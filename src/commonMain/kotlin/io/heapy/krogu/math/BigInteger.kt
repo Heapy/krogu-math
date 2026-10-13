@@ -189,9 +189,11 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return arrayOf(root, subtract(root.multiply(root)))
     }
 
-    open fun shiftLeft(n: Int): BigInteger {
-        if (sign == 0 || n == 0) return this
-        if (n < 0) return if (n == Int.MIN_VALUE) (if (sign < 0) ONE.negate() else ZERO) else shiftRight(-n)
+    open fun shiftLeft(n: Int): BigInteger = shiftLeftValue(n)
+    private fun shiftLeftValue(n: Int): BigInteger {
+        if (sign == 0) return ZERO
+        if (n == 0) return this
+        if (n < 0) return if (n == Int.MIN_VALUE) (if (sign < 0) ONE.negate() else ZERO) else shiftRightValue(-n)
         if (magnitudeBits().toLong() + n > Int.MAX_VALUE) throw ArithmeticException("BigInteger overflow")
         val whole = n / LIMB_BITS
         val bits = n % LIMB_BITS
@@ -205,11 +207,13 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         result[words.size + whole] = carry.toInt()
         return normalized(sign, result)
     }
-    open fun shiftRight(n: Int): BigInteger {
-        if (sign == 0 || n == 0) return this
+    open fun shiftRight(n: Int): BigInteger = shiftRightValue(n)
+    private fun shiftRightValue(n: Int): BigInteger {
+        if (sign == 0) return ZERO
+        if (n == 0) return this
         if (n < 0) {
             if (n == Int.MIN_VALUE) throw ArithmeticException("BigInteger overflow")
-            return shiftLeft(-n)
+            return shiftLeftValue(-n)
         }
         if (n >= magnitudeBits()) return if (sign < 0) ONE.negate() else ZERO
         val whole = n / LIMB_BITS
@@ -222,7 +226,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             result[i] = v
         }
         val truncated = normalized(sign, result)
-        return if (sign < 0 && getLowestSetBit() < n) truncated.subtract(ONE) else truncated
+        return if (sign < 0 && lowestSetBitValue() < n) truncated.subtract(ONE) else truncated
     }
 
     private fun magnitudeBits(): Int = if (words.isEmpty()) 0 else (words.size - 1) * LIMB_BITS + 32 - words.last().countLeadingZeroBits()
@@ -239,7 +243,8 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         for (i in first + 1 until words.size) count += words[i].countOneBits()
         return count
     }
-    open fun getLowestSetBit(): Int {
+    open fun getLowestSetBit(): Int = lowestSetBitValue()
+    private fun lowestSetBitValue(): Int {
         for (i in words.indices) if (words[i] != 0) return i * LIMB_BITS + words[i].countTrailingZeroBits()
         return -1
     }

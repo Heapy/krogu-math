@@ -141,6 +141,18 @@ The largest supported magnitudes still require the range audit noted above;
 these tests do not allocate multi-gigabyte integers or complete the broader
 subclass-dispatch audit for arithmetic, shifts and conversions.
 
+Shift routines use private left/right helpers and a private lowest-set-bit
+query, so negative distances and negative rounding do not dispatch through
+overridden public methods. Java black-box fixtures compare both directions,
+signs, zero, 30-bit boundaries and extreme distances with JDK. They also compare
+whether the source object is retained and whether the result has the base type.
+Zero shifts return canonical ZERO even for a zero-valued subclass; a zero
+distance on a nonzero value retains the source. Common subclass regressions
+include 120-bit powers and neighboring negative values to exercise discarded-bit
+rounding, plus Int.MIN_VALUE/Int.MAX_VALUE distances. The existing structured
+oracle independently supplies normal-value results at the extreme distances.
+Broader dispatch behavior in arithmetic and conversions remains unverified.
+
 ## Completion gate
 
 Every row above must have direct, current evidence at the required scope and no
