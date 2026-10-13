@@ -400,6 +400,44 @@ for (coefficient in listOf("0", "1", "-1", "123", "-123", "2147483646", "2147483
         }
     }
 }
+for (coefficient in listOf("0", "1", "-1", "123", "-123", "2147483647", "123456789012345678901234567890")) {
+    for (scale in listOf(-2, -1, 0, 1, 2, 3, 6, 7)) for (sign in -1..1) for (op in listOf("plain", "engineering")) {
+        record("Y", op, coefficient, scale.toString(), sign) {
+            val trace = StringBuilder()
+            val value = object : BigDecimal(BigInteger(coefficient), scale) {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                override fun signum(): Int { trace.append("sign;"); return sign }
+                override fun precision(): Int { trace.append("precision;"); return 1 }
+                override fun toPlainString(): String { trace.append("plain;"); return super.toPlainString() }
+            }
+            val result = if (op == "plain") value.toPlainString() else value.toEngineeringString()
+            "$result|$trace"
+        }
+    }
+}
+for (coefficient in listOf("0", "1", "-1", "-9223372036854775808", "123456789012345678901234567890")) {
+    for (scale in listOf(-2, 0, 1, 2, 7)) for (initialSign in listOf(-1, 0)) for (op in listOf("text", "plain", "engineering")) {
+        record("Z", op, coefficient, scale.toString(), initialSign) {
+            var observedSign = initialSign
+            val trace = StringBuilder()
+            val value = object : BigDecimal(BigInteger(coefficient), scale) {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                override fun signum(): Int { trace.append("sign;"); return observedSign }
+                override fun precision(): Int { trace.append("precision;"); return 1 }
+            }
+            fun format(): String = when (op) {
+                "plain" -> value.toPlainString()
+                "engineering" -> value.toEngineeringString()
+                else -> value.toString()
+            }
+            val first = format()
+            observedSign = 1
+            "$first|${format()}|$trace"
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

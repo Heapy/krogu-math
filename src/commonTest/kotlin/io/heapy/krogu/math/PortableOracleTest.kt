@@ -16,6 +16,32 @@ class PortableOracleTest {
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "Z") {
+            var observedSign = p
+            val trace = StringBuilder()
+            val value = object : BigDecimal(BigInteger(v[2]), v[3].toInt()) {
+                override fun signum(): Int { trace.append("sign;"); return observedSign }
+                override fun precision(): Int { trace.append("precision;"); return 1 }
+            }
+            fun format(): String = when (op) {
+                "plain" -> value.toPlainString()
+                "engineering" -> value.toEngineeringString()
+                else -> value.toString()
+            }
+            val first = format()
+            observedSign = 1
+            return "$first|${format()}|$trace"
+        }
+        if (v[0] == "Y") {
+            val trace = StringBuilder()
+            val value = object : BigDecimal(BigInteger(v[2]), v[3].toInt()) {
+                override fun signum(): Int { trace.append("sign;"); return p }
+                override fun precision(): Int { trace.append("precision;"); return 1 }
+                override fun toPlainString(): String { trace.append("plain;"); return super.toPlainString() }
+            }
+            val result = if (op == "plain") value.toPlainString() else value.toEngineeringString()
+            return "$result|$trace"
+        }
         if (v[0] == "W") {
             val trace = StringBuilder()
             val value = object : BigDecimal(BigInteger(v[2]), v[3].toInt()) {

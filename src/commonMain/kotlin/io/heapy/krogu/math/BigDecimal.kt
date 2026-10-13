@@ -395,16 +395,28 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     private fun adjustedExponent(): Long = precision().toLong() - decimalScale - 1
     private fun scaledCoefficient(scale: Int): BigInteger = if (signum() == 0) coefficient else coefficient.multiply(tenPow(scale.toLong() - decimalScale))
 
+    @kotlin.concurrent.Volatile
+    @kotlin.jvm.Transient
+    private var stringCache: String? = null
+
     override fun toString(): String {
+        stringCache?.let { return it }
+        return canonicalStringValue().also { stringCache = it }
+    }
+
+    private fun canonicalStringValue(): String {
         val digits = coefficient.abs().toString()
-        val compact = coefficient.decimalCompactValue()
-        val directSign = decimalScale == 0 || (decimalScale == 2 && compact != null &&
-            compact >= 0 && compact < Int.MAX_VALUE.toLong())
-        val sign = if (directSign) coefficient.signum() else signum()
+        val sign = layoutSign()
         val exponent = digits.length.toLong() - decimalScale - 1
         if (decimalScale >= 0 && exponent >= -6) return canonicalPlain(digits, sign)
         val body = if (digits.length == 1) digits else digits[0] + "." + digits.substring(1)
         return (if (sign < 0) "-" else "") + body + exponentText(exponent)
+    }
+    private fun layoutSign(): Int {
+        val compact = coefficient.decimalCompactValue()
+        val directSign = decimalScale == 0 || (decimalScale == 2 && compact != null &&
+            compact >= 0 && compact < Int.MAX_VALUE.toLong())
+        return if (directSign) coefficient.signum() else signum()
     }
     private fun canonicalPlain(digits: String, sign: Int): String {
         val body = when {
@@ -415,31 +427,30 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         return (if (sign < 0) "-" else "") + body
     }
     open fun toPlainString(): String {
-        val digits = coefficient.abs().toString()
-        val body = when {
-            decimalScale == 0 -> digits
-            decimalScale < 0 -> if (signum() == 0) "0" else digits + zeros(-decimalScale.toLong())
-            decimalScale < digits.length -> digits.substring(0, digits.length - decimalScale) + "." + digits.substring(digits.length - decimalScale)
-            else -> "0." + zeros(decimalScale.toLong() - digits.length) + digits
+        if (decimalScale == 0) return coefficient.toString()
+        if (decimalScale < 0) {
+            if (signum() == 0) return "0"
+            return coefficient.toString() + zeros(-decimalScale.toLong())
         }
-        return (if (signum() < 0) "-" else "") + body
+        return canonicalPlain(coefficient.abs().toString(), signum())
     }
     open fun toEngineeringString(): String {
-        if (decimalScale >= 0 && adjustedExponent() >= -6) return toPlainString()
         val digits = coefficient.abs().toString()
-        val exp = adjustedExponent()
+        val sign = layoutSign()
+        val exp = digits.length.toLong() - decimalScale - 1
+        if (decimalScale >= 0 && exp >= -6) return canonicalPlain(digits, sign)
         val mod = ((exp % 3 + 3) % 3).toInt()
         var engineeringExp = exp - mod
         val body: String
         if (signum() == 0) {
-            val decimals = ((decimalScale.toLong() % 3 + 3) % 3).toInt()
-            engineeringExp = -decimalScale.toLong() + decimals
+            val decimals = (3 - mod) % 3
+            if (mod != 0) engineeringExp += 3
             body = if (decimals == 0) "0" else "0." + "0".repeat(decimals)
         } else {
             val before = mod + 1
             body = if (digits.length <= before) digits.padEnd(before, '0') else digits.substring(0, before) + "." + digits.substring(before)
         }
-        return (if (signum() < 0) "-" else "") + body + if (engineeringExp == 0L) "" else exponentText(engineeringExp)
+        return (if (sign < 0) "-" else "") + body + if (engineeringExp == 0L) "" else exponentText(engineeringExp)
     }
 
     open fun toBigInteger(): BigInteger {
