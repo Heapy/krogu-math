@@ -68,7 +68,7 @@ etc.). Native tests cannot execute on a different host OS or CPU architecture.
 Kotlin/Native 2.4.21 does not provide a Linux ARM64 compiler host: CI cross-compiles
 the ARM64 test executable on Linux x64 and then runs it on a Linux ARM64 runner.
 
-The committed 66,403 portable vectors compare values, preferred scales, text,
+The committed 74,618 portable vectors compare values, preferred scales, text,
 floating-point bits and exception **types** on every test target.
 The vectors include 8,888 structured/dense bit-query, bit-update and extreme
 shift cases. Portable subclass tests also check that inherited bit operations

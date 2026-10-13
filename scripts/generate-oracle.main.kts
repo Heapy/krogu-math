@@ -851,6 +851,47 @@ for (text in listOf("0.00", "1", "-1")) for (behavior in listOf("return", "self"
         }
     }
 }
+val decimalComparisonInputs = listOf("0", "0.00", "1", "1.00", "-1.00", "123.456", "12345678901234567890.00", "9.0", "1.234", "9.87", "9999999999999999999.0",
+    "9223372036854775807", "-9223372036854775808", "9223372036854775808", "-9223372036854775809")
+val decimalComparisonSigns = (-1..1).flatMap { a -> (-1..1).map { b -> a to b } } + listOf(-2 to -2, 2 to 2)
+for (left in decimalComparisonInputs) for (right in decimalComparisonInputs) {
+    record("CP", "base", left, right) { "${BigDecimal(left).compareTo(BigDecimal(right))}|" }
+    for ((sign, rightSign) in decimalComparisonSigns) for (digits in listOf(-1, 1, 7)) {
+        record("CP", "getters:$sign:$rightSign", left, right, digits) {
+            val trace = StringBuilder()
+            fun operand(text: String, label: String, observedSign: Int) = object : BigDecimal(text) {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                override fun signum(): Int { trace.append(label).append("sign;"); return observedSign }
+                override fun precision(): Int { trace.append(label).append("precision;"); return if (digits < 0) super.precision() else digits }
+                override fun scale(): Int { trace.append(label).append("scale;"); return 0 }
+            }
+            "${operand(left, "a", sign).compareTo(operand(right, "b", rightSign))}|$trace"
+        }
+    }
+}
+val decimalComparisonScaled = listOf("0", "1", "-1", "12345678901234567890").flatMap { coefficient ->
+    listOf(Int.MIN_VALUE, -2, 0, 2, Int.MAX_VALUE).map { scale -> coefficient to scale }
+}
+for ((left, ls) in decimalComparisonScaled) for ((right, rs) in decimalComparisonScaled) {
+    record("CP", "scaled", "$left@$ls", "$right@$rs") {
+        "${BigDecimal(BigInteger(left), ls).compareTo(BigDecimal(BigInteger(right), rs))}|"
+    }
+}
+for (text in decimalComparisonInputs) for ((first, second) in decimalComparisonSigns) {
+    record("CP", "self:$first:$second", text) {
+        val trace = StringBuilder()
+        val value = object : BigDecimal(text) {
+            override fun toByte(): Byte = super.toInt().toByte()
+            override fun toShort(): Short = super.toInt().toShort()
+            private var calls = 0
+            override fun signum(): Int { trace.append("sign;"); return if (calls++ == 0) first else second }
+            override fun precision(): Int { trace.append("precision;"); return 1 }
+            override fun scale(): Int { trace.append("scale;"); return 0 }
+        }
+        "${value.compareTo(value)}|$trace"
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

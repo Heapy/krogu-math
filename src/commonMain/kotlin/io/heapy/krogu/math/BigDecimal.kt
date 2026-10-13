@@ -413,14 +413,29 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     }
 
     override fun compareTo(other: BigDecimal): Int {
-        if (signum() != other.signum()) return signum().compareTo(other.signum())
-        if (signum() == 0) return 0
+        if (decimalScale == other.decimalScale) {
+            val left = coefficient.decimalCompactValue()
+            val right = other.coefficient.decimalCompactValue()
+            if (left != null && right != null) return left.compareTo(right)
+        }
+        val leftSign = signum()
+        val rightSign = other.signum()
+        if (leftSign != rightSign) return leftSign.compareTo(rightSign)
+        if (leftSign == 0) return 0
+        val magnitude = compareMagnitude(other)
+        return if (leftSign > 0) magnitude else -magnitude
+    }
+    private fun compareMagnitude(other: BigDecimal): Int {
+        val left = coefficient.abs()
+        val right = other.coefficient.abs()
+        if (left.signum() == 0 || right.signum() == 0) return left.signum().compareTo(right.signum())
+        if (decimalScale == other.decimalScale) return left.compareTo(right)
         val exponent = adjustedExponent().compareTo(other.adjustedExponent())
-        if (exponent != 0) return exponent * signum()
-        val a = coefficient.abs().toString()
-        val b = other.coefficient.abs().toString()
+        if (exponent != 0) return exponent
+        val a = left.toString()
+        val b = right.toString()
         val length = maxOf(a.length, b.length)
-        return a.padEnd(length, '0').compareTo(b.padEnd(length, '0')) * signum()
+        return a.padEnd(length, '0').compareTo(b.padEnd(length, '0')).compareTo(0)
     }
     open fun min(value: BigDecimal): BigDecimal = if (this <= value) this else value
     open fun max(value: BigDecimal): BigDecimal = if (this >= value) this else value

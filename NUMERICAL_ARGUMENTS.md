@@ -117,6 +117,26 @@ arithmetic. It does not establish all allocation/range behavior, finite-context
 sticky-tail rounding or virtual callback semantics. Separate public-JDK fixtures
 constrain which overrides exact and context operations invoke.
 
+## Decimal comparison
+
+For ordinary inputs with different nonzero signs, sign order determines numeric
+order. Equal nonzero signs reduce the problem to absolute magnitudes, reversing
+the result for negative numbers. At equal scales, comparing stored coefficients
+(or magnitudes after sign separation) preserves order because the decimal factor
+is positive.
+
+For nonzero magnitude c*10^-s with d coefficient digits, its adjusted exponent
+is d-s-1. Different adjusted exponents determine magnitude order by disjoint
+decimal decades. Equal exponents reduce comparison to decimal significands:
+padding coefficient digit strings on the right to equal length multiplies each
+by the appropriate positive power of ten. Lexicographic order of equal-length
+decimal strings equals integer order. Normalizing the string comparison result
+preserves order and the pinned JDK's -1/0/1 result domain on every backend.
+Scale arithmetic uses Long; no power of ten proportional to the scale distance
+is constructed. This proves the numeric reduction for truthful metadata and
+supported digit-string sizes. Virtual getter dispatch and replacement metadata
+are constrained separately by public-JDK oracle cases.
+
 ## Decimal rational conversion
 
 For an ordinary BigDecimal, separate its sign and write its absolute value as

@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 66,403 vectors, including 8,888 added signed
+The main oracle now contains 74,618 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -453,3 +453,17 @@ exact-callback delegation. Round/plus, abs/negate and unlimited binary overloads
 match the pinned JDK in these Java-only interop cases without another arithmetic
 change. Other runtime interop surfaces, chained returned-null callbacks and
 detailed NPE diagnostics remain open.
+
+Comparison adds 8,215 portable outcomes: 7,425 getter/sign combinations, 225
+ordinary text pairs, 400 extreme-scale pairs and 165 self comparisons with
+changing sign getters. Same-scale compact operands compare stored coefficients
+without getters. General paths read each virtual sign once; stored-zero and
+same-scale magnitude paths bypass precision, while different-scale nonzero
+magnitudes read virtual precision. Scale getters are bypassed. Magnitude string
+comparison now normalizes its result to -1/0/1, correcting ordinary results such
+as 1 versus 9.0 returning -8 instead of the pinned -1. Sign direction uses positive
+versus negative branching, including the selected replacement signs +/-2.
+Long boundaries and adjacent inflated values constrain compact-path selection.
+The numerical order argument assumes truthful getter metadata; broader dynamic
+getter domains, null comparison/min/max callbacks and large-input allocation
+behavior remain open.
