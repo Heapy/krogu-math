@@ -305,6 +305,15 @@ for (coefficient in listOf(0L, 1L, -1L, 10L)) for (scale in nonzeroDivisionScale
         }
     }
 }
+val setScaleScales = listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, -19, -18, -1, 0, 1, 18, 19, Int.MAX_VALUE - 1, Int.MAX_VALUE)
+for (coefficient in listOf("0", "1", "-1", "10", "9223372036854775807", "-9223372036854775808", "123456789012345678901234567890")) {
+    for (scale in setScaleScales) for (target in setScaleScales) for (mode in RoundingMode.entries) {
+        record("G", "setScale", "$coefficient@$scale", "0@0", target, mode) {
+            try { BigDecimal(BigInteger(coefficient), scale).setScale(target, mode).toString() }
+            catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

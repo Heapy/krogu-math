@@ -286,7 +286,9 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         if (decimalScale == newScale) return this
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, newScale)
         val shift = newScale.toLong() - decimalScale
-        if (kotlin.math.abs(shift) > 646456992L) throw ArithmeticException("BigInteger overflow")
+        // Both directions validate the positive rescaling distance first.
+        val distance = checkedScale(kotlin.math.abs(shift))
+        if (distance > 646456992) throw ArithmeticException("BigInteger would overflow supported range")
         val value = when {
             shift > 0 -> coefficient.multiply(tenPow(shift))
             -shift > precision() -> roundTiny(signum(), roundingMode)
