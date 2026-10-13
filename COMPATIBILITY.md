@@ -87,6 +87,18 @@ certainty retains the JDK's unconditional `true`. The portable oracle includes
 strong pseudoprimes to initial basis subsets, both strict-boundary neighbors,
 signed primes through 81 bits, and ordinary-strength 89/127-bit primes.
 
+Binary constructors now pack bytes directly into limbs, including stripped
+negative sign extension and a final complement carry. JVM checks compare all
+65,536 two-byte encodings and seeded inputs through 65,536 bytes with JDK;
+portable regressions include 131,072-byte sign padding and carry boundaries.
+Checked sizing rejects magnitudes beyond the supported bit-length range and
+avoids Int overflow in division allocation and the initial square-root shift.
+Boundary arithmetic is tested without allocating the largest possible arrays;
+actual multi-gigabyte execution remains unverified. Modular exponentiation has
+a bounded-residue multiplication fallback so an oversized intermediate product
+does not alone reject an otherwise representable result. Its arithmetic is
+compared with full-precision JDK products on seeded operands through 512 bits.
+
 ## Completion gate
 
 Every row above must have direct, current evidence at the required scope and no

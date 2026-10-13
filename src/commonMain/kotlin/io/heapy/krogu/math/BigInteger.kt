@@ -40,6 +40,8 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     open fun subtract(value: BigInteger): BigInteger = add(value.negate())
     open fun multiply(value: BigInteger): BigInteger {
         if (sign == 0 || value.sign == 0) return ZERO
+        if (magnitudeBits().toLong() + value.magnitudeBits() - 1 > Int.MAX_VALUE)
+            throw ArithmeticException("BigInteger overflow")
         val result = IntArray(words.size + value.words.size)
         for (i in words.indices) {
             var carry = 0L
@@ -72,7 +74,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             return arrayOf(normalized(sign * value.sign, result), valueOf(remainder * sign))
         }
         // Binary long division: at each step the partial remainder stays below twice b.
-        val result = IntArray((a.magnitudeBits() + LIMB_BITS - 1) / LIMB_BITS)
+        val result = IntArray(a.words.size)
         var rem = ZERO
         for (bit in a.magnitudeBits() - 1 downTo 0) {
             rem = rem.shiftLeft(1)
@@ -117,8 +119,8 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         var result = ONE.mod(m)
         val e = power.abs()
         for (i in 0 until e.bitLength()) {
-            if (e.testBit(i)) result = result.multiply(base).mod(m)
-            if (i + 1 < e.bitLength()) base = base.multiply(base).mod(m)
+            if (e.testBit(i)) result = result.multiplyMod(base, m)
+            if (i + 1 < e.bitLength()) base = base.multiplyMod(base, m)
         }
         return result
     }
@@ -136,10 +138,31 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         if (r != ONE) throw ArithmeticException("BigInteger not invertible")
         return t.mod(m)
     }
+    private fun multiplyMod(value: BigInteger, m: BigInteger): BigInteger =
+        if (magnitudeBits().toLong() + value.magnitudeBits() <= Int.MAX_VALUE) multiply(value).mod(m)
+        else multiplyModuloBounded(value, m)
+
+    /** Residue multiplication that never constructs the potentially out-of-range full product. */
+    @kotlin.jvm.JvmSynthetic
+    internal fun multiplyModuloBounded(value: BigInteger, m: BigInteger): BigInteger {
+        require(sign >= 0 && value.sign >= 0 && m.sign > 0 && this < m && value < m)
+        fun addResidues(a: BigInteger, b: BigInteger): BigInteger {
+            val gap = m.subtract(b)
+            return if (a >= gap) a.subtract(gap) else a.add(b)
+        }
+        var result = ZERO
+        var addend = this
+        val bits = value.magnitudeBits()
+        for (i in 0 until bits) {
+            if (value.testBit(i)) result = addResidues(result, addend)
+            if (i + 1 < bits) addend = addResidues(addend, addend)
+        }
+        return result
+    }
     open fun sqrt(): BigInteger {
         if (sign < 0) throw ArithmeticException("Negative BigInteger")
         if (this < TWO) return this
-        var x = ONE.shiftLeft((bitLength() + 1) / 2)
+        var x = ONE.shiftLeft(MagnitudeLimits.initialSqrtShift(bitLength()))
         while (true) {
             val next = x.add(divide(x)).shiftRight(1)
             if (next >= x) return x
@@ -248,7 +271,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             var x = a.modPow(d, n)
             if (x == ONE || x == nm1) return true
             for (r in 1 until s) {
-                x = x.multiply(x).mod(n)
+                x = x.multiplyMod(x, n)
                 if (x == nm1) return true
             }
             return false
@@ -359,7 +382,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     // 'open' on @JvmStatic functions prevents final static bridges, preserving Java hiding.
     @Suppress("NON_FINAL_MEMBER_IN_OBJECT")
     companion object {
-        private const val LIMB_BITS = 30
+        private const val LIMB_BITS = MagnitudeLimits.WORD_BITS
         private const val MASK = (1L shl LIMB_BITS) - 1
         @JvmField val ZERO = BigInteger(0, intArrayOf())
         @JvmField val ONE = BigInteger(1, intArrayOf(1))
@@ -422,14 +445,48 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             if (twos && bytes.isEmpty()) throw NumberFormatException("Zero length BigInteger")
             checkBounds(bytes, off, len)
             if (len == 0) return ZERO
-            var n = ZERO
-            for (i in off until off + len) n = n.shiftLeft(8).add(valueOf((bytes[i].toInt() and 255).toLong()))
-            return if (twos && bytes[off] < 0) n.subtract(ONE.shiftLeft(len * 8)) else n
+            val negative = twos && bytes[off] < 0
+            var start = off
+            val end = off + len
+            if (negative) {
+                while (end - start > 1 && bytes[start] == (-1).toByte()) start++
+            } else {
+                while (start < end && bytes[start] == 0.toByte()) start++
+                if (start == end) return ZERO
+            }
+            val result = IntArray(MagnitudeLimits.packedWords(end - start, negative))
+            var buffer = 0L
+            var bufferedBits = 0
+            var word = 0
+            var carry = if (negative) 1 else 0
+            for (i in end - 1 downTo start) {
+                val raw = bytes[i].toInt() and 255
+                val converted = if (negative) (raw xor 255) + carry else raw
+                if (negative) carry = converted ushr 8
+                buffer = buffer or ((converted and 255).toLong() shl bufferedBits)
+                bufferedBits += 8
+                if (bufferedBits >= LIMB_BITS) {
+                    result[word++] = (buffer and MASK).toInt()
+                    buffer = buffer ushr LIMB_BITS
+                    bufferedBits -= LIMB_BITS
+                }
+            }
+            // Stripping FF sign extension can leave an all-zero payload (e.g. FF 00).
+            // Its complement carry is a real extra magnitude bit, not signed overflow.
+            buffer = buffer or (carry.toLong() shl bufferedBits)
+            if (buffer != 0L) result[word] = buffer.toInt()
+            return normalized(if (negative) -1 else 1, result)
         }
         private fun signedBytes(signum: Int, bytes: ByteArray?, off: Int, len: Int): BigInteger {
             if (signum !in -1..1) throw NumberFormatException("Invalid signum value")
-            val n = fromBytes(bytes ?: throw NullPointerException(), off, len, false)
-            if (signum == 0 && n.sign != 0) throw NumberFormatException("signum-magnitude mismatch")
+            val magnitude = bytes ?: throw NullPointerException()
+            if (signum == 0) {
+                checkBounds(magnitude, off, len)
+                for (i in off until off + len)
+                    if (magnitude[i] != 0.toByte()) throw NumberFormatException("signum-magnitude mismatch")
+                return ZERO
+            }
+            val n = fromBytes(magnitude, off, len, false)
             return if (signum < 0) n.negate() else n
         }
         private fun checkBounds(bytes: ByteArray, off: Int, len: Int) {
@@ -438,7 +495,9 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         private fun normalized(sign: Int, words: IntArray): BigInteger {
             var length = words.size
             while (length > 0 && words[length - 1] == 0) length--
-            return if (length == 0) ZERO else BigInteger(sign, if (length == words.size) words else words.copyOf(length))
+            if (length == 0) return ZERO
+            MagnitudeLimits.checkedBitLength(length, words[length - 1])
+            return BigInteger(sign, if (length == words.size) words else words.copyOf(length))
         }
         private fun compareMagnitude(a: IntArray, b: IntArray): Int {
             if (a.size != b.size) return a.size.compareTo(b.size)
