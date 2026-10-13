@@ -244,18 +244,27 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         val nm1 = n.subtract(ONE)
         val s = nm1.getLowestSetBit()
         val d = nm1.shiftRight(s)
+        fun passesWitness(a: BigInteger): Boolean {
+            var x = a.modPow(d, n)
+            if (x == ONE || x == nm1) return true
+            for (r in 1 until s) {
+                x = x.multiply(x).mod(n)
+                if (x == nm1) return true
+            }
+            return false
+        }
+        // Sorenson–Webster, Theorem 1.1: below this strict bound, testing the
+        // first thirteen prime bases is conclusive, independently of certainty.
+        // https://arxiv.org/abs/1509.00864 (mathematical result, not library code).
+        if (n < DETERMINISTIC_PRIME_LIMIT) {
+            for (base in DETERMINISTIC_PRIME_BASES)
+                if (!passesWitness(valueOf(base.toLong()))) return false
+            return true
+        }
         repeat((certainty.toLong() + 1L).div(2L).coerceAtMost(Int.MAX_VALUE.toLong()).toInt()) {
             var a: BigInteger
             do { a = randomBits(n.bitLength(), Random.Default) } while (a < TWO || a >= nm1)
-            var x = a.modPow(d, n)
-            if (x != ONE && x != nm1) {
-                var witnessed = true
-                for (r in 1 until s) {
-                    x = x.multiply(x).mod(n)
-                    if (x == nm1) { witnessed = false; break }
-                }
-                if (witnessed) return false
-            }
+            if (!passesWitness(a)) return false
         }
         return true
     }
@@ -356,6 +365,8 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         @JvmField val ONE = BigInteger(1, intArrayOf(1))
         @JvmField val TWO = BigInteger(1, intArrayOf(2))
         @JvmField val TEN = BigInteger(1, intArrayOf(10))
+        private val DETERMINISTIC_PRIME_LIMIT = BigInteger("3317044064679887385961981")
+        private val DETERMINISTIC_PRIME_BASES = intArrayOf(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41)
         @JvmStatic open fun valueOf(value: Long): BigInteger {
             if (value == 0L) return ZERO
             var magnitude = if (value < 0) 0uL - value.toULong() else value.toULong()

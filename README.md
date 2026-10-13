@@ -78,6 +78,8 @@ results on every target, including errors at both signed scale limits.
 Null/error precedence adds 7,486 live JVM comparisons and 3,462 portable outcomes.
 Character tests cover every BMP character in bases 2–36, both single-character
 string constructors, and all supplementary digit characters classified by JDK 25.
+Primality tests include maximum certainty in a proven deterministic domain,
+strong pseudoprimes and the strict domain boundary.
 Java sources are compiled and executed to check constructors, static factories,
 subclassing, method hiding and virtual Number dispatch. Fixtures are
 generated reproducibly with a dependency-free Kotlin script:
@@ -89,6 +91,7 @@ kotlinr scripts/generate-oracle.main.kts --check
 kotlinr scripts/generate-scale-oracle.main.kts --check
 kotlinr scripts/generate-null-oracle.main.kts --check
 kotlinr scripts/generate-character-oracle.main.kts --check
+kotlinr scripts/generate-prime-oracle.main.kts --check
 ```
 
 The first script invocation compiles the script; later runs use the compiler cache.

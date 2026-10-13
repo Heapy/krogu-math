@@ -20,7 +20,7 @@ specifications and black-box results may supply evidence.
 | Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 207,239 exact portable scale-boundary outcomes; portable fixtures | Wider coefficient/scale/precision combinations and overflow across remaining overloads |
 | Powers and roots | 10,560 structured JVM comparisons plus portable fixtures | Adversarial midpoint and carry cases at larger precision |
 | Float/Double conversions and canonical Double factory values | Bitwise oracle comparisons, binary boundaries, 10,000 seeded canonical Double cases | Exhaustive Float input domain, wider subnormal/tie/overflow campaigns and algorithm audit |
-| Prime generation and certainty | Seeded generation, external primality checks, Carmichael/composite regressions | Witness independence, certainty/range boundaries, caller RNG behavior and distribution |
+| Prime generation and certainty | 368 portable primality/successor cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions | Very large certainty beyond the proven bound, witness independence at larger magnitudes, supported-range limits, caller RNG behavior and distribution |
 | Exception conditions and types | Portable fixtures; 7,486 live JVM null/invalid-argument comparisons; 3,462 portable null-precedence outcomes; constructor precedence matrix | Wider invalid-argument domains, extreme offsets and cross-products; exception messages remain unmatched |
 | Equality, ordering, hash codes, immutability | JVM oracle and common invariants | Full context/enum/hash and subclass audit |
 | JVM serialization and Java adapters | Value round trips using validated proxies; exact coefficient/scale conversion | Malformed streams, subclass streams, descriptor/version policy and Java serialization compatibility audit |
@@ -35,6 +35,7 @@ kotlinr scripts/generate-oracle.main.kts --check
 kotlinr scripts/generate-scale-oracle.main.kts --check
 kotlinr scripts/generate-null-oracle.main.kts --check
 kotlinr scripts/generate-character-oracle.main.kts --check
+kotlinr scripts/generate-prime-oracle.main.kts --check
 ```
 
 Use the appropriate Native host test tasks for other OS/architectures. CI
@@ -75,6 +76,16 @@ checks the complete public-JDK results before losslessly encoding the BMP map
 as 41 arithmetic ranges. It distinguishes constructor failures from failures
 in test-result conversion. Supplementary UTF-16 constructor behavior is stored
 explicitly, rather than inferred from code-point digit classification.
+
+For positive certainty and absolute values strictly below
+`3317044064679887385961981`, the first thirteen prime bases give a conclusive
+Miller–Rabin decision ([Sorenson–Webster, Theorem 1.1](https://arxiv.org/html/1509.00864v1)).
+This removes the billion-round `Int.MAX_VALUE`-certainty path in that domain
+without weakening the result. Larger inputs retain the probability-driven
+random-witness path; extreme certainty there still needs work. Non-positive
+certainty retains the JDK's unconditional `true`. The portable oracle includes
+strong pseudoprimes to initial basis subsets, both strict-boundary neighbors,
+signed primes through 81 bits, and ordinary-strength 89/127-bit primes.
 
 ## Completion gate
 
