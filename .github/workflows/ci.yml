@@ -41,6 +41,12 @@ jobs:
       - uses: gradle/actions/setup-gradle@4c125117fe7c5aed11272ec4213f602f012f89f2 # v5
       - run: ./gradlew ${{ matrix.tasks }} --stacktrace
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always() && !cancelled()
+        with:
+          name: test-results-${{ matrix.os }}
+          path: build/test-results/**
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: matrix.os == 'ubuntu-24.04'
         with:
           name: linux-arm64-tests

@@ -1,11 +1,21 @@
 package io.heapy.krogu.math
 
 /** Immutable decimal precision and rounding policy; zero precision means unlimited. */
-class MathContext(val precision: Int, val roundingMode: RoundingMode) : MathSerializable {
+@Suppress("NON_FINAL_MEMBER_IN_FINAL_CLASS")
+class MathContext(open val precision: Int, open val roundingMode: RoundingMode) : MathSerializable {
     init { require(precision >= 0) { "Digits < 0" } }
     private fun writeReplace(): Any = serializationProxy(this)
     constructor(setPrecision: Int) : this(setPrecision, RoundingMode.HALF_UP)
     constructor(value: String) : this(parse(value).first, parse(value).second)
+
+    // Common callers can use both Kotlin properties and the JDK method names.
+    // JVM already exposes the property accessors; hide the duplicate aliases from Java.
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("getPrecisionMethod")
+    fun getPrecision(): Int = precision
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("getRoundingModeMethod")
+    fun getRoundingMode(): RoundingMode = roundingMode
 
     override fun equals(other: Any?): Boolean = other is MathContext && precision == other.precision && roundingMode == other.roundingMode
     override fun hashCode(): Int = precision + roundingMode.hashCode() * 59

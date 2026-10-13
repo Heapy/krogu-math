@@ -15,6 +15,20 @@ class PortableOracleTest {
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "R") {
+            val bits = v[2].toInt()
+            val random: PlatformRandom? = null
+            return when (op) {
+                "random" -> BigInteger(bits, random)
+                "prime" -> BigInteger(bits, v[3].toInt(), random)
+                "probablePrime" -> BigInteger.probablePrime(bits, random)
+                else -> error("Unknown random operation $op")
+            }
+        }
+        if (v[0] == "B") {
+            val bytes = if (v[2].isEmpty()) byteArrayOf() else v[2].split(',').map { it.toByte() }.toByteArray()
+            return if (op == "twos") BigInteger(bytes, p, v[3].toInt()) else BigInteger(v[5].toInt(), bytes, p, v[3].toInt())
+        }
         val mode = RoundingMode.valueOf(v[5])
         if (v[0] == "F") {
             val d = Double.fromBits(v[2].toLong())
@@ -95,6 +109,8 @@ class PortableOracleTest {
         assertFailsWith<ArithmeticException> { BigInteger.ONE.divide(BigInteger.ZERO) }
     }
     @Test fun contextsAndRoundingConstants() {
+        assertEquals(34, MathContext.DECIMAL128.getPrecision())
+        assertEquals(RoundingMode.HALF_EVEN, MathContext.DECIMAL128.getRoundingMode())
         assertEquals(MathContext.DECIMAL128, MathContext(MathContext.DECIMAL128.toString()))
         assertEquals(RoundingMode.HALF_EVEN, RoundingMode.valueOf(6))
         assertFailsWith<IllegalArgumentException> { MathContext(-1) }

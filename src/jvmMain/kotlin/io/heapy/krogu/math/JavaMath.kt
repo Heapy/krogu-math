@@ -6,9 +6,11 @@ import kotlin.random.asKotlinRandom
 
 /** Uses the supplied java.util.Random without substituting a different random generator. */
 @JvmName("randomInteger")
-fun BigInteger(numBits: Int, rnd: java.util.Random): BigInteger = BigInteger(numBits, rnd.asKotlinRandom())
+fun randomInteger(numBits: Int, rnd: java.util.Random): BigInteger = BigInteger(numBits, rnd)
 @JvmName("randomPrime")
-fun BigInteger(bitLength: Int, certainty: Int, rnd: java.util.Random): BigInteger = BigInteger(bitLength, certainty, rnd.asKotlinRandom())
+fun randomPrime(bitLength: Int, certainty: Int, rnd: java.util.Random): BigInteger = BigInteger(bitLength, certainty, rnd)
+@Deprecated("Use the BigInteger.probablePrime member overload")
+@Suppress("EXTENSION_SHADOWED_BY_MEMBER")
 fun BigInteger.Companion.probablePrime(bitLength: Int, rnd: java.util.Random): BigInteger = probablePrime(bitLength, rnd.asKotlinRandom())
 fun probablePrime(bitLength: Int, rnd: java.util.Random): BigInteger = BigInteger.probablePrime(bitLength, rnd.asKotlinRandom())
 

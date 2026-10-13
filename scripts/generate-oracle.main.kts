@@ -113,6 +113,20 @@ for (text in listOf("0E+2147483647", "1E+2147483647", "0E-2147483647", "1E-21474
     record("D", "scale", text, p = 0) { BigDecimal(text).setScale(0, RoundingMode.HALF_EVEN) }
     record("D", "divideScale", text, b = "1", p = 0) { BigDecimal(text).divide(BigDecimal.ONE, 0, RoundingMode.HALF_EVEN) }
 }
+for (bytes in listOf(byteArrayOf(), byteArrayOf(0), byteArrayOf(-1), byteArrayOf(0, -128, 1))) {
+    for (off in -2..bytes.size + 1) for (len in -2..bytes.size + 1) {
+        val input = bytes.joinToString(",")
+        rows.add(listOf("B", "twos", input, len.toString(), off.toString(), "0", outcome { BigInteger(bytes, off, len) }))
+        for (sign in -2..2)
+            rows.add(listOf("B", "signed", input, len.toString(), off.toString(), sign.toString(), outcome { BigInteger(sign, bytes, off, len) }))
+    }
+}
+for (bits in -1..3) {
+    record("R", "random", bits.toString()) { BigInteger(bits, null as Random?) }
+    record("R", "probablePrime", bits.toString()) { BigInteger.probablePrime(bits, null) }
+    for (certainty in -1..1)
+        record("R", "prime", bits.toString(), certainty.toString()) { BigInteger(bits, certainty, null) }
+}
 fun literal(value: String): String = buildString {
     append('"')
     for (c in value) when (c) {

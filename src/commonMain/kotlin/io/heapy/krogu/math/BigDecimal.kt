@@ -5,7 +5,9 @@ import kotlin.jvm.JvmStatic
 import kotlin.math.pow
 
 /** Immutable decimal, represented exactly as coefficient × 10^(-scale). */
-class BigDecimal(private val coefficient: BigInteger, private val decimalScale: Int) :
+// Preserve virtual java.lang.Number methods instead of Kotlin's default final bridges.
+@Suppress("INAPPLICABLE_JVM_NAME")
+open class BigDecimal(private val coefficient: BigInteger, private val decimalScale: Int) :
     Number(), Comparable<BigDecimal>, MathSerializable {
 
     private constructor(value: BigDecimal) : this(value.coefficient, value.decimalScale)
@@ -26,22 +28,22 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
     constructor(value: Double) : this(fromDouble(value))
     constructor(value: Double, mc: MathContext) : this(fromDouble(value).round(mc))
 
-    fun unscaledValue(): BigInteger = coefficient
-    fun scale(): Int = decimalScale
-    fun precision(): Int = coefficient.abs().toString().length
-    fun signum(): Int = coefficient.signum()
-    fun abs(): BigDecimal = if (signum() < 0) negate() else this
-    fun abs(mc: MathContext): BigDecimal = abs().round(mc)
-    fun negate(): BigDecimal = BigDecimal(coefficient.negate(), decimalScale)
-    fun negate(mc: MathContext): BigDecimal = negate().round(mc)
-    fun plus(): BigDecimal = this
-    fun plus(mc: MathContext): BigDecimal = round(mc)
+    open fun unscaledValue(): BigInteger = coefficient
+    open fun scale(): Int = decimalScale
+    open fun precision(): Int = coefficient.abs().toString().length
+    open fun signum(): Int = coefficient.signum()
+    open fun abs(): BigDecimal = if (signum() < 0) negate() else this
+    open fun abs(mc: MathContext): BigDecimal = abs().round(mc)
+    open fun negate(): BigDecimal = BigDecimal(coefficient.negate(), decimalScale)
+    open fun negate(mc: MathContext): BigDecimal = negate().round(mc)
+    open fun plus(): BigDecimal = this
+    open fun plus(mc: MathContext): BigDecimal = round(mc)
 
-    fun add(augend: BigDecimal): BigDecimal {
+    open fun add(augend: BigDecimal): BigDecimal {
         val scale = maxOf(decimalScale, augend.decimalScale)
         return BigDecimal(scaledCoefficient(scale).add(augend.scaledCoefficient(scale)), scale)
     }
-    fun add(augend: BigDecimal, mc: MathContext): BigDecimal {
+    open fun add(augend: BigDecimal, mc: MathContext): BigDecimal {
         if (mc.precision == 0) return add(augend)
         val preferredScale = maxOf(decimalScale, augend.decimalScale)
         if (signum() == 0 || augend.signum() == 0) {
@@ -73,13 +75,13 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         }
         return BigDecimal(BigInteger.valueOf(signum().toLong()), checkedScale(scale))
     }
-    fun subtract(subtrahend: BigDecimal): BigDecimal = add(subtrahend.negate())
-    fun subtract(subtrahend: BigDecimal, mc: MathContext): BigDecimal = add(subtrahend.negate(), mc)
-    fun multiply(multiplicand: BigDecimal): BigDecimal = BigDecimal(
+    open fun subtract(subtrahend: BigDecimal): BigDecimal = add(subtrahend.negate())
+    open fun subtract(subtrahend: BigDecimal, mc: MathContext): BigDecimal = add(subtrahend.negate(), mc)
+    open fun multiply(multiplicand: BigDecimal): BigDecimal = BigDecimal(
         coefficient.multiply(multiplicand.coefficient), scaleForValue(decimalScale.toLong() + multiplicand.decimalScale, signum() == 0))
-    fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal = multiply(multiplicand).round(mc)
+    open fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal = multiply(multiplicand).round(mc)
 
-    fun divide(divisor: BigDecimal): BigDecimal {
+    open fun divide(divisor: BigDecimal): BigDecimal {
         checkDivisor(divisor)
         val preferred = saturatedScale(decimalScale.toLong() - divisor.decimalScale)
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, preferred)
@@ -101,12 +103,12 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         numerator = numerator.shiftLeft(digits - twos).multiply(five.pow(digits - fives))
         return BigDecimal(numerator, checkedScale(decimalScale.toLong() - divisor.decimalScale + digits)).stripTo(preferred)
     }
-    fun divide(divisor: BigDecimal, roundingMode: RoundingMode): BigDecimal = divide(divisor, decimalScale, roundingMode)
+    open fun divide(divisor: BigDecimal, roundingMode: RoundingMode): BigDecimal = divide(divisor, decimalScale, roundingMode)
     @Deprecated("Use RoundingMode")
-    fun divide(divisor: BigDecimal, roundingMode: Int): BigDecimal = divide(divisor, RoundingMode.valueOf(roundingMode))
+    open fun divide(divisor: BigDecimal, roundingMode: Int): BigDecimal = divide(divisor, RoundingMode.valueOf(roundingMode))
     @Deprecated("Use RoundingMode")
-    fun divide(divisor: BigDecimal, scale: Int, roundingMode: Int): BigDecimal = divide(divisor, scale, RoundingMode.valueOf(roundingMode))
-    fun divide(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode): BigDecimal {
+    open fun divide(divisor: BigDecimal, scale: Int, roundingMode: Int): BigDecimal = divide(divisor, scale, RoundingMode.valueOf(roundingMode))
+    open fun divide(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode): BigDecimal {
         checkDivisor(divisor)
         val shift = scale.toLong() + divisor.decimalScale - decimalScale
         if (kotlin.math.abs(shift) > 646456992L) throw ArithmeticException("BigInteger overflow")
@@ -118,7 +120,7 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         val denominator = if (shift < 0) divisor.coefficient.multiply(tenPow(-shift)) else divisor.coefficient
         return BigDecimal(roundedDivide(numerator, denominator, roundingMode), scale)
     }
-    fun divide(divisor: BigDecimal, mc: MathContext): BigDecimal {
+    open fun divide(divisor: BigDecimal, mc: MathContext): BigDecimal {
         if (mc.precision == 0) return divide(divisor)
         checkDivisor(divisor)
         val preferred = saturatedScale(decimalScale.toLong() - divisor.decimalScale)
@@ -135,8 +137,8 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         val cmp = a.padEnd(length, '0').compareTo(b.padEnd(length, '0'))
         return a.length.toLong() - b.length + divisor.decimalScale.toLong() - decimalScale - if (cmp < 0) 1 else 0
     }
-    fun divideToIntegralValue(divisor: BigDecimal): BigDecimal = integralDivide(divisor, MathContext.UNLIMITED)
-    fun divideToIntegralValue(divisor: BigDecimal, mc: MathContext): BigDecimal = integralDivide(divisor, mc)
+    open fun divideToIntegralValue(divisor: BigDecimal): BigDecimal = integralDivide(divisor, MathContext.UNLIMITED)
+    open fun divideToIntegralValue(divisor: BigDecimal, mc: MathContext): BigDecimal = integralDivide(divisor, mc)
     private fun integralDivide(divisor: BigDecimal, mc: MathContext): BigDecimal {
         checkDivisor(divisor)
         val preferred = saturatedScale(decimalScale.toLong() - divisor.decimalScale)
@@ -153,15 +155,15 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         }
         return result
     }
-    fun divideAndRemainder(divisor: BigDecimal): Array<BigDecimal> = divideAndRemainder(divisor, MathContext.UNLIMITED)
-    fun divideAndRemainder(divisor: BigDecimal, mc: MathContext): Array<BigDecimal> {
+    open fun divideAndRemainder(divisor: BigDecimal): Array<BigDecimal> = divideAndRemainder(divisor, MathContext.UNLIMITED)
+    open fun divideAndRemainder(divisor: BigDecimal, mc: MathContext): Array<BigDecimal> {
         val quotient = divideToIntegralValue(divisor, mc)
         return arrayOf(quotient, subtract(quotient.multiply(divisor)))
     }
-    fun remainder(divisor: BigDecimal): BigDecimal = divideAndRemainder(divisor)[1]
-    fun remainder(divisor: BigDecimal, mc: MathContext): BigDecimal = divideAndRemainder(divisor, mc)[1]
+    open fun remainder(divisor: BigDecimal): BigDecimal = divideAndRemainder(divisor)[1]
+    open fun remainder(divisor: BigDecimal, mc: MathContext): BigDecimal = divideAndRemainder(divisor, mc)[1]
 
-    fun round(mc: MathContext): BigDecimal {
+    open fun round(mc: MathContext): BigDecimal {
         if (mc.precision == 0) return this
         var result = this
         while (result.precision() > mc.precision) {
@@ -171,10 +173,10 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         }
         return result
     }
-    fun setScale(newScale: Int): BigDecimal = setScale(newScale, RoundingMode.UNNECESSARY)
+    open fun setScale(newScale: Int): BigDecimal = setScale(newScale, RoundingMode.UNNECESSARY)
     @Deprecated("Use RoundingMode")
-    fun setScale(newScale: Int, roundingMode: Int): BigDecimal = setScale(newScale, RoundingMode.valueOf(roundingMode))
-    fun setScale(newScale: Int, roundingMode: RoundingMode): BigDecimal {
+    open fun setScale(newScale: Int, roundingMode: Int): BigDecimal = setScale(newScale, RoundingMode.valueOf(roundingMode))
+    open fun setScale(newScale: Int, roundingMode: RoundingMode): BigDecimal {
         if (decimalScale == newScale) return this
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, newScale)
         val shift = newScale.toLong() - decimalScale
@@ -186,7 +188,7 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         }
         return BigDecimal(value, newScale)
     }
-    fun stripTrailingZeros(): BigDecimal = if (signum() == 0) ZERO else stripTo(Int.MIN_VALUE)
+    open fun stripTrailingZeros(): BigDecimal = if (signum() == 0) ZERO else stripTo(Int.MIN_VALUE)
     private fun stripTo(minScale: Int): BigDecimal {
         var value = coefficient
         var scale = decimalScale
@@ -199,21 +201,21 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
             throw ArithmeticException("Overflow")
         return if (scale == decimalScale) this else BigDecimal(value, scale)
     }
-    fun movePointLeft(n: Int): BigDecimal = movePoint(decimalScale.toLong() + n)
-    fun movePointRight(n: Int): BigDecimal = movePoint(decimalScale.toLong() - n)
+    open fun movePointLeft(n: Int): BigDecimal = movePoint(decimalScale.toLong() + n)
+    open fun movePointRight(n: Int): BigDecimal = movePoint(decimalScale.toLong() - n)
     private fun movePoint(scale: Long): BigDecimal {
         val result = BigDecimal(coefficient, scaleForValue(scale, signum() == 0))
         return if (result.decimalScale < 0) result.setScale(0) else result
     }
-    fun scaleByPowerOfTen(n: Int): BigDecimal = BigDecimal(coefficient, scaleForValue(decimalScale.toLong() - n, signum() == 0))
-    fun ulp(): BigDecimal = BigDecimal(BigInteger.ONE, decimalScale)
+    open fun scaleByPowerOfTen(n: Int): BigDecimal = BigDecimal(coefficient, scaleForValue(decimalScale.toLong() - n, signum() == 0))
+    open fun ulp(): BigDecimal = BigDecimal(BigInteger.ONE, decimalScale)
 
-    fun pow(n: Int): BigDecimal {
+    open fun pow(n: Int): BigDecimal {
         if (n !in 0..999999999) throw ArithmeticException("Invalid operation")
         if (n == 0) return ONE
         return BigDecimal(coefficient.pow(n), scaleForValue(decimalScale.toLong() * n, signum() == 0))
     }
-    fun pow(n: Int, mc: MathContext): BigDecimal {
+    open fun pow(n: Int, mc: MathContext): BigDecimal {
         if (mc.precision == 0) return pow(n)
         if (n !in -999999999..999999999) throw ArithmeticException("Invalid operation")
         if (n == 0) return ONE
@@ -231,7 +233,7 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         return result.round(mc)
     }
 
-    fun sqrt(mc: MathContext): BigDecimal {
+    open fun sqrt(mc: MathContext): BigDecimal {
         if (signum() < 0) throw ArithmeticException("Attempted square root of negative BigDecimal")
         val preferred = decimalScale / 2
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, preferred)
@@ -269,8 +271,8 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         val length = maxOf(a.length, b.length)
         return a.padEnd(length, '0').compareTo(b.padEnd(length, '0')) * signum()
     }
-    fun min(value: BigDecimal): BigDecimal = if (this <= value) this else value
-    fun max(value: BigDecimal): BigDecimal = if (this >= value) this else value
+    open fun min(value: BigDecimal): BigDecimal = if (this <= value) this else value
+    open fun max(value: BigDecimal): BigDecimal = if (this >= value) this else value
     override fun equals(other: Any?): Boolean = other is BigDecimal && decimalScale == other.decimalScale && coefficient == other.coefficient
     override fun hashCode(): Int = 31 * coefficient.hashCode() + decimalScale
     private fun adjustedExponent(): Long = precision().toLong() - decimalScale - 1
@@ -283,7 +285,7 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         val body = if (digits.length == 1) digits else digits[0] + "." + digits.substring(1)
         return (if (signum() < 0) "-" else "") + body + exponentText(exponent)
     }
-    fun toPlainString(): String {
+    open fun toPlainString(): String {
         val digits = coefficient.abs().toString()
         val body = when {
             decimalScale == 0 -> digits
@@ -293,7 +295,7 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         }
         return (if (signum() < 0) "-" else "") + body
     }
-    fun toEngineeringString(): String {
+    open fun toEngineeringString(): String {
         if (decimalScale >= 0 && adjustedExponent() >= -6) return toPlainString()
         val digits = coefficient.abs().toString()
         val exp = adjustedExponent()
@@ -311,14 +313,16 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         return (if (signum() < 0) "-" else "") + body + if (engineeringExp == 0L) "" else exponentText(engineeringExp)
     }
 
-    fun toBigInteger(): BigInteger {
+    open fun toBigInteger(): BigInteger {
         if (signum() == 0) return BigInteger.ZERO
         if (decimalScale <= 0) return coefficient.multiply(tenPow(-decimalScale.toLong()))
         if (decimalScale >= precision()) return BigInteger.ZERO
         return coefficient.divide(tenPow(decimalScale.toLong()))
     }
-    fun toBigIntegerExact(): BigInteger = setScale(0).coefficient
+    open fun toBigIntegerExact(): BigInteger = setScale(0).coefficient
+    @kotlin.jvm.JvmName("intValue")
     override fun toInt(): Int = integerLowBits(32).toInt()
+    @kotlin.jvm.JvmName("longValue")
     override fun toLong(): Long = integerLowBits(64)
     private fun integerLowBits(bits: Int): Long {
         if (decimalScale >= 0) return toBigInteger().toLong()
@@ -326,13 +330,17 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         if (-decimalScale.toLong() >= bits) return 0
         return coefficient.multiply(tenPow(-decimalScale.toLong())).toLong()
     }
+    @kotlin.jvm.JvmName("byteValue")
     override fun toByte(): Byte = toInt().toByte()
+    @kotlin.jvm.JvmName("shortValue")
     override fun toShort(): Short = toInt().toShort()
-    fun intValueExact(): Int = toBigIntegerExact().intValueExact()
-    fun longValueExact(): Long = toBigIntegerExact().longValueExact()
-    fun shortValueExact(): Short = toBigIntegerExact().shortValueExact()
-    fun byteValueExact(): Byte = toBigIntegerExact().byteValueExact()
+    open fun intValueExact(): Int = toBigIntegerExact().intValueExact()
+    open fun longValueExact(): Long = toBigIntegerExact().longValueExact()
+    open fun shortValueExact(): Short = toBigIntegerExact().shortValueExact()
+    open fun byteValueExact(): Byte = toBigIntegerExact().byteValueExact()
+    @kotlin.jvm.JvmName("doubleValue")
     override fun toDouble(): Double = binaryValue(53, -1022, 1023)
+    @kotlin.jvm.JvmName("floatValue")
     override fun toFloat(): Float = binaryValue(24, -126, 127).toFloat()
     private fun binaryValue(precision: Int, minExponent: Int, maxExponent: Int): Double {
         if (signum() == 0) return 0.0
@@ -360,6 +368,8 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
     operator fun unaryMinus(): BigDecimal = negate()
     operator fun unaryPlus(): BigDecimal = this
 
+    // Preserve the non-final static factories exposed by JDK.
+    @Suppress("NON_FINAL_MEMBER_IN_OBJECT")
     companion object {
         @JvmField val ZERO = BigDecimal(BigInteger.ZERO, 0)
         @JvmField val ONE = BigDecimal(BigInteger.ONE, 0)
@@ -374,9 +384,9 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         @Deprecated("Use RoundingMode.HALF_EVEN") const val ROUND_HALF_EVEN = 6
         @Deprecated("Use RoundingMode.UNNECESSARY") const val ROUND_UNNECESSARY = 7
 
-        @JvmStatic fun valueOf(value: Long): BigDecimal = BigDecimal(value)
-        @JvmStatic fun valueOf(unscaledVal: Long, scale: Int): BigDecimal = BigDecimal(BigInteger.valueOf(unscaledVal), scale)
-        @JvmStatic fun valueOf(value: Double): BigDecimal = BigDecimal(decimalDoubleString(value))
+        @JvmStatic open fun valueOf(value: Long): BigDecimal = BigDecimal(value)
+        @JvmStatic open fun valueOf(unscaledVal: Long, scale: Int): BigDecimal = BigDecimal(BigInteger.valueOf(unscaledVal), scale)
+        @JvmStatic open fun valueOf(value: Double): BigDecimal = BigDecimal(decimalDoubleString(value))
 
         private fun parse(value: String): BigDecimal {
             if (value.isEmpty()) throw NumberFormatException("Empty BigDecimal")

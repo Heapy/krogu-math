@@ -68,10 +68,13 @@ etc.). Native tests cannot execute on a different host OS or CPU architecture.
 Kotlin/Native 2.4.21 does not provide a Linux ARM64 compiler host: CI cross-compiles
 the ARM64 test executable on Linux x64 and then runs it on a Linux ARM64 runner.
 
-The committed 3,916 portable vectors compare values, preferred scales, text,
+The committed 4,631 portable vectors compare values, preferred scales, text,
 floating-point bits and exception **types** on every test target. JVM tests add
 seeded random arithmetic, negative bit operations, modular arithmetic, primes,
-rounding, scale boundaries, serialization and API surface checks. Fixtures are
+rounding, scale boundaries, serialization and API surface checks. Structured JVM
+campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
+Java sources are compiled and executed to check constructors, static factories,
+subclassing, method hiding and virtual Number dispatch. Fixtures are
 generated reproducibly with a dependency-free Kotlin script:
 
 ```shell
@@ -86,8 +89,9 @@ Generated fixtures contain public inputs and observable outputs, not JDK code.
 
 ## JVM integration
 
-Common constructors and prime factories accept `kotlin.random.Random`. JVM Kotlin
-callers can use the `java.util.Random` overload factories with the same call syntax:
+Common factory functions and prime factories accept `kotlin.random.Random`, using
+constructor call syntax. JVM has actual constructors and static prime factories
+accepting `java.util.Random`:
 
 ```kotlin
 import io.heapy.krogu.math.*
@@ -97,10 +101,11 @@ val javaValue: java.math.BigInteger = n.toJavaBigInteger()
 val commonValue = javaValue.toKroguBigInteger()
 ```
 
-Java callers use `JavaMath.randomInteger(bits, random)`,
-`JavaMath.randomPrime(bits, certainty, random)` or
-`JavaMath.probablePrime(bits, random)`. Java can otherwise use ordinary constructors,
-static constants and static `valueOf` methods. Conversion helpers for integers,
+Java callers can use `new BigInteger(bits, random)`,
+`new BigInteger(bits, certainty, random)` and
+`BigInteger.probablePrime(bits, random)` directly. The `JavaMath` factory helpers
+remain available. Java can use ordinary constructors, static constants and static
+`valueOf` methods. Conversion helpers for integers,
 decimals and contexts preserve coefficient, scale and rounding policy.
 
 The three value classes implement Java `Serializable` on JVM through validated
@@ -111,7 +116,7 @@ serialization.
 ## Compatibility boundaries
 
 The test suite is evidence for the covered cases, not proof of exhaustive JDK
-conformance. Exception messages, Java binary compatibility, subclassing, exact
+conformance. Exception messages, Java binary compatibility with the original `java.math` namespace, exact
 prime/random output sequences and performance equivalence are not promised.
 `parallelMultiply` computes the same result synchronously. Multiplication and
 division currently prioritize straightforward correctness over JDK's advanced
@@ -119,5 +124,6 @@ large-input algorithms. Extremely large inputs remain subject to available
 memory and execution time. Random sources are caller-selected; the default
 primality witness generator is Kotlin's default random source.
 
-This initial version should receive additional differential testing and
-performance evaluation before use in systems requiring audited numerical code.
+The active work toward exhaustive compatibility, its evidence and remaining
+gaps are tracked in [COMPATIBILITY.md](COMPATIBILITY.md). The current passing
+campaigns do not establish exhaustive conformance.
