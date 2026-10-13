@@ -226,30 +226,77 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     }
 
     private fun magnitudeBits(): Int = if (words.isEmpty()) 0 else (words.size - 1) * LIMB_BITS + 32 - words.last().countLeadingZeroBits()
-    open fun bitLength(): Int = if (sign < 0) abs().subtract(ONE).magnitudeBits() else magnitudeBits()
-    open fun bitCount(): Int = (if (sign < 0) abs().subtract(ONE) else this).words.sumOf { it.countOneBits() }
+    open fun bitLength(): Int {
+        val bits = magnitudeBits()
+        if (sign >= 0 || words.last().countOneBits() != 1) return bits
+        for (i in 0 until words.lastIndex) if (words[i] != 0) return bits
+        return bits - 1
+    }
+    open fun bitCount(): Int {
+        if (sign >= 0) return words.sumOf { it.countOneBits() }
+        val first = firstNonzeroWord()
+        var count = first * LIMB_BITS + (words[first] - 1).countOneBits()
+        for (i in first + 1 until words.size) count += words[i].countOneBits()
+        return count
+    }
     open fun getLowestSetBit(): Int {
         for (i in words.indices) if (words[i] != 0) return i * LIMB_BITS + words[i].countTrailingZeroBits()
         return -1
     }
-    open fun testBit(n: Int): Boolean {
-        if (n < 0) throw ArithmeticException("Negative bit address")
-        if (sign < 0) return !abs().subtract(ONE).testBit(n)
-        return n / LIMB_BITS < words.size && words[n / LIMB_BITS] and (1 shl (n % LIMB_BITS)) != 0
+    private fun firstNonzeroWord(): Int {
+        var first = 0
+        while (words[first] == 0) first++
+        return first
     }
-    open fun setBit(n: Int): BigInteger = if (testBit(n)) this else add(ONE.shiftLeft(n))
-    open fun clearBit(n: Int): BigInteger = if (testBit(n)) subtract(ONE.shiftLeft(n)) else this
-    open fun flipBit(n: Int): BigInteger = if (testBit(n)) clearBit(n) else setBit(n)
-    open fun not(): BigInteger = negate().subtract(ONE)
+    private fun testBitValue(n: Int): Boolean {
+        if (n < 0) throw ArithmeticException("Negative bit address")
+        val index = n / LIMB_BITS
+        val raw = words.getOrElse(index) { 0 }
+        val word = if (sign >= 0) raw else {
+            val first = firstNonzeroWord()
+            when {
+                index < first -> 0
+                index == first -> -raw
+                else -> raw.inv()
+            }
+        }
+        return word and (1 shl (n % LIMB_BITS)) != 0
+    }
+    open fun testBit(n: Int): Boolean = testBitValue(n)
+    open fun setBit(n: Int): BigInteger = changeBit(n, 1)
+    open fun clearBit(n: Int): BigInteger = changeBit(n, 0)
+    open fun flipBit(n: Int): BigInteger = changeBit(n, 2)
+    private fun changeBit(n: Int, operation: Int): BigInteger {
+        val present = testBitValue(n)
+        if ((operation == 1 && present) || (operation == 0 && !present)) return BigInteger(this)
+        if (n == Int.MAX_VALUE) throw ArithmeticException("BigInteger overflow")
+        val index = n / LIMB_BITS
+        val result = twosComplement(maxOf(words.size + 1, index + 2))
+        val mask = 1 shl (n % LIMB_BITS)
+        result[index] = when (operation) {
+            0 -> result[index] and mask.inv()
+            1 -> result[index] or mask
+            else -> result[index] xor mask
+        }
+        return fromTwosComplement(result)
+    }
+    open fun not(): BigInteger {
+        val result = twosComplement(words.size + 1)
+        for (i in result.indices) result[i] = result[i].inv() and MASK.toInt()
+        return fromTwosComplement(result)
+    }
     open fun and(value: BigInteger): BigInteger = bitwise(value) { a, b -> a and b }
     open fun or(value: BigInteger): BigInteger = bitwise(value) { a, b -> a or b }
     open fun xor(value: BigInteger): BigInteger = bitwise(value) { a, b -> a xor b }
-    open fun andNot(value: BigInteger): BigInteger = and(value.not())
+    open fun andNot(value: BigInteger): BigInteger = bitwise(value) { a, b -> a and b.inv() }
     private fun bitwise(value: BigInteger, op: (Int, Int) -> Int): BigInteger {
         val length = maxOf(words.size, value.words.size) + 1
         val a = twosComplement(length)
         val b = value.twosComplement(length)
         val out = IntArray(length) { op(a[it], b[it]) and MASK.toInt() }
+        return fromTwosComplement(out)
+    }
+    private fun fromTwosComplement(out: IntArray): BigInteger {
         if (out.last() and (1 shl (LIMB_BITS - 1)) == 0) return normalized(1, out)
         var carry = 1L
         for (i in out.indices) {

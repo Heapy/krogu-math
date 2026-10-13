@@ -49,7 +49,12 @@ class PortableOracleTest {
                 "andNot" -> a.andNot(b)
                 "not" -> a.not()
                 "bits" -> "${a.bitLength()}|${a.bitCount()}|${a.getLowestSetBit()}"
+                "testBit" -> a.testBit(p)
+                "setBit" -> a.setBit(p)
+                "clearBit" -> a.clearBit(p)
+                "flipBit" -> a.flipBit(p)
                 "shift" -> a.shiftLeft(p)
+                "shiftRight" -> a.shiftRight(p)
                 "sqrt" -> a.sqrtAndRemainder()
                 "double" -> a.toDouble().toBits()
                 "float" -> a.toFloat().toBits()

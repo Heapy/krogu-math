@@ -127,6 +127,20 @@ format`; negative precision is rejected with `Digits < 0` only after a valid
 rounding mode has been parsed. This closes those MathContext message mismatches;
 the broader exception-message audit remains open.
 
+Bit-query and bit-update routines now work directly on stored limbs and
+two's-complement words. They do not invoke overridable arithmetic operations
+or neighboring public bit methods. Black-box Java subclass fixtures reproduce
+the former `andNot`/`setBit` failures and compare the corrected dispatch and
+returned base-class type with JDK; common subclass fixtures run on every target.
+The main oracle now contains 13,519 vectors, including 8,888 added signed
+power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
+extreme-shift cases. Negative bit length/count are computed without constructing
+`abs(n)-1`. `andNot` complements individual words directly, so it does not
+require the potentially unrepresentable separate value `not(operand)`.
+The largest supported magnitudes still require the range audit noted above;
+these tests do not allocate multi-gigabyte integers or complete the broader
+subclass-dispatch audit for arithmetic, shifts and conversions.
+
 ## Completion gate
 
 Every row above must have direct, current evidence at the required scope and no

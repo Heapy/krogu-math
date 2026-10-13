@@ -54,6 +54,35 @@ for (a in integerInputs) {
     val radix = 2 + random.nextInt(35)
     record("I", "radix", a, p = radix) { x.toString(radix) }
     record("I", "pow", a, p = 3) { x.pow(3) }
+    for (distance in listOf(0, 1, 29, 30, 31, 63, 64, 127, 128, 511, 512)) {
+        record("I", "testBit", a, p = distance) { x.testBit(distance) }
+        record("I", "setBit", a, p = distance) { x.setBit(distance) }
+        record("I", "clearBit", a, p = distance) { x.clearBit(distance) }
+        record("I", "flipBit", a, p = distance) { x.flipBit(distance) }
+    }
+}
+// Structured signed powers and adjacent values around byte, JVM-word and our limb boundaries.
+for (power in listOf(0, 1, 7, 8, 29, 30, 31, 32, 59, 60, 61, 63, 64, 89, 90, 91, 127, 128, 255, 256, 511, 512, 1023, 1024)) {
+    for (offset in -1L..1L) for (negative in listOf(false, true)) {
+        val magnitude = BigInteger.ONE.shiftLeft(power).add(BigInteger.valueOf(offset))
+        val x = if (negative) magnitude.negate() else magnitude
+        val a = x.toString()
+        record("I", "bits", a) { "${x.bitLength()}|${x.bitCount()}|${x.lowestSetBit}" }
+        record("I", "not", a) { x.not() }
+        for (distance in listOf(Int.MIN_VALUE, -1, 0, maxOf(0, power - 1), power, power + 1, power + 30).distinct()) {
+            record("I", "testBit", a, p = distance) { x.testBit(distance) }
+            record("I", "setBit", a, p = distance) { x.setBit(distance) }
+            record("I", "clearBit", a, p = distance) { x.clearBit(distance) }
+            record("I", "flipBit", a, p = distance) { x.flipBit(distance) }
+        }
+        record("I", "testBit", a, p = Int.MAX_VALUE) { x.testBit(Int.MAX_VALUE) }
+        for (distance in listOf(Int.MIN_VALUE, -Int.MAX_VALUE, Int.MAX_VALUE)) {
+            record("I", "shift", a, p = distance) { x.shiftLeft(distance) }
+            record("I", "shiftRight", a, p = distance) { x.shiftRight(distance) }
+        }
+        val mask = BigInteger.ONE.shiftLeft(power + 1).subtract(BigInteger.ONE)
+        for (y in listOf(mask, mask.negate())) record("I", "andNot", a, y.toString()) { x.andNot(y) }
+    }
 }
 val decimalInputs = listOf("0", "0.00", "0E+20", "0E-8", "0E-9", "0E-10", "1", "-1", "1.00", "-2.500", "0.000001", "0.0000001", "9.9999999", "1E+25", "1000.000") +
     List(85) { BigDecimal(BigInteger(100, random).let { if (random.nextBoolean()) it.negate() else it }, random.nextInt(80) - 30).toString() }
