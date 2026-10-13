@@ -19,7 +19,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     constructor(value: ByteArray) : this(fromBytes(value, 0, value.size, true))
     constructor(value: ByteArray, off: Int, len: Int) : this(fromBytes(value, off, len, true))
     constructor(signum: Int, magnitude: ByteArray) : this(signum, magnitude, 0, magnitude.size)
-    constructor(signum: Int, magnitude: ByteArray, off: Int, len: Int) : this(signedBytes(signum, magnitude, off, len))
+    constructor(signum: Int, magnitude: ByteArray?, off: Int, len: Int) : this(signedBytes(signum, magnitude, off, len))
     constructor(numBits: Int, rnd: PlatformRandom?) : this(randomBits(numBits, rnd))
     constructor(bitLength: Int, certainty: Int, rnd: PlatformRandom?) : this(generatePrime(bitLength, certainty, rnd))
 
@@ -110,11 +110,12 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         val r = remainder(m)
         return if (r.sign < 0) r.add(m) else r
     }
-    open fun modPow(exponent: BigInteger, m: BigInteger): BigInteger {
+    open fun modPow(exponent: BigInteger?, m: BigInteger): BigInteger {
         if (m.sign <= 0) throw ArithmeticException("BigInteger: modulus not positive")
-        var base = if (exponent.sign < 0) modInverse(m) else mod(m)
+        val power = exponent ?: throw NullPointerException()
+        var base = if (power.sign < 0) modInverse(m) else mod(m)
         var result = ONE.mod(m)
-        val e = exponent.abs()
+        val e = power.abs()
         for (i in 0 until e.bitLength()) {
             if (e.testBit(i)) result = result.multiply(base).mod(m)
             if (i + 1 < e.bitLength()) base = base.multiply(base).mod(m)
@@ -414,9 +415,9 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             for (i in off until off + len) n = n.shiftLeft(8).add(valueOf((bytes[i].toInt() and 255).toLong()))
             return if (twos && bytes[off] < 0) n.subtract(ONE.shiftLeft(len * 8)) else n
         }
-        private fun signedBytes(signum: Int, bytes: ByteArray, off: Int, len: Int): BigInteger {
+        private fun signedBytes(signum: Int, bytes: ByteArray?, off: Int, len: Int): BigInteger {
             if (signum !in -1..1) throw NumberFormatException("Invalid signum value")
-            val n = fromBytes(bytes, off, len, false)
+            val n = fromBytes(bytes ?: throw NullPointerException(), off, len, false)
             if (signum == 0 && n.sign != 0) throw NumberFormatException("signum-magnitude mismatch")
             return if (signum < 0) n.negate() else n
         }

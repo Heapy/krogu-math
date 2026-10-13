@@ -21,7 +21,7 @@ specifications and black-box results may supply evidence.
 | Powers and roots | 10,560 structured JVM comparisons plus portable fixtures | Adversarial midpoint and carry cases at larger precision |
 | Float/Double conversions and canonical Double factory values | Bitwise oracle comparisons, binary boundaries, 10,000 seeded canonical Double cases | Exhaustive Float input domain, wider subnormal/tie/overflow campaigns and algorithm audit |
 | Prime generation and certainty | Seeded generation, external primality checks, Carmichael/composite regressions | Witness independence, certainty/range boundaries, caller RNG behavior and distribution |
-| Exception conditions and types | Portable fixtures, dynamic JVM oracle, constructor precedence matrix | Full cross-product of invalid arguments and null precedence; exception messages remain unmatched |
+| Exception conditions and types | Portable fixtures; 7,486 live JVM null/invalid-argument comparisons; 3,462 portable null-precedence outcomes; constructor precedence matrix | Wider invalid-argument domains, extreme offsets and cross-products; exception messages remain unmatched |
 | Equality, ordering, hash codes, immutability | JVM oracle and common invariants | Full context/enum/hash and subclass audit |
 | JVM serialization and Java adapters | Value round trips using validated proxies; exact coefficient/scale conversion | Malformed streams, subclass streams, descriptor/version policy and Java serialization compatibility audit |
 | Same common behavior on every supported platform | CI matrix for JVM, JS, Wasm, macOS/Linux/Windows Native and iOS simulators; cross-built Linux ARM64 binary executed on ARM64 | Each new common regression must pass on every supported target |
@@ -33,6 +33,7 @@ specifications and black-box results may supply evidence.
 ./gradlew jvmTest jsNodeTest wasmJsNodeTest macosArm64Test
 kotlinr scripts/generate-oracle.main.kts --check
 kotlinr scripts/generate-scale-oracle.main.kts --check
+kotlinr scripts/generate-null-oracle.main.kts --check
 ```
 
 Use the appropriate Native host test tasks for other OS/architectures. CI
@@ -54,6 +55,16 @@ context division, addition, multiplication, roots, powers, canonical parsing,
 engineering text and trailing-zero removal. Its 68,000-case wide-coefficient
 extension includes powers of ten and their immediate neighbors, up to 512-bit
 coefficients, precisions around 17/18/19 digits, and very remote signed tails.
+
+`NullArgumentConformanceTest` invokes public Java signatures by reflection so
+null reaches the library, not a caller-side Kotlin cast. It compares all public
+constructors and reference-argument methods over a bounded invalid-argument
+matrix. `NullPrecedenceOracleTest` replays 3,462 cases for the affected contracts
+on every target, including zero/negative square roots, invalid text, legacy
+rounding constants, sign/magnitude validation and nullable contexts. Public
+nullability is relaxed only where the oracle requires a particular validation
+order or intentionally ignores a null argument; global parameter assertions
+remain enabled.
 
 ## Completion gate
 

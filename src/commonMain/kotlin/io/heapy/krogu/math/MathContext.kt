@@ -2,8 +2,9 @@ package io.heapy.krogu.math
 
 /** Immutable decimal precision and rounding policy; zero precision means unlimited. */
 @Suppress("NON_FINAL_MEMBER_IN_FINAL_CLASS")
-class MathContext(open val precision: Int, open val roundingMode: RoundingMode) : MathSerializable {
+class MathContext(open val precision: Int, roundingMode: RoundingMode?) : MathSerializable {
     init { require(precision >= 0) { "Digits < 0" } }
+    open val roundingMode: RoundingMode = roundingMode ?: throw NullPointerException()
     private fun writeReplace(): Any = serializationProxy(this)
     constructor(setPrecision: Int) : this(setPrecision, RoundingMode.HALF_UP)
     constructor(value: String) : this(parse(value).first, parse(value).second)

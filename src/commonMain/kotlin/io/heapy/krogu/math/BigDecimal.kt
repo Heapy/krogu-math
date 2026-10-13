@@ -20,13 +20,13 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
     constructor(value: Int, mc: MathContext) : this(value.toLong(), mc)
     constructor(value: Long, mc: MathContext) : this(BigDecimal(value).round(mc))
     constructor(value: String) : this(parse(value))
-    constructor(value: String, mc: MathContext) : this(parse(value).round(mc))
+    constructor(value: String, mc: MathContext?) : this(parse(value).round(mc ?: throw NullPointerException()))
     constructor(value: CharArray) : this(value, 0, value.size)
     constructor(value: CharArray, offset: Int, len: Int) : this(characters(value, offset, len))
-    constructor(value: CharArray, mc: MathContext) : this(value, 0, value.size, mc)
-    constructor(value: CharArray, offset: Int, len: Int, mc: MathContext) : this(characters(value, offset, len), mc)
+    constructor(value: CharArray, mc: MathContext?) : this(value, 0, value.size, mc)
+    constructor(value: CharArray, offset: Int, len: Int, mc: MathContext?) : this(characters(value, offset, len), mc)
     constructor(value: Double) : this(fromDouble(value))
-    constructor(value: Double, mc: MathContext) : this(fromDouble(value).round(mc))
+    constructor(value: Double, mc: MathContext?) : this(roundedDouble(value, mc))
 
     open fun unscaledValue(): BigInteger = coefficient
     open fun scale(): Int = decimalScale
@@ -128,9 +128,15 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
     }
     open fun divide(divisor: BigDecimal, roundingMode: RoundingMode): BigDecimal = divide(divisor, decimalScale, roundingMode)
     @Deprecated("Use RoundingMode")
-    open fun divide(divisor: BigDecimal, roundingMode: Int): BigDecimal = divide(divisor, RoundingMode.valueOf(roundingMode))
+    open fun divide(divisor: BigDecimal?, roundingMode: Int): BigDecimal {
+        val mode = RoundingMode.valueOf(roundingMode)
+        return divide(divisor ?: throw NullPointerException(), mode)
+    }
     @Deprecated("Use RoundingMode")
-    open fun divide(divisor: BigDecimal, scale: Int, roundingMode: Int): BigDecimal = divide(divisor, scale, RoundingMode.valueOf(roundingMode))
+    open fun divide(divisor: BigDecimal?, scale: Int, roundingMode: Int): BigDecimal {
+        val mode = RoundingMode.valueOf(roundingMode)
+        return divide(divisor ?: throw NullPointerException(), scale, mode)
+    }
     open fun divide(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode): BigDecimal {
         checkDivisor(divisor)
         val shift = scale.toLong() + divisor.decimalScale - decimalScale
@@ -267,11 +273,12 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
         return result.round(mc)
     }
 
-    open fun sqrt(mc: MathContext): BigDecimal {
+    open fun sqrt(mc: MathContext?): BigDecimal {
         if (signum() < 0) throw ArithmeticException("Attempted square root of negative BigDecimal")
         val preferred = decimalScale / 2
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, preferred)
-        if (mc.precision == 0 || mc.roundingMode == RoundingMode.UNNECESSARY) {
+        val context = mc ?: throw NullPointerException()
+        if (context.precision == 0 || context.roundingMode == RoundingMode.UNNECESSARY) {
             val odd = decimalScale and 1
             val value = if (odd == 0) coefficient else coefficient.multiply(BigInteger.TEN)
             val root = value.sqrtAndRemainder()
@@ -280,11 +287,11 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
             // Exact-mode validation in the oracle squares a minimally scaled root.
             // Its scale overflow is observable even when the preferred form could be squared.
             checkedScale(2L * exact.stripTrailingZeros().decimalScale)
-            return exact.round(mc)
+            return exact.round(context)
         }
         val exponent = adjustedExponent()
         val rootExponent = if (exponent < 0) (exponent - 1) / 2 else exponent / 2
-        val scale = checkedScale(mc.precision.toLong() - 1 - rootExponent)
+        val scale = checkedScale(context.precision.toLong() - 1 - rootExponent)
         val shift = 2L * scale - decimalScale
         val numerator = if (shift >= 0) coefficient.multiply(tenPow(shift)) else coefficient
         val denominator = if (shift < 0) tenPow(-shift) else BigInteger.ONE
@@ -293,9 +300,9 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
         if (!exact) {
             val midpoint = root.shiftLeft(1).add(BigInteger.ONE)
             val half = numerator.shiftLeft(2).compareTo(midpoint.multiply(midpoint).multiply(denominator))
-            if (increment(mc.roundingMode, 1, half, root.testBit(0))) root = root.add(BigInteger.ONE)
+            if (increment(context.roundingMode, 1, half, root.testBit(0))) root = root.add(BigInteger.ONE)
         }
-        return BigDecimal(root, scale).round(mc).stripTo(preferred)
+        return BigDecimal(root, scale).round(context).stripTo(preferred)
     }
 
     override fun compareTo(other: BigDecimal): Int {
@@ -490,6 +497,10 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
             if (exponent >= 0) { coefficient = coefficient.shiftLeft(exponent); scale = 0 }
             else { scale = -exponent; coefficient = coefficient.multiply(BigInteger.valueOf(5).pow(scale)) }
             return BigDecimal(if (value < 0) coefficient.negate() else coefficient, scale)
+        }
+        private fun roundedDouble(value: Double, mc: MathContext?): BigDecimal {
+            val exact = fromDouble(value)
+            return if (exact.signum() == 0) exact else exact.round(mc ?: throw NullPointerException())
         }
         private fun tenPow(exponent: Long): BigInteger {
             if (exponent < 0 || exponent > 646456992L) throw ArithmeticException("BigInteger overflow")
