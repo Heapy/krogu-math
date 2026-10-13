@@ -102,6 +102,16 @@ skipped without constructing the corresponding power of ten. Stored coefficient
 signs determine this optimization; an overridden public signum is not numerical
 input to exact alignment.
 
+For a nonzero coefficient and positive distance k, the scaled magnitude is at
+least 10^k, hence greater than 2^k. If k exceeds Int.MAX_VALUE, the scaled integer
+necessarily exceeds the supported Int-sized bit-length domain. Validating the
+positive distance before power construction is therefore sound for nonzero
+coefficients. At target scale u, the other coefficient is an unchanged stored
+input with magnitude below 2^Int.MAX_VALUE. The oversized aligned term exceeds
+2^(Int.MAX_VALUE+1), so cancellation with the other input cannot bring the
+result back into range. A zero coefficient still requires no such power. The pinned JDK
+error label and validation order are established by separate oracle cases.
+
 This argument assumes supported intermediate sizes and correct integer
 arithmetic. It does not establish all allocation/range behavior, finite-context
 sticky-tail rounding or virtual callback semantics. Separate public-JDK fixtures

@@ -416,7 +416,11 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     override fun equals(other: Any?): Boolean = other is BigDecimal && decimalScale == other.decimalScale && coefficient == other.coefficient
     override fun hashCode(): Int = 31 * coefficient.hashCode() + decimalScale
     private fun adjustedExponent(): Long = precision().toLong() - decimalScale - 1
-    private fun scaledCoefficient(scale: Int): BigInteger = if (coefficient.signum() == 0) coefficient else coefficient.multiply(tenPow(scale.toLong() - decimalScale))
+    private fun scaledCoefficient(scale: Int): BigInteger {
+        if (coefficient.signum() == 0) return coefficient
+        val distance = checkedScale(scale.toLong() - decimalScale)
+        return coefficient.multiply(tenPow(distance.toLong()))
+    }
 
     @kotlin.concurrent.Volatile
     @kotlin.jvm.Transient
@@ -651,7 +655,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             return if (exact.signum() == 0) exact else exact.round(mc ?: throw NullPointerException())
         }
         private fun tenPow(exponent: Long): BigInteger {
-            if (exponent < 0 || exponent > 646456992L) throw ArithmeticException("BigInteger overflow")
+            if (exponent < 0) throw ArithmeticException("BigInteger overflow")
+            if (exponent > 646456992L) throw ArithmeticException("BigInteger would overflow supported range")
             return BigInteger.TEN.pow(exponent.toInt())
         }
         private fun checkedScale(scale: Long): Int {

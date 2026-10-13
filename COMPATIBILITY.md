@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 65,233 vectors, including 8,888 added signed
+The main oracle now contains 66,115 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -423,3 +423,13 @@ with JDK; the original subtraction matrix exposed 364 differences. The selected
 JVM checks also rerun the numerical decimal, scale and null campaigns. Null
 callback operands, broader getter replacement domains and full range/allocation
 behavior remain open.
+
+Exact alignment errors add 882 portable add/subtract outcomes over signed unit
+and zero coefficients and seven scales spanning both Int endpoints. The matrix
+exposed 384 diagnostic differences. A nonzero coefficient's positive alignment
+distance is validated as an Int before the power-of-ten range check; oversized
+distances report Underflow. The positive power range guard now uses the JDK
+message `BigInteger would overflow supported range`. Zero coefficients bypass
+unnecessary scaling. Selected distances are small or far beyond supported range,
+so this campaign does not allocate near-limit integers. The broader range and
+exception-message audit remains open.

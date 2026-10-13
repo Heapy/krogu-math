@@ -815,6 +815,17 @@ for (coefficient in listOf("1", "-1")) for (leftScale in listOf(-10001, 0, 10001
         }
     }
 }
+for (left in listOf("0", "1", "-1")) for (right in listOf("0", "1", "-1")) {
+    val scales = listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, -2, 0, 2, Int.MAX_VALUE - 1, Int.MAX_VALUE)
+    for (leftScale in scales) for (rightScale in scales) for (op in listOf("alignAdd", "alignSubtract")) {
+        record("O", op, "$left@$leftScale", "$right@$rightScale") {
+            val a = BigDecimal(BigInteger(left), leftScale)
+            val b = BigDecimal(BigInteger(right), rightScale)
+            try { (if (op == "alignAdd") a.add(b) else a.subtract(b)).toString() }
+                catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

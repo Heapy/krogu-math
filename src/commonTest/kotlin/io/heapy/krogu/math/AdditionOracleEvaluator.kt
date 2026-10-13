@@ -7,6 +7,14 @@ internal fun evaluateAdditionOracle(v: Array<String>): String {
     val mode = RoundingMode.valueOf(v[5])
     fun outcome(block: () -> Any): String = try { block().toString() }
         catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+    if (op[0] == "alignAdd" || op[0] == "alignSubtract") {
+        fun operand(text: String): BigDecimal {
+            val parts = text.split('@')
+            return BigDecimal(BigInteger(parts[0]), parts[1].toInt())
+        }
+        val left = operand(v[2]); val right = operand(v[3])
+        return outcome { if (op[0] == "alignAdd") left.add(right) else left.subtract(right) }
+    }
     if (op[0] == "addSign") {
         fun operand(text: String) = object : BigDecimal(text) {
             override fun signum(): Int { trace.append("sign;"); return op[1].toInt() }
