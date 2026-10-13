@@ -1,8 +1,8 @@
-# Numerical conversion arguments
+# Numerical arguments
 
 These arguments describe the independent common implementation in
-`BigInteger.kt`, together with its portable JDK fixtures. They concern integer
-conversions and hash packing, followed by BigDecimal rational conversion.
+`BigInteger.kt` and `BigDecimal.kt`, together with portable JDK fixtures. They
+cover integer packing, decimal conversions, roots and powers.
 
 ## Binary floating-point rounding
 
@@ -182,6 +182,32 @@ There are 128 portable cases at this boundary; JVM tests additionally compare
 the error message. Base one avoids enormous allocations in the successful
 near-Int.MAX_VALUE precision cases. These observations do not prove every
 intermediate-size limit, subclass call sequence or every exponent/input pair.
+
+## Decimal exact primitive conversion
+
+For an ordinary nonzero decimal with coefficient precision d and scale s, let
+`k=d-s`, computed in Long. If k<=0, its absolute value is strictly between zero
+and one, so exact conversion requires a fractional-part error. If k>19, its
+absolute value is at least 10^19, exceeding signed Long range. Otherwise exact
+rescaling to zero either rejects a nonzero fractional part or supplies an integer.
+An integer of fewer than 19 decimal digits fits Long. At 19 digits the signed
+bitLength rule above, bitLength<=63, distinguishes both signed endpoints from
+overflow. Zero and compact scale-zero values have separate observed fast paths.
+
+Narrow conversions first call virtual longValueExact once, then compare the
+returned Long with their signed width endpoints. This preserves both fractional
+versus overflow precedence and replacement-method behavior. The 560 ordinary
+cases and 27 replacement-Long cases compare values and exact messages. Another
+72 traces constrain public signum/precision calls, legacy-Int setScale dispatch
+and canonical formatting. The long guards deliberately make separate virtual
+precision calls, as observed in the pinned JDK.
+
+Canonical text derives digit count from stored coefficient text. Its private
+plain layout avoids virtual toPlainString. The reference bypasses virtual signum
+at scale zero and for nonnegative compact coefficients below Int.MAX_VALUE at
+scale two; other tested layouts call it once. There are 264 replacement-getter
+text-and-trace cases around these boundaries. These observations concern fresh
+single calls and do not prove repeated-call caching or every formatter/subclass.
 
 ## Evidence and remaining scope
 

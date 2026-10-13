@@ -12,9 +12,48 @@ class PortableOracleTest {
             assertEquals(v[6], actual, "${v.take(6)}")
         }
     }
+    @Suppress("DEPRECATION")
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "W") {
+            val trace = StringBuilder()
+            val value = object : BigDecimal(BigInteger(v[2]), v[3].toInt()) {
+                override fun signum(): Int { trace.append("sign;"); return p }
+                override fun precision(): Int { trace.append("precision;"); return 1 }
+                override fun toPlainString(): String { trace.append("plain;"); return "custom" }
+            }
+            val result = value.toString()
+            return "$result|$trace"
+        }
+        if (v[0] == "T" || v[0] == "U") {
+            val trace = StringBuilder()
+            val value = if (v[0] == "U") object : BigDecimal(v[2]) {
+                override fun longValueExact(): Long { trace.append("longExact;"); return v[3].toLong() }
+            } else object : BigDecimal(BigInteger(v[2]), v[3].toInt()) {
+                override fun toLong(): Long { trace.append("long;"); return super.toLong() }
+                override fun longValueExact(): Long { trace.append("longExact;"); return super.longValueExact() }
+                override fun toBigIntegerExact(): BigInteger { trace.append("integerExact;"); return super.toBigIntegerExact() }
+                override fun precision(): Int { trace.append("precision;"); return super.precision() }
+                override fun signum(): Int { trace.append("sign;"); return super.signum() }
+                override fun setScale(newScale: Int, roundingMode: RoundingMode): BigDecimal { trace.append("enumScale;"); return super.setScale(newScale, roundingMode) }
+                override fun setScale(newScale: Int, roundingMode: Int): BigDecimal { trace.append("intScale;"); return super.setScale(newScale, roundingMode) }
+                override fun setScale(newScale: Int): BigDecimal { trace.append("scale;"); return super.setScale(newScale) }
+            }
+            val result = try { when (op) {
+                "byte" -> value.byteValueExact()
+                "short" -> value.shortValueExact()
+                "int" -> value.intValueExact()
+                "long" -> value.longValueExact()
+                "integer" -> value.toBigIntegerExact()
+                "text" -> value.toString()
+                "scale" -> value.setScale(p)
+                "enumScale" -> value.setScale(p, RoundingMode.valueOf(v[5]))
+                "intScale" -> value.setScale(p, RoundingMode.valueOf(v[5]).ordinal)
+                else -> error("Unknown exact decimal operation $op")
+            }.toString() } catch (failure: Exception) { "!${failure::class.simpleName}:${failure.message}" }
+            return "$result|$trace"
+        }
         if (v[0] == "X") {
             val trace = StringBuilder()
             val value = object : BigDecimal(BigInteger(v[2]), v[3].toInt()) {
@@ -74,6 +113,10 @@ class PortableOracleTest {
                 when (op) {
                     "scaledDivide" -> a.divide(b, p, mode).toString()
                     "setScale" -> a.setScale(p, mode).toString()
+                    "byteExact" -> a.byteValueExact().toString()
+                    "shortExact" -> a.shortValueExact().toString()
+                    "intExact" -> a.intValueExact().toString()
+                    "longExact" -> a.longValueExact().toString()
                     else -> {
                         val mc = MathContext(p, mode)
                         when (op) {

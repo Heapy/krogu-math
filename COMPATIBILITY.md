@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 43,040 vectors, including 8,888 added signed
+The main oracle now contains 43,963 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -261,3 +261,13 @@ rounding mode. The initial 3,072 differences were diagnostic messages. Both
 increase and decrease now validate a positive scale distance before the power-of-ten
 range guard, matching the pinned Underflow and integer-range messages. The JVM
 matrix and existing scale-boundary tests pass; the same cases are portable fixtures.
+
+Decimal exact primitive conversion adds 560 value/message cases. The initial 315
+message differences are resolved by long-range/fraction guards before rescaling,
+followed by narrow-width checks. Another 72 public-call traces and 27 replacement
+longValueExact cases constrain the legacy-Int setScale delegation and virtual
+conversion guards. Canonical toString uses stored digit length and private plain
+layout, with observed signum dispatch outside scale zero and the nonnegative
+small-compact scale-two fast path. Its 264 getter-replacement cases compare text
+and calls. These are single-call observations; other formatting methods, wider
+subclass callback domains and repeated-call/cache behavior remain separate audits.

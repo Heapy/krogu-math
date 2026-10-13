@@ -4,6 +4,8 @@
  * Usage (from repository root): kotlinr scripts/generate-oracle.main.kts [--check]
  * No third-party dependencies or implementation-source access.
  */
+@file:Suppress("DEPRECATION")
+
 import java.io.File
 import java.math.BigInteger
 import java.math.BigDecimal
@@ -311,6 +313,90 @@ for (coefficient in listOf("0", "1", "-1", "10", "9223372036854775807", "-922337
         record("G", "setScale", "$coefficient@$scale", "0@0", target, mode) {
             try { BigDecimal(BigInteger(coefficient), scale).setScale(target, mode).toString() }
             catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
+        }
+    }
+}
+val exactDecimalCoefficients = listOf("0", "1", "-1", "127", "128", "-128", "-129", "32767", "32768",
+    "-32768", "-32769", "2147483647", "2147483648", "-2147483648", "-2147483649",
+    "9223372036854775807", "9223372036854775808", "-9223372036854775808", "-9223372036854775809",
+    "1000000000000000000000000000000")
+for (coefficient in exactDecimalCoefficients) for (scale in listOf(Int.MIN_VALUE, -20, -1, 0, 1, 20, Int.MAX_VALUE)) {
+    for (op in listOf("byteExact", "shortExact", "intExact", "longExact")) {
+        record("G", op, "$coefficient@$scale", "0@0") {
+            val value = BigDecimal(BigInteger(coefficient), scale)
+            try { when (op) {
+                "byteExact" -> value.byteValueExact()
+                "shortExact" -> value.shortValueExact()
+                "intExact" -> value.intValueExact()
+                else -> value.longValueExact()
+            }.toString() } catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
+        }
+    }
+}
+for ((coefficient, scale) in listOf("0" to Int.MIN_VALUE, "1" to 0, "1" to 1, "12300" to 4,
+    "-9223372036854775808" to 0, "92233720368547758080" to 1, "1" to Int.MIN_VALUE, "1" to Int.MAX_VALUE)) {
+    for (op in listOf("byte", "short", "int", "long", "integer", "scale", "enumScale", "intScale", "text")) {
+        record("T", op, coefficient, scale.toString(), mode = RoundingMode.HALF_UP) {
+            val trace = StringBuilder()
+            val value = object : BigDecimal(BigInteger(coefficient), scale) {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                override fun toLong(): Long { trace.append("long;"); return super.toLong() }
+                override fun longValueExact(): Long { trace.append("longExact;"); return super.longValueExact() }
+                override fun toBigIntegerExact(): BigInteger { trace.append("integerExact;"); return super.toBigIntegerExact() }
+                override fun precision(): Int { trace.append("precision;"); return super.precision() }
+                override fun signum(): Int { trace.append("sign;"); return super.signum() }
+                override fun setScale(scale: Int, mode: RoundingMode): BigDecimal { trace.append("enumScale;"); return super.setScale(scale, mode) }
+                override fun setScale(scale: Int, mode: Int): BigDecimal { trace.append("intScale;"); return super.setScale(scale, mode) }
+                override fun setScale(scale: Int): BigDecimal { trace.append("scale;"); return super.setScale(scale) }
+            }
+            val result = try { when (op) {
+                "byte" -> value.byteValueExact()
+                "short" -> value.shortValueExact()
+                "int" -> value.intValueExact()
+                "long" -> value.longValueExact()
+                "integer" -> value.toBigIntegerExact()
+                "text" -> value.toString()
+                "scale" -> value.setScale(0)
+                "enumScale" -> value.setScale(0, RoundingMode.HALF_UP)
+                else -> value.setScale(0, RoundingMode.HALF_UP.ordinal)
+            }.toString() } catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
+            "$result|$trace"
+        }
+    }
+}
+for (replacement in listOf(Long.MIN_VALUE, -32769L, -129L, -128L, 127L, 128L, 32768L, 2147483648L, Long.MAX_VALUE)) {
+    for (op in listOf("byte", "short", "int")) {
+        record("U", op, "1", replacement.toString()) {
+            val trace = StringBuilder()
+            val value = object : BigDecimal("1") {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                override fun longValueExact(): Long { trace.append("longExact;"); return replacement }
+            }
+            val result = try { when (op) {
+                "byte" -> value.byteValueExact()
+                "short" -> value.shortValueExact()
+                else -> value.intValueExact()
+            }.toString() } catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
+            "$result|$trace"
+        }
+    }
+}
+for (coefficient in listOf("0", "1", "-1", "123", "-123", "2147483646", "2147483647", "2147483648",
+    "9223372036854775807", "-9223372036854775808", "123456789012345678901234567890")) {
+    for (scale in listOf(-2, -1, 0, 1, 2, 3, 6, 7)) for (sign in -1..1) {
+        record("W", "text", coefficient, scale.toString(), sign) {
+            val trace = StringBuilder()
+            val value = object : BigDecimal(BigInteger(coefficient), scale) {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                override fun signum(): Int { trace.append("sign;"); return sign }
+                override fun precision(): Int { trace.append("precision;"); return 1 }
+                override fun toPlainString(): String { trace.append("plain;"); return "custom" }
+            }
+            val result = value.toString()
+            "$result|$trace"
         }
     }
 }

@@ -6,7 +6,7 @@ import kotlin.math.pow
 
 /** Immutable decimal, represented exactly as coefficient × 10^(-scale). */
 // Preserve virtual java.lang.Number methods instead of Kotlin's default final bridges.
-@Suppress("INAPPLICABLE_JVM_NAME")
+@Suppress("INAPPLICABLE_JVM_NAME", "DEPRECATION")
 open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     Number(), Comparable<BigDecimal>, MathSerializable {
 
@@ -40,7 +40,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
 
     open fun unscaledValue(): BigInteger = coefficient
     open fun scale(): Int = decimalScale
-    open fun precision(): Int = coefficient.abs().toString().length
+    open fun precision(): Int = storedPrecision()
+    private fun storedPrecision(): Int = coefficient.abs().toString().length
     open fun signum(): Int = coefficient.signum()
     open fun abs(): BigDecimal = if (signum() < 0) negate() else this
     open fun abs(mc: MathContext): BigDecimal = abs().round(mc)
@@ -279,10 +280,12 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         }
         return result
     }
-    open fun setScale(newScale: Int): BigDecimal = setScale(newScale, RoundingMode.UNNECESSARY)
+    // Convenience overloads retain the public legacy-Int dispatch used by JDK.
+    open fun setScale(newScale: Int): BigDecimal = setScale(newScale, ROUND_UNNECESSARY)
     @Deprecated("Use RoundingMode")
-    open fun setScale(newScale: Int, roundingMode: Int): BigDecimal = setScale(newScale, RoundingMode.valueOf(roundingMode))
-    open fun setScale(newScale: Int, roundingMode: RoundingMode): BigDecimal {
+    open fun setScale(newScale: Int, roundingMode: Int): BigDecimal = setScaleValue(newScale, RoundingMode.valueOf(roundingMode))
+    open fun setScale(newScale: Int, roundingMode: RoundingMode): BigDecimal = setScale(newScale, roundingMode.ordinal)
+    private fun setScaleValue(newScale: Int, roundingMode: RoundingMode): BigDecimal {
         if (decimalScale == newScale) return this
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, newScale)
         val shift = newScale.toLong() - decimalScale
@@ -291,7 +294,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         if (distance > 646456992) throw ArithmeticException("BigInteger would overflow supported range")
         val value = when {
             shift > 0 -> coefficient.multiply(tenPow(shift))
-            -shift > precision() -> roundTiny(signum(), roundingMode)
+            -shift > storedPrecision() -> roundTiny(signum(), roundingMode)
             else -> roundedDivide(coefficient, tenPow(-shift), roundingMode)
         }
         return BigDecimal(value, newScale)
@@ -394,10 +397,22 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
 
     override fun toString(): String {
         val digits = coefficient.abs().toString()
-        val exponent = adjustedExponent()
-        if (decimalScale >= 0 && exponent >= -6) return toPlainString()
+        val compact = coefficient.decimalCompactValue()
+        val directSign = decimalScale == 0 || (decimalScale == 2 && compact != null &&
+            compact >= 0 && compact < Int.MAX_VALUE.toLong())
+        val sign = if (directSign) coefficient.signum() else signum()
+        val exponent = digits.length.toLong() - decimalScale - 1
+        if (decimalScale >= 0 && exponent >= -6) return canonicalPlain(digits, sign)
         val body = if (digits.length == 1) digits else digits[0] + "." + digits.substring(1)
-        return (if (signum() < 0) "-" else "") + body + exponentText(exponent)
+        return (if (sign < 0) "-" else "") + body + exponentText(exponent)
+    }
+    private fun canonicalPlain(digits: String, sign: Int): String {
+        val body = when {
+            decimalScale == 0 -> digits
+            decimalScale < digits.length -> digits.substring(0, digits.length - decimalScale) + "." + digits.substring(digits.length - decimalScale)
+            else -> "0." + zeros(decimalScale.toLong() - digits.length) + digits
+        }
+        return (if (sign < 0) "-" else "") + body
     }
     open fun toPlainString(): String {
         val digits = coefficient.abs().toString()
@@ -433,7 +448,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         if (decimalScale >= precision()) return BigInteger.ZERO
         return coefficient.divide(tenPow(decimalScale.toLong()))
     }
-    open fun toBigIntegerExact(): BigInteger = setScale(0).coefficient
+    open fun toBigIntegerExact(): BigInteger = setScale(0, ROUND_UNNECESSARY).coefficient
     @kotlin.jvm.JvmName("intValue")
     override fun toInt(): Int = integerLowBits(32).toInt()
     @kotlin.jvm.JvmName("longValue")
@@ -448,10 +463,26 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     override fun toByte(): Byte = toInt().toByte()
     @kotlin.jvm.JvmName("shortValue")
     override fun toShort(): Short = toInt().toShort()
-    open fun intValueExact(): Int = toBigIntegerExact().intValueExact()
-    open fun longValueExact(): Long = toBigIntegerExact().longValueExact()
-    open fun shortValueExact(): Short = toBigIntegerExact().shortValueExact()
-    open fun byteValueExact(): Byte = toBigIntegerExact().byteValueExact()
+    open fun intValueExact(): Int = narrowExact(Int.MIN_VALUE.toLong(), Int.MAX_VALUE.toLong()).toInt()
+    open fun shortValueExact(): Short = narrowExact(Short.MIN_VALUE.toLong(), Short.MAX_VALUE.toLong()).toShort()
+    open fun byteValueExact(): Byte = narrowExact(Byte.MIN_VALUE.toLong(), Byte.MAX_VALUE.toLong()).toByte()
+    private fun narrowExact(minimum: Long, maximum: Long): Long {
+        val value = longValueExact()
+        if (value < minimum || value > maximum) throw ArithmeticException("Overflow")
+        return value
+    }
+    open fun longValueExact(): Long {
+        val compact = coefficient.decimalCompactValue()
+        if (compact != null && decimalScale == 0) return compact
+        if (signum() == 0) return 0
+        // Keep these virtual calls separate: subclass traces observe both guards.
+        if (precision().toLong() - decimalScale <= 0) throw ArithmeticException("Rounding necessary")
+        if (precision().toLong() - decimalScale > 19) throw ArithmeticException("Overflow")
+        val integer = setScale(0, ROUND_UNNECESSARY)
+        if (integer.precision() >= 19 && integer.coefficient.bitLength() > 63)
+            throw ArithmeticException("Overflow")
+        return integer.coefficient.toLong()
+    }
     @kotlin.jvm.JvmName("doubleValue")
     override fun toDouble(): Double = binaryValue(53, -1022, 1023)
     @kotlin.jvm.JvmName("floatValue")
