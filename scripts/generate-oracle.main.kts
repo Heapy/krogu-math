@@ -756,6 +756,65 @@ for (text in listOf("0.00", "1", "-1")) for (sign in -1..1) for (behavior in lis
         "$result|$trace"
     }
 }
+for (left in listOf("0.00", "-123.45", "1.2345678901234567890")) for (right in listOf("0.00", "-123.45", "1.2345678901234567890")) {
+    for (precision in listOf(-1, 0, 1, 7)) for (mode in listOf(RoundingMode.HALF_EVEN, RoundingMode.UNNECESSARY)) {
+        for (leftBehavior in listOf("super", "replace", "throw")) for (rightBehavior in listOf("super", "replace", "throw")) {
+            record("O", "subtract:$leftBehavior:$rightBehavior", left, right, precision, mode) {
+                val trace = StringBuilder()
+                val value = object : BigDecimal(left) {
+                    override fun toByte(): Byte = super.toInt().toByte()
+                    override fun toShort(): Short = super.toInt().toShort()
+                    override fun add(value: BigDecimal): BigDecimal {
+                        trace.append("add;")
+                        return when (leftBehavior) { "replace" -> BigDecimal("42"); "throw" -> throw IllegalStateException("add callback"); else -> super.add(value) }
+                    }
+                    override fun add(value: BigDecimal, mc: MathContext): BigDecimal {
+                        trace.append("addContext;")
+                        return when (leftBehavior) { "replace" -> BigDecimal("43"); "throw" -> throw IllegalStateException("add context callback"); else -> super.add(value, mc) }
+                    }
+                    override fun subtract(value: BigDecimal): BigDecimal { trace.append("subtract;"); return super.subtract(value) }
+                }
+                val other = object : BigDecimal(right) {
+                    override fun toByte(): Byte = super.toInt().toByte()
+                    override fun toShort(): Short = super.toInt().toShort()
+                    override fun negate(): BigDecimal {
+                        trace.append("rightNegate;")
+                        return when (rightBehavior) { "replace" -> BigDecimal("99"); "throw" -> throw IllegalStateException("negate callback"); else -> super.negate() }
+                    }
+                }
+                val result = try { (if (precision < 0) value.subtract(other) else value.subtract(other, MathContext(precision, mode))).toString() }
+                    catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+                "$result|$trace"
+            }
+        }
+    }
+}
+for (left in listOf("0.00", "-123.45", "1.2345678901234567890")) for (right in listOf("0.00", "-123.45", "1.2345678901234567890")) for (sign in -1..1) {
+    record("O", "addSign:$sign", left, right) {
+        val trace = StringBuilder()
+        fun operand(text: String) = object : BigDecimal(text) {
+            override fun toByte(): Byte = super.toInt().toByte()
+            override fun toShort(): Short = super.toInt().toShort()
+            override fun signum(): Int { trace.append("sign;"); return sign }
+        }
+        "${operand(left).add(operand(right))}|$trace"
+    }
+}
+for (coefficient in listOf("1", "-1")) for (leftScale in listOf(-10001, 0, 10001)) for (rightScale in listOf(-10001, 0, 10001)) {
+    for (precision in listOf(1, 7)) for (mode in listOf(RoundingMode.HALF_EVEN, RoundingMode.UNNECESSARY)) {
+        record("O", "wideAdd", "$coefficient@$leftScale", "1@$rightScale", precision, mode) {
+            val trace = StringBuilder()
+            val value = object : BigDecimal(BigInteger(coefficient), leftScale) {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                override fun add(value: BigDecimal): BigDecimal { trace.append("add;"); throw IllegalStateException("exact add callback") }
+            }
+            val result = try { value.add(BigDecimal(BigInteger.ONE, rightScale), MathContext(precision, mode)).toString() }
+                catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+            "$result|$trace"
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

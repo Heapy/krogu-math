@@ -91,6 +91,22 @@ compared with public JDK outputs. This is an argument for packing equivalence;
 the JDK's particular hash recurrence is constrained by the oracle, rather than
 specified by the Object.hashCode contract.
 
+## Exact decimal addition and subtraction
+
+For stored operands x=c*10^-s and y=d*10^-t, choose u=max(s,t).
+The integers C=c*10^(u-s) and D=d*10^(u-t) then give
+x+y=(C+D)*10^-u and x-y=(C-D)*10^-u. Both scale distances are
+nonnegative, and Long subtraction represents their full Int-scale domain.
+A zero coefficient remains zero for every distance, so its scaling can be
+skipped without constructing the corresponding power of ten. Stored coefficient
+signs determine this optimization; an overridden public signum is not numerical
+input to exact alignment.
+
+This argument assumes supported intermediate sizes and correct integer
+arithmetic. It does not establish all allocation/range behavior, finite-context
+sticky-tail rounding or virtual callback semantics. Separate public-JDK fixtures
+constrain which overrides exact and context operations invoke.
+
 ## Decimal rational conversion
 
 For an ordinary BigDecimal, separate its sign and write its absolute value as

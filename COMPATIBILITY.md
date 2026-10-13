@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 64,486 vectors, including 8,888 added signed
+The main oracle now contains 65,233 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -409,3 +409,17 @@ of these two chains. abs/negate context signatures now use MathContext? to forwa
 null to callbacks before base validation. Kotlin overrides use the nullable
 parameter too. Broader returned-subclass combinations, extreme unary scales and
 detailed NPE messages remain open.
+
+Addition/subtraction routing adds 747 portable cases: 648 subtraction callback
+cross-products, 27 exact-add sign replacements and 72 finite additions with scale
+gaps through 20,002. Exact subtraction aligns stored coefficients directly,
+bypassing source add and right-operand negate overrides. Unlimited context
+subtraction delegates to public subtract; finite context subtraction preserves
+virtual right negate followed by left add(context). Finite addition's ordinary
+and remote-tail paths use private exact addition. Exact alignment checks stored
+zero coefficients, so a replacement signum cannot suppress decimal scaling.
+Replacement values, throwing callbacks, exact errors and call traces are compared
+with JDK; the original subtraction matrix exposed 364 differences. The selected
+JVM checks also rerun the numerical decimal, scale and null campaigns. Null
+callback operands, broader getter replacement domains and full range/allocation
+behavior remain open.

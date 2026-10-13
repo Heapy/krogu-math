@@ -50,7 +50,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun plus(): BigDecimal = this
     open fun plus(mc: MathContext?): BigDecimal = roundValue(mc ?: throw NullPointerException())
 
-    open fun add(augend: BigDecimal): BigDecimal {
+    open fun add(augend: BigDecimal): BigDecimal = addValue(augend)
+    private fun addValue(augend: BigDecimal): BigDecimal {
         val scale = maxOf(decimalScale, augend.decimalScale)
         return BigDecimal(scaledCoefficient(scale).add(augend.scaledCoefficient(scale)), scale)
     }
@@ -68,13 +69,13 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         checkAdditionAlignment(augend, mc)
         if (kotlin.math.abs(decimalScale.toLong() - augend.decimalScale) < 10000 ||
             kotlin.math.abs(adjustedExponent() - augend.adjustedExponent()) <= mc.precision.toLong() + 3)
-            return add(augend).round(mc)
+            return addValue(augend).round(mc)
         // Keep a guard digit plus a sticky digit when the exponent gap is enormous.
         // Replacing a remote tail by a signed sticky unit preserves every rounding decision.
         val large = if (adjustedExponent() > augend.adjustedExponent()) this else augend
         val small = if (large === this) augend else this
         val workingScale = maxOf(large.decimalScale.toLong(), mc.precision.toLong() + 2L - large.adjustedExponent())
-        val result = large.add(small.stickyAt(workingScale)).round(mc)
+        val result = large.addValue(small.stickyAt(workingScale)).round(mc)
         val preferred = maxOf(decimalScale, augend.decimalScale)
         return if (result.signum() == 0) result.setScale(preferred) else result.stripTo(preferred)
     }
@@ -103,8 +104,12 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         // a whole unit can carry through 999... or cancel a retained +1 digit.
         return BigDecimal(BigInteger.valueOf(signum().toLong()), checkedScale(scale + 1))
     }
-    open fun subtract(subtrahend: BigDecimal): BigDecimal = add(subtrahend.negate())
-    open fun subtract(subtrahend: BigDecimal, mc: MathContext): BigDecimal = add(subtrahend.negate(), mc)
+    open fun subtract(subtrahend: BigDecimal): BigDecimal {
+        val scale = maxOf(decimalScale, subtrahend.decimalScale)
+        return BigDecimal(scaledCoefficient(scale).subtract(subtrahend.scaledCoefficient(scale)), scale)
+    }
+    open fun subtract(subtrahend: BigDecimal, mc: MathContext): BigDecimal =
+        if (mc.precision == 0) subtract(subtrahend) else add(subtrahend.negate(), mc)
     open fun multiply(multiplicand: BigDecimal): BigDecimal = multiplyValue(multiplicand)
     private fun multiplyValue(multiplicand: BigDecimal): BigDecimal {
         val scale = scaleForValue(decimalScale.toLong() + multiplicand.decimalScale, coefficient.signum() == 0)
@@ -411,7 +416,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     override fun equals(other: Any?): Boolean = other is BigDecimal && decimalScale == other.decimalScale && coefficient == other.coefficient
     override fun hashCode(): Int = 31 * coefficient.hashCode() + decimalScale
     private fun adjustedExponent(): Long = precision().toLong() - decimalScale - 1
-    private fun scaledCoefficient(scale: Int): BigInteger = if (signum() == 0) coefficient else coefficient.multiply(tenPow(scale.toLong() - decimalScale))
+    private fun scaledCoefficient(scale: Int): BigInteger = if (coefficient.signum() == 0) coefficient else coefficient.multiply(tenPow(scale.toLong() - decimalScale))
 
     @kotlin.concurrent.Volatile
     @kotlin.jvm.Transient

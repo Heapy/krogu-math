@@ -1293,6 +1293,21 @@ internal fun oracleVectors(): List<Array<String>> = buildList {
     addAll(oracleBatch1287())
     addAll(oracleBatch1288())
     addAll(oracleBatch1289())
+    addAll(oracleBatch1290())
+    addAll(oracleBatch1291())
+    addAll(oracleBatch1292())
+    addAll(oracleBatch1293())
+    addAll(oracleBatch1294())
+    addAll(oracleBatch1295())
+    addAll(oracleBatch1296())
+    addAll(oracleBatch1297())
+    addAll(oracleBatch1298())
+    addAll(oracleBatch1299())
+    addAll(oracleBatch1300())
+    addAll(oracleBatch1301())
+    addAll(oracleBatch1302())
+    addAll(oracleBatch1303())
+    addAll(oracleBatch1304())
 }
 
 private fun oracleBatch0(): List<Array<String>> = listOf(
@@ -65645,6 +65660,798 @@ private fun oracleBatch1214(): List<Array<String>> = listOf(
     arrayOf("C", "nullNegate:throw", "-1", "1", "0", "HALF_EVEN", "!IllegalStateException:context callback|negateContext:true;"),
     arrayOf("C", "nullAbs:super", "-1", "1", "0", "HALF_EVEN", "!NullPointerException|sign;plus:true;"),
     arrayOf("C", "nullNegate:super", "-1", "1", "0", "HALF_EVEN", "!NullPointerException|negateContext:true;negate;"),
+    arrayOf("O", "subtract:super:super", "0.00", "0.00", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "0.00", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "0.00", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "0.00", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "0.00", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "0.00", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "0.00", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "0.00", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "0.00", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:super", "0.00", "0.00", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "0.00", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "0.00", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "0.00", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "0.00", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "0.00", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "0.00", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "0.00", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "0.00", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:super", "0.00", "0.00", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "0.00", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "0.00", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "0.00", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "0.00", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "0.00", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "0.00", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "0.00", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "0.00", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:super", "0.00", "0.00", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "0.00", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "0.00", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "0.00", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "0.00", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "0.00", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "0.00", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "0.00", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "0.00", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:super", "0.00", "0.00", "1", "HALF_EVEN", "0.00|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "0.00", "1", "HALF_EVEN", "1E+2|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "0.00", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "0.00", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "0.00", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "0.00", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "0.00", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+)
+
+private fun oracleBatch1215(): List<Array<String>> = listOf(
+    arrayOf("O", "subtract:throw:replace", "0.00", "0.00", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "0.00", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "0.00", "0.00", "1", "UNNECESSARY", "0.00|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "0.00", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "0.00", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "0.00", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "0.00", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "0.00", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "0.00", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "0.00", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "0.00", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "0.00", "0.00", "7", "HALF_EVEN", "0.00|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "0.00", "7", "HALF_EVEN", "99.00|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "0.00", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "0.00", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "0.00", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "0.00", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "0.00", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "0.00", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "0.00", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "0.00", "0.00", "7", "UNNECESSARY", "0.00|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "0.00", "7", "UNNECESSARY", "99.00|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "0.00", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "0.00", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "0.00", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "0.00", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "0.00", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "0.00", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "0.00", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "0.00", "-123.45", "-1", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "-123.45", "-1", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "-123.45", "-1", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "-123.45", "-1", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "-123.45", "-1", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "-123.45", "-1", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "-123.45", "-1", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "-123.45", "-1", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "-123.45", "-1", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:super:super", "0.00", "-123.45", "-1", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "-123.45", "-1", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "-123.45", "-1", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "-123.45", "-1", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "-123.45", "-1", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "-123.45", "-1", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "-123.45", "-1", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "-123.45", "-1", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "-123.45", "-1", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:super:super", "0.00", "-123.45", "0", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "-123.45", "0", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "-123.45", "0", "HALF_EVEN", "123.45|subtract;"),
+)
+
+private fun oracleBatch1216(): List<Array<String>> = listOf(
+    arrayOf("O", "subtract:replace:super", "0.00", "-123.45", "0", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "-123.45", "0", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "-123.45", "0", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "-123.45", "0", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "-123.45", "0", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "-123.45", "0", "HALF_EVEN", "123.45|subtract;"),
+    arrayOf("O", "subtract:super:super", "0.00", "-123.45", "0", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "-123.45", "0", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "-123.45", "0", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "-123.45", "0", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "-123.45", "0", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "-123.45", "0", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "-123.45", "0", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "-123.45", "0", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "-123.45", "0", "UNNECESSARY", "123.45|subtract;"),
+    arrayOf("O", "subtract:super:super", "0.00", "-123.45", "1", "HALF_EVEN", "1E+2|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "-123.45", "1", "HALF_EVEN", "1E+2|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "-123.45", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "-123.45", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "0.00", "-123.45", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "-123.45", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "-123.45", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "-123.45", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "0.00", "-123.45", "7", "HALF_EVEN", "123.45|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "-123.45", "7", "HALF_EVEN", "99.00|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "-123.45", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "-123.45", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "0.00", "-123.45", "7", "UNNECESSARY", "123.45|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "-123.45", "7", "UNNECESSARY", "99.00|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "-123.45", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "-123.45", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+)
+
+private fun oracleBatch1217(): List<Array<String>> = listOf(
+    arrayOf("O", "subtract:throw:throw", "0.00", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "0.00", "1.2345678901234567890", "-1", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "1.2345678901234567890", "-1", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "1.2345678901234567890", "-1", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "1.2345678901234567890", "-1", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "1.2345678901234567890", "-1", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "1.2345678901234567890", "-1", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "1.2345678901234567890", "-1", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "1.2345678901234567890", "-1", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "1.2345678901234567890", "-1", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "0.00", "1.2345678901234567890", "-1", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "1.2345678901234567890", "-1", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "1.2345678901234567890", "-1", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "1.2345678901234567890", "-1", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "1.2345678901234567890", "-1", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "1.2345678901234567890", "-1", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "1.2345678901234567890", "-1", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "1.2345678901234567890", "-1", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "1.2345678901234567890", "-1", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "0.00", "1.2345678901234567890", "0", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "1.2345678901234567890", "0", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "1.2345678901234567890", "0", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "1.2345678901234567890", "0", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "1.2345678901234567890", "0", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "1.2345678901234567890", "0", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "1.2345678901234567890", "0", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "1.2345678901234567890", "0", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "1.2345678901234567890", "0", "HALF_EVEN", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "0.00", "1.2345678901234567890", "0", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "1.2345678901234567890", "0", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "1.2345678901234567890", "0", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "1.2345678901234567890", "0", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "1.2345678901234567890", "0", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "1.2345678901234567890", "0", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "1.2345678901234567890", "0", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "1.2345678901234567890", "0", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "1.2345678901234567890", "0", "UNNECESSARY", "-1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "0.00", "1.2345678901234567890", "1", "HALF_EVEN", "-1|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "1.2345678901234567890", "1", "HALF_EVEN", "1E+2|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "1.2345678901234567890", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "1.2345678901234567890", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "0.00", "1.2345678901234567890", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "1.2345678901234567890", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "1.2345678901234567890", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+)
+
+private fun oracleBatch1218(): List<Array<String>> = listOf(
+    arrayOf("O", "subtract:replace:replace", "0.00", "1.2345678901234567890", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "0.00", "1.2345678901234567890", "7", "HALF_EVEN", "-1.234568|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "1.2345678901234567890", "7", "HALF_EVEN", "99.00|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "1.2345678901234567890", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "1.2345678901234567890", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "0.00", "1.2345678901234567890", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "0.00", "1.2345678901234567890", "7", "UNNECESSARY", "99.00|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "0.00", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "0.00", "1.2345678901234567890", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "0.00", "1.2345678901234567890", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "0.00", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "0.00", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "0.00", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "0.00", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "0.00", "-1", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "0.00", "-1", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "0.00", "-1", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "0.00", "-1", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "0.00", "-1", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "0.00", "-1", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "0.00", "-1", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "0.00", "-1", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "0.00", "-1", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "0.00", "-1", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "0.00", "-1", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "0.00", "-1", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "0.00", "-1", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "0.00", "-1", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "0.00", "-1", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "0.00", "-1", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "0.00", "-1", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "0.00", "-1", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "0.00", "0", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "0.00", "0", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "0.00", "0", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "0.00", "0", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "0.00", "0", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "0.00", "0", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "0.00", "0", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "0.00", "0", "HALF_EVEN", "-123.45|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "0.00", "0", "HALF_EVEN", "-123.45|subtract;"),
+)
+
+private fun oracleBatch1219(): List<Array<String>> = listOf(
+    arrayOf("O", "subtract:super:super", "-123.45", "0.00", "0", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "0.00", "0", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "0.00", "0", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "0.00", "0", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "0.00", "0", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "0.00", "0", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "0.00", "0", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "0.00", "0", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "0.00", "0", "UNNECESSARY", "-123.45|subtract;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "0.00", "1", "HALF_EVEN", "-1E+2|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "0.00", "1", "HALF_EVEN", "-2E+1|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "0.00", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "0.00", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "0.00", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "0.00", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "0.00", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "0.00", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "0.00", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "0.00", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "0.00", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "0.00", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "0.00", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "0.00", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "0.00", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "0.00", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "0.00", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "0.00", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "0.00", "7", "HALF_EVEN", "-123.45|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "0.00", "7", "HALF_EVEN", "-24.45|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "0.00", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "0.00", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "0.00", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "0.00", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "0.00", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "0.00", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "0.00", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "0.00", "7", "UNNECESSARY", "-123.45|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "0.00", "7", "UNNECESSARY", "-24.45|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "0.00", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "0.00", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "0.00", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "0.00", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "0.00", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "0.00", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "0.00", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "-123.45", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "-123.45", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "-123.45", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "-123.45", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "-123.45", "-1", "HALF_EVEN", "0.00|subtract;"),
+)
+
+private fun oracleBatch1220(): List<Array<String>> = listOf(
+    arrayOf("O", "subtract:replace:throw", "-123.45", "-123.45", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "-123.45", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "-123.45", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "-123.45", "-1", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "-123.45", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "-123.45", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "-123.45", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "-123.45", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "-123.45", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "-123.45", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "-123.45", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "-123.45", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "-123.45", "-1", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "-123.45", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "-123.45", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "-123.45", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "-123.45", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "-123.45", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "-123.45", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "-123.45", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "-123.45", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "-123.45", "0", "HALF_EVEN", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "-123.45", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "-123.45", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "-123.45", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "-123.45", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "-123.45", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "-123.45", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "-123.45", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "-123.45", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "-123.45", "0", "UNNECESSARY", "0.00|subtract;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "-123.45", "1", "HALF_EVEN", "0.00|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "-123.45", "1", "HALF_EVEN", "-2E+1|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "-123.45", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "-123.45", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "-123.45", "1", "UNNECESSARY", "0.00|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "-123.45", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "-123.45", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "-123.45", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "-123.45", "7", "HALF_EVEN", "0.00|rightNegate;addContext;"),
+)
+
+private fun oracleBatch1221(): List<Array<String>> = listOf(
+    arrayOf("O", "subtract:super:replace", "-123.45", "-123.45", "7", "HALF_EVEN", "-24.45|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "-123.45", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "-123.45", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "-123.45", "7", "UNNECESSARY", "0.00|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "-123.45", "7", "UNNECESSARY", "-24.45|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "-123.45", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "-123.45", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "1.2345678901234567890", "-1", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "1.2345678901234567890", "-1", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "1.2345678901234567890", "-1", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "1.2345678901234567890", "-1", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "1.2345678901234567890", "-1", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "1.2345678901234567890", "-1", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "1.2345678901234567890", "-1", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "1.2345678901234567890", "-1", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "1.2345678901234567890", "-1", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "1.2345678901234567890", "-1", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "1.2345678901234567890", "-1", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "1.2345678901234567890", "-1", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "1.2345678901234567890", "-1", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "1.2345678901234567890", "-1", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "1.2345678901234567890", "-1", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "1.2345678901234567890", "-1", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "1.2345678901234567890", "-1", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "1.2345678901234567890", "-1", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "1.2345678901234567890", "0", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "1.2345678901234567890", "0", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "1.2345678901234567890", "0", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "1.2345678901234567890", "0", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "1.2345678901234567890", "0", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "1.2345678901234567890", "0", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "1.2345678901234567890", "0", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "1.2345678901234567890", "0", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "1.2345678901234567890", "0", "HALF_EVEN", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "1.2345678901234567890", "0", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "1.2345678901234567890", "0", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "1.2345678901234567890", "0", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "1.2345678901234567890", "0", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "1.2345678901234567890", "0", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "1.2345678901234567890", "0", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+)
+
+private fun oracleBatch1222(): List<Array<String>> = listOf(
+    arrayOf("O", "subtract:throw:super", "-123.45", "1.2345678901234567890", "0", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "1.2345678901234567890", "0", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "1.2345678901234567890", "0", "UNNECESSARY", "-124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "1.2345678901234567890", "1", "HALF_EVEN", "-1E+2|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "1.2345678901234567890", "1", "HALF_EVEN", "-2E+1|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "1.2345678901234567890", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "1.2345678901234567890", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "1.2345678901234567890", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "1.2345678901234567890", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "1.2345678901234567890", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "1.2345678901234567890", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "1.2345678901234567890", "7", "HALF_EVEN", "-124.6846|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "1.2345678901234567890", "7", "HALF_EVEN", "-24.45|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "1.2345678901234567890", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "1.2345678901234567890", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "-123.45", "1.2345678901234567890", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "-123.45", "1.2345678901234567890", "7", "UNNECESSARY", "-24.45|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "-123.45", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "-123.45", "1.2345678901234567890", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "-123.45", "1.2345678901234567890", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "-123.45", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "-123.45", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "-123.45", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "-123.45", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "0.00", "-1", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "0.00", "-1", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "0.00", "-1", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "0.00", "-1", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "0.00", "-1", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "0.00", "-1", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "0.00", "-1", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "0.00", "-1", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "0.00", "-1", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "0.00", "-1", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "0.00", "-1", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+)
+
+private fun oracleBatch1223(): List<Array<String>> = listOf(
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "0.00", "-1", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "0.00", "-1", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "0.00", "-1", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "0.00", "-1", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "0.00", "-1", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "0.00", "-1", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "0.00", "-1", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "0.00", "0", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "0.00", "0", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "0.00", "0", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "0.00", "0", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "0.00", "0", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "0.00", "0", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "0.00", "0", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "0.00", "0", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "0.00", "0", "HALF_EVEN", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "0.00", "0", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "0.00", "0", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "0.00", "0", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "0.00", "0", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "0.00", "0", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "0.00", "0", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "0.00", "0", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "0.00", "0", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "0.00", "0", "UNNECESSARY", "1.2345678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "0.00", "1", "HALF_EVEN", "1|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "0.00", "1", "HALF_EVEN", "1E+2|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "0.00", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "0.00", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "0.00", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "0.00", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "0.00", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "0.00", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "0.00", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "0.00", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "0.00", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "0.00", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "0.00", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "0.00", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "0.00", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "0.00", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "0.00", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "0.00", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "0.00", "7", "HALF_EVEN", "1.234568|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "0.00", "7", "HALF_EVEN", "100.2346|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "0.00", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "0.00", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "0.00", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "0.00", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "0.00", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+)
+
+private fun oracleBatch1224(): List<Array<String>> = listOf(
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "0.00", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "0.00", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "0.00", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "0.00", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "0.00", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "0.00", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "0.00", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "0.00", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "0.00", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "0.00", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "0.00", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "-123.45", "-1", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "-123.45", "-1", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "-123.45", "-1", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "-123.45", "-1", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "-123.45", "-1", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "-123.45", "-1", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "-123.45", "-1", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "-123.45", "-1", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "-123.45", "-1", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "-123.45", "-1", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "-123.45", "-1", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "-123.45", "-1", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "-123.45", "-1", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "-123.45", "-1", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "-123.45", "-1", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "-123.45", "-1", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "-123.45", "-1", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "-123.45", "-1", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "-123.45", "0", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "-123.45", "0", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "-123.45", "0", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "-123.45", "0", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "-123.45", "0", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "-123.45", "0", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "-123.45", "0", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "-123.45", "0", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "-123.45", "0", "HALF_EVEN", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "-123.45", "0", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "-123.45", "0", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "-123.45", "0", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "-123.45", "0", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "-123.45", "0", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "-123.45", "0", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "-123.45", "0", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "-123.45", "0", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "-123.45", "0", "UNNECESSARY", "124.6845678901234567890|subtract;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "-123.45", "1", "HALF_EVEN", "1E+2|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "-123.45", "1", "HALF_EVEN", "1E+2|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+)
+
+private fun oracleBatch1225(): List<Array<String>> = listOf(
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "-123.45", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "-123.45", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "-123.45", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "-123.45", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "-123.45", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "-123.45", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "-123.45", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "-123.45", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "-123.45", "7", "HALF_EVEN", "124.6846|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "-123.45", "7", "HALF_EVEN", "100.2346|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "-123.45", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "-123.45", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "-123.45", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "-123.45", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "-123.45", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "-123.45", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "-123.45", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "-123.45", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "1.2345678901234567890", "-1", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "1.2345678901234567890", "-1", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "1.2345678901234567890", "-1", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "1.2345678901234567890", "-1", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "1.2345678901234567890", "-1", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "1.2345678901234567890", "-1", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "1.2345678901234567890", "-1", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "1.2345678901234567890", "-1", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "1.2345678901234567890", "-1", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "1.2345678901234567890", "-1", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "1.2345678901234567890", "-1", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "1.2345678901234567890", "-1", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "1.2345678901234567890", "-1", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "1.2345678901234567890", "-1", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "1.2345678901234567890", "-1", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "1.2345678901234567890", "-1", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "1.2345678901234567890", "-1", "UNNECESSARY", "0E-19|subtract;"),
+)
+
+private fun oracleBatch1226(): List<Array<String>> = listOf(
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "1.2345678901234567890", "-1", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "1.2345678901234567890", "0", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "1.2345678901234567890", "0", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "1.2345678901234567890", "0", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "1.2345678901234567890", "0", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "1.2345678901234567890", "0", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "1.2345678901234567890", "0", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "1.2345678901234567890", "0", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "1.2345678901234567890", "0", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "1.2345678901234567890", "0", "HALF_EVEN", "0E-19|subtract;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "1.2345678901234567890", "0", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "1.2345678901234567890", "0", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "1.2345678901234567890", "0", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "1.2345678901234567890", "0", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "1.2345678901234567890", "0", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "1.2345678901234567890", "0", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "1.2345678901234567890", "0", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "1.2345678901234567890", "0", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "1.2345678901234567890", "0", "UNNECESSARY", "0E-19|subtract;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "1.2345678901234567890", "1", "HALF_EVEN", "0E-19|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "1.2345678901234567890", "1", "HALF_EVEN", "1E+2|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "1.2345678901234567890", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "1.2345678901234567890", "1", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "1.2345678901234567890", "1", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "1.2345678901234567890", "1", "UNNECESSARY", "0E-19|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "1.2345678901234567890", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "1.2345678901234567890", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "1.2345678901234567890", "1", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "1.2345678901234567890", "1", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "1.2345678901234567890", "7", "HALF_EVEN", "0E-19|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "1.2345678901234567890", "7", "HALF_EVEN", "100.2346|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "1.2345678901234567890", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "1.2345678901234567890", "7", "HALF_EVEN", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "1.2345678901234567890", "7", "HALF_EVEN", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:super:super", "1.2345678901234567890", "1.2345678901234567890", "7", "UNNECESSARY", "0E-19|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:replace", "1.2345678901234567890", "1.2345678901234567890", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|rightNegate;addContext;"),
+    arrayOf("O", "subtract:super:throw", "1.2345678901234567890", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:replace:super", "1.2345678901234567890", "1.2345678901234567890", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+)
+
+private fun oracleBatch1227(): List<Array<String>> = listOf(
+    arrayOf("O", "subtract:replace:replace", "1.2345678901234567890", "1.2345678901234567890", "7", "UNNECESSARY", "43|rightNegate;addContext;"),
+    arrayOf("O", "subtract:replace:throw", "1.2345678901234567890", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "subtract:throw:super", "1.2345678901234567890", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:replace", "1.2345678901234567890", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:add context callback|rightNegate;addContext;"),
+    arrayOf("O", "subtract:throw:throw", "1.2345678901234567890", "1.2345678901234567890", "7", "UNNECESSARY", "!IllegalStateException:negate callback|rightNegate;"),
+    arrayOf("O", "addSign:-1", "0.00", "0.00", "0", "HALF_EVEN", "0.00|"),
+    arrayOf("O", "addSign:0", "0.00", "0.00", "0", "HALF_EVEN", "0.00|"),
+    arrayOf("O", "addSign:1", "0.00", "0.00", "0", "HALF_EVEN", "0.00|"),
+    arrayOf("O", "addSign:-1", "0.00", "-123.45", "0", "HALF_EVEN", "-123.45|"),
+    arrayOf("O", "addSign:0", "0.00", "-123.45", "0", "HALF_EVEN", "-123.45|"),
+    arrayOf("O", "addSign:1", "0.00", "-123.45", "0", "HALF_EVEN", "-123.45|"),
+    arrayOf("O", "addSign:-1", "0.00", "1.2345678901234567890", "0", "HALF_EVEN", "1.2345678901234567890|"),
+    arrayOf("O", "addSign:0", "0.00", "1.2345678901234567890", "0", "HALF_EVEN", "1.2345678901234567890|"),
+    arrayOf("O", "addSign:1", "0.00", "1.2345678901234567890", "0", "HALF_EVEN", "1.2345678901234567890|"),
+    arrayOf("O", "addSign:-1", "-123.45", "0.00", "0", "HALF_EVEN", "-123.45|"),
+    arrayOf("O", "addSign:0", "-123.45", "0.00", "0", "HALF_EVEN", "-123.45|"),
+    arrayOf("O", "addSign:1", "-123.45", "0.00", "0", "HALF_EVEN", "-123.45|"),
+    arrayOf("O", "addSign:-1", "-123.45", "-123.45", "0", "HALF_EVEN", "-246.90|"),
+    arrayOf("O", "addSign:0", "-123.45", "-123.45", "0", "HALF_EVEN", "-246.90|"),
+    arrayOf("O", "addSign:1", "-123.45", "-123.45", "0", "HALF_EVEN", "-246.90|"),
+    arrayOf("O", "addSign:-1", "-123.45", "1.2345678901234567890", "0", "HALF_EVEN", "-122.2154321098765432110|"),
+    arrayOf("O", "addSign:0", "-123.45", "1.2345678901234567890", "0", "HALF_EVEN", "-122.2154321098765432110|"),
+    arrayOf("O", "addSign:1", "-123.45", "1.2345678901234567890", "0", "HALF_EVEN", "-122.2154321098765432110|"),
+    arrayOf("O", "addSign:-1", "1.2345678901234567890", "0.00", "0", "HALF_EVEN", "1.2345678901234567890|"),
+    arrayOf("O", "addSign:0", "1.2345678901234567890", "0.00", "0", "HALF_EVEN", "1.2345678901234567890|"),
+    arrayOf("O", "addSign:1", "1.2345678901234567890", "0.00", "0", "HALF_EVEN", "1.2345678901234567890|"),
+    arrayOf("O", "addSign:-1", "1.2345678901234567890", "-123.45", "0", "HALF_EVEN", "-122.2154321098765432110|"),
+    arrayOf("O", "addSign:0", "1.2345678901234567890", "-123.45", "0", "HALF_EVEN", "-122.2154321098765432110|"),
+    arrayOf("O", "addSign:1", "1.2345678901234567890", "-123.45", "0", "HALF_EVEN", "-122.2154321098765432110|"),
+    arrayOf("O", "addSign:-1", "1.2345678901234567890", "1.2345678901234567890", "0", "HALF_EVEN", "2.4691357802469135780|"),
+    arrayOf("O", "addSign:0", "1.2345678901234567890", "1.2345678901234567890", "0", "HALF_EVEN", "2.4691357802469135780|"),
+    arrayOf("O", "addSign:1", "1.2345678901234567890", "1.2345678901234567890", "0", "HALF_EVEN", "2.4691357802469135780|"),
+    arrayOf("O", "wideAdd", "1@-10001", "1@-10001", "1", "HALF_EVEN", "2E+10001|"),
+    arrayOf("O", "wideAdd", "1@-10001", "1@-10001", "1", "UNNECESSARY", "2E+10001|"),
+    arrayOf("O", "wideAdd", "1@-10001", "1@-10001", "7", "HALF_EVEN", "2E+10001|"),
+    arrayOf("O", "wideAdd", "1@-10001", "1@-10001", "7", "UNNECESSARY", "2E+10001|"),
+    arrayOf("O", "wideAdd", "1@-10001", "1@0", "1", "HALF_EVEN", "1E+10001|"),
+    arrayOf("O", "wideAdd", "1@-10001", "1@0", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "1@-10001", "1@0", "7", "HALF_EVEN", "1.000000E+10001|"),
+    arrayOf("O", "wideAdd", "1@-10001", "1@0", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "1@-10001", "1@10001", "1", "HALF_EVEN", "1E+10001|"),
+    arrayOf("O", "wideAdd", "1@-10001", "1@10001", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "1@-10001", "1@10001", "7", "HALF_EVEN", "1.000000E+10001|"),
+    arrayOf("O", "wideAdd", "1@-10001", "1@10001", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "1@0", "1@-10001", "1", "HALF_EVEN", "1E+10001|"),
+    arrayOf("O", "wideAdd", "1@0", "1@-10001", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "1@0", "1@-10001", "7", "HALF_EVEN", "1.000000E+10001|"),
+    arrayOf("O", "wideAdd", "1@0", "1@-10001", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "1@0", "1@0", "1", "HALF_EVEN", "2|"),
+    arrayOf("O", "wideAdd", "1@0", "1@0", "1", "UNNECESSARY", "2|"),
+)
+
+private fun oracleBatch1228(): List<Array<String>> = listOf(
+    arrayOf("O", "wideAdd", "1@0", "1@0", "7", "HALF_EVEN", "2|"),
+    arrayOf("O", "wideAdd", "1@0", "1@0", "7", "UNNECESSARY", "2|"),
+    arrayOf("O", "wideAdd", "1@0", "1@10001", "1", "HALF_EVEN", "1|"),
+    arrayOf("O", "wideAdd", "1@0", "1@10001", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "1@0", "1@10001", "7", "HALF_EVEN", "1.000000|"),
+    arrayOf("O", "wideAdd", "1@0", "1@10001", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "1@10001", "1@-10001", "1", "HALF_EVEN", "1E+10001|"),
+    arrayOf("O", "wideAdd", "1@10001", "1@-10001", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "1@10001", "1@-10001", "7", "HALF_EVEN", "1.000000E+10001|"),
+    arrayOf("O", "wideAdd", "1@10001", "1@-10001", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "1@10001", "1@0", "1", "HALF_EVEN", "1|"),
+    arrayOf("O", "wideAdd", "1@10001", "1@0", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "1@10001", "1@0", "7", "HALF_EVEN", "1.000000|"),
+    arrayOf("O", "wideAdd", "1@10001", "1@0", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "1@10001", "1@10001", "1", "HALF_EVEN", "2E-10001|"),
+    arrayOf("O", "wideAdd", "1@10001", "1@10001", "1", "UNNECESSARY", "2E-10001|"),
+    arrayOf("O", "wideAdd", "1@10001", "1@10001", "7", "HALF_EVEN", "2E-10001|"),
+    arrayOf("O", "wideAdd", "1@10001", "1@10001", "7", "UNNECESSARY", "2E-10001|"),
+    arrayOf("O", "wideAdd", "-1@-10001", "1@-10001", "1", "HALF_EVEN", "0E+10001|"),
+    arrayOf("O", "wideAdd", "-1@-10001", "1@-10001", "1", "UNNECESSARY", "0E+10001|"),
+    arrayOf("O", "wideAdd", "-1@-10001", "1@-10001", "7", "HALF_EVEN", "0E+10001|"),
+    arrayOf("O", "wideAdd", "-1@-10001", "1@-10001", "7", "UNNECESSARY", "0E+10001|"),
+    arrayOf("O", "wideAdd", "-1@-10001", "1@0", "1", "HALF_EVEN", "-1E+10001|"),
+    arrayOf("O", "wideAdd", "-1@-10001", "1@0", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "-1@-10001", "1@0", "7", "HALF_EVEN", "-1.000000E+10001|"),
+    arrayOf("O", "wideAdd", "-1@-10001", "1@0", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "-1@-10001", "1@10001", "1", "HALF_EVEN", "-1E+10001|"),
+    arrayOf("O", "wideAdd", "-1@-10001", "1@10001", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "-1@-10001", "1@10001", "7", "HALF_EVEN", "-1.000000E+10001|"),
+    arrayOf("O", "wideAdd", "-1@-10001", "1@10001", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "-1@0", "1@-10001", "1", "HALF_EVEN", "1E+10001|"),
+    arrayOf("O", "wideAdd", "-1@0", "1@-10001", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "-1@0", "1@-10001", "7", "HALF_EVEN", "1.000000E+10001|"),
+    arrayOf("O", "wideAdd", "-1@0", "1@-10001", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "-1@0", "1@0", "1", "HALF_EVEN", "0|"),
+    arrayOf("O", "wideAdd", "-1@0", "1@0", "1", "UNNECESSARY", "0|"),
+    arrayOf("O", "wideAdd", "-1@0", "1@0", "7", "HALF_EVEN", "0|"),
+    arrayOf("O", "wideAdd", "-1@0", "1@0", "7", "UNNECESSARY", "0|"),
+    arrayOf("O", "wideAdd", "-1@0", "1@10001", "1", "HALF_EVEN", "-1|"),
+    arrayOf("O", "wideAdd", "-1@0", "1@10001", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "-1@0", "1@10001", "7", "HALF_EVEN", "-1.000000|"),
+    arrayOf("O", "wideAdd", "-1@0", "1@10001", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "-1@10001", "1@-10001", "1", "HALF_EVEN", "1E+10001|"),
+    arrayOf("O", "wideAdd", "-1@10001", "1@-10001", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "-1@10001", "1@-10001", "7", "HALF_EVEN", "1.000000E+10001|"),
+    arrayOf("O", "wideAdd", "-1@10001", "1@-10001", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "-1@10001", "1@0", "1", "HALF_EVEN", "1|"),
+    arrayOf("O", "wideAdd", "-1@10001", "1@0", "1", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+    arrayOf("O", "wideAdd", "-1@10001", "1@0", "7", "HALF_EVEN", "1.000000|"),
+    arrayOf("O", "wideAdd", "-1@10001", "1@0", "7", "UNNECESSARY", "!ArithmeticException:Rounding necessary|"),
+)
+
+private fun oracleBatch1229(): List<Array<String>> = listOf(
+    arrayOf("O", "wideAdd", "-1@10001", "1@10001", "1", "HALF_EVEN", "0E-10001|"),
+    arrayOf("O", "wideAdd", "-1@10001", "1@10001", "1", "UNNECESSARY", "0E-10001|"),
+    arrayOf("O", "wideAdd", "-1@10001", "1@10001", "7", "HALF_EVEN", "0E-10001|"),
+    arrayOf("O", "wideAdd", "-1@10001", "1@10001", "7", "UNNECESSARY", "0E-10001|"),
     arrayOf("D", "pow", "1", "0", "2147483647", "UP", "1"),
     arrayOf("D", "pow", "1", "0", "2147483647", "DOWN", "1"),
     arrayOf("D", "pow", "1", "0", "2147483647", "CEILING", "1"),
@@ -65688,12 +66495,12 @@ private fun oracleBatch1214(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "1", "2147483646", "UP", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "1", "2147483646", "DOWN", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "1", "2147483646", "CEILING", "!IllegalArgumentException"),
-)
-
-private fun oracleBatch1215(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "1", "2147483646", "FLOOR", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "1", "2147483646", "HALF_UP", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "1", "2147483646", "HALF_DOWN", "!IllegalArgumentException"),
+)
+
+private fun oracleBatch1230(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "1", "2147483646", "HALF_EVEN", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "1", "2147483646", "UNNECESSARY", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "10", "2147483646", "UP", "!IllegalArgumentException"),
@@ -65741,12 +66548,12 @@ private fun oracleBatch1215(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "999999999", "2147483645", "CEILING", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "999999999", "2147483645", "FLOOR", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "999999999", "2147483645", "HALF_UP", "!IllegalArgumentException"),
-)
-
-private fun oracleBatch1216(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "999999999", "2147483645", "HALF_DOWN", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "999999999", "2147483645", "HALF_EVEN", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "999999999", "2147483645", "UNNECESSARY", "!IllegalArgumentException"),
+)
+
+private fun oracleBatch1231(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "0", "2147483637", "UP", "1"),
     arrayOf("D", "pow", "1", "0", "2147483637", "DOWN", "1"),
     arrayOf("D", "pow", "1", "0", "2147483637", "CEILING", "1"),
@@ -65794,12 +66601,12 @@ private fun oracleBatch1216(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "8.999000E-102", "0", "1", "HALF_UP", "3E-51"),
     arrayOf("D", "sqrt", "8.999000E-102", "0", "1", "HALF_DOWN", "3E-51"),
     arrayOf("D", "sqrt", "8.999000E-102", "0", "1", "HALF_EVEN", "3E-51"),
-)
-
-private fun oracleBatch1217(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "8.999000E-102", "0", "1", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "9.000E-102", "0", "1", "UP", "3E-51"),
     arrayOf("D", "sqrt", "9.000E-102", "0", "1", "DOWN", "3E-51"),
+)
+
+private fun oracleBatch1232(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "9.000E-102", "0", "1", "CEILING", "3E-51"),
     arrayOf("D", "sqrt", "9.000E-102", "0", "1", "FLOOR", "3E-51"),
     arrayOf("D", "sqrt", "9.000E-102", "0", "1", "HALF_UP", "3E-51"),
@@ -65847,12 +66654,12 @@ private fun oracleBatch1217(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "2.4999000E-101", "0", "1", "HALF_EVEN", "5E-51"),
     arrayOf("D", "sqrt", "2.4999000E-101", "0", "1", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "2.5000E-101", "0", "1", "UP", "5E-51"),
-)
-
-private fun oracleBatch1218(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "2.5000E-101", "0", "1", "DOWN", "5E-51"),
     arrayOf("D", "sqrt", "2.5000E-101", "0", "1", "CEILING", "5E-51"),
     arrayOf("D", "sqrt", "2.5000E-101", "0", "1", "FLOOR", "5E-51"),
+)
+
+private fun oracleBatch1233(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "2.5000E-101", "0", "1", "HALF_UP", "5E-51"),
     arrayOf("D", "sqrt", "2.5000E-101", "0", "1", "HALF_DOWN", "5E-51"),
     arrayOf("D", "sqrt", "2.5000E-101", "0", "1", "HALF_EVEN", "5E-51"),
@@ -65900,12 +66707,12 @@ private fun oracleBatch1218(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61000E-100", "0", "1", "UP", "2E-50"),
     arrayOf("D", "sqrt", "3.61000E-100", "0", "1", "DOWN", "1E-50"),
     arrayOf("D", "sqrt", "3.61000E-100", "0", "1", "CEILING", "2E-50"),
-)
-
-private fun oracleBatch1219(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61000E-100", "0", "1", "FLOOR", "1E-50"),
     arrayOf("D", "sqrt", "3.61000E-100", "0", "1", "HALF_UP", "2E-50"),
     arrayOf("D", "sqrt", "3.61000E-100", "0", "1", "HALF_DOWN", "2E-50"),
+)
+
+private fun oracleBatch1234(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61000E-100", "0", "1", "HALF_EVEN", "2E-50"),
     arrayOf("D", "sqrt", "3.61000E-100", "0", "1", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.61000000E-100", "0", "1", "UP", "2E-50"),
@@ -65953,12 +66760,12 @@ private fun oracleBatch1219(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.09000", "0", "1", "CEILING", "0.3"),
     arrayOf("D", "sqrt", "0.09000", "0", "1", "FLOOR", "0.3"),
     arrayOf("D", "sqrt", "0.09000", "0", "1", "HALF_UP", "0.3"),
-)
-
-private fun oracleBatch1220(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.09000", "0", "1", "HALF_DOWN", "0.3"),
     arrayOf("D", "sqrt", "0.09000", "0", "1", "HALF_EVEN", "0.3"),
     arrayOf("D", "sqrt", "0.09000", "0", "1", "UNNECESSARY", "0.3"),
+)
+
+private fun oracleBatch1235(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.09000000", "0", "1", "UP", "0.3"),
     arrayOf("D", "sqrt", "0.09000000", "0", "1", "DOWN", "0.3"),
     arrayOf("D", "sqrt", "0.09000000", "0", "1", "CEILING", "0.3"),
@@ -66006,12 +66813,12 @@ private fun oracleBatch1220(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.25000", "0", "1", "HALF_UP", "0.5"),
     arrayOf("D", "sqrt", "0.25000", "0", "1", "HALF_DOWN", "0.5"),
     arrayOf("D", "sqrt", "0.25000", "0", "1", "HALF_EVEN", "0.5"),
-)
-
-private fun oracleBatch1221(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.25000", "0", "1", "UNNECESSARY", "0.5"),
     arrayOf("D", "sqrt", "0.25000000", "0", "1", "UP", "0.5"),
     arrayOf("D", "sqrt", "0.25000000", "0", "1", "DOWN", "0.5"),
+)
+
+private fun oracleBatch1236(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.25000000", "0", "1", "CEILING", "0.5"),
     arrayOf("D", "sqrt", "0.25000000", "0", "1", "FLOOR", "0.5"),
     arrayOf("D", "sqrt", "0.25000000", "0", "1", "HALF_UP", "0.5"),
@@ -66059,12 +66866,12 @@ private fun oracleBatch1221(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61000", "0", "1", "HALF_EVEN", "2"),
     arrayOf("D", "sqrt", "3.61000", "0", "1", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.61000000", "0", "1", "UP", "2"),
-)
-
-private fun oracleBatch1222(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61000000", "0", "1", "DOWN", "1"),
     arrayOf("D", "sqrt", "3.61000000", "0", "1", "CEILING", "2"),
     arrayOf("D", "sqrt", "3.61000000", "0", "1", "FLOOR", "1"),
+)
+
+private fun oracleBatch1237(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61000000", "0", "1", "HALF_UP", "2"),
     arrayOf("D", "sqrt", "3.61000000", "0", "1", "HALF_DOWN", "2"),
     arrayOf("D", "sqrt", "3.61000000", "0", "1", "HALF_EVEN", "2"),
@@ -66112,12 +66919,12 @@ private fun oracleBatch1222(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "9.000000E+98", "0", "1", "UP", "3E+49"),
     arrayOf("D", "sqrt", "9.000000E+98", "0", "1", "DOWN", "3E+49"),
     arrayOf("D", "sqrt", "9.000000E+98", "0", "1", "CEILING", "3E+49"),
-)
-
-private fun oracleBatch1223(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "9.000000E+98", "0", "1", "FLOOR", "3E+49"),
     arrayOf("D", "sqrt", "9.000000E+98", "0", "1", "HALF_UP", "3E+49"),
     arrayOf("D", "sqrt", "9.000000E+98", "0", "1", "HALF_DOWN", "3E+49"),
+)
+
+private fun oracleBatch1238(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "9.000000E+98", "0", "1", "HALF_EVEN", "3E+49"),
     arrayOf("D", "sqrt", "9.000000E+98", "0", "1", "UNNECESSARY", "3E+49"),
     arrayOf("D", "sqrt", "9.001E+98", "0", "1", "UP", "4E+49"),
@@ -66165,12 +66972,12 @@ private fun oracleBatch1223(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "2.5000000E+99", "0", "1", "CEILING", "5E+49"),
     arrayOf("D", "sqrt", "2.5000000E+99", "0", "1", "FLOOR", "5E+49"),
     arrayOf("D", "sqrt", "2.5000000E+99", "0", "1", "HALF_UP", "5E+49"),
-)
-
-private fun oracleBatch1224(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "2.5000000E+99", "0", "1", "HALF_DOWN", "5E+49"),
     arrayOf("D", "sqrt", "2.5000000E+99", "0", "1", "HALF_EVEN", "5E+49"),
     arrayOf("D", "sqrt", "2.5000000E+99", "0", "1", "UNNECESSARY", "5E+49"),
+)
+
+private fun oracleBatch1239(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "2.5001E+99", "0", "1", "UP", "6E+49"),
     arrayOf("D", "sqrt", "2.5001E+99", "0", "1", "DOWN", "5E+49"),
     arrayOf("D", "sqrt", "2.5001E+99", "0", "1", "CEILING", "6E+49"),
@@ -66218,12 +67025,12 @@ private fun oracleBatch1224(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61000000E+100", "0", "1", "HALF_UP", "2E+50"),
     arrayOf("D", "sqrt", "3.61000000E+100", "0", "1", "HALF_DOWN", "2E+50"),
     arrayOf("D", "sqrt", "3.61000000E+100", "0", "1", "HALF_EVEN", "2E+50"),
-)
-
-private fun oracleBatch1225(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61000000E+100", "0", "1", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.61001E+100", "0", "1", "UP", "2E+50"),
     arrayOf("D", "sqrt", "3.61001E+100", "0", "1", "DOWN", "1E+50"),
+)
+
+private fun oracleBatch1240(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61001E+100", "0", "1", "CEILING", "2E+50"),
     arrayOf("D", "sqrt", "3.61001E+100", "0", "1", "FLOOR", "1E+50"),
     arrayOf("D", "sqrt", "3.61001E+100", "0", "1", "HALF_UP", "2E+50"),
@@ -66271,12 +67078,12 @@ private fun oracleBatch1225(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.41000000E-102", "0", "2", "HALF_EVEN", "2.1E-51"),
     arrayOf("D", "sqrt", "4.41000000E-102", "0", "2", "UNNECESSARY", "2.1E-51"),
     arrayOf("D", "sqrt", "4.41001E-102", "0", "2", "UP", "2.2E-51"),
-)
-
-private fun oracleBatch1226(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.41001E-102", "0", "2", "DOWN", "2.1E-51"),
     arrayOf("D", "sqrt", "4.41001E-102", "0", "2", "CEILING", "2.2E-51"),
     arrayOf("D", "sqrt", "4.41001E-102", "0", "2", "FLOOR", "2.1E-51"),
+)
+
+private fun oracleBatch1241(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.41001E-102", "0", "2", "HALF_UP", "2.1E-51"),
     arrayOf("D", "sqrt", "4.41001E-102", "0", "2", "HALF_DOWN", "2.1E-51"),
     arrayOf("D", "sqrt", "4.41001E-102", "0", "2", "HALF_EVEN", "2.1E-51"),
@@ -66324,12 +67131,12 @@ private fun oracleBatch1226(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.29001E-102", "0", "2", "UP", "2.4E-51"),
     arrayOf("D", "sqrt", "5.29001E-102", "0", "2", "DOWN", "2.3E-51"),
     arrayOf("D", "sqrt", "5.29001E-102", "0", "2", "CEILING", "2.4E-51"),
-)
-
-private fun oracleBatch1227(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.29001E-102", "0", "2", "FLOOR", "2.3E-51"),
     arrayOf("D", "sqrt", "5.29001E-102", "0", "2", "HALF_UP", "2.3E-51"),
     arrayOf("D", "sqrt", "5.29001E-102", "0", "2", "HALF_DOWN", "2.3E-51"),
+)
+
+private fun oracleBatch1242(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.29001E-102", "0", "2", "HALF_EVEN", "2.3E-51"),
     arrayOf("D", "sqrt", "5.29001E-102", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "5.29001000E-102", "0", "2", "UP", "2.4E-51"),
@@ -66377,12 +67184,12 @@ private fun oracleBatch1227(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9601001E-100", "0", "2", "CEILING", "2.0E-50"),
     arrayOf("D", "sqrt", "3.9601001E-100", "0", "2", "FLOOR", "1.9E-50"),
     arrayOf("D", "sqrt", "3.9601001E-100", "0", "2", "HALF_UP", "2.0E-50"),
-)
-
-private fun oracleBatch1228(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9601001E-100", "0", "2", "HALF_DOWN", "2.0E-50"),
     arrayOf("D", "sqrt", "3.9601001E-100", "0", "2", "HALF_EVEN", "2.0E-50"),
     arrayOf("D", "sqrt", "3.9601001E-100", "0", "2", "UNNECESSARY", "!ArithmeticException"),
+)
+
+private fun oracleBatch1243(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9601001000E-100", "0", "2", "UP", "2.0E-50"),
     arrayOf("D", "sqrt", "3.9601001000E-100", "0", "2", "DOWN", "1.9E-50"),
     arrayOf("D", "sqrt", "3.9601001000E-100", "0", "2", "CEILING", "2.0E-50"),
@@ -66430,12 +67237,12 @@ private fun oracleBatch1228(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0441001", "0", "2", "HALF_UP", "0.21"),
     arrayOf("D", "sqrt", "0.0441001", "0", "2", "HALF_DOWN", "0.21"),
     arrayOf("D", "sqrt", "0.0441001", "0", "2", "HALF_EVEN", "0.21"),
-)
-
-private fun oracleBatch1229(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0441001", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "0.0441001000", "0", "2", "UP", "0.22"),
     arrayOf("D", "sqrt", "0.0441001000", "0", "2", "DOWN", "0.21"),
+)
+
+private fun oracleBatch1244(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0441001000", "0", "2", "CEILING", "0.22"),
     arrayOf("D", "sqrt", "0.0441001000", "0", "2", "FLOOR", "0.21"),
     arrayOf("D", "sqrt", "0.0441001000", "0", "2", "HALF_UP", "0.21"),
@@ -66483,12 +67290,12 @@ private fun oracleBatch1229(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0529001", "0", "2", "HALF_EVEN", "0.23"),
     arrayOf("D", "sqrt", "0.0529001", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "0.0529001000", "0", "2", "UP", "0.24"),
-)
-
-private fun oracleBatch1230(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0529001000", "0", "2", "DOWN", "0.23"),
     arrayOf("D", "sqrt", "0.0529001000", "0", "2", "CEILING", "0.24"),
     arrayOf("D", "sqrt", "0.0529001000", "0", "2", "FLOOR", "0.23"),
+)
+
+private fun oracleBatch1245(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0529001000", "0", "2", "HALF_UP", "0.23"),
     arrayOf("D", "sqrt", "0.0529001000", "0", "2", "HALF_DOWN", "0.23"),
     arrayOf("D", "sqrt", "0.0529001000", "0", "2", "HALF_EVEN", "0.23"),
@@ -66536,12 +67343,12 @@ private fun oracleBatch1230(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9601001000", "0", "2", "UP", "2.0"),
     arrayOf("D", "sqrt", "3.9601001000", "0", "2", "DOWN", "1.9"),
     arrayOf("D", "sqrt", "3.9601001000", "0", "2", "CEILING", "2.0"),
-)
-
-private fun oracleBatch1231(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9601001000", "0", "2", "FLOOR", "1.9"),
     arrayOf("D", "sqrt", "3.9601001000", "0", "2", "HALF_UP", "2.0"),
     arrayOf("D", "sqrt", "3.9601001000", "0", "2", "HALF_DOWN", "2.0"),
+)
+
+private fun oracleBatch1246(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9601001000", "0", "2", "HALF_EVEN", "2.0"),
     arrayOf("D", "sqrt", "3.9601001000", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "4.40999E+98", "0", "2", "UP", "2.1E+49"),
@@ -66589,12 +67396,12 @@ private fun oracleBatch1231(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.41001000E+98", "0", "2", "CEILING", "2.2E+49"),
     arrayOf("D", "sqrt", "4.41001000E+98", "0", "2", "FLOOR", "2.1E+49"),
     arrayOf("D", "sqrt", "4.41001000E+98", "0", "2", "HALF_UP", "2.1E+49"),
-)
-
-private fun oracleBatch1232(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.41001000E+98", "0", "2", "HALF_DOWN", "2.1E+49"),
     arrayOf("D", "sqrt", "4.41001000E+98", "0", "2", "HALF_EVEN", "2.1E+49"),
     arrayOf("D", "sqrt", "4.41001000E+98", "0", "2", "UNNECESSARY", "!ArithmeticException"),
+)
+
+private fun oracleBatch1247(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.28999E+98", "0", "2", "UP", "2.3E+49"),
     arrayOf("D", "sqrt", "5.28999E+98", "0", "2", "DOWN", "2.2E+49"),
     arrayOf("D", "sqrt", "5.28999E+98", "0", "2", "CEILING", "2.3E+49"),
@@ -66642,12 +67449,12 @@ private fun oracleBatch1232(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.29001000E+98", "0", "2", "HALF_UP", "2.3E+49"),
     arrayOf("D", "sqrt", "5.29001000E+98", "0", "2", "HALF_DOWN", "2.3E+49"),
     arrayOf("D", "sqrt", "5.29001000E+98", "0", "2", "HALF_EVEN", "2.3E+49"),
-)
-
-private fun oracleBatch1233(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.29001000E+98", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.9600999E+100", "0", "2", "UP", "2.0E+50"),
     arrayOf("D", "sqrt", "3.9600999E+100", "0", "2", "DOWN", "1.9E+50"),
+)
+
+private fun oracleBatch1248(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9600999E+100", "0", "2", "CEILING", "2.0E+50"),
     arrayOf("D", "sqrt", "3.9600999E+100", "0", "2", "FLOOR", "1.9E+50"),
     arrayOf("D", "sqrt", "3.9600999E+100", "0", "2", "HALF_UP", "2.0E+50"),
@@ -66695,12 +67502,12 @@ private fun oracleBatch1233(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9601001000E+100", "0", "2", "HALF_EVEN", "2.0E+50"),
     arrayOf("D", "sqrt", "3.9601001000E+100", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "4.000004000000999E-102", "0", "7", "UP", "2.000001E-51"),
-)
-
-private fun oracleBatch1234(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000004000000999E-102", "0", "7", "DOWN", "2.000000E-51"),
     arrayOf("D", "sqrt", "4.000004000000999E-102", "0", "7", "CEILING", "2.000001E-51"),
     arrayOf("D", "sqrt", "4.000004000000999E-102", "0", "7", "FLOOR", "2.000000E-51"),
+)
+
+private fun oracleBatch1249(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000004000000999E-102", "0", "7", "HALF_UP", "2.000001E-51"),
     arrayOf("D", "sqrt", "4.000004000000999E-102", "0", "7", "HALF_DOWN", "2.000001E-51"),
     arrayOf("D", "sqrt", "4.000004000000999E-102", "0", "7", "HALF_EVEN", "2.000001E-51"),
@@ -66748,12 +67555,12 @@ private fun oracleBatch1234(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000008999E-102", "0", "7", "UP", "2.000003E-51"),
     arrayOf("D", "sqrt", "4.000012000008999E-102", "0", "7", "DOWN", "2.000002E-51"),
     arrayOf("D", "sqrt", "4.000012000008999E-102", "0", "7", "CEILING", "2.000003E-51"),
-)
-
-private fun oracleBatch1235(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000008999E-102", "0", "7", "FLOOR", "2.000002E-51"),
     arrayOf("D", "sqrt", "4.000012000008999E-102", "0", "7", "HALF_UP", "2.000003E-51"),
     arrayOf("D", "sqrt", "4.000012000008999E-102", "0", "7", "HALF_DOWN", "2.000003E-51"),
+)
+
+private fun oracleBatch1250(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000008999E-102", "0", "7", "HALF_EVEN", "2.000003E-51"),
     arrayOf("D", "sqrt", "4.000012000008999E-102", "0", "7", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "4.000012000008999000E-102", "0", "7", "UP", "2.000003E-51"),
@@ -66801,12 +67608,12 @@ private fun oracleBatch1235(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000000999E-100", "0", "7", "CEILING", "2.000000E-50"),
     arrayOf("D", "sqrt", "3.99999960000000999E-100", "0", "7", "FLOOR", "1.999999E-50"),
     arrayOf("D", "sqrt", "3.99999960000000999E-100", "0", "7", "HALF_UP", "2.000000E-50"),
-)
-
-private fun oracleBatch1236(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000000999E-100", "0", "7", "HALF_DOWN", "2.000000E-50"),
     arrayOf("D", "sqrt", "3.99999960000000999E-100", "0", "7", "HALF_EVEN", "2.000000E-50"),
     arrayOf("D", "sqrt", "3.99999960000000999E-100", "0", "7", "UNNECESSARY", "!ArithmeticException"),
+)
+
+private fun oracleBatch1251(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000000999000E-100", "0", "7", "UP", "2.000000E-50"),
     arrayOf("D", "sqrt", "3.99999960000000999000E-100", "0", "7", "DOWN", "1.999999E-50"),
     arrayOf("D", "sqrt", "3.99999960000000999000E-100", "0", "7", "CEILING", "2.000000E-50"),
@@ -66854,12 +67661,12 @@ private fun oracleBatch1236(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000004000000999", "0", "7", "HALF_UP", "0.2000001"),
     arrayOf("D", "sqrt", "0.04000004000000999", "0", "7", "HALF_DOWN", "0.2000001"),
     arrayOf("D", "sqrt", "0.04000004000000999", "0", "7", "HALF_EVEN", "0.2000001"),
-)
-
-private fun oracleBatch1237(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000004000000999", "0", "7", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "0.04000004000000999000", "0", "7", "UP", "0.2000001"),
     arrayOf("D", "sqrt", "0.04000004000000999000", "0", "7", "DOWN", "0.2000000"),
+)
+
+private fun oracleBatch1252(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000004000000999000", "0", "7", "CEILING", "0.2000001"),
     arrayOf("D", "sqrt", "0.04000004000000999000", "0", "7", "FLOOR", "0.2000000"),
     arrayOf("D", "sqrt", "0.04000004000000999000", "0", "7", "HALF_UP", "0.2000001"),
@@ -66907,12 +67714,12 @@ private fun oracleBatch1237(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000012000008999", "0", "7", "HALF_EVEN", "0.2000003"),
     arrayOf("D", "sqrt", "0.04000012000008999", "0", "7", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "0.04000012000008999000", "0", "7", "UP", "0.2000003"),
-)
-
-private fun oracleBatch1238(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000012000008999000", "0", "7", "DOWN", "0.2000002"),
     arrayOf("D", "sqrt", "0.04000012000008999000", "0", "7", "CEILING", "0.2000003"),
     arrayOf("D", "sqrt", "0.04000012000008999000", "0", "7", "FLOOR", "0.2000002"),
+)
+
+private fun oracleBatch1253(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000012000008999000", "0", "7", "HALF_UP", "0.2000003"),
     arrayOf("D", "sqrt", "0.04000012000008999000", "0", "7", "HALF_DOWN", "0.2000003"),
     arrayOf("D", "sqrt", "0.04000012000008999000", "0", "7", "HALF_EVEN", "0.2000003"),
@@ -66960,12 +67767,12 @@ private fun oracleBatch1238(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000000999000", "0", "7", "UP", "2.000000"),
     arrayOf("D", "sqrt", "3.99999960000000999000", "0", "7", "DOWN", "1.999999"),
     arrayOf("D", "sqrt", "3.99999960000000999000", "0", "7", "CEILING", "2.000000"),
-)
-
-private fun oracleBatch1239(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000000999000", "0", "7", "FLOOR", "1.999999"),
     arrayOf("D", "sqrt", "3.99999960000000999000", "0", "7", "HALF_UP", "2.000000"),
     arrayOf("D", "sqrt", "3.99999960000000999000", "0", "7", "HALF_DOWN", "2.000000"),
+)
+
+private fun oracleBatch1254(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000000999000", "0", "7", "HALF_EVEN", "2.000000"),
     arrayOf("D", "sqrt", "3.99999960000000999000", "0", "7", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.99999960000001000", "0", "7", "UP", "2.000000"),
@@ -67013,12 +67820,12 @@ private fun oracleBatch1239(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000004000000999000E+98", "0", "7", "CEILING", "2.000001E+49"),
     arrayOf("D", "sqrt", "4.000004000000999000E+98", "0", "7", "FLOOR", "2.000000E+49"),
     arrayOf("D", "sqrt", "4.000004000000999000E+98", "0", "7", "HALF_UP", "2.000001E+49"),
-)
-
-private fun oracleBatch1240(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000004000000999000E+98", "0", "7", "HALF_DOWN", "2.000001E+49"),
     arrayOf("D", "sqrt", "4.000004000000999000E+98", "0", "7", "HALF_EVEN", "2.000001E+49"),
     arrayOf("D", "sqrt", "4.000004000000999000E+98", "0", "7", "UNNECESSARY", "!ArithmeticException"),
+)
+
+private fun oracleBatch1255(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000004000001000E+98", "0", "7", "UP", "2.000001E+49"),
     arrayOf("D", "sqrt", "4.000004000001000E+98", "0", "7", "DOWN", "2.000001E+49"),
     arrayOf("D", "sqrt", "4.000004000001000E+98", "0", "7", "CEILING", "2.000001E+49"),
@@ -67066,12 +67873,12 @@ private fun oracleBatch1240(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000008999000E+98", "0", "7", "HALF_UP", "2.000003E+49"),
     arrayOf("D", "sqrt", "4.000012000008999000E+98", "0", "7", "HALF_DOWN", "2.000003E+49"),
     arrayOf("D", "sqrt", "4.000012000008999000E+98", "0", "7", "HALF_EVEN", "2.000003E+49"),
-)
-
-private fun oracleBatch1241(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000008999000E+98", "0", "7", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "4.000012000009000E+98", "0", "7", "UP", "2.000003E+49"),
     arrayOf("D", "sqrt", "4.000012000009000E+98", "0", "7", "DOWN", "2.000003E+49"),
+)
+
+private fun oracleBatch1256(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000009000E+98", "0", "7", "CEILING", "2.000003E+49"),
     arrayOf("D", "sqrt", "4.000012000009000E+98", "0", "7", "FLOOR", "2.000003E+49"),
     arrayOf("D", "sqrt", "4.000012000009000E+98", "0", "7", "HALF_UP", "2.000003E+49"),
@@ -67119,12 +67926,12 @@ private fun oracleBatch1241(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000000999000E+100", "0", "7", "HALF_EVEN", "2.000000E+50"),
     arrayOf("D", "sqrt", "3.99999960000000999000E+100", "0", "7", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.99999960000001000E+100", "0", "7", "UP", "2.000000E+50"),
-)
-
-private fun oracleBatch1242(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000001000E+100", "0", "7", "DOWN", "1.999999E+50"),
     arrayOf("D", "sqrt", "3.99999960000001000E+100", "0", "7", "CEILING", "2.000000E+50"),
     arrayOf("D", "sqrt", "3.99999960000001000E+100", "0", "7", "FLOOR", "1.999999E+50"),
+)
+
+private fun oracleBatch1257(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000001000E+100", "0", "7", "HALF_UP", "2.000000E+50"),
     arrayOf("D", "sqrt", "3.99999960000001000E+100", "0", "7", "HALF_DOWN", "2.000000E+50"),
     arrayOf("D", "sqrt", "3.99999960000001000E+100", "0", "7", "HALF_EVEN", "2.000000E+50"),
@@ -67172,12 +67979,12 @@ private fun oracleBatch1242(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000E-102", "0", "34", "UP", "2.000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000E-102", "0", "34", "DOWN", "2.000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000E-102", "0", "34", "CEILING", "2.000000000000000000000000000000001E-51"),
-)
-
-private fun oracleBatch1243(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000E-102", "0", "34", "FLOOR", "2.000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000E-102", "0", "34", "HALF_UP", "2.000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000E-102", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000001E-51"),
+)
+
+private fun oracleBatch1258(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000E-102", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000E-102", "0", "34", "UNNECESSARY", "2.000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000000E-102", "0", "34", "UP", "2.000000000000000000000000000000001E-51"),
@@ -67225,12 +68032,12 @@ private fun oracleBatch1243(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000E-102", "0", "34", "CEILING", "2.000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000E-102", "0", "34", "FLOOR", "2.000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000E-102", "0", "34", "HALF_UP", "2.000000000000000000000000000000003E-51"),
-)
-
-private fun oracleBatch1244(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000E-102", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000E-102", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000E-102", "0", "34", "UNNECESSARY", "2.000000000000000000000000000000003E-51"),
+)
+
+private fun oracleBatch1259(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000000E-102", "0", "34", "UP", "2.000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000000E-102", "0", "34", "DOWN", "2.000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000000E-102", "0", "34", "CEILING", "2.000000000000000000000000000000003E-51"),
@@ -67278,12 +68085,12 @@ private fun oracleBatch1244(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000E-100", "0", "34", "HALF_UP", "2.000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000E-100", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000E-100", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000000E-50"),
-)
-
-private fun oracleBatch1245(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000E-100", "0", "34", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000000E-100", "0", "34", "UP", "2.000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000000E-100", "0", "34", "DOWN", "1.999999999999999999999999999999999E-50"),
+)
+
+private fun oracleBatch1260(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000000E-100", "0", "34", "CEILING", "2.000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000000E-100", "0", "34", "FLOOR", "1.999999999999999999999999999999999E-50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000000E-100", "0", "34", "HALF_UP", "2.000000000000000000000000000000000E-50"),
@@ -67331,12 +68138,12 @@ private fun oracleBatch1245(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001000", "0", "34", "HALF_EVEN", "0.2000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001000", "0", "34", "UNNECESSARY", "0.2000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001000000", "0", "34", "UP", "0.2000000000000000000000000000000001"),
-)
-
-private fun oracleBatch1246(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001000000", "0", "34", "DOWN", "0.2000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001000000", "0", "34", "CEILING", "0.2000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001000000", "0", "34", "FLOOR", "0.2000000000000000000000000000000001"),
+)
+
+private fun oracleBatch1261(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001000000", "0", "34", "HALF_UP", "0.2000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001000000", "0", "34", "HALF_DOWN", "0.2000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001000000", "0", "34", "HALF_EVEN", "0.2000000000000000000000000000000001"),
@@ -67384,12 +68191,12 @@ private fun oracleBatch1246(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009000000", "0", "34", "UP", "0.2000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009000000", "0", "34", "DOWN", "0.2000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009000000", "0", "34", "CEILING", "0.2000000000000000000000000000000003"),
-)
-
-private fun oracleBatch1247(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009000000", "0", "34", "FLOOR", "0.2000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009000000", "0", "34", "HALF_UP", "0.2000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009000000", "0", "34", "HALF_DOWN", "0.2000000000000000000000000000000003"),
+)
+
+private fun oracleBatch1262(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009000000", "0", "34", "HALF_EVEN", "0.2000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009000000", "0", "34", "UNNECESSARY", "0.2000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009001", "0", "34", "UP", "0.2000000000000000000000000000000004"),
@@ -67437,12 +68244,12 @@ private fun oracleBatch1247(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000000", "0", "34", "CEILING", "2.000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000000", "0", "34", "FLOOR", "1.999999999999999999999999999999999"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000000", "0", "34", "HALF_UP", "2.000000000000000000000000000000000"),
-)
-
-private fun oracleBatch1248(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000000", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000000", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000000", "0", "34", "UNNECESSARY", "!ArithmeticException"),
+)
+
+private fun oracleBatch1263(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001", "0", "34", "UP", "2.000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001", "0", "34", "DOWN", "1.999999999999999999999999999999999"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001", "0", "34", "CEILING", "2.000000000000000000000000000000000"),
@@ -67490,12 +68297,12 @@ private fun oracleBatch1248(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000000E+98", "0", "34", "HALF_UP", "2.000000000000000000000000000000001E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000000E+98", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000001E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000000E+98", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000001E+49"),
-)
-
-private fun oracleBatch1249(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000000E+98", "0", "34", "UNNECESSARY", "2.000000000000000000000000000000001E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001E+98", "0", "34", "UP", "2.000000000000000000000000000000002E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001E+98", "0", "34", "DOWN", "2.000000000000000000000000000000001E+49"),
+)
+
+private fun oracleBatch1264(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001E+98", "0", "34", "CEILING", "2.000000000000000000000000000000002E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001E+98", "0", "34", "FLOOR", "2.000000000000000000000000000000001E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001E+98", "0", "34", "HALF_UP", "2.000000000000000000000000000000001E+49"),
@@ -67543,12 +68350,12 @@ private fun oracleBatch1249(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000000E+98", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000003E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000000E+98", "0", "34", "UNNECESSARY", "2.000000000000000000000000000000003E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001E+98", "0", "34", "UP", "2.000000000000000000000000000000004E+49"),
-)
-
-private fun oracleBatch1250(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001E+98", "0", "34", "DOWN", "2.000000000000000000000000000000003E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001E+98", "0", "34", "CEILING", "2.000000000000000000000000000000004E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001E+98", "0", "34", "FLOOR", "2.000000000000000000000000000000003E+49"),
+)
+
+private fun oracleBatch1265(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001E+98", "0", "34", "HALF_UP", "2.000000000000000000000000000000003E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001E+98", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000003E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001E+98", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000003E+49"),
@@ -67596,12 +68403,12 @@ private fun oracleBatch1250(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001E+100", "0", "34", "UP", "2.000000000000000000000000000000000E+50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001E+100", "0", "34", "DOWN", "1.999999999999999999999999999999999E+50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001E+100", "0", "34", "CEILING", "2.000000000000000000000000000000000E+50"),
-)
-
-private fun oracleBatch1251(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001E+100", "0", "34", "FLOOR", "1.999999999999999999999999999999999E+50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001E+100", "0", "34", "HALF_UP", "2.000000000000000000000000000000000E+50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001E+100", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000000E+50"),
+)
+
+private fun oracleBatch1266(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001E+100", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000000E+50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001E+100", "0", "34", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000E+100", "0", "34", "UP", "2.000000000000000000000000000000000E+50"),
@@ -67649,12 +68456,12 @@ private fun oracleBatch1251(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001E-102", "0", "65", "CEILING", "2.0000000000000000000000000000000000000000000000000000000000000002E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001E-102", "0", "65", "FLOOR", "2.0000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001E-102", "0", "65", "HALF_UP", "2.0000000000000000000000000000000000000000000000000000000000000001E-51"),
-)
-
-private fun oracleBatch1252(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001E-102", "0", "65", "HALF_DOWN", "2.0000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001E-102", "0", "65", "HALF_EVEN", "2.0000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001E-102", "0", "65", "UNNECESSARY", "!ArithmeticException"),
+)
+
+private fun oracleBatch1267(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000E-102", "0", "65", "UP", "2.0000000000000000000000000000000000000000000000000000000000000002E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000E-102", "0", "65", "DOWN", "2.0000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000E-102", "0", "65", "CEILING", "2.0000000000000000000000000000000000000000000000000000000000000002E-51"),
@@ -67702,12 +68509,12 @@ private fun oracleBatch1252(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001E-102", "0", "65", "HALF_UP", "2.0000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001E-102", "0", "65", "HALF_DOWN", "2.0000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001E-102", "0", "65", "HALF_EVEN", "2.0000000000000000000000000000000000000000000000000000000000000003E-51"),
-)
-
-private fun oracleBatch1253(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001E-102", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001000E-102", "0", "65", "UP", "2.0000000000000000000000000000000000000000000000000000000000000004E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001000E-102", "0", "65", "DOWN", "2.0000000000000000000000000000000000000000000000000000000000000003E-51"),
+)
+
+private fun oracleBatch1268(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001000E-102", "0", "65", "CEILING", "2.0000000000000000000000000000000000000000000000000000000000000004E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001000E-102", "0", "65", "FLOOR", "2.0000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001000E-102", "0", "65", "HALF_UP", "2.0000000000000000000000000000000000000000000000000000000000000003E-51"),
@@ -67755,12 +68562,12 @@ private fun oracleBatch1253(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001001E-100", "0", "65", "HALF_EVEN", "2.0000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001001E-100", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001001000E-100", "0", "65", "UP", "2.0000000000000000000000000000000000000000000000000000000000000000E-50"),
-)
-
-private fun oracleBatch1254(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001001000E-100", "0", "65", "DOWN", "1.9999999999999999999999999999999999999999999999999999999999999999E-50"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001001000E-100", "0", "65", "CEILING", "2.0000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001001000E-100", "0", "65", "FLOOR", "1.9999999999999999999999999999999999999999999999999999999999999999E-50"),
+)
+
+private fun oracleBatch1269(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001001000E-100", "0", "65", "HALF_UP", "2.0000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001001000E-100", "0", "65", "HALF_DOWN", "2.0000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001001000E-100", "0", "65", "HALF_EVEN", "2.0000000000000000000000000000000000000000000000000000000000000000E-50"),
@@ -67808,12 +68615,12 @@ private fun oracleBatch1254(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000", "0", "65", "UP", "0.20000000000000000000000000000000000000000000000000000000000000002"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000", "0", "65", "DOWN", "0.20000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000", "0", "65", "CEILING", "0.20000000000000000000000000000000000000000000000000000000000000002"),
-)
-
-private fun oracleBatch1255(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000", "0", "65", "FLOOR", "0.20000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000", "0", "65", "HALF_UP", "0.20000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000", "0", "65", "HALF_DOWN", "0.20000000000000000000000000000000000000000000000000000000000000001"),
+)
+
+private fun oracleBatch1270(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000", "0", "65", "HALF_EVEN", "0.20000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999", "0", "65", "UP", "0.20000000000000000000000000000000000000000000000000000000000000003"),
@@ -67861,12 +68668,12 @@ private fun oracleBatch1255(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001000", "0", "65", "CEILING", "0.20000000000000000000000000000000000000000000000000000000000000004"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001000", "0", "65", "FLOOR", "0.20000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001000", "0", "65", "HALF_UP", "0.20000000000000000000000000000000000000000000000000000000000000003"),
-)
-
-private fun oracleBatch1256(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001000", "0", "65", "HALF_DOWN", "0.20000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001000", "0", "65", "HALF_EVEN", "0.20000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001000", "0", "65", "UNNECESSARY", "!ArithmeticException"),
+)
+
+private fun oracleBatch1271(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999", "0", "65", "UP", "2.0000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999", "0", "65", "DOWN", "1.9999999999999999999999999999999999999999999999999999999999999999"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999", "0", "65", "CEILING", "2.0000000000000000000000000000000000000000000000000000000000000000"),
@@ -67914,12 +68721,12 @@ private fun oracleBatch1256(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001001000", "0", "65", "HALF_UP", "2.0000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001001000", "0", "65", "HALF_DOWN", "2.0000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001001000", "0", "65", "HALF_EVEN", "2.0000000000000000000000000000000000000000000000000000000000000000"),
-)
-
-private fun oracleBatch1257(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001001000", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "UP", "20000000000000000000000000000000000000000000000000.000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "DOWN", "20000000000000000000000000000000000000000000000000.000000000000000"),
+)
+
+private fun oracleBatch1272(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "CEILING", "20000000000000000000000000000000000000000000000000.000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "FLOOR", "20000000000000000000000000000000000000000000000000.000000000000000"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "HALF_UP", "20000000000000000000000000000000000000000000000000.000000000000001"),
@@ -67967,12 +68774,12 @@ private fun oracleBatch1257(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000001001000", "0", "65", "HALF_EVEN", "20000000000000000000000000000000000000000000000000.000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000001001000", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000008999", "0", "65", "UP", "20000000000000000000000000000000000000000000000000.000000000000003"),
-)
-
-private fun oracleBatch1258(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000008999", "0", "65", "DOWN", "20000000000000000000000000000000000000000000000000.000000000000002"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000008999", "0", "65", "CEILING", "20000000000000000000000000000000000000000000000000.000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000008999", "0", "65", "FLOOR", "20000000000000000000000000000000000000000000000000.000000000000002"),
+)
+
+private fun oracleBatch1273(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000008999", "0", "65", "HALF_UP", "20000000000000000000000000000000000000000000000000.000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000008999", "0", "65", "HALF_DOWN", "20000000000000000000000000000000000000000000000000.000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000008999", "0", "65", "HALF_EVEN", "20000000000000000000000000000000000000000000000000.000000000000003"),
@@ -68020,12 +68827,12 @@ private fun oracleBatch1258(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "UP", "200000000000000000000000000000000000000000000000000.00000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "DOWN", "199999999999999999999999999999999999999999999999999.99999999999999"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "CEILING", "200000000000000000000000000000000000000000000000000.00000000000000"),
-)
-
-private fun oracleBatch1259(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "FLOOR", "199999999999999999999999999999999999999999999999999.99999999999999"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "HALF_UP", "200000000000000000000000000000000000000000000000000.00000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "HALF_DOWN", "200000000000000000000000000000000000000000000000000.00000000000000"),
+)
+
+private fun oracleBatch1274(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "HALF_EVEN", "200000000000000000000000000000000000000000000000000.00000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999000", "0", "65", "UP", "200000000000000000000000000000000000000000000000000.00000000000000"),
@@ -68073,12 +68880,12 @@ private fun oracleBatch1259(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999E-102", "0", "129", "CEILING", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999E-102", "0", "129", "FLOOR", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999E-102", "0", "129", "HALF_UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
-)
-
-private fun oracleBatch1260(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999E-102", "0", "129", "HALF_DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999E-102", "0", "129", "HALF_EVEN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999E-102", "0", "129", "UNNECESSARY", "!ArithmeticException"),
+)
+
+private fun oracleBatch1275(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-102", "0", "129", "UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-102", "0", "129", "DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-102", "0", "129", "CEILING", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
@@ -68126,12 +68933,12 @@ private fun oracleBatch1260(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999E-102", "0", "129", "HALF_UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999E-102", "0", "129", "HALF_DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999E-102", "0", "129", "HALF_EVEN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
-)
-
-private fun oracleBatch1261(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999E-102", "0", "129", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999000E-102", "0", "129", "UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999000E-102", "0", "129", "DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002E-51"),
+)
+
+private fun oracleBatch1276(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999000E-102", "0", "129", "CEILING", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999000E-102", "0", "129", "FLOOR", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999000E-102", "0", "129", "HALF_UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
@@ -68179,12 +68986,12 @@ private fun oracleBatch1261(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999E-100", "0", "129", "HALF_EVEN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999E-100", "0", "129", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-100", "0", "129", "UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
-)
-
-private fun oracleBatch1262(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-100", "0", "129", "DOWN", "1.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999E-50"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-100", "0", "129", "CEILING", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-100", "0", "129", "FLOOR", "1.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999E-50"),
+)
+
+private fun oracleBatch1277(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-100", "0", "129", "HALF_UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-100", "0", "129", "HALF_DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-100", "0", "129", "HALF_EVEN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
@@ -68232,12 +69039,12 @@ private fun oracleBatch1262(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "UP", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "DOWN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "CEILING", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
-)
-
-private fun oracleBatch1263(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "FLOOR", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "HALF_UP", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "HALF_DOWN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
+)
+
+private fun oracleBatch1278(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "HALF_EVEN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "UP", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
@@ -68285,12 +69092,12 @@ private fun oracleBatch1263(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999000", "0", "129", "CEILING", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999000", "0", "129", "FLOOR", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999000", "0", "129", "HALF_UP", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
-)
-
-private fun oracleBatch1264(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999000", "0", "129", "HALF_DOWN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999000", "0", "129", "HALF_EVEN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999000", "0", "129", "UNNECESSARY", "!ArithmeticException"),
+)
+
+private fun oracleBatch1279(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "UP", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "DOWN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "CEILING", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
@@ -68338,12 +69145,12 @@ private fun oracleBatch1264(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "HALF_UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "HALF_DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "HALF_EVEN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
-)
-
-private fun oracleBatch1265(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "DOWN", "1.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999"),
+)
+
+private fun oracleBatch1280(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "CEILING", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "FLOOR", "1.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "HALF_UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
@@ -68391,12 +69198,12 @@ private fun oracleBatch1265(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "HALF_EVEN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000", "0", "129", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "UP", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
-)
-
-private fun oracleBatch1266(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "DOWN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "CEILING", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "FLOOR", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
+)
+
+private fun oracleBatch1281(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "HALF_UP", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "HALF_DOWN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "HALF_EVEN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
@@ -68444,12 +69251,12 @@ private fun oracleBatch1266(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "UP", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "DOWN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "CEILING", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
-)
-
-private fun oracleBatch1267(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "FLOOR", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "HALF_UP", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "HALF_DOWN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
+)
+
+private fun oracleBatch1282(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "HALF_EVEN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "UNNECESSARY", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000", "0", "129", "UP", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
@@ -68497,12 +69304,12 @@ private fun oracleBatch1267(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "CEILING", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "FLOOR", "199999999999999999999999999999999999999999999999999.999999999999999999999999999999999999999999999999999999999999999999999999999999"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "HALF_UP", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
-)
-
-private fun oracleBatch1268(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "HALF_DOWN", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "HALF_EVEN", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "UNNECESSARY", "!ArithmeticException"),
+)
+
+private fun oracleBatch1283(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "UP", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "DOWN", "199999999999999999999999999999999999999999999999999.999999999999999999999999999999999999999999999999999999999999999999999999999999"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "CEILING", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
@@ -68550,12 +69357,12 @@ private fun oracleBatch1268(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "4.00", "5", "UP", "0.25"),
     arrayOf("D", "divide", "1.000", "8", "5", "UP", "0.125"),
     arrayOf("D", "divide", "1.000", "5", "5", "UP", "0.200"),
-)
-
-private fun oracleBatch1269(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "0.5", "5", "UP", "2.00"),
     arrayOf("D", "divide", "1.000", "3", "5", "UP", "0.33334"),
     arrayOf("D", "divide", "1.000", "0", "5", "UP", "!ArithmeticException"),
+)
+
+private fun oracleBatch1284(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "2.5", "0", "0", "DOWN", "2"),
     arrayOf("D", "scale", "3.5", "0", "0", "DOWN", "3"),
     arrayOf("D", "scale", "-2.5", "0", "0", "DOWN", "-2"),
@@ -68603,12 +69410,12 @@ private fun oracleBatch1269(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-1.0000", "0E-100000", "4", "CEILING", "-1.000"),
     arrayOf("D", "divide", "1.000", "2", "5", "CEILING", "0.500"),
     arrayOf("D", "divide", "1.000", "4.00", "5", "CEILING", "0.25"),
-)
-
-private fun oracleBatch1270(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "8", "5", "CEILING", "0.125"),
     arrayOf("D", "divide", "1.000", "5", "5", "CEILING", "0.200"),
     arrayOf("D", "divide", "1.000", "0.5", "5", "CEILING", "2.00"),
+)
+
+private fun oracleBatch1285(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "3", "5", "CEILING", "0.33334"),
     arrayOf("D", "divide", "1.000", "0", "5", "CEILING", "!ArithmeticException"),
     arrayOf("D", "scale", "2.5", "0", "0", "FLOOR", "2"),
@@ -68656,12 +69463,12 @@ private fun oracleBatch1270(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-1.0000", "1E-100000", "4", "HALF_UP", "-1.000"),
     arrayOf("D", "add", "-1.0000", "-1E-100000", "4", "HALF_UP", "-1.000"),
     arrayOf("D", "add", "-1.0000", "0E-100000", "4", "HALF_UP", "-1.000"),
-)
-
-private fun oracleBatch1271(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "2", "5", "HALF_UP", "0.500"),
     arrayOf("D", "divide", "1.000", "4.00", "5", "HALF_UP", "0.25"),
     arrayOf("D", "divide", "1.000", "8", "5", "HALF_UP", "0.125"),
+)
+
+private fun oracleBatch1286(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "5", "5", "HALF_UP", "0.200"),
     arrayOf("D", "divide", "1.000", "0.5", "5", "HALF_UP", "2.00"),
     arrayOf("D", "divide", "1.000", "3", "5", "HALF_UP", "0.33333"),
@@ -68709,12 +69516,12 @@ private fun oracleBatch1271(): List<Array<String>> = listOf(
     arrayOf("D", "add", "1.0000", "-1E-100000", "4", "HALF_EVEN", "1.000"),
     arrayOf("D", "add", "1.0000", "0E-100000", "4", "HALF_EVEN", "1.000"),
     arrayOf("D", "add", "-1.0000", "1E-100000", "4", "HALF_EVEN", "-1.000"),
-)
-
-private fun oracleBatch1272(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-1.0000", "-1E-100000", "4", "HALF_EVEN", "-1.000"),
     arrayOf("D", "add", "-1.0000", "0E-100000", "4", "HALF_EVEN", "-1.000"),
     arrayOf("D", "divide", "1.000", "2", "5", "HALF_EVEN", "0.500"),
+)
+
+private fun oracleBatch1287(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "4.00", "5", "HALF_EVEN", "0.25"),
     arrayOf("D", "divide", "1.000", "8", "5", "HALF_EVEN", "0.125"),
     arrayOf("D", "divide", "1.000", "5", "5", "HALF_EVEN", "0.200"),
@@ -68762,12 +69569,12 @@ private fun oracleBatch1272(): List<Array<String>> = listOf(
     arrayOf("D", "parse", " 1", "0", "0", "HALF_EVEN", "!NumberFormatException"),
     arrayOf("I", "parse", " 1", "0", "0", "HALF_EVEN", "!NumberFormatException"),
     arrayOf("D", "parse", "1 ", "0", "0", "HALF_EVEN", "!NumberFormatException"),
-)
-
-private fun oracleBatch1273(): List<Array<String>> = listOf(
     arrayOf("I", "parse", "1 ", "0", "0", "HALF_EVEN", "!NumberFormatException"),
     arrayOf("D", "parse", "1_0", "0", "0", "HALF_EVEN", "!NumberFormatException"),
     arrayOf("I", "parse", "1_0", "0", "0", "HALF_EVEN", "!NumberFormatException"),
+)
+
+private fun oracleBatch1288(): List<Array<String>> = listOf(
     arrayOf("D", "parse", "1E2147483648", "0", "0", "HALF_EVEN", "1E+2147483648"),
     arrayOf("I", "parse", "1E2147483648", "0", "0", "HALF_EVEN", "!NumberFormatException"),
     arrayOf("D", "parse", "0.1E-2147483647", "0", "0", "HALF_EVEN", "!NumberFormatException"),
@@ -68815,12 +69622,12 @@ private fun oracleBatch1273(): List<Array<String>> = listOf(
     arrayOf("F", "construct", "4335919454543380079", "0", "0", "HALF_EVEN", "7.6654059438539606160024017929796080240293986415289480100543340057583918678574264049530029296875E-19"),
     arrayOf("F", "valueOf", "4335919454543380079", "0", "0", "HALF_EVEN", "7.665405943853961E-19"),
     arrayOf("F", "construct", "1848720946535314927", "0", "0", "HALF_EVEN", "4.408318231120476913566987675662845081996191327593025168672650011000424580575019788140653059168850583237854490226990297966119962167497525766351519016869158115668751787042637870822868258253406736503536285208372147410122366554130944839296613502598470764306723566496297821484824770071162816298799876115891454287498725456290850351101812866635671006771250494540277154049918859494852749559863946748060715366425429010816781841405016807186317348977826202638397035116213373839855194091796875E-185"),
-)
-
-private fun oracleBatch1274(): List<Array<String>> = listOf(
     arrayOf("F", "valueOf", "1848720946535314927", "0", "0", "HALF_EVEN", "4.408318231120477E-185"),
     arrayOf("F", "construct", "6290702895396775242", "0", "0", "HALF_EVEN", "34950793669167323882344799569273795565644034126921094992749848122160485278496980763056458133673249120742165970944"),
     arrayOf("F", "valueOf", "6290702895396775242", "0", "0", "HALF_EVEN", "3.4950793669167324E+112"),
+)
+
+private fun oracleBatch1289(): List<Array<String>> = listOf(
     arrayOf("F", "construct", "5989339043458420083", "0", "0", "HALF_EVEN", "247758547549208792253644050165084288826273489825923435407344692517796880683543259954995527680"),
     arrayOf("F", "valueOf", "5989339043458420083", "0", "0", "HALF_EVEN", "2.477585475492088E+92"),
     arrayOf("F", "construct", "-5532710506213085621", "0", "0", "HALF_EVEN", "-5.80094503594099329367167064557006598168442443681429485298273939068683724040366369315696811449012027214802058316287250719092085930762340115206811403571608536100523423328922945074737071990966796875E-62"),
@@ -68868,12 +69675,12 @@ private fun oracleBatch1274(): List<Array<String>> = listOf(
     arrayOf("F", "construct", "-693126335150132706", "0", "0", "HALF_EVEN", "-17240700888657535329766844460775779109826997929470285149865151573226860481395503302946067772249510519793281509813917822867419476292149069313556341980002597988680563752419388290867512587675355485368876652458803911300190386217951372194476906316073162797328589914112"),
     arrayOf("F", "valueOf", "-693126335150132706", "0", "0", "HALF_EVEN", "-1.7240700888657535E+262"),
     arrayOf("F", "construct", "-1831395504427392974", "0", "0", "HALF_EVEN", "-1466868193256792392785296982912722950076907779238542960795675924519544919361622229899051018652792342837280714635821624948880598163858851175879144406233520103378367676869674859281111842816"),
-)
-
-private fun oracleBatch1275(): List<Array<String>> = listOf(
     arrayOf("F", "valueOf", "-1831395504427392974", "0", "0", "HALF_EVEN", "-1.4668681932567924E+186"),
     arrayOf("F", "construct", "-530965416666053903", "0", "0", "HALF_EVEN", "-1192299135856870086205919206695341232251596534523880751985798323459285565196582960414287254042246414377551975238666202783719065619607407620910533592329015052281771390791826700550229147505903040599937793105823354870773346600712998829974170174252389411854338920796626907824128"),
     arrayOf("F", "valueOf", "-530965416666053903", "0", "0", "HALF_EVEN", "-1.19229913585687E+273"),
+)
+
+private fun oracleBatch1290(): List<Array<String>> = listOf(
     arrayOf("F", "construct", "-371205050138846665", "0", "0", "HALF_EVEN", "-58585540330014614041425160343688257039167019799353328206669275274834988917267204601412034609786623523658277308691600908963916914374891892654492198154794098435762033636144113048720980800049788331091787925192978982592839856085985566101906466826321084524222532500620687153369358874443776"),
     arrayOf("F", "valueOf", "-371205050138846665", "0", "0", "HALF_EVEN", "-5.858554033001461E+283"),
     arrayOf("F", "construct", "4208227247404797674", "0", "0", "HALF_EVEN", "2.28469318363210227130526995847252798422061645963902686983748051444828510055107262388673916575498878955841064453125E-27"),
@@ -68921,12 +69728,12 @@ private fun oracleBatch1275(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "-2", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-2", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-2", "-1", "1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch1276(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "-2", "-1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "", "-1", "-1", "0", "!NumberFormatException"),
     arrayOf("B", "signed", "", "-1", "-1", "-2", "!NumberFormatException"),
+)
+
+private fun oracleBatch1291(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "-1", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-1", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-1", "-1", "1", "!IndexOutOfBoundsException"),
@@ -68974,12 +69781,12 @@ private fun oracleBatch1276(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "-2", "1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-2", "1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "", "-1", "1", "0", "!NumberFormatException"),
-)
-
-private fun oracleBatch1277(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "-1", "1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "", "-1", "1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-1", "1", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch1292(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "-1", "1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-1", "1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "", "0", "1", "0", "!NumberFormatException"),
@@ -69027,12 +69834,12 @@ private fun oracleBatch1277(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0", "-2", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-2", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0", "-2", "-1", "-1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch1278(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "-2", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-2", "-1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-2", "-1", "2", "!NumberFormatException"),
+)
+
+private fun oracleBatch1293(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0", "-1", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-1", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0", "-1", "-1", "-1", "!IndexOutOfBoundsException"),
@@ -69080,12 +69887,12 @@ private fun oracleBatch1278(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "1", "0", "-1", "0"),
     arrayOf("B", "signed", "0", "1", "0", "0", "0"),
     arrayOf("B", "signed", "0", "1", "0", "1", "0"),
-)
-
-private fun oracleBatch1279(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "1", "0", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0", "2", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "2", "0", "-2", "!NumberFormatException"),
+)
+
+private fun oracleBatch1294(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "2", "0", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "2", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "2", "0", "1", "!IndexOutOfBoundsException"),
@@ -69133,12 +69940,12 @@ private fun oracleBatch1279(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "-1", "2", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-1", "2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0", "0", "2", "0", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch1280(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "0", "2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0", "0", "2", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "0", "2", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch1295(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "0", "2", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "0", "2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0", "1", "2", "0", "!IndexOutOfBoundsException"),
@@ -69186,12 +69993,12 @@ private fun oracleBatch1280(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "-1", "-2", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-2", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "-1", "-2", "-1", "-1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch1281(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "-2", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-2", "-1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-2", "-1", "2", "!NumberFormatException"),
+)
+
+private fun oracleBatch1296(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "-1", "-1", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-1", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "-1", "-1", "-1", "-1", "!IndexOutOfBoundsException"),
@@ -69239,12 +70046,12 @@ private fun oracleBatch1281(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "1", "0", "-1", "-255"),
     arrayOf("B", "signed", "-1", "1", "0", "0", "!NumberFormatException"),
     arrayOf("B", "signed", "-1", "1", "0", "1", "255"),
-)
-
-private fun oracleBatch1282(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "1", "0", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "-1", "2", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "2", "0", "-2", "!NumberFormatException"),
+)
+
+private fun oracleBatch1297(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "2", "0", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "2", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "2", "0", "1", "!IndexOutOfBoundsException"),
@@ -69292,12 +70099,12 @@ private fun oracleBatch1282(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "-1", "2", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-1", "2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "-1", "0", "2", "0", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch1283(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "0", "2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "-1", "0", "2", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "0", "2", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch1298(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "0", "2", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "0", "2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "-1", "1", "2", "0", "!IndexOutOfBoundsException"),
@@ -69345,12 +70152,12 @@ private fun oracleBatch1283(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0,-128,1", "3", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "-2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "3", "-2", "-1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch1284(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "3", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "-2", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "-2", "2", "!NumberFormatException"),
+)
+
+private fun oracleBatch1299(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0,-128,1", "4", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "4", "-2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "4", "-2", "-1", "!IndexOutOfBoundsException"),
@@ -69398,12 +70205,12 @@ private fun oracleBatch1284(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "4", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "4", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "4", "-1", "1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch1285(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "4", "-1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "-2", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "0", "-2", "!NumberFormatException"),
+)
+
+private fun oracleBatch1300(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-2", "0", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "0", "1", "!IndexOutOfBoundsException"),
@@ -69451,12 +70258,12 @@ private fun oracleBatch1285(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-2", "1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "-1", "1", "0", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch1286(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-1", "1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "1", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch1301(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-1", "1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "0", "1", "0", "0"),
@@ -69504,12 +70311,12 @@ private fun oracleBatch1286(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0,-128,1", "0", "2", "0", "0"),
     arrayOf("B", "signed", "0,-128,1", "0", "2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "0", "2", "-1", "0"),
-)
-
-private fun oracleBatch1287(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "0", "2", "0", "0"),
     arrayOf("B", "signed", "0,-128,1", "0", "2", "1", "0"),
     arrayOf("B", "signed", "0,-128,1", "0", "2", "2", "!NumberFormatException"),
+)
+
+private fun oracleBatch1302(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0,-128,1", "1", "2", "0", "1"),
     arrayOf("B", "signed", "0,-128,1", "1", "2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "1", "2", "-1", "-1"),
@@ -69557,12 +70364,12 @@ private fun oracleBatch1287(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "1", "3", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "1", "3", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "1", "3", "1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch1288(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "1", "3", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "2", "3", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "2", "3", "-2", "!NumberFormatException"),
+)
+
+private fun oracleBatch1303(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "2", "3", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "2", "3", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "2", "3", "1", "!IndexOutOfBoundsException"),
@@ -69610,12 +70417,12 @@ private fun oracleBatch1288(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "2", "4", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "2", "4", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "3", "4", "0", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch1289(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "3", "4", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "3", "4", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "4", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch1304(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "3", "4", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "4", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "4", "4", "0", "!IndexOutOfBoundsException"),

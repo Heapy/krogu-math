@@ -16,6 +16,7 @@ class PortableOracleTest {
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "O") return evaluateAdditionOracle(v)
         if (v[0] == "C") return evaluateUnaryOracle(v)
         if (v[0] == "K") {
             val operation = op.substringBefore(':')
