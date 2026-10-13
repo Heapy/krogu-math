@@ -409,7 +409,10 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         }
     }
     @kotlin.jvm.JvmName("intValue")
-    override fun toInt(): Int = toLong().toInt()
+    override fun toInt(): Int {
+        val low = words.getOrElse(0) { 0 } or (words.getOrElse(1) { 0 } shl LIMB_BITS)
+        return if (sign < 0) -low else low
+    }
     @kotlin.jvm.JvmName("longValue")
     override fun toLong(): Long {
         var value = 0L
@@ -424,13 +427,21 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     override fun toDouble(): Double = floatingValue(53, 1024)
     @kotlin.jvm.JvmName("floatValue")
     override fun toFloat(): Float = floatingValue(24, 128).toFloat()
-    private fun floatingValue(precision: Int, maxExponent: Int): Double {
+    private fun floatingValue(precision: Int, maxExponent: Int, dispatchSmallValue: Boolean = true): Double {
         if (sign == 0) return 0.0
         val bits = magnitudeBits()
+        // JDK delegates nonzero magnitudes below 2^63 to the virtual longValue.
+        if (dispatchSmallValue && bits <= 63) {
+            val small = toLong()
+            return if (precision == 53) small.toDouble()
+            else valueOf(small).floatingValue(precision, maxExponent, false)
+        }
         if (bits > maxExponent) return if (sign < 0) Double.NEGATIVE_INFINITY else Double.POSITIVE_INFINITY
         val shift = maxOf(0, bits - precision)
-        var top = abs().shiftRight(shift).toLong()
-        if (shift > 0 && abs().testBit(shift - 1) && (getLowestSetBit() < shift - 1 || top and 1L != 0L)) top++
+        fun magnitudeBit(n: Int): Boolean = words[n / LIMB_BITS] and (1 shl (n % LIMB_BITS)) != 0
+        var top = 0L
+        for (bit in bits - 1 downTo shift) top = (top shl 1) or if (magnitudeBit(bit)) 1L else 0L
+        if (shift > 0 && magnitudeBit(shift - 1) && (lowestSetBitValue() < shift - 1 || top and 1L != 0L)) top++
         return sign * top.toDouble() * 2.0.pow(shift)
     }
     open fun intValueExact(): Int { if (bitLength() > 31) throw ArithmeticException("BigInteger out of int range"); return toInt() }

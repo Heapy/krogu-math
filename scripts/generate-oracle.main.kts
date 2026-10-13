@@ -61,6 +61,23 @@ for (a in integerInputs) {
         record("I", "flipBit", a, p = distance) { x.flipBit(distance) }
     }
 }
+// Observable JVM Number delegation, using public APIs on independently declared subclasses.
+val replacementLongs = listOf(0L, 42L, -42L, Long.MIN_VALUE, Long.MAX_VALUE,
+    (1L shl 54) + (1L shl 30) + 1, (1L shl 62) + (1L shl 38) + 1, -((1L shl 62) + (1L shl 38) + 1))
+for (a in listOf("0", "1", "-1", "9223372036854775807", "-9223372036854775807", "9223372036854775808", "-9223372036854775808", "18446744073709551615")) {
+    for (replacement in replacementLongs) {
+        val x = object : BigInteger(a) {
+            override fun toLong(): Long = replacement
+            // Kotlin's Java Number mapping requires these implementations even though
+            // this oracle never invokes either method on this subclass.
+            override fun toByte(): Byte = error("Unused byte conversion")
+            override fun toShort(): Short = error("Unused short conversion")
+        }
+        record("P", "primitiveSubclass", a, replacement.toString()) {
+            "${x.toInt()}|${x.toDouble().toBits()}|${x.toFloat().toBits()}"
+        }
+    }
+}
 // Structured signed powers and adjacent values around byte, JVM-word and our limb boundaries.
 for (power in listOf(0, 1, 7, 8, 29, 30, 31, 32, 59, 60, 61, 63, 64, 89, 90, 91, 127, 128, 255, 256, 511, 512, 1023, 1024)) {
     for (offset in -1L..1L) for (negative in listOf(false, true)) {

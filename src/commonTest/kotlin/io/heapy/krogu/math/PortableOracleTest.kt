@@ -15,6 +15,10 @@ class PortableOracleTest {
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "P") {
+            val value = object : BigInteger(v[2]) { override fun toLong(): Long = v[3].toLong() }
+            return "${value.toInt()}|${value.toDouble().toBits()}|${value.toFloat().toBits()}"
+        }
         if (v[0] == "R") {
             val bits = v[2].toInt()
             val random: PlatformRandom? = null

@@ -274,6 +274,7 @@ internal fun oracleVectors(): List<Array<String>> = buildList {
     addAll(oracleBatch268())
     addAll(oracleBatch269())
     addAll(oracleBatch270())
+    addAll(oracleBatch271())
 }
 
 private fun oracleBatch0(): List<Array<String>> = listOf(
@@ -5593,6 +5594,73 @@ private fun oracleBatch100(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-17181839408184479148845408866001977383485721040264830223110363868293716236149751621295623719580882668741", "0", "512", "HALF_EVEN", "-17181839408184479148845408866001977383485721040264830223110363868293716236149751621295623719580882668741"),
     arrayOf("I", "clearBit", "-17181839408184479148845408866001977383485721040264830223110363868293716236149751621295623719580882668741", "0", "512", "HALF_EVEN", "-13407807929942597099574024998205846127479365820592410559562969628200912875482412978779257783887943692520254968550354344569990032563567865570153229888752837"),
     arrayOf("I", "flipBit", "-17181839408184479148845408866001977383485721040264830223110363868293716236149751621295623719580882668741", "0", "512", "HALF_EVEN", "-13407807929942597099574024998205846127479365820592410559562969628200912875482412978779257783887943692520254968550354344569990032563567865570153229888752837"),
+    arrayOf("P", "primitiveSubclass", "0", "0", "0", "HALF_EVEN", "0|0|0"),
+    arrayOf("P", "primitiveSubclass", "0", "42", "0", "HALF_EVEN", "0|0|0"),
+    arrayOf("P", "primitiveSubclass", "0", "-42", "0", "HALF_EVEN", "0|0|0"),
+    arrayOf("P", "primitiveSubclass", "0", "-9223372036854775808", "0", "HALF_EVEN", "0|0|0"),
+    arrayOf("P", "primitiveSubclass", "0", "9223372036854775807", "0", "HALF_EVEN", "0|0|0"),
+    arrayOf("P", "primitiveSubclass", "0", "18014399583223809", "0", "HALF_EVEN", "0|0|0"),
+    arrayOf("P", "primitiveSubclass", "0", "4611686293305294849", "0", "HALF_EVEN", "0|0|0"),
+    arrayOf("P", "primitiveSubclass", "0", "-4611686293305294849", "0", "HALF_EVEN", "0|0|0"),
+    arrayOf("P", "primitiveSubclass", "1", "0", "0", "HALF_EVEN", "1|0|0"),
+    arrayOf("P", "primitiveSubclass", "1", "42", "0", "HALF_EVEN", "1|4631107791820423168|1109917696"),
+    arrayOf("P", "primitiveSubclass", "1", "-42", "0", "HALF_EVEN", "1|-4592264245034352640|-1037565952"),
+    arrayOf("P", "primitiveSubclass", "1", "-9223372036854775808", "0", "HALF_EVEN", "1|-4332462841530417152|-553648128"),
+    arrayOf("P", "primitiveSubclass", "1", "9223372036854775807", "0", "HALF_EVEN", "1|4890909195324358656|1593835520"),
+    arrayOf("P", "primitiveSubclass", "1", "18014399583223809", "0", "HALF_EVEN", "1|4850376798946459648|1518338049"),
+    arrayOf("P", "primitiveSubclass", "1", "4611686293305294849", "0", "HALF_EVEN", "1|4886405595965423616|1585446913"),
+    arrayOf("P", "primitiveSubclass", "1", "-4611686293305294849", "0", "HALF_EVEN", "1|-4336966440889352192|-562036735"),
+    arrayOf("P", "primitiveSubclass", "-1", "0", "0", "HALF_EVEN", "-1|0|0"),
+    arrayOf("P", "primitiveSubclass", "-1", "42", "0", "HALF_EVEN", "-1|4631107791820423168|1109917696"),
+    arrayOf("P", "primitiveSubclass", "-1", "-42", "0", "HALF_EVEN", "-1|-4592264245034352640|-1037565952"),
+    arrayOf("P", "primitiveSubclass", "-1", "-9223372036854775808", "0", "HALF_EVEN", "-1|-4332462841530417152|-553648128"),
+    arrayOf("P", "primitiveSubclass", "-1", "9223372036854775807", "0", "HALF_EVEN", "-1|4890909195324358656|1593835520"),
+    arrayOf("P", "primitiveSubclass", "-1", "18014399583223809", "0", "HALF_EVEN", "-1|4850376798946459648|1518338049"),
+    arrayOf("P", "primitiveSubclass", "-1", "4611686293305294849", "0", "HALF_EVEN", "-1|4886405595965423616|1585446913"),
+    arrayOf("P", "primitiveSubclass", "-1", "-4611686293305294849", "0", "HALF_EVEN", "-1|-4336966440889352192|-562036735"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775807", "0", "0", "HALF_EVEN", "-1|0|0"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775807", "42", "0", "HALF_EVEN", "-1|4631107791820423168|1109917696"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775807", "-42", "0", "HALF_EVEN", "-1|-4592264245034352640|-1037565952"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775807", "-9223372036854775808", "0", "HALF_EVEN", "-1|-4332462841530417152|-553648128"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775807", "9223372036854775807", "0", "HALF_EVEN", "-1|4890909195324358656|1593835520"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775807", "18014399583223809", "0", "HALF_EVEN", "-1|4850376798946459648|1518338049"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775807", "4611686293305294849", "0", "HALF_EVEN", "-1|4886405595965423616|1585446913"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775807", "-4611686293305294849", "0", "HALF_EVEN", "-1|-4336966440889352192|-562036735"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775807", "0", "0", "HALF_EVEN", "1|0|0"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775807", "42", "0", "HALF_EVEN", "1|4631107791820423168|1109917696"),
+)
+
+private fun oracleBatch101(): List<Array<String>> = listOf(
+    arrayOf("P", "primitiveSubclass", "-9223372036854775807", "-42", "0", "HALF_EVEN", "1|-4592264245034352640|-1037565952"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775807", "-9223372036854775808", "0", "HALF_EVEN", "1|-4332462841530417152|-553648128"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775807", "9223372036854775807", "0", "HALF_EVEN", "1|4890909195324358656|1593835520"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775807", "18014399583223809", "0", "HALF_EVEN", "1|4850376798946459648|1518338049"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775807", "4611686293305294849", "0", "HALF_EVEN", "1|4886405595965423616|1585446913"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775807", "-4611686293305294849", "0", "HALF_EVEN", "1|-4336966440889352192|-562036735"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775808", "0", "0", "HALF_EVEN", "0|4890909195324358656|1593835520"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775808", "42", "0", "HALF_EVEN", "0|4890909195324358656|1593835520"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775808", "-42", "0", "HALF_EVEN", "0|4890909195324358656|1593835520"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775808", "-9223372036854775808", "0", "HALF_EVEN", "0|4890909195324358656|1593835520"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775808", "9223372036854775807", "0", "HALF_EVEN", "0|4890909195324358656|1593835520"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775808", "18014399583223809", "0", "HALF_EVEN", "0|4890909195324358656|1593835520"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775808", "4611686293305294849", "0", "HALF_EVEN", "0|4890909195324358656|1593835520"),
+    arrayOf("P", "primitiveSubclass", "9223372036854775808", "-4611686293305294849", "0", "HALF_EVEN", "0|4890909195324358656|1593835520"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775808", "0", "0", "HALF_EVEN", "0|-4332462841530417152|-553648128"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775808", "42", "0", "HALF_EVEN", "0|-4332462841530417152|-553648128"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775808", "-42", "0", "HALF_EVEN", "0|-4332462841530417152|-553648128"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775808", "-9223372036854775808", "0", "HALF_EVEN", "0|-4332462841530417152|-553648128"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775808", "9223372036854775807", "0", "HALF_EVEN", "0|-4332462841530417152|-553648128"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775808", "18014399583223809", "0", "HALF_EVEN", "0|-4332462841530417152|-553648128"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775808", "4611686293305294849", "0", "HALF_EVEN", "0|-4332462841530417152|-553648128"),
+    arrayOf("P", "primitiveSubclass", "-9223372036854775808", "-4611686293305294849", "0", "HALF_EVEN", "0|-4332462841530417152|-553648128"),
+    arrayOf("P", "primitiveSubclass", "18446744073709551615", "0", "0", "HALF_EVEN", "-1|4895412794951729152|1602224128"),
+    arrayOf("P", "primitiveSubclass", "18446744073709551615", "42", "0", "HALF_EVEN", "-1|4895412794951729152|1602224128"),
+    arrayOf("P", "primitiveSubclass", "18446744073709551615", "-42", "0", "HALF_EVEN", "-1|4895412794951729152|1602224128"),
+    arrayOf("P", "primitiveSubclass", "18446744073709551615", "-9223372036854775808", "0", "HALF_EVEN", "-1|4895412794951729152|1602224128"),
+    arrayOf("P", "primitiveSubclass", "18446744073709551615", "9223372036854775807", "0", "HALF_EVEN", "-1|4895412794951729152|1602224128"),
+    arrayOf("P", "primitiveSubclass", "18446744073709551615", "18014399583223809", "0", "HALF_EVEN", "-1|4895412794951729152|1602224128"),
+    arrayOf("P", "primitiveSubclass", "18446744073709551615", "4611686293305294849", "0", "HALF_EVEN", "-1|4895412794951729152|1602224128"),
+    arrayOf("P", "primitiveSubclass", "18446744073709551615", "-4611686293305294849", "0", "HALF_EVEN", "-1|4895412794951729152|1602224128"),
     arrayOf("I", "bits", "0", "0", "0", "HALF_EVEN", "0|0|-1"),
     arrayOf("I", "not", "0", "0", "0", "HALF_EVEN", "-1"),
     arrayOf("I", "testBit", "0", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -5613,6 +5681,9 @@ private fun oracleBatch100(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "0", "0", "1", "HALF_EVEN", "2"),
     arrayOf("I", "testBit", "0", "0", "30", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "0", "0", "30", "HALF_EVEN", "1073741824"),
+)
+
+private fun oracleBatch102(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "0", "0", "30", "HALF_EVEN", "0"),
     arrayOf("I", "flipBit", "0", "0", "30", "HALF_EVEN", "1073741824"),
     arrayOf("I", "testBit", "0", "0", "2147483647", "HALF_EVEN", "false"),
@@ -5627,9 +5698,6 @@ private fun oracleBatch100(): List<Array<String>> = listOf(
     arrayOf("I", "bits", "0", "0", "0", "HALF_EVEN", "0|0|-1"),
     arrayOf("I", "not", "0", "0", "0", "HALF_EVEN", "-1"),
     arrayOf("I", "testBit", "0", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch101(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "0", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "0", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "0", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -5666,6 +5734,9 @@ private fun oracleBatch101(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "1", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "1", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "1", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch103(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "1", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "1", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "1", "0", "0", "HALF_EVEN", "true"),
@@ -5680,9 +5751,6 @@ private fun oracleBatch101(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "1", "0", "30", "HALF_EVEN", "1073741825"),
     arrayOf("I", "clearBit", "1", "0", "30", "HALF_EVEN", "1"),
     arrayOf("I", "flipBit", "1", "0", "30", "HALF_EVEN", "1073741825"),
-)
-
-private fun oracleBatch102(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "1", "0", "2147483647", "HALF_EVEN", "false"),
     arrayOf("I", "shift", "1", "0", "-2147483648", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "1", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -5719,6 +5787,9 @@ private fun oracleBatch102(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-1", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-1", "0", "-2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-1", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch104(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-1", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "-1", "0", "2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "andNot", "-1", "1", "0", "HALF_EVEN", "-2"),
@@ -5733,9 +5804,6 @@ private fun oracleBatch102(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "2", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "2", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "2", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch103(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "2", "0", "0", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "2", "0", "0", "HALF_EVEN", "3"),
     arrayOf("I", "clearBit", "2", "0", "0", "HALF_EVEN", "2"),
@@ -5772,6 +5840,9 @@ private fun oracleBatch103(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-2", "0", "0", "HALF_EVEN", "-2"),
     arrayOf("I", "flipBit", "-2", "0", "0", "HALF_EVEN", "-1"),
     arrayOf("I", "testBit", "-2", "0", "1", "HALF_EVEN", "true"),
+)
+
+private fun oracleBatch105(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-2", "0", "1", "HALF_EVEN", "-2"),
     arrayOf("I", "clearBit", "-2", "0", "1", "HALF_EVEN", "-4"),
     arrayOf("I", "flipBit", "-2", "0", "1", "HALF_EVEN", "-4"),
@@ -5786,9 +5857,6 @@ private fun oracleBatch103(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-2", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-2", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "-2", "0", "2147483647", "HALF_EVEN", "-1"),
-)
-
-private fun oracleBatch104(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "-2", "1", "0", "HALF_EVEN", "-2"),
     arrayOf("I", "andNot", "-2", "-1", "0", "HALF_EVEN", "0"),
     arrayOf("I", "bits", "1", "0", "0", "HALF_EVEN", "1|1|0"),
@@ -5825,6 +5893,9 @@ private fun oracleBatch104(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "1", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "1", "0", "2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "1", "3", "0", "HALF_EVEN", "0"),
+)
+
+private fun oracleBatch106(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "1", "-3", "0", "HALF_EVEN", "0"),
     arrayOf("I", "bits", "-1", "0", "0", "HALF_EVEN", "0|0|0"),
     arrayOf("I", "not", "-1", "0", "0", "HALF_EVEN", "0"),
@@ -5839,9 +5910,6 @@ private fun oracleBatch104(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-1", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-1", "0", "0", "HALF_EVEN", "-1"),
     arrayOf("I", "clearBit", "-1", "0", "0", "HALF_EVEN", "-2"),
-)
-
-private fun oracleBatch105(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-1", "0", "0", "HALF_EVEN", "-2"),
     arrayOf("I", "testBit", "-1", "0", "1", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-1", "0", "1", "HALF_EVEN", "-1"),
@@ -5878,6 +5946,9 @@ private fun oracleBatch105(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "2", "0", "0", "HALF_EVEN", "3"),
     arrayOf("I", "clearBit", "2", "0", "0", "HALF_EVEN", "2"),
     arrayOf("I", "flipBit", "2", "0", "0", "HALF_EVEN", "3"),
+)
+
+private fun oracleBatch107(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "2", "0", "1", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "2", "0", "1", "HALF_EVEN", "2"),
     arrayOf("I", "clearBit", "2", "0", "1", "HALF_EVEN", "0"),
@@ -5892,9 +5963,6 @@ private fun oracleBatch105(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "2", "0", "31", "HALF_EVEN", "2147483650"),
     arrayOf("I", "testBit", "2", "0", "2147483647", "HALF_EVEN", "false"),
     arrayOf("I", "shift", "2", "0", "-2147483648", "HALF_EVEN", "0"),
-)
-
-private fun oracleBatch106(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "2", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "2", "0", "-2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "2", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
@@ -5931,6 +5999,9 @@ private fun oracleBatch106(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-2", "0", "2147483647", "HALF_EVEN", "true"),
     arrayOf("I", "shift", "-2", "0", "-2147483648", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-2", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch108(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-2", "0", "-2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-2", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-2", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
@@ -5945,9 +6016,6 @@ private fun oracleBatch106(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "3", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "3", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "3", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch107(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "3", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "3", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "3", "0", "0", "HALF_EVEN", "true"),
@@ -5984,6 +6052,9 @@ private fun oracleBatch107(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-3", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-3", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-3", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch109(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-3", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-3", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-3", "0", "0", "HALF_EVEN", "-3"),
@@ -5998,9 +6069,6 @@ private fun oracleBatch107(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-3", "0", "2", "HALF_EVEN", "-7"),
     arrayOf("I", "flipBit", "-3", "0", "2", "HALF_EVEN", "-7"),
     arrayOf("I", "testBit", "-3", "0", "31", "HALF_EVEN", "true"),
-)
-
-private fun oracleBatch108(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-3", "0", "31", "HALF_EVEN", "-3"),
     arrayOf("I", "clearBit", "-3", "0", "31", "HALF_EVEN", "-2147483651"),
     arrayOf("I", "flipBit", "-3", "0", "31", "HALF_EVEN", "-2147483651"),
@@ -6037,6 +6105,9 @@ private fun oracleBatch108(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "127", "0", "7", "HALF_EVEN", "255"),
     arrayOf("I", "testBit", "127", "0", "8", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "127", "0", "8", "HALF_EVEN", "383"),
+)
+
+private fun oracleBatch110(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "127", "0", "8", "HALF_EVEN", "127"),
     arrayOf("I", "flipBit", "127", "0", "8", "HALF_EVEN", "383"),
     arrayOf("I", "testBit", "127", "0", "37", "HALF_EVEN", "false"),
@@ -6051,9 +6122,6 @@ private fun oracleBatch108(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "127", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "127", "0", "2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "127", "255", "0", "HALF_EVEN", "0"),
-)
-
-private fun oracleBatch109(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "127", "-255", "0", "HALF_EVEN", "126"),
     arrayOf("I", "bits", "-127", "0", "0", "HALF_EVEN", "7|6|0"),
     arrayOf("I", "not", "-127", "0", "0", "HALF_EVEN", "126"),
@@ -6090,6 +6158,9 @@ private fun oracleBatch109(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-127", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-127", "0", "-2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-127", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch111(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-127", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "-127", "0", "2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "andNot", "-127", "255", "0", "HALF_EVEN", "-256"),
@@ -6104,9 +6175,6 @@ private fun oracleBatch109(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "128", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "128", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "128", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch110(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "128", "0", "0", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "128", "0", "0", "HALF_EVEN", "129"),
     arrayOf("I", "clearBit", "128", "0", "0", "HALF_EVEN", "128"),
@@ -6143,6 +6211,9 @@ private fun oracleBatch110(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-128", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-128", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-128", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch112(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-128", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-128", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-128", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -6157,9 +6228,6 @@ private fun oracleBatch110(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-128", "0", "7", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-128", "0", "7", "HALF_EVEN", "-128"),
     arrayOf("I", "clearBit", "-128", "0", "7", "HALF_EVEN", "-256"),
-)
-
-private fun oracleBatch111(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-128", "0", "7", "HALF_EVEN", "-256"),
     arrayOf("I", "testBit", "-128", "0", "8", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-128", "0", "8", "HALF_EVEN", "-128"),
@@ -6196,6 +6264,9 @@ private fun oracleBatch111(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "129", "0", "6", "HALF_EVEN", "193"),
     arrayOf("I", "clearBit", "129", "0", "6", "HALF_EVEN", "129"),
     arrayOf("I", "flipBit", "129", "0", "6", "HALF_EVEN", "193"),
+)
+
+private fun oracleBatch113(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "129", "0", "7", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "129", "0", "7", "HALF_EVEN", "129"),
     arrayOf("I", "clearBit", "129", "0", "7", "HALF_EVEN", "1"),
@@ -6210,9 +6281,6 @@ private fun oracleBatch111(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "129", "0", "37", "HALF_EVEN", "137438953601"),
     arrayOf("I", "testBit", "129", "0", "2147483647", "HALF_EVEN", "false"),
     arrayOf("I", "shift", "129", "0", "-2147483648", "HALF_EVEN", "0"),
-)
-
-private fun oracleBatch112(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "129", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "129", "0", "-2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "129", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
@@ -6249,6 +6317,9 @@ private fun oracleBatch112(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-129", "0", "37", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-129", "0", "37", "HALF_EVEN", "-129"),
     arrayOf("I", "clearBit", "-129", "0", "37", "HALF_EVEN", "-137438953601"),
+)
+
+private fun oracleBatch114(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-129", "0", "37", "HALF_EVEN", "-137438953601"),
     arrayOf("I", "testBit", "-129", "0", "2147483647", "HALF_EVEN", "true"),
     arrayOf("I", "shift", "-129", "0", "-2147483648", "HALF_EVEN", "-1"),
@@ -6263,9 +6334,6 @@ private fun oracleBatch112(): List<Array<String>> = listOf(
     arrayOf("I", "not", "255", "0", "0", "HALF_EVEN", "-256"),
     arrayOf("I", "testBit", "255", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "255", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch113(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "255", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "255", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "255", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -6302,6 +6370,9 @@ private fun oracleBatch113(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "255", "511", "0", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "255", "-511", "0", "HALF_EVEN", "254"),
     arrayOf("I", "bits", "-255", "0", "0", "HALF_EVEN", "8|7|0"),
+)
+
+private fun oracleBatch115(): List<Array<String>> = listOf(
     arrayOf("I", "not", "-255", "0", "0", "HALF_EVEN", "254"),
     arrayOf("I", "testBit", "-255", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-255", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -6316,9 +6387,6 @@ private fun oracleBatch113(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-255", "0", "0", "HALF_EVEN", "-256"),
     arrayOf("I", "flipBit", "-255", "0", "0", "HALF_EVEN", "-256"),
     arrayOf("I", "testBit", "-255", "0", "7", "HALF_EVEN", "false"),
-)
-
-private fun oracleBatch114(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-255", "0", "7", "HALF_EVEN", "-127"),
     arrayOf("I", "clearBit", "-255", "0", "7", "HALF_EVEN", "-255"),
     arrayOf("I", "flipBit", "-255", "0", "7", "HALF_EVEN", "-127"),
@@ -6355,6 +6423,9 @@ private fun oracleBatch114(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "256", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "256", "0", "0", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "256", "0", "0", "HALF_EVEN", "257"),
+)
+
+private fun oracleBatch116(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "256", "0", "0", "HALF_EVEN", "256"),
     arrayOf("I", "flipBit", "256", "0", "0", "HALF_EVEN", "257"),
     arrayOf("I", "testBit", "256", "0", "7", "HALF_EVEN", "false"),
@@ -6369,9 +6440,6 @@ private fun oracleBatch114(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "256", "0", "9", "HALF_EVEN", "768"),
     arrayOf("I", "clearBit", "256", "0", "9", "HALF_EVEN", "256"),
     arrayOf("I", "flipBit", "256", "0", "9", "HALF_EVEN", "768"),
-)
-
-private fun oracleBatch115(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "256", "0", "38", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "256", "0", "38", "HALF_EVEN", "274877907200"),
     arrayOf("I", "clearBit", "256", "0", "38", "HALF_EVEN", "256"),
@@ -6408,6 +6476,9 @@ private fun oracleBatch115(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-256", "0", "8", "HALF_EVEN", "-512"),
     arrayOf("I", "flipBit", "-256", "0", "8", "HALF_EVEN", "-512"),
     arrayOf("I", "testBit", "-256", "0", "9", "HALF_EVEN", "true"),
+)
+
+private fun oracleBatch117(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-256", "0", "9", "HALF_EVEN", "-256"),
     arrayOf("I", "clearBit", "-256", "0", "9", "HALF_EVEN", "-768"),
     arrayOf("I", "flipBit", "-256", "0", "9", "HALF_EVEN", "-768"),
@@ -6422,9 +6493,6 @@ private fun oracleBatch115(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-256", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-256", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "-256", "0", "2147483647", "HALF_EVEN", "-1"),
-)
-
-private fun oracleBatch116(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "-256", "511", "0", "HALF_EVEN", "-512"),
     arrayOf("I", "andNot", "-256", "-511", "0", "HALF_EVEN", "256"),
     arrayOf("I", "bits", "257", "0", "0", "HALF_EVEN", "9|2|0"),
@@ -6461,6 +6529,9 @@ private fun oracleBatch116(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "257", "0", "-2147483648", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "257", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "257", "0", "-2147483647", "HALF_EVEN", "0"),
+)
+
+private fun oracleBatch118(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "257", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "257", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "257", "0", "2147483647", "HALF_EVEN", "0"),
@@ -6475,9 +6546,6 @@ private fun oracleBatch116(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-257", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-257", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-257", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch117(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-257", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-257", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-257", "0", "0", "HALF_EVEN", "-257"),
@@ -6514,6 +6582,9 @@ private fun oracleBatch117(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "536870911", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "536870911", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "536870911", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch119(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "536870911", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "536870911", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "536870911", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -6528,9 +6599,6 @@ private fun oracleBatch117(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "536870911", "0", "28", "HALF_EVEN", "268435455"),
     arrayOf("I", "testBit", "536870911", "0", "29", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "536870911", "0", "29", "HALF_EVEN", "1073741823"),
-)
-
-private fun oracleBatch118(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "536870911", "0", "29", "HALF_EVEN", "536870911"),
     arrayOf("I", "flipBit", "536870911", "0", "29", "HALF_EVEN", "1073741823"),
     arrayOf("I", "testBit", "536870911", "0", "30", "HALF_EVEN", "false"),
@@ -6567,6 +6635,9 @@ private fun oracleBatch118(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-536870911", "0", "28", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-536870911", "0", "28", "HALF_EVEN", "-268435455"),
     arrayOf("I", "clearBit", "-536870911", "0", "28", "HALF_EVEN", "-536870911"),
+)
+
+private fun oracleBatch120(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-536870911", "0", "28", "HALF_EVEN", "-268435455"),
     arrayOf("I", "testBit", "-536870911", "0", "29", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-536870911", "0", "29", "HALF_EVEN", "-536870911"),
@@ -6581,9 +6652,6 @@ private fun oracleBatch118(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-536870911", "0", "59", "HALF_EVEN", "-576460752840294399"),
     arrayOf("I", "flipBit", "-536870911", "0", "59", "HALF_EVEN", "-576460752840294399"),
     arrayOf("I", "testBit", "-536870911", "0", "2147483647", "HALF_EVEN", "true"),
-)
-
-private fun oracleBatch119(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-536870911", "0", "-2147483648", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-536870911", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-536870911", "0", "-2147483647", "HALF_EVEN", "-1"),
@@ -6620,6 +6688,9 @@ private fun oracleBatch119(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "536870912", "0", "30", "HALF_EVEN", "1610612736"),
     arrayOf("I", "testBit", "536870912", "0", "59", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "536870912", "0", "59", "HALF_EVEN", "576460752840294400"),
+)
+
+private fun oracleBatch121(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "536870912", "0", "59", "HALF_EVEN", "536870912"),
     arrayOf("I", "flipBit", "536870912", "0", "59", "HALF_EVEN", "576460752840294400"),
     arrayOf("I", "testBit", "536870912", "0", "2147483647", "HALF_EVEN", "false"),
@@ -6634,9 +6705,6 @@ private fun oracleBatch119(): List<Array<String>> = listOf(
     arrayOf("I", "bits", "-536870912", "0", "0", "HALF_EVEN", "29|29|29"),
     arrayOf("I", "not", "-536870912", "0", "0", "HALF_EVEN", "536870911"),
     arrayOf("I", "testBit", "-536870912", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch120(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-536870912", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-536870912", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-536870912", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -6673,6 +6741,9 @@ private fun oracleBatch120(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-536870912", "0", "2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "andNot", "-536870912", "1073741823", "0", "HALF_EVEN", "-1073741824"),
     arrayOf("I", "andNot", "-536870912", "-1073741823", "0", "HALF_EVEN", "536870912"),
+)
+
+private fun oracleBatch122(): List<Array<String>> = listOf(
     arrayOf("I", "bits", "536870913", "0", "0", "HALF_EVEN", "30|2|0"),
     arrayOf("I", "not", "536870913", "0", "0", "HALF_EVEN", "-536870914"),
     arrayOf("I", "testBit", "536870913", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -6687,9 +6758,6 @@ private fun oracleBatch120(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "536870913", "0", "0", "HALF_EVEN", "536870913"),
     arrayOf("I", "clearBit", "536870913", "0", "0", "HALF_EVEN", "536870912"),
     arrayOf("I", "flipBit", "536870913", "0", "0", "HALF_EVEN", "536870912"),
-)
-
-private fun oracleBatch121(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "536870913", "0", "28", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "536870913", "0", "28", "HALF_EVEN", "805306369"),
     arrayOf("I", "clearBit", "536870913", "0", "28", "HALF_EVEN", "536870913"),
@@ -6726,6 +6794,9 @@ private fun oracleBatch121(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-536870913", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-536870913", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-536870913", "0", "0", "HALF_EVEN", "true"),
+)
+
+private fun oracleBatch123(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-536870913", "0", "0", "HALF_EVEN", "-536870913"),
     arrayOf("I", "clearBit", "-536870913", "0", "0", "HALF_EVEN", "-536870914"),
     arrayOf("I", "flipBit", "-536870913", "0", "0", "HALF_EVEN", "-536870914"),
@@ -6740,9 +6811,6 @@ private fun oracleBatch121(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-536870913", "0", "30", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-536870913", "0", "30", "HALF_EVEN", "-536870913"),
     arrayOf("I", "clearBit", "-536870913", "0", "30", "HALF_EVEN", "-1610612737"),
-)
-
-private fun oracleBatch122(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-536870913", "0", "30", "HALF_EVEN", "-1610612737"),
     arrayOf("I", "testBit", "-536870913", "0", "59", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-536870913", "0", "59", "HALF_EVEN", "-536870913"),
@@ -6779,6 +6847,9 @@ private fun oracleBatch122(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "1073741823", "0", "30", "HALF_EVEN", "2147483647"),
     arrayOf("I", "clearBit", "1073741823", "0", "30", "HALF_EVEN", "1073741823"),
     arrayOf("I", "flipBit", "1073741823", "0", "30", "HALF_EVEN", "2147483647"),
+)
+
+private fun oracleBatch124(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "1073741823", "0", "31", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "1073741823", "0", "31", "HALF_EVEN", "3221225471"),
     arrayOf("I", "clearBit", "1073741823", "0", "31", "HALF_EVEN", "1073741823"),
@@ -6793,9 +6864,6 @@ private fun oracleBatch122(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "1073741823", "0", "-2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "1073741823", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "1073741823", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch123(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "1073741823", "0", "2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "1073741823", "2147483647", "0", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "1073741823", "-2147483647", "0", "HALF_EVEN", "1073741822"),
@@ -6832,6 +6900,9 @@ private fun oracleBatch123(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-1073741823", "0", "2147483647", "HALF_EVEN", "true"),
     arrayOf("I", "shift", "-1073741823", "0", "-2147483648", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-1073741823", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch125(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-1073741823", "0", "-2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-1073741823", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-1073741823", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
@@ -6846,9 +6917,6 @@ private fun oracleBatch123(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "1073741824", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "1073741824", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "1073741824", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch124(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "1073741824", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "1073741824", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "1073741824", "0", "0", "HALF_EVEN", "false"),
@@ -6885,6 +6953,9 @@ private fun oracleBatch124(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-1073741824", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-1073741824", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-1073741824", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch126(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-1073741824", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-1073741824", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-1073741824", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -6899,9 +6970,6 @@ private fun oracleBatch124(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-1073741824", "0", "29", "HALF_EVEN", "-1073741824"),
     arrayOf("I", "flipBit", "-1073741824", "0", "29", "HALF_EVEN", "-536870912"),
     arrayOf("I", "testBit", "-1073741824", "0", "30", "HALF_EVEN", "true"),
-)
-
-private fun oracleBatch125(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-1073741824", "0", "30", "HALF_EVEN", "-1073741824"),
     arrayOf("I", "clearBit", "-1073741824", "0", "30", "HALF_EVEN", "-2147483648"),
     arrayOf("I", "flipBit", "-1073741824", "0", "30", "HALF_EVEN", "-2147483648"),
@@ -6938,6 +7006,9 @@ private fun oracleBatch125(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "1073741825", "0", "0", "HALF_EVEN", "1073741824"),
     arrayOf("I", "testBit", "1073741825", "0", "29", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "1073741825", "0", "29", "HALF_EVEN", "1610612737"),
+)
+
+private fun oracleBatch127(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "1073741825", "0", "29", "HALF_EVEN", "1073741825"),
     arrayOf("I", "flipBit", "1073741825", "0", "29", "HALF_EVEN", "1610612737"),
     arrayOf("I", "testBit", "1073741825", "0", "30", "HALF_EVEN", "true"),
@@ -6952,9 +7023,6 @@ private fun oracleBatch125(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "1073741825", "0", "60", "HALF_EVEN", "1152921505680588801"),
     arrayOf("I", "clearBit", "1073741825", "0", "60", "HALF_EVEN", "1073741825"),
     arrayOf("I", "flipBit", "1073741825", "0", "60", "HALF_EVEN", "1152921505680588801"),
-)
-
-private fun oracleBatch126(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "1073741825", "0", "2147483647", "HALF_EVEN", "false"),
     arrayOf("I", "shift", "1073741825", "0", "-2147483648", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "1073741825", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -6991,6 +7059,9 @@ private fun oracleBatch126(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-1073741825", "0", "31", "HALF_EVEN", "-3221225473"),
     arrayOf("I", "flipBit", "-1073741825", "0", "31", "HALF_EVEN", "-3221225473"),
     arrayOf("I", "testBit", "-1073741825", "0", "60", "HALF_EVEN", "true"),
+)
+
+private fun oracleBatch128(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-1073741825", "0", "60", "HALF_EVEN", "-1073741825"),
     arrayOf("I", "clearBit", "-1073741825", "0", "60", "HALF_EVEN", "-1152921505680588801"),
     arrayOf("I", "flipBit", "-1073741825", "0", "60", "HALF_EVEN", "-1152921505680588801"),
@@ -7005,9 +7076,6 @@ private fun oracleBatch126(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "-1073741825", "-2147483647", "0", "HALF_EVEN", "1073741822"),
     arrayOf("I", "bits", "2147483647", "0", "0", "HALF_EVEN", "31|31|0"),
     arrayOf("I", "not", "2147483647", "0", "0", "HALF_EVEN", "-2147483648"),
-)
-
-private fun oracleBatch127(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "2147483647", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "2147483647", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "2147483647", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -7044,6 +7112,9 @@ private fun oracleBatch127(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "2147483647", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "2147483647", "0", "2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "2147483647", "4294967295", "0", "HALF_EVEN", "0"),
+)
+
+private fun oracleBatch129(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "2147483647", "-4294967295", "0", "HALF_EVEN", "2147483646"),
     arrayOf("I", "bits", "-2147483647", "0", "0", "HALF_EVEN", "31|30|0"),
     arrayOf("I", "not", "-2147483647", "0", "0", "HALF_EVEN", "2147483646"),
@@ -7058,9 +7129,6 @@ private fun oracleBatch127(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-2147483647", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-2147483647", "0", "0", "HALF_EVEN", "-2147483647"),
     arrayOf("I", "clearBit", "-2147483647", "0", "0", "HALF_EVEN", "-2147483648"),
-)
-
-private fun oracleBatch128(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-2147483647", "0", "0", "HALF_EVEN", "-2147483648"),
     arrayOf("I", "testBit", "-2147483647", "0", "30", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-2147483647", "0", "30", "HALF_EVEN", "-1073741823"),
@@ -7097,6 +7165,9 @@ private fun oracleBatch128(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "2147483648", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "2147483648", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "2147483648", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch130(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "2147483648", "0", "0", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "2147483648", "0", "0", "HALF_EVEN", "2147483649"),
     arrayOf("I", "clearBit", "2147483648", "0", "0", "HALF_EVEN", "2147483648"),
@@ -7111,9 +7182,6 @@ private fun oracleBatch128(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "2147483648", "0", "31", "HALF_EVEN", "0"),
     arrayOf("I", "testBit", "2147483648", "0", "32", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "2147483648", "0", "32", "HALF_EVEN", "6442450944"),
-)
-
-private fun oracleBatch129(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "2147483648", "0", "32", "HALF_EVEN", "2147483648"),
     arrayOf("I", "flipBit", "2147483648", "0", "32", "HALF_EVEN", "6442450944"),
     arrayOf("I", "testBit", "2147483648", "0", "61", "HALF_EVEN", "false"),
@@ -7150,6 +7218,9 @@ private fun oracleBatch129(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-2147483648", "0", "31", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-2147483648", "0", "31", "HALF_EVEN", "-2147483648"),
     arrayOf("I", "clearBit", "-2147483648", "0", "31", "HALF_EVEN", "-4294967296"),
+)
+
+private fun oracleBatch131(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-2147483648", "0", "31", "HALF_EVEN", "-4294967296"),
     arrayOf("I", "testBit", "-2147483648", "0", "32", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-2147483648", "0", "32", "HALF_EVEN", "-2147483648"),
@@ -7164,9 +7235,6 @@ private fun oracleBatch129(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-2147483648", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-2147483648", "0", "-2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-2147483648", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch130(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-2147483648", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "-2147483648", "0", "2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "andNot", "-2147483648", "4294967295", "0", "HALF_EVEN", "-4294967296"),
@@ -7203,6 +7271,9 @@ private fun oracleBatch130(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "2147483649", "0", "61", "HALF_EVEN", "2305843011361177601"),
     arrayOf("I", "testBit", "2147483649", "0", "2147483647", "HALF_EVEN", "false"),
     arrayOf("I", "shift", "2147483649", "0", "-2147483648", "HALF_EVEN", "0"),
+)
+
+private fun oracleBatch132(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "2147483649", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "2147483649", "0", "-2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "2147483649", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
@@ -7217,9 +7288,6 @@ private fun oracleBatch130(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-2147483649", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-2147483649", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-2147483649", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch131(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-2147483649", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-2147483649", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-2147483649", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -7256,6 +7324,9 @@ private fun oracleBatch131(): List<Array<String>> = listOf(
     arrayOf("I", "not", "4294967295", "0", "0", "HALF_EVEN", "-4294967296"),
     arrayOf("I", "testBit", "4294967295", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "4294967295", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch133(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "4294967295", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "4294967295", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "4294967295", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -7270,9 +7341,6 @@ private fun oracleBatch131(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "4294967295", "0", "31", "HALF_EVEN", "4294967295"),
     arrayOf("I", "clearBit", "4294967295", "0", "31", "HALF_EVEN", "2147483647"),
     arrayOf("I", "flipBit", "4294967295", "0", "31", "HALF_EVEN", "2147483647"),
-)
-
-private fun oracleBatch132(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "4294967295", "0", "32", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "4294967295", "0", "32", "HALF_EVEN", "8589934591"),
     arrayOf("I", "clearBit", "4294967295", "0", "32", "HALF_EVEN", "4294967295"),
@@ -7309,6 +7377,9 @@ private fun oracleBatch132(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-4294967295", "0", "0", "HALF_EVEN", "-4294967296"),
     arrayOf("I", "flipBit", "-4294967295", "0", "0", "HALF_EVEN", "-4294967296"),
     arrayOf("I", "testBit", "-4294967295", "0", "31", "HALF_EVEN", "false"),
+)
+
+private fun oracleBatch134(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-4294967295", "0", "31", "HALF_EVEN", "-2147483647"),
     arrayOf("I", "clearBit", "-4294967295", "0", "31", "HALF_EVEN", "-4294967295"),
     arrayOf("I", "flipBit", "-4294967295", "0", "31", "HALF_EVEN", "-2147483647"),
@@ -7323,9 +7394,6 @@ private fun oracleBatch132(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-4294967295", "0", "62", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-4294967295", "0", "62", "HALF_EVEN", "-4294967295"),
     arrayOf("I", "clearBit", "-4294967295", "0", "62", "HALF_EVEN", "-4611686022722355199"),
-)
-
-private fun oracleBatch133(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-4294967295", "0", "62", "HALF_EVEN", "-4611686022722355199"),
     arrayOf("I", "testBit", "-4294967295", "0", "2147483647", "HALF_EVEN", "true"),
     arrayOf("I", "shift", "-4294967295", "0", "-2147483648", "HALF_EVEN", "-1"),
@@ -7362,6 +7430,9 @@ private fun oracleBatch133(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "4294967296", "0", "33", "HALF_EVEN", "12884901888"),
     arrayOf("I", "clearBit", "4294967296", "0", "33", "HALF_EVEN", "4294967296"),
     arrayOf("I", "flipBit", "4294967296", "0", "33", "HALF_EVEN", "12884901888"),
+)
+
+private fun oracleBatch135(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "4294967296", "0", "62", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "4294967296", "0", "62", "HALF_EVEN", "4611686022722355200"),
     arrayOf("I", "clearBit", "4294967296", "0", "62", "HALF_EVEN", "4294967296"),
@@ -7376,9 +7447,6 @@ private fun oracleBatch133(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "4294967296", "8589934591", "0", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "4294967296", "-8589934591", "0", "HALF_EVEN", "4294967296"),
     arrayOf("I", "bits", "-4294967296", "0", "0", "HALF_EVEN", "32|32|32"),
-)
-
-private fun oracleBatch134(): List<Array<String>> = listOf(
     arrayOf("I", "not", "-4294967296", "0", "0", "HALF_EVEN", "4294967295"),
     arrayOf("I", "testBit", "-4294967296", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-4294967296", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -7415,6 +7483,9 @@ private fun oracleBatch134(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-4294967296", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-4294967296", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "-4294967296", "0", "2147483647", "HALF_EVEN", "-1"),
+)
+
+private fun oracleBatch136(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "-4294967296", "8589934591", "0", "HALF_EVEN", "-8589934592"),
     arrayOf("I", "andNot", "-4294967296", "-8589934591", "0", "HALF_EVEN", "4294967296"),
     arrayOf("I", "bits", "4294967297", "0", "0", "HALF_EVEN", "33|2|0"),
@@ -7429,9 +7500,6 @@ private fun oracleBatch134(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "4294967297", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "4294967297", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "4294967297", "0", "0", "HALF_EVEN", "4294967297"),
-)
-
-private fun oracleBatch135(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "4294967297", "0", "0", "HALF_EVEN", "4294967296"),
     arrayOf("I", "flipBit", "4294967297", "0", "0", "HALF_EVEN", "4294967296"),
     arrayOf("I", "testBit", "4294967297", "0", "31", "HALF_EVEN", "false"),
@@ -7468,6 +7536,9 @@ private fun oracleBatch135(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-4294967297", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-4294967297", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-4294967297", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch137(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-4294967297", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-4294967297", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-4294967297", "0", "0", "HALF_EVEN", "-4294967297"),
@@ -7482,9 +7553,6 @@ private fun oracleBatch135(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-4294967297", "0", "32", "HALF_EVEN", "-4294967297"),
     arrayOf("I", "flipBit", "-4294967297", "0", "32", "HALF_EVEN", "-1"),
     arrayOf("I", "testBit", "-4294967297", "0", "33", "HALF_EVEN", "true"),
-)
-
-private fun oracleBatch136(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-4294967297", "0", "33", "HALF_EVEN", "-4294967297"),
     arrayOf("I", "clearBit", "-4294967297", "0", "33", "HALF_EVEN", "-12884901889"),
     arrayOf("I", "flipBit", "-4294967297", "0", "33", "HALF_EVEN", "-12884901889"),
@@ -7521,6 +7589,9 @@ private fun oracleBatch136(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "576460752303423487", "0", "58", "HALF_EVEN", "288230376151711743"),
     arrayOf("I", "testBit", "576460752303423487", "0", "59", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "576460752303423487", "0", "59", "HALF_EVEN", "1152921504606846975"),
+)
+
+private fun oracleBatch138(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "576460752303423487", "0", "59", "HALF_EVEN", "576460752303423487"),
     arrayOf("I", "flipBit", "576460752303423487", "0", "59", "HALF_EVEN", "1152921504606846975"),
     arrayOf("I", "testBit", "576460752303423487", "0", "60", "HALF_EVEN", "false"),
@@ -7535,9 +7606,6 @@ private fun oracleBatch136(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "576460752303423487", "0", "-2147483648", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "576460752303423487", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "576460752303423487", "0", "-2147483647", "HALF_EVEN", "0"),
-)
-
-private fun oracleBatch137(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "576460752303423487", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "576460752303423487", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "576460752303423487", "0", "2147483647", "HALF_EVEN", "0"),
@@ -7574,6 +7642,9 @@ private fun oracleBatch137(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-576460752303423487", "0", "89", "HALF_EVEN", "-618970020219150889752985599"),
     arrayOf("I", "flipBit", "-576460752303423487", "0", "89", "HALF_EVEN", "-618970020219150889752985599"),
     arrayOf("I", "testBit", "-576460752303423487", "0", "2147483647", "HALF_EVEN", "true"),
+)
+
+private fun oracleBatch139(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-576460752303423487", "0", "-2147483648", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-576460752303423487", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-576460752303423487", "0", "-2147483647", "HALF_EVEN", "-1"),
@@ -7588,9 +7659,6 @@ private fun oracleBatch137(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "576460752303423488", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "576460752303423488", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "576460752303423488", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch138(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "576460752303423488", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "576460752303423488", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "576460752303423488", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -7627,6 +7695,9 @@ private fun oracleBatch138(): List<Array<String>> = listOf(
     arrayOf("I", "bits", "-576460752303423488", "0", "0", "HALF_EVEN", "59|59|59"),
     arrayOf("I", "not", "-576460752303423488", "0", "0", "HALF_EVEN", "576460752303423487"),
     arrayOf("I", "testBit", "-576460752303423488", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch140(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-576460752303423488", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-576460752303423488", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-576460752303423488", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -7641,9 +7712,6 @@ private fun oracleBatch138(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-576460752303423488", "0", "58", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-576460752303423488", "0", "58", "HALF_EVEN", "-288230376151711744"),
     arrayOf("I", "clearBit", "-576460752303423488", "0", "58", "HALF_EVEN", "-576460752303423488"),
-)
-
-private fun oracleBatch139(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-576460752303423488", "0", "58", "HALF_EVEN", "-288230376151711744"),
     arrayOf("I", "testBit", "-576460752303423488", "0", "59", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-576460752303423488", "0", "59", "HALF_EVEN", "-576460752303423488"),
@@ -7680,6 +7748,9 @@ private fun oracleBatch139(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "576460752303423489", "0", "0", "HALF_EVEN", "576460752303423489"),
     arrayOf("I", "clearBit", "576460752303423489", "0", "0", "HALF_EVEN", "576460752303423488"),
     arrayOf("I", "flipBit", "576460752303423489", "0", "0", "HALF_EVEN", "576460752303423488"),
+)
+
+private fun oracleBatch141(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "576460752303423489", "0", "58", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "576460752303423489", "0", "58", "HALF_EVEN", "864691128455135233"),
     arrayOf("I", "clearBit", "576460752303423489", "0", "58", "HALF_EVEN", "576460752303423489"),
@@ -7694,9 +7765,6 @@ private fun oracleBatch139(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "576460752303423489", "0", "60", "HALF_EVEN", "1729382256910270465"),
     arrayOf("I", "testBit", "576460752303423489", "0", "89", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "576460752303423489", "0", "89", "HALF_EVEN", "618970020219150889752985601"),
-)
-
-private fun oracleBatch140(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "576460752303423489", "0", "89", "HALF_EVEN", "576460752303423489"),
     arrayOf("I", "flipBit", "576460752303423489", "0", "89", "HALF_EVEN", "618970020219150889752985601"),
     arrayOf("I", "testBit", "576460752303423489", "0", "2147483647", "HALF_EVEN", "false"),
@@ -7733,6 +7801,9 @@ private fun oracleBatch140(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-576460752303423489", "0", "60", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-576460752303423489", "0", "60", "HALF_EVEN", "-576460752303423489"),
     arrayOf("I", "clearBit", "-576460752303423489", "0", "60", "HALF_EVEN", "-1729382256910270465"),
+)
+
+private fun oracleBatch142(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-576460752303423489", "0", "60", "HALF_EVEN", "-1729382256910270465"),
     arrayOf("I", "testBit", "-576460752303423489", "0", "89", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-576460752303423489", "0", "89", "HALF_EVEN", "-576460752303423489"),
@@ -7747,9 +7818,6 @@ private fun oracleBatch140(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-576460752303423489", "0", "2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "andNot", "-576460752303423489", "1152921504606846975", "0", "HALF_EVEN", "-1152921504606846976"),
     arrayOf("I", "andNot", "-576460752303423489", "-1152921504606846975", "0", "HALF_EVEN", "576460752303423486"),
-)
-
-private fun oracleBatch141(): List<Array<String>> = listOf(
     arrayOf("I", "bits", "1152921504606846975", "0", "0", "HALF_EVEN", "60|60|0"),
     arrayOf("I", "not", "1152921504606846975", "0", "0", "HALF_EVEN", "-1152921504606846976"),
     arrayOf("I", "testBit", "1152921504606846975", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -7786,6 +7854,9 @@ private fun oracleBatch141(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "1152921504606846975", "0", "-2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "1152921504606846975", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "1152921504606846975", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch143(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "1152921504606846975", "0", "2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "1152921504606846975", "2305843009213693951", "0", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "1152921504606846975", "-2305843009213693951", "0", "HALF_EVEN", "1152921504606846974"),
@@ -7800,9 +7871,6 @@ private fun oracleBatch141(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-1152921504606846975", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-1152921504606846975", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-1152921504606846975", "0", "0", "HALF_EVEN", "true"),
-)
-
-private fun oracleBatch142(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-1152921504606846975", "0", "0", "HALF_EVEN", "-1152921504606846975"),
     arrayOf("I", "clearBit", "-1152921504606846975", "0", "0", "HALF_EVEN", "-1152921504606846976"),
     arrayOf("I", "flipBit", "-1152921504606846975", "0", "0", "HALF_EVEN", "-1152921504606846976"),
@@ -7839,6 +7907,9 @@ private fun oracleBatch142(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "1152921504606846976", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "1152921504606846976", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "1152921504606846976", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch144(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "1152921504606846976", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "1152921504606846976", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "1152921504606846976", "0", "0", "HALF_EVEN", "false"),
@@ -7853,9 +7924,6 @@ private fun oracleBatch142(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "1152921504606846976", "0", "60", "HALF_EVEN", "1152921504606846976"),
     arrayOf("I", "clearBit", "1152921504606846976", "0", "60", "HALF_EVEN", "0"),
     arrayOf("I", "flipBit", "1152921504606846976", "0", "60", "HALF_EVEN", "0"),
-)
-
-private fun oracleBatch143(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "1152921504606846976", "0", "61", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "1152921504606846976", "0", "61", "HALF_EVEN", "3458764513820540928"),
     arrayOf("I", "clearBit", "1152921504606846976", "0", "61", "HALF_EVEN", "1152921504606846976"),
@@ -7892,6 +7960,9 @@ private fun oracleBatch143(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-1152921504606846976", "0", "59", "HALF_EVEN", "-1152921504606846976"),
     arrayOf("I", "flipBit", "-1152921504606846976", "0", "59", "HALF_EVEN", "-576460752303423488"),
     arrayOf("I", "testBit", "-1152921504606846976", "0", "60", "HALF_EVEN", "true"),
+)
+
+private fun oracleBatch145(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-1152921504606846976", "0", "60", "HALF_EVEN", "-1152921504606846976"),
     arrayOf("I", "clearBit", "-1152921504606846976", "0", "60", "HALF_EVEN", "-2305843009213693952"),
     arrayOf("I", "flipBit", "-1152921504606846976", "0", "60", "HALF_EVEN", "-2305843009213693952"),
@@ -7906,9 +7977,6 @@ private fun oracleBatch143(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-1152921504606846976", "0", "2147483647", "HALF_EVEN", "true"),
     arrayOf("I", "shift", "-1152921504606846976", "0", "-2147483648", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-1152921504606846976", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch144(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-1152921504606846976", "0", "-2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-1152921504606846976", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-1152921504606846976", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
@@ -7945,6 +8013,9 @@ private fun oracleBatch144(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "1152921504606846977", "0", "90", "HALF_EVEN", "1237940040438301779505971201"),
     arrayOf("I", "clearBit", "1152921504606846977", "0", "90", "HALF_EVEN", "1152921504606846977"),
     arrayOf("I", "flipBit", "1152921504606846977", "0", "90", "HALF_EVEN", "1237940040438301779505971201"),
+)
+
+private fun oracleBatch146(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "1152921504606846977", "0", "2147483647", "HALF_EVEN", "false"),
     arrayOf("I", "shift", "1152921504606846977", "0", "-2147483648", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "1152921504606846977", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -7959,9 +8030,6 @@ private fun oracleBatch144(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-1152921504606846977", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-1152921504606846977", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-1152921504606846977", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch145(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-1152921504606846977", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-1152921504606846977", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-1152921504606846977", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -7998,6 +8066,9 @@ private fun oracleBatch145(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "-1152921504606846977", "-2305843009213693951", "0", "HALF_EVEN", "1152921504606846974"),
     arrayOf("I", "bits", "2305843009213693951", "0", "0", "HALF_EVEN", "61|61|0"),
     arrayOf("I", "not", "2305843009213693951", "0", "0", "HALF_EVEN", "-2305843009213693952"),
+)
+
+private fun oracleBatch147(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "2305843009213693951", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "2305843009213693951", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "2305843009213693951", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -8012,9 +8083,6 @@ private fun oracleBatch145(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "2305843009213693951", "0", "0", "HALF_EVEN", "2305843009213693950"),
     arrayOf("I", "testBit", "2305843009213693951", "0", "60", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "2305843009213693951", "0", "60", "HALF_EVEN", "2305843009213693951"),
-)
-
-private fun oracleBatch146(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "2305843009213693951", "0", "60", "HALF_EVEN", "1152921504606846975"),
     arrayOf("I", "flipBit", "2305843009213693951", "0", "60", "HALF_EVEN", "1152921504606846975"),
     arrayOf("I", "testBit", "2305843009213693951", "0", "61", "HALF_EVEN", "false"),
@@ -8051,6 +8119,9 @@ private fun oracleBatch146(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-2305843009213693951", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-2305843009213693951", "0", "0", "HALF_EVEN", "-2305843009213693951"),
     arrayOf("I", "clearBit", "-2305843009213693951", "0", "0", "HALF_EVEN", "-2305843009213693952"),
+)
+
+private fun oracleBatch148(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-2305843009213693951", "0", "0", "HALF_EVEN", "-2305843009213693952"),
     arrayOf("I", "testBit", "-2305843009213693951", "0", "60", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-2305843009213693951", "0", "60", "HALF_EVEN", "-1152921504606846975"),
@@ -8065,9 +8136,6 @@ private fun oracleBatch146(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-2305843009213693951", "0", "62", "HALF_EVEN", "-6917529027641081855"),
     arrayOf("I", "flipBit", "-2305843009213693951", "0", "62", "HALF_EVEN", "-6917529027641081855"),
     arrayOf("I", "testBit", "-2305843009213693951", "0", "91", "HALF_EVEN", "true"),
-)
-
-private fun oracleBatch147(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-2305843009213693951", "0", "91", "HALF_EVEN", "-2305843009213693951"),
     arrayOf("I", "clearBit", "-2305843009213693951", "0", "91", "HALF_EVEN", "-2475880080876603559011942399"),
     arrayOf("I", "flipBit", "-2305843009213693951", "0", "91", "HALF_EVEN", "-2475880080876603559011942399"),
@@ -8104,6 +8172,9 @@ private fun oracleBatch147(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "2305843009213693952", "0", "61", "HALF_EVEN", "0"),
     arrayOf("I", "testBit", "2305843009213693952", "0", "62", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "2305843009213693952", "0", "62", "HALF_EVEN", "6917529027641081856"),
+)
+
+private fun oracleBatch149(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "2305843009213693952", "0", "62", "HALF_EVEN", "2305843009213693952"),
     arrayOf("I", "flipBit", "2305843009213693952", "0", "62", "HALF_EVEN", "6917529027641081856"),
     arrayOf("I", "testBit", "2305843009213693952", "0", "91", "HALF_EVEN", "false"),
@@ -8118,9 +8189,6 @@ private fun oracleBatch147(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "2305843009213693952", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "2305843009213693952", "0", "2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "2305843009213693952", "4611686018427387903", "0", "HALF_EVEN", "0"),
-)
-
-private fun oracleBatch148(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "2305843009213693952", "-4611686018427387903", "0", "HALF_EVEN", "2305843009213693952"),
     arrayOf("I", "bits", "-2305843009213693952", "0", "0", "HALF_EVEN", "61|61|61"),
     arrayOf("I", "not", "-2305843009213693952", "0", "0", "HALF_EVEN", "2305843009213693951"),
@@ -8157,6 +8225,9 @@ private fun oracleBatch148(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-2305843009213693952", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-2305843009213693952", "0", "-2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-2305843009213693952", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch150(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-2305843009213693952", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "-2305843009213693952", "0", "2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "andNot", "-2305843009213693952", "4611686018427387903", "0", "HALF_EVEN", "-4611686018427387904"),
@@ -8171,9 +8242,6 @@ private fun oracleBatch148(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "2305843009213693953", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "2305843009213693953", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "2305843009213693953", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch149(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "2305843009213693953", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "2305843009213693953", "0", "0", "HALF_EVEN", "2305843009213693953"),
     arrayOf("I", "clearBit", "2305843009213693953", "0", "0", "HALF_EVEN", "2305843009213693952"),
@@ -8210,6 +8278,9 @@ private fun oracleBatch149(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-2305843009213693953", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-2305843009213693953", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-2305843009213693953", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch151(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-2305843009213693953", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-2305843009213693953", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-2305843009213693953", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -8224,9 +8295,6 @@ private fun oracleBatch149(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-2305843009213693953", "0", "61", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-2305843009213693953", "0", "61", "HALF_EVEN", "-1"),
     arrayOf("I", "clearBit", "-2305843009213693953", "0", "61", "HALF_EVEN", "-2305843009213693953"),
-)
-
-private fun oracleBatch150(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-2305843009213693953", "0", "61", "HALF_EVEN", "-1"),
     arrayOf("I", "testBit", "-2305843009213693953", "0", "62", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-2305843009213693953", "0", "62", "HALF_EVEN", "-2305843009213693953"),
@@ -8263,6 +8331,9 @@ private fun oracleBatch150(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "9223372036854775807", "0", "62", "HALF_EVEN", "9223372036854775807"),
     arrayOf("I", "clearBit", "9223372036854775807", "0", "62", "HALF_EVEN", "4611686018427387903"),
     arrayOf("I", "flipBit", "9223372036854775807", "0", "62", "HALF_EVEN", "4611686018427387903"),
+)
+
+private fun oracleBatch152(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "9223372036854775807", "0", "63", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "9223372036854775807", "0", "63", "HALF_EVEN", "18446744073709551615"),
     arrayOf("I", "clearBit", "9223372036854775807", "0", "63", "HALF_EVEN", "9223372036854775807"),
@@ -8277,9 +8348,6 @@ private fun oracleBatch150(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "9223372036854775807", "0", "93", "HALF_EVEN", "9903520323506414236047769599"),
     arrayOf("I", "testBit", "9223372036854775807", "0", "2147483647", "HALF_EVEN", "false"),
     arrayOf("I", "shift", "9223372036854775807", "0", "-2147483648", "HALF_EVEN", "0"),
-)
-
-private fun oracleBatch151(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "9223372036854775807", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "9223372036854775807", "0", "-2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "9223372036854775807", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
@@ -8316,6 +8384,9 @@ private fun oracleBatch151(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-9223372036854775807", "0", "93", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-9223372036854775807", "0", "93", "HALF_EVEN", "-9223372036854775807"),
     arrayOf("I", "clearBit", "-9223372036854775807", "0", "93", "HALF_EVEN", "-9903520323506414236047769599"),
+)
+
+private fun oracleBatch153(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-9223372036854775807", "0", "93", "HALF_EVEN", "-9903520323506414236047769599"),
     arrayOf("I", "testBit", "-9223372036854775807", "0", "2147483647", "HALF_EVEN", "true"),
     arrayOf("I", "shift", "-9223372036854775807", "0", "-2147483648", "HALF_EVEN", "-1"),
@@ -8330,9 +8401,6 @@ private fun oracleBatch151(): List<Array<String>> = listOf(
     arrayOf("I", "not", "9223372036854775808", "0", "0", "HALF_EVEN", "-9223372036854775809"),
     arrayOf("I", "testBit", "9223372036854775808", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "9223372036854775808", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch152(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "9223372036854775808", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "9223372036854775808", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "9223372036854775808", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -8369,6 +8437,9 @@ private fun oracleBatch152(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "9223372036854775808", "18446744073709551615", "0", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "9223372036854775808", "-18446744073709551615", "0", "HALF_EVEN", "9223372036854775808"),
     arrayOf("I", "bits", "-9223372036854775808", "0", "0", "HALF_EVEN", "63|63|63"),
+)
+
+private fun oracleBatch154(): List<Array<String>> = listOf(
     arrayOf("I", "not", "-9223372036854775808", "0", "0", "HALF_EVEN", "9223372036854775807"),
     arrayOf("I", "testBit", "-9223372036854775808", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-9223372036854775808", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -8383,9 +8454,6 @@ private fun oracleBatch152(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-9223372036854775808", "0", "0", "HALF_EVEN", "-9223372036854775808"),
     arrayOf("I", "flipBit", "-9223372036854775808", "0", "0", "HALF_EVEN", "-9223372036854775807"),
     arrayOf("I", "testBit", "-9223372036854775808", "0", "62", "HALF_EVEN", "false"),
-)
-
-private fun oracleBatch153(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-9223372036854775808", "0", "62", "HALF_EVEN", "-4611686018427387904"),
     arrayOf("I", "clearBit", "-9223372036854775808", "0", "62", "HALF_EVEN", "-9223372036854775808"),
     arrayOf("I", "flipBit", "-9223372036854775808", "0", "62", "HALF_EVEN", "-4611686018427387904"),
@@ -8422,6 +8490,9 @@ private fun oracleBatch153(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "9223372036854775809", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "9223372036854775809", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "9223372036854775809", "0", "0", "HALF_EVEN", "9223372036854775809"),
+)
+
+private fun oracleBatch155(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "9223372036854775809", "0", "0", "HALF_EVEN", "9223372036854775808"),
     arrayOf("I", "flipBit", "9223372036854775809", "0", "0", "HALF_EVEN", "9223372036854775808"),
     arrayOf("I", "testBit", "9223372036854775809", "0", "62", "HALF_EVEN", "false"),
@@ -8436,9 +8507,6 @@ private fun oracleBatch153(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "9223372036854775809", "0", "64", "HALF_EVEN", "27670116110564327425"),
     arrayOf("I", "clearBit", "9223372036854775809", "0", "64", "HALF_EVEN", "9223372036854775809"),
     arrayOf("I", "flipBit", "9223372036854775809", "0", "64", "HALF_EVEN", "27670116110564327425"),
-)
-
-private fun oracleBatch154(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "9223372036854775809", "0", "93", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "9223372036854775809", "0", "93", "HALF_EVEN", "9903520323506414236047769601"),
     arrayOf("I", "clearBit", "9223372036854775809", "0", "93", "HALF_EVEN", "9223372036854775809"),
@@ -8475,6 +8543,9 @@ private fun oracleBatch154(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-9223372036854775809", "0", "63", "HALF_EVEN", "-9223372036854775809"),
     arrayOf("I", "flipBit", "-9223372036854775809", "0", "63", "HALF_EVEN", "-1"),
     arrayOf("I", "testBit", "-9223372036854775809", "0", "64", "HALF_EVEN", "true"),
+)
+
+private fun oracleBatch156(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-9223372036854775809", "0", "64", "HALF_EVEN", "-9223372036854775809"),
     arrayOf("I", "clearBit", "-9223372036854775809", "0", "64", "HALF_EVEN", "-27670116110564327425"),
     arrayOf("I", "flipBit", "-9223372036854775809", "0", "64", "HALF_EVEN", "-27670116110564327425"),
@@ -8489,9 +8560,6 @@ private fun oracleBatch154(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-9223372036854775809", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-9223372036854775809", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "-9223372036854775809", "0", "2147483647", "HALF_EVEN", "-1"),
-)
-
-private fun oracleBatch155(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "-9223372036854775809", "18446744073709551615", "0", "HALF_EVEN", "-18446744073709551616"),
     arrayOf("I", "andNot", "-9223372036854775809", "-18446744073709551615", "0", "HALF_EVEN", "9223372036854775806"),
     arrayOf("I", "bits", "18446744073709551615", "0", "0", "HALF_EVEN", "64|64|0"),
@@ -8528,6 +8596,9 @@ private fun oracleBatch155(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "18446744073709551615", "0", "-2147483648", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "18446744073709551615", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "18446744073709551615", "0", "-2147483647", "HALF_EVEN", "0"),
+)
+
+private fun oracleBatch157(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "18446744073709551615", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "18446744073709551615", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "18446744073709551615", "0", "2147483647", "HALF_EVEN", "0"),
@@ -8542,9 +8613,6 @@ private fun oracleBatch155(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-18446744073709551615", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-18446744073709551615", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-18446744073709551615", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch156(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-18446744073709551615", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-18446744073709551615", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-18446744073709551615", "0", "0", "HALF_EVEN", "-18446744073709551615"),
@@ -8581,6 +8649,9 @@ private fun oracleBatch156(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "18446744073709551616", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "18446744073709551616", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "18446744073709551616", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch158(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "18446744073709551616", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "18446744073709551616", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "18446744073709551616", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -8595,9 +8666,6 @@ private fun oracleBatch156(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "18446744073709551616", "0", "63", "HALF_EVEN", "27670116110564327424"),
     arrayOf("I", "testBit", "18446744073709551616", "0", "64", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "18446744073709551616", "0", "64", "HALF_EVEN", "18446744073709551616"),
-)
-
-private fun oracleBatch157(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "18446744073709551616", "0", "64", "HALF_EVEN", "0"),
     arrayOf("I", "flipBit", "18446744073709551616", "0", "64", "HALF_EVEN", "0"),
     arrayOf("I", "testBit", "18446744073709551616", "0", "65", "HALF_EVEN", "false"),
@@ -8634,6 +8702,9 @@ private fun oracleBatch157(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-18446744073709551616", "0", "63", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-18446744073709551616", "0", "63", "HALF_EVEN", "-9223372036854775808"),
     arrayOf("I", "clearBit", "-18446744073709551616", "0", "63", "HALF_EVEN", "-18446744073709551616"),
+)
+
+private fun oracleBatch159(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-18446744073709551616", "0", "63", "HALF_EVEN", "-9223372036854775808"),
     arrayOf("I", "testBit", "-18446744073709551616", "0", "64", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-18446744073709551616", "0", "64", "HALF_EVEN", "-18446744073709551616"),
@@ -8648,9 +8719,6 @@ private fun oracleBatch157(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-18446744073709551616", "0", "94", "HALF_EVEN", "-19807040647012828472095539200"),
     arrayOf("I", "flipBit", "-18446744073709551616", "0", "94", "HALF_EVEN", "-19807040647012828472095539200"),
     arrayOf("I", "testBit", "-18446744073709551616", "0", "2147483647", "HALF_EVEN", "true"),
-)
-
-private fun oracleBatch158(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-18446744073709551616", "0", "-2147483648", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-18446744073709551616", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-18446744073709551616", "0", "-2147483647", "HALF_EVEN", "-1"),
@@ -8687,6 +8755,9 @@ private fun oracleBatch158(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "18446744073709551617", "0", "65", "HALF_EVEN", "55340232221128654849"),
     arrayOf("I", "testBit", "18446744073709551617", "0", "94", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "18446744073709551617", "0", "94", "HALF_EVEN", "19807040647012828472095539201"),
+)
+
+private fun oracleBatch160(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "18446744073709551617", "0", "94", "HALF_EVEN", "18446744073709551617"),
     arrayOf("I", "flipBit", "18446744073709551617", "0", "94", "HALF_EVEN", "19807040647012828472095539201"),
     arrayOf("I", "testBit", "18446744073709551617", "0", "2147483647", "HALF_EVEN", "false"),
@@ -8701,9 +8772,6 @@ private fun oracleBatch158(): List<Array<String>> = listOf(
     arrayOf("I", "bits", "-18446744073709551617", "0", "0", "HALF_EVEN", "65|1|0"),
     arrayOf("I", "not", "-18446744073709551617", "0", "0", "HALF_EVEN", "18446744073709551616"),
     arrayOf("I", "testBit", "-18446744073709551617", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch159(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-18446744073709551617", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-18446744073709551617", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-18446744073709551617", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -8740,6 +8808,9 @@ private fun oracleBatch159(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-18446744073709551617", "0", "2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "andNot", "-18446744073709551617", "36893488147419103231", "0", "HALF_EVEN", "-36893488147419103232"),
     arrayOf("I", "andNot", "-18446744073709551617", "-36893488147419103231", "0", "HALF_EVEN", "18446744073709551614"),
+)
+
+private fun oracleBatch161(): List<Array<String>> = listOf(
     arrayOf("I", "bits", "618970019642690137449562111", "0", "0", "HALF_EVEN", "89|89|0"),
     arrayOf("I", "not", "618970019642690137449562111", "0", "0", "HALF_EVEN", "-618970019642690137449562112"),
     arrayOf("I", "testBit", "618970019642690137449562111", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -8754,9 +8825,6 @@ private fun oracleBatch159(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "618970019642690137449562111", "0", "0", "HALF_EVEN", "618970019642690137449562111"),
     arrayOf("I", "clearBit", "618970019642690137449562111", "0", "0", "HALF_EVEN", "618970019642690137449562110"),
     arrayOf("I", "flipBit", "618970019642690137449562111", "0", "0", "HALF_EVEN", "618970019642690137449562110"),
-)
-
-private fun oracleBatch160(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "618970019642690137449562111", "0", "88", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "618970019642690137449562111", "0", "88", "HALF_EVEN", "618970019642690137449562111"),
     arrayOf("I", "clearBit", "618970019642690137449562111", "0", "88", "HALF_EVEN", "309485009821345068724781055"),
@@ -8793,6 +8861,9 @@ private fun oracleBatch160(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-618970019642690137449562111", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-618970019642690137449562111", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-618970019642690137449562111", "0", "0", "HALF_EVEN", "true"),
+)
+
+private fun oracleBatch162(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-618970019642690137449562111", "0", "0", "HALF_EVEN", "-618970019642690137449562111"),
     arrayOf("I", "clearBit", "-618970019642690137449562111", "0", "0", "HALF_EVEN", "-618970019642690137449562112"),
     arrayOf("I", "flipBit", "-618970019642690137449562111", "0", "0", "HALF_EVEN", "-618970019642690137449562112"),
@@ -8807,9 +8878,6 @@ private fun oracleBatch160(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-618970019642690137449562111", "0", "90", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-618970019642690137449562111", "0", "90", "HALF_EVEN", "-618970019642690137449562111"),
     arrayOf("I", "clearBit", "-618970019642690137449562111", "0", "90", "HALF_EVEN", "-1856910058928070412348686335"),
-)
-
-private fun oracleBatch161(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-618970019642690137449562111", "0", "90", "HALF_EVEN", "-1856910058928070412348686335"),
     arrayOf("I", "testBit", "-618970019642690137449562111", "0", "119", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-618970019642690137449562111", "0", "119", "HALF_EVEN", "-618970019642690137449562111"),
@@ -8846,6 +8914,9 @@ private fun oracleBatch161(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "618970019642690137449562112", "0", "89", "HALF_EVEN", "618970019642690137449562112"),
     arrayOf("I", "clearBit", "618970019642690137449562112", "0", "89", "HALF_EVEN", "0"),
     arrayOf("I", "flipBit", "618970019642690137449562112", "0", "89", "HALF_EVEN", "0"),
+)
+
+private fun oracleBatch163(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "618970019642690137449562112", "0", "90", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "618970019642690137449562112", "0", "90", "HALF_EVEN", "1856910058928070412348686336"),
     arrayOf("I", "clearBit", "618970019642690137449562112", "0", "90", "HALF_EVEN", "618970019642690137449562112"),
@@ -8860,9 +8931,6 @@ private fun oracleBatch161(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "618970019642690137449562112", "0", "-2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "618970019642690137449562112", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "618970019642690137449562112", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch162(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "618970019642690137449562112", "0", "2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "618970019642690137449562112", "1237940039285380274899124223", "0", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "618970019642690137449562112", "-1237940039285380274899124223", "0", "HALF_EVEN", "618970019642690137449562112"),
@@ -8899,6 +8967,9 @@ private fun oracleBatch162(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-618970019642690137449562112", "0", "2147483647", "HALF_EVEN", "true"),
     arrayOf("I", "shift", "-618970019642690137449562112", "0", "-2147483648", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-618970019642690137449562112", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch164(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-618970019642690137449562112", "0", "-2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-618970019642690137449562112", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-618970019642690137449562112", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
@@ -8913,9 +8984,6 @@ private fun oracleBatch162(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "618970019642690137449562113", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "618970019642690137449562113", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "618970019642690137449562113", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch163(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "618970019642690137449562113", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "618970019642690137449562113", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "618970019642690137449562113", "0", "0", "HALF_EVEN", "true"),
@@ -8952,6 +9020,9 @@ private fun oracleBatch163(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-618970019642690137449562113", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-618970019642690137449562113", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-618970019642690137449562113", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch165(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-618970019642690137449562113", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-618970019642690137449562113", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-618970019642690137449562113", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -8966,9 +9037,6 @@ private fun oracleBatch163(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-618970019642690137449562113", "0", "88", "HALF_EVEN", "-928455029464035206174343169"),
     arrayOf("I", "flipBit", "-618970019642690137449562113", "0", "88", "HALF_EVEN", "-928455029464035206174343169"),
     arrayOf("I", "testBit", "-618970019642690137449562113", "0", "89", "HALF_EVEN", "false"),
-)
-
-private fun oracleBatch164(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-618970019642690137449562113", "0", "89", "HALF_EVEN", "-1"),
     arrayOf("I", "clearBit", "-618970019642690137449562113", "0", "89", "HALF_EVEN", "-618970019642690137449562113"),
     arrayOf("I", "flipBit", "-618970019642690137449562113", "0", "89", "HALF_EVEN", "-1"),
@@ -9005,6 +9073,9 @@ private fun oracleBatch164(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "1237940039285380274899124223", "0", "0", "HALF_EVEN", "1237940039285380274899124222"),
     arrayOf("I", "testBit", "1237940039285380274899124223", "0", "89", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "1237940039285380274899124223", "0", "89", "HALF_EVEN", "1237940039285380274899124223"),
+)
+
+private fun oracleBatch166(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "1237940039285380274899124223", "0", "89", "HALF_EVEN", "618970019642690137449562111"),
     arrayOf("I", "flipBit", "1237940039285380274899124223", "0", "89", "HALF_EVEN", "618970019642690137449562111"),
     arrayOf("I", "testBit", "1237940039285380274899124223", "0", "90", "HALF_EVEN", "false"),
@@ -9019,9 +9090,6 @@ private fun oracleBatch164(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "1237940039285380274899124223", "0", "120", "HALF_EVEN", "1329227997022855912189187335179468799"),
     arrayOf("I", "clearBit", "1237940039285380274899124223", "0", "120", "HALF_EVEN", "1237940039285380274899124223"),
     arrayOf("I", "flipBit", "1237940039285380274899124223", "0", "120", "HALF_EVEN", "1329227997022855912189187335179468799"),
-)
-
-private fun oracleBatch165(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "1237940039285380274899124223", "0", "2147483647", "HALF_EVEN", "false"),
     arrayOf("I", "shift", "1237940039285380274899124223", "0", "-2147483648", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "1237940039285380274899124223", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -9058,6 +9126,9 @@ private fun oracleBatch165(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-1237940039285380274899124223", "0", "91", "HALF_EVEN", "-3713820117856140824697372671"),
     arrayOf("I", "flipBit", "-1237940039285380274899124223", "0", "91", "HALF_EVEN", "-3713820117856140824697372671"),
     arrayOf("I", "testBit", "-1237940039285380274899124223", "0", "120", "HALF_EVEN", "true"),
+)
+
+private fun oracleBatch167(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-1237940039285380274899124223", "0", "120", "HALF_EVEN", "-1237940039285380274899124223"),
     arrayOf("I", "clearBit", "-1237940039285380274899124223", "0", "120", "HALF_EVEN", "-1329227997022855912189187335179468799"),
     arrayOf("I", "flipBit", "-1237940039285380274899124223", "0", "120", "HALF_EVEN", "-1329227997022855912189187335179468799"),
@@ -9072,9 +9143,6 @@ private fun oracleBatch165(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "-1237940039285380274899124223", "-2475880078570760549798248447", "0", "HALF_EVEN", "1237940039285380274899124224"),
     arrayOf("I", "bits", "1237940039285380274899124224", "0", "0", "HALF_EVEN", "91|1|90"),
     arrayOf("I", "not", "1237940039285380274899124224", "0", "0", "HALF_EVEN", "-1237940039285380274899124225"),
-)
-
-private fun oracleBatch166(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "1237940039285380274899124224", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "1237940039285380274899124224", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "1237940039285380274899124224", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -9111,6 +9179,9 @@ private fun oracleBatch166(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "1237940039285380274899124224", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "1237940039285380274899124224", "0", "2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "1237940039285380274899124224", "2475880078570760549798248447", "0", "HALF_EVEN", "0"),
+)
+
+private fun oracleBatch168(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "1237940039285380274899124224", "-2475880078570760549798248447", "0", "HALF_EVEN", "1237940039285380274899124224"),
     arrayOf("I", "bits", "-1237940039285380274899124224", "0", "0", "HALF_EVEN", "90|90|90"),
     arrayOf("I", "not", "-1237940039285380274899124224", "0", "0", "HALF_EVEN", "1237940039285380274899124223"),
@@ -9125,9 +9196,6 @@ private fun oracleBatch166(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-1237940039285380274899124224", "0", "0", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-1237940039285380274899124224", "0", "0", "HALF_EVEN", "-1237940039285380274899124223"),
     arrayOf("I", "clearBit", "-1237940039285380274899124224", "0", "0", "HALF_EVEN", "-1237940039285380274899124224"),
-)
-
-private fun oracleBatch167(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-1237940039285380274899124224", "0", "0", "HALF_EVEN", "-1237940039285380274899124223"),
     arrayOf("I", "testBit", "-1237940039285380274899124224", "0", "89", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-1237940039285380274899124224", "0", "89", "HALF_EVEN", "-618970019642690137449562112"),
@@ -9164,6 +9232,9 @@ private fun oracleBatch167(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "1237940039285380274899124225", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "1237940039285380274899124225", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "1237940039285380274899124225", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch169(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "1237940039285380274899124225", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "1237940039285380274899124225", "0", "0", "HALF_EVEN", "1237940039285380274899124225"),
     arrayOf("I", "clearBit", "1237940039285380274899124225", "0", "0", "HALF_EVEN", "1237940039285380274899124224"),
@@ -9178,9 +9249,6 @@ private fun oracleBatch167(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "1237940039285380274899124225", "0", "90", "HALF_EVEN", "1"),
     arrayOf("I", "testBit", "1237940039285380274899124225", "0", "91", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "1237940039285380274899124225", "0", "91", "HALF_EVEN", "3713820117856140824697372673"),
-)
-
-private fun oracleBatch168(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "1237940039285380274899124225", "0", "91", "HALF_EVEN", "1237940039285380274899124225"),
     arrayOf("I", "flipBit", "1237940039285380274899124225", "0", "91", "HALF_EVEN", "3713820117856140824697372673"),
     arrayOf("I", "testBit", "1237940039285380274899124225", "0", "120", "HALF_EVEN", "false"),
@@ -9217,6 +9285,9 @@ private fun oracleBatch168(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-1237940039285380274899124225", "0", "90", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-1237940039285380274899124225", "0", "90", "HALF_EVEN", "-1"),
     arrayOf("I", "clearBit", "-1237940039285380274899124225", "0", "90", "HALF_EVEN", "-1237940039285380274899124225"),
+)
+
+private fun oracleBatch170(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-1237940039285380274899124225", "0", "90", "HALF_EVEN", "-1"),
     arrayOf("I", "testBit", "-1237940039285380274899124225", "0", "91", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-1237940039285380274899124225", "0", "91", "HALF_EVEN", "-1237940039285380274899124225"),
@@ -9231,9 +9302,6 @@ private fun oracleBatch168(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-1237940039285380274899124225", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-1237940039285380274899124225", "0", "-2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-1237940039285380274899124225", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch169(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-1237940039285380274899124225", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "-1237940039285380274899124225", "0", "2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "andNot", "-1237940039285380274899124225", "2475880078570760549798248447", "0", "HALF_EVEN", "-2475880078570760549798248448"),
@@ -9270,6 +9338,9 @@ private fun oracleBatch169(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "2475880078570760549798248447", "0", "121", "HALF_EVEN", "2658455994045711824378374670358937599"),
     arrayOf("I", "testBit", "2475880078570760549798248447", "0", "2147483647", "HALF_EVEN", "false"),
     arrayOf("I", "shift", "2475880078570760549798248447", "0", "-2147483648", "HALF_EVEN", "0"),
+)
+
+private fun oracleBatch171(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "2475880078570760549798248447", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "2475880078570760549798248447", "0", "-2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "2475880078570760549798248447", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
@@ -9284,9 +9355,6 @@ private fun oracleBatch169(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-2475880078570760549798248447", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-2475880078570760549798248447", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-2475880078570760549798248447", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch170(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-2475880078570760549798248447", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-2475880078570760549798248447", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-2475880078570760549798248447", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -9323,6 +9391,9 @@ private fun oracleBatch170(): List<Array<String>> = listOf(
     arrayOf("I", "not", "2475880078570760549798248448", "0", "0", "HALF_EVEN", "-2475880078570760549798248449"),
     arrayOf("I", "testBit", "2475880078570760549798248448", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "2475880078570760549798248448", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch172(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "2475880078570760549798248448", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "2475880078570760549798248448", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "2475880078570760549798248448", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -9337,9 +9408,6 @@ private fun oracleBatch170(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "2475880078570760549798248448", "0", "90", "HALF_EVEN", "3713820117856140824697372672"),
     arrayOf("I", "clearBit", "2475880078570760549798248448", "0", "90", "HALF_EVEN", "2475880078570760549798248448"),
     arrayOf("I", "flipBit", "2475880078570760549798248448", "0", "90", "HALF_EVEN", "3713820117856140824697372672"),
-)
-
-private fun oracleBatch171(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "2475880078570760549798248448", "0", "91", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "2475880078570760549798248448", "0", "91", "HALF_EVEN", "2475880078570760549798248448"),
     arrayOf("I", "clearBit", "2475880078570760549798248448", "0", "91", "HALF_EVEN", "0"),
@@ -9376,6 +9444,9 @@ private fun oracleBatch171(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-2475880078570760549798248448", "0", "0", "HALF_EVEN", "-2475880078570760549798248448"),
     arrayOf("I", "flipBit", "-2475880078570760549798248448", "0", "0", "HALF_EVEN", "-2475880078570760549798248447"),
     arrayOf("I", "testBit", "-2475880078570760549798248448", "0", "90", "HALF_EVEN", "false"),
+)
+
+private fun oracleBatch173(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-2475880078570760549798248448", "0", "90", "HALF_EVEN", "-1237940039285380274899124224"),
     arrayOf("I", "clearBit", "-2475880078570760549798248448", "0", "90", "HALF_EVEN", "-2475880078570760549798248448"),
     arrayOf("I", "flipBit", "-2475880078570760549798248448", "0", "90", "HALF_EVEN", "-1237940039285380274899124224"),
@@ -9390,9 +9461,6 @@ private fun oracleBatch171(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-2475880078570760549798248448", "0", "121", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-2475880078570760549798248448", "0", "121", "HALF_EVEN", "-2475880078570760549798248448"),
     arrayOf("I", "clearBit", "-2475880078570760549798248448", "0", "121", "HALF_EVEN", "-2658455994045711824378374670358937600"),
-)
-
-private fun oracleBatch172(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-2475880078570760549798248448", "0", "121", "HALF_EVEN", "-2658455994045711824378374670358937600"),
     arrayOf("I", "testBit", "-2475880078570760549798248448", "0", "2147483647", "HALF_EVEN", "true"),
     arrayOf("I", "shift", "-2475880078570760549798248448", "0", "-2147483648", "HALF_EVEN", "-1"),
@@ -9429,6 +9497,9 @@ private fun oracleBatch172(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "2475880078570760549798248449", "0", "92", "HALF_EVEN", "7427640235712281649394745345"),
     arrayOf("I", "clearBit", "2475880078570760549798248449", "0", "92", "HALF_EVEN", "2475880078570760549798248449"),
     arrayOf("I", "flipBit", "2475880078570760549798248449", "0", "92", "HALF_EVEN", "7427640235712281649394745345"),
+)
+
+private fun oracleBatch174(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "2475880078570760549798248449", "0", "121", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "2475880078570760549798248449", "0", "121", "HALF_EVEN", "2658455994045711824378374670358937601"),
     arrayOf("I", "clearBit", "2475880078570760549798248449", "0", "121", "HALF_EVEN", "2475880078570760549798248449"),
@@ -9443,9 +9514,6 @@ private fun oracleBatch172(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "2475880078570760549798248449", "4951760157141521099596496895", "0", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "2475880078570760549798248449", "-4951760157141521099596496895", "0", "HALF_EVEN", "2475880078570760549798248448"),
     arrayOf("I", "bits", "-2475880078570760549798248449", "0", "0", "HALF_EVEN", "92|1|0"),
-)
-
-private fun oracleBatch173(): List<Array<String>> = listOf(
     arrayOf("I", "not", "-2475880078570760549798248449", "0", "0", "HALF_EVEN", "2475880078570760549798248448"),
     arrayOf("I", "testBit", "-2475880078570760549798248449", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-2475880078570760549798248449", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -9482,6 +9550,9 @@ private fun oracleBatch173(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-2475880078570760549798248449", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-2475880078570760549798248449", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "-2475880078570760549798248449", "0", "2147483647", "HALF_EVEN", "-1"),
+)
+
+private fun oracleBatch175(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "-2475880078570760549798248449", "4951760157141521099596496895", "0", "HALF_EVEN", "-4951760157141521099596496896"),
     arrayOf("I", "andNot", "-2475880078570760549798248449", "-4951760157141521099596496895", "0", "HALF_EVEN", "2475880078570760549798248446"),
     arrayOf("I", "bits", "170141183460469231731687303715884105727", "0", "0", "HALF_EVEN", "127|127|0"),
@@ -9496,9 +9567,6 @@ private fun oracleBatch173(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "170141183460469231731687303715884105727", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "170141183460469231731687303715884105727", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "170141183460469231731687303715884105727", "0", "0", "HALF_EVEN", "170141183460469231731687303715884105727"),
-)
-
-private fun oracleBatch174(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "170141183460469231731687303715884105727", "0", "0", "HALF_EVEN", "170141183460469231731687303715884105726"),
     arrayOf("I", "flipBit", "170141183460469231731687303715884105727", "0", "0", "HALF_EVEN", "170141183460469231731687303715884105726"),
     arrayOf("I", "testBit", "170141183460469231731687303715884105727", "0", "126", "HALF_EVEN", "true"),
@@ -9535,6 +9603,9 @@ private fun oracleBatch174(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-170141183460469231731687303715884105727", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-170141183460469231731687303715884105727", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-170141183460469231731687303715884105727", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch176(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-170141183460469231731687303715884105727", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-170141183460469231731687303715884105727", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-170141183460469231731687303715884105727", "0", "0", "HALF_EVEN", "-170141183460469231731687303715884105727"),
@@ -9549,9 +9620,6 @@ private fun oracleBatch174(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-170141183460469231731687303715884105727", "0", "127", "HALF_EVEN", "-340282366920938463463374607431768211455"),
     arrayOf("I", "flipBit", "-170141183460469231731687303715884105727", "0", "127", "HALF_EVEN", "-340282366920938463463374607431768211455"),
     arrayOf("I", "testBit", "-170141183460469231731687303715884105727", "0", "128", "HALF_EVEN", "true"),
-)
-
-private fun oracleBatch175(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-170141183460469231731687303715884105727", "0", "128", "HALF_EVEN", "-170141183460469231731687303715884105727"),
     arrayOf("I", "clearBit", "-170141183460469231731687303715884105727", "0", "128", "HALF_EVEN", "-510423550381407695195061911147652317183"),
     arrayOf("I", "flipBit", "-170141183460469231731687303715884105727", "0", "128", "HALF_EVEN", "-510423550381407695195061911147652317183"),
@@ -9588,6 +9656,9 @@ private fun oracleBatch175(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "170141183460469231731687303715884105728", "0", "126", "HALF_EVEN", "255211775190703847597530955573826158592"),
     arrayOf("I", "testBit", "170141183460469231731687303715884105728", "0", "127", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "170141183460469231731687303715884105728", "0", "127", "HALF_EVEN", "170141183460469231731687303715884105728"),
+)
+
+private fun oracleBatch177(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "170141183460469231731687303715884105728", "0", "127", "HALF_EVEN", "0"),
     arrayOf("I", "flipBit", "170141183460469231731687303715884105728", "0", "127", "HALF_EVEN", "0"),
     arrayOf("I", "testBit", "170141183460469231731687303715884105728", "0", "128", "HALF_EVEN", "false"),
@@ -9602,9 +9673,6 @@ private fun oracleBatch175(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "170141183460469231731687303715884105728", "0", "-2147483648", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "170141183460469231731687303715884105728", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "170141183460469231731687303715884105728", "0", "-2147483647", "HALF_EVEN", "0"),
-)
-
-private fun oracleBatch176(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "170141183460469231731687303715884105728", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "170141183460469231731687303715884105728", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "170141183460469231731687303715884105728", "0", "2147483647", "HALF_EVEN", "0"),
@@ -9641,6 +9709,9 @@ private fun oracleBatch176(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-170141183460469231731687303715884105728", "0", "157", "HALF_EVEN", "-182687704836504048235929835821222681172875673600"),
     arrayOf("I", "flipBit", "-170141183460469231731687303715884105728", "0", "157", "HALF_EVEN", "-182687704836504048235929835821222681172875673600"),
     arrayOf("I", "testBit", "-170141183460469231731687303715884105728", "0", "2147483647", "HALF_EVEN", "true"),
+)
+
+private fun oracleBatch178(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-170141183460469231731687303715884105728", "0", "-2147483648", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-170141183460469231731687303715884105728", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-170141183460469231731687303715884105728", "0", "-2147483647", "HALF_EVEN", "-1"),
@@ -9655,9 +9726,6 @@ private fun oracleBatch176(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "170141183460469231731687303715884105729", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "170141183460469231731687303715884105729", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "170141183460469231731687303715884105729", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch177(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "170141183460469231731687303715884105729", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "170141183460469231731687303715884105729", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "170141183460469231731687303715884105729", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -9694,6 +9762,9 @@ private fun oracleBatch177(): List<Array<String>> = listOf(
     arrayOf("I", "bits", "-170141183460469231731687303715884105729", "0", "0", "HALF_EVEN", "128|1|0"),
     arrayOf("I", "not", "-170141183460469231731687303715884105729", "0", "0", "HALF_EVEN", "170141183460469231731687303715884105728"),
     arrayOf("I", "testBit", "-170141183460469231731687303715884105729", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch179(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-170141183460469231731687303715884105729", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-170141183460469231731687303715884105729", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-170141183460469231731687303715884105729", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -9708,9 +9779,6 @@ private fun oracleBatch177(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-170141183460469231731687303715884105729", "0", "126", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-170141183460469231731687303715884105729", "0", "126", "HALF_EVEN", "-170141183460469231731687303715884105729"),
     arrayOf("I", "clearBit", "-170141183460469231731687303715884105729", "0", "126", "HALF_EVEN", "-255211775190703847597530955573826158593"),
-)
-
-private fun oracleBatch178(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-170141183460469231731687303715884105729", "0", "126", "HALF_EVEN", "-255211775190703847597530955573826158593"),
     arrayOf("I", "testBit", "-170141183460469231731687303715884105729", "0", "127", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-170141183460469231731687303715884105729", "0", "127", "HALF_EVEN", "-1"),
@@ -9747,6 +9815,9 @@ private fun oracleBatch178(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "340282366920938463463374607431768211455", "0", "0", "HALF_EVEN", "340282366920938463463374607431768211455"),
     arrayOf("I", "clearBit", "340282366920938463463374607431768211455", "0", "0", "HALF_EVEN", "340282366920938463463374607431768211454"),
     arrayOf("I", "flipBit", "340282366920938463463374607431768211455", "0", "0", "HALF_EVEN", "340282366920938463463374607431768211454"),
+)
+
+private fun oracleBatch180(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "340282366920938463463374607431768211455", "0", "127", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "340282366920938463463374607431768211455", "0", "127", "HALF_EVEN", "340282366920938463463374607431768211455"),
     arrayOf("I", "clearBit", "340282366920938463463374607431768211455", "0", "127", "HALF_EVEN", "170141183460469231731687303715884105727"),
@@ -9761,9 +9832,6 @@ private fun oracleBatch178(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "340282366920938463463374607431768211455", "0", "129", "HALF_EVEN", "1020847100762815390390123822295304634367"),
     arrayOf("I", "testBit", "340282366920938463463374607431768211455", "0", "158", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "340282366920938463463374607431768211455", "0", "158", "HALF_EVEN", "365375409673008096471859671642445362345751347199"),
-)
-
-private fun oracleBatch179(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "340282366920938463463374607431768211455", "0", "158", "HALF_EVEN", "340282366920938463463374607431768211455"),
     arrayOf("I", "flipBit", "340282366920938463463374607431768211455", "0", "158", "HALF_EVEN", "365375409673008096471859671642445362345751347199"),
     arrayOf("I", "testBit", "340282366920938463463374607431768211455", "0", "2147483647", "HALF_EVEN", "false"),
@@ -9800,6 +9868,9 @@ private fun oracleBatch179(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-340282366920938463463374607431768211455", "0", "129", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-340282366920938463463374607431768211455", "0", "129", "HALF_EVEN", "-340282366920938463463374607431768211455"),
     arrayOf("I", "clearBit", "-340282366920938463463374607431768211455", "0", "129", "HALF_EVEN", "-1020847100762815390390123822295304634367"),
+)
+
+private fun oracleBatch181(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-340282366920938463463374607431768211455", "0", "129", "HALF_EVEN", "-1020847100762815390390123822295304634367"),
     arrayOf("I", "testBit", "-340282366920938463463374607431768211455", "0", "158", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-340282366920938463463374607431768211455", "0", "158", "HALF_EVEN", "-340282366920938463463374607431768211455"),
@@ -9814,9 +9885,6 @@ private fun oracleBatch179(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-340282366920938463463374607431768211455", "0", "2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "andNot", "-340282366920938463463374607431768211455", "680564733841876926926749214863536422911", "0", "HALF_EVEN", "-680564733841876926926749214863536422912"),
     arrayOf("I", "andNot", "-340282366920938463463374607431768211455", "-680564733841876926926749214863536422911", "0", "HALF_EVEN", "340282366920938463463374607431768211456"),
-)
-
-private fun oracleBatch180(): List<Array<String>> = listOf(
     arrayOf("I", "bits", "340282366920938463463374607431768211456", "0", "0", "HALF_EVEN", "129|1|128"),
     arrayOf("I", "not", "340282366920938463463374607431768211456", "0", "0", "HALF_EVEN", "-340282366920938463463374607431768211457"),
     arrayOf("I", "testBit", "340282366920938463463374607431768211456", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -9853,6 +9921,9 @@ private fun oracleBatch180(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "340282366920938463463374607431768211456", "0", "-2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "340282366920938463463374607431768211456", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "340282366920938463463374607431768211456", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch182(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "340282366920938463463374607431768211456", "0", "2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "340282366920938463463374607431768211456", "680564733841876926926749214863536422911", "0", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "340282366920938463463374607431768211456", "-680564733841876926926749214863536422911", "0", "HALF_EVEN", "340282366920938463463374607431768211456"),
@@ -9867,9 +9938,6 @@ private fun oracleBatch180(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-340282366920938463463374607431768211456", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-340282366920938463463374607431768211456", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-340282366920938463463374607431768211456", "0", "0", "HALF_EVEN", "false"),
-)
-
-private fun oracleBatch181(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-340282366920938463463374607431768211456", "0", "0", "HALF_EVEN", "-340282366920938463463374607431768211455"),
     arrayOf("I", "clearBit", "-340282366920938463463374607431768211456", "0", "0", "HALF_EVEN", "-340282366920938463463374607431768211456"),
     arrayOf("I", "flipBit", "-340282366920938463463374607431768211456", "0", "0", "HALF_EVEN", "-340282366920938463463374607431768211455"),
@@ -9906,6 +9974,9 @@ private fun oracleBatch181(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "340282366920938463463374607431768211457", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "340282366920938463463374607431768211457", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "340282366920938463463374607431768211457", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch183(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "340282366920938463463374607431768211457", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "340282366920938463463374607431768211457", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "340282366920938463463374607431768211457", "0", "0", "HALF_EVEN", "true"),
@@ -9920,9 +9991,6 @@ private fun oracleBatch181(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "340282366920938463463374607431768211457", "0", "128", "HALF_EVEN", "340282366920938463463374607431768211457"),
     arrayOf("I", "clearBit", "340282366920938463463374607431768211457", "0", "128", "HALF_EVEN", "1"),
     arrayOf("I", "flipBit", "340282366920938463463374607431768211457", "0", "128", "HALF_EVEN", "1"),
-)
-
-private fun oracleBatch182(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "340282366920938463463374607431768211457", "0", "129", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "340282366920938463463374607431768211457", "0", "129", "HALF_EVEN", "1020847100762815390390123822295304634369"),
     arrayOf("I", "clearBit", "340282366920938463463374607431768211457", "0", "129", "HALF_EVEN", "340282366920938463463374607431768211457"),
@@ -9959,6 +10027,9 @@ private fun oracleBatch182(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-340282366920938463463374607431768211457", "0", "127", "HALF_EVEN", "-510423550381407695195061911147652317185"),
     arrayOf("I", "flipBit", "-340282366920938463463374607431768211457", "0", "127", "HALF_EVEN", "-510423550381407695195061911147652317185"),
     arrayOf("I", "testBit", "-340282366920938463463374607431768211457", "0", "128", "HALF_EVEN", "false"),
+)
+
+private fun oracleBatch184(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-340282366920938463463374607431768211457", "0", "128", "HALF_EVEN", "-1"),
     arrayOf("I", "clearBit", "-340282366920938463463374607431768211457", "0", "128", "HALF_EVEN", "-340282366920938463463374607431768211457"),
     arrayOf("I", "flipBit", "-340282366920938463463374607431768211457", "0", "128", "HALF_EVEN", "-1"),
@@ -9973,9 +10044,6 @@ private fun oracleBatch182(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-340282366920938463463374607431768211457", "0", "2147483647", "HALF_EVEN", "true"),
     arrayOf("I", "shift", "-340282366920938463463374607431768211457", "0", "-2147483648", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-340282366920938463463374607431768211457", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch183(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-340282366920938463463374607431768211457", "0", "-2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-340282366920938463463374607431768211457", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-340282366920938463463374607431768211457", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
@@ -10012,6 +10080,9 @@ private fun oracleBatch183(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "57896044618658097711785492504343953926634992332820282019728792003956564819967", "0", "285", "HALF_EVEN", "62165404609119374888080878730138097516900972776303457012878279131373729130523236761599"),
     arrayOf("I", "clearBit", "57896044618658097711785492504343953926634992332820282019728792003956564819967", "0", "285", "HALF_EVEN", "57896044618658097711785492504343953926634992332820282019728792003956564819967"),
     arrayOf("I", "flipBit", "57896044618658097711785492504343953926634992332820282019728792003956564819967", "0", "285", "HALF_EVEN", "62165404609119374888080878730138097516900972776303457012878279131373729130523236761599"),
+)
+
+private fun oracleBatch185(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "57896044618658097711785492504343953926634992332820282019728792003956564819967", "0", "2147483647", "HALF_EVEN", "false"),
     arrayOf("I", "shift", "57896044618658097711785492504343953926634992332820282019728792003956564819967", "0", "-2147483648", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "57896044618658097711785492504343953926634992332820282019728792003956564819967", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -10026,9 +10097,6 @@ private fun oracleBatch183(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819967", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819967", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819967", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch184(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819967", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819967", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819967", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -10065,6 +10133,9 @@ private fun oracleBatch184(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "-57896044618658097711785492504343953926634992332820282019728792003956564819967", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "HALF_EVEN", "57896044618658097711785492504343953926634992332820282019728792003956564819968"),
     arrayOf("I", "bits", "57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "0", "HALF_EVEN", "256|1|255"),
     arrayOf("I", "not", "57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "0", "HALF_EVEN", "-57896044618658097711785492504343953926634992332820282019728792003956564819969"),
+)
+
+private fun oracleBatch186(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -10079,9 +10150,6 @@ private fun oracleBatch184(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "0", "HALF_EVEN", "57896044618658097711785492504343953926634992332820282019728792003956564819969"),
     arrayOf("I", "testBit", "57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "254", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "254", "HALF_EVEN", "86844066927987146567678238756515930889952488499230423029593188005934847229952"),
-)
-
-private fun oracleBatch185(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "254", "HALF_EVEN", "57896044618658097711785492504343953926634992332820282019728792003956564819968"),
     arrayOf("I", "flipBit", "57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "254", "HALF_EVEN", "86844066927987146567678238756515930889952488499230423029593188005934847229952"),
     arrayOf("I", "testBit", "57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "255", "HALF_EVEN", "true"),
@@ -10118,6 +10186,9 @@ private fun oracleBatch185(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "0", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "0", "HALF_EVEN", "-57896044618658097711785492504343953926634992332820282019728792003956564819967"),
     arrayOf("I", "clearBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "0", "HALF_EVEN", "-57896044618658097711785492504343953926634992332820282019728792003956564819968"),
+)
+
+private fun oracleBatch187(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "0", "HALF_EVEN", "-57896044618658097711785492504343953926634992332820282019728792003956564819967"),
     arrayOf("I", "testBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "254", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "254", "HALF_EVEN", "-28948022309329048855892746252171976963317496166410141009864396001978282409984"),
@@ -10132,9 +10203,6 @@ private fun oracleBatch185(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "256", "HALF_EVEN", "-173688133855974293135356477513031861779904976998460846059186376011869694459904"),
     arrayOf("I", "flipBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "256", "HALF_EVEN", "-173688133855974293135356477513031861779904976998460846059186376011869694459904"),
     arrayOf("I", "testBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "285", "HALF_EVEN", "true"),
-)
-
-private fun oracleBatch186(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "285", "HALF_EVEN", "-57896044618658097711785492504343953926634992332820282019728792003956564819968"),
     arrayOf("I", "clearBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "285", "HALF_EVEN", "-62165404609119374888080878730138097516900972776303457012878279131373729130523236761600"),
     arrayOf("I", "flipBit", "-57896044618658097711785492504343953926634992332820282019728792003956564819968", "0", "285", "HALF_EVEN", "-62165404609119374888080878730138097516900972776303457012878279131373729130523236761600"),
@@ -10171,6 +10239,9 @@ private fun oracleBatch186(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "255", "HALF_EVEN", "1"),
     arrayOf("I", "testBit", "57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "256", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "256", "HALF_EVEN", "173688133855974293135356477513031861779904976998460846059186376011869694459905"),
+)
+
+private fun oracleBatch188(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "256", "HALF_EVEN", "57896044618658097711785492504343953926634992332820282019728792003956564819969"),
     arrayOf("I", "flipBit", "57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "256", "HALF_EVEN", "173688133855974293135356477513031861779904976998460846059186376011869694459905"),
     arrayOf("I", "testBit", "57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "285", "HALF_EVEN", "false"),
@@ -10185,9 +10256,6 @@ private fun oracleBatch186(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "57896044618658097711785492504343953926634992332820282019728792003956564819969", "115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "HALF_EVEN", "0"),
-)
-
-private fun oracleBatch187(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "57896044618658097711785492504343953926634992332820282019728792003956564819969", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "HALF_EVEN", "57896044618658097711785492504343953926634992332820282019728792003956564819968"),
     arrayOf("I", "bits", "-57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "0", "HALF_EVEN", "256|1|0"),
     arrayOf("I", "not", "-57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "0", "HALF_EVEN", "57896044618658097711785492504343953926634992332820282019728792003956564819968"),
@@ -10224,6 +10292,9 @@ private fun oracleBatch187(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "-2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch189(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "-57896044618658097711785492504343953926634992332820282019728792003956564819969", "0", "2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "andNot", "-57896044618658097711785492504343953926634992332820282019728792003956564819969", "115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "HALF_EVEN", "-115792089237316195423570985008687907853269984665640564039457584007913129639936"),
@@ -10238,9 +10309,6 @@ private fun oracleBatch187(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch188(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "0", "HALF_EVEN", "115792089237316195423570985008687907853269984665640564039457584007913129639935"),
     arrayOf("I", "clearBit", "115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "0", "HALF_EVEN", "115792089237316195423570985008687907853269984665640564039457584007913129639934"),
@@ -10277,6 +10345,9 @@ private fun oracleBatch188(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch190(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -10291,9 +10362,6 @@ private fun oracleBatch188(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "256", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "256", "HALF_EVEN", "-115792089237316195423570985008687907853269984665640564039457584007913129639935"),
     arrayOf("I", "clearBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "256", "HALF_EVEN", "-231584178474632390847141970017375815706539969331281128078915168015826259279871"),
-)
-
-private fun oracleBatch189(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "256", "HALF_EVEN", "-231584178474632390847141970017375815706539969331281128078915168015826259279871"),
     arrayOf("I", "testBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "257", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639935", "0", "257", "HALF_EVEN", "-115792089237316195423570985008687907853269984665640564039457584007913129639935"),
@@ -10330,6 +10398,9 @@ private fun oracleBatch189(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "255", "HALF_EVEN", "173688133855974293135356477513031861779904976998460846059186376011869694459904"),
     arrayOf("I", "clearBit", "115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "255", "HALF_EVEN", "115792089237316195423570985008687907853269984665640564039457584007913129639936"),
     arrayOf("I", "flipBit", "115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "255", "HALF_EVEN", "173688133855974293135356477513031861779904976998460846059186376011869694459904"),
+)
+
+private fun oracleBatch191(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "256", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "256", "HALF_EVEN", "115792089237316195423570985008687907853269984665640564039457584007913129639936"),
     arrayOf("I", "clearBit", "115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "256", "HALF_EVEN", "0"),
@@ -10344,9 +10415,6 @@ private fun oracleBatch189(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "286", "HALF_EVEN", "124330809218238749776161757460276195033801945552606914025756558262747458261046473523200"),
     arrayOf("I", "testBit", "115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "2147483647", "HALF_EVEN", "false"),
     arrayOf("I", "shift", "115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "-2147483648", "HALF_EVEN", "0"),
-)
-
-private fun oracleBatch190(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "-2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
@@ -10383,6 +10451,9 @@ private fun oracleBatch190(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "286", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "286", "HALF_EVEN", "-115792089237316195423570985008687907853269984665640564039457584007913129639936"),
     arrayOf("I", "clearBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "286", "HALF_EVEN", "-124330809218238749776161757460276195033801945552606914025756558262747458261046473523200"),
+)
+
+private fun oracleBatch192(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "286", "HALF_EVEN", "-124330809218238749776161757460276195033801945552606914025756558262747458261046473523200"),
     arrayOf("I", "testBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "2147483647", "HALF_EVEN", "true"),
     arrayOf("I", "shift", "-115792089237316195423570985008687907853269984665640564039457584007913129639936", "0", "-2147483648", "HALF_EVEN", "-1"),
@@ -10397,9 +10468,6 @@ private fun oracleBatch190(): List<Array<String>> = listOf(
     arrayOf("I", "not", "115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "0", "HALF_EVEN", "-115792089237316195423570985008687907853269984665640564039457584007913129639938"),
     arrayOf("I", "testBit", "115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch191(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -10436,6 +10504,9 @@ private fun oracleBatch191(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "115792089237316195423570985008687907853269984665640564039457584007913129639937", "231584178474632390847141970017375815706539969331281128078915168015826259279871", "0", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "115792089237316195423570985008687907853269984665640564039457584007913129639937", "-231584178474632390847141970017375815706539969331281128078915168015826259279871", "0", "HALF_EVEN", "115792089237316195423570985008687907853269984665640564039457584007913129639936"),
     arrayOf("I", "bits", "-115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "0", "HALF_EVEN", "257|1|0"),
+)
+
+private fun oracleBatch193(): List<Array<String>> = listOf(
     arrayOf("I", "not", "-115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "0", "HALF_EVEN", "115792089237316195423570985008687907853269984665640564039457584007913129639936"),
     arrayOf("I", "testBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -10450,9 +10521,6 @@ private fun oracleBatch191(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "0", "HALF_EVEN", "-115792089237316195423570985008687907853269984665640564039457584007913129639938"),
     arrayOf("I", "flipBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "0", "HALF_EVEN", "-115792089237316195423570985008687907853269984665640564039457584007913129639938"),
     arrayOf("I", "testBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "255", "HALF_EVEN", "true"),
-)
-
-private fun oracleBatch192(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "255", "HALF_EVEN", "-115792089237316195423570985008687907853269984665640564039457584007913129639937"),
     arrayOf("I", "clearBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "255", "HALF_EVEN", "-173688133855974293135356477513031861779904976998460846059186376011869694459905"),
     arrayOf("I", "flipBit", "-115792089237316195423570985008687907853269984665640564039457584007913129639937", "0", "255", "HALF_EVEN", "-173688133855974293135356477513031861779904976998460846059186376011869694459905"),
@@ -10489,6 +10557,9 @@ private fun oracleBatch192(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "0", "HALF_EVEN", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047"),
+)
+
+private fun oracleBatch194(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "0", "HALF_EVEN", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042046"),
     arrayOf("I", "flipBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "0", "HALF_EVEN", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042046"),
     arrayOf("I", "testBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "510", "HALF_EVEN", "true"),
@@ -10503,9 +10574,6 @@ private fun oracleBatch192(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "512", "HALF_EVEN", "20111711894913895649361037497308769191219048730888590066585342165582646045110320465202811447250355141535047787279729076280630824217919854919650473509126143"),
     arrayOf("I", "clearBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "512", "HALF_EVEN", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047"),
     arrayOf("I", "flipBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "512", "HALF_EVEN", "20111711894913895649361037497308769191219048730888590066585342165582646045110320465202811447250355141535047787279729076280630824217919854919650473509126143"),
-)
-
-private fun oracleBatch193(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "541", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "541", "HALF_EVEN", "7198262077973018177468160162084583473294438453022749523257405605040720850935262607547238586167162520523325170858649361290376251115667820908386909262601086671257599"),
     arrayOf("I", "clearBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "541", "HALF_EVEN", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047"),
@@ -10542,6 +10610,9 @@ private fun oracleBatch193(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "511", "HALF_EVEN", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095"),
     arrayOf("I", "flipBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "511", "HALF_EVEN", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095"),
     arrayOf("I", "testBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "512", "HALF_EVEN", "true"),
+)
+
+private fun oracleBatch195(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "512", "HALF_EVEN", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047"),
     arrayOf("I", "clearBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "512", "HALF_EVEN", "-20111711894913895649361037497308769191219048730888590066585342165582646045110320465202811447250355141535047787279729076280630824217919854919650473509126143"),
     arrayOf("I", "flipBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "512", "HALF_EVEN", "-20111711894913895649361037497308769191219048730888590066585342165582646045110320465202811447250355141535047787279729076280630824217919854919650473509126143"),
@@ -10556,9 +10627,6 @@ private fun oracleBatch193(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "0", "2147483647", "HALF_EVEN", "-1"),
-)
-
-private fun oracleBatch194(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "HALF_EVEN", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096"),
     arrayOf("I", "andNot", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "HALF_EVEN", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048"),
     arrayOf("I", "bits", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048", "0", "0", "HALF_EVEN", "512|1|511"),
@@ -10595,6 +10663,9 @@ private fun oracleBatch194(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048", "0", "-2147483648", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048", "0", "-2147483647", "HALF_EVEN", "0"),
+)
+
+private fun oracleBatch196(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048", "0", "2147483647", "HALF_EVEN", "0"),
@@ -10609,9 +10680,6 @@ private fun oracleBatch194(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch195(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048", "0", "0", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042048", "0", "0", "HALF_EVEN", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042047"),
@@ -10648,6 +10716,9 @@ private fun oracleBatch195(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch197(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -10662,9 +10733,6 @@ private fun oracleBatch195(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "510", "HALF_EVEN", "10055855947456947824680518748654384595609524365444295033292671082791323022555160232601405723625177570767523893639864538140315412108959927459825236754563073"),
     arrayOf("I", "testBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "511", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "511", "HALF_EVEN", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049"),
-)
-
-private fun oracleBatch196(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "511", "HALF_EVEN", "1"),
     arrayOf("I", "flipBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "511", "HALF_EVEN", "1"),
     arrayOf("I", "testBit", "6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "512", "HALF_EVEN", "false"),
@@ -10701,6 +10769,9 @@ private fun oracleBatch196(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "510", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "510", "HALF_EVEN", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049"),
     arrayOf("I", "clearBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "510", "HALF_EVEN", "-10055855947456947824680518748654384595609524365444295033292671082791323022555160232601405723625177570767523893639864538140315412108959927459825236754563073"),
+)
+
+private fun oracleBatch198(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "510", "HALF_EVEN", "-10055855947456947824680518748654384595609524365444295033292671082791323022555160232601405723625177570767523893639864538140315412108959927459825236754563073"),
     arrayOf("I", "testBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "511", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "511", "HALF_EVEN", "-1"),
@@ -10715,9 +10786,6 @@ private fun oracleBatch196(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "541", "HALF_EVEN", "-7198262077973018177468160162084583473294438453022749523257405605040720850935262607547238586167162520523325170858649361290376251115667820908386909262601086671257601"),
     arrayOf("I", "flipBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "541", "HALF_EVEN", "-7198262077973018177468160162084583473294438453022749523257405605040720850935262607547238586167162520523325170858649361290376251115667820908386909262601086671257601"),
     arrayOf("I", "testBit", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "2147483647", "HALF_EVEN", "true"),
-)
-
-private fun oracleBatch197(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "-2147483648", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-6703903964971298549787012499102923063739682910296196688861780721860882015036773488400937149083451713845015929093243025426876941405973284973216824503042049", "0", "-2147483647", "HALF_EVEN", "-1"),
@@ -10754,6 +10822,9 @@ private fun oracleBatch197(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "513", "HALF_EVEN", "40223423789827791298722074994617538382438097461777180133170684331165292090220640930405622894500710283070095574559458152561261648435839709839300947018252287"),
     arrayOf("I", "testBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "542", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "542", "HALF_EVEN", "14396524155946036354936320324169166946588876906045499046514811210081441701870525215094477172334325041046650341717298722580752502231335641816773818525202173342515199"),
+)
+
+private fun oracleBatch199(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "542", "HALF_EVEN", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095"),
     arrayOf("I", "flipBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "542", "HALF_EVEN", "14396524155946036354936320324169166946588876906045499046514811210081441701870525215094477172334325041046650341717298722580752502231335641816773818525202173342515199"),
     arrayOf("I", "testBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "2147483647", "HALF_EVEN", "false"),
@@ -10768,9 +10839,6 @@ private fun oracleBatch197(): List<Array<String>> = listOf(
     arrayOf("I", "bits", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "0", "HALF_EVEN", "512|511|0"),
     arrayOf("I", "not", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "0", "HALF_EVEN", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084094"),
     arrayOf("I", "testBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch198(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -10807,6 +10875,9 @@ private fun oracleBatch198(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "0", "2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "andNot", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168191", "0", "HALF_EVEN", "-26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168192"),
     arrayOf("I", "andNot", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095", "-26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168191", "0", "HALF_EVEN", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096"),
+)
+
+private fun oracleBatch200(): List<Array<String>> = listOf(
     arrayOf("I", "bits", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "0", "HALF_EVEN", "513|1|512"),
     arrayOf("I", "not", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "0", "HALF_EVEN", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097"),
     arrayOf("I", "testBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -10821,9 +10892,6 @@ private fun oracleBatch198(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "0", "HALF_EVEN", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097"),
     arrayOf("I", "clearBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "0", "HALF_EVEN", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096"),
     arrayOf("I", "flipBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "0", "HALF_EVEN", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097"),
-)
-
-private fun oracleBatch199(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "511", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "511", "HALF_EVEN", "20111711894913895649361037497308769191219048730888590066585342165582646045110320465202811447250355141535047787279729076280630824217919854919650473509126144"),
     arrayOf("I", "clearBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "511", "HALF_EVEN", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096"),
@@ -10860,6 +10928,9 @@ private fun oracleBatch199(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "0", "HALF_EVEN", "false"),
+)
+
+private fun oracleBatch201(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "0", "HALF_EVEN", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095"),
     arrayOf("I", "clearBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "0", "HALF_EVEN", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096"),
     arrayOf("I", "flipBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "0", "HALF_EVEN", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084095"),
@@ -10874,9 +10945,6 @@ private fun oracleBatch199(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "513", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "513", "HALF_EVEN", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096"),
     arrayOf("I", "clearBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "513", "HALF_EVEN", "-40223423789827791298722074994617538382438097461777180133170684331165292090220640930405622894500710283070095574559458152561261648435839709839300947018252288"),
-)
-
-private fun oracleBatch200(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "513", "HALF_EVEN", "-40223423789827791298722074994617538382438097461777180133170684331165292090220640930405622894500710283070095574559458152561261648435839709839300947018252288"),
     arrayOf("I", "testBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "542", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096", "0", "542", "HALF_EVEN", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096"),
@@ -10913,6 +10981,9 @@ private fun oracleBatch200(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "512", "HALF_EVEN", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097"),
     arrayOf("I", "clearBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "512", "HALF_EVEN", "1"),
     arrayOf("I", "flipBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "512", "HALF_EVEN", "1"),
+)
+
+private fun oracleBatch202(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "513", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "513", "HALF_EVEN", "40223423789827791298722074994617538382438097461777180133170684331165292090220640930405622894500710283070095574559458152561261648435839709839300947018252289"),
     arrayOf("I", "clearBit", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "513", "HALF_EVEN", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097"),
@@ -10927,9 +10998,6 @@ private fun oracleBatch200(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "-2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch201(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168191", "0", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "-26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168191", "0", "HALF_EVEN", "13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096"),
@@ -10966,6 +11034,9 @@ private fun oracleBatch201(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "2147483647", "HALF_EVEN", "true"),
     arrayOf("I", "shift", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "-2147483648", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch203(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "-2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084097", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
@@ -10980,9 +11051,6 @@ private fun oracleBatch201(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch202(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "0", "HALF_EVEN", "true"),
@@ -11019,6 +11087,9 @@ private fun oracleBatch202(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch204(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -11033,9 +11104,6 @@ private fun oracleBatch202(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "1022", "HALF_EVEN", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607"),
     arrayOf("I", "flipBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "1022", "HALF_EVEN", "-44942328371557897693232629769725618340449424473557664318357520289433168951375240783177119330601884005280028469967848339414697442203604155623211857659868531094441973356216371319075554900311523529863270738021251442209537670585615720368478277635206809290837627671146574559986811484619929076208839082406056034303"),
     arrayOf("I", "testBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "1023", "HALF_EVEN", "true"),
-)
-
-private fun oracleBatch203(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "1023", "HALF_EVEN", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607"),
     arrayOf("I", "clearBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "1023", "HALF_EVEN", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215"),
     arrayOf("I", "flipBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068607", "0", "1023", "HALF_EVEN", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215"),
@@ -11072,6 +11140,9 @@ private fun oracleBatch203(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "0", "HALF_EVEN", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609"),
     arrayOf("I", "testBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1022", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1022", "HALF_EVEN", "134826985114673693079697889309176855021348273420672992955072560868299506854125722349531357991805652015840085409903545018244092326610812466869635572979605593283325920068649113957226664700934570589589812214063754326628613011756847161105434832905620427872512883013439723679960434453859787228626517247218168102912"),
+)
+
+private fun oracleBatch205(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1022", "HALF_EVEN", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608"),
     arrayOf("I", "flipBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1022", "HALF_EVEN", "134826985114673693079697889309176855021348273420672992955072560868299506854125722349531357991805652015840085409903545018244092326610812466869635572979605593283325920068649113957226664700934570589589812214063754326628613011756847161105434832905620427872512883013439723679960434453859787228626517247218168102912"),
     arrayOf("I", "testBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1023", "HALF_EVEN", "true"),
@@ -11086,9 +11157,6 @@ private fun oracleBatch203(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1053", "HALF_EVEN", "96512915370851710324589788076989030372255272708874941455861169676100998090765974596686058816566490560535374810790470334572713326829059895272903024810694931674830743656210283270043687263096376686971660645424070824683902021641695684674279076601767287320741900228574845621077621878853524155318085914948007994651679129600"),
     arrayOf("I", "clearBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1053", "HALF_EVEN", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608"),
     arrayOf("I", "flipBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1053", "HALF_EVEN", "96512915370851710324589788076989030372255272708874941455861169676100998090765974596686058816566490560535374810790470334572713326829059895272903024810694931674830743656210283270043687263096376686971660645424070824683902021641695684674279076601767287320741900228574845621077621878853524155318085914948007994651679129600"),
-)
-
-private fun oracleBatch204(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "2147483647", "HALF_EVEN", "false"),
     arrayOf("I", "shift", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "-2147483648", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -11125,6 +11193,9 @@ private fun oracleBatch204(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1024", "HALF_EVEN", "-269653970229347386159395778618353710042696546841345985910145121736599013708251444699062715983611304031680170819807090036488184653221624933739271145959211186566651840137298227914453329401869141179179624428127508653257226023513694322210869665811240855745025766026879447359920868907719574457253034494436336205824"),
     arrayOf("I", "flipBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1024", "HALF_EVEN", "-269653970229347386159395778618353710042696546841345985910145121736599013708251444699062715983611304031680170819807090036488184653221624933739271145959211186566651840137298227914453329401869141179179624428127508653257226023513694322210869665811240855745025766026879447359920868907719574457253034494436336205824"),
     arrayOf("I", "testBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1053", "HALF_EVEN", "true"),
+)
+
+private fun oracleBatch206(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1053", "HALF_EVEN", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608"),
     arrayOf("I", "clearBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1053", "HALF_EVEN", "-96512915370851710324589788076989030372255272708874941455861169676100998090765974596686058816566490560535374810790470334572713326829059895272903024810694931674830743656210283270043687263096376686971660645424070824683902021641695684674279076601767287320741900228574845621077621878853524155318085914948007994651679129600"),
     arrayOf("I", "flipBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "0", "1053", "HALF_EVEN", "-96512915370851710324589788076989030372255272708874941455861169676100998090765974596686058816566490560535374810790470334572713326829059895272903024810694931674830743656210283270043687263096376686971660645424070824683902021641695684674279076601767287320741900228574845621077621878853524155318085914948007994651679129600"),
@@ -11139,9 +11210,6 @@ private fun oracleBatch204(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "HALF_EVEN", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608"),
     arrayOf("I", "bits", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "0", "HALF_EVEN", "1024|2|0"),
     arrayOf("I", "not", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "0", "HALF_EVEN", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068610"),
-)
-
-private fun oracleBatch205(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
@@ -11178,6 +11246,9 @@ private fun oracleBatch205(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "andNot", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "HALF_EVEN", "0"),
+)
+
+private fun oracleBatch207(): List<Array<String>> = listOf(
     arrayOf("I", "andNot", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "HALF_EVEN", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608"),
     arrayOf("I", "bits", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "0", "HALF_EVEN", "1024|1|0"),
     arrayOf("I", "not", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "0", "HALF_EVEN", "89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608"),
@@ -11192,9 +11263,6 @@ private fun oracleBatch205(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "0", "HALF_EVEN", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609"),
     arrayOf("I", "clearBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "0", "HALF_EVEN", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068610"),
-)
-
-private fun oracleBatch206(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "0", "HALF_EVEN", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068610"),
     arrayOf("I", "testBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "1022", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609", "0", "1022", "HALF_EVEN", "-89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068609"),
@@ -11231,6 +11299,9 @@ private fun oracleBatch206(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch208(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "0", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "0", "HALF_EVEN", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215"),
     arrayOf("I", "clearBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "0", "HALF_EVEN", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137214"),
@@ -11245,9 +11316,6 @@ private fun oracleBatch206(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "1024", "HALF_EVEN", "359538626972463181545861038157804946723595395788461314546860162315465351611001926265416954644815072042240227759742786715317579537628833244985694861278948248755535786849730970552604439202492188238906165904170011537676301364684925762947826221081654474326701021369172596479894491876959432609670712659248448274431"),
     arrayOf("I", "testBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "1025", "HALF_EVEN", "false"),
     arrayOf("I", "setBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "1025", "HALF_EVEN", "539307940458694772318791557236707420085393093682691971820290243473198027416502889398125431967222608063360341639614180072976369306443249867478542291918422373133303680274596455828906658803738282358359248856255017306514452047027388644421739331622481711490051532053758894719841737815439148914506068988872672411647"),
-)
-
-private fun oracleBatch207(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "1025", "HALF_EVEN", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215"),
     arrayOf("I", "flipBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "1025", "HALF_EVEN", "539307940458694772318791557236707420085393093682691971820290243473198027416502889398125431967222608063360341639614180072976369306443249867478542291918422373133303680274596455828906658803738282358359248856255017306514452047027388644421739331622481711490051532053758894719841737815439148914506068988872672411647"),
     arrayOf("I", "testBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "1054", "HALF_EVEN", "false"),
@@ -11284,6 +11352,9 @@ private fun oracleBatch207(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "1024", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "1024", "HALF_EVEN", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215"),
     arrayOf("I", "clearBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "1024", "HALF_EVEN", "-359538626972463181545861038157804946723595395788461314546860162315465351611001926265416954644815072042240227759742786715317579537628833244985694861278948248755535786849730970552604439202492188238906165904170011537676301364684925762947826221081654474326701021369172596479894491876959432609670712659248448274431"),
+)
+
+private fun oracleBatch209(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "1024", "HALF_EVEN", "-359538626972463181545861038157804946723595395788461314546860162315465351611001926265416954644815072042240227759742786715317579537628833244985694861278948248755535786849730970552604439202492188238906165904170011537676301364684925762947826221081654474326701021369172596479894491876959432609670712659248448274431"),
     arrayOf("I", "testBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "1025", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "1025", "HALF_EVEN", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215"),
@@ -11298,9 +11369,6 @@ private fun oracleBatch207(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "-2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "shiftRight", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch208(): List<Array<String>> = listOf(
     arrayOf("I", "shift", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "2147483647", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shiftRight", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "0", "2147483647", "HALF_EVEN", "-1"),
     arrayOf("I", "andNot", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215", "359538626972463181545861038157804946723595395788461314546860162315465351611001926265416954644815072042240227759742786715317579537628833244985694861278948248755535786849730970552604439202492188238906165904170011537676301364684925762947826221081654474326701021369172596479894491876959432609670712659248448274431", "0", "HALF_EVEN", "-359538626972463181545861038157804946723595395788461314546860162315465351611001926265416954644815072042240227759742786715317579537628833244985694861278948248755535786849730970552604439202492188238906165904170011537676301364684925762947826221081654474326701021369172596479894491876959432609670712659248448274432"),
@@ -11337,6 +11405,9 @@ private fun oracleBatch208(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216", "0", "1054", "HALF_EVEN", "193025830741703420649179576153978060744510545417749882911722339352201996181531949193372117633132981121070749621580940669145426653658119790545806049621389863349661487312420566540087374526192753373943321290848141649367804043283391369348558153203534574641483800457149691242155243757707048310636171829896015989303358259200"),
     arrayOf("I", "testBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216", "0", "2147483647", "HALF_EVEN", "false"),
     arrayOf("I", "shift", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216", "0", "-2147483648", "HALF_EVEN", "0"),
+)
+
+private fun oracleBatch210(): List<Array<String>> = listOf(
     arrayOf("I", "shiftRight", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "shift", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216", "0", "-2147483647", "HALF_EVEN", "0"),
     arrayOf("I", "shiftRight", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216", "0", "-2147483647", "HALF_EVEN", "!ArithmeticException"),
@@ -11351,9 +11422,6 @@ private fun oracleBatch208(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch209(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "clearBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -11390,6 +11458,9 @@ private fun oracleBatch209(): List<Array<String>> = listOf(
     arrayOf("I", "not", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "0", "HALF_EVEN", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137218"),
     arrayOf("I", "testBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "setBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch211(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "flipBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "-2147483648", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("I", "testBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "-1", "HALF_EVEN", "!ArithmeticException"),
@@ -11404,9 +11475,6 @@ private fun oracleBatch209(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1023", "HALF_EVEN", "269653970229347386159395778618353710042696546841345985910145121736599013708251444699062715983611304031680170819807090036488184653221624933739271145959211186566651840137298227914453329401869141179179624428127508653257226023513694322210869665811240855745025766026879447359920868907719574457253034494436336205825"),
     arrayOf("I", "clearBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1023", "HALF_EVEN", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217"),
     arrayOf("I", "flipBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1023", "HALF_EVEN", "269653970229347386159395778618353710042696546841345985910145121736599013708251444699062715983611304031680170819807090036488184653221624933739271145959211186566651840137298227914453329401869141179179624428127508653257226023513694322210869665811240855745025766026879447359920868907719574457253034494436336205825"),
-)
-
-private fun oracleBatch210(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1024", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1024", "HALF_EVEN", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217"),
     arrayOf("I", "clearBit", "179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1024", "HALF_EVEN", "1"),
@@ -11443,6 +11511,9 @@ private fun oracleBatch210(): List<Array<String>> = listOf(
     arrayOf("I", "clearBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "0", "HALF_EVEN", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137218"),
     arrayOf("I", "flipBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "0", "HALF_EVEN", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137218"),
     arrayOf("I", "testBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1023", "HALF_EVEN", "true"),
+)
+
+private fun oracleBatch212(): List<Array<String>> = listOf(
     arrayOf("I", "setBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1023", "HALF_EVEN", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217"),
     arrayOf("I", "clearBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1023", "HALF_EVEN", "-269653970229347386159395778618353710042696546841345985910145121736599013708251444699062715983611304031680170819807090036488184653221624933739271145959211186566651840137298227914453329401869141179179624428127508653257226023513694322210869665811240855745025766026879447359920868907719574457253034494436336205825"),
     arrayOf("I", "flipBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1023", "HALF_EVEN", "-269653970229347386159395778618353710042696546841345985910145121736599013708251444699062715983611304031680170819807090036488184653221624933739271145959211186566651840137298227914453329401869141179179624428127508653257226023513694322210869665811240855745025766026879447359920868907719574457253034494436336205825"),
@@ -11457,9 +11528,6 @@ private fun oracleBatch210(): List<Array<String>> = listOf(
     arrayOf("I", "testBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1054", "HALF_EVEN", "true"),
     arrayOf("I", "setBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1054", "HALF_EVEN", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217"),
     arrayOf("I", "clearBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1054", "HALF_EVEN", "-193025830741703420649179576153978060744510545417749882911722339352201996181531949193372117633132981121070749621580940669145426653658119790545806049621389863349661487312420566540087374526192753373943321290848141649367804043283391369348558153203534574641483800457149691242155243757707048310636171829896015989303358259201"),
-)
-
-private fun oracleBatch211(): List<Array<String>> = listOf(
     arrayOf("I", "flipBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "1054", "HALF_EVEN", "-193025830741703420649179576153978060744510545417749882911722339352201996181531949193372117633132981121070749621580940669145426653658119790545806049621389863349661487312420566540087374526192753373943321290848141649367804043283391369348558153203534574641483800457149691242155243757707048310636171829896015989303358259201"),
     arrayOf("I", "testBit", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "2147483647", "HALF_EVEN", "true"),
     arrayOf("I", "shift", "-179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137217", "0", "-2147483648", "HALF_EVEN", "-1"),
@@ -11496,6 +11564,9 @@ private fun oracleBatch211(): List<Array<String>> = listOf(
     arrayOf("D", "subtract", "0.00", "-182196924356.873043767720", "5", "UP", "1.8220E+11"),
     arrayOf("D", "multiply", "0.00", "-182196924356.873043767720", "5", "UP", "0E-14"),
     arrayOf("D", "divide", "0.00", "-182196924356.873043767720", "5", "UP", "0E+10"),
+)
+
+private fun oracleBatch213(): List<Array<String>> = listOf(
     arrayOf("D", "exactDivide", "0.00", "-182196924356.873043767720", "0", "HALF_EVEN", "0E+10"),
     arrayOf("D", "integral", "0.00", "-182196924356.873043767720", "5", "UP", "0E+10"),
     arrayOf("D", "remainder", "0.00", "-182196924356.873043767720", "5", "UP", "0E+10|0.00"),
@@ -11510,9 +11581,6 @@ private fun oracleBatch211(): List<Array<String>> = listOf(
     arrayOf("D", "integerExact", "0.00", "0", "0", "HALF_EVEN", "0"),
     arrayOf("D", "parse", "0E+20", "0", "0", "HALF_EVEN", "0E+20"),
     arrayOf("D", "plain", "0E+20", "0", "0", "HALF_EVEN", "0"),
-)
-
-private fun oracleBatch212(): List<Array<String>> = listOf(
     arrayOf("D", "engineering", "0E+20", "0", "0", "HALF_EVEN", "0.0E+21"),
     arrayOf("D", "add", "0E+20", "-0.00001085386129490507689751738", "9", "HALF_EVEN", "-0.0000108538613"),
     arrayOf("D", "subtract", "0E+20", "-0.00001085386129490507689751738", "9", "HALF_EVEN", "0.0000108538613"),
@@ -11549,6 +11617,9 @@ private fun oracleBatch212(): List<Array<String>> = listOf(
     arrayOf("D", "double", "0E-8", "0", "0", "HALF_EVEN", "0"),
     arrayOf("D", "float", "0E-8", "0", "0", "HALF_EVEN", "0"),
     arrayOf("D", "integerExact", "0E-8", "0", "0", "HALF_EVEN", "0"),
+)
+
+private fun oracleBatch214(): List<Array<String>> = listOf(
     arrayOf("D", "parse", "0E-9", "0", "0", "HALF_EVEN", "0E-9"),
     arrayOf("D", "plain", "0E-9", "0", "0", "HALF_EVEN", "0.000000000"),
     arrayOf("D", "engineering", "0E-9", "0", "0", "HALF_EVEN", "0E-9"),
@@ -11563,9 +11634,6 @@ private fun oracleBatch212(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "0E-9", "0", "-4", "HALF_DOWN", "0E+4"),
     arrayOf("D", "divideScale", "0E-9", "0.130167404721827593060314", "-4", "HALF_DOWN", "0E+4"),
     arrayOf("D", "strip", "0E-9", "0", "0", "HALF_EVEN", "0"),
-)
-
-private fun oracleBatch213(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0E-9", "0", "11", "HALF_DOWN", "0.0000"),
     arrayOf("D", "pow", "0E-9", "7", "11", "HALF_DOWN", "0E-63"),
     arrayOf("D", "double", "0E-9", "0", "0", "HALF_EVEN", "0"),
@@ -11602,6 +11670,9 @@ private fun oracleBatch213(): List<Array<String>> = listOf(
     arrayOf("D", "remainder", "1", "1.004394827263921759517451E-13", "11", "HALF_UP", "!ArithmeticException"),
     arrayOf("D", "round", "1", "0", "11", "HALF_UP", "1"),
     arrayOf("D", "scale", "1", "0", "-10", "HALF_UP", "0E+10"),
+)
+
+private fun oracleBatch215(): List<Array<String>> = listOf(
     arrayOf("D", "divideScale", "1", "1.004394827263921759517451E-13", "-10", "HALF_UP", "9.96E+12"),
     arrayOf("D", "strip", "1", "0", "0", "HALF_EVEN", "1"),
     arrayOf("D", "sqrt", "1", "0", "11", "HALF_UP", "1"),
@@ -11616,9 +11687,6 @@ private fun oracleBatch213(): List<Array<String>> = listOf(
     arrayOf("D", "subtract", "-1", "-3.14071313830440223174251E+34", "15", "FLOOR", "3.14071313830440E+34"),
     arrayOf("D", "multiply", "-1", "-3.14071313830440223174251E+34", "15", "FLOOR", "3.14071313830440E+34"),
     arrayOf("D", "divide", "-1", "-3.14071313830440223174251E+34", "15", "FLOOR", "3.18399024668606E-35"),
-)
-
-private fun oracleBatch214(): List<Array<String>> = listOf(
     arrayOf("D", "exactDivide", "-1", "-3.14071313830440223174251E+34", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "-1", "-3.14071313830440223174251E+34", "15", "FLOOR", "0E-11"),
     arrayOf("D", "remainder", "-1", "-3.14071313830440223174251E+34", "15", "FLOOR", "0E-11|-1"),
@@ -11655,6 +11723,9 @@ private fun oracleBatch214(): List<Array<String>> = listOf(
     arrayOf("D", "engineering", "-2.500", "0", "0", "HALF_EVEN", "-2.500"),
     arrayOf("D", "add", "-2.500", "5.34151708308630953115065", "16", "HALF_DOWN", "2.841517083086310"),
     arrayOf("D", "subtract", "-2.500", "5.34151708308630953115065", "16", "HALF_DOWN", "-7.841517083086310"),
+)
+
+private fun oracleBatch216(): List<Array<String>> = listOf(
     arrayOf("D", "multiply", "-2.500", "5.34151708308630953115065", "16", "HALF_DOWN", "-13.35379270771577"),
     arrayOf("D", "divide", "-2.500", "5.34151708308630953115065", "16", "HALF_DOWN", "-0.4680318271219511"),
     arrayOf("D", "exactDivide", "-2.500", "5.34151708308630953115065", "0", "HALF_EVEN", "!ArithmeticException"),
@@ -11669,9 +11740,6 @@ private fun oracleBatch214(): List<Array<String>> = listOf(
     arrayOf("D", "double", "-2.500", "0", "0", "HALF_EVEN", "-4610560118520545280"),
     arrayOf("D", "float", "-2.500", "0", "0", "HALF_EVEN", "-1071644672"),
     arrayOf("D", "integerExact", "-2.500", "0", "0", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch215(): List<Array<String>> = listOf(
     arrayOf("D", "parse", "0.000001", "0", "0", "HALF_EVEN", "0.000001"),
     arrayOf("D", "plain", "0.000001", "0", "0", "HALF_EVEN", "0.000001"),
     arrayOf("D", "engineering", "0.000001", "0", "0", "HALF_EVEN", "0.000001"),
@@ -11708,6 +11776,9 @@ private fun oracleBatch215(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0000001", "0", "20", "CEILING", "0.0003162277660168379332"),
     arrayOf("D", "pow", "0.0000001", "7", "20", "CEILING", "1E-49"),
     arrayOf("D", "double", "0.0000001", "0", "0", "HALF_EVEN", "4502148214488346440"),
+)
+
+private fun oracleBatch217(): List<Array<String>> = listOf(
     arrayOf("D", "float", "0.0000001", "0", "0", "HALF_EVEN", "869711765"),
     arrayOf("D", "integerExact", "0.0000001", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "parse", "9.9999999", "0", "0", "HALF_EVEN", "9.9999999"),
@@ -11722,9 +11793,6 @@ private fun oracleBatch215(): List<Array<String>> = listOf(
     arrayOf("D", "remainder", "9.9999999", "-1.140558047925221485921858E+32", "11", "UNNECESSARY", "0E-15|9.9999999"),
     arrayOf("D", "round", "9.9999999", "0", "11", "UNNECESSARY", "9.9999999"),
     arrayOf("D", "scale", "9.9999999", "0", "18", "UNNECESSARY", "9.999999900000000000"),
-)
-
-private fun oracleBatch216(): List<Array<String>> = listOf(
     arrayOf("D", "divideScale", "9.9999999", "-1.140558047925221485921858E+32", "18", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "strip", "9.9999999", "0", "0", "HALF_EVEN", "9.9999999"),
     arrayOf("D", "sqrt", "9.9999999", "0", "11", "UNNECESSARY", "!ArithmeticException"),
@@ -11761,6 +11829,9 @@ private fun oracleBatch216(): List<Array<String>> = listOf(
     arrayOf("D", "exactDivide", "1000.000", "101589958331859.0638389332", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "1000.000", "101589958331859.0638389332", "12", "UNNECESSARY", "0E+7"),
     arrayOf("D", "remainder", "1000.000", "101589958331859.0638389332", "12", "UNNECESSARY", "0E+7|1000.000"),
+)
+
+private fun oracleBatch218(): List<Array<String>> = listOf(
     arrayOf("D", "round", "1000.000", "0", "12", "UNNECESSARY", "1000.000"),
     arrayOf("D", "scale", "1000.000", "0", "25", "UNNECESSARY", "1000.0000000000000000000000000"),
     arrayOf("D", "divideScale", "1000.000", "101589958331859.0638389332", "25", "UNNECESSARY", "!ArithmeticException"),
@@ -11775,9 +11846,6 @@ private fun oracleBatch216(): List<Array<String>> = listOf(
     arrayOf("D", "engineering", "1.013287742384957093281609154919E-8", "0", "0", "HALF_EVEN", "10.13287742384957093281609154919E-9"),
     arrayOf("D", "add", "1.013287742384957093281609154919E-8", "9.44064342234673295908535E+30", "13", "HALF_DOWN", "9.440643422347E+30"),
     arrayOf("D", "subtract", "1.013287742384957093281609154919E-8", "9.44064342234673295908535E+30", "13", "HALF_DOWN", "-9.440643422347E+30"),
-)
-
-private fun oracleBatch217(): List<Array<String>> = listOf(
     arrayOf("D", "multiply", "1.013287742384957093281609154919E-8", "9.44064342234673295908535E+30", "13", "HALF_DOWN", "9.566088260091E+22"),
     arrayOf("D", "divide", "1.013287742384957093281609154919E-8", "9.44064342234673295908535E+30", "13", "HALF_DOWN", "1.073324875280E-39"),
     arrayOf("D", "exactDivide", "1.013287742384957093281609154919E-8", "9.44064342234673295908535E+30", "0", "HALF_EVEN", "!ArithmeticException"),
@@ -11814,6 +11882,9 @@ private fun oracleBatch217(): List<Array<String>> = listOf(
     arrayOf("D", "parse", "-889097908.19983726510633554504", "0", "0", "HALF_EVEN", "-889097908.19983726510633554504"),
     arrayOf("D", "plain", "-889097908.19983726510633554504", "0", "0", "HALF_EVEN", "-889097908.19983726510633554504"),
     arrayOf("D", "engineering", "-889097908.19983726510633554504", "0", "0", "HALF_EVEN", "-889097908.19983726510633554504"),
+)
+
+private fun oracleBatch219(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-889097908.19983726510633554504", "11.44762769476991200649409", "21", "DOWN", "-889097896.752209570336"),
     arrayOf("D", "subtract", "-889097908.19983726510633554504", "11.44762769476991200649409", "21", "DOWN", "-889097919.647464959876"),
     arrayOf("D", "multiply", "-889097908.19983726510633554504", "11.44762769476991200649409", "21", "DOWN", "-10178061837.2704539167"),
@@ -11828,9 +11899,6 @@ private fun oracleBatch217(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "-889097908.19983726510633554504", "0", "21", "DOWN", "!ArithmeticException"),
     arrayOf("D", "pow", "-889097908.19983726510633554504", "7", "21", "DOWN", "-4.39184616308800037927E+62"),
     arrayOf("D", "double", "-889097908.19983726510633554504", "0", "0", "HALF_EVEN", "-4482630534662876092"),
-)
-
-private fun oracleBatch218(): List<Array<String>> = listOf(
     arrayOf("D", "float", "-889097908.19983726510633554504", "0", "0", "HALF_EVEN", "-833357253"),
     arrayOf("D", "integerExact", "-889097908.19983726510633554504", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "parse", "6.82290220203023603228607135172E+41", "0", "0", "HALF_EVEN", "6.82290220203023603228607135172E+41"),
@@ -11867,6 +11935,9 @@ private fun oracleBatch218(): List<Array<String>> = listOf(
     arrayOf("D", "divideScale", "-1.68327370875959223814819438846E+49", "-40081962990947430766091.3", "21", "HALF_UP", "419957902046803954314505126.233467095028441002442"),
     arrayOf("D", "strip", "-1.68327370875959223814819438846E+49", "0", "0", "HALF_EVEN", "-1.68327370875959223814819438846E+49"),
     arrayOf("D", "sqrt", "-1.68327370875959223814819438846E+49", "0", "21", "HALF_UP", "!ArithmeticException"),
+)
+
+private fun oracleBatch220(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "-1.68327370875959223814819438846E+49", "7", "21", "HALF_UP", "-3.82898073513054327154E+344"),
     arrayOf("D", "double", "-1.68327370875959223814819438846E+49", "0", "0", "HALF_EVEN", "-3880122743940138333"),
     arrayOf("D", "float", "-1.68327370875959223814819438846E+49", "0", "0", "HALF_EVEN", "-8388608"),
@@ -11881,9 +11952,6 @@ private fun oracleBatch218(): List<Array<String>> = listOf(
     arrayOf("D", "exactDivide", "-7.75876240075936257524080342146E+55", "-0.0246091662438551562083770", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "-7.75876240075936257524080342146E+55", "-0.0246091662438551562083770", "23", "FLOOR", "!ArithmeticException"),
     arrayOf("D", "remainder", "-7.75876240075936257524080342146E+55", "-0.0246091662438551562083770", "23", "FLOOR", "!ArithmeticException"),
-)
-
-private fun oracleBatch219(): List<Array<String>> = listOf(
     arrayOf("D", "round", "-7.75876240075936257524080342146E+55", "0", "23", "FLOOR", "-7.7587624007593625752409E+55"),
     arrayOf("D", "scale", "-7.75876240075936257524080342146E+55", "0", "-2", "FLOOR", "-7.75876240075936257524080342146000000000000000000000000E+55"),
     arrayOf("D", "divideScale", "-7.75876240075936257524080342146E+55", "-0.0246091662438551562083770", "-2", "FLOOR", "3.1527936882854391897221221431292448553289868426548801752E+57"),
@@ -11920,6 +11988,9 @@ private fun oracleBatch219(): List<Array<String>> = listOf(
     arrayOf("D", "multiply", "-961573681680438188962.869112792", "-114062651641.914337170849", "0", "DOWN", "109679643881548847191575219450075.559893772123955400408"),
     arrayOf("D", "divide", "-961573681680438188962.869112792", "-114062651641.914337170849", "0", "DOWN", "!ArithmeticException"),
     arrayOf("D", "exactDivide", "-961573681680438188962.869112792", "-114062651641.914337170849", "0", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch221(): List<Array<String>> = listOf(
     arrayOf("D", "integral", "-961573681680438188962.869112792", "-114062651641.914337170849", "0", "DOWN", "8430223809"),
     arrayOf("D", "remainder", "-961573681680438188962.869112792", "-114062651641.914337170849", "0", "DOWN", "8430223809|-91099001406.724172248159"),
     arrayOf("D", "round", "-961573681680438188962.869112792", "0", "0", "DOWN", "-961573681680438188962.869112792"),
@@ -11934,9 +12005,6 @@ private fun oracleBatch219(): List<Array<String>> = listOf(
     arrayOf("D", "parse", "-0.529950864617882815192256429721", "0", "0", "HALF_EVEN", "-0.529950864617882815192256429721"),
     arrayOf("D", "plain", "-0.529950864617882815192256429721", "0", "0", "HALF_EVEN", "-0.529950864617882815192256429721"),
     arrayOf("D", "engineering", "-0.529950864617882815192256429721", "0", "0", "HALF_EVEN", "-0.529950864617882815192256429721"),
-)
-
-private fun oracleBatch220(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-0.529950864617882815192256429721", "-1.147430615665679378748836E+35", "11", "FLOOR", "-1.1474306157E+35"),
     arrayOf("D", "subtract", "-0.529950864617882815192256429721", "-1.147430615665679378748836E+35", "11", "FLOOR", "1.1474306156E+35"),
     arrayOf("D", "multiply", "-0.529950864617882815192256429721", "-1.147430615665679378748836E+35", "11", "FLOOR", "6.0808184686E+34"),
@@ -11973,6 +12041,9 @@ private fun oracleBatch220(): List<Array<String>> = listOf(
     arrayOf("D", "float", "-3.21486362277264333344635759182E-9", "0", "0", "HALF_EVEN", "-1319310213"),
     arrayOf("D", "integerExact", "-3.21486362277264333344635759182E-9", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "parse", "2.89086115118547718274465872620E-12", "0", "0", "HALF_EVEN", "2.89086115118547718274465872620E-12"),
+)
+
+private fun oracleBatch222(): List<Array<String>> = listOf(
     arrayOf("D", "plain", "2.89086115118547718274465872620E-12", "0", "0", "HALF_EVEN", "0.00000000000289086115118547718274465872620"),
     arrayOf("D", "engineering", "2.89086115118547718274465872620E-12", "0", "0", "HALF_EVEN", "2.89086115118547718274465872620E-12"),
     arrayOf("D", "add", "2.89086115118547718274465872620E-12", "1.099497537411623601085194E+29", "18", "HALF_EVEN", "1.09949753741162360E+29"),
@@ -11987,9 +12058,6 @@ private fun oracleBatch220(): List<Array<String>> = listOf(
     arrayOf("D", "divideScale", "2.89086115118547718274465872620E-12", "1.099497537411623601085194E+29", "7", "HALF_EVEN", "0E-7"),
     arrayOf("D", "strip", "2.89086115118547718274465872620E-12", "0", "0", "HALF_EVEN", "2.8908611511854771827446587262E-12"),
     arrayOf("D", "sqrt", "2.89086115118547718274465872620E-12", "0", "18", "HALF_EVEN", "0.0000017002532608954106"),
-)
-
-private fun oracleBatch221(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "2.89086115118547718274465872620E-12", "7", "18", "HALF_EVEN", "1.68729348751495406E-81"),
     arrayOf("D", "double", "2.89086115118547718274465872620E-12", "0", "0", "HALF_EVEN", "4434195859239331827"),
     arrayOf("D", "float", "2.89086115118547718274465872620E-12", "0", "0", "HALF_EVEN", "743140640"),
@@ -12026,6 +12094,9 @@ private fun oracleBatch221(): List<Array<String>> = listOf(
     arrayOf("D", "round", "-5321.54615696439450239317662027", "0", "24", "HALF_UP", "-5321.54615696439450239318"),
     arrayOf("D", "scale", "-5321.54615696439450239317662027", "0", "17", "HALF_UP", "-5321.54615696439450239"),
     arrayOf("D", "divideScale", "-5321.54615696439450239317662027", "6.50145554478858368692095E+43", "17", "HALF_UP", "0E-17"),
+)
+
+private fun oracleBatch223(): List<Array<String>> = listOf(
     arrayOf("D", "strip", "-5321.54615696439450239317662027", "0", "0", "HALF_EVEN", "-5321.54615696439450239317662027"),
     arrayOf("D", "sqrt", "-5321.54615696439450239317662027", "0", "24", "HALF_UP", "!ArithmeticException"),
     arrayOf("D", "pow", "-5321.54615696439450239317662027", "7", "24", "HALF_UP", "-1.20855058745068357461668E+26"),
@@ -12040,9 +12111,6 @@ private fun oracleBatch221(): List<Array<String>> = listOf(
     arrayOf("D", "multiply", "-81315710167.740772542604614494", "-17.7726831598744053089094", "22", "HALF_UP", "1445198352731.434381914"),
     arrayOf("D", "divide", "-81315710167.740772542604614494", "-17.7726831598744053089094", "22", "HALF_UP", "4575319856.673538337396"),
     arrayOf("D", "exactDivide", "-81315710167.740772542604614494", "-17.7726831598744053089094", "0", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch222(): List<Array<String>> = listOf(
     arrayOf("D", "integral", "-81315710167.740772542604614494", "-17.7726831598744053089094", "22", "HALF_UP", "4575319856"),
     arrayOf("D", "remainder", "-81315710167.740772542604614494", "-17.7726831598744053089094", "22", "HALF_UP", "4575319856|-11.9705834665596229689536"),
     arrayOf("D", "round", "-81315710167.740772542604614494", "0", "22", "HALF_UP", "-81315710167.74077254260"),
@@ -12079,6 +12147,9 @@ private fun oracleBatch222(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-423623458294794953884111408423", "1.007673588982076446085315E+41", "5", "DOWN", "1.0076E+41"),
     arrayOf("D", "subtract", "-423623458294794953884111408423", "1.007673588982076446085315E+41", "5", "DOWN", "-1.0076E+41"),
     arrayOf("D", "multiply", "-423623458294794953884111408423", "1.007673588982076446085315E+41", "5", "DOWN", "-4.2687E+70"),
+)
+
+private fun oracleBatch224(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "-423623458294794953884111408423", "1.007673588982076446085315E+41", "5", "DOWN", "-4.2039E-12"),
     arrayOf("D", "exactDivide", "-423623458294794953884111408423", "1.007673588982076446085315E+41", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "-423623458294794953884111408423", "1.007673588982076446085315E+41", "5", "DOWN", "0E-17"),
@@ -12093,9 +12164,6 @@ private fun oracleBatch222(): List<Array<String>> = listOf(
     arrayOf("D", "float", "-423623458294794953884111408423", "0", "0", "HALF_EVEN", "-257222236"),
     arrayOf("D", "integerExact", "-423623458294794953884111408423", "0", "0", "HALF_EVEN", "-423623458294794953884111408423"),
     arrayOf("D", "parse", "476490008837756915704587052077", "0", "0", "HALF_EVEN", "476490008837756915704587052077"),
-)
-
-private fun oracleBatch223(): List<Array<String>> = listOf(
     arrayOf("D", "plain", "476490008837756915704587052077", "0", "0", "HALF_EVEN", "476490008837756915704587052077"),
     arrayOf("D", "engineering", "476490008837756915704587052077", "0", "0", "HALF_EVEN", "476490008837756915704587052077"),
     arrayOf("D", "add", "476490008837756915704587052077", "-1410933044787.5223311337", "13", "HALF_DOWN", "4.764900088378E+29"),
@@ -12132,6 +12200,9 @@ private fun oracleBatch223(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "-0.0817790858822803922932932833544", "7", "12", "HALF_UP", "-2.44622140621E-8"),
     arrayOf("D", "double", "-0.0817790858822803922932932833544", "0", "0", "HALF_EVEN", "-4632814812020312676"),
     arrayOf("D", "float", "-0.0817790858822803922932932833544", "0", "0", "HALF_EVEN", "-1113097269"),
+)
+
+private fun oracleBatch225(): List<Array<String>> = listOf(
     arrayOf("D", "integerExact", "-0.0817790858822803922932932833544", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "parse", "-4.80776362079473315226402811777E-17", "0", "0", "HALF_EVEN", "-4.80776362079473315226402811777E-17"),
     arrayOf("D", "plain", "-4.80776362079473315226402811777E-17", "0", "0", "HALF_EVEN", "-0.0000000000000000480776362079473315226402811777"),
@@ -12146,9 +12217,6 @@ private fun oracleBatch223(): List<Array<String>> = listOf(
     arrayOf("D", "round", "-4.80776362079473315226402811777E-17", "0", "12", "DOWN", "-4.80776362079E-17"),
     arrayOf("D", "scale", "-4.80776362079473315226402811777E-17", "0", "-5", "DOWN", "0E+5"),
     arrayOf("D", "divideScale", "-4.80776362079473315226402811777E-17", "6.98639242255067209018653E+27", "-5", "DOWN", "0E+5"),
-)
-
-private fun oracleBatch224(): List<Array<String>> = listOf(
     arrayOf("D", "strip", "-4.80776362079473315226402811777E-17", "0", "0", "HALF_EVEN", "-4.80776362079473315226402811777E-17"),
     arrayOf("D", "sqrt", "-4.80776362079473315226402811777E-17", "0", "12", "DOWN", "!ArithmeticException"),
     arrayOf("D", "pow", "-4.80776362079473315226402811777E-17", "7", "12", "DOWN", "-5.93747437817E-115"),
@@ -12185,6 +12253,9 @@ private fun oracleBatch224(): List<Array<String>> = listOf(
     arrayOf("D", "integral", "-99758466679800350909118495535.4", "0.000323572895671832647543163", "4", "FLOOR", "!ArithmeticException"),
     arrayOf("D", "remainder", "-99758466679800350909118495535.4", "0.000323572895671832647543163", "4", "FLOOR", "!ArithmeticException"),
     arrayOf("D", "round", "-99758466679800350909118495535.4", "0", "4", "FLOOR", "-9.976E+28"),
+)
+
+private fun oracleBatch226(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "-99758466679800350909118495535.4", "0", "39", "FLOOR", "-99758466679800350909118495535.400000000000000000000000000000000000000"),
     arrayOf("D", "divideScale", "-99758466679800350909118495535.4", "0.000323572895671832647543163", "39", "FLOOR", "-308302914163043192606379042057229.513812362159160416433761418929195897212"),
     arrayOf("D", "strip", "-99758466679800350909118495535.4", "0", "0", "HALF_EVEN", "-99758466679800350909118495535.4"),
@@ -12199,9 +12270,6 @@ private fun oracleBatch224(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-1.9243563403850712728552010756E+44", "-1.2528471633233672796196E+34", "3", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "subtract", "-1.9243563403850712728552010756E+44", "-1.2528471633233672796196E+34", "3", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "multiply", "-1.9243563403850712728552010756E+44", "-1.2528471633233672796196E+34", "3", "UNNECESSARY", "!ArithmeticException"),
-)
-
-private fun oracleBatch225(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "-1.9243563403850712728552010756E+44", "-1.2528471633233672796196E+34", "3", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "exactDivide", "-1.9243563403850712728552010756E+44", "-1.2528471633233672796196E+34", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "-1.9243563403850712728552010756E+44", "-1.2528471633233672796196E+34", "3", "UNNECESSARY", "!ArithmeticException"),
@@ -12238,6 +12306,9 @@ private fun oracleBatch225(): List<Array<String>> = listOf(
     arrayOf("D", "plain", "1.032778339186079799796679917665E-19", "0", "0", "HALF_EVEN", "0.0000000000000000001032778339186079799796679917665"),
     arrayOf("D", "engineering", "1.032778339186079799796679917665E-19", "0", "0", "HALF_EVEN", "103.2778339186079799796679917665E-21"),
     arrayOf("D", "add", "1.032778339186079799796679917665E-19", "-3.81106955822952612015050E+33", "7", "HALF_UP", "-3.811070E+33"),
+)
+
+private fun oracleBatch227(): List<Array<String>> = listOf(
     arrayOf("D", "subtract", "1.032778339186079799796679917665E-19", "-3.81106955822952612015050E+33", "7", "HALF_UP", "3.811070E+33"),
     arrayOf("D", "multiply", "1.032778339186079799796679917665E-19", "-3.81106955822952612015050E+33", "7", "HALF_UP", "-3.935990E+14"),
     arrayOf("D", "divide", "1.032778339186079799796679917665E-19", "-3.81106955822952612015050E+33", "7", "HALF_UP", "-2.709944E-53"),
@@ -12252,9 +12323,6 @@ private fun oracleBatch225(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1.032778339186079799796679917665E-19", "7", "7", "HALF_UP", "1.253285E-133"),
     arrayOf("D", "double", "1.032778339186079799796679917665E-19", "0", "0", "HALF_EVEN", "4323028429782725086"),
     arrayOf("D", "float", "1.032778339186079799796679917665E-19", "0", "0", "HALF_EVEN", "536075167"),
-)
-
-private fun oracleBatch226(): List<Array<String>> = listOf(
     arrayOf("D", "integerExact", "1.032778339186079799796679917665E-19", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "parse", "-2.85419603085713290793570987253E+44", "0", "0", "HALF_EVEN", "-2.85419603085713290793570987253E+44"),
     arrayOf("D", "plain", "-2.85419603085713290793570987253E+44", "0", "0", "HALF_EVEN", "-285419603085713290793570987253000000000000000"),
@@ -12291,6 +12359,9 @@ private fun oracleBatch226(): List<Array<String>> = listOf(
     arrayOf("D", "strip", "571898362197811113.405688781809", "0", "0", "HALF_EVEN", "571898362197811113.405688781809"),
     arrayOf("D", "sqrt", "571898362197811113.405688781809", "0", "21", "HALF_UP", "756239619.563674482709"),
     arrayOf("D", "pow", "571898362197811113.405688781809", "7", "21", "HALF_UP", "2.00093034118651259589E+124"),
+)
+
+private fun oracleBatch228(): List<Array<String>> = listOf(
     arrayOf("D", "double", "571898362197811113.405688781809", "0", "0", "HALF_EVEN", "4872823509469476479"),
     arrayOf("D", "float", "571898362197811113.405688781809", "0", "0", "HALF_EVEN", "1560148305"),
     arrayOf("D", "integerExact", "571898362197811113.405688781809", "0", "0", "HALF_EVEN", "!ArithmeticException"),
@@ -12305,9 +12376,6 @@ private fun oracleBatch226(): List<Array<String>> = listOf(
     arrayOf("D", "integral", "15205107989668929450702094320.9", "2.43698433716510408103618E+25", "6", "UNNECESSARY", "623.000"),
     arrayOf("D", "remainder", "15205107989668929450702094320.9", "2.43698433716510408103618E+25", "6", "UNNECESSARY", "623.000|22695569130331025846692920.9"),
     arrayOf("D", "round", "15205107989668929450702094320.9", "0", "6", "UNNECESSARY", "!ArithmeticException"),
-)
-
-private fun oracleBatch227(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "15205107989668929450702094320.9", "0", "16", "UNNECESSARY", "15205107989668929450702094320.9000000000000000"),
     arrayOf("D", "divideScale", "15205107989668929450702094320.9", "2.43698433716510408103618E+25", "16", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "strip", "15205107989668929450702094320.9", "0", "0", "HALF_EVEN", "15205107989668929450702094320.9"),
@@ -12344,6 +12412,9 @@ private fun oracleBatch227(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "76004427792948129088553.5316384", "92348.3774821923338980095", "12", "HALF_UP", "8.23018550679E+17"),
     arrayOf("D", "exactDivide", "76004427792948129088553.5316384", "92348.3774821923338980095", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "76004427792948129088553.5316384", "92348.3774821923338980095", "12", "HALF_UP", "!ArithmeticException"),
+)
+
+private fun oracleBatch229(): List<Array<String>> = listOf(
     arrayOf("D", "remainder", "76004427792948129088553.5316384", "92348.3774821923338980095", "12", "HALF_UP", "!ArithmeticException"),
     arrayOf("D", "round", "76004427792948129088553.5316384", "0", "12", "HALF_UP", "7.60044277929E+22"),
     arrayOf("D", "scale", "76004427792948129088553.5316384", "0", "35", "HALF_UP", "76004427792948129088553.53163840000000000000000000000000000"),
@@ -12358,9 +12429,6 @@ private fun oracleBatch227(): List<Array<String>> = listOf(
     arrayOf("D", "plain", "-5.58640992853382668446698981327E+51", "0", "0", "HALF_EVEN", "-5586409928533826684466989813270000000000000000000000"),
     arrayOf("D", "engineering", "-5.58640992853382668446698981327E+51", "0", "0", "HALF_EVEN", "-5.58640992853382668446698981327E+51"),
     arrayOf("D", "add", "-5.58640992853382668446698981327E+51", "0.000066006434334855526874584", "2", "DOWN", "-5.5E+51"),
-)
-
-private fun oracleBatch228(): List<Array<String>> = listOf(
     arrayOf("D", "subtract", "-5.58640992853382668446698981327E+51", "0.000066006434334855526874584", "2", "DOWN", "-5.5E+51"),
     arrayOf("D", "multiply", "-5.58640992853382668446698981327E+51", "0.000066006434334855526874584", "2", "DOWN", "-3.6E+47"),
     arrayOf("D", "divide", "-5.58640992853382668446698981327E+51", "0.000066006434334855526874584", "2", "DOWN", "-8.4E+55"),
@@ -12397,6 +12465,9 @@ private fun oracleBatch228(): List<Array<String>> = listOf(
     arrayOf("D", "integerExact", "7.94170511948622101192545018740E+58", "0", "0", "HALF_EVEN", "79417051194862210119254501874000000000000000000000000000000"),
     arrayOf("D", "parse", "8.1877658895321229200741823473", "0", "0", "HALF_EVEN", "8.1877658895321229200741823473"),
     arrayOf("D", "plain", "8.1877658895321229200741823473", "0", "0", "HALF_EVEN", "8.1877658895321229200741823473"),
+)
+
+private fun oracleBatch230(): List<Array<String>> = listOf(
     arrayOf("D", "engineering", "8.1877658895321229200741823473", "0", "0", "HALF_EVEN", "8.1877658895321229200741823473"),
     arrayOf("D", "add", "8.1877658895321229200741823473", "-9.45492839207564147861001E-11", "3", "CEILING", "8.19"),
     arrayOf("D", "subtract", "8.1877658895321229200741823473", "-9.45492839207564147861001E-11", "3", "CEILING", "8.19"),
@@ -12411,9 +12482,6 @@ private fun oracleBatch228(): List<Array<String>> = listOf(
     arrayOf("D", "strip", "8.1877658895321229200741823473", "0", "0", "HALF_EVEN", "8.1877658895321229200741823473"),
     arrayOf("D", "sqrt", "8.1877658895321229200741823473", "0", "3", "CEILING", "2.87"),
     arrayOf("D", "pow", "8.1877658895321229200741823473", "7", "3", "CEILING", "2.47E+6"),
-)
-
-private fun oracleBatch229(): List<Array<String>> = listOf(
     arrayOf("D", "double", "8.1877658895321229200741823473", "0", "0", "HALF_EVEN", "4620798920480895116"),
     arrayOf("D", "float", "8.1877658895321229200741823473", "0", "0", "HALF_EVEN", "1090715927"),
     arrayOf("D", "integerExact", "8.1877658895321229200741823473", "0", "0", "HALF_EVEN", "!ArithmeticException"),
@@ -12450,6 +12518,9 @@ private fun oracleBatch229(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "-9.54251106994606317843516150404E+57", "0", "32", "UNNECESSARY", "-9542511069946063178435161504040000000000000000000000000000.00000000000000000000000000000000"),
     arrayOf("D", "divideScale", "-9.54251106994606317843516150404E+57", "18582601495056787.4906494", "32", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "strip", "-9.54251106994606317843516150404E+57", "0", "0", "HALF_EVEN", "-9.54251106994606317843516150404E+57"),
+)
+
+private fun oracleBatch231(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "-9.54251106994606317843516150404E+57", "0", "23", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "pow", "-9.54251106994606317843516150404E+57", "7", "23", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "double", "-9.54251106994606317843516150404E+57", "0", "0", "HALF_EVEN", "-3749155673299637255"),
@@ -12464,9 +12535,6 @@ private fun oracleBatch229(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "-1.019578062157023721132834793799E+46", "467.33110970822632593156", "9", "DOWN", "-2.18170380E+43"),
     arrayOf("D", "exactDivide", "-1.019578062157023721132834793799E+46", "467.33110970822632593156", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "-1.019578062157023721132834793799E+46", "467.33110970822632593156", "9", "DOWN", "!ArithmeticException"),
-)
-
-private fun oracleBatch230(): List<Array<String>> = listOf(
     arrayOf("D", "remainder", "-1.019578062157023721132834793799E+46", "467.33110970822632593156", "9", "DOWN", "!ArithmeticException"),
     arrayOf("D", "round", "-1.019578062157023721132834793799E+46", "0", "9", "DOWN", "-1.01957806E+46"),
     arrayOf("D", "scale", "-1.019578062157023721132834793799E+46", "0", "6", "DOWN", "-10195780621570237211328347937990000000000000000.000000"),
@@ -12503,6 +12571,9 @@ private fun oracleBatch230(): List<Array<String>> = listOf(
     arrayOf("D", "subtract", "501648517661699103400422312911", "-34095259388269598.7565283", "2", "FLOOR", "5.0E+29"),
     arrayOf("D", "multiply", "501648517661699103400422312911", "-34095259388269598.7565283", "2", "FLOOR", "-1.8E+46"),
     arrayOf("D", "divide", "501648517661699103400422312911", "-34095259388269598.7565283", "2", "FLOOR", "-1.5E+13"),
+)
+
+private fun oracleBatch232(): List<Array<String>> = listOf(
     arrayOf("D", "exactDivide", "501648517661699103400422312911", "-34095259388269598.7565283", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "501648517661699103400422312911", "-34095259388269598.7565283", "2", "FLOOR", "!ArithmeticException"),
     arrayOf("D", "remainder", "501648517661699103400422312911", "-34095259388269598.7565283", "2", "FLOOR", "!ArithmeticException"),
@@ -12517,9 +12588,6 @@ private fun oracleBatch230(): List<Array<String>> = listOf(
     arrayOf("D", "integerExact", "501648517661699103400422312911", "0", "0", "HALF_EVEN", "501648517661699103400422312911"),
     arrayOf("D", "parse", "4.61644600331590793973751614810E+37", "0", "0", "HALF_EVEN", "4.61644600331590793973751614810E+37"),
     arrayOf("D", "plain", "4.61644600331590793973751614810E+37", "0", "0", "HALF_EVEN", "46164460033159079397375161481000000000"),
-)
-
-private fun oracleBatch231(): List<Array<String>> = listOf(
     arrayOf("D", "engineering", "4.61644600331590793973751614810E+37", "0", "0", "HALF_EVEN", "46.1644600331590793973751614810E+36"),
     arrayOf("D", "add", "4.61644600331590793973751614810E+37", "-6312120425.44112947384355", "12", "HALF_EVEN", "4.61644600332E+37"),
     arrayOf("D", "subtract", "4.61644600331590793973751614810E+37", "-6312120425.44112947384355", "12", "HALF_EVEN", "4.61644600332E+37"),
@@ -12556,6 +12624,9 @@ private fun oracleBatch231(): List<Array<String>> = listOf(
     arrayOf("D", "double", "-0.0000454771383325456958782518193375", "0", "0", "HALF_EVEN", "-4681535971036485082"),
     arrayOf("D", "float", "-0.0000454771383325456958782518193375", "0", "0", "HALF_EVEN", "-1203847499"),
     arrayOf("D", "integerExact", "-0.0000454771383325456958782518193375", "0", "0", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch233(): List<Array<String>> = listOf(
     arrayOf("D", "parse", "0.00000229966059150816677223485330818", "0", "0", "HALF_EVEN", "0.00000229966059150816677223485330818"),
     arrayOf("D", "plain", "0.00000229966059150816677223485330818", "0", "0", "HALF_EVEN", "0.00000229966059150816677223485330818"),
     arrayOf("D", "engineering", "0.00000229966059150816677223485330818", "0", "0", "HALF_EVEN", "0.00000229966059150816677223485330818"),
@@ -12570,9 +12641,6 @@ private fun oracleBatch231(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "0.00000229966059150816677223485330818", "0", "1", "HALF_UP", "0.0"),
     arrayOf("D", "divideScale", "0.00000229966059150816677223485330818", "-59648129324608.6034308881", "1", "HALF_UP", "0.0"),
     arrayOf("D", "strip", "0.00000229966059150816677223485330818", "0", "0", "HALF_EVEN", "0.00000229966059150816677223485330818"),
-)
-
-private fun oracleBatch232(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.00000229966059150816677223485330818", "0", "1", "HALF_UP", "0.002"),
     arrayOf("D", "pow", "0.00000229966059150816677223485330818", "7", "1", "HALF_UP", "3E-40"),
     arrayOf("D", "double", "0.00000229966059150816677223485330818", "0", "0", "HALF_EVEN", "4522540346302264663"),
@@ -12609,6 +12677,9 @@ private fun oracleBatch232(): List<Array<String>> = listOf(
     arrayOf("D", "remainder", "-4834611802926205916331503110.38", "67936.240712429791394912", "24", "UP", "-71163958326614512826516|-45549.298396372498913408"),
     arrayOf("D", "round", "-4834611802926205916331503110.38", "0", "24", "UP", "-4.83461180292620591633151E+27"),
     arrayOf("D", "scale", "-4834611802926205916331503110.38", "0", "-4", "UP", "-4.83461180292620591633151E+27"),
+)
+
+private fun oracleBatch234(): List<Array<String>> = listOf(
     arrayOf("D", "divideScale", "-4834611802926205916331503110.38", "67936.240712429791394912", "-4", "UP", "-7.116395832661451283E+22"),
     arrayOf("D", "strip", "-4834611802926205916331503110.38", "0", "0", "HALF_EVEN", "-4834611802926205916331503110.38"),
     arrayOf("D", "sqrt", "-4834611802926205916331503110.38", "0", "24", "UP", "!ArithmeticException"),
@@ -12623,9 +12694,6 @@ private fun oracleBatch232(): List<Array<String>> = listOf(
     arrayOf("D", "subtract", "108241115938897497393151.4123263", "3.97444706023073067003692", "9", "UP", "1.08241116E+23"),
     arrayOf("D", "multiply", "108241115938897497393151.4123263", "3.97444706023073067003692", "9", "UP", "4.30198586E+23"),
     arrayOf("D", "divide", "108241115938897497393151.4123263", "3.97444706023073067003692", "9", "UP", "2.72342579E+22"),
-)
-
-private fun oracleBatch233(): List<Array<String>> = listOf(
     arrayOf("D", "exactDivide", "108241115938897497393151.4123263", "3.97444706023073067003692", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "108241115938897497393151.4123263", "3.97444706023073067003692", "9", "UP", "!ArithmeticException"),
     arrayOf("D", "remainder", "108241115938897497393151.4123263", "3.97444706023073067003692", "9", "UP", "!ArithmeticException"),
@@ -12662,6 +12730,9 @@ private fun oracleBatch233(): List<Array<String>> = listOf(
     arrayOf("D", "engineering", "-6.40646993715343885605136278490E+42", "0", "0", "HALF_EVEN", "-6.40646993715343885605136278490E+42"),
     arrayOf("D", "add", "-6.40646993715343885605136278490E+42", "8.5471896049271919739457E+30", "3", "HALF_UP", "-6.41E+42"),
     arrayOf("D", "subtract", "-6.40646993715343885605136278490E+42", "8.5471896049271919739457E+30", "3", "HALF_UP", "-6.41E+42"),
+)
+
+private fun oracleBatch235(): List<Array<String>> = listOf(
     arrayOf("D", "multiply", "-6.40646993715343885605136278490E+42", "8.5471896049271919739457E+30", "3", "HALF_UP", "-5.48E+73"),
     arrayOf("D", "divide", "-6.40646993715343885605136278490E+42", "8.5471896049271919739457E+30", "3", "HALF_UP", "-7.50E+11"),
     arrayOf("D", "exactDivide", "-6.40646993715343885605136278490E+42", "8.5471896049271919739457E+30", "0", "HALF_EVEN", "!ArithmeticException"),
@@ -12676,9 +12747,6 @@ private fun oracleBatch233(): List<Array<String>> = listOf(
     arrayOf("D", "double", "-6.40646993715343885605136278490E+42", "0", "0", "HALF_EVEN", "-3976006965393450946"),
     arrayOf("D", "float", "-6.40646993715343885605136278490E+42", "0", "0", "HALF_EVEN", "-8388608"),
     arrayOf("D", "integerExact", "-6.40646993715343885605136278490E+42", "0", "0", "HALF_EVEN", "-6406469937153438856051362784900000000000000"),
-)
-
-private fun oracleBatch234(): List<Array<String>> = listOf(
     arrayOf("D", "parse", "6.45472330026043714867538911872E+41", "0", "0", "HALF_EVEN", "6.45472330026043714867538911872E+41"),
     arrayOf("D", "plain", "6.45472330026043714867538911872E+41", "0", "0", "HALF_EVEN", "645472330026043714867538911872000000000000"),
     arrayOf("D", "engineering", "6.45472330026043714867538911872E+41", "0", "0", "HALF_EVEN", "645.472330026043714867538911872E+39"),
@@ -12715,6 +12783,9 @@ private fun oracleBatch234(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "8.53954229785853280003838628268E+31", "0", "20", "CEILING", "9240964396565183.6073"),
     arrayOf("D", "pow", "8.53954229785853280003838628268E+31", "7", "20", "CEILING", "3.3116326678133862495E+223"),
     arrayOf("D", "double", "8.53954229785853280003838628268E+31", "0", "0", "HALF_EVEN", "5084800777913340968"),
+)
+
+private fun oracleBatch236(): List<Array<String>> = listOf(
     arrayOf("D", "float", "8.53954229785853280003838628268E+31", "0", "0", "HALF_EVEN", "1954986736"),
     arrayOf("D", "integerExact", "8.53954229785853280003838628268E+31", "0", "0", "HALF_EVEN", "85395422978585328000383862826800"),
     arrayOf("D", "parse", "1.221356636764231135919252511998E-10", "0", "0", "HALF_EVEN", "1.221356636764231135919252511998E-10"),
@@ -12729,9 +12800,6 @@ private fun oracleBatch234(): List<Array<String>> = listOf(
     arrayOf("D", "remainder", "1.221356636764231135919252511998E-10", "-8.33968628481177557579954E-8", "19", "CEILING", "0E-9|1.221356636764231135919252511998E-10"),
     arrayOf("D", "round", "1.221356636764231135919252511998E-10", "0", "19", "CEILING", "1.221356636764231136E-10"),
     arrayOf("D", "scale", "1.221356636764231135919252511998E-10", "0", "-8", "CEILING", "1E+8"),
-)
-
-private fun oracleBatch235(): List<Array<String>> = listOf(
     arrayOf("D", "divideScale", "1.221356636764231135919252511998E-10", "-8.33968628481177557579954E-8", "-8", "CEILING", "0E+8"),
     arrayOf("D", "strip", "1.221356636764231135919252511998E-10", "0", "0", "HALF_EVEN", "1.221356636764231135919252511998E-10"),
     arrayOf("D", "sqrt", "1.221356636764231135919252511998E-10", "0", "19", "CEILING", "0.00001105150051696253207"),
@@ -12768,6 +12836,9 @@ private fun oracleBatch235(): List<Array<String>> = listOf(
     arrayOf("D", "exactDivide", "0.0405909146686891958493328744663", "-3.12693134311331148979730E+25", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "0.0405909146686891958493328744663", "-3.12693134311331148979730E+25", "11", "DOWN", "0E-33"),
     arrayOf("D", "remainder", "0.0405909146686891958493328744663", "-3.12693134311331148979730E+25", "11", "DOWN", "0E-33|0.0405909146686891958493328744663"),
+)
+
+private fun oracleBatch237(): List<Array<String>> = listOf(
     arrayOf("D", "round", "0.0405909146686891958493328744663", "0", "11", "DOWN", "0.040590914668"),
     arrayOf("D", "scale", "0.0405909146686891958493328744663", "0", "18", "DOWN", "0.040590914668689195"),
     arrayOf("D", "divideScale", "0.0405909146686891958493328744663", "-3.12693134311331148979730E+25", "18", "DOWN", "0E-18"),
@@ -12782,9 +12853,6 @@ private fun oracleBatch235(): List<Array<String>> = listOf(
     arrayOf("D", "engineering", "-87664200.7824798972393370998963", "0", "0", "HALF_EVEN", "-87664200.7824798972393370998963"),
     arrayOf("D", "add", "-87664200.7824798972393370998963", "0.000401369305354831415926210", "19", "FLOOR", "-87664200.78207852794"),
     arrayOf("D", "subtract", "-87664200.7824798972393370998963", "0.000401369305354831415926210", "19", "FLOOR", "-87664200.78288126655"),
-)
-
-private fun oracleBatch236(): List<Array<String>> = listOf(
     arrayOf("D", "multiply", "-87664200.7824798972393370998963", "0.000401369305354831415926210", "19", "FLOOR", "-35185.71937255042503"),
     arrayOf("D", "divide", "-87664200.7824798972393370998963", "0.000401369305354831415926210", "19", "FLOOR", "-218412817355.2787451"),
     arrayOf("D", "exactDivide", "-87664200.7824798972393370998963", "0.000401369305354831415926210", "0", "HALF_EVEN", "!ArithmeticException"),
@@ -12821,6 +12889,9 @@ private fun oracleBatch236(): List<Array<String>> = listOf(
     arrayOf("D", "parse", "6.94961130077461871987361616756E+41", "0", "0", "HALF_EVEN", "6.94961130077461871987361616756E+41"),
     arrayOf("D", "plain", "6.94961130077461871987361616756E+41", "0", "0", "HALF_EVEN", "694961130077461871987361616756000000000000"),
     arrayOf("D", "engineering", "6.94961130077461871987361616756E+41", "0", "0", "HALF_EVEN", "694.961130077461871987361616756E+39"),
+)
+
+private fun oracleBatch238(): List<Array<String>> = listOf(
     arrayOf("D", "add", "6.94961130077461871987361616756E+41", "-4.63513145584843505866866E+29", "11", "HALF_UP", "6.9496113008E+41"),
     arrayOf("D", "subtract", "6.94961130077461871987361616756E+41", "-4.63513145584843505866866E+29", "11", "HALF_UP", "6.9496113008E+41"),
     arrayOf("D", "multiply", "6.94961130077461871987361616756E+41", "-4.63513145584843505866866E+29", "11", "HALF_UP", "-3.2212361946E+71"),
@@ -12835,9 +12906,6 @@ private fun oracleBatch236(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "6.94961130077461871987361616756E+41", "0", "11", "HALF_UP", "8.3364328707E+20"),
     arrayOf("D", "pow", "6.94961130077461871987361616756E+41", "7", "11", "HALF_UP", "7.8293120511E+292"),
     arrayOf("D", "double", "6.94961130077461871987361616756E+41", "0", "0", "HALF_EVEN", "5233157729832244411"),
-)
-
-private fun oracleBatch237(): List<Array<String>> = listOf(
     arrayOf("D", "float", "6.94961130077461871987361616756E+41", "0", "0", "HALF_EVEN", "2139095040"),
     arrayOf("D", "integerExact", "6.94961130077461871987361616756E+41", "0", "0", "HALF_EVEN", "694961130077461871987361616756000000000000"),
     arrayOf("D", "parse", "-1.207683083083157375010023252828E+38", "0", "0", "HALF_EVEN", "-1.207683083083157375010023252828E+38"),
@@ -12874,6 +12942,9 @@ private fun oracleBatch237(): List<Array<String>> = listOf(
     arrayOf("D", "divideScale", "3.0056504111106767465300991776E+58", "0.0001042863374991838816635542", "25", "FLOOR", "288211330763648517401511495449392142231561476708306457651365078.6701858194507386904430515"),
     arrayOf("D", "strip", "3.0056504111106767465300991776E+58", "0", "0", "HALF_EVEN", "3.0056504111106767465300991776E+58"),
     arrayOf("D", "sqrt", "3.0056504111106767465300991776E+58", "0", "15", "FLOOR", "1.73368117343145E+29"),
+)
+
+private fun oracleBatch239(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "3.0056504111106767465300991776E+58", "7", "15", "FLOOR", "2.21599748452500E+409"),
     arrayOf("D", "double", "3.0056504111106767465300991776E+58", "0", "0", "HALF_EVEN", "5481768267913418043"),
     arrayOf("D", "float", "3.0056504111106767465300991776E+58", "0", "0", "HALF_EVEN", "2139095040"),
@@ -12888,9 +12959,6 @@ private fun oracleBatch237(): List<Array<String>> = listOf(
     arrayOf("D", "exactDivide", "4.72644609997638537622167298450E-16", "-760102997243330.360725759", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "4.72644609997638537622167298450E-16", "-760102997243330.360725759", "21", "CEILING", "0E-36"),
     arrayOf("D", "remainder", "4.72644609997638537622167298450E-16", "-760102997243330.360725759", "21", "CEILING", "0E-36|4.72644609997638537622167298450E-16"),
-)
-
-private fun oracleBatch238(): List<Array<String>> = listOf(
     arrayOf("D", "round", "4.72644609997638537622167298450E-16", "0", "21", "CEILING", "4.72644609997638537623E-16"),
     arrayOf("D", "scale", "4.72644609997638537622167298450E-16", "0", "32", "CEILING", "4.7264460999763854E-16"),
     arrayOf("D", "divideScale", "4.72644609997638537622167298450E-16", "-760102997243330.360725759", "32", "CEILING", "-6.2E-31"),
@@ -12927,6 +12995,9 @@ private fun oracleBatch238(): List<Array<String>> = listOf(
     arrayOf("D", "multiply", "-7.68188948187538057129406719180E-8", "-0.14321246697919711244406", "0", "HALF_EVEN", "1.1001423437609195550702810163410151722333535587907080E-8"),
     arrayOf("D", "divide", "-7.68188948187538057129406719180E-8", "-0.14321246697919711244406", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "exactDivide", "-7.68188948187538057129406719180E-8", "-0.14321246697919711244406", "0", "HALF_EVEN", "!ArithmeticException"),
+)
+
+private fun oracleBatch240(): List<Array<String>> = listOf(
     arrayOf("D", "integral", "-7.68188948187538057129406719180E-8", "-0.14321246697919711244406", "0", "HALF_EVEN", "0E-14"),
     arrayOf("D", "remainder", "-7.68188948187538057129406719180E-8", "-0.14321246697919711244406", "0", "HALF_EVEN", "0E-14|-7.68188948187538057129406719180E-8"),
     arrayOf("D", "round", "-7.68188948187538057129406719180E-8", "0", "0", "HALF_EVEN", "-7.68188948187538057129406719180E-8"),
@@ -12941,9 +13012,6 @@ private fun oracleBatch238(): List<Array<String>> = listOf(
     arrayOf("D", "parse", "-11715793076892117305371.55691206", "0", "0", "HALF_EVEN", "-11715793076892117305371.55691206"),
     arrayOf("D", "plain", "-11715793076892117305371.55691206", "0", "0", "HALF_EVEN", "-11715793076892117305371.55691206"),
     arrayOf("D", "engineering", "-11715793076892117305371.55691206", "0", "0", "HALF_EVEN", "-11715793076892117305371.55691206"),
-)
-
-private fun oracleBatch239(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-11715793076892117305371.55691206", "3.45825594494164821435537E+24", "10", "FLOOR", "3.446540151E+24"),
     arrayOf("D", "subtract", "-11715793076892117305371.55691206", "3.45825594494164821435537E+24", "10", "FLOOR", "-3.469971739E+24"),
     arrayOf("D", "multiply", "-11715793076892117305371.55691206", "3.45825594494164821435537E+24", "10", "FLOOR", "-4.051621106E+46"),
@@ -12980,6 +13048,9 @@ private fun oracleBatch239(): List<Array<String>> = listOf(
     arrayOf("D", "float", "1.255540216758013687339840244991E-15", "0", "0", "HALF_EVEN", "649392450"),
     arrayOf("D", "integerExact", "1.255540216758013687339840244991E-15", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "parse", "-1.018804312289783191814082344337E-12", "0", "0", "HALF_EVEN", "-1.018804312289783191814082344337E-12"),
+)
+
+private fun oracleBatch241(): List<Array<String>> = listOf(
     arrayOf("D", "plain", "-1.018804312289783191814082344337E-12", "0", "0", "HALF_EVEN", "-0.000000000001018804312289783191814082344337"),
     arrayOf("D", "engineering", "-1.018804312289783191814082344337E-12", "0", "0", "HALF_EVEN", "-1.018804312289783191814082344337E-12"),
     arrayOf("D", "add", "-1.018804312289783191814082344337E-12", "56441978.6049600219158031", "3", "HALF_DOWN", "5.64E+7"),
@@ -12994,9 +13065,6 @@ private fun oracleBatch239(): List<Array<String>> = listOf(
     arrayOf("D", "divideScale", "-1.018804312289783191814082344337E-12", "56441978.6049600219158031", "30", "HALF_DOWN", "-1.8050471253E-20"),
     arrayOf("D", "strip", "-1.018804312289783191814082344337E-12", "0", "0", "HALF_EVEN", "-1.018804312289783191814082344337E-12"),
     arrayOf("D", "sqrt", "-1.018804312289783191814082344337E-12", "0", "3", "HALF_DOWN", "!ArithmeticException"),
-)
-
-private fun oracleBatch240(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "-1.018804312289783191814082344337E-12", "7", "3", "HALF_DOWN", "-1.14E-84"),
     arrayOf("D", "double", "-1.018804312289783191814082344337E-12", "0", "0", "HALF_EVEN", "-4795792328175428220"),
     arrayOf("D", "float", "-1.018804312289783191814082344337E-12", "0", "0", "HALF_EVEN", "-1416666549"),
@@ -13033,6 +13101,9 @@ private fun oracleBatch240(): List<Array<String>> = listOf(
     arrayOf("D", "round", "-1.046487478200447803974140640956E+33", "0", "2", "HALF_UP", "-1.0E+33"),
     arrayOf("D", "scale", "-1.046487478200447803974140640956E+33", "0", "-11", "HALF_UP", "-1.0464874782004478039741E+33"),
     arrayOf("D", "divideScale", "-1.046487478200447803974140640956E+33", "-0.000623851873607586594231280", "-11", "HALF_UP", "1.6774614655701205294837346E+36"),
+)
+
+private fun oracleBatch242(): List<Array<String>> = listOf(
     arrayOf("D", "strip", "-1.046487478200447803974140640956E+33", "0", "0", "HALF_EVEN", "-1.046487478200447803974140640956E+33"),
     arrayOf("D", "sqrt", "-1.046487478200447803974140640956E+33", "0", "2", "HALF_UP", "!ArithmeticException"),
     arrayOf("D", "pow", "-1.046487478200447803974140640956E+33", "7", "2", "HALF_UP", "-1.4E+231"),
@@ -13047,9 +13118,6 @@ private fun oracleBatch240(): List<Array<String>> = listOf(
     arrayOf("D", "multiply", "3186118845946462295200670409.35", "6.68269394354027498784584E-16", "15", "HALF_DOWN", "2129185711520.60"),
     arrayOf("D", "divide", "3186118845946462295200670409.35", "6.68269394354027498784584E-16", "15", "HALF_DOWN", "4.76771624267826E+42"),
     arrayOf("D", "exactDivide", "3186118845946462295200670409.35", "6.68269394354027498784584E-16", "0", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch241(): List<Array<String>> = listOf(
     arrayOf("D", "integral", "3186118845946462295200670409.35", "6.68269394354027498784584E-16", "15", "HALF_DOWN", "!ArithmeticException"),
     arrayOf("D", "remainder", "3186118845946462295200670409.35", "6.68269394354027498784584E-16", "15", "HALF_DOWN", "!ArithmeticException"),
     arrayOf("D", "round", "3186118845946462295200670409.35", "0", "15", "HALF_DOWN", "3.18611884594646E+27"),
@@ -13086,6 +13154,9 @@ private fun oracleBatch241(): List<Array<String>> = listOf(
     arrayOf("D", "add", "12.44998288349531694685514266328", "0.0690705407835204808192428", "23", "CEILING", "12.519053424278837427675"),
     arrayOf("D", "subtract", "12.44998288349531694685514266328", "0.0690705407835204808192428", "23", "CEILING", "12.380912342711796466036"),
     arrayOf("D", "multiply", "12.44998288349531694685514266328", "0.0690705407835204808192428", "23", "CEILING", "0.85992705050859520405803"),
+)
+
+private fun oracleBatch243(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "12.44998288349531694685514266328", "0.0690705407835204808192428", "23", "CEILING", "180.25025926054070437619"),
     arrayOf("D", "exactDivide", "12.44998288349531694685514266328", "0.0690705407835204808192428", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "12.44998288349531694685514266328", "0.0690705407835204808192428", "23", "CEILING", "180.0000"),
@@ -13100,9 +13171,6 @@ private fun oracleBatch241(): List<Array<String>> = listOf(
     arrayOf("D", "float", "12.44998288349531694685514266328", "0", "0", "HALF_EVEN", "1095185185"),
     arrayOf("D", "integerExact", "12.44998288349531694685514266328", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "parse", "-9048735880726502116.82967457500", "0", "0", "HALF_EVEN", "-9048735880726502116.82967457500"),
-)
-
-private fun oracleBatch242(): List<Array<String>> = listOf(
     arrayOf("D", "plain", "-9048735880726502116.82967457500", "0", "0", "HALF_EVEN", "-9048735880726502116.82967457500"),
     arrayOf("D", "engineering", "-9048735880726502116.82967457500", "0", "0", "HALF_EVEN", "-9048735880726502116.82967457500"),
     arrayOf("D", "add", "-9048735880726502116.82967457500", "-55236494445655494539.7153", "7", "HALF_EVEN", "-6.428523E+19"),
@@ -13139,6 +13207,9 @@ private fun oracleBatch242(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "909393907682500.536454623858577", "7", "17", "UP", "5.1435655965485100E+104"),
     arrayOf("D", "double", "909393907682500.536454623858577", "0", "0", "HALF_EVEN", "4830630352175261220"),
     arrayOf("D", "float", "909393907682500.536454623858577", "0", "0", "HALF_EVEN", "1481557425"),
+)
+
+private fun oracleBatch244(): List<Array<String>> = listOf(
     arrayOf("D", "integerExact", "909393907682500.536454623858577", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "parse", "-8959.81496139906124504433602658", "0", "0", "HALF_EVEN", "-8959.81496139906124504433602658"),
     arrayOf("D", "plain", "-8959.81496139906124504433602658", "0", "0", "HALF_EVEN", "-8959.81496139906124504433602658"),
@@ -13153,9 +13224,6 @@ private fun oracleBatch242(): List<Array<String>> = listOf(
     arrayOf("D", "round", "-8959.81496139906124504433602658", "0", "2", "DOWN", "-8.9E+3"),
     arrayOf("D", "scale", "-8959.81496139906124504433602658", "0", "23", "DOWN", "-8959.81496139906124504433602"),
     arrayOf("D", "divideScale", "-8959.81496139906124504433602658", "-6875973365528.20358036722", "23", "DOWN", "1.30306132457084E-9"),
-)
-
-private fun oracleBatch243(): List<Array<String>> = listOf(
     arrayOf("D", "strip", "-8959.81496139906124504433602658", "0", "0", "HALF_EVEN", "-8959.81496139906124504433602658"),
     arrayOf("D", "sqrt", "-8959.81496139906124504433602658", "0", "2", "DOWN", "!ArithmeticException"),
     arrayOf("D", "pow", "-8959.81496139906124504433602658", "7", "2", "DOWN", "-4.6E+27"),
@@ -13192,6 +13260,9 @@ private fun oracleBatch243(): List<Array<String>> = listOf(
     arrayOf("D", "integral", "-73565928484396854.2676451142725", "894573487757.1256620360", "19", "FLOOR", "-82235.000"),
     arrayOf("D", "remainder", "-73565928484396854.2676451142725", "894573487757.1256620360", "19", "FLOOR", "-82235.000|-677718689625.4501146542725"),
     arrayOf("D", "round", "-73565928484396854.2676451142725", "0", "19", "FLOOR", "-73565928484396854.27"),
+)
+
+private fun oracleBatch245(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "-73565928484396854.2676451142725", "0", "38", "FLOOR", "-73565928484396854.26764511427250000000000000000000000000"),
     arrayOf("D", "divideScale", "-73565928484396854.2676451142725", "894573487757.1256620360", "38", "FLOOR", "-82235.75758861502214443893383021407587057761"),
     arrayOf("D", "strip", "-73565928484396854.2676451142725", "0", "0", "HALF_EVEN", "-73565928484396854.2676451142725"),
@@ -13206,9 +13277,6 @@ private fun oracleBatch243(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-9.93925596514488083578925445608E-12", "-0.00871854471793134012784158", "0", "CEILING", "-0.00871854472787059609298646083578925445608"),
     arrayOf("D", "subtract", "-9.93925596514488083578925445608E-12", "-0.00871854471793134012784158", "0", "CEILING", "0.00871854470799208416269669916421074554392"),
     arrayOf("D", "multiply", "-9.93925596514488083578925445608E-12", "-0.00871854471793134012784158", "0", "CEILING", "8.66558475950814648716931688895754517335043838873078064E-14"),
-)
-
-private fun oracleBatch244(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "-9.93925596514488083578925445608E-12", "-0.00871854471793134012784158", "0", "CEILING", "!ArithmeticException"),
     arrayOf("D", "exactDivide", "-9.93925596514488083578925445608E-12", "-0.00871854471793134012784158", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "-9.93925596514488083578925445608E-12", "-0.00871854471793134012784158", "0", "CEILING", "0E-15"),
@@ -13245,6 +13313,9 @@ private fun oracleBatch244(): List<Array<String>> = listOf(
     arrayOf("D", "plain", "6.18200336335330518052816748469E-19", "0", "0", "HALF_EVEN", "0.000000000000000000618200336335330518052816748469"),
     arrayOf("D", "engineering", "6.18200336335330518052816748469E-19", "0", "0", "HALF_EVEN", "618.200336335330518052816748469E-21"),
     arrayOf("D", "add", "6.18200336335330518052816748469E-19", "2.20061015230060532326934E-8", "23", "FLOOR", "2.2006101523624253569028E-8"),
+)
+
+private fun oracleBatch246(): List<Array<String>> = listOf(
     arrayOf("D", "subtract", "6.18200336335330518052816748469E-19", "2.20061015230060532326934E-8", "23", "FLOOR", "-2.2006101522387852896359E-8"),
     arrayOf("D", "multiply", "6.18200336335330518052816748469E-19", "2.20061015230060532326934E-8", "23", "FLOOR", "1.3604179362951771262517E-26"),
     arrayOf("D", "divide", "6.18200336335330518052816748469E-19", "2.20061015230060532326934E-8", "23", "FLOOR", "2.8092224135612539738770E-11"),
@@ -13259,9 +13330,6 @@ private fun oracleBatch244(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "6.18200336335330518052816748469E-19", "7", "23", "FLOOR", "3.4506797802558676984001E-128"),
     arrayOf("D", "double", "6.18200336335330518052816748469E-19", "0", "0", "HALF_EVEN", "4334379001231644877"),
     arrayOf("D", "float", "6.18200336335330518052816748469E-19", "0", "0", "HALF_EVEN", "557217254"),
-)
-
-private fun oracleBatch245(): List<Array<String>> = listOf(
     arrayOf("D", "integerExact", "6.18200336335330518052816748469E-19", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "parse", "-9.81471151434871553640544954072E+31", "0", "0", "HALF_EVEN", "-9.81471151434871553640544954072E+31"),
     arrayOf("D", "plain", "-9.81471151434871553640544954072E+31", "0", "0", "HALF_EVEN", "-98147115143487155364054495407200"),
@@ -13298,6 +13366,9 @@ private fun oracleBatch245(): List<Array<String>> = listOf(
     arrayOf("D", "strip", "-5338602710910352392229.22843005", "0", "0", "HALF_EVEN", "-5338602710910352392229.22843005"),
     arrayOf("D", "sqrt", "-5338602710910352392229.22843005", "0", "8", "HALF_UP", "!ArithmeticException"),
     arrayOf("D", "pow", "-5338602710910352392229.22843005", "7", "8", "HALF_UP", "-1.2359281E+152"),
+)
+
+private fun oracleBatch247(): List<Array<String>> = listOf(
     arrayOf("D", "double", "-5338602710910352392229.22843005", "0", "0", "HALF_EVEN", "-4291342756220561201"),
     arrayOf("D", "float", "-5338602710910352392229.22843005", "0", "0", "HALF_EVEN", "-477056001"),
     arrayOf("D", "integerExact", "-5338602710910352392229.22843005", "0", "0", "HALF_EVEN", "!ArithmeticException"),
@@ -13312,9 +13383,6 @@ private fun oracleBatch245(): List<Array<String>> = listOf(
     arrayOf("D", "integral", "-9922.35684654843354252776172892", "1133610440009771442686.004", "2", "HALF_EVEN", "0E-23"),
     arrayOf("D", "remainder", "-9922.35684654843354252776172892", "1133610440009771442686.004", "2", "HALF_EVEN", "0E-23|-9922.35684654843354252776172892"),
     arrayOf("D", "round", "-9922.35684654843354252776172892", "0", "2", "HALF_EVEN", "-9.9E+3"),
-)
-
-private fun oracleBatch246(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "-9922.35684654843354252776172892", "0", "-15", "HALF_EVEN", "0E+15"),
     arrayOf("D", "divideScale", "-9922.35684654843354252776172892", "1133610440009771442686.004", "-15", "HALF_EVEN", "0E+15"),
     arrayOf("D", "strip", "-9922.35684654843354252776172892", "0", "0", "HALF_EVEN", "-9922.35684654843354252776172892"),
@@ -13351,6 +13419,9 @@ private fun oracleBatch246(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "-9.44208028628519056691953034428E+47", "-69.9629534684142074088839", "11", "HALF_DOWN", "1.3495828604E+46"),
     arrayOf("D", "exactDivide", "-9.44208028628519056691953034428E+47", "-69.9629534684142074088839", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "-9.44208028628519056691953034428E+47", "-69.9629534684142074088839", "11", "HALF_DOWN", "!ArithmeticException"),
+)
+
+private fun oracleBatch248(): List<Array<String>> = listOf(
     arrayOf("D", "remainder", "-9.44208028628519056691953034428E+47", "-69.9629534684142074088839", "11", "HALF_DOWN", "!ArithmeticException"),
     arrayOf("D", "round", "-9.44208028628519056691953034428E+47", "0", "11", "HALF_DOWN", "-9.4420802863E+47"),
     arrayOf("D", "scale", "-9.44208028628519056691953034428E+47", "0", "0", "HALF_DOWN", "-944208028628519056691953034428000000000000000000"),
@@ -13365,9 +13436,6 @@ private fun oracleBatch246(): List<Array<String>> = listOf(
     arrayOf("D", "plain", "-9.06932835948129161464681970498E-7", "0", "0", "HALF_EVEN", "-0.000000906932835948129161464681970498"),
     arrayOf("D", "engineering", "-9.06932835948129161464681970498E-7", "0", "0", "HALF_EVEN", "-906.932835948129161464681970498E-9"),
     arrayOf("D", "add", "-9.06932835948129161464681970498E-7", "4.57713339753436096779092E+41", "7", "HALF_DOWN", "4.577133E+41"),
-)
-
-private fun oracleBatch247(): List<Array<String>> = listOf(
     arrayOf("D", "subtract", "-9.06932835948129161464681970498E-7", "4.57713339753436096779092E+41", "7", "HALF_DOWN", "-4.577133E+41"),
     arrayOf("D", "multiply", "-9.06932835948129161464681970498E-7", "4.57713339753436096779092E+41", "7", "HALF_DOWN", "-4.151153E+35"),
     arrayOf("D", "divide", "-9.06932835948129161464681970498E-7", "4.57713339753436096779092E+41", "7", "HALF_DOWN", "-1.981443E-48"),
@@ -13404,6 +13472,9 @@ private fun oracleBatch247(): List<Array<String>> = listOf(
     arrayOf("D", "integerExact", "-61515959273897681721974661118.1", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "parse", "-6.1541594293568754798481347423E-12", "0", "0", "HALF_EVEN", "-6.1541594293568754798481347423E-12"),
     arrayOf("D", "plain", "-6.1541594293568754798481347423E-12", "0", "0", "HALF_EVEN", "-0.0000000000061541594293568754798481347423"),
+)
+
+private fun oracleBatch249(): List<Array<String>> = listOf(
     arrayOf("D", "engineering", "-6.1541594293568754798481347423E-12", "0", "0", "HALF_EVEN", "-6.1541594293568754798481347423E-12"),
     arrayOf("D", "add", "-6.1541594293568754798481347423E-12", "-113198.717450108188377430", "22", "CEILING", "-113198.7174501081945315"),
     arrayOf("D", "subtract", "-6.1541594293568754798481347423E-12", "-113198.717450108188377430", "22", "CEILING", "113198.7174501081822233"),
@@ -13418,9 +13489,6 @@ private fun oracleBatch247(): List<Array<String>> = listOf(
     arrayOf("D", "strip", "-6.1541594293568754798481347423E-12", "0", "0", "HALF_EVEN", "-6.1541594293568754798481347423E-12"),
     arrayOf("D", "sqrt", "-6.1541594293568754798481347423E-12", "0", "22", "CEILING", "!ArithmeticException"),
     arrayOf("D", "pow", "-6.1541594293568754798481347423E-12", "7", "22", "CEILING", "-3.343345048506793832059E-79"),
-)
-
-private fun oracleBatch248(): List<Array<String>> = listOf(
     arrayOf("D", "double", "-6.1541594293568754798481347423E-12", "0", "0", "HALF_EVEN", "-4784211523156461200"),
     arrayOf("D", "float", "-6.1541594293568754798481347423E-12", "0", "0", "HALF_EVEN", "-1395095619"),
     arrayOf("D", "integerExact", "-6.1541594293568754798481347423E-12", "0", "0", "HALF_EVEN", "!ArithmeticException"),
@@ -13457,6 +13525,9 @@ private fun oracleBatch248(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "1.12134011831852205007097082062E+36", "0", "-20", "DOWN", "1.1213401183185220E+36"),
     arrayOf("D", "divideScale", "1.12134011831852205007097082062E+36", "9.39410359196490314974855E+24", "-20", "DOWN", "0E+20"),
     arrayOf("D", "strip", "1.12134011831852205007097082062E+36", "0", "0", "HALF_EVEN", "1.12134011831852205007097082062E+36"),
+)
+
+private fun oracleBatch250(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "1.12134011831852205007097082062E+36", "0", "13", "DOWN", "1.058933481536E+18"),
     arrayOf("D", "pow", "1.12134011831852205007097082062E+36", "7", "13", "DOWN", "2.229264097088E+252"),
     arrayOf("D", "double", "1.12134011831852205007097082062E+36", "0", "0", "HALF_EVEN", "5146205671032086525"),
@@ -13471,9 +13542,6 @@ private fun oracleBatch248(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "-4974099986738619.77205705907249", "-1.004799095623810363292718E-15", "16", "UP", "4.950342818183515E+30"),
     arrayOf("D", "exactDivide", "-4974099986738619.77205705907249", "-1.004799095623810363292718E-15", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "integral", "-4974099986738619.77205705907249", "-1.004799095623810363292718E-15", "16", "UP", "!ArithmeticException"),
-)
-
-private fun oracleBatch249(): List<Array<String>> = listOf(
     arrayOf("D", "remainder", "-4974099986738619.77205705907249", "-1.004799095623810363292718E-15", "16", "UP", "!ArithmeticException"),
     arrayOf("D", "round", "-4974099986738619.77205705907249", "0", "16", "UP", "-4974099986738620"),
     arrayOf("D", "scale", "-4974099986738619.77205705907249", "0", "8", "UP", "-4974099986738619.77205706"),
@@ -13510,6 +13578,9 @@ private fun oracleBatch249(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "0.5", "5", "UP", "2.00"),
     arrayOf("D", "divide", "1.000", "3", "5", "UP", "0.33334"),
     arrayOf("D", "divide", "1.000", "0", "5", "UP", "!ArithmeticException"),
+)
+
+private fun oracleBatch251(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "2.5", "0", "0", "DOWN", "2"),
     arrayOf("D", "scale", "3.5", "0", "0", "DOWN", "3"),
     arrayOf("D", "scale", "-2.5", "0", "0", "DOWN", "-2"),
@@ -13524,9 +13595,6 @@ private fun oracleBatch249(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-1", "-1E-100000", "4", "DOWN", "-1.000"),
     arrayOf("D", "add", "-1", "0E-100000", "4", "DOWN", "-1.000"),
     arrayOf("D", "add", "1.0000", "1E-100000", "4", "DOWN", "1.000"),
-)
-
-private fun oracleBatch250(): List<Array<String>> = listOf(
     arrayOf("D", "add", "1.0000", "-1E-100000", "4", "DOWN", "0.9999"),
     arrayOf("D", "add", "1.0000", "0E-100000", "4", "DOWN", "1.000"),
     arrayOf("D", "add", "-1.0000", "1E-100000", "4", "DOWN", "-0.9999"),
@@ -13563,6 +13631,9 @@ private fun oracleBatch250(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "8", "5", "CEILING", "0.125"),
     arrayOf("D", "divide", "1.000", "5", "5", "CEILING", "0.200"),
     arrayOf("D", "divide", "1.000", "0.5", "5", "CEILING", "2.00"),
+)
+
+private fun oracleBatch252(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "3", "5", "CEILING", "0.33334"),
     arrayOf("D", "divide", "1.000", "0", "5", "CEILING", "!ArithmeticException"),
     arrayOf("D", "scale", "2.5", "0", "0", "FLOOR", "2"),
@@ -13577,9 +13648,6 @@ private fun oracleBatch250(): List<Array<String>> = listOf(
     arrayOf("D", "add", "1", "0E-100000", "4", "FLOOR", "1.000"),
     arrayOf("D", "add", "-1", "1E-100000", "4", "FLOOR", "-1.000"),
     arrayOf("D", "add", "-1", "-1E-100000", "4", "FLOOR", "-1.001"),
-)
-
-private fun oracleBatch251(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-1", "0E-100000", "4", "FLOOR", "-1.000"),
     arrayOf("D", "add", "1.0000", "1E-100000", "4", "FLOOR", "1.000"),
     arrayOf("D", "add", "1.0000", "-1E-100000", "4", "FLOOR", "0.9999"),
@@ -13616,6 +13684,9 @@ private fun oracleBatch251(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "2", "5", "HALF_UP", "0.500"),
     arrayOf("D", "divide", "1.000", "4.00", "5", "HALF_UP", "0.25"),
     arrayOf("D", "divide", "1.000", "8", "5", "HALF_UP", "0.125"),
+)
+
+private fun oracleBatch253(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "5", "5", "HALF_UP", "0.200"),
     arrayOf("D", "divide", "1.000", "0.5", "5", "HALF_UP", "2.00"),
     arrayOf("D", "divide", "1.000", "3", "5", "HALF_UP", "0.33333"),
@@ -13630,9 +13701,6 @@ private fun oracleBatch251(): List<Array<String>> = listOf(
     arrayOf("D", "add", "1", "1E-100000", "4", "HALF_DOWN", "1.000"),
     arrayOf("D", "add", "1", "-1E-100000", "4", "HALF_DOWN", "1.000"),
     arrayOf("D", "add", "1", "0E-100000", "4", "HALF_DOWN", "1.000"),
-)
-
-private fun oracleBatch252(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-1", "1E-100000", "4", "HALF_DOWN", "-1.000"),
     arrayOf("D", "add", "-1", "-1E-100000", "4", "HALF_DOWN", "-1.000"),
     arrayOf("D", "add", "-1", "0E-100000", "4", "HALF_DOWN", "-1.000"),
@@ -13669,6 +13737,9 @@ private fun oracleBatch252(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-1.0000", "-1E-100000", "4", "HALF_EVEN", "-1.000"),
     arrayOf("D", "add", "-1.0000", "0E-100000", "4", "HALF_EVEN", "-1.000"),
     arrayOf("D", "divide", "1.000", "2", "5", "HALF_EVEN", "0.500"),
+)
+
+private fun oracleBatch254(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "4.00", "5", "HALF_EVEN", "0.25"),
     arrayOf("D", "divide", "1.000", "8", "5", "HALF_EVEN", "0.125"),
     arrayOf("D", "divide", "1.000", "5", "5", "HALF_EVEN", "0.200"),
@@ -13683,9 +13754,6 @@ private fun oracleBatch252(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "-0.49999999999999999999", "0", "0", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "scale", "9.99", "0", "0", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "add", "1", "1E-100000", "4", "UNNECESSARY", "!ArithmeticException"),
-)
-
-private fun oracleBatch253(): List<Array<String>> = listOf(
     arrayOf("D", "add", "1", "-1E-100000", "4", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "add", "1", "0E-100000", "4", "UNNECESSARY", "1.000"),
     arrayOf("D", "add", "-1", "1E-100000", "4", "UNNECESSARY", "!ArithmeticException"),
@@ -13722,6 +13790,9 @@ private fun oracleBatch253(): List<Array<String>> = listOf(
     arrayOf("I", "parse", "1 ", "0", "0", "HALF_EVEN", "!NumberFormatException"),
     arrayOf("D", "parse", "1_0", "0", "0", "HALF_EVEN", "!NumberFormatException"),
     arrayOf("I", "parse", "1_0", "0", "0", "HALF_EVEN", "!NumberFormatException"),
+)
+
+private fun oracleBatch255(): List<Array<String>> = listOf(
     arrayOf("D", "parse", "1E2147483648", "0", "0", "HALF_EVEN", "1E+2147483648"),
     arrayOf("I", "parse", "1E2147483648", "0", "0", "HALF_EVEN", "!NumberFormatException"),
     arrayOf("D", "parse", "0.1E-2147483647", "0", "0", "HALF_EVEN", "!NumberFormatException"),
@@ -13736,9 +13807,6 @@ private fun oracleBatch253(): List<Array<String>> = listOf(
     arrayOf("F", "valueOf", "-9223372036854775808", "0", "0", "HALF_EVEN", "0.0"),
     arrayOf("F", "construct", "1", "0", "0", "HALF_EVEN", "4.940656458412465441765687928682213723650598026143247644255856825006755072702087518652998363616359923797965646954457177309266567103559397963987747960107818781263007131903114045278458171678489821036887186360569987307230500063874091535649843873124733972731696151400317153853980741262385655911710266585566867681870395603106249319452715914924553293054565444011274801297099995419319894090804165633245247571478690147267801593552386115501348035264934720193790268107107491703332226844753335720832431936092382893458368060106011506169809753078342277318329247904982524730776375927247874656084778203734469699533647017972677717585125660551199131504891101451037862738167250955837389733598993664809941164205702637090279242767544565229087538682506419718265533447265625E-324"),
     arrayOf("F", "valueOf", "1", "0", "0", "HALF_EVEN", "4.9E-324"),
-)
-
-private fun oracleBatch254(): List<Array<String>> = listOf(
     arrayOf("F", "construct", "9218868437227405311", "0", "0", "HALF_EVEN", "179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368"),
     arrayOf("F", "valueOf", "9218868437227405311", "0", "0", "HALF_EVEN", "1.7976931348623157E+308"),
     arrayOf("F", "construct", "4591870180066957722", "0", "0", "HALF_EVEN", "0.1000000000000000055511151231257827021181583404541015625"),
@@ -13775,6 +13843,9 @@ private fun oracleBatch254(): List<Array<String>> = listOf(
     arrayOf("F", "valueOf", "1848720946535314927", "0", "0", "HALF_EVEN", "4.408318231120477E-185"),
     arrayOf("F", "construct", "6290702895396775242", "0", "0", "HALF_EVEN", "34950793669167323882344799569273795565644034126921094992749848122160485278496980763056458133673249120742165970944"),
     arrayOf("F", "valueOf", "6290702895396775242", "0", "0", "HALF_EVEN", "3.4950793669167324E+112"),
+)
+
+private fun oracleBatch256(): List<Array<String>> = listOf(
     arrayOf("F", "construct", "5989339043458420083", "0", "0", "HALF_EVEN", "247758547549208792253644050165084288826273489825923435407344692517796880683543259954995527680"),
     arrayOf("F", "valueOf", "5989339043458420083", "0", "0", "HALF_EVEN", "2.477585475492088E+92"),
     arrayOf("F", "construct", "-5532710506213085621", "0", "0", "HALF_EVEN", "-5.80094503594099329367167064557006598168442443681429485298273939068683724040366369315696811449012027214802058316287250719092085930762340115206811403571608536100523423328922945074737071990966796875E-62"),
@@ -13789,9 +13860,6 @@ private fun oracleBatch254(): List<Array<String>> = listOf(
     arrayOf("F", "valueOf", "5043907942618379131", "0", "0", "HALF_EVEN", "1.5628122650253844E+29"),
     arrayOf("F", "construct", "-5963526699253538436", "0", "0", "HALF_EVEN", "-8.9888942838749008133384504191255388575583140756813063537382390013720673445309213104947194436094011875357425260395207435852357770090709392544788300229347115257592461495143287169414738290003342061324483650909001873312970630480744915757895796559751033782958984375E-91"),
     arrayOf("F", "valueOf", "-5963526699253538436", "0", "0", "HALF_EVEN", "-8.988894283874901E-91"),
-)
-
-private fun oracleBatch255(): List<Array<String>> = listOf(
     arrayOf("F", "construct", "-357458366978379791", "0", "0", "HALF_EVEN", "-484261369419621086947362949376491110914092354097147651025615217039191473936161252943271101226415052661633286855183810672441952106710589514585538447036716299643182582786538326524410457033565420124841386911059745171311715256332362773438517526018309177408982860997705331937151880706129920"),
     arrayOf("F", "valueOf", "-357458366978379791", "0", "0", "HALF_EVEN", "-4.842613694196211E+284"),
     arrayOf("F", "construct", "-3980764943367503695", "0", "0", "HALF_EVEN", "-3045782398334130348409342508313423307079680"),
@@ -13828,6 +13896,9 @@ private fun oracleBatch255(): List<Array<String>> = listOf(
     arrayOf("F", "valueOf", "-1831395504427392974", "0", "0", "HALF_EVEN", "-1.4668681932567924E+186"),
     arrayOf("F", "construct", "-530965416666053903", "0", "0", "HALF_EVEN", "-1192299135856870086205919206695341232251596534523880751985798323459285565196582960414287254042246414377551975238666202783719065619607407620910533592329015052281771390791826700550229147505903040599937793105823354870773346600712998829974170174252389411854338920796626907824128"),
     arrayOf("F", "valueOf", "-530965416666053903", "0", "0", "HALF_EVEN", "-1.19229913585687E+273"),
+)
+
+private fun oracleBatch257(): List<Array<String>> = listOf(
     arrayOf("F", "construct", "-371205050138846665", "0", "0", "HALF_EVEN", "-58585540330014614041425160343688257039167019799353328206669275274834988917267204601412034609786623523658277308691600908963916914374891892654492198154794098435762033636144113048720980800049788331091787925192978982592839856085985566101906466826321084524222532500620687153369358874443776"),
     arrayOf("F", "valueOf", "-371205050138846665", "0", "0", "HALF_EVEN", "-5.858554033001461E+283"),
     arrayOf("F", "construct", "4208227247404797674", "0", "0", "HALF_EVEN", "2.28469318363210227130526995847252798422061645963902686983748051444828510055107262388673916575498878955841064453125E-27"),
@@ -13842,9 +13913,6 @@ private fun oracleBatch255(): List<Array<String>> = listOf(
     arrayOf("D", "divideScale", "1E+2147483647", "1", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "scale", "0E-2147483647", "0", "0", "HALF_EVEN", "0"),
     arrayOf("D", "divideScale", "0E-2147483647", "1", "0", "HALF_EVEN", "!ArithmeticException"),
-)
-
-private fun oracleBatch256(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "1E-2147483647", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "divideScale", "1E-2147483647", "1", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "scale", "10E+2147483647", "0", "0", "HALF_EVEN", "!ArithmeticException"),
@@ -13881,6 +13949,9 @@ private fun oracleBatch256(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "-2", "-1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "", "-1", "-1", "0", "!NumberFormatException"),
     arrayOf("B", "signed", "", "-1", "-1", "-2", "!NumberFormatException"),
+)
+
+private fun oracleBatch258(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "-1", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-1", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-1", "-1", "1", "!IndexOutOfBoundsException"),
@@ -13895,9 +13966,6 @@ private fun oracleBatch256(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "1", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "", "1", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "1", "-1", "0", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch257(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "1", "-1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "1", "-1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "", "-2", "0", "0", "!NumberFormatException"),
@@ -13934,6 +14002,9 @@ private fun oracleBatch257(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "-1", "1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "", "-1", "1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-1", "1", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch259(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "-1", "1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-1", "1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "", "0", "1", "0", "!NumberFormatException"),
@@ -13948,9 +14019,6 @@ private fun oracleBatch257(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "1", "1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "1", "1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "1", "1", "2", "!NumberFormatException"),
-)
-
-private fun oracleBatch258(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0", "-2", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-2", "-2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0", "-2", "-2", "-1", "!IndexOutOfBoundsException"),
@@ -13987,6 +14055,9 @@ private fun oracleBatch258(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "-2", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-2", "-1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-2", "-1", "2", "!NumberFormatException"),
+)
+
+private fun oracleBatch260(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0", "-1", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-1", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0", "-1", "-1", "-1", "!IndexOutOfBoundsException"),
@@ -14001,9 +14072,6 @@ private fun oracleBatch258(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "0", "-1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0", "1", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "1", "-1", "-2", "!NumberFormatException"),
-)
-
-private fun oracleBatch259(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "1", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "1", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "1", "-1", "1", "!IndexOutOfBoundsException"),
@@ -14040,6 +14108,9 @@ private fun oracleBatch259(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "1", "0", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0", "2", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "2", "0", "-2", "!NumberFormatException"),
+)
+
+private fun oracleBatch261(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "2", "0", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "2", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "2", "0", "1", "!IndexOutOfBoundsException"),
@@ -14054,9 +14125,6 @@ private fun oracleBatch259(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "-1", "1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0", "-1", "1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-1", "1", "0", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch260(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "-1", "1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-1", "1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0", "0", "1", "0", "0"),
@@ -14093,6 +14161,9 @@ private fun oracleBatch260(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "0", "2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0", "0", "2", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "0", "2", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch262(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "0", "2", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "0", "2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0", "1", "2", "0", "!IndexOutOfBoundsException"),
@@ -14107,9 +14178,6 @@ private fun oracleBatch260(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "2", "2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "2", "2", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "2", "2", "2", "!NumberFormatException"),
-)
-
-private fun oracleBatch261(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "-1", "-2", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-2", "-2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "-1", "-2", "-2", "-1", "!IndexOutOfBoundsException"),
@@ -14146,6 +14214,9 @@ private fun oracleBatch261(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "-2", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-2", "-1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-2", "-1", "2", "!NumberFormatException"),
+)
+
+private fun oracleBatch263(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "-1", "-1", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-1", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "-1", "-1", "-1", "-1", "!IndexOutOfBoundsException"),
@@ -14160,9 +14231,6 @@ private fun oracleBatch261(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "0", "-1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "-1", "1", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "1", "-1", "-2", "!NumberFormatException"),
-)
-
-private fun oracleBatch262(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "1", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "1", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "1", "-1", "1", "!IndexOutOfBoundsException"),
@@ -14199,6 +14267,9 @@ private fun oracleBatch262(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "1", "0", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "-1", "2", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "2", "0", "-2", "!NumberFormatException"),
+)
+
+private fun oracleBatch264(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "2", "0", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "2", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "2", "0", "1", "!IndexOutOfBoundsException"),
@@ -14213,9 +14284,6 @@ private fun oracleBatch262(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "-1", "1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "-1", "-1", "1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-1", "1", "0", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch263(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "-1", "1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-1", "1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "-1", "0", "1", "0", "0"),
@@ -14252,6 +14320,9 @@ private fun oracleBatch263(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "0", "2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "-1", "0", "2", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "0", "2", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch265(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "0", "2", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "0", "2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "-1", "1", "2", "0", "!IndexOutOfBoundsException"),
@@ -14266,9 +14337,6 @@ private fun oracleBatch263(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "2", "2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "2", "2", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "2", "2", "2", "!NumberFormatException"),
-)
-
-private fun oracleBatch264(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0,-128,1", "-2", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "-2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "-2", "-1", "!IndexOutOfBoundsException"),
@@ -14305,6 +14373,9 @@ private fun oracleBatch264(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "3", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "-2", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "-2", "2", "!NumberFormatException"),
+)
+
+private fun oracleBatch266(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0,-128,1", "4", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "4", "-2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "4", "-2", "-1", "!IndexOutOfBoundsException"),
@@ -14319,9 +14390,6 @@ private fun oracleBatch264(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-2", "-1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "-1", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "-1", "-2", "!NumberFormatException"),
-)
-
-private fun oracleBatch265(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-1", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "-1", "1", "!IndexOutOfBoundsException"),
@@ -14358,6 +14426,9 @@ private fun oracleBatch265(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "4", "-1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "-2", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "0", "-2", "!NumberFormatException"),
+)
+
+private fun oracleBatch267(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-2", "0", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "0", "1", "!IndexOutOfBoundsException"),
@@ -14372,9 +14443,6 @@ private fun oracleBatch265(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "0", "0", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "0", "0", "-1", "0"),
     arrayOf("B", "signed", "0,-128,1", "0", "0", "0", "0"),
-)
-
-private fun oracleBatch266(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "0", "0", "1", "0"),
     arrayOf("B", "signed", "0,-128,1", "0", "0", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "1", "0", "0", "0"),
@@ -14411,6 +14479,9 @@ private fun oracleBatch266(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-1", "1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "1", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch268(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-1", "1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "0", "1", "0", "0"),
@@ -14425,9 +14496,6 @@ private fun oracleBatch266(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "1", "1", "0", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "1", "1", "1", "128"),
     arrayOf("B", "signed", "0,-128,1", "1", "1", "2", "!NumberFormatException"),
-)
-
-private fun oracleBatch267(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0,-128,1", "2", "1", "0", "-32767"),
     arrayOf("B", "signed", "0,-128,1", "2", "1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "2", "1", "-1", "-32769"),
@@ -14464,6 +14532,9 @@ private fun oracleBatch267(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "0", "2", "0", "0"),
     arrayOf("B", "signed", "0,-128,1", "0", "2", "1", "0"),
     arrayOf("B", "signed", "0,-128,1", "0", "2", "2", "!NumberFormatException"),
+)
+
+private fun oracleBatch269(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0,-128,1", "1", "2", "0", "1"),
     arrayOf("B", "signed", "0,-128,1", "1", "2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "1", "2", "-1", "-1"),
@@ -14478,9 +14549,6 @@ private fun oracleBatch267(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "2", "2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "3", "2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "2", "-2", "!NumberFormatException"),
-)
-
-private fun oracleBatch268(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "3", "2", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "2", "1", "!IndexOutOfBoundsException"),
@@ -14517,6 +14585,9 @@ private fun oracleBatch268(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "1", "3", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "2", "3", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "2", "3", "-2", "!NumberFormatException"),
+)
+
+private fun oracleBatch270(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "2", "3", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "2", "3", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "2", "3", "1", "!IndexOutOfBoundsException"),
@@ -14531,9 +14602,6 @@ private fun oracleBatch268(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "4", "3", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "4", "3", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "4", "3", "0", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch269(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "4", "3", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "4", "3", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "-2", "4", "0", "!IndexOutOfBoundsException"),
@@ -14570,6 +14638,9 @@ private fun oracleBatch269(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "3", "4", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "3", "4", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "4", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch271(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "3", "4", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "4", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "4", "4", "0", "!IndexOutOfBoundsException"),
@@ -14584,9 +14655,6 @@ private fun oracleBatch269(): List<Array<String>> = listOf(
     arrayOf("R", "prime", "-1", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("R", "prime", "-1", "1", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("R", "random", "0", "0", "0", "HALF_EVEN", "0"),
-)
-
-private fun oracleBatch270(): List<Array<String>> = listOf(
     arrayOf("R", "probablePrime", "0", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("R", "prime", "0", "-1", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("R", "prime", "0", "0", "0", "HALF_EVEN", "!ArithmeticException"),

@@ -132,7 +132,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 13,519 vectors, including 8,888 added signed
+The main oracle now contains 13,583 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -152,6 +152,19 @@ include 120-bit powers and neighboring negative values to exercise discarded-bit
 rounding, plus Int.MIN_VALUE/Int.MAX_VALUE distances. The existing structured
 oracle independently supplies normal-value results at the extreme distances.
 Broader dispatch behavior in arithmetic and conversions remains unverified.
+
+Primitive conversion subclass fixtures compare actual Java call traces with
+JDK across zero, signs, precision boundaries and overflow-to-infinity boundaries.
+`intValue` reads the low magnitude directly instead of calling overridable
+`longValue`. Inherited byte/short conversion still delegates to virtual intValue,
+as JDK Number does. Nonzero magnitudes below 2^63 use virtual longValue for
+Float/Double; zero and larger magnitudes do not. Larger conversions extract
+the mantissa and guard/sticky information from private limbs without abs,
+shiftRight, testBit, bitLength or getLowestSetBit overrides. The oracle adds 64
+portable subclass cases with replacement Long values, including values just
+above Float halfway points that would be double-rounded by a Long→Double→Float
+path. Floating numerical-range proof, exhaustive Float-domain verification and
+dispatch in exact conversion methods remain open.
 
 ## Completion gate
 
