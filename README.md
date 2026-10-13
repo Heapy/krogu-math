@@ -68,11 +68,15 @@ etc.). Native tests cannot execute on a different host OS or CPU architecture.
 Kotlin/Native 2.4.21 does not provide a Linux ARM64 compiler host: CI cross-compiles
 the ARM64 test executable on Linux x64 and then runs it on a Linux ARM64 runner.
 
-The committed 13,583 portable vectors compare values, preferred scales, text,
+The committed 16,559 portable vectors compare values, preferred scales, text,
 floating-point bits and exception **types** on every test target.
 The vectors include 8,888 structured/dense bit-query, bit-update and extreme
 shift cases. Portable subclass tests also check that inherited bit operations
 use the stored value independently of neighboring public overrides.
+Exact conversions add 1,248 subclass cases checking range-guard order,
+delegation, exact error messages and call traces against JDK.
+Another 1,728 Float/Double midpoint-neighbor outcomes exercise rounding parity,
+sticky bits and finite/infinity edges; see [conversion arguments](NUMERICAL_ARGUMENTS.md).
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.

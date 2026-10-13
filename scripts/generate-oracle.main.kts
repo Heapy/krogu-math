@@ -61,6 +61,55 @@ for (a in integerInputs) {
         record("I", "flipBit", a, p = distance) { x.flipBit(distance) }
     }
 }
+// Integer neighbors of binary rounding midpoints, including the finite/infinity edge.
+for (precision in listOf(24, 53)) {
+    val leading = BigInteger.ONE.shiftLeft(precision - 1)
+    val significands = listOf(leading, leading.add(BigInteger.ONE), leading.add(BigInteger.TWO),
+        BigInteger.ONE.shiftLeft(precision).subtract(BigInteger.ONE))
+    for (exponent in listOf(24, 29, 30, 31, 53, 59, 60, 61, 62, 63, 64, 65, 126, 127, 128, 254, 511, 1022, 1023, 1024)) {
+        if (exponent < precision) continue
+        val shift = exponent - precision + 1
+        for (significand in significands) {
+            val midpoint = significand.shiftLeft(shift).add(BigInteger.ONE.shiftLeft(shift - 1))
+            for (offset in -1L..1L) for (negative in listOf(false, true)) {
+                val magnitude = midpoint.add(BigInteger.valueOf(offset))
+                val x = if (negative) magnitude.negate() else magnitude
+                record("I", "float", x.toString()) { x.toFloat().toBits() }
+                record("I", "double", x.toString()) { x.toDouble().toBits() }
+            }
+        }
+    }
+}
+// Exact conversion range guards and observable subclass calls.
+val exactInputs = listOf("0", "1", "127", "128", "32767", "32768", "2147483647", "2147483648",
+    "4294967295", "4294967296", "9223372036854775807", "9223372036854775808", "-128", "-129",
+    "-32768", "-32769", "-2147483648", "-2147483649", "-9223372036854775808", "-9223372036854775809",
+    "-4294967295", "-4294967296", "18446744073709551615", "18446744073709551616",
+    "-18446744073709551615", "-18446744073709551616")
+for (a in exactInputs) for (fakeBits in listOf(Int.MIN_VALUE, -1, 0, 7, 8, 15, 16, 31, 32, 63, 64, Int.MAX_VALUE)) {
+    for (op in listOf("intExact", "longExact", "shortExact", "byteExact")) {
+        val trace = StringBuilder()
+        val x = object : BigInteger(a) {
+            override fun bitLength(): Int { trace.append("bits;"); return fakeBits }
+            override fun toInt(): Int { trace.append("int;"); return 44 }
+            override fun toLong(): Long { trace.append("long;"); return 45L }
+            override fun toByte(): Byte { trace.append("byte;"); return 42 }
+            override fun toShort(): Short { trace.append("short;"); return 43 }
+        }
+        record("E", op, a, fakeBits.toString()) {
+            val result = try { when (op) {
+                "intExact" -> x.intValueExact()
+                "longExact" -> x.longValueExact()
+                "shortExact" -> x.shortValueExact()
+                else -> x.byteValueExact()
+            }.toString() } catch (e: ArithmeticException) {
+                check(e.cause == null)
+                "!${e.javaClass.simpleName}:${e.message}"
+            }
+            "$result|$trace"
+        }
+    }
+}
 // Observable JVM Number delegation, using public APIs on independently declared subclasses.
 val replacementLongs = listOf(0L, 42L, -42L, Long.MIN_VALUE, Long.MAX_VALUE,
     (1L shl 54) + (1L shl 30) + 1, (1L shl 62) + (1L shl 38) + 1, -((1L shl 62) + (1L shl 38) + 1))

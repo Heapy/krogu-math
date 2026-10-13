@@ -132,7 +132,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 13,583 vectors, including 8,888 added signed
+The main oracle now contains 16,559 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -163,8 +163,27 @@ the mantissa and guard/sticky information from private limbs without abs,
 shiftRight, testBit, bitLength or getLowestSetBit overrides. The oracle adds 64
 portable subclass cases with replacement Long values, including values just
 above Float halfway points that would be double-rounded by a Long→Double→Float
-path. Floating numerical-range proof, exhaustive Float-domain verification and
-dispatch in exact conversion methods remain open.
+path. Floating numerical-range proof and exhaustive Float-domain verification
+remain open. Exact conversion dispatch evidence is described below.
+
+Exact BigInteger conversions now reject oversized magnitudes before consulting
+overridden bitLength: the threshold is 32 magnitude bits for int/short/byte
+and 64 for long. Within those thresholds they consult bitLength and delegate
+to the corresponding virtual primitive conversion. Short/byte exact methods
+do not go through intValueExact. Java poison overrides reproduce the previous
+failures. An additional 1,248 portable JDK cases cross 26 signed boundary values,
+12 replacement bitLength results and all four exact methods; they compare
+results, exact error messages, absence of causes and call traces. This includes
+both sides of 2^32 and 2^64, so the early-rejection branches are exercised on
+every target. The broad arithmetic/conversion subclass audit is still ongoing.
+
+`NUMERICAL_ARGUMENTS.md` derives BigInteger guard/sticky rounding, carry,
+finite/infinity thresholds, absence of a second Float rounding, and ordinary
+signed exact-conversion range checks. The main oracle adds 1,728 Float/Double
+outcomes immediately below, at and above binary midpoints, varying retained
+parity, exponent and sign. This strengthens the integer conversion algorithm
+audit without closing the BigDecimal/subnormal, exhaustive Float-domain,
+compiler/runtime and practical largest-magnitude requirements.
 
 ## Completion gate
 

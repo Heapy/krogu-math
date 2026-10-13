@@ -15,6 +15,27 @@ class PortableOracleTest {
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "E") {
+            val trace = StringBuilder()
+            val value = object : BigInteger(v[2]) {
+                override fun bitLength(): Int { trace.append("bits;"); return v[3].toInt() }
+                override fun toInt(): Int { trace.append("int;"); return 44 }
+                override fun toLong(): Long { trace.append("long;"); return 45L }
+                override fun toByte(): Byte { trace.append("byte;"); return 42 }
+                override fun toShort(): Short { trace.append("short;"); return 43 }
+            }
+            val result = try { when (op) {
+                "intExact" -> value.intValueExact()
+                "longExact" -> value.longValueExact()
+                "shortExact" -> value.shortValueExact()
+                "byteExact" -> value.byteValueExact()
+                else -> error("Unknown exact conversion $op")
+            }.toString() } catch (e: ArithmeticException) {
+                assertNull(e.cause)
+                "!${e::class.simpleName}:${e.message}"
+            }
+            return "$result|$trace"
+        }
         if (v[0] == "P") {
             val value = object : BigInteger(v[2]) { override fun toLong(): Long = v[3].toLong() }
             return "${value.toInt()}|${value.toDouble().toBits()}|${value.toFloat().toBits()}"

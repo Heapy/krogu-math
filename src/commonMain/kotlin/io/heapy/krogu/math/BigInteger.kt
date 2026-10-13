@@ -444,10 +444,22 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         if (shift > 0 && magnitudeBit(shift - 1) && (lowestSetBitValue() < shift - 1 || top and 1L != 0L)) top++
         return sign * top.toDouble() * 2.0.pow(shift)
     }
-    open fun intValueExact(): Int { if (bitLength() > 31) throw ArithmeticException("BigInteger out of int range"); return toInt() }
-    open fun longValueExact(): Long { if (bitLength() > 63) throw ArithmeticException("BigInteger out of long range"); return toLong() }
-    open fun shortValueExact(): Short { val n = intValueExact(); if (n !in Short.MIN_VALUE..Short.MAX_VALUE) throw ArithmeticException("BigInteger out of short range"); return n.toShort() }
-    open fun byteValueExact(): Byte { val n = intValueExact(); if (n !in Byte.MIN_VALUE..Byte.MAX_VALUE) throw ArithmeticException("BigInteger out of byte range"); return n.toByte() }
+    open fun intValueExact(): Int {
+        if (magnitudeBits() > 32 || bitLength() > 31) throw ArithmeticException("BigInteger out of int range")
+        return toInt()
+    }
+    open fun longValueExact(): Long {
+        if (magnitudeBits() > 64 || bitLength() > 63) throw ArithmeticException("BigInteger out of long range")
+        return toLong()
+    }
+    open fun shortValueExact(): Short {
+        if (magnitudeBits() > 32 || bitLength() > 15) throw ArithmeticException("BigInteger out of short range")
+        return toShort()
+    }
+    open fun byteValueExact(): Byte {
+        if (magnitudeBits() > 32 || bitLength() > 7) throw ArithmeticException("BigInteger out of byte range")
+        return toByte()
+    }
 
     operator fun plus(other: BigInteger): BigInteger = add(other)
     operator fun minus(other: BigInteger): BigInteger = subtract(other)

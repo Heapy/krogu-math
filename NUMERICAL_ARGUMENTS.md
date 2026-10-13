@@ -1,0 +1,89 @@
+# BigInteger conversion arguments
+
+These arguments describe the independent common implementation in
+`BigInteger.kt`, together with its portable JDK fixtures. They concern integer
+conversions; BigDecimal rational conversion and its subnormal cases remain
+separate audit requirements.
+
+## Binary floating-point rounding
+
+The relevant format parameters are precision `p=24`, upper bit-length `E=128`
+for Float, and `p=53`, `E=1024` for Double. These follow from
+[JLS 4.2.3](https://docs.oracle.com/javase/specs/jls/se25/html/jls-4.html#jls-4.2.3).
+Java numeric conversion uses nearest rounding with even ties
+([JLS 5.1.2–5.1.3](https://docs.oracle.com/javase/specs/jls/se25/html/jls-5.html#jls-5.1.2),
+[JLS 15.4](https://docs.oracle.com/javase/specs/jls/se25/html/jls-15.html#jls-15.4)).
+The argument assumes the target's primitive arithmetic and conversion implement
+that policy; portable bit-pattern comparisons check the exercised cases on each
+supported target.
+
+For a positive magnitude `n` with bit length `b`, zero is handled separately.
+If `b>E`, then `n>=2^E`, so signed infinity is the correct result. Otherwise set
+`s=max(0,b-p)`. Reading the highest bits directly from the normalized limbs gives
+`q=floor(n/2^s)`; at most 53 bits are read. The discarded part is
+`r=n mod 2^s`, which need not be materialized.
+
+When `s=0`, the integer is exact. When `s>0`, the guard bit says whether
+`r>=2^(s-1)`. Sticky bits say whether any lower discarded bit is set. The private
+lowest-set-bit index is less than `s-1` exactly when such a bit exists. Therefore
+the increment rule `guard && (sticky || q is odd)` has three outcomes:
+
+- Below the midpoint, retain `q`.
+- Above the midpoint, increment `q`.
+- At the midpoint, choose the even significand.
+
+After rounding, `q<=2^p`, so it fits Long and converts exactly to Double.
+Also `s<=E-p`: at most 104 for Float and 971 for Double. The power `2^s` is exact
+in Double. `FloatingPowerTest` checks every used power, 0 through 971, against
+its independently encoded IEEE exponent bits on every target. Multiplication
+produces an exact dyadic value with at most `p`
+significand bits, except when the Double result itself overflows. A carried
+`q=2^p` is a power of two and also exact. Consequently a finite Float result is
+already representable when the final Float cast occurs; that cast introduces
+no second rounding.
+
+The greatest finite magnitude is `(2^p-1)*2^(E-p)`. Its overflow midpoint is
+`2^E-2^(E-p-1)`. At that point the retained significand is odd and the guard is
+set, so the carry selects infinity. Below it the result remains finite. This
+covers both the largest finite value and the carry into the next exponent.
+Restoring the integer sign preserves the symmetric rounding result. Nonzero
+integer magnitudes cannot underflow or produce subnormals; integer zero returns
+positive zero.
+
+For a nonzero original magnitude below `2^63`, the implementation preserves
+JDK's observed virtual longValue call. Double converts that returned Long once.
+Float reconstructs its exact integer magnitude and applies the rule above with
+virtual dispatch disabled. Thus a replacement Long just above a Float midpoint
+is not first rounded to a Double midpoint. Zero and original magnitudes at or
+above `2^63` bypass that virtual call, as the Java trace fixtures demonstrate.
+
+## Exact integral conversions
+
+For an ordinary stored value, fitting signed width `w` is equivalent to
+`bitLength()<=w-1`: positive bit length describes its magnitude; negative bit
+length describes `abs(n)-1`. This includes the asymmetric negative endpoint.
+
+The preliminary magnitude guards cannot reject a representable value: int's
+negative endpoint has 32 magnitude bits and long's has 64. Short and byte use
+the broader 32-bit preliminary guard and their own final signed-width test.
+After the checks, the corresponding primitive conversion is exact for an
+ordinary object. Subclasses can deliberately change these public methods;
+the oracle constrains the observed guard order and delegation instead of
+assuming overridden methods remain truthful.
+
+## Evidence and remaining scope
+
+The main portable oracle includes 1,728 signed midpoint-neighbor Float/Double
+outcomes. It varies retained parity, carry, exponents across the 30-bit limb,
+32/64-bit conversion boundaries, and the finite/infinity edges. Another 64
+cases replace virtual longValue, including Long values where an intermediate
+Double would change Float rounding. The exact-conversion matrix has 1,248
+cases covering signed endpoints, both sides of the magnitude guards, replaced
+bitLength, exact error messages and primitive-call traces. Separate power tests
+check every scaling factor and positive/negative integer powers through 2^1100
+against IEEE encodings, including the finite/infinity transition.
+
+These arguments complement the fixtures; they do not prove every compiler or
+runtime implementation, complete BigDecimal conversion, exercise multi-gigabyte
+objects, or settle the full java.math compatibility audit. Those requirements
+remain tracked in `COMPATIBILITY.md`.
