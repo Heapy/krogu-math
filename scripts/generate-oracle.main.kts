@@ -826,6 +826,31 @@ for (left in listOf("0", "1", "-1")) for (right in listOf("0", "1", "-1")) {
         }
     }
 }
+for (text in listOf("0.00", "1", "-1")) for (behavior in listOf("return", "self", "throw", "super")) {
+    for (precision in listOf(-2, -1, 0, 1)) for (operandText in listOf("2", "~")) for (op in listOf("add", "subtract", "multiply")) {
+        record("ND", "$op:$behavior", text, operandText, precision, RoundingMode.HALF_UP) {
+            val trace = StringBuilder()
+            val value = object : BigDecimal(text) {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                private fun callback(operand: BigDecimal?, base: () -> BigDecimal): BigDecimal {
+                    trace.append(op).append(':').append(operand == null).append(';')
+                    return when (behavior) { "return" -> BigDecimal("42.00"); "self" -> this; "throw" -> throw IllegalStateException("operation callback"); else -> base() }
+                }
+                override fun add(augend: BigDecimal?): BigDecimal = callback(augend) { super.add(augend) }
+                override fun subtract(subtrahend: BigDecimal?): BigDecimal = callback(subtrahend) { super.subtract(subtrahend) }
+                override fun multiply(multiplicand: BigDecimal?): BigDecimal = callback(multiplicand) { super.multiply(multiplicand) }
+            }
+            val operand = if (operandText == "~") null else BigDecimal(operandText)
+            val context = if (precision < 0) null else MathContext(precision)
+            val result = try {
+                (if (precision == -2) when (op) { "add" -> value.add(operand); "subtract" -> value.subtract(operand); else -> value.multiply(operand) }
+                    else when (op) { "add" -> value.add(operand, context); "subtract" -> value.subtract(operand, context); else -> value.multiply(operand, context) }).toString()
+            } catch (e: Exception) { "!${e::class.simpleName}" + if (e is IllegalStateException) ":${e.message}" else "" }
+            "$result|$trace"
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

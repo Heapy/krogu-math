@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 66,115 vectors, including 8,888 added signed
+The main oracle now contains 66,403 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -433,3 +433,15 @@ message `BigInteger would overflow supported range`. Zero coefficients bypass
 unnecessary scaling. Selected distances are small or far beyond supported range,
 so this campaign does not allocate near-limit integers. The broader range and
 exception-message audit remains open.
+
+Nullable binary delegation adds 288 portable outcomes and a compiled Java matrix
+for add/subtract/multiply, direct and context overloads, null/ordinary operands,
+null/unlimited/finite contexts and four exact-callback behaviors. Unlimited
+contexts forward the operand to the public exact override before operand
+validation. Finite contexts validate before private calculation. Context-null
+controls reject without invoking the exact callback. Binary operand and context
+parameters now use nullable Kotlin types; subclass overrides use them too.
+Base numeric behavior, callback replacements, callback exception messages and
+traces are compared. NPE classes are checked separately from their still-open
+detailed diagnostic audit. More callback compositions and returned-null results
+remain open.

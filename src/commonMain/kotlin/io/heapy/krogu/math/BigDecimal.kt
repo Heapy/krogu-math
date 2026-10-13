@@ -50,13 +50,17 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun plus(): BigDecimal = this
     open fun plus(mc: MathContext?): BigDecimal = roundValue(mc ?: throw NullPointerException())
 
-    open fun add(augend: BigDecimal): BigDecimal = addValue(augend)
+    open fun add(augend: BigDecimal?): BigDecimal = addValue(augend ?: throw NullPointerException())
     private fun addValue(augend: BigDecimal): BigDecimal {
         val scale = maxOf(decimalScale, augend.decimalScale)
         return BigDecimal(scaledCoefficient(scale).add(augend.scaledCoefficient(scale)), scale)
     }
-    open fun add(augend: BigDecimal, mc: MathContext): BigDecimal {
-        if (mc.precision == 0) return add(augend)
+    open fun add(augend: BigDecimal?, mc: MathContext?): BigDecimal {
+        val context = mc ?: throw NullPointerException()
+        if (context.precision == 0) return add(augend)
+        return addContextValue(augend ?: throw NullPointerException(), context)
+    }
+    private fun addContextValue(augend: BigDecimal, mc: MathContext): BigDecimal {
         val preferredScale = maxOf(decimalScale, augend.decimalScale)
         if (signum() == 0 || augend.signum() == 0) {
             val nonzero = (if (signum() == 0) augend else this).round(mc)
@@ -104,19 +108,26 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         // a whole unit can carry through 999... or cancel a retained +1 digit.
         return BigDecimal(BigInteger.valueOf(signum().toLong()), checkedScale(scale + 1))
     }
-    open fun subtract(subtrahend: BigDecimal): BigDecimal {
-        val scale = maxOf(decimalScale, subtrahend.decimalScale)
-        return BigDecimal(scaledCoefficient(scale).subtract(subtrahend.scaledCoefficient(scale)), scale)
+    open fun subtract(subtrahend: BigDecimal?): BigDecimal {
+        val operand = subtrahend ?: throw NullPointerException()
+        val scale = maxOf(decimalScale, operand.decimalScale)
+        return BigDecimal(scaledCoefficient(scale).subtract(operand.scaledCoefficient(scale)), scale)
     }
-    open fun subtract(subtrahend: BigDecimal, mc: MathContext): BigDecimal =
-        if (mc.precision == 0) subtract(subtrahend) else add(subtrahend.negate(), mc)
-    open fun multiply(multiplicand: BigDecimal): BigDecimal = multiplyValue(multiplicand)
+    open fun subtract(subtrahend: BigDecimal?, mc: MathContext?): BigDecimal {
+        val context = mc ?: throw NullPointerException()
+        return if (context.precision == 0) subtract(subtrahend)
+            else add((subtrahend ?: throw NullPointerException()).negate(), context)
+    }
+    open fun multiply(multiplicand: BigDecimal?): BigDecimal = multiplyValue(multiplicand ?: throw NullPointerException())
     private fun multiplyValue(multiplicand: BigDecimal): BigDecimal {
         val scale = scaleForValue(decimalScale.toLong() + multiplicand.decimalScale, coefficient.signum() == 0)
         return BigDecimal(coefficient.multiply(multiplicand.coefficient), scale)
     }
-    open fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal =
-        if (mc.precision == 0) multiply(multiplicand) else multiplyValue(multiplicand).round(mc)
+    open fun multiply(multiplicand: BigDecimal?, mc: MathContext?): BigDecimal {
+        val context = mc ?: throw NullPointerException()
+        return if (context.precision == 0) multiply(multiplicand)
+            else multiplyValue(multiplicand ?: throw NullPointerException()).round(context)
+    }
 
     open fun divide(divisor: BigDecimal): BigDecimal {
         checkDivisionByZero(divisor)

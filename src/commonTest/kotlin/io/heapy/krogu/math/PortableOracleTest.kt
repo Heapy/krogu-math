@@ -16,6 +16,7 @@ class PortableOracleTest {
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "ND") return evaluateNullableBinaryOracle(v)
         if (v[0] == "O") return evaluateAdditionOracle(v)
         if (v[0] == "C") return evaluateUnaryOracle(v)
         if (v[0] == "K") {
@@ -65,8 +66,8 @@ class PortableOracleTest {
             val value = object : BigDecimal(BigInteger(v[2].substringBefore('@')), v[2].substringAfter('@').toInt()) {
                 override fun signum(): Int { trace.append("sign;"); return sign }
                 override fun precision(): Int { trace.append("precision;"); return 1 }
-                override fun multiply(multiplicand: BigDecimal): BigDecimal { trace.append("exact;"); return super.multiply(multiplicand) }
-                override fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal { trace.append("context;"); return super.multiply(multiplicand, mc) }
+                override fun multiply(multiplicand: BigDecimal?): BigDecimal { trace.append("exact;"); return super.multiply(multiplicand) }
+                override fun multiply(multiplicand: BigDecimal?, mc: MathContext?): BigDecimal { trace.append("context;"); return super.multiply(multiplicand, mc) }
             }
             val other = BigDecimal(BigInteger(v[3].substringBefore('@')), v[3].substringAfter('@').toInt())
             val result = try {
