@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 47,113 vectors, including 8,888 added signed
+The main oracle now contains 48,457 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -305,3 +305,14 @@ coefficient and scale for exact root extraction; the original scale still suppli
 the preferred result scale, padded only as far as finite precision allows.
 stripTrailingZeros itself checks the stored coefficient for zero and bypasses
 virtual signum. The broader replacement-method domain remains open.
+
+Returned normalization subclasses add 1,344 portable cases. Exact-root handling
+rejects an odd stored normalized scale before invoking coefficient getters. The
+first virtual unscaledValue result selects the coefficient-one shortcut; otherwise
+a second call supplies the integer root input. Cases vary the first result across
+one, zero, signed nonsquares, ordinary values and a throwing callback, while
+tracking the absence of virtual scale/signum/precision calls on the returned object.
+Finite exact contexts validate the extracted integer root's digit count before
+removing coefficient zeros, matching the pinned rejection of an unnormalized
+4.00 replacement at precision one. Extreme normalized scales, additional returned
+subclass methods and large-input resource behavior remain open.

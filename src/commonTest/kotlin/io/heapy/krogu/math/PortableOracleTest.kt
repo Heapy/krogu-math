@@ -16,6 +16,29 @@ class PortableOracleTest {
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "N") {
+            val trace = StringBuilder()
+            val normalized = object : BigDecimal(v[2]) {
+                override fun signum(): Int { trace.append("sign;"); return super.signum() }
+                override fun precision(): Int { trace.append("precision;"); return super.precision() }
+                override fun scale(): Int { trace.append("scale;"); return super.scale() }
+                private var calls = 0
+                override fun unscaledValue(): BigInteger {
+                    trace.append("unscaled;")
+                    if (calls++ == 0 && v[3] != "~") {
+                        if (v[3] == "throw") throw IllegalStateException("first coefficient")
+                        return BigInteger(v[3])
+                    }
+                    return super.unscaledValue()
+                }
+            }
+            val value = object : BigDecimal("4.00") {
+                override fun stripTrailingZeros(): BigDecimal = normalized
+            }
+            val result = try { value.sqrt(MathContext(p, RoundingMode.valueOf(v[5]))).toString() }
+                catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+            return "$result|$trace"
+        }
         if (v[0] == "H") {
             val trace = StringBuilder()
             val value = object : BigDecimal(v[2]) {

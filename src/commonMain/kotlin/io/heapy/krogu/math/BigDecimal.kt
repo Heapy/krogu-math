@@ -354,15 +354,16 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val context = mc ?: throw NullPointerException()
         if (context.precision == 0 || context.roundingMode == RoundingMode.UNNECESSARY) {
             val normalized = stripTrailingZeros()
-            val odd = normalized.decimalScale and 1
-            val value = if (odd == 0) normalized.coefficient else normalized.coefficient.multiply(BigInteger.TEN)
-            val root = value.sqrtAndRemainder()
-            if (root[1].signum() != 0) throw ArithmeticException("Computed square root not exact.")
+            if (normalized.decimalScale and 1 != 0) throw ArithmeticException("Computed square root not exact.")
+            val root = if (normalized.unscaledValue() == BigInteger.ONE) arrayOf(BigInteger.ONE, BigInteger.ZERO)
+                else normalized.unscaledValue().sqrtAndRemainder()
+            if (root[1].signum() != 0 || (context.precision > 0 && root[0].abs().toString().length > context.precision))
+                throw ArithmeticException("Computed square root not exact.")
             if (root[0].signum() == 0) {
                 val scale = if (context.precision > 0) minOf(preferred, context.precision - 1) else preferred
                 return BigDecimal(BigInteger.ZERO, scale)
             }
-            val exact = BigDecimal(root[0], checkedScale((normalized.decimalScale.toLong() + odd) / 2)).stripTo(preferred)
+            val exact = BigDecimal(root[0], normalized.decimalScale / 2).stripTo(preferred)
             // Exact-mode validation in the oracle squares a minimally scaled root.
             // Its scale overflow is observable even when the preferred form could be squared.
             checkedScale(2L * exact.stripTrailingZeros().decimalScale)

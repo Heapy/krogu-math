@@ -501,6 +501,37 @@ for (text in listOf("-4", "0.00", "1", "4.00", "2", "0.0004", "123.456")) {
         }
     }
 }
+for (text in listOf("9", "0.04", "4.00", "0", "-4", "0.4", "0.9", "4.0")) {
+    for (precision in listOf(0, 1, 7)) for (mode in RoundingMode.entries) for (first in listOf(null, "1", "0", "4", "2", "-4", "throw")) {
+        record("N", "normalizedRoot", text, first ?: "~", precision, mode) {
+            val trace = StringBuilder()
+            val normalized = object : BigDecimal(text) {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                override fun signum(): Int { trace.append("sign;"); return super.signum() }
+                override fun precision(): Int { trace.append("precision;"); return super.precision() }
+                override fun scale(): Int { trace.append("scale;"); return super.scale() }
+                private var calls = 0
+                override fun unscaledValue(): BigInteger {
+                    trace.append("unscaled;")
+                    if (calls++ == 0 && first != null) {
+                        if (first == "throw") throw IllegalStateException("first coefficient")
+                        return BigInteger(first)
+                    }
+                    return super.unscaledValue()
+                }
+            }
+            val value = object : BigDecimal("4.00") {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                override fun stripTrailingZeros(): BigDecimal = normalized
+            }
+            val result = try { value.sqrt(MathContext(precision, mode)).toString() }
+                catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+            "$result|$trace"
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

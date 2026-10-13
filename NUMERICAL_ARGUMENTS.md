@@ -152,8 +152,19 @@ exactly the comparison with the midpoint r+1/2. The rounding policy chooses
 between r and r+1; HALF_EVEN uses the parity of r at equality. A carry into
 10^p is an exact decimal power and is adjusted to p digits by the final round.
 Removing trailing zeros toward the preferred scale changes representation,
-not value. Exact/unnecessary modes instead require an integer square after
-making the coefficient scale even, followed by the requested precision check.
+not value. Exact/unnecessary modes first remove decimal trailing zeros and
+require an even normalized scale and an integer-square coefficient, followed by
+the requested precision check.
+
+For a positive normalized coefficient c, at least one of the prime-factor
+exponents v2(c) and v5(c) is zero, since c is not divisible by ten. A rational
+square c*10^-s requires both v2(c)-s and v5(c)-s to be even. An odd s would
+therefore force both v2(c) and v5(c) to be odd and positive, contradicting
+normalization. For even s, the decimal factor is already a rational square;
+the remaining condition is that c itself is an integer square. Zero is handled
+separately. This establishes the numerical guard for ordinary normalized inputs;
+returned subclasses and their virtual getters are constrained by separate JDK
+oracle cases rather than by this argument.
 
 The public [Java SE 25 sqrt contract](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html#sqrt(java.math.MathContext))
 specifies preferred scale s/2, error bounds and exact-mode failures. The pinned
