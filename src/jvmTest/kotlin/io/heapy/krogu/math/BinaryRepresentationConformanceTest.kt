@@ -25,6 +25,7 @@ class BinaryRepresentationConformanceTest {
                 assertContentEquals(expected.toByteArray(), actual.toByteArray(), "size=$size sign=$sign")
                 assertEquals(expected.bitLength(), actual.bitLength())
                 assertEquals(expected.toLong(), actual.toLong())
+                assertEquals(expected.hashCode(), actual.hashCode(), "hash size=$size sign=$sign")
             }
             assertContentEquals(JInteger(bytes).toByteArray(), BigInteger(bytes).toByteArray())
         }

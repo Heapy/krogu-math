@@ -375,11 +375,14 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         // Java's public hash behavior uses unsigned 32-bit chunks, independent of our limb layout.
         val count = (magnitudeBits().toLong() + 31).div(32).toInt()
         for (i in count - 1 downTo 0) {
-            var chunk = 0L
-            for (b in 0..31) {
-                val bit = i.toLong() * 32 + b
-                if (bit < magnitudeBits() && abs().testBit(bit.toInt())) chunk = chunk or (1L shl b)
-            }
+            val start = i.toLong() * 32
+            val word = (start / LIMB_BITS).toInt()
+            val offset = (start % LIMB_BITS).toInt()
+            // A 32-bit boundary has an even offset in 30-bit limbs (0..28),
+            // so at most two limbs supply the entire unsigned chunk.
+            var chunk = words[word].toLong() ushr offset
+            if (word + 1 < words.size) chunk = chunk or (words[word + 1].toLong() shl (LIMB_BITS - offset))
+            chunk = chunk and 0xffffffffL
             hash = (31L * hash + chunk).toInt()
         }
         return hash * sign

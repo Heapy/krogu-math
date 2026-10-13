@@ -22,7 +22,7 @@ specifications and black-box results may supply evidence.
 | Float/Double conversions and canonical Double factory values | Bitwise oracle comparisons, binary boundaries, 10,000 seeded canonical Double cases | Exhaustive Float input domain, wider subnormal/tie/overflow campaigns and algorithm audit |
 | Prime generation and certainty | 368 portable primality/successor cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions | Very large certainty beyond the proven bound, witness independence at larger magnitudes, supported-range limits, caller RNG behavior and distribution |
 | Exception conditions and types | Portable fixtures; 7,486 live JVM null/invalid-argument comparisons; 3,462 portable null-precedence outcomes; constructor precedence matrix | Wider invalid-argument domains, extreme offsets and cross-products; exception messages remain unmatched |
-| Equality, ordering, hash codes, immutability | JVM oracle and common invariants | Full context/enum/hash and subclass audit |
+| Equality, ordering, hash codes, immutability | JVM oracle and common invariants; 6,110 portable BigInteger hash outcomes | Full context/enum/hash and subclass audit |
 | JVM serialization and Java adapters | Validated proxies; subclass round trips, invalid fields, missing-superclass-data streams and array-alias isolation; explicit JDK serialVersionUID values; exact coefficient/scale conversion | Descriptor/field-schema compatibility with JDK, stream-version migration and broader malformed-stream audit |
 | Same common behavior on every supported platform | CI matrix for JVM, JS, Wasm, macOS/Linux/Windows Native and iOS simulators; cross-built Linux ARM64 binary executed on ARM64 | Each new common regression must pass on every supported target |
 | Required numerical range | Overflow guards and selected extreme-scale regressions | Supported-range proof and practical large-input tests remain incomplete |
@@ -37,6 +37,7 @@ kotlinr scripts/generate-null-oracle.main.kts --check
 kotlinr scripts/generate-character-oracle.main.kts --check
 kotlinr scripts/generate-prime-oracle.main.kts --check
 kotlinr scripts/generate-context-oracle.main.kts --check
+kotlinr scripts/generate-hash-oracle.main.kts --check
 ```
 
 Use the appropriate Native host test tasks for other OS/architectures. CI
@@ -184,6 +185,17 @@ outcomes immediately below, at and above binary midpoints, varying retained
 parity, exponent and sign. This strengthens the integer conversion algorithm
 audit without closing the BigDecimal/subnormal, exhaustive Float-domain,
 compiler/runtime and practical largest-magnitude requirements.
+
+BigInteger hashCode now repacks unsigned 32-bit magnitude chunks directly from
+private 30-bit limbs. It does not call overridable abs/testBit and does not
+construct intermediate BigIntegers. A Java poison-subclass fixture reproduces
+the former failure. A separate portable JDK oracle compares 5,760 signed powers
+and neighbors through two 480-bit alignment cycles, plus 350 dense-byte cases
+through 65,536 bytes. The common hash fixtures use poison subclasses throughout
+and independently encode structured powers as byte arrays. JVM seeded large
+binary inputs also compare hash results with JDK. The packing argument is
+recorded in `NUMERICAL_ARGUMENTS.md`; broader hash/equality and subclass behavior
+for the other public types remains part of the audit.
 
 ## Completion gate
 

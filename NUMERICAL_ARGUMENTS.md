@@ -1,8 +1,8 @@
-# BigInteger conversion arguments
+# BigInteger numerical arguments
 
 These arguments describe the independent common implementation in
 `BigInteger.kt`, together with its portable JDK fixtures. They concern integer
-conversions; BigDecimal rational conversion and its subnormal cases remain
+conversions and hash packing; BigDecimal rational conversion and its subnormal cases remain
 separate audit requirements.
 
 ## Binary floating-point rounding
@@ -71,6 +71,27 @@ ordinary object. Subclasses can deliberately change these public methods;
 the oracle constrains the observed guard order and delegation instead of
 assuming overridden methods remain truthful.
 
+## Hash packing
+
+The observed JDK hash folds unsigned 32-bit magnitude chunks, most significant
+first, with multiplier 31, then applies the sign. Our magnitude uses 30-bit
+limbs. For chunk index `i`, its starting bit is `32*i`, its source limb index
+is `floor(32*i/30)` and its offset is `32*i mod 30`. This offset is always even
+and at most 28. Two consecutive limbs therefore contain at least
+`30-offset+30>=32` needed bits. Shift the first limb right by the offset, shift
+the next limb left by `30-offset`, join them and mask to 32 bits. A missing next
+limb supplies zero.
+
+The intermediate is at most 60 bits, so it fits signed Long. The chunk index
+calculation uses Long even at the supported magnitude limit. Each fold's Long
+arithmetic fits before conversion to Int; conversion and final sign application
+implement arithmetic modulo 2^32. This is independent of our limb layout and
+requires constant auxiliary storage without abs/testBit calls or intermediate
+BigInteger objects. Both signs, overflow of the hash accumulator and every alignment are
+compared with public JDK outputs. This is an argument for packing equivalence;
+the JDK's particular hash recurrence is constrained by the oracle, rather than
+specified by the Object.hashCode contract.
+
 ## Evidence and remaining scope
 
 The main portable oracle includes 1,728 signed midpoint-neighbor Float/Double
@@ -82,6 +103,10 @@ cases covering signed endpoints, both sides of the magnitude guards, replaced
 bitLength, exact error messages and primitive-call traces. Separate power tests
 check every scaling factor and positive/negative integer powers through 2^1100
 against IEEE encodings, including the finite/infinity transition.
+Hash fixtures add 5,760 signed power/neighbor results through two full 480-bit
+alignment periods and 350 dense-byte results through 65,536 bytes. Structured
+common inputs are encoded independently as byte arrays; all common hash inputs
+use subclasses whose abs/testBit throw if invoked.
 
 These arguments complement the fixtures; they do not prove every compiler or
 runtime implementation, complete BigDecimal conversion, exercise multi-gigabyte

@@ -76,7 +76,9 @@ use the stored value independently of neighboring public overrides.
 Exact conversions add 1,248 subclass cases checking range-guard order,
 delegation, exact error messages and call traces against JDK.
 Another 1,728 Float/Double midpoint-neighbor outcomes exercise rounding parity,
-sticky bits and finite/infinity edges; see [conversion arguments](NUMERICAL_ARGUMENTS.md).
+sticky bits and finite/infinity edges; see [numerical arguments](NUMERICAL_ARGUMENTS.md).
+Separate hash fixtures add 6,110 JDK outcomes, including complete 30/32-bit
+alignment cycles and signed dense inputs through 65,536 bytes.
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
@@ -102,6 +104,7 @@ kotlinr scripts/generate-null-oracle.main.kts --check
 kotlinr scripts/generate-character-oracle.main.kts --check
 kotlinr scripts/generate-prime-oracle.main.kts --check
 kotlinr scripts/generate-context-oracle.main.kts --check
+kotlinr scripts/generate-hash-oracle.main.kts --check
 ```
 
 The first script invocation compiles the script; later runs use the compiler cache.
