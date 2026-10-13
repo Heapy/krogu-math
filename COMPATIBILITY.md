@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 44,953 vectors, including 8,888 added signed
+The main oracle now contains 46,273 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -286,3 +286,12 @@ arithmetic error messages and signum/precision/scale callback traces. Inexact
 square roots now retain the JDK message's terminating period. Replacement getter
 values, additional overridable methods, exponent domains and resource limits
 remain part of the broader power/root audit.
+
+Another 1,320 portable square-root cases replace signum or precision results.
+The zero/sign replacement domain spans scales -4 through 20 and all rounding
+modes. A stored zero reporting a positive sign follows the nonzero context
+dispatch, then returns the preferred zero scale; finite UNNECESSARY precision
+also caps that scale at precision minus one. This corrects odd-scale and
+high-precision zero layouts without changing the ordinary zero early return.
+The 240 precision replacements also retain the pinned JDK's observable behavior
+when the reported digit count differs from the stored coefficient's precision.

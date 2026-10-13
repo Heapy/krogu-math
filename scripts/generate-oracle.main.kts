@@ -460,6 +460,27 @@ for (text in listOf("-4", "0.00", "1", "4.00", "2", "0.0004", "123.456")) {
         }
     }
 }
+for (op in listOf("sqrtSign", "sqrtPrecision")) {
+    val texts = if (op == "sqrtSign") listOf("0E+4", "0E+3", "0E+2", "0E+1", "0", "0.0", "0.00", "0.000", "0E-4", "0E-7", "0E-20", "1", "4.00", "2", "123.456")
+        else listOf("1", "4.00", "2", "0.0004", "123.456")
+    val replacements = if (op == "sqrtSign") listOf(-1, 0, 1) else listOf(1, 7, 30)
+    val precisions = if (op == "sqrtSign") listOf(0, 1, 7) else listOf(1, 7)
+    for (text in texts) for (replacement in replacements) for (precision in precisions) for (mode in RoundingMode.entries) {
+        record("H", op, text, replacement.toString(), precision, mode) {
+            val trace = StringBuilder()
+            val value = object : BigDecimal(text) {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                override fun signum(): Int { trace.append("sign;"); return if (op == "sqrtSign") replacement else super.signum() }
+                override fun precision(): Int { trace.append("precision;"); return if (op == "sqrtPrecision") replacement else super.precision() }
+                override fun scale(): Int { trace.append("scale;"); return super.scale() }
+            }
+            val result = try { value.sqrt(MathContext(precision, mode)).toString() }
+                catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+            "$result|$trace"
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

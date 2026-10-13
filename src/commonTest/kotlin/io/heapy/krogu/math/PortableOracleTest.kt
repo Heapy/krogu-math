@@ -19,18 +19,21 @@ class PortableOracleTest {
         if (v[0] == "H") {
             val trace = StringBuilder()
             val value = object : BigDecimal(v[2]) {
-                override fun signum(): Int { trace.append("sign;"); return super.signum() }
-                override fun precision(): Int { trace.append("precision;"); return super.precision() }
+                override fun signum(): Int { trace.append("sign;"); return if (op == "sqrtSign") v[3].toInt() else super.signum() }
+                override fun precision(): Int { trace.append("precision;"); return if (op == "sqrtPrecision") v[3].toInt() else super.precision() }
                 override fun scale(): Int { trace.append("scale;"); return super.scale() }
             }
             val context = MathContext(p, RoundingMode.valueOf(v[5]))
             val result = try {
                 when (op) {
-                    "sqrt" -> value.sqrt(context)
+                    "sqrt", "sqrtSign", "sqrtPrecision" -> value.sqrt(context)
                     "pow" -> value.pow(v[3].toInt())
                     else -> value.pow(v[3].toInt(), context)
                 }.toString()
-            } catch (e: ArithmeticException) { "!${e.message}" }
+            } catch (e: Exception) {
+                if (op == "sqrtSign" || op == "sqrtPrecision") "!${e::class.simpleName}:${e.message}"
+                else if (e is ArithmeticException) "!${e.message}" else throw e
+            }
             return "$result|$trace"
         }
         if (v[0] == "Z") {

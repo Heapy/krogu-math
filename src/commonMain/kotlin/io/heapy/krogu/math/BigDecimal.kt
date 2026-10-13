@@ -352,6 +352,14 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val preferred = decimalScale / 2
         if (sign == 0) return BigDecimal(BigInteger.ZERO, preferred)
         val context = mc ?: throw NullPointerException()
+        // A subclass can report a positive sign for a stored zero. Preserve
+        // sqrt's context dispatch and final preferred-scale normalization.
+        if (coefficient.signum() == 0) {
+            if (context.precision > 0 && context.roundingMode != RoundingMode.UNNECESSARY) precision()
+            val scale = if (context.precision > 0 && context.roundingMode == RoundingMode.UNNECESSARY)
+                minOf(preferred, context.precision - 1) else preferred
+            return BigDecimal(BigInteger.ZERO, scale)
+        }
         if (context.precision == 0 || context.roundingMode == RoundingMode.UNNECESSARY) {
             val odd = decimalScale and 1
             val value = if (odd == 0) coefficient else coefficient.multiply(BigInteger.TEN)
