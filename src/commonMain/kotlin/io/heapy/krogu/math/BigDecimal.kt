@@ -299,7 +299,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         }
         return BigDecimal(value, newScale)
     }
-    open fun stripTrailingZeros(): BigDecimal = if (signum() == 0) ZERO else stripTo(Int.MIN_VALUE, failOnOverflow = true)
+    open fun stripTrailingZeros(): BigDecimal = if (coefficient.signum() == 0) ZERO else stripTo(Int.MIN_VALUE, failOnOverflow = true)
     private fun stripTo(minScale: Int, failOnOverflow: Boolean = false): BigDecimal {
         var value = coefficient
         var scale = decimalScale
@@ -352,24 +352,29 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val preferred = decimalScale / 2
         if (sign == 0) return BigDecimal(BigInteger.ZERO, preferred)
         val context = mc ?: throw NullPointerException()
-        // A subclass can report a positive sign for a stored zero. Preserve
-        // sqrt's context dispatch and final preferred-scale normalization.
-        if (coefficient.signum() == 0) {
-            if (context.precision > 0 && context.roundingMode != RoundingMode.UNNECESSARY) precision()
-            val scale = if (context.precision > 0 && context.roundingMode == RoundingMode.UNNECESSARY)
-                minOf(preferred, context.precision - 1) else preferred
-            return BigDecimal(BigInteger.ZERO, scale)
-        }
         if (context.precision == 0 || context.roundingMode == RoundingMode.UNNECESSARY) {
-            val odd = decimalScale and 1
-            val value = if (odd == 0) coefficient else coefficient.multiply(BigInteger.TEN)
+            val normalized = stripTrailingZeros()
+            val odd = normalized.decimalScale and 1
+            val value = if (odd == 0) normalized.coefficient else normalized.coefficient.multiply(BigInteger.TEN)
             val root = value.sqrtAndRemainder()
             if (root[1].signum() != 0) throw ArithmeticException("Computed square root not exact.")
-            val exact = BigDecimal(root[0], checkedScale((decimalScale.toLong() + odd) / 2)).stripTo(preferred)
+            if (root[0].signum() == 0) {
+                val scale = if (context.precision > 0) minOf(preferred, context.precision - 1) else preferred
+                return BigDecimal(BigInteger.ZERO, scale)
+            }
+            val exact = BigDecimal(root[0], checkedScale((normalized.decimalScale.toLong() + odd) / 2)).stripTo(preferred)
             // Exact-mode validation in the oracle squares a minimally scaled root.
             // Its scale overflow is observable even when the preferred form could be squared.
             checkedScale(2L * exact.stripTrailingZeros().decimalScale)
-            return exact.round(context)
+            val rounded = exact.round(context)
+            val targetScale = if (context.precision == 0) preferred else minOf(preferred.toLong(),
+                rounded.decimalScale.toLong() + context.precision - rounded.storedPrecision()).toInt()
+            return if (rounded.decimalScale < targetScale) rounded.setScaleValue(targetScale, RoundingMode.UNNECESSARY) else rounded
+        }
+        // A subclass can report a positive sign for a stored zero.
+        if (coefficient.signum() == 0) {
+            precision()
+            return BigDecimal(BigInteger.ZERO, preferred)
         }
         val exponent = adjustedExponent()
         val rootExponent = if (exponent < 0) (exponent - 1) / 2 else exponent / 2

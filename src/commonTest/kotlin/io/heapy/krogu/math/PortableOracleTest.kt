@@ -22,16 +22,31 @@ class PortableOracleTest {
                 override fun signum(): Int { trace.append("sign;"); return if (op == "sqrtSign") v[3].toInt() else super.signum() }
                 override fun precision(): Int { trace.append("precision;"); return if (op == "sqrtPrecision") v[3].toInt() else super.precision() }
                 override fun scale(): Int { trace.append("scale;"); return super.scale() }
+                override fun stripTrailingZeros(): BigDecimal {
+                    if (op == "sqrtNormalize") {
+                        trace.append("strip;")
+                        if (v[3] != "~") return BigDecimal(v[3])
+                    }
+                    return super.stripTrailingZeros()
+                }
+                override fun scaleByPowerOfTen(n: Int): BigDecimal {
+                    if (op == "sqrtNormalize") trace.append("scaleBy:$n;")
+                    return super.scaleByPowerOfTen(n)
+                }
+                override fun toDouble(): Double {
+                    if (op == "sqrtNormalize") trace.append("double;")
+                    return super.toDouble()
+                }
             }
             val context = MathContext(p, RoundingMode.valueOf(v[5]))
             val result = try {
                 when (op) {
-                    "sqrt", "sqrtSign", "sqrtPrecision" -> value.sqrt(context)
+                    "sqrt", "sqrtSign", "sqrtPrecision", "sqrtNormalize" -> value.sqrt(context)
                     "pow" -> value.pow(v[3].toInt())
                     else -> value.pow(v[3].toInt(), context)
                 }.toString()
             } catch (e: Exception) {
-                if (op == "sqrtSign" || op == "sqrtPrecision") "!${e::class.simpleName}:${e.message}"
+                if (op == "sqrtSign" || op == "sqrtPrecision" || op == "sqrtNormalize") "!${e::class.simpleName}:${e.message}"
                 else if (e is ArithmeticException) "!${e.message}" else throw e
             }
             return "$result|$trace"
