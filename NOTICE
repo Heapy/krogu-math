@@ -1,0 +1,7 @@
+krogu-math
+Copyright 2026 krogu-math contributors
+
+An independent implementation in Kotlin. No implementation source from OpenJDK
+or third-party big-number libraries is included. The java.math public API and
+Java SE 25 documentation are used as compatibility specifications. Java and
+OpenJDK are trademarks of their respective owners.

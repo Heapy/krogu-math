@@ -1,0 +1,148 @@
+#!/usr/bin/env kotlinr
+// SPDX-License-Identifier: Apache-2.0
+/** Generate portable behavioral fixtures using only the public JDK 25.0.4+9 API.
+ * Usage (from repository root): kotlinr scripts/generate-oracle.main.kts [--check]
+ * No third-party dependencies or implementation-source access.
+ */
+import java.io.File
+import java.math.BigInteger
+import java.math.BigDecimal
+import java.math.MathContext
+import java.math.RoundingMode
+import java.util.Random
+
+check(Runtime.version().toString() == "25.0.4+9-LTS" || Runtime.version().toString() == "25.0.4+9") {
+    "Oracle requires JDK 25.0.4+9, got ${Runtime.version()}"
+}
+check(args.all { it == "--check" }) { "Usage: generate-oracle.main.kts [--check]" }
+val random = Random(0x4b524f47554d4154L)
+val rows = mutableListOf<List<String>>()
+fun outcome(block: () -> Any?): String = try {
+    val result = block()
+    if (result is Array<*>) result.joinToString("|") else result.toString()
+} catch (e: Exception) { "!${e.javaClass.simpleName}" }
+fun record(kind: String, op: String, a: String, b: String = "0", p: Int = 0, mode: RoundingMode = RoundingMode.HALF_EVEN, block: () -> Any?) {
+    rows.add(listOf(kind, op, a, b, p.toString(), mode.name, outcome(block)))
+}
+val integerInputs = listOf("0", "1", "-1", "127", "128", "-128", "-129", "2147483647", "-2147483648", "9223372036854775807", "-9223372036854775808") +
+    List(65) { BigInteger(ByteArray(1 + random.nextInt(64)).also(random::nextBytes)).toString() }
+for (a in integerInputs) {
+    val x = BigInteger(a)
+    val y = BigInteger(ByteArray(1 + random.nextInt(32)).also(random::nextBytes))
+    val b = y.toString()
+    record("I", "add", a, b) { x.add(y) }
+    record("I", "subtract", a, b) { x.subtract(y) }
+    record("I", "multiply", a, b) { x.multiply(y) }
+    record("I", "divide", a, b) { x.divideAndRemainder(y) }
+    record("I", "gcd", a, b) { x.gcd(y) }
+    record("I", "and", a, b) { x.and(y) }
+    record("I", "or", a, b) { x.or(y) }
+    record("I", "xor", a, b) { x.xor(y) }
+    record("I", "andNot", a, b) { x.andNot(y) }
+    record("I", "not", a) { x.not() }
+    record("I", "bits", a) { "${x.bitLength()}|${x.bitCount()}|${x.lowestSetBit}" }
+    val shift = random.nextInt(1000) - 500
+    record("I", "shift", a, p = shift) { x.shiftLeft(shift) }
+    record("I", "sqrt", a) { x.sqrtAndRemainder() }
+    record("I", "double", a) { x.toDouble().toBits() }
+    record("I", "float", a) { x.toFloat().toBits() }
+    record("I", "bytes", a) { x.toByteArray().joinToString(",") }
+    record("I", "longExact", a) { x.longValueExact() }
+    record("I", "intExact", a) { x.intValueExact() }
+    record("I", "shortExact", a) { x.shortValueExact() }
+    record("I", "byteExact", a) { x.byteValueExact() }
+    val radix = 2 + random.nextInt(35)
+    record("I", "radix", a, p = radix) { x.toString(radix) }
+    record("I", "pow", a, p = 3) { x.pow(3) }
+}
+val decimalInputs = listOf("0", "0.00", "0E+20", "0E-8", "0E-9", "0E-10", "1", "-1", "1.00", "-2.500", "0.000001", "0.0000001", "9.9999999", "1E+25", "1000.000") +
+    List(85) { BigDecimal(BigInteger(100, random).let { if (random.nextBoolean()) it.negate() else it }, random.nextInt(80) - 30).toString() }
+for (a in decimalInputs) {
+    val x = BigDecimal(a)
+    val y = BigDecimal(BigInteger(80, random).let { if (random.nextBoolean()) it.negate() else it }, random.nextInt(60) - 20)
+    val b = y.toString()
+    val mode = RoundingMode.entries[random.nextInt(8)]
+    val p = random.nextInt(25)
+    val mc = MathContext(p, mode)
+    record("D", "parse", a) { x }
+    record("D", "plain", a) { x.toPlainString() }
+    record("D", "engineering", a) { x.toEngineeringString() }
+    record("D", "add", a, b, p, mode) { x.add(y, mc) }
+    record("D", "subtract", a, b, p, mode) { x.subtract(y, mc) }
+    record("D", "multiply", a, b, p, mode) { x.multiply(y, mc) }
+    record("D", "divide", a, b, p, mode) { x.divide(y, mc) }
+    record("D", "exactDivide", a, b) { x.divide(y) }
+    record("D", "integral", a, b, p, mode) { x.divideToIntegralValue(y, mc) }
+    record("D", "remainder", a, b, p, mode) { x.divideAndRemainder(y, mc) }
+    record("D", "round", a, p = p, mode = mode) { x.round(mc) }
+    val scale = random.nextInt(60) - 20
+    record("D", "scale", a, p = scale, mode = mode) { x.setScale(scale, mode) }
+    record("D", "divideScale", a, b, scale, mode) { x.divide(y, scale, mode) }
+    record("D", "strip", a) { x.stripTrailingZeros() }
+    record("D", "sqrt", a, p = p, mode = mode) { x.sqrt(mc) }
+    record("D", "pow", a, b = "7", p = p, mode = mode) { x.pow(7, mc) }
+    record("D", "double", a) { x.toDouble().toBits() }
+    record("D", "float", a) { x.toFloat().toBits() }
+    record("D", "integerExact", a) { x.toBigIntegerExact() }
+}
+// Midpoints, sticky tails, preferred scales and scale saturation, independent of random coverage.
+for (mode in RoundingMode.entries) {
+    for (a in listOf("2.5", "3.5", "-2.5", "-3.5", "0.50000000000000000001", "-0.49999999999999999999", "9.99")) {
+        record("D", "scale", a, p = 0, mode = mode) { BigDecimal(a).setScale(0, mode) }
+    }
+    for (a in listOf("1", "-1", "1.0000", "-1.0000")) {
+        for (b in listOf("1E-100000", "-1E-100000", "0E-100000")) {
+            record("D", "add", a, b, 4, mode) { BigDecimal(a).add(BigDecimal(b), MathContext(4, mode)) }
+        }
+    }
+    for (b in listOf("2", "4.00", "8", "5", "0.5", "3", "0")) {
+        record("D", "divide", "1.000", b, 5, mode) { BigDecimal("1.000").divide(BigDecimal(b), MathContext(5, mode)) }
+    }
+}
+for (text in listOf("", "-", "+", ".", "1E", "1E+", " 1", "1 ", "1_0", "1E2147483648", "0.1E-2147483647", "١٢٣.٤٥", "１２３")) {
+    record("D", "parse", text) { BigDecimal(text) }
+    record("I", "parse", text) { BigInteger(text) }
+}
+val doubles = listOf(0.0, -0.0, Double.MIN_VALUE, Double.MAX_VALUE, 0.1, 1e23, 1e7, 1e-4, Double.NaN, Double.POSITIVE_INFINITY) +
+    List(40) { Double.fromBits(random.nextLong()) }
+for (d in doubles) {
+    record("F", "construct", d.toBits().toString()) { BigDecimal(d) }
+    record("F", "valueOf", d.toBits().toString()) { BigDecimal.valueOf(d) }
+}
+fun literal(value: String): String = buildString {
+    append('"')
+    for (c in value) when (c) {
+        '\\' -> append("\\\\")
+        '"' -> append("\\\"")
+        '$' -> append("\\$")
+        '\n' -> append("\\n")
+        '\r' -> append("\\r")
+        '\t' -> append("\\t")
+        else -> append(c)
+    }
+    append('"')
+}
+val batches = rows.chunked(50)
+val source = buildString {
+    appendLine("// SPDX-License-Identifier: Apache-2.0")
+    appendLine("// Generated by scripts/generate-oracle.main.kts. Oracle: JDK 25.0.4+9. Do not edit.")
+    appendLine("package io.heapy.krogu.math")
+    appendLine()
+    appendLine("internal fun oracleVectors(): List<Array<String>> = buildList {")
+    for (i in batches.indices) appendLine("    addAll(oracleBatch$i())")
+    appendLine("}")
+    for ((i, batch) in batches.withIndex()) {
+        appendLine("\nprivate fun oracleBatch$i(): List<Array<String>> = listOf(")
+        for (row in batch) appendLine("    arrayOf(${row.joinToString(", ", transform = ::literal)}),")
+        appendLine(")")
+    }
+}
+val target = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25Vectors.kt")
+if ("--check" in args) {
+    check(target.exists() && target.readText() == source) { "Oracle vectors differ; regenerate with the pinned JDK" }
+    println("Verified ${rows.size} oracle vectors with JDK ${Runtime.version()}")
+} else {
+    target.parentFile.mkdirs()
+    target.writeText(source)
+    println("Generated ${rows.size} oracle vectors in $target")
+}

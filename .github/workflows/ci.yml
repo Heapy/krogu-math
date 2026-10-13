@@ -1,0 +1,44 @@
+name: Compatibility
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: compatibility-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  oracle:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: Heapy/setup-main-kts@b0858237748f325b825e752bbac2ec2eb1fb9419 # v1.0.1
+        with:
+          kotlin-version: '2.4.21'
+          java-version: '25.0.4+9'
+          distribution: 'liberica'
+      - run: kotlinr scripts/generate-oracle.main.kts --check
+  platforms:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            tasks: jvmTest jsNodeTest wasmJsNodeTest linuxX64Test
+          - os: ubuntu-24.04-arm
+            tasks: jvmTest linuxArm64Test
+          - os: windows-2025
+            tasks: jvmTest mingwX64Test
+          - os: macos-15
+            tasks: jvmTest macosArm64Test iosSimulatorArm64Test compileKotlinIosArm64
+          - os: macos-15-intel
+            tasks: jvmTest macosX64Test iosX64Test
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: liberica
+          java-version: '25.0.4+9'
+      - uses: gradle/actions/setup-gradle@4c125117fe7c5aed11272ec4213f602f012f89f2 # v5
+      - run: ./gradlew ${{ matrix.tasks }} --stacktrace

@@ -1,0 +1,45 @@
+plugins {
+    kotlin("multiplatform") version "2.4.21"
+    `maven-publish`
+}
+
+group = "io.heapy.krogu"
+version = "0.1.0-SNAPSHOT"
+
+kotlin {
+    jvm()
+    js { nodejs { testTask { useMocha { timeout = "120s" } } } }
+    @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
+    wasmJs { nodejs() }
+    macosArm64()
+    macosX64()
+    linuxX64()
+    linuxArm64()
+    mingwX64()
+    iosArm64()
+    iosSimulatorArm64()
+    iosX64()
+    jvmToolchain(25)
+    applyDefaultHierarchyTemplate()
+    sourceSets {
+        commonTest.dependencies { implementation(kotlin("test")) }
+        val nonJvmMain = create("nonJvmMain") { dependsOn(commonMain.get()) }
+        jsMain { dependsOn(nonJvmMain) }
+        wasmJsMain { dependsOn(nonJvmMain) }
+        nativeMain { dependsOn(nonJvmMain) }
+    }
+}
+
+tasks.withType<Test>().configureEach {
+    testLogging { events("failed", "skipped"); exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL }
+}
+
+publishing.publications.withType<MavenPublication>().configureEach {
+    pom {
+        name.set("krogu-math")
+        description.set("Independent common Kotlin implementation of the java.math API")
+        url.set("https://github.com/Heapy/krogu-math")
+        licenses { license { name.set("Apache License 2.0"); url.set("https://www.apache.org/licenses/LICENSE-2.0") } }
+        scm { url.set("https://github.com/Heapy/krogu-math"); connection.set("scm:git:https://github.com/Heapy/krogu-math.git") }
+    }
+}
