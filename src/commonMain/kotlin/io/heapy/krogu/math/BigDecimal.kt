@@ -159,14 +159,26 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     }
     open fun divide(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode): BigDecimal {
         if (divisor.signum() == 0) failScaledZeroDivision(divisor.decimalScale, scale)
-        val shift = scale.toLong() + divisor.decimalScale - decimalScale
-        if (kotlin.math.abs(shift) > 646456992L) throw ArithmeticException("BigInteger overflow")
+        val adjusted = scaleForValue(scale.toLong() + divisor.decimalScale, coefficient.decimalCompactValue() == 0L)
+        val numerator = adjusted > decimalScale
+        val raise = if (numerator) scale + divisor.decimalScale - decimalScale
+            else scaleForValue(decimalScale.toLong() - scale, divisor.coefficient.decimalCompactValue() == 0L) - divisor.decimalScale
+        return divideScaledCoefficients(divisor, scale, roundingMode, numerator, raise)
+    }
+    private fun divideScaledCoefficients(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode,
+        scaleNumerator: Boolean, raise: Int): BigDecimal {
+        if (raise > 646456992) throw ArithmeticException("BigInteger would overflow supported range")
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, scale)
+        // A wrapped, nonpositive raise leaves the stored coefficient unchanged
+        // in the pinned JDK's scale-bound path. Context division passes a checked
+        // nonnegative raise and does not inherit that staging behavior.
+        val power = maxOf(raise, 0)
         // Avoid constructing an unbounded power of ten for a quotient strictly below 0.1.
-        val exponent = quotientExponent(divisor) + scale
+        val exponent = quotientExponent(divisor) + decimalScale - divisor.decimalScale +
+            if (scaleNumerator) power.toLong() else -power.toLong()
         if (exponent < -1) return BigDecimal(roundTiny(signum() * divisor.signum(), roundingMode), scale)
-        val numerator = if (shift >= 0) coefficient.multiply(tenPow(shift)) else coefficient
-        val denominator = if (shift < 0) divisor.coefficient.multiply(tenPow(-shift)) else divisor.coefficient
+        val numerator = if (scaleNumerator && power > 0) coefficient.multiply(tenPow(power.toLong())) else coefficient
+        val denominator = if (!scaleNumerator && power > 0) divisor.coefficient.multiply(tenPow(power.toLong())) else divisor.coefficient
         return BigDecimal(roundedDivide(numerator, denominator, roundingMode), scale)
     }
     private fun failScaledZeroDivision(zeroScale: Int, target: Int): Nothing {
@@ -201,7 +213,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             throw ArithmeticException("BigInteger would overflow supported range")
         val preferred = divisionScale(preferredScale)
         val target = checkedScale(targetScale)
-        val result = divide(divisor, target, mc.roundingMode).round(mc)
+        val result = divideScaledCoefficients(divisor, target, mc.roundingMode, shift >= 0,
+            kotlin.math.abs(shift).toInt()).round(mc)
         // Exact quotients use the nearest representable scale to the preferred scale.
         val exact = compareValues(result.coefficient.multiply(divisor.coefficient),
             result.decimalScale.toLong() + divisor.decimalScale, coefficient, decimalScale.toLong()) == 0

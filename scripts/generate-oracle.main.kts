@@ -292,6 +292,19 @@ for (coefficient in listOf("0", "1", "-1", "123456789012345678901234567890")) {
         }
     }
 }
+// Scale-bound division keeps the pinned runtime's staged Int arithmetic, even
+// where an unbounded mathematical rescaling would have required range rejection.
+val nonzeroDivisionScales = listOf(Int.MIN_VALUE, -10, 0, 10, Int.MAX_VALUE)
+for (coefficient in listOf(0L, 1L, -1L, 10L)) for (scale in nonzeroDivisionScales) {
+    for (divisor in listOf(1L, -2L, 3L)) for (divisorScale in nonzeroDivisionScales) {
+        for (target in nonzeroDivisionScales) for (mode in RoundingMode.entries) {
+            record("G", "scaledDivide", "$coefficient@$scale", "$divisor@$divisorScale", target, mode) {
+                try { BigDecimal.valueOf(coefficient, scale).divide(BigDecimal.valueOf(divisor, divisorScale), target, mode).toString() }
+                catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
+            }
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

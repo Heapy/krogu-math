@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 24,264 vectors, including 8,888 added signed
+The main oracle now contains 36,264 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -242,3 +242,14 @@ The error classifier preserves the observed rescaling order and Int wrap without
 allocating an intermediate numeric value for an operation that must fail. Operand
 subclasses and the full nonzero-divisor message domain remain
 separate audits.
+
+Scale-bound division adds 12,000 nonzero-divisor outcomes across all modes,
+including returned values and exact messages. The initial wide-Long rescaling
+rejected some values returned by the pinned JDK and accepted some calls it
+rejects. The scale-bound overload now follows the observed checked scale stages
+and Int raises, including wraparound. For example, coefficient one at scale
+Int.MIN_VALUE divided by ONE with target scale zero returns ONE in the reference
+runtime. The fixture preserves that observed endpoint behavior. Context division
+uses the shared coefficient-rounding kernel with a separately checked Long raise,
+so these scale-bound stages do not change context arithmetic. Existing scale,
+context, exact-division and zero-divisor campaigns also pass. Operand subclasses,+wider coefficient domains and resource-limit behavior remain open.
