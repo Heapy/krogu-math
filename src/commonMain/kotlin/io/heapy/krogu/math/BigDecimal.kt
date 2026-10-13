@@ -162,10 +162,17 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun divide(divisor: BigDecimal, mc: MathContext): BigDecimal {
         if (mc.precision == 0) return divide(divisor)
         checkDivisor(divisor)
-        val preferred = scaleForValue(decimalScale.toLong() - divisor.decimalScale, signum() == 0)
-        if (signum() == 0) return BigDecimal(BigInteger.ZERO, preferred)
+        val preferredScale = decimalScale.toLong() - divisor.decimalScale
+        if (signum() == 0) return BigDecimal(BigInteger.ZERO, saturatedScale(preferredScale))
         checkDivisionNormalization(divisor, mc.precision)
-        val target = checkedScale(mc.precision.toLong() - 1 - quotientExponent(divisor))
+        val targetScale = mc.precision.toLong() - 1 - quotientExponent(divisor)
+        val shift = targetScale + divisor.decimalScale - decimalScale
+        // Public-JDK errors expose the intermediate range check before the
+        // preferred/result scale checks. Keep all computations wide until then.
+        if (kotlin.math.abs(shift) > 646456992L)
+            throw ArithmeticException("BigInteger would overflow supported range")
+        val preferred = divisionScale(preferredScale)
+        val target = checkedScale(targetScale)
         val result = divide(divisor, target, mc.roundingMode).round(mc)
         // Exact quotients use the nearest representable scale to the preferred scale.
         val exact = compareValues(result.coefficient.multiply(divisor.coefficient),
@@ -174,7 +181,15 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     }
     private fun checkDivisionNormalization(divisor: BigDecimal, precision: Int) {
         val adjustment = if (normalizedComparison(divisor) > 0) 1 else 0
-        checkedScale(decimalScale.toLong() - divisor.decimalScale + precision + divisor.precision() - precision() - adjustment)
+        divisionScale(decimalScale.toLong() - divisor.decimalScale + precision + divisor.precision() - precision() - adjustment)
+    }
+    private fun divisionScale(scale: Long): Int {
+        val narrowed = scale.toInt()
+        // The pinned runtime's error wording follows the narrowed Int sign,
+        // including a second wrap past 2^32, rather than the original Long sign.
+        if (narrowed.toLong() != scale)
+            throw ArithmeticException(if (narrowed > 0) "Underflow" else "Overflow")
+        return narrowed
     }
     private fun quotientExponent(divisor: BigDecimal): Long {
         val a = coefficient.abs().toString()

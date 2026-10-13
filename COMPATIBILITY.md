@@ -117,7 +117,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 21,169 vectors, including 8,888 added signed
+The main oracle now contains 21,904 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -207,3 +207,14 @@ are normalized through virtual toByteArray at construction, as confirmed by a
 public-JDK probe; common tests exercise all four coefficient constructors,
 replacement encodings, invalid empty encoding and ordinary coefficient identity.
 Other decimal virtual calls and compound invalid-argument precedence remain open.
+
+A 735-case portable division matrix combines signed scale endpoints, small
+divisors and near-Int.MAX_VALUE precision under HALF_UP, comparing results,
+exception types and messages. It initially exposed 408 message differences. The
+JVM matrix extends these inputs across all eight modes (5,880 comparisons), all
+matching the pinned JDK. Context division now
+checks normalization and intermediate range before preferred/result scale, and
+uses the observed narrowed-Int sign for normalization error wording. All 735
+cases match; the existing 207,239 scale-boundary comparisons also pass. The same
+matrix is included in the portable oracle. This is evidence for this domain,
+not a complete exception-message audit of every division overload or input domain.

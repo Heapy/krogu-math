@@ -64,6 +64,14 @@ class PortableOracleTest {
             return if (op == "twos") BigInteger(bytes, p, v[3].toInt()) else BigInteger(v[5].toInt(), bytes, p, v[3].toInt())
         }
         val mode = RoundingMode.valueOf(v[5])
+        if (v[0] == "G") {
+            fun operand(text: String): BigDecimal {
+                val pieces = text.split('@')
+                return BigDecimal(BigInteger(pieces[0]), pieces[1].toInt())
+            }
+            return try { operand(v[2]).divide(operand(v[3]), MathContext(p, mode)).toString() }
+                catch (failure: Exception) { "!${failure::class.simpleName}:${failure.message}" }
+        }
         if (v[0] == "F") {
             val d = Double.fromBits(v[2].toLong())
             return if (op == "construct") BigDecimal(d) else BigDecimal.valueOf(d)

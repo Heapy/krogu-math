@@ -224,6 +224,18 @@ for (coefficient in listOf("0", "1", "16777216", "16777217", "9007199254740992",
         }
     }
 }
+// Division error ordering and wording at wide scale/precision boundaries.
+val divisionScales = listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, -10, 0, 10, Int.MAX_VALUE - 1, Int.MAX_VALUE)
+for (scale in divisionScales) for (divisorScale in divisionScales) {
+    for (precision in listOf(1, 2, 7, Int.MAX_VALUE - 1, Int.MAX_VALUE)) for (divisor in 1L..3L) {
+        val x = BigDecimal(BigInteger.ONE, scale)
+        val y = BigDecimal.valueOf(divisor, divisorScale)
+        record("G", "divide", "1@$scale", "$divisor@$divisorScale", precision, RoundingMode.HALF_UP) {
+            try { x.divide(y, MathContext(precision, RoundingMode.HALF_UP)).toString() }
+            catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {
