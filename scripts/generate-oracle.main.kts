@@ -642,6 +642,29 @@ for (coefficient in listOf("0", "123", "999")) {
         }
     }
 }
+for (text in listOf("0.00", "-123.456", "999.99", "1.2345678901234567890")) {
+    for (replacement in listOf(-1, 0, 1, 3, 9)) for (precision in listOf(0, 1, 7)) for (mode in RoundingMode.entries) for (behavior in listOf("super", "replace", "throw", "sequence")) {
+        record("S", behavior, text, replacement.toString(), precision, mode) {
+            val trace = StringBuilder()
+            val value = object : BigDecimal(text) {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                private var calls = 0
+                override fun precision(): Int { trace.append("precision;"); return if (behavior == "sequence" && calls++ > 0) 1 else replacement }
+                override fun signum(): Int { trace.append("sign;"); return super.signum() }
+                override fun plus(mc: MathContext): BigDecimal {
+                    trace.append("plus;")
+                    return when (behavior) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
+                }
+            }
+            val result = try {
+                val rounded = value.round(MathContext(precision, mode))
+                "${BigDecimal(rounded.unscaledValue(), rounded.scale())}|${rounded === value}|${rounded.javaClass == BigDecimal::class.java}"
+            } catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+            "$result|$trace"
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

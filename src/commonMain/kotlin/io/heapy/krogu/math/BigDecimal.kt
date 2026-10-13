@@ -48,7 +48,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun negate(): BigDecimal = BigDecimal(coefficient.negate(), decimalScale)
     open fun negate(mc: MathContext): BigDecimal = negate().round(mc)
     open fun plus(): BigDecimal = this
-    open fun plus(mc: MathContext): BigDecimal = round(mc)
+    open fun plus(mc: MathContext): BigDecimal = roundValue(mc)
 
     open fun add(augend: BigDecimal): BigDecimal {
         val scale = maxOf(decimalScale, augend.decimalScale)
@@ -274,14 +274,16 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun remainder(divisor: BigDecimal): BigDecimal = divideAndRemainder(divisor)[1]
     open fun remainder(divisor: BigDecimal, mc: MathContext): BigDecimal = divideAndRemainder(divisor, mc)[1]
 
-    open fun round(mc: MathContext): BigDecimal {
+    open fun round(mc: MathContext): BigDecimal = plus(mc)
+    private fun roundValue(mc: MathContext): BigDecimal {
         if (mc.precision == 0) return this
         var result = this
-        while (result.precision() > mc.precision) {
-            val drop = result.precision() - mc.precision
+        var drop = result.precision() - mc.precision
+        while (drop > 0) {
             val scale = checkedRoundingScale(result.decimalScale.toLong() - drop)
             result = BigDecimal(roundedDivide(result.coefficient, tenPow(drop.toLong()), mc.roundingMode),
                 scale)
+            drop = result.precision() - mc.precision
         }
         return result
     }

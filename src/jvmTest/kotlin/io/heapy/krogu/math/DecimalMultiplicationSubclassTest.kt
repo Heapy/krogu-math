@@ -41,8 +41,8 @@ class DecimalMultiplicationSubclassTest {
                     val actual = object : BigDecimal(BigInteger(left), leftScale) {
                         override fun signum(): Int { actualTrace.append("sign;"); return sign }
                         override fun precision(): Int { actualTrace.append("precision;"); return 1 }
-                        override fun multiply(value: BigDecimal): BigDecimal { actualTrace.append("exact;"); return super.multiply(value) }
-                        override fun multiply(value: BigDecimal, mc: MathContext): BigDecimal { actualTrace.append("context;"); return super.multiply(value, mc) }
+                        override fun multiply(multiplicand: BigDecimal): BigDecimal { actualTrace.append("exact;"); return super.multiply(multiplicand) }
+                        override fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal { actualTrace.append("context;"); return super.multiply(multiplicand, mc) }
                     }
                     val expectedRight = java.math.BigDecimal(java.math.BigInteger(right), rightScale)
                     val actualRight = BigDecimal(BigInteger(right), rightScale)

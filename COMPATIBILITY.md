@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 61,950 vectors, including 8,888 added signed
+The main oracle now contains 63,870 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -377,3 +377,14 @@ was replaced by Overflow or Rounding necessary. Public round getter replacements
 other constructor overloads, right-operand subclasses and larger products remain
 open. Products here have at most 22 digits, keeping precision-reduction powers
 small even at extreme scales.
+
+Public round/plus dispatch adds 1,920 portable cases across zero, negative,
+carry-producing and inflated values, five replacement precisions, three context
+precisions and all rounding modes. round delegates to virtual plus even for an
+unlimited context; plus performs the private rounding calculation. Replacement
+plus results and callback exceptions propagate directly. Each rounding step
+reads precision once, so a changing subclass getter cannot supply a second
+value for the same reduction. Cases compare stored numerical state, identity,
+base type, errors and call traces. These close the selected getter-replacement
+domain noted above; null contexts handled by overridden plus, extreme replacement
+precisions, other unary operations and returned-subclass combinations remain open.
