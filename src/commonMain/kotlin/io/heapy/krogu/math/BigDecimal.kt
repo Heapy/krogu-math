@@ -12,6 +12,12 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
 
     private constructor(value: BigDecimal) : this(value.coefficient, value.decimalScale)
     private fun writeReplace(): Any = serializationProxy(this)
+    private fun readObject(stream: MathObjectInputStream) {
+        restoreSerializedFields(stream)
+        val restored: BigInteger? = coefficient
+        if (restored == null) invalidSerializedState("Missing BigDecimal coefficient")
+    }
+    private fun readObjectNoData(): Unit = invalidSerializedState("Missing BigDecimal data")
     constructor(value: BigInteger) : this(value, 0)
     constructor(value: BigInteger, mc: MathContext) : this(BigDecimal(value).round(mc))
     constructor(unscaledVal: BigInteger, scale: Int, mc: MathContext) : this(BigDecimal(unscaledVal, scale).round(mc))
@@ -415,6 +421,7 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
     // Preserve the non-final static factories exposed by JDK.
     @Suppress("NON_FINAL_MEMBER_IN_OBJECT")
     companion object {
+        private const val serialVersionUID: Long = 6108874887143696463L
         private fun compareValues(a: BigInteger, aScale: Long, b: BigInteger, bScale: Long): Int {
             if (a.signum() != b.signum()) return a.signum().compareTo(b.signum())
             if (a.signum() == 0) return 0

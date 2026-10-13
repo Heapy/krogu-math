@@ -14,6 +14,21 @@ open class BigInteger private constructor(private val sign: Int, private val wor
 
     private constructor(value: BigInteger) : this(value.sign, value.words)
     private fun writeReplace(): Any = serializationProxy(this)
+    private fun readObject(stream: MathObjectInputStream) {
+        restoreSerializedFields(stream)
+        // Stream fields are untrusted even when their Kotlin declarations are non-null.
+        val restored: IntArray? = words
+        if (restored == null || sign !in -1..1 || (sign == 0) != restored.isEmpty() ||
+            restored.any { it < 0 || it.toLong() > MASK } || restored.lastOrNull() == 0)
+            invalidSerializedState("Invalid BigInteger representation")
+        if (restored.isNotEmpty()) {
+            try { MagnitudeLimits.checkedBitLength(restored.size, restored.last()) }
+            catch (_: ArithmeticException) { invalidSerializedState("BigInteger overflow") }
+        }
+        // Do not retain an array that another object in the stream can mutate.
+        restoreSerializedMagnitude(this, restored.copyOf())
+    }
+    private fun readObjectNoData(): Unit = invalidSerializedState("Missing BigInteger data")
     constructor(value: String) : this(value, 10)
     constructor(value: String, radix: Int) : this(parse(value, radix))
     constructor(value: ByteArray) : this(fromBytes(value, 0, value.size, true))
@@ -382,6 +397,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     // 'open' on @JvmStatic functions prevents final static bridges, preserving Java hiding.
     @Suppress("NON_FINAL_MEMBER_IN_OBJECT")
     companion object {
+        private const val serialVersionUID: Long = -8287574255936472291L
         private const val LIMB_BITS = MagnitudeLimits.WORD_BITS
         private const val MASK = (1L shl LIMB_BITS) - 1
         @JvmField val ZERO = BigInteger(0, intArrayOf())

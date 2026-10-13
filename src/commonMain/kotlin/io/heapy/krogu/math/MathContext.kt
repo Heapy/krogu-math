@@ -6,6 +6,12 @@ class MathContext(open val precision: Int, roundingMode: RoundingMode?) : MathSe
     init { require(precision >= 0) { "Digits < 0" } }
     open val roundingMode: RoundingMode = roundingMode ?: throw NullPointerException()
     private fun writeReplace(): Any = serializationProxy(this)
+    private fun readObject(stream: MathObjectInputStream) {
+        restoreSerializedFields(stream)
+        val restored: RoundingMode? = roundingMode
+        if (precision < 0 || restored == null) invalidSerializedState("Invalid MathContext")
+    }
+    private fun readObjectNoData(): Unit = invalidSerializedState("Missing MathContext data")
     constructor(setPrecision: Int) : this(setPrecision, RoundingMode.HALF_UP)
     constructor(value: String) : this(parse(value).first, parse(value).second)
 
@@ -23,6 +29,7 @@ class MathContext(open val precision: Int, roundingMode: RoundingMode?) : MathSe
     override fun toString(): String = "precision=$precision roundingMode=$roundingMode"
 
     companion object {
+        private const val serialVersionUID: Long = 5579720004786848255L
         @kotlin.jvm.JvmField val UNLIMITED = MathContext(0, RoundingMode.HALF_UP)
         @kotlin.jvm.JvmField val DECIMAL32 = MathContext(7, RoundingMode.HALF_EVEN)
         @kotlin.jvm.JvmField val DECIMAL64 = MathContext(16, RoundingMode.HALF_EVEN)
