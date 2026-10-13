@@ -25,7 +25,7 @@ class DecimalRoundSubclassTest {
                     private var calls = 0
                     override fun precision(): Int { actualTrace.append("precision;"); return if (behavior == "sequence" && calls++ > 0) 1 else replacement }
                     override fun signum(): Int { actualTrace.append("sign;"); return super.signum() }
-                    override fun plus(mc: MathContext): BigDecimal {
+                    override fun plus(mc: MathContext?): BigDecimal {
                         actualTrace.append("plus;")
                         return when (behavior) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
                     }

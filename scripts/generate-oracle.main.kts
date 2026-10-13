@@ -665,6 +665,27 @@ for (text in listOf("0.00", "-123.456", "999.99", "1.2345678901234567890")) {
         }
     }
 }
+for (text in listOf("0.00", "-123.45")) for (behavior in listOf("return", "self", "throw", "super")) for (op in listOf("round", "plus")) {
+    record("K", "$op:$behavior", text) {
+        val trace = StringBuilder()
+        val value = object : BigDecimal(text) {
+            override fun toByte(): Byte = super.toInt().toByte()
+            override fun toShort(): Short = super.toInt().toShort()
+            override fun plus(mc: MathContext?): BigDecimal {
+                trace.append("plus:").append(mc == null).append(';')
+                return when (behavior) {
+                    "return" -> BigDecimal("42.00")
+                    "self" -> this
+                    "throw" -> throw IllegalStateException("plus callback")
+                    else -> super.plus(mc)
+                }
+            }
+        }
+        val result = try { (if (op == "round") value.round(null) else value.plus(null)).toString() }
+            catch (e: Exception) { "!${e::class.simpleName}" + if (e is IllegalStateException) ":${e.message}" else "" }
+        "$result|$trace"
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

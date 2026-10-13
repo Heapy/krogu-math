@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 63,870 vectors, including 8,888 added signed
+The main oracle now contains 63,886 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -386,5 +386,14 @@ plus results and callback exceptions propagate directly. Each rounding step
 reads precision once, so a changing subclass getter cannot supply a second
 value for the same reduction. Cases compare stored numerical state, identity,
 base type, errors and call traces. These close the selected getter-replacement
-domain noted above; null contexts handled by overridden plus, extreme replacement
+domain noted above; extreme replacement
 precisions, other unary operations and returned-subclass combinations remain open.
+
+Null round/plus callbacks add 16 portable outcomes and a compiled Java call-site
+test. round forwards a null context to overridden plus, whose replacement value,
+source return or callback exception is preserved; the base plus validates null
+before its private calculation. Kotlin signatures now use MathContext? for both
+methods, including subclass overrides. The Kotlin plus(BigDecimal) operator is
+JvmSynthetic so Java plus(null) resolves to the JDK-compatible MathContext
+overload instead of failing as ambiguous. The cases compare NPE classes, callback
+exception messages and traces; detailed NPE diagnostics remain unverified.

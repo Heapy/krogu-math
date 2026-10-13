@@ -16,13 +16,32 @@ class PortableOracleTest {
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "K") {
+            val operation = op.substringBefore(':')
+            val behavior = op.substringAfter(':')
+            val trace = StringBuilder()
+            val value = object : BigDecimal(v[2]) {
+                override fun plus(mc: MathContext?): BigDecimal {
+                    trace.append("plus:").append(mc == null).append(';')
+                    return when (behavior) {
+                        "return" -> BigDecimal("42.00")
+                        "self" -> this
+                        "throw" -> throw IllegalStateException("plus callback")
+                        else -> super.plus(mc)
+                    }
+                }
+            }
+            val result = try { (if (operation == "round") value.round(null) else value.plus(null)).toString() }
+                catch (e: Exception) { "!${e::class.simpleName}" + if (e is IllegalStateException) ":${e.message}" else "" }
+            return "$result|$trace"
+        }
         if (v[0] == "S") {
             val trace = StringBuilder()
             val value = object : BigDecimal(v[2]) {
                 private var calls = 0
                 override fun precision(): Int { trace.append("precision;"); return if (op == "sequence" && calls++ > 0) 1 else v[3].toInt() }
                 override fun signum(): Int { trace.append("sign;"); return super.signum() }
-                override fun plus(mc: MathContext): BigDecimal {
+                override fun plus(mc: MathContext?): BigDecimal {
                     trace.append("plus;")
                     return when (op) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
                 }

@@ -48,7 +48,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun negate(): BigDecimal = BigDecimal(coefficient.negate(), decimalScale)
     open fun negate(mc: MathContext): BigDecimal = negate().round(mc)
     open fun plus(): BigDecimal = this
-    open fun plus(mc: MathContext): BigDecimal = roundValue(mc)
+    open fun plus(mc: MathContext?): BigDecimal = roundValue(mc ?: throw NullPointerException())
 
     open fun add(augend: BigDecimal): BigDecimal {
         val scale = maxOf(decimalScale, augend.decimalScale)
@@ -274,7 +274,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun remainder(divisor: BigDecimal): BigDecimal = divideAndRemainder(divisor)[1]
     open fun remainder(divisor: BigDecimal, mc: MathContext): BigDecimal = divideAndRemainder(divisor, mc)[1]
 
-    open fun round(mc: MathContext): BigDecimal = plus(mc)
+    open fun round(mc: MathContext?): BigDecimal = plus(mc)
     private fun roundValue(mc: MathContext): BigDecimal {
         if (mc.precision == 0) return this
         var result = this
@@ -545,6 +545,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         return resultSign * top.toLong().toDouble() * 2.0.pow(-shift)
     }
 
+    @kotlin.jvm.JvmSynthetic
     operator fun plus(other: BigDecimal): BigDecimal = add(other)
     operator fun minus(other: BigDecimal): BigDecimal = subtract(other)
     operator fun times(other: BigDecimal): BigDecimal = multiply(other)
