@@ -13,9 +13,10 @@ class PortableOracleTest {
         }
     }
     @Suppress("DEPRECATION")
-    private fun evaluate(v: Array<String>): Any {
+    private fun evaluate(v: Array<String>): Any? {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "MM") return evaluateMinMaxOracle(v)
         if (v[0] == "CP") return evaluateComparisonOracle(v)
         if (v[0] == "ND") return evaluateNullableBinaryOracle(v)
         if (v[0] == "O") return evaluateAdditionOracle(v)

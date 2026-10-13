@@ -8,7 +8,7 @@ import kotlin.math.pow
 // Preserve virtual java.lang.Number methods instead of Kotlin's default final bridges.
 @Suppress("INAPPLICABLE_JVM_NAME", "DEPRECATION")
 open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
-    Number(), Comparable<BigDecimal>, MathSerializable {
+    Number(), Comparable<BigDecimal?>, MathSerializable {
 
     // A public-JDK constructor probe shows that subclass coefficients are
     // normalized through their virtual byte encoding before being retained.
@@ -412,17 +412,18 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         return BigDecimal(root, scale).round(context).stripTo(preferred)
     }
 
-    override fun compareTo(other: BigDecimal): Int {
-        if (decimalScale == other.decimalScale) {
+    override fun compareTo(other: BigDecimal?): Int {
+        val operand = other ?: throw NullPointerException()
+        if (decimalScale == operand.decimalScale) {
             val left = coefficient.decimalCompactValue()
-            val right = other.coefficient.decimalCompactValue()
+            val right = operand.coefficient.decimalCompactValue()
             if (left != null && right != null) return left.compareTo(right)
         }
         val leftSign = signum()
-        val rightSign = other.signum()
+        val rightSign = operand.signum()
         if (leftSign != rightSign) return leftSign.compareTo(rightSign)
         if (leftSign == 0) return 0
-        val magnitude = compareMagnitude(other)
+        val magnitude = compareMagnitude(operand)
         return if (leftSign > 0) magnitude else -magnitude
     }
     private fun compareMagnitude(other: BigDecimal): Int {
@@ -437,8 +438,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val length = maxOf(a.length, b.length)
         return a.padEnd(length, '0').compareTo(b.padEnd(length, '0')).compareTo(0)
     }
-    open fun min(value: BigDecimal): BigDecimal = if (this <= value) this else value
-    open fun max(value: BigDecimal): BigDecimal = if (this >= value) this else value
+    open fun min(value: BigDecimal?): BigDecimal? = if (compareTo(value) <= 0) this else value
+    open fun max(value: BigDecimal?): BigDecimal? = if (compareTo(value) >= 0) this else value
     override fun equals(other: Any?): Boolean = other is BigDecimal && decimalScale == other.decimalScale && coefficient == other.coefficient
     override fun hashCode(): Int = 31 * coefficient.hashCode() + decimalScale
     private fun adjustedExponent(): Long = precision().toLong() - decimalScale - 1

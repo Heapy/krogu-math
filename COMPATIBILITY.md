@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 74,618 vectors, including 8,888 added signed
+The main oracle now contains 74,822 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -423,6 +423,19 @@ with JDK; the original subtraction matrix exposed 364 differences. The selected
 JVM checks also rerun the numerical decimal, scale and null campaigns. Null
 callback operands, broader getter replacement domains and full range/allocation
 behavior remain open.
+
+Min/max delegation adds 204 portable cases: 120 custom-comparison outcomes and
+84 ordinary/null-base outcomes. Both methods invoke virtual compareTo once,
+including null operands, preserve source identity on ties and can return the
+selected null operand when a subclass comparison permits it. Callback exceptions
+propagate before argument rejection. compareTo accepts a nullable operand while
+its base implementation still rejects null. The common class implements
+Comparable<BigDecimal?>; Java Comparable<BigDecimal> assignment and collection
+sorting are compiled and exercised. Kotlin member min/max now have nullable
+return types. Ordinary Kotlin sorted/minOf/maxOf remain usable with non-null
+result types, as checked in common tests. Source/operand identities, callback
+traces, selected null results and NPE classes match JDK in this domain. Broader
+callback compositions, returned subclasses and detailed NPE messages remain open.
 
 Exact alignment errors add 882 portable add/subtract outcomes over signed unit
 and zero coefficients and seven scales spanning both Int endpoints. The matrix

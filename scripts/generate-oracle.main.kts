@@ -892,6 +892,39 @@ for (text in decimalComparisonInputs) for ((first, second) in decimalComparisonS
         "${value.compareTo(value)}|$trace"
     }
 }
+for (text in listOf("0.00", "1", "-1")) for (comparison in listOf(-2, -1, 0, 1, 2)) {
+    for (throwing in listOf(false, true)) for (operandText in listOf("2", "~")) for (op in listOf("min", "max")) {
+        record("MM", "$op:${if (throwing) "throw" else "return"}", text, operandText, comparison) {
+            val trace = StringBuilder()
+            val value = object : BigDecimal(text) {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                override fun compareTo(other: BigDecimal?): Int {
+                    trace.append("compare:").append(other == null).append(';')
+                    if (throwing) throw IllegalStateException("comparison callback")
+                    return comparison
+                }
+            }
+            val operand = if (operandText == "~") null else BigDecimal(operandText)
+            val result = try {
+                val computed: BigDecimal? = if (op == "min") value.min(operand) else value.max(operand)
+                "${computed?.toString() ?: "null"}|${computed === value}|${computed === operand}"
+            } catch (e: Exception) { "!${e::class.simpleName}" + if (e is IllegalStateException) ":${e.message}" else "" }
+            "$result|$trace"
+        }
+    }
+}
+val decimalMinMaxInputs = listOf("0", "0.00", "1", "1.00", "-1", "2")
+for (left in decimalMinMaxInputs) for (right in decimalMinMaxInputs + "~") for (op in listOf("baseMin", "baseMax")) {
+    record("MM", op, left, right) {
+        val value = BigDecimal(left)
+        val operand = if (right == "~") null else BigDecimal(right)
+        try {
+            val computed: BigDecimal? = if (op == "baseMin") value.min(operand) else value.max(operand)
+            "${computed?.toString() ?: "null"}|${computed === value}|${computed === operand}|"
+        } catch (e: Exception) { "!${e::class.simpleName}|" }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {
