@@ -65,8 +65,10 @@ The Gradle distribution checksum and CI action revisions are pinned.
 
 Use the native test task appropriate to your host (`linuxX64Test`, `mingwX64Test`,
 etc.). Native tests cannot execute on a different host OS or CPU architecture.
+Kotlin/Native 2.4.21 does not provide a Linux ARM64 compiler host: CI cross-compiles
+the ARM64 test executable on Linux x64 and then runs it on a Linux ARM64 runner.
 
-The committed 3,906 portable vectors compare values, preferred scales, text,
+The committed 3,916 portable vectors compare values, preferred scales, text,
 floating-point bits and exception **types** on every test target. JVM tests add
 seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Fixtures are

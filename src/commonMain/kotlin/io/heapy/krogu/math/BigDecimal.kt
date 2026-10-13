@@ -108,8 +108,9 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
     fun divide(divisor: BigDecimal, scale: Int, roundingMode: Int): BigDecimal = divide(divisor, scale, RoundingMode.valueOf(roundingMode))
     fun divide(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode): BigDecimal {
         checkDivisor(divisor)
-        if (signum() == 0) return BigDecimal(BigInteger.ZERO, scale)
         val shift = scale.toLong() + divisor.decimalScale - decimalScale
+        if (kotlin.math.abs(shift) > 646456992L) throw ArithmeticException("BigInteger overflow")
+        if (signum() == 0) return BigDecimal(BigInteger.ZERO, scale)
         // Avoid constructing an unbounded power of ten for a quotient strictly below 0.1.
         val exponent = quotientExponent(divisor) + scale
         if (exponent < -1) return BigDecimal(roundTiny(signum() * divisor.signum(), roundingMode), scale)
@@ -177,7 +178,7 @@ class BigDecimal(private val coefficient: BigInteger, private val decimalScale: 
         if (decimalScale == newScale) return this
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, newScale)
         val shift = newScale.toLong() - decimalScale
-        if (kotlin.math.abs(shift) > Int.MAX_VALUE) throw ArithmeticException("Underflow")
+        if (kotlin.math.abs(shift) > 646456992L) throw ArithmeticException("BigInteger overflow")
         val value = when {
             shift > 0 -> coefficient.multiply(tenPow(shift))
             -shift > precision() -> roundTiny(signum(), roundingMode)

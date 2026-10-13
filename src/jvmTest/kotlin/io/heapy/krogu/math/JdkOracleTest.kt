@@ -187,6 +187,8 @@ class JdkOracleTest {
             assertEquals(x.toDouble().toBits(), a.toDouble().toBits())
             assertEquals(x.toLong(), a.toLong())
             same("tiny setScale $s", { x.setScale(-10, JRound.HALF_EVEN) }, { a.setScale(-10, RoundingMode.HALF_EVEN) })
+            same("tiny setScale zero $s", { x.setScale(0, JRound.HALF_EVEN) }, { a.setScale(0, RoundingMode.HALF_EVEN) })
+            same("tiny divide $s", { x.divide(JDecimal.ONE, 0, JRound.HALF_EVEN) }, { a.divide(BigDecimal.ONE, 0, RoundingMode.HALF_EVEN) })
         }
     }
 }

@@ -109,6 +109,10 @@ for (d in doubles) {
     record("F", "construct", d.toBits().toString()) { BigDecimal(d) }
     record("F", "valueOf", d.toBits().toString()) { BigDecimal.valueOf(d) }
 }
+for (text in listOf("0E+2147483647", "1E+2147483647", "0E-2147483647", "1E-2147483647", "10E+2147483647")) {
+    record("D", "scale", text, p = 0) { BigDecimal(text).setScale(0, RoundingMode.HALF_EVEN) }
+    record("D", "divideScale", text, b = "1", p = 0) { BigDecimal(text).divide(BigDecimal.ONE, 0, RoundingMode.HALF_EVEN) }
+}
 fun literal(value: String): String = buildString {
     append('"')
     for (c in value) when (c) {
