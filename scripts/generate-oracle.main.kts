@@ -10,11 +10,17 @@ import java.math.BigDecimal
 import java.math.MathContext
 import java.math.RoundingMode
 import java.util.Random
+import java.lang.management.ManagementFactory
+import com.sun.management.HotSpotDiagnosticMXBean
 
 check(Runtime.version().toString() == "25.0.4+9-LTS" || Runtime.version().toString() == "25.0.4+9") {
     "Oracle requires JDK 25.0.4+9, got ${Runtime.version()}"
 }
 check(args.all { it == "--check" }) { "Usage: generate-oracle.main.kts [--check]" }
+check(ManagementFactory.getPlatformMXBean(HotSpotDiagnosticMXBean::class.java)
+    .getVMOption("OmitStackTraceInFastThrow").value == "false") {
+    "Message oracle requires JAVA_TOOL_OPTIONS=-XX:-OmitStackTraceInFastThrow"
+}
 val random = Random(0x4b524f47554d4154L)
 val rows = mutableListOf<List<String>>()
 fun outcome(block: () -> Any?): String = try {
@@ -226,6 +232,25 @@ for (coefficient in listOf("0", "1", "16777216", "16777217", "9007199254740992",
 }
 // Division error ordering and wording at wide scale/precision boundaries.
 val divisionScales = listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, -10, 0, 10, Int.MAX_VALUE - 1, Int.MAX_VALUE)
+fun recordScaledZero(coefficient: String, scale: Int, zeroScale: Int, target: Int, mode: RoundingMode) {
+    record("G", "scaledDivide", "$coefficient@$scale", "0@$zeroScale", target, mode) {
+        try { BigDecimal(BigInteger(coefficient), scale).divide(BigDecimal(BigInteger.ZERO, zeroScale), target, mode).toString() }
+        catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
+    }
+}
+val scaledZeroCoefficients = listOf("0", "1", "-1", "9223372036854775807", "-9223372036854775807",
+    "-9223372036854775808", "123456789012345678901234567890", "-123456789012345678901234567890")
+for (coefficient in scaledZeroCoefficients) {
+    for (scale in listOf(Int.MIN_VALUE, 0, 10, Int.MAX_VALUE)) {
+        for (zeroScale in listOf(Int.MIN_VALUE, 0, 10, Int.MAX_VALUE)) {
+            for (target in listOf(Int.MIN_VALUE, 0, 10, Int.MAX_VALUE)) {
+                for (mode in listOf(RoundingMode.UP, RoundingMode.UNNECESSARY)) recordScaledZero(coefficient, scale, zeroScale, target, mode)
+            }
+        }
+    }
+    for (target in listOf(-19, -18, 18, 19)) for (mode in listOf(RoundingMode.UP, RoundingMode.UNNECESSARY))
+        recordScaledZero(coefficient, 0, 0, target, mode)
+}
 for (scale in divisionScales) for (divisorScale in divisionScales) {
     for (precision in listOf(1, 2, 7, Int.MAX_VALUE - 1, Int.MAX_VALUE)) for (divisor in 1L..3L) {
         val x = BigDecimal(BigInteger.ONE, scale)

@@ -467,6 +467,28 @@ internal fun oracleVectors(): List<Array<String>> = buildList {
     addAll(oracleBatch461())
     addAll(oracleBatch462())
     addAll(oracleBatch463())
+    addAll(oracleBatch464())
+    addAll(oracleBatch465())
+    addAll(oracleBatch466())
+    addAll(oracleBatch467())
+    addAll(oracleBatch468())
+    addAll(oracleBatch469())
+    addAll(oracleBatch470())
+    addAll(oracleBatch471())
+    addAll(oracleBatch472())
+    addAll(oracleBatch473())
+    addAll(oracleBatch474())
+    addAll(oracleBatch475())
+    addAll(oracleBatch476())
+    addAll(oracleBatch477())
+    addAll(oracleBatch478())
+    addAll(oracleBatch479())
+    addAll(oracleBatch480())
+    addAll(oracleBatch481())
+    addAll(oracleBatch482())
+    addAll(oracleBatch483())
+    addAll(oracleBatch484())
+    addAll(oracleBatch485())
 }
 
 private fun oracleBatch0(): List<Array<String>> = listOf(
@@ -18901,6 +18923,1160 @@ private fun oracleBatch347(): List<Array<String>> = listOf(
     arrayOf("X", "float", "9223372036854775808", "350", "0", "HALF_EVEN", "0|sign;"),
     arrayOf("X", "double", "9223372036854775808", "350", "1", "HALF_EVEN", "0|sign;"),
     arrayOf("X", "float", "9223372036854775808", "350", "1", "HALF_EVEN", "0|sign;"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@-2147483648", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@0", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+)
+
+private fun oracleBatch348(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@0", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@0", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@0", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@10", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@10", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@10", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@10", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@10", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@10", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@2147483647", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@2147483647", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@2147483647", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@-2147483648", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@0", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@0", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@0", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@0", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@0", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@0", "0@10", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@10", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@10", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@0", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+)
+
+private fun oracleBatch349(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "0@0", "0@2147483647", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@2147483647", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@-2147483648", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@10", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@10", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@0", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@0", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@10", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@10", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@10", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@10", "0@10", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@10", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@10", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@10", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@10", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@10", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@10", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@10", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@10", "0@2147483647", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@10", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@10", "0@2147483647", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@10", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@-2147483648", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@0", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@0", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+)
+
+private fun oracleBatch350(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@0", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@10", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@10", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@10", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@2147483647", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@2147483647", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@2147483647", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@2147483647", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "-19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "-19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "-18", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "-18", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "18", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "18", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "0@0", "0@0", "19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@-2147483648", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@0", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@0", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@0", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@0", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@10", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@10", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@10", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@10", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@10", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+)
+
+private fun oracleBatch351(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@2147483647", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@-2147483648", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@0", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "1@0", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "1@0", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@0", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@0", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@0", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@0", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@0", "0@10", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@10", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@0", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@0", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@0", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@0", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@0", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@0", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@0", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@10", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "1@10", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "1@10", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@-2147483648", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@10", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+)
+
+private fun oracleBatch352(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "1@10", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@0", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@0", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@10", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@10", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@10", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@10", "0@10", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@10", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@10", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@10", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@10", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@10", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@10", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@10", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@10", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@10", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@10", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@10", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@-2147483648", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@0", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@0", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@0", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@10", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@10", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@2147483647", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+)
+
+private fun oracleBatch353(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@2147483647", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "-19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "-19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "-18", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "-18", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "18", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "18", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "1@0", "0@0", "19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@-2147483648", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@0", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@0", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@0", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@0", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@10", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@10", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@10", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@10", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@10", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@2147483647", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@-2147483648", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+)
+
+private fun oracleBatch354(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "-1@0", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@10", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@10", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@-2147483648", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@0", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@0", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@10", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@10", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@10", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@10", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+)
+
+private fun oracleBatch355(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "-1@10", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@10", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@-2147483648", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@0", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@0", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@0", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@10", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@10", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@2147483647", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@2147483647", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "-19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "-19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "-18", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "-18", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "18", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "18", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-1@0", "0@0", "19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+)
+
+private fun oracleBatch356(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@0", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@0", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@0", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@0", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@10", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@10", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@10", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@10", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@2147483647", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@-2147483648", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@10", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+)
+
+private fun oracleBatch357(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@-2147483648", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@0", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@0", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@10", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@10", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@10", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@-2147483648", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+)
+
+private fun oracleBatch358(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@0", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@0", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@0", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@10", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@10", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@2147483647", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@2147483647", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "-19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "-19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "-18", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "-18", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "18", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "18", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "9223372036854775807@0", "0@0", "19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@0", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@0", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@0", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@0", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+)
+
+private fun oracleBatch359(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@10", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@10", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@10", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@10", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@2147483647", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@-2147483648", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@10", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+)
+
+private fun oracleBatch360(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@-2147483648", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@0", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@0", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@0", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@0", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@10", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@10", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@10", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@-2147483648", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@-2147483648", "10", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@0", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@0", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@0", "2147483647", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@10", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+)
+
+private fun oracleBatch361(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@10", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@2147483647", "0", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@2147483647", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "-19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "-19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "-18", "UP", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "-18", "UNNECESSARY", "!ArithmeticException:/ by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "18", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "18", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775807@0", "0@0", "19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@-2147483648", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@0", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@0", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@10", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+)
+
+private fun oracleBatch362(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@-2147483648", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@-2147483648", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@10", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@-2147483648", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@0", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@0", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+)
+
+private fun oracleBatch363(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@10", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@10", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@-2147483648", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@0", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@0", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@10", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@10", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@2147483647", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "-19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "-19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+)
+
+private fun oracleBatch364(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "-18", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "-18", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "18", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "18", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-9223372036854775808@0", "0@0", "19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@-2147483648", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@0", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@0", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@10", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@-2147483648", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@-2147483648", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+)
+
+private fun oracleBatch365(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@10", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@-2147483648", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@0", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@0", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@10", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+)
+
+private fun oracleBatch366(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@10", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@-2147483648", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@0", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@0", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@10", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@10", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@2147483647", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "-19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "-19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "-18", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "-18", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "18", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "18", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "123456789012345678901234567890@0", "0@0", "19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@-2147483648", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+)
+
+private fun oracleBatch367(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@0", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@0", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@10", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@-2147483648", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@-2147483648", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@10", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+)
+
+private fun oracleBatch368(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@-2147483648", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@0", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@0", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@10", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@10", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@10", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@-2147483648", "-2147483648", "UP", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@-2147483648", "-2147483648", "UNNECESSARY", "!ArithmeticException:Overflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@-2147483648", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@-2147483648", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@-2147483648", "10", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@-2147483648", "10", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@-2147483648", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@-2147483648", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@0", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@0", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@0", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@0", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+)
+
+private fun oracleBatch369(): List<Array<String>> = listOf(
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@0", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@0", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@0", "2147483647", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@0", "2147483647", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@10", "-2147483648", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@10", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@10", "0", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@10", "0", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@10", "10", "UP", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@10", "10", "UNNECESSARY", "!ArithmeticException:BigInteger would overflow supported range"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@10", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@10", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@2147483647", "-2147483648", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@2147483647", "-2147483648", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@2147483647", "0", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@2147483647", "0", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@2147483647", "10", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@2147483647", "10", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@2147483647", "2147483647", "UP", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@2147483647", "0@2147483647", "2147483647", "UNNECESSARY", "!ArithmeticException:Underflow"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "-19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "-19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "-18", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "-18", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "18", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "18", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "19", "UP", "!ArithmeticException:BigInteger divide by zero"),
+    arrayOf("G", "scaledDivide", "-123456789012345678901234567890@0", "0@0", "19", "UNNECESSARY", "!ArithmeticException:BigInteger divide by zero"),
     arrayOf("G", "divide", "1@-2147483648", "1@-2147483648", "1", "HALF_UP", "1"),
     arrayOf("G", "divide", "1@-2147483648", "2@-2147483648", "1", "HALF_UP", "0.5"),
     arrayOf("G", "divide", "1@-2147483648", "3@-2147483648", "1", "HALF_UP", "0.3"),
@@ -18911,9 +20087,6 @@ private fun oracleBatch347(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483648", "2@-2147483648", "7", "HALF_UP", "0.5"),
     arrayOf("G", "divide", "1@-2147483648", "3@-2147483648", "7", "HALF_UP", "0.3333333"),
     arrayOf("G", "divide", "1@-2147483648", "1@-2147483648", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
-)
-
-private fun oracleBatch348(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483648", "2@-2147483648", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-2147483648", "3@-2147483648", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-2147483648", "1@-2147483648", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
@@ -18926,6 +20099,9 @@ private fun oracleBatch348(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483648", "2@-2147483647", "2", "HALF_UP", "5"),
     arrayOf("G", "divide", "1@-2147483648", "3@-2147483647", "2", "HALF_UP", "3.3"),
     arrayOf("G", "divide", "1@-2147483648", "1@-2147483647", "7", "HALF_UP", "1E+1"),
+)
+
+private fun oracleBatch370(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483648", "2@-2147483647", "7", "HALF_UP", "5"),
     arrayOf("G", "divide", "1@-2147483648", "3@-2147483647", "7", "HALF_UP", "3.333333"),
     arrayOf("G", "divide", "1@-2147483648", "1@-2147483647", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
@@ -18964,9 +20140,6 @@ private fun oracleBatch348(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483648", "1@0", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-2147483648", "2@0", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-2147483648", "3@0", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
-)
-
-private fun oracleBatch349(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483648", "1@10", "1", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@-2147483648", "2@10", "1", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@-2147483648", "3@10", "1", "HALF_UP", "!ArithmeticException:Underflow"),
@@ -18979,6 +20152,9 @@ private fun oracleBatch349(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483648", "1@10", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-2147483648", "2@10", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-2147483648", "3@10", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
+)
+
+private fun oracleBatch371(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483648", "1@10", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-2147483648", "2@10", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-2147483648", "3@10", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
@@ -19017,9 +20193,6 @@ private fun oracleBatch349(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483647", "3@-2147483648", "1", "HALF_UP", "0.03"),
     arrayOf("G", "divide", "1@-2147483647", "1@-2147483648", "2", "HALF_UP", "0.1"),
     arrayOf("G", "divide", "1@-2147483647", "2@-2147483648", "2", "HALF_UP", "0.05"),
-)
-
-private fun oracleBatch350(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483647", "3@-2147483648", "2", "HALF_UP", "0.033"),
     arrayOf("G", "divide", "1@-2147483647", "1@-2147483648", "7", "HALF_UP", "0.1"),
     arrayOf("G", "divide", "1@-2147483647", "2@-2147483648", "7", "HALF_UP", "0.05"),
@@ -19032,6 +20205,9 @@ private fun oracleBatch350(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483647", "3@-2147483648", "2147483647", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@-2147483647", "1@-2147483647", "1", "HALF_UP", "1"),
     arrayOf("G", "divide", "1@-2147483647", "2@-2147483647", "1", "HALF_UP", "0.5"),
+)
+
+private fun oracleBatch372(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483647", "3@-2147483647", "1", "HALF_UP", "0.3"),
     arrayOf("G", "divide", "1@-2147483647", "1@-2147483647", "2", "HALF_UP", "1"),
     arrayOf("G", "divide", "1@-2147483647", "2@-2147483647", "2", "HALF_UP", "0.5"),
@@ -19070,9 +20246,6 @@ private fun oracleBatch350(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483647", "2@0", "7", "HALF_UP", "5E+2147483646"),
     arrayOf("G", "divide", "1@-2147483647", "3@0", "7", "HALF_UP", "3.333333E+2147483646"),
     arrayOf("G", "divide", "1@-2147483647", "1@0", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
-)
-
-private fun oracleBatch351(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483647", "2@0", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-2147483647", "3@0", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-2147483647", "1@0", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
@@ -19085,6 +20258,9 @@ private fun oracleBatch351(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483647", "2@10", "2", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@-2147483647", "3@10", "2", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@-2147483647", "1@10", "7", "HALF_UP", "!ArithmeticException:Underflow"),
+)
+
+private fun oracleBatch373(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483647", "2@10", "7", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@-2147483647", "3@10", "7", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@-2147483647", "1@10", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
@@ -19123,9 +20299,6 @@ private fun oracleBatch351(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-2147483647", "1@2147483647", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-2147483647", "2@2147483647", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-2147483647", "3@2147483647", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
-)
-
-private fun oracleBatch352(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-10", "1@-2147483648", "1", "HALF_UP", "1E-2147483638"),
     arrayOf("G", "divide", "1@-10", "2@-2147483648", "1", "HALF_UP", "5E-2147483639"),
     arrayOf("G", "divide", "1@-10", "3@-2147483648", "1", "HALF_UP", "3E-2147483639"),
@@ -19138,6 +20311,9 @@ private fun oracleBatch352(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-10", "1@-2147483648", "2147483646", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@-10", "2@-2147483648", "2147483646", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@-10", "3@-2147483648", "2147483646", "HALF_UP", "!ArithmeticException:Overflow"),
+)
+
+private fun oracleBatch374(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-10", "1@-2147483648", "2147483647", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@-10", "2@-2147483648", "2147483647", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@-10", "3@-2147483648", "2147483647", "HALF_UP", "!ArithmeticException:Overflow"),
@@ -19176,9 +20352,6 @@ private fun oracleBatch352(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-10", "3@0", "1", "HALF_UP", "3E+9"),
     arrayOf("G", "divide", "1@-10", "1@0", "2", "HALF_UP", "1E+10"),
     arrayOf("G", "divide", "1@-10", "2@0", "2", "HALF_UP", "5E+9"),
-)
-
-private fun oracleBatch353(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-10", "3@0", "2", "HALF_UP", "3.3E+9"),
     arrayOf("G", "divide", "1@-10", "1@0", "7", "HALF_UP", "1E+10"),
     arrayOf("G", "divide", "1@-10", "2@0", "7", "HALF_UP", "5E+9"),
@@ -19191,6 +20364,9 @@ private fun oracleBatch353(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-10", "3@0", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-10", "1@10", "1", "HALF_UP", "1E+20"),
     arrayOf("G", "divide", "1@-10", "2@10", "1", "HALF_UP", "5E+19"),
+)
+
+private fun oracleBatch375(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-10", "3@10", "1", "HALF_UP", "3E+19"),
     arrayOf("G", "divide", "1@-10", "1@10", "2", "HALF_UP", "1E+20"),
     arrayOf("G", "divide", "1@-10", "2@10", "2", "HALF_UP", "5E+19"),
@@ -19229,9 +20405,6 @@ private fun oracleBatch353(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-10", "2@2147483647", "7", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@-10", "3@2147483647", "7", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@-10", "1@2147483647", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
-)
-
-private fun oracleBatch354(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@-10", "2@2147483647", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-10", "3@2147483647", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@-10", "1@2147483647", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
@@ -19244,6 +20417,9 @@ private fun oracleBatch354(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@0", "2@-2147483648", "2", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@0", "3@-2147483648", "2", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@0", "1@-2147483648", "7", "HALF_UP", "!ArithmeticException:Overflow"),
+)
+
+private fun oracleBatch376(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@0", "2@-2147483648", "7", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@0", "3@-2147483648", "7", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@0", "1@-2147483648", "2147483646", "HALF_UP", "!ArithmeticException:Overflow"),
@@ -19282,9 +20458,6 @@ private fun oracleBatch354(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@0", "1@-10", "2147483647", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@0", "2@-10", "2147483647", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@0", "3@-10", "2147483647", "HALF_UP", "!ArithmeticException:Overflow"),
-)
-
-private fun oracleBatch355(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@0", "1@0", "1", "HALF_UP", "1"),
     arrayOf("G", "divide", "1@0", "2@0", "1", "HALF_UP", "0.5"),
     arrayOf("G", "divide", "1@0", "3@0", "1", "HALF_UP", "0.3"),
@@ -19297,6 +20470,9 @@ private fun oracleBatch355(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@0", "1@0", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@0", "2@0", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@0", "3@0", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
+)
+
+private fun oracleBatch377(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@0", "1@0", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@0", "2@0", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@0", "3@0", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
@@ -19335,9 +20511,6 @@ private fun oracleBatch355(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@0", "3@2147483647", "1", "HALF_UP", "3E+2147483646"),
     arrayOf("G", "divide", "1@0", "1@2147483647", "2", "HALF_UP", "1E+2147483647"),
     arrayOf("G", "divide", "1@0", "2@2147483647", "2", "HALF_UP", "5E+2147483646"),
-)
-
-private fun oracleBatch356(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@0", "3@2147483647", "2", "HALF_UP", "3.3E+2147483646"),
     arrayOf("G", "divide", "1@0", "1@2147483647", "7", "HALF_UP", "1E+2147483647"),
     arrayOf("G", "divide", "1@0", "2@2147483647", "7", "HALF_UP", "5E+2147483646"),
@@ -19350,6 +20523,9 @@ private fun oracleBatch356(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@0", "3@2147483647", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@10", "1@-2147483648", "1", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@10", "2@-2147483648", "1", "HALF_UP", "!ArithmeticException:Overflow"),
+)
+
+private fun oracleBatch378(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@10", "3@-2147483648", "1", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@10", "1@-2147483648", "2", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@10", "2@-2147483648", "2", "HALF_UP", "!ArithmeticException:Overflow"),
@@ -19388,9 +20564,6 @@ private fun oracleBatch356(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@10", "2@-10", "7", "HALF_UP", "5E-21"),
     arrayOf("G", "divide", "1@10", "3@-10", "7", "HALF_UP", "3.333333E-21"),
     arrayOf("G", "divide", "1@10", "1@-10", "2147483646", "HALF_UP", "!ArithmeticException:Overflow"),
-)
-
-private fun oracleBatch357(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@10", "2@-10", "2147483646", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@10", "3@-10", "2147483646", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@10", "1@-10", "2147483647", "HALF_UP", "!ArithmeticException:Overflow"),
@@ -19403,6 +20576,9 @@ private fun oracleBatch357(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@10", "2@0", "2", "HALF_UP", "5E-11"),
     arrayOf("G", "divide", "1@10", "3@0", "2", "HALF_UP", "3.3E-11"),
     arrayOf("G", "divide", "1@10", "1@0", "7", "HALF_UP", "1E-10"),
+)
+
+private fun oracleBatch379(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@10", "2@0", "7", "HALF_UP", "5E-11"),
     arrayOf("G", "divide", "1@10", "3@0", "7", "HALF_UP", "3.333333E-11"),
     arrayOf("G", "divide", "1@10", "1@0", "2147483646", "HALF_UP", "!ArithmeticException:Overflow"),
@@ -19441,9 +20617,6 @@ private fun oracleBatch357(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@10", "1@2147483646", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@10", "2@2147483646", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@10", "3@2147483646", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
-)
-
-private fun oracleBatch358(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@10", "1@2147483647", "1", "HALF_UP", "1E+2147483637"),
     arrayOf("G", "divide", "1@10", "2@2147483647", "1", "HALF_UP", "5E+2147483636"),
     arrayOf("G", "divide", "1@10", "3@2147483647", "1", "HALF_UP", "3E+2147483636"),
@@ -19456,6 +20629,9 @@ private fun oracleBatch358(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@10", "1@2147483647", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@10", "2@2147483647", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@10", "3@2147483647", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
+)
+
+private fun oracleBatch380(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@10", "1@2147483647", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@10", "2@2147483647", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@10", "3@2147483647", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
@@ -19494,9 +20670,6 @@ private fun oracleBatch358(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483646", "3@-10", "1", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@2147483646", "1@-10", "2", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@2147483646", "2@-10", "2", "HALF_UP", "!ArithmeticException:Overflow"),
-)
-
-private fun oracleBatch359(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483646", "3@-10", "2", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@2147483646", "1@-10", "7", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@2147483646", "2@-10", "7", "HALF_UP", "!ArithmeticException:Overflow"),
@@ -19509,6 +20682,9 @@ private fun oracleBatch359(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483646", "3@-10", "2147483647", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@2147483646", "1@0", "1", "HALF_UP", "1E-2147483646"),
     arrayOf("G", "divide", "1@2147483646", "2@0", "1", "HALF_UP", "5E-2147483647"),
+)
+
+private fun oracleBatch381(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483646", "3@0", "1", "HALF_UP", "3E-2147483647"),
     arrayOf("G", "divide", "1@2147483646", "1@0", "2", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@2147483646", "2@0", "2", "HALF_UP", "!ArithmeticException:Overflow"),
@@ -19547,9 +20723,6 @@ private fun oracleBatch359(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483646", "2@2147483646", "7", "HALF_UP", "0.5"),
     arrayOf("G", "divide", "1@2147483646", "3@2147483646", "7", "HALF_UP", "0.3333333"),
     arrayOf("G", "divide", "1@2147483646", "1@2147483646", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
-)
-
-private fun oracleBatch360(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483646", "2@2147483646", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@2147483646", "3@2147483646", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
     arrayOf("G", "divide", "1@2147483646", "1@2147483646", "2147483647", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
@@ -19562,6 +20735,9 @@ private fun oracleBatch360(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483646", "2@2147483647", "2", "HALF_UP", "5"),
     arrayOf("G", "divide", "1@2147483646", "3@2147483647", "2", "HALF_UP", "3.3"),
     arrayOf("G", "divide", "1@2147483646", "1@2147483647", "7", "HALF_UP", "1E+1"),
+)
+
+private fun oracleBatch382(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483646", "2@2147483647", "7", "HALF_UP", "5"),
     arrayOf("G", "divide", "1@2147483646", "3@2147483647", "7", "HALF_UP", "3.333333"),
     arrayOf("G", "divide", "1@2147483646", "1@2147483647", "2147483646", "HALF_UP", "!ArithmeticException:BigInteger would overflow supported range"),
@@ -19600,9 +20776,6 @@ private fun oracleBatch360(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483647", "1@-2147483647", "2147483647", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@2147483647", "2@-2147483647", "2147483647", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@2147483647", "3@-2147483647", "2147483647", "HALF_UP", "!ArithmeticException:Underflow"),
-)
-
-private fun oracleBatch361(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483647", "1@-10", "1", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@2147483647", "2@-10", "1", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@2147483647", "3@-10", "1", "HALF_UP", "!ArithmeticException:Overflow"),
@@ -19615,6 +20788,9 @@ private fun oracleBatch361(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483647", "1@-10", "2147483646", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@2147483647", "2@-10", "2147483646", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@2147483647", "3@-10", "2147483646", "HALF_UP", "!ArithmeticException:Underflow"),
+)
+
+private fun oracleBatch383(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483647", "1@-10", "2147483647", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@2147483647", "2@-10", "2147483647", "HALF_UP", "!ArithmeticException:Underflow"),
     arrayOf("G", "divide", "1@2147483647", "3@-10", "2147483647", "HALF_UP", "!ArithmeticException:Underflow"),
@@ -19653,9 +20829,6 @@ private fun oracleBatch361(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483647", "3@2147483646", "1", "HALF_UP", "0.03"),
     arrayOf("G", "divide", "1@2147483647", "1@2147483646", "2", "HALF_UP", "0.1"),
     arrayOf("G", "divide", "1@2147483647", "2@2147483646", "2", "HALF_UP", "0.05"),
-)
-
-private fun oracleBatch362(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483647", "3@2147483646", "2", "HALF_UP", "0.033"),
     arrayOf("G", "divide", "1@2147483647", "1@2147483646", "7", "HALF_UP", "0.1"),
     arrayOf("G", "divide", "1@2147483647", "2@2147483646", "7", "HALF_UP", "0.05"),
@@ -19668,6 +20841,9 @@ private fun oracleBatch362(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483647", "3@2147483646", "2147483647", "HALF_UP", "!ArithmeticException:Overflow"),
     arrayOf("G", "divide", "1@2147483647", "1@2147483647", "1", "HALF_UP", "1"),
     arrayOf("G", "divide", "1@2147483647", "2@2147483647", "1", "HALF_UP", "0.5"),
+)
+
+private fun oracleBatch384(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "1@2147483647", "3@2147483647", "1", "HALF_UP", "0.3"),
     arrayOf("G", "divide", "1@2147483647", "1@2147483647", "2", "HALF_UP", "1"),
     arrayOf("G", "divide", "1@2147483647", "2@2147483647", "2", "HALF_UP", "0.5"),
@@ -19706,9 +20882,6 @@ private fun oracleBatch362(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@-2147483648", "5@-2147483648", "0", "HALF_EVEN", "2"),
     arrayOf("G", "exactDivide", "10@-2147483648", "6@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "0@-2147483648", "0@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Division undefined"),
-)
-
-private fun oracleBatch363(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@-2147483648", "1@-2147483647", "0", "HALF_EVEN", "0E+1"),
     arrayOf("G", "exactDivide", "0@-2147483648", "-2@-2147483647", "0", "HALF_EVEN", "0E+1"),
     arrayOf("G", "exactDivide", "0@-2147483648", "3@-2147483647", "0", "HALF_EVEN", "0E+1"),
@@ -19721,6 +20894,9 @@ private fun oracleBatch363(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@-2147483648", "5@-2147483647", "0", "HALF_EVEN", "2"),
     arrayOf("G", "exactDivide", "1@-2147483648", "6@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@-2147483648", "0@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
+)
+
+private fun oracleBatch385(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@-2147483648", "1@-2147483647", "0", "HALF_EVEN", "-1E+1"),
     arrayOf("G", "exactDivide", "-1@-2147483648", "-2@-2147483647", "0", "HALF_EVEN", "5"),
     arrayOf("G", "exactDivide", "-1@-2147483648", "3@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -19759,9 +20935,6 @@ private fun oracleBatch363(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@-2147483648", "0@0", "0", "HALF_EVEN", "!ArithmeticException:Division undefined"),
     arrayOf("G", "exactDivide", "0@-2147483648", "1@0", "0", "HALF_EVEN", "0E+2147483648"),
     arrayOf("G", "exactDivide", "0@-2147483648", "-2@0", "0", "HALF_EVEN", "0E+2147483648"),
-)
-
-private fun oracleBatch364(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@-2147483648", "3@0", "0", "HALF_EVEN", "0E+2147483648"),
     arrayOf("G", "exactDivide", "0@-2147483648", "5@0", "0", "HALF_EVEN", "0E+2147483648"),
     arrayOf("G", "exactDivide", "0@-2147483648", "6@0", "0", "HALF_EVEN", "0E+2147483648"),
@@ -19774,6 +20947,9 @@ private fun oracleBatch364(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@-2147483648", "0@0", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "-1@-2147483648", "1@0", "0", "HALF_EVEN", "-1E+2147483648"),
     arrayOf("G", "exactDivide", "-1@-2147483648", "-2@0", "0", "HALF_EVEN", "5E+2147483647"),
+)
+
+private fun oracleBatch386(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@-2147483648", "3@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@-2147483648", "5@0", "0", "HALF_EVEN", "-2E+2147483647"),
     arrayOf("G", "exactDivide", "-1@-2147483648", "6@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -19812,9 +20988,6 @@ private fun oracleBatch364(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@-2147483648", "-2@2147483646", "0", "HALF_EVEN", "0E+2147483648"),
     arrayOf("G", "exactDivide", "0@-2147483648", "3@2147483646", "0", "HALF_EVEN", "0E+2147483648"),
     arrayOf("G", "exactDivide", "0@-2147483648", "5@2147483646", "0", "HALF_EVEN", "0E+2147483648"),
-)
-
-private fun oracleBatch365(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@-2147483648", "6@2147483646", "0", "HALF_EVEN", "0E+2147483648"),
     arrayOf("G", "exactDivide", "1@-2147483648", "0@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "1@-2147483648", "1@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -19827,6 +21000,9 @@ private fun oracleBatch365(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@-2147483648", "-2@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@-2147483648", "3@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@-2147483648", "5@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
+)
+
+private fun oracleBatch387(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@-2147483648", "6@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@-2147483648", "0@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "10@-2147483648", "1@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -19865,9 +21041,6 @@ private fun oracleBatch365(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@-2147483647", "5@-2147483648", "0", "HALF_EVEN", "0.0"),
     arrayOf("G", "exactDivide", "0@-2147483647", "6@-2147483648", "0", "HALF_EVEN", "0.0"),
     arrayOf("G", "exactDivide", "1@-2147483647", "0@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
-)
-
-private fun oracleBatch366(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@-2147483647", "1@-2147483648", "0", "HALF_EVEN", "0.1"),
     arrayOf("G", "exactDivide", "1@-2147483647", "-2@-2147483648", "0", "HALF_EVEN", "-0.05"),
     arrayOf("G", "exactDivide", "1@-2147483647", "3@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -19880,6 +21053,9 @@ private fun oracleBatch366(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@-2147483647", "5@-2147483648", "0", "HALF_EVEN", "-0.02"),
     arrayOf("G", "exactDivide", "-1@-2147483647", "6@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@-2147483647", "0@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
+)
+
+private fun oracleBatch388(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@-2147483647", "1@-2147483648", "0", "HALF_EVEN", "1.0"),
     arrayOf("G", "exactDivide", "10@-2147483647", "-2@-2147483648", "0", "HALF_EVEN", "-0.5"),
     arrayOf("G", "exactDivide", "10@-2147483647", "3@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -19918,9 +21094,6 @@ private fun oracleBatch366(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@-2147483647", "0@-10", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "1@-2147483647", "1@-10", "0", "HALF_EVEN", "1E+2147483637"),
     arrayOf("G", "exactDivide", "1@-2147483647", "-2@-10", "0", "HALF_EVEN", "-5E+2147483636"),
-)
-
-private fun oracleBatch367(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@-2147483647", "3@-10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@-2147483647", "5@-10", "0", "HALF_EVEN", "2E+2147483636"),
     arrayOf("G", "exactDivide", "1@-2147483647", "6@-10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -19933,6 +21106,9 @@ private fun oracleBatch367(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@-2147483647", "0@-10", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "10@-2147483647", "1@-10", "0", "HALF_EVEN", "1.0E+2147483638"),
     arrayOf("G", "exactDivide", "10@-2147483647", "-2@-10", "0", "HALF_EVEN", "-5E+2147483637"),
+)
+
+private fun oracleBatch389(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@-2147483647", "3@-10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@-2147483647", "5@-10", "0", "HALF_EVEN", "2E+2147483637"),
     arrayOf("G", "exactDivide", "10@-2147483647", "6@-10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -19971,9 +21147,6 @@ private fun oracleBatch367(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@-2147483647", "-2@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@-2147483647", "3@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@-2147483647", "5@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
-)
-
-private fun oracleBatch368(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@-2147483647", "6@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@-2147483647", "0@10", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "-1@-2147483647", "1@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -19986,6 +21159,9 @@ private fun oracleBatch368(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@-2147483647", "-2@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@-2147483647", "3@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@-2147483647", "5@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
+)
+
+private fun oracleBatch390(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@-2147483647", "6@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "0@-2147483647", "0@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Division undefined"),
     arrayOf("G", "exactDivide", "0@-2147483647", "1@2147483646", "0", "HALF_EVEN", "0E+2147483648"),
@@ -20024,9 +21200,6 @@ private fun oracleBatch368(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@-2147483647", "5@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@-2147483647", "6@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@-2147483647", "0@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
-)
-
-private fun oracleBatch369(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@-2147483647", "1@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@-2147483647", "-2@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@-2147483647", "3@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20039,6 +21212,9 @@ private fun oracleBatch369(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@-2147483647", "5@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@-2147483647", "6@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "0@-10", "0@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Division undefined"),
+)
+
+private fun oracleBatch391(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@-10", "1@-2147483648", "0", "HALF_EVEN", "0E-2147483638"),
     arrayOf("G", "exactDivide", "0@-10", "-2@-2147483648", "0", "HALF_EVEN", "0E-2147483638"),
     arrayOf("G", "exactDivide", "0@-10", "3@-2147483648", "0", "HALF_EVEN", "0E-2147483638"),
@@ -20077,9 +21253,6 @@ private fun oracleBatch369(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@-10", "0@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "-1@-10", "1@-2147483647", "0", "HALF_EVEN", "-1E-2147483637"),
     arrayOf("G", "exactDivide", "-1@-10", "-2@-2147483647", "0", "HALF_EVEN", "5E-2147483638"),
-)
-
-private fun oracleBatch370(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@-10", "3@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@-10", "5@-2147483647", "0", "HALF_EVEN", "-2E-2147483638"),
     arrayOf("G", "exactDivide", "-1@-10", "6@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20092,6 +21265,9 @@ private fun oracleBatch370(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@-10", "0@-10", "0", "HALF_EVEN", "!ArithmeticException:Division undefined"),
     arrayOf("G", "exactDivide", "0@-10", "1@-10", "0", "HALF_EVEN", "0"),
     arrayOf("G", "exactDivide", "0@-10", "-2@-10", "0", "HALF_EVEN", "0"),
+)
+
+private fun oracleBatch392(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@-10", "3@-10", "0", "HALF_EVEN", "0"),
     arrayOf("G", "exactDivide", "0@-10", "5@-10", "0", "HALF_EVEN", "0"),
     arrayOf("G", "exactDivide", "0@-10", "6@-10", "0", "HALF_EVEN", "0"),
@@ -20130,9 +21306,6 @@ private fun oracleBatch370(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@-10", "-2@0", "0", "HALF_EVEN", "5E+9"),
     arrayOf("G", "exactDivide", "-1@-10", "3@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@-10", "5@0", "0", "HALF_EVEN", "-2E+9"),
-)
-
-private fun oracleBatch371(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@-10", "6@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@-10", "0@0", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "10@-10", "1@0", "0", "HALF_EVEN", "1.0E+11"),
@@ -20145,6 +21318,9 @@ private fun oracleBatch371(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@-10", "-2@10", "0", "HALF_EVEN", "0E+20"),
     arrayOf("G", "exactDivide", "0@-10", "3@10", "0", "HALF_EVEN", "0E+20"),
     arrayOf("G", "exactDivide", "0@-10", "5@10", "0", "HALF_EVEN", "0E+20"),
+)
+
+private fun oracleBatch393(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@-10", "6@10", "0", "HALF_EVEN", "0E+20"),
     arrayOf("G", "exactDivide", "1@-10", "0@10", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "1@-10", "1@10", "0", "HALF_EVEN", "1E+20"),
@@ -20183,9 +21359,6 @@ private fun oracleBatch371(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@-10", "5@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@-10", "6@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@-10", "0@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
-)
-
-private fun oracleBatch372(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@-10", "1@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@-10", "-2@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@-10", "3@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20198,6 +21371,9 @@ private fun oracleBatch372(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@-10", "5@2147483647", "0", "HALF_EVEN", "0E+2147483648"),
     arrayOf("G", "exactDivide", "0@-10", "6@2147483647", "0", "HALF_EVEN", "0E+2147483648"),
     arrayOf("G", "exactDivide", "1@-10", "0@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
+)
+
+private fun oracleBatch394(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@-10", "1@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@-10", "-2@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@-10", "3@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20236,9 +21412,6 @@ private fun oracleBatch372(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@0", "0@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "10@0", "1@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@0", "-2@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
-)
-
-private fun oracleBatch373(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@0", "3@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@0", "5@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@0", "6@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20251,6 +21424,9 @@ private fun oracleBatch373(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@0", "0@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "1@0", "1@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@0", "-2@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
+)
+
+private fun oracleBatch395(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@0", "3@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@0", "5@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@0", "6@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20289,9 +21465,6 @@ private fun oracleBatch373(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@0", "-2@-10", "0", "HALF_EVEN", "-5E-10"),
     arrayOf("G", "exactDivide", "10@0", "3@-10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@0", "5@-10", "0", "HALF_EVEN", "2E-10"),
-)
-
-private fun oracleBatch374(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@0", "6@-10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "0@0", "0@0", "0", "HALF_EVEN", "!ArithmeticException:Division undefined"),
     arrayOf("G", "exactDivide", "0@0", "1@0", "0", "HALF_EVEN", "0"),
@@ -20304,6 +21477,9 @@ private fun oracleBatch374(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@0", "-2@0", "0", "HALF_EVEN", "-0.5"),
     arrayOf("G", "exactDivide", "1@0", "3@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@0", "5@0", "0", "HALF_EVEN", "0.2"),
+)
+
+private fun oracleBatch396(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@0", "6@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@0", "0@0", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "-1@0", "1@0", "0", "HALF_EVEN", "-1"),
@@ -20342,9 +21518,6 @@ private fun oracleBatch374(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@0", "5@10", "0", "HALF_EVEN", "2E+10"),
     arrayOf("G", "exactDivide", "10@0", "6@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "0@0", "0@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Division undefined"),
-)
-
-private fun oracleBatch375(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@0", "1@2147483646", "0", "HALF_EVEN", "0E+2147483646"),
     arrayOf("G", "exactDivide", "0@0", "-2@2147483646", "0", "HALF_EVEN", "0E+2147483646"),
     arrayOf("G", "exactDivide", "0@0", "3@2147483646", "0", "HALF_EVEN", "0E+2147483646"),
@@ -20357,6 +21530,9 @@ private fun oracleBatch375(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@0", "5@2147483646", "0", "HALF_EVEN", "2E+2147483645"),
     arrayOf("G", "exactDivide", "1@0", "6@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@0", "0@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
+)
+
+private fun oracleBatch397(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@0", "1@2147483646", "0", "HALF_EVEN", "-1E+2147483646"),
     arrayOf("G", "exactDivide", "-1@0", "-2@2147483646", "0", "HALF_EVEN", "5E+2147483645"),
     arrayOf("G", "exactDivide", "-1@0", "3@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20395,9 +21571,6 @@ private fun oracleBatch375(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@10", "0@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Division undefined"),
     arrayOf("G", "exactDivide", "0@10", "1@-2147483648", "0", "HALF_EVEN", "0E-2147483647"),
     arrayOf("G", "exactDivide", "0@10", "-2@-2147483648", "0", "HALF_EVEN", "0E-2147483647"),
-)
-
-private fun oracleBatch376(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@10", "3@-2147483648", "0", "HALF_EVEN", "0E-2147483647"),
     arrayOf("G", "exactDivide", "0@10", "5@-2147483648", "0", "HALF_EVEN", "0E-2147483647"),
     arrayOf("G", "exactDivide", "0@10", "6@-2147483648", "0", "HALF_EVEN", "0E-2147483647"),
@@ -20410,6 +21583,9 @@ private fun oracleBatch376(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@10", "0@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "-1@10", "1@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@10", "-2@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
+)
+
+private fun oracleBatch398(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@10", "3@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@10", "5@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@10", "6@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20448,9 +21624,6 @@ private fun oracleBatch376(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@10", "-2@-10", "0", "HALF_EVEN", "0E-20"),
     arrayOf("G", "exactDivide", "0@10", "3@-10", "0", "HALF_EVEN", "0E-20"),
     arrayOf("G", "exactDivide", "0@10", "5@-10", "0", "HALF_EVEN", "0E-20"),
-)
-
-private fun oracleBatch377(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@10", "6@-10", "0", "HALF_EVEN", "0E-20"),
     arrayOf("G", "exactDivide", "1@10", "0@-10", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "1@10", "1@-10", "0", "HALF_EVEN", "1E-20"),
@@ -20463,6 +21636,9 @@ private fun oracleBatch377(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@10", "-2@-10", "0", "HALF_EVEN", "5E-21"),
     arrayOf("G", "exactDivide", "-1@10", "3@-10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@10", "5@-10", "0", "HALF_EVEN", "-2E-21"),
+)
+
+private fun oracleBatch399(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@10", "6@-10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@10", "0@-10", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "10@10", "1@-10", "0", "HALF_EVEN", "1.0E-19"),
@@ -20501,9 +21677,6 @@ private fun oracleBatch377(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@10", "5@10", "0", "HALF_EVEN", "0"),
     arrayOf("G", "exactDivide", "0@10", "6@10", "0", "HALF_EVEN", "0"),
     arrayOf("G", "exactDivide", "1@10", "0@10", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
-)
-
-private fun oracleBatch378(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@10", "1@10", "0", "HALF_EVEN", "1"),
     arrayOf("G", "exactDivide", "1@10", "-2@10", "0", "HALF_EVEN", "-0.5"),
     arrayOf("G", "exactDivide", "1@10", "3@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20516,6 +21689,9 @@ private fun oracleBatch378(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@10", "5@10", "0", "HALF_EVEN", "-0.2"),
     arrayOf("G", "exactDivide", "-1@10", "6@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@10", "0@10", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
+)
+
+private fun oracleBatch400(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@10", "1@10", "0", "HALF_EVEN", "10"),
     arrayOf("G", "exactDivide", "10@10", "-2@10", "0", "HALF_EVEN", "-5"),
     arrayOf("G", "exactDivide", "10@10", "3@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20554,9 +21730,6 @@ private fun oracleBatch378(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@10", "0@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "1@10", "1@2147483647", "0", "HALF_EVEN", "1E+2147483637"),
     arrayOf("G", "exactDivide", "1@10", "-2@2147483647", "0", "HALF_EVEN", "-5E+2147483636"),
-)
-
-private fun oracleBatch379(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@10", "3@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@10", "5@2147483647", "0", "HALF_EVEN", "2E+2147483636"),
     arrayOf("G", "exactDivide", "1@10", "6@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20569,6 +21742,9 @@ private fun oracleBatch379(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@10", "0@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "10@10", "1@2147483647", "0", "HALF_EVEN", "1.0E+2147483638"),
     arrayOf("G", "exactDivide", "10@10", "-2@2147483647", "0", "HALF_EVEN", "-5E+2147483637"),
+)
+
+private fun oracleBatch401(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@10", "3@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@10", "5@2147483647", "0", "HALF_EVEN", "2E+2147483637"),
     arrayOf("G", "exactDivide", "10@10", "6@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20607,9 +21783,6 @@ private fun oracleBatch379(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@2147483646", "-2@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@2147483646", "3@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@2147483646", "5@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
-)
-
-private fun oracleBatch380(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@2147483646", "6@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@2147483646", "0@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "-1@2147483646", "1@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20622,6 +21795,9 @@ private fun oracleBatch380(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@2147483646", "-2@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@2147483646", "3@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@2147483646", "5@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
+)
+
+private fun oracleBatch402(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@2147483646", "6@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "0@2147483646", "0@-10", "0", "HALF_EVEN", "!ArithmeticException:Division undefined"),
     arrayOf("G", "exactDivide", "0@2147483646", "1@-10", "0", "HALF_EVEN", "0E-2147483647"),
@@ -20660,9 +21836,6 @@ private fun oracleBatch380(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@2147483646", "5@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@2147483646", "6@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@2147483646", "0@0", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
-)
-
-private fun oracleBatch381(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@2147483646", "1@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@2147483646", "-2@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@2147483646", "3@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20675,6 +21848,9 @@ private fun oracleBatch381(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@2147483646", "5@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@2147483646", "6@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "0@2147483646", "0@10", "0", "HALF_EVEN", "!ArithmeticException:Division undefined"),
+)
+
+private fun oracleBatch403(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@2147483646", "1@10", "0", "HALF_EVEN", "0E-2147483636"),
     arrayOf("G", "exactDivide", "0@2147483646", "-2@10", "0", "HALF_EVEN", "0E-2147483636"),
     arrayOf("G", "exactDivide", "0@2147483646", "3@10", "0", "HALF_EVEN", "0E-2147483636"),
@@ -20713,9 +21889,6 @@ private fun oracleBatch381(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@2147483646", "0@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "-1@2147483646", "1@2147483646", "0", "HALF_EVEN", "-1"),
     arrayOf("G", "exactDivide", "-1@2147483646", "-2@2147483646", "0", "HALF_EVEN", "0.5"),
-)
-
-private fun oracleBatch382(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@2147483646", "3@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@2147483646", "5@2147483646", "0", "HALF_EVEN", "-0.2"),
     arrayOf("G", "exactDivide", "-1@2147483646", "6@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20728,6 +21901,9 @@ private fun oracleBatch382(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@2147483646", "0@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Division undefined"),
     arrayOf("G", "exactDivide", "0@2147483646", "1@2147483647", "0", "HALF_EVEN", "0E+1"),
     arrayOf("G", "exactDivide", "0@2147483646", "-2@2147483647", "0", "HALF_EVEN", "0E+1"),
+)
+
+private fun oracleBatch404(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@2147483646", "3@2147483647", "0", "HALF_EVEN", "0E+1"),
     arrayOf("G", "exactDivide", "0@2147483646", "5@2147483647", "0", "HALF_EVEN", "0E+1"),
     arrayOf("G", "exactDivide", "0@2147483646", "6@2147483647", "0", "HALF_EVEN", "0E+1"),
@@ -20766,9 +21942,6 @@ private fun oracleBatch382(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@2147483647", "-2@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@2147483647", "3@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@2147483647", "5@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
-)
-
-private fun oracleBatch383(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@2147483647", "6@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@2147483647", "0@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "10@2147483647", "1@-2147483648", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20781,6 +21954,9 @@ private fun oracleBatch383(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@2147483647", "-2@-2147483647", "0", "HALF_EVEN", "0E-2147483647"),
     arrayOf("G", "exactDivide", "0@2147483647", "3@-2147483647", "0", "HALF_EVEN", "0E-2147483647"),
     arrayOf("G", "exactDivide", "0@2147483647", "5@-2147483647", "0", "HALF_EVEN", "0E-2147483647"),
+)
+
+private fun oracleBatch405(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@2147483647", "6@-2147483647", "0", "HALF_EVEN", "0E-2147483647"),
     arrayOf("G", "exactDivide", "1@2147483647", "0@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "1@2147483647", "1@-2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20819,9 +21995,6 @@ private fun oracleBatch383(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@2147483647", "5@-10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "-1@2147483647", "6@-10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@2147483647", "0@-10", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
-)
-
-private fun oracleBatch384(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@2147483647", "1@-10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@2147483647", "-2@-10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@2147483647", "3@-10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20834,6 +22007,9 @@ private fun oracleBatch384(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "0@2147483647", "5@0", "0", "HALF_EVEN", "0E-2147483647"),
     arrayOf("G", "exactDivide", "0@2147483647", "6@0", "0", "HALF_EVEN", "0E-2147483647"),
     arrayOf("G", "exactDivide", "1@2147483647", "0@0", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
+)
+
+private fun oracleBatch406(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@2147483647", "1@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@2147483647", "-2@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@2147483647", "3@0", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20872,9 +22048,6 @@ private fun oracleBatch384(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@2147483647", "0@10", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "10@2147483647", "1@10", "0", "HALF_EVEN", "1.0E-2147483636"),
     arrayOf("G", "exactDivide", "10@2147483647", "-2@10", "0", "HALF_EVEN", "-5E-2147483637"),
-)
-
-private fun oracleBatch385(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@2147483647", "3@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@2147483647", "5@10", "0", "HALF_EVEN", "2E-2147483637"),
     arrayOf("G", "exactDivide", "10@2147483647", "6@10", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20887,6 +22060,9 @@ private fun oracleBatch385(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@2147483647", "0@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Division by zero"),
     arrayOf("G", "exactDivide", "1@2147483647", "1@2147483646", "0", "HALF_EVEN", "0.1"),
     arrayOf("G", "exactDivide", "1@2147483647", "-2@2147483646", "0", "HALF_EVEN", "-0.05"),
+)
+
+private fun oracleBatch407(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "1@2147483647", "3@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "1@2147483647", "5@2147483646", "0", "HALF_EVEN", "0.02"),
     arrayOf("G", "exactDivide", "1@2147483647", "6@2147483646", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
@@ -20925,9 +22101,6 @@ private fun oracleBatch385(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@2147483647", "-2@2147483647", "0", "HALF_EVEN", "-5"),
     arrayOf("G", "exactDivide", "10@2147483647", "3@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "exactDivide", "10@2147483647", "5@2147483647", "0", "HALF_EVEN", "2"),
-)
-
-private fun oracleBatch386(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "10@2147483647", "6@2147483647", "0", "HALF_EVEN", "!ArithmeticException:Non-terminating decimal expansion; no exact representable decimal result."),
     arrayOf("G", "divide", "0@0", "0@0", "7", "HALF_UP", "!ArithmeticException:Division undefined"),
     arrayOf("G", "exactDivide", "0@0", "0@0", "7", "HALF_UP", "!ArithmeticException:Division undefined"),
@@ -20940,6 +22113,9 @@ private fun oracleBatch386(): List<Array<String>> = listOf(
     arrayOf("G", "divide", "0@0", "0@-2147483648", "7", "HALF_UP", "!ArithmeticException:Division undefined"),
     arrayOf("G", "exactDivide", "0@0", "0@-2147483648", "7", "HALF_UP", "!ArithmeticException:Division undefined"),
     arrayOf("G", "integral", "0@0", "0@-2147483648", "7", "HALF_UP", "!ArithmeticException:Division undefined"),
+)
+
+private fun oracleBatch408(): List<Array<String>> = listOf(
     arrayOf("G", "integralContext", "0@0", "0@-2147483648", "7", "HALF_UP", "!ArithmeticException:Division undefined"),
     arrayOf("G", "remainder", "0@0", "0@-2147483648", "7", "HALF_UP", "!ArithmeticException:Division undefined"),
     arrayOf("G", "remainderContext", "0@0", "0@-2147483648", "7", "HALF_UP", "!ArithmeticException:Division undefined"),
@@ -20978,9 +22154,6 @@ private fun oracleBatch386(): List<Array<String>> = listOf(
     arrayOf("G", "pair", "1@0", "0@2147483647", "7", "HALF_UP", "!ArithmeticException:Division by zero"),
     arrayOf("G", "pairContext", "1@0", "0@2147483647", "7", "HALF_UP", "!ArithmeticException:Division by zero"),
     arrayOf("G", "divide", "-1@0", "0@0", "7", "HALF_UP", "!ArithmeticException:Division by zero"),
-)
-
-private fun oracleBatch387(): List<Array<String>> = listOf(
     arrayOf("G", "exactDivide", "-1@0", "0@0", "7", "HALF_UP", "!ArithmeticException:Division by zero"),
     arrayOf("G", "integral", "-1@0", "0@0", "7", "HALF_UP", "!ArithmeticException:Division by zero"),
     arrayOf("G", "integralContext", "-1@0", "0@0", "7", "HALF_UP", "!ArithmeticException:Division by zero"),
@@ -20993,6 +22166,9 @@ private fun oracleBatch387(): List<Array<String>> = listOf(
     arrayOf("G", "integral", "-1@0", "0@-2147483648", "7", "HALF_UP", "!ArithmeticException:Division by zero"),
     arrayOf("G", "integralContext", "-1@0", "0@-2147483648", "7", "HALF_UP", "!ArithmeticException:Division by zero"),
     arrayOf("G", "remainder", "-1@0", "0@-2147483648", "7", "HALF_UP", "!ArithmeticException:Division by zero"),
+)
+
+private fun oracleBatch409(): List<Array<String>> = listOf(
     arrayOf("G", "remainderContext", "-1@0", "0@-2147483648", "7", "HALF_UP", "!ArithmeticException:Division by zero"),
     arrayOf("G", "pair", "-1@0", "0@-2147483648", "7", "HALF_UP", "!ArithmeticException:Division by zero"),
     arrayOf("G", "pairContext", "-1@0", "0@-2147483648", "7", "HALF_UP", "!ArithmeticException:Division by zero"),
@@ -21031,9 +22207,6 @@ private fun oracleBatch387(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "0", "2147483647", "UP", "1"),
     arrayOf("D", "pow", "1", "0", "2147483647", "DOWN", "1"),
     arrayOf("D", "pow", "1", "0", "2147483647", "CEILING", "1"),
-)
-
-private fun oracleBatch388(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "0", "2147483647", "FLOOR", "1"),
     arrayOf("D", "pow", "1", "0", "2147483647", "HALF_UP", "1"),
     arrayOf("D", "pow", "1", "0", "2147483647", "HALF_DOWN", "1"),
@@ -21046,6 +22219,9 @@ private fun oracleBatch388(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "1", "2147483647", "HALF_UP", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "1", "2147483647", "HALF_DOWN", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "1", "2147483647", "HALF_EVEN", "!IllegalArgumentException"),
+)
+
+private fun oracleBatch410(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "1", "2147483647", "UNNECESSARY", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "10", "2147483647", "UP", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "10", "2147483647", "DOWN", "!IllegalArgumentException"),
@@ -21084,9 +22260,6 @@ private fun oracleBatch388(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "10", "2147483646", "CEILING", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "10", "2147483646", "FLOOR", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "10", "2147483646", "HALF_UP", "!IllegalArgumentException"),
-)
-
-private fun oracleBatch389(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "10", "2147483646", "HALF_DOWN", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "10", "2147483646", "HALF_EVEN", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "10", "2147483646", "UNNECESSARY", "!IllegalArgumentException"),
@@ -21099,6 +22272,9 @@ private fun oracleBatch389(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "999999999", "2147483646", "HALF_EVEN", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "999999999", "2147483646", "UNNECESSARY", "!IllegalArgumentException"),
     arrayOf("D", "pow", "1", "0", "2147483645", "UP", "1"),
+)
+
+private fun oracleBatch411(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "0", "2147483645", "DOWN", "1"),
     arrayOf("D", "pow", "1", "0", "2147483645", "CEILING", "1"),
     arrayOf("D", "pow", "1", "0", "2147483645", "FLOOR", "1"),
@@ -21137,9 +22313,6 @@ private fun oracleBatch389(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "0", "2147483637", "HALF_UP", "1"),
     arrayOf("D", "pow", "1", "0", "2147483637", "HALF_DOWN", "1"),
     arrayOf("D", "pow", "1", "0", "2147483637", "HALF_EVEN", "1"),
-)
-
-private fun oracleBatch390(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "0", "2147483637", "UNNECESSARY", "1"),
     arrayOf("D", "pow", "1", "1", "2147483637", "UP", "1"),
     arrayOf("D", "pow", "1", "1", "2147483637", "DOWN", "1"),
@@ -21152,6 +22325,9 @@ private fun oracleBatch390(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "10", "2147483637", "UP", "1"),
     arrayOf("D", "pow", "1", "10", "2147483637", "DOWN", "1"),
     arrayOf("D", "pow", "1", "10", "2147483637", "CEILING", "1"),
+)
+
+private fun oracleBatch412(): List<Array<String>> = listOf(
     arrayOf("D", "pow", "1", "10", "2147483637", "FLOOR", "1"),
     arrayOf("D", "pow", "1", "10", "2147483637", "HALF_UP", "1"),
     arrayOf("D", "pow", "1", "10", "2147483637", "HALF_DOWN", "1"),
@@ -21190,9 +22366,6 @@ private fun oracleBatch390(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "9.000E-102", "0", "1", "HALF_EVEN", "3E-51"),
     arrayOf("D", "sqrt", "9.000E-102", "0", "1", "UNNECESSARY", "3E-51"),
     arrayOf("D", "sqrt", "9.000000E-102", "0", "1", "UP", "3E-51"),
-)
-
-private fun oracleBatch391(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "9.000000E-102", "0", "1", "DOWN", "3E-51"),
     arrayOf("D", "sqrt", "9.000000E-102", "0", "1", "CEILING", "3E-51"),
     arrayOf("D", "sqrt", "9.000000E-102", "0", "1", "FLOOR", "3E-51"),
@@ -21205,6 +22378,9 @@ private fun oracleBatch391(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "9.001E-102", "0", "1", "CEILING", "4E-51"),
     arrayOf("D", "sqrt", "9.001E-102", "0", "1", "FLOOR", "3E-51"),
     arrayOf("D", "sqrt", "9.001E-102", "0", "1", "HALF_UP", "3E-51"),
+)
+
+private fun oracleBatch413(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "9.001E-102", "0", "1", "HALF_DOWN", "3E-51"),
     arrayOf("D", "sqrt", "9.001E-102", "0", "1", "HALF_EVEN", "3E-51"),
     arrayOf("D", "sqrt", "9.001E-102", "0", "1", "UNNECESSARY", "!ArithmeticException"),
@@ -21243,9 +22419,6 @@ private fun oracleBatch391(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "2.5000000E-101", "0", "1", "UP", "5E-51"),
     arrayOf("D", "sqrt", "2.5000000E-101", "0", "1", "DOWN", "5E-51"),
     arrayOf("D", "sqrt", "2.5000000E-101", "0", "1", "CEILING", "5E-51"),
-)
-
-private fun oracleBatch392(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "2.5000000E-101", "0", "1", "FLOOR", "5E-51"),
     arrayOf("D", "sqrt", "2.5000000E-101", "0", "1", "HALF_UP", "5E-51"),
     arrayOf("D", "sqrt", "2.5000000E-101", "0", "1", "HALF_DOWN", "5E-51"),
@@ -21258,6 +22431,9 @@ private fun oracleBatch392(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "2.5001E-101", "0", "1", "HALF_UP", "5E-51"),
     arrayOf("D", "sqrt", "2.5001E-101", "0", "1", "HALF_DOWN", "5E-51"),
     arrayOf("D", "sqrt", "2.5001E-101", "0", "1", "HALF_EVEN", "5E-51"),
+)
+
+private fun oracleBatch414(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "2.5001E-101", "0", "1", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "2.5001000E-101", "0", "1", "UP", "6E-51"),
     arrayOf("D", "sqrt", "2.5001000E-101", "0", "1", "DOWN", "5E-51"),
@@ -21296,9 +22472,6 @@ private fun oracleBatch392(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61000000E-100", "0", "1", "CEILING", "2E-50"),
     arrayOf("D", "sqrt", "3.61000000E-100", "0", "1", "FLOOR", "1E-50"),
     arrayOf("D", "sqrt", "3.61000000E-100", "0", "1", "HALF_UP", "2E-50"),
-)
-
-private fun oracleBatch393(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61000000E-100", "0", "1", "HALF_DOWN", "2E-50"),
     arrayOf("D", "sqrt", "3.61000000E-100", "0", "1", "HALF_EVEN", "2E-50"),
     arrayOf("D", "sqrt", "3.61000000E-100", "0", "1", "UNNECESSARY", "!ArithmeticException"),
@@ -21311,6 +22484,9 @@ private fun oracleBatch393(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61001E-100", "0", "1", "HALF_EVEN", "2E-50"),
     arrayOf("D", "sqrt", "3.61001E-100", "0", "1", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.61001000E-100", "0", "1", "UP", "2E-50"),
+)
+
+private fun oracleBatch415(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61001000E-100", "0", "1", "DOWN", "1E-50"),
     arrayOf("D", "sqrt", "3.61001000E-100", "0", "1", "CEILING", "2E-50"),
     arrayOf("D", "sqrt", "3.61001000E-100", "0", "1", "FLOOR", "1E-50"),
@@ -21349,9 +22525,6 @@ private fun oracleBatch393(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.09000000", "0", "1", "HALF_UP", "0.3"),
     arrayOf("D", "sqrt", "0.09000000", "0", "1", "HALF_DOWN", "0.3"),
     arrayOf("D", "sqrt", "0.09000000", "0", "1", "HALF_EVEN", "0.3"),
-)
-
-private fun oracleBatch394(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.09000000", "0", "1", "UNNECESSARY", "0.3"),
     arrayOf("D", "sqrt", "0.09001", "0", "1", "UP", "0.4"),
     arrayOf("D", "sqrt", "0.09001", "0", "1", "DOWN", "0.3"),
@@ -21364,6 +22537,9 @@ private fun oracleBatch394(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.09001000", "0", "1", "UP", "0.4"),
     arrayOf("D", "sqrt", "0.09001000", "0", "1", "DOWN", "0.3"),
     arrayOf("D", "sqrt", "0.09001000", "0", "1", "CEILING", "0.4"),
+)
+
+private fun oracleBatch416(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.09001000", "0", "1", "FLOOR", "0.3"),
     arrayOf("D", "sqrt", "0.09001000", "0", "1", "HALF_UP", "0.3"),
     arrayOf("D", "sqrt", "0.09001000", "0", "1", "HALF_DOWN", "0.3"),
@@ -21402,9 +22578,6 @@ private fun oracleBatch394(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.25000000", "0", "1", "HALF_EVEN", "0.5"),
     arrayOf("D", "sqrt", "0.25000000", "0", "1", "UNNECESSARY", "0.5"),
     arrayOf("D", "sqrt", "0.25001", "0", "1", "UP", "0.6"),
-)
-
-private fun oracleBatch395(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.25001", "0", "1", "DOWN", "0.5"),
     arrayOf("D", "sqrt", "0.25001", "0", "1", "CEILING", "0.6"),
     arrayOf("D", "sqrt", "0.25001", "0", "1", "FLOOR", "0.5"),
@@ -21417,6 +22590,9 @@ private fun oracleBatch395(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.25001000", "0", "1", "CEILING", "0.6"),
     arrayOf("D", "sqrt", "0.25001000", "0", "1", "FLOOR", "0.5"),
     arrayOf("D", "sqrt", "0.25001000", "0", "1", "HALF_UP", "0.5"),
+)
+
+private fun oracleBatch417(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.25001000", "0", "1", "HALF_DOWN", "0.5"),
     arrayOf("D", "sqrt", "0.25001000", "0", "1", "HALF_EVEN", "0.5"),
     arrayOf("D", "sqrt", "0.25001000", "0", "1", "UNNECESSARY", "!ArithmeticException"),
@@ -21455,9 +22631,6 @@ private fun oracleBatch395(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61001", "0", "1", "UP", "2"),
     arrayOf("D", "sqrt", "3.61001", "0", "1", "DOWN", "1"),
     arrayOf("D", "sqrt", "3.61001", "0", "1", "CEILING", "2"),
-)
-
-private fun oracleBatch396(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61001", "0", "1", "FLOOR", "1"),
     arrayOf("D", "sqrt", "3.61001", "0", "1", "HALF_UP", "2"),
     arrayOf("D", "sqrt", "3.61001", "0", "1", "HALF_DOWN", "2"),
@@ -21470,6 +22643,9 @@ private fun oracleBatch396(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61001000", "0", "1", "HALF_UP", "2"),
     arrayOf("D", "sqrt", "3.61001000", "0", "1", "HALF_DOWN", "2"),
     arrayOf("D", "sqrt", "3.61001000", "0", "1", "HALF_EVEN", "2"),
+)
+
+private fun oracleBatch418(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61001000", "0", "1", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "8.999E+98", "0", "1", "UP", "3E+49"),
     arrayOf("D", "sqrt", "8.999E+98", "0", "1", "DOWN", "2E+49"),
@@ -21508,9 +22684,6 @@ private fun oracleBatch396(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "9.001E+98", "0", "1", "CEILING", "4E+49"),
     arrayOf("D", "sqrt", "9.001E+98", "0", "1", "FLOOR", "3E+49"),
     arrayOf("D", "sqrt", "9.001E+98", "0", "1", "HALF_UP", "3E+49"),
-)
-
-private fun oracleBatch397(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "9.001E+98", "0", "1", "HALF_DOWN", "3E+49"),
     arrayOf("D", "sqrt", "9.001E+98", "0", "1", "HALF_EVEN", "3E+49"),
     arrayOf("D", "sqrt", "9.001E+98", "0", "1", "UNNECESSARY", "!ArithmeticException"),
@@ -21523,6 +22696,9 @@ private fun oracleBatch397(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "9.001000E+98", "0", "1", "HALF_EVEN", "3E+49"),
     arrayOf("D", "sqrt", "9.001000E+98", "0", "1", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "2.4999E+99", "0", "1", "UP", "5E+49"),
+)
+
+private fun oracleBatch419(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "2.4999E+99", "0", "1", "DOWN", "4E+49"),
     arrayOf("D", "sqrt", "2.4999E+99", "0", "1", "CEILING", "5E+49"),
     arrayOf("D", "sqrt", "2.4999E+99", "0", "1", "FLOOR", "4E+49"),
@@ -21561,9 +22737,6 @@ private fun oracleBatch397(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "2.5001E+99", "0", "1", "HALF_UP", "5E+49"),
     arrayOf("D", "sqrt", "2.5001E+99", "0", "1", "HALF_DOWN", "5E+49"),
     arrayOf("D", "sqrt", "2.5001E+99", "0", "1", "HALF_EVEN", "5E+49"),
-)
-
-private fun oracleBatch398(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "2.5001E+99", "0", "1", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "2.5001000E+99", "0", "1", "UP", "6E+49"),
     arrayOf("D", "sqrt", "2.5001000E+99", "0", "1", "DOWN", "5E+49"),
@@ -21576,6 +22749,9 @@ private fun oracleBatch398(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.60999E+100", "0", "1", "UP", "2E+50"),
     arrayOf("D", "sqrt", "3.60999E+100", "0", "1", "DOWN", "1E+50"),
     arrayOf("D", "sqrt", "3.60999E+100", "0", "1", "CEILING", "2E+50"),
+)
+
+private fun oracleBatch420(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.60999E+100", "0", "1", "FLOOR", "1E+50"),
     arrayOf("D", "sqrt", "3.60999E+100", "0", "1", "HALF_UP", "2E+50"),
     arrayOf("D", "sqrt", "3.60999E+100", "0", "1", "HALF_DOWN", "2E+50"),
@@ -21614,9 +22790,6 @@ private fun oracleBatch398(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61001E+100", "0", "1", "HALF_EVEN", "2E+50"),
     arrayOf("D", "sqrt", "3.61001E+100", "0", "1", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.61001000E+100", "0", "1", "UP", "2E+50"),
-)
-
-private fun oracleBatch399(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.61001000E+100", "0", "1", "DOWN", "1E+50"),
     arrayOf("D", "sqrt", "3.61001000E+100", "0", "1", "CEILING", "2E+50"),
     arrayOf("D", "sqrt", "3.61001000E+100", "0", "1", "FLOOR", "1E+50"),
@@ -21629,6 +22802,9 @@ private fun oracleBatch399(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.40999E-102", "0", "2", "CEILING", "2.1E-51"),
     arrayOf("D", "sqrt", "4.40999E-102", "0", "2", "FLOOR", "2.0E-51"),
     arrayOf("D", "sqrt", "4.40999E-102", "0", "2", "HALF_UP", "2.1E-51"),
+)
+
+private fun oracleBatch421(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.40999E-102", "0", "2", "HALF_DOWN", "2.1E-51"),
     arrayOf("D", "sqrt", "4.40999E-102", "0", "2", "HALF_EVEN", "2.1E-51"),
     arrayOf("D", "sqrt", "4.40999E-102", "0", "2", "UNNECESSARY", "!ArithmeticException"),
@@ -21667,9 +22843,6 @@ private fun oracleBatch399(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.41001000E-102", "0", "2", "UP", "2.2E-51"),
     arrayOf("D", "sqrt", "4.41001000E-102", "0", "2", "DOWN", "2.1E-51"),
     arrayOf("D", "sqrt", "4.41001000E-102", "0", "2", "CEILING", "2.2E-51"),
-)
-
-private fun oracleBatch400(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.41001000E-102", "0", "2", "FLOOR", "2.1E-51"),
     arrayOf("D", "sqrt", "4.41001000E-102", "0", "2", "HALF_UP", "2.1E-51"),
     arrayOf("D", "sqrt", "4.41001000E-102", "0", "2", "HALF_DOWN", "2.1E-51"),
@@ -21682,6 +22855,9 @@ private fun oracleBatch400(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.28999E-102", "0", "2", "HALF_UP", "2.3E-51"),
     arrayOf("D", "sqrt", "5.28999E-102", "0", "2", "HALF_DOWN", "2.3E-51"),
     arrayOf("D", "sqrt", "5.28999E-102", "0", "2", "HALF_EVEN", "2.3E-51"),
+)
+
+private fun oracleBatch422(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.28999E-102", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "5.28999000E-102", "0", "2", "UP", "2.3E-51"),
     arrayOf("D", "sqrt", "5.28999000E-102", "0", "2", "DOWN", "2.2E-51"),
@@ -21720,9 +22896,6 @@ private fun oracleBatch400(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.29001000E-102", "0", "2", "CEILING", "2.4E-51"),
     arrayOf("D", "sqrt", "5.29001000E-102", "0", "2", "FLOOR", "2.3E-51"),
     arrayOf("D", "sqrt", "5.29001000E-102", "0", "2", "HALF_UP", "2.3E-51"),
-)
-
-private fun oracleBatch401(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.29001000E-102", "0", "2", "HALF_DOWN", "2.3E-51"),
     arrayOf("D", "sqrt", "5.29001000E-102", "0", "2", "HALF_EVEN", "2.3E-51"),
     arrayOf("D", "sqrt", "5.29001000E-102", "0", "2", "UNNECESSARY", "!ArithmeticException"),
@@ -21735,6 +22908,9 @@ private fun oracleBatch401(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9600999E-100", "0", "2", "HALF_EVEN", "2.0E-50"),
     arrayOf("D", "sqrt", "3.9600999E-100", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.9600999000E-100", "0", "2", "UP", "2.0E-50"),
+)
+
+private fun oracleBatch423(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9600999000E-100", "0", "2", "DOWN", "1.9E-50"),
     arrayOf("D", "sqrt", "3.9600999000E-100", "0", "2", "CEILING", "2.0E-50"),
     arrayOf("D", "sqrt", "3.9600999000E-100", "0", "2", "FLOOR", "1.9E-50"),
@@ -21773,9 +22949,6 @@ private fun oracleBatch401(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9601001000E-100", "0", "2", "HALF_UP", "2.0E-50"),
     arrayOf("D", "sqrt", "3.9601001000E-100", "0", "2", "HALF_DOWN", "2.0E-50"),
     arrayOf("D", "sqrt", "3.9601001000E-100", "0", "2", "HALF_EVEN", "2.0E-50"),
-)
-
-private fun oracleBatch402(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9601001000E-100", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "0.0440999", "0", "2", "UP", "0.21"),
     arrayOf("D", "sqrt", "0.0440999", "0", "2", "DOWN", "0.20"),
@@ -21788,6 +22961,9 @@ private fun oracleBatch402(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0440999000", "0", "2", "UP", "0.21"),
     arrayOf("D", "sqrt", "0.0440999000", "0", "2", "DOWN", "0.20"),
     arrayOf("D", "sqrt", "0.0440999000", "0", "2", "CEILING", "0.21"),
+)
+
+private fun oracleBatch424(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0440999000", "0", "2", "FLOOR", "0.20"),
     arrayOf("D", "sqrt", "0.0440999000", "0", "2", "HALF_UP", "0.21"),
     arrayOf("D", "sqrt", "0.0440999000", "0", "2", "HALF_DOWN", "0.21"),
@@ -21826,9 +23002,6 @@ private fun oracleBatch402(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0441001000", "0", "2", "HALF_EVEN", "0.21"),
     arrayOf("D", "sqrt", "0.0441001000", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "0.0528999", "0", "2", "UP", "0.23"),
-)
-
-private fun oracleBatch403(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0528999", "0", "2", "DOWN", "0.22"),
     arrayOf("D", "sqrt", "0.0528999", "0", "2", "CEILING", "0.23"),
     arrayOf("D", "sqrt", "0.0528999", "0", "2", "FLOOR", "0.22"),
@@ -21841,6 +23014,9 @@ private fun oracleBatch403(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0528999000", "0", "2", "CEILING", "0.23"),
     arrayOf("D", "sqrt", "0.0528999000", "0", "2", "FLOOR", "0.22"),
     arrayOf("D", "sqrt", "0.0528999000", "0", "2", "HALF_UP", "0.23"),
+)
+
+private fun oracleBatch425(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0528999000", "0", "2", "HALF_DOWN", "0.23"),
     arrayOf("D", "sqrt", "0.0528999000", "0", "2", "HALF_EVEN", "0.23"),
     arrayOf("D", "sqrt", "0.0528999000", "0", "2", "UNNECESSARY", "!ArithmeticException"),
@@ -21879,9 +23055,6 @@ private fun oracleBatch403(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9600999", "0", "2", "UP", "2.0"),
     arrayOf("D", "sqrt", "3.9600999", "0", "2", "DOWN", "1.9"),
     arrayOf("D", "sqrt", "3.9600999", "0", "2", "CEILING", "2.0"),
-)
-
-private fun oracleBatch404(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9600999", "0", "2", "FLOOR", "1.9"),
     arrayOf("D", "sqrt", "3.9600999", "0", "2", "HALF_UP", "2.0"),
     arrayOf("D", "sqrt", "3.9600999", "0", "2", "HALF_DOWN", "2.0"),
@@ -21894,6 +23067,9 @@ private fun oracleBatch404(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9600999000", "0", "2", "HALF_UP", "2.0"),
     arrayOf("D", "sqrt", "3.9600999000", "0", "2", "HALF_DOWN", "2.0"),
     arrayOf("D", "sqrt", "3.9600999000", "0", "2", "HALF_EVEN", "2.0"),
+)
+
+private fun oracleBatch426(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9600999000", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.9601000", "0", "2", "UP", "2.0"),
     arrayOf("D", "sqrt", "3.9601000", "0", "2", "DOWN", "1.9"),
@@ -21932,9 +23108,6 @@ private fun oracleBatch404(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.40999E+98", "0", "2", "CEILING", "2.1E+49"),
     arrayOf("D", "sqrt", "4.40999E+98", "0", "2", "FLOOR", "2.0E+49"),
     arrayOf("D", "sqrt", "4.40999E+98", "0", "2", "HALF_UP", "2.1E+49"),
-)
-
-private fun oracleBatch405(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.40999E+98", "0", "2", "HALF_DOWN", "2.1E+49"),
     arrayOf("D", "sqrt", "4.40999E+98", "0", "2", "HALF_EVEN", "2.1E+49"),
     arrayOf("D", "sqrt", "4.40999E+98", "0", "2", "UNNECESSARY", "!ArithmeticException"),
@@ -21947,6 +23120,9 @@ private fun oracleBatch405(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.40999000E+98", "0", "2", "HALF_EVEN", "2.1E+49"),
     arrayOf("D", "sqrt", "4.40999000E+98", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "4.41000E+98", "0", "2", "UP", "2.1E+49"),
+)
+
+private fun oracleBatch427(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.41000E+98", "0", "2", "DOWN", "2.1E+49"),
     arrayOf("D", "sqrt", "4.41000E+98", "0", "2", "CEILING", "2.1E+49"),
     arrayOf("D", "sqrt", "4.41000E+98", "0", "2", "FLOOR", "2.1E+49"),
@@ -21985,9 +23161,6 @@ private fun oracleBatch405(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.28999E+98", "0", "2", "HALF_UP", "2.3E+49"),
     arrayOf("D", "sqrt", "5.28999E+98", "0", "2", "HALF_DOWN", "2.3E+49"),
     arrayOf("D", "sqrt", "5.28999E+98", "0", "2", "HALF_EVEN", "2.3E+49"),
-)
-
-private fun oracleBatch406(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.28999E+98", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "5.28999000E+98", "0", "2", "UP", "2.3E+49"),
     arrayOf("D", "sqrt", "5.28999000E+98", "0", "2", "DOWN", "2.2E+49"),
@@ -22000,6 +23173,9 @@ private fun oracleBatch406(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.29000E+98", "0", "2", "UP", "2.3E+49"),
     arrayOf("D", "sqrt", "5.29000E+98", "0", "2", "DOWN", "2.3E+49"),
     arrayOf("D", "sqrt", "5.29000E+98", "0", "2", "CEILING", "2.3E+49"),
+)
+
+private fun oracleBatch428(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "5.29000E+98", "0", "2", "FLOOR", "2.3E+49"),
     arrayOf("D", "sqrt", "5.29000E+98", "0", "2", "HALF_UP", "2.3E+49"),
     arrayOf("D", "sqrt", "5.29000E+98", "0", "2", "HALF_DOWN", "2.3E+49"),
@@ -22038,9 +23214,6 @@ private fun oracleBatch406(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9600999E+100", "0", "2", "HALF_EVEN", "2.0E+50"),
     arrayOf("D", "sqrt", "3.9600999E+100", "0", "2", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.9600999000E+100", "0", "2", "UP", "2.0E+50"),
-)
-
-private fun oracleBatch407(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9600999000E+100", "0", "2", "DOWN", "1.9E+50"),
     arrayOf("D", "sqrt", "3.9600999000E+100", "0", "2", "CEILING", "2.0E+50"),
     arrayOf("D", "sqrt", "3.9600999000E+100", "0", "2", "FLOOR", "1.9E+50"),
@@ -22053,6 +23226,9 @@ private fun oracleBatch407(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9601000E+100", "0", "2", "CEILING", "2.0E+50"),
     arrayOf("D", "sqrt", "3.9601000E+100", "0", "2", "FLOOR", "1.9E+50"),
     arrayOf("D", "sqrt", "3.9601000E+100", "0", "2", "HALF_UP", "2.0E+50"),
+)
+
+private fun oracleBatch429(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9601000E+100", "0", "2", "HALF_DOWN", "2.0E+50"),
     arrayOf("D", "sqrt", "3.9601000E+100", "0", "2", "HALF_EVEN", "2.0E+50"),
     arrayOf("D", "sqrt", "3.9601000E+100", "0", "2", "UNNECESSARY", "!ArithmeticException"),
@@ -22091,9 +23267,6 @@ private fun oracleBatch407(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000004000000999000E-102", "0", "7", "UP", "2.000001E-51"),
     arrayOf("D", "sqrt", "4.000004000000999000E-102", "0", "7", "DOWN", "2.000000E-51"),
     arrayOf("D", "sqrt", "4.000004000000999000E-102", "0", "7", "CEILING", "2.000001E-51"),
-)
-
-private fun oracleBatch408(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000004000000999000E-102", "0", "7", "FLOOR", "2.000000E-51"),
     arrayOf("D", "sqrt", "4.000004000000999000E-102", "0", "7", "HALF_UP", "2.000001E-51"),
     arrayOf("D", "sqrt", "4.000004000000999000E-102", "0", "7", "HALF_DOWN", "2.000001E-51"),
@@ -22106,6 +23279,9 @@ private fun oracleBatch408(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000004000001000E-102", "0", "7", "HALF_UP", "2.000001E-51"),
     arrayOf("D", "sqrt", "4.000004000001000E-102", "0", "7", "HALF_DOWN", "2.000001E-51"),
     arrayOf("D", "sqrt", "4.000004000001000E-102", "0", "7", "HALF_EVEN", "2.000001E-51"),
+)
+
+private fun oracleBatch430(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000004000001000E-102", "0", "7", "UNNECESSARY", "2.000001E-51"),
     arrayOf("D", "sqrt", "4.000004000001000000E-102", "0", "7", "UP", "2.000001E-51"),
     arrayOf("D", "sqrt", "4.000004000001000000E-102", "0", "7", "DOWN", "2.000001E-51"),
@@ -22144,9 +23320,6 @@ private fun oracleBatch408(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000008999000E-102", "0", "7", "CEILING", "2.000003E-51"),
     arrayOf("D", "sqrt", "4.000012000008999000E-102", "0", "7", "FLOOR", "2.000002E-51"),
     arrayOf("D", "sqrt", "4.000012000008999000E-102", "0", "7", "HALF_UP", "2.000003E-51"),
-)
-
-private fun oracleBatch409(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000008999000E-102", "0", "7", "HALF_DOWN", "2.000003E-51"),
     arrayOf("D", "sqrt", "4.000012000008999000E-102", "0", "7", "HALF_EVEN", "2.000003E-51"),
     arrayOf("D", "sqrt", "4.000012000008999000E-102", "0", "7", "UNNECESSARY", "!ArithmeticException"),
@@ -22159,6 +23332,9 @@ private fun oracleBatch409(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000009000E-102", "0", "7", "HALF_EVEN", "2.000003E-51"),
     arrayOf("D", "sqrt", "4.000012000009000E-102", "0", "7", "UNNECESSARY", "2.000003E-51"),
     arrayOf("D", "sqrt", "4.000012000009000000E-102", "0", "7", "UP", "2.000003E-51"),
+)
+
+private fun oracleBatch431(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000009000000E-102", "0", "7", "DOWN", "2.000003E-51"),
     arrayOf("D", "sqrt", "4.000012000009000000E-102", "0", "7", "CEILING", "2.000003E-51"),
     arrayOf("D", "sqrt", "4.000012000009000000E-102", "0", "7", "FLOOR", "2.000003E-51"),
@@ -22197,9 +23373,6 @@ private fun oracleBatch409(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000000999000E-100", "0", "7", "HALF_UP", "2.000000E-50"),
     arrayOf("D", "sqrt", "3.99999960000000999000E-100", "0", "7", "HALF_DOWN", "2.000000E-50"),
     arrayOf("D", "sqrt", "3.99999960000000999000E-100", "0", "7", "HALF_EVEN", "2.000000E-50"),
-)
-
-private fun oracleBatch410(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000000999000E-100", "0", "7", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.99999960000001000E-100", "0", "7", "UP", "2.000000E-50"),
     arrayOf("D", "sqrt", "3.99999960000001000E-100", "0", "7", "DOWN", "1.999999E-50"),
@@ -22212,6 +23385,9 @@ private fun oracleBatch410(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000001000000E-100", "0", "7", "UP", "2.000000E-50"),
     arrayOf("D", "sqrt", "3.99999960000001000000E-100", "0", "7", "DOWN", "1.999999E-50"),
     arrayOf("D", "sqrt", "3.99999960000001000000E-100", "0", "7", "CEILING", "2.000000E-50"),
+)
+
+private fun oracleBatch432(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000001000000E-100", "0", "7", "FLOOR", "1.999999E-50"),
     arrayOf("D", "sqrt", "3.99999960000001000000E-100", "0", "7", "HALF_UP", "2.000000E-50"),
     arrayOf("D", "sqrt", "3.99999960000001000000E-100", "0", "7", "HALF_DOWN", "2.000000E-50"),
@@ -22250,9 +23426,6 @@ private fun oracleBatch410(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000004000000999000", "0", "7", "HALF_EVEN", "0.2000001"),
     arrayOf("D", "sqrt", "0.04000004000000999000", "0", "7", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "0.04000004000001000", "0", "7", "UP", "0.2000001"),
-)
-
-private fun oracleBatch411(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000004000001000", "0", "7", "DOWN", "0.2000001"),
     arrayOf("D", "sqrt", "0.04000004000001000", "0", "7", "CEILING", "0.2000001"),
     arrayOf("D", "sqrt", "0.04000004000001000", "0", "7", "FLOOR", "0.2000001"),
@@ -22265,6 +23438,9 @@ private fun oracleBatch411(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000004000001000000", "0", "7", "CEILING", "0.2000001"),
     arrayOf("D", "sqrt", "0.04000004000001000000", "0", "7", "FLOOR", "0.2000001"),
     arrayOf("D", "sqrt", "0.04000004000001000000", "0", "7", "HALF_UP", "0.2000001"),
+)
+
+private fun oracleBatch433(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000004000001000000", "0", "7", "HALF_DOWN", "0.2000001"),
     arrayOf("D", "sqrt", "0.04000004000001000000", "0", "7", "HALF_EVEN", "0.2000001"),
     arrayOf("D", "sqrt", "0.04000004000001000000", "0", "7", "UNNECESSARY", "0.2000001"),
@@ -22303,9 +23479,6 @@ private fun oracleBatch411(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000012000009000", "0", "7", "UP", "0.2000003"),
     arrayOf("D", "sqrt", "0.04000012000009000", "0", "7", "DOWN", "0.2000003"),
     arrayOf("D", "sqrt", "0.04000012000009000", "0", "7", "CEILING", "0.2000003"),
-)
-
-private fun oracleBatch412(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000012000009000", "0", "7", "FLOOR", "0.2000003"),
     arrayOf("D", "sqrt", "0.04000012000009000", "0", "7", "HALF_UP", "0.2000003"),
     arrayOf("D", "sqrt", "0.04000012000009000", "0", "7", "HALF_DOWN", "0.2000003"),
@@ -22318,6 +23491,9 @@ private fun oracleBatch412(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000012000009000000", "0", "7", "HALF_UP", "0.2000003"),
     arrayOf("D", "sqrt", "0.04000012000009000000", "0", "7", "HALF_DOWN", "0.2000003"),
     arrayOf("D", "sqrt", "0.04000012000009000000", "0", "7", "HALF_EVEN", "0.2000003"),
+)
+
+private fun oracleBatch434(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000012000009000000", "0", "7", "UNNECESSARY", "0.2000003"),
     arrayOf("D", "sqrt", "0.04000012000009001", "0", "7", "UP", "0.2000004"),
     arrayOf("D", "sqrt", "0.04000012000009001", "0", "7", "DOWN", "0.2000003"),
@@ -22356,9 +23532,6 @@ private fun oracleBatch412(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000001000", "0", "7", "CEILING", "2.000000"),
     arrayOf("D", "sqrt", "3.99999960000001000", "0", "7", "FLOOR", "1.999999"),
     arrayOf("D", "sqrt", "3.99999960000001000", "0", "7", "HALF_UP", "2.000000"),
-)
-
-private fun oracleBatch413(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000001000", "0", "7", "HALF_DOWN", "2.000000"),
     arrayOf("D", "sqrt", "3.99999960000001000", "0", "7", "HALF_EVEN", "2.000000"),
     arrayOf("D", "sqrt", "3.99999960000001000", "0", "7", "UNNECESSARY", "!ArithmeticException"),
@@ -22371,6 +23544,9 @@ private fun oracleBatch413(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000001000000", "0", "7", "HALF_EVEN", "2.000000"),
     arrayOf("D", "sqrt", "3.99999960000001000000", "0", "7", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.99999960000001001", "0", "7", "UP", "2.000000"),
+)
+
+private fun oracleBatch435(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000001001", "0", "7", "DOWN", "1.999999"),
     arrayOf("D", "sqrt", "3.99999960000001001", "0", "7", "CEILING", "2.000000"),
     arrayOf("D", "sqrt", "3.99999960000001001", "0", "7", "FLOOR", "1.999999"),
@@ -22409,9 +23585,6 @@ private fun oracleBatch413(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000004000001000E+98", "0", "7", "HALF_UP", "2.000001E+49"),
     arrayOf("D", "sqrt", "4.000004000001000E+98", "0", "7", "HALF_DOWN", "2.000001E+49"),
     arrayOf("D", "sqrt", "4.000004000001000E+98", "0", "7", "HALF_EVEN", "2.000001E+49"),
-)
-
-private fun oracleBatch414(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000004000001000E+98", "0", "7", "UNNECESSARY", "2.000001E+49"),
     arrayOf("D", "sqrt", "4.000004000001000000E+98", "0", "7", "UP", "2.000001E+49"),
     arrayOf("D", "sqrt", "4.000004000001000000E+98", "0", "7", "DOWN", "2.000001E+49"),
@@ -22424,6 +23597,9 @@ private fun oracleBatch414(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000004000001001E+98", "0", "7", "UP", "2.000002E+49"),
     arrayOf("D", "sqrt", "4.000004000001001E+98", "0", "7", "DOWN", "2.000001E+49"),
     arrayOf("D", "sqrt", "4.000004000001001E+98", "0", "7", "CEILING", "2.000002E+49"),
+)
+
+private fun oracleBatch436(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000004000001001E+98", "0", "7", "FLOOR", "2.000001E+49"),
     arrayOf("D", "sqrt", "4.000004000001001E+98", "0", "7", "HALF_UP", "2.000001E+49"),
     arrayOf("D", "sqrt", "4.000004000001001E+98", "0", "7", "HALF_DOWN", "2.000001E+49"),
@@ -22462,9 +23638,6 @@ private fun oracleBatch414(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000009000E+98", "0", "7", "HALF_EVEN", "2.000003E+49"),
     arrayOf("D", "sqrt", "4.000012000009000E+98", "0", "7", "UNNECESSARY", "2.000003E+49"),
     arrayOf("D", "sqrt", "4.000012000009000000E+98", "0", "7", "UP", "2.000003E+49"),
-)
-
-private fun oracleBatch415(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000009000000E+98", "0", "7", "DOWN", "2.000003E+49"),
     arrayOf("D", "sqrt", "4.000012000009000000E+98", "0", "7", "CEILING", "2.000003E+49"),
     arrayOf("D", "sqrt", "4.000012000009000000E+98", "0", "7", "FLOOR", "2.000003E+49"),
@@ -22477,6 +23650,9 @@ private fun oracleBatch415(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000009001E+98", "0", "7", "CEILING", "2.000004E+49"),
     arrayOf("D", "sqrt", "4.000012000009001E+98", "0", "7", "FLOOR", "2.000003E+49"),
     arrayOf("D", "sqrt", "4.000012000009001E+98", "0", "7", "HALF_UP", "2.000003E+49"),
+)
+
+private fun oracleBatch437(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000012000009001E+98", "0", "7", "HALF_DOWN", "2.000003E+49"),
     arrayOf("D", "sqrt", "4.000012000009001E+98", "0", "7", "HALF_EVEN", "2.000003E+49"),
     arrayOf("D", "sqrt", "4.000012000009001E+98", "0", "7", "UNNECESSARY", "!ArithmeticException"),
@@ -22515,9 +23691,6 @@ private fun oracleBatch415(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000001000000E+100", "0", "7", "UP", "2.000000E+50"),
     arrayOf("D", "sqrt", "3.99999960000001000000E+100", "0", "7", "DOWN", "1.999999E+50"),
     arrayOf("D", "sqrt", "3.99999960000001000000E+100", "0", "7", "CEILING", "2.000000E+50"),
-)
-
-private fun oracleBatch416(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000001000000E+100", "0", "7", "FLOOR", "1.999999E+50"),
     arrayOf("D", "sqrt", "3.99999960000001000000E+100", "0", "7", "HALF_UP", "2.000000E+50"),
     arrayOf("D", "sqrt", "3.99999960000001000000E+100", "0", "7", "HALF_DOWN", "2.000000E+50"),
@@ -22530,6 +23703,9 @@ private fun oracleBatch416(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000001001E+100", "0", "7", "HALF_UP", "2.000000E+50"),
     arrayOf("D", "sqrt", "3.99999960000001001E+100", "0", "7", "HALF_DOWN", "2.000000E+50"),
     arrayOf("D", "sqrt", "3.99999960000001001E+100", "0", "7", "HALF_EVEN", "2.000000E+50"),
+)
+
+private fun oracleBatch438(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999960000001001E+100", "0", "7", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.99999960000001001000E+100", "0", "7", "UP", "2.000000E+50"),
     arrayOf("D", "sqrt", "3.99999960000001001000E+100", "0", "7", "DOWN", "1.999999E+50"),
@@ -22568,9 +23744,6 @@ private fun oracleBatch416(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000000E-102", "0", "34", "CEILING", "2.000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000000E-102", "0", "34", "FLOOR", "2.000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000000E-102", "0", "34", "HALF_UP", "2.000000000000000000000000000000001E-51"),
-)
-
-private fun oracleBatch417(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000000E-102", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000000E-102", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001000000E-102", "0", "34", "UNNECESSARY", "2.000000000000000000000000000000001E-51"),
@@ -22583,6 +23756,9 @@ private fun oracleBatch417(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001E-102", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001E-102", "0", "34", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001000E-102", "0", "34", "UP", "2.000000000000000000000000000000002E-51"),
+)
+
+private fun oracleBatch439(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001000E-102", "0", "34", "DOWN", "2.000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001000E-102", "0", "34", "CEILING", "2.000000000000000000000000000000002E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001000E-102", "0", "34", "FLOOR", "2.000000000000000000000000000000001E-51"),
@@ -22621,9 +23797,6 @@ private fun oracleBatch417(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000000E-102", "0", "34", "HALF_UP", "2.000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000000E-102", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000000E-102", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000003E-51"),
-)
-
-private fun oracleBatch418(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009000000E-102", "0", "34", "UNNECESSARY", "2.000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001E-102", "0", "34", "UP", "2.000000000000000000000000000000004E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001E-102", "0", "34", "DOWN", "2.000000000000000000000000000000003E-51"),
@@ -22636,6 +23809,9 @@ private fun oracleBatch418(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001000E-102", "0", "34", "UP", "2.000000000000000000000000000000004E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001000E-102", "0", "34", "DOWN", "2.000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001000E-102", "0", "34", "CEILING", "2.000000000000000000000000000000004E-51"),
+)
+
+private fun oracleBatch440(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001000E-102", "0", "34", "FLOOR", "2.000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001000E-102", "0", "34", "HALF_UP", "2.000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001000E-102", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000003E-51"),
@@ -22674,9 +23850,6 @@ private fun oracleBatch418(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000000E-100", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001000000E-100", "0", "34", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001E-100", "0", "34", "UP", "2.000000000000000000000000000000000E-50"),
-)
-
-private fun oracleBatch419(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001E-100", "0", "34", "DOWN", "1.999999999999999999999999999999999E-50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001E-100", "0", "34", "CEILING", "2.000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001E-100", "0", "34", "FLOOR", "1.999999999999999999999999999999999E-50"),
@@ -22689,6 +23862,9 @@ private fun oracleBatch419(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000E-100", "0", "34", "CEILING", "2.000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000E-100", "0", "34", "FLOOR", "1.999999999999999999999999999999999E-50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000E-100", "0", "34", "HALF_UP", "2.000000000000000000000000000000000E-50"),
+)
+
+private fun oracleBatch441(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000E-100", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000E-100", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000E-100", "0", "34", "UNNECESSARY", "!ArithmeticException"),
@@ -22727,9 +23903,6 @@ private fun oracleBatch419(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001001", "0", "34", "UP", "0.2000000000000000000000000000000002"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001001", "0", "34", "DOWN", "0.2000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001001", "0", "34", "CEILING", "0.2000000000000000000000000000000002"),
-)
-
-private fun oracleBatch420(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001001", "0", "34", "FLOOR", "0.2000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001001", "0", "34", "HALF_UP", "0.2000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001001", "0", "34", "HALF_DOWN", "0.2000000000000000000000000000000001"),
@@ -22742,6 +23915,9 @@ private fun oracleBatch420(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001001000", "0", "34", "HALF_UP", "0.2000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001001000", "0", "34", "HALF_DOWN", "0.2000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001001000", "0", "34", "HALF_EVEN", "0.2000000000000000000000000000000001"),
+)
+
+private fun oracleBatch442(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000004000000000000000000000000000000001001000", "0", "34", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000008999", "0", "34", "UP", "0.2000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000008999", "0", "34", "DOWN", "0.2000000000000000000000000000000002"),
@@ -22780,9 +23956,6 @@ private fun oracleBatch420(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009001", "0", "34", "CEILING", "0.2000000000000000000000000000000004"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009001", "0", "34", "FLOOR", "0.2000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009001", "0", "34", "HALF_UP", "0.2000000000000000000000000000000003"),
-)
-
-private fun oracleBatch421(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009001", "0", "34", "HALF_DOWN", "0.2000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009001", "0", "34", "HALF_EVEN", "0.2000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009001", "0", "34", "UNNECESSARY", "!ArithmeticException"),
@@ -22795,6 +23968,9 @@ private fun oracleBatch421(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009001000", "0", "34", "HALF_EVEN", "0.2000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.04000000000000000000000000000000012000000000000000000000000000000009001000", "0", "34", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000000999", "0", "34", "UP", "2.000000000000000000000000000000000"),
+)
+
+private fun oracleBatch443(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000000999", "0", "34", "DOWN", "1.999999999999999999999999999999999"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000000999", "0", "34", "CEILING", "2.000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000000999", "0", "34", "FLOOR", "1.999999999999999999999999999999999"),
@@ -22833,9 +24009,6 @@ private fun oracleBatch421(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001", "0", "34", "HALF_UP", "2.000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000000"),
-)
-
-private fun oracleBatch422(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001", "0", "34", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000", "0", "34", "UP", "2.000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000", "0", "34", "DOWN", "1.999999999999999999999999999999999"),
@@ -22848,6 +24021,9 @@ private fun oracleBatch422(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000000999E+98", "0", "34", "UP", "2.000000000000000000000000000000001E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000000999E+98", "0", "34", "DOWN", "2.000000000000000000000000000000000E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000000999E+98", "0", "34", "CEILING", "2.000000000000000000000000000000001E+49"),
+)
+
+private fun oracleBatch444(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000000999E+98", "0", "34", "FLOOR", "2.000000000000000000000000000000000E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000000999E+98", "0", "34", "HALF_UP", "2.000000000000000000000000000000001E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000000999E+98", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000001E+49"),
@@ -22886,9 +24062,6 @@ private fun oracleBatch422(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001E+98", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000001E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001E+98", "0", "34", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001000E+98", "0", "34", "UP", "2.000000000000000000000000000000002E+49"),
-)
-
-private fun oracleBatch423(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001000E+98", "0", "34", "DOWN", "2.000000000000000000000000000000001E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001000E+98", "0", "34", "CEILING", "2.000000000000000000000000000000002E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000004000000000000000000000000000000001001000E+98", "0", "34", "FLOOR", "2.000000000000000000000000000000001E+49"),
@@ -22901,6 +24074,9 @@ private fun oracleBatch423(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000008999E+98", "0", "34", "CEILING", "2.000000000000000000000000000000003E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000008999E+98", "0", "34", "FLOOR", "2.000000000000000000000000000000002E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000008999E+98", "0", "34", "HALF_UP", "2.000000000000000000000000000000003E+49"),
+)
+
+private fun oracleBatch445(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000008999E+98", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000003E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000008999E+98", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000003E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000008999E+98", "0", "34", "UNNECESSARY", "!ArithmeticException"),
@@ -22939,9 +24115,6 @@ private fun oracleBatch423(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001000E+98", "0", "34", "UP", "2.000000000000000000000000000000004E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001000E+98", "0", "34", "DOWN", "2.000000000000000000000000000000003E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001000E+98", "0", "34", "CEILING", "2.000000000000000000000000000000004E+49"),
-)
-
-private fun oracleBatch424(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001000E+98", "0", "34", "FLOOR", "2.000000000000000000000000000000003E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001000E+98", "0", "34", "HALF_UP", "2.000000000000000000000000000000003E+49"),
     arrayOf("D", "sqrt", "4.000000000000000000000000000000012000000000000000000000000000000009001000E+98", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000003E+49"),
@@ -22954,6 +24127,9 @@ private fun oracleBatch424(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000000999E+100", "0", "34", "HALF_UP", "2.000000000000000000000000000000000E+50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000000999E+100", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000000E+50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000000999E+100", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000000E+50"),
+)
+
+private fun oracleBatch446(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000000999E+100", "0", "34", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000000999000E+100", "0", "34", "UP", "2.000000000000000000000000000000000E+50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000000999000E+100", "0", "34", "DOWN", "1.999999999999999999999999999999999E+50"),
@@ -22992,9 +24168,6 @@ private fun oracleBatch424(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000E+100", "0", "34", "CEILING", "2.000000000000000000000000000000000E+50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000E+100", "0", "34", "FLOOR", "1.999999999999999999999999999999999E+50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000E+100", "0", "34", "HALF_UP", "2.000000000000000000000000000000000E+50"),
-)
-
-private fun oracleBatch425(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000E+100", "0", "34", "HALF_DOWN", "2.000000000000000000000000000000000E+50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000E+100", "0", "34", "HALF_EVEN", "2.000000000000000000000000000000000E+50"),
     arrayOf("D", "sqrt", "3.99999999999999999999999999999999960000000000000000000000000000000001001000E+100", "0", "34", "UNNECESSARY", "!ArithmeticException"),
@@ -23007,6 +24180,9 @@ private fun oracleBatch425(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999E-102", "0", "65", "HALF_EVEN", "2.0000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999E-102", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999000E-102", "0", "65", "UP", "2.0000000000000000000000000000000000000000000000000000000000000001E-51"),
+)
+
+private fun oracleBatch447(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999000E-102", "0", "65", "DOWN", "2.0000000000000000000000000000000000000000000000000000000000000000E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999000E-102", "0", "65", "CEILING", "2.0000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999000E-102", "0", "65", "FLOOR", "2.0000000000000000000000000000000000000000000000000000000000000000E-51"),
@@ -23045,9 +24221,6 @@ private fun oracleBatch425(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000E-102", "0", "65", "HALF_UP", "2.0000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000E-102", "0", "65", "HALF_DOWN", "2.0000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000E-102", "0", "65", "HALF_EVEN", "2.0000000000000000000000000000000000000000000000000000000000000001E-51"),
-)
-
-private fun oracleBatch426(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001001000E-102", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999E-102", "0", "65", "UP", "2.0000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999E-102", "0", "65", "DOWN", "2.0000000000000000000000000000000000000000000000000000000000000002E-51"),
@@ -23060,6 +24233,9 @@ private fun oracleBatch426(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999000E-102", "0", "65", "UP", "2.0000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999000E-102", "0", "65", "DOWN", "2.0000000000000000000000000000000000000000000000000000000000000002E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999000E-102", "0", "65", "CEILING", "2.0000000000000000000000000000000000000000000000000000000000000003E-51"),
+)
+
+private fun oracleBatch448(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999000E-102", "0", "65", "FLOOR", "2.0000000000000000000000000000000000000000000000000000000000000002E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999000E-102", "0", "65", "HALF_UP", "2.0000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999000E-102", "0", "65", "HALF_DOWN", "2.0000000000000000000000000000000000000000000000000000000000000003E-51"),
@@ -23098,9 +24274,6 @@ private fun oracleBatch426(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001000E-102", "0", "65", "HALF_EVEN", "2.0000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.00000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009001000E-102", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999E-100", "0", "65", "UP", "2.0000000000000000000000000000000000000000000000000000000000000000E-50"),
-)
-
-private fun oracleBatch427(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999E-100", "0", "65", "DOWN", "1.9999999999999999999999999999999999999999999999999999999999999999E-50"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999E-100", "0", "65", "CEILING", "2.0000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999E-100", "0", "65", "FLOOR", "1.9999999999999999999999999999999999999999999999999999999999999999E-50"),
@@ -23113,6 +24286,9 @@ private fun oracleBatch427(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999000E-100", "0", "65", "CEILING", "2.0000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999000E-100", "0", "65", "FLOOR", "1.9999999999999999999999999999999999999999999999999999999999999999E-50"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999000E-100", "0", "65", "HALF_UP", "2.0000000000000000000000000000000000000000000000000000000000000000E-50"),
+)
+
+private fun oracleBatch449(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999000E-100", "0", "65", "HALF_DOWN", "2.0000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999000E-100", "0", "65", "HALF_EVEN", "2.0000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999000E-100", "0", "65", "UNNECESSARY", "!ArithmeticException"),
@@ -23151,9 +24327,6 @@ private fun oracleBatch427(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999", "0", "65", "UP", "0.20000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999", "0", "65", "DOWN", "0.20000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999", "0", "65", "CEILING", "0.20000000000000000000000000000000000000000000000000000000000000001"),
-)
-
-private fun oracleBatch428(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999", "0", "65", "FLOOR", "0.20000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999", "0", "65", "HALF_UP", "0.20000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999", "0", "65", "HALF_DOWN", "0.20000000000000000000000000000000000000000000000000000000000000001"),
@@ -23166,6 +24339,9 @@ private fun oracleBatch428(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999000", "0", "65", "HALF_UP", "0.20000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999000", "0", "65", "HALF_DOWN", "0.20000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999000", "0", "65", "HALF_EVEN", "0.20000000000000000000000000000000000000000000000000000000000000001"),
+)
+
+private fun oracleBatch450(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000999000", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001000", "0", "65", "UP", "0.20000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000001000", "0", "65", "DOWN", "0.20000000000000000000000000000000000000000000000000000000000000001"),
@@ -23204,9 +24380,6 @@ private fun oracleBatch428(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999", "0", "65", "CEILING", "0.20000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999", "0", "65", "FLOOR", "0.20000000000000000000000000000000000000000000000000000000000000002"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999", "0", "65", "HALF_UP", "0.20000000000000000000000000000000000000000000000000000000000000003"),
-)
-
-private fun oracleBatch429(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999", "0", "65", "HALF_DOWN", "0.20000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999", "0", "65", "HALF_EVEN", "0.20000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999", "0", "65", "UNNECESSARY", "!ArithmeticException"),
@@ -23219,6 +24392,9 @@ private fun oracleBatch429(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999000", "0", "65", "HALF_EVEN", "0.20000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000008999000", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009000", "0", "65", "UP", "0.20000000000000000000000000000000000000000000000000000000000000003"),
+)
+
+private fun oracleBatch451(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009000", "0", "65", "DOWN", "0.20000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009000", "0", "65", "CEILING", "0.20000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.0400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000009000", "0", "65", "FLOOR", "0.20000000000000000000000000000000000000000000000000000000000000003"),
@@ -23257,9 +24433,6 @@ private fun oracleBatch429(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999", "0", "65", "HALF_UP", "2.0000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999", "0", "65", "HALF_DOWN", "2.0000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999", "0", "65", "HALF_EVEN", "2.0000000000000000000000000000000000000000000000000000000000000000"),
-)
-
-private fun oracleBatch430(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999000", "0", "65", "UP", "2.0000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000000999000", "0", "65", "DOWN", "1.9999999999999999999999999999999999999999999999999999999999999999"),
@@ -23272,6 +24445,9 @@ private fun oracleBatch430(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001000", "0", "65", "UP", "2.0000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001000", "0", "65", "DOWN", "1.9999999999999999999999999999999999999999999999999999999999999999"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001000", "0", "65", "CEILING", "2.0000000000000000000000000000000000000000000000000000000000000000"),
+)
+
+private fun oracleBatch452(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001000", "0", "65", "FLOOR", "1.9999999999999999999999999999999999999999999999999999999999999999"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001000", "0", "65", "HALF_UP", "2.0000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.9999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000000000000000000000000000000001000", "0", "65", "HALF_DOWN", "2.0000000000000000000000000000000000000000000000000000000000000000"),
@@ -23310,9 +24486,6 @@ private fun oracleBatch430(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "HALF_EVEN", "20000000000000000000000000000000000000000000000000.000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000000999", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000000999000", "0", "65", "UP", "20000000000000000000000000000000000000000000000000.000000000000001"),
-)
-
-private fun oracleBatch431(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000000999000", "0", "65", "DOWN", "20000000000000000000000000000000000000000000000000.000000000000000"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000000999000", "0", "65", "CEILING", "20000000000000000000000000000000000000000000000000.000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000000999000", "0", "65", "FLOOR", "20000000000000000000000000000000000000000000000000.000000000000000"),
@@ -23325,6 +24498,9 @@ private fun oracleBatch431(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000001000", "0", "65", "CEILING", "20000000000000000000000000000000000000000000000000.000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000001000", "0", "65", "FLOOR", "20000000000000000000000000000000000000000000000000.000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000001000", "0", "65", "HALF_UP", "20000000000000000000000000000000000000000000000000.000000000000001"),
+)
+
+private fun oracleBatch453(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000001000", "0", "65", "HALF_DOWN", "20000000000000000000000000000000000000000000000000.000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000001000", "0", "65", "HALF_EVEN", "20000000000000000000000000000000000000000000000000.000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000.000000000000000000000000000001000", "0", "65", "UNNECESSARY", "20000000000000000000000000000000000000000000000000.000000000000001"),
@@ -23363,9 +24539,6 @@ private fun oracleBatch431(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000008999000", "0", "65", "UP", "20000000000000000000000000000000000000000000000000.000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000008999000", "0", "65", "DOWN", "20000000000000000000000000000000000000000000000000.000000000000002"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000008999000", "0", "65", "CEILING", "20000000000000000000000000000000000000000000000000.000000000000003"),
-)
-
-private fun oracleBatch432(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000008999000", "0", "65", "FLOOR", "20000000000000000000000000000000000000000000000000.000000000000002"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000008999000", "0", "65", "HALF_UP", "20000000000000000000000000000000000000000000000000.000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000008999000", "0", "65", "HALF_DOWN", "20000000000000000000000000000000000000000000000000.000000000000003"),
@@ -23378,6 +24551,9 @@ private fun oracleBatch432(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000009000", "0", "65", "HALF_UP", "20000000000000000000000000000000000000000000000000.000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000009000", "0", "65", "HALF_DOWN", "20000000000000000000000000000000000000000000000000.000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000009000", "0", "65", "HALF_EVEN", "20000000000000000000000000000000000000000000000000.000000000000003"),
+)
+
+private fun oracleBatch454(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000009000", "0", "65", "UNNECESSARY", "20000000000000000000000000000000000000000000000000.000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000009000000", "0", "65", "UP", "20000000000000000000000000000000000000000000000000.000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000.000000000000000000000000000009000000", "0", "65", "DOWN", "20000000000000000000000000000000000000000000000000.000000000000003"),
@@ -23416,9 +24592,6 @@ private fun oracleBatch432(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999000", "0", "65", "CEILING", "200000000000000000000000000000000000000000000000000.00000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999000", "0", "65", "FLOOR", "199999999999999999999999999999999999999999999999999.99999999999999"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999000", "0", "65", "HALF_UP", "200000000000000000000000000000000000000000000000000.00000000000000"),
-)
-
-private fun oracleBatch433(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999000", "0", "65", "HALF_DOWN", "200000000000000000000000000000000000000000000000000.00000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999000", "0", "65", "HALF_EVEN", "200000000000000000000000000000000000000000000000000.00000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000000999000", "0", "65", "UNNECESSARY", "!ArithmeticException"),
@@ -23431,6 +24604,9 @@ private fun oracleBatch433(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000001000", "0", "65", "HALF_EVEN", "200000000000000000000000000000000000000000000000000.00000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000001000", "0", "65", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000001000000", "0", "65", "UP", "200000000000000000000000000000000000000000000000000.00000000000000"),
+)
+
+private fun oracleBatch455(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000001000000", "0", "65", "DOWN", "199999999999999999999999999999999999999999999999999.99999999999999"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000001000000", "0", "65", "CEILING", "200000000000000000000000000000000000000000000000000.00000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999600000000000000000000000000000000000.000000000000000000000000000001000000", "0", "65", "FLOOR", "199999999999999999999999999999999999999999999999999.99999999999999"),
@@ -23469,9 +24645,6 @@ private fun oracleBatch433(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-102", "0", "129", "HALF_UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-102", "0", "129", "HALF_DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-102", "0", "129", "HALF_EVEN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
-)
-
-private fun oracleBatch434(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999000E-102", "0", "129", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000E-102", "0", "129", "UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000E-102", "0", "129", "DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
@@ -23484,6 +24657,9 @@ private fun oracleBatch434(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000E-102", "0", "129", "UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000E-102", "0", "129", "DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000E-102", "0", "129", "CEILING", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
+)
+
+private fun oracleBatch456(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000E-102", "0", "129", "FLOOR", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000E-102", "0", "129", "HALF_UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000E-102", "0", "129", "HALF_DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001E-51"),
@@ -23522,9 +24698,6 @@ private fun oracleBatch434(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999000E-102", "0", "129", "HALF_EVEN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008999000E-102", "0", "129", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000E-102", "0", "129", "UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
-)
-
-private fun oracleBatch435(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000E-102", "0", "129", "DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000E-102", "0", "129", "CEILING", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000E-102", "0", "129", "FLOOR", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
@@ -23537,6 +24710,9 @@ private fun oracleBatch435(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000E-102", "0", "129", "CEILING", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000E-102", "0", "129", "FLOOR", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000E-102", "0", "129", "HALF_UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
+)
+
+private fun oracleBatch457(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000E-102", "0", "129", "HALF_DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000E-102", "0", "129", "HALF_EVEN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
     arrayOf("D", "sqrt", "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000E-102", "0", "129", "UNNECESSARY", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003E-51"),
@@ -23575,9 +24751,6 @@ private fun oracleBatch435(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000E-100", "0", "129", "UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000E-100", "0", "129", "DOWN", "1.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999E-50"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000E-100", "0", "129", "CEILING", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
-)
-
-private fun oracleBatch436(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000E-100", "0", "129", "FLOOR", "1.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999E-50"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000E-100", "0", "129", "HALF_UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000E-100", "0", "129", "HALF_DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
@@ -23590,6 +24763,9 @@ private fun oracleBatch436(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000E-100", "0", "129", "HALF_UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000E-100", "0", "129", "HALF_DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000E-100", "0", "129", "HALF_EVEN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
+)
+
+private fun oracleBatch458(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000E-100", "0", "129", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001E-100", "0", "129", "UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-50"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001E-100", "0", "129", "DOWN", "1.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999E-50"),
@@ -23628,9 +24804,6 @@ private fun oracleBatch436(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "CEILING", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "FLOOR", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "HALF_UP", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
-)
-
-private fun oracleBatch437(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "HALF_DOWN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "HALF_EVEN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "UNNECESSARY", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
@@ -23643,6 +24816,9 @@ private fun oracleBatch437(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "HALF_EVEN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "UNNECESSARY", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "UP", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002"),
+)
+
+private fun oracleBatch459(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "DOWN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "CEILING", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "FLOOR", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"),
@@ -23681,9 +24857,6 @@ private fun oracleBatch437(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "HALF_UP", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "HALF_DOWN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "HALF_EVEN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
-)
-
-private fun oracleBatch438(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000", "0", "129", "UNNECESSARY", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000", "0", "129", "UP", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000", "0", "129", "DOWN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
@@ -23696,6 +24869,9 @@ private fun oracleBatch438(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009001", "0", "129", "UP", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009001", "0", "129", "DOWN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009001", "0", "129", "CEILING", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"),
+)
+
+private fun oracleBatch460(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009001", "0", "129", "FLOOR", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009001", "0", "129", "HALF_UP", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "0.040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009001", "0", "129", "HALF_DOWN", "0.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"),
@@ -23734,9 +24910,6 @@ private fun oracleBatch438(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "HALF_EVEN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000", "0", "129", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
-)
-
-private fun oracleBatch439(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "DOWN", "1.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "CEILING", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "FLOOR", "1.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999"),
@@ -23749,6 +24922,9 @@ private fun oracleBatch439(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "CEILING", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "FLOOR", "1.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "HALF_UP", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
+)
+
+private fun oracleBatch461(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "HALF_DOWN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "HALF_EVEN", "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "3.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "UNNECESSARY", "!ArithmeticException"),
@@ -23787,9 +24963,6 @@ private fun oracleBatch439(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "UP", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "DOWN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "CEILING", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
-)
-
-private fun oracleBatch440(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "FLOOR", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "HALF_UP", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "HALF_DOWN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
@@ -23802,6 +24975,9 @@ private fun oracleBatch440(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "HALF_UP", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "HALF_DOWN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "HALF_EVEN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
+)
+
+private fun oracleBatch462(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001000", "0", "129", "UP", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000002"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001000", "0", "129", "DOWN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000001"),
@@ -23840,9 +25016,6 @@ private fun oracleBatch440(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000", "0", "129", "CEILING", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000", "0", "129", "FLOOR", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000", "0", "129", "HALF_UP", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
-)
-
-private fun oracleBatch441(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000", "0", "129", "HALF_DOWN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000", "0", "129", "HALF_EVEN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000", "0", "129", "UNNECESSARY", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
@@ -23855,6 +25028,9 @@ private fun oracleBatch441(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009001", "0", "129", "HALF_EVEN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009001", "0", "129", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009001000", "0", "129", "UP", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000004"),
+)
+
+private fun oracleBatch463(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009001000", "0", "129", "DOWN", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009001000", "0", "129", "CEILING", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000004"),
     arrayOf("D", "sqrt", "400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009001000", "0", "129", "FLOOR", "20000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000003"),
@@ -23893,9 +25069,6 @@ private fun oracleBatch441(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "HALF_UP", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "HALF_DOWN", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "HALF_EVEN", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
-)
-
-private fun oracleBatch442(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000", "0", "129", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "UP", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001", "0", "129", "DOWN", "199999999999999999999999999999999999999999999999999.999999999999999999999999999999999999999999999999999999999999999999999999999999"),
@@ -23908,6 +25081,9 @@ private fun oracleBatch442(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001000", "0", "129", "UP", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001000", "0", "129", "DOWN", "199999999999999999999999999999999999999999999999999.999999999999999999999999999999999999999999999999999999999999999999999999999999"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001000", "0", "129", "CEILING", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
+)
+
+private fun oracleBatch464(): List<Array<String>> = listOf(
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001000", "0", "129", "FLOOR", "199999999999999999999999999999999999999999999999999.999999999999999999999999999999999999999999999999999999999999999999999999999999"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001000", "0", "129", "HALF_UP", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
     arrayOf("D", "sqrt", "39999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.99999999999999999999999999996000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001001000", "0", "129", "HALF_DOWN", "200000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000"),
@@ -23946,9 +25122,6 @@ private fun oracleBatch442(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "0.50000000000000000001", "0", "0", "DOWN", "0"),
     arrayOf("D", "scale", "-0.49999999999999999999", "0", "0", "DOWN", "0"),
     arrayOf("D", "scale", "9.99", "0", "0", "DOWN", "9"),
-)
-
-private fun oracleBatch443(): List<Array<String>> = listOf(
     arrayOf("D", "add", "1", "1E-100000", "4", "DOWN", "1.000"),
     arrayOf("D", "add", "1", "-1E-100000", "4", "DOWN", "0.9999"),
     arrayOf("D", "add", "1", "0E-100000", "4", "DOWN", "1.000"),
@@ -23961,6 +25134,9 @@ private fun oracleBatch443(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-1.0000", "1E-100000", "4", "DOWN", "-0.9999"),
     arrayOf("D", "add", "-1.0000", "-1E-100000", "4", "DOWN", "-1.000"),
     arrayOf("D", "add", "-1.0000", "0E-100000", "4", "DOWN", "-1.000"),
+)
+
+private fun oracleBatch465(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "2", "5", "DOWN", "0.500"),
     arrayOf("D", "divide", "1.000", "4.00", "5", "DOWN", "0.25"),
     arrayOf("D", "divide", "1.000", "8", "5", "DOWN", "0.125"),
@@ -23999,9 +25175,6 @@ private fun oracleBatch443(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "-2.5", "0", "0", "FLOOR", "-3"),
     arrayOf("D", "scale", "-3.5", "0", "0", "FLOOR", "-4"),
     arrayOf("D", "scale", "0.50000000000000000001", "0", "0", "FLOOR", "0"),
-)
-
-private fun oracleBatch444(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "-0.49999999999999999999", "0", "0", "FLOOR", "-1"),
     arrayOf("D", "scale", "9.99", "0", "0", "FLOOR", "9"),
     arrayOf("D", "add", "1", "1E-100000", "4", "FLOOR", "1.000"),
@@ -24014,6 +25187,9 @@ private fun oracleBatch444(): List<Array<String>> = listOf(
     arrayOf("D", "add", "1.0000", "-1E-100000", "4", "FLOOR", "0.9999"),
     arrayOf("D", "add", "1.0000", "0E-100000", "4", "FLOOR", "1.000"),
     arrayOf("D", "add", "-1.0000", "1E-100000", "4", "FLOOR", "-1.000"),
+)
+
+private fun oracleBatch466(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-1.0000", "-1E-100000", "4", "FLOOR", "-1.001"),
     arrayOf("D", "add", "-1.0000", "0E-100000", "4", "FLOOR", "-1.000"),
     arrayOf("D", "divide", "1.000", "2", "5", "FLOOR", "0.500"),
@@ -24052,9 +25228,6 @@ private fun oracleBatch444(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "2.5", "0", "0", "HALF_DOWN", "2"),
     arrayOf("D", "scale", "3.5", "0", "0", "HALF_DOWN", "3"),
     arrayOf("D", "scale", "-2.5", "0", "0", "HALF_DOWN", "-2"),
-)
-
-private fun oracleBatch445(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "-3.5", "0", "0", "HALF_DOWN", "-3"),
     arrayOf("D", "scale", "0.50000000000000000001", "0", "0", "HALF_DOWN", "1"),
     arrayOf("D", "scale", "-0.49999999999999999999", "0", "0", "HALF_DOWN", "0"),
@@ -24067,6 +25240,9 @@ private fun oracleBatch445(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-1", "0E-100000", "4", "HALF_DOWN", "-1.000"),
     arrayOf("D", "add", "1.0000", "1E-100000", "4", "HALF_DOWN", "1.000"),
     arrayOf("D", "add", "1.0000", "-1E-100000", "4", "HALF_DOWN", "1.000"),
+)
+
+private fun oracleBatch467(): List<Array<String>> = listOf(
     arrayOf("D", "add", "1.0000", "0E-100000", "4", "HALF_DOWN", "1.000"),
     arrayOf("D", "add", "-1.0000", "1E-100000", "4", "HALF_DOWN", "-1.000"),
     arrayOf("D", "add", "-1.0000", "-1E-100000", "4", "HALF_DOWN", "-1.000"),
@@ -24105,9 +25281,6 @@ private fun oracleBatch445(): List<Array<String>> = listOf(
     arrayOf("D", "divide", "1.000", "3", "5", "HALF_EVEN", "0.33333"),
     arrayOf("D", "divide", "1.000", "0", "5", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "scale", "2.5", "0", "0", "UNNECESSARY", "!ArithmeticException"),
-)
-
-private fun oracleBatch446(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "3.5", "0", "0", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "scale", "-2.5", "0", "0", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "scale", "-3.5", "0", "0", "UNNECESSARY", "!ArithmeticException"),
@@ -24120,6 +25293,9 @@ private fun oracleBatch446(): List<Array<String>> = listOf(
     arrayOf("D", "add", "-1", "1E-100000", "4", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "add", "-1", "-1E-100000", "4", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "add", "-1", "0E-100000", "4", "UNNECESSARY", "-1.000"),
+)
+
+private fun oracleBatch468(): List<Array<String>> = listOf(
     arrayOf("D", "add", "1.0000", "1E-100000", "4", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "add", "1.0000", "-1E-100000", "4", "UNNECESSARY", "!ArithmeticException"),
     arrayOf("D", "add", "1.0000", "0E-100000", "4", "UNNECESSARY", "1.000"),
@@ -24158,9 +25334,6 @@ private fun oracleBatch446(): List<Array<String>> = listOf(
     arrayOf("D", "parse", "١٢٣.٤٥", "0", "0", "HALF_EVEN", "123.45"),
     arrayOf("I", "parse", "١٢٣.٤٥", "0", "0", "HALF_EVEN", "!NumberFormatException"),
     arrayOf("D", "parse", "１２３", "0", "0", "HALF_EVEN", "123"),
-)
-
-private fun oracleBatch447(): List<Array<String>> = listOf(
     arrayOf("I", "parse", "１２３", "0", "0", "HALF_EVEN", "123"),
     arrayOf("F", "construct", "0", "0", "0", "HALF_EVEN", "0"),
     arrayOf("F", "valueOf", "0", "0", "0", "HALF_EVEN", "0.0"),
@@ -24173,6 +25346,9 @@ private fun oracleBatch447(): List<Array<String>> = listOf(
     arrayOf("F", "construct", "4591870180066957722", "0", "0", "HALF_EVEN", "0.1000000000000000055511151231257827021181583404541015625"),
     arrayOf("F", "valueOf", "4591870180066957722", "0", "0", "HALF_EVEN", "0.1"),
     arrayOf("F", "construct", "4950912855330343670", "0", "0", "HALF_EVEN", "99999999999999991611392"),
+)
+
+private fun oracleBatch469(): List<Array<String>> = listOf(
     arrayOf("F", "valueOf", "4950912855330343670", "0", "0", "HALF_EVEN", "1.0E+23"),
     arrayOf("F", "construct", "4711630319722168320", "0", "0", "HALF_EVEN", "10000000"),
     arrayOf("F", "valueOf", "4711630319722168320", "0", "0", "HALF_EVEN", "1.0E+7"),
@@ -24211,9 +25387,6 @@ private fun oracleBatch447(): List<Array<String>> = listOf(
     arrayOf("F", "construct", "2148006505929011323", "0", "0", "HALF_EVEN", "4.23986018705211881015648784968631601245859368011849016725325656554420612073378762989860420405560178524145818875150233586205278821204370435423118408967185929411001609617386979900293117480166652017734568577137987828641944393070252892656282149448147997825790543917989887736138097011046031433548993504214125216568362305180993935732558603632803535132393848218859980752701427938872149118432224433757581072423903378876275382936000823974609375E-165"),
     arrayOf("F", "valueOf", "2148006505929011323", "0", "0", "HALF_EVEN", "4.239860187052119E-165"),
     arrayOf("F", "construct", "4307757110136349904", "0", "0", "HALF_EVEN", "1.02607920073174425467107491535769211487076427595350699463472299299837686703540384769439697265625E-20"),
-)
-
-private fun oracleBatch448(): List<Array<String>> = listOf(
     arrayOf("F", "valueOf", "4307757110136349904", "0", "0", "HALF_EVEN", "1.0260792007317443E-20"),
     arrayOf("F", "construct", "6481674039764667433", "0", "0", "HALF_EVEN", "206588161935643281632108994016473818250709088278980881067310150440238835638647279307581635318420855487474336795514740104232960"),
     arrayOf("F", "valueOf", "6481674039764667433", "0", "0", "HALF_EVEN", "2.065881619356433E+125"),
@@ -24226,6 +25399,9 @@ private fun oracleBatch448(): List<Array<String>> = listOf(
     arrayOf("F", "construct", "-3980764943367503695", "0", "0", "HALF_EVEN", "-3045782398334130348409342508313423307079680"),
     arrayOf("F", "valueOf", "-3980764943367503695", "0", "0", "HALF_EVEN", "-3.0457823983341303E+42"),
     arrayOf("F", "construct", "-6687335605965529378", "0", "0", "HALF_EVEN", "-3.739194604534540092830628666372165020277876860775473104147618747580545968559988150436750699237883556803257540495244106216719568535546142409257532089955967983058326211148055288726523803608428026280433793174777158064785632539796667884186191453571336871502076283685824502611094481288898902531226345476568572289237246825436138516885842091042047030668982188217341899871826171875E-139"),
+)
+
+private fun oracleBatch470(): List<Array<String>> = listOf(
     arrayOf("F", "valueOf", "-6687335605965529378", "0", "0", "HALF_EVEN", "-3.73919460453454E-139"),
     arrayOf("F", "construct", "5584592615461033701", "0", "0", "HALF_EVEN", "216661287631139591630273531896976940503539644075143884123536359424"),
     arrayOf("F", "valueOf", "5584592615461033701", "0", "0", "HALF_EVEN", "2.166612876311396E+65"),
@@ -24264,9 +25440,6 @@ private fun oracleBatch448(): List<Array<String>> = listOf(
     arrayOf("F", "construct", "-5154632496342127729", "0", "0", "HALF_EVEN", "-1.0845873097436902195330925171704697240616027707325948094215039104135621632693379458313198658039010202625007650567567907273769378662109375E-36"),
     arrayOf("F", "valueOf", "-5154632496342127729", "0", "0", "HALF_EVEN", "-1.0845873097436902E-36"),
     arrayOf("F", "construct", "-8702910074377745360", "0", "0", "HALF_EVEN", "-7.2358930133446563448171554856727180056237981700522050889140785315583861933633494680297766517040007712489163940774332175069543426218253733785069477752478740335728475425289842934292445468055568025543237949696416406353123303418081417189947320271629695864382375285796346768632648074967538174332056111630632460508807306574413203558651172779985956684059149382382354219062098330118994008865123242499981692736391274270534976875473202062396078513061516585766200278887313419219255435112663268709869104278283924022264232555202758720829279950093521168422742544160829878015078613362662978213238151080841209669989132415201084302576817313348573453447916295315500700979782777721993625164031982421875E-274"),
-)
-
-private fun oracleBatch449(): List<Array<String>> = listOf(
     arrayOf("F", "valueOf", "-8702910074377745360", "0", "0", "HALF_EVEN", "-7.235893013344656E-274"),
     arrayOf("D", "scale", "0E+2147483647", "0", "0", "HALF_EVEN", "0"),
     arrayOf("D", "divideScale", "0E+2147483647", "1", "0", "HALF_EVEN", "!ArithmeticException"),
@@ -24279,6 +25452,9 @@ private fun oracleBatch449(): List<Array<String>> = listOf(
     arrayOf("D", "scale", "10E+2147483647", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("D", "divideScale", "10E+2147483647", "1", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("B", "twos", "", "-2", "-2", "0", "!NumberFormatException"),
+)
+
+private fun oracleBatch471(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "-2", "-2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "", "-2", "-2", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-2", "-2", "0", "!IndexOutOfBoundsException"),
@@ -24317,9 +25493,6 @@ private fun oracleBatch449(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "", "0", "-1", "0", "!NumberFormatException"),
     arrayOf("B", "signed", "", "0", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "", "0", "-1", "-1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch450(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "0", "-1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "0", "-1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "0", "-1", "2", "!NumberFormatException"),
@@ -24332,6 +25505,9 @@ private fun oracleBatch450(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "", "-2", "0", "0", "!NumberFormatException"),
     arrayOf("B", "signed", "", "-2", "0", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "", "-2", "0", "-1", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch472(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "-2", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-2", "0", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "-2", "0", "2", "!NumberFormatException"),
@@ -24370,9 +25546,6 @@ private fun oracleBatch450(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "0", "1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "0", "1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "", "0", "1", "1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch451(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "", "0", "1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "", "1", "1", "0", "!NumberFormatException"),
     arrayOf("B", "signed", "", "1", "1", "-2", "!NumberFormatException"),
@@ -24385,6 +25558,9 @@ private fun oracleBatch451(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "-2", "-2", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-2", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-2", "-2", "1", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch473(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "-2", "-2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0", "-1", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-1", "-2", "-2", "!NumberFormatException"),
@@ -24423,9 +25599,6 @@ private fun oracleBatch451(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "-1", "-1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-1", "-1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0", "0", "-1", "0", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch452(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "0", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0", "0", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "0", "-1", "0", "!IndexOutOfBoundsException"),
@@ -24438,6 +25611,9 @@ private fun oracleBatch452(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "1", "-1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "1", "-1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0", "2", "-1", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch474(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "2", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0", "2", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "2", "-1", "0", "!IndexOutOfBoundsException"),
@@ -24476,9 +25652,6 @@ private fun oracleBatch452(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0", "-2", "1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-2", "1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0", "-2", "1", "-1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch453(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "-2", "1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-2", "1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "-2", "1", "2", "!NumberFormatException"),
@@ -24491,6 +25664,9 @@ private fun oracleBatch453(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0", "0", "1", "0", "0"),
     arrayOf("B", "signed", "0", "0", "1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0", "0", "1", "-1", "0"),
+)
+
+private fun oracleBatch475(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "0", "1", "0", "0"),
     arrayOf("B", "signed", "0", "0", "1", "1", "0"),
     arrayOf("B", "signed", "0", "0", "1", "2", "!NumberFormatException"),
@@ -24529,9 +25705,6 @@ private fun oracleBatch453(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "1", "2", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "1", "2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "1", "2", "1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch454(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0", "1", "2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0", "2", "2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0", "2", "2", "-2", "!NumberFormatException"),
@@ -24544,6 +25717,9 @@ private fun oracleBatch454(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "-2", "-2", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-2", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-2", "-2", "1", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch476(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "-2", "-2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "-1", "-1", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-1", "-2", "-2", "!NumberFormatException"),
@@ -24582,9 +25758,6 @@ private fun oracleBatch454(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "-1", "-1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-1", "-1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "-1", "0", "-1", "0", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch455(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "0", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "-1", "0", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "0", "-1", "0", "!IndexOutOfBoundsException"),
@@ -24597,6 +25770,9 @@ private fun oracleBatch455(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "1", "-1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "1", "-1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "-1", "2", "-1", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch477(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "2", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "-1", "2", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "2", "-1", "0", "!IndexOutOfBoundsException"),
@@ -24635,9 +25811,6 @@ private fun oracleBatch455(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "-1", "-2", "1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-2", "1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "-1", "-2", "1", "-1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch456(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "-2", "1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-2", "1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "-2", "1", "2", "!NumberFormatException"),
@@ -24650,6 +25823,9 @@ private fun oracleBatch456(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "-1", "0", "1", "0", "0"),
     arrayOf("B", "signed", "-1", "0", "1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "-1", "0", "1", "-1", "0"),
+)
+
+private fun oracleBatch478(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "0", "1", "0", "0"),
     arrayOf("B", "signed", "-1", "0", "1", "1", "0"),
     arrayOf("B", "signed", "-1", "0", "1", "2", "!NumberFormatException"),
@@ -24688,9 +25864,6 @@ private fun oracleBatch456(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "1", "2", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "1", "2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "1", "2", "1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch457(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "-1", "1", "2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "-1", "2", "2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "-1", "2", "2", "-2", "!NumberFormatException"),
@@ -24703,6 +25876,9 @@ private fun oracleBatch457(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-2", "-2", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "-2", "1", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch479(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-2", "-2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "-1", "-2", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "-2", "-2", "!NumberFormatException"),
@@ -24741,9 +25917,6 @@ private fun oracleBatch457(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "4", "-2", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "4", "-2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "-2", "-1", "0", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch458(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-2", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "-1", "0", "!IndexOutOfBoundsException"),
@@ -24756,6 +25929,9 @@ private fun oracleBatch458(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-1", "-1", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "-1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "0", "-1", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch480(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "0", "-1", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "0", "-1", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "0", "-1", "0", "!IndexOutOfBoundsException"),
@@ -24794,9 +25970,6 @@ private fun oracleBatch458(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0,-128,1", "-1", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "0", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "0", "-1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch459(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-1", "0", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "0", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-1", "0", "2", "!NumberFormatException"),
@@ -24809,6 +25982,9 @@ private fun oracleBatch459(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0,-128,1", "1", "0", "0", "0"),
     arrayOf("B", "signed", "0,-128,1", "1", "0", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "1", "0", "-1", "0"),
+)
+
+private fun oracleBatch481(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "1", "0", "0", "0"),
     arrayOf("B", "signed", "0,-128,1", "1", "0", "1", "0"),
     arrayOf("B", "signed", "0,-128,1", "1", "0", "2", "!NumberFormatException"),
@@ -24847,9 +26023,6 @@ private fun oracleBatch459(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "0", "1", "-1", "0"),
     arrayOf("B", "signed", "0,-128,1", "0", "1", "0", "0"),
     arrayOf("B", "signed", "0,-128,1", "0", "1", "1", "0"),
-)
-
-private fun oracleBatch460(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "0", "1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "1", "1", "0", "-128"),
     arrayOf("B", "signed", "0,-128,1", "1", "1", "-2", "!NumberFormatException"),
@@ -24862,6 +26035,9 @@ private fun oracleBatch460(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "2", "1", "-1", "-32769"),
     arrayOf("B", "signed", "0,-128,1", "2", "1", "0", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "2", "1", "1", "32769"),
+)
+
+private fun oracleBatch482(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "2", "1", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "3", "1", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "1", "-2", "!NumberFormatException"),
@@ -24900,9 +26076,6 @@ private fun oracleBatch460(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "1", "2", "1", "1"),
     arrayOf("B", "signed", "0,-128,1", "1", "2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "2", "2", "0", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch461(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "2", "2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "2", "2", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "2", "2", "0", "!IndexOutOfBoundsException"),
@@ -24915,6 +26088,9 @@ private fun oracleBatch461(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "3", "2", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "2", "2", "!NumberFormatException"),
     arrayOf("B", "twos", "0,-128,1", "4", "2", "0", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch483(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "4", "2", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "4", "2", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "4", "2", "0", "!IndexOutOfBoundsException"),
@@ -24953,9 +26129,6 @@ private fun oracleBatch461(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0,-128,1", "3", "3", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "3", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "3", "3", "-1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch462(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "3", "3", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "3", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "3", "3", "2", "!NumberFormatException"),
@@ -24968,6 +26141,9 @@ private fun oracleBatch462(): List<Array<String>> = listOf(
     arrayOf("B", "twos", "0,-128,1", "-2", "4", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "4", "-2", "!NumberFormatException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "4", "-1", "!IndexOutOfBoundsException"),
+)
+
+private fun oracleBatch484(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "-2", "4", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "4", "1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "-2", "4", "2", "!NumberFormatException"),
@@ -25006,9 +26182,6 @@ private fun oracleBatch462(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "4", "4", "-1", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "4", "4", "0", "!IndexOutOfBoundsException"),
     arrayOf("B", "signed", "0,-128,1", "4", "4", "1", "!IndexOutOfBoundsException"),
-)
-
-private fun oracleBatch463(): List<Array<String>> = listOf(
     arrayOf("B", "signed", "0,-128,1", "4", "4", "2", "!NumberFormatException"),
     arrayOf("R", "random", "-1", "0", "0", "HALF_EVEN", "!IllegalArgumentException"),
     arrayOf("R", "probablePrime", "-1", "0", "0", "HALF_EVEN", "!ArithmeticException"),
@@ -25021,6 +26194,9 @@ private fun oracleBatch463(): List<Array<String>> = listOf(
     arrayOf("R", "prime", "0", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("R", "prime", "0", "1", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("R", "random", "1", "0", "0", "HALF_EVEN", "!NullPointerException"),
+)
+
+private fun oracleBatch485(): List<Array<String>> = listOf(
     arrayOf("R", "probablePrime", "1", "0", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("R", "prime", "1", "-1", "0", "HALF_EVEN", "!ArithmeticException"),
     arrayOf("R", "prime", "1", "0", "0", "HALF_EVEN", "!ArithmeticException"),

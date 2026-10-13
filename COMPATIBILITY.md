@@ -8,6 +8,14 @@ Reference runtime: BellSoft Liberica **25.0.4+9**. Implementation source from
 OpenJDK or other numerical libraries must not be used. Only public API
 specifications and black-box results may supply evidence.
 
+Message-oracle runs and JVM test workers use `-XX:-OmitStackTraceInFastThrow`.
+A repeated scaled-zero-division campaign exposed 6,975 null messages caused by
+HotSpot exception reuse; rerunning with this flag restored the canonical `/ by zero`
+message in every such case. The generator verifies the effective VM option.
+This diagnostic configuration follows [Oracle's documented flag](https://www.oracle.com/java/technologies/javase/release-notes-introduction.html)
+for disabling preallocated exceptions; numerical values and exception classes
+are compared independently of this optimization.
+
 ## Requirements and current evidence
 
 | Requirement | Evidence | Remaining audit |
@@ -31,6 +39,7 @@ specifications and black-box results may supply evidence.
 
 ```shell
 ./gradlew jvmTest jsNodeTest wasmJsNodeTest macosArm64Test
+export JAVA_TOOL_OPTIONS=-XX:-OmitStackTraceInFastThrow
 kotlinr scripts/generate-oracle.main.kts --check
 kotlinr scripts/generate-scale-oracle.main.kts --check
 kotlinr scripts/generate-null-oracle.main.kts --check
@@ -117,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 23,176 vectors, including 8,888 added signed
+The main oracle now contains 24,264 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -225,5 +234,11 @@ for arithmetic failures while constructing the exact result, including scale
 failures, after checking division by zero. Zero divided by zero is distinguished
 as Division undefined for exact, context and integral quotient families. These
 cases and 96 zero-divisor cases across quotient/remainder/pair overloads are in
-the portable corpus. Scale-bound division overloads use different primitive or
-BigInteger zero-divisor messages and remain an open message-audit requirement.
+the portable corpus. Scale-bound division follows different primitive or
+BigInteger zero-divisor error paths. A 210,912-case JVM campaign compares compact
+boundaries, signed scale endpoints, power-of-ten boundaries and all eight rounding
+modes. All cases match; 1,088 representative outcomes are in the portable corpus.
+The error classifier preserves the observed rescaling order and Int wrap without
+allocating an intermediate numeric value for an operation that must fail. Operand
+subclasses and the full nonzero-divisor message domain remain
+separate audits.

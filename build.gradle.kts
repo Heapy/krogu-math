@@ -45,6 +45,8 @@ kotlin {
 }
 
 tasks.withType<Test>().configureEach {
+    // Keep public-JDK exception messages stable after repeated implicit throws.
+    jvmArgs("-XX:-OmitStackTraceInFastThrow")
     testLogging { events("failed", "skipped"); exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL }
 }
 

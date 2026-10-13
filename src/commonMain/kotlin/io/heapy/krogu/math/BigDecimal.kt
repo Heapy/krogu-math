@@ -158,7 +158,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         return divide(divisor ?: throw NullPointerException(), scale, mode)
     }
     open fun divide(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode): BigDecimal {
-        checkDivisor(divisor)
+        if (divisor.signum() == 0) failScaledZeroDivision(divisor.decimalScale, scale)
         val shift = scale.toLong() + divisor.decimalScale - decimalScale
         if (kotlin.math.abs(shift) > 646456992L) throw ArithmeticException("BigInteger overflow")
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, scale)
@@ -168,6 +168,24 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val numerator = if (shift >= 0) coefficient.multiply(tenPow(shift)) else coefficient
         val denominator = if (shift < 0) divisor.coefficient.multiply(tenPow(-shift)) else divisor.coefficient
         return BigDecimal(roundedDivide(numerator, denominator, roundingMode), scale)
+    }
+    private fun failScaledZeroDivision(zeroScale: Int, target: Int): Nothing {
+        val compact = coefficient.decimalCompactValue()
+        val adjusted = scaleForValue(target.toLong() + zeroScale, compact == 0L)
+        val numerator = adjusted > decimalScale
+        // Public-JDK probes expose different staging on the two rescaling paths.
+        // The final Int subtraction deliberately retains its wraparound behavior.
+        val raise = if (numerator) target + zeroScale - decimalScale
+            else saturatedScale(decimalScale.toLong() - target) - zeroScale
+        if (raise > 646456992) throw ArithmeticException("BigInteger would overflow supported range")
+        if (compact == null || raise > 18) throw ArithmeticException("BigInteger divide by zero")
+        if (numerator && raise > 0) {
+            var factor = 1L
+            repeat(raise) { factor *= 10 }
+            if (kotlin.math.abs(compact) > Long.MAX_VALUE / factor)
+                throw ArithmeticException("BigInteger divide by zero")
+        }
+        throw ArithmeticException("/ by zero")
     }
     open fun divide(divisor: BigDecimal, mc: MathContext): BigDecimal {
         if (mc.precision == 0) return divide(divisor)
@@ -566,9 +584,6 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             return "0".repeat(count.toInt())
         }
         private fun exponentText(exponent: Long): String = "E" + (if (exponent >= 0) "+" else "") + exponent
-        private fun checkDivisor(divisor: BigDecimal) {
-            if (divisor.signum() == 0) throw ArithmeticException("Division by zero")
-        }
         private fun roundedDivide(numerator: BigInteger, denominator: BigInteger, mode: RoundingMode): BigInteger {
             val qr = numerator.divideAndRemainder(denominator)
             if (qr[1].signum() == 0) return qr[0]

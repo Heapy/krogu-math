@@ -70,18 +70,21 @@ class PortableOracleTest {
                 return BigDecimal(BigInteger(pieces[0]), pieces[1].toInt())
             }
             return try {
-                val a = operand(v[2]); val b = operand(v[3]); val mc = MathContext(p, mode)
-                when (op) {
-                    "divide" -> a.divide(b, mc)
-                    "exactDivide" -> a.divide(b)
-                    "integral" -> a.divideToIntegralValue(b)
-                    "integralContext" -> a.divideToIntegralValue(b, mc)
-                    "remainder" -> a.remainder(b)
-                    "remainderContext" -> a.remainder(b, mc)
-                    "pair" -> a.divideAndRemainder(b)
-                    "pairContext" -> a.divideAndRemainder(b, mc)
-                    else -> error("Unknown division message operation $op")
-                }.toString()
+                val a = operand(v[2]); val b = operand(v[3])
+                if (op == "scaledDivide") a.divide(b, p, mode).toString() else {
+                    val mc = MathContext(p, mode)
+                    when (op) {
+                        "divide" -> a.divide(b, mc)
+                        "exactDivide" -> a.divide(b)
+                        "integral" -> a.divideToIntegralValue(b)
+                        "integralContext" -> a.divideToIntegralValue(b, mc)
+                        "remainder" -> a.remainder(b)
+                        "remainderContext" -> a.remainder(b, mc)
+                        "pair" -> a.divideAndRemainder(b)
+                        "pairContext" -> a.divideAndRemainder(b, mc)
+                        else -> error("Unknown division message operation $op")
+                    }.toString()
+                }
             }
                 catch (failure: Exception) { "!${failure::class.simpleName}:${failure.message}" }
         }

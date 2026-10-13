@@ -68,7 +68,7 @@ etc.). Native tests cannot execute on a different host OS or CPU architecture.
 Kotlin/Native 2.4.21 does not provide a Linux ARM64 compiler host: CI cross-compiles
 the ARM64 test executable on Linux x64 and then runs it on a Linux ARM64 runner.
 
-The committed 23,176 portable vectors compare values, preferred scales, text,
+The committed 24,264 portable vectors compare values, preferred scales, text,
 floating-point bits and exception **types** on every test target.
 The vectors include 8,888 structured/dense bit-query, bit-update and extreme
 shift cases. Portable subclass tests also check that inherited bit operations
@@ -97,6 +97,7 @@ generated reproducibly with a dependency-free Kotlin script:
 
 ```shell
 # Requires JDK 25.0.4+9 and Kotlin 2.4.21 (kotlinr).
+export JAVA_TOOL_OPTIONS=-XX:-OmitStackTraceInFastThrow
 kotlinr scripts/generate-oracle.main.kts
 kotlinr scripts/generate-oracle.main.kts --check
 kotlinr scripts/generate-scale-oracle.main.kts --check
@@ -110,6 +111,8 @@ kotlinr scripts/generate-hash-oracle.main.kts --check
 The first script invocation compiles the script; later runs use the compiler cache.
 You may also `chmod +x scripts/generate-oracle.main.kts` and execute it directly.
 Generated fixtures contain public inputs and observable outputs, not JDK code.
+Oracle and JVM test processes disable HotSpot's preallocated implicit exceptions
+so diagnostic messages remain reproducible after repeated failures.
 
 ## JVM integration
 
