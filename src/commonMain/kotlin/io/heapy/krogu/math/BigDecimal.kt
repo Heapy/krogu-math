@@ -109,7 +109,17 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal = multiply(multiplicand).round(mc)
 
     open fun divide(divisor: BigDecimal): BigDecimal {
-        checkDivisor(divisor)
+        checkDivisionByZero(divisor)
+        return try { divideExactly(divisor) }
+        catch (_: ArithmeticException) {
+            throw ArithmeticException("Non-terminating decimal expansion; no exact representable decimal result.")
+        }
+    }
+    private fun checkDivisionByZero(divisor: BigDecimal) {
+        if (divisor.signum() == 0)
+            throw ArithmeticException(if (signum() == 0) "Division undefined" else "Division by zero")
+    }
+    private fun divideExactly(divisor: BigDecimal): BigDecimal {
         val preferred = scaleForValue(decimalScale.toLong() - divisor.decimalScale, signum() == 0)
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, preferred)
         // A terminating denominator can require fewer than (10/3)*its decimal digits
@@ -161,7 +171,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     }
     open fun divide(divisor: BigDecimal, mc: MathContext): BigDecimal {
         if (mc.precision == 0) return divide(divisor)
-        checkDivisor(divisor)
+        checkDivisionByZero(divisor)
         val preferredScale = decimalScale.toLong() - divisor.decimalScale
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, saturatedScale(preferredScale))
         checkDivisionNormalization(divisor, mc.precision)
@@ -205,7 +215,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun divideToIntegralValue(divisor: BigDecimal): BigDecimal = integralDivide(divisor, MathContext.UNLIMITED)
     open fun divideToIntegralValue(divisor: BigDecimal, mc: MathContext): BigDecimal = integralDivide(divisor, mc)
     private fun integralDivide(divisor: BigDecimal, mc: MathContext): BigDecimal {
-        checkDivisor(divisor)
+        checkDivisionByZero(divisor)
         val preferred = saturatedScale(decimalScale.toLong() - divisor.decimalScale)
         if (signum() == 0 || abs() < divisor.abs()) return BigDecimal(BigInteger.ZERO, preferred)
         var result = divide(divisor, 0, RoundingMode.DOWN)

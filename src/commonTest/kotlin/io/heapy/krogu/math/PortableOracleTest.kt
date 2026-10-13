@@ -69,7 +69,20 @@ class PortableOracleTest {
                 val pieces = text.split('@')
                 return BigDecimal(BigInteger(pieces[0]), pieces[1].toInt())
             }
-            return try { operand(v[2]).divide(operand(v[3]), MathContext(p, mode)).toString() }
+            return try {
+                val a = operand(v[2]); val b = operand(v[3]); val mc = MathContext(p, mode)
+                when (op) {
+                    "divide" -> a.divide(b, mc)
+                    "exactDivide" -> a.divide(b)
+                    "integral" -> a.divideToIntegralValue(b)
+                    "integralContext" -> a.divideToIntegralValue(b, mc)
+                    "remainder" -> a.remainder(b)
+                    "remainderContext" -> a.remainder(b, mc)
+                    "pair" -> a.divideAndRemainder(b)
+                    "pairContext" -> a.divideAndRemainder(b, mc)
+                    else -> error("Unknown division message operation $op")
+                }.toString()
+            }
                 catch (failure: Exception) { "!${failure::class.simpleName}:${failure.message}" }
         }
         if (v[0] == "F") {

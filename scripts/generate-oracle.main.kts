@@ -236,6 +236,37 @@ for (scale in divisionScales) for (divisorScale in divisionScales) {
         }
     }
 }
+for (scale in divisionScales) for (divisorScale in divisionScales) {
+    for (coefficient in listOf(0L, 1L, -1L, 10L)) for (divisor in listOf(0L, 1L, -2L, 3L, 5L, 6L)) {
+        record("G", "exactDivide", "$coefficient@$scale", "$divisor@$divisorScale") {
+            try { BigDecimal.valueOf(coefficient, scale).divide(BigDecimal.valueOf(divisor, divisorScale)).toString() }
+            catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
+        }
+    }
+}
+for (coefficient in listOf("0", "1", "-1", "123456789012345678901234567890")) {
+    for (scale in listOf(0, Int.MIN_VALUE, Int.MAX_VALUE)) {
+        for (op in listOf("divide", "exactDivide", "integral", "integralContext", "remainder", "remainderContext", "pair", "pairContext")) {
+            record("G", op, "$coefficient@0", "0@$scale", 7, RoundingMode.HALF_UP) {
+                val x = BigDecimal(coefficient)
+                val zero = BigDecimal(BigInteger.ZERO, scale)
+                val mc = MathContext(7)
+                try {
+                    when (op) {
+                        "divide" -> x.divide(zero, mc)
+                        "exactDivide" -> x.divide(zero)
+                        "integral" -> x.divideToIntegralValue(zero)
+                        "integralContext" -> x.divideToIntegralValue(zero, mc)
+                        "remainder" -> x.remainder(zero)
+                        "remainderContext" -> x.remainder(zero, mc)
+                        "pair" -> x.divideAndRemainder(zero)
+                        else -> x.divideAndRemainder(zero, mc)
+                    }.toString()
+                } catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
+            }
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

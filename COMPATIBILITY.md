@@ -117,7 +117,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 21,904 vectors, including 8,888 added signed
+The main oracle now contains 23,176 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -218,3 +218,12 @@ uses the observed narrowed-Int sign for normalization error wording. All 735
 cases match; the existing 207,239 scale-boundary comparisons also pass. The same
 matrix is included in the portable oracle. This is evidence for this domain,
 not a complete exception-message audit of every division overload or input domain.
+
+An additional 1,176 exact-division cases initially exposed 523 message differences.
+Exact division now reports the pinned JDK's complete nonterminating-result message
+for arithmetic failures while constructing the exact result, including scale
+failures, after checking division by zero. Zero divided by zero is distinguished
+as Division undefined for exact, context and integral quotient families. These
+cases and 96 zero-divisor cases across quotient/remainder/pair overloads are in
+the portable corpus. Scale-bound division overloads use different primitive or
+BigInteger zero-divisor messages and remain an open message-audit requirement.
