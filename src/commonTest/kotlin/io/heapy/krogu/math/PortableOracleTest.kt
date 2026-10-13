@@ -16,6 +16,18 @@ class PortableOracleTest {
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "A") {
+            val trace = StringBuilder()
+            val normalized = object : BigDecimal(BigInteger(v[2]), v[3].toInt()) {
+                override fun unscaledValue(): BigInteger { trace.append("unscaled;"); return super.unscaledValue() }
+            }
+            val value = object : BigDecimal(BigInteger("4"), v[3].toInt()) {
+                override fun stripTrailingZeros(): BigDecimal = normalized
+            }
+            val result = try { value.sqrt(MathContext(p, RoundingMode.valueOf(v[5]))).toString() }
+                catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+            return "$result|$trace"
+        }
         if (v[0] == "N") {
             val trace = StringBuilder()
             val normalized = object : BigDecimal(v[2]) {

@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 48,457 vectors, including 8,888 added signed
+The main oracle now contains 51,265 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -316,3 +316,20 @@ Finite exact contexts validate the extracted integer root's digit count before
 removing coefficient zeros, matching the pinned rejection of an unnormalized
 4.00 replacement at precision one. Extreme normalized scales, additional returned
 subclass methods and large-input resource behavior remain open.
+
+A further 2,808 normalized-root cases cross nine coefficients with thirteen
+scales (both Int endpoints and neighboring/ordinary values), three precisions
+and all rounding modes. They distinguish the normalized zero's root scale from
+the original preferred scale and cover trailing-zero integer roots at MIN_VALUE.
+The final zero scale now uses the normalized root scale when applying finite
+precision, then adjusts toward the original preferred scale. An extra check that
+renormalized the extracted root before doubling its scale has been removed:
+the reference accepts the unnormalized 100/400 coefficient replacements at
+MIN_VALUE. Ordinary input normalization still validates its own scale. The matrix
+uses bounded coefficients and matching source/replacement scales to avoid large
+power-of-ten allocations; it does not establish resource behavior for distant
+source/replacement scales.
+For the rounded branches, source coefficient four has adjusted exponent -s;
+the scaling shift is 2p-2 or 2p-1. With tested positive precisions one and seven,
+the largest constructed decimal power is therefore 10^13, even at Int scale
+endpoints. Exact branches use only the small supplied integer coefficients.

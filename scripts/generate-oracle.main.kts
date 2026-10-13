@@ -532,6 +532,28 @@ for (text in listOf("9", "0.04", "4.00", "0", "-4", "0.4", "0.9", "4.0")) {
         }
     }
 }
+for (coefficient in listOf("0", "1", "4", "9", "2", "-4", "10", "100", "400")) {
+    for (scale in listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, Int.MIN_VALUE + 2, -3, -2, -1, 0, 1, 2, 3, Int.MAX_VALUE - 2, Int.MAX_VALUE - 1, Int.MAX_VALUE)) {
+        for (precision in listOf(0, 1, 7)) for (mode in RoundingMode.entries) {
+            record("A", "normalizedScale", coefficient, scale.toString(), precision, mode) {
+                val trace = StringBuilder()
+                val normalized = object : BigDecimal(BigInteger(coefficient), scale) {
+                    override fun toByte(): Byte = super.toInt().toByte()
+                    override fun toShort(): Short = super.toInt().toShort()
+                    override fun unscaledValue(): BigInteger { trace.append("unscaled;"); return super.unscaledValue() }
+                }
+                val value = object : BigDecimal(BigInteger("4"), scale) {
+                    override fun toByte(): Byte = super.toInt().toByte()
+                    override fun toShort(): Short = super.toInt().toShort()
+                    override fun stripTrailingZeros(): BigDecimal = normalized
+                }
+                val result = try { value.sqrt(MathContext(precision, mode)).toString() }
+                    catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+                "$result|$trace"
+            }
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

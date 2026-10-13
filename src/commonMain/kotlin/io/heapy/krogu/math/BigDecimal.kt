@@ -359,17 +359,11 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
                 else normalized.unscaledValue().sqrtAndRemainder()
             if (root[1].signum() != 0 || (context.precision > 0 && root[0].abs().toString().length > context.precision))
                 throw ArithmeticException("Computed square root not exact.")
-            if (root[0].signum() == 0) {
-                val scale = if (context.precision > 0) minOf(preferred, context.precision - 1) else preferred
-                return BigDecimal(BigInteger.ZERO, scale)
-            }
             val exact = BigDecimal(root[0], normalized.decimalScale / 2).stripTo(preferred)
-            // Exact-mode validation in the oracle squares a minimally scaled root.
-            // Its scale overflow is observable even when the preferred form could be squared.
-            checkedScale(2L * exact.stripTrailingZeros().decimalScale)
             val rounded = exact.round(context)
             val targetScale = if (context.precision == 0) preferred else minOf(preferred.toLong(),
                 rounded.decimalScale.toLong() + context.precision - rounded.storedPrecision()).toInt()
+            if (rounded.coefficient.signum() == 0) return BigDecimal(BigInteger.ZERO, targetScale)
             return if (rounded.decimalScale < targetScale) rounded.setScaleValue(targetScale, RoundingMode.UNNECESSARY) else rounded
         }
         // A subclass can report a positive sign for a stored zero.
