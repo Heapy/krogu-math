@@ -16,6 +16,24 @@ class PortableOracleTest {
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "V") {
+            val operation = op.substringBefore(':')
+            val distance = op.substringAfter(':').toInt()
+            val trace = StringBuilder()
+            val value = object : BigDecimal(BigInteger(v[2]), v[3].toInt()) {
+                override fun signum(): Int { trace.append("sign;"); return p }
+                override fun precision(): Int { trace.append("precision;"); return 1 }
+                override fun movePointLeft(n: Int): BigDecimal { trace.append("left;"); return super.movePointLeft(n) }
+                override fun movePointRight(n: Int): BigDecimal { trace.append("right;"); return super.movePointRight(n) }
+                override fun scaleByPowerOfTen(n: Int): BigDecimal { trace.append("scaleBy;"); return super.scaleByPowerOfTen(n) }
+            }
+            val result = try {
+                val moved = when (operation) { "left" -> value.movePointLeft(distance); "right" -> value.movePointRight(distance); else -> value.scaleByPowerOfTen(distance) }
+                val text = BigDecimal(moved.unscaledValue(), moved.scale()).toString()
+                "$text|${moved === value}|${moved::class == BigDecimal::class}"
+            } catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+            return "$result|$trace"
+        }
         if (v[0] == "Q") {
             if (op == "integer") return try { BigInteger(v[2]).pow(p).toString() }
                 catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }

@@ -315,10 +315,11 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun movePointLeft(n: Int): BigDecimal = movePoint(decimalScale.toLong() + n)
     open fun movePointRight(n: Int): BigDecimal = movePoint(decimalScale.toLong() - n)
     private fun movePoint(scale: Long): BigDecimal {
-        val result = BigDecimal(coefficient, scaleForValue(scale, signum() == 0))
+        if (scale == decimalScale.toLong() && decimalScale >= 0) return this
+        val result = BigDecimal(coefficient, scaleForValue(scale, coefficient.signum() == 0))
         return if (result.decimalScale < 0) result.setScale(0) else result
     }
-    open fun scaleByPowerOfTen(n: Int): BigDecimal = BigDecimal(coefficient, scaleForValue(decimalScale.toLong() - n, signum() == 0))
+    open fun scaleByPowerOfTen(n: Int): BigDecimal = BigDecimal(coefficient, scaleForValue(decimalScale.toLong() - n, coefficient.signum() == 0))
     open fun ulp(): BigDecimal = BigDecimal(BigInteger.ONE, decimalScale)
 
     open fun pow(n: Int): BigDecimal {

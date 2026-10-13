@@ -580,6 +580,32 @@ for (coefficient in listOf("0", "1", "-1", "8", "-8", "16", "-16", "4294967296",
         }
     }
 }
+for (coefficient in listOf("0", "1", "-1", "123", "-123", "9223372036854775808")) {
+    for (scale in listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, -2, 0, 2, Int.MAX_VALUE - 1, Int.MAX_VALUE)) {
+        for (distance in listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, -2, -1, 0, 1, 2, Int.MAX_VALUE - 1, Int.MAX_VALUE)) {
+            for (sign in -1..1) for (op in listOf("left", "right", "scale")) {
+                record("V", "$op:$distance", coefficient, scale.toString(), sign) {
+                    val trace = StringBuilder()
+                    val value = object : BigDecimal(BigInteger(coefficient), scale) {
+                        override fun toByte(): Byte = super.toInt().toByte()
+                        override fun toShort(): Short = super.toInt().toShort()
+                        override fun signum(): Int { trace.append("sign;"); return sign }
+                        override fun precision(): Int { trace.append("precision;"); return 1 }
+                        override fun movePointLeft(n: Int): BigDecimal { trace.append("left;"); return super.movePointLeft(n) }
+                        override fun movePointRight(n: Int): BigDecimal { trace.append("right;"); return super.movePointRight(n) }
+                        override fun scaleByPowerOfTen(n: Int): BigDecimal { trace.append("scaleBy;"); return super.scaleByPowerOfTen(n) }
+                    }
+                    val result = try {
+                        val moved = when (op) { "left" -> value.movePointLeft(distance); "right" -> value.movePointRight(distance); else -> value.scaleByPowerOfTen(distance) }
+                        val text = BigDecimal(moved.unscaledValue(), moved.scale()).toString()
+                        "$text|${moved === value}|${moved.javaClass == BigDecimal::class.java}"
+                    } catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+                    "$result|$trace"
+                }
+            }
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 51,996 vectors, including 8,888 added signed
+The main oracle now contains 55,398 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -348,3 +348,17 @@ additional decimal-message differences. Large exponents in this corpus either
 retain a zero/unit coefficient or violate the bit-length lower bound before
 allocation; it does not test feasible multi-gigabyte powers or certify the full
 range/exception-message audit.
+
+Point movement adds 3,402 portable cases across six coefficients (including zero,
+both signs and an inflated value), seven scales, nine signed distances, three
+replacement signs and all three movement methods. Scale overflow and zero
+saturation inspect the stored coefficient, bypassing virtual signum/precision.
+Zero-distance left/right movement preserves the source object only when its
+scale is nonnegative; a negative scale is normalized to zero. scaleByPowerOfTen
+still returns a base instance. Result text, exact errors, source identity, base
+type and public call traces are compared with JDK, including MIN_VALUE distances
+and the absence of delegation to neighboring public movement methods.
+Selected negative result scales are either within four places of zero or beyond
+the supported power-of-ten range, so the corpus avoids large successful power
+allocations. Wider distances, caller-overridden result inspectors and practical
+large-input allocation behavior remain open.
