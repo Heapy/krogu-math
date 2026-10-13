@@ -324,7 +324,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun pow(n: Int): BigDecimal {
         if (n !in 0..999999999) throw ArithmeticException("Invalid operation")
         if (n == 0) return ONE
-        return BigDecimal(coefficient.pow(n), scaleForValue(decimalScale.toLong() * n, coefficient.signum() == 0))
+        val scale = scaleForValue(decimalScale.toLong() * n, coefficient.signum() == 0)
+        return BigDecimal(coefficient.pow(n), scale)
     }
     open fun pow(n: Int, mc: MathContext): BigDecimal {
         if (mc.precision == 0) return pow(n)

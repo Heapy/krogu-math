@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 51,265 vectors, including 8,888 added signed
+The main oracle now contains 51,996 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -333,3 +333,18 @@ For the rounded branches, source coefficient four has adjusted exponent -s;
 the scaling shift is 2p-2 or 2p-1. With tested positive precisions one and seven,
 the largest constructed decimal power is therefore 10^13, even at Int scale
 endpoints. Exact branches use only the small supplied integer coefficients.
+
+Exact decimal powers add 686 portable value/message/callback cases across seven
+coefficients, seven scales, seven exponents and direct/unlimited-context overloads.
+After exponent validation and the exponent-zero shortcut, scale multiplication is
+validated before coefficient exponentiation. This corrects 16 cases where a
+coefficient-range error masked the pinned Overflow/Underflow scale error, and
+avoids coefficient growth for an invalid result scale. The same matrix confirms
+zero-scale saturation and virtual pow delegation from the unlimited overload.
+Another 45 direct BigInteger power cases constrain negative exponents, zero
+exponents, zero and signed unit values, and supported-range failures. The power range
+guard now reports `BigInteger would overflow supported range`, matching 24
+additional decimal-message differences. Large exponents in this corpus either
+retain a zero/unit coefficient or violate the bit-length lower bound before
+allocation; it does not test feasible multi-gigabyte powers or certify the full
+range/exception-message audit.

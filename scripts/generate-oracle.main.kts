@@ -554,6 +554,32 @@ for (coefficient in listOf("0", "1", "4", "9", "2", "-4", "10", "100", "400")) {
         }
     }
 }
+for (coefficient in listOf("0", "1", "-1", "8", "-8", "16", "-16")) {
+    for (scale in listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, -1, 0, 1, Int.MAX_VALUE - 1, Int.MAX_VALUE)) {
+        for (power in listOf(Int.MIN_VALUE, -1, 0, 1, 2, 999999999, 1000000000)) for (op in listOf("exact", "unlimited")) {
+            record("Q", op, coefficient, scale.toString(), power) {
+                val trace = StringBuilder()
+                val value = object : BigDecimal(BigInteger(coefficient), scale) {
+                    override fun toByte(): Byte = super.toInt().toByte()
+                    override fun toShort(): Short = super.toInt().toShort()
+                    override fun signum(): Int { trace.append("sign;"); return super.signum() }
+                    override fun pow(n: Int): BigDecimal { trace.append("pow;"); return super.pow(n) }
+                }
+                val result = try { (if (op == "exact") value.pow(power) else value.pow(power, MathContext.UNLIMITED)).toString() }
+                    catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+                "$result|$trace"
+            }
+        }
+    }
+}
+for (coefficient in listOf("0", "1", "-1", "8", "-8", "16", "-16", "4294967296", "-4294967296")) {
+    for (power in listOf(Int.MIN_VALUE, -1, 0, 999999999, Int.MAX_VALUE)) {
+        record("Q", "integer", coefficient, p = power) {
+            try { BigInteger(coefficient).pow(power).toString() }
+                catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

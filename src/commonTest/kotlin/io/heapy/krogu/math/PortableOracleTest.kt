@@ -16,6 +16,18 @@ class PortableOracleTest {
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "Q") {
+            if (op == "integer") return try { BigInteger(v[2]).pow(p).toString() }
+                catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+            val trace = StringBuilder()
+            val value = object : BigDecimal(BigInteger(v[2]), v[3].toInt()) {
+                override fun signum(): Int { trace.append("sign;"); return super.signum() }
+                override fun pow(n: Int): BigDecimal { trace.append("pow;"); return super.pow(n) }
+            }
+            val result = try { (if (op == "exact") value.pow(p) else value.pow(p, MathContext.UNLIMITED)).toString() }
+                catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+            return "$result|$trace"
+        }
         if (v[0] == "A") {
             val trace = StringBuilder()
             val normalized = object : BigDecimal(BigInteger(v[2]), v[3].toInt()) {

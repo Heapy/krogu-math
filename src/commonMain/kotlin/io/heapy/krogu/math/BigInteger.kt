@@ -104,7 +104,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     open fun pow(exponent: Int): BigInteger {
         if (exponent < 0) throw ArithmeticException("Negative exponent")
         if (sign != 0 && (magnitudeBits().toLong() - 1) * exponent >= Int.MAX_VALUE)
-            throw ArithmeticException("BigInteger overflow")
+            throw ArithmeticException("BigInteger would overflow supported range")
         var e = exponent
         var base = this
         var result = ONE
