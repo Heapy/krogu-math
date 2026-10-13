@@ -16,7 +16,7 @@ specifications and black-box results may supply evidence.
 | Java source compatibility, including subclassing and virtual dispatch | Compiled `JavaApiContractTest`, `KotlinSubclassContractTest`; real Java Random constructors | Broader Java call-site, null precedence and subclass behavior audit |
 | BigInteger signed arithmetic and exact results | Portable oracle, seeded JVM arithmetic and modular tests | Larger magnitudes, limb-boundary campaigns, algorithm/range limits |
 | Infinite two's-complement bit semantics | Portable oracle, seeded JVM operations and algebraic invariants | Structured positive/negative bit boundaries, extreme shift/bit distances |
-| All constructor encodings and validation | Portable byte slice/sign matrix; JVM byte and character range matrix | Extreme integer offsets, every radix, Unicode character corpus, malformed text fuzzing |
+| All constructor encodings and validation | Portable byte slice/sign matrix; JVM byte and character range matrix; complete BMP digit/radix corpus and supplementary digit constructors | Extreme integer offsets, compound textual grammar, malformed text fuzzing |
 | Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 207,239 exact portable scale-boundary outcomes; portable fixtures | Wider coefficient/scale/precision combinations and overflow across remaining overloads |
 | Powers and roots | 10,560 structured JVM comparisons plus portable fixtures | Adversarial midpoint and carry cases at larger precision |
 | Float/Double conversions and canonical Double factory values | Bitwise oracle comparisons, binary boundaries, 10,000 seeded canonical Double cases | Exhaustive Float input domain, wider subnormal/tie/overflow campaigns and algorithm audit |
@@ -34,6 +34,7 @@ specifications and black-box results may supply evidence.
 kotlinr scripts/generate-oracle.main.kts --check
 kotlinr scripts/generate-scale-oracle.main.kts --check
 kotlinr scripts/generate-null-oracle.main.kts --check
+kotlinr scripts/generate-character-oracle.main.kts --check
 ```
 
 Use the appropriate Native host test tasks for other OS/architectures. CI
@@ -65,6 +66,15 @@ rounding constants, sign/magnitude validation and nullable contexts. Public
 nullability is relaxed only where the oracle requires a particular validation
 order or intentionally ignores a null argument; global parameter assertions
 remain enabled.
+
+`CharacterOracleTest` verifies all 2,293,760 BMP-character/valid-radix pairs,
+131,072 single-character BigInteger/BigDecimal constructor outcomes, every
+valid digit character in every integer radix, and all 390 supplementary digit
+code points accepted by JDK 25 `Character.digit(codePoint, 36)`. The generator
+checks the complete public-JDK results before losslessly encoding the BMP map
+as 41 arithmetic ranges. It distinguishes constructor failures from failures
+in test-result conversion. Supplementary UTF-16 constructor behavior is stored
+explicitly, rather than inferred from code-point digit classification.
 
 ## Completion gate
 

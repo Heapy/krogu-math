@@ -20,6 +20,7 @@ jobs:
       - run: kotlinr scripts/generate-oracle.main.kts --check
       - run: kotlinr scripts/generate-scale-oracle.main.kts --check
       - run: kotlinr scripts/generate-null-oracle.main.kts --check
+      - run: kotlinr scripts/generate-character-oracle.main.kts --check
   platforms:
     strategy:
       fail-fast: false
