@@ -1,9 +1,8 @@
-# BigInteger numerical arguments
+# Numerical conversion arguments
 
 These arguments describe the independent common implementation in
 `BigInteger.kt`, together with its portable JDK fixtures. They concern integer
-conversions and hash packing; BigDecimal rational conversion and its subnormal cases remain
-separate audit requirements.
+conversions and hash packing, followed by BigDecimal rational conversion.
 
 ## Binary floating-point rounding
 
@@ -34,7 +33,7 @@ the increment rule `guard && (sticky || q is odd)` has three outcomes:
 
 After rounding, `q<=2^p`, so it fits Long and converts exactly to Double.
 Also `s<=E-p`: at most 104 for Float and 971 for Double. The power `2^s` is exact
-in Double. `FloatingPowerTest` checks every used power, 0 through 971, against
+in Double. `FloatingPowerTest` checks all powers from -1074 through 1023 against
 its independently encoded IEEE exponent bits on every target. Multiplication
 produces an exact dyadic value with at most `p`
 significand bits, except when the Double result itself overflows. A carried
@@ -92,6 +91,51 @@ compared with public JDK outputs. This is an argument for packing equivalence;
 the JDK's particular hash recurrence is constrained by the oracle, rather than
 specified by the Object.hashCode contract.
 
+## Decimal rational conversion
+
+For an ordinary BigDecimal, separate its sign and write its absolute value as
+`n/d`, where `n` and `d` are positive integers. A negative decimal scale multiplies
+the coefficient by a power of ten; a positive scale supplies that power in the
+denominator. Zero returns positive zero, consistent with the absence of a signed
+decimal zero. Decimal adjusted exponents outside [-400, 400] are respectively
+above both formats' overflow thresholds or below both half-minimum-subnormal
+thresholds. The early infinity/zero results therefore preserve rounding and sign.
+
+The bit-length difference `b=bitLength(n)-bitLength(d)` places the binary
+exponent in `{b-1,b}`. One exact shifted comparison selects `e=floor(log2(n/d))`.
+If `e` exceeds the format's greatest finite exponent, the result is infinity.
+Otherwise the rounding quantum is `2^k`, with
+`k=max(e, minimumNormalExponent)-(p-1)`. Scaling the numerator or denominator
+by a power of two gives an exact integer division. HALF_EVEN division rounds
+`(n/d)/2^k` to an integer `q`, including ties, without decimal approximation.
+
+For normal values, `q` has at most p significant bits, apart from a carry to
+the exact power `2^p`. For subnormal values the quantum stays fixed at `2^-149`
+for Float or `2^-1074` for Double. Consequently `q*2^k` is representable in the
+target format, including a carry into the first normal value. At underflow,
+q=0 preserves the original sign through multiplication; at overflow the rounded
+carry selects infinity. q fits Long and converts exactly to Double. The scaling
+power itself is exactly representable in Double. For Float, the product is
+already an exact Float value before the final cast, so no double rounding occurs.
+
+Compact coefficients in the open interval (-2^63, 2^63) bypass virtual signum
+at scale zero, or at scales within +/-10 for Float and +/-22 for Double when
+casting the primitive coefficient back to Long reproduces the stored Long.
+The comparison deliberately includes primitive-to-Long saturation at Long.MAX_VALUE,
+as constrained by the public-JDK subclass oracle. Stored zero always returns
+positive zero. Other paths call virtual signum exactly once and multiply the
+rational magnitude by its return value; no virtual precision call participates.
+These dispatch rules have 594 portable result-and-trace outcomes.
+
+Constructor coefficient subclasses are normalized through their virtual byte
+encoding into an ordinary BigInteger; ordinary coefficient identity is retained.
+This argument assumes exact integer arithmetic and does not settle the practical
+allocation limits for very large cancelling coefficients and
+scales. The portable tests independently check every binary scaling power from
+2^-1074 through 2^1023 by IEEE bit encoding, and compare signed exact midpoint
+neighbors with the pinned JDK. They exercise both retained parities, significand
+carry, underflow to signed zero, the subnormal/normal transition and overflow.
+
 ## Evidence and remaining scope
 
 The main portable oracle includes 1,728 signed midpoint-neighbor Float/Double
@@ -108,7 +152,10 @@ alignment periods and 350 dense-byte results through 65,536 bytes. Structured
 common inputs are encoded independently as byte arrays; all common hash inputs
 use subclasses whose abs/testBit throw if invoked.
 
+The decimal midpoint campaign adds 1,296 Float/Double results constructed from
+exact dyadic rational midpoints and decimal epsilon offsets.
+
 These arguments complement the fixtures; they do not prove every compiler or
-runtime implementation, complete BigDecimal conversion, exercise multi-gigabyte
+runtime implementation, complete the decimal subclass audit, exercise multi-gigabyte
 objects, or settle the full java.math compatibility audit. Those requirements
 remain tracked in `COMPATIBILITY.md`.

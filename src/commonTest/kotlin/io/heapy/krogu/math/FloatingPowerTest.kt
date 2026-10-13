@@ -5,9 +5,11 @@ import kotlin.test.*
 
 class FloatingPowerTest {
     @Test fun everyScalingPowerMatchesItsIeeeEncoding() {
-        // Entire finite exponent domain used by BigInteger.floatingValue.
-        for (exponent in 0..971) {
-            val expectedBits = (exponent.toLong() + 1023L) shl 52
+        // Includes integer conversion and decimal conversion down to the least
+        // subnormal quantum. Subnormal powers have no implicit leading bit.
+        for (exponent in -1074..1023) {
+            val expectedBits = if (exponent < -1022) 1L shl (exponent + 1074)
+                else (exponent.toLong() + 1023L) shl 52
             assertEquals(expectedBits, 2.0.pow(exponent).toBits(), "scale 2^$exponent")
         }
     }

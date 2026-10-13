@@ -15,6 +15,15 @@ class PortableOracleTest {
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "X") {
+            val trace = StringBuilder()
+            val value = object : BigDecimal(BigInteger(v[2]), v[3].toInt()) {
+                override fun signum(): Int { trace.append("sign;"); return p }
+                override fun precision(): Int { trace.append("precision;"); return 1 }
+            }
+            val bits = if (op == "float") value.toFloat().toBits().toLong() else value.toDouble().toBits()
+            return "$bits|$trace"
+        }
         if (v[0] == "E") {
             val trace = StringBuilder()
             val value = object : BigInteger(v[2]) {

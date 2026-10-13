@@ -180,6 +180,50 @@ for (a in decimalInputs) {
     record("D", "float", a) { x.toFloat().toBits() }
     record("D", "integerExact", a) { x.toBigIntegerExact() }
 }
+// Exact dyadic midpoint neighbors: gradual underflow, normal carries and overflow.
+// Construct the rational numbers directly; no primitive floating-point arithmetic
+// participates in the inputs or in deciding which side of a midpoint they occupy.
+fun exactDyadic(numerator: BigInteger, exponent: Int): BigDecimal =
+    if (exponent >= 0) BigDecimal(numerator.shiftLeft(exponent))
+    else BigDecimal(numerator.multiply(BigInteger.valueOf(5).pow(-exponent)), -exponent)
+for (precision in listOf(24, 53)) {
+    val minimum = if (precision == 24) -126 else -1022
+    val maximum = if (precision == 24) 127 else 1023
+    val leading = BigInteger.ONE.shiftLeft(precision - 1)
+    val significands = listOf(BigInteger.ZERO, BigInteger.ONE, leading.subtract(BigInteger.ONE),
+        leading, leading.add(BigInteger.ONE), BigInteger.ONE.shiftLeft(precision).subtract(BigInteger.ONE))
+    for (exponent in listOf(minimum, minimum + 1, -30, -1, 0, 1, 30, maximum - 1, maximum)) {
+        for (significand in significands) {
+            val midpoint = exactDyadic(significand.shiftLeft(1).add(BigInteger.ONE), exponent - precision)
+            val epsilon = BigDecimal(BigInteger.ONE, midpoint.scale() + 2)
+            for (offset in -1L..1L) for (negative in listOf(false, true)) {
+                val positive = midpoint.add(epsilon.multiply(BigDecimal.valueOf(offset)))
+                val x = if (negative) positive.negate() else positive
+                record("D", "float", x.toString()) { x.toFloat().toBits() }
+                record("D", "double", x.toString()) { x.toDouble().toBits() }
+            }
+        }
+    }
+}
+// Observable decimal subclass calls at compact primitive-conversion boundaries.
+for (coefficient in listOf("0", "1", "16777216", "16777217", "9007199254740992",
+    "9007199254740993", "9223372036854775807", "-9223372036854775808", "9223372036854775808")) {
+    for (scale in listOf(-350, -23, -22, -11, -10, 0, 10, 11, 22, 23, 350)) {
+        for (sign in -1..1) for (single in listOf(false, true)) {
+            record("X", if (single) "float" else "double", coefficient, scale.toString(), sign) {
+                val trace = StringBuilder()
+                val value = object : BigDecimal(BigInteger(coefficient), scale) {
+                    override fun toByte(): Byte = 0
+                    override fun toShort(): Short = 0
+                    override fun signum(): Int { trace.append("sign;"); return sign }
+                    override fun precision(): Int { trace.append("precision;"); return 1 }
+                }
+                val bits = if (single) value.toFloat().toBits().toLong() else value.toDouble().toBits()
+                "$bits|$trace"
+            }
+        }
+    }
+}
 // Midpoints, sticky tails, preferred scales and scale saturation, independent of random coverage.
 for (mode in RoundingMode.entries) {
     for (a in listOf("2.5", "3.5", "-2.5", "-3.5", "0.50000000000000000001", "-0.49999999999999999999", "9.99")) {

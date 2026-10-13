@@ -7,8 +7,13 @@ import kotlin.math.pow
 /** Immutable decimal, represented exactly as coefficient × 10^(-scale). */
 // Preserve virtual java.lang.Number methods instead of Kotlin's default final bridges.
 @Suppress("INAPPLICABLE_JVM_NAME")
-open class BigDecimal(private val coefficient: BigInteger, private val decimalScale: Int) :
+open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     Number(), Comparable<BigDecimal>, MathSerializable {
+
+    // A public-JDK constructor probe shows that subclass coefficients are
+    // normalized through their virtual byte encoding before being retained.
+    private val coefficient: BigInteger = if (coefficient::class == BigInteger::class) coefficient
+        else BigInteger(coefficient.toByteArray())
 
     private constructor(value: BigDecimal) : this(value.coefficient, value.decimalScale)
     private fun readObject(stream: MathObjectInputStream) {
@@ -392,21 +397,32 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
     @kotlin.jvm.JvmName("floatValue")
     override fun toFloat(): Float = binaryValue(24, -126, 127).toFloat()
     private fun binaryValue(precision: Int, minExponent: Int, maxExponent: Int): Double {
-        if (signum() == 0) return 0.0
-        val decimalExponent = adjustedExponent()
-        if (decimalExponent > 400) return if (signum() < 0) Double.NEGATIVE_INFINITY else Double.POSITIVE_INFINITY
-        if (decimalExponent < -400) return if (signum() < 0) -0.0 else 0.0
+        val compact = coefficient.decimalCompactValue()
+        if (compact == 0L) return 0.0
+        val compactPrimitive = compact?.let {
+            if (precision == 24) BigInteger.valueOf(it).toFloat().toDouble() else it.toDouble()
+        }
+        val maxCompactScale = if (precision == 24) 10L else 22L
+        val compactPath = compact != null && (decimalScale == 0 ||
+            (decimalScale.toLong() in -maxCompactScale..maxCompactScale &&
+                compactPrimitive!!.toLong() == compact))
+        // Public-JDK probes distinguish compact paths (no virtual calls) from
+        // the general rational path (one virtual signum, no virtual precision).
+        val resultSign = if (compactPath) compact!!.compareTo(0L) else signum()
+        val decimalExponent = coefficient.abs().toString().length.toLong() - decimalScale - 1
+        if (decimalExponent > 400) return resultSign * Double.POSITIVE_INFINITY
+        if (decimalExponent < -400) return resultSign * 0.0
         val numerator = if (decimalScale < 0) coefficient.abs().multiply(tenPow(-decimalScale.toLong())) else coefficient.abs()
         val denominator = if (decimalScale > 0) tenPow(decimalScale.toLong()) else BigInteger.ONE
         var exponent = numerator.bitLength() - denominator.bitLength()
         if (exponent >= 0) { if (numerator < denominator.shiftLeft(exponent)) exponent-- }
         else if (numerator.shiftLeft(-exponent) < denominator) exponent--
-        if (exponent > maxExponent) return if (signum() < 0) Double.NEGATIVE_INFINITY else Double.POSITIVE_INFINITY
+        if (exponent > maxExponent) return resultSign * Double.POSITIVE_INFINITY
         val shift = precision - 1 - maxOf(exponent, minExponent)
         val top = if (shift >= 0) roundedDivide(numerator.shiftLeft(shift), denominator, RoundingMode.HALF_EVEN)
             else roundedDivide(numerator, denominator.shiftLeft(-shift), RoundingMode.HALF_EVEN)
         // Multiplication by a power of two is exact, including gradual underflow.
-        return signum() * top.toLong().toDouble() * 2.0.pow(-shift)
+        return resultSign * top.toLong().toDouble() * 2.0.pow(-shift)
     }
 
     operator fun plus(other: BigDecimal): BigDecimal = add(other)

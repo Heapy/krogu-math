@@ -19,7 +19,7 @@ specifications and black-box results may supply evidence.
 | All constructor encodings and validation | Portable byte slice/sign matrix; JVM byte and character range matrix; complete BMP digit/radix corpus and supplementary digit constructors | Extreme integer offsets, compound textual grammar, malformed text fuzzing |
 | Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 207,239 exact portable scale-boundary outcomes; portable fixtures | Wider coefficient/scale/precision combinations and overflow across remaining overloads |
 | Powers and roots | 10,560 structured JVM comparisons plus portable fixtures | Adversarial midpoint and carry cases at larger precision |
-| Float/Double conversions and canonical Double factory values | Bitwise oracle comparisons, binary boundaries, 10,000 seeded canonical Double cases | Exhaustive Float input domain, wider subnormal/tie/overflow campaigns and algorithm audit |
+| Float/Double conversions and canonical Double factory values | Bitwise oracle comparisons, 1,296 exact decimal midpoint-neighbor outcomes, rational rounding argument, all binary scaling powers from -1074 through 1023, 10,000 seeded canonical Double cases | Exhaustive Float input domain, decimal subclass dispatch and very large cancelling coefficient/scale allocation audit |
 | Prime generation and certainty | 368 portable primality/successor cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions | Very large certainty beyond the proven bound, witness independence at larger magnitudes, supported-range limits, caller RNG behavior and distribution |
 | Exception conditions and types | Portable fixtures; 7,486 live JVM null/invalid-argument comparisons; 3,462 portable null-precedence outcomes; constructor precedence matrix | Wider invalid-argument domains, extreme offsets and cross-products; exception messages remain unmatched |
 | Equality, ordering, hash codes, immutability | JVM oracle and common invariants; 6,110 portable BigInteger hash outcomes | Full context/enum/hash and subclass audit |
@@ -117,7 +117,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 16,559 vectors, including 8,888 added signed
+The main oracle now contains 18,449 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -196,3 +196,14 @@ subclass state, shared references and cycles. Deserialization validates base-cla
 state and detaches integer limb arrays. Legacy proxies, older binary formats and
 interchange or migration with `java.math` streams are not compatibility requirements.
 This exception does not narrow mathematical API compatibility.
+
+Decimal floating conversion now distinguishes compact no-dispatch paths from
+general paths that call virtual signum once and bypass virtual precision.
+The public-JDK matrix contributes 594 portable result-and-call-trace outcomes,
+covering zero, both primitive mantissa boundaries, compact Long limits, scales
+around 10/22 and extreme exponents. A separate seeded JVM matrix compares 25,959
+ordinary Long-coefficient/scale combinations. BigInteger subclass coefficients
+are normalized through virtual toByteArray at construction, as confirmed by a
+public-JDK probe; common tests exercise all four coefficient constructors,
+replacement encodings, invalid empty encoding and ordinary coefficient identity.
+Other decimal virtual calls and compound invalid-argument precedence remain open.

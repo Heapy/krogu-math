@@ -421,6 +421,15 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         for (i in minOf(words.size, 3) - 1 downTo 0) value = (value shl LIMB_BITS) or words[i].toLong()
         return if (sign < 0) -value else value
     }
+    // Decimal conversion needs the stored value without dispatching to a
+    // subclass's Number methods. Long.MIN_VALUE is the noncompact boundary.
+    @kotlin.jvm.JvmSynthetic
+    internal fun decimalCompactValue(): Long? {
+        if (words.size > 3 || (words.size == 3 && words[2] >= 8)) return null
+        var value = 0L
+        for (i in words.indices.reversed()) value = (value shl LIMB_BITS) or words[i].toLong()
+        return if (sign < 0) -value else value
+    }
     @kotlin.jvm.JvmName("byteValue")
     override fun toByte(): Byte = toInt().toByte()
     @kotlin.jvm.JvmName("shortValue")
