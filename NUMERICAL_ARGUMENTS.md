@@ -136,6 +136,53 @@ scales. The portable tests independently check every binary scaling power from
 neighbors with the pinned JDK. They exercise both retained parities, significand
 carry, underflow to signed zero, the subnormal/normal transition and overflow.
 
+## Decimal square-root rounding
+
+For positive ordinary input `x=c*10^-s`, let `E=floor(log10(x))` and
+`R=floor(E/2)`. Its square root has adjusted exponent R. At positive precision p,
+the result quantum is `10^-t`, where `t=p-1-R`. Scaling the radicand by
+`10^(2*t)` represents it as an exact nonnegative rational `n/d`. Computing
+`r=floor(sqrt(floor(n/d)))` gives `floor(sqrt(n/d))`: the integer square r^2
+cannot lie strictly between floor(n/d) and n/d. Thus r brackets the scaled root
+between r and r+1 without approximating the irrational value.
+
+The equality `r*r*d==n` detects an exact result. Otherwise compare `4*n` with
+`(2*r+1)^2*d`. Squaring is monotone for these nonnegative values, so this is
+exactly the comparison with the midpoint r+1/2. The rounding policy chooses
+between r and r+1; HALF_EVEN uses the parity of r at equality. A carry into
+10^p is an exact decimal power and is adjusted to p digits by the final round.
+Removing trailing zeros toward the preferred scale changes representation,
+not value. Exact/unnecessary modes instead require an integer square after
+making the coefficient scale even, followed by the requested precision check.
+
+The public [Java SE 25 sqrt contract](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html#sqrt(java.math.MathContext))
+specifies preferred scale s/2, error bounds and exact-mode failures. The pinned
+oracle additionally constrains concrete representations and errors. The 2,592
+new cases square decimal midpoints exactly, perturb the radicand on both sides,
+and vary parity, carry, precision through 129 digits, decimal exponent and input
+trailing zeros across all eight rounding modes. This argument assumes valid
+scale/intermediate sizes and ordinary methods; it does not establish the whole
+scale-overflow or subclass-dispatch behavior of sqrt.
+
+## Decimal powers and working precision
+
+The public [pow contract](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html#pow(int,java.math.MathContext))
+describes a single accumulator, repeated squaring, expanded precision based on
+the decimal digit count of the exponent, an optional reciprocal and final
+rounding. Scanning exponent bits from most to least significant, the accumulator
+represents the power for the scanned prefix. Squaring doubles that prefix;
+multiplication by the base adds the next set bit. Every step uses the expanded
+context, rather than computing an exact power and rounding only once.
+
+A seeded JVM boundary matrix compares 13,024 outcomes for positive and negative
+exponents, adjacent powers of two, all modes and precision through 65 digits.
+The pinned runtime also exposes Int overflow of the expanded precision as
+MathContext's IllegalArgumentException (Digits < 0), not a decimal-scale error.
+There are 128 portable cases at this boundary; JVM tests additionally compare
+the error message. Base one avoids enormous allocations in the successful
+near-Int.MAX_VALUE precision cases. These observations do not prove every
+intermediate-size limit, subclass call sequence or every exponent/input pair.
+
 ## Evidence and remaining scope
 
 The main portable oracle includes 1,728 signed midpoint-neighbor Float/Double

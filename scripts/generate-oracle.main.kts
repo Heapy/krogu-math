@@ -224,6 +224,32 @@ for (coefficient in listOf("0", "1", "16777216", "16777217", "9007199254740992",
         }
     }
 }
+// Observable constructor failure when pow's expanded working precision wraps.
+// Coefficient one keeps successful high-precision cases bounded in memory.
+for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {
+    for (power in listOf(0, 1, 10, 999999999)) for (mode in RoundingMode.entries) {
+        record("D", "pow", "1", power.toString(), precision, mode) { BigDecimal.ONE.pow(power, MathContext(precision, mode)) }
+    }
+}
+// Squared decimal rounding midpoints, perturbed exactly on each side. The root
+// significands exercise both tie parities and carry into the next decade.
+for (precision in listOf(1, 2, 7, 34, 65, 129)) {
+    val leading = BigInteger.TEN.pow(precision - 1)
+    val significands = listOf(leading, leading.add(BigInteger.ONE), BigInteger.TEN.pow(precision).subtract(BigInteger.ONE))
+    for (exponent in listOf(-50, 0, 50)) for (significand in significands) {
+        val midpoint = BigDecimal(significand.shiftLeft(1).add(BigInteger.ONE), 1)
+            .scaleByPowerOfTen(exponent - precision + 1)
+        val square = midpoint.multiply(midpoint)
+        val epsilon = BigDecimal(BigInteger.ONE, square.scale() + 3)
+        for (offset in -1L..1L) for (padding in listOf(0, 3)) {
+            val value = square.add(epsilon.multiply(BigDecimal.valueOf(offset)))
+            val x = value.setScale(value.scale() + padding)
+            for (mode in RoundingMode.entries) {
+                record("D", "sqrt", x.toString(), p = precision, mode = mode) { x.sqrt(MathContext(precision, mode)) }
+            }
+        }
+    }
+}
 // Midpoints, sticky tails, preferred scales and scale saturation, independent of random coverage.
 for (mode in RoundingMode.entries) {
     for (a in listOf("2.5", "3.5", "-2.5", "-3.5", "0.50000000000000000001", "-0.49999999999999999999", "9.99")) {

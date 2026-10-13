@@ -272,7 +272,9 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val magnitude = if (n < 0) -n else n
         val exponentDigits = magnitude.toString().length
         if (exponentDigits > mc.precision) throw ArithmeticException("Invalid operation")
-        val work = MathContext(checkedScale(mc.precision.toLong() + exponentDigits + 1), mc.roundingMode)
+        // The pinned JDK exposes MathContext's negative-precision failure when
+        // this Int sum wraps; this is not a decimal scale overflow.
+        val work = MathContext(mc.precision + exponentDigits + 1, mc.roundingMode)
         var result = ONE
         val bits = 32 - magnitude.countLeadingZeroBits()
         for (i in bits - 1 downTo 0) {
