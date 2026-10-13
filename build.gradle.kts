@@ -6,6 +6,20 @@ plugins {
 group = "io.heapy.krogu"
 version = "0.1.0-SNAPSHOT"
 
+// Test tooling only. Kotlin's reporter requires Mocha 11; pin its patched transitive packages.
+plugins.withType<org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin> {
+    extensions.configure<org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension> {
+        resolution("serialize-javascript", "7.1.2")
+        resolution("diff", "8.0.3")
+    }
+}
+plugins.withType<org.jetbrains.kotlin.gradle.targets.wasm.yarn.WasmYarnPlugin> {
+    extensions.configure<org.jetbrains.kotlin.gradle.targets.wasm.yarn.WasmYarnRootExtension> {
+        resolution("serialize-javascript", "7.1.2")
+        resolution("diff", "8.0.3")
+    }
+}
+
 kotlin {
     jvm()
     js { nodejs { testTask { useMocha { timeout = "120s" } } } }
