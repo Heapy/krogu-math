@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 63,886 vectors, including 8,888 added signed
+The main oracle now contains 64,486 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -397,3 +397,15 @@ methods, including subclass overrides. The Kotlin plus(BigDecimal) operator is
 JvmSynthetic so Java plus(null) resolves to the JDK-compatible MathContext
 overload instead of failing as ambiguous. The cases compare NPE classes, callback
 exception messages and traces; detailed NPE diagnostics remain unverified.
+
+Unary operations add 600 portable outcomes: 432 result/identity/type/trace cases,
+96 returned-negation callback cases across all rounding modes and null/ordinary
+contexts, and 72 null-context callback cases also exercised from Java. abs(context)
+reads virtual signum, then calls virtual negate(context) or plus(context) directly.
+negate(context) calls plus(context) on the object returned by virtual negate(),
+preserving replacement results and exceptions instead of invoking that object's
+round override. The selected matrices exposed 72 dispatch differences in each
+of these two chains. abs/negate context signatures now use MathContext? to forward
+null to callbacks before base validation. Kotlin overrides use the nullable
+parameter too. Broader returned-subclass combinations, extreme unary scales and
+detailed NPE messages remain open.

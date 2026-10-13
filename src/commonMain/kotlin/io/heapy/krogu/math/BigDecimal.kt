@@ -44,9 +44,9 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     private fun storedPrecision(): Int = coefficient.abs().toString().length
     open fun signum(): Int = coefficient.signum()
     open fun abs(): BigDecimal = if (signum() < 0) negate() else this
-    open fun abs(mc: MathContext): BigDecimal = abs().round(mc)
+    open fun abs(mc: MathContext?): BigDecimal = if (signum() < 0) negate(mc) else plus(mc)
     open fun negate(): BigDecimal = BigDecimal(coefficient.negate(), decimalScale)
-    open fun negate(mc: MathContext): BigDecimal = negate().round(mc)
+    open fun negate(mc: MathContext?): BigDecimal = negate().plus(mc)
     open fun plus(): BigDecimal = this
     open fun plus(mc: MathContext?): BigDecimal = roundValue(mc ?: throw NullPointerException())
 

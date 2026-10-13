@@ -686,6 +686,76 @@ for (text in listOf("0.00", "-123.45")) for (behavior in listOf("return", "self"
         "$result|$trace"
     }
 }
+fun unaryOutcome(block: () -> String): String = try { block() }
+    catch (e: Exception) { "!${e::class.simpleName}" + if (e is NullPointerException) "" else ":${e.message}" }
+for (text in listOf("0.00", "-123.456", "123.456", "1.2345678901234567890")) {
+    for (sign in -1..1) for (precision in listOf(0, 1, 7)) for (mode in listOf(RoundingMode.HALF_EVEN, RoundingMode.UNNECESSARY)) {
+        for (op in listOf("abs", "absContext", "negate", "negateContext", "plus", "plusContext")) {
+            record("C", "$op:$sign", text, p = precision, mode = mode) {
+                val trace = StringBuilder()
+                val value = object : BigDecimal(text) {
+                    override fun toByte(): Byte = super.toInt().toByte()
+                    override fun toShort(): Short = super.toInt().toShort()
+                    override fun signum(): Int { trace.append("sign;"); return sign }
+                    override fun abs(): BigDecimal { trace.append("abs;"); return super.abs() }
+                    override fun negate(): BigDecimal { trace.append("negate;"); return super.negate() }
+                    override fun negate(mc: MathContext?): BigDecimal { trace.append("negateContext;"); return super.negate(mc) }
+                    override fun plus(): BigDecimal { trace.append("plus;"); return super.plus() }
+                    override fun plus(mc: MathContext?): BigDecimal { trace.append("plusContext;"); return super.plus(mc) }
+                    override fun round(mc: MathContext?): BigDecimal { trace.append("round;"); return super.round(mc) }
+                }
+                val result = unaryOutcome {
+                    val context = MathContext(precision, mode)
+                    val r = when (op) { "abs" -> value.abs(); "absContext" -> value.abs(context); "negate" -> value.negate(); "negateContext" -> value.negate(context); "plus" -> value.plus(); else -> value.plus(context) }
+                    "${BigDecimal(r.unscaledValue(), r.scale())}|${r === value}|${r.javaClass == BigDecimal::class.java}"
+                }
+                "$result|$trace"
+            }
+        }
+    }
+}
+for (behavior in listOf("super", "replace", "throw")) for (precision in listOf(-1, 0, 1, 7)) for (mode in RoundingMode.entries) {
+    record("C", "returnedNegate:$behavior", "1", "12.34", precision, mode) {
+        val trace = StringBuilder()
+        val returned = object : BigDecimal("12.34") {
+            override fun toByte(): Byte = super.toInt().toByte()
+            override fun toShort(): Short = super.toInt().toShort()
+            override fun plus(mc: MathContext?): BigDecimal {
+                trace.append("plus;")
+                return when (behavior) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
+            }
+            override fun round(mc: MathContext?): BigDecimal { trace.append("round;"); return BigDecimal("99") }
+        }
+        val value = object : BigDecimal("1") {
+            override fun toByte(): Byte = super.toInt().toByte()
+            override fun toShort(): Short = super.toInt().toShort()
+            override fun negate(): BigDecimal = returned
+        }
+        val result = unaryOutcome { value.negate(if (precision < 0) null else MathContext(precision, mode)).toString() }
+        "$result|$trace"
+    }
+}
+for (text in listOf("0.00", "1", "-1")) for (sign in -1..1) for (behavior in listOf("return", "self", "throw", "super")) for (op in listOf("nullAbs", "nullNegate")) {
+    record("C", "$op:$behavior", text, sign.toString()) {
+        val trace = StringBuilder()
+        val value = object : BigDecimal(text) {
+            override fun toByte(): Byte = super.toInt().toByte()
+            override fun toShort(): Short = super.toInt().toShort()
+            override fun signum(): Int { trace.append("sign;"); return sign }
+            override fun negate(): BigDecimal { trace.append("negate;"); return super.negate() }
+            override fun plus(mc: MathContext?): BigDecimal {
+                trace.append("plus:").append(mc == null).append(';')
+                return when (behavior) { "return" -> BigDecimal("42.00"); "self" -> this; "throw" -> throw IllegalStateException("context callback"); else -> super.plus(mc) }
+            }
+            override fun negate(mc: MathContext?): BigDecimal {
+                trace.append("negateContext:").append(mc == null).append(';')
+                return when (behavior) { "return" -> BigDecimal("42.00"); "self" -> this; "throw" -> throw IllegalStateException("context callback"); else -> super.negate(mc) }
+            }
+        }
+        val result = unaryOutcome { (if (op == "nullAbs") value.abs(null) else value.negate(null)).toString() }
+        "$result|$trace"
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {
