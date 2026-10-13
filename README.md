@@ -73,7 +73,7 @@ floating-point bits and exception **types** on every test target. JVM tests add
 seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
-An additional 139,239 structured scale-boundary cases compare full expected
+An additional 207,239 structured scale-boundary cases compare full expected
 results on every target, including errors at both signed scale limits.
 Java sources are compiled and executed to check constructors, static factories,
 subclassing, method hiding and virtual Number dispatch. Fixtures are

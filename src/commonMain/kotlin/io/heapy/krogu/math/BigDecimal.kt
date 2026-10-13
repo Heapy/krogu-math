@@ -69,7 +69,7 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
     }
     private fun checkAdditionAlignment(other: BigDecimal, mc: MathContext) {
         if (decimalScale == other.decimalScale) return
-        val dominant = if (adjustedExponent() >= other.adjustedExponent()) this else other
+        val dominant = if (decimalScale <= other.decimalScale) this else other
         val remote = if (dominant === this) other else this
         val leadingPosition = remote.decimalScale.toLong() - remote.precision() + 1
         val roundingScale = dominant.decimalScale.toLong() - dominant.precision() + mc.precision
@@ -88,7 +88,9 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
             val sticky = if (qr[1].signum() == 0) qr[0] else qr[0].multiply(BigInteger.TEN).add(BigInteger.valueOf(signum().toLong()))
             return if (qr[1].signum() == 0) BigDecimal(sticky, checkedScale(scale)) else BigDecimal(sticky, checkedScale(scale + 1))
         }
-        return BigDecimal(BigInteger.valueOf(signum().toLong()), checkedScale(scale))
+        // This tail is strictly less than one unit at 'scale'. Replacing it by
+        // a whole unit can carry through 999... or cancel a retained +1 digit.
+        return BigDecimal(BigInteger.valueOf(signum().toLong()), checkedScale(scale + 1))
     }
     open fun subtract(subtrahend: BigDecimal): BigDecimal = add(subtrahend.negate())
     open fun subtract(subtrahend: BigDecimal, mc: MathContext): BigDecimal = add(subtrahend.negate(), mc)

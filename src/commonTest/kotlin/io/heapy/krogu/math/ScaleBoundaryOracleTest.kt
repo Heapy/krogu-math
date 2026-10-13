@@ -6,15 +6,24 @@ import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class ScaleBoundaryOracleTest {
-    @Test fun everyStructuredScaleBoundaryOutcomeMatchesJdk25() {
-        val expected = scaleBoundaryExpected().iterator()
-        var count = 0
+    private class OracleCursor(offset: Int) {
+        private val expected = scaleBoundaryExpected().drop(offset).iterator()
+        private var count = offset
         fun verify(label: String, action: () -> Any?) {
             assertTrue(expected.hasNext(), "Oracle ended before $label")
             val actual = try { action().toString() } catch (e: Exception) { "!${e::class.simpleName}" }
             assertEquals(expected.next(), actual, "$count: $label")
             count++
         }
+        fun finish(end: Int, requireEnd: Boolean = false) {
+            assertEquals(end, count)
+            if (requireEnd) assertFalse(expected.hasNext(), "Unconsumed oracle outcomes")
+        }
+    }
+
+    @Test fun compactCoefficientsAndScaleEndpoints() {
+        val cursor = OracleCursor(0)
+        val verify = cursor::verify
         val scales = listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, Int.MIN_VALUE + 5, -1, 0, 1, Int.MAX_VALUE - 5, Int.MAX_VALUE - 1, Int.MAX_VALUE)
         val inputs = listOf(-1000L, -100, -3, -1, 0, 1, 3, 100, 1000).flatMap { n -> scales.map { BigDecimal.valueOf(n, it) } }
         for (a in inputs) {
@@ -37,7 +46,53 @@ class ScaleBoundaryOracleTest {
                 verify("pow $a,2,$context") { a.pow(2, context) }
             }
         }
-        assertEquals(139239, count)
-        assertFalse(expected.hasNext(), "Unconsumed oracle outcomes")
+        cursor.finish(139239)
+    }
+
+    @Test fun wideCoefficientsBatch00() = wideBatch(0)
+    @Test fun wideCoefficientsBatch01() = wideBatch(1)
+    @Test fun wideCoefficientsBatch02() = wideBatch(2)
+    @Test fun wideCoefficientsBatch03() = wideBatch(3)
+    @Test fun wideCoefficientsBatch04() = wideBatch(4)
+    @Test fun wideCoefficientsBatch05() = wideBatch(5)
+    @Test fun wideCoefficientsBatch06() = wideBatch(6)
+    @Test fun wideCoefficientsBatch07() = wideBatch(7)
+    @Test fun wideCoefficientsBatch08() = wideBatch(8)
+    @Test fun wideCoefficientsBatch09() = wideBatch(9)
+
+    private fun wideBatch(batch: Int) {
+        val cursor = OracleCursor(139239 + batch * 6800)
+        val verify = cursor::verify
+        val random = kotlin.random.Random(20261015)
+        val wideScales = listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, Int.MIN_VALUE + 2, Int.MIN_VALUE + 16,
+            Int.MIN_VALUE + 32, Int.MIN_VALUE / 2, -10, 0, 10, Int.MAX_VALUE / 2,
+            Int.MAX_VALUE - 32, Int.MAX_VALUE - 16, Int.MAX_VALUE - 2, Int.MAX_VALUE - 1, Int.MAX_VALUE)
+        fun coefficient(): BigInteger {
+            val value = if (random.nextBoolean()) {
+                BigInteger.TEN.pow(listOf(1, 16, 17, 18, 19, 31, 32, 63, 64, 100)[random.nextInt(10)])
+                    .add(BigInteger.valueOf(random.nextLong(-1, 2)))
+            } else BigInteger(random.nextBytes(listOf(1, 4, 8, 16, 32, 64)[random.nextInt(6)]))
+            return if (random.nextBoolean()) value.negate() else value
+        }
+        repeat((batch + 1) * 200) { index ->
+            val a = BigDecimal(coefficient(), wideScales[random.nextInt(wideScales.size)])
+            val b = BigDecimal(coefficient(), wideScales[random.nextInt(wideScales.size)])
+            val selected = index / 200 == batch
+            if (selected) {
+                verify("parse $a") { BigDecimal(a.toString()) }
+                verify("exactDivide $a,$b") { a.divide(b) }
+            }
+            for (p in listOf(1, 2, 7, 17, 18, 19, 34, 120)) {
+                // Consume RNG for earlier batches too, but execute each numerical case once.
+                val context = MathContext(p, RoundingMode.entries[random.nextInt(8)])
+                if (selected) {
+                    verify("add $a,$b,$context") { a.add(b, context) }
+                    verify("divide $a,$b,$context") { a.divide(b, context) }
+                    verify("multiply $a,$b,$context") { a.multiply(b, context) }
+                    verify("sqrt $a,$context") { a.sqrt(context) }
+                }
+            }
+        }
+        cursor.finish(139239 + (batch + 1) * 6800, requireEnd = batch == 9)
     }
 }
