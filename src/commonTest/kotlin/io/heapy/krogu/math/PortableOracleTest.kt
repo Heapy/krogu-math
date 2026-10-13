@@ -16,6 +16,27 @@ class PortableOracleTest {
     private fun evaluate(v: Array<String>): Any {
         val op = v[1]
         val p = v[4].toInt()
+        if (v[0] == "L") {
+            if (op == "round" || op == "constructor") return try {
+                val context = MathContext(p, RoundingMode.valueOf(v[5]))
+                (if (op == "constructor") BigDecimal(BigInteger(v[2]), v[3].toInt(), context)
+                    else BigDecimal(BigInteger(v[2]), v[3].toInt()).round(context)).toString()
+            } catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+            val sign = op.substringAfter(':').toInt()
+            val trace = StringBuilder()
+            val value = object : BigDecimal(BigInteger(v[2].substringBefore('@')), v[2].substringAfter('@').toInt()) {
+                override fun signum(): Int { trace.append("sign;"); return sign }
+                override fun precision(): Int { trace.append("precision;"); return 1 }
+                override fun multiply(value: BigDecimal): BigDecimal { trace.append("exact;"); return super.multiply(value) }
+                override fun multiply(value: BigDecimal, mc: MathContext): BigDecimal { trace.append("context;"); return super.multiply(value, mc) }
+            }
+            val other = BigDecimal(BigInteger(v[3].substringBefore('@')), v[3].substringAfter('@').toInt())
+            val result = try {
+                val product = if (p < 0) value.multiply(other) else value.multiply(other, MathContext(p, RoundingMode.valueOf(v[5])))
+                "$product|${product === value}|${product::class == BigDecimal::class}"
+            } catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+            return "$result|$trace"
+        }
         if (v[0] == "V") {
             val operation = op.substringBefore(':')
             val distance = op.substringAfter(':').toInt()

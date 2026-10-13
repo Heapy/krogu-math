@@ -105,9 +105,13 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     }
     open fun subtract(subtrahend: BigDecimal): BigDecimal = add(subtrahend.negate())
     open fun subtract(subtrahend: BigDecimal, mc: MathContext): BigDecimal = add(subtrahend.negate(), mc)
-    open fun multiply(multiplicand: BigDecimal): BigDecimal = BigDecimal(
-        coefficient.multiply(multiplicand.coefficient), scaleForValue(decimalScale.toLong() + multiplicand.decimalScale, signum() == 0))
-    open fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal = multiply(multiplicand).round(mc)
+    open fun multiply(multiplicand: BigDecimal): BigDecimal = multiplyValue(multiplicand)
+    private fun multiplyValue(multiplicand: BigDecimal): BigDecimal {
+        val scale = scaleForValue(decimalScale.toLong() + multiplicand.decimalScale, coefficient.signum() == 0)
+        return BigDecimal(coefficient.multiply(multiplicand.coefficient), scale)
+    }
+    open fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal =
+        if (mc.precision == 0) multiply(multiplicand) else multiplyValue(multiplicand).round(mc)
 
     open fun divide(divisor: BigDecimal): BigDecimal {
         checkDivisionByZero(divisor)
@@ -275,8 +279,9 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         var result = this
         while (result.precision() > mc.precision) {
             val drop = result.precision() - mc.precision
+            val scale = checkedRoundingScale(result.decimalScale.toLong() - drop)
             result = BigDecimal(roundedDivide(result.coefficient, tenPow(drop.toLong()), mc.roundingMode),
-                checkedScale(result.decimalScale.toLong() - drop))
+                scale)
         }
         return result
     }
@@ -644,6 +649,12 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         private fun checkedScale(scale: Long): Int {
             if (scale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong()) throw ArithmeticException(if (scale < 0) "Overflow" else "Underflow")
             return scale.toInt()
+        }
+        private fun checkedRoundingScale(scale: Long): Int {
+            // The pinned rounding diagnostic follows the narrowed Int's sign.
+            val narrowed = scale.toInt()
+            if (narrowed.toLong() != scale) throw ArithmeticException(if (narrowed > 0) "Underflow" else "Overflow")
+            return narrowed
         }
         private fun saturatedScale(scale: Long): Int = scale.coerceIn(Int.MIN_VALUE.toLong(), Int.MAX_VALUE.toLong()).toInt()
         private fun scaleForValue(scale: Long, zero: Boolean): Int = if (zero) saturatedScale(scale) else checkedScale(scale)

@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 55,398 vectors, including 8,888 added signed
+The main oracle now contains 61,950 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -362,3 +362,18 @@ Selected negative result scales are either within four places of zero or beyond
 the supported power-of-ten range, so the corpus avoids large successful power
 allocations. Wider distances, caller-overridden result inspectors and practical
 large-input allocation behavior remain open.
+
+Multiplication adds 5,400 portable cases with replacement source getters, signed/
+zero/inflated coefficients, both scale endpoints, direct and context overloads,
+and HALF_EVEN/UNNECESSARY rounding. Scale validation checks the stored left
+coefficient. Finite contexts use the private multiplication path; only unlimited
+contexts delegate through public multiply. Exact errors, call traces, source
+identity and result base type are included. A separate 1,152-case matrix compares
+round and the BigInteger/scale/context constructor across all rounding modes,
+carry-producing coefficients and scale neighbors. Rounding validates the reduced
+scale before coefficient division and uses the sign of its narrowed Int for the
+pinned overflow diagnostic, fixing 108 multiplication outcomes where Underflow
+was replaced by Overflow or Rounding necessary. Public round getter replacements,
+other constructor overloads, right-operand subclasses and larger products remain
+open. Products here have at most 22 digits, keeping precision-reduction powers
+small even at extreme scales.

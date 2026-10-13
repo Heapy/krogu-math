@@ -606,6 +606,42 @@ for (coefficient in listOf("0", "1", "-1", "123", "-123", "9223372036854775808")
         }
     }
 }
+for (left in listOf("0", "-1", "12345678901234567890")) for (right in listOf("0", "1", "123")) {
+    for (leftScale in listOf(Int.MIN_VALUE, -2, 0, 2, Int.MAX_VALUE)) for (rightScale in listOf(Int.MIN_VALUE, -2, 0, 2, Int.MAX_VALUE)) {
+        for (sign in -1..1) for (precision in listOf(-1, 0, 1, 7)) for (mode in listOf(RoundingMode.HALF_EVEN, RoundingMode.UNNECESSARY)) {
+            record("L", "multiply:$sign", "$left@$leftScale", "$right@$rightScale", precision, mode) {
+                val trace = StringBuilder()
+                val value = object : BigDecimal(BigInteger(left), leftScale) {
+                    override fun toByte(): Byte = super.toInt().toByte()
+                    override fun toShort(): Short = super.toInt().toShort()
+                    override fun signum(): Int { trace.append("sign;"); return sign }
+                    override fun precision(): Int { trace.append("precision;"); return 1 }
+                    override fun multiply(value: BigDecimal): BigDecimal { trace.append("exact;"); return super.multiply(value) }
+                    override fun multiply(value: BigDecimal, mc: MathContext): BigDecimal { trace.append("context;"); return super.multiply(value, mc) }
+                }
+                val other = BigDecimal(BigInteger(right), rightScale)
+                val result = try {
+                    val product = if (precision < 0) value.multiply(other) else value.multiply(other, MathContext(precision, mode))
+                    "$product|${product === value}|${product.javaClass == BigDecimal::class.java}"
+                } catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+                "$result|$trace"
+            }
+        }
+    }
+}
+for (coefficient in listOf("0", "123", "999")) {
+    for (scale in listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, Int.MIN_VALUE + 2, Int.MIN_VALUE + 3, 0, Int.MAX_VALUE)) {
+        for (precision in listOf(0, 1, 2, 7)) for (mode in RoundingMode.entries) for (op in listOf("round", "constructor")) {
+            record("L", op, coefficient, scale.toString(), precision, mode) {
+                try {
+                    val context = MathContext(precision, mode)
+                    (if (op == "constructor") BigDecimal(BigInteger(coefficient), scale, context)
+                        else BigDecimal(BigInteger(coefficient), scale).round(context)).toString()
+                } catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+            }
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {
