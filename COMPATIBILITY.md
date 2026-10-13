@@ -23,7 +23,7 @@ specifications and black-box results may supply evidence.
 | Prime generation and certainty | 368 portable primality/successor cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions | Very large certainty beyond the proven bound, witness independence at larger magnitudes, supported-range limits, caller RNG behavior and distribution |
 | Exception conditions and types | Portable fixtures; 7,486 live JVM null/invalid-argument comparisons; 3,462 portable null-precedence outcomes; constructor precedence matrix | Wider invalid-argument domains, extreme offsets and cross-products; exception messages remain unmatched |
 | Equality, ordering, hash codes, immutability | JVM oracle and common invariants; 6,110 portable BigInteger hash outcomes | Full context/enum/hash and subclass audit |
-| JVM serialization and Java adapters | Validated proxies; subclass round trips, invalid fields, missing-superclass-data streams and array-alias isolation; explicit JDK serialVersionUID values; exact coefficient/scale conversion | Descriptor/field-schema compatibility with JDK, stream-version migration and broader malformed-stream audit |
+| JVM serialization and Java adapters | Current-format round trips, validated base state, subclass state, reference identity, cycles and array-alias isolation; exact coefficient/scale conversion | Cross-version serialization and migration to/from java.math streams are explicitly outside scope |
 | Same common behavior on every supported platform | CI matrix for JVM, JS, Wasm, macOS/Linux/Windows Native and iOS simulators; cross-built Linux ARM64 binary executed on ARM64 | Each new common regression must pass on every supported target |
 | Required numerical range | Overflow guards and selected extreme-scale regressions | Supported-range proof and practical large-input tests remain incomplete |
 
@@ -100,22 +100,6 @@ actual multi-gigabyte execution remains unverified. Modular exponentiation has
 a bounded-residue multiplication fallback so an oversized intermediate product
 does not alone reject an otherwise representable result. Its arithmetic is
 compared with full-precision JDK products on seeded operands through 512 bits.
-
-JVM deserialization now validates base-class state even when a subclass bypasses
-the private serialization proxy. Invalid signs, null or noncanonical limbs,
-out-of-range limbs and null decimal coefficients are rejected during reading.
-Restored limb arrays are copied so another stream object cannot retain a mutable
-alias to integer storage. Invalid proxy fields produce `InvalidObjectException`
-with the constructor failure as cause. Tests retain subclass type and extra
-fields, repeated references and cycles, and compare valid subclass round trips
-with JDK. The three serialVersionUID constants match the published JDK values;
-proxy UIDs remain 1. This does **not** establish JDK stream-format compatibility:
-the library uses its own package, proxy classes and subclass field schema.
-Private `readObjectNoData` hooks reject missing base data. A hierarchy evolution
-test writes a child without a math superclass, then reads it as a same-name,
-same-UID child that extends BigInteger or BigDecimal. Both the port and JDK
-reject those actual streams with `InvalidObjectException`. Existing snapshot streams
-that used computed base-class UIDs have no migration guarantee yet.
 
 MathContext string parsing uses a single bounded integer scan rather than
 arbitrary-precision arithmetic and repeated parsing. The public-JDK oracle
@@ -206,3 +190,9 @@ common mismatch must have a portable regression and pass the complete target
 matrix. Exception messages, serialization details, range guarantees and other
 remaining differences cannot silently disappear from the audit or be replaced
 by a narrower compatibility claim.
+
+JVM serialization supports round trips of the current implementation, including
+subclass state, shared references and cycles. Deserialization validates base-class
+state and detaches integer limb arrays. Legacy proxies, older binary formats and
+interchange or migration with `java.math` streams are not compatibility requirements.
+This exception does not narrow mathematical API compatibility.

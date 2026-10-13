@@ -11,7 +11,6 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
     Number(), Comparable<BigDecimal>, MathSerializable {
 
     private constructor(value: BigDecimal) : this(value.coefficient, value.decimalScale)
-    private fun writeReplace(): Any = serializationProxy(this)
     private fun readObject(stream: MathObjectInputStream) {
         restoreSerializedFields(stream)
         val restored: BigInteger? = coefficient

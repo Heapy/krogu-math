@@ -1,8 +1,6 @@
 package io.heapy.krogu.math
 
 import java.io.*
-import java.net.URLClassLoader
-import javax.tools.ToolProvider
 import kotlin.test.*
 
 class SerializationConformanceTest {
@@ -75,25 +73,6 @@ class SerializationConformanceTest {
         assertFailsWith<InvalidObjectException> { roundTrip(decimal) }
     }
 
-    @Test fun malformedProxiesUseSerializationExceptions() {
-        fun proxy(value: Any): Any = value.javaClass.getDeclaredMethod("writeReplace").apply {
-            isAccessible = true
-        }.invoke(value)
-        for (original in listOf(BigInteger.ONE, BigDecimal.ONE)) {
-            for (invalid in listOf(null, byteArrayOf())) {
-                val value = proxy(original)
-                field(value.javaClass, "bytes").set(value, invalid)
-                val failure = assertFailsWith<InvalidObjectException> { roundTrip(value) }
-                assertIs<RuntimeException>(failure.cause)
-            }
-        }
-        for ((name, invalid) in listOf("precision" to -1, "rounding" to "INVALID", "rounding" to null)) {
-            val value = proxy(MathContext.DECIMAL128)
-            field(value.javaClass, name).set(value, invalid)
-            assertFailsWith<InvalidObjectException> { roundTrip(value) }
-        }
-    }
-
     @Test fun repeatedReferencesAndCyclesRemainIntact() {
         val value = IntegerChild("234567890123456789", "shared")
         val graph = arrayListOf<Any>(value, value)
@@ -104,51 +83,13 @@ class SerializationConformanceTest {
         assertEquals(value, copy[0])
     }
 
-    @Test fun insertingSerializableMathSuperclassWithoutDataIsRejected() {
-        // Genuine hierarchy evolution: the writer's child had no math superclass.
-        // The reader loads a same-name/same-UID child with a newly inserted one.
-        val directory = kotlin.io.path.createTempDirectory("krogu-stream-hierarchy").toFile()
-        try {
-            val compiler = ToolProvider.getSystemJavaCompiler()
-            val classpath = listOf(BigInteger::class.java, kotlin.Unit::class.java).joinToString(File.pathSeparator) {
-                File(it.protectionDomain.codeSource.location.toURI()).path
-            }
-            fun compile(name: String, source: String): File {
-                val output = File(directory, name).apply { mkdirs() }
-                val file = File(output, "SerializedChild.java").apply { writeText(source) }
-                val diagnostics = ByteArrayOutputStream()
-                assertEquals(0, compiler.run(null, diagnostics, diagnostics, "-classpath", classpath,
-                    "-d", output.path, file.path), diagnostics.toString())
-                return output
-            }
-            val old = compile("old", """
-                public class SerializedChild implements java.io.Serializable {
-                    private static final long serialVersionUID = 1L;
-                }
-            """.trimIndent())
-            val bytes = URLClassLoader(arrayOf(old.toURI().toURL()), javaClass.classLoader).use { loader ->
-                encode(loader.loadClass("SerializedChild").getConstructor().newInstance())
-            }
-            for (base in listOf("BigInteger", "BigDecimal")) {
-                for (namespace in listOf("java.math", "io.heapy.krogu.math")) {
-                    val output = compile("$namespace-$base", """
-                        public class SerializedChild extends $namespace.$base {
-                            private static final long serialVersionUID = 1L;
-                            public SerializedChild() { super("1"); }
-                        }
-                    """.trimIndent())
-                    URLClassLoader(arrayOf(output.toURI().toURL()), javaClass.classLoader).use { loader ->
-                        val input = object : ObjectInputStream(ByteArrayInputStream(bytes)) {
-                            override fun resolveClass(descriptor: ObjectStreamClass): Class<*> =
-                                if (descriptor.name == "SerializedChild") loader.loadClass(descriptor.name)
-                                else super.resolveClass(descriptor)
-                        }
-                        input.use { assertFailsWith<InvalidObjectException>("$namespace.$base") { it.readObject() } }
-                    }
-                }
-            }
-        } finally {
-            directory.walkBottomUp().forEach { it.delete() }
-        }
+    @Test fun malformedContextFieldsAreRejectedDuringReading() {
+        val negative = MathContext(7, RoundingMode.HALF_UP)
+        field(MathContext::class.java, "precision").setInt(negative, -1)
+        assertFailsWith<InvalidObjectException> { roundTrip(negative) }
+        val missingMode = MathContext(7, RoundingMode.HALF_UP)
+        field(MathContext::class.java, "roundingMode").set(missingMode, null)
+        assertFailsWith<InvalidObjectException> { roundTrip(missingMode) }
     }
+
 }

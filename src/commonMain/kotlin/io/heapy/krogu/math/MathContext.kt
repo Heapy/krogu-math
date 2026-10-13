@@ -5,7 +5,6 @@ package io.heapy.krogu.math
 class MathContext(open val precision: Int, roundingMode: RoundingMode?) : MathSerializable {
     init { require(precision >= 0) { "Digits < 0" } }
     open val roundingMode: RoundingMode = roundingMode ?: throw NullPointerException()
-    private fun writeReplace(): Any = serializationProxy(this)
     private fun readObject(stream: MathObjectInputStream) {
         restoreSerializedFields(stream)
         val restored: RoundingMode? = roundingMode

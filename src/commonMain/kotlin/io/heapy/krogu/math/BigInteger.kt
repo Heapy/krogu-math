@@ -13,7 +13,6 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     Number(), Comparable<BigInteger>, MathSerializable {
 
     private constructor(value: BigInteger) : this(value.sign, value.words)
-    private fun writeReplace(): Any = serializationProxy(this)
     private fun readObject(stream: MathObjectInputStream) {
         restoreSerializedFields(stream)
         // Stream fields are untrusted even when their Kotlin declarations are non-null.

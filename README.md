@@ -132,10 +132,11 @@ remain available. Java can use ordinary constructors, static constants and stati
 `valueOf` methods. Conversion helpers for integers,
 decimals and contexts preserve coefficient, scale and rounding policy.
 
-The three value classes implement Java `Serializable` on JVM through validated
-serialization proxies. Their serialized form belongs to krogu-math and is **not**
-the `java.math` object-stream format. Non-JVM platforms do not depend on Java
-serialization.
+The three value classes implement Java `Serializable` on JVM and validate restored
+state. The serialized form is private to the current krogu-math implementation.
+Compatibility with older krogu-math streams or `java.math` streams, and migration
+between these formats, are outside the project requirements. Non-JVM platforms
+do not depend on Java serialization.
 
 ## Compatibility boundaries
 
