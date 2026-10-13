@@ -22,6 +22,7 @@ jobs:
       - run: kotlinr scripts/generate-null-oracle.main.kts --check
       - run: kotlinr scripts/generate-character-oracle.main.kts --check
       - run: kotlinr scripts/generate-prime-oracle.main.kts --check
+      - run: kotlinr scripts/generate-context-oracle.main.kts --check
   platforms:
     strategy:
       fail-fast: false

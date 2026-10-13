@@ -78,6 +78,8 @@ results on every target, including errors at both signed scale limits.
 Null/error precedence adds 7,486 live JVM comparisons and 3,462 portable outcomes.
 Character tests cover every BMP character in bases 2–36, both single-character
 string constructors, and all supplementary digit characters classified by JDK 25.
+MathContext grammar tests add 196,608 BMP-position outcomes, 1,115 compound
+cases with exact error messages, and precision tokens up to a million characters.
 Primality tests include maximum certainty in a proven deterministic domain,
 strong pseudoprimes and the strict domain boundary.
 Java sources are compiled and executed to check constructors, static factories,
@@ -92,6 +94,7 @@ kotlinr scripts/generate-scale-oracle.main.kts --check
 kotlinr scripts/generate-null-oracle.main.kts --check
 kotlinr scripts/generate-character-oracle.main.kts --check
 kotlinr scripts/generate-prime-oracle.main.kts --check
+kotlinr scripts/generate-context-oracle.main.kts --check
 ```
 
 The first script invocation compiles the script; later runs use the compiler cache.

@@ -36,6 +36,7 @@ kotlinr scripts/generate-scale-oracle.main.kts --check
 kotlinr scripts/generate-null-oracle.main.kts --check
 kotlinr scripts/generate-character-oracle.main.kts --check
 kotlinr scripts/generate-prime-oracle.main.kts --check
+kotlinr scripts/generate-context-oracle.main.kts --check
 ```
 
 Use the appropriate Native host test tasks for other OS/architectures. CI
@@ -114,6 +115,17 @@ test writes a child without a math superclass, then reads it as a same-name,
 same-UID child that extends BigInteger or BigDecimal. Both the port and JDK
 reject those actual streams with `InvalidObjectException`. Existing snapshot streams
 that used computed base-class UIDs have no migration guarantee yet.
+
+MathContext string parsing uses a single bounded integer scan rather than
+arbitrary-precision arithmetic and repeated parsing. The public-JDK oracle
+checks every BMP code unit in single-digit, compound-digit and separator
+positions (196,608 outcomes), 1,115 compound grammar/error-precedence cases,
+and four precision tokens through one million characters. Common tests compare
+the exact exception message and absence of a cause as well as successful
+precision and rounding mode. Overflow/invalid syntax produces `bad string
+format`; negative precision is rejected with `Digits < 0` only after a valid
+rounding mode has been parsed. This closes those MathContext message mismatches;
+the broader exception-message audit remains open.
 
 ## Completion gate
 

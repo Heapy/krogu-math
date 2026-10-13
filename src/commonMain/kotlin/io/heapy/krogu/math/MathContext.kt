@@ -13,7 +13,8 @@ class MathContext(open val precision: Int, roundingMode: RoundingMode?) : MathSe
     }
     private fun readObjectNoData(): Unit = invalidSerializedState("Missing MathContext data")
     constructor(setPrecision: Int) : this(setPrecision, RoundingMode.HALF_UP)
-    constructor(value: String) : this(parse(value).first, parse(value).second)
+    private constructor(parsed: Pair<Int, RoundingMode>) : this(parsed.first, parsed.second)
+    constructor(value: String) : this(parse(value))
 
     // Common callers can use both Kotlin properties and the JDK method names.
     // JVM already exposes the property accessors; hide the duplicate aliases from Java.
@@ -35,12 +36,26 @@ class MathContext(open val precision: Int, roundingMode: RoundingMode?) : MathSe
         @kotlin.jvm.JvmField val DECIMAL64 = MathContext(16, RoundingMode.HALF_EVEN)
         @kotlin.jvm.JvmField val DECIMAL128 = MathContext(34, RoundingMode.HALF_EVEN)
         private fun parse(value: String): Pair<Int, RoundingMode> {
-            val match = Regex("precision=([^ ]+) roundingMode=([A-Z_]+)").matchEntire(value)
-                ?: throw IllegalArgumentException("Bad string format")
-            val precision = try { BigInteger(match.groupValues[1]).intValueExact() }
-                catch (e: NumberFormatException) { throw IllegalArgumentException("Bad precision", e) }
-                catch (e: ArithmeticException) { throw IllegalArgumentException("Bad precision", e) }
-            return precision to RoundingMode.valueOf(match.groupValues[2])
+            fun badFormat(): Nothing = throw IllegalArgumentException("bad string format")
+            val separator = value.indexOf(' ')
+            if (!value.startsWith("precision=") || separator <= 10 ||
+                !value.startsWith("roundingMode=", separator + 1)) badFormat()
+            var index = 10
+            val negative = value[index] == '-'
+            if (negative || value[index] == '+') index++
+            if (index == separator) badFormat()
+            val limit = if (negative) 2147483648L else 2147483647L
+            var magnitude = 0L
+            while (index < separator) {
+                val digit = value[index++].digitToIntOrNull(10) ?: badFormat()
+                magnitude = magnitude * 10 + digit
+                if (magnitude > limit) badFormat()
+            }
+            val rounding = try { RoundingMode.valueOf(value.substring(separator + 14)) }
+                catch (_: IllegalArgumentException) { badFormat() }
+            val precision = (if (negative) -magnitude else magnitude).toInt()
+            // Validate negative precision only after the entire grammar and mode.
+            return precision to rounding
         }
     }
 }
