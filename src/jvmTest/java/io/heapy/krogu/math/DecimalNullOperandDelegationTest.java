@@ -6,11 +6,11 @@ import static org.junit.Assert.assertEquals;
 
 public class DecimalNullOperandDelegationTest {
     private static String outcome(Callable<?> action) {
-        try { return action.call().toString(); }
+        try { return String.valueOf(action.call()); }
         catch (Exception e) { return "!" + e.getClass().getSimpleName() + (e instanceof IllegalStateException ? ":" + e.getMessage() : ""); }
     }
     @Test public void binaryDelegationAndValidationMatchJdk() {
-        for (String text : new String[] {"0.00", "1", "-1"}) for (String behavior : new String[] {"return", "self", "throw", "super"}) {
+        for (String text : new String[] {"0.00", "1", "-1"}) for (String behavior : new String[] {"return", "self", "null", "throw", "super"}) {
             for (int precision : new int[] {-2, -1, 0, 1}) for (boolean nullOperand : new boolean[] {false, true}) for (String op : new String[] {"add", "subtract", "multiply"}) {
                 StringBuilder et = new StringBuilder(), at = new StringBuilder();
                 java.math.BigDecimal expected = new java.math.BigDecimal(text) {

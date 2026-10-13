@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 public class DecimalNullRoundSubclassTest {
     private static String outcome(Callable<?> action) {
-        try { return action.call().toString(); }
+        try { return String.valueOf(action.call()); }
         catch (Exception error) {
             return "!" + error.getClass().getSimpleName()
                 + (error instanceof IllegalStateException ? ":" + error.getMessage() : "");
@@ -15,7 +15,7 @@ public class DecimalNullRoundSubclassTest {
 
     @Test public void nullContextReachesOverriddenPlusBeforeValidation() {
         for (String text : new String[] {"0.00", "-123.45"}) {
-            for (String behavior : new String[] {"return", "self", "throw", "super"}) for (boolean round : new boolean[] {false, true}) {
+            for (String behavior : new String[] {"return", "self", "null", "throw", "super"}) for (boolean round : new boolean[] {false, true}) {
                 StringBuilder expectedTrace = new StringBuilder();
                 StringBuilder actualTrace = new StringBuilder();
                 java.math.BigDecimal expected = new java.math.BigDecimal(text) {
@@ -23,6 +23,7 @@ public class DecimalNullRoundSubclassTest {
                         expectedTrace.append("plus:").append(context == null).append(';');
                         if (behavior.equals("return")) return new java.math.BigDecimal("42.00");
                         if (behavior.equals("self")) return this;
+                        if (behavior.equals("null")) return null;
                         if (behavior.equals("throw")) throw new IllegalStateException("plus callback");
                         return super.plus(context);
                     }
@@ -32,6 +33,7 @@ public class DecimalNullRoundSubclassTest {
                         actualTrace.append("plus:").append(context == null).append(';');
                         if (behavior.equals("return")) return new BigDecimal("42.00");
                         if (behavior.equals("self")) return this;
+                        if (behavior.equals("null")) return null;
                         if (behavior.equals("throw")) throw new IllegalStateException("plus callback");
                         return super.plus(context);
                     }

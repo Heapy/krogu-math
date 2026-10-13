@@ -443,5 +443,13 @@ controls reject without invoking the exact callback. Binary operand and context
 parameters now use nullable Kotlin types; subclass overrides use them too.
 Base numeric behavior, callback replacements, callback exception messages and
 traces are compared. NPE classes are checked separately from their still-open
-detailed diagnostic audit. More callback compositions and returned-null results
-remain open.
+detailed diagnostic audit. More callback compositions remain open.
+
+Java returned-null callback checks add 94 cases to the three null-context/operand
+matrices (470 JVM cases total). The observer uses String.valueOf so a returned
+null is distinguished from an NPE thrown by the library. The added domain covers
+58 forwarded null results and 36 controls where null/finite contexts prevent
+exact-callback delegation. Round/plus, abs/negate and unlimited binary overloads
+match the pinned JDK in these Java-only interop cases without another arithmetic
+change. Other runtime interop surfaces, chained returned-null callbacks and
+detailed NPE diagnostics remain open.
