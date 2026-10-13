@@ -438,6 +438,28 @@ for (coefficient in listOf("0", "1", "-1", "-9223372036854775808", "123456789012
         }
     }
 }
+for (text in listOf("-4", "0.00", "1", "4.00", "2", "0.0004", "123.456")) {
+    for (precision in listOf(0, 1, 7)) for (mode in RoundingMode.entries) for (op in listOf("sqrt", "pow", "powContext")) {
+        record("H", op, text, "3", precision, mode) {
+            val trace = StringBuilder()
+            val value = object : BigDecimal(text) {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                override fun signum(): Int { trace.append("sign;"); return super.signum() }
+                override fun precision(): Int { trace.append("precision;"); return super.precision() }
+                override fun scale(): Int { trace.append("scale;"); return super.scale() }
+            }
+            val result = try {
+                when (op) {
+                    "sqrt" -> value.sqrt(MathContext(precision, mode))
+                    "pow" -> value.pow(3)
+                    else -> value.pow(3, MathContext(precision, mode))
+                }.toString()
+            } catch (e: ArithmeticException) { "!${e.message}" }
+            "$result|$trace"
+        }
+    }
+}
 // Observable constructor failure when pow's expanded working precision wraps.
 // Coefficient one keeps successful high-precision cases bounded in memory.
 for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {

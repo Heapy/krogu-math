@@ -324,7 +324,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun pow(n: Int): BigDecimal {
         if (n !in 0..999999999) throw ArithmeticException("Invalid operation")
         if (n == 0) return ONE
-        return BigDecimal(coefficient.pow(n), scaleForValue(decimalScale.toLong() * n, signum() == 0))
+        return BigDecimal(coefficient.pow(n), scaleForValue(decimalScale.toLong() * n, coefficient.signum() == 0))
     }
     open fun pow(n: Int, mc: MathContext): BigDecimal {
         if (mc.precision == 0) return pow(n)
@@ -347,15 +347,16 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     }
 
     open fun sqrt(mc: MathContext?): BigDecimal {
-        if (signum() < 0) throw ArithmeticException("Attempted square root of negative BigDecimal")
+        val sign = signum()
+        if (sign < 0) throw ArithmeticException("Attempted square root of negative BigDecimal")
         val preferred = decimalScale / 2
-        if (signum() == 0) return BigDecimal(BigInteger.ZERO, preferred)
+        if (sign == 0) return BigDecimal(BigInteger.ZERO, preferred)
         val context = mc ?: throw NullPointerException()
         if (context.precision == 0 || context.roundingMode == RoundingMode.UNNECESSARY) {
             val odd = decimalScale and 1
             val value = if (odd == 0) coefficient else coefficient.multiply(BigInteger.TEN)
             val root = value.sqrtAndRemainder()
-            if (root[1].signum() != 0) throw ArithmeticException("Computed square root not exact")
+            if (root[1].signum() != 0) throw ArithmeticException("Computed square root not exact.")
             val exact = BigDecimal(root[0], checkedScale((decimalScale.toLong() + odd) / 2)).stripTo(preferred)
             // Exact-mode validation in the oracle squares a minimally scaled root.
             // Its scale overflow is observable even when the preferred form could be squared.

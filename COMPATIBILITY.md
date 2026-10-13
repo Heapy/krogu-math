@@ -126,7 +126,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 44,449 vectors, including 8,888 added signed
+The main oracle now contains 44,953 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -277,3 +277,12 @@ Canonical text retains the first successful result;
 its cache is volatile and transient on JVM. JVM regressions compare repeated
 calls with a changing subclass getter, current-format serialization after a warm
 cache, and concurrent readers. Wider subclass callback domains remain open.
+
+Power/root getter dispatch adds 504 portable cases across seven signed/zero/
+fractional inputs, three precisions, all eight rounding modes and sqrt/exact pow/
+context pow. Exact pow uses stored coefficient zero detection rather than virtual
+signum; sqrt reads virtual signum once. The cases compare result text, exact
+arithmetic error messages and signum/precision/scale callback traces. Inexact
+square roots now retain the JDK message's terminating period. Replacement getter
+values, additional overridable methods, exponent domains and resource limits
+remain part of the broader power/root audit.
