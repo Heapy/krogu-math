@@ -17,7 +17,7 @@ specifications and black-box results may supply evidence.
 | BigInteger signed arithmetic and exact results | Portable oracle, seeded JVM arithmetic and modular tests | Larger magnitudes, limb-boundary campaigns, algorithm/range limits |
 | Infinite two's-complement bit semantics | Portable oracle, seeded JVM operations and algebraic invariants | Structured positive/negative bit boundaries, extreme shift/bit distances |
 | All constructor encodings and validation | Portable byte slice/sign matrix; JVM byte and character range matrix | Extreme integer offsets, every radix, Unicode character corpus, malformed text fuzzing |
-| Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons plus portable fixtures | Larger coefficient and scale campaigns; overflow across every overload |
+| Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 139,239 exact portable scale-boundary outcomes; portable fixtures | Larger coefficients, wider scale/precision combinations and overflow across remaining overloads |
 | Powers and roots | 10,560 structured JVM comparisons plus portable fixtures | Adversarial midpoint and carry cases at larger precision |
 | Float/Double conversions and canonical Double factory values | Bitwise oracle comparisons, binary boundaries, 10,000 seeded canonical Double cases | Exhaustive Float input domain, wider subnormal/tie/overflow campaigns and algorithm audit |
 | Prime generation and certainty | Seeded generation, external primality checks, Carmichael/composite regressions | Witness independence, certainty/range boundaries, caller RNG behavior and distribution |
@@ -32,6 +32,7 @@ specifications and black-box results may supply evidence.
 ```shell
 ./gradlew jvmTest jsNodeTest wasmJsNodeTest macosArm64Test
 kotlinr scripts/generate-oracle.main.kts --check
+kotlinr scripts/generate-scale-oracle.main.kts --check
 ```
 
 Use the appropriate Native host test tasks for other OS/architectures. CI
@@ -43,6 +44,14 @@ campaign can be extended with
 `JAVA_TOOL_OPTIONS=-Dkrogu.campaign.doubles=100000 ./gradlew jvmTest --tests '*doubleCanonicalizationCampaign*'`.
 Failure output includes reproducible public inputs. Passing a finite corpus must
 not be promoted into a claim that all numerical or API contracts are satisfied.
+
+`ScaleBoundaryOracleTest` compares all 139,239 outcomes individually on every
+target. Its separate generator stores complete expected results in JVM-safe
+string chunks, not hashes. `ScaleBoundaryConformanceTest` also regenerates each
+reference result against the live pinned JDK. The corpus covers compact signed
+coefficients, both scale endpoints and their neighbors, zero operands, exact and
+context division, addition, multiplication, roots, powers, canonical parsing,
+engineering text and trailing-zero removal.
 
 ## Completion gate
 

@@ -49,9 +49,12 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
         if (signum() == 0 || augend.signum() == 0) {
             val nonzero = (if (signum() == 0) augend else this).round(mc)
             if (nonzero.signum() == 0) return BigDecimal(BigInteger.ZERO, preferredScale)
+            if (preferredScale.toLong() - nonzero.decimalScale > Int.MAX_VALUE)
+                throw ArithmeticException("Underflow")
             val scale = minOf(preferredScale.toLong(), nonzero.decimalScale.toLong() + mc.precision - nonzero.precision())
             return nonzero.setScale(checkedScale(scale))
         }
+        checkAdditionAlignment(augend, mc)
         if (kotlin.math.abs(decimalScale.toLong() - augend.decimalScale) < 10000 ||
             kotlin.math.abs(adjustedExponent() - augend.adjustedExponent()) <= mc.precision.toLong() + 3)
             return add(augend).round(mc)
@@ -63,6 +66,18 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
         val result = large.add(small.stickyAt(workingScale)).round(mc)
         val preferred = maxOf(decimalScale, augend.decimalScale)
         return if (result.signum() == 0) result.setScale(preferred) else result.stripTo(preferred)
+    }
+    private fun checkAdditionAlignment(other: BigDecimal, mc: MathContext) {
+        if (decimalScale == other.decimalScale) return
+        val dominant = if (adjustedExponent() >= other.adjustedExponent()) this else other
+        val remote = if (dominant === this) other else this
+        val leadingPosition = remote.decimalScale.toLong() - remote.precision() + 1
+        val roundingScale = dominant.decimalScale.toLong() - dominant.precision() + mc.precision
+        // The pinned JDK's alignment threshold is a signed 32-bit quantity. Its
+        // wrap at MAX_VALUE is observable as an ArithmeticException before rounding.
+        val alignmentThreshold = (dominant.decimalScale + 2).toLong()
+        if (leadingPosition > alignmentThreshold && leadingPosition > roundingScale + 2)
+            checkedScale(maxOf(dominant.decimalScale.toLong(), roundingScale) + 3)
     }
     private fun stickyAt(scale: Long): BigDecimal {
         if (signum() == 0 || decimalScale.toLong() <= scale) return this
@@ -83,8 +98,14 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
 
     open fun divide(divisor: BigDecimal): BigDecimal {
         checkDivisor(divisor)
-        val preferred = saturatedScale(decimalScale.toLong() - divisor.decimalScale)
+        val preferred = scaleForValue(decimalScale.toLong() - divisor.decimalScale, signum() == 0)
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, preferred)
+        // A terminating denominator can require fewer than (10/3)*its decimal digits
+        // of additional precision (10/3 > log2(10)). The pinned oracle checks the
+        // normalization scale at this conservative precision even for exact division.
+        val exactPrecision = (precision().toLong() + (10L * divisor.precision() + 2) / 3)
+            .coerceAtMost(Int.MAX_VALUE.toLong()).toInt()
+        checkDivisionNormalization(divisor, exactPrecision)
         val gcd = coefficient.gcd(divisor.coefficient)
         var denominator = divisor.coefficient.abs().divide(gcd)
         var numerator = coefficient.divide(gcd)
@@ -123,19 +144,30 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
     open fun divide(divisor: BigDecimal, mc: MathContext): BigDecimal {
         if (mc.precision == 0) return divide(divisor)
         checkDivisor(divisor)
-        val preferred = saturatedScale(decimalScale.toLong() - divisor.decimalScale)
+        val preferred = scaleForValue(decimalScale.toLong() - divisor.decimalScale, signum() == 0)
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, preferred)
+        checkDivisionNormalization(divisor, mc.precision)
         val target = checkedScale(mc.precision.toLong() - 1 - quotientExponent(divisor))
         val result = divide(divisor, target, mc.roundingMode).round(mc)
         // Exact quotients use the nearest representable scale to the preferred scale.
-        return if (result.multiply(divisor).compareTo(this) == 0) result.stripTo(preferred) else result
+        val exact = compareValues(result.coefficient.multiply(divisor.coefficient),
+            result.decimalScale.toLong() + divisor.decimalScale, coefficient, decimalScale.toLong()) == 0
+        return if (exact) result.stripTo(preferred) else result
+    }
+    private fun checkDivisionNormalization(divisor: BigDecimal, precision: Int) {
+        val adjustment = if (normalizedComparison(divisor) > 0) 1 else 0
+        checkedScale(decimalScale.toLong() - divisor.decimalScale + precision + divisor.precision() - precision() - adjustment)
     }
     private fun quotientExponent(divisor: BigDecimal): Long {
         val a = coefficient.abs().toString()
         val b = divisor.coefficient.abs().toString()
+        return a.length.toLong() - b.length + divisor.decimalScale.toLong() - decimalScale - if (normalizedComparison(divisor) < 0) 1 else 0
+    }
+    private fun normalizedComparison(divisor: BigDecimal): Int {
+        val a = coefficient.abs().toString()
+        val b = divisor.coefficient.abs().toString()
         val length = maxOf(a.length, b.length)
-        val cmp = a.padEnd(length, '0').compareTo(b.padEnd(length, '0'))
-        return a.length.toLong() - b.length + divisor.decimalScale.toLong() - decimalScale - if (cmp < 0) 1 else 0
+        return a.padEnd(length, '0').compareTo(b.padEnd(length, '0'))
     }
     open fun divideToIntegralValue(divisor: BigDecimal): BigDecimal = integralDivide(divisor, MathContext.UNLIMITED)
     open fun divideToIntegralValue(divisor: BigDecimal, mc: MathContext): BigDecimal = integralDivide(divisor, mc)
@@ -188,8 +220,8 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
         }
         return BigDecimal(value, newScale)
     }
-    open fun stripTrailingZeros(): BigDecimal = if (signum() == 0) ZERO else stripTo(Int.MIN_VALUE)
-    private fun stripTo(minScale: Int): BigDecimal {
+    open fun stripTrailingZeros(): BigDecimal = if (signum() == 0) ZERO else stripTo(Int.MIN_VALUE, failOnOverflow = true)
+    private fun stripTo(minScale: Int, failOnOverflow: Boolean = false): BigDecimal {
         var value = coefficient
         var scale = decimalScale
         while (value.signum() != 0 && scale > minScale) {
@@ -197,7 +229,7 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
             if (qr[1].signum() != 0) break
             value = qr[0]; scale--
         }
-        if (scale == Int.MIN_VALUE && minScale == Int.MIN_VALUE && value.signum() != 0 && value.remainder(BigInteger.TEN).signum() == 0)
+        if (failOnOverflow && scale == Int.MIN_VALUE && value.signum() != 0 && value.remainder(BigInteger.TEN).signum() == 0)
             throw ArithmeticException("Overflow")
         return if (scale == decimalScale) this else BigDecimal(value, scale)
     }
@@ -243,6 +275,9 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
             val root = value.sqrtAndRemainder()
             if (root[1].signum() != 0) throw ArithmeticException("Computed square root not exact")
             val exact = BigDecimal(root[0], checkedScale((decimalScale.toLong() + odd) / 2)).stripTo(preferred)
+            // Exact-mode validation in the oracle squares a minimally scaled root.
+            // Its scale overflow is observable even when the preferred form could be squared.
+            checkedScale(2L * exact.stripTrailingZeros().decimalScale)
             return exact.round(mc)
         }
         val exponent = adjustedExponent()
@@ -371,6 +406,16 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
     // Preserve the non-final static factories exposed by JDK.
     @Suppress("NON_FINAL_MEMBER_IN_OBJECT")
     companion object {
+        private fun compareValues(a: BigInteger, aScale: Long, b: BigInteger, bScale: Long): Int {
+            if (a.signum() != b.signum()) return a.signum().compareTo(b.signum())
+            if (a.signum() == 0) return 0
+            val aDigits = a.abs().toString()
+            val bDigits = b.abs().toString()
+            val exponent = (aDigits.length - aScale).compareTo(bDigits.length - bScale)
+            if (exponent != 0) return exponent * a.signum()
+            val length = maxOf(aDigits.length, bDigits.length)
+            return aDigits.padEnd(length, '0').compareTo(bDigits.padEnd(length, '0')) * a.signum()
+        }
         @JvmField val ZERO = BigDecimal(BigInteger.ZERO, 0)
         @JvmField val ONE = BigDecimal(BigInteger.ONE, 0)
         @JvmField val TWO = BigDecimal(BigInteger.TWO, 0)
@@ -413,7 +458,7 @@ open class BigDecimal(private val coefficient: BigInteger, private val decimalSc
                 while (i < value.length) {
                     val d = value[i++].digitToIntOrNull(10) ?: throw NumberFormatException("Invalid exponent")
                     exponent = exponent * 10 + d
-                    if (exponent > Int.MAX_VALUE.toLong() + 1) throw NumberFormatException("Exponent overflow")
+                    if (exponent > Int.MAX_VALUE.toLong() + 1 + fraction) throw NumberFormatException("Exponent overflow")
                 }
                 exponent *= expSign
             }
