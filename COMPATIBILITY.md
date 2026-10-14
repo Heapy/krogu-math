@@ -16,6 +16,10 @@ OpenJDK or other numerical libraries must not be used. Public API specifications
 independent mathematical reasoning and black-box results supply evidence; a
 runtime result does not override the public contract.
 
+Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
+retained JDK diagnostics and deliberate numerical divergences are documented in
+[Decimal scale contract](docs/decimal-scale-contract.md).
+
 Message-oracle runs and JVM test workers use `-XX:-OmitStackTraceInFastThrow`.
 A repeated scaled-zero-division campaign exposed 6,975 null messages caused by
 HotSpot exception reuse; rerunning with this flag restored the canonical `/ by zero`

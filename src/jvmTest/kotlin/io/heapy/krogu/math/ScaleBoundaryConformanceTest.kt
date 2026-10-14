@@ -46,7 +46,9 @@ class ScaleBoundaryConformanceTest {
                 val mode = RoundingMode.entries[random.nextInt(8)]
                 val mc = MathContext(p, mode); val jc = JC(p, JR.valueOf(mode.name))
                 val label = "$x,$y,$mc"
-                check("add $label", { x.add(y, jc) }, { a.add(b, mc) })
+                check("add $label", {
+                    additionReference(x, y, jc, a, b, mc)
+                }, { a.add(b, mc) })
                 check("divide $label", { x.divide(y, jc) }, { a.divide(b, mc) })
                 check("multiply $label", { x.multiply(y, jc) }, { a.multiply(b, mc) })
                 check("sqrt $x,$mc", { x.sqrt(jc) }, { a.sqrt(mc) })
@@ -80,7 +82,7 @@ class ScaleBoundaryConformanceTest {
                 for (p in listOf(1, 2, 7)) for (mode in listOf(RoundingMode.DOWN, RoundingMode.HALF_EVEN, RoundingMode.UNNECESSARY)) {
                     val mc = MathContext(p, mode); val jc = JC(p, JR.valueOf(mode.name))
                     check("divide $x,$y,$mc", { x.divide(y, jc) }, { a.divide(b, mc) })
-                    check("add $x,$y,$mc", { x.add(y, jc) }, { a.add(b, mc) })
+                    check("add $x,$y,$mc", { additionReference(x, y, jc, a, b, mc) }, { a.add(b, mc) })
                 }
             }
             for (p in listOf(0, 1, 2, 7)) for (mode in RoundingMode.entries) {
@@ -92,5 +94,13 @@ class ScaleBoundaryConformanceTest {
         }
         assertEquals(emptyList(), failures, "$comparisons comparisons; first discrepancies:\n${failures.joinToString("\n")}")
         println("$comparisons signed-scale-boundary comparisons passed")
+    }
+
+    private fun additionReference(x: JD, y: JD, jc: JC, a: BigDecimal, b: BigDecimal, mc: MathContext): Any {
+        if (!DecimalScaleContractExpected.affectedAddition(a, b, mc)) return x.add(y, jc)
+        val diagnostic = try { x.add(y, jc).toString() }
+            catch (_: ArithmeticException) { "!ArithmeticException" }
+        assertEquals("!ArithmeticException", diagnostic, "retained JDK addition defect")
+        return DecimalScaleContractExpected.addition(a, b, mc)
     }
 }

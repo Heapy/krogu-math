@@ -10,9 +10,21 @@ class ScaleBoundaryOracleTest {
         private val expected = scaleBoundaryExpected().drop(offset).iterator()
         private var count = offset
         fun verify(label: String, action: () -> Any?) {
+            verifyExpected(label, null, action)
+        }
+        fun verifyAddition(label: String, a: BigDecimal, b: BigDecimal, mc: MathContext) {
+            val contract = if (DecimalScaleContractExpected.affectedAddition(a, b, mc))
+                DecimalScaleContractExpected.addition(a, b, mc) else null
+            verifyExpected(label, contract) { a.add(b, mc) }
+        }
+        private fun verifyExpected(label: String, contract: String?, action: () -> Any?) {
             assertTrue(expected.hasNext(), "Oracle ended before $label")
             val actual = try { action().toString() } catch (e: Exception) { "!${e::class.simpleName}" }
-            assertEquals(expected.next(), actual, "$count: $label")
+            val diagnostic = expected.next()
+            // Keep consuming and checking the frozen JDK defect, while requiring
+            // the bounded exact-intermediate contract for this proved domain.
+            if (contract != null) assertEquals("!ArithmeticException", diagnostic, "retained JDK defect: $label")
+            assertEquals(contract ?: diagnostic, actual, "$count: $label; JDK=$diagnostic")
             count++
         }
         fun finish(end: Int, requireEnd: Boolean = false) {
@@ -36,7 +48,7 @@ class ScaleBoundaryOracleTest {
                 for (p in listOf(1, 2, 7)) for (mode in listOf(RoundingMode.DOWN, RoundingMode.HALF_EVEN, RoundingMode.UNNECESSARY)) {
                     val context = MathContext(p, mode)
                     verify("divide $a,$b,$context") { a.divide(b, context) }
-                    verify("add $a,$b,$context") { a.add(b, context) }
+                    cursor.verifyAddition("add $a,$b,$context", a, b, context)
                 }
             }
             for (p in listOf(0, 1, 2, 7)) for (mode in RoundingMode.entries) {
@@ -86,7 +98,7 @@ class ScaleBoundaryOracleTest {
                 // Consume RNG for earlier batches too, but execute each numerical case once.
                 val context = MathContext(p, RoundingMode.entries[random.nextInt(8)])
                 if (selected) {
-                    verify("add $a,$b,$context") { a.add(b, context) }
+                    cursor.verifyAddition("add $a,$b,$context", a, b, context)
                     verify("divide $a,$b,$context") { a.divide(b, context) }
                     verify("multiply $a,$b,$context") { a.multiply(b, context) }
                     verify("sqrt $a,$context") { a.sqrt(context) }

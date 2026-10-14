@@ -89,9 +89,9 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val remote = if (dominant === this) other else this
         val leadingPosition = remote.decimalScale.toLong() - remote.precision() + 1
         val roundingScale = dominant.decimalScale.toLong() - dominant.precision() + mc.precision
-        // The pinned JDK's alignment threshold is a signed 32-bit quantity. Its
-        // wrap at MAX_VALUE is observable as an ArithmeticException before rounding.
-        val alignmentThreshold = (dominant.decimalScale + 2).toLong()
+        // A guard position may exceed the scale range even when the aligned
+        // exact sum and its rounded result are representable. Do not wrap it.
+        val alignmentThreshold = dominant.decimalScale.toLong() + 2
         if (leadingPosition > alignmentThreshold && leadingPosition > roundingScale + 2)
             checkedScale(maxOf(dominant.decimalScale.toLong(), roundingScale) + 3)
     }
@@ -181,30 +181,30 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     }
     open fun divide(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode): BigDecimal {
         if (divisor.signum() == 0) failScaledZeroDivision(divisor.decimalScale, scale)
-        val adjusted = scaleForValue(scale.toLong() + divisor.decimalScale, coefficient.decimalCompactValue() == 0L)
-        val numerator = adjusted > decimalScale
-        val raise = if (numerator) scale + divisor.decimalScale - decimalScale
-            else scaleForValue(decimalScale.toLong() - scale, divisor.coefficient.decimalCompactValue() == 0L) - divisor.decimalScale
-        return divideScaledCoefficients(divisor, scale, roundingMode, numerator, raise)
+        val shift = scale.toLong() + divisor.decimalScale - decimalScale
+        // Retain useful range diagnostics only when an enormous coefficient
+        // really is required. Zero/tiny results and bounded net shifts must not
+        // fail merely because a temporary scale sum is outside Int.
+        if (coefficient.signum() != 0 && kotlin.math.abs(shift) > 646456992L && quotientExponent(divisor) + scale >= -1) {
+            scaleForValue(scale.toLong() + divisor.decimalScale, false)
+            if (shift <= 0) scaleForValue(decimalScale.toLong() - scale, false)
+        }
+        return divideScaledCoefficients(divisor, scale, roundingMode, shift >= 0, kotlin.math.abs(shift))
     }
     private fun divideScaledCoefficients(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode,
-        scaleNumerator: Boolean, raise: Int, checkSourceSign: Boolean = true): BigDecimal {
-        if (raise > 646456992) throw ArithmeticException("BigInteger would overflow supported range")
+        scaleNumerator: Boolean, raise: Long, checkSourceSign: Boolean = true): BigDecimal {
         if (checkSourceSign && signum() == 0) return BigDecimal(BigInteger.ZERO, scale)
-        // A wrapped, nonpositive raise leaves the stored coefficient unchanged
-        // in the pinned JDK's scale-bound path. Context division passes a checked
-        // nonnegative raise and does not inherit that staging behavior.
-        val power = maxOf(raise, 0)
         // Avoid constructing an unbounded power of ten for a quotient strictly below 0.1.
         val exponent = quotientExponent(divisor) + decimalScale - divisor.decimalScale +
-            if (scaleNumerator) power.toLong() else -power.toLong()
+            if (scaleNumerator) raise else -raise
         if (exponent < -1 && coefficient.signum() != 0 && divisor.coefficient.signum() != 0) {
             val sign = if (checkSourceSign) signum() * divisor.signum()
                 else coefficient.signum() * divisor.coefficient.signum()
             return BigDecimal(roundTiny(sign, roundingMode), scale)
         }
-        val numerator = if (scaleNumerator && power > 0) coefficient.multiply(tenPow(power.toLong())) else coefficient
-        val denominator = if (!scaleNumerator && power > 0) divisor.coefficient.multiply(tenPow(power.toLong())) else divisor.coefficient
+        if (raise > 646456992L) throw ArithmeticException("BigInteger would overflow supported range")
+        val numerator = if (scaleNumerator && raise > 0) coefficient.multiply(tenPow(raise)) else coefficient
+        val denominator = if (!scaleNumerator && raise > 0) divisor.coefficient.multiply(tenPow(raise)) else divisor.coefficient
         if (!checkSourceSign && denominator.signum() == 0 && numerator.decimalCompactValue() != null)
             throw ArithmeticException("/ by zero")
         return BigDecimal(roundedDivide(numerator, denominator, roundingMode), scale)
@@ -261,7 +261,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             return BigDecimal(BigInteger.valueOf(sign), divisionScale(preferredScale + divisorDigits - sourceDigits))
         }
         val result = divideScaledCoefficients(operand, target, context.roundingMode, shift >= 0,
-            kotlin.math.abs(shift).toInt(), checkSourceSign = false).round(context)
+            kotlin.math.abs(shift), checkSourceSign = false).round(context)
         // Exact quotients use the nearest representable scale to the preferred scale.
         val exact = compareValues(result.coefficient.multiply(operand.coefficient),
             result.decimalScale.toLong() + operand.decimalScale, coefficient, decimalScale.toLong()) == 0
