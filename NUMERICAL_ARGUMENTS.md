@@ -298,6 +298,49 @@ wide factors and consecutive Fibonacci inputs. Java tests add 168 nullable
 callback/argument cases. These domains do not establish all returned subclass
 graphs, exact null diagnostics or practical allocation limits.
 
+## Modular exponentiation
+
+For positive `m`, ordinary positive powering keeps a residue `r` and a base
+`b`, initially `r=1 mod m` and `b=a mod m`. At bit `i`, `b` is congruent to
+`a^(2^i)`. Multiplying `r` by `b` when the exponent bit is set incorporates
+exactly that exponent contribution; squaring `b` advances the invariant.
+There are finitely many stored exponent bits. The odd-modulus implementation
+uses this independent binary algorithm; public equality selects the observed
+exponent-one identity shortcut before the stored-bit loop.
+
+For even `m`, write `m=q*B`, with odd `q` and `B=2^p`. These factors are coprime.
+Compute residues `u=a^e mod q` and `v=a^e mod B`. Let `s=B^(-1) mod q` and
+`t=q^(-1) mod B`. Then `u*B*s+v*q*t` is congruent to `u` modulo `q` and to `v`
+modulo `B`. Reducing the sum modulo `m` gives the unique required CRT residue.
+When `q=1`, the odd residue and its coefficient are zero and this reduces to
+the binary residue.
+
+Low-magnitude masking computes reduction modulo `B` for ordinary nonnegative
+bases. For odd bases, reducing the exponent modulo `2^(p-1)` is sufficient:
+odd `x` obeys `x^(2^(p-1))=1 mod 2^p`. For `p=1` this is immediate. Squaring
+`1+c*2^p` proves the induction step from `p` to `p+1`. Thus retaining only
+`p-1` low exponent bits is valid. Even bases use all exponent bits. Virtual
+metadata and bit callbacks intentionally affect this path for subclasses;
+the ordinary proof assumes truthful results.
+
+With modulus bit length `b`, the direct CRT products and sum need at most
+`2*b+1` bits. The direct branch conservatively requires `2*b+2<=Int.MAX_VALUE`.
+Otherwise `u*B<m` and `v*q<m` are formed first, and further products are
+computed as bounded residues. To add residues `L,R` without creating `2*m`,
+set `gap=m-R`: return `L-gap` when `L>=gap`, otherwise `L+R`. In each case the
+result lies in `[0,m)`. Bounded multiplication repeats that operation with
+doubling and selected multiplier bits, so it never materializes the full product.
+The binary-modulus path similarly switches to bounded multiplication if its
+full product would exceed the magnitude limit; `B` itself fits because `p+1`
+does not exceed the supported modulus bit length.
+
+For negative exponents the positive power is inverted after recombination.
+Coprimality of that residue with `m` is equivalent to coprimality of `a` with
+`m`, so failure and successful inverse congruences follow from the inverse
+argument below. Canonical constants, source identities and callback order are
+separate black-box observations. False and changing metadata compositions and
+full-range resource feasibility still require audit.
+
 ## Modular inverses
 
 For truthful ordinary operands, first reduce `a` to `0<=a<m`, with `m>0`.

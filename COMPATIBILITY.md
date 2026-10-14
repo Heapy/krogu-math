@@ -22,7 +22,7 @@ are compared independently of this optimization.
 |---|---|---|
 | Every public constructor, method and constant of all four types | `ApiSurfaceTest` compares qualified parameter and return types, static/instance modality, finality and field modifiers, after package relocation | An inventory proves shape, not method behavior |
 | Java source compatibility, including subclassing and virtual dispatch | Compiled `JavaApiContractTest`, `KotlinSubclassContractTest`; real Java Random constructors | Broader Java call-site, null precedence and subclass behavior audit |
-| BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor outcomes; 11,798 modular reduction/inverse outcomes and Euclidean argument | Confirmed modular-exponentiation callback mismatches below; larger operand patterns, supported-range/allocation limits and broader subclass behavior |
+| BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor outcomes; 11,798 modular reduction/inverse outcomes; 9,176 modular-power outcomes and numerical arguments | Larger operand patterns, supported-range/allocation limits and compound modular subclass behavior |
 | Infinite two's-complement bit semantics | Portable oracle, seeded JVM operations, algebraic invariants and finite-width sign-extension argument; 17,198 bit value/callback/identity outcomes | Multi-gigabyte operands and bit distances, wider changing-metadata subclass compositions |
 | All constructor encodings and validation | 25,584 exact byte-constructor outcomes including Int offset/length endpoints and array isolation; 10,156 exact string-constructor outcomes; complete BMP digit/radix corpus and supplementary digit constructors | Larger input/allocation limits, compound textual grammar, malformed text fuzzing |
 | Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 207,239 exact portable scale-boundary outcomes; portable fixtures | Wider coefficient/scale/precision combinations and overflow across remaining overloads |
@@ -54,6 +54,7 @@ kotlinr scripts/generate-integer-gcd-oracle.main.kts --check
 kotlinr scripts/generate-integer-sqrt-oracle.main.kts --check
 kotlinr scripts/generate-integer-bits-oracle.main.kts --check
 kotlinr scripts/generate-integer-inverse-oracle.main.kts --check
+kotlinr scripts/generate-integer-modpow-oracle.main.kts --check
 kotlinr scripts/generate-context-oracle.main.kts --check
 kotlinr scripts/generate-hash-oracle.main.kts --check
 ```
@@ -185,14 +186,35 @@ failure gcds. Java tests add 720 nullable/throwing callback comparisons and ten
 null-modulus comparisons. Broader compound callback replacements and supported
 range/allocation proofs still require audit.
 
-Modular exponentiation still has confirmed black-box callback mismatches.
-Inherited `modPow(0, 10)` on stored zero returns one without source mod/remainder
-callbacks in JDK; the port invokes both callbacks before producing one.
-Modulus-one and negative-exponent paths also differ in their callback traces.
-For inherited `modPow(1, 17)` on a positive subclass storing three, JDK returns
-the source instance after equality/compare/modulus-bit callbacks; the port
-currently returns a separate value and invokes exponent bit queries instead.
-These remain open; ordinary seeded modular value comparisons do not cover them.
+The modular-power oracle adds 9,176 exact outcomes, including callback arguments
+and source/exponent/modulus replacement or throwing hooks. Zero exponents,
+one/zero/minus-one bases and odd-modulus exponent-one results now retain JDK's
+shortcuts and identities. Odd-modulus binary powering reads stored exponent bits;
+the power-of-two path uses virtual exponent bit queries and the observed odd-base
+period reduction. Even moduli use independently implemented CRT recombination.
+Negative powers invert the computed residue, preserving a source inverse callback
+when the odd exponent-one path returned the source. Normal inputs additionally
+check residue bounds, full small powers and inverse-power congruences.
+The negative replacement -7 from the exponent's negate callback is covered:
+the odd path reads the magnitude bits, while the binary-modulus path retains its
+public bit-query behavior. For base three, replacement -7 and modulus seventeen,
+the result is fourteen rather than six.
+
+Java tests add 5,040 nullable/throwing callback comparisons, 30 null-argument
+precedence comparisons and seven stable primality parity-callback comparisons.
+Primality witness callback counts can depend on JDK's random witnesses and are
+not asserted as a fixed count. Factory checks establish stable cached values
+from -16 through 16, public constant aliases and the negative-one equality
+argument. Division remainders and two-bit generated primes retain fresh-instance
+behavior despite the factory cache. The oracle generator also verifies these
+observations directly against the pinned JDK.
+
+The generator includes an expensive JDK exponent-one/false-equality case; it
+eventually produces a result and is retained. Timing is not asserted. Broader
+callback compositions, fake modulus parity/lowest-bit results, wide exponent and
+modulus domains, and allocation behavior at the full supported range remain
+unproven. The large-range numeric paths use bounded residue multiplication and
+bounded CRT addition; their feasibility at multi-gigabyte sizes is not established.
 
 Shift routines use private left/right helpers and a private lowest-set-bit
 query, so negative distances and negative rounding do not dispatch through

@@ -96,7 +96,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
                 result[i] = (part / value.words[0]).toInt()
                 remainder = part % value.words[0]
             }
-            return arrayOf(normalized(sign * value.sign, result), valueOf(remainder * sign))
+            return arrayOf(normalized(sign * value.sign, result), normalized(sign, intArrayOf(remainder.toInt())))
         }
         // Binary long division: at each step the partial remainder stays below twice b.
         val b = BigInteger(1, value.words)
@@ -188,14 +188,76 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     open fun modPow(exponent: BigInteger?, m: BigInteger): BigInteger {
         if (m.sign <= 0) throw ArithmeticException("BigInteger: modulus not positive")
         val power = exponent ?: throw NullPointerException()
-        var base = if (power.sign < 0) modInverse(m) else mod(m)
+        if (power.sign == 0) return if (m == ONE) ZERO else ONE
+        if (this == ONE) return if (m == ONE) ZERO else ONE
+        if (this == ZERO && power.sign >= 0) return ZERO
+        if (this == valueOf(-1) && !power.testBit(0)) return if (m == ONE) ZERO else ONE
+        val inverse = power.sign < 0
+        val e: BigInteger? = if (inverse) power.negate() else power
+        val base = if (sign < 0 || compareTo(m) >= 0) mod(m) else this
+        val result = if (m.testBit(0)) base.oddModPowStored(e, m) else {
+            val p = m.getLowestSetBit()
+            val oddModulus = m.shiftRight(p)
+            val oddBase = if (sign < 0 || compareTo(oddModulus) >= 0) mod(oddModulus) else this
+            val oddResidue = if (oddModulus == ONE) ZERO else oddBase.oddModPowStored(e, oddModulus)
+            val binaryResidue = base.modPowPowerOfTwo(e, p)
+            val binaryModulus = ONE.shiftLeftValue(p)
+            val binaryInverse = binaryModulus.modInverse(oddModulus)
+            val oddInverse = oddModulus.modInverse(binaryModulus)
+            if (m.magnitudeBits().toLong() * 2 + 2 <= Int.MAX_VALUE) {
+                oddResidue.multiply(binaryModulus).multiply(binaryInverse)
+                    .add(binaryResidue.multiply(oddModulus).multiply(oddInverse)).mod(m)
+            } else {
+                val modulus = BigInteger(1, m.words)
+                val left = oddResidue.multiply(binaryModulus).multiplyMod(binaryInverse, modulus)
+                val right = binaryResidue.multiply(oddModulus).multiplyMod(oddInverse, modulus)
+                val gap = modulus.subtract(right)
+                if (left >= gap) left.subtract(gap) else left.add(right)
+            }
+        }
+        return if (inverse) result.modInverse(m) else result
+    }
+    private fun oddModPowStored(exponent: BigInteger?, modulus: BigInteger): BigInteger {
+        val power = exponent ?: throw NullPointerException()
+        if (power == ONE) return this
+        if (words.isEmpty()) return ZERO
+        val m = BigInteger(1, modulus.words)
+        var base = BigInteger(1, words).mod(m)
         var result = ONE.mod(m)
-        val e = power.abs()
-        for (i in 0 until e.bitLength()) {
-            if (e.testBit(i)) result = result.multiplyMod(base, m)
-            if (i + 1 < e.bitLength()) base = base.multiplyMod(base, m)
+        val bits = power.magnitudeBits()
+        for (i in 0 until bits) {
+            if (power.words[i / LIMB_BITS] and (1 shl (i % LIMB_BITS)) != 0)
+                result = result.multiplyMod(base, m)
+            if (i + 1 < bits) base = base.multiplyMod(base, m)
+        }
+        return if (result.sign == 0) BigInteger(result) else result
+    }
+    private fun moduloPowerOfTwo(bits: Int): BigInteger {
+        if (bitLength() <= bits) return this
+        if (bits == 0) return ZERO
+        val out = words.copyOf(((bits.toLong() + LIMB_BITS - 1) / LIMB_BITS).toInt())
+        if (bits % LIMB_BITS != 0) out[out.lastIndex] = out.last() and ((1 shl (bits % LIMB_BITS)) - 1)
+        return normalized(1, out)
+    }
+    private fun modPowPowerOfTwo(exponent: BigInteger?, bits: Int): BigInteger {
+        var base = moduloPowerOfTwo(bits)
+        var result = ONE
+        val power = exponent ?: throw NullPointerException()
+        var limit = power.bitLength()
+        if (testBit(0)) limit = minOf(bits - 1, limit)
+        for (i in 0 until limit) {
+            if (power.testBit(i)) result = result.multiplyPowerOfTwo(base, bits)
+            if (i + 1 < limit) base = BigInteger(base.sign, base.words).multiplyPowerOfTwo(base, bits)
         }
         return result
+    }
+    private fun multiplyPowerOfTwo(value: BigInteger, bits: Int): BigInteger {
+        if (magnitudeBits().toLong() + value.magnitudeBits() <= Int.MAX_VALUE)
+            return multiply(value).moduloPowerOfTwo(bits)
+        val modulus = ONE.shiftLeftValue(bits)
+        val a = BigInteger(1, words).mod(modulus)
+        val b = BigInteger(1, value.words).mod(modulus)
+        return a.multiplyModuloBounded(b, modulus)
     }
     open fun modInverse(m: BigInteger): BigInteger {
         if (m.sign <= 0) throw ArithmeticException("BigInteger: modulus not positive")
@@ -413,7 +475,9 @@ open class BigInteger private constructor(private val sign: Int, private val wor
 
     private fun passesPrimeTest(rounds: Long): Boolean {
         val n = abs()
-        if (n < TWO) return false
+        if (n == TWO) return true
+        if (!n.testBit(0) || n == ONE) return false
+        if (n.sign < 0) return false
         val smallPrimes = intArrayOf(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)
         for (p in smallPrimes) {
             val prime = valueOf(p.toLong())
@@ -592,10 +656,17 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         @JvmField val ONE = BigInteger(1, intArrayOf(1))
         @JvmField val TWO = BigInteger(1, intArrayOf(2))
         @JvmField val TEN = BigInteger(1, intArrayOf(10))
+        private val SMALL_VALUES = Array(33) { index ->
+            val value = index - 16
+            when (value) {
+                0 -> ZERO; 1 -> ONE; 2 -> TWO; 10 -> TEN
+                else -> BigInteger(if (value < 0) -1 else 1, intArrayOf(if (value < 0) -value else value))
+            }
+        }
         private val DETERMINISTIC_PRIME_LIMIT = BigInteger("3317044064679887385961981")
         private val DETERMINISTIC_PRIME_BASES = intArrayOf(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41)
         @JvmStatic open fun valueOf(value: Long): BigInteger {
-            if (value == 0L) return ZERO
+            if (value in -16L..16L) return SMALL_VALUES[(value + 16).toInt()]
             var magnitude = if (value < 0) 0uL - value.toULong() else value.toULong()
             val result = IntArray(3)
             var i = 0
@@ -618,7 +689,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         }
         private fun generatePrime(bitLength: Int, certainty: Int, rnd: Random): BigInteger {
             if (bitLength < 2) throw ArithmeticException("bitLength < 2")
-            if (bitLength == 2) return valueOf(rnd.nextInt(2, 4).toLong())
+            if (bitLength == 2) return BigInteger(valueOf(rnd.nextInt(2, 4).toLong()))
             val rounds = PrimalityCertainty.generationRounds(bitLength, certainty)
             while (true) {
                 val n = randomBits(bitLength, rnd).setBit(bitLength - 1).setBit(0)

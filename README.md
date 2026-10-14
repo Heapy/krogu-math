@@ -103,6 +103,8 @@ Bit operations add 17,198 value/callback/identity outcomes, including virtual
 metadata, self aliases, signed boundaries through 4,097 bits and fresh zero results.
 Modular reduction and inversion add 11,798 outcomes for conditional callbacks,
 replacement results, equality shortcuts, identities and moduli through 1,025 bits.
+Modular exponentiation adds 9,176 value/error/identity/callback outcomes, including
+callback arguments, even/odd moduli, negative powers and replacement metadata.
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
@@ -137,6 +139,7 @@ kotlinr scripts/generate-integer-gcd-oracle.main.kts --check
 kotlinr scripts/generate-integer-sqrt-oracle.main.kts --check
 kotlinr scripts/generate-integer-bits-oracle.main.kts --check
 kotlinr scripts/generate-integer-inverse-oracle.main.kts --check
+kotlinr scripts/generate-integer-modpow-oracle.main.kts --check
 kotlinr scripts/generate-context-oracle.main.kts --check
 kotlinr scripts/generate-hash-oracle.main.kts --check
 ```
