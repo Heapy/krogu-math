@@ -425,9 +425,9 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         for (i in result.indices) result[i] = result[i].inv() and MASK.toInt()
         return bitwiseResult(result, width)
     }
-    open fun and(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a and b }
-    open fun or(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a or b }
-    open fun xor(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a xor b }
+    open infix fun and(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a and b }
+    open infix fun or(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a or b }
+    open infix fun xor(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a xor b }
     open fun andNot(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a and b.inv() }
     // Public bitLength is intentionally virtual, including on a subclass operand.
     private fun bitwiseLength32(): Int = (bitLength() ushr 5) + 1

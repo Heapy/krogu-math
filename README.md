@@ -22,6 +22,8 @@ val third = BigDecimal.ONE.divide(BigDecimal(3), MathContext.DECIMAL128)
 For integral and String conversions, explicitly import krogu's `toBigInteger`,
 `toBigDecimal` and their nullable counterparts alongside its types; see
 [Kotlin conversion imports](docs/kotlin-conversion-extensions.md).
+For increment/decrement, shifts, complements and named or aliased bitwise calls,
+see [Kotlin operator migration](docs/kotlin-operator-migration.md).
 
 This is an initial implementation (`0.1.0-SNAPSHOT`), not a published Maven Central
 release. To consume locally, run `./gradlew publishToMavenLocal`, add `mavenLocal()`
