@@ -1,7 +1,8 @@
 # krogu-math
 
-Independent Kotlin Multiplatform implementation of the Java SE 25 `java.math`
-public API, in the package `io.heapy.krogu.math`. Licensed under Apache 2.0.
+Independent Kotlin Multiplatform arithmetic targeting the Java SE 25 `java.math`
+numerical contract and Kotlin source migration, in the package
+`io.heapy.krogu.math`. Licensed under Apache 2.0.
 
 `BigInteger`, `BigDecimal`, `MathContext` and `RoundingMode` perform all arithmetic
 in **common Kotlin**, including on JVM. There are no runtime dependencies other
@@ -200,17 +201,69 @@ use nullable operand/context parameters to preserve Java validation and delegati
 order. The base implementation checks arguments at the corresponding computation
 stage; zero-precision and remainder delegation can be handled by an override first.
 
-## Compatibility boundaries
+## Source and behavioral compatibility contract
 
-The test suite is evidence for the covered cases, not proof of exhaustive JDK
-conformance. Exception messages, Java binary compatibility with the original `java.math` namespace, exact
-prime/random output sequences and performance equivalence are not promised.
+The intended migration is **Java → Kotlin using java.math → Kotlin using
+krogu-math**. Source compatibility targets the second step: Kotlin call sites
+retain their operations and behavior after replacing type and extension imports.
+The numerical contract follows the public
+[Java SE 25 java.math API](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/package-summary.html).
+Documented
+[Kotlin operators](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/div.html)
+and [numeric conversions](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/to-big-decimal.html)
+are part of the migration contract. Proven JDK defects are handled through the
+specification-led procedure in [COMPATIBILITY.md](COMPATIBILITY.md#normative-contract-and-oracle-classification).
+The current snapshot has not yet achieved this target.
+
+| Surface | Compatibility target and boundary |
+|---|---|
+| Kotlin source | Preserve numerical calls, constants, documented operators and extensions after replacing their imports. Constructor-like factories and interface-backed types are allowed when the Kotlin call contract remains compatible. |
+| Java source | Required only inside the TCK harness. Test-only adapters may supply Java constructors, constructor references or subclass facades where tests need them. The public library does not promise Java source compatibility and need not expose real Java constructors. |
+| Numerical behavior | Preserve documented values, rounding, precision, preferred scales, encodings, text and primitive conversions. Decimal equality remains scale-sensitive; ordering is numerical. |
+| Exceptions and identity | Preserve documented error conditions/types, any specified diagnostics or identity, and language-level virtual dispatch. Unspecified allocation, caches, diagnostic wording and internal callback order are reference observations rather than independent guarantees. |
+| JVM boundaries | Existing Java `Random` constructors and `toJava*`/`toKrogu*` adapters are snapshot facilities, not requirements on the future library shape. Kotlin calls into APIs whose signatures use `java.math`, including JDBC, still need explicit boundary conversion. |
+| Binary compatibility | Relocation does not provide ABI compatibility with binaries compiled against `java.math`; consumers must recompile. |
+| Serialization | Current-format krogu JVM round trips are supported. Older krogu streams, legacy proxies and interchange with `java.math` streams are outside requirements. |
+| Runtime details | Algorithm choice, private representation, performance, resource-exhaustion timing and exact random/prime sequences are not promised. Documented numerical range and probability guarantees remain required. |
+
+Kotlin's JVM numeric extensions in the
+[default-imported](https://kotlinlang.org/docs/packages.html) `kotlin` and
+`kotlin.text` packages target `java.math` types. A krogu migration needs
+corresponding krogu extensions or members; importing an extension does not replace
+a matching [member function](https://kotlinlang.org/docs/extensions.html).
+The snapshot currently lacks `inc`/`dec`, primitive/string `toBigInteger` and
+`toBigDecimal` extensions, and nullable parsing helpers. Its decimal `/` still
+uses exact `divide(other)`, while Kotlin stdlib specifies dividend scale and
+`HALF_EVEN`; this is tracked in kotgent `local:524`. Other import-only gaps are
+tracked in `local:525`. This contract records the target, not a claim that those
+gaps are already closed.
+
+During the current unpublished `0.x` phase, release-to-release source and binary
+stability is not established. Changes to public Kotlin calls or behavior must be
+documented. Stable releases must declare supported toolchains and binary
+compatibility separately; they target source and behavioral stability within a
+major version, with breaking public-contract changes requiring a major version
+and migration notes. This policy does not add serialized-format compatibility.
+
+The test suite is evidence for the covered cases, not proof of full compatibility.
+Existing oracle suites mix specification guarantees with additional runtime
+observations; their classification is tracked in kotgent `local:526`. Absence of
+a documented detail does not prove a JDK bug. A defect exception requires a
+public reproducer, an explicit violated contract and an independent expected
+result; diagnostic oracle data is retained. Contract-preserving subclasses remain
+in scope. A subclass reporting a negative precision or a digit count inconsistent
+with its unscaled value violates the documented precision invariant, so that
+case alone does not establish a required result or a JDK defect.
+
+Official TCK/JCK has not been run. These differential suites are not a TCK result
+or certification.
+
 `parallelMultiply` computes the same result synchronously. Multiplication and
 division currently prioritize straightforward correctness over JDK's advanced
 large-input algorithms. Extremely large inputs remain subject to available
 memory and execution time. Random sources are caller-selected; the default
 primality witness generator is Kotlin's default random source.
 
-The active work toward exhaustive compatibility, its evidence and remaining
+The active work toward full source and behavioral compatibility, its evidence and remaining
 gaps are tracked in [COMPATIBILITY.md](COMPATIBILITY.md). The current passing
 campaigns do not establish exhaustive conformance.

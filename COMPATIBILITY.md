@@ -1,12 +1,20 @@
 # JDK 25 conformance audit
 
-Objective: exhaustive compatibility with the public Java SE 25 `java.math` API,
-relocated to `io.heapy.krogu.math`, with independent Apache-2.0 common Kotlin
-arithmetic. The objective remains **active and unproven**.
+Objective: full Kotlin source and behavioral compatibility for the migration
+**Java → Kotlin using java.math → Kotlin using krogu-math**, with the public
+Java SE 25 numerical contract and documented Kotlin stdlib operators/extensions
+exposed in `io.heapy.krogu.math`. Arithmetic remains independent Apache-2.0
+common Kotlin. Java source compatibility is required only in the TCK harness,
+where test-only adapters may supply the expected Java call shapes. Public types
+may use interfaces and constructor-like Kotlin factories; real Java constructors
+and direct Java subclass source compatibility are not library requirements.
+Proven JDK defects are handled as specified below. The objective remains
+**active and unproven**.
 
 Reference runtime: BellSoft Liberica **25.0.4+9**. Implementation source from
-OpenJDK or other numerical libraries must not be used. Only public API
-specifications and black-box results may supply evidence.
+OpenJDK or other numerical libraries must not be used. Public API specifications,
+independent mathematical reasoning and black-box results supply evidence; a
+runtime result does not override the public contract.
 
 Message-oracle runs and JVM test workers use `-XX:-OmitStackTraceInFastThrow`.
 A repeated scaled-zero-division campaign exposed 6,975 null messages caused by
@@ -16,12 +24,81 @@ This diagnostic configuration follows [Oracle's documented flag](https://www.ora
 for disabling preallocated exceptions; numerical values and exception classes
 are compared independently of this optimization.
 
+## Normative contract and oracle classification
+
+The public [Java SE 25 package contract](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/package-summary.html)
+and documentation of [BigInteger](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigInteger.html),
+[BigDecimal](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html),
+[MathContext](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/MathContext.html)
+and [RoundingMode](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/RoundingMode.html)
+define the numerical and behavioral requirements. Kotlin source migration also
+includes documented [operators](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/div.html),
+[numeric conversions](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/to-big-decimal.html)
+and [string conversions](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/to-big-decimal.html).
+For example, Kotlin decimal `/` keeps the dividend scale and rounds HALF_EVEN;
+it is not interchangeable with exact `divide(other)`.
+
+| Classification | Evidence needed | Compatibility obligation |
+|---|---|---|
+| Specification guarantee | A public contract clause or Kotlin language/stdlib guarantee, plus an independent expected result where numerical | Preserve it, including specified values, rounding, scale, encodings, text, range, error conditions/types and identity. Kotlin caller compilation and overload resolution must remain compatible after import migration. |
+| Reference observation | Reproducible public inputs and outputs on the pinned runtime | Retain as diagnostic evidence and preserve useful additional behavior when consistent with the contract. Unspecified callback order, allocation/cache choices, exact diagnostic wording and random sequences do not become independent requirements solely from one JDK build. |
+| Proven JDK defect | Minimal public reproducer, the precise violated clause, independent expected behavior and tested JDK version/configuration | Follow the contract, retain the reference counterexample and add a regression for correct behavior. Record every deliberate divergence explicitly. |
+| Unresolved difference | A reproducible mismatch without sufficient normative or mathematical evidence | Investigate; do not silently ignore it or call it a JDK bug because documentation is absent. |
+| Contract-violating subclass input | A specific overridden method violating a documented invariant or method contract | Keep the probe as diagnostic evidence; it does not establish a required numerical outcome. This classification does not waive Kotlin extensibility or contract-preserving overrides. |
+
+Documented identities remain requirements: for example BigDecimal `plus()` returns
+its receiver, `min`/`max` ties return the receiver, and stripping a numerical zero
+returns `ZERO`. Where `setScale` permits reuse or allocation, one runtime's choice
+does not add an identity guarantee. Dynamic dispatch of an explicit overridable
+call follows the language contract; internal call counts/order require their own
+documented guarantee before becoming normative.
+
+BigDecimal precision is the number of decimal digits in its unscaled value,
+with zero having precision one. An override reporting negative or inconsistent
+precision violates that invariant. Such a probe can reveal implementation
+mechanics, but cannot alone prove either a JDK defect or a required port result.
+Contract-preserving subclasses and documented exception/identity behavior remain
+in scope. Current corpora contain mixed categories; full case classification is
+tracked in kotgent `local:526`, not claimed complete by this policy change.
+
+For every new difference:
+
+1. Preserve a minimal input, reference runtime/configuration, port result and
+   reproducible command, including any preceding callbacks.
+2. Locate the public contract and determine whether the input and overrides
+   satisfy it. Use independent mathematics or compiler-checked Kotlin migration
+   examples to establish the expected result.
+3. Assign one of the categories above with evidence. A numerical mismatch on a
+   valid input remains a port defect until the reference result is shown to
+   violate the governing contract; lack of a specified internal detail is not
+   proof of a bug.
+4. For a proven reference defect, retain diagnostic oracle data, document the
+   divergence and require a correct-behavior regression before removing any
+   emulation. For observations or invalid overrides, do not silently delete
+   evidence or exclude entire methods/subclass families.
+5. Verify required behavior on the supported common targets and Kotlin call
+   surfaces. Java call-shape adaptation belongs to the TCK harness and does not
+   constrain the library to JDK-shaped classes or constructors.
+
+The migration boundaries and release-to-release policy are stated in
+[README.md](README.md#source-and-behavioral-compatibility-contract). JVM assignability
+to `java.math`, its binary ABI and legacy/cross-format serialization are outside
+requirements. Current krogu serialization round trips remain supported. Official
+TCK/JCK has not been run; existing Java fixtures and differential suites are not
+an official TCK result or certification.
+
 ## Requirements and current evidence
+
+Campaign descriptions below preserve observations from the pinned runtime.
+Statements about what an implementation "must" do to match those observations
+do not establish additional public guarantees. Their normative classification
+is governed by the policy above and remains work in kotgent `local:526`; numerical
+and source guarantees themselves are not waived by that classification.
 
 | Requirement | Evidence | Remaining audit |
 |---|---|---|
-| Every public constructor, method and constant of all four types | `ApiSurfaceTest` compares qualified parameter and return types, static/instance modality, finality and field modifiers, after package relocation | An inventory proves shape, not method behavior |
-| Java source compatibility, including subclassing and virtual dispatch | Compiled `JavaApiContractTest`, `KotlinSubclassContractTest`; real Java Random constructors | Broader Java call-site, null precedence and subclass behavior audit |
+| Kotlin numerical call surface, constants, operators and conversions of all four types | `ApiSurfaceTest` inventories the current JVM shape; `KotlinSubclassContractTest` exercises selected Kotlin calls | Compiler-checked migration matrix and missing stdlib counterparts; Java class/constructor shape is not a library requirement |
+| Java source compatibility inside the TCK harness | Existing `JavaApiContractTest` exercises current real constructors and virtual calls | Test-only adaptation for the applicable TCK; no direct Java consumer source-compatibility promise |
 | BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor outcomes; 11,798 modular reduction/inverse outcomes; 9,176 modular-power outcomes and numerical arguments | Larger operand patterns, supported-range/allocation limits and compound modular subclass behavior |
 | Infinite two's-complement bit semantics | Portable oracle, seeded JVM operations, algebraic invariants and finite-width sign-extension argument; 17,198 bit value/callback/identity outcomes | Multi-gigabyte operands and bit distances, wider changing-metadata subclass compositions |
 | All constructor encodings and validation | 25,584 exact byte-constructor outcomes including Int offset/length endpoints and array isolation; 10,156 exact string-constructor outcomes; complete BMP digit/radix corpus and supplementary digit constructors | Larger input/allocation limits, compound textual grammar, malformed text fuzzing |
@@ -31,7 +108,7 @@ are compared independently of this optimization.
 | Prime generation and certainty | 416 portable primality/successor/trace cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions; generation density argument and successor whole-search error budget; exhaustive small byte-payload distribution, primality and successor trial-division checks | Very large certainty beyond the proven bound, witness independence at larger magnitudes, supported-range limits, caller RNG behavior and wider subclass dispatch |
 | Exception conditions and types | Portable fixtures; 7,486 live JVM null/invalid-argument comparisons; 3,462 portable null-precedence outcomes; exact integer string/byte constructor diagnostics | Wider invalid-argument domains and cross-products; other exception messages remain unmatched |
 | Equality, ordering, hash codes, immutability | JVM oracle and common invariants; 6,110 portable BigInteger hash outcomes | Full context/enum/hash and subclass audit |
-| JVM serialization and Java adapters | Current-format round trips, validated base state, subclass state, reference identity, cycles and array-alias isolation; exact coefficient/scale conversion | Cross-version serialization and migration to/from java.math streams are explicitly outside scope |
+| Current-format JVM serialization; optional snapshot adapter evidence | Current-format round trips, validated base state, subclass state, reference identity, cycles and array-alias isolation; existing exact coefficient/scale adapters | Java adapters do not constrain the future library shape; cross-version serialization and java.math stream migration are outside scope |
 | Same common behavior on every supported platform | CI matrix for JVM, JS, Wasm, macOS/Linux/Windows Native and iOS simulators; cross-built Linux ARM64 binary executed on ARM64 | Each new common regression must pass on every supported target |
 | Required numerical range | Overflow guards and selected extreme-scale regressions | Supported-range proof and practical large-input tests remain incomplete |
 
@@ -286,13 +363,16 @@ for the other public types remains part of the audit.
 
 ## Completion gate
 
-Every row above must have direct, current evidence at the required scope and no
-known unresolved mismatch. Required API contracts need specification-led tests
+Every required row above must have direct, current evidence at the required scope
+and no unresolved mismatch in the required contract. Proven reference defects
+must have retained reproducers, an explicit violated contract and correct-behavior
+regressions. Required API contracts need specification-led tests
 and algorithmic reasoning in addition to random examples. Every discovered
 common mismatch must have a portable regression and pass the complete target
-matrix. Exception messages, serialization details, range guarantees and other
-remaining differences cannot silently disappear from the audit or be replaced
-by a narrower compatibility claim.
+matrix. Reference observations, unspecified diagnostics and contract-violating
+subclass inputs must be classified transparently rather than silently disappearing
+from the audit. Specified diagnostics, current-format serialization, range
+guarantees and other required behavior cannot be replaced by a narrower claim.
 
 JVM serialization supports round trips of the current implementation, including
 subclass state, shared references and cycles. Deserialization validates base-class
