@@ -19,22 +19,24 @@ private class PairSource(text: String, val trace: StringBuilder, val mode: Strin
         if (mode == "integral-throw") throw IllegalStateException("integral callback")
         return PairQuotient(trace, mode, this)
     }
-    override fun divideToIntegralValue(v: BigDecimal): BigDecimal {
+    override fun divideToIntegralValue(v: BigDecimal?): BigDecimal {
         trace.append("integral;")
         return quotient()
     }
-    override fun divideToIntegralValue(v: BigDecimal, mc: MathContext): BigDecimal {
-        trace.append("integral(${mc.precision},${mc.roundingMode});")
+    override fun divideToIntegralValue(v: BigDecimal?, mc: MathContext?): BigDecimal {
+        val context = mc ?: throw NullPointerException()
+        trace.append("integral(${context.precision},${context.roundingMode});")
         return quotient()
     }
-    override fun divideAndRemainder(v: BigDecimal): Array<BigDecimal> {
+    override fun divideAndRemainder(v: BigDecimal?): Array<BigDecimal> {
         trace.append("pair;")
         if (mode == "pair-throw") throw IllegalStateException("pair callback")
         if (mode == "pair-replace") return arrayOf(BigDecimal("7.0"), this)
         return super.divideAndRemainder(v)
     }
-    override fun divideAndRemainder(v: BigDecimal, mc: MathContext): Array<BigDecimal> {
-        trace.append("pair(${mc.precision},${mc.roundingMode});")
+    override fun divideAndRemainder(v: BigDecimal?, mc: MathContext?): Array<BigDecimal> {
+        val context = mc ?: throw NullPointerException()
+        trace.append("pair(${context.precision},${context.roundingMode});")
         if (mode == "pair-throw") throw IllegalStateException("pair callback")
         if (mode == "pair-replace") return arrayOf(BigDecimal("7.0"), this)
         return super.divideAndRemainder(v, mc)

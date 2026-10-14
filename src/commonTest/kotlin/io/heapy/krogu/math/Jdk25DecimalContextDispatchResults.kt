@@ -6791,5 +6791,1375 @@ internal fun jdk25DecimalContextDispatchCases(): List<Array<String>> = listOf(
 123456789012345678901234567890.123	987654321098765432109876543210.9	precision	precision	7	HALF_DOWN	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
 123456789012345678901234567890.123	987654321098765432109876543210.9	precision	precision	7	HALF_EVEN	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
 123456789012345678901234567890.123	987654321098765432109876543210.9	precision	precision	7	UNNECESSARY	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+0.00	0.00	delegate	self	0	UP	7.00:2|A.exact;
+0.00	0.00	delegate	self	0	DOWN	7.00:2|A.exact;
+0.00	0.00	delegate	self	0	CEILING	7.00:2|A.exact;
+0.00	0.00	delegate	self	0	FLOOR	7.00:2|A.exact;
+0.00	0.00	delegate	self	0	HALF_UP	7.00:2|A.exact;
+0.00	0.00	delegate	self	0	HALF_DOWN	7.00:2|A.exact;
+0.00	0.00	delegate	self	0	HALF_EVEN	7.00:2|A.exact;
+0.00	0.00	delegate	self	0	UNNECESSARY	7.00:2|A.exact;
+0.00	0.00	delegate	self	1	UP	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	1	DOWN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	1	CEILING	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	1	FLOOR	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	1	HALF_UP	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	1	HALF_DOWN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	1	HALF_EVEN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	1	UNNECESSARY	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	2	UP	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	2	DOWN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	2	CEILING	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	2	FLOOR	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	2	HALF_UP	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	2	HALF_DOWN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	2	HALF_EVEN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	2	UNNECESSARY	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	7	UP	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	7	DOWN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	7	CEILING	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	7	FLOOR	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	7	HALF_UP	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	7	HALF_DOWN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	7	HALF_EVEN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	delegate	self	7	UNNECESSARY	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	sign-first	self	0	UP	7.00:2|A.exact;
+0.00	0.00	sign-first	self	0	DOWN	7.00:2|A.exact;
+0.00	0.00	sign-first	self	0	CEILING	7.00:2|A.exact;
+0.00	0.00	sign-first	self	0	FLOOR	7.00:2|A.exact;
+0.00	0.00	sign-first	self	0	HALF_UP	7.00:2|A.exact;
+0.00	0.00	sign-first	self	0	HALF_DOWN	7.00:2|A.exact;
+0.00	0.00	sign-first	self	0	HALF_EVEN	7.00:2|A.exact;
+0.00	0.00	sign-first	self	0	UNNECESSARY	7.00:2|A.exact;
+0.00	0.00	sign-first	self	1	UP	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	1	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	1	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	1	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+    """.trimIndent(),
+    """
+0.00	0.00	sign-first	self	1	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	1	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	1	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	1	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	2	UP	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	2	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	2	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	2	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	2	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	2	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	2	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	2	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	7	UP	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	7	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	7	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	7	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	7	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	7	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	7	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-first	self	7	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+0.00	0.00	sign-second	self	0	UP	7.00:2|A.exact;
+0.00	0.00	sign-second	self	0	DOWN	7.00:2|A.exact;
+0.00	0.00	sign-second	self	0	CEILING	7.00:2|A.exact;
+0.00	0.00	sign-second	self	0	FLOOR	7.00:2|A.exact;
+0.00	0.00	sign-second	self	0	HALF_UP	7.00:2|A.exact;
+0.00	0.00	sign-second	self	0	HALF_DOWN	7.00:2|A.exact;
+0.00	0.00	sign-second	self	0	HALF_EVEN	7.00:2|A.exact;
+0.00	0.00	sign-second	self	0	UNNECESSARY	7.00:2|A.exact;
+0.00	0.00	sign-second	self	1	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	1	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	1	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	1	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	1	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	1	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	1	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	1	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	2	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	2	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	2	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	2	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	2	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	2	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	2	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	2	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	7	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	7	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	7	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	7	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	7	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	7	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	7	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	sign-second	self	7	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	0	UP	7.00:2|A.exact;
+0.00	0.00	precision	self	0	DOWN	7.00:2|A.exact;
+0.00	0.00	precision	self	0	CEILING	7.00:2|A.exact;
+0.00	0.00	precision	self	0	FLOOR	7.00:2|A.exact;
+0.00	0.00	precision	self	0	HALF_UP	7.00:2|A.exact;
+0.00	0.00	precision	self	0	HALF_DOWN	7.00:2|A.exact;
+0.00	0.00	precision	self	0	HALF_EVEN	7.00:2|A.exact;
+0.00	0.00	precision	self	0	UNNECESSARY	7.00:2|A.exact;
+0.00	0.00	precision	self	1	UP	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	1	DOWN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	1	CEILING	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	1	FLOOR	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	1	HALF_UP	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	1	HALF_DOWN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	1	HALF_EVEN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	1	UNNECESSARY	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	2	UP	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	2	DOWN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	2	CEILING	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	2	FLOOR	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	2	HALF_UP	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	2	HALF_DOWN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	2	HALF_EVEN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	2	UNNECESSARY	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	7	UP	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	7	DOWN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	7	CEILING	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	7	FLOOR	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	7	HALF_UP	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	7	HALF_DOWN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	7	HALF_EVEN	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+0.00	0.00	precision	self	7	UNNECESSARY	!ArithmeticException:Division undefined|A.sign(1);A.sign(2);
+1	1	delegate	self	0	UP	7.00:2|A.exact;
+1	1	delegate	self	0	DOWN	7.00:2|A.exact;
+1	1	delegate	self	0	CEILING	7.00:2|A.exact;
+1	1	delegate	self	0	FLOOR	7.00:2|A.exact;
+1	1	delegate	self	0	HALF_UP	7.00:2|A.exact;
+1	1	delegate	self	0	HALF_DOWN	7.00:2|A.exact;
+1	1	delegate	self	0	HALF_EVEN	7.00:2|A.exact;
+1	1	delegate	self	0	UNNECESSARY	7.00:2|A.exact;
+1	1	delegate	self	1	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	1	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	1	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	1	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	1	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	1	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	1	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	1	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+    """.trimIndent(),
+    """
+1	1	delegate	self	2	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	2	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	2	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	2	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	2	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	2	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	2	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	2	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	7	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	7	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	7	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	7	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	7	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	7	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	7	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	delegate	self	7	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1	1	sign-first	self	0	UP	7.00:2|A.exact;
+1	1	sign-first	self	0	DOWN	7.00:2|A.exact;
+1	1	sign-first	self	0	CEILING	7.00:2|A.exact;
+1	1	sign-first	self	0	FLOOR	7.00:2|A.exact;
+1	1	sign-first	self	0	HALF_UP	7.00:2|A.exact;
+1	1	sign-first	self	0	HALF_DOWN	7.00:2|A.exact;
+1	1	sign-first	self	0	HALF_EVEN	7.00:2|A.exact;
+1	1	sign-first	self	0	UNNECESSARY	7.00:2|A.exact;
+1	1	sign-first	self	1	UP	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	1	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	1	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	1	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	1	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	1	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	1	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	1	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	2	UP	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	2	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	2	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	2	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	2	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	2	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	2	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	2	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	7	UP	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	7	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	7	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	7	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	7	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	7	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	7	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-first	self	7	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+1	1	sign-second	self	0	UP	7.00:2|A.exact;
+1	1	sign-second	self	0	DOWN	7.00:2|A.exact;
+1	1	sign-second	self	0	CEILING	7.00:2|A.exact;
+1	1	sign-second	self	0	FLOOR	7.00:2|A.exact;
+1	1	sign-second	self	0	HALF_UP	7.00:2|A.exact;
+1	1	sign-second	self	0	HALF_DOWN	7.00:2|A.exact;
+1	1	sign-second	self	0	HALF_EVEN	7.00:2|A.exact;
+1	1	sign-second	self	0	UNNECESSARY	7.00:2|A.exact;
+1	1	sign-second	self	1	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	1	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	1	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	1	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	1	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	1	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	1	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	1	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	2	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	2	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	2	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	2	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	2	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	2	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	2	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	2	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	7	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	7	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	7	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	7	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	7	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	7	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	7	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	sign-second	self	7	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1	1	precision	self	0	UP	7.00:2|A.exact;
+1	1	precision	self	0	DOWN	7.00:2|A.exact;
+1	1	precision	self	0	CEILING	7.00:2|A.exact;
+1	1	precision	self	0	FLOOR	7.00:2|A.exact;
+1	1	precision	self	0	HALF_UP	7.00:2|A.exact;
+1	1	precision	self	0	HALF_DOWN	7.00:2|A.exact;
+1	1	precision	self	0	HALF_EVEN	7.00:2|A.exact;
+1	1	precision	self	0	UNNECESSARY	7.00:2|A.exact;
+1	1	precision	self	1	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	1	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	1	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	1	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	1	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	1	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	1	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	1	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	2	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	2	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	2	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	2	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+    """.trimIndent(),
+    """
+1	1	precision	self	2	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	2	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	2	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	2	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	7	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	7	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	7	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	7	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	7	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	7	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	7	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1	1	precision	self	7	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	delegate	self	0	UP	7.00:2|A.exact;
+10.50	10.50	delegate	self	0	DOWN	7.00:2|A.exact;
+10.50	10.50	delegate	self	0	CEILING	7.00:2|A.exact;
+10.50	10.50	delegate	self	0	FLOOR	7.00:2|A.exact;
+10.50	10.50	delegate	self	0	HALF_UP	7.00:2|A.exact;
+10.50	10.50	delegate	self	0	HALF_DOWN	7.00:2|A.exact;
+10.50	10.50	delegate	self	0	HALF_EVEN	7.00:2|A.exact;
+10.50	10.50	delegate	self	0	UNNECESSARY	7.00:2|A.exact;
+10.50	10.50	delegate	self	1	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	1	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	1	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	1	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	1	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	1	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	1	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	1	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	2	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	2	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	2	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	2	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	2	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	2	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	2	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	2	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	7	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	7	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	7	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	7	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	7	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	7	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	7	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	delegate	self	7	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+10.50	10.50	sign-first	self	0	UP	7.00:2|A.exact;
+10.50	10.50	sign-first	self	0	DOWN	7.00:2|A.exact;
+10.50	10.50	sign-first	self	0	CEILING	7.00:2|A.exact;
+10.50	10.50	sign-first	self	0	FLOOR	7.00:2|A.exact;
+10.50	10.50	sign-first	self	0	HALF_UP	7.00:2|A.exact;
+10.50	10.50	sign-first	self	0	HALF_DOWN	7.00:2|A.exact;
+10.50	10.50	sign-first	self	0	HALF_EVEN	7.00:2|A.exact;
+10.50	10.50	sign-first	self	0	UNNECESSARY	7.00:2|A.exact;
+10.50	10.50	sign-first	self	1	UP	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	1	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	1	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	1	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	1	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	1	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	1	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	1	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	2	UP	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	2	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	2	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	2	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	2	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	2	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	2	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	2	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	7	UP	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	7	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	7	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	7	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	7	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	7	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	7	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-first	self	7	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+10.50	10.50	sign-second	self	0	UP	7.00:2|A.exact;
+10.50	10.50	sign-second	self	0	DOWN	7.00:2|A.exact;
+10.50	10.50	sign-second	self	0	CEILING	7.00:2|A.exact;
+10.50	10.50	sign-second	self	0	FLOOR	7.00:2|A.exact;
+10.50	10.50	sign-second	self	0	HALF_UP	7.00:2|A.exact;
+10.50	10.50	sign-second	self	0	HALF_DOWN	7.00:2|A.exact;
+10.50	10.50	sign-second	self	0	HALF_EVEN	7.00:2|A.exact;
+10.50	10.50	sign-second	self	0	UNNECESSARY	7.00:2|A.exact;
+10.50	10.50	sign-second	self	1	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	1	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	1	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	1	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	1	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	1	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	1	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	1	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	2	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	2	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	2	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	2	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	2	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	2	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	2	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	2	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+    """.trimIndent(),
+    """
+10.50	10.50	sign-second	self	7	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	7	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	7	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	7	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	7	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	7	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	7	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	sign-second	self	7	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+10.50	10.50	precision	self	0	UP	7.00:2|A.exact;
+10.50	10.50	precision	self	0	DOWN	7.00:2|A.exact;
+10.50	10.50	precision	self	0	CEILING	7.00:2|A.exact;
+10.50	10.50	precision	self	0	FLOOR	7.00:2|A.exact;
+10.50	10.50	precision	self	0	HALF_UP	7.00:2|A.exact;
+10.50	10.50	precision	self	0	HALF_DOWN	7.00:2|A.exact;
+10.50	10.50	precision	self	0	HALF_EVEN	7.00:2|A.exact;
+10.50	10.50	precision	self	0	UNNECESSARY	7.00:2|A.exact;
+10.50	10.50	precision	self	1	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	1	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	1	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	1	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	1	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	1	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	1	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	1	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	2	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	2	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	2	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	2	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	2	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	2	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	2	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	2	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	7	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	7	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	7	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	7	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	7	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	7	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	7	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+10.50	10.50	precision	self	7	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	delegate	self	0	UP	7.00:2|A.exact;
+-10.50	-10.50	delegate	self	0	DOWN	7.00:2|A.exact;
+-10.50	-10.50	delegate	self	0	CEILING	7.00:2|A.exact;
+-10.50	-10.50	delegate	self	0	FLOOR	7.00:2|A.exact;
+-10.50	-10.50	delegate	self	0	HALF_UP	7.00:2|A.exact;
+-10.50	-10.50	delegate	self	0	HALF_DOWN	7.00:2|A.exact;
+-10.50	-10.50	delegate	self	0	HALF_EVEN	7.00:2|A.exact;
+-10.50	-10.50	delegate	self	0	UNNECESSARY	7.00:2|A.exact;
+-10.50	-10.50	delegate	self	1	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	1	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	1	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	1	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	1	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	1	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	1	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	1	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	2	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	2	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	2	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	2	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	2	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	2	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	2	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	2	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	7	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	7	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	7	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	7	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	7	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	7	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	7	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	delegate	self	7	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+-10.50	-10.50	sign-first	self	0	UP	7.00:2|A.exact;
+-10.50	-10.50	sign-first	self	0	DOWN	7.00:2|A.exact;
+-10.50	-10.50	sign-first	self	0	CEILING	7.00:2|A.exact;
+-10.50	-10.50	sign-first	self	0	FLOOR	7.00:2|A.exact;
+-10.50	-10.50	sign-first	self	0	HALF_UP	7.00:2|A.exact;
+-10.50	-10.50	sign-first	self	0	HALF_DOWN	7.00:2|A.exact;
+-10.50	-10.50	sign-first	self	0	HALF_EVEN	7.00:2|A.exact;
+-10.50	-10.50	sign-first	self	0	UNNECESSARY	7.00:2|A.exact;
+-10.50	-10.50	sign-first	self	1	UP	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	1	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	1	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	1	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	1	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	1	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	1	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	1	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	2	UP	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	2	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	2	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	2	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	2	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	2	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	2	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	2	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	7	UP	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	7	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	7	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	7	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+    """.trimIndent(),
+    """
+-10.50	-10.50	sign-first	self	7	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	7	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	7	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-first	self	7	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+-10.50	-10.50	sign-second	self	0	UP	7.00:2|A.exact;
+-10.50	-10.50	sign-second	self	0	DOWN	7.00:2|A.exact;
+-10.50	-10.50	sign-second	self	0	CEILING	7.00:2|A.exact;
+-10.50	-10.50	sign-second	self	0	FLOOR	7.00:2|A.exact;
+-10.50	-10.50	sign-second	self	0	HALF_UP	7.00:2|A.exact;
+-10.50	-10.50	sign-second	self	0	HALF_DOWN	7.00:2|A.exact;
+-10.50	-10.50	sign-second	self	0	HALF_EVEN	7.00:2|A.exact;
+-10.50	-10.50	sign-second	self	0	UNNECESSARY	7.00:2|A.exact;
+-10.50	-10.50	sign-second	self	1	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	1	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	1	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	1	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	1	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	1	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	1	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	1	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	2	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	2	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	2	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	2	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	2	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	2	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	2	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	2	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	7	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	7	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	7	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	7	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	7	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	7	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	7	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	sign-second	self	7	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+-10.50	-10.50	precision	self	0	UP	7.00:2|A.exact;
+-10.50	-10.50	precision	self	0	DOWN	7.00:2|A.exact;
+-10.50	-10.50	precision	self	0	CEILING	7.00:2|A.exact;
+-10.50	-10.50	precision	self	0	FLOOR	7.00:2|A.exact;
+-10.50	-10.50	precision	self	0	HALF_UP	7.00:2|A.exact;
+-10.50	-10.50	precision	self	0	HALF_DOWN	7.00:2|A.exact;
+-10.50	-10.50	precision	self	0	HALF_EVEN	7.00:2|A.exact;
+-10.50	-10.50	precision	self	0	UNNECESSARY	7.00:2|A.exact;
+-10.50	-10.50	precision	self	1	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	1	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	1	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	1	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	1	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	1	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	1	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	1	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	2	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	2	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	2	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	2	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	2	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	2	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	2	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	2	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	7	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	7	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	7	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	7	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	7	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	7	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	7	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+-10.50	-10.50	precision	self	7	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	delegate	self	0	UP	7.00:2|A.exact;
+1E+20	1E+20	delegate	self	0	DOWN	7.00:2|A.exact;
+1E+20	1E+20	delegate	self	0	CEILING	7.00:2|A.exact;
+1E+20	1E+20	delegate	self	0	FLOOR	7.00:2|A.exact;
+1E+20	1E+20	delegate	self	0	HALF_UP	7.00:2|A.exact;
+1E+20	1E+20	delegate	self	0	HALF_DOWN	7.00:2|A.exact;
+1E+20	1E+20	delegate	self	0	HALF_EVEN	7.00:2|A.exact;
+1E+20	1E+20	delegate	self	0	UNNECESSARY	7.00:2|A.exact;
+1E+20	1E+20	delegate	self	1	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	1	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	1	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	1	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	1	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	1	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	1	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	1	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	2	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	2	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	2	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	2	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	2	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	2	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	2	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	2	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	7	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	7	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	7	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	7	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	7	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	7	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	7	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+1E+20	1E+20	delegate	self	7	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+    """.trimIndent(),
+    """
+1E+20	1E+20	sign-first	self	0	UP	7.00:2|A.exact;
+1E+20	1E+20	sign-first	self	0	DOWN	7.00:2|A.exact;
+1E+20	1E+20	sign-first	self	0	CEILING	7.00:2|A.exact;
+1E+20	1E+20	sign-first	self	0	FLOOR	7.00:2|A.exact;
+1E+20	1E+20	sign-first	self	0	HALF_UP	7.00:2|A.exact;
+1E+20	1E+20	sign-first	self	0	HALF_DOWN	7.00:2|A.exact;
+1E+20	1E+20	sign-first	self	0	HALF_EVEN	7.00:2|A.exact;
+1E+20	1E+20	sign-first	self	0	UNNECESSARY	7.00:2|A.exact;
+1E+20	1E+20	sign-first	self	1	UP	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	1	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	1	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	1	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	1	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	1	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	1	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	1	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	2	UP	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	2	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	2	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	2	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	2	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	2	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	2	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	2	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	7	UP	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	7	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	7	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	7	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	7	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	7	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	7	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-first	self	7	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+1E+20	1E+20	sign-second	self	0	UP	7.00:2|A.exact;
+1E+20	1E+20	sign-second	self	0	DOWN	7.00:2|A.exact;
+1E+20	1E+20	sign-second	self	0	CEILING	7.00:2|A.exact;
+1E+20	1E+20	sign-second	self	0	FLOOR	7.00:2|A.exact;
+1E+20	1E+20	sign-second	self	0	HALF_UP	7.00:2|A.exact;
+1E+20	1E+20	sign-second	self	0	HALF_DOWN	7.00:2|A.exact;
+1E+20	1E+20	sign-second	self	0	HALF_EVEN	7.00:2|A.exact;
+1E+20	1E+20	sign-second	self	0	UNNECESSARY	7.00:2|A.exact;
+1E+20	1E+20	sign-second	self	1	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	1	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	1	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	1	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	1	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	1	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	1	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	1	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	2	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	2	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	2	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	2	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	2	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	2	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	2	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	2	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	7	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	7	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	7	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	7	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	7	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	7	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	7	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	sign-second	self	7	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+1E+20	1E+20	precision	self	0	UP	7.00:2|A.exact;
+1E+20	1E+20	precision	self	0	DOWN	7.00:2|A.exact;
+1E+20	1E+20	precision	self	0	CEILING	7.00:2|A.exact;
+1E+20	1E+20	precision	self	0	FLOOR	7.00:2|A.exact;
+1E+20	1E+20	precision	self	0	HALF_UP	7.00:2|A.exact;
+1E+20	1E+20	precision	self	0	HALF_DOWN	7.00:2|A.exact;
+1E+20	1E+20	precision	self	0	HALF_EVEN	7.00:2|A.exact;
+1E+20	1E+20	precision	self	0	UNNECESSARY	7.00:2|A.exact;
+1E+20	1E+20	precision	self	1	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	1	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	1	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	1	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	1	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	1	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	1	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	1	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	2	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	2	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	2	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	2	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	2	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	2	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	2	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	2	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	7	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	7	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	7	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	7	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	7	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	7	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	7	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+1E+20	1E+20	precision	self	7	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	0	UP	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	0	DOWN	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	0	CEILING	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	0	FLOOR	7.00:2|A.exact;
+    """.trimIndent(),
+    """
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	0	HALF_UP	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	0	HALF_DOWN	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	0	HALF_EVEN	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	0	UNNECESSARY	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	1	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	1	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	1	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	1	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	1	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	1	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	1	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	1	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	2	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	2	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	2	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	2	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	2	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	2	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	2	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	2	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	7	UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	7	DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	7	CEILING	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	7	FLOOR	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	7	HALF_UP	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	7	HALF_DOWN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	7	HALF_EVEN	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	delegate	self	7	UNNECESSARY	1:0|A.sign(1);A.sign(2);A.precision;A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	0	UP	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	0	DOWN	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	0	CEILING	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	0	FLOOR	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	0	HALF_UP	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	0	HALF_DOWN	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	0	HALF_EVEN	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	0	UNNECESSARY	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	1	UP	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	1	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	1	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	1	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	1	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	1	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	1	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	1	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	2	UP	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	2	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	2	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	2	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	2	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	2	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	2	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	2	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	7	UP	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	7	DOWN	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	7	CEILING	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	7	FLOOR	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	7	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	7	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	7	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-first	self	7	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	0	UP	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	0	DOWN	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	0	CEILING	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	0	FLOOR	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	0	HALF_UP	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	0	HALF_DOWN	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	0	HALF_EVEN	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	0	UNNECESSARY	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	1	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	1	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	1	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	1	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	1	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	1	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	1	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	1	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	2	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	2	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	2	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	2	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	2	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	2	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	2	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	2	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	7	UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	7	DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	7	CEILING	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	7	FLOOR	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	7	HALF_UP	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	7	HALF_DOWN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	7	HALF_EVEN	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	sign-second	self	7	UNNECESSARY	!IllegalStateException:A sign callback|A.sign(1);A.sign(2);
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	0	UP	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	0	DOWN	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	0	CEILING	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	0	FLOOR	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	0	HALF_UP	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	0	HALF_DOWN	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	0	HALF_EVEN	7.00:2|A.exact;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	0	UNNECESSARY	7.00:2|A.exact;
+    """.trimIndent(),
+    """
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	1	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	1	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	1	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	1	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	1	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	1	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	1	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	1	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	2	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	2	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	2	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	2	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	2	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	2	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	2	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	2	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	7	UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	7	DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	7	CEILING	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	7	FLOOR	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	7	HALF_UP	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	7	HALF_DOWN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	7	HALF_EVEN	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+123456789012345678901234567890.123	123456789012345678901234567890.123	precision	self	7	UNNECESSARY	!IllegalStateException:A precision callback|A.sign(1);A.sign(2);A.precision;
+0.00	2.0	delegate	delegate	-1	UP	!NullPointerException|
+0.00	2.0	delegate	delegate	-1	DOWN	!NullPointerException|
+0.00	2.0	delegate	delegate	-1	CEILING	!NullPointerException|
+0.00	2.0	delegate	delegate	-1	FLOOR	!NullPointerException|
+0.00	2.0	delegate	delegate	-1	HALF_UP	!NullPointerException|
+0.00	2.0	delegate	delegate	-1	HALF_DOWN	!NullPointerException|
+0.00	2.0	delegate	delegate	-1	HALF_EVEN	!NullPointerException|
+0.00	2.0	delegate	delegate	-1	UNNECESSARY	!NullPointerException|
+0.00	2.0	delegate	delegate	0	UP	7.00:2|A.exact;
+0.00	2.0	delegate	delegate	0	DOWN	7.00:2|A.exact;
+0.00	2.0	delegate	delegate	0	CEILING	7.00:2|A.exact;
+0.00	2.0	delegate	delegate	0	FLOOR	7.00:2|A.exact;
+0.00	2.0	delegate	delegate	0	HALF_UP	7.00:2|A.exact;
+0.00	2.0	delegate	delegate	0	HALF_DOWN	7.00:2|A.exact;
+0.00	2.0	delegate	delegate	0	HALF_EVEN	7.00:2|A.exact;
+0.00	2.0	delegate	delegate	0	UNNECESSARY	7.00:2|A.exact;
+0.00	2.0	delegate	delegate	2	UP	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	delegate	delegate	2	DOWN	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	delegate	delegate	2	CEILING	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	delegate	delegate	2	FLOOR	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	delegate	delegate	2	HALF_UP	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	delegate	delegate	2	HALF_DOWN	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	delegate	delegate	2	HALF_EVEN	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	delegate	delegate	2	UNNECESSARY	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	delegate	null	-1	UP	!NullPointerException|
+0.00	2.0	delegate	null	-1	DOWN	!NullPointerException|
+0.00	2.0	delegate	null	-1	CEILING	!NullPointerException|
+0.00	2.0	delegate	null	-1	FLOOR	!NullPointerException|
+0.00	2.0	delegate	null	-1	HALF_UP	!NullPointerException|
+0.00	2.0	delegate	null	-1	HALF_DOWN	!NullPointerException|
+0.00	2.0	delegate	null	-1	HALF_EVEN	!NullPointerException|
+0.00	2.0	delegate	null	-1	UNNECESSARY	!NullPointerException|
+0.00	2.0	delegate	null	0	UP	7.00:2|A.exact-null;
+0.00	2.0	delegate	null	0	DOWN	7.00:2|A.exact-null;
+0.00	2.0	delegate	null	0	CEILING	7.00:2|A.exact-null;
+0.00	2.0	delegate	null	0	FLOOR	7.00:2|A.exact-null;
+0.00	2.0	delegate	null	0	HALF_UP	7.00:2|A.exact-null;
+0.00	2.0	delegate	null	0	HALF_DOWN	7.00:2|A.exact-null;
+0.00	2.0	delegate	null	0	HALF_EVEN	7.00:2|A.exact-null;
+0.00	2.0	delegate	null	0	UNNECESSARY	7.00:2|A.exact-null;
+0.00	2.0	delegate	null	2	UP	!NullPointerException|
+0.00	2.0	delegate	null	2	DOWN	!NullPointerException|
+0.00	2.0	delegate	null	2	CEILING	!NullPointerException|
+0.00	2.0	delegate	null	2	FLOOR	!NullPointerException|
+0.00	2.0	delegate	null	2	HALF_UP	!NullPointerException|
+0.00	2.0	delegate	null	2	HALF_DOWN	!NullPointerException|
+0.00	2.0	delegate	null	2	HALF_EVEN	!NullPointerException|
+0.00	2.0	delegate	null	2	UNNECESSARY	!NullPointerException|
+0.00	2.0	sign-first	delegate	-1	UP	!NullPointerException|
+0.00	2.0	sign-first	delegate	-1	DOWN	!NullPointerException|
+0.00	2.0	sign-first	delegate	-1	CEILING	!NullPointerException|
+0.00	2.0	sign-first	delegate	-1	FLOOR	!NullPointerException|
+0.00	2.0	sign-first	delegate	-1	HALF_UP	!NullPointerException|
+0.00	2.0	sign-first	delegate	-1	HALF_DOWN	!NullPointerException|
+0.00	2.0	sign-first	delegate	-1	HALF_EVEN	!NullPointerException|
+0.00	2.0	sign-first	delegate	-1	UNNECESSARY	!NullPointerException|
+0.00	2.0	sign-first	delegate	0	UP	7.00:2|A.exact;
+0.00	2.0	sign-first	delegate	0	DOWN	7.00:2|A.exact;
+0.00	2.0	sign-first	delegate	0	CEILING	7.00:2|A.exact;
+0.00	2.0	sign-first	delegate	0	FLOOR	7.00:2|A.exact;
+0.00	2.0	sign-first	delegate	0	HALF_UP	7.00:2|A.exact;
+0.00	2.0	sign-first	delegate	0	HALF_DOWN	7.00:2|A.exact;
+0.00	2.0	sign-first	delegate	0	HALF_EVEN	7.00:2|A.exact;
+0.00	2.0	sign-first	delegate	0	UNNECESSARY	7.00:2|A.exact;
+0.00	2.0	sign-first	delegate	2	UP	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+0.00	2.0	sign-first	delegate	2	DOWN	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+0.00	2.0	sign-first	delegate	2	CEILING	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+0.00	2.0	sign-first	delegate	2	FLOOR	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+0.00	2.0	sign-first	delegate	2	HALF_UP	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+0.00	2.0	sign-first	delegate	2	HALF_DOWN	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+0.00	2.0	sign-first	delegate	2	HALF_EVEN	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+0.00	2.0	sign-first	delegate	2	UNNECESSARY	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+0.00	2.0	sign-first	null	-1	UP	!NullPointerException|
+0.00	2.0	sign-first	null	-1	DOWN	!NullPointerException|
+0.00	2.0	sign-first	null	-1	CEILING	!NullPointerException|
+0.00	2.0	sign-first	null	-1	FLOOR	!NullPointerException|
+    """.trimIndent(),
+    """
+0.00	2.0	sign-first	null	-1	HALF_UP	!NullPointerException|
+0.00	2.0	sign-first	null	-1	HALF_DOWN	!NullPointerException|
+0.00	2.0	sign-first	null	-1	HALF_EVEN	!NullPointerException|
+0.00	2.0	sign-first	null	-1	UNNECESSARY	!NullPointerException|
+0.00	2.0	sign-first	null	0	UP	7.00:2|A.exact-null;
+0.00	2.0	sign-first	null	0	DOWN	7.00:2|A.exact-null;
+0.00	2.0	sign-first	null	0	CEILING	7.00:2|A.exact-null;
+0.00	2.0	sign-first	null	0	FLOOR	7.00:2|A.exact-null;
+0.00	2.0	sign-first	null	0	HALF_UP	7.00:2|A.exact-null;
+0.00	2.0	sign-first	null	0	HALF_DOWN	7.00:2|A.exact-null;
+0.00	2.0	sign-first	null	0	HALF_EVEN	7.00:2|A.exact-null;
+0.00	2.0	sign-first	null	0	UNNECESSARY	7.00:2|A.exact-null;
+0.00	2.0	sign-first	null	2	UP	!NullPointerException|
+0.00	2.0	sign-first	null	2	DOWN	!NullPointerException|
+0.00	2.0	sign-first	null	2	CEILING	!NullPointerException|
+0.00	2.0	sign-first	null	2	FLOOR	!NullPointerException|
+0.00	2.0	sign-first	null	2	HALF_UP	!NullPointerException|
+0.00	2.0	sign-first	null	2	HALF_DOWN	!NullPointerException|
+0.00	2.0	sign-first	null	2	HALF_EVEN	!NullPointerException|
+0.00	2.0	sign-first	null	2	UNNECESSARY	!NullPointerException|
+0.00	2.0	sign-second	delegate	-1	UP	!NullPointerException|
+0.00	2.0	sign-second	delegate	-1	DOWN	!NullPointerException|
+0.00	2.0	sign-second	delegate	-1	CEILING	!NullPointerException|
+0.00	2.0	sign-second	delegate	-1	FLOOR	!NullPointerException|
+0.00	2.0	sign-second	delegate	-1	HALF_UP	!NullPointerException|
+0.00	2.0	sign-second	delegate	-1	HALF_DOWN	!NullPointerException|
+0.00	2.0	sign-second	delegate	-1	HALF_EVEN	!NullPointerException|
+0.00	2.0	sign-second	delegate	-1	UNNECESSARY	!NullPointerException|
+0.00	2.0	sign-second	delegate	0	UP	7.00:2|A.exact;
+0.00	2.0	sign-second	delegate	0	DOWN	7.00:2|A.exact;
+0.00	2.0	sign-second	delegate	0	CEILING	7.00:2|A.exact;
+0.00	2.0	sign-second	delegate	0	FLOOR	7.00:2|A.exact;
+0.00	2.0	sign-second	delegate	0	HALF_UP	7.00:2|A.exact;
+0.00	2.0	sign-second	delegate	0	HALF_DOWN	7.00:2|A.exact;
+0.00	2.0	sign-second	delegate	0	HALF_EVEN	7.00:2|A.exact;
+0.00	2.0	sign-second	delegate	0	UNNECESSARY	7.00:2|A.exact;
+0.00	2.0	sign-second	delegate	2	UP	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	sign-second	delegate	2	DOWN	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	sign-second	delegate	2	CEILING	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	sign-second	delegate	2	FLOOR	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	sign-second	delegate	2	HALF_UP	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	sign-second	delegate	2	HALF_DOWN	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	sign-second	delegate	2	HALF_EVEN	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	sign-second	delegate	2	UNNECESSARY	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	sign-second	null	-1	UP	!NullPointerException|
+0.00	2.0	sign-second	null	-1	DOWN	!NullPointerException|
+0.00	2.0	sign-second	null	-1	CEILING	!NullPointerException|
+0.00	2.0	sign-second	null	-1	FLOOR	!NullPointerException|
+0.00	2.0	sign-second	null	-1	HALF_UP	!NullPointerException|
+0.00	2.0	sign-second	null	-1	HALF_DOWN	!NullPointerException|
+0.00	2.0	sign-second	null	-1	HALF_EVEN	!NullPointerException|
+0.00	2.0	sign-second	null	-1	UNNECESSARY	!NullPointerException|
+0.00	2.0	sign-second	null	0	UP	7.00:2|A.exact-null;
+0.00	2.0	sign-second	null	0	DOWN	7.00:2|A.exact-null;
+0.00	2.0	sign-second	null	0	CEILING	7.00:2|A.exact-null;
+0.00	2.0	sign-second	null	0	FLOOR	7.00:2|A.exact-null;
+0.00	2.0	sign-second	null	0	HALF_UP	7.00:2|A.exact-null;
+0.00	2.0	sign-second	null	0	HALF_DOWN	7.00:2|A.exact-null;
+0.00	2.0	sign-second	null	0	HALF_EVEN	7.00:2|A.exact-null;
+0.00	2.0	sign-second	null	0	UNNECESSARY	7.00:2|A.exact-null;
+0.00	2.0	sign-second	null	2	UP	!NullPointerException|
+0.00	2.0	sign-second	null	2	DOWN	!NullPointerException|
+0.00	2.0	sign-second	null	2	CEILING	!NullPointerException|
+0.00	2.0	sign-second	null	2	FLOOR	!NullPointerException|
+0.00	2.0	sign-second	null	2	HALF_UP	!NullPointerException|
+0.00	2.0	sign-second	null	2	HALF_DOWN	!NullPointerException|
+0.00	2.0	sign-second	null	2	HALF_EVEN	!NullPointerException|
+0.00	2.0	sign-second	null	2	UNNECESSARY	!NullPointerException|
+0.00	2.0	precision	delegate	-1	UP	!NullPointerException|
+0.00	2.0	precision	delegate	-1	DOWN	!NullPointerException|
+0.00	2.0	precision	delegate	-1	CEILING	!NullPointerException|
+0.00	2.0	precision	delegate	-1	FLOOR	!NullPointerException|
+0.00	2.0	precision	delegate	-1	HALF_UP	!NullPointerException|
+0.00	2.0	precision	delegate	-1	HALF_DOWN	!NullPointerException|
+0.00	2.0	precision	delegate	-1	HALF_EVEN	!NullPointerException|
+0.00	2.0	precision	delegate	-1	UNNECESSARY	!NullPointerException|
+0.00	2.0	precision	delegate	0	UP	7.00:2|A.exact;
+0.00	2.0	precision	delegate	0	DOWN	7.00:2|A.exact;
+0.00	2.0	precision	delegate	0	CEILING	7.00:2|A.exact;
+0.00	2.0	precision	delegate	0	FLOOR	7.00:2|A.exact;
+0.00	2.0	precision	delegate	0	HALF_UP	7.00:2|A.exact;
+0.00	2.0	precision	delegate	0	HALF_DOWN	7.00:2|A.exact;
+0.00	2.0	precision	delegate	0	HALF_EVEN	7.00:2|A.exact;
+0.00	2.0	precision	delegate	0	UNNECESSARY	7.00:2|A.exact;
+0.00	2.0	precision	delegate	2	UP	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	precision	delegate	2	DOWN	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	precision	delegate	2	CEILING	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	precision	delegate	2	FLOOR	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	precision	delegate	2	HALF_UP	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	precision	delegate	2	HALF_DOWN	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	precision	delegate	2	HALF_EVEN	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	precision	delegate	2	UNNECESSARY	0.0:1|B.sign(1);A.sign(1);
+0.00	2.0	precision	null	-1	UP	!NullPointerException|
+0.00	2.0	precision	null	-1	DOWN	!NullPointerException|
+0.00	2.0	precision	null	-1	CEILING	!NullPointerException|
+0.00	2.0	precision	null	-1	FLOOR	!NullPointerException|
+0.00	2.0	precision	null	-1	HALF_UP	!NullPointerException|
+0.00	2.0	precision	null	-1	HALF_DOWN	!NullPointerException|
+0.00	2.0	precision	null	-1	HALF_EVEN	!NullPointerException|
+0.00	2.0	precision	null	-1	UNNECESSARY	!NullPointerException|
+    """.trimIndent(),
+    """
+0.00	2.0	precision	null	0	UP	7.00:2|A.exact-null;
+0.00	2.0	precision	null	0	DOWN	7.00:2|A.exact-null;
+0.00	2.0	precision	null	0	CEILING	7.00:2|A.exact-null;
+0.00	2.0	precision	null	0	FLOOR	7.00:2|A.exact-null;
+0.00	2.0	precision	null	0	HALF_UP	7.00:2|A.exact-null;
+0.00	2.0	precision	null	0	HALF_DOWN	7.00:2|A.exact-null;
+0.00	2.0	precision	null	0	HALF_EVEN	7.00:2|A.exact-null;
+0.00	2.0	precision	null	0	UNNECESSARY	7.00:2|A.exact-null;
+0.00	2.0	precision	null	2	UP	!NullPointerException|
+0.00	2.0	precision	null	2	DOWN	!NullPointerException|
+0.00	2.0	precision	null	2	CEILING	!NullPointerException|
+0.00	2.0	precision	null	2	FLOOR	!NullPointerException|
+0.00	2.0	precision	null	2	HALF_UP	!NullPointerException|
+0.00	2.0	precision	null	2	HALF_DOWN	!NullPointerException|
+0.00	2.0	precision	null	2	HALF_EVEN	!NullPointerException|
+0.00	2.0	precision	null	2	UNNECESSARY	!NullPointerException|
+10.50	2.0	delegate	delegate	-1	UP	!NullPointerException|
+10.50	2.0	delegate	delegate	-1	DOWN	!NullPointerException|
+10.50	2.0	delegate	delegate	-1	CEILING	!NullPointerException|
+10.50	2.0	delegate	delegate	-1	FLOOR	!NullPointerException|
+10.50	2.0	delegate	delegate	-1	HALF_UP	!NullPointerException|
+10.50	2.0	delegate	delegate	-1	HALF_DOWN	!NullPointerException|
+10.50	2.0	delegate	delegate	-1	HALF_EVEN	!NullPointerException|
+10.50	2.0	delegate	delegate	-1	UNNECESSARY	!NullPointerException|
+10.50	2.0	delegate	delegate	0	UP	7.00:2|A.exact;
+10.50	2.0	delegate	delegate	0	DOWN	7.00:2|A.exact;
+10.50	2.0	delegate	delegate	0	CEILING	7.00:2|A.exact;
+10.50	2.0	delegate	delegate	0	FLOOR	7.00:2|A.exact;
+10.50	2.0	delegate	delegate	0	HALF_UP	7.00:2|A.exact;
+10.50	2.0	delegate	delegate	0	HALF_DOWN	7.00:2|A.exact;
+10.50	2.0	delegate	delegate	0	HALF_EVEN	7.00:2|A.exact;
+10.50	2.0	delegate	delegate	0	UNNECESSARY	7.00:2|A.exact;
+10.50	2.0	delegate	delegate	2	UP	5.3:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	delegate	delegate	2	DOWN	5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	delegate	delegate	2	CEILING	5.3:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	delegate	delegate	2	FLOOR	5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	delegate	delegate	2	HALF_UP	5.3:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	delegate	delegate	2	HALF_DOWN	5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	delegate	delegate	2	HALF_EVEN	5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	delegate	delegate	2	UNNECESSARY	!ArithmeticException:Rounding necessary|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	delegate	null	-1	UP	!NullPointerException|
+10.50	2.0	delegate	null	-1	DOWN	!NullPointerException|
+10.50	2.0	delegate	null	-1	CEILING	!NullPointerException|
+10.50	2.0	delegate	null	-1	FLOOR	!NullPointerException|
+10.50	2.0	delegate	null	-1	HALF_UP	!NullPointerException|
+10.50	2.0	delegate	null	-1	HALF_DOWN	!NullPointerException|
+10.50	2.0	delegate	null	-1	HALF_EVEN	!NullPointerException|
+10.50	2.0	delegate	null	-1	UNNECESSARY	!NullPointerException|
+10.50	2.0	delegate	null	0	UP	7.00:2|A.exact-null;
+10.50	2.0	delegate	null	0	DOWN	7.00:2|A.exact-null;
+10.50	2.0	delegate	null	0	CEILING	7.00:2|A.exact-null;
+10.50	2.0	delegate	null	0	FLOOR	7.00:2|A.exact-null;
+10.50	2.0	delegate	null	0	HALF_UP	7.00:2|A.exact-null;
+10.50	2.0	delegate	null	0	HALF_DOWN	7.00:2|A.exact-null;
+10.50	2.0	delegate	null	0	HALF_EVEN	7.00:2|A.exact-null;
+10.50	2.0	delegate	null	0	UNNECESSARY	7.00:2|A.exact-null;
+10.50	2.0	delegate	null	2	UP	!NullPointerException|
+10.50	2.0	delegate	null	2	DOWN	!NullPointerException|
+10.50	2.0	delegate	null	2	CEILING	!NullPointerException|
+10.50	2.0	delegate	null	2	FLOOR	!NullPointerException|
+10.50	2.0	delegate	null	2	HALF_UP	!NullPointerException|
+10.50	2.0	delegate	null	2	HALF_DOWN	!NullPointerException|
+10.50	2.0	delegate	null	2	HALF_EVEN	!NullPointerException|
+10.50	2.0	delegate	null	2	UNNECESSARY	!NullPointerException|
+10.50	2.0	sign-first	delegate	-1	UP	!NullPointerException|
+10.50	2.0	sign-first	delegate	-1	DOWN	!NullPointerException|
+10.50	2.0	sign-first	delegate	-1	CEILING	!NullPointerException|
+10.50	2.0	sign-first	delegate	-1	FLOOR	!NullPointerException|
+10.50	2.0	sign-first	delegate	-1	HALF_UP	!NullPointerException|
+10.50	2.0	sign-first	delegate	-1	HALF_DOWN	!NullPointerException|
+10.50	2.0	sign-first	delegate	-1	HALF_EVEN	!NullPointerException|
+10.50	2.0	sign-first	delegate	-1	UNNECESSARY	!NullPointerException|
+10.50	2.0	sign-first	delegate	0	UP	7.00:2|A.exact;
+10.50	2.0	sign-first	delegate	0	DOWN	7.00:2|A.exact;
+10.50	2.0	sign-first	delegate	0	CEILING	7.00:2|A.exact;
+10.50	2.0	sign-first	delegate	0	FLOOR	7.00:2|A.exact;
+10.50	2.0	sign-first	delegate	0	HALF_UP	7.00:2|A.exact;
+10.50	2.0	sign-first	delegate	0	HALF_DOWN	7.00:2|A.exact;
+10.50	2.0	sign-first	delegate	0	HALF_EVEN	7.00:2|A.exact;
+10.50	2.0	sign-first	delegate	0	UNNECESSARY	7.00:2|A.exact;
+10.50	2.0	sign-first	delegate	2	UP	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+10.50	2.0	sign-first	delegate	2	DOWN	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+10.50	2.0	sign-first	delegate	2	CEILING	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+10.50	2.0	sign-first	delegate	2	FLOOR	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+10.50	2.0	sign-first	delegate	2	HALF_UP	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+10.50	2.0	sign-first	delegate	2	HALF_DOWN	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+10.50	2.0	sign-first	delegate	2	HALF_EVEN	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+10.50	2.0	sign-first	delegate	2	UNNECESSARY	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+10.50	2.0	sign-first	null	-1	UP	!NullPointerException|
+10.50	2.0	sign-first	null	-1	DOWN	!NullPointerException|
+10.50	2.0	sign-first	null	-1	CEILING	!NullPointerException|
+10.50	2.0	sign-first	null	-1	FLOOR	!NullPointerException|
+10.50	2.0	sign-first	null	-1	HALF_UP	!NullPointerException|
+10.50	2.0	sign-first	null	-1	HALF_DOWN	!NullPointerException|
+10.50	2.0	sign-first	null	-1	HALF_EVEN	!NullPointerException|
+10.50	2.0	sign-first	null	-1	UNNECESSARY	!NullPointerException|
+10.50	2.0	sign-first	null	0	UP	7.00:2|A.exact-null;
+10.50	2.0	sign-first	null	0	DOWN	7.00:2|A.exact-null;
+10.50	2.0	sign-first	null	0	CEILING	7.00:2|A.exact-null;
+10.50	2.0	sign-first	null	0	FLOOR	7.00:2|A.exact-null;
+    """.trimIndent(),
+    """
+10.50	2.0	sign-first	null	0	HALF_UP	7.00:2|A.exact-null;
+10.50	2.0	sign-first	null	0	HALF_DOWN	7.00:2|A.exact-null;
+10.50	2.0	sign-first	null	0	HALF_EVEN	7.00:2|A.exact-null;
+10.50	2.0	sign-first	null	0	UNNECESSARY	7.00:2|A.exact-null;
+10.50	2.0	sign-first	null	2	UP	!NullPointerException|
+10.50	2.0	sign-first	null	2	DOWN	!NullPointerException|
+10.50	2.0	sign-first	null	2	CEILING	!NullPointerException|
+10.50	2.0	sign-first	null	2	FLOOR	!NullPointerException|
+10.50	2.0	sign-first	null	2	HALF_UP	!NullPointerException|
+10.50	2.0	sign-first	null	2	HALF_DOWN	!NullPointerException|
+10.50	2.0	sign-first	null	2	HALF_EVEN	!NullPointerException|
+10.50	2.0	sign-first	null	2	UNNECESSARY	!NullPointerException|
+10.50	2.0	sign-second	delegate	-1	UP	!NullPointerException|
+10.50	2.0	sign-second	delegate	-1	DOWN	!NullPointerException|
+10.50	2.0	sign-second	delegate	-1	CEILING	!NullPointerException|
+10.50	2.0	sign-second	delegate	-1	FLOOR	!NullPointerException|
+10.50	2.0	sign-second	delegate	-1	HALF_UP	!NullPointerException|
+10.50	2.0	sign-second	delegate	-1	HALF_DOWN	!NullPointerException|
+10.50	2.0	sign-second	delegate	-1	HALF_EVEN	!NullPointerException|
+10.50	2.0	sign-second	delegate	-1	UNNECESSARY	!NullPointerException|
+10.50	2.0	sign-second	delegate	0	UP	7.00:2|A.exact;
+10.50	2.0	sign-second	delegate	0	DOWN	7.00:2|A.exact;
+10.50	2.0	sign-second	delegate	0	CEILING	7.00:2|A.exact;
+10.50	2.0	sign-second	delegate	0	FLOOR	7.00:2|A.exact;
+10.50	2.0	sign-second	delegate	0	HALF_UP	7.00:2|A.exact;
+10.50	2.0	sign-second	delegate	0	HALF_DOWN	7.00:2|A.exact;
+10.50	2.0	sign-second	delegate	0	HALF_EVEN	7.00:2|A.exact;
+10.50	2.0	sign-second	delegate	0	UNNECESSARY	7.00:2|A.exact;
+10.50	2.0	sign-second	delegate	2	UP	5.3:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	sign-second	delegate	2	DOWN	5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	sign-second	delegate	2	CEILING	5.3:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	sign-second	delegate	2	FLOOR	5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	sign-second	delegate	2	HALF_UP	5.3:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	sign-second	delegate	2	HALF_DOWN	5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	sign-second	delegate	2	HALF_EVEN	5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	sign-second	delegate	2	UNNECESSARY	!ArithmeticException:Rounding necessary|B.sign(1);A.sign(1);A.precision;B.precision;
+10.50	2.0	sign-second	null	-1	UP	!NullPointerException|
+10.50	2.0	sign-second	null	-1	DOWN	!NullPointerException|
+10.50	2.0	sign-second	null	-1	CEILING	!NullPointerException|
+10.50	2.0	sign-second	null	-1	FLOOR	!NullPointerException|
+10.50	2.0	sign-second	null	-1	HALF_UP	!NullPointerException|
+10.50	2.0	sign-second	null	-1	HALF_DOWN	!NullPointerException|
+10.50	2.0	sign-second	null	-1	HALF_EVEN	!NullPointerException|
+10.50	2.0	sign-second	null	-1	UNNECESSARY	!NullPointerException|
+10.50	2.0	sign-second	null	0	UP	7.00:2|A.exact-null;
+10.50	2.0	sign-second	null	0	DOWN	7.00:2|A.exact-null;
+10.50	2.0	sign-second	null	0	CEILING	7.00:2|A.exact-null;
+10.50	2.0	sign-second	null	0	FLOOR	7.00:2|A.exact-null;
+10.50	2.0	sign-second	null	0	HALF_UP	7.00:2|A.exact-null;
+10.50	2.0	sign-second	null	0	HALF_DOWN	7.00:2|A.exact-null;
+10.50	2.0	sign-second	null	0	HALF_EVEN	7.00:2|A.exact-null;
+10.50	2.0	sign-second	null	0	UNNECESSARY	7.00:2|A.exact-null;
+10.50	2.0	sign-second	null	2	UP	!NullPointerException|
+10.50	2.0	sign-second	null	2	DOWN	!NullPointerException|
+10.50	2.0	sign-second	null	2	CEILING	!NullPointerException|
+10.50	2.0	sign-second	null	2	FLOOR	!NullPointerException|
+10.50	2.0	sign-second	null	2	HALF_UP	!NullPointerException|
+10.50	2.0	sign-second	null	2	HALF_DOWN	!NullPointerException|
+10.50	2.0	sign-second	null	2	HALF_EVEN	!NullPointerException|
+10.50	2.0	sign-second	null	2	UNNECESSARY	!NullPointerException|
+10.50	2.0	precision	delegate	-1	UP	!NullPointerException|
+10.50	2.0	precision	delegate	-1	DOWN	!NullPointerException|
+10.50	2.0	precision	delegate	-1	CEILING	!NullPointerException|
+10.50	2.0	precision	delegate	-1	FLOOR	!NullPointerException|
+10.50	2.0	precision	delegate	-1	HALF_UP	!NullPointerException|
+10.50	2.0	precision	delegate	-1	HALF_DOWN	!NullPointerException|
+10.50	2.0	precision	delegate	-1	HALF_EVEN	!NullPointerException|
+10.50	2.0	precision	delegate	-1	UNNECESSARY	!NullPointerException|
+10.50	2.0	precision	delegate	0	UP	7.00:2|A.exact;
+10.50	2.0	precision	delegate	0	DOWN	7.00:2|A.exact;
+10.50	2.0	precision	delegate	0	CEILING	7.00:2|A.exact;
+10.50	2.0	precision	delegate	0	FLOOR	7.00:2|A.exact;
+10.50	2.0	precision	delegate	0	HALF_UP	7.00:2|A.exact;
+10.50	2.0	precision	delegate	0	HALF_DOWN	7.00:2|A.exact;
+10.50	2.0	precision	delegate	0	HALF_EVEN	7.00:2|A.exact;
+10.50	2.0	precision	delegate	0	UNNECESSARY	7.00:2|A.exact;
+10.50	2.0	precision	delegate	2	UP	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+10.50	2.0	precision	delegate	2	DOWN	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+10.50	2.0	precision	delegate	2	CEILING	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+10.50	2.0	precision	delegate	2	FLOOR	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+10.50	2.0	precision	delegate	2	HALF_UP	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+10.50	2.0	precision	delegate	2	HALF_DOWN	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+10.50	2.0	precision	delegate	2	HALF_EVEN	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+10.50	2.0	precision	delegate	2	UNNECESSARY	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+10.50	2.0	precision	null	-1	UP	!NullPointerException|
+10.50	2.0	precision	null	-1	DOWN	!NullPointerException|
+10.50	2.0	precision	null	-1	CEILING	!NullPointerException|
+10.50	2.0	precision	null	-1	FLOOR	!NullPointerException|
+10.50	2.0	precision	null	-1	HALF_UP	!NullPointerException|
+10.50	2.0	precision	null	-1	HALF_DOWN	!NullPointerException|
+10.50	2.0	precision	null	-1	HALF_EVEN	!NullPointerException|
+10.50	2.0	precision	null	-1	UNNECESSARY	!NullPointerException|
+10.50	2.0	precision	null	0	UP	7.00:2|A.exact-null;
+10.50	2.0	precision	null	0	DOWN	7.00:2|A.exact-null;
+10.50	2.0	precision	null	0	CEILING	7.00:2|A.exact-null;
+10.50	2.0	precision	null	0	FLOOR	7.00:2|A.exact-null;
+10.50	2.0	precision	null	0	HALF_UP	7.00:2|A.exact-null;
+10.50	2.0	precision	null	0	HALF_DOWN	7.00:2|A.exact-null;
+10.50	2.0	precision	null	0	HALF_EVEN	7.00:2|A.exact-null;
+10.50	2.0	precision	null	0	UNNECESSARY	7.00:2|A.exact-null;
+    """.trimIndent(),
+    """
+10.50	2.0	precision	null	2	UP	!NullPointerException|
+10.50	2.0	precision	null	2	DOWN	!NullPointerException|
+10.50	2.0	precision	null	2	CEILING	!NullPointerException|
+10.50	2.0	precision	null	2	FLOOR	!NullPointerException|
+10.50	2.0	precision	null	2	HALF_UP	!NullPointerException|
+10.50	2.0	precision	null	2	HALF_DOWN	!NullPointerException|
+10.50	2.0	precision	null	2	HALF_EVEN	!NullPointerException|
+10.50	2.0	precision	null	2	UNNECESSARY	!NullPointerException|
+-10.50	2.0	delegate	delegate	-1	UP	!NullPointerException|
+-10.50	2.0	delegate	delegate	-1	DOWN	!NullPointerException|
+-10.50	2.0	delegate	delegate	-1	CEILING	!NullPointerException|
+-10.50	2.0	delegate	delegate	-1	FLOOR	!NullPointerException|
+-10.50	2.0	delegate	delegate	-1	HALF_UP	!NullPointerException|
+-10.50	2.0	delegate	delegate	-1	HALF_DOWN	!NullPointerException|
+-10.50	2.0	delegate	delegate	-1	HALF_EVEN	!NullPointerException|
+-10.50	2.0	delegate	delegate	-1	UNNECESSARY	!NullPointerException|
+-10.50	2.0	delegate	delegate	0	UP	7.00:2|A.exact;
+-10.50	2.0	delegate	delegate	0	DOWN	7.00:2|A.exact;
+-10.50	2.0	delegate	delegate	0	CEILING	7.00:2|A.exact;
+-10.50	2.0	delegate	delegate	0	FLOOR	7.00:2|A.exact;
+-10.50	2.0	delegate	delegate	0	HALF_UP	7.00:2|A.exact;
+-10.50	2.0	delegate	delegate	0	HALF_DOWN	7.00:2|A.exact;
+-10.50	2.0	delegate	delegate	0	HALF_EVEN	7.00:2|A.exact;
+-10.50	2.0	delegate	delegate	0	UNNECESSARY	7.00:2|A.exact;
+-10.50	2.0	delegate	delegate	2	UP	-5.3:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	delegate	delegate	2	DOWN	-5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	delegate	delegate	2	CEILING	-5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	delegate	delegate	2	FLOOR	-5.3:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	delegate	delegate	2	HALF_UP	-5.3:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	delegate	delegate	2	HALF_DOWN	-5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	delegate	delegate	2	HALF_EVEN	-5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	delegate	delegate	2	UNNECESSARY	!ArithmeticException:Rounding necessary|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	delegate	null	-1	UP	!NullPointerException|
+-10.50	2.0	delegate	null	-1	DOWN	!NullPointerException|
+-10.50	2.0	delegate	null	-1	CEILING	!NullPointerException|
+-10.50	2.0	delegate	null	-1	FLOOR	!NullPointerException|
+-10.50	2.0	delegate	null	-1	HALF_UP	!NullPointerException|
+-10.50	2.0	delegate	null	-1	HALF_DOWN	!NullPointerException|
+-10.50	2.0	delegate	null	-1	HALF_EVEN	!NullPointerException|
+-10.50	2.0	delegate	null	-1	UNNECESSARY	!NullPointerException|
+-10.50	2.0	delegate	null	0	UP	7.00:2|A.exact-null;
+-10.50	2.0	delegate	null	0	DOWN	7.00:2|A.exact-null;
+-10.50	2.0	delegate	null	0	CEILING	7.00:2|A.exact-null;
+-10.50	2.0	delegate	null	0	FLOOR	7.00:2|A.exact-null;
+-10.50	2.0	delegate	null	0	HALF_UP	7.00:2|A.exact-null;
+-10.50	2.0	delegate	null	0	HALF_DOWN	7.00:2|A.exact-null;
+-10.50	2.0	delegate	null	0	HALF_EVEN	7.00:2|A.exact-null;
+-10.50	2.0	delegate	null	0	UNNECESSARY	7.00:2|A.exact-null;
+-10.50	2.0	delegate	null	2	UP	!NullPointerException|
+-10.50	2.0	delegate	null	2	DOWN	!NullPointerException|
+-10.50	2.0	delegate	null	2	CEILING	!NullPointerException|
+-10.50	2.0	delegate	null	2	FLOOR	!NullPointerException|
+-10.50	2.0	delegate	null	2	HALF_UP	!NullPointerException|
+-10.50	2.0	delegate	null	2	HALF_DOWN	!NullPointerException|
+-10.50	2.0	delegate	null	2	HALF_EVEN	!NullPointerException|
+-10.50	2.0	delegate	null	2	UNNECESSARY	!NullPointerException|
+-10.50	2.0	sign-first	delegate	-1	UP	!NullPointerException|
+-10.50	2.0	sign-first	delegate	-1	DOWN	!NullPointerException|
+-10.50	2.0	sign-first	delegate	-1	CEILING	!NullPointerException|
+-10.50	2.0	sign-first	delegate	-1	FLOOR	!NullPointerException|
+-10.50	2.0	sign-first	delegate	-1	HALF_UP	!NullPointerException|
+-10.50	2.0	sign-first	delegate	-1	HALF_DOWN	!NullPointerException|
+-10.50	2.0	sign-first	delegate	-1	HALF_EVEN	!NullPointerException|
+-10.50	2.0	sign-first	delegate	-1	UNNECESSARY	!NullPointerException|
+-10.50	2.0	sign-first	delegate	0	UP	7.00:2|A.exact;
+-10.50	2.0	sign-first	delegate	0	DOWN	7.00:2|A.exact;
+-10.50	2.0	sign-first	delegate	0	CEILING	7.00:2|A.exact;
+-10.50	2.0	sign-first	delegate	0	FLOOR	7.00:2|A.exact;
+-10.50	2.0	sign-first	delegate	0	HALF_UP	7.00:2|A.exact;
+-10.50	2.0	sign-first	delegate	0	HALF_DOWN	7.00:2|A.exact;
+-10.50	2.0	sign-first	delegate	0	HALF_EVEN	7.00:2|A.exact;
+-10.50	2.0	sign-first	delegate	0	UNNECESSARY	7.00:2|A.exact;
+-10.50	2.0	sign-first	delegate	2	UP	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+-10.50	2.0	sign-first	delegate	2	DOWN	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+-10.50	2.0	sign-first	delegate	2	CEILING	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+-10.50	2.0	sign-first	delegate	2	FLOOR	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+-10.50	2.0	sign-first	delegate	2	HALF_UP	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+-10.50	2.0	sign-first	delegate	2	HALF_DOWN	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+-10.50	2.0	sign-first	delegate	2	HALF_EVEN	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+-10.50	2.0	sign-first	delegate	2	UNNECESSARY	!IllegalStateException:A sign callback|B.sign(1);A.sign(1);
+-10.50	2.0	sign-first	null	-1	UP	!NullPointerException|
+-10.50	2.0	sign-first	null	-1	DOWN	!NullPointerException|
+-10.50	2.0	sign-first	null	-1	CEILING	!NullPointerException|
+-10.50	2.0	sign-first	null	-1	FLOOR	!NullPointerException|
+-10.50	2.0	sign-first	null	-1	HALF_UP	!NullPointerException|
+-10.50	2.0	sign-first	null	-1	HALF_DOWN	!NullPointerException|
+-10.50	2.0	sign-first	null	-1	HALF_EVEN	!NullPointerException|
+-10.50	2.0	sign-first	null	-1	UNNECESSARY	!NullPointerException|
+-10.50	2.0	sign-first	null	0	UP	7.00:2|A.exact-null;
+-10.50	2.0	sign-first	null	0	DOWN	7.00:2|A.exact-null;
+-10.50	2.0	sign-first	null	0	CEILING	7.00:2|A.exact-null;
+-10.50	2.0	sign-first	null	0	FLOOR	7.00:2|A.exact-null;
+-10.50	2.0	sign-first	null	0	HALF_UP	7.00:2|A.exact-null;
+-10.50	2.0	sign-first	null	0	HALF_DOWN	7.00:2|A.exact-null;
+-10.50	2.0	sign-first	null	0	HALF_EVEN	7.00:2|A.exact-null;
+-10.50	2.0	sign-first	null	0	UNNECESSARY	7.00:2|A.exact-null;
+-10.50	2.0	sign-first	null	2	UP	!NullPointerException|
+-10.50	2.0	sign-first	null	2	DOWN	!NullPointerException|
+-10.50	2.0	sign-first	null	2	CEILING	!NullPointerException|
+-10.50	2.0	sign-first	null	2	FLOOR	!NullPointerException|
+    """.trimIndent(),
+    """
+-10.50	2.0	sign-first	null	2	HALF_UP	!NullPointerException|
+-10.50	2.0	sign-first	null	2	HALF_DOWN	!NullPointerException|
+-10.50	2.0	sign-first	null	2	HALF_EVEN	!NullPointerException|
+-10.50	2.0	sign-first	null	2	UNNECESSARY	!NullPointerException|
+-10.50	2.0	sign-second	delegate	-1	UP	!NullPointerException|
+-10.50	2.0	sign-second	delegate	-1	DOWN	!NullPointerException|
+-10.50	2.0	sign-second	delegate	-1	CEILING	!NullPointerException|
+-10.50	2.0	sign-second	delegate	-1	FLOOR	!NullPointerException|
+-10.50	2.0	sign-second	delegate	-1	HALF_UP	!NullPointerException|
+-10.50	2.0	sign-second	delegate	-1	HALF_DOWN	!NullPointerException|
+-10.50	2.0	sign-second	delegate	-1	HALF_EVEN	!NullPointerException|
+-10.50	2.0	sign-second	delegate	-1	UNNECESSARY	!NullPointerException|
+-10.50	2.0	sign-second	delegate	0	UP	7.00:2|A.exact;
+-10.50	2.0	sign-second	delegate	0	DOWN	7.00:2|A.exact;
+-10.50	2.0	sign-second	delegate	0	CEILING	7.00:2|A.exact;
+-10.50	2.0	sign-second	delegate	0	FLOOR	7.00:2|A.exact;
+-10.50	2.0	sign-second	delegate	0	HALF_UP	7.00:2|A.exact;
+-10.50	2.0	sign-second	delegate	0	HALF_DOWN	7.00:2|A.exact;
+-10.50	2.0	sign-second	delegate	0	HALF_EVEN	7.00:2|A.exact;
+-10.50	2.0	sign-second	delegate	0	UNNECESSARY	7.00:2|A.exact;
+-10.50	2.0	sign-second	delegate	2	UP	-5.3:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	sign-second	delegate	2	DOWN	-5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	sign-second	delegate	2	CEILING	-5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	sign-second	delegate	2	FLOOR	-5.3:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	sign-second	delegate	2	HALF_UP	-5.3:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	sign-second	delegate	2	HALF_DOWN	-5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	sign-second	delegate	2	HALF_EVEN	-5.2:1|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	sign-second	delegate	2	UNNECESSARY	!ArithmeticException:Rounding necessary|B.sign(1);A.sign(1);A.precision;B.precision;
+-10.50	2.0	sign-second	null	-1	UP	!NullPointerException|
+-10.50	2.0	sign-second	null	-1	DOWN	!NullPointerException|
+-10.50	2.0	sign-second	null	-1	CEILING	!NullPointerException|
+-10.50	2.0	sign-second	null	-1	FLOOR	!NullPointerException|
+-10.50	2.0	sign-second	null	-1	HALF_UP	!NullPointerException|
+-10.50	2.0	sign-second	null	-1	HALF_DOWN	!NullPointerException|
+-10.50	2.0	sign-second	null	-1	HALF_EVEN	!NullPointerException|
+-10.50	2.0	sign-second	null	-1	UNNECESSARY	!NullPointerException|
+-10.50	2.0	sign-second	null	0	UP	7.00:2|A.exact-null;
+-10.50	2.0	sign-second	null	0	DOWN	7.00:2|A.exact-null;
+-10.50	2.0	sign-second	null	0	CEILING	7.00:2|A.exact-null;
+-10.50	2.0	sign-second	null	0	FLOOR	7.00:2|A.exact-null;
+-10.50	2.0	sign-second	null	0	HALF_UP	7.00:2|A.exact-null;
+-10.50	2.0	sign-second	null	0	HALF_DOWN	7.00:2|A.exact-null;
+-10.50	2.0	sign-second	null	0	HALF_EVEN	7.00:2|A.exact-null;
+-10.50	2.0	sign-second	null	0	UNNECESSARY	7.00:2|A.exact-null;
+-10.50	2.0	sign-second	null	2	UP	!NullPointerException|
+-10.50	2.0	sign-second	null	2	DOWN	!NullPointerException|
+-10.50	2.0	sign-second	null	2	CEILING	!NullPointerException|
+-10.50	2.0	sign-second	null	2	FLOOR	!NullPointerException|
+-10.50	2.0	sign-second	null	2	HALF_UP	!NullPointerException|
+-10.50	2.0	sign-second	null	2	HALF_DOWN	!NullPointerException|
+-10.50	2.0	sign-second	null	2	HALF_EVEN	!NullPointerException|
+-10.50	2.0	sign-second	null	2	UNNECESSARY	!NullPointerException|
+-10.50	2.0	precision	delegate	-1	UP	!NullPointerException|
+-10.50	2.0	precision	delegate	-1	DOWN	!NullPointerException|
+-10.50	2.0	precision	delegate	-1	CEILING	!NullPointerException|
+-10.50	2.0	precision	delegate	-1	FLOOR	!NullPointerException|
+-10.50	2.0	precision	delegate	-1	HALF_UP	!NullPointerException|
+-10.50	2.0	precision	delegate	-1	HALF_DOWN	!NullPointerException|
+-10.50	2.0	precision	delegate	-1	HALF_EVEN	!NullPointerException|
+-10.50	2.0	precision	delegate	-1	UNNECESSARY	!NullPointerException|
+-10.50	2.0	precision	delegate	0	UP	7.00:2|A.exact;
+-10.50	2.0	precision	delegate	0	DOWN	7.00:2|A.exact;
+-10.50	2.0	precision	delegate	0	CEILING	7.00:2|A.exact;
+-10.50	2.0	precision	delegate	0	FLOOR	7.00:2|A.exact;
+-10.50	2.0	precision	delegate	0	HALF_UP	7.00:2|A.exact;
+-10.50	2.0	precision	delegate	0	HALF_DOWN	7.00:2|A.exact;
+-10.50	2.0	precision	delegate	0	HALF_EVEN	7.00:2|A.exact;
+-10.50	2.0	precision	delegate	0	UNNECESSARY	7.00:2|A.exact;
+-10.50	2.0	precision	delegate	2	UP	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+-10.50	2.0	precision	delegate	2	DOWN	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+-10.50	2.0	precision	delegate	2	CEILING	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+-10.50	2.0	precision	delegate	2	FLOOR	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+-10.50	2.0	precision	delegate	2	HALF_UP	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+-10.50	2.0	precision	delegate	2	HALF_DOWN	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+-10.50	2.0	precision	delegate	2	HALF_EVEN	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+-10.50	2.0	precision	delegate	2	UNNECESSARY	!IllegalStateException:A precision callback|B.sign(1);A.sign(1);A.precision;
+-10.50	2.0	precision	null	-1	UP	!NullPointerException|
+-10.50	2.0	precision	null	-1	DOWN	!NullPointerException|
+-10.50	2.0	precision	null	-1	CEILING	!NullPointerException|
+-10.50	2.0	precision	null	-1	FLOOR	!NullPointerException|
+-10.50	2.0	precision	null	-1	HALF_UP	!NullPointerException|
+-10.50	2.0	precision	null	-1	HALF_DOWN	!NullPointerException|
+-10.50	2.0	precision	null	-1	HALF_EVEN	!NullPointerException|
+-10.50	2.0	precision	null	-1	UNNECESSARY	!NullPointerException|
+-10.50	2.0	precision	null	0	UP	7.00:2|A.exact-null;
+-10.50	2.0	precision	null	0	DOWN	7.00:2|A.exact-null;
+-10.50	2.0	precision	null	0	CEILING	7.00:2|A.exact-null;
+-10.50	2.0	precision	null	0	FLOOR	7.00:2|A.exact-null;
+-10.50	2.0	precision	null	0	HALF_UP	7.00:2|A.exact-null;
+-10.50	2.0	precision	null	0	HALF_DOWN	7.00:2|A.exact-null;
+-10.50	2.0	precision	null	0	HALF_EVEN	7.00:2|A.exact-null;
+-10.50	2.0	precision	null	0	UNNECESSARY	7.00:2|A.exact-null;
+-10.50	2.0	precision	null	2	UP	!NullPointerException|
+-10.50	2.0	precision	null	2	DOWN	!NullPointerException|
+-10.50	2.0	precision	null	2	CEILING	!NullPointerException|
+-10.50	2.0	precision	null	2	FLOOR	!NullPointerException|
+-10.50	2.0	precision	null	2	HALF_UP	!NullPointerException|
+-10.50	2.0	precision	null	2	HALF_DOWN	!NullPointerException|
+-10.50	2.0	precision	null	2	HALF_EVEN	!NullPointerException|
+-10.50	2.0	precision	null	2	UNNECESSARY	!NullPointerException|
     """.trimIndent(),
 ).flatMap { it.lines().map { line -> line.split('\t').toTypedArray() } }

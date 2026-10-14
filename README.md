@@ -112,8 +112,9 @@ replacement and throwing callbacks, returned identities, values and scales.
 Inherited decimal integral division adds 1,400 outcomes for context-divide callbacks,
 preferred scales, precision, residual checks and returned subclass identities.
 It also adds 1,176 signed metadata outcomes, including precision and scale endpoints.
-Context division adds 6,656 outcomes for operand callback order, failure precedence,
-all rounding modes and compact/wide coefficients.
+Context division adds 8,000 outcomes for operand callback order, failure precedence,
+all rounding modes, compact/wide coefficients, shared operands and nullable calls.
+Java tests add 2,250 nullable division-family comparisons, including callback results.
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
@@ -189,6 +190,11 @@ state. The serialized form is private to the current krogu-math implementation.
 Compatibility with older krogu-math streams or `java.math` streams, and migration
 between these formats, are outside the project requirements. Non-JVM platforms
 do not depend on Java serialization.
+
+Kotlin overrides of exact/context division, integral division, pairs and remainder
+use nullable operand/context parameters to preserve Java validation and delegation
+order. The base implementation checks arguments at the corresponding computation
+stage; zero-precision and remainder delegation can be handled by an override first.
 
 ## Compatibility boundaries
 

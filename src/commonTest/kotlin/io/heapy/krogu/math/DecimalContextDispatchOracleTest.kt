@@ -24,20 +24,21 @@ private class ContextProbe(text: String, val label: String, val mode: String, va
     override fun unscaledValue(): BigInteger = unexpected("unscaled")
     override fun abs(): BigDecimal = unexpected("abs")
     override fun negate(): BigDecimal = unexpected("negate")
-    override fun divide(v: BigDecimal): BigDecimal {
-        trace.append("$label.exact;"); return BigDecimal("7.00")
+    override fun divide(v: BigDecimal?): BigDecimal {
+        trace.append("$label.exact${if (v == null) "-null" else ""};"); return BigDecimal("7.00")
     }
-    fun enter(v: BigDecimal, p: Int, rounding: String): BigDecimal = super.divide(v, MathContext(p, RoundingMode.valueOf(rounding)))
+    fun enter(v: BigDecimal?, p: Int, rounding: String): BigDecimal =
+        super.divide(v, if (p < 0) null else MathContext(p, RoundingMode.valueOf(rounding)))
 }
 private fun contextOutcome(a: String, b: String, aMode: String, bMode: String, p: Int, rounding: String): String {
     val trace = StringBuilder()
     val source = ContextProbe(a, "A", aMode, trace)
-    val divisor = ContextProbe(b, "B", bMode, trace)
+    val divisor = if (bMode == "self") source else if (bMode == "null") null else ContextProbe(b, "B", bMode, trace)
     return try {
         val result = source.enter(divisor, p, rounding)
         val calls = trace.toString()
         "${result.toString()}:${result.scale()}|$calls"
-    } catch (e: Exception) { "!${e::class.simpleName}:${e.message}|$trace" }
+    } catch (e: Exception) { "!${e::class.simpleName}${if (e is NullPointerException) "" else ":${e.message}"}|$trace" }
 }
 class DecimalContextDispatchOracleTest {
     @Test fun contextDivisionPreservesOperandCallOrderAndFailurePrecedence() {
