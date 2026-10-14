@@ -7,6 +7,37 @@ import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class PrimalityCertaintyTest {
+    @Test fun successorBudgetsBoundTheWholeSearchAndExceedIntSafely() {
+        // Sum the first 16 complete groups with a common exact denominator.
+        var scaledError = 0L
+        for (index in 1..65535) {
+            val bits = BigInteger.valueOf(index.toLong()).bitLength()
+            val rounds = PrimalityCertainty.successorRounds(bits)
+            val extra = 2 * rounds - 100
+            assertTrue(extra in 2L..32L)
+            scaledError += 1L shl (32 - extra.toInt())
+        }
+        assertEquals((1L shl 31) - (1L shl 15), scaledError)
+        assertTrue(scaledError < (1L shl 31))
+        for (bits in listOf(1, 2, 31, 32, 63, 64, 100, Int.MAX_VALUE)) {
+            val rounds = PrimalityCertainty.successorRounds(bits)
+            assertEquals(100L + 2L * bits, 2 * rounds)
+        }
+        assertEquals(2_147_483_697L, PrimalityCertainty.successorRounds(Int.MAX_VALUE))
+    }
+
+    @Test fun boundedSuccessorsNeverSkipATrialDivisionPrime() {
+        fun prime(n: Int) = n >= 2 && (2..n / 2).none { n % it == 0 }
+        var next = 2
+        for (n in 0..4096) {
+            if (next <= n) {
+                next = n + 1
+                while (!prime(next)) next++
+            }
+            assertEquals(BigInteger.valueOf(next.toLong()), BigInteger.valueOf(n.toLong()).nextProbablePrime(), "n=$n")
+        }
+    }
+
     @Test fun generationBudgetCoversConditioningOnAcceptanceWithoutIntOverflow() {
         val lengths = (2..4096).toList() + (13..30).flatMap {
             listOf((1 shl it) - 1, 1 shl it, (1 shl it) + 1)

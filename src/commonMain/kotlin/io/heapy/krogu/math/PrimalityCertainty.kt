@@ -14,6 +14,11 @@ internal object PrimalityCertainty {
         return rounds(certainty.toLong() + selectionBits)
     }
 
+    // For one-based candidate index i, bitLength(i)=ceil(log2(i+1)).
+    // Summing 2^(-2*bitLength(i)) over every i>=1 gives 1/2.
+    // Long also represents budgets when the index itself has Int.MAX_VALUE bits.
+    fun successorRounds(candidateIndexBits: Int): Long = 50L + candidateIndexBits
+
     private fun rounds(certainty: Long): Int =
         if (certainty <= 0) 0 else ((certainty + 1) / 2).toInt()
 }

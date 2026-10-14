@@ -28,7 +28,7 @@ are compared independently of this optimization.
 | Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 207,239 exact portable scale-boundary outcomes; portable fixtures | Wider coefficient/scale/precision combinations and overflow across remaining overloads |
 | Powers and roots | 10,560 initial JVM comparisons, 13,024 exponent-bit/rounding comparisons, 128 working-precision overflow cases, 2,592 squared-midpoint root fixtures through 129 digits, integer midpoint rounding argument | Sqrt/pow subclass behavior and intermediate/scale-overflow audit; larger exponent/operand combinations |
 | Float/Double conversions and canonical Double factory values | Bitwise oracle comparisons, 1,296 exact decimal midpoint-neighbor outcomes, rational rounding argument, all binary scaling powers from -1074 through 1023, 10,000 seeded canonical Double cases | Exhaustive Float input domain, decimal subclass dispatch and very large cancelling coefficient/scale allocation audit |
-| Prime generation and certainty | 368 portable primality/successor cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions; generation selection-error budget with density argument; exhaustive small byte-payload distribution and trial-division checks | Very large certainty beyond the proven bound, witness independence at larger magnitudes, supported-range limits, caller RNG behavior, next-prime selection-error budget |
+| Prime generation and certainty | 416 portable primality/successor/trace cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions; generation density argument and successor whole-search error budget; exhaustive small byte-payload distribution, primality and successor trial-division checks | Very large certainty beyond the proven bound, witness independence at larger magnitudes, supported-range limits, caller RNG behavior and wider subclass dispatch |
 | Exception conditions and types | Portable fixtures; 7,486 live JVM null/invalid-argument comparisons; 3,462 portable null-precedence outcomes; constructor precedence matrix | Wider invalid-argument domains, extreme offsets and cross-products; exception messages remain unmatched |
 | Equality, ordering, hash codes, immutability | JVM oracle and common invariants; 6,110 portable BigInteger hash outcomes | Full context/enum/hash and subclass audit |
 | JVM serialization and Java adapters | Current-format round trips, validated base state, subclass state, reference identity, cycles and array-alias isolation; exact coefficient/scale conversion | Cross-version serialization and migration to/from java.math streams are explicitly outside scope |
@@ -101,8 +101,13 @@ Prime generation now adds ceil(log2(bitLength)) certainty bits before computing
 its random-witness budget, accounting for conditioning on candidate acceptance.
 The density bound and explicit RNG assumptions are described in
 [NUMERICAL_ARGUMENTS.md](NUMERICAL_ARGUMENTS.md#primality-and-prime-generation).
-The analogous successor-selection argument beyond the deterministic domain is
-still open; per-candidate error alone is not a returned-value error guarantee.
+Successor search assigns 50+bitLength(i) rounds to its ith odd candidate;
+the union bound over all candidates stays below the returned-value error limit.
+The unbounded index uses BigInteger, and round budgets use Long. Both arguments
+still rely on independent uniform witnesses. Portable successor fixtures cover
+81..256-bit binary boundaries, the composite gap after 64!+1, source callback
+traces and negative-start diagnostics; independent trial division checks every
+start from 0 through 4096.
 
 Binary constructors now pack bytes directly into limbs, including stripped
 negative sign extension and a final complement carry. JVM checks compare all

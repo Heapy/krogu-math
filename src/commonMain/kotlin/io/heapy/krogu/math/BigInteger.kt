@@ -322,10 +322,10 @@ open class BigInteger private constructor(private val sign: Int, private val wor
 
     open fun isProbablePrime(certainty: Int): Boolean {
         if (certainty <= 0) return true
-        return passesPrimeTest(PrimalityCertainty.testRounds(certainty))
+        return passesPrimeTest(PrimalityCertainty.testRounds(certainty).toLong())
     }
 
-    private fun passesPrimeTest(rounds: Int): Boolean {
+    private fun passesPrimeTest(rounds: Long): Boolean {
         val n = abs()
         if (n < TWO) return false
         val smallPrimes = intArrayOf(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)
@@ -354,7 +354,9 @@ open class BigInteger private constructor(private val sign: Int, private val wor
                 if (!passesWitness(valueOf(base.toLong()))) return false
             return true
         }
-        repeat(rounds) {
+        var remaining = rounds
+        while (remaining > 0) {
+            remaining--
             var a: BigInteger
             do { a = randomBits(n.bitLength(), Random.Default) } while (a < TWO || a >= nm1)
             if (!passesWitness(a)) return false
@@ -362,10 +364,14 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return true
     }
     open fun nextProbablePrime(): BigInteger {
-        if (sign < 0) throw ArithmeticException("Negative start")
-        if (this < TWO) return TWO
+        if (sign < 0) throw ArithmeticException("start < 0: $this")
+        if (sign == 0 || (words.size == 1 && words[0] == 1)) return TWO
         var n = add(ONE).setBit(0)
-        while (!n.isProbablePrime(100)) n = n.add(TWO)
+        var candidateIndex = ONE
+        while (!n.passesPrimeTest(PrimalityCertainty.successorRounds(candidateIndex.bitLength()))) {
+            n = n.add(TWO)
+            candidateIndex = candidateIndex.add(ONE)
+        }
         return n
     }
 
@@ -524,7 +530,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             val rounds = PrimalityCertainty.generationRounds(bitLength, certainty)
             while (true) {
                 val n = randomBits(bitLength, rnd).setBit(bitLength - 1).setBit(0)
-                if (rounds == 0 || n.passesPrimeTest(rounds)) return n
+                if (rounds == 0 || n.passesPrimeTest(rounds.toLong())) return n
             }
         }
         private fun randomBits(numBits: Int, rnd: Random): BigInteger {

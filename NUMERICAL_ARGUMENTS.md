@@ -52,12 +52,34 @@ The portable budget test checks the integer inequality 2^(2*r-c)>=b,
 including power-of-two neighbors and Int endpoints. Independent trial
 division also checks both signs throughout 0..4096.
 
+For successor search, index the tested odd candidates by i=1,2,... and put
+k=bitLength(i)=ceil(log2(i+1)). `successorRounds(k)` assigns r=50+k rounds.
+There are 2^(k-1) indices with that bit length, so the sum of all candidate
+false-acceptance bounds, even over an infinite search, is
+2^-100 * sum(k>=1, 2^(k-1)*2^(-2*k)) = 2^-101.
+A union bound therefore limits the probability of returning any composite
+to less than 2^-100. This bound does not need a density estimate or a fixed
+maximum prime gap. Early termination only reduces the set of possible errors.
+Prime candidates always pass: below 2 the result is 2, and otherwise the
+search visits every subsequent odd value, so no prime is skipped.
+
+The index uses BigInteger rather than a wrapping primitive counter.
+For initial candidate n0>=3, the ith candidate is n=n0+2*(i-1), hence
+i<=(n-1)/2. Thus the counter cannot exceed the supported magnitude before
+the candidate does. Round counts use Long because 50+Int.MAX_VALUE no
+longer fits Int. The private witness loop also uses Long. Portable tests
+sum 16 complete index groups using exact integer weights, exercise budget
+endpoints, and compare every successor for starts 0..4096 with trial division.
+The JDK fixtures include 81..256-bit binary boundaries and the gap following
+64!+1, whose subsequent offsets 2..64 are all composite. Source comparison
+is bypassed, source add is retained, and negative-start diagnostics retain
+the observed source formatting/abs call; portable traces constrain those paths.
+
 These probability arguments assume independent uniform candidate bytes
 and witnesses, correct modular arithmetic and termination. They do not
 prove those assumptions for platform pseudorandom generators or arbitrary
 caller-supplied RNG implementations. In particular, generation with a
-biased or repeating caller RNG, and the returned-error budget of
-`nextProbablePrime` beyond the deterministic domain, remain separate audits.
+biased or repeating caller RNG remains a separate audit.
 Extreme certainty can require a very large number of rounds; the public
 [JDK contract](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigInteger.html#isProbablePrime(int))
 explicitly permits long execution. Practical large-input performance and
