@@ -9,11 +9,22 @@ class PortableOracleTest {
                 val result = evaluate(v)
                 if (result is Array<*>) result.joinToString("|") else result.toString()
             } catch (e: Exception) { "!${e::class.simpleName}" }
-            val corrected = scaledDivisionContractExpected(v)
+            val normalization = normalizationContractExpected(v)
+            val corrected = normalization ?: scaledDivisionContractExpected(v)
+            if (normalization != null)
+                assertTrue(v[6].startsWith("!ArithmeticException"), "retained normalization diagnostic ${v.take(6)}")
             val normalized = if (corrected == "!ArithmeticException" && actual.startsWith("!ArithmeticException:"))
                 "!ArithmeticException" else actual
             assertEquals(corrected ?: v[6], normalized, "${v.take(6)} JDK diagnostic=${v[6]}")
         }
+    }
+
+    private fun normalizationContractExpected(v: Array<String>): String? {
+        if (v[0] !in listOf("G", "D") || v[1] !in listOf("divide", "exactDivide")) return null
+        fun operand(text: String): BigDecimal = if (v[0] == "D") BigDecimal(text)
+            else BigDecimal(BigInteger(text.substringBefore('@')), text.substringAfter('@').toInt())
+        val mc = if (v[1] == "exactDivide") null else MathContext(v[4].toInt(), RoundingMode.valueOf(v[5]))
+        return DivisionNormalizationExpected.correctedText(operand(v[2]), operand(v[3]), mc)
     }
 
     private fun scaledDivisionContractExpected(v: Array<String>): String? {

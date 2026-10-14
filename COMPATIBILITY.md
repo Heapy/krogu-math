@@ -20,6 +20,9 @@ Two confirmed extreme-scale decimal defects, their bounded mathematical witnesse
 retained JDK diagnostics and deliberate numerical divergences are documented in
 [Decimal scale contract](docs/decimal-scale-contract.md).
 
+Representable exact/context division despite an unsupported intermediate scale,
+including rounding carries, is documented in the [division normalization contract](docs/decimal-division-normalization-contract.md).
+
 The independent canonical Double candidate argument, binary-boundary regressions
 and exact coefficient/scale/text corpus are documented in
 [Canonical Double contract](docs/canonical-double-contract.md).

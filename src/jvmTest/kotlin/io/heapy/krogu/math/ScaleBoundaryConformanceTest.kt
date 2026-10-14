@@ -41,7 +41,7 @@ class ScaleBoundaryConformanceTest {
             val a = BigDecimal(BigInteger(x.unscaledValue().toString()), x.scale())
             val b = BigDecimal(BigInteger(y.unscaledValue().toString()), y.scale())
             check("parse $x", { JD(x.toString()) }, { BigDecimal(x.toString()) })
-            check("exactDivide $x,$y", { x.divide(y) }, { a.divide(b) })
+            check("exactDivide $x,$y", { divisionReference(a, b, null) { x.divide(y) } }, { a.divide(b) })
             for (p in listOf(1, 2, 7, 17, 18, 19, 34, 120)) {
                 val mode = RoundingMode.entries[random.nextInt(8)]
                 val mc = MathContext(p, mode); val jc = JC(p, JR.valueOf(mode.name))
@@ -49,7 +49,7 @@ class ScaleBoundaryConformanceTest {
                 check("add $label", {
                     additionReference(x, y, jc, a, b, mc)
                 }, { a.add(b, mc) })
-                check("divide $label", { x.divide(y, jc) }, { a.divide(b, mc) })
+                check("divide $label", { divisionReference(a, b, mc) { x.divide(y, jc) } }, { a.divide(b, mc) })
                 check("multiply $label", { x.multiply(y, jc) }, { a.multiply(b, mc) })
                 check("sqrt $x,$mc", { x.sqrt(jc) }, { a.sqrt(mc) })
             }
@@ -78,10 +78,10 @@ class ScaleBoundaryConformanceTest {
             for (y in inputs) {
                 val b = BigDecimal(BigInteger(y.unscaledValue().toString()), y.scale())
                 check("multiply $x,$y", { x.multiply(y) }, { a.multiply(b) })
-                check("exact divide $x,$y", { x.divide(y) }, { a.divide(b) })
+                check("exact divide $x,$y", { divisionReference(a, b, null) { x.divide(y) } }, { a.divide(b) })
                 for (p in listOf(1, 2, 7)) for (mode in listOf(RoundingMode.DOWN, RoundingMode.HALF_EVEN, RoundingMode.UNNECESSARY)) {
                     val mc = MathContext(p, mode); val jc = JC(p, JR.valueOf(mode.name))
-                    check("divide $x,$y,$mc", { x.divide(y, jc) }, { a.divide(b, mc) })
+                    check("divide $x,$y,$mc", { divisionReference(a, b, mc) { x.divide(y, jc) } }, { a.divide(b, mc) })
                     check("add $x,$y,$mc", { additionReference(x, y, jc, a, b, mc) }, { a.add(b, mc) })
                 }
             }
@@ -94,6 +94,14 @@ class ScaleBoundaryConformanceTest {
         }
         assertEquals(emptyList(), failures, "$comparisons comparisons; first discrepancies:\n${failures.joinToString("\n")}")
         println("$comparisons signed-scale-boundary comparisons passed")
+    }
+
+    private fun divisionReference(a: BigDecimal, b: BigDecimal, mc: MathContext?, reference: () -> JD): Any {
+        val corrected = DivisionNormalizationExpected.correctedText(a, b, mc) ?: return reference()
+        val diagnostic = try { reference().toString() }
+            catch (_: ArithmeticException) { "!ArithmeticException" }
+        assertEquals("!ArithmeticException", diagnostic, "retained JDK division normalization defect: $a / $b $mc")
+        return corrected
     }
 
     private fun additionReference(x: JD, y: JD, jc: JC, a: BigDecimal, b: BigDecimal, mc: MathContext): Any {

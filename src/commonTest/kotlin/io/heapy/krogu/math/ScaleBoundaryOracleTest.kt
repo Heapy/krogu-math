@@ -17,6 +17,11 @@ class ScaleBoundaryOracleTest {
                 DecimalScaleContractExpected.addition(a, b, mc) else null
             verifyExpected(label, contract) { a.add(b, mc) }
         }
+        fun verifyDivision(label: String, a: BigDecimal, b: BigDecimal, mc: MathContext? = null) {
+            verifyExpected(label, DivisionNormalizationExpected.correctedText(a, b, mc)) {
+                if (mc == null) a.divide(b) else a.divide(b, mc)
+            }
+        }
         private fun verifyExpected(label: String, contract: String?, action: () -> Any?) {
             assertTrue(expected.hasNext(), "Oracle ended before $label")
             val actual = try { action().toString() } catch (e: Exception) { "!${e::class.simpleName}" }
@@ -44,10 +49,10 @@ class ScaleBoundaryOracleTest {
             verify("strip $a") { a.stripTrailingZeros() }
             for (b in inputs) {
                 verify("multiply $a,$b") { a.multiply(b) }
-                verify("exact divide $a,$b") { a.divide(b) }
+                cursor.verifyDivision("exact divide $a,$b", a, b)
                 for (p in listOf(1, 2, 7)) for (mode in listOf(RoundingMode.DOWN, RoundingMode.HALF_EVEN, RoundingMode.UNNECESSARY)) {
                     val context = MathContext(p, mode)
-                    verify("divide $a,$b,$context") { a.divide(b, context) }
+                    cursor.verifyDivision("divide $a,$b,$context", a, b, context)
                     cursor.verifyAddition("add $a,$b,$context", a, b, context)
                 }
             }
@@ -92,14 +97,14 @@ class ScaleBoundaryOracleTest {
             val selected = index / 200 == batch
             if (selected) {
                 verify("parse $a") { BigDecimal(a.toString()) }
-                verify("exactDivide $a,$b") { a.divide(b) }
+                cursor.verifyDivision("exactDivide $a,$b", a, b)
             }
             for (p in listOf(1, 2, 7, 17, 18, 19, 34, 120)) {
                 // Consume RNG for earlier batches too, but execute each numerical case once.
                 val context = MathContext(p, RoundingMode.entries[random.nextInt(8)])
                 if (selected) {
                     cursor.verifyAddition("add $a,$b,$context", a, b, context)
-                    verify("divide $a,$b,$context") { a.divide(b, context) }
+                    cursor.verifyDivision("divide $a,$b,$context", a, b, context)
                     verify("multiply $a,$b,$context") { a.multiply(b, context) }
                     verify("sqrt $a,$context") { a.sqrt(context) }
                 }

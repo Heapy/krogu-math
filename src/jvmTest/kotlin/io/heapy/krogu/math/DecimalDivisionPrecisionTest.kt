@@ -12,12 +12,17 @@ class DecimalDivisionPrecisionTest {
             catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
         for (scale in scales) for (divisorScale in scales) for (coefficient in listOf(0L, 1L, -1L, 10L)) {
             for (divisor in listOf(0L, 1L, -2L, 3L, 5L, 6L)) {
-                val expected = outcome { java.math.BigDecimal.valueOf(coefficient, scale)
+                val diagnostic = outcome { java.math.BigDecimal.valueOf(coefficient, scale)
                     .divide(java.math.BigDecimal.valueOf(divisor, divisorScale)) }
+                val corrected = DivisionNormalizationExpected.correctedText(BigDecimal.valueOf(coefficient, scale),
+                    BigDecimal.valueOf(divisor, divisorScale), null)
+                if (corrected != null) assertTrue(diagnostic.startsWith("!ArithmeticException:"),
+                    "retained JDK exact normalization diagnostic: $diagnostic")
+                val expected = corrected ?: diagnostic
                 val actual = outcome { BigDecimal.valueOf(coefficient, scale)
                     .divide(BigDecimal.valueOf(divisor, divisorScale)) }
                 if (expected != actual) {
-                    mismatches.add("$coefficient@$scale / $divisor@$divisorScale: $expected / $actual")
+                    mismatches.add("$coefficient@$scale / $divisor@$divisorScale: $expected / $actual; JDK=$diagnostic")
                     val transition = "$expected -> $actual"
                     transitions[transition] = (transitions[transition] ?: 0) + 1
                 }
@@ -36,12 +41,17 @@ class DecimalDivisionPrecisionTest {
             catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
         for (scale in scales) for (divisorScale in scales) for (precision in precisions) for (divisor in 1L..3L) {
             for (mode in RoundingMode.entries) {
-                val expected = outcome { java.math.BigDecimal(java.math.BigInteger.ONE, scale).divide(
+                val diagnostic = outcome { java.math.BigDecimal(java.math.BigInteger.ONE, scale).divide(
                     java.math.BigDecimal.valueOf(divisor, divisorScale), java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))) }
+                val corrected = DivisionNormalizationExpected.correctedText(BigDecimal(BigInteger.ONE, scale),
+                    BigDecimal.valueOf(divisor, divisorScale), MathContext(precision, mode))
+                if (corrected != null) assertTrue(diagnostic.startsWith("!ArithmeticException:"),
+                    "retained JDK context normalization diagnostic: $diagnostic")
+                val expected = corrected ?: diagnostic
                 val actual = outcome { BigDecimal(BigInteger.ONE, scale).divide(
                     BigDecimal.valueOf(divisor, divisorScale), MathContext(precision, mode)) }
                 if (expected != actual) {
-                    mismatches.add("scale=$scale divisor=$divisor scale=$divisorScale precision=$precision mode=$mode: $expected / $actual")
+                    mismatches.add("scale=$scale divisor=$divisor scale=$divisorScale precision=$precision mode=$mode: $expected / $actual; JDK=$diagnostic")
                     val transition = "$expected -> $actual"
                     transitions[transition] = (transitions[transition] ?: 0) + 1
                 }
