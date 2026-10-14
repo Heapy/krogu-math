@@ -142,8 +142,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             throw ArithmeticException(if (signum() == 0) "Division undefined" else "Division by zero")
     }
     private fun divideExactly(divisor: BigDecimal): BigDecimal {
-        val preferred = scaleForValue(decimalScale.toLong() - divisor.decimalScale, signum() == 0)
-        if (signum() == 0) return BigDecimal(BigInteger.ZERO, preferred)
+        val preferred = decimalScale.toLong() - divisor.decimalScale
+        if (signum() == 0) return BigDecimal(BigInteger.ZERO, saturatedScale(preferred))
         // Retain legacy metadata diagnostics, but a manufactured normalization
         // scale cannot reject a supported exact quotient of truthful operands.
         val exactPrecision = (precision().toLong() + (10L * divisor.precision() + 2) / 3)
@@ -151,7 +151,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         checkDivisionNormalization(divisor, exactPrecision)
         val quotient = exactDivisionCoefficient(divisor)
             ?: throw ArithmeticException("Non-terminating decimal expansion")
-        return BigDecimal(quotient.first, checkedScale(quotient.second)).stripTo(preferred)
+        return BigDecimal(quotient.first, checkedScale(quotient.second)).stripTo(saturatedScale(preferred))
     }
     // Keep scale wide: an unsupported exact cohort may still round into range.
     private fun exactDivisionCoefficient(divisor: BigDecimal, forContext: Boolean = false): Pair<BigInteger, Long>? {
@@ -172,10 +172,11 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         if (denominator != BigInteger.ONE) return null
         val digits = maxOf(twos, fives)
         val scale = decimalScale.toLong() - divisor.decimalScale + digits
-        // A reduced fractional cohort has no trailing decimal zero. If its
-        // scale is unsupported, constructing its coefficient cannot rescue it.
-        // Context division can instead round the bounded coefficient rational.
-        if (scale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong()) {
+        // A natural exact scale below MIN would need a different padded cohort;
+        // that rescue is outside the proved contract. Above MAX, rounding may
+        // still select fewer digits and carry into a supported final scale.
+        if (scale < Int.MIN_VALUE.toLong()) checkedScale(scale)
+        if (scale > Int.MAX_VALUE.toLong()) {
             if (forContext) return null
             checkedScale(scale)
         }
@@ -257,14 +258,19 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val shift = targetScale + operand.decimalScale - decimalScale
         // Only observed truthful metadata enters the mathematical repair. No
         // extra virtual calls or runtime-class exclusions change old probes.
-        if (preferredScale in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong() &&
-            (targetScale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong() || kotlin.math.abs(shift) > 646456992L) &&
+        if ((preferredScale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong() ||
+            targetScale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong() || kotlin.math.abs(shift) > 646456992L) &&
             sourceDigits == storedPrecision() && divisorDigits == operand.storedPrecision() &&
             coefficient.signum() != 0 && operand.coefficient.signum() != 0)
             return try { divideWideContext(operand, context, preferredScale, normalized, sourceDigits, divisorDigits) }
                 catch (failure: ArithmeticException) {
                     // If no supported result exists, preserve the old range diagnostic.
                     divisionScale(targetScale)
+                    if (preferredScale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong()) {
+                        if (kotlin.math.abs(shift) > 646456992L)
+                            throw ArithmeticException("BigInteger would overflow supported range")
+                        divisionScale(preferredScale)
+                    }
                     throw failure
                 }
         divisionScale(targetScale)
@@ -315,7 +321,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             value = value.divide(BigInteger.TEN)
             scale--
         }
-        if (isExact) while (scale > preferred) {
+        if (isExact) while (scale > preferred && scale > Int.MIN_VALUE.toLong()) {
             val qr = value.divideAndRemainder(BigInteger.TEN)
             if (qr[1].signum() != 0) break
             value = qr[0]; scale--
@@ -339,8 +345,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val sourceDigits = sourcePrecision ?: precision()
         val preferred = decimalScale.toLong() - divisor.decimalScale
         val normalization = preferred + precision + divisorDigits - sourceDigits - adjustment
-        if (preferred in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong() &&
-            sourceDigits == storedPrecision() && divisorDigits == divisor.storedPrecision() &&
+        if (sourceDigits == storedPrecision() && divisorDigits == divisor.storedPrecision() &&
             coefficient.signum() != 0 && divisor.coefficient.signum() != 0) return
         divisionScale(normalization)
     }

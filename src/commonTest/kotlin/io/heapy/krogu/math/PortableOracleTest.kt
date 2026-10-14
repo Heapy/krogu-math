@@ -24,7 +24,8 @@ class PortableOracleTest {
         fun operand(text: String): BigDecimal = if (v[0] == "D") BigDecimal(text)
             else BigDecimal(BigInteger(text.substringBefore('@')), text.substringAfter('@').toInt())
         val mc = if (v[1] == "exactDivide") null else MathContext(v[4].toInt(), RoundingMode.valueOf(v[5]))
-        return DivisionNormalizationExpected.correctedText(operand(v[2]), operand(v[3]), mc)
+        val a = operand(v[2]); val b = operand(v[3])
+        return DivisionNormalizationExpected.correctedText(a, b, mc) ?: PreferredScaleStringModel.correctedText(a, b, mc)
     }
 
     private fun scaledDivisionContractExpected(v: Array<String>): String? {

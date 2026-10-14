@@ -18,7 +18,7 @@ class ScaleBoundaryOracleTest {
             verifyExpected(label, contract) { a.add(b, mc) }
         }
         fun verifyDivision(label: String, a: BigDecimal, b: BigDecimal, mc: MathContext? = null) {
-            verifyExpected(label, DivisionNormalizationExpected.correctedText(a, b, mc)) {
+            verifyExpected(label, DivisionNormalizationExpected.correctedText(a, b, mc) ?: PreferredScaleStringModel.correctedText(a, b, mc)) {
                 if (mc == null) a.divide(b) else a.divide(b, mc)
             }
         }

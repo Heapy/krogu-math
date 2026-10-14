@@ -23,6 +23,8 @@ retained JDK diagnostics and deliberate numerical divergences are documented in
 Representable exact/context division despite an unsupported intermediate scale,
 including rounding carries, is documented in the [division normalization contract](docs/decimal-division-normalization-contract.md).
 
+Division with a preferred scale outside Int is tracked in the [preferred-scale division contract](docs/decimal-division-preferred-scale-contract.md).
+
 The portable equality/order/hash laws, context/enum contracts and mutation/alias
 witnesses are documented in [Value identity and immutability](docs/value-identity-contract.md).
 

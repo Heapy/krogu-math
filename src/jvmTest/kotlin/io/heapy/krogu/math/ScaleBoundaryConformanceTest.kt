@@ -97,7 +97,8 @@ class ScaleBoundaryConformanceTest {
     }
 
     private fun divisionReference(a: BigDecimal, b: BigDecimal, mc: MathContext?, reference: () -> JD): Any {
-        val corrected = DivisionNormalizationExpected.correctedText(a, b, mc) ?: return reference()
+        val corrected = DivisionNormalizationExpected.correctedText(a, b, mc)
+            ?: PreferredScaleStringModel.correctedText(a, b, mc) ?: return reference()
         val diagnostic = try { reference().toString() }
             catch (_: ArithmeticException) { "!ArithmeticException" }
         assertEquals("!ArithmeticException", diagnostic, "retained JDK division normalization defect: $a / $b $mc")

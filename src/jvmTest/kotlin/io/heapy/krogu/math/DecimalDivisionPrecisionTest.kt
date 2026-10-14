@@ -16,6 +16,8 @@ class DecimalDivisionPrecisionTest {
                     .divide(java.math.BigDecimal.valueOf(divisor, divisorScale)) }
                 val corrected = DivisionNormalizationExpected.correctedText(BigDecimal.valueOf(coefficient, scale),
                     BigDecimal.valueOf(divisor, divisorScale), null)
+                    ?: PreferredScaleStringModel.correctedText(BigDecimal.valueOf(coefficient, scale),
+                        BigDecimal.valueOf(divisor, divisorScale), null)
                 if (corrected != null) assertTrue(diagnostic.startsWith("!ArithmeticException:"),
                     "retained JDK exact normalization diagnostic: $diagnostic")
                 val expected = corrected ?: diagnostic
@@ -45,6 +47,8 @@ class DecimalDivisionPrecisionTest {
                     java.math.BigDecimal.valueOf(divisor, divisorScale), java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))) }
                 val corrected = DivisionNormalizationExpected.correctedText(BigDecimal(BigInteger.ONE, scale),
                     BigDecimal.valueOf(divisor, divisorScale), MathContext(precision, mode))
+                    ?: PreferredScaleStringModel.correctedText(BigDecimal(BigInteger.ONE, scale),
+                        BigDecimal.valueOf(divisor, divisorScale), MathContext(precision, mode))
                 if (corrected != null) assertTrue(diagnostic.startsWith("!ArithmeticException:"),
                     "retained JDK context normalization diagnostic: $diagnostic")
                 val expected = corrected ?: diagnostic
