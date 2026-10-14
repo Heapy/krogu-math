@@ -1,0 +1,21 @@
+{
+  "repository": "https://github.com/openjdk/jdk25u",
+  "tag": "jdk-25.0.4.1-ga",
+  "annotatedTagObject": "598c9b864328adc4ce1049ea70b2e4b14cc5a051",
+  "commit": "7b65d74bcbd7c3a0b4c1f5c5bd85e64aa2e51b4a",
+  "verificationCommand": "git ls-remote https://github.com/openjdk/jdk25u.git refs/tags/jdk-25.0.4.1-ga 'refs/tags/jdk-25.0.4.1-ga^{}'",
+  "verifiedDate": "2026-10-14",
+  "testSubtrees": {
+    "test/jdk/java/math/BigDecimal": "2db454303a4e6c3e03caf3e7e41437b91584c482",
+    "test/jdk/java/math/BigInteger": "cc136ecb7056f63b5ccf73a11722cee4a0866777",
+    "test/jdk/java/math/RoundingMode": "343d977c74562099ca18652fdfc76d13c70c31cf"
+  },
+  "upstreamFiles": 56,
+  "externalSupportFiles": ["test/lib/jdk/test/lib/RandomFactory.java"],
+  "runtime": "BellSoft Liberica 25.0.4+9-LTS",
+  "runtimeReleaseSource": ".:git:cb897ec0b2a9+",
+  "testRuntimeRevisionMismatch": "The upstream tag includes 25.0.4.1; the reference BellSoft runtime is 25.0.4+9-LTS. Vendor and source revisions differ. No source equivalence is asserted.",
+  "kotlin": "2.4.21",
+  "gradle": "9.8.1",
+  "worktreeBase": "104f29c298adbe23975242c8512e5e10d6624cd9"
+}

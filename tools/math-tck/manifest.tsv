@@ -1,0 +1,58 @@
+path	disposition	resource	runner	adaptation	reason	lostCoverage
+test/jdk/java/math/BigDecimal/AddTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/CompareToTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/Constructor.java	selected	standard	testng	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/ConstructorUnscaledValue.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/DivideMcTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/DivideTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/DoubleFloatValueTests.java	adapted	standard	main	separate-float16-phase	Keep all double/float conversion cases; Float16.valueOf accepts host java.math.BigDecimal	Incubator Float16 BigDecimal integration; preserve exact Float16 call-site inventory before any patch
+test/jdk/java/math/BigDecimal/EqualsTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/FloatDoubleValueTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/IntValueExactTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/IntegralDivisionTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/IntegralValueTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/LongValueExactTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/MovePointTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/MultiplyTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/NegateTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/PowTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/PrecisionTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/RangeTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/RoundingTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/ScaleByPowerOfTenTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/SerializationTests.java	selected	serialization	main	imports-only	Current-universe round trips and subclass preservation; no legacy or cross-format payloads	none planned; execution pending
+test/jdk/java/math/BigDecimal/SquareRootTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/StringConstructor.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/StrippingZerosTest.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/ToPlainStringTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/ValueOfDouble.java	selected	standard	junit	imports-only	JUnit assertions require real pinned JUnit runner; no annotation stripping	none planned; execution pending
+test/jdk/java/math/BigDecimal/ZeroScalingTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/BigIntegerParallelMultiplyTest.java	selected	heavy	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/BigIntegerTest.java	selected	heavy	main	imports-only-subsets	Two upstream run directives; run each with subset=0 and fixed seed; keep own serialization round trips	none planned; execution pending
+test/jdk/java/math/BigInteger/BitLengthOverflow.java	selected	large-memory-8g	main	imports-only	No requires directive, but billion-bit inputs and swallowed OOM require explicit SKIP detection and 8g profile	none planned; execution pending
+test/jdk/java/math/BigInteger/ByteArrayConstructorTest.java	adapted	standard	junit	own-representation-accessor	Retain both original racy constructor tests and assertTrue via a test-only leading-word view of krogu storage	JDK mag layout minimality becomes krogu words normalization observation; original public constructor race and thread/duration coverage retained
+test/jdk/java/math/BigInteger/CompareToTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/DoubleValueOverflow.java	selected	large-memory-8g	main	imports-only	No requires directive, but billion-bit inputs and swallowed OOM require explicit SKIP detection and 8g profile	none planned; execution pending
+test/jdk/java/math/BigInteger/ExtremeShiftingTests.java	selected	memory-512m	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/HashCode.java	selected	standard	main	imports-only	Historical BigInteger hash observations retained as compatibility evidence; not cross-universe enum/context identity	none planned; execution pending
+test/jdk/java/math/BigInteger/LargeValueExceptions.java	selected	large-memory-4g	testng	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/ModInvTime.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/ModPow.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/ModPow65537.java	adapted	standard	main	separate-provider-phase	Keep all three public modPow known-answer assertions; SunRsaSign phase invokes host math	Provider key generation and signing are host-JDK integration observations, outside port numerical evidence
+test/jdk/java/math/BigInteger/ModPowPowersof2.java	adapted	standard	main	verified-descendant-jvm	Retain nested ModTester body; strengthen parent crash check to exact success plus exit/completion/core proof; both phases adapt orchestration	none planned; execution pending
+test/jdk/java/math/BigInteger/MutableBigIntegerShiftTests.java	excluded	standard	none	none	Calls package-private MutableBigInteger through patched java.base wrapper	Internal limb shifting and mutation invariants; public shift tests remain selected
+test/jdk/java/math/BigInteger/OperatorNpeTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/PrimeTest.java	selected	heavy	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/PrimitiveConversionTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/ProbablePrime.java	selected	heavy	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/SerializationTests.java	selected	serialization	main	imports-only	Current-universe round trips and subclass preservation; no legacy or cross-format payloads	none planned; execution pending
+test/jdk/java/math/BigInteger/StringConstructor.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/TestValueExact.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/UnicodeConstructor.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/java.base/java/math/Accessor.java	support	support	none	baseline-patch-module	Original private JDK accessor used only for unchanged baseline; port uses independently authored ArrayAccessor	No port dependency on JDK mag storage; representation correspondence is explicitly adapted
+test/jdk/java/math/BigInteger/java.base/java/math/MutableBigIntegerBox.java	excluded	standard	none	none	Test-only wrapper for package-private MutableBigInteger	Support for excluded internal shift assertions
+test/jdk/java/math/BigInteger/largeMemory/DivisionOverflow.java	selected	large-memory-8g	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/largeMemory/StringConstructorOverflow.java	selected	large-memory-8g	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigInteger/largeMemory/SymmetricRangeTests.java	selected	large-memory-10g	main	imports-only-subsets	Force subset=0 to retain all four regimes; retain public range/overflow assertions and own round trip; classify implementation-specific probes after baseline	none planned; execution pending
+test/jdk/java/math/RoundingMode/RoundingModeTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/lib/jdk/test/lib/RandomFactory.java	support	support	none	none	Only required external OpenJDK support; java.util PRNG and seed logging; no other support dependencies	none planned; execution pending
