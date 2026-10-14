@@ -173,10 +173,12 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return value.shiftLeftValue(distance)
     }
     open fun gcd(value: BigInteger): BigInteger {
-        var a = abs()
-        var b = value.abs()
-        while (b.sign != 0) { val r = a.remainder(b); a = b; b = r }
-        return a
+        if (value.sign == 0) return abs()
+        if (sign == 0) return value.abs()
+        var a = BigInteger(1, words)
+        var b = BigInteger(1, value.words)
+        while (b.sign != 0) { val r = a.divideStored(b)[1]; a = b; b = r }
+        return normalized(1, a.words)
     }
     open fun mod(m: BigInteger): BigInteger {
         if (m.sign <= 0) throw ArithmeticException("BigInteger: modulus not positive")

@@ -50,6 +50,7 @@ kotlinr scripts/generate-integer-parser-oracle.main.kts --check
 kotlinr scripts/generate-integer-bytes-oracle.main.kts --check
 kotlinr scripts/generate-integer-division-oracle.main.kts --check
 kotlinr scripts/generate-integer-pow-oracle.main.kts --check
+kotlinr scripts/generate-integer-gcd-oracle.main.kts --check
 kotlinr scripts/generate-context-oracle.main.kts --check
 kotlinr scripts/generate-hash-oracle.main.kts --check
 ```
@@ -506,6 +507,18 @@ empty-magnitude array exception; the JVM exception is the Java array-index subty
 Another 336 Java cases cover null/throw abs, negate and shiftRight callbacks and
 their precedence. Wider callback compositions, cached identities beyond public
 constants and near-allocation-limit powers remain open.
+
+Integer GCD adds 1,602 portable callback/value/identity outcomes, including zero
+in either position, both zero, both signs and self aliases. A stored zero operand
+delegates only to source abs; otherwise a stored zero source delegates only to
+operand abs. These paths forward replacement values and identities without
+normalization. Two nonzero stored magnitudes use base-class working views and
+private division, bypassing source/operand abs, negate, remainder, pair, equality,
+comparison and bit metadata overrides. The result is a separate positive base
+value. Wide cases include shared 1,024-bit factors, a 4,096-bit dividend and
+consecutive Fibonacci numbers after 750 recurrence steps. Another 168 live Java
+cases verify null/throw abs and negate callbacks, null arguments and self aliases.
+Wider callback graphs, detailed NPE messages and resource limits remain open.
 
 Integer subtraction adds 896 portable dispatch cases. A stored zero operand
 returns the source without callbacks; only a stored zero source and nonzero

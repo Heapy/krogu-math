@@ -250,6 +250,28 @@ formatting. Every pair also checks q*y+r, the remainder bound and its sign.
 These cases corroborate the arguments on each target; they do not exhaust the
 operand domain or establish all subclass behavior, resource limits or diagnostics.
 
+## Greatest common divisors
+
+For two nonzero stored operands, start with positive magnitude views A=abs(x)
+and B=abs(y). Euclidean division gives A=q*B+R with 0<=R<B. A number divides
+both A and B exactly when it divides both B and R, so replacing (A,B) by (B,R)
+preserves the common divisors. Every nonzero second component strictly decreases;
+the loop therefore terminates with (G,0), where G>0 is the greatest common divisor.
+The private division argument bounds each remainder and its intermediates by
+the current dividend, so no new numerical magnitude exceeds the initial inputs.
+
+Working values are exact base-class objects. Subclass callbacks cannot alter
+this reduction. The final positive result is normalized into a separate base
+object. For a zero operand, the observed public abs callback is forwarded
+instead, including its identity and any replacement/null result; the ordinary
+mathematical argument assumes truthful abs behavior.
+
+`IntegerGcdOracleTest` compares 1,602 pinned outcomes on every target, including
+sign/zero combinations, self aliases, replacement and throwing callbacks, shared
+wide factors and consecutive Fibonacci inputs. Java tests add 168 nullable
+callback/argument cases. These domains do not establish all returned subclass
+graphs, exact null diagnostics or practical allocation limits.
+
 ## Integer powers
 
 For truthful operand metadata, write abs(x)=u*2^t with u odd. Then
