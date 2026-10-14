@@ -59,6 +59,17 @@ audit remain in the isolated task handoff at
 The worktree-specific freeze script remains there because it deliberately
 requires its original base and inventories that isolated checkout.
 
+## Integrated CI
+
+The implementation was published in `301174e`. Compatibility CI
+[38645542584](https://github.com/Heapy/krogu-math/actions/runs/38645542584)
+completed successfully at the exact integrated head
+`03ebb60a482873acb3fe892f0c86510472f2e0b3`. All six jobs passed: oracle, Linux,
+Windows, both macOS architectures, and the separate Linux ARM64 runtime job.
+The latter actually ran `test.kexe`: 198 tests passed, including all five
+DecimalBinaryPrefixTest methods. This satisfies the publication/platform gate
+for task562; subsequent changes require their own CI evidence.
+
 ## Limits
 
 The mathematical certificate checks the range witness symbolically; no giant
