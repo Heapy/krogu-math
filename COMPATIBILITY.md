@@ -74,6 +74,14 @@ classifier checks all rows and the retained data hash independently of the port.
 This classification neither excludes valid extreme-scale inputs nor completes
 the classification of other existing oracle families.
 
+An [input-only inventory of the tracked context-dispatch corpus](diagnostics/decimal-context-dispatch/README.md)
+also covers all 75,728 rows: 57,576 configure inconsistent sign/precision returns,
+7,248 have throwing metadata callbacks without inconsistent returns, and 10,904
+have consistent returned metadata. Other replacement callbacks prevent treating
+the last category as certified contract-preserving subclasses. The fixture and
+all current assertions remain unchanged; field-level normative classification
+is still open.
+
 For every new difference:
 
 1. Preserve a minimal input, reference runtime/configuration, port result and
