@@ -376,14 +376,17 @@ it does not introduce a lower saturation absent from the pinned runtime. Call
 order and failures match the JDK for this matrix. Changing getters, different
 stored-scale comparisons and nullable callbacks still need separate audits.
 
-A live delegated-context probe confirms another outstanding defect in `divide`:
-for subclassed source 10.50 and divisor 2.0 with precision 2, both return 5.3,
-but the JDK calls divisor signum, source signum, source precision, divisor precision.
-The port instead queries divisor precision before source precision and then calls
-source signum a second time. Throwing or changing getters can therefore change
-the result or failure. This context-division dispatch still requires its own oracle
-and correction; the integral metadata matrix intercepts context divide and does
-not validate that delegated implementation.
+A context-division dispatch oracle adds 6,656 portable outcomes across all eight
+rounding modes, precisions 0, 1, 2 and 7, both signs, zero operands, compact and
+wide coefficients, and throwing getters on both operands. It exposed 2,160
+differences: source precision must be queried before divisor precision, and the
+source signum check must not be repeated in the coefficient kernel. Cached context
+metadata now preserves that order; the scale-bound and exact paths retain their
+separate dispatch. Results, scales, call counts and exception precedence match
+the pinned JDK for this matrix. A zero-precision context delegates directly to
+virtual exact divide. Operand scale, unscaledValue, abs and negate overrides are
+not invoked in the tested finite-context paths. Replacement getter values, changing
+precision getters, aliased operands and nullable calls remain separate audits.
 
 Scale-bound division adds 12,000 nonzero-divisor outcomes across all modes,
 including returned values and exact messages. The initial wide-Long rescaling

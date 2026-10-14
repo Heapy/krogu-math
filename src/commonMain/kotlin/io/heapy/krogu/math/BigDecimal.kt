@@ -187,9 +187,9 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         return divideScaledCoefficients(divisor, scale, roundingMode, numerator, raise)
     }
     private fun divideScaledCoefficients(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode,
-        scaleNumerator: Boolean, raise: Int): BigDecimal {
+        scaleNumerator: Boolean, raise: Int, checkSourceSign: Boolean = true): BigDecimal {
         if (raise > 646456992) throw ArithmeticException("BigInteger would overflow supported range")
-        if (signum() == 0) return BigDecimal(BigInteger.ZERO, scale)
+        if (checkSourceSign && signum() == 0) return BigDecimal(BigInteger.ZERO, scale)
         // A wrapped, nonpositive raise leaves the stored coefficient unchanged
         // in the pinned JDK's scale-bound path. Context division passes a checked
         // nonnegative raise and does not inherit that staging behavior.
@@ -225,7 +225,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         checkDivisionByZero(divisor)
         val preferredScale = decimalScale.toLong() - divisor.decimalScale
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, saturatedScale(preferredScale))
-        checkDivisionNormalization(divisor, mc.precision)
+        checkDivisionNormalization(divisor, mc.precision, precision(), divisor.precision())
         val targetScale = mc.precision.toLong() - 1 - quotientExponent(divisor)
         val shift = targetScale + divisor.decimalScale - decimalScale
         // Public-JDK errors expose the intermediate range check before the
@@ -235,15 +235,17 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val preferred = divisionScale(preferredScale)
         val target = checkedScale(targetScale)
         val result = divideScaledCoefficients(divisor, target, mc.roundingMode, shift >= 0,
-            kotlin.math.abs(shift).toInt()).round(mc)
+            kotlin.math.abs(shift).toInt(), checkSourceSign = false).round(mc)
         // Exact quotients use the nearest representable scale to the preferred scale.
         val exact = compareValues(result.coefficient.multiply(divisor.coefficient),
             result.decimalScale.toLong() + divisor.decimalScale, coefficient, decimalScale.toLong()) == 0
         return if (exact) result.stripTo(preferred) else result
     }
-    private fun checkDivisionNormalization(divisor: BigDecimal, precision: Int) {
+    private fun checkDivisionNormalization(divisor: BigDecimal, precision: Int,
+        sourcePrecision: Int? = null, divisorPrecision: Int? = null) {
         val adjustment = if (normalizedComparison(divisor) > 0) 1 else 0
-        divisionScale(decimalScale.toLong() - divisor.decimalScale + precision + divisor.precision() - precision() - adjustment)
+        divisionScale(decimalScale.toLong() - divisor.decimalScale + precision +
+            (divisorPrecision ?: divisor.precision()) - (sourcePrecision ?: precision()) - adjustment)
     }
     private fun divisionScale(scale: Long): Int {
         val narrowed = scale.toInt()
