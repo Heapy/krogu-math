@@ -914,6 +914,74 @@ for (text in listOf("0.00", "1", "-1")) for (comparison in listOf(-2, -1, 0, 1, 
         }
     }
 }
+for (text in listOf("0", "1", "-1")) for (comparison in listOf(Int.MIN_VALUE, -2, -1, 0, 1, 2, Int.MAX_VALUE)) {
+    for (throwing in listOf(false, true)) for (operandText in listOf("2", "~")) for (op in listOf("min", "max")) {
+        record("IM", "$op:${if (throwing) "throw" else "return"}", text, operandText, comparison) {
+            val trace = StringBuilder()
+            val value = object : BigInteger(text) {
+                override fun toByte(): Byte = super.toInt().toByte()
+                override fun toShort(): Short = super.toInt().toShort()
+                override fun compareTo(other: BigInteger?): Int {
+                    trace.append("compare:").append(other == null).append(';')
+                    if (throwing) throw IllegalStateException("comparison callback")
+                    return comparison
+                }
+            }
+            val operand = if (operandText == "~") null else BigInteger(operandText)
+            val result = try {
+                val computed: BigInteger? = if (op == "min") value.min(operand) else value.max(operand)
+                "${computed?.toString() ?: "null"}|${computed === value}|${computed === operand}"
+            } catch (e: Exception) { "!${e::class.simpleName}" + if (e is IllegalStateException) ":${e.message}" else "" }
+            "$result|$trace"
+        }
+    }
+}
+val integerMinMaxInputs = listOf("-9223372036854775809", "-9223372036854775808", "-1073741824", "-1", "0", "1",
+    "1073741824", "9223372036854775807", "9223372036854775808", "18446744073709551616")
+for (left in integerMinMaxInputs) for (right in integerMinMaxInputs + "~") for (op in listOf("baseMin", "baseMax", "baseCompare")) {
+    record("IM", op, left, right) {
+        val value = BigInteger(left)
+        val operand = if (right == "~") null else BigInteger(right)
+        try {
+            val result = if (op == "baseCompare") value.compareTo(operand).toString()
+            else {
+                val computed: BigInteger? = if (op == "baseMin") value.min(operand) else value.max(operand)
+                "${computed?.toString() ?: "null"}|${computed === value}|${computed === operand}"
+            }
+            "$result|"
+        } catch (e: Exception) { "!${e::class.simpleName}|" }
+    }
+}
+val integerDivisionInputs = listOf("-123456789012345678901234567890", "-1", "0", "1", "10", "123456789012345678901234567890")
+fun comparisonFreeIntegerOutcome(text: String, operand: String, op: String, radix: Int): String {
+    val trace = StringBuilder()
+    val value = object : BigInteger(text) {
+        override fun toByte(): Byte = super.toInt().toByte()
+        override fun toShort(): Short = super.toInt().toShort()
+        override fun compareTo(other: BigInteger?): Int {
+            trace.append("compare;")
+            throw IllegalStateException("comparison callback")
+        }
+    }
+    val divisor = BigInteger(operand)
+    val result = try {
+        when (op) {
+            "divide" -> value.divide(divisor).toString()
+            "remainder" -> value.remainder(divisor).toString()
+            "pair" -> value.divideAndRemainder(divisor).joinToString("|")
+            "text" -> value.toString(radix)
+            else -> error("Unknown integer comparison probe $op")
+        }
+    } catch (e: Exception) { "!${e::class.simpleName}" }
+    return "$result|$trace"
+}
+for (text in integerDivisionInputs) {
+    for (operand in listOf("-18446744073709551616", "-10", "-1", "1", "10", "18446744073709551616"))
+        for (op in listOf("divide", "remainder", "pair"))
+            record("ID", op, text, operand) { comparisonFreeIntegerOutcome(text, operand, op, 10) }
+    for (radix in 2..36)
+        record("ID", "text", text, p = radix) { comparisonFreeIntegerOutcome(text, "1", "text", radix) }
+}
 val decimalMinMaxInputs = listOf("0", "0.00", "1", "1.00", "-1", "2")
 for (left in decimalMinMaxInputs) for (right in decimalMinMaxInputs + "~") for (op in listOf("baseMin", "baseMax")) {
     record("MM", op, left, right) {

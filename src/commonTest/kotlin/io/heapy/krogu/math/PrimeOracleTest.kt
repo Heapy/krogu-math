@@ -27,7 +27,7 @@ class PrimeOracleTest {
     private fun successorTrace(text: String): String {
         val calls = mutableListOf<String>()
         val observed = object : BigInteger(text) {
-            override fun compareTo(other: BigInteger): Int { calls += "compareTo"; return super.compareTo(other) }
+            override fun compareTo(other: BigInteger?): Int { calls += "compareTo"; return super.compareTo(other) }
             override fun add(value: BigInteger): BigInteger { calls += "add"; return super.add(value) }
             override fun setBit(n: Int): BigInteger { calls += "setBit"; return super.setBit(n) }
             override fun isProbablePrime(certainty: Int): Boolean { calls += "prime:$certainty"; return super.isProbablePrime(certainty) }

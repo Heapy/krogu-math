@@ -151,6 +151,23 @@ ordinary object. Subclasses can deliberately change these public methods;
 the oracle constrains the observed guard order and delegation instead of
 assuming overridden methods remain truthful.
 
+## Initial integer division comparison
+
+For ordinary operands, division first checks whether abs(x)<abs(y) using
+normalized stored magnitudes with radix B=2^30. A nonzero magnitude with k
+limbs lies in [B^(k-1), B^k), so limb count decides unequal-length order.
+For equal lengths, the highest unequal limb decides order: all lower limb
+differences together have absolute value less than the weight B^i of that
+limb. Comparing from highest to lowest therefore gives exact magnitude order.
+When abs(x)<abs(y), truncation toward zero gives quotient zero and remainder x.
+
+This comparison is an arithmetic step, independent of a subclass's public
+compareTo implementation. Reading stored limbs prevents replacement ordering
+or a comparison exception from altering it. Portable JDK fixtures exercise
+positive/negative/zero dividends, both divisor signs, single-/multi-limb cases
+and formatting in every radix while source compareTo throws if called.
+They do not establish every other division/abs/formatting callback path.
+
 ## Hash packing
 
 The observed JDK hash folds unsigned 32-bit magnitude chunks, most significant

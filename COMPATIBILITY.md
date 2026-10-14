@@ -137,7 +137,7 @@ two's-complement words. They do not invoke overridable arithmetic operations
 or neighboring public bit methods. Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
-The main oracle now contains 74,822 vectors, including 8,888 added signed
+The main oracle now contains 75,638 vectors, including 8,888 added signed
 power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
 extreme-shift cases. Negative bit length/count are computed without constructing
 `abs(n)-1`. `andNot` complements individual words directly, so it does not
@@ -447,6 +447,29 @@ return types. Ordinary Kotlin sorted/minOf/maxOf remain usable with non-null
 result types, as checked in common tests. Source/operand identities, callback
 traces, selected null results and NPE classes match JDK in this domain. Broader
 callback compositions, returned subclasses and detailed NPE messages remain open.
+
+BigInteger min/max add 498 portable cases: 168 custom-comparison outcomes and
+330 ordinary min/max/compareTo outcomes, including null and signed 30/63/64-bit
+boundaries. Both integer extrema pass the operand to virtual
+compareTo before base null validation, select the operand on ties, propagate
+callback exceptions and can select null when the override permits it. Comparator
+results include Int.MIN_VALUE and Int.MAX_VALUE. The common class now implements
+Comparable<BigInteger?>, with nullable compareTo arguments and member min/max
+return types; Kotlin subclass overrides must accept nullable comparison arguments.
+The base comparison still rejects null. Java Comparable<BigInteger>, Java
+collection sorting, erased bridge dispatch/type checks and non-null Kotlin
+sorted/minOf/maxOf results are compiled and tested. Public JVM method descriptors
+remain unchanged. These cases constrain result identity and exception classes;
+detailed null messages and broader callback compositions remain open.
+
+The initial quotient magnitude comparison now reads stored limbs directly rather
+than invoking public compareTo. An overridden comparison no longer changes
+division or leaks a callback into integer formatting. Another 318 portable JDK
+outcomes cover divide/remainder/pairs with both divisor signs and one-/multi-limb
+magnitudes, plus every radix 2..36 for signed/zero inputs, while source compareTo
+throws if called. These cases also constrain formatting of a selected min/max
+source. Abs/division/formatting overrides beyond this comparison callback remain
+a separate audit.
 
 Exact alignment errors add 882 portable add/subtract outcomes over signed unit
 and zero coefficients and seven scales spanning both Int endpoints. The matrix

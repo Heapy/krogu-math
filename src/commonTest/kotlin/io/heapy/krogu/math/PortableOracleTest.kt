@@ -17,6 +17,8 @@ class PortableOracleTest {
         val op = v[1]
         val p = v[4].toInt()
         if (v[0] == "MM") return evaluateMinMaxOracle(v)
+        if (v[0] == "IM") return evaluateIntegerMinMaxOracle(v)
+        if (v[0] == "ID") return evaluateIntegerDivisionOracle(v)
         if (v[0] == "CP") return evaluateComparisonOracle(v)
         if (v[0] == "ND") return evaluateNullableBinaryOracle(v)
         if (v[0] == "O") return evaluateAdditionOracle(v)

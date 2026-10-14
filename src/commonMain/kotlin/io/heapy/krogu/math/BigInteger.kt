@@ -10,7 +10,7 @@ import kotlin.random.Random
 // generates final bridges; JavaApiContractTest checks Java and Kotlin dispatch.
 @Suppress("INAPPLICABLE_JVM_NAME")
 open class BigInteger private constructor(private val sign: Int, private val words: IntArray) :
-    Number(), Comparable<BigInteger>, MathSerializable {
+    Number(), Comparable<BigInteger?>, MathSerializable {
 
     private constructor(value: BigInteger) : this(value.sign, value.words)
     private fun readObject(stream: MathObjectInputStream) {
@@ -76,7 +76,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         if (value.sign == 0) throw ArithmeticException("BigInteger divide by zero")
         val a = abs()
         val b = value.abs()
-        if (a < b) return arrayOf(ZERO, this)
+        if (compareMagnitude(a.words, b.words) < 0) return arrayOf(ZERO, this)
         if (b.words.size == 1) {
             val result = IntArray(words.size)
             var remainder = 0L
@@ -375,9 +375,12 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return n
     }
 
-    override fun compareTo(other: BigInteger): Int = if (sign != other.sign) sign.compareTo(other.sign) else sign * compareMagnitude(words, other.words)
-    open fun min(value: BigInteger): BigInteger = if (this <= value) this else value
-    open fun max(value: BigInteger): BigInteger = if (this >= value) this else value
+    override fun compareTo(other: BigInteger?): Int {
+        val operand = other ?: throw NullPointerException()
+        return if (sign != operand.sign) sign.compareTo(operand.sign) else sign * compareMagnitude(words, operand.words)
+    }
+    open fun min(value: BigInteger?): BigInteger? = if (compareTo(value) < 0) this else value
+    open fun max(value: BigInteger?): BigInteger? = if (compareTo(value) > 0) this else value
     override fun equals(other: Any?): Boolean = other is BigInteger && sign == other.sign && words.contentEquals(other.words)
     override fun hashCode(): Int {
         var hash = 0
