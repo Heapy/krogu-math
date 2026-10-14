@@ -328,8 +328,12 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val quotient = divideToIntegralValue(divisor, context)
         return arrayOf(quotient, subtract(quotient.multiply(divisor)))
     }
-    open fun remainder(divisor: BigDecimal?): BigDecimal = divideAndRemainder(divisor)[1]
-    open fun remainder(divisor: BigDecimal?, mc: MathContext?): BigDecimal = divideAndRemainder(divisor, mc)[1]
+    open fun remainder(divisor: BigDecimal?): BigDecimal = remainderElement(divideAndRemainder(divisor))
+    open fun remainder(divisor: BigDecimal?, mc: MathContext?): BigDecimal = remainderElement(divideAndRemainder(divisor, mc))
+    private fun remainderElement(pair: Array<BigDecimal>): BigDecimal {
+        if (pair.size < 2) arrayIndexFailure(1, pair.size)
+        return pair[1]
+    }
 
     open fun round(mc: MathContext?): BigDecimal = plus(mc)
     private fun roundValue(mc: MathContext): BigDecimal {

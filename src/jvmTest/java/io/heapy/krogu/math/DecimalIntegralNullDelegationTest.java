@@ -26,6 +26,9 @@ private static class Reference extends java.math.BigDecimal {
     }
     private java.math.BigDecimal[] pairReplacement() {
         if (behavior.equals("null")) return null;
+        if (behavior.equals("empty")) return new java.math.BigDecimal[0];
+        if (behavior.equals("short")) return new java.math.BigDecimal[] {this};
+        if (behavior.equals("null-element")) return new java.math.BigDecimal[] {this, null};
         return new java.math.BigDecimal[] {this, behavior.equals("self") ? this : new java.math.BigDecimal("9.00")};
     }
     @Override public java.math.BigDecimal divideToIntegralValue(java.math.BigDecimal value) {
@@ -84,6 +87,9 @@ private static class Actual extends BigDecimal {
     }
     private BigDecimal[] pairReplacement() {
         if (behavior.equals("null")) return null;
+        if (behavior.equals("empty")) return new BigDecimal[0];
+        if (behavior.equals("short")) return new BigDecimal[] {this};
+        if (behavior.equals("null-element")) return new BigDecimal[] {this, null};
         return new BigDecimal[] {this, behavior.equals("self") ? this : new BigDecimal("9.00")};
     }
     @Override public BigDecimal divideToIntegralValue(BigDecimal value) {
@@ -140,7 +146,7 @@ private static class Actual extends BigDecimal {
         int comparisons = 0, differences = 0;
         StringBuilder failures = new StringBuilder();
         for (String text : new String[] {"0.00", "1", "-10.50"})
-            for (String behavior : new String[] {"return", "self", "null", "throw", "super"})
+            for (String behavior : new String[] {"return", "self", "null", "throw", "super", "empty", "short", "null-element"})
                 for (String hook : new String[] {"integral", "integral-context", "pair", "pair-context"})
                     for (String op : new String[] {"integral", "integral-context", "pair", "pair-context", "remainder", "remainder-context"})
                         for (int precision : new int[] {-1, 0, 2})
@@ -161,7 +167,7 @@ private static class Actual extends BigDecimal {
                                         .append(" expected=").append(e).append(" actual=").append(a).append('\n');
                                 }
                             }
-        assertEquals("comparison count", 2160, comparisons);
+        assertEquals("comparison count", 3456, comparisons);
         assertEquals(differences + " mismatches:\n" + failures, 0, differences);
     }
 }

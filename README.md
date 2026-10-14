@@ -114,7 +114,9 @@ preferred scales, precision, residual checks and returned subclass identities.
 It also adds 1,176 signed metadata outcomes, including precision and scale endpoints.
 Context division adds 8,000 outcomes for operand callback order, failure precedence,
 all rounding modes, compact/wide coefficients, shared operands and nullable calls.
-Java tests add 2,250 nullable division-family comparisons, including callback results.
+Java tests add 3,546 nullable division-family comparisons, including callback results.
+Another 216 portable cases check remainder delegation to replacement pair arrays,
+including bounds failures and returned element identity.
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
