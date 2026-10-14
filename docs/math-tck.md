@@ -300,3 +300,17 @@ test sources. Neither command invoked javac, Gradle or mathematical tests.
 The recorded numerical results above still refer to their original campaigns
 and exact sealed JAR; this integration check does not replace those runs or
 resolve their five failures and ten resource skips.
+
+## Targeted plain-string repair verification
+
+Task564 subsequently ran both original ToPlainStringTests directives against its
+fresh formatter-fix JAR and the pinned JDK. Run1792016503091 completed all four
+baseline/port invocations with PASS, preserving the original559 failures as
+historical evidence. Parent independently checked successful compilation and
+execution, own-JAR class loading, the bytecode audit and no incomplete OOM
+assertions. See [plain-string preflight](plain-string-preflight.md) for exact
+artifact/result hashes, four-target regressions and integration limits.
+
+This targeted follow-up resolves those two failure witnesses on that JAR. It
+does not replace the original broad campaign, its three primality timeouts or
+ten capacity skips, and does not establish a full corpus or official JCK pass.

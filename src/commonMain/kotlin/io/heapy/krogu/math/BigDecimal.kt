@@ -617,18 +617,31 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         return if (directSign) coefficient.signum() else signum()
     }
     private fun canonicalPlain(digits: String, sign: Int): String {
+        if (plainStringLength(digits.length, sign) > Int.MAX_VALUE.toLong()) plainStringTooLarge()
         val body = when {
             decimalScale == 0 -> digits
             decimalScale < digits.length -> digits.substring(0, digits.length - decimalScale) + "." + digits.substring(digits.length - decimalScale)
-            else -> "0." + zeros(decimalScale.toLong() - digits.length) + digits
+            else -> "0." + "0".repeat(decimalScale - digits.length) + digits
         }
         return (if (sign < 0) "-" else "") + body
+    }
+    // Complete layout length, before padding/concatenation. Negative-scale zero
+    // suppression belongs to the caller, including its virtual signum() dispatch.
+    private fun plainStringLength(digits: Int, sign: Int): Long {
+        val signLength = if (sign < 0) 1L else 0L
+        return signLength + when {
+            decimalScale <= 0 -> digits.toLong() - decimalScale.toLong()
+            decimalScale < digits -> digits.toLong() + 1L
+            else -> decimalScale.toLong() + 2L
+        }
     }
     open fun toPlainString(): String {
         if (decimalScale == 0) return coefficient.toString()
         if (decimalScale < 0) {
             if (signum() == 0) return "0"
-            return coefficient.toString() + zeros(-decimalScale.toLong())
+            val text = coefficient.toString()
+            if (text.length.toLong() - decimalScale.toLong() > Int.MAX_VALUE.toLong()) plainStringTooLarge()
+            return text + "0".repeat((-decimalScale.toLong()).toInt())
         }
         return canonicalPlain(coefficient.abs().toString(), signum())
     }
