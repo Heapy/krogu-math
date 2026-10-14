@@ -6,7 +6,8 @@ permissions:
   contents: read
 concurrency:
   group: compatibility-${{ github.ref }}
-  cancel-in-progress: true
+  # Let the active platform matrix finish; queue the newest revision behind it.
+  cancel-in-progress: false
 jobs:
   oracle:
     runs-on: ubuntu-24.04
