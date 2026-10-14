@@ -337,6 +337,24 @@ allocating an intermediate numeric value for an operation that must fail. Operan
 subclasses and the full nonzero-divisor message domain remain
 separate audits.
 
+A public-JDK composition oracle adds 1,440 portable BigDecimal quotient/remainder
+pair outcomes. Exact pairs call the exact virtual integral-quotient overload;
+context pairs with zero precision delegate to the exact virtual pair overload.
+Finite contexts call the context integral-quotient overload. The returned quotient
+then receives virtual multiply before source subtract, and remainder overloads
+select the second element of the corresponding virtual pair. Replacement and
+throwing callbacks constrain this order, returned source/divisor/quotient identities,
+values and scales. The matrix includes zero divisors whose quotient callbacks
+replace division, both source signs and positive/negative preferred scales. It
+isolates composition using overridden integral-quotient methods; null callback
+inputs and the inherited integral-quotient implementation's own callbacks remain
+a separate audit. A live public-JDK probe confirms a remaining mismatch in the
+inherited implementation: for source 10.50 and divisor 2.0, overriding context
+divide to return 7.9 produces integral quotient 7.0 on JDK, but currently 5.0 here
+(exact overload and context precisions 0, 2 and 7). The current scale-bound division
+path bypasses that override. This is an outstanding compatibility defect, not an
+excluded requirement.
+
 Scale-bound division adds 12,000 nonzero-divisor outcomes across all modes,
 including returned values and exact messages. The initial wide-Long rescaling
 rejected some values returned by the pinned JDK and accepted some calls it

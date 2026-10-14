@@ -107,6 +107,8 @@ Modular exponentiation adds 9,176 value/error/identity/callback outcomes, includ
 callback arguments, even/odd moduli, negative powers and replacement metadata.
 Primality prefixes add 78 deterministic outcomes for certainty endpoints,
 early returns and propagation of virtual bitLength failures before witness tests.
+Decimal quotient/remainder composition adds 1,440 outcomes for overload routing,
+replacement and throwing callbacks, returned identities, values and scales.
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
@@ -133,6 +135,7 @@ kotlinr scripts/generate-null-oracle.main.kts --check
 kotlinr scripts/generate-character-oracle.main.kts --check
 kotlinr scripts/generate-prime-oracle.main.kts --check
 kotlinr scripts/generate-prime-prefix-oracle.main.kts --check
+kotlinr scripts/generate-decimal-pair-dispatch-oracle.main.kts --check
 kotlinr scripts/generate-integer-arithmetic-oracle.main.kts --check
 kotlinr scripts/generate-integer-parser-oracle.main.kts --check
 kotlinr scripts/generate-integer-bytes-oracle.main.kts --check

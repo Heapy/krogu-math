@@ -282,8 +282,12 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         }
         return result
     }
-    open fun divideAndRemainder(divisor: BigDecimal): Array<BigDecimal> = divideAndRemainder(divisor, MathContext.UNLIMITED)
+    open fun divideAndRemainder(divisor: BigDecimal): Array<BigDecimal> {
+        val quotient = divideToIntegralValue(divisor)
+        return arrayOf(quotient, subtract(quotient.multiply(divisor)))
+    }
     open fun divideAndRemainder(divisor: BigDecimal, mc: MathContext): Array<BigDecimal> {
+        if (mc.precision == 0) return divideAndRemainder(divisor)
         val quotient = divideToIntegralValue(divisor, mc)
         return arrayOf(quotient, subtract(quotient.multiply(divisor)))
     }
