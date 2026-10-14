@@ -2,7 +2,8 @@
 
 These arguments describe the independent common implementation in
 `BigInteger.kt` and `BigDecimal.kt`, together with portable JDK fixtures. They
-cover integer packing, decimal conversions, roots, powers and primality budgets.
+cover integer packing, signed arithmetic, decimal conversions, roots, powers
+and primality budgets.
 
 ## Primality and prime generation
 
@@ -151,7 +152,39 @@ ordinary object. Subclasses can deliberately change these public methods;
 the oracle constrains the observed guard order and delegation instead of
 assuming overridden methods remain truthful.
 
-## Initial integer division comparison
+## Signed integer addition and multiplication
+
+For ordinary objects, each magnitude digit lies in 0..B-1 with B=2^30.
+Addition computes a digit sum plus an incoming carry in 0..1. The maximum
+is 2*B-1, so the Long intermediate is exact. Its low 30 bits give the next
+digit and its quotient by B gives the outgoing carry in 0..1. Subtraction
+of the smaller magnitude from the larger computes a digit difference minus
+a borrow in 0..1. The intermediate lies in [-B,B-1]; masking gives its
+residue modulo B, and negativity gives the next borrow. Magnitude order
+ensures the final borrow is zero. Equal signs add magnitudes; opposite signs
+subtract the smaller from the larger and retain the larger magnitude's sign.
+Equal opposing magnitudes give zero. Ordinary subtraction negates the second
+sign and applies the same reduction, without increasing either input magnitude.
+
+In multiplication, one inner step computes a_i*b_j+out_(i+j)+carry.
+Assuming the output digit and carry are in 0..B-1, this is at most
+(B-1)^2+2*(B-1)=B^2-1=2^60-1, below signed Long's maximum. The low 30
+bits and quotient by B again produce a digit and carry in 0..B-1, completing
+the induction. Row i adds a_i*B^i times the second magnitude to the prior
+partial product. Its terminal carry goes into position i+len(b), which no
+earlier row has reached; assigning that position cannot discard prior data.
+After all rows the array therefore represents the full unsigned product.
+The operand-sign product restores the sign; normalization removes high zero
+digits and canonicalizes zero.
+
+For nonzero operands of bit lengths u,v, the product lies in
+[2^(u+v-2),2^(u+v)). Thus u+v-1>Int.MAX_VALUE proves an out-of-range result
+and justifies the early guard. The bit-length sum uses Long. At the ambiguous
+upper boundary, normalization must still check the actual highest digit.
+This argument establishes digit arithmetic and the early bound; it does not
+prove every allocation failure or range-error diagnostic.
+
+## Integer division
 
 For ordinary operands, division first checks whether abs(x)<abs(y) using
 normalized stored magnitudes with radix B=2^30. A nonzero magnitude with k
@@ -167,6 +200,40 @@ or a comparison exception from altering it. Portable JDK fixtures exercise
 positive/negative/zero dividends, both divisor signs, single-/multi-limb cases
 and formatting in every radix while source compareTo throws if called.
 They do not establish every other division/abs/formatting callback path.
+
+For a one-digit positive divisor d, the high-to-low loop maintains 0<=r<d.
+Appending the next radix-B digit x forms t=r*B+x<d*B<=B^2. Hence t fits
+Long, floor(t/d)<B is a valid quotient digit, and t mod d restores the
+remainder invariant. Appending all digits yields A=Q*d+R with 0<=R<d.
+
+For a multi-digit divisor D, binary long division processes the dividend's
+bits from highest to lowest. After a prefix P, maintain P=Q*D+R with
+0<=R<D. Appending bit v gives 2*P+v=(2*Q)*D+(2*R+v). Since 2*R+v<2*D,
+subtracting D at most once and choosing the next quotient bit restores the
+invariant. The fixed output bit positions encode those successive quotient
+bits, so at termination A=Q*D+R and 0<=R<D.
+
+The stronger prefix bound also addresses supported-range intermediates.
+R<=P implies 2*R<=2*P<=2*P+v, and every processed prefix is at most the
+original dividend magnitude A. Both the shift and the optional addition of
+one therefore stay <=A, even when 2*D itself would be out of range.
+Subtracting D cannot increase the nonnegative magnitude. The quotient is
+also <=A, and the output array has the dividend's digit capacity. Thus this
+reduction does not require an out-of-range numerical intermediate for
+supported ordinary inputs; actual resource exhaustion remains a separate issue.
+
+Finally, for signs sx,sy, choose q=sx*sy*Q and r=sx*R. Then q*y+r=x,
+abs(r)<abs(y), and a nonzero remainder has the dividend's sign, giving
+truncation toward zero. Zero is canonicalized rather than assigned a sign.
+
+`IntegerArithmeticOracleTest` checks 396 independent signed JDK operand pairs:
+30-bit digit neighbors, dense squares, maximal one-digit and two-digit divisors,
+alternating digit blocks, seeded wide operands and zero dividends. Inputs reach
+16,384 bits and products reach 32,768 bits. Expected sums, differences, products,
+quotients and remainders use signed byte encodings, independent of decimal
+formatting. Every pair also checks q*y+r, the remainder bound and its sign.
+These cases corroborate the arguments on each target; they do not exhaust the
+operand domain or establish all subclass behavior, resource limits or diagnostics.
 
 ## Hash packing
 

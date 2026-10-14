@@ -79,6 +79,9 @@ Another 1,728 Float/Double midpoint-neighbor outcomes exercise rounding parity,
 sticky bits and finite/infinity edges; see [numerical arguments](NUMERICAL_ARGUMENTS.md).
 Separate hash fixtures add 6,110 JDK outcomes, including complete 30/32-bit
 alignment cycles and signed dense inputs through 65,536 bytes.
+Separate signed arithmetic fixtures cover 396 operand pairs through 16,384-bit
+inputs and 32,768-bit products, including digit carry chains, dense/sparse
+patterns, both signs and quotient/remainder invariants.
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
