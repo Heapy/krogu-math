@@ -70,6 +70,25 @@ class DecimalScaleContractTest {
         }
     }
 
+    @Test fun DecimalScaleContractZeroAndTinyRangeGuardWitnesses() {
+        // This zero has a valid representation at the requested endpoint.
+        // Multiplication reconstructs the dividend's value without any large power.
+        val sourceZero = BigDecimal(BigInteger.ZERO, Int.MIN_VALUE)
+        val divisor = BigDecimal(BigInteger.ONE, Int.MIN_VALUE)
+        val witness = BigDecimal(BigInteger.ZERO, Int.MAX_VALUE)
+        assertEquals(0, witness.multiply(divisor).compareTo(sourceZero))
+        for (mode in RoundingMode.entries)
+            assertPair("0", Int.MAX_VALUE, sourceZero.divide(divisor, Int.MAX_VALUE, mode))
+        // A nonzero represented quotient already exists; only its rounded
+        // coefficient at scale zero is needed, not 10^MAX in a denominator.
+        for (sign in listOf(-1, 1)) {
+            val tiny = BigDecimal(BigInteger.valueOf(sign.toLong()), Int.MAX_VALUE)
+            assertEquals(-1, tiny.abs().compareTo(BigDecimal("0.1")))
+            for (mode in RoundingMode.entries)
+                checkTiny(sign, 0, mode, "$sign@MAX / ONE scale=0 $mode") { tiny.divide(BigDecimal.ONE, 0, mode) }
+        }
+    }
+
     @Test fun DecimalScaleContractBoundedRescalingAndHalfwayNeighbors() {
         for (source in listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, Int.MAX_VALUE - 1, Int.MAX_VALUE)) {
             for (target in listOf(source, if (source == Int.MAX_VALUE) source - 1 else source + 1)) {

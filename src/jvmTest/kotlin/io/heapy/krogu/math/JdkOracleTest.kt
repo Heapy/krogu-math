@@ -188,7 +188,14 @@ class JdkOracleTest {
             assertEquals(x.toLong(), a.toLong())
             same("tiny setScale $s", { x.setScale(-10, JRound.HALF_EVEN) }, { a.setScale(-10, RoundingMode.HALF_EVEN) })
             same("tiny setScale zero $s", { x.setScale(0, JRound.HALF_EVEN) }, { a.setScale(0, RoundingMode.HALF_EVEN) })
-            same("tiny divide $s", { x.divide(JDecimal.ONE, 0, JRound.HALF_EVEN) }, { a.divide(BigDecimal.ONE, 0, RoundingMode.HALF_EVEN) })
+            val diagnostic = outcome { x.divide(JDecimal.ONE, 0, JRound.HALF_EVEN) }
+            val expected = if (DecimalScaleContractExpected.affectedScaledDivision(a, BigDecimal.ONE, 0))
+                DecimalScaleContractExpected.scaledDivide(a, BigDecimal.ONE, 0, RoundingMode.HALF_EVEN)
+            else diagnostic
+            assertEquals(expected, outcome { a.divide(BigDecimal.ONE, 0, RoundingMode.HALF_EVEN) },
+                "tiny divide $s JDK diagnostic=$diagnostic")
+            if (s in listOf("0E+2147483647", "0E-2147483647", "1E-2147483647"))
+                assertEquals("!ArithmeticException", diagnostic, "retained pinned-JDK zero/tiny defect $s")
         }
     }
 }

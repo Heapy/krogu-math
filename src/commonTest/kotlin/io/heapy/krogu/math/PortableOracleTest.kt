@@ -9,7 +9,33 @@ class PortableOracleTest {
                 val result = evaluate(v)
                 if (result is Array<*>) result.joinToString("|") else result.toString()
             } catch (e: Exception) { "!${e::class.simpleName}" }
-            assertEquals(v[6], actual, "${v.take(6)}")
+            val corrected = scaledDivisionContractExpected(v)
+            val normalized = if (corrected == "!ArithmeticException" && actual.startsWith("!ArithmeticException:"))
+                "!ArithmeticException" else actual
+            assertEquals(corrected ?: v[6], normalized, "${v.take(6)} JDK diagnostic=${v[6]}")
+        }
+    }
+
+    private fun scaledDivisionContractExpected(v: Array<String>): String? {
+        // Only ordinary, stored-value G and parsed D operands enter this proved domain.
+        // Frozen JDK observations remain intact, including their error wording.
+        val stored = v[0] == "G" && v[1] == "scaledDivide"
+        val parsed = v[0] == "D" && v[1] == "divideScale"
+        if (!stored && !parsed) return null
+        fun operand(text: String): BigDecimal {
+            if (parsed) return BigDecimal(text)
+            val parts = text.split('@')
+            return BigDecimal(BigInteger(parts[0]), parts[1].toInt())
+        }
+        val a = operand(v[2])
+        val b = operand(v[3])
+        if (b.signum() == 0) return null
+        val target = v[4].toInt()
+        return when {
+            DecimalScaleContractExpected.affectedScaledDivision(a, b, target) ->
+                DecimalScaleContractExpected.scaledDivide(a, b, target, RoundingMode.valueOf(v[5]))
+            DecimalScaleContractExpected.exceedsSupportedCoefficientRange(a, b, target) -> "!ArithmeticException"
+            else -> null
         }
     }
     @Suppress("DEPRECATION")

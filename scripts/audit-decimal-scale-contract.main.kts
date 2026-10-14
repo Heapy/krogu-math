@@ -73,4 +73,22 @@ for (sign in listOf(-1L, 1L)) {
 verify("range diagnostic 1@MIN / 1@0 scale=0 HALF_EVEN", "!ArithmeticException",
     j { JD(JI.ONE, Int.MIN_VALUE).divide(JD.ONE, 0, JR.HALF_EVEN) },
     k { KD(KI.ONE, Int.MIN_VALUE).divide(KD.ONE, 0, KR.HALF_EVEN) })
+// The full-suite consumers also contain false range errors for zero and tiny
+// results. Their existing frozen JDK observations must not force these errors.
+for (mode in JR.entries) {
+    verify("zero diagnostic 0@MIN / 1@MIN targetMAX $mode", "0@${Int.MAX_VALUE}",
+        j { JD(JI.ZERO, Int.MIN_VALUE).divide(JD(JI.ONE, Int.MIN_VALUE), Int.MAX_VALUE, mode) },
+        k { KD(KI.ZERO, Int.MIN_VALUE).divide(KD(KI.ONE, Int.MIN_VALUE), Int.MAX_VALUE, KR.valueOf(mode.name)) })
+    for (sign in listOf(-1L, 0L, 1L)) {
+        val expected = when {
+            sign == 0L -> "0@0"
+            mode == JR.UNNECESSARY -> "!ArithmeticException"
+            mode == JR.UP || mode == JR.CEILING && sign > 0 || mode == JR.FLOOR && sign < 0 -> "$sign@0"
+            else -> "0@0"
+        }
+        verify("zero/tiny range diagnostic $sign@MAX / ONE target0 $mode", expected,
+            j { JD(JI.valueOf(sign), Int.MAX_VALUE).divide(JD.ONE, 0, mode) },
+            k { KD(KI.valueOf(sign), Int.MAX_VALUE).divide(KD.ONE, 0, KR.valueOf(mode.name)) })
+    }
+}
 println("Independent witnesses passed; port checks=${if (checkPort) "required and passed" else "diagnostic only"}.")

@@ -90,6 +90,43 @@ power is constructed. No valid bounded coefficient is excluded by this rule.
 
 ## Reproducer and verification
 
+The first full CI of the integrated scale correction exposed two additional
+oracle consumers still requiring the same false range rejection:
+`PortableOracleTest` and `JdkOracleTest.invalidInputsAndScaleLimits`. The pinned
+JDK rejects zero at scales `-MAX` (`MIN+1`) and `MAX` divided by `ONE`, requested scale zero,
+and rejects `0@MIN / 1@MIN` at requested scale `MAX`. Zero has coefficient zero at
+every requested Int scale; no large power is needed. The witness `0@MAX`
+multiplied by `1@MIN` reconstructs the zero dividend's value at scale -1.
+It also rejects `+/-1@MAX / ONE` at scale zero, although the represented exact
+quotient has magnitude below 0.1. The directional/half-mode argument above gives
+0 or a signed unit; UNNECESSARY correctly requires an exception, whose message
+is not a separate numerical guarantee.
+
+Those consumers now use the existing independent model only for proved ordinary
+scaled-division inputs: zero/tiny/bounded rescaling after failed staging, or the
+conservative unsupported-coefficient range bound. Zero divisors and other
+operations stay outside this substitution. Frozen JDK fixture values are not
+edited, and assertion labels retain them. The live JVM test also retains the
+specific pinned JDK failures. A classified input need not have a bad JDK result;
+ordinary already-correct members of the bounded domain remain checked too.
+
+The initial combined parent JVM/JS/WasmJS/macOS ARM64 check exited 1 in 9m25s:
+the same two JVM assertions and the portable assertion on each other target
+failed. New canonical-Double and ordinary/truthful context controls passed.
+The consumers' classification and explicit zero/tiny witnesses require a fresh
+combined rerun; those initial failures are not passing evidence. The next combined
+run exited 1 in 8m43s: the live JVM consumer passed, but the portable parsed
+`D/divideScale` zero case still required the same JDK exception. The identical
+ordinary-operand classification now covers both stored `G/scaledDivide` and
+parsed `D/divideScale` inputs. A focused JVM rerun of both consumers then exited
+zero in 1m02s. The final integrated four-target run exited zero in **8m20s**:
+JVM **89** methods and JS/WasmJS/macOS ARM64 **73** methods each, with no
+failures, errors or skips. It includes the eight scale-contract methods, both
+corrected consumers, new canonical-Double and ordinary/truthful context controls,
+and retained scale/operator/context suites. The terminal log is
+`/private/tmp/krogu-root-context-double-final.log`; an independent XML summary
+confirmed all four target totals. Fresh full supported-platform CI is still required.
+
 `scripts/audit-decimal-scale-contract.main.kts` prints the runtime, independent
 expected results, JDK diagnostics and port results for all eight modes and both
 signs. It proves the division reconstruction and addition alignment with bounded

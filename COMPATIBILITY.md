@@ -20,6 +20,10 @@ Two confirmed extreme-scale decimal defects, their bounded mathematical witnesse
 retained JDK diagnostics and deliberate numerical divergences are documented in
 [Decimal scale contract](docs/decimal-scale-contract.md).
 
+The independent canonical Double candidate argument, binary-boundary regressions
+and exact coefficient/scale/text corpus are documented in
+[Canonical Double contract](docs/canonical-double-contract.md).
+
 Message-oracle runs and JVM test workers use `-XX:-OmitStackTraceInFastThrow`.
 A repeated scaled-zero-division campaign exposed 6,975 null messages caused by
 HotSpot exception reuse; rerunning with this flag restored the canonical `/ by zero`
@@ -81,6 +85,12 @@ have consistent returned metadata. Other replacement callbacks prevent treating
 the last category as certified contract-preserving subclasses. The fixture and
 all current assertions remain unchanged; field-level normative classification
 is still open.
+
+New [ordinary and fully delegating context-division controls](docs/decimal-context-oracle-classification.md)
+project all 75,728 input rows to 3,000 distinct numerical/topology/context cases
+and 11,472 meaningful operand-class combinations. They compare values, scales
+and exception types without poisoned getters or internal trace requirements.
+The old observations remain intact; this addition does not finish their classification.
 
 For every new difference:
 
