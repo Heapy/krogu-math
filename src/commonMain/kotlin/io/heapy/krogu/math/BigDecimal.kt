@@ -709,11 +709,24 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         // Public-JDK probes distinguish compact paths (no virtual calls) from
         // the general rational path (one virtual signum, no virtual precision).
         val resultSign = if (compactPath) compact!!.compareTo(0L) else signum()
-        val decimalExponent = coefficient.abs().toString().length.toLong() - decimalScale - 1
+        val lowerExponent = coefficient.decimalDigitLowerBound().toLong() - decimalScale - 1
+        if (lowerExponent > 400) return resultSign * Double.POSITIVE_INFINITY
+        if (lowerExponent + 1 < -400) return resultSign * 0.0
+        // Every IEEE midpoint has a terminating decimal with at most this
+        // many significant digits. Keep its decimal grid and one sticky digit
+        // instead of constructing a potentially unsupported 10^decimalScale.
+        // See DECIMAL_BINARY_CONVERSION.md for the bound and endpoint proof.
+        val midpointDigits = maxOf(precision - minExponent + (precision + 3) / 3,
+            (maxExponent + 3) / 3)
+        val prefix = coefficient.decimalBinaryPrefix(midpointDigits)
+        val decimalExponent = prefix.decimalDigits.toLong() - decimalScale - 1
         if (decimalExponent > 400) return resultSign * Double.POSITIVE_INFINITY
         if (decimalExponent < -400) return resultSign * 0.0
-        val numerator = if (decimalScale < 0) coefficient.abs().multiply(tenPow(-decimalScale.toLong())) else coefficient.abs()
-        val denominator = if (decimalScale > 0) tenPow(decimalScale.toLong()) else BigInteger.ONE
+        val magnitude = if (prefix.sticky) prefix.magnitude.multiply(BigInteger.TEN).add(BigInteger.ONE)
+            else prefix.magnitude
+        val scale = decimalScale.toLong() - prefix.discardedDigits + if (prefix.sticky) 1 else 0
+        val numerator = if (scale < 0) magnitude.multiply(tenPow(-scale)) else magnitude
+        val denominator = if (scale > 0) tenPow(scale) else BigInteger.ONE
         var exponent = numerator.bitLength() - denominator.bitLength()
         if (exponent >= 0) { if (numerator < denominator.shiftLeft(exponent)) exponent-- }
         else if (numerator.shiftLeft(-exponent) < denominator) exponent--

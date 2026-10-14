@@ -598,6 +598,37 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         for (i in words.indices.reversed()) value = (value shl LIMB_BITS) or words[i].toLong()
         return if (sign < 0) -value else value
     }
+
+    // Stored magnitude metadata for decimal binary conversion. The certified
+    // lower approximation 1292913986 / 2^32 < log10(2) loses less than one
+    // decimal digit over the entire supported bit range: D is E or E+1.
+    // See DECIMAL_BINARY_CONVERSION.md; no full decimal string is required.
+    @kotlin.jvm.JvmSynthetic
+    internal fun decimalDigitLowerBound(): Int = if (sign == 0) 1 else
+        (((magnitudeBits() - 1).toLong() * 1292913986L) ushr 32).toInt() + 1
+
+    internal class DecimalBinaryPrefix(
+        val magnitude: BigInteger,
+        val decimalDigits: Int,
+        val discardedDigits: Int,
+        val sticky: Boolean,
+    )
+
+    @kotlin.jvm.JvmSynthetic
+    internal fun decimalBinaryPrefix(maxDigits: Int): DecimalBinaryPrefix {
+        require(maxDigits > 0)
+        if (sign == 0) return DecimalBinaryPrefix(ZERO, 1, 0, false)
+        val trim = maxOf(0, decimalDigitLowerBound() - maxDigits)
+        val absolute = BigInteger(1, words)
+        // trim <= D-maxDigits, so this power is no larger than the input.
+        // The unchanged division kernel extracts at most maxDigits+1 digits.
+        val qr = if (trim == 0) arrayOf(absolute, ZERO) else absolute.divideStored(TEN.pow(trim))
+        val digits = qr[0].toString()
+        val extra = maxOf(0, digits.length - maxDigits)
+        val sticky = qr[1].sign != 0 || (maxDigits until digits.length).any { digits[it] != '0' }
+        val prefix = if (extra == 0) qr[0] else BigInteger(digits.substring(0, maxDigits))
+        return DecimalBinaryPrefix(prefix, trim + digits.length, trim + extra, sticky)
+    }
     @kotlin.jvm.JvmName("byteValue")
     override fun toByte(): Byte = toInt().toByte()
     @kotlin.jvm.JvmName("shortValue")
