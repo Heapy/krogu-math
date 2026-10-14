@@ -26,7 +26,7 @@ are compared independently of this optimization.
 | Infinite two's-complement bit semantics | Portable oracle, seeded JVM operations and algebraic invariants | Structured positive/negative bit boundaries, extreme shift/bit distances |
 | All constructor encodings and validation | 25,584 exact byte-constructor outcomes including Int offset/length endpoints and array isolation; 10,156 exact string-constructor outcomes; complete BMP digit/radix corpus and supplementary digit constructors | Larger input/allocation limits, compound textual grammar, malformed text fuzzing |
 | Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 207,239 exact portable scale-boundary outcomes; portable fixtures | Wider coefficient/scale/precision combinations and overflow across remaining overloads |
-| Powers and roots | 10,560 initial JVM comparisons, 13,024 exponent-bit/rounding comparisons, 128 working-precision overflow cases, 2,592 squared-midpoint root fixtures through 129 digits, integer midpoint rounding argument; 6,677 integer-power callback/value/identity outcomes | Wider sqrt/pow subclass compositions and intermediate/scale-overflow audit; larger exponent/operand combinations |
+| Powers and roots | 10,560 initial JVM comparisons, 13,024 exponent-bit/rounding comparisons, 128 working-precision overflow cases, 2,592 squared-midpoint root fixtures through 129 digits, integer midpoint rounding argument; 6,677 integer-power outcomes; 978 integer-root outcomes and independent bounds | Wider decimal-root and integer-power subclass compositions, intermediate/scale-overflow audit and larger operand/allocation domains |
 | Float/Double conversions and canonical Double factory values | Bitwise oracle comparisons, 1,296 exact decimal midpoint-neighbor outcomes, rational rounding argument, all binary scaling powers from -1074 through 1023, 10,000 seeded canonical Double cases | Exhaustive Float input domain, decimal subclass dispatch and very large cancelling coefficient/scale allocation audit |
 | Prime generation and certainty | 416 portable primality/successor/trace cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions; generation density argument and successor whole-search error budget; exhaustive small byte-payload distribution, primality and successor trial-division checks | Very large certainty beyond the proven bound, witness independence at larger magnitudes, supported-range limits, caller RNG behavior and wider subclass dispatch |
 | Exception conditions and types | Portable fixtures; 7,486 live JVM null/invalid-argument comparisons; 3,462 portable null-precedence outcomes; exact integer string/byte constructor diagnostics | Wider invalid-argument domains and cross-products; other exception messages remain unmatched |
@@ -51,6 +51,7 @@ kotlinr scripts/generate-integer-bytes-oracle.main.kts --check
 kotlinr scripts/generate-integer-division-oracle.main.kts --check
 kotlinr scripts/generate-integer-pow-oracle.main.kts --check
 kotlinr scripts/generate-integer-gcd-oracle.main.kts --check
+kotlinr scripts/generate-integer-sqrt-oracle.main.kts --check
 kotlinr scripts/generate-context-oracle.main.kts --check
 kotlinr scripts/generate-hash-oracle.main.kts --check
 ```
@@ -519,6 +520,20 @@ value. Wide cases include shared 1,024-bit factors, a 4,096-bit dividend and
 consecutive Fibonacci numbers after 750 recurrence steps. Another 168 live Java
 cases verify null/throw abs and negate callbacks, null arguments and self aliases.
 Wider callback graphs, detailed NPE messages and resource limits remain open.
+
+Integer square roots add 978 portable value/callback/identity outcomes across
+both APIs. The inherited implementations use a private common root routine;
+they bypass source comparison, bit metadata, arithmetic and the other public
+root overload. Zero roots and zero remainders are canonical ZERO; nonzero roots
+and remainders are separate base-class values. Probes enter each inherited API
+through super, including throwing/replacement overrides and empty pair arrays.
+Direct calls to user overrides still dispatch normally. Numerical cases cover
+small square neighbors and roots around powers of two through exponent 4,096
+(inputs through 8,193 bits). Every successful case checks the floor-root
+inequalities; pairs also check shape, reconstruction and remainder bounds.
+Another 180 Java null/throw callback cases constrain inherited sqrt/pair, divide,
+multiply and subtract independence. Larger input/allocation domains and decimal
+root subclass compositions remain open.
 
 Integer subtraction adds 896 portable dispatch cases. A stored zero operand
 returns the source without callbacks; only a stored zero source and nonzero

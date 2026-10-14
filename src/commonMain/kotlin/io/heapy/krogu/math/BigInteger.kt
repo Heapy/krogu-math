@@ -232,19 +232,25 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         }
         return result
     }
-    open fun sqrt(): BigInteger {
+    open fun sqrt(): BigInteger = sqrtStored()
+
+    private fun sqrtStored(): BigInteger {
         if (sign < 0) throw ArithmeticException("Negative BigInteger")
-        if (this < TWO) return this
-        var x = ONE.shiftLeft(MagnitudeLimits.initialSqrtShift(bitLength()))
+        if (sign == 0) return ZERO
+        val bits = magnitudeBits()
+        if (bits == 1) return normalized(1, words)
+        val value = BigInteger(1, words)
+        var x = ONE.shiftLeftValue(MagnitudeLimits.initialSqrtShift(bits))
         while (true) {
-            val next = x.add(divide(x)).shiftRight(1)
-            if (next >= x) return x
+            val next = x.add(value.divideStored(x)[0]).shiftRightValue(1)
+            if (compareMagnitude(next.words, x.words) >= 0) return normalized(1, x.words)
             x = next
         }
     }
     open fun sqrtAndRemainder(): Array<BigInteger> {
-        val root = sqrt()
-        return arrayOf(root, subtract(root.multiply(root)))
+        val root = sqrtStored()
+        val square = root.multiply(root)
+        return arrayOf(root, normalized(1, subtractMagnitude(words, square.words)))
     }
 
     open fun shiftLeft(n: Int): BigInteger = shiftLeftValue(n)

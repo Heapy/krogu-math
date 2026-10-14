@@ -31,6 +31,7 @@ jobs:
       - run: kotlinr scripts/generate-integer-division-oracle.main.kts --check
       - run: kotlinr scripts/generate-integer-pow-oracle.main.kts --check
       - run: kotlinr scripts/generate-integer-gcd-oracle.main.kts --check
+      - run: kotlinr scripts/generate-integer-sqrt-oracle.main.kts --check
       - run: kotlinr scripts/generate-context-oracle.main.kts --check
       - run: kotlinr scripts/generate-hash-oracle.main.kts --check
   platforms:
@@ -54,7 +55,8 @@ jobs:
           distribution: liberica
           java-version: '25.0.4+9'
       - uses: gradle/actions/setup-gradle@4c125117fe7c5aed11272ec4213f602f012f89f2 # v5
-      - run: ./gradlew ${{ matrix.tasks }} --stacktrace
+      # Kotlin compilers run in-process; keep their shared heap from being contested.
+      - run: ./gradlew ${{ matrix.tasks }} --max-workers=1 "-Dorg.gradle.jvmargs=-Xmx4g -Dfile.encoding=UTF-8" --stacktrace
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always() && !cancelled()
         with:

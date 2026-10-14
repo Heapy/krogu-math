@@ -94,6 +94,8 @@ Integer powers add 6,677 callback/value/identity cases, including exponent endpo
 factor-of-two extraction, compact arithmetic and replacement metadata.
 GCD adds 1,602 callback/value/identity outcomes, including zero routing, self aliases,
 shared wide factors and consecutive Fibonacci inputs; Java tests cover nullable callbacks.
+Integer roots add 978 value/callback/identity outcomes and independent square/remainder
+bounds, including exact-square neighbors through 8,193-bit inputs.
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
@@ -125,6 +127,7 @@ kotlinr scripts/generate-integer-bytes-oracle.main.kts --check
 kotlinr scripts/generate-integer-division-oracle.main.kts --check
 kotlinr scripts/generate-integer-pow-oracle.main.kts --check
 kotlinr scripts/generate-integer-gcd-oracle.main.kts --check
+kotlinr scripts/generate-integer-sqrt-oracle.main.kts --check
 kotlinr scripts/generate-context-oracle.main.kts --check
 kotlinr scripts/generate-hash-oracle.main.kts --check
 ```

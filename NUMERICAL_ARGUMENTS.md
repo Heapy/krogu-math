@@ -250,6 +250,32 @@ formatting. Every pair also checks q*y+r, the remainder bound and its sign.
 These cases corroborate the arguments on each target; they do not exhaust the
 operand domain or establish all subclass behavior, resource limits or diagnostics.
 
+## Integer square roots
+
+For N>0 with b stored magnitude bits, let r=floor(sqrt(N)) and start Newton's
+iteration at x0=2^ceil(b/2). Since N<2^b<=x0^2, x0>r. The update is
+y=floor((x+floor(N/x))/2). For x>=r, x^2+r^2>=2*x*r and N>=r^2 imply
+floor(N/x)>=2*r-x, so y>=r. If x>r, then N<(r+1)^2<=x^2 and therefore
+floor(N/x)<=x-1, giving y<x. Thus the positive iterate strictly decreases until
+x=r. At x=r, floor(N/x)>=r gives y>=x, which is precisely the stopping condition.
+This establishes termination and the floor-root inequalities without floating
+approximations or operand subclass metadata.
+
+The initial shift uses Long to compute ceil(b/2), including b=Int.MAX_VALUE.
+All iterates stay in [r,x0]. Since N<=r^2+2*r, floor(N/x)<=r+2<=x0+1 and
+x+floor(N/x)<=2*x0+1. This sum has at most ceil(b/2)+2 bits, which is <=b
+for b>=4; smaller inputs require at most four bits and are far below the supported
+limit. Division intermediates are bounded separately by the private division
+argument. For pairs, r^2<=N ensures the square is supported, and the nonnegative
+stored-magnitude subtraction gives R=N-r^2<2*r+1. Zero is handled before division.
+
+Both inherited APIs use this private routine on base-class working objects.
+Source compare/bit/arithmetic overrides and the other public root API cannot
+alter it. The 978 pinned outcomes cover exact-square neighbors through 8,193-bit
+inputs and callback/result identities, plus independent inequalities and pair
+reconstruction. Java tests add 180 nullable/throwing callback cases. This does
+not establish practical near-limit allocation or every decimal-root contract.
+
 ## Greatest common divisors
 
 For two nonzero stored operands, start with positive magnitude views A=abs(x)
