@@ -322,6 +322,10 @@ open class BigInteger private constructor(private val sign: Int, private val wor
 
     open fun isProbablePrime(certainty: Int): Boolean {
         if (certainty <= 0) return true
+        return passesPrimeTest(PrimalityCertainty.testRounds(certainty))
+    }
+
+    private fun passesPrimeTest(rounds: Int): Boolean {
         val n = abs()
         if (n < TWO) return false
         val smallPrimes = intArrayOf(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)
@@ -350,7 +354,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
                 if (!passesWitness(valueOf(base.toLong()))) return false
             return true
         }
-        repeat((certainty.toLong() + 1L).div(2L).coerceAtMost(Int.MAX_VALUE.toLong()).toInt()) {
+        repeat(rounds) {
             var a: BigInteger
             do { a = randomBits(n.bitLength(), Random.Default) } while (a < TWO || a >= nm1)
             if (!passesWitness(a)) return false
@@ -517,9 +521,10 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         private fun generatePrime(bitLength: Int, certainty: Int, rnd: Random): BigInteger {
             if (bitLength < 2) throw ArithmeticException("bitLength < 2")
             if (bitLength == 2) return valueOf(rnd.nextInt(2, 4).toLong())
+            val rounds = PrimalityCertainty.generationRounds(bitLength, certainty)
             while (true) {
                 val n = randomBits(bitLength, rnd).setBit(bitLength - 1).setBit(0)
-                if (n.isProbablePrime(certainty)) return n
+                if (rounds == 0 || n.passesPrimeTest(rounds)) return n
             }
         }
         private fun randomBits(numBits: Int, rnd: Random): BigInteger {

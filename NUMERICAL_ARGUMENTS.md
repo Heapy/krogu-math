@@ -2,7 +2,66 @@
 
 These arguments describe the independent common implementation in
 `BigInteger.kt` and `BigDecimal.kt`, together with portable JDK fixtures. They
-cover integer packing, decimal conversions, roots and powers.
+cover integer packing, decimal conversions, roots, powers and primality budgets.
+
+## Primality and prime generation
+
+Write an odd candidate as n-1=2^s*d with d odd. A witness passes when
+a^d mod n is 1, or one of a^(d*2^r) mod n is -1 for 0<=r<s.
+Every prime passes by the field property that the only square roots of 1
+are 1 and -1. For composite n the strong-liar fraction is at most 1/4
+([Rabin, 1980](https://doi.org/10.1016/0022-314X(80)90084-0)). Excluding
+the two always-passing bases 1 and n-1 makes the fraction strictly less
+than 1/4 on the sampled interval 2..n-2. Independent uniform witnesses
+therefore give a false acceptance probability less than 2^(-2*r) after
+r rounds. `isProbablePrime(c)` uses r=ceil(c/2) for c>0. Below the strict
+thirteen-base bound, the cited Sorenson–Webster theorem instead gives a
+conclusive decision; c<=0 returns true before examining the value.
+
+`randomBits(b)` samples ceil(b/8) bytes and keeps the low b bits. Each
+integer in 0..2^b-1 has exactly 2^(8*ceil(b/8)-b) byte-string preimages.
+Uniform bytes thus give uniform integers. Rejection outside 2..n-2
+preserves uniformity on that interval. For prime generation with b>=3,
+forcing the highest and lowest bits gives each odd b-bit candidate four
+preimages, so candidates are uniform on a set of size 2^(b-2).
+`RandomIntegerDistributionTest` exhausts one-byte payloads for each b=1..8,
+and two-byte payloads for b=9 and b=16, checking equal multiplicities and
+range. These finite checks do not establish the underlying RNG's quality.
+
+The returned-composite probability of rejection sampling needs a separate
+bound from a single candidate's error probability. Let p be the fraction
+of actual primes among candidates and q the probability that one draw
+is composite and nevertheless accepted. The eventual returned-composite
+probability is q/(p+q), less than q/p. Using only c bits of candidate-test
+certainty does not by itself establish c bits for the returned value.
+
+For b>=6, set x=2^b. Rosser–Schoenfeld's Corollary 1, inequalities (3.5)
+and (3.6), gives pi(x)>x/ln(x) and pi(x/2)<1.25506*(x/2)/ln(x/2)
+([original paper, p. 69](https://denisevellachemla.eu/Rosser-Schoenfeld-1962.pdf#page=6)).
+Since ln(x)/ln(x/2)<=6/5, subtraction gives more than
+0.246964*x/ln(x), and hence more than x/(5*ln(x)), primes in the interval.
+Dividing by the odd candidate count x/4 gives p>4/(5*b*ln(2))>1/b.
+For b=3,4,5 the respective exact fractions are 2/2, 2/4 and 5/8,
+also greater than 1/b. For b=2 both possible outputs are prime.
+
+`PrimalityCertainty.generationRounds` therefore uses
+r=ceil((c+ceil(log2(b)))/2) for positive c. Then
+q/p < b*2^(-2*r) <= 2^-c. The additions use Long: even c=Int.MAX_VALUE
+and b=Int.MAX_VALUE yield the positive Int round count 1,073,741,839.
+The portable budget test checks the integer inequality 2^(2*r-c)>=b,
+including power-of-two neighbors and Int endpoints. Independent trial
+division also checks both signs throughout 0..4096.
+
+These probability arguments assume independent uniform candidate bytes
+and witnesses, correct modular arithmetic and termination. They do not
+prove those assumptions for platform pseudorandom generators or arbitrary
+caller-supplied RNG implementations. In particular, generation with a
+biased or repeating caller RNG, and the returned-error budget of
+`nextProbablePrime` beyond the deterministic domain, remain separate audits.
+Extreme certainty can require a very large number of rounds; the public
+[JDK contract](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigInteger.html#isProbablePrime(int))
+explicitly permits long execution. Practical large-input performance and
+supported-range behavior remain unproven here.
 
 ## Binary floating-point rounding
 
