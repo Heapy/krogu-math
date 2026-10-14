@@ -108,6 +108,9 @@ requirements. Current krogu serialization round trips remain supported. Official
 TCK/JCK has not been run; existing Java fixtures and differential suites are not
 an official TCK result or certification.
 
+Official kit scope, access barriers and the requirements for an authorized run
+are documented in [TCK/JCK applicability](docs/tck-applicability.md).
+
 ## Requirements and current evidence
 
 Campaign descriptions below preserve observations from the pinned runtime.
