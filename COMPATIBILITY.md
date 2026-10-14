@@ -23,6 +23,9 @@ retained JDK diagnostics and deliberate numerical divergences are documented in
 Representable exact/context division despite an unsupported intermediate scale,
 including rounding carries, is documented in the [division normalization contract](docs/decimal-division-normalization-contract.md).
 
+The portable equality/order/hash laws, context/enum contracts and mutation/alias
+witnesses are documented in [Value identity and immutability](docs/value-identity-contract.md).
+
 The independent canonical Double candidate argument, binary-boundary regressions
 and exact coefficient/scale/text corpus are documented in
 [Canonical Double contract](docs/canonical-double-contract.md).
