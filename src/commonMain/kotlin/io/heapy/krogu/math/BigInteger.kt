@@ -115,17 +115,62 @@ open class BigInteger private constructor(private val sign: Int, private val wor
 
     open fun pow(exponent: Int): BigInteger {
         if (exponent < 0) throw ArithmeticException("Negative exponent")
-        if (sign != 0 && (magnitudeBits().toLong() - 1) * exponent >= Int.MAX_VALUE)
+        if (exponent == 0) return ONE
+        if (equals(ONE)) return ONE
+        if (sign == 0 || exponent == 1) return this
+        val absolute = abs()
+        val twos = absolute.getLowestSetBit()
+        val shift = twos.toLong() * exponent
+        if (shift > Int.MAX_VALUE)
             throw ArithmeticException("BigInteger would overflow supported range")
+        val part = absolute.shiftRight(twos)
+        val bits = part.bitLength()
+        val negative = sign < 0 && exponent and 1 != 0
+        if (bits == 1) return shiftPower(if (negative) valueOf(-1) else ONE, shift.toInt())
+        if ((bits.toLong() - 1) * exponent >= Int.MAX_VALUE)
+            throw ArithmeticException("BigInteger would overflow supported range")
+        val estimate = bits.toLong() * exponent
+        if (estimate <= 64) {
+            if (part.words.isEmpty()) emptyPowMagnitude()
+            // A compact calculation observes the leading unsigned 32-bit magnitude word.
+            // False subclass metadata can select it even for a wider stored magnitude.
+            val count = (part.magnitudeBits().toLong() + 31).div(32).toInt()
+            var factor = part.magnitudeWord32(count - 1)
+            // The observed compact leading-word-two path uses the masked Long shift distance.
+            var e = if (factor == 2L) 0 else exponent
+            var product = if (factor == 2L) 1L shl exponent else 1L
+            while (e != 0) {
+                if (e and 1 != 0) product *= factor
+                e = e ushr 1
+                if (e != 0) factor *= factor
+            }
+            val compactShift = estimate + shift <= 64
+            if (compactShift) product = product shl shift.toInt()
+            var magnitude = product.toULong()
+            val packed = IntArray(3)
+            var size = 0
+            while (magnitude != 0uL) {
+                packed[size++] = (magnitude and MASK.toULong()).toInt()
+                magnitude = magnitude shr LIMB_BITS
+            }
+            val value = if (size == 0) BigInteger(0, intArrayOf())
+                else normalized(if (negative) -1 else 1, packed)
+            return if (compactShift) value else shiftPower(value, shift.toInt())
+        }
         var e = exponent
-        var base = this
+        var base = normalized(part.sign, part.words)
         var result = ONE
         while (e != 0) {
             if (e and 1 != 0) result = result.multiply(base)
             e = e ushr 1
             if (e != 0) base = base.multiply(base)
         }
-        return result
+        return shiftPower(if (negative) result.negate() else result, shift.toInt())
+    }
+    private fun shiftPower(value: BigInteger, distance: Int): BigInteger {
+        if (distance > 0 && value.sign != 0 && value.magnitudeBits().toLong() + distance > Int.MAX_VALUE)
+            throw ArithmeticException("BigInteger would overflow supported range")
+        return value.shiftLeftValue(distance)
     }
     open fun gcd(value: BigInteger): BigInteger {
         var a = abs()
@@ -399,17 +444,20 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         // Java's public hash behavior uses unsigned 32-bit chunks, independent of our limb layout.
         val count = (magnitudeBits().toLong() + 31).div(32).toInt()
         for (i in count - 1 downTo 0) {
-            val start = i.toLong() * 32
-            val word = (start / LIMB_BITS).toInt()
-            val offset = (start % LIMB_BITS).toInt()
-            // A 32-bit boundary has an even offset in 30-bit limbs (0..28),
-            // so at most two limbs supply the entire unsigned chunk.
-            var chunk = words[word].toLong() ushr offset
-            if (word + 1 < words.size) chunk = chunk or (words[word + 1].toLong() shl (LIMB_BITS - offset))
-            chunk = chunk and 0xffffffffL
+            val chunk = magnitudeWord32(i)
             hash = (31L * hash + chunk).toInt()
         }
         return hash * sign
+    }
+    private fun magnitudeWord32(index: Int): Long {
+        val start = index.toLong() * 32
+        val word = (start / LIMB_BITS).toInt()
+        val offset = (start % LIMB_BITS).toInt()
+        // A 32-bit boundary has an even offset in 30-bit limbs (0..28),
+        // so at most two limbs supply the entire unsigned chunk.
+        var chunk = words[word].toLong() ushr offset
+        if (word + 1 < words.size) chunk = chunk or (words[word + 1].toLong() shl (LIMB_BITS - offset))
+        return chunk and 0xffffffffL
     }
     override fun toString(): String = toString(10)
     open fun toString(radix: Int): String {

@@ -29,6 +29,7 @@ jobs:
       - run: kotlinr scripts/generate-integer-parser-oracle.main.kts --check
       - run: kotlinr scripts/generate-integer-bytes-oracle.main.kts --check
       - run: kotlinr scripts/generate-integer-division-oracle.main.kts --check
+      - run: kotlinr scripts/generate-integer-pow-oracle.main.kts --check
       - run: kotlinr scripts/generate-context-oracle.main.kts --check
       - run: kotlinr scripts/generate-hash-oracle.main.kts --check
   platforms:

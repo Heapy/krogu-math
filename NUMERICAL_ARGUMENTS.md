@@ -250,6 +250,31 @@ formatting. Every pair also checks q*y+r, the remainder bound and its sign.
 These cases corroborate the arguments on each target; they do not exhaust the
 operand domain or establish all subclass behavior, resource limits or diagnostics.
 
+## Integer powers
+
+For truthful operand metadata, write abs(x)=u*2^t with u odd. Then
+x^e=sign(x)^e*u^e*2^(t*e). After zero/unit/identity cases, the implementation
+obtains u and t through the observed public callbacks. Binary exponentiation
+maintains answer*base^remaining=u^e: consuming an odd low bit multiplies answer
+by base, and halving the exponent squares base. Base-class working objects
+prevent unrelated source multiply overrides from changing this reduction.
+
+If u has b bits, u<2^b implies u^e<2^(b*e). Thus b*e<=64 permits exact unsigned
+64-bit arithmetic; if b*e+t*e<=64, the final shift also fits. Otherwise the exact
+unsigned result is packed into the library's 30-bit limbs before shifting. The
+unit factor is handled separately. For odd u>1, u>2^(b-1), so (b-1)*e>=Int.MAX_VALUE
+already implies an unsupported output. The final shift checks the exact stored
+bit length. Actual supported-range allocation and intermediate failures still
+require a broader audit.
+
+The 6,677 pinned JDK outcomes also cover false subclass metadata. Those paths
+deliberately preserve observed compact-word selection, wrapping Long operations,
+masked shift distances, result identity and exceptions; the numerical argument
+above assumes truthful callbacks. The leading-word-two compact path has period
+64 in the exponent, corroborated against other even leading words at exponents
+31/32/33/63/64/65/127 and Int.MAX_VALUE. Individual callback modes do not exhaust
+all combinations or returned subclass graphs.
+
 ## Byte-slice validation
 
 Let N be the byte-array size. A slice is valid exactly when off>=0, len>=0
