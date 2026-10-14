@@ -65,7 +65,28 @@ Class-origin and bytecode audits verified own core classes and no host math
 members in the adapted test. This pre-borrowed isolated JAR contains baseline859
 plus the formatter fix; it does not contain later binary562 or root525 additions.
 Integration preserves the tested formatter section and five new files while
-retaining the binary fix. Fresh integrated-head CI remains required.
+retaining the binary fix.
+
+### Integrated verification
+
+Published head `955799277281f740c43d262c23892167c2c36026` passed a fresh JVM
+JAR build and both original public directives in baseline and port again:
+run `1792017211894`, four PASS, no failures, and136 other-scope SKIPs.
+The archived integrated JAR is bound by SHA-256
+`b2b7b2ad0a785c15c15b511813fc01bea30bbd81d5650ce9d241ca6a0aec855f`;
+the result JSON is
+`d689d1d30055d6e7c4d4bee2320d98f7830f2a36809dee06c102470d2adfca50`.
+Every compile and execution exited0, neither execution timed out, both port
+runs verified own core loading, and bytecode audits found no host math members.
+
+All six jobs of [CI38648283439](https://github.com/Heapy/krogu-math/actions/runs/38648283439)
+completed successfully at that exact head: oracle, Ubuntu JVM/JS/Wasm/Linux x64,
+Windows JVM/MinGW, Intel and ARM macOS/iOS coverage, and actual Linux ARM64
+execution. The Linux ARM64 job116163169866 ran `./test.kexe`:204 tests from44
+test cases passed, including all three `PlainStringPreflightTest` methods.
+This completes the focused564 gates. Later pending pow/sqrt/floating changes
+need their own integrated validation; broad resource/range/error and public
+corpus tasks remain open.
 
 ## Retained history and limits
 
