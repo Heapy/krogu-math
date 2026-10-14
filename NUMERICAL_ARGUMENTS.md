@@ -163,8 +163,12 @@ a borrow in 0..1. The intermediate lies in [-B,B-1]; masking gives its
 residue modulo B, and negativity gives the next borrow. Magnitude order
 ensures the final borrow is zero. Equal signs add magnitudes; opposite signs
 subtract the smaller from the larger and retain the larger magnitude's sign.
-Equal opposing magnitudes give zero. Ordinary subtraction negates the second
-sign and applies the same reduction, without increasing either input magnitude.
+Equal opposing magnitudes give zero. Ordinary subtraction reverses the second
+sign algebraically and applies the same reduction, without increasing either
+input magnitude. Nonzero-source paths use stored signs and digits. A zero
+operand returns the source; a zero source with nonzero operand retains the
+public operand.negate delegate, whose override behavior is constrained separately
+by the subtraction dispatch fixtures and compiled Java null-result tests.
 
 In multiplication, one inner step computes a_i*b_j+out_(i+j)+carry.
 Assuming the output digit and carry are in 0..B-1, this is at most

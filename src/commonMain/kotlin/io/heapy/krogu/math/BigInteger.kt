@@ -51,7 +51,17 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             else -> normalized(value.sign, subtractMagnitude(value.words, words))
         }
     }
-    open fun subtract(value: BigInteger): BigInteger = add(value.negate())
+    open fun subtract(value: BigInteger): BigInteger {
+        if (value.sign == 0) return this
+        if (sign == 0) return value.negate()
+        if (sign != value.sign) return normalized(sign, addMagnitude(words, value.words))
+        val cmp = compareMagnitude(words, value.words)
+        return when {
+            cmp == 0 -> ZERO
+            cmp > 0 -> normalized(sign, subtractMagnitude(words, value.words))
+            else -> normalized(-sign, subtractMagnitude(value.words, words))
+        }
+    }
     open fun multiply(value: BigInteger): BigInteger {
         if (sign == 0 || value.sign == 0) return ZERO
         if (magnitudeBits().toLong() + value.magnitudeBits() - 1 > Int.MAX_VALUE)

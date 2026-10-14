@@ -471,6 +471,19 @@ throws if called. These cases also constrain formatting of a selected min/max
 source. Abs/division/formatting overrides beyond this comparison callback remain
 a separate audit.
 
+Integer subtraction adds 896 portable dispatch cases. A stored zero operand
+returns the source without callbacks; only a stored zero source and nonzero
+operand delegate to operand.negate. Other paths use stored signed magnitudes,
+bypassing source.add and public negation. Fixtures cover both signs, zero,
+30-bit boundaries and larger values, distinct and self operands, callback
+replacement objects and exceptions, result identity and call order. Observation
+captures the trace before formatting and uses known values for returned source
+or operand objects, so unrelated formatting overrides do not alter the measured
+subtraction trace. Another 196 Java null/throw combinations and three null-operand
+checks constrain direct null forwarding and argument rejection. The existing
+396 wide ordinary arithmetic pairs remain the numerical regression domain;
+broader callback compositions, range failures and detailed NPE messages remain open.
+
 Exact alignment errors add 882 portable add/subtract outcomes over signed unit
 and zero coefficients and seven scales spanning both Int endpoints. The matrix
 exposed 384 diagnostic differences. A nonzero coefficient's positive alignment

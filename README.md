@@ -82,6 +82,8 @@ alignment cycles and signed dense inputs through 65,536 bytes.
 Separate signed arithmetic fixtures cover 396 operand pairs through 16,384-bit
 inputs and 32,768-bit products, including digit carry chains, dense/sparse
 patterns, both signs and quotient/remainder invariants.
+Subtraction dispatch adds 896 portable cases for zero paths, replacement callback
+values, exceptions and aliased operands; Java tests also cover null callback results.
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
