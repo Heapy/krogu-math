@@ -7,7 +7,16 @@ class PrimeOracleTest {
     @Test fun boundedSuccessorContracts() = verify { it[0] == "next" && BigInteger(it[1]).bitLength() <= 81 }
     @Test fun successorsThrough127Bits() = verify { it[0] == "next" && BigInteger(it[1]).bitLength() in 82..127 }
     @Test fun successorsThrough255Bits() = verify { it[0] == "next" && BigInteger(it[1]).bitLength() in 128..255 }
-    @Test fun successorsAt256BitsAndAbove() = verify { it[0] == "next" && BigInteger(it[1]).bitLength() >= 256 }
+    // Keep each family within Mocha's per-test limit on hosted runners,
+    // without dropping fixtures or relaxing the timeout.
+    @Test fun successorsInLower256BitHalf() = verify {
+        it[0] == "next" && BigInteger(it[1]).let { n -> n.bitLength() == 256 && !n.testBit(254) }
+    }
+    @Test fun successorsInUpper256BitHalf() = verify {
+        it[0] == "next" && BigInteger(it[1]).let { n -> n.bitLength() == 256 && n.testBit(254) }
+    }
+    @Test fun successorsAt257Bits() = verify { it[0] == "next" && BigInteger(it[1]).bitLength() == 257 }
+    @Test fun successorsAbove257Bits() = verify { it[0] == "next" && BigInteger(it[1]).bitLength() > 257 }
     @Test fun successorCallbackContracts() = verify { it[0] == "nextTrace" }
 
     private fun verify(include: (Array<String>) -> Boolean) {
