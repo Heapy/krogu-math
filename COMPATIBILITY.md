@@ -45,6 +45,7 @@ kotlinr scripts/generate-scale-oracle.main.kts --check
 kotlinr scripts/generate-null-oracle.main.kts --check
 kotlinr scripts/generate-character-oracle.main.kts --check
 kotlinr scripts/generate-prime-oracle.main.kts --check
+kotlinr scripts/generate-prime-prefix-oracle.main.kts --check
 kotlinr scripts/generate-integer-arithmetic-oracle.main.kts --check
 kotlinr scripts/generate-integer-parser-oracle.main.kts --check
 kotlinr scripts/generate-integer-bytes-oracle.main.kts --check
@@ -118,6 +119,18 @@ still rely on independent uniform witnesses. Portable successor fixtures cover
 81..256-bit binary boundaries, the composite gap after 64!+1, source callback
 traces and negative-start diagnostics; independent trial division checks every
 start from 0 through 4096.
+
+A separate 78-case primality-prefix oracle checks certainty endpoints and
+stable callback paths before randomized witnesses. For positive odd values
+other than one, virtual bitLength now runs after abs/equality/parity checks
+and before the private small-prime shortcuts. A throwing getter therefore
+propagates its error even for stored three, five or nine, matching JDK's exact
+prefix and message. Non-positive certainty bypasses all callbacks; zero, one,
+two and even values retain their earlier returns. In these negative-input
+fixtures, delegated abs returns an ordinary base object, so the original
+subclass getter is not called.
+These cases do not assert a deterministic count for random witness callbacks
+or establish behavior for replacement length values and compound overrides.
 
 Binary constructors now pack bytes directly into limbs, including stripped
 negative sign extension and a final complement carry. JVM checks compare all

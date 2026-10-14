@@ -105,6 +105,8 @@ Modular reduction and inversion add 11,798 outcomes for conditional callbacks,
 replacement results, equality shortcuts, identities and moduli through 1,025 bits.
 Modular exponentiation adds 9,176 value/error/identity/callback outcomes, including
 callback arguments, even/odd moduli, negative powers and replacement metadata.
+Primality prefixes add 78 deterministic outcomes for certainty endpoints,
+early returns and propagation of virtual bitLength failures before witness tests.
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
@@ -130,6 +132,7 @@ kotlinr scripts/generate-scale-oracle.main.kts --check
 kotlinr scripts/generate-null-oracle.main.kts --check
 kotlinr scripts/generate-character-oracle.main.kts --check
 kotlinr scripts/generate-prime-oracle.main.kts --check
+kotlinr scripts/generate-prime-prefix-oracle.main.kts --check
 kotlinr scripts/generate-integer-arithmetic-oracle.main.kts --check
 kotlinr scripts/generate-integer-parser-oracle.main.kts --check
 kotlinr scripts/generate-integer-bytes-oracle.main.kts --check

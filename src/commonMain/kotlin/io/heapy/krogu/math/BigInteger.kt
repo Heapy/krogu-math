@@ -477,6 +477,8 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         val n = abs()
         if (n == TWO) return true
         if (!n.testBit(0) || n == ONE) return false
+        // Preserve the public metadata callback before private primality shortcuts.
+        n.bitLength()
         if (n.sign < 0) return false
         val smallPrimes = intArrayOf(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)
         for (p in smallPrimes) {
