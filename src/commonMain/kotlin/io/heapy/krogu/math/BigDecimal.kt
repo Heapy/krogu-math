@@ -665,7 +665,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     operator fun plus(other: BigDecimal): BigDecimal = add(other)
     operator fun minus(other: BigDecimal): BigDecimal = subtract(other)
     operator fun times(other: BigDecimal): BigDecimal = multiply(other)
-    operator fun div(other: BigDecimal): BigDecimal = divide(other)
+    operator fun div(other: BigDecimal): BigDecimal = divide(other, RoundingMode.HALF_EVEN)
     operator fun rem(other: BigDecimal): BigDecimal = remainder(other)
     operator fun unaryMinus(): BigDecimal = negate()
     operator fun unaryPlus(): BigDecimal = this

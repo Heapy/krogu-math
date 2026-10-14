@@ -231,12 +231,14 @@ Kotlin's JVM numeric extensions in the
 `kotlin.text` packages target `java.math` types. A krogu migration needs
 corresponding krogu extensions or members; importing an extension does not replace
 a matching [member function](https://kotlinlang.org/docs/extensions.html).
-The snapshot currently lacks `inc`/`dec`, primitive/string `toBigInteger` and
-`toBigDecimal` extensions, and nullable parsing helpers. Its decimal `/` still
-uses exact `divide(other)`, while Kotlin stdlib specifies dividend scale and
-`HALF_EVEN`; this is tracked in kotgent `local:524`. Other import-only gaps are
-tracked in `local:525`. This contract records the target, not a claim that those
-gaps are already closed.
+Decimal `/` retains the dividend scale and rounds `HALF_EVEN`, matching Kotlin
+stdlib. The named `divide(other)` method remains exact. For example,
+`BigDecimal("1") / BigDecimal("3")` is zero at scale zero, while
+`BigDecimal("1.00") / BigDecimal("3")` is `0.33` at scale two.
+The snapshot still lacks `inc`/`dec`, primitive/string `toBigInteger` and
+`toBigDecimal` extensions, and nullable parsing helpers; these import-only gaps
+are tracked in kotgent `local:525`. This contract records the full target, not
+a claim that every migration gap is already closed.
 
 During the current unpublished `0.x` phase, release-to-release source and binary
 stability is not established. Changes to public Kotlin calls or behavior must be

@@ -147,6 +147,16 @@ campaign can be extended with
 Failure output includes reproducible public inputs. Passing a finite corpus must
 not be promoted into a claim that all numerical or API contracts are satisfied.
 
+Kotlin decimal operator division has six portable specification-led tests and
+11,560 live JVM comparisons of actual Kotlin `/` expressions against stdlib.
+The matrix covers signed compact and wide coefficients, differing/negative
+scales, HALF_EVEN midpoint parity, zero divisors and source scale endpoints with
+bounded coefficient rescaling. Values, scales and exception types are compared.
+Separate checks keep named exact division distinct:
+`BigDecimal("1").divide(BigDecimal("2"))` returns `0.5`, while exact division by
+`BigDecimal("3")` throws for a nonterminating expansion. These tests cover the
+operator contract, not the entire Kotlin migration surface.
+
 `ScaleBoundaryOracleTest` compares all 207,239 outcomes individually on every
 target. Its separate generator stores complete expected results in JVM-safe
 string chunks, not hashes. `ScaleBoundaryConformanceTest` also regenerates each
