@@ -264,23 +264,47 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val length = maxOf(a.length, b.length)
         return a.padEnd(length, '0').compareTo(b.padEnd(length, '0'))
     }
-    open fun divideToIntegralValue(divisor: BigDecimal): BigDecimal = integralDivide(divisor, MathContext.UNLIMITED)
-    open fun divideToIntegralValue(divisor: BigDecimal, mc: MathContext): BigDecimal = integralDivide(divisor, mc)
-    private fun integralDivide(divisor: BigDecimal, mc: MathContext): BigDecimal {
-        checkDivisionByZero(divisor)
+    open fun divideToIntegralValue(divisor: BigDecimal): BigDecimal {
         val preferred = saturatedScale(decimalScale.toLong() - divisor.decimalScale)
-        if (signum() == 0 || abs() < divisor.abs()) return BigDecimal(BigInteger.ZERO, preferred)
-        var result = divide(divisor, 0, RoundingMode.DOWN)
-        if (preferred < 0) result = result.stripTo(preferred)
-        if (mc.precision > 0 && result.precision() > mc.precision) {
-            val reduced = result.stripTrailingZeros()
-            if (reduced.precision() > mc.precision) throw ArithmeticException("Division impossible")
-            result = reduced.setScale(minOf(preferred, checkedScale(mc.precision.toLong() - reduced.adjustedExponent() - 1)))
-        } else if (preferred > result.decimalScale) {
-            val room = if (mc.precision == 0) preferred else minOf(preferred, result.decimalScale + mc.precision - result.precision())
-            result = result.setScale(room)
+        if (compareMagnitude(divisor) < 0 || (signum() == 0 && divisor.signum() != 0))
+            return BigDecimal(BigInteger.ZERO, preferred)
+        // A conservative guard-digit budget suffices to recover the integral part.
+        // Keep public metadata calls and their order observable to subclasses.
+        val digits = precision().toLong() + (10L * divisor.precision() + 2) / 3 +
+            kotlin.math.abs(scale().toLong() - divisor.scale()) + 2
+        var result = divide(divisor, MathContext(minOf(digits, Int.MAX_VALUE.toLong()).toInt(), RoundingMode.DOWN))
+        if (result.decimalScale > 0) {
+            result = result.setScale(0, RoundingMode.DOWN).integralStrip(preferred, preserveIdentity = true)
         }
-        return result
+        return if (preferred > result.decimalScale) result.setScale(preferred, ROUND_UNNECESSARY) else result
+    }
+    open fun divideToIntegralValue(divisor: BigDecimal, mc: MathContext): BigDecimal {
+        if (mc.precision == 0 || compareMagnitude(divisor) < 0) return divideToIntegralValue(divisor)
+        val preferred = saturatedScale(decimalScale.toLong() - divisor.decimalScale)
+        var result = divide(divisor, MathContext(mc.precision, RoundingMode.DOWN))
+        if (result.scale() < 0) {
+            val residual = subtract(result.multiply(divisor))
+            if (residual.compareMagnitude(divisor) >= 0) throw ArithmeticException("Division impossible")
+        } else if (result.scale() > 0) {
+            result = result.setScale(0, RoundingMode.DOWN)
+        }
+        if (preferred > result.scale()) {
+            val room = mc.precision - result.precision()
+            if (room > 0) {
+                val scale = result.scale()
+                return result.setScale((scale.toLong() + minOf(room.toLong(), preferred.toLong() - scale)).toInt())
+            }
+        }
+        return result.integralStrip(preferred, preserveIdentity = false)
+    }
+    private fun integralStrip(preferred: Int, preserveIdentity: Boolean): BigDecimal {
+        if (coefficient.signum() == 0) {
+            val scale = minOf(decimalScale, preferred)
+            if (preserveIdentity && decimalScale == scale) return this
+            return BigDecimal(BigInteger.ZERO, scale)
+        }
+        val stripped = stripTo(preferred)
+        return if (preserveIdentity) stripped else BigDecimal(stripped.coefficient, stripped.decimalScale)
     }
     open fun divideAndRemainder(divisor: BigDecimal): Array<BigDecimal> {
         val quotient = divideToIntegralValue(divisor)

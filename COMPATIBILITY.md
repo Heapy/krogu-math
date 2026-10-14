@@ -347,13 +347,30 @@ throwing callbacks constrain this order, returned source/divisor/quotient identi
 values and scales. The matrix includes zero divisors whose quotient callbacks
 replace division, both source signs and positive/negative preferred scales. It
 isolates composition using overridden integral-quotient methods; null callback
-inputs and the inherited integral-quotient implementation's own callbacks remain
-a separate audit. A live public-JDK probe confirms a remaining mismatch in the
-inherited implementation: for source 10.50 and divisor 2.0, overriding context
-divide to return 7.9 produces integral quotient 7.0 on JDK, but currently 5.0 here
-(exact overload and context precisions 0, 2 and 7). The current scale-bound division
-path bypasses that override. This is an outstanding compatibility defect, not an
-excluded requirement.
+inputs remain a separate audit.
+
+An inherited integral-division oracle adds 1,400 portable outcomes for both operand
+signs, zero divisors, smaller dividends, preferred scales, exact division and context
+precisions 0, 1, 2 and 7. Public-JDK probes exposed a bypassed context-divide override:
+source 10.50, divisor 2.0 and an override returning 7.9 formerly produced 5.0 here,
+instead of the JDK's 7.0. Both integral overloads now call virtual context divide
+with DOWN. Exact division preserves its observed metadata call order and guard-digit
+budget; context division checks the residual when the returned scale is negative.
+The oracle constrains callbacks on returned quotient subclasses, zero scale,
+source aliases and fresh base results. Exact division only strips after truncating
+a fractional result; finite-context stripping materializes a base value even when
+the scale stays unchanged. Divide exceptions are propagated, including replacements
+that bypass the ordinary zero-divisor failure. Poisoned metadata, nullable callback
+results, all callback compositions, delegated context-divide traces and full-range
+resource behavior remain unproven.
+
+A follow-up live metadata probe identified a remaining exact-integral budget
+defect when a subclass reports negative divisor precision. With equal input scales,
+source precision 0 and divisor precision -1, JDK rejects the negative context
+precision with `IllegalArgumentException: Digits < 0`; the current positive-only
+ceiling expression instead dispatches context divide with precision 0. Source
+precision 1 and divisor precision -1 dispatch precision 0 on JDK and 1 here.
+This signed metadata calculation still requires a permanent oracle and correction.
 
 Scale-bound division adds 12,000 nonzero-divisor outcomes across all modes,
 including returned values and exact messages. The initial wide-Long rescaling

@@ -109,6 +109,8 @@ Primality prefixes add 78 deterministic outcomes for certainty endpoints,
 early returns and propagation of virtual bitLength failures before witness tests.
 Decimal quotient/remainder composition adds 1,440 outcomes for overload routing,
 replacement and throwing callbacks, returned identities, values and scales.
+Inherited decimal integral division adds 1,400 outcomes for context-divide callbacks,
+preferred scales, precision, residual checks and returned subclass identities.
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
@@ -136,6 +138,7 @@ kotlinr scripts/generate-character-oracle.main.kts --check
 kotlinr scripts/generate-prime-oracle.main.kts --check
 kotlinr scripts/generate-prime-prefix-oracle.main.kts --check
 kotlinr scripts/generate-decimal-pair-dispatch-oracle.main.kts --check
+kotlinr scripts/generate-decimal-integral-dispatch-oracle.main.kts --check
 kotlinr scripts/generate-integer-arithmetic-oracle.main.kts --check
 kotlinr scripts/generate-integer-parser-oracle.main.kts --check
 kotlinr scripts/generate-integer-bytes-oracle.main.kts --check
