@@ -127,6 +127,35 @@ wording are observations here. Some callback, null and arithmetic failure
 precedence interactions remain unresolved. None of the old assertions are
 archived or removed by this addition.
 
+### Null arguments and an unlimited-context replacement
+
+Frozen row `D07457` illustrates why a null input alone does not settle an old
+poisoned outcome. Its seven fields are:
+
+```text
+0.00\t2.0\tdelegate\tnull\t0\tUP\t7.00:2|A.exact-null;
+```
+
+Here `0` means an unlimited, non-null context. The divisor is null. The probe's
+exact `divide` override accepts that argument, records `A.exact-null`, and returns
+its caller-owned replacement `7.00`. The separate truthful control `C0625` has
+topology `null`, precision `0`, rounding `UP`, and requires
+`NullPointerException`. Its expected error is not the old replacement outcome.
+
+The compact row is `D07457 C0625 M01 M06 V 051`. Mask `051` contains only the
+poisoned-probe, null-divisor and invoked-exact-replacement flags (`001`, `010`,
+`040`); it does **not** contain the null-context flag `008`. Stable IDs count
+tab-separated fixture records, not physical Kotlin source lines, because the
+fixtures contain multiple string chunks.
+
+Current source ordering can explain an invocation, but it cannot independently
+prove a required internal-forwarding or callback-precedence rule. This row's old
+value/error status remains `UNRESOLVED_POISONED_INTERACTION`, its trace remains
+`REFERENCE_OBSERVATION`, and archival remains blocked. Explicit caller entry and
+caller-owned result/exception identity are covered by the separate language
+controls. This analysis changes no fixture, assertion or numerical code, and
+does not claim a JDK defect or waive the inherited method's contract.
+
 ## Reproduction and verification
 
 Run from the repository root with Kotlin 2.4.21 and the public JDK 25.0.4+9 API:
