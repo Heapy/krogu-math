@@ -32,6 +32,7 @@ jobs:
       - run: kotlinr scripts/generate-integer-pow-oracle.main.kts --check
       - run: kotlinr scripts/generate-integer-gcd-oracle.main.kts --check
       - run: kotlinr scripts/generate-integer-sqrt-oracle.main.kts --check
+      - run: kotlinr scripts/generate-integer-bits-oracle.main.kts --check
       - run: kotlinr scripts/generate-context-oracle.main.kts --check
       - run: kotlinr scripts/generate-hash-oracle.main.kts --check
   platforms:

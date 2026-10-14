@@ -45,6 +45,9 @@ The oracle uses only public JDK methods and their observable results.
 
 ## Platforms and verification
 
+Gradle uses a 4 GiB heap and one worker to limit memory pressure from the
+in-process compilers when compiling the multiplatform oracle suites.
+
 Build pins: **Gradle 9.8.1**, **Kotlin 2.4.21**, **BellSoft Liberica JDK 25.0.4+9**.
 The Gradle distribution checksum and CI action revisions are pinned.
 
@@ -96,6 +99,8 @@ GCD adds 1,602 callback/value/identity outcomes, including zero routing, self al
 shared wide factors and consecutive Fibonacci inputs; Java tests cover nullable callbacks.
 Integer roots add 978 value/callback/identity outcomes and independent square/remainder
 bounds, including exact-square neighbors through 8,193-bit inputs.
+Bit operations add 17,198 value/callback/identity outcomes, including virtual
+metadata, self aliases, signed boundaries through 4,097 bits and fresh zero results.
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
@@ -128,6 +133,7 @@ kotlinr scripts/generate-integer-division-oracle.main.kts --check
 kotlinr scripts/generate-integer-pow-oracle.main.kts --check
 kotlinr scripts/generate-integer-gcd-oracle.main.kts --check
 kotlinr scripts/generate-integer-sqrt-oracle.main.kts --check
+kotlinr scripts/generate-integer-bits-oracle.main.kts --check
 kotlinr scripts/generate-context-oracle.main.kts --check
 kotlinr scripts/generate-hash-oracle.main.kts --check
 ```

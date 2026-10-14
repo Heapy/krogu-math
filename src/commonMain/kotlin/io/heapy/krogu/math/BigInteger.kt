@@ -302,10 +302,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     }
     open fun bitCount(): Int {
         if (sign >= 0) return words.sumOf { it.countOneBits() }
-        val first = firstNonzeroWord()
-        var count = first * LIMB_BITS + (words[first] - 1).countOneBits()
-        for (i in first + 1 until words.size) count += words[i].countOneBits()
-        return count
+        return words.sumOf { it.countOneBits() } + getLowestSetBit() - 1
     }
     open fun getLowestSetBit(): Int = lowestSetBitValue()
     private fun lowestSetBitValue(): Int {
@@ -336,34 +333,52 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     open fun clearBit(n: Int): BigInteger = changeBit(n, 0)
     open fun flipBit(n: Int): BigInteger = changeBit(n, 2)
     private fun changeBit(n: Int, operation: Int): BigInteger {
+        if (n < 0) throw ArithmeticException("Negative bit address")
+        val length32 = bitwiseLength32()
+        // Avoid allocating a sign-extension-only array at the largest address.
         val present = testBitValue(n)
-        if ((operation == 1 && present) || (operation == 0 && !present)) return BigInteger(this)
-        if (n == Int.MAX_VALUE) throw ArithmeticException("BigInteger overflow")
+        if (n == Int.MAX_VALUE && ((operation == 1 && present) || (operation == 0 && !present))) return BigInteger(this)
+        if (n == Int.MAX_VALUE) throw ArithmeticException("BigInteger would overflow supported range")
         val index = n / LIMB_BITS
-        val result = twosComplement(maxOf(words.size + 1, index + 2))
+        val addressedLength32 = if (operation == 0) ((n.toLong() + 1) / 32 + 1).toInt() else n / 32 + 2
+        val width = maxOf(length32, addressedLength32).toLong() * 32
+        val result = twosComplement(((width + LIMB_BITS - 1) / LIMB_BITS).toInt())
         val mask = 1 shl (n % LIMB_BITS)
         result[index] = when (operation) {
             0 -> result[index] and mask.inv()
             1 -> result[index] or mask
             else -> result[index] xor mask
         }
-        return fromTwosComplement(result)
+        return bitwiseResult(result, width)
     }
     open fun not(): BigInteger {
-        val result = twosComplement(words.size + 1)
+        val width = bitwiseLength32().toLong() * 32
+        val result = twosComplement(((width + LIMB_BITS - 1) / LIMB_BITS).toInt())
         for (i in result.indices) result[i] = result[i].inv() and MASK.toInt()
-        return fromTwosComplement(result)
+        return bitwiseResult(result, width)
     }
-    open fun and(value: BigInteger): BigInteger = bitwise(value) { a, b -> a and b }
-    open fun or(value: BigInteger): BigInteger = bitwise(value) { a, b -> a or b }
-    open fun xor(value: BigInteger): BigInteger = bitwise(value) { a, b -> a xor b }
-    open fun andNot(value: BigInteger): BigInteger = bitwise(value) { a, b -> a and b.inv() }
-    private fun bitwise(value: BigInteger, op: (Int, Int) -> Int): BigInteger {
-        val length = maxOf(words.size, value.words.size) + 1
+    open fun and(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a and b }
+    open fun or(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a or b }
+    open fun xor(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a xor b }
+    open fun andNot(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a and b.inv() }
+    // Public bitLength is intentionally virtual, including on a subclass operand.
+    private fun bitwiseLength32(): Int = (bitLength() ushr 5) + 1
+    private fun bitwise(value: BigInteger?, op: (Int, Int) -> Int): BigInteger {
+        val width = maxOf(bitwiseLength32(), value!!.bitwiseLength32()).toLong() * 32
+        val length = ((width + LIMB_BITS - 1) / LIMB_BITS).toInt()
         val a = twosComplement(length)
         val b = value.twosComplement(length)
         val out = IntArray(length) { op(a[it], b[it]) and MASK.toInt() }
-        return fromTwosComplement(out)
+        return bitwiseResult(out, width)
+    }
+    private fun bitwiseResult(out: IntArray, width: Long): BigInteger {
+        val highBits = ((width - 1) % LIMB_BITS + 1).toInt()
+        val highMask = (1 shl highBits) - 1
+        out[out.lastIndex] = out.last() and highMask
+        if (out.last() and (1 shl (highBits - 1)) != 0)
+            out[out.lastIndex] = out.last() or (MASK.toInt() xor highMask)
+        val result = fromTwosComplement(out)
+        return if (result.sign == 0) BigInteger(result) else result
     }
     private fun fromTwosComplement(out: IntArray): BigInteger {
         if (out.last() and (1 shl (LIMB_BITS - 1)) == 0) return normalized(1, out)

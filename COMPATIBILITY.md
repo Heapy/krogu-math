@@ -22,8 +22,8 @@ are compared independently of this optimization.
 |---|---|---|
 | Every public constructor, method and constant of all four types | `ApiSurfaceTest` compares qualified parameter and return types, static/instance modality, finality and field modifiers, after package relocation | An inventory proves shape, not method behavior |
 | Java source compatibility, including subclassing and virtual dispatch | Compiled `JavaApiContractTest`, `KotlinSubclassContractTest`; real Java Random constructors | Broader Java call-site, null precedence and subclass behavior audit |
-| BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor values and exact diagnostics | Larger and broader operand patterns, supported-range/allocation limits, other diagnostics and subclass behavior |
-| Infinite two's-complement bit semantics | Portable oracle, seeded JVM operations and algebraic invariants | Structured positive/negative bit boundaries, extreme shift/bit distances |
+| BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor values and exact diagnostics | Confirmed modular callback/diagnostic mismatches below; larger operand patterns, supported-range/allocation limits and broader subclass behavior |
+| Infinite two's-complement bit semantics | Portable oracle, seeded JVM operations, algebraic invariants and finite-width sign-extension argument; 17,198 bit value/callback/identity outcomes | Multi-gigabyte operands and bit distances, wider changing-metadata subclass compositions |
 | All constructor encodings and validation | 25,584 exact byte-constructor outcomes including Int offset/length endpoints and array isolation; 10,156 exact string-constructor outcomes; complete BMP digit/radix corpus and supplementary digit constructors | Larger input/allocation limits, compound textual grammar, malformed text fuzzing |
 | Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 207,239 exact portable scale-boundary outcomes; portable fixtures | Wider coefficient/scale/precision combinations and overflow across remaining overloads |
 | Powers and roots | 10,560 initial JVM comparisons, 13,024 exponent-bit/rounding comparisons, 128 working-precision overflow cases, 2,592 squared-midpoint root fixtures through 129 digits, integer midpoint rounding argument; 6,677 integer-power outcomes; 978 integer-root outcomes and independent bounds | Wider decimal-root and integer-power subclass compositions, intermediate/scale-overflow audit and larger operand/allocation domains |
@@ -52,6 +52,7 @@ kotlinr scripts/generate-integer-division-oracle.main.kts --check
 kotlinr scripts/generate-integer-pow-oracle.main.kts --check
 kotlinr scripts/generate-integer-gcd-oracle.main.kts --check
 kotlinr scripts/generate-integer-sqrt-oracle.main.kts --check
+kotlinr scripts/generate-integer-bits-oracle.main.kts --check
 kotlinr scripts/generate-context-oracle.main.kts --check
 kotlinr scripts/generate-hash-oracle.main.kts --check
 ```
@@ -139,9 +140,11 @@ format`; negative precision is rejected with `Digits < 0` only after a valid
 rounding mode has been parsed. This closes those MathContext message mismatches;
 the broader exception-message audit remains open.
 
-Bit-query and bit-update routines now work directly on stored limbs and
-two's-complement words. They do not invoke overridable arithmetic operations
-or neighboring public bit methods. Black-box Java subclass fixtures reproduce
+Bit-query and bit-update routines work on stored limbs and two's-complement
+words. Bit operations invoke virtual `bitLength()` to select a signed 32-bit-word
+width; negative `bitCount()` invokes virtual `getLowestSetBit()`. They bypass
+overridable arithmetic operations and neighboring public bit updates.
+Black-box Java subclass fixtures reproduce
 the former `andNot`/`setBit` failures and compare the corrected dispatch and
 returned base-class type with JDK; common subclass fixtures run on every target.
 The main oracle now contains 75,638 vectors, including 8,888 added signed
@@ -152,6 +155,32 @@ require the potentially unrepresentable separate value `not(operand)`.
 The largest supported magnitudes still require the range audit noted above;
 these tests do not allocate multi-gigabyte integers or complete the broader
 subclass-dispatch audit for arithmetic, shifts and conversions.
+
+A separate 17,198-case public-JDK bit oracle compares all four binary operations,
+complement, bit queries and bit updates, including source and operand callbacks,
+throwing and replacement metadata, self aliases, zero-result identities and
+signed power neighbors through 4,097-bit inputs. Each result is a fresh base
+instance, including zero and unchanged updates. Negative bit addresses fail
+before metadata callbacks; Java null operands fail after the source bitLength
+callback (24 live Java comparisons). The four binary operand parameters are
+nullable in Kotlin to preserve that Java order; Kotlin overrides must use the
+same nullable parameter. Fake negative/huge bitLength values, changing callback
+results and allocation-scale bit addresses still require a broader audit.
+Six additional common cases cover updates at `Int.MAX_VALUE`: unchanged zero/-1
+values still return fresh instances; unsupported results report `BigInteger would
+overflow supported range`. The public-JDK experiment is reproducible with
+`JAVA_OPTS=-Xmx1g kotlinr scripts/generate-integer-bits-oracle.main.kts --check-extreme`.
+It needs that heap because JDK allocates large sign-extension arrays; the port
+avoids those arrays for these endpoint cases. Allocation timing is not asserted.
+
+The next modular audit already has confirmed black-box mismatches. Inherited
+`modInverse(10)` on stored zero throws `BigInteger not invertible.` in JDK,
+including the final period, and bypasses source mod/remainder overrides; the
+port currently calls those overrides and omits the period. Inherited
+`modPow(0, 10)` on stored zero returns one without source mod/remainder callbacks
+in JDK; the port invokes both callbacks before producing one. Modulus-one and
+negative-exponent paths also differ in their callback traces. These remain open;
+ordinary seeded modular value comparisons do not cover them.
 
 Shift routines use private left/right helpers and a private lowest-set-bit
 query, so negative distances and negative rounding do not dispatch through

@@ -339,6 +339,45 @@ sign-extension/limb boundaries. Successful cases mutate the input and exported
 arrays and verify stable value and hash. This finite domain does not establish
 the maximum practical allocation size or all byte-packing behavior by itself.
 
+## Infinite two's-complement bit operations
+
+For an ordinary value with Java bit length `b`, choose `w=32*(floor(b/32)+1)`.
+Then `w>b`, so both positive values and negative values fit a signed `w`-bit
+representation with a sign bit. Reading the stored base-2^30 limbs with complement
+and carry for negatives gives exactly the residue modulo `2^w`. Binary operations
+use the larger operand width. Every bit above that width is a constant sign bit;
+applying the Boolean operation to those bits gives the sign bit of the finite
+result. Interpreting the finite result as signed therefore agrees with infinite
+sign extension. The same reasoning applies to complement.
+
+Updates additionally select a width beyond the addressed bit with space for a
+sign bit: set/flip use at least `32*(floor(n/32)+2)` bits; clear uses at least
+`32*(floor((n+1)/32)+1)`. Masking the partial highest base-2^30 limb to the selected
+width and extending its sign into that limb preserves this signed interpretation.
+Width arithmetic uses Long, including `n+1`, before conversion to a limb count.
+This bounds the arithmetic used for indexing; it does not establish that every
+permitted allocation succeeds or resolve all supported-magnitude limits.
+
+At address `n=Int.MAX_VALUE`, any supported positive magnitude has a zero bit
+and any negative value has a sign-extension one bit. Clearing the former or
+setting the latter leaves the value unchanged. The other updates create a
+magnitude at least `2^n`, whose bit length exceeds the supported `n` bits.
+Thus the endpoint can return a fresh unchanged value or reject the result before
+allocating a sign-extension array, while preserving the virtual width callback.
+
+For negative `-m`, let `t` be the number of trailing zero bits of positive `m`.
+Writing `m=u*2^t` with odd `u` gives
+`m-1=(u-1)*2^t+(2^t-1)`, hence
+`popcount(m-1)=popcount(m)-1+t`. These are exactly the bits differing from the
+negative sign extension. The implementation counts magnitude bits directly and
+adds the virtual lowest-set-bit result minus one. For ordinary values this proves
+the count; replacement callback values intentionally retain JDK Int arithmetic.
+
+Virtual bitLength also intentionally controls finite width for subclass instances.
+That behavior and fresh result identities are black-box compatibility observations,
+checked by the separate 17,198-case oracle, rather than assumptions about sensible
+metadata overrides. All ordinary width arguments above assume truthful metadata.
+
 ## Hash packing
 
 The observed JDK hash folds unsigned 32-bit magnitude chunks, most significant
