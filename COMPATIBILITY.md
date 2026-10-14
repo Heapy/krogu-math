@@ -22,7 +22,7 @@ are compared independently of this optimization.
 |---|---|---|
 | Every public constructor, method and constant of all four types | `ApiSurfaceTest` compares qualified parameter and return types, static/instance modality, finality and field modifiers, after package relocation | An inventory proves shape, not method behavior |
 | Java source compatibility, including subclassing and virtual dispatch | Compiled `JavaApiContractTest`, `KotlinSubclassContractTest`; real Java Random constructors | Broader Java call-site, null precedence and subclass behavior audit |
-| BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor values and exact diagnostics | Confirmed modular callback/diagnostic mismatches below; larger operand patterns, supported-range/allocation limits and broader subclass behavior |
+| BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor outcomes; 11,798 modular reduction/inverse outcomes and Euclidean argument | Confirmed modular-exponentiation callback mismatches below; larger operand patterns, supported-range/allocation limits and broader subclass behavior |
 | Infinite two's-complement bit semantics | Portable oracle, seeded JVM operations, algebraic invariants and finite-width sign-extension argument; 17,198 bit value/callback/identity outcomes | Multi-gigabyte operands and bit distances, wider changing-metadata subclass compositions |
 | All constructor encodings and validation | 25,584 exact byte-constructor outcomes including Int offset/length endpoints and array isolation; 10,156 exact string-constructor outcomes; complete BMP digit/radix corpus and supplementary digit constructors | Larger input/allocation limits, compound textual grammar, malformed text fuzzing |
 | Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 207,239 exact portable scale-boundary outcomes; portable fixtures | Wider coefficient/scale/precision combinations and overflow across remaining overloads |
@@ -53,6 +53,7 @@ kotlinr scripts/generate-integer-pow-oracle.main.kts --check
 kotlinr scripts/generate-integer-gcd-oracle.main.kts --check
 kotlinr scripts/generate-integer-sqrt-oracle.main.kts --check
 kotlinr scripts/generate-integer-bits-oracle.main.kts --check
+kotlinr scripts/generate-integer-inverse-oracle.main.kts --check
 kotlinr scripts/generate-context-oracle.main.kts --check
 kotlinr scripts/generate-hash-oracle.main.kts --check
 ```
@@ -173,14 +174,25 @@ overflow supported range`. The public-JDK experiment is reproducible with
 It needs that heap because JDK allocates large sign-extension arrays; the port
 avoids those arrays for these endpoint cases. Allocation timing is not asserted.
 
-The next modular audit already has confirmed black-box mismatches. Inherited
-`modInverse(10)` on stored zero throws `BigInteger not invertible.` in JDK,
-including the final period, and bypasses source mod/remainder overrides; the
-port currently calls those overrides and omits the period. Inherited
-`modPow(0, 10)` on stored zero returns one without source mod/remainder callbacks
-in JDK; the port invokes both callbacks before producing one. Modulus-one and
-negative-exponent paths also differ in their callback traces. These remain open;
-ordinary seeded modular value comparisons do not cover them.
+The separate modular reduction/inverse oracle has 11,798 public-JDK outcomes.
+It checks modulus validation before callbacks, virtual modulus equals(ONE),
+conditional source mod/remainder calls, virtual reduced-value equals(ONE),
+replaced/throwing results, self aliases and canonical ZERO/ONE shortcuts. Working
+Euclidean values bypass source and modulus arithmetic/metadata overrides. The
+non-invertible diagnostic now includes JDK's final period. Wide cases through
+1,025-bit moduli additionally check residue bounds, the inverse congruence and
+failure gcds. Java tests add 720 nullable/throwing callback comparisons and ten
+null-modulus comparisons. Broader compound callback replacements and supported
+range/allocation proofs still require audit.
+
+Modular exponentiation still has confirmed black-box callback mismatches.
+Inherited `modPow(0, 10)` on stored zero returns one without source mod/remainder
+callbacks in JDK; the port invokes both callbacks before producing one.
+Modulus-one and negative-exponent paths also differ in their callback traces.
+For inherited `modPow(1, 17)` on a positive subclass storing three, JDK returns
+the source instance after equality/compare/modulus-bit callbacks; the port
+currently returns a separate value and invokes exponent bit queries instead.
+These remain open; ordinary seeded modular value comparisons do not cover them.
 
 Shift routines use private left/right helpers and a private lowest-set-bit
 query, so negative distances and negative rounding do not dispatch through

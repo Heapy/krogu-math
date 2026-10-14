@@ -199,17 +199,23 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     }
     open fun modInverse(m: BigInteger): BigInteger {
         if (m.sign <= 0) throw ArithmeticException("BigInteger: modulus not positive")
-        var r = m
-        var nextR = mod(m)
+        if (m == ONE) return ZERO
+        val reduced = if (sign < 0 || compareMagnitude(words, m.words) >= 0) mod(m) else this
+        if (reduced == ONE) return ONE
+        if (reduced.sign == 0) throw ArithmeticException("BigInteger not invertible.")
+        // Working values deliberately bypass arithmetic/metadata overrides.
+        val modulus = BigInteger(1, m.words)
+        var r = modulus
+        var nextR = BigInteger(1, reduced.words)
         var t = ZERO
         var nextT = ONE
         while (nextR.sign != 0) {
-            val qr = r.divideAndRemainder(nextR)
+            val qr = r.divideStored(nextR)
             val temp = t.subtract(qr[0].multiply(nextT))
             t = nextT; nextT = temp; r = nextR; nextR = qr[1]
         }
-        if (r != ONE) throw ArithmeticException("BigInteger not invertible")
-        return t.mod(m)
+        if (r != ONE) throw ArithmeticException("BigInteger not invertible.")
+        return t.mod(modulus)
     }
     private fun multiplyMod(value: BigInteger, m: BigInteger): BigInteger =
         if (magnitudeBits().toLong() + value.magnitudeBits() <= Int.MAX_VALUE) multiply(value).mod(m)

@@ -298,6 +298,42 @@ wide factors and consecutive Fibonacci inputs. Java tests add 168 nullable
 callback/argument cases. These domains do not establish all returned subclass
 graphs, exact null diagnostics or practical allocation limits.
 
+## Modular inverses
+
+For truthful ordinary operands, first reduce `a` to `0<=a<m`, with `m>0`.
+The modulus-one shortcut returns zero. For all other moduli, zero has no inverse;
+one has inverse one. The public
+[modInverse contract](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigInteger.html#modInverse(java.math.BigInteger))
+requires coprimality and a nonnegative residue below the modulus.
+
+The independent extended Euclidean loop starts with remainders `(m,a)` and
+coefficients `(0,1)`. Each division `r=q*nextR+remainder` replaces the pair with
+`(nextR,remainder)` and the coefficient pair with `(nextT,t-q*nextT)`.
+By induction each remainder is congruent to `a` times its coefficient modulo
+`m`. The remainder is nonnegative and strictly smaller than the divisor, so
+the loop terminates at `g=gcd(m,a)`. If `g!=1`, no inverse exists. Otherwise
+the last coefficient satisfies `a*t=1 (mod m)`; reducing it gives the required
+unique residue in `[0,m)`.
+
+For the reduced ordinary input, successive nonzero coefficients alternate in
+sign and their absolute values grow by `abs(tNext)=abs(tPrev)+q*abs(tCurrent)`.
+Each swap/subtract step has determinant minus one on the two Bezout coefficient
+rows, so the terminal zero row remains primitive. Its equation
+`m*s+a*t=0` then forces `abs(t)=m/g`. Thus the terminal zero-remainder coefficient
+has magnitude `m/g`, and every
+coefficient and every product `q*nextT` has magnitude at most `m`, and the signed
+subtraction remains within that bound. This proves the coefficient arithmetic
+does not require a magnitude larger than the supported modulus in this path.
+The argument still assumes exact supported-range division and feasible arrays;
+it does not prove resource behavior at multi-gigabyte inputs.
+
+Subclass equality and reduction callbacks intentionally precede the private
+working loop. Replacement negative reductions supply their magnitude to that
+loop, matching the black-box JDK outcomes; fake equality can select a constant
+shortcut. Those observations are checked separately from ordinary mathematical
+invariants. The proof above assumes truthful callbacks and does not cover every
+composition of replacement objects.
+
 ## Integer powers
 
 For truthful operand metadata, write abs(x)=u*2^t with u odd. Then
