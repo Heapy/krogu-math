@@ -653,6 +653,23 @@ scale two; other tested layouts call it once. There are 264 replacement-getter
 text-and-trace cases around these boundaries. These observations concern fresh
 single calls and do not prove repeated-call caching or every formatter/subclass.
 
+## Signed integral-division metadata
+
+For the guard-digit term, let `n = 10 * divisor.precision()` in Long arithmetic.
+Truncating division writes `n = 3q + r`, with `-2 <= r <= 2`. Therefore
+`ceil(n / 3) = q + 1` when `r > 0`, and `q` otherwise. The former `(n + 2) / 3`
+expression only supplies the ceiling for nonnegative `n`; a negative reported
+precision can alter both the context precision and whether its constructor fails.
+
+Both reported precisions and scales are Int values. The guard term lies between
+-7,158,278,826 and 7,158,278,824, and the absolute scale difference is at most
+4,294,967,295. Including source precision and two extra digits, the budget lies
+between -9,305,762,472 and 13,600,729,768, so its Long arithmetic cannot overflow.
+The observed upper cap and subsequent Int narrowing are separate compatibility
+steps. The 1,176-case public-JDK matrix checks their observable dispatch and
+failures; this arithmetic argument establishes the signed ceiling and Long bounds,
+not every subclass composition or the complete integral-division contract.
+
 ## Evidence and remaining scope
 
 The main portable oracle includes 1,728 signed midpoint-neighbor Float/Double

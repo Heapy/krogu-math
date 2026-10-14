@@ -270,7 +270,10 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             return BigDecimal(BigInteger.ZERO, preferred)
         // A conservative guard-digit budget suffices to recover the integral part.
         // Keep public metadata calls and their order observable to subclasses.
-        val digits = precision().toLong() + (10L * divisor.precision() + 2) / 3 +
+        val sourceDigits = precision().toLong()
+        val divisorDigits = 10L * divisor.precision()
+        val guardDigits = divisorDigits / 3 + if (divisorDigits % 3 > 0) 1 else 0
+        val digits = sourceDigits + guardDigits +
             kotlin.math.abs(scale().toLong() - divisor.scale()) + 2
         var result = divide(divisor, MathContext(minOf(digits, Int.MAX_VALUE.toLong()).toInt(), RoundingMode.DOWN))
         if (result.decimalScale > 0) {

@@ -44,7 +44,31 @@ private fun integralOutcome(a: String, b: String, p: Int, mode: String): String 
         "${result.toString()}:${result.scale()}:${when { result === source -> "source"; result === operand -> "divisor"; result is IntegralResult -> "quotient"; else -> "base" }}|$calls"
     } catch (e: Exception) { "!${e::class.simpleName}:${e.message}|$trace" }
 }
+private class IntegralMetadata(text: String, val label: String, val digits: Int, val reportedScale: Int, val trace: StringBuilder) : BigDecimal(text) {
+    override fun signum(): Int { trace.append("$label.sign;"); return super.signum() }
+    override fun precision(): Int { trace.append("$label.precision;"); return digits }
+    override fun scale(): Int { trace.append("$label.scale;"); return reportedScale }
+    override fun divide(v: BigDecimal, mc: MathContext): BigDecimal {
+        trace.append("$label.divide(${mc.precision},${mc.roundingMode});")
+        throw IllegalStateException("divide callback")
+    }
+}
+private fun metadataOutcome(a: Int, b: Int, aScale: Int, bScale: Int): String {
+    val trace = StringBuilder()
+    val source = IntegralMetadata("10.0", "A", a, aScale, trace)
+    val divisor = IntegralMetadata("2.0", "B", b, bScale, trace)
+    return try { source.divideToIntegralValue(divisor).toString() + "|$trace" }
+        catch (e: Exception) { "!${e::class.simpleName}:${e.message}|$trace" }
+}
 class DecimalIntegralDispatchOracleTest {
+    @Test fun signedMetadataAndScaleEndpointsDetermineContextPrecision() {
+        val failures = mutableListOf<String>()
+        for (row in jdk25DecimalIntegralMetadataCases()) {
+            val actual = metadataOutcome(row[0].toInt(), row[1].toInt(), row[2].toInt(), row[3].toInt())
+            if (row[4] != actual) failures += row.take(4).toString() + " expected=" + row[4] + " actual=" + actual
+        }
+        assertEquals(emptyList<String>(), failures.take(12), failures.size.toString() + " mismatches")
+    }
     @Test fun inheritedIntegralDivisionUsesVirtualContextDivision() {
         val failures = mutableListOf<String>()
         for (row in jdk25DecimalIntegralDispatchCases()) {

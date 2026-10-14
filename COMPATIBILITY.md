@@ -364,13 +364,26 @@ that bypass the ordinary zero-divisor failure. Poisoned metadata, nullable callb
 results, all callback compositions, delegated context-divide traces and full-range
 resource behavior remain unproven.
 
-A follow-up live metadata probe identified a remaining exact-integral budget
-defect when a subclass reports negative divisor precision. With equal input scales,
-source precision 0 and divisor precision -1, JDK rejects the negative context
-precision with `IllegalArgumentException: Digits < 0`; the current positive-only
-ceiling expression instead dispatches context divide with precision 0. Source
-precision 1 and divisor precision -1 dispatch precision 0 on JDK and 1 here.
-This signed metadata calculation still requires a permanent oracle and correction.
+The integral oracle adds 1,176 signed metadata cases, combining 14 reported source
+precisions, 14 divisor precisions and six scale pairs, including both Int endpoints.
+The former positive-only ceiling expression caused 143 differences. It now rounds
+the guard-digit term toward positive infinity for either sign. With equal input
+scales, source precision 0 and divisor precision -1 reject the negative context
+precision with `IllegalArgumentException: Digits < 0`; source precision 1 and divisor
+precision -1 dispatch context divide with precision 0. The oracle also preserves
+the observed upper precision cap and narrowing of negative Long budgets to Int;
+it does not introduce a lower saturation absent from the pinned runtime. Call
+order and failures match the JDK for this matrix. Changing getters, different
+stored-scale comparisons and nullable callbacks still need separate audits.
+
+A live delegated-context probe confirms another outstanding defect in `divide`:
+for subclassed source 10.50 and divisor 2.0 with precision 2, both return 5.3,
+but the JDK calls divisor signum, source signum, source precision, divisor precision.
+The port instead queries divisor precision before source precision and then calls
+source signum a second time. Throwing or changing getters can therefore change
+the result or failure. This context-division dispatch still requires its own oracle
+and correction; the integral metadata matrix intercepts context divide and does
+not validate that delegated implementation.
 
 Scale-bound division adds 12,000 nonzero-divisor outcomes across all modes,
 including returned values and exact messages. The initial wide-Long rescaling
