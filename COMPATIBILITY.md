@@ -45,6 +45,10 @@ kotlinr scripts/generate-scale-oracle.main.kts --check
 kotlinr scripts/generate-null-oracle.main.kts --check
 kotlinr scripts/generate-character-oracle.main.kts --check
 kotlinr scripts/generate-prime-oracle.main.kts --check
+kotlinr scripts/generate-integer-arithmetic-oracle.main.kts --check
+kotlinr scripts/generate-integer-parser-oracle.main.kts --check
+kotlinr scripts/generate-integer-bytes-oracle.main.kts --check
+kotlinr scripts/generate-integer-division-oracle.main.kts --check
 kotlinr scripts/generate-context-oracle.main.kts --check
 kotlinr scripts/generate-hash-oracle.main.kts --check
 ```
@@ -468,8 +472,24 @@ division or leaks a callback into integer formatting. Another 318 portable JDK
 outcomes cover divide/remainder/pairs with both divisor signs and one-/multi-limb
 magnitudes, plus every radix 2..36 for signed/zero inputs, while source compareTo
 throws if called. These cases also constrain formatting of a selected min/max
-source. Abs/division/formatting overrides beyond this comparison callback remain
-a separate audit.
+source. Broader combinations with formatting overrides remain a separate audit.
+
+Division adds 3,216 portable callback/value/identity cases through 8,192-bit
+dividends, including both operand signs, zero divisors, one-/multi-limb divisors
+and self aliases. Public divide and remainder now enter a private implementation
+rather than virtual divideAndRemainder. Stored magnitude comparisons and direct
+bit reads prevent operand abs, negate, signum, bitLength, compareTo, testBit and
+arithmetic overrides from changing inherited division. The multi-limb reduction
+uses a base-class divisor view. Nonzero remainders are normalized into base values,
+including the smaller-dividend path, preserving the observed result type and
+identity. Small-remainder cases cross both signs, quotient parity and 29/30/90-bit
+divisors with remainders 0, 1, 2 and 10; a final add of ONE must not leak that
+constant as the returned remainder. Callback modes include delegation, replacements,
+exceptions and empty pair arrays. The pair cases explicitly enter the inherited base implementation
+via super; a user's direct call to its own override still dispatches normally.
+Another 294 live Java cases cover null/throw callback returns, null operands and
+self aliases. Detailed null diagnostics, wider identity combinations and extreme
+resource limits remain open.
 
 Integer subtraction adds 896 portable dispatch cases. A stored zero operand
 returns the source without callbacks; only a stored zero source and nonzero

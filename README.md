@@ -88,6 +88,8 @@ String-constructor fixtures add 10,156 value and exact-diagnostic cases across a
 radices, invalid radix precedence, signs, Unicode digits and digit-group boundaries.
 Byte constructors add 25,584 outcomes for signed magnitudes, two's-complement
 slices and exact range diagnostics; successful cases also check array isolation.
+Division adds 3,216 callback/value/identity cases for subclassed operands, aliased
+operands and wide dividends; Java tests add nullable callback and operand cases.
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
@@ -113,6 +115,10 @@ kotlinr scripts/generate-scale-oracle.main.kts --check
 kotlinr scripts/generate-null-oracle.main.kts --check
 kotlinr scripts/generate-character-oracle.main.kts --check
 kotlinr scripts/generate-prime-oracle.main.kts --check
+kotlinr scripts/generate-integer-arithmetic-oracle.main.kts --check
+kotlinr scripts/generate-integer-parser-oracle.main.kts --check
+kotlinr scripts/generate-integer-bytes-oracle.main.kts --check
+kotlinr scripts/generate-integer-division-oracle.main.kts --check
 kotlinr scripts/generate-context-oracle.main.kts --check
 kotlinr scripts/generate-hash-oracle.main.kts --check
 ```

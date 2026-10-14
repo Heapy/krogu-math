@@ -203,7 +203,18 @@ compareTo implementation. Reading stored limbs prevents replacement ordering
 or a comparison exception from altering it. Portable JDK fixtures exercise
 positive/negative/zero dividends, both divisor signs, single-/multi-limb cases
 and formatting in every radix while source compareTo throws if called.
-They do not establish every other division/abs/formatting callback path.
+An additional division dispatch corpus checks stored magnitudes with inherited
+division on subclassed source and operand objects. Public divide and remainder
+enter the same private implementation as inherited divideAndRemainder. It reads
+stored limbs and source bits directly; the multi-limb divisor view is an exact
+base-class object sharing immutable limbs. Subsequent reduction operations act
+on base-class working values, preserving the ordinary magnitude argument even
+when operand overrides return replacements or throw. Nonzero remainders are
+normalized into separate base-class values, including the smaller-dividend path
+and a final working value equal to the ONE constant; zero remains canonical ZERO.
+The 3,216 portable cases additionally constrain quotient parity and small final
+remainders across the one-/multi-limb boundary. This does not settle unrelated
+formatting callbacks, null diagnostics or practical allocation limits.
 
 For a one-digit positive divisor d, the high-to-low loop maintains 0<=r<d.
 Appending the next radix-B digit x forms t=r*B+x<d*B<=B^2. Hence t fits

@@ -79,36 +79,38 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return normalized(sign * value.sign, result)
     }
     open fun parallelMultiply(value: BigInteger): BigInteger = multiply(value)
-    open fun divide(value: BigInteger): BigInteger = divideAndRemainder(value)[0]
-    open fun remainder(value: BigInteger): BigInteger = divideAndRemainder(value)[1]
+    open fun divide(value: BigInteger): BigInteger = divideStored(value)[0]
+    open fun remainder(value: BigInteger): BigInteger = divideStored(value)[1]
 
-    open fun divideAndRemainder(value: BigInteger): Array<BigInteger> {
+    open fun divideAndRemainder(value: BigInteger): Array<BigInteger> = divideStored(value)
+
+    private fun divideStored(value: BigInteger): Array<BigInteger> {
         if (value.sign == 0) throw ArithmeticException("BigInteger divide by zero")
-        val a = abs()
-        val b = value.abs()
-        if (compareMagnitude(a.words, b.words) < 0) return arrayOf(ZERO, this)
-        if (b.words.size == 1) {
+        // Read stored magnitudes and bits without invoking operand subclass callbacks.
+        if (compareMagnitude(words, value.words) < 0) return arrayOf(ZERO, normalized(sign, words))
+        if (value.words.size == 1) {
             val result = IntArray(words.size)
             var remainder = 0L
             for (i in words.indices.reversed()) {
                 val part = (remainder shl LIMB_BITS) + words[i]
-                result[i] = (part / b.words[0]).toInt()
-                remainder = part % b.words[0]
+                result[i] = (part / value.words[0]).toInt()
+                remainder = part % value.words[0]
             }
             return arrayOf(normalized(sign * value.sign, result), valueOf(remainder * sign))
         }
         // Binary long division: at each step the partial remainder stays below twice b.
-        val result = IntArray(a.words.size)
+        val b = BigInteger(1, value.words)
+        val result = IntArray(words.size)
         var rem = ZERO
-        for (bit in a.magnitudeBits() - 1 downTo 0) {
+        for (bit in magnitudeBits() - 1 downTo 0) {
             rem = rem.shiftLeft(1)
-            if (a.testBit(bit)) rem = rem.add(ONE)
+            if (words[bit / LIMB_BITS] and (1 shl (bit % LIMB_BITS)) != 0) rem = rem.add(ONE)
             if (rem >= b) {
                 rem = rem.subtract(b)
                 result[bit / LIMB_BITS] = result[bit / LIMB_BITS] or (1 shl (bit % LIMB_BITS))
             }
         }
-        return arrayOf(normalized(sign * value.sign, result), if (sign < 0) rem.negate() else rem)
+        return arrayOf(normalized(sign * value.sign, result), normalized(sign, rem.words))
     }
 
     open fun pow(exponent: Int): BigInteger {
