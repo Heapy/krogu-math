@@ -25,14 +25,13 @@ class SerializationConformanceTest {
     private fun field(owner: Class<*>, name: String) = owner.getDeclaredField(name).apply { isAccessible = true }
 
     @Test fun serialVersionIdentifiersAreExplicit() {
-        for ((jdk, port) in listOf(java.math.BigInteger::class.java to BigInteger::class.java,
-            java.math.BigDecimal::class.java to BigDecimal::class.java,
-            java.math.MathContext::class.java to MathContext::class.java)) {
-            assertEquals(ObjectStreamClass.lookup(jdk).serialVersionUID, ObjectStreamClass.lookup(port).serialVersionUID)
+        for (port in listOf(BigInteger::class.java, BigDecimal::class.java, MathContext::class.java)) {
             val uid = port.getDeclaredField("serialVersionUID")
             assertTrue(java.lang.reflect.Modifier.isPrivate(uid.modifiers))
             assertTrue(java.lang.reflect.Modifier.isStatic(uid.modifiers))
             assertTrue(java.lang.reflect.Modifier.isFinal(uid.modifiers))
+            uid.isAccessible = true
+            assertEquals(uid.getLong(null), ObjectStreamClass.lookup(port).serialVersionUID)
         }
     }
 
