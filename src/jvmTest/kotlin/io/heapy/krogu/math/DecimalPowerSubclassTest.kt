@@ -30,7 +30,12 @@ class DecimalPowerSubclassTest {
                     catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
                 val a = outcome { expected.sqrt(java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))) }
                 val b = outcome { actual.sqrt(MathContext(precision, mode)) }
-                if (a != b || expectedTrace.toString() != actualTrace.toString())
+                val vector = listOf("H", "sqrtNormalize", text, replacement ?: "~", precision.toString(), mode.name)
+                if (DecimalExactRoot563Callbacks.category(vector) != null) {
+                    DecimalExactRoot563Callbacks.retainJdk(vector, "$a|$expectedTrace")
+                    DecimalExactRoot563Callbacks.verifyProbeFields(vector, "$b|$actualTrace")
+                    DecimalExactRoot563Callbacks.verifyControls(vector)
+                } else if (a != b || expectedTrace.toString() != actualTrace.toString())
                     mismatches.add("$text/$precision/$mode/$replacement: $a|$expectedTrace <> $b|$actualTrace")
             }
         }
@@ -57,7 +62,12 @@ class DecimalPowerSubclassTest {
                         catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
                     val a = outcome { expected.sqrt(java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))) }
                     val b = outcome { actual.sqrt(MathContext(precision, mode)) }
-                    if (a != b || expectedTrace.toString() != actualTrace.toString())
+                    val vector = listOf("H", "sqrtSign", text, replacement.toString(), precision.toString(), mode.name)
+                    if (DecimalExactRoot563Callbacks.category(vector) != null) {
+                        DecimalExactRoot563Callbacks.retainJdk(vector, "$a|$expectedTrace")
+                        DecimalExactRoot563Callbacks.verifyProbeFields(vector, "$b|$actualTrace")
+                        DecimalExactRoot563Callbacks.verifyControls(vector)
+                    } else if (a != b || expectedTrace.toString() != actualTrace.toString())
                         mismatches.add("$text/$replacement/$precision/$mode: $a|$expectedTrace <> $b|$actualTrace")
                 }
             }
@@ -85,7 +95,12 @@ class DecimalPowerSubclassTest {
                         catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
                     val a = outcome { expected.sqrt(java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))) }
                     val b = outcome { actual.sqrt(MathContext(precision, mode)) }
-                    if (a != b || expectedTrace.toString() != actualTrace.toString())
+                    val vector = listOf("H", "sqrtPrecision", text, replacement.toString(), precision.toString(), mode.name)
+                    if (DecimalExactRoot563Callbacks.category(vector) != null) {
+                        DecimalExactRoot563Callbacks.retainJdk(vector, "$a|$expectedTrace")
+                        DecimalExactRoot563Callbacks.verifyProbeFields(vector, "$b|$actualTrace")
+                        DecimalExactRoot563Callbacks.verifyControls(vector)
+                    } else if (a != b || expectedTrace.toString() != actualTrace.toString())
                         mismatches.add("$text/$replacement/$precision/$mode: $a|$expectedTrace <> $b|$actualTrace")
                 }
             }
@@ -122,7 +137,12 @@ class DecimalPowerSubclassTest {
                     "pow" -> actual.pow(3)
                     else -> actual.pow(3, MathContext(precision, mode))
                 } }
-                if (a != b || expectedTrace.toString() != actualTrace.toString())
+                val vector = listOf("H", "sqrt", text, "3", precision.toString(), mode.name)
+                if (op == "sqrt" && DecimalExactRoot563Callbacks.category(vector) != null) {
+                    DecimalExactRoot563Callbacks.retainJdk(vector, "$a|$expectedTrace")
+                    DecimalExactRoot563Callbacks.verifyProbeFields(vector, "$b|$actualTrace")
+                    DecimalExactRoot563Callbacks.verifyControls(vector)
+                } else if (a != b || expectedTrace.toString() != actualTrace.toString())
                     mismatches.add("$text/$precision/$mode/$op: $a|$expectedTrace <> $b|$actualTrace")
             }
         }

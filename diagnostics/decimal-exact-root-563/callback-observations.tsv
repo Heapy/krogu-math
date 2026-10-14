@@ -1,0 +1,1657 @@
+index	line	classification	family	operation	source	metadata	precision	mode	frozen_observation
+40838	44808	H.sqrt.precision	H	sqrt	1	3	1	UP	1|sign;precision;
+40841	44811	H.sqrt.precision	H	sqrt	1	3	1	DOWN	1|sign;precision;
+40844	44814	H.sqrt.precision	H	sqrt	1	3	1	CEILING	1|sign;precision;
+40847	44817	H.sqrt.precision	H	sqrt	1	3	1	FLOOR	1|sign;precision;
+40850	44823	H.sqrt.precision	H	sqrt	1	3	1	HALF_UP	1|sign;precision;
+40853	44826	H.sqrt.precision	H	sqrt	1	3	1	HALF_DOWN	1|sign;precision;
+40856	44829	H.sqrt.precision	H	sqrt	1	3	1	HALF_EVEN	1|sign;precision;
+40862	44835	H.sqrt.precision	H	sqrt	1	3	7	UP	1|sign;precision;
+40865	44838	H.sqrt.precision	H	sqrt	1	3	7	DOWN	1|sign;precision;
+40868	44841	H.sqrt.precision	H	sqrt	1	3	7	CEILING	1|sign;precision;
+40871	44844	H.sqrt.precision	H	sqrt	1	3	7	FLOOR	1|sign;precision;
+40874	44847	H.sqrt.precision	H	sqrt	1	3	7	HALF_UP	1|sign;precision;
+40877	44850	H.sqrt.precision	H	sqrt	1	3	7	HALF_DOWN	1|sign;precision;
+40880	44853	H.sqrt.precision	H	sqrt	1	3	7	HALF_EVEN	1|sign;precision;
+40910	44886	H.sqrt.precision	H	sqrt	4.00	3	1	UP	2|sign;precision;
+40913	44889	H.sqrt.precision	H	sqrt	4.00	3	1	DOWN	2|sign;precision;
+40916	44892	H.sqrt.precision	H	sqrt	4.00	3	1	CEILING	2|sign;precision;
+40919	44895	H.sqrt.precision	H	sqrt	4.00	3	1	FLOOR	2|sign;precision;
+40922	44898	H.sqrt.precision	H	sqrt	4.00	3	1	HALF_UP	2|sign;precision;
+40925	44901	H.sqrt.precision	H	sqrt	4.00	3	1	HALF_DOWN	2|sign;precision;
+40928	44904	H.sqrt.precision	H	sqrt	4.00	3	1	HALF_EVEN	2|sign;precision;
+40934	44910	H.sqrt.precision	H	sqrt	4.00	3	7	UP	2.0|sign;precision;
+40937	44913	H.sqrt.precision	H	sqrt	4.00	3	7	DOWN	2.0|sign;precision;
+40940	44916	H.sqrt.precision	H	sqrt	4.00	3	7	CEILING	2.0|sign;precision;
+40943	44919	H.sqrt.precision	H	sqrt	4.00	3	7	FLOOR	2.0|sign;precision;
+40946	44922	H.sqrt.precision	H	sqrt	4.00	3	7	HALF_UP	2.0|sign;precision;
+40949	44925	H.sqrt.precision	H	sqrt	4.00	3	7	HALF_DOWN	2.0|sign;precision;
+40952	44931	H.sqrt.precision	H	sqrt	4.00	3	7	HALF_EVEN	2.0|sign;precision;
+41054	45039	H.sqrt.precision	H	sqrt	0.0004	3	1	UP	0.02|sign;precision;
+41057	45042	H.sqrt.precision	H	sqrt	0.0004	3	1	DOWN	0.02|sign;precision;
+41060	45045	H.sqrt.precision	H	sqrt	0.0004	3	1	CEILING	0.02|sign;precision;
+41063	45048	H.sqrt.precision	H	sqrt	0.0004	3	1	FLOOR	0.02|sign;precision;
+41066	45051	H.sqrt.precision	H	sqrt	0.0004	3	1	HALF_UP	0.02|sign;precision;
+41069	45054	H.sqrt.precision	H	sqrt	0.0004	3	1	HALF_DOWN	0.02|sign;precision;
+41072	45057	H.sqrt.precision	H	sqrt	0.0004	3	1	HALF_EVEN	0.02|sign;precision;
+41078	45063	H.sqrt.precision	H	sqrt	0.0004	3	7	UP	0.02|sign;precision;
+41081	45066	H.sqrt.precision	H	sqrt	0.0004	3	7	DOWN	0.02|sign;precision;
+41084	45069	H.sqrt.precision	H	sqrt	0.0004	3	7	CEILING	0.02|sign;precision;
+41087	45072	H.sqrt.precision	H	sqrt	0.0004	3	7	FLOOR	0.02|sign;precision;
+41090	45075	H.sqrt.precision	H	sqrt	0.0004	3	7	HALF_UP	0.02|sign;precision;
+41093	45078	H.sqrt.precision	H	sqrt	0.0004	3	7	HALF_DOWN	0.02|sign;precision;
+41096	45081	H.sqrt.precision	H	sqrt	0.0004	3	7	HALF_EVEN	0.02|sign;precision;
+42022	46064	H.sqrtSign.precision	H	sqrtSign	1	1	1	UP	1|sign;precision;
+42023	46065	H.sqrtSign.precision	H	sqrtSign	1	1	1	DOWN	1|sign;precision;
+42024	46066	H.sqrtSign.precision	H	sqrtSign	1	1	1	CEILING	1|sign;precision;
+42025	46067	H.sqrtSign.precision	H	sqrtSign	1	1	1	FLOOR	1|sign;precision;
+42026	46068	H.sqrtSign.precision	H	sqrtSign	1	1	1	HALF_UP	1|sign;precision;
+42027	46069	H.sqrtSign.precision	H	sqrtSign	1	1	1	HALF_DOWN	1|sign;precision;
+42028	46070	H.sqrtSign.precision	H	sqrtSign	1	1	1	HALF_EVEN	1|sign;precision;
+42030	46072	H.sqrtSign.precision	H	sqrtSign	1	1	7	UP	1|sign;precision;
+42031	46073	H.sqrtSign.precision	H	sqrtSign	1	1	7	DOWN	1|sign;precision;
+42032	46074	H.sqrtSign.precision	H	sqrtSign	1	1	7	CEILING	1|sign;precision;
+42033	46075	H.sqrtSign.precision	H	sqrtSign	1	1	7	FLOOR	1|sign;precision;
+42034	46076	H.sqrtSign.precision	H	sqrtSign	1	1	7	HALF_UP	1|sign;precision;
+42035	46077	H.sqrtSign.precision	H	sqrtSign	1	1	7	HALF_DOWN	1|sign;precision;
+42036	46078	H.sqrtSign.precision	H	sqrtSign	1	1	7	HALF_EVEN	1|sign;precision;
+42094	46139	H.sqrtSign.precision	H	sqrtSign	4.00	1	1	UP	2|sign;precision;
+42095	46140	H.sqrtSign.precision	H	sqrtSign	4.00	1	1	DOWN	2|sign;precision;
+42096	46141	H.sqrtSign.precision	H	sqrtSign	4.00	1	1	CEILING	2|sign;precision;
+42097	46142	H.sqrtSign.precision	H	sqrtSign	4.00	1	1	FLOOR	2|sign;precision;
+42098	46143	H.sqrtSign.precision	H	sqrtSign	4.00	1	1	HALF_UP	2|sign;precision;
+42099	46144	H.sqrtSign.precision	H	sqrtSign	4.00	1	1	HALF_DOWN	2|sign;precision;
+42100	46148	H.sqrtSign.precision	H	sqrtSign	4.00	1	1	HALF_EVEN	2|sign;precision;
+42102	46150	H.sqrtSign.precision	H	sqrtSign	4.00	1	7	UP	2.0|sign;precision;
+42103	46151	H.sqrtSign.precision	H	sqrtSign	4.00	1	7	DOWN	2.0|sign;precision;
+42104	46152	H.sqrtSign.precision	H	sqrtSign	4.00	1	7	CEILING	2.0|sign;precision;
+42105	46153	H.sqrtSign.precision	H	sqrtSign	4.00	1	7	FLOOR	2.0|sign;precision;
+42106	46154	H.sqrtSign.precision	H	sqrtSign	4.00	1	7	HALF_UP	2.0|sign;precision;
+42107	46155	H.sqrtSign.precision	H	sqrtSign	4.00	1	7	HALF_DOWN	2.0|sign;precision;
+42108	46156	H.sqrtSign.precision	H	sqrtSign	4.00	1	7	HALF_EVEN	2.0|sign;precision;
+42254	46311	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	1	UP	1|sign;precision;
+42255	46312	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	1	DOWN	1|sign;precision;
+42256	46313	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	1	CEILING	1|sign;precision;
+42257	46314	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	1	FLOOR	1|sign;precision;
+42258	46315	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	1	HALF_UP	1|sign;precision;
+42259	46316	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	1	HALF_DOWN	1|sign;precision;
+42260	46317	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	1	HALF_EVEN	1|sign;precision;
+42262	46319	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	7	UP	1|sign;precision;
+42263	46320	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	7	DOWN	1|sign;precision;
+42264	46321	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	7	CEILING	1|sign;precision;
+42265	46322	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	7	FLOOR	1|sign;precision;
+42266	46323	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	7	HALF_UP	1|sign;precision;
+42267	46324	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	7	HALF_DOWN	1|sign;precision;
+42268	46325	H.sqrtPrecision.metadata	H	sqrtPrecision	1	1	7	HALF_EVEN	1|sign;precision;
+42270	46327	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	1	UP	1E+3|sign;precision;
+42271	46328	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	1	DOWN	0E+3|sign;precision;
+42272	46329	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	1	CEILING	1E+3|sign;precision;
+42273	46330	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	1	FLOOR	0E+3|sign;precision;
+42274	46331	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	1	HALF_UP	0E+3|sign;precision;
+42275	46332	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	1	HALF_DOWN	0E+3|sign;precision;
+42276	46333	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	1	HALF_EVEN	0E+3|sign;precision;
+42278	46335	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	7	UP	1|sign;precision;
+42279	46336	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	7	DOWN	1|sign;precision;
+42280	46337	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	7	CEILING	1|sign;precision;
+42281	46338	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	7	FLOOR	1|sign;precision;
+42282	46339	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	7	HALF_UP	1|sign;precision;
+42283	46340	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	7	HALF_DOWN	1|sign;precision;
+42284	46341	H.sqrtPrecision.metadata	H	sqrtPrecision	1	7	7	HALF_EVEN	1|sign;precision;
+42286	46343	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	1	UP	1E+14|sign;precision;
+42287	46344	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	1	DOWN	0E+14|sign;precision;
+42288	46345	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	1	CEILING	1E+14|sign;precision;
+42289	46346	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	1	FLOOR	0E+14|sign;precision;
+42290	46347	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	1	HALF_UP	0E+14|sign;precision;
+42291	46348	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	1	HALF_DOWN	0E+14|sign;precision;
+42292	46349	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	1	HALF_EVEN	0E+14|sign;precision;
+42294	46351	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	7	UP	1E+8|sign;precision;
+42295	46352	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	7	DOWN	0E+8|sign;precision;
+42296	46353	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	7	CEILING	1E+8|sign;precision;
+42297	46354	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	7	FLOOR	0E+8|sign;precision;
+42298	46355	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	7	HALF_UP	0E+8|sign;precision;
+42299	46356	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	7	HALF_DOWN	0E+8|sign;precision;
+42300	46360	H.sqrtPrecision.metadata	H	sqrtPrecision	1	30	7	HALF_EVEN	0E+8|sign;precision;
+42302	46362	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	1	UP	2|sign;precision;
+42303	46363	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	1	DOWN	2|sign;precision;
+42304	46364	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	1	CEILING	2|sign;precision;
+42305	46365	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	1	FLOOR	2|sign;precision;
+42306	46366	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	1	HALF_UP	2|sign;precision;
+42307	46367	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	1	HALF_DOWN	2|sign;precision;
+42308	46368	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	1	HALF_EVEN	2|sign;precision;
+42310	46370	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	7	UP	2.0|sign;precision;
+42311	46371	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	7	DOWN	2.0|sign;precision;
+42312	46372	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	7	CEILING	2.0|sign;precision;
+42313	46373	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	7	FLOOR	2.0|sign;precision;
+42314	46374	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	7	HALF_UP	2.0|sign;precision;
+42315	46375	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	7	HALF_DOWN	2.0|sign;precision;
+42316	46376	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	1	7	HALF_EVEN	2.0|sign;precision;
+42318	46378	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	1	UP	1E+2|sign;precision;
+42319	46379	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	1	DOWN	0E+2|sign;precision;
+42320	46380	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	1	CEILING	1E+2|sign;precision;
+42321	46381	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	1	FLOOR	0E+2|sign;precision;
+42322	46382	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	1	HALF_UP	0E+2|sign;precision;
+42323	46383	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	1	HALF_DOWN	0E+2|sign;precision;
+42324	46384	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	1	HALF_EVEN	0E+2|sign;precision;
+42326	46386	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	7	UP	2.0|sign;precision;
+42327	46387	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	7	DOWN	2.0|sign;precision;
+42328	46388	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	7	CEILING	2.0|sign;precision;
+42329	46389	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	7	FLOOR	2.0|sign;precision;
+42330	46390	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	7	HALF_UP	2.0|sign;precision;
+42331	46391	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	7	HALF_DOWN	2.0|sign;precision;
+42332	46392	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	7	7	HALF_EVEN	2.0|sign;precision;
+42334	46394	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	1	UP	1E+13|sign;precision;
+42335	46395	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	1	DOWN	0E+13|sign;precision;
+42336	46396	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	1	CEILING	1E+13|sign;precision;
+42337	46397	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	1	FLOOR	0E+13|sign;precision;
+42338	46398	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	1	HALF_UP	0E+13|sign;precision;
+42339	46399	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	1	HALF_DOWN	0E+13|sign;precision;
+42340	46400	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	1	HALF_EVEN	0E+13|sign;precision;
+42342	46402	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	7	UP	1E+7|sign;precision;
+42343	46403	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	7	DOWN	0E+7|sign;precision;
+42344	46404	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	7	CEILING	1E+7|sign;precision;
+42345	46405	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	7	FLOOR	0E+7|sign;precision;
+42346	46406	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	7	HALF_UP	0E+7|sign;precision;
+42347	46407	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	7	HALF_DOWN	0E+7|sign;precision;
+42348	46408	H.sqrtPrecision.metadata	H	sqrtPrecision	4.00	30	7	HALF_EVEN	0E+7|sign;precision;
+42398	46461	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	1	UP	0.02|sign;precision;
+42399	46462	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	1	DOWN	0.02|sign;precision;
+42400	46466	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	1	CEILING	0.02|sign;precision;
+42401	46467	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	1	FLOOR	0.02|sign;precision;
+42402	46468	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	1	HALF_UP	0.02|sign;precision;
+42403	46469	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	1	HALF_DOWN	0.02|sign;precision;
+42404	46470	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	1	HALF_EVEN	0.02|sign;precision;
+42406	46472	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	7	UP	0.02|sign;precision;
+42407	46473	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	7	DOWN	0.02|sign;precision;
+42408	46474	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	7	CEILING	0.02|sign;precision;
+42409	46475	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	7	FLOOR	0.02|sign;precision;
+42410	46476	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	7	HALF_UP	0.02|sign;precision;
+42411	46477	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	7	HALF_DOWN	0.02|sign;precision;
+42412	46478	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	1	7	HALF_EVEN	0.02|sign;precision;
+42414	46480	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	1	UP	1E+1|sign;precision;
+42415	46481	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	1	DOWN	0E+1|sign;precision;
+42416	46482	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	1	CEILING	1E+1|sign;precision;
+42417	46483	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	1	FLOOR	0E+1|sign;precision;
+42418	46484	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	1	HALF_UP	0E+1|sign;precision;
+42419	46485	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	1	HALF_DOWN	0E+1|sign;precision;
+42420	46486	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	1	HALF_EVEN	0E+1|sign;precision;
+42422	46488	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	7	UP	0.02|sign;precision;
+42423	46489	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	7	DOWN	0.02|sign;precision;
+42424	46490	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	7	CEILING	0.02|sign;precision;
+42425	46491	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	7	FLOOR	0.02|sign;precision;
+42426	46492	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	7	HALF_UP	0.02|sign;precision;
+42427	46493	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	7	HALF_DOWN	0.02|sign;precision;
+42428	46494	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	7	7	HALF_EVEN	0.02|sign;precision;
+42430	46496	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	1	UP	1E+12|sign;precision;
+42431	46497	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	1	DOWN	0E+12|sign;precision;
+42432	46498	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	1	CEILING	1E+12|sign;precision;
+42433	46499	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	1	FLOOR	0E+12|sign;precision;
+42434	46500	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	1	HALF_UP	0E+12|sign;precision;
+42435	46501	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	1	HALF_DOWN	0E+12|sign;precision;
+42436	46502	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	1	HALF_EVEN	0E+12|sign;precision;
+42438	46504	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	7	UP	1E+6|sign;precision;
+42439	46505	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	7	DOWN	0E+6|sign;precision;
+42440	46506	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	7	CEILING	1E+6|sign;precision;
+42441	46507	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	7	FLOOR	0E+6|sign;precision;
+42442	46508	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	7	HALF_UP	0E+6|sign;precision;
+42443	46509	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	7	HALF_DOWN	0E+6|sign;precision;
+42444	46510	H.sqrtPrecision.metadata	H	sqrtPrecision	0.0004	30	7	HALF_EVEN	0E+6|sign;precision;
+42734	46818	H.sqrtNormalize.strip	H	sqrtNormalize	1	~	0	UP	1|sign;strip;
+42735	46819	H.sqrtNormalize.strip	H	sqrtNormalize	1	9	0	UP	3|sign;strip;
+42736	46820	H.sqrtNormalize.strip	H	sqrtNormalize	1	0	0	UP	0|sign;strip;
+42737	46821	H.sqrtNormalize.strip	H	sqrtNormalize	1	-4	0	UP	!ArithmeticException:Negative BigInteger|sign;strip;
+42738	46822	H.sqrtNormalize.strip	H	sqrtNormalize	1	0.04	0	UP	0.2|sign;strip;
+42739	46823	H.sqrtNormalize.strip	H	sqrtNormalize	1	~	0	DOWN	1|sign;strip;
+42740	46824	H.sqrtNormalize.strip	H	sqrtNormalize	1	9	0	DOWN	3|sign;strip;
+42741	46825	H.sqrtNormalize.strip	H	sqrtNormalize	1	0	0	DOWN	0|sign;strip;
+42742	46826	H.sqrtNormalize.strip	H	sqrtNormalize	1	-4	0	DOWN	!ArithmeticException:Negative BigInteger|sign;strip;
+42743	46827	H.sqrtNormalize.strip	H	sqrtNormalize	1	0.04	0	DOWN	0.2|sign;strip;
+42744	46828	H.sqrtNormalize.strip	H	sqrtNormalize	1	~	0	CEILING	1|sign;strip;
+42745	46829	H.sqrtNormalize.strip	H	sqrtNormalize	1	9	0	CEILING	3|sign;strip;
+42746	46830	H.sqrtNormalize.strip	H	sqrtNormalize	1	0	0	CEILING	0|sign;strip;
+42747	46831	H.sqrtNormalize.strip	H	sqrtNormalize	1	-4	0	CEILING	!ArithmeticException:Negative BigInteger|sign;strip;
+42748	46832	H.sqrtNormalize.strip	H	sqrtNormalize	1	0.04	0	CEILING	0.2|sign;strip;
+42749	46833	H.sqrtNormalize.strip	H	sqrtNormalize	1	~	0	FLOOR	1|sign;strip;
+42750	46837	H.sqrtNormalize.strip	H	sqrtNormalize	1	9	0	FLOOR	3|sign;strip;
+42751	46838	H.sqrtNormalize.strip	H	sqrtNormalize	1	0	0	FLOOR	0|sign;strip;
+42752	46839	H.sqrtNormalize.strip	H	sqrtNormalize	1	-4	0	FLOOR	!ArithmeticException:Negative BigInteger|sign;strip;
+42753	46840	H.sqrtNormalize.strip	H	sqrtNormalize	1	0.04	0	FLOOR	0.2|sign;strip;
+42754	46841	H.sqrtNormalize.strip	H	sqrtNormalize	1	~	0	HALF_UP	1|sign;strip;
+42755	46842	H.sqrtNormalize.strip	H	sqrtNormalize	1	9	0	HALF_UP	3|sign;strip;
+42756	46843	H.sqrtNormalize.strip	H	sqrtNormalize	1	0	0	HALF_UP	0|sign;strip;
+42757	46844	H.sqrtNormalize.strip	H	sqrtNormalize	1	-4	0	HALF_UP	!ArithmeticException:Negative BigInteger|sign;strip;
+42758	46845	H.sqrtNormalize.strip	H	sqrtNormalize	1	0.04	0	HALF_UP	0.2|sign;strip;
+42759	46846	H.sqrtNormalize.strip	H	sqrtNormalize	1	~	0	HALF_DOWN	1|sign;strip;
+42760	46847	H.sqrtNormalize.strip	H	sqrtNormalize	1	9	0	HALF_DOWN	3|sign;strip;
+42761	46848	H.sqrtNormalize.strip	H	sqrtNormalize	1	0	0	HALF_DOWN	0|sign;strip;
+42762	46849	H.sqrtNormalize.strip	H	sqrtNormalize	1	-4	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|sign;strip;
+42763	46850	H.sqrtNormalize.strip	H	sqrtNormalize	1	0.04	0	HALF_DOWN	0.2|sign;strip;
+42764	46851	H.sqrtNormalize.strip	H	sqrtNormalize	1	~	0	HALF_EVEN	1|sign;strip;
+42765	46852	H.sqrtNormalize.strip	H	sqrtNormalize	1	9	0	HALF_EVEN	3|sign;strip;
+42766	46853	H.sqrtNormalize.strip	H	sqrtNormalize	1	0	0	HALF_EVEN	0|sign;strip;
+42767	46854	H.sqrtNormalize.strip	H	sqrtNormalize	1	-4	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|sign;strip;
+42768	46855	H.sqrtNormalize.strip	H	sqrtNormalize	1	0.04	0	HALF_EVEN	0.2|sign;strip;
+42769	46856	H.sqrtNormalize.strip	H	sqrtNormalize	1	~	0	UNNECESSARY	1|sign;strip;
+42770	46857	H.sqrtNormalize.strip	H	sqrtNormalize	1	9	0	UNNECESSARY	3|sign;strip;
+42771	46858	H.sqrtNormalize.strip	H	sqrtNormalize	1	0	0	UNNECESSARY	0|sign;strip;
+42772	46859	H.sqrtNormalize.strip	H	sqrtNormalize	1	-4	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|sign;strip;
+42773	46860	H.sqrtNormalize.strip	H	sqrtNormalize	1	0.04	0	UNNECESSARY	0.2|sign;strip;
+42774	46861	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	1	UP	1|sign;precision;
+42775	46862	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	1	UP	1|sign;precision;
+42776	46863	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	1	UP	1|sign;precision;
+42777	46864	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	1	UP	1|sign;precision;
+42778	46865	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	1	UP	1|sign;precision;
+42779	46866	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	1	DOWN	1|sign;precision;
+42780	46867	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	1	DOWN	1|sign;precision;
+42781	46868	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	1	DOWN	1|sign;precision;
+42782	46869	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	1	DOWN	1|sign;precision;
+42783	46870	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	1	DOWN	1|sign;precision;
+42784	46871	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	1	CEILING	1|sign;precision;
+42785	46872	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	1	CEILING	1|sign;precision;
+42786	46873	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	1	CEILING	1|sign;precision;
+42787	46874	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	1	CEILING	1|sign;precision;
+42788	46875	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	1	CEILING	1|sign;precision;
+42789	46876	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	1	FLOOR	1|sign;precision;
+42790	46877	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	1	FLOOR	1|sign;precision;
+42791	46878	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	1	FLOOR	1|sign;precision;
+42792	46879	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	1	FLOOR	1|sign;precision;
+42793	46880	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	1	FLOOR	1|sign;precision;
+42794	46881	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	1	HALF_UP	1|sign;precision;
+42795	46882	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	1	HALF_UP	1|sign;precision;
+42796	46883	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	1	HALF_UP	1|sign;precision;
+42797	46884	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	1	HALF_UP	1|sign;precision;
+42798	46885	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	1	HALF_UP	1|sign;precision;
+42799	46886	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	1	HALF_DOWN	1|sign;precision;
+42800	46890	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	1	HALF_DOWN	1|sign;precision;
+42801	46891	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	1	HALF_DOWN	1|sign;precision;
+42802	46892	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	1	HALF_DOWN	1|sign;precision;
+42803	46893	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	1	HALF_DOWN	1|sign;precision;
+42804	46894	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	1	HALF_EVEN	1|sign;precision;
+42805	46895	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	1	HALF_EVEN	1|sign;precision;
+42806	46896	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	1	HALF_EVEN	1|sign;precision;
+42807	46897	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	1	HALF_EVEN	1|sign;precision;
+42808	46898	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	1	HALF_EVEN	1|sign;precision;
+42809	46899	H.sqrtNormalize.strip	H	sqrtNormalize	1	~	1	UNNECESSARY	1|sign;strip;
+42810	46900	H.sqrtNormalize.strip	H	sqrtNormalize	1	9	1	UNNECESSARY	3|sign;strip;
+42811	46901	H.sqrtNormalize.strip	H	sqrtNormalize	1	0	1	UNNECESSARY	0|sign;strip;
+42812	46902	H.sqrtNormalize.strip	H	sqrtNormalize	1	-4	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|sign;strip;
+42813	46903	H.sqrtNormalize.strip	H	sqrtNormalize	1	0.04	1	UNNECESSARY	0.2|sign;strip;
+42814	46904	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	7	UP	1|sign;precision;
+42815	46905	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	7	UP	1|sign;precision;
+42816	46906	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	7	UP	1|sign;precision;
+42817	46907	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	7	UP	1|sign;precision;
+42818	46908	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	7	UP	1|sign;precision;
+42819	46909	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	7	DOWN	1|sign;precision;
+42820	46910	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	7	DOWN	1|sign;precision;
+42821	46911	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	7	DOWN	1|sign;precision;
+42822	46912	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	7	DOWN	1|sign;precision;
+42823	46913	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	7	DOWN	1|sign;precision;
+42824	46914	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	7	CEILING	1|sign;precision;
+42825	46915	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	7	CEILING	1|sign;precision;
+42826	46916	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	7	CEILING	1|sign;precision;
+42827	46917	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	7	CEILING	1|sign;precision;
+42828	46918	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	7	CEILING	1|sign;precision;
+42829	46919	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	7	FLOOR	1|sign;precision;
+42830	46920	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	7	FLOOR	1|sign;precision;
+42831	46921	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	7	FLOOR	1|sign;precision;
+42832	46922	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	7	FLOOR	1|sign;precision;
+42833	46923	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	7	FLOOR	1|sign;precision;
+42834	46924	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	7	HALF_UP	1|sign;precision;
+42835	46925	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	7	HALF_UP	1|sign;precision;
+42836	46926	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	7	HALF_UP	1|sign;precision;
+42837	46927	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	7	HALF_UP	1|sign;precision;
+42838	46928	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	7	HALF_UP	1|sign;precision;
+42839	46929	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	7	HALF_DOWN	1|sign;precision;
+42840	46930	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	7	HALF_DOWN	1|sign;precision;
+42841	46931	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	7	HALF_DOWN	1|sign;precision;
+42842	46932	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	7	HALF_DOWN	1|sign;precision;
+42843	46933	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	7	HALF_DOWN	1|sign;precision;
+42844	46934	H.sqrtNormalize.precision	H	sqrtNormalize	1	~	7	HALF_EVEN	1|sign;precision;
+42845	46935	H.sqrtNormalize.precision	H	sqrtNormalize	1	9	7	HALF_EVEN	1|sign;precision;
+42846	46936	H.sqrtNormalize.precision	H	sqrtNormalize	1	0	7	HALF_EVEN	1|sign;precision;
+42847	46937	H.sqrtNormalize.precision	H	sqrtNormalize	1	-4	7	HALF_EVEN	1|sign;precision;
+42848	46938	H.sqrtNormalize.precision	H	sqrtNormalize	1	0.04	7	HALF_EVEN	1|sign;precision;
+42849	46939	H.sqrtNormalize.strip	H	sqrtNormalize	1	~	7	UNNECESSARY	1|sign;strip;
+42850	46943	H.sqrtNormalize.strip	H	sqrtNormalize	1	9	7	UNNECESSARY	3|sign;strip;
+42851	46944	H.sqrtNormalize.strip	H	sqrtNormalize	1	0	7	UNNECESSARY	0|sign;strip;
+42852	46945	H.sqrtNormalize.strip	H	sqrtNormalize	1	-4	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|sign;strip;
+42853	46946	H.sqrtNormalize.strip	H	sqrtNormalize	1	0.04	7	UNNECESSARY	0.2|sign;strip;
+42854	46947	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	~	0	UP	2.0|sign;strip;
+42855	46948	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	9	0	UP	3.0|sign;strip;
+42856	46949	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0	0	UP	0.0|sign;strip;
+42857	46950	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	-4	0	UP	!ArithmeticException:Negative BigInteger|sign;strip;
+42858	46951	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0.04	0	UP	0.2|sign;strip;
+42859	46952	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	~	0	DOWN	2.0|sign;strip;
+42860	46953	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	9	0	DOWN	3.0|sign;strip;
+42861	46954	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0	0	DOWN	0.0|sign;strip;
+42862	46955	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	-4	0	DOWN	!ArithmeticException:Negative BigInteger|sign;strip;
+42863	46956	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0.04	0	DOWN	0.2|sign;strip;
+42864	46957	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	~	0	CEILING	2.0|sign;strip;
+42865	46958	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	9	0	CEILING	3.0|sign;strip;
+42866	46959	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0	0	CEILING	0.0|sign;strip;
+42867	46960	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	-4	0	CEILING	!ArithmeticException:Negative BigInteger|sign;strip;
+42868	46961	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0.04	0	CEILING	0.2|sign;strip;
+42869	46962	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	~	0	FLOOR	2.0|sign;strip;
+42870	46963	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	9	0	FLOOR	3.0|sign;strip;
+42871	46964	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0	0	FLOOR	0.0|sign;strip;
+42872	46965	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	-4	0	FLOOR	!ArithmeticException:Negative BigInteger|sign;strip;
+42873	46966	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0.04	0	FLOOR	0.2|sign;strip;
+42874	46967	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	~	0	HALF_UP	2.0|sign;strip;
+42875	46968	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	9	0	HALF_UP	3.0|sign;strip;
+42876	46969	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0	0	HALF_UP	0.0|sign;strip;
+42877	46970	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	-4	0	HALF_UP	!ArithmeticException:Negative BigInteger|sign;strip;
+42878	46971	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0.04	0	HALF_UP	0.2|sign;strip;
+42879	46972	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	~	0	HALF_DOWN	2.0|sign;strip;
+42880	46973	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	9	0	HALF_DOWN	3.0|sign;strip;
+42881	46974	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0	0	HALF_DOWN	0.0|sign;strip;
+42882	46975	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	-4	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|sign;strip;
+42883	46976	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0.04	0	HALF_DOWN	0.2|sign;strip;
+42884	46977	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	~	0	HALF_EVEN	2.0|sign;strip;
+42885	46978	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	9	0	HALF_EVEN	3.0|sign;strip;
+42886	46979	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0	0	HALF_EVEN	0.0|sign;strip;
+42887	46980	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	-4	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|sign;strip;
+42888	46981	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0.04	0	HALF_EVEN	0.2|sign;strip;
+42889	46982	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	~	0	UNNECESSARY	2.0|sign;strip;
+42890	46983	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	9	0	UNNECESSARY	3.0|sign;strip;
+42891	46984	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0	0	UNNECESSARY	0.0|sign;strip;
+42892	46985	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	-4	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|sign;strip;
+42893	46986	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0.04	0	UNNECESSARY	0.2|sign;strip;
+42894	46987	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	1	UP	2|sign;precision;
+42895	46988	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	1	UP	2|sign;precision;
+42896	46989	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	1	UP	2|sign;precision;
+42897	46990	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	1	UP	2|sign;precision;
+42898	46991	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	1	UP	2|sign;precision;
+42899	46992	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	1	DOWN	2|sign;precision;
+42900	46996	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	1	DOWN	2|sign;precision;
+42901	46997	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	1	DOWN	2|sign;precision;
+42902	46998	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	1	DOWN	2|sign;precision;
+42903	46999	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	1	DOWN	2|sign;precision;
+42904	47000	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	1	CEILING	2|sign;precision;
+42905	47001	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	1	CEILING	2|sign;precision;
+42906	47002	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	1	CEILING	2|sign;precision;
+42907	47003	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	1	CEILING	2|sign;precision;
+42908	47004	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	1	CEILING	2|sign;precision;
+42909	47005	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	1	FLOOR	2|sign;precision;
+42910	47006	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	1	FLOOR	2|sign;precision;
+42911	47007	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	1	FLOOR	2|sign;precision;
+42912	47008	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	1	FLOOR	2|sign;precision;
+42913	47009	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	1	FLOOR	2|sign;precision;
+42914	47010	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	1	HALF_UP	2|sign;precision;
+42915	47011	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	1	HALF_UP	2|sign;precision;
+42916	47012	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	1	HALF_UP	2|sign;precision;
+42917	47013	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	1	HALF_UP	2|sign;precision;
+42918	47014	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	1	HALF_UP	2|sign;precision;
+42919	47015	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	1	HALF_DOWN	2|sign;precision;
+42920	47016	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	1	HALF_DOWN	2|sign;precision;
+42921	47017	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	1	HALF_DOWN	2|sign;precision;
+42922	47018	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	1	HALF_DOWN	2|sign;precision;
+42923	47019	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	1	HALF_DOWN	2|sign;precision;
+42924	47020	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	1	HALF_EVEN	2|sign;precision;
+42925	47021	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	1	HALF_EVEN	2|sign;precision;
+42926	47022	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	1	HALF_EVEN	2|sign;precision;
+42927	47023	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	1	HALF_EVEN	2|sign;precision;
+42928	47024	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	1	HALF_EVEN	2|sign;precision;
+42929	47025	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	~	1	UNNECESSARY	2|sign;strip;
+42930	47026	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	9	1	UNNECESSARY	3|sign;strip;
+42931	47027	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0	1	UNNECESSARY	0|sign;strip;
+42932	47028	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	-4	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|sign;strip;
+42933	47029	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0.04	1	UNNECESSARY	0.2|sign;strip;
+42934	47030	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	7	UP	2.0|sign;precision;
+42935	47031	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	7	UP	2.0|sign;precision;
+42936	47032	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	7	UP	2.0|sign;precision;
+42937	47033	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	7	UP	2.0|sign;precision;
+42938	47034	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	7	UP	2.0|sign;precision;
+42939	47035	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	7	DOWN	2.0|sign;precision;
+42940	47036	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	7	DOWN	2.0|sign;precision;
+42941	47037	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	7	DOWN	2.0|sign;precision;
+42942	47038	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	7	DOWN	2.0|sign;precision;
+42943	47039	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	7	DOWN	2.0|sign;precision;
+42944	47040	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	7	CEILING	2.0|sign;precision;
+42945	47041	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	7	CEILING	2.0|sign;precision;
+42946	47042	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	7	CEILING	2.0|sign;precision;
+42947	47043	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	7	CEILING	2.0|sign;precision;
+42948	47044	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	7	CEILING	2.0|sign;precision;
+42949	47045	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	7	FLOOR	2.0|sign;precision;
+42950	47049	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	7	FLOOR	2.0|sign;precision;
+42951	47050	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	7	FLOOR	2.0|sign;precision;
+42952	47051	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	7	FLOOR	2.0|sign;precision;
+42953	47052	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	7	FLOOR	2.0|sign;precision;
+42954	47053	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	7	HALF_UP	2.0|sign;precision;
+42955	47054	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	7	HALF_UP	2.0|sign;precision;
+42956	47055	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	7	HALF_UP	2.0|sign;precision;
+42957	47056	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	7	HALF_UP	2.0|sign;precision;
+42958	47057	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	7	HALF_UP	2.0|sign;precision;
+42959	47058	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	7	HALF_DOWN	2.0|sign;precision;
+42960	47059	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	7	HALF_DOWN	2.0|sign;precision;
+42961	47060	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	7	HALF_DOWN	2.0|sign;precision;
+42962	47061	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	7	HALF_DOWN	2.0|sign;precision;
+42963	47062	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	7	HALF_DOWN	2.0|sign;precision;
+42964	47063	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	~	7	HALF_EVEN	2.0|sign;precision;
+42965	47064	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	9	7	HALF_EVEN	2.0|sign;precision;
+42966	47065	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0	7	HALF_EVEN	2.0|sign;precision;
+42967	47066	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	-4	7	HALF_EVEN	2.0|sign;precision;
+42968	47067	H.sqrtNormalize.precision	H	sqrtNormalize	4.00	0.04	7	HALF_EVEN	2.0|sign;precision;
+42969	47068	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	~	7	UNNECESSARY	2.0|sign;strip;
+42970	47069	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	9	7	UNNECESSARY	3.0|sign;strip;
+42971	47070	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0	7	UNNECESSARY	0.0|sign;strip;
+42972	47071	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	-4	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|sign;strip;
+42973	47072	H.sqrtNormalize.strip	H	sqrtNormalize	4.00	0.04	7	UNNECESSARY	0.2|sign;strip;
+43094	47199	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	~	0	UP	0.02|sign;strip;
+43095	47200	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	9	0	UP	3.00|sign;strip;
+43096	47201	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0	0	UP	0.00|sign;strip;
+43097	47202	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	-4	0	UP	!ArithmeticException:Negative BigInteger|sign;strip;
+43098	47203	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0.04	0	UP	0.20|sign;strip;
+43099	47204	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	~	0	DOWN	0.02|sign;strip;
+43100	47208	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	9	0	DOWN	3.00|sign;strip;
+43101	47209	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0	0	DOWN	0.00|sign;strip;
+43102	47210	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	-4	0	DOWN	!ArithmeticException:Negative BigInteger|sign;strip;
+43103	47211	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0.04	0	DOWN	0.20|sign;strip;
+43104	47212	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	~	0	CEILING	0.02|sign;strip;
+43105	47213	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	9	0	CEILING	3.00|sign;strip;
+43106	47214	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0	0	CEILING	0.00|sign;strip;
+43107	47215	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	-4	0	CEILING	!ArithmeticException:Negative BigInteger|sign;strip;
+43108	47216	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0.04	0	CEILING	0.20|sign;strip;
+43109	47217	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	~	0	FLOOR	0.02|sign;strip;
+43110	47218	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	9	0	FLOOR	3.00|sign;strip;
+43111	47219	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0	0	FLOOR	0.00|sign;strip;
+43112	47220	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	-4	0	FLOOR	!ArithmeticException:Negative BigInteger|sign;strip;
+43113	47221	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0.04	0	FLOOR	0.20|sign;strip;
+43114	47222	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	~	0	HALF_UP	0.02|sign;strip;
+43115	47223	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	9	0	HALF_UP	3.00|sign;strip;
+43116	47224	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0	0	HALF_UP	0.00|sign;strip;
+43117	47225	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	-4	0	HALF_UP	!ArithmeticException:Negative BigInteger|sign;strip;
+43118	47226	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0.04	0	HALF_UP	0.20|sign;strip;
+43119	47227	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	~	0	HALF_DOWN	0.02|sign;strip;
+43120	47228	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	9	0	HALF_DOWN	3.00|sign;strip;
+43121	47229	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0	0	HALF_DOWN	0.00|sign;strip;
+43122	47230	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	-4	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|sign;strip;
+43123	47231	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0.04	0	HALF_DOWN	0.20|sign;strip;
+43124	47232	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	~	0	HALF_EVEN	0.02|sign;strip;
+43125	47233	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	9	0	HALF_EVEN	3.00|sign;strip;
+43126	47234	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0	0	HALF_EVEN	0.00|sign;strip;
+43127	47235	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	-4	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|sign;strip;
+43128	47236	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0.04	0	HALF_EVEN	0.20|sign;strip;
+43129	47237	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	~	0	UNNECESSARY	0.02|sign;strip;
+43130	47238	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	9	0	UNNECESSARY	3.00|sign;strip;
+43131	47239	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0	0	UNNECESSARY	0.00|sign;strip;
+43132	47240	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	-4	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|sign;strip;
+43133	47241	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0.04	0	UNNECESSARY	0.20|sign;strip;
+43134	47242	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	1	UP	0.02|sign;precision;
+43135	47243	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	1	UP	0.02|sign;precision;
+43136	47244	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	1	UP	0.02|sign;precision;
+43137	47245	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	1	UP	0.02|sign;precision;
+43138	47246	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	1	UP	0.02|sign;precision;
+43139	47247	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	1	DOWN	0.02|sign;precision;
+43140	47248	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	1	DOWN	0.02|sign;precision;
+43141	47249	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	1	DOWN	0.02|sign;precision;
+43142	47250	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	1	DOWN	0.02|sign;precision;
+43143	47251	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	1	DOWN	0.02|sign;precision;
+43144	47252	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	1	CEILING	0.02|sign;precision;
+43145	47253	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	1	CEILING	0.02|sign;precision;
+43146	47254	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	1	CEILING	0.02|sign;precision;
+43147	47255	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	1	CEILING	0.02|sign;precision;
+43148	47256	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	1	CEILING	0.02|sign;precision;
+43149	47257	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	1	FLOOR	0.02|sign;precision;
+43150	47261	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	1	FLOOR	0.02|sign;precision;
+43151	47262	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	1	FLOOR	0.02|sign;precision;
+43152	47263	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	1	FLOOR	0.02|sign;precision;
+43153	47264	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	1	FLOOR	0.02|sign;precision;
+43154	47265	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	1	HALF_UP	0.02|sign;precision;
+43155	47266	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	1	HALF_UP	0.02|sign;precision;
+43156	47267	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	1	HALF_UP	0.02|sign;precision;
+43157	47268	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	1	HALF_UP	0.02|sign;precision;
+43158	47269	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	1	HALF_UP	0.02|sign;precision;
+43159	47270	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	1	HALF_DOWN	0.02|sign;precision;
+43160	47271	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	1	HALF_DOWN	0.02|sign;precision;
+43161	47272	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	1	HALF_DOWN	0.02|sign;precision;
+43162	47273	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	1	HALF_DOWN	0.02|sign;precision;
+43163	47274	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	1	HALF_DOWN	0.02|sign;precision;
+43164	47275	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	1	HALF_EVEN	0.02|sign;precision;
+43165	47276	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	1	HALF_EVEN	0.02|sign;precision;
+43166	47277	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	1	HALF_EVEN	0.02|sign;precision;
+43167	47278	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	1	HALF_EVEN	0.02|sign;precision;
+43168	47279	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	1	HALF_EVEN	0.02|sign;precision;
+43169	47280	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	~	1	UNNECESSARY	0.02|sign;strip;
+43170	47281	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	9	1	UNNECESSARY	3|sign;strip;
+43171	47282	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0	1	UNNECESSARY	0|sign;strip;
+43172	47283	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	-4	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|sign;strip;
+43173	47284	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0.04	1	UNNECESSARY	0.2|sign;strip;
+43174	47285	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	7	UP	0.02|sign;precision;
+43175	47286	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	7	UP	0.02|sign;precision;
+43176	47287	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	7	UP	0.02|sign;precision;
+43177	47288	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	7	UP	0.02|sign;precision;
+43178	47289	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	7	UP	0.02|sign;precision;
+43179	47290	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	7	DOWN	0.02|sign;precision;
+43180	47291	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	7	DOWN	0.02|sign;precision;
+43181	47292	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	7	DOWN	0.02|sign;precision;
+43182	47293	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	7	DOWN	0.02|sign;precision;
+43183	47294	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	7	DOWN	0.02|sign;precision;
+43184	47295	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	7	CEILING	0.02|sign;precision;
+43185	47296	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	7	CEILING	0.02|sign;precision;
+43186	47297	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	7	CEILING	0.02|sign;precision;
+43187	47298	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	7	CEILING	0.02|sign;precision;
+43188	47299	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	7	CEILING	0.02|sign;precision;
+43189	47300	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	7	FLOOR	0.02|sign;precision;
+43190	47301	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	7	FLOOR	0.02|sign;precision;
+43191	47302	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	7	FLOOR	0.02|sign;precision;
+43192	47303	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	7	FLOOR	0.02|sign;precision;
+43193	47304	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	7	FLOOR	0.02|sign;precision;
+43194	47305	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	7	HALF_UP	0.02|sign;precision;
+43195	47306	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	7	HALF_UP	0.02|sign;precision;
+43196	47307	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	7	HALF_UP	0.02|sign;precision;
+43197	47308	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	7	HALF_UP	0.02|sign;precision;
+43198	47309	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	7	HALF_UP	0.02|sign;precision;
+43199	47310	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	7	HALF_DOWN	0.02|sign;precision;
+43200	47314	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	7	HALF_DOWN	0.02|sign;precision;
+43201	47315	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	7	HALF_DOWN	0.02|sign;precision;
+43202	47316	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	7	HALF_DOWN	0.02|sign;precision;
+43203	47317	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	7	HALF_DOWN	0.02|sign;precision;
+43204	47318	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	~	7	HALF_EVEN	0.02|sign;precision;
+43205	47319	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	9	7	HALF_EVEN	0.02|sign;precision;
+43206	47320	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0	7	HALF_EVEN	0.02|sign;precision;
+43207	47321	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	-4	7	HALF_EVEN	0.02|sign;precision;
+43208	47322	H.sqrtNormalize.precision	H	sqrtNormalize	0.0004	0.04	7	HALF_EVEN	0.02|sign;precision;
+43209	47323	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	~	7	UNNECESSARY	0.02|sign;strip;
+43210	47324	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	9	7	UNNECESSARY	3.00|sign;strip;
+43211	47325	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0	7	UNNECESSARY	0.00|sign;strip;
+43212	47326	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	-4	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|sign;strip;
+43213	47327	H.sqrtNormalize.strip	H	sqrtNormalize	0.0004	0.04	7	UNNECESSARY	0.20|sign;strip;
+43334	47454	N.normalized-replacement-getter	N	normalizedRoot	9	~	0	UP	3.0|unscaled;unscaled;
+43335	47455	N.normalized-replacement-getter	N	normalizedRoot	9	1	0	UP	1.0|unscaled;
+43336	47456	N.normalized-replacement-getter	N	normalizedRoot	9	0	0	UP	3.0|unscaled;unscaled;
+43337	47457	N.normalized-replacement-getter	N	normalizedRoot	9	4	0	UP	3.0|unscaled;unscaled;
+43338	47458	N.normalized-replacement-getter	N	normalizedRoot	9	2	0	UP	3.0|unscaled;unscaled;
+43339	47459	N.normalized-replacement-getter	N	normalizedRoot	9	-4	0	UP	3.0|unscaled;unscaled;
+43340	47460	N.normalized-replacement-getter	N	normalizedRoot	9	throw	0	UP	!IllegalStateException:first coefficient|unscaled;
+43341	47461	N.normalized-replacement-getter	N	normalizedRoot	9	~	0	DOWN	3.0|unscaled;unscaled;
+43342	47462	N.normalized-replacement-getter	N	normalizedRoot	9	1	0	DOWN	1.0|unscaled;
+43343	47463	N.normalized-replacement-getter	N	normalizedRoot	9	0	0	DOWN	3.0|unscaled;unscaled;
+43344	47464	N.normalized-replacement-getter	N	normalizedRoot	9	4	0	DOWN	3.0|unscaled;unscaled;
+43345	47465	N.normalized-replacement-getter	N	normalizedRoot	9	2	0	DOWN	3.0|unscaled;unscaled;
+43346	47466	N.normalized-replacement-getter	N	normalizedRoot	9	-4	0	DOWN	3.0|unscaled;unscaled;
+43347	47467	N.normalized-replacement-getter	N	normalizedRoot	9	throw	0	DOWN	!IllegalStateException:first coefficient|unscaled;
+43348	47468	N.normalized-replacement-getter	N	normalizedRoot	9	~	0	CEILING	3.0|unscaled;unscaled;
+43349	47469	N.normalized-replacement-getter	N	normalizedRoot	9	1	0	CEILING	1.0|unscaled;
+43350	47473	N.normalized-replacement-getter	N	normalizedRoot	9	0	0	CEILING	3.0|unscaled;unscaled;
+43351	47474	N.normalized-replacement-getter	N	normalizedRoot	9	4	0	CEILING	3.0|unscaled;unscaled;
+43352	47475	N.normalized-replacement-getter	N	normalizedRoot	9	2	0	CEILING	3.0|unscaled;unscaled;
+43353	47476	N.normalized-replacement-getter	N	normalizedRoot	9	-4	0	CEILING	3.0|unscaled;unscaled;
+43354	47477	N.normalized-replacement-getter	N	normalizedRoot	9	throw	0	CEILING	!IllegalStateException:first coefficient|unscaled;
+43355	47478	N.normalized-replacement-getter	N	normalizedRoot	9	~	0	FLOOR	3.0|unscaled;unscaled;
+43356	47479	N.normalized-replacement-getter	N	normalizedRoot	9	1	0	FLOOR	1.0|unscaled;
+43357	47480	N.normalized-replacement-getter	N	normalizedRoot	9	0	0	FLOOR	3.0|unscaled;unscaled;
+43358	47481	N.normalized-replacement-getter	N	normalizedRoot	9	4	0	FLOOR	3.0|unscaled;unscaled;
+43359	47482	N.normalized-replacement-getter	N	normalizedRoot	9	2	0	FLOOR	3.0|unscaled;unscaled;
+43360	47483	N.normalized-replacement-getter	N	normalizedRoot	9	-4	0	FLOOR	3.0|unscaled;unscaled;
+43361	47484	N.normalized-replacement-getter	N	normalizedRoot	9	throw	0	FLOOR	!IllegalStateException:first coefficient|unscaled;
+43362	47485	N.normalized-replacement-getter	N	normalizedRoot	9	~	0	HALF_UP	3.0|unscaled;unscaled;
+43363	47486	N.normalized-replacement-getter	N	normalizedRoot	9	1	0	HALF_UP	1.0|unscaled;
+43364	47487	N.normalized-replacement-getter	N	normalizedRoot	9	0	0	HALF_UP	3.0|unscaled;unscaled;
+43365	47488	N.normalized-replacement-getter	N	normalizedRoot	9	4	0	HALF_UP	3.0|unscaled;unscaled;
+43366	47489	N.normalized-replacement-getter	N	normalizedRoot	9	2	0	HALF_UP	3.0|unscaled;unscaled;
+43367	47490	N.normalized-replacement-getter	N	normalizedRoot	9	-4	0	HALF_UP	3.0|unscaled;unscaled;
+43368	47491	N.normalized-replacement-getter	N	normalizedRoot	9	throw	0	HALF_UP	!IllegalStateException:first coefficient|unscaled;
+43369	47492	N.normalized-replacement-getter	N	normalizedRoot	9	~	0	HALF_DOWN	3.0|unscaled;unscaled;
+43370	47493	N.normalized-replacement-getter	N	normalizedRoot	9	1	0	HALF_DOWN	1.0|unscaled;
+43371	47494	N.normalized-replacement-getter	N	normalizedRoot	9	0	0	HALF_DOWN	3.0|unscaled;unscaled;
+43372	47495	N.normalized-replacement-getter	N	normalizedRoot	9	4	0	HALF_DOWN	3.0|unscaled;unscaled;
+43373	47496	N.normalized-replacement-getter	N	normalizedRoot	9	2	0	HALF_DOWN	3.0|unscaled;unscaled;
+43374	47497	N.normalized-replacement-getter	N	normalizedRoot	9	-4	0	HALF_DOWN	3.0|unscaled;unscaled;
+43375	47498	N.normalized-replacement-getter	N	normalizedRoot	9	throw	0	HALF_DOWN	!IllegalStateException:first coefficient|unscaled;
+43376	47499	N.normalized-replacement-getter	N	normalizedRoot	9	~	0	HALF_EVEN	3.0|unscaled;unscaled;
+43377	47500	N.normalized-replacement-getter	N	normalizedRoot	9	1	0	HALF_EVEN	1.0|unscaled;
+43378	47501	N.normalized-replacement-getter	N	normalizedRoot	9	0	0	HALF_EVEN	3.0|unscaled;unscaled;
+43379	47502	N.normalized-replacement-getter	N	normalizedRoot	9	4	0	HALF_EVEN	3.0|unscaled;unscaled;
+43380	47503	N.normalized-replacement-getter	N	normalizedRoot	9	2	0	HALF_EVEN	3.0|unscaled;unscaled;
+43381	47504	N.normalized-replacement-getter	N	normalizedRoot	9	-4	0	HALF_EVEN	3.0|unscaled;unscaled;
+43382	47505	N.normalized-replacement-getter	N	normalizedRoot	9	throw	0	HALF_EVEN	!IllegalStateException:first coefficient|unscaled;
+43383	47506	N.normalized-replacement-getter	N	normalizedRoot	9	~	0	UNNECESSARY	3.0|unscaled;unscaled;
+43384	47507	N.normalized-replacement-getter	N	normalizedRoot	9	1	0	UNNECESSARY	1.0|unscaled;
+43385	47508	N.normalized-replacement-getter	N	normalizedRoot	9	0	0	UNNECESSARY	3.0|unscaled;unscaled;
+43386	47509	N.normalized-replacement-getter	N	normalizedRoot	9	4	0	UNNECESSARY	3.0|unscaled;unscaled;
+43387	47510	N.normalized-replacement-getter	N	normalizedRoot	9	2	0	UNNECESSARY	3.0|unscaled;unscaled;
+43388	47511	N.normalized-replacement-getter	N	normalizedRoot	9	-4	0	UNNECESSARY	3.0|unscaled;unscaled;
+43389	47512	N.normalized-replacement-getter	N	normalizedRoot	9	throw	0	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+43439	47565	N.normalized-replacement-getter	N	normalizedRoot	9	~	1	UNNECESSARY	3|unscaled;unscaled;
+43440	47566	N.normalized-replacement-getter	N	normalizedRoot	9	1	1	UNNECESSARY	1|unscaled;
+43441	47567	N.normalized-replacement-getter	N	normalizedRoot	9	0	1	UNNECESSARY	3|unscaled;unscaled;
+43442	47568	N.normalized-replacement-getter	N	normalizedRoot	9	4	1	UNNECESSARY	3|unscaled;unscaled;
+43443	47569	N.normalized-replacement-getter	N	normalizedRoot	9	2	1	UNNECESSARY	3|unscaled;unscaled;
+43444	47570	N.normalized-replacement-getter	N	normalizedRoot	9	-4	1	UNNECESSARY	3|unscaled;unscaled;
+43445	47571	N.normalized-replacement-getter	N	normalizedRoot	9	throw	1	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+43495	47624	N.normalized-replacement-getter	N	normalizedRoot	9	~	7	UNNECESSARY	3.0|unscaled;unscaled;
+43496	47625	N.normalized-replacement-getter	N	normalizedRoot	9	1	7	UNNECESSARY	1.0|unscaled;
+43497	47626	N.normalized-replacement-getter	N	normalizedRoot	9	0	7	UNNECESSARY	3.0|unscaled;unscaled;
+43498	47627	N.normalized-replacement-getter	N	normalizedRoot	9	4	7	UNNECESSARY	3.0|unscaled;unscaled;
+43499	47628	N.normalized-replacement-getter	N	normalizedRoot	9	2	7	UNNECESSARY	3.0|unscaled;unscaled;
+43500	47632	N.normalized-replacement-getter	N	normalizedRoot	9	-4	7	UNNECESSARY	3.0|unscaled;unscaled;
+43501	47633	N.normalized-replacement-getter	N	normalizedRoot	9	throw	7	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+43502	47634	N.normalized-replacement-getter	N	normalizedRoot	0.04	~	0	UP	0.2|unscaled;unscaled;
+43503	47635	N.normalized-replacement-getter	N	normalizedRoot	0.04	1	0	UP	0.1|unscaled;
+43504	47636	N.normalized-replacement-getter	N	normalizedRoot	0.04	0	0	UP	0.2|unscaled;unscaled;
+43505	47637	N.normalized-replacement-getter	N	normalizedRoot	0.04	4	0	UP	0.2|unscaled;unscaled;
+43506	47638	N.normalized-replacement-getter	N	normalizedRoot	0.04	2	0	UP	0.2|unscaled;unscaled;
+43507	47639	N.normalized-replacement-getter	N	normalizedRoot	0.04	-4	0	UP	0.2|unscaled;unscaled;
+43508	47640	N.normalized-replacement-getter	N	normalizedRoot	0.04	throw	0	UP	!IllegalStateException:first coefficient|unscaled;
+43509	47641	N.normalized-replacement-getter	N	normalizedRoot	0.04	~	0	DOWN	0.2|unscaled;unscaled;
+43510	47642	N.normalized-replacement-getter	N	normalizedRoot	0.04	1	0	DOWN	0.1|unscaled;
+43511	47643	N.normalized-replacement-getter	N	normalizedRoot	0.04	0	0	DOWN	0.2|unscaled;unscaled;
+43512	47644	N.normalized-replacement-getter	N	normalizedRoot	0.04	4	0	DOWN	0.2|unscaled;unscaled;
+43513	47645	N.normalized-replacement-getter	N	normalizedRoot	0.04	2	0	DOWN	0.2|unscaled;unscaled;
+43514	47646	N.normalized-replacement-getter	N	normalizedRoot	0.04	-4	0	DOWN	0.2|unscaled;unscaled;
+43515	47647	N.normalized-replacement-getter	N	normalizedRoot	0.04	throw	0	DOWN	!IllegalStateException:first coefficient|unscaled;
+43516	47648	N.normalized-replacement-getter	N	normalizedRoot	0.04	~	0	CEILING	0.2|unscaled;unscaled;
+43517	47649	N.normalized-replacement-getter	N	normalizedRoot	0.04	1	0	CEILING	0.1|unscaled;
+43518	47650	N.normalized-replacement-getter	N	normalizedRoot	0.04	0	0	CEILING	0.2|unscaled;unscaled;
+43519	47651	N.normalized-replacement-getter	N	normalizedRoot	0.04	4	0	CEILING	0.2|unscaled;unscaled;
+43520	47652	N.normalized-replacement-getter	N	normalizedRoot	0.04	2	0	CEILING	0.2|unscaled;unscaled;
+43521	47653	N.normalized-replacement-getter	N	normalizedRoot	0.04	-4	0	CEILING	0.2|unscaled;unscaled;
+43522	47654	N.normalized-replacement-getter	N	normalizedRoot	0.04	throw	0	CEILING	!IllegalStateException:first coefficient|unscaled;
+43523	47655	N.normalized-replacement-getter	N	normalizedRoot	0.04	~	0	FLOOR	0.2|unscaled;unscaled;
+43524	47656	N.normalized-replacement-getter	N	normalizedRoot	0.04	1	0	FLOOR	0.1|unscaled;
+43525	47657	N.normalized-replacement-getter	N	normalizedRoot	0.04	0	0	FLOOR	0.2|unscaled;unscaled;
+43526	47658	N.normalized-replacement-getter	N	normalizedRoot	0.04	4	0	FLOOR	0.2|unscaled;unscaled;
+43527	47659	N.normalized-replacement-getter	N	normalizedRoot	0.04	2	0	FLOOR	0.2|unscaled;unscaled;
+43528	47660	N.normalized-replacement-getter	N	normalizedRoot	0.04	-4	0	FLOOR	0.2|unscaled;unscaled;
+43529	47661	N.normalized-replacement-getter	N	normalizedRoot	0.04	throw	0	FLOOR	!IllegalStateException:first coefficient|unscaled;
+43530	47662	N.normalized-replacement-getter	N	normalizedRoot	0.04	~	0	HALF_UP	0.2|unscaled;unscaled;
+43531	47663	N.normalized-replacement-getter	N	normalizedRoot	0.04	1	0	HALF_UP	0.1|unscaled;
+43532	47664	N.normalized-replacement-getter	N	normalizedRoot	0.04	0	0	HALF_UP	0.2|unscaled;unscaled;
+43533	47665	N.normalized-replacement-getter	N	normalizedRoot	0.04	4	0	HALF_UP	0.2|unscaled;unscaled;
+43534	47666	N.normalized-replacement-getter	N	normalizedRoot	0.04	2	0	HALF_UP	0.2|unscaled;unscaled;
+43535	47667	N.normalized-replacement-getter	N	normalizedRoot	0.04	-4	0	HALF_UP	0.2|unscaled;unscaled;
+43536	47668	N.normalized-replacement-getter	N	normalizedRoot	0.04	throw	0	HALF_UP	!IllegalStateException:first coefficient|unscaled;
+43537	47669	N.normalized-replacement-getter	N	normalizedRoot	0.04	~	0	HALF_DOWN	0.2|unscaled;unscaled;
+43538	47670	N.normalized-replacement-getter	N	normalizedRoot	0.04	1	0	HALF_DOWN	0.1|unscaled;
+43539	47671	N.normalized-replacement-getter	N	normalizedRoot	0.04	0	0	HALF_DOWN	0.2|unscaled;unscaled;
+43540	47672	N.normalized-replacement-getter	N	normalizedRoot	0.04	4	0	HALF_DOWN	0.2|unscaled;unscaled;
+43541	47673	N.normalized-replacement-getter	N	normalizedRoot	0.04	2	0	HALF_DOWN	0.2|unscaled;unscaled;
+43542	47674	N.normalized-replacement-getter	N	normalizedRoot	0.04	-4	0	HALF_DOWN	0.2|unscaled;unscaled;
+43543	47675	N.normalized-replacement-getter	N	normalizedRoot	0.04	throw	0	HALF_DOWN	!IllegalStateException:first coefficient|unscaled;
+43544	47676	N.normalized-replacement-getter	N	normalizedRoot	0.04	~	0	HALF_EVEN	0.2|unscaled;unscaled;
+43545	47677	N.normalized-replacement-getter	N	normalizedRoot	0.04	1	0	HALF_EVEN	0.1|unscaled;
+43546	47678	N.normalized-replacement-getter	N	normalizedRoot	0.04	0	0	HALF_EVEN	0.2|unscaled;unscaled;
+43547	47679	N.normalized-replacement-getter	N	normalizedRoot	0.04	4	0	HALF_EVEN	0.2|unscaled;unscaled;
+43548	47680	N.normalized-replacement-getter	N	normalizedRoot	0.04	2	0	HALF_EVEN	0.2|unscaled;unscaled;
+43549	47681	N.normalized-replacement-getter	N	normalizedRoot	0.04	-4	0	HALF_EVEN	0.2|unscaled;unscaled;
+43550	47685	N.normalized-replacement-getter	N	normalizedRoot	0.04	throw	0	HALF_EVEN	!IllegalStateException:first coefficient|unscaled;
+43551	47686	N.normalized-replacement-getter	N	normalizedRoot	0.04	~	0	UNNECESSARY	0.2|unscaled;unscaled;
+43552	47687	N.normalized-replacement-getter	N	normalizedRoot	0.04	1	0	UNNECESSARY	0.1|unscaled;
+43553	47688	N.normalized-replacement-getter	N	normalizedRoot	0.04	0	0	UNNECESSARY	0.2|unscaled;unscaled;
+43554	47689	N.normalized-replacement-getter	N	normalizedRoot	0.04	4	0	UNNECESSARY	0.2|unscaled;unscaled;
+43555	47690	N.normalized-replacement-getter	N	normalizedRoot	0.04	2	0	UNNECESSARY	0.2|unscaled;unscaled;
+43556	47691	N.normalized-replacement-getter	N	normalizedRoot	0.04	-4	0	UNNECESSARY	0.2|unscaled;unscaled;
+43557	47692	N.normalized-replacement-getter	N	normalizedRoot	0.04	throw	0	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+43607	47745	N.normalized-replacement-getter	N	normalizedRoot	0.04	~	1	UNNECESSARY	0.2|unscaled;unscaled;
+43608	47746	N.normalized-replacement-getter	N	normalizedRoot	0.04	1	1	UNNECESSARY	0.1|unscaled;
+43609	47747	N.normalized-replacement-getter	N	normalizedRoot	0.04	0	1	UNNECESSARY	0.2|unscaled;unscaled;
+43610	47748	N.normalized-replacement-getter	N	normalizedRoot	0.04	4	1	UNNECESSARY	0.2|unscaled;unscaled;
+43611	47749	N.normalized-replacement-getter	N	normalizedRoot	0.04	2	1	UNNECESSARY	0.2|unscaled;unscaled;
+43612	47750	N.normalized-replacement-getter	N	normalizedRoot	0.04	-4	1	UNNECESSARY	0.2|unscaled;unscaled;
+43613	47751	N.normalized-replacement-getter	N	normalizedRoot	0.04	throw	1	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+43663	47804	N.normalized-replacement-getter	N	normalizedRoot	0.04	~	7	UNNECESSARY	0.2|unscaled;unscaled;
+43664	47805	N.normalized-replacement-getter	N	normalizedRoot	0.04	1	7	UNNECESSARY	0.1|unscaled;
+43665	47806	N.normalized-replacement-getter	N	normalizedRoot	0.04	0	7	UNNECESSARY	0.2|unscaled;unscaled;
+43666	47807	N.normalized-replacement-getter	N	normalizedRoot	0.04	4	7	UNNECESSARY	0.2|unscaled;unscaled;
+43667	47808	N.normalized-replacement-getter	N	normalizedRoot	0.04	2	7	UNNECESSARY	0.2|unscaled;unscaled;
+43668	47809	N.normalized-replacement-getter	N	normalizedRoot	0.04	-4	7	UNNECESSARY	0.2|unscaled;unscaled;
+43669	47810	N.normalized-replacement-getter	N	normalizedRoot	0.04	throw	7	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+43670	47811	N.normalized-replacement-getter	N	normalizedRoot	4.00	~	0	UP	2.0|unscaled;unscaled;
+43671	47812	N.normalized-replacement-getter	N	normalizedRoot	4.00	1	0	UP	0.1|unscaled;
+43672	47813	N.normalized-replacement-getter	N	normalizedRoot	4.00	0	0	UP	2.0|unscaled;unscaled;
+43673	47814	N.normalized-replacement-getter	N	normalizedRoot	4.00	4	0	UP	2.0|unscaled;unscaled;
+43674	47815	N.normalized-replacement-getter	N	normalizedRoot	4.00	2	0	UP	2.0|unscaled;unscaled;
+43675	47816	N.normalized-replacement-getter	N	normalizedRoot	4.00	-4	0	UP	2.0|unscaled;unscaled;
+43676	47817	N.normalized-replacement-getter	N	normalizedRoot	4.00	throw	0	UP	!IllegalStateException:first coefficient|unscaled;
+43677	47818	N.normalized-replacement-getter	N	normalizedRoot	4.00	~	0	DOWN	2.0|unscaled;unscaled;
+43678	47819	N.normalized-replacement-getter	N	normalizedRoot	4.00	1	0	DOWN	0.1|unscaled;
+43679	47820	N.normalized-replacement-getter	N	normalizedRoot	4.00	0	0	DOWN	2.0|unscaled;unscaled;
+43680	47821	N.normalized-replacement-getter	N	normalizedRoot	4.00	4	0	DOWN	2.0|unscaled;unscaled;
+43681	47822	N.normalized-replacement-getter	N	normalizedRoot	4.00	2	0	DOWN	2.0|unscaled;unscaled;
+43682	47823	N.normalized-replacement-getter	N	normalizedRoot	4.00	-4	0	DOWN	2.0|unscaled;unscaled;
+43683	47824	N.normalized-replacement-getter	N	normalizedRoot	4.00	throw	0	DOWN	!IllegalStateException:first coefficient|unscaled;
+43684	47825	N.normalized-replacement-getter	N	normalizedRoot	4.00	~	0	CEILING	2.0|unscaled;unscaled;
+43685	47826	N.normalized-replacement-getter	N	normalizedRoot	4.00	1	0	CEILING	0.1|unscaled;
+43686	47827	N.normalized-replacement-getter	N	normalizedRoot	4.00	0	0	CEILING	2.0|unscaled;unscaled;
+43687	47828	N.normalized-replacement-getter	N	normalizedRoot	4.00	4	0	CEILING	2.0|unscaled;unscaled;
+43688	47829	N.normalized-replacement-getter	N	normalizedRoot	4.00	2	0	CEILING	2.0|unscaled;unscaled;
+43689	47830	N.normalized-replacement-getter	N	normalizedRoot	4.00	-4	0	CEILING	2.0|unscaled;unscaled;
+43690	47831	N.normalized-replacement-getter	N	normalizedRoot	4.00	throw	0	CEILING	!IllegalStateException:first coefficient|unscaled;
+43691	47832	N.normalized-replacement-getter	N	normalizedRoot	4.00	~	0	FLOOR	2.0|unscaled;unscaled;
+43692	47833	N.normalized-replacement-getter	N	normalizedRoot	4.00	1	0	FLOOR	0.1|unscaled;
+43693	47834	N.normalized-replacement-getter	N	normalizedRoot	4.00	0	0	FLOOR	2.0|unscaled;unscaled;
+43694	47835	N.normalized-replacement-getter	N	normalizedRoot	4.00	4	0	FLOOR	2.0|unscaled;unscaled;
+43695	47836	N.normalized-replacement-getter	N	normalizedRoot	4.00	2	0	FLOOR	2.0|unscaled;unscaled;
+43696	47837	N.normalized-replacement-getter	N	normalizedRoot	4.00	-4	0	FLOOR	2.0|unscaled;unscaled;
+43697	47838	N.normalized-replacement-getter	N	normalizedRoot	4.00	throw	0	FLOOR	!IllegalStateException:first coefficient|unscaled;
+43698	47839	N.normalized-replacement-getter	N	normalizedRoot	4.00	~	0	HALF_UP	2.0|unscaled;unscaled;
+43699	47840	N.normalized-replacement-getter	N	normalizedRoot	4.00	1	0	HALF_UP	0.1|unscaled;
+43700	47844	N.normalized-replacement-getter	N	normalizedRoot	4.00	0	0	HALF_UP	2.0|unscaled;unscaled;
+43701	47845	N.normalized-replacement-getter	N	normalizedRoot	4.00	4	0	HALF_UP	2.0|unscaled;unscaled;
+43702	47846	N.normalized-replacement-getter	N	normalizedRoot	4.00	2	0	HALF_UP	2.0|unscaled;unscaled;
+43703	47847	N.normalized-replacement-getter	N	normalizedRoot	4.00	-4	0	HALF_UP	2.0|unscaled;unscaled;
+43704	47848	N.normalized-replacement-getter	N	normalizedRoot	4.00	throw	0	HALF_UP	!IllegalStateException:first coefficient|unscaled;
+43705	47849	N.normalized-replacement-getter	N	normalizedRoot	4.00	~	0	HALF_DOWN	2.0|unscaled;unscaled;
+43706	47850	N.normalized-replacement-getter	N	normalizedRoot	4.00	1	0	HALF_DOWN	0.1|unscaled;
+43707	47851	N.normalized-replacement-getter	N	normalizedRoot	4.00	0	0	HALF_DOWN	2.0|unscaled;unscaled;
+43708	47852	N.normalized-replacement-getter	N	normalizedRoot	4.00	4	0	HALF_DOWN	2.0|unscaled;unscaled;
+43709	47853	N.normalized-replacement-getter	N	normalizedRoot	4.00	2	0	HALF_DOWN	2.0|unscaled;unscaled;
+43710	47854	N.normalized-replacement-getter	N	normalizedRoot	4.00	-4	0	HALF_DOWN	2.0|unscaled;unscaled;
+43711	47855	N.normalized-replacement-getter	N	normalizedRoot	4.00	throw	0	HALF_DOWN	!IllegalStateException:first coefficient|unscaled;
+43712	47856	N.normalized-replacement-getter	N	normalizedRoot	4.00	~	0	HALF_EVEN	2.0|unscaled;unscaled;
+43713	47857	N.normalized-replacement-getter	N	normalizedRoot	4.00	1	0	HALF_EVEN	0.1|unscaled;
+43714	47858	N.normalized-replacement-getter	N	normalizedRoot	4.00	0	0	HALF_EVEN	2.0|unscaled;unscaled;
+43715	47859	N.normalized-replacement-getter	N	normalizedRoot	4.00	4	0	HALF_EVEN	2.0|unscaled;unscaled;
+43716	47860	N.normalized-replacement-getter	N	normalizedRoot	4.00	2	0	HALF_EVEN	2.0|unscaled;unscaled;
+43717	47861	N.normalized-replacement-getter	N	normalizedRoot	4.00	-4	0	HALF_EVEN	2.0|unscaled;unscaled;
+43718	47862	N.normalized-replacement-getter	N	normalizedRoot	4.00	throw	0	HALF_EVEN	!IllegalStateException:first coefficient|unscaled;
+43719	47863	N.normalized-replacement-getter	N	normalizedRoot	4.00	~	0	UNNECESSARY	2.0|unscaled;unscaled;
+43720	47864	N.normalized-replacement-getter	N	normalizedRoot	4.00	1	0	UNNECESSARY	0.1|unscaled;
+43721	47865	N.normalized-replacement-getter	N	normalizedRoot	4.00	0	0	UNNECESSARY	2.0|unscaled;unscaled;
+43722	47866	N.normalized-replacement-getter	N	normalizedRoot	4.00	4	0	UNNECESSARY	2.0|unscaled;unscaled;
+43723	47867	N.normalized-replacement-getter	N	normalizedRoot	4.00	2	0	UNNECESSARY	2.0|unscaled;unscaled;
+43724	47868	N.normalized-replacement-getter	N	normalizedRoot	4.00	-4	0	UNNECESSARY	2.0|unscaled;unscaled;
+43725	47869	N.normalized-replacement-getter	N	normalizedRoot	4.00	throw	0	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+43775	47922	N.normalized-replacement-getter	N	normalizedRoot	4.00	~	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+43776	47923	N.normalized-replacement-getter	N	normalizedRoot	4.00	1	1	UNNECESSARY	0.1|unscaled;
+43777	47924	N.normalized-replacement-getter	N	normalizedRoot	4.00	0	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+43778	47925	N.normalized-replacement-getter	N	normalizedRoot	4.00	4	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+43779	47926	N.normalized-replacement-getter	N	normalizedRoot	4.00	2	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+43780	47927	N.normalized-replacement-getter	N	normalizedRoot	4.00	-4	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+43781	47928	N.normalized-replacement-getter	N	normalizedRoot	4.00	throw	1	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+43831	47981	N.normalized-replacement-getter	N	normalizedRoot	4.00	~	7	UNNECESSARY	2.0|unscaled;unscaled;
+43832	47982	N.normalized-replacement-getter	N	normalizedRoot	4.00	1	7	UNNECESSARY	0.1|unscaled;
+43833	47983	N.normalized-replacement-getter	N	normalizedRoot	4.00	0	7	UNNECESSARY	2.0|unscaled;unscaled;
+43834	47984	N.normalized-replacement-getter	N	normalizedRoot	4.00	4	7	UNNECESSARY	2.0|unscaled;unscaled;
+43835	47985	N.normalized-replacement-getter	N	normalizedRoot	4.00	2	7	UNNECESSARY	2.0|unscaled;unscaled;
+43836	47986	N.normalized-replacement-getter	N	normalizedRoot	4.00	-4	7	UNNECESSARY	2.0|unscaled;unscaled;
+43837	47987	N.normalized-replacement-getter	N	normalizedRoot	4.00	throw	7	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+43838	47988	N.normalized-replacement-getter	N	normalizedRoot	0	~	0	UP	0.0|unscaled;unscaled;
+43839	47989	N.normalized-replacement-getter	N	normalizedRoot	0	1	0	UP	1.0|unscaled;
+43840	47990	N.normalized-replacement-getter	N	normalizedRoot	0	0	0	UP	0.0|unscaled;unscaled;
+43841	47991	N.normalized-replacement-getter	N	normalizedRoot	0	4	0	UP	0.0|unscaled;unscaled;
+43842	47992	N.normalized-replacement-getter	N	normalizedRoot	0	2	0	UP	0.0|unscaled;unscaled;
+43843	47993	N.normalized-replacement-getter	N	normalizedRoot	0	-4	0	UP	0.0|unscaled;unscaled;
+43844	47994	N.normalized-replacement-getter	N	normalizedRoot	0	throw	0	UP	!IllegalStateException:first coefficient|unscaled;
+43845	47995	N.normalized-replacement-getter	N	normalizedRoot	0	~	0	DOWN	0.0|unscaled;unscaled;
+43846	47996	N.normalized-replacement-getter	N	normalizedRoot	0	1	0	DOWN	1.0|unscaled;
+43847	47997	N.normalized-replacement-getter	N	normalizedRoot	0	0	0	DOWN	0.0|unscaled;unscaled;
+43848	47998	N.normalized-replacement-getter	N	normalizedRoot	0	4	0	DOWN	0.0|unscaled;unscaled;
+43849	47999	N.normalized-replacement-getter	N	normalizedRoot	0	2	0	DOWN	0.0|unscaled;unscaled;
+43850	48003	N.normalized-replacement-getter	N	normalizedRoot	0	-4	0	DOWN	0.0|unscaled;unscaled;
+43851	48004	N.normalized-replacement-getter	N	normalizedRoot	0	throw	0	DOWN	!IllegalStateException:first coefficient|unscaled;
+43852	48005	N.normalized-replacement-getter	N	normalizedRoot	0	~	0	CEILING	0.0|unscaled;unscaled;
+43853	48006	N.normalized-replacement-getter	N	normalizedRoot	0	1	0	CEILING	1.0|unscaled;
+43854	48007	N.normalized-replacement-getter	N	normalizedRoot	0	0	0	CEILING	0.0|unscaled;unscaled;
+43855	48008	N.normalized-replacement-getter	N	normalizedRoot	0	4	0	CEILING	0.0|unscaled;unscaled;
+43856	48009	N.normalized-replacement-getter	N	normalizedRoot	0	2	0	CEILING	0.0|unscaled;unscaled;
+43857	48010	N.normalized-replacement-getter	N	normalizedRoot	0	-4	0	CEILING	0.0|unscaled;unscaled;
+43858	48011	N.normalized-replacement-getter	N	normalizedRoot	0	throw	0	CEILING	!IllegalStateException:first coefficient|unscaled;
+43859	48012	N.normalized-replacement-getter	N	normalizedRoot	0	~	0	FLOOR	0.0|unscaled;unscaled;
+43860	48013	N.normalized-replacement-getter	N	normalizedRoot	0	1	0	FLOOR	1.0|unscaled;
+43861	48014	N.normalized-replacement-getter	N	normalizedRoot	0	0	0	FLOOR	0.0|unscaled;unscaled;
+43862	48015	N.normalized-replacement-getter	N	normalizedRoot	0	4	0	FLOOR	0.0|unscaled;unscaled;
+43863	48016	N.normalized-replacement-getter	N	normalizedRoot	0	2	0	FLOOR	0.0|unscaled;unscaled;
+43864	48017	N.normalized-replacement-getter	N	normalizedRoot	0	-4	0	FLOOR	0.0|unscaled;unscaled;
+43865	48018	N.normalized-replacement-getter	N	normalizedRoot	0	throw	0	FLOOR	!IllegalStateException:first coefficient|unscaled;
+43866	48019	N.normalized-replacement-getter	N	normalizedRoot	0	~	0	HALF_UP	0.0|unscaled;unscaled;
+43867	48020	N.normalized-replacement-getter	N	normalizedRoot	0	1	0	HALF_UP	1.0|unscaled;
+43868	48021	N.normalized-replacement-getter	N	normalizedRoot	0	0	0	HALF_UP	0.0|unscaled;unscaled;
+43869	48022	N.normalized-replacement-getter	N	normalizedRoot	0	4	0	HALF_UP	0.0|unscaled;unscaled;
+43870	48023	N.normalized-replacement-getter	N	normalizedRoot	0	2	0	HALF_UP	0.0|unscaled;unscaled;
+43871	48024	N.normalized-replacement-getter	N	normalizedRoot	0	-4	0	HALF_UP	0.0|unscaled;unscaled;
+43872	48025	N.normalized-replacement-getter	N	normalizedRoot	0	throw	0	HALF_UP	!IllegalStateException:first coefficient|unscaled;
+43873	48026	N.normalized-replacement-getter	N	normalizedRoot	0	~	0	HALF_DOWN	0.0|unscaled;unscaled;
+43874	48027	N.normalized-replacement-getter	N	normalizedRoot	0	1	0	HALF_DOWN	1.0|unscaled;
+43875	48028	N.normalized-replacement-getter	N	normalizedRoot	0	0	0	HALF_DOWN	0.0|unscaled;unscaled;
+43876	48029	N.normalized-replacement-getter	N	normalizedRoot	0	4	0	HALF_DOWN	0.0|unscaled;unscaled;
+43877	48030	N.normalized-replacement-getter	N	normalizedRoot	0	2	0	HALF_DOWN	0.0|unscaled;unscaled;
+43878	48031	N.normalized-replacement-getter	N	normalizedRoot	0	-4	0	HALF_DOWN	0.0|unscaled;unscaled;
+43879	48032	N.normalized-replacement-getter	N	normalizedRoot	0	throw	0	HALF_DOWN	!IllegalStateException:first coefficient|unscaled;
+43880	48033	N.normalized-replacement-getter	N	normalizedRoot	0	~	0	HALF_EVEN	0.0|unscaled;unscaled;
+43881	48034	N.normalized-replacement-getter	N	normalizedRoot	0	1	0	HALF_EVEN	1.0|unscaled;
+43882	48035	N.normalized-replacement-getter	N	normalizedRoot	0	0	0	HALF_EVEN	0.0|unscaled;unscaled;
+43883	48036	N.normalized-replacement-getter	N	normalizedRoot	0	4	0	HALF_EVEN	0.0|unscaled;unscaled;
+43884	48037	N.normalized-replacement-getter	N	normalizedRoot	0	2	0	HALF_EVEN	0.0|unscaled;unscaled;
+43885	48038	N.normalized-replacement-getter	N	normalizedRoot	0	-4	0	HALF_EVEN	0.0|unscaled;unscaled;
+43886	48039	N.normalized-replacement-getter	N	normalizedRoot	0	throw	0	HALF_EVEN	!IllegalStateException:first coefficient|unscaled;
+43887	48040	N.normalized-replacement-getter	N	normalizedRoot	0	~	0	UNNECESSARY	0.0|unscaled;unscaled;
+43888	48041	N.normalized-replacement-getter	N	normalizedRoot	0	1	0	UNNECESSARY	1.0|unscaled;
+43889	48042	N.normalized-replacement-getter	N	normalizedRoot	0	0	0	UNNECESSARY	0.0|unscaled;unscaled;
+43890	48043	N.normalized-replacement-getter	N	normalizedRoot	0	4	0	UNNECESSARY	0.0|unscaled;unscaled;
+43891	48044	N.normalized-replacement-getter	N	normalizedRoot	0	2	0	UNNECESSARY	0.0|unscaled;unscaled;
+43892	48045	N.normalized-replacement-getter	N	normalizedRoot	0	-4	0	UNNECESSARY	0.0|unscaled;unscaled;
+43893	48046	N.normalized-replacement-getter	N	normalizedRoot	0	throw	0	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+43943	48099	N.normalized-replacement-getter	N	normalizedRoot	0	~	1	UNNECESSARY	0|unscaled;unscaled;
+43944	48100	N.normalized-replacement-getter	N	normalizedRoot	0	1	1	UNNECESSARY	1|unscaled;
+43945	48101	N.normalized-replacement-getter	N	normalizedRoot	0	0	1	UNNECESSARY	0|unscaled;unscaled;
+43946	48102	N.normalized-replacement-getter	N	normalizedRoot	0	4	1	UNNECESSARY	0|unscaled;unscaled;
+43947	48103	N.normalized-replacement-getter	N	normalizedRoot	0	2	1	UNNECESSARY	0|unscaled;unscaled;
+43948	48104	N.normalized-replacement-getter	N	normalizedRoot	0	-4	1	UNNECESSARY	0|unscaled;unscaled;
+43949	48105	N.normalized-replacement-getter	N	normalizedRoot	0	throw	1	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+43999	48158	N.normalized-replacement-getter	N	normalizedRoot	0	~	7	UNNECESSARY	0.0|unscaled;unscaled;
+44000	48162	N.normalized-replacement-getter	N	normalizedRoot	0	1	7	UNNECESSARY	1.0|unscaled;
+44001	48163	N.normalized-replacement-getter	N	normalizedRoot	0	0	7	UNNECESSARY	0.0|unscaled;unscaled;
+44002	48164	N.normalized-replacement-getter	N	normalizedRoot	0	4	7	UNNECESSARY	0.0|unscaled;unscaled;
+44003	48165	N.normalized-replacement-getter	N	normalizedRoot	0	2	7	UNNECESSARY	0.0|unscaled;unscaled;
+44004	48166	N.normalized-replacement-getter	N	normalizedRoot	0	-4	7	UNNECESSARY	0.0|unscaled;unscaled;
+44005	48167	N.normalized-replacement-getter	N	normalizedRoot	0	throw	7	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+44006	48168	N.normalized-replacement-getter	N	normalizedRoot	-4	~	0	UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44007	48169	N.normalized-replacement-getter	N	normalizedRoot	-4	1	0	UP	1.0|unscaled;
+44008	48170	N.normalized-replacement-getter	N	normalizedRoot	-4	0	0	UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44009	48171	N.normalized-replacement-getter	N	normalizedRoot	-4	4	0	UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44010	48172	N.normalized-replacement-getter	N	normalizedRoot	-4	2	0	UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44011	48173	N.normalized-replacement-getter	N	normalizedRoot	-4	-4	0	UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44012	48174	N.normalized-replacement-getter	N	normalizedRoot	-4	throw	0	UP	!IllegalStateException:first coefficient|unscaled;
+44013	48175	N.normalized-replacement-getter	N	normalizedRoot	-4	~	0	DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44014	48176	N.normalized-replacement-getter	N	normalizedRoot	-4	1	0	DOWN	1.0|unscaled;
+44015	48177	N.normalized-replacement-getter	N	normalizedRoot	-4	0	0	DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44016	48178	N.normalized-replacement-getter	N	normalizedRoot	-4	4	0	DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44017	48179	N.normalized-replacement-getter	N	normalizedRoot	-4	2	0	DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44018	48180	N.normalized-replacement-getter	N	normalizedRoot	-4	-4	0	DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44019	48181	N.normalized-replacement-getter	N	normalizedRoot	-4	throw	0	DOWN	!IllegalStateException:first coefficient|unscaled;
+44020	48182	N.normalized-replacement-getter	N	normalizedRoot	-4	~	0	CEILING	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44021	48183	N.normalized-replacement-getter	N	normalizedRoot	-4	1	0	CEILING	1.0|unscaled;
+44022	48184	N.normalized-replacement-getter	N	normalizedRoot	-4	0	0	CEILING	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44023	48185	N.normalized-replacement-getter	N	normalizedRoot	-4	4	0	CEILING	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44024	48186	N.normalized-replacement-getter	N	normalizedRoot	-4	2	0	CEILING	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44025	48187	N.normalized-replacement-getter	N	normalizedRoot	-4	-4	0	CEILING	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44026	48188	N.normalized-replacement-getter	N	normalizedRoot	-4	throw	0	CEILING	!IllegalStateException:first coefficient|unscaled;
+44027	48189	N.normalized-replacement-getter	N	normalizedRoot	-4	~	0	FLOOR	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44028	48190	N.normalized-replacement-getter	N	normalizedRoot	-4	1	0	FLOOR	1.0|unscaled;
+44029	48191	N.normalized-replacement-getter	N	normalizedRoot	-4	0	0	FLOOR	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44030	48192	N.normalized-replacement-getter	N	normalizedRoot	-4	4	0	FLOOR	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44031	48193	N.normalized-replacement-getter	N	normalizedRoot	-4	2	0	FLOOR	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44032	48194	N.normalized-replacement-getter	N	normalizedRoot	-4	-4	0	FLOOR	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44033	48195	N.normalized-replacement-getter	N	normalizedRoot	-4	throw	0	FLOOR	!IllegalStateException:first coefficient|unscaled;
+44034	48196	N.normalized-replacement-getter	N	normalizedRoot	-4	~	0	HALF_UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44035	48197	N.normalized-replacement-getter	N	normalizedRoot	-4	1	0	HALF_UP	1.0|unscaled;
+44036	48198	N.normalized-replacement-getter	N	normalizedRoot	-4	0	0	HALF_UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44037	48199	N.normalized-replacement-getter	N	normalizedRoot	-4	4	0	HALF_UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44038	48200	N.normalized-replacement-getter	N	normalizedRoot	-4	2	0	HALF_UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44039	48201	N.normalized-replacement-getter	N	normalizedRoot	-4	-4	0	HALF_UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44040	48202	N.normalized-replacement-getter	N	normalizedRoot	-4	throw	0	HALF_UP	!IllegalStateException:first coefficient|unscaled;
+44041	48203	N.normalized-replacement-getter	N	normalizedRoot	-4	~	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44042	48204	N.normalized-replacement-getter	N	normalizedRoot	-4	1	0	HALF_DOWN	1.0|unscaled;
+44043	48205	N.normalized-replacement-getter	N	normalizedRoot	-4	0	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44044	48206	N.normalized-replacement-getter	N	normalizedRoot	-4	4	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44045	48207	N.normalized-replacement-getter	N	normalizedRoot	-4	2	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44046	48208	N.normalized-replacement-getter	N	normalizedRoot	-4	-4	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44047	48209	N.normalized-replacement-getter	N	normalizedRoot	-4	throw	0	HALF_DOWN	!IllegalStateException:first coefficient|unscaled;
+44048	48210	N.normalized-replacement-getter	N	normalizedRoot	-4	~	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44049	48211	N.normalized-replacement-getter	N	normalizedRoot	-4	1	0	HALF_EVEN	1.0|unscaled;
+44050	48215	N.normalized-replacement-getter	N	normalizedRoot	-4	0	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44051	48216	N.normalized-replacement-getter	N	normalizedRoot	-4	4	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44052	48217	N.normalized-replacement-getter	N	normalizedRoot	-4	2	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44053	48218	N.normalized-replacement-getter	N	normalizedRoot	-4	-4	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44054	48219	N.normalized-replacement-getter	N	normalizedRoot	-4	throw	0	HALF_EVEN	!IllegalStateException:first coefficient|unscaled;
+44055	48220	N.normalized-replacement-getter	N	normalizedRoot	-4	~	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44056	48221	N.normalized-replacement-getter	N	normalizedRoot	-4	1	0	UNNECESSARY	1.0|unscaled;
+44057	48222	N.normalized-replacement-getter	N	normalizedRoot	-4	0	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44058	48223	N.normalized-replacement-getter	N	normalizedRoot	-4	4	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44059	48224	N.normalized-replacement-getter	N	normalizedRoot	-4	2	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44060	48225	N.normalized-replacement-getter	N	normalizedRoot	-4	-4	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44061	48226	N.normalized-replacement-getter	N	normalizedRoot	-4	throw	0	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+44111	48279	N.normalized-replacement-getter	N	normalizedRoot	-4	~	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44112	48280	N.normalized-replacement-getter	N	normalizedRoot	-4	1	1	UNNECESSARY	1|unscaled;
+44113	48281	N.normalized-replacement-getter	N	normalizedRoot	-4	0	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44114	48282	N.normalized-replacement-getter	N	normalizedRoot	-4	4	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44115	48283	N.normalized-replacement-getter	N	normalizedRoot	-4	2	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44116	48284	N.normalized-replacement-getter	N	normalizedRoot	-4	-4	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44117	48285	N.normalized-replacement-getter	N	normalizedRoot	-4	throw	1	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+44167	48338	N.normalized-replacement-getter	N	normalizedRoot	-4	~	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44168	48339	N.normalized-replacement-getter	N	normalizedRoot	-4	1	7	UNNECESSARY	1.0|unscaled;
+44169	48340	N.normalized-replacement-getter	N	normalizedRoot	-4	0	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44170	48341	N.normalized-replacement-getter	N	normalizedRoot	-4	4	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44171	48342	N.normalized-replacement-getter	N	normalizedRoot	-4	2	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44172	48343	N.normalized-replacement-getter	N	normalizedRoot	-4	-4	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+44173	48344	N.normalized-replacement-getter	N	normalizedRoot	-4	throw	7	UNNECESSARY	!IllegalStateException:first coefficient|unscaled;
+44174	48345	N.normalized-replacement-getter	N	normalizedRoot	0.4	~	0	UP	!ArithmeticException:Computed square root not exact.|
+44175	48346	N.normalized-replacement-getter	N	normalizedRoot	0.4	1	0	UP	!ArithmeticException:Computed square root not exact.|
+44176	48347	N.normalized-replacement-getter	N	normalizedRoot	0.4	0	0	UP	!ArithmeticException:Computed square root not exact.|
+44177	48348	N.normalized-replacement-getter	N	normalizedRoot	0.4	4	0	UP	!ArithmeticException:Computed square root not exact.|
+44178	48349	N.normalized-replacement-getter	N	normalizedRoot	0.4	2	0	UP	!ArithmeticException:Computed square root not exact.|
+44179	48350	N.normalized-replacement-getter	N	normalizedRoot	0.4	-4	0	UP	!ArithmeticException:Computed square root not exact.|
+44180	48351	N.normalized-replacement-getter	N	normalizedRoot	0.4	throw	0	UP	!ArithmeticException:Computed square root not exact.|
+44181	48352	N.normalized-replacement-getter	N	normalizedRoot	0.4	~	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44182	48353	N.normalized-replacement-getter	N	normalizedRoot	0.4	1	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44183	48354	N.normalized-replacement-getter	N	normalizedRoot	0.4	0	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44184	48355	N.normalized-replacement-getter	N	normalizedRoot	0.4	4	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44185	48356	N.normalized-replacement-getter	N	normalizedRoot	0.4	2	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44186	48357	N.normalized-replacement-getter	N	normalizedRoot	0.4	-4	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44187	48358	N.normalized-replacement-getter	N	normalizedRoot	0.4	throw	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44188	48359	N.normalized-replacement-getter	N	normalizedRoot	0.4	~	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44189	48360	N.normalized-replacement-getter	N	normalizedRoot	0.4	1	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44190	48361	N.normalized-replacement-getter	N	normalizedRoot	0.4	0	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44191	48362	N.normalized-replacement-getter	N	normalizedRoot	0.4	4	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44192	48363	N.normalized-replacement-getter	N	normalizedRoot	0.4	2	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44193	48364	N.normalized-replacement-getter	N	normalizedRoot	0.4	-4	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44194	48365	N.normalized-replacement-getter	N	normalizedRoot	0.4	throw	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44195	48366	N.normalized-replacement-getter	N	normalizedRoot	0.4	~	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44196	48367	N.normalized-replacement-getter	N	normalizedRoot	0.4	1	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44197	48368	N.normalized-replacement-getter	N	normalizedRoot	0.4	0	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44198	48369	N.normalized-replacement-getter	N	normalizedRoot	0.4	4	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44199	48370	N.normalized-replacement-getter	N	normalizedRoot	0.4	2	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44200	48374	N.normalized-replacement-getter	N	normalizedRoot	0.4	-4	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44201	48375	N.normalized-replacement-getter	N	normalizedRoot	0.4	throw	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44202	48376	N.normalized-replacement-getter	N	normalizedRoot	0.4	~	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44203	48377	N.normalized-replacement-getter	N	normalizedRoot	0.4	1	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44204	48378	N.normalized-replacement-getter	N	normalizedRoot	0.4	0	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44205	48379	N.normalized-replacement-getter	N	normalizedRoot	0.4	4	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44206	48380	N.normalized-replacement-getter	N	normalizedRoot	0.4	2	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44207	48381	N.normalized-replacement-getter	N	normalizedRoot	0.4	-4	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44208	48382	N.normalized-replacement-getter	N	normalizedRoot	0.4	throw	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44209	48383	N.normalized-replacement-getter	N	normalizedRoot	0.4	~	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44210	48384	N.normalized-replacement-getter	N	normalizedRoot	0.4	1	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44211	48385	N.normalized-replacement-getter	N	normalizedRoot	0.4	0	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44212	48386	N.normalized-replacement-getter	N	normalizedRoot	0.4	4	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44213	48387	N.normalized-replacement-getter	N	normalizedRoot	0.4	2	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44214	48388	N.normalized-replacement-getter	N	normalizedRoot	0.4	-4	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44215	48389	N.normalized-replacement-getter	N	normalizedRoot	0.4	throw	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44216	48390	N.normalized-replacement-getter	N	normalizedRoot	0.4	~	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44217	48391	N.normalized-replacement-getter	N	normalizedRoot	0.4	1	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44218	48392	N.normalized-replacement-getter	N	normalizedRoot	0.4	0	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44219	48393	N.normalized-replacement-getter	N	normalizedRoot	0.4	4	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44220	48394	N.normalized-replacement-getter	N	normalizedRoot	0.4	2	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44221	48395	N.normalized-replacement-getter	N	normalizedRoot	0.4	-4	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44222	48396	N.normalized-replacement-getter	N	normalizedRoot	0.4	throw	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44223	48397	N.normalized-replacement-getter	N	normalizedRoot	0.4	~	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44224	48398	N.normalized-replacement-getter	N	normalizedRoot	0.4	1	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44225	48399	N.normalized-replacement-getter	N	normalizedRoot	0.4	0	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44226	48400	N.normalized-replacement-getter	N	normalizedRoot	0.4	4	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44227	48401	N.normalized-replacement-getter	N	normalizedRoot	0.4	2	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44228	48402	N.normalized-replacement-getter	N	normalizedRoot	0.4	-4	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44229	48403	N.normalized-replacement-getter	N	normalizedRoot	0.4	throw	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44279	48456	N.normalized-replacement-getter	N	normalizedRoot	0.4	~	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44280	48457	N.normalized-replacement-getter	N	normalizedRoot	0.4	1	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44281	48458	N.normalized-replacement-getter	N	normalizedRoot	0.4	0	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44282	48459	N.normalized-replacement-getter	N	normalizedRoot	0.4	4	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44283	48460	N.normalized-replacement-getter	N	normalizedRoot	0.4	2	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44284	48461	N.normalized-replacement-getter	N	normalizedRoot	0.4	-4	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44285	48462	N.normalized-replacement-getter	N	normalizedRoot	0.4	throw	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44335	48515	N.normalized-replacement-getter	N	normalizedRoot	0.4	~	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44336	48516	N.normalized-replacement-getter	N	normalizedRoot	0.4	1	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44337	48517	N.normalized-replacement-getter	N	normalizedRoot	0.4	0	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44338	48518	N.normalized-replacement-getter	N	normalizedRoot	0.4	4	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44339	48519	N.normalized-replacement-getter	N	normalizedRoot	0.4	2	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44340	48520	N.normalized-replacement-getter	N	normalizedRoot	0.4	-4	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44341	48521	N.normalized-replacement-getter	N	normalizedRoot	0.4	throw	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44342	48522	N.normalized-replacement-getter	N	normalizedRoot	0.9	~	0	UP	!ArithmeticException:Computed square root not exact.|
+44343	48523	N.normalized-replacement-getter	N	normalizedRoot	0.9	1	0	UP	!ArithmeticException:Computed square root not exact.|
+44344	48524	N.normalized-replacement-getter	N	normalizedRoot	0.9	0	0	UP	!ArithmeticException:Computed square root not exact.|
+44345	48525	N.normalized-replacement-getter	N	normalizedRoot	0.9	4	0	UP	!ArithmeticException:Computed square root not exact.|
+44346	48526	N.normalized-replacement-getter	N	normalizedRoot	0.9	2	0	UP	!ArithmeticException:Computed square root not exact.|
+44347	48527	N.normalized-replacement-getter	N	normalizedRoot	0.9	-4	0	UP	!ArithmeticException:Computed square root not exact.|
+44348	48528	N.normalized-replacement-getter	N	normalizedRoot	0.9	throw	0	UP	!ArithmeticException:Computed square root not exact.|
+44349	48529	N.normalized-replacement-getter	N	normalizedRoot	0.9	~	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44350	48533	N.normalized-replacement-getter	N	normalizedRoot	0.9	1	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44351	48534	N.normalized-replacement-getter	N	normalizedRoot	0.9	0	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44352	48535	N.normalized-replacement-getter	N	normalizedRoot	0.9	4	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44353	48536	N.normalized-replacement-getter	N	normalizedRoot	0.9	2	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44354	48537	N.normalized-replacement-getter	N	normalizedRoot	0.9	-4	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44355	48538	N.normalized-replacement-getter	N	normalizedRoot	0.9	throw	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44356	48539	N.normalized-replacement-getter	N	normalizedRoot	0.9	~	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44357	48540	N.normalized-replacement-getter	N	normalizedRoot	0.9	1	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44358	48541	N.normalized-replacement-getter	N	normalizedRoot	0.9	0	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44359	48542	N.normalized-replacement-getter	N	normalizedRoot	0.9	4	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44360	48543	N.normalized-replacement-getter	N	normalizedRoot	0.9	2	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44361	48544	N.normalized-replacement-getter	N	normalizedRoot	0.9	-4	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44362	48545	N.normalized-replacement-getter	N	normalizedRoot	0.9	throw	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44363	48546	N.normalized-replacement-getter	N	normalizedRoot	0.9	~	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44364	48547	N.normalized-replacement-getter	N	normalizedRoot	0.9	1	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44365	48548	N.normalized-replacement-getter	N	normalizedRoot	0.9	0	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44366	48549	N.normalized-replacement-getter	N	normalizedRoot	0.9	4	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44367	48550	N.normalized-replacement-getter	N	normalizedRoot	0.9	2	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44368	48551	N.normalized-replacement-getter	N	normalizedRoot	0.9	-4	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44369	48552	N.normalized-replacement-getter	N	normalizedRoot	0.9	throw	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44370	48553	N.normalized-replacement-getter	N	normalizedRoot	0.9	~	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44371	48554	N.normalized-replacement-getter	N	normalizedRoot	0.9	1	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44372	48555	N.normalized-replacement-getter	N	normalizedRoot	0.9	0	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44373	48556	N.normalized-replacement-getter	N	normalizedRoot	0.9	4	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44374	48557	N.normalized-replacement-getter	N	normalizedRoot	0.9	2	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44375	48558	N.normalized-replacement-getter	N	normalizedRoot	0.9	-4	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44376	48559	N.normalized-replacement-getter	N	normalizedRoot	0.9	throw	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44377	48560	N.normalized-replacement-getter	N	normalizedRoot	0.9	~	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44378	48561	N.normalized-replacement-getter	N	normalizedRoot	0.9	1	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44379	48562	N.normalized-replacement-getter	N	normalizedRoot	0.9	0	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44380	48563	N.normalized-replacement-getter	N	normalizedRoot	0.9	4	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44381	48564	N.normalized-replacement-getter	N	normalizedRoot	0.9	2	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44382	48565	N.normalized-replacement-getter	N	normalizedRoot	0.9	-4	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44383	48566	N.normalized-replacement-getter	N	normalizedRoot	0.9	throw	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44384	48567	N.normalized-replacement-getter	N	normalizedRoot	0.9	~	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44385	48568	N.normalized-replacement-getter	N	normalizedRoot	0.9	1	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44386	48569	N.normalized-replacement-getter	N	normalizedRoot	0.9	0	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44387	48570	N.normalized-replacement-getter	N	normalizedRoot	0.9	4	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44388	48571	N.normalized-replacement-getter	N	normalizedRoot	0.9	2	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44389	48572	N.normalized-replacement-getter	N	normalizedRoot	0.9	-4	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44390	48573	N.normalized-replacement-getter	N	normalizedRoot	0.9	throw	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44391	48574	N.normalized-replacement-getter	N	normalizedRoot	0.9	~	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44392	48575	N.normalized-replacement-getter	N	normalizedRoot	0.9	1	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44393	48576	N.normalized-replacement-getter	N	normalizedRoot	0.9	0	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44394	48577	N.normalized-replacement-getter	N	normalizedRoot	0.9	4	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44395	48578	N.normalized-replacement-getter	N	normalizedRoot	0.9	2	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44396	48579	N.normalized-replacement-getter	N	normalizedRoot	0.9	-4	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44397	48580	N.normalized-replacement-getter	N	normalizedRoot	0.9	throw	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44447	48633	N.normalized-replacement-getter	N	normalizedRoot	0.9	~	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44448	48634	N.normalized-replacement-getter	N	normalizedRoot	0.9	1	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44449	48635	N.normalized-replacement-getter	N	normalizedRoot	0.9	0	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44450	48639	N.normalized-replacement-getter	N	normalizedRoot	0.9	4	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44451	48640	N.normalized-replacement-getter	N	normalizedRoot	0.9	2	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44452	48641	N.normalized-replacement-getter	N	normalizedRoot	0.9	-4	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44453	48642	N.normalized-replacement-getter	N	normalizedRoot	0.9	throw	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44503	48695	N.normalized-replacement-getter	N	normalizedRoot	0.9	~	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44504	48696	N.normalized-replacement-getter	N	normalizedRoot	0.9	1	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44505	48697	N.normalized-replacement-getter	N	normalizedRoot	0.9	0	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44506	48698	N.normalized-replacement-getter	N	normalizedRoot	0.9	4	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44507	48699	N.normalized-replacement-getter	N	normalizedRoot	0.9	2	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44508	48700	N.normalized-replacement-getter	N	normalizedRoot	0.9	-4	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44509	48701	N.normalized-replacement-getter	N	normalizedRoot	0.9	throw	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44510	48702	N.normalized-replacement-getter	N	normalizedRoot	4.0	~	0	UP	!ArithmeticException:Computed square root not exact.|
+44511	48703	N.normalized-replacement-getter	N	normalizedRoot	4.0	1	0	UP	!ArithmeticException:Computed square root not exact.|
+44512	48704	N.normalized-replacement-getter	N	normalizedRoot	4.0	0	0	UP	!ArithmeticException:Computed square root not exact.|
+44513	48705	N.normalized-replacement-getter	N	normalizedRoot	4.0	4	0	UP	!ArithmeticException:Computed square root not exact.|
+44514	48706	N.normalized-replacement-getter	N	normalizedRoot	4.0	2	0	UP	!ArithmeticException:Computed square root not exact.|
+44515	48707	N.normalized-replacement-getter	N	normalizedRoot	4.0	-4	0	UP	!ArithmeticException:Computed square root not exact.|
+44516	48708	N.normalized-replacement-getter	N	normalizedRoot	4.0	throw	0	UP	!ArithmeticException:Computed square root not exact.|
+44517	48709	N.normalized-replacement-getter	N	normalizedRoot	4.0	~	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44518	48710	N.normalized-replacement-getter	N	normalizedRoot	4.0	1	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44519	48711	N.normalized-replacement-getter	N	normalizedRoot	4.0	0	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44520	48712	N.normalized-replacement-getter	N	normalizedRoot	4.0	4	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44521	48713	N.normalized-replacement-getter	N	normalizedRoot	4.0	2	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44522	48714	N.normalized-replacement-getter	N	normalizedRoot	4.0	-4	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44523	48715	N.normalized-replacement-getter	N	normalizedRoot	4.0	throw	0	DOWN	!ArithmeticException:Computed square root not exact.|
+44524	48716	N.normalized-replacement-getter	N	normalizedRoot	4.0	~	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44525	48717	N.normalized-replacement-getter	N	normalizedRoot	4.0	1	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44526	48718	N.normalized-replacement-getter	N	normalizedRoot	4.0	0	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44527	48719	N.normalized-replacement-getter	N	normalizedRoot	4.0	4	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44528	48720	N.normalized-replacement-getter	N	normalizedRoot	4.0	2	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44529	48721	N.normalized-replacement-getter	N	normalizedRoot	4.0	-4	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44530	48722	N.normalized-replacement-getter	N	normalizedRoot	4.0	throw	0	CEILING	!ArithmeticException:Computed square root not exact.|
+44531	48723	N.normalized-replacement-getter	N	normalizedRoot	4.0	~	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44532	48724	N.normalized-replacement-getter	N	normalizedRoot	4.0	1	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44533	48725	N.normalized-replacement-getter	N	normalizedRoot	4.0	0	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44534	48726	N.normalized-replacement-getter	N	normalizedRoot	4.0	4	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44535	48727	N.normalized-replacement-getter	N	normalizedRoot	4.0	2	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44536	48728	N.normalized-replacement-getter	N	normalizedRoot	4.0	-4	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44537	48729	N.normalized-replacement-getter	N	normalizedRoot	4.0	throw	0	FLOOR	!ArithmeticException:Computed square root not exact.|
+44538	48730	N.normalized-replacement-getter	N	normalizedRoot	4.0	~	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44539	48731	N.normalized-replacement-getter	N	normalizedRoot	4.0	1	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44540	48732	N.normalized-replacement-getter	N	normalizedRoot	4.0	0	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44541	48733	N.normalized-replacement-getter	N	normalizedRoot	4.0	4	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44542	48734	N.normalized-replacement-getter	N	normalizedRoot	4.0	2	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44543	48735	N.normalized-replacement-getter	N	normalizedRoot	4.0	-4	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44544	48736	N.normalized-replacement-getter	N	normalizedRoot	4.0	throw	0	HALF_UP	!ArithmeticException:Computed square root not exact.|
+44545	48737	N.normalized-replacement-getter	N	normalizedRoot	4.0	~	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44546	48738	N.normalized-replacement-getter	N	normalizedRoot	4.0	1	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44547	48739	N.normalized-replacement-getter	N	normalizedRoot	4.0	0	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44548	48740	N.normalized-replacement-getter	N	normalizedRoot	4.0	4	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44549	48741	N.normalized-replacement-getter	N	normalizedRoot	4.0	2	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44550	48745	N.normalized-replacement-getter	N	normalizedRoot	4.0	-4	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44551	48746	N.normalized-replacement-getter	N	normalizedRoot	4.0	throw	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|
+44552	48747	N.normalized-replacement-getter	N	normalizedRoot	4.0	~	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44553	48748	N.normalized-replacement-getter	N	normalizedRoot	4.0	1	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44554	48749	N.normalized-replacement-getter	N	normalizedRoot	4.0	0	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44555	48750	N.normalized-replacement-getter	N	normalizedRoot	4.0	4	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44556	48751	N.normalized-replacement-getter	N	normalizedRoot	4.0	2	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44557	48752	N.normalized-replacement-getter	N	normalizedRoot	4.0	-4	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44558	48753	N.normalized-replacement-getter	N	normalizedRoot	4.0	throw	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|
+44559	48754	N.normalized-replacement-getter	N	normalizedRoot	4.0	~	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44560	48755	N.normalized-replacement-getter	N	normalizedRoot	4.0	1	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44561	48756	N.normalized-replacement-getter	N	normalizedRoot	4.0	0	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44562	48757	N.normalized-replacement-getter	N	normalizedRoot	4.0	4	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44563	48758	N.normalized-replacement-getter	N	normalizedRoot	4.0	2	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44564	48759	N.normalized-replacement-getter	N	normalizedRoot	4.0	-4	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44565	48760	N.normalized-replacement-getter	N	normalizedRoot	4.0	throw	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44615	48813	N.normalized-replacement-getter	N	normalizedRoot	4.0	~	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44616	48814	N.normalized-replacement-getter	N	normalizedRoot	4.0	1	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44617	48815	N.normalized-replacement-getter	N	normalizedRoot	4.0	0	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44618	48816	N.normalized-replacement-getter	N	normalizedRoot	4.0	4	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44619	48817	N.normalized-replacement-getter	N	normalizedRoot	4.0	2	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44620	48818	N.normalized-replacement-getter	N	normalizedRoot	4.0	-4	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44621	48819	N.normalized-replacement-getter	N	normalizedRoot	4.0	throw	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44671	48872	N.normalized-replacement-getter	N	normalizedRoot	4.0	~	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44672	48873	N.normalized-replacement-getter	N	normalizedRoot	4.0	1	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44673	48874	N.normalized-replacement-getter	N	normalizedRoot	4.0	0	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44674	48875	N.normalized-replacement-getter	N	normalizedRoot	4.0	4	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44675	48876	N.normalized-replacement-getter	N	normalizedRoot	4.0	2	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44676	48877	N.normalized-replacement-getter	N	normalizedRoot	4.0	-4	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44677	48878	N.normalized-replacement-getter	N	normalizedRoot	4.0	throw	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|
+44678	48879	A.normalized-getter	A	normalizedScale	0	-2147483648	0	UP	0E+1073741824|unscaled;unscaled;
+44679	48880	A.normalized-getter	A	normalizedScale	0	-2147483648	0	DOWN	0E+1073741824|unscaled;unscaled;
+44680	48881	A.normalized-getter	A	normalizedScale	0	-2147483648	0	CEILING	0E+1073741824|unscaled;unscaled;
+44681	48882	A.normalized-getter	A	normalizedScale	0	-2147483648	0	FLOOR	0E+1073741824|unscaled;unscaled;
+44682	48883	A.normalized-getter	A	normalizedScale	0	-2147483648	0	HALF_UP	0E+1073741824|unscaled;unscaled;
+44683	48884	A.normalized-getter	A	normalizedScale	0	-2147483648	0	HALF_DOWN	0E+1073741824|unscaled;unscaled;
+44684	48885	A.normalized-getter	A	normalizedScale	0	-2147483648	0	HALF_EVEN	0E+1073741824|unscaled;unscaled;
+44685	48886	A.normalized-getter	A	normalizedScale	0	-2147483648	0	UNNECESSARY	0E+1073741824|unscaled;unscaled;
+44693	48894	A.normalized-getter	A	normalizedScale	0	-2147483648	1	UNNECESSARY	0E+1073741824|unscaled;unscaled;
+44701	48905	A.normalized-getter	A	normalizedScale	0	-2147483648	7	UNNECESSARY	0E+1073741824|unscaled;unscaled;
+44726	48930	A.normalized-getter	A	normalizedScale	0	-2147483646	0	UP	0E+1073741823|unscaled;unscaled;
+44727	48931	A.normalized-getter	A	normalizedScale	0	-2147483646	0	DOWN	0E+1073741823|unscaled;unscaled;
+44728	48932	A.normalized-getter	A	normalizedScale	0	-2147483646	0	CEILING	0E+1073741823|unscaled;unscaled;
+44729	48933	A.normalized-getter	A	normalizedScale	0	-2147483646	0	FLOOR	0E+1073741823|unscaled;unscaled;
+44730	48934	A.normalized-getter	A	normalizedScale	0	-2147483646	0	HALF_UP	0E+1073741823|unscaled;unscaled;
+44731	48935	A.normalized-getter	A	normalizedScale	0	-2147483646	0	HALF_DOWN	0E+1073741823|unscaled;unscaled;
+44732	48936	A.normalized-getter	A	normalizedScale	0	-2147483646	0	HALF_EVEN	0E+1073741823|unscaled;unscaled;
+44733	48937	A.normalized-getter	A	normalizedScale	0	-2147483646	0	UNNECESSARY	0E+1073741823|unscaled;unscaled;
+44741	48945	A.normalized-getter	A	normalizedScale	0	-2147483646	1	UNNECESSARY	0E+1073741823|unscaled;unscaled;
+44749	48953	A.normalized-getter	A	normalizedScale	0	-2147483646	7	UNNECESSARY	0E+1073741823|unscaled;unscaled;
+44774	48981	A.normalized-getter	A	normalizedScale	0	-2	0	UP	0E+1|unscaled;unscaled;
+44775	48982	A.normalized-getter	A	normalizedScale	0	-2	0	DOWN	0E+1|unscaled;unscaled;
+44776	48983	A.normalized-getter	A	normalizedScale	0	-2	0	CEILING	0E+1|unscaled;unscaled;
+44777	48984	A.normalized-getter	A	normalizedScale	0	-2	0	FLOOR	0E+1|unscaled;unscaled;
+44778	48985	A.normalized-getter	A	normalizedScale	0	-2	0	HALF_UP	0E+1|unscaled;unscaled;
+44779	48986	A.normalized-getter	A	normalizedScale	0	-2	0	HALF_DOWN	0E+1|unscaled;unscaled;
+44780	48987	A.normalized-getter	A	normalizedScale	0	-2	0	HALF_EVEN	0E+1|unscaled;unscaled;
+44781	48988	A.normalized-getter	A	normalizedScale	0	-2	0	UNNECESSARY	0E+1|unscaled;unscaled;
+44789	48996	A.normalized-getter	A	normalizedScale	0	-2	1	UNNECESSARY	0E+1|unscaled;unscaled;
+44797	49004	A.normalized-getter	A	normalizedScale	0	-2	7	UNNECESSARY	0E+1|unscaled;unscaled;
+44822	49032	A.normalized-getter	A	normalizedScale	0	0	0	UP	0|unscaled;unscaled;
+44823	49033	A.normalized-getter	A	normalizedScale	0	0	0	DOWN	0|unscaled;unscaled;
+44824	49034	A.normalized-getter	A	normalizedScale	0	0	0	CEILING	0|unscaled;unscaled;
+44825	49035	A.normalized-getter	A	normalizedScale	0	0	0	FLOOR	0|unscaled;unscaled;
+44826	49036	A.normalized-getter	A	normalizedScale	0	0	0	HALF_UP	0|unscaled;unscaled;
+44827	49037	A.normalized-getter	A	normalizedScale	0	0	0	HALF_DOWN	0|unscaled;unscaled;
+44828	49038	A.normalized-getter	A	normalizedScale	0	0	0	HALF_EVEN	0|unscaled;unscaled;
+44829	49039	A.normalized-getter	A	normalizedScale	0	0	0	UNNECESSARY	0|unscaled;unscaled;
+44837	49047	A.normalized-getter	A	normalizedScale	0	0	1	UNNECESSARY	0|unscaled;unscaled;
+44845	49055	A.normalized-getter	A	normalizedScale	0	0	7	UNNECESSARY	0|unscaled;unscaled;
+44870	49083	A.normalized-getter	A	normalizedScale	0	2	0	UP	0.0|unscaled;unscaled;
+44871	49084	A.normalized-getter	A	normalizedScale	0	2	0	DOWN	0.0|unscaled;unscaled;
+44872	49085	A.normalized-getter	A	normalizedScale	0	2	0	CEILING	0.0|unscaled;unscaled;
+44873	49086	A.normalized-getter	A	normalizedScale	0	2	0	FLOOR	0.0|unscaled;unscaled;
+44874	49087	A.normalized-getter	A	normalizedScale	0	2	0	HALF_UP	0.0|unscaled;unscaled;
+44875	49088	A.normalized-getter	A	normalizedScale	0	2	0	HALF_DOWN	0.0|unscaled;unscaled;
+44876	49089	A.normalized-getter	A	normalizedScale	0	2	0	HALF_EVEN	0.0|unscaled;unscaled;
+44877	49090	A.normalized-getter	A	normalizedScale	0	2	0	UNNECESSARY	0.0|unscaled;unscaled;
+44885	49098	A.normalized-getter	A	normalizedScale	0	2	1	UNNECESSARY	0.0|unscaled;unscaled;
+44893	49106	A.normalized-getter	A	normalizedScale	0	2	7	UNNECESSARY	0.0|unscaled;unscaled;
+44942	49158	A.normalized-getter	A	normalizedScale	0	2147483646	0	UP	0E-1073741823|unscaled;unscaled;
+44943	49159	A.normalized-getter	A	normalizedScale	0	2147483646	0	DOWN	0E-1073741823|unscaled;unscaled;
+44944	49160	A.normalized-getter	A	normalizedScale	0	2147483646	0	CEILING	0E-1073741823|unscaled;unscaled;
+44945	49161	A.normalized-getter	A	normalizedScale	0	2147483646	0	FLOOR	0E-1073741823|unscaled;unscaled;
+44946	49162	A.normalized-getter	A	normalizedScale	0	2147483646	0	HALF_UP	0E-1073741823|unscaled;unscaled;
+44947	49163	A.normalized-getter	A	normalizedScale	0	2147483646	0	HALF_DOWN	0E-1073741823|unscaled;unscaled;
+44948	49164	A.normalized-getter	A	normalizedScale	0	2147483646	0	HALF_EVEN	0E-1073741823|unscaled;unscaled;
+44949	49165	A.normalized-getter	A	normalizedScale	0	2147483646	0	UNNECESSARY	0E-1073741823|unscaled;unscaled;
+44957	49176	A.normalized-getter	A	normalizedScale	0	2147483646	1	UNNECESSARY	0E-1073741823|unscaled;unscaled;
+44965	49184	A.normalized-getter	A	normalizedScale	0	2147483646	7	UNNECESSARY	0E-1073741823|unscaled;unscaled;
+44990	49209	A.normalized-getter	A	normalizedScale	1	-2147483648	0	UP	1E+1073741824|unscaled;
+44991	49210	A.normalized-getter	A	normalizedScale	1	-2147483648	0	DOWN	1E+1073741824|unscaled;
+44992	49211	A.normalized-getter	A	normalizedScale	1	-2147483648	0	CEILING	1E+1073741824|unscaled;
+44993	49212	A.normalized-getter	A	normalizedScale	1	-2147483648	0	FLOOR	1E+1073741824|unscaled;
+44994	49213	A.normalized-getter	A	normalizedScale	1	-2147483648	0	HALF_UP	1E+1073741824|unscaled;
+44995	49214	A.normalized-getter	A	normalizedScale	1	-2147483648	0	HALF_DOWN	1E+1073741824|unscaled;
+44996	49215	A.normalized-getter	A	normalizedScale	1	-2147483648	0	HALF_EVEN	1E+1073741824|unscaled;
+44997	49216	A.normalized-getter	A	normalizedScale	1	-2147483648	0	UNNECESSARY	1E+1073741824|unscaled;
+45005	49227	A.normalized-getter	A	normalizedScale	1	-2147483648	1	UNNECESSARY	1E+1073741824|unscaled;
+45013	49235	A.normalized-getter	A	normalizedScale	1	-2147483648	7	UNNECESSARY	1E+1073741824|unscaled;
+45038	49260	A.normalized-getter	A	normalizedScale	1	-2147483646	0	UP	1E+1073741823|unscaled;
+45039	49261	A.normalized-getter	A	normalizedScale	1	-2147483646	0	DOWN	1E+1073741823|unscaled;
+45040	49262	A.normalized-getter	A	normalizedScale	1	-2147483646	0	CEILING	1E+1073741823|unscaled;
+45041	49263	A.normalized-getter	A	normalizedScale	1	-2147483646	0	FLOOR	1E+1073741823|unscaled;
+45042	49264	A.normalized-getter	A	normalizedScale	1	-2147483646	0	HALF_UP	1E+1073741823|unscaled;
+45043	49265	A.normalized-getter	A	normalizedScale	1	-2147483646	0	HALF_DOWN	1E+1073741823|unscaled;
+45044	49266	A.normalized-getter	A	normalizedScale	1	-2147483646	0	HALF_EVEN	1E+1073741823|unscaled;
+45045	49267	A.normalized-getter	A	normalizedScale	1	-2147483646	0	UNNECESSARY	1E+1073741823|unscaled;
+45053	49278	A.normalized-getter	A	normalizedScale	1	-2147483646	1	UNNECESSARY	1E+1073741823|unscaled;
+45061	49286	A.normalized-getter	A	normalizedScale	1	-2147483646	7	UNNECESSARY	1E+1073741823|unscaled;
+45086	49311	A.normalized-getter	A	normalizedScale	1	-2	0	UP	1E+1|unscaled;
+45087	49312	A.normalized-getter	A	normalizedScale	1	-2	0	DOWN	1E+1|unscaled;
+45088	49313	A.normalized-getter	A	normalizedScale	1	-2	0	CEILING	1E+1|unscaled;
+45089	49314	A.normalized-getter	A	normalizedScale	1	-2	0	FLOOR	1E+1|unscaled;
+45090	49315	A.normalized-getter	A	normalizedScale	1	-2	0	HALF_UP	1E+1|unscaled;
+45091	49316	A.normalized-getter	A	normalizedScale	1	-2	0	HALF_DOWN	1E+1|unscaled;
+45092	49317	A.normalized-getter	A	normalizedScale	1	-2	0	HALF_EVEN	1E+1|unscaled;
+45093	49318	A.normalized-getter	A	normalizedScale	1	-2	0	UNNECESSARY	1E+1|unscaled;
+45101	49329	A.normalized-getter	A	normalizedScale	1	-2	1	UNNECESSARY	1E+1|unscaled;
+45109	49337	A.normalized-getter	A	normalizedScale	1	-2	7	UNNECESSARY	1E+1|unscaled;
+45134	49362	A.normalized-getter	A	normalizedScale	1	0	0	UP	1|unscaled;
+45135	49363	A.normalized-getter	A	normalizedScale	1	0	0	DOWN	1|unscaled;
+45136	49364	A.normalized-getter	A	normalizedScale	1	0	0	CEILING	1|unscaled;
+45137	49365	A.normalized-getter	A	normalizedScale	1	0	0	FLOOR	1|unscaled;
+45138	49366	A.normalized-getter	A	normalizedScale	1	0	0	HALF_UP	1|unscaled;
+45139	49367	A.normalized-getter	A	normalizedScale	1	0	0	HALF_DOWN	1|unscaled;
+45140	49368	A.normalized-getter	A	normalizedScale	1	0	0	HALF_EVEN	1|unscaled;
+45141	49369	A.normalized-getter	A	normalizedScale	1	0	0	UNNECESSARY	1|unscaled;
+45149	49377	A.normalized-getter	A	normalizedScale	1	0	1	UNNECESSARY	1|unscaled;
+45157	49388	A.normalized-getter	A	normalizedScale	1	0	7	UNNECESSARY	1|unscaled;
+45182	49413	A.normalized-getter	A	normalizedScale	1	2	0	UP	0.1|unscaled;
+45183	49414	A.normalized-getter	A	normalizedScale	1	2	0	DOWN	0.1|unscaled;
+45184	49415	A.normalized-getter	A	normalizedScale	1	2	0	CEILING	0.1|unscaled;
+45185	49416	A.normalized-getter	A	normalizedScale	1	2	0	FLOOR	0.1|unscaled;
+45186	49417	A.normalized-getter	A	normalizedScale	1	2	0	HALF_UP	0.1|unscaled;
+45187	49418	A.normalized-getter	A	normalizedScale	1	2	0	HALF_DOWN	0.1|unscaled;
+45188	49419	A.normalized-getter	A	normalizedScale	1	2	0	HALF_EVEN	0.1|unscaled;
+45189	49420	A.normalized-getter	A	normalizedScale	1	2	0	UNNECESSARY	0.1|unscaled;
+45197	49428	A.normalized-getter	A	normalizedScale	1	2	1	UNNECESSARY	0.1|unscaled;
+45205	49439	A.normalized-getter	A	normalizedScale	1	2	7	UNNECESSARY	0.1|unscaled;
+45254	49491	A.normalized-getter	A	normalizedScale	1	2147483646	0	UP	1E-1073741823|unscaled;
+45255	49492	A.normalized-getter	A	normalizedScale	1	2147483646	0	DOWN	1E-1073741823|unscaled;
+45256	49493	A.normalized-getter	A	normalizedScale	1	2147483646	0	CEILING	1E-1073741823|unscaled;
+45257	49494	A.normalized-getter	A	normalizedScale	1	2147483646	0	FLOOR	1E-1073741823|unscaled;
+45258	49495	A.normalized-getter	A	normalizedScale	1	2147483646	0	HALF_UP	1E-1073741823|unscaled;
+45259	49496	A.normalized-getter	A	normalizedScale	1	2147483646	0	HALF_DOWN	1E-1073741823|unscaled;
+45260	49497	A.normalized-getter	A	normalizedScale	1	2147483646	0	HALF_EVEN	1E-1073741823|unscaled;
+45261	49498	A.normalized-getter	A	normalizedScale	1	2147483646	0	UNNECESSARY	1E-1073741823|unscaled;
+45269	49506	A.normalized-getter	A	normalizedScale	1	2147483646	1	UNNECESSARY	1E-1073741823|unscaled;
+45277	49514	A.normalized-getter	A	normalizedScale	1	2147483646	7	UNNECESSARY	1E-1073741823|unscaled;
+45302	49542	A.normalized-getter	A	normalizedScale	4	-2147483648	0	UP	2E+1073741824|unscaled;unscaled;
+45303	49543	A.normalized-getter	A	normalizedScale	4	-2147483648	0	DOWN	2E+1073741824|unscaled;unscaled;
+45304	49544	A.normalized-getter	A	normalizedScale	4	-2147483648	0	CEILING	2E+1073741824|unscaled;unscaled;
+45305	49545	A.normalized-getter	A	normalizedScale	4	-2147483648	0	FLOOR	2E+1073741824|unscaled;unscaled;
+45306	49546	A.normalized-getter	A	normalizedScale	4	-2147483648	0	HALF_UP	2E+1073741824|unscaled;unscaled;
+45307	49547	A.normalized-getter	A	normalizedScale	4	-2147483648	0	HALF_DOWN	2E+1073741824|unscaled;unscaled;
+45308	49548	A.normalized-getter	A	normalizedScale	4	-2147483648	0	HALF_EVEN	2E+1073741824|unscaled;unscaled;
+45309	49549	A.normalized-getter	A	normalizedScale	4	-2147483648	0	UNNECESSARY	2E+1073741824|unscaled;unscaled;
+45317	49557	A.normalized-getter	A	normalizedScale	4	-2147483648	1	UNNECESSARY	2E+1073741824|unscaled;unscaled;
+45325	49565	A.normalized-getter	A	normalizedScale	4	-2147483648	7	UNNECESSARY	2E+1073741824|unscaled;unscaled;
+45350	49593	A.normalized-getter	A	normalizedScale	4	-2147483646	0	UP	2E+1073741823|unscaled;unscaled;
+45351	49594	A.normalized-getter	A	normalizedScale	4	-2147483646	0	DOWN	2E+1073741823|unscaled;unscaled;
+45352	49595	A.normalized-getter	A	normalizedScale	4	-2147483646	0	CEILING	2E+1073741823|unscaled;unscaled;
+45353	49596	A.normalized-getter	A	normalizedScale	4	-2147483646	0	FLOOR	2E+1073741823|unscaled;unscaled;
+45354	49597	A.normalized-getter	A	normalizedScale	4	-2147483646	0	HALF_UP	2E+1073741823|unscaled;unscaled;
+45355	49598	A.normalized-getter	A	normalizedScale	4	-2147483646	0	HALF_DOWN	2E+1073741823|unscaled;unscaled;
+45356	49599	A.normalized-getter	A	normalizedScale	4	-2147483646	0	HALF_EVEN	2E+1073741823|unscaled;unscaled;
+45357	49600	A.normalized-getter	A	normalizedScale	4	-2147483646	0	UNNECESSARY	2E+1073741823|unscaled;unscaled;
+45365	49608	A.normalized-getter	A	normalizedScale	4	-2147483646	1	UNNECESSARY	2E+1073741823|unscaled;unscaled;
+45373	49616	A.normalized-getter	A	normalizedScale	4	-2147483646	7	UNNECESSARY	2E+1073741823|unscaled;unscaled;
+45398	49641	A.normalized-getter	A	normalizedScale	4	-2	0	UP	2E+1|unscaled;unscaled;
+45399	49642	A.normalized-getter	A	normalizedScale	4	-2	0	DOWN	2E+1|unscaled;unscaled;
+45400	49646	A.normalized-getter	A	normalizedScale	4	-2	0	CEILING	2E+1|unscaled;unscaled;
+45401	49647	A.normalized-getter	A	normalizedScale	4	-2	0	FLOOR	2E+1|unscaled;unscaled;
+45402	49648	A.normalized-getter	A	normalizedScale	4	-2	0	HALF_UP	2E+1|unscaled;unscaled;
+45403	49649	A.normalized-getter	A	normalizedScale	4	-2	0	HALF_DOWN	2E+1|unscaled;unscaled;
+45404	49650	A.normalized-getter	A	normalizedScale	4	-2	0	HALF_EVEN	2E+1|unscaled;unscaled;
+45405	49651	A.normalized-getter	A	normalizedScale	4	-2	0	UNNECESSARY	2E+1|unscaled;unscaled;
+45413	49659	A.normalized-getter	A	normalizedScale	4	-2	1	UNNECESSARY	2E+1|unscaled;unscaled;
+45421	49667	A.normalized-getter	A	normalizedScale	4	-2	7	UNNECESSARY	2E+1|unscaled;unscaled;
+45446	49692	A.normalized-getter	A	normalizedScale	4	0	0	UP	2|unscaled;unscaled;
+45447	49693	A.normalized-getter	A	normalizedScale	4	0	0	DOWN	2|unscaled;unscaled;
+45448	49694	A.normalized-getter	A	normalizedScale	4	0	0	CEILING	2|unscaled;unscaled;
+45449	49695	A.normalized-getter	A	normalizedScale	4	0	0	FLOOR	2|unscaled;unscaled;
+45450	49699	A.normalized-getter	A	normalizedScale	4	0	0	HALF_UP	2|unscaled;unscaled;
+45451	49700	A.normalized-getter	A	normalizedScale	4	0	0	HALF_DOWN	2|unscaled;unscaled;
+45452	49701	A.normalized-getter	A	normalizedScale	4	0	0	HALF_EVEN	2|unscaled;unscaled;
+45453	49702	A.normalized-getter	A	normalizedScale	4	0	0	UNNECESSARY	2|unscaled;unscaled;
+45461	49710	A.normalized-getter	A	normalizedScale	4	0	1	UNNECESSARY	2|unscaled;unscaled;
+45469	49718	A.normalized-getter	A	normalizedScale	4	0	7	UNNECESSARY	2|unscaled;unscaled;
+45494	49743	A.normalized-getter	A	normalizedScale	4	2	0	UP	0.2|unscaled;unscaled;
+45495	49744	A.normalized-getter	A	normalizedScale	4	2	0	DOWN	0.2|unscaled;unscaled;
+45496	49745	A.normalized-getter	A	normalizedScale	4	2	0	CEILING	0.2|unscaled;unscaled;
+45497	49746	A.normalized-getter	A	normalizedScale	4	2	0	FLOOR	0.2|unscaled;unscaled;
+45498	49747	A.normalized-getter	A	normalizedScale	4	2	0	HALF_UP	0.2|unscaled;unscaled;
+45499	49748	A.normalized-getter	A	normalizedScale	4	2	0	HALF_DOWN	0.2|unscaled;unscaled;
+45500	49752	A.normalized-getter	A	normalizedScale	4	2	0	HALF_EVEN	0.2|unscaled;unscaled;
+45501	49753	A.normalized-getter	A	normalizedScale	4	2	0	UNNECESSARY	0.2|unscaled;unscaled;
+45509	49761	A.normalized-getter	A	normalizedScale	4	2	1	UNNECESSARY	0.2|unscaled;unscaled;
+45517	49769	A.normalized-getter	A	normalizedScale	4	2	7	UNNECESSARY	0.2|unscaled;unscaled;
+45566	49821	A.normalized-getter	A	normalizedScale	4	2147483646	0	UP	2E-1073741823|unscaled;unscaled;
+45567	49822	A.normalized-getter	A	normalizedScale	4	2147483646	0	DOWN	2E-1073741823|unscaled;unscaled;
+45568	49823	A.normalized-getter	A	normalizedScale	4	2147483646	0	CEILING	2E-1073741823|unscaled;unscaled;
+45569	49824	A.normalized-getter	A	normalizedScale	4	2147483646	0	FLOOR	2E-1073741823|unscaled;unscaled;
+45570	49825	A.normalized-getter	A	normalizedScale	4	2147483646	0	HALF_UP	2E-1073741823|unscaled;unscaled;
+45571	49826	A.normalized-getter	A	normalizedScale	4	2147483646	0	HALF_DOWN	2E-1073741823|unscaled;unscaled;
+45572	49827	A.normalized-getter	A	normalizedScale	4	2147483646	0	HALF_EVEN	2E-1073741823|unscaled;unscaled;
+45573	49828	A.normalized-getter	A	normalizedScale	4	2147483646	0	UNNECESSARY	2E-1073741823|unscaled;unscaled;
+45581	49836	A.normalized-getter	A	normalizedScale	4	2147483646	1	UNNECESSARY	2E-1073741823|unscaled;unscaled;
+45589	49844	A.normalized-getter	A	normalizedScale	4	2147483646	7	UNNECESSARY	2E-1073741823|unscaled;unscaled;
+45614	49872	A.normalized-getter	A	normalizedScale	9	-2147483648	0	UP	3E+1073741824|unscaled;unscaled;
+45615	49873	A.normalized-getter	A	normalizedScale	9	-2147483648	0	DOWN	3E+1073741824|unscaled;unscaled;
+45616	49874	A.normalized-getter	A	normalizedScale	9	-2147483648	0	CEILING	3E+1073741824|unscaled;unscaled;
+45617	49875	A.normalized-getter	A	normalizedScale	9	-2147483648	0	FLOOR	3E+1073741824|unscaled;unscaled;
+45618	49876	A.normalized-getter	A	normalizedScale	9	-2147483648	0	HALF_UP	3E+1073741824|unscaled;unscaled;
+45619	49877	A.normalized-getter	A	normalizedScale	9	-2147483648	0	HALF_DOWN	3E+1073741824|unscaled;unscaled;
+45620	49878	A.normalized-getter	A	normalizedScale	9	-2147483648	0	HALF_EVEN	3E+1073741824|unscaled;unscaled;
+45621	49879	A.normalized-getter	A	normalizedScale	9	-2147483648	0	UNNECESSARY	3E+1073741824|unscaled;unscaled;
+45629	49887	A.normalized-getter	A	normalizedScale	9	-2147483648	1	UNNECESSARY	3E+1073741824|unscaled;unscaled;
+45637	49895	A.normalized-getter	A	normalizedScale	9	-2147483648	7	UNNECESSARY	3E+1073741824|unscaled;unscaled;
+45662	49923	A.normalized-getter	A	normalizedScale	9	-2147483646	0	UP	3E+1073741823|unscaled;unscaled;
+45663	49924	A.normalized-getter	A	normalizedScale	9	-2147483646	0	DOWN	3E+1073741823|unscaled;unscaled;
+45664	49925	A.normalized-getter	A	normalizedScale	9	-2147483646	0	CEILING	3E+1073741823|unscaled;unscaled;
+45665	49926	A.normalized-getter	A	normalizedScale	9	-2147483646	0	FLOOR	3E+1073741823|unscaled;unscaled;
+45666	49927	A.normalized-getter	A	normalizedScale	9	-2147483646	0	HALF_UP	3E+1073741823|unscaled;unscaled;
+45667	49928	A.normalized-getter	A	normalizedScale	9	-2147483646	0	HALF_DOWN	3E+1073741823|unscaled;unscaled;
+45668	49929	A.normalized-getter	A	normalizedScale	9	-2147483646	0	HALF_EVEN	3E+1073741823|unscaled;unscaled;
+45669	49930	A.normalized-getter	A	normalizedScale	9	-2147483646	0	UNNECESSARY	3E+1073741823|unscaled;unscaled;
+45677	49938	A.normalized-getter	A	normalizedScale	9	-2147483646	1	UNNECESSARY	3E+1073741823|unscaled;unscaled;
+45685	49946	A.normalized-getter	A	normalizedScale	9	-2147483646	7	UNNECESSARY	3E+1073741823|unscaled;unscaled;
+45710	49974	A.normalized-getter	A	normalizedScale	9	-2	0	UP	3E+1|unscaled;unscaled;
+45711	49975	A.normalized-getter	A	normalizedScale	9	-2	0	DOWN	3E+1|unscaled;unscaled;
+45712	49976	A.normalized-getter	A	normalizedScale	9	-2	0	CEILING	3E+1|unscaled;unscaled;
+45713	49977	A.normalized-getter	A	normalizedScale	9	-2	0	FLOOR	3E+1|unscaled;unscaled;
+45714	49978	A.normalized-getter	A	normalizedScale	9	-2	0	HALF_UP	3E+1|unscaled;unscaled;
+45715	49979	A.normalized-getter	A	normalizedScale	9	-2	0	HALF_DOWN	3E+1|unscaled;unscaled;
+45716	49980	A.normalized-getter	A	normalizedScale	9	-2	0	HALF_EVEN	3E+1|unscaled;unscaled;
+45717	49981	A.normalized-getter	A	normalizedScale	9	-2	0	UNNECESSARY	3E+1|unscaled;unscaled;
+45725	49989	A.normalized-getter	A	normalizedScale	9	-2	1	UNNECESSARY	3E+1|unscaled;unscaled;
+45733	49997	A.normalized-getter	A	normalizedScale	9	-2	7	UNNECESSARY	3E+1|unscaled;unscaled;
+45758	50025	A.normalized-getter	A	normalizedScale	9	0	0	UP	3|unscaled;unscaled;
+45759	50026	A.normalized-getter	A	normalizedScale	9	0	0	DOWN	3|unscaled;unscaled;
+45760	50027	A.normalized-getter	A	normalizedScale	9	0	0	CEILING	3|unscaled;unscaled;
+45761	50028	A.normalized-getter	A	normalizedScale	9	0	0	FLOOR	3|unscaled;unscaled;
+45762	50029	A.normalized-getter	A	normalizedScale	9	0	0	HALF_UP	3|unscaled;unscaled;
+45763	50030	A.normalized-getter	A	normalizedScale	9	0	0	HALF_DOWN	3|unscaled;unscaled;
+45764	50031	A.normalized-getter	A	normalizedScale	9	0	0	HALF_EVEN	3|unscaled;unscaled;
+45765	50032	A.normalized-getter	A	normalizedScale	9	0	0	UNNECESSARY	3|unscaled;unscaled;
+45773	50040	A.normalized-getter	A	normalizedScale	9	0	1	UNNECESSARY	3|unscaled;unscaled;
+45781	50048	A.normalized-getter	A	normalizedScale	9	0	7	UNNECESSARY	3|unscaled;unscaled;
+45806	50076	A.normalized-getter	A	normalizedScale	9	2	0	UP	0.3|unscaled;unscaled;
+45807	50077	A.normalized-getter	A	normalizedScale	9	2	0	DOWN	0.3|unscaled;unscaled;
+45808	50078	A.normalized-getter	A	normalizedScale	9	2	0	CEILING	0.3|unscaled;unscaled;
+45809	50079	A.normalized-getter	A	normalizedScale	9	2	0	FLOOR	0.3|unscaled;unscaled;
+45810	50080	A.normalized-getter	A	normalizedScale	9	2	0	HALF_UP	0.3|unscaled;unscaled;
+45811	50081	A.normalized-getter	A	normalizedScale	9	2	0	HALF_DOWN	0.3|unscaled;unscaled;
+45812	50082	A.normalized-getter	A	normalizedScale	9	2	0	HALF_EVEN	0.3|unscaled;unscaled;
+45813	50083	A.normalized-getter	A	normalizedScale	9	2	0	UNNECESSARY	0.3|unscaled;unscaled;
+45821	50091	A.normalized-getter	A	normalizedScale	9	2	1	UNNECESSARY	0.3|unscaled;unscaled;
+45829	50099	A.normalized-getter	A	normalizedScale	9	2	7	UNNECESSARY	0.3|unscaled;unscaled;
+45878	50151	A.normalized-getter	A	normalizedScale	9	2147483646	0	UP	3E-1073741823|unscaled;unscaled;
+45879	50152	A.normalized-getter	A	normalizedScale	9	2147483646	0	DOWN	3E-1073741823|unscaled;unscaled;
+45880	50153	A.normalized-getter	A	normalizedScale	9	2147483646	0	CEILING	3E-1073741823|unscaled;unscaled;
+45881	50154	A.normalized-getter	A	normalizedScale	9	2147483646	0	FLOOR	3E-1073741823|unscaled;unscaled;
+45882	50155	A.normalized-getter	A	normalizedScale	9	2147483646	0	HALF_UP	3E-1073741823|unscaled;unscaled;
+45883	50156	A.normalized-getter	A	normalizedScale	9	2147483646	0	HALF_DOWN	3E-1073741823|unscaled;unscaled;
+45884	50157	A.normalized-getter	A	normalizedScale	9	2147483646	0	HALF_EVEN	3E-1073741823|unscaled;unscaled;
+45885	50158	A.normalized-getter	A	normalizedScale	9	2147483646	0	UNNECESSARY	3E-1073741823|unscaled;unscaled;
+45893	50166	A.normalized-getter	A	normalizedScale	9	2147483646	1	UNNECESSARY	3E-1073741823|unscaled;unscaled;
+45901	50177	A.normalized-getter	A	normalizedScale	9	2147483646	7	UNNECESSARY	3E-1073741823|unscaled;unscaled;
+45926	50202	A.normalized-getter	A	normalizedScale	2	-2147483648	0	UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45927	50203	A.normalized-getter	A	normalizedScale	2	-2147483648	0	DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45928	50204	A.normalized-getter	A	normalizedScale	2	-2147483648	0	CEILING	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45929	50205	A.normalized-getter	A	normalizedScale	2	-2147483648	0	FLOOR	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45930	50206	A.normalized-getter	A	normalizedScale	2	-2147483648	0	HALF_UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45931	50207	A.normalized-getter	A	normalizedScale	2	-2147483648	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45932	50208	A.normalized-getter	A	normalizedScale	2	-2147483648	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45933	50209	A.normalized-getter	A	normalizedScale	2	-2147483648	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45941	50217	A.normalized-getter	A	normalizedScale	2	-2147483648	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45949	50225	A.normalized-getter	A	normalizedScale	2	-2147483648	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45974	50253	A.normalized-getter	A	normalizedScale	2	-2147483646	0	UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45975	50254	A.normalized-getter	A	normalizedScale	2	-2147483646	0	DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45976	50255	A.normalized-getter	A	normalizedScale	2	-2147483646	0	CEILING	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45977	50256	A.normalized-getter	A	normalizedScale	2	-2147483646	0	FLOOR	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45978	50257	A.normalized-getter	A	normalizedScale	2	-2147483646	0	HALF_UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45979	50258	A.normalized-getter	A	normalizedScale	2	-2147483646	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45980	50259	A.normalized-getter	A	normalizedScale	2	-2147483646	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45981	50260	A.normalized-getter	A	normalizedScale	2	-2147483646	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45989	50268	A.normalized-getter	A	normalizedScale	2	-2147483646	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+45997	50276	A.normalized-getter	A	normalizedScale	2	-2147483646	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46022	50304	A.normalized-getter	A	normalizedScale	2	-2	0	UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46023	50305	A.normalized-getter	A	normalizedScale	2	-2	0	DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46024	50306	A.normalized-getter	A	normalizedScale	2	-2	0	CEILING	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46025	50307	A.normalized-getter	A	normalizedScale	2	-2	0	FLOOR	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46026	50308	A.normalized-getter	A	normalizedScale	2	-2	0	HALF_UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46027	50309	A.normalized-getter	A	normalizedScale	2	-2	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46028	50310	A.normalized-getter	A	normalizedScale	2	-2	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46029	50311	A.normalized-getter	A	normalizedScale	2	-2	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46037	50319	A.normalized-getter	A	normalizedScale	2	-2	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46045	50327	A.normalized-getter	A	normalizedScale	2	-2	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46070	50355	A.normalized-getter	A	normalizedScale	2	0	0	UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46071	50356	A.normalized-getter	A	normalizedScale	2	0	0	DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46072	50357	A.normalized-getter	A	normalizedScale	2	0	0	CEILING	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46073	50358	A.normalized-getter	A	normalizedScale	2	0	0	FLOOR	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46074	50359	A.normalized-getter	A	normalizedScale	2	0	0	HALF_UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46075	50360	A.normalized-getter	A	normalizedScale	2	0	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46076	50361	A.normalized-getter	A	normalizedScale	2	0	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46077	50362	A.normalized-getter	A	normalizedScale	2	0	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46085	50370	A.normalized-getter	A	normalizedScale	2	0	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46093	50378	A.normalized-getter	A	normalizedScale	2	0	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46118	50406	A.normalized-getter	A	normalizedScale	2	2	0	UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46119	50407	A.normalized-getter	A	normalizedScale	2	2	0	DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46120	50408	A.normalized-getter	A	normalizedScale	2	2	0	CEILING	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46121	50409	A.normalized-getter	A	normalizedScale	2	2	0	FLOOR	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46122	50410	A.normalized-getter	A	normalizedScale	2	2	0	HALF_UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46123	50411	A.normalized-getter	A	normalizedScale	2	2	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46124	50412	A.normalized-getter	A	normalizedScale	2	2	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46125	50413	A.normalized-getter	A	normalizedScale	2	2	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46133	50421	A.normalized-getter	A	normalizedScale	2	2	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46141	50429	A.normalized-getter	A	normalizedScale	2	2	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46190	50481	A.normalized-getter	A	normalizedScale	2	2147483646	0	UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46191	50482	A.normalized-getter	A	normalizedScale	2	2147483646	0	DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46192	50483	A.normalized-getter	A	normalizedScale	2	2147483646	0	CEILING	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46193	50484	A.normalized-getter	A	normalizedScale	2	2147483646	0	FLOOR	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46194	50485	A.normalized-getter	A	normalizedScale	2	2147483646	0	HALF_UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46195	50486	A.normalized-getter	A	normalizedScale	2	2147483646	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46196	50487	A.normalized-getter	A	normalizedScale	2	2147483646	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46197	50488	A.normalized-getter	A	normalizedScale	2	2147483646	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46205	50499	A.normalized-getter	A	normalizedScale	2	2147483646	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46213	50507	A.normalized-getter	A	normalizedScale	2	2147483646	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46238	50532	A.normalized-getter	A	normalizedScale	-4	-2147483648	0	UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46239	50533	A.normalized-getter	A	normalizedScale	-4	-2147483648	0	DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46240	50534	A.normalized-getter	A	normalizedScale	-4	-2147483648	0	CEILING	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46241	50535	A.normalized-getter	A	normalizedScale	-4	-2147483648	0	FLOOR	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46242	50536	A.normalized-getter	A	normalizedScale	-4	-2147483648	0	HALF_UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46243	50537	A.normalized-getter	A	normalizedScale	-4	-2147483648	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46244	50538	A.normalized-getter	A	normalizedScale	-4	-2147483648	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46245	50539	A.normalized-getter	A	normalizedScale	-4	-2147483648	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46253	50550	A.normalized-getter	A	normalizedScale	-4	-2147483648	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46261	50558	A.normalized-getter	A	normalizedScale	-4	-2147483648	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46286	50583	A.normalized-getter	A	normalizedScale	-4	-2147483646	0	UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46287	50584	A.normalized-getter	A	normalizedScale	-4	-2147483646	0	DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46288	50585	A.normalized-getter	A	normalizedScale	-4	-2147483646	0	CEILING	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46289	50586	A.normalized-getter	A	normalizedScale	-4	-2147483646	0	FLOOR	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46290	50587	A.normalized-getter	A	normalizedScale	-4	-2147483646	0	HALF_UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46291	50588	A.normalized-getter	A	normalizedScale	-4	-2147483646	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46292	50589	A.normalized-getter	A	normalizedScale	-4	-2147483646	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46293	50590	A.normalized-getter	A	normalizedScale	-4	-2147483646	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46301	50601	A.normalized-getter	A	normalizedScale	-4	-2147483646	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46309	50609	A.normalized-getter	A	normalizedScale	-4	-2147483646	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46334	50634	A.normalized-getter	A	normalizedScale	-4	-2	0	UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46335	50635	A.normalized-getter	A	normalizedScale	-4	-2	0	DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46336	50636	A.normalized-getter	A	normalizedScale	-4	-2	0	CEILING	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46337	50637	A.normalized-getter	A	normalizedScale	-4	-2	0	FLOOR	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46338	50638	A.normalized-getter	A	normalizedScale	-4	-2	0	HALF_UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46339	50639	A.normalized-getter	A	normalizedScale	-4	-2	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46340	50640	A.normalized-getter	A	normalizedScale	-4	-2	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46341	50641	A.normalized-getter	A	normalizedScale	-4	-2	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46349	50649	A.normalized-getter	A	normalizedScale	-4	-2	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46357	50660	A.normalized-getter	A	normalizedScale	-4	-2	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46382	50685	A.normalized-getter	A	normalizedScale	-4	0	0	UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46383	50686	A.normalized-getter	A	normalizedScale	-4	0	0	DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46384	50687	A.normalized-getter	A	normalizedScale	-4	0	0	CEILING	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46385	50688	A.normalized-getter	A	normalizedScale	-4	0	0	FLOOR	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46386	50689	A.normalized-getter	A	normalizedScale	-4	0	0	HALF_UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46387	50690	A.normalized-getter	A	normalizedScale	-4	0	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46388	50691	A.normalized-getter	A	normalizedScale	-4	0	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46389	50692	A.normalized-getter	A	normalizedScale	-4	0	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46397	50700	A.normalized-getter	A	normalizedScale	-4	0	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46405	50711	A.normalized-getter	A	normalizedScale	-4	0	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46430	50736	A.normalized-getter	A	normalizedScale	-4	2	0	UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46431	50737	A.normalized-getter	A	normalizedScale	-4	2	0	DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46432	50738	A.normalized-getter	A	normalizedScale	-4	2	0	CEILING	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46433	50739	A.normalized-getter	A	normalizedScale	-4	2	0	FLOOR	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46434	50740	A.normalized-getter	A	normalizedScale	-4	2	0	HALF_UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46435	50741	A.normalized-getter	A	normalizedScale	-4	2	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46436	50742	A.normalized-getter	A	normalizedScale	-4	2	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46437	50743	A.normalized-getter	A	normalizedScale	-4	2	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46445	50751	A.normalized-getter	A	normalizedScale	-4	2	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46453	50762	A.normalized-getter	A	normalizedScale	-4	2	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46502	50814	A.normalized-getter	A	normalizedScale	-4	2147483646	0	UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46503	50815	A.normalized-getter	A	normalizedScale	-4	2147483646	0	DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46504	50816	A.normalized-getter	A	normalizedScale	-4	2147483646	0	CEILING	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46505	50817	A.normalized-getter	A	normalizedScale	-4	2147483646	0	FLOOR	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46506	50818	A.normalized-getter	A	normalizedScale	-4	2147483646	0	HALF_UP	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46507	50819	A.normalized-getter	A	normalizedScale	-4	2147483646	0	HALF_DOWN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46508	50820	A.normalized-getter	A	normalizedScale	-4	2147483646	0	HALF_EVEN	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46509	50821	A.normalized-getter	A	normalizedScale	-4	2147483646	0	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46517	50829	A.normalized-getter	A	normalizedScale	-4	2147483646	1	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46525	50837	A.normalized-getter	A	normalizedScale	-4	2147483646	7	UNNECESSARY	!ArithmeticException:Negative BigInteger|unscaled;unscaled;
+46550	50865	A.normalized-getter	A	normalizedScale	10	-2147483648	0	UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46551	50866	A.normalized-getter	A	normalizedScale	10	-2147483648	0	DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46552	50867	A.normalized-getter	A	normalizedScale	10	-2147483648	0	CEILING	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46553	50868	A.normalized-getter	A	normalizedScale	10	-2147483648	0	FLOOR	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46554	50869	A.normalized-getter	A	normalizedScale	10	-2147483648	0	HALF_UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46555	50870	A.normalized-getter	A	normalizedScale	10	-2147483648	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46556	50871	A.normalized-getter	A	normalizedScale	10	-2147483648	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46557	50872	A.normalized-getter	A	normalizedScale	10	-2147483648	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46565	50880	A.normalized-getter	A	normalizedScale	10	-2147483648	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46573	50888	A.normalized-getter	A	normalizedScale	10	-2147483648	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46598	50913	A.normalized-getter	A	normalizedScale	10	-2147483646	0	UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46599	50914	A.normalized-getter	A	normalizedScale	10	-2147483646	0	DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46600	50918	A.normalized-getter	A	normalizedScale	10	-2147483646	0	CEILING	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46601	50919	A.normalized-getter	A	normalizedScale	10	-2147483646	0	FLOOR	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46602	50920	A.normalized-getter	A	normalizedScale	10	-2147483646	0	HALF_UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46603	50921	A.normalized-getter	A	normalizedScale	10	-2147483646	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46604	50922	A.normalized-getter	A	normalizedScale	10	-2147483646	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46605	50923	A.normalized-getter	A	normalizedScale	10	-2147483646	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46613	50931	A.normalized-getter	A	normalizedScale	10	-2147483646	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46621	50939	A.normalized-getter	A	normalizedScale	10	-2147483646	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46646	50964	A.normalized-getter	A	normalizedScale	10	-2	0	UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46647	50965	A.normalized-getter	A	normalizedScale	10	-2	0	DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46648	50966	A.normalized-getter	A	normalizedScale	10	-2	0	CEILING	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46649	50967	A.normalized-getter	A	normalizedScale	10	-2	0	FLOOR	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46650	50971	A.normalized-getter	A	normalizedScale	10	-2	0	HALF_UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46651	50972	A.normalized-getter	A	normalizedScale	10	-2	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46652	50973	A.normalized-getter	A	normalizedScale	10	-2	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46653	50974	A.normalized-getter	A	normalizedScale	10	-2	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46661	50982	A.normalized-getter	A	normalizedScale	10	-2	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46669	50990	A.normalized-getter	A	normalizedScale	10	-2	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46694	51015	A.normalized-getter	A	normalizedScale	10	0	0	UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46695	51016	A.normalized-getter	A	normalizedScale	10	0	0	DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46696	51017	A.normalized-getter	A	normalizedScale	10	0	0	CEILING	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46697	51018	A.normalized-getter	A	normalizedScale	10	0	0	FLOOR	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46698	51019	A.normalized-getter	A	normalizedScale	10	0	0	HALF_UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46699	51020	A.normalized-getter	A	normalizedScale	10	0	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46700	51024	A.normalized-getter	A	normalizedScale	10	0	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46701	51025	A.normalized-getter	A	normalizedScale	10	0	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46709	51033	A.normalized-getter	A	normalizedScale	10	0	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46717	51041	A.normalized-getter	A	normalizedScale	10	0	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46742	51066	A.normalized-getter	A	normalizedScale	10	2	0	UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46743	51067	A.normalized-getter	A	normalizedScale	10	2	0	DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46744	51068	A.normalized-getter	A	normalizedScale	10	2	0	CEILING	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46745	51069	A.normalized-getter	A	normalizedScale	10	2	0	FLOOR	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46746	51070	A.normalized-getter	A	normalizedScale	10	2	0	HALF_UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46747	51071	A.normalized-getter	A	normalizedScale	10	2	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46748	51072	A.normalized-getter	A	normalizedScale	10	2	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46749	51073	A.normalized-getter	A	normalizedScale	10	2	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46757	51084	A.normalized-getter	A	normalizedScale	10	2	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46765	51092	A.normalized-getter	A	normalizedScale	10	2	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46814	51144	A.normalized-getter	A	normalizedScale	10	2147483646	0	UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46815	51145	A.normalized-getter	A	normalizedScale	10	2147483646	0	DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46816	51146	A.normalized-getter	A	normalizedScale	10	2147483646	0	CEILING	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46817	51147	A.normalized-getter	A	normalizedScale	10	2147483646	0	FLOOR	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46818	51148	A.normalized-getter	A	normalizedScale	10	2147483646	0	HALF_UP	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46819	51149	A.normalized-getter	A	normalizedScale	10	2147483646	0	HALF_DOWN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46820	51150	A.normalized-getter	A	normalizedScale	10	2147483646	0	HALF_EVEN	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46821	51151	A.normalized-getter	A	normalizedScale	10	2147483646	0	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46829	51159	A.normalized-getter	A	normalizedScale	10	2147483646	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46837	51167	A.normalized-getter	A	normalizedScale	10	2147483646	7	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46862	51195	A.normalized-getter	A	normalizedScale	100	-2147483648	0	UP	1.0E+1073741825|unscaled;unscaled;
+46863	51196	A.normalized-getter	A	normalizedScale	100	-2147483648	0	DOWN	1.0E+1073741825|unscaled;unscaled;
+46864	51197	A.normalized-getter	A	normalizedScale	100	-2147483648	0	CEILING	1.0E+1073741825|unscaled;unscaled;
+46865	51198	A.normalized-getter	A	normalizedScale	100	-2147483648	0	FLOOR	1.0E+1073741825|unscaled;unscaled;
+46866	51199	A.normalized-getter	A	normalizedScale	100	-2147483648	0	HALF_UP	1.0E+1073741825|unscaled;unscaled;
+46867	51200	A.normalized-getter	A	normalizedScale	100	-2147483648	0	HALF_DOWN	1.0E+1073741825|unscaled;unscaled;
+46868	51201	A.normalized-getter	A	normalizedScale	100	-2147483648	0	HALF_EVEN	1.0E+1073741825|unscaled;unscaled;
+46869	51202	A.normalized-getter	A	normalizedScale	100	-2147483648	0	UNNECESSARY	1.0E+1073741825|unscaled;unscaled;
+46877	51210	A.normalized-getter	A	normalizedScale	100	-2147483648	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46885	51218	A.normalized-getter	A	normalizedScale	100	-2147483648	7	UNNECESSARY	1.0E+1073741825|unscaled;unscaled;
+46910	51246	A.normalized-getter	A	normalizedScale	100	-2147483646	0	UP	1.0E+1073741824|unscaled;unscaled;
+46911	51247	A.normalized-getter	A	normalizedScale	100	-2147483646	0	DOWN	1.0E+1073741824|unscaled;unscaled;
+46912	51248	A.normalized-getter	A	normalizedScale	100	-2147483646	0	CEILING	1.0E+1073741824|unscaled;unscaled;
+46913	51249	A.normalized-getter	A	normalizedScale	100	-2147483646	0	FLOOR	1.0E+1073741824|unscaled;unscaled;
+46914	51250	A.normalized-getter	A	normalizedScale	100	-2147483646	0	HALF_UP	1.0E+1073741824|unscaled;unscaled;
+46915	51251	A.normalized-getter	A	normalizedScale	100	-2147483646	0	HALF_DOWN	1.0E+1073741824|unscaled;unscaled;
+46916	51252	A.normalized-getter	A	normalizedScale	100	-2147483646	0	HALF_EVEN	1.0E+1073741824|unscaled;unscaled;
+46917	51253	A.normalized-getter	A	normalizedScale	100	-2147483646	0	UNNECESSARY	1.0E+1073741824|unscaled;unscaled;
+46925	51261	A.normalized-getter	A	normalizedScale	100	-2147483646	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46933	51269	A.normalized-getter	A	normalizedScale	100	-2147483646	7	UNNECESSARY	1.0E+1073741824|unscaled;unscaled;
+46958	51297	A.normalized-getter	A	normalizedScale	100	-2	0	UP	1.0E+2|unscaled;unscaled;
+46959	51298	A.normalized-getter	A	normalizedScale	100	-2	0	DOWN	1.0E+2|unscaled;unscaled;
+46960	51299	A.normalized-getter	A	normalizedScale	100	-2	0	CEILING	1.0E+2|unscaled;unscaled;
+46961	51300	A.normalized-getter	A	normalizedScale	100	-2	0	FLOOR	1.0E+2|unscaled;unscaled;
+46962	51301	A.normalized-getter	A	normalizedScale	100	-2	0	HALF_UP	1.0E+2|unscaled;unscaled;
+46963	51302	A.normalized-getter	A	normalizedScale	100	-2	0	HALF_DOWN	1.0E+2|unscaled;unscaled;
+46964	51303	A.normalized-getter	A	normalizedScale	100	-2	0	HALF_EVEN	1.0E+2|unscaled;unscaled;
+46965	51304	A.normalized-getter	A	normalizedScale	100	-2	0	UNNECESSARY	1.0E+2|unscaled;unscaled;
+46973	51312	A.normalized-getter	A	normalizedScale	100	-2	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+46981	51320	A.normalized-getter	A	normalizedScale	100	-2	7	UNNECESSARY	1.0E+2|unscaled;unscaled;
+47006	51348	A.normalized-getter	A	normalizedScale	100	0	0	UP	10|unscaled;unscaled;
+47007	51349	A.normalized-getter	A	normalizedScale	100	0	0	DOWN	10|unscaled;unscaled;
+47008	51350	A.normalized-getter	A	normalizedScale	100	0	0	CEILING	10|unscaled;unscaled;
+47009	51351	A.normalized-getter	A	normalizedScale	100	0	0	FLOOR	10|unscaled;unscaled;
+47010	51352	A.normalized-getter	A	normalizedScale	100	0	0	HALF_UP	10|unscaled;unscaled;
+47011	51353	A.normalized-getter	A	normalizedScale	100	0	0	HALF_DOWN	10|unscaled;unscaled;
+47012	51354	A.normalized-getter	A	normalizedScale	100	0	0	HALF_EVEN	10|unscaled;unscaled;
+47013	51355	A.normalized-getter	A	normalizedScale	100	0	0	UNNECESSARY	10|unscaled;unscaled;
+47021	51363	A.normalized-getter	A	normalizedScale	100	0	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+47029	51371	A.normalized-getter	A	normalizedScale	100	0	7	UNNECESSARY	10|unscaled;unscaled;
+47054	51399	A.normalized-getter	A	normalizedScale	100	2	0	UP	1.0|unscaled;unscaled;
+47055	51400	A.normalized-getter	A	normalizedScale	100	2	0	DOWN	1.0|unscaled;unscaled;
+47056	51401	A.normalized-getter	A	normalizedScale	100	2	0	CEILING	1.0|unscaled;unscaled;
+47057	51402	A.normalized-getter	A	normalizedScale	100	2	0	FLOOR	1.0|unscaled;unscaled;
+47058	51403	A.normalized-getter	A	normalizedScale	100	2	0	HALF_UP	1.0|unscaled;unscaled;
+47059	51404	A.normalized-getter	A	normalizedScale	100	2	0	HALF_DOWN	1.0|unscaled;unscaled;
+47060	51405	A.normalized-getter	A	normalizedScale	100	2	0	HALF_EVEN	1.0|unscaled;unscaled;
+47061	51406	A.normalized-getter	A	normalizedScale	100	2	0	UNNECESSARY	1.0|unscaled;unscaled;
+47069	51414	A.normalized-getter	A	normalizedScale	100	2	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+47077	51422	A.normalized-getter	A	normalizedScale	100	2	7	UNNECESSARY	1.0|unscaled;unscaled;
+47126	51474	A.normalized-getter	A	normalizedScale	100	2147483646	0	UP	1.0E-1073741822|unscaled;unscaled;
+47127	51475	A.normalized-getter	A	normalizedScale	100	2147483646	0	DOWN	1.0E-1073741822|unscaled;unscaled;
+47128	51476	A.normalized-getter	A	normalizedScale	100	2147483646	0	CEILING	1.0E-1073741822|unscaled;unscaled;
+47129	51477	A.normalized-getter	A	normalizedScale	100	2147483646	0	FLOOR	1.0E-1073741822|unscaled;unscaled;
+47130	51478	A.normalized-getter	A	normalizedScale	100	2147483646	0	HALF_UP	1.0E-1073741822|unscaled;unscaled;
+47131	51479	A.normalized-getter	A	normalizedScale	100	2147483646	0	HALF_DOWN	1.0E-1073741822|unscaled;unscaled;
+47132	51480	A.normalized-getter	A	normalizedScale	100	2147483646	0	HALF_EVEN	1.0E-1073741822|unscaled;unscaled;
+47133	51481	A.normalized-getter	A	normalizedScale	100	2147483646	0	UNNECESSARY	1.0E-1073741822|unscaled;unscaled;
+47141	51489	A.normalized-getter	A	normalizedScale	100	2147483646	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+47149	51497	A.normalized-getter	A	normalizedScale	100	2147483646	7	UNNECESSARY	1.0E-1073741822|unscaled;unscaled;
+47174	51525	A.normalized-getter	A	normalizedScale	400	-2147483648	0	UP	2.0E+1073741825|unscaled;unscaled;
+47175	51526	A.normalized-getter	A	normalizedScale	400	-2147483648	0	DOWN	2.0E+1073741825|unscaled;unscaled;
+47176	51527	A.normalized-getter	A	normalizedScale	400	-2147483648	0	CEILING	2.0E+1073741825|unscaled;unscaled;
+47177	51528	A.normalized-getter	A	normalizedScale	400	-2147483648	0	FLOOR	2.0E+1073741825|unscaled;unscaled;
+47178	51529	A.normalized-getter	A	normalizedScale	400	-2147483648	0	HALF_UP	2.0E+1073741825|unscaled;unscaled;
+47179	51530	A.normalized-getter	A	normalizedScale	400	-2147483648	0	HALF_DOWN	2.0E+1073741825|unscaled;unscaled;
+47180	51531	A.normalized-getter	A	normalizedScale	400	-2147483648	0	HALF_EVEN	2.0E+1073741825|unscaled;unscaled;
+47181	51532	A.normalized-getter	A	normalizedScale	400	-2147483648	0	UNNECESSARY	2.0E+1073741825|unscaled;unscaled;
+47189	51540	A.normalized-getter	A	normalizedScale	400	-2147483648	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+47197	51548	A.normalized-getter	A	normalizedScale	400	-2147483648	7	UNNECESSARY	2.0E+1073741825|unscaled;unscaled;
+47222	51576	A.normalized-getter	A	normalizedScale	400	-2147483646	0	UP	2.0E+1073741824|unscaled;unscaled;
+47223	51577	A.normalized-getter	A	normalizedScale	400	-2147483646	0	DOWN	2.0E+1073741824|unscaled;unscaled;
+47224	51578	A.normalized-getter	A	normalizedScale	400	-2147483646	0	CEILING	2.0E+1073741824|unscaled;unscaled;
+47225	51579	A.normalized-getter	A	normalizedScale	400	-2147483646	0	FLOOR	2.0E+1073741824|unscaled;unscaled;
+47226	51580	A.normalized-getter	A	normalizedScale	400	-2147483646	0	HALF_UP	2.0E+1073741824|unscaled;unscaled;
+47227	51581	A.normalized-getter	A	normalizedScale	400	-2147483646	0	HALF_DOWN	2.0E+1073741824|unscaled;unscaled;
+47228	51582	A.normalized-getter	A	normalizedScale	400	-2147483646	0	HALF_EVEN	2.0E+1073741824|unscaled;unscaled;
+47229	51583	A.normalized-getter	A	normalizedScale	400	-2147483646	0	UNNECESSARY	2.0E+1073741824|unscaled;unscaled;
+47237	51591	A.normalized-getter	A	normalizedScale	400	-2147483646	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+47245	51599	A.normalized-getter	A	normalizedScale	400	-2147483646	7	UNNECESSARY	2.0E+1073741824|unscaled;unscaled;
+47270	51627	A.normalized-getter	A	normalizedScale	400	-2	0	UP	2.0E+2|unscaled;unscaled;
+47271	51628	A.normalized-getter	A	normalizedScale	400	-2	0	DOWN	2.0E+2|unscaled;unscaled;
+47272	51629	A.normalized-getter	A	normalizedScale	400	-2	0	CEILING	2.0E+2|unscaled;unscaled;
+47273	51630	A.normalized-getter	A	normalizedScale	400	-2	0	FLOOR	2.0E+2|unscaled;unscaled;
+47274	51631	A.normalized-getter	A	normalizedScale	400	-2	0	HALF_UP	2.0E+2|unscaled;unscaled;
+47275	51632	A.normalized-getter	A	normalizedScale	400	-2	0	HALF_DOWN	2.0E+2|unscaled;unscaled;
+47276	51633	A.normalized-getter	A	normalizedScale	400	-2	0	HALF_EVEN	2.0E+2|unscaled;unscaled;
+47277	51634	A.normalized-getter	A	normalizedScale	400	-2	0	UNNECESSARY	2.0E+2|unscaled;unscaled;
+47285	51642	A.normalized-getter	A	normalizedScale	400	-2	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+47293	51650	A.normalized-getter	A	normalizedScale	400	-2	7	UNNECESSARY	2.0E+2|unscaled;unscaled;
+47318	51678	A.normalized-getter	A	normalizedScale	400	0	0	UP	20|unscaled;unscaled;
+47319	51679	A.normalized-getter	A	normalizedScale	400	0	0	DOWN	20|unscaled;unscaled;
+47320	51680	A.normalized-getter	A	normalizedScale	400	0	0	CEILING	20|unscaled;unscaled;
+47321	51681	A.normalized-getter	A	normalizedScale	400	0	0	FLOOR	20|unscaled;unscaled;
+47322	51682	A.normalized-getter	A	normalizedScale	400	0	0	HALF_UP	20|unscaled;unscaled;
+47323	51683	A.normalized-getter	A	normalizedScale	400	0	0	HALF_DOWN	20|unscaled;unscaled;
+47324	51684	A.normalized-getter	A	normalizedScale	400	0	0	HALF_EVEN	20|unscaled;unscaled;
+47325	51685	A.normalized-getter	A	normalizedScale	400	0	0	UNNECESSARY	20|unscaled;unscaled;
+47333	51693	A.normalized-getter	A	normalizedScale	400	0	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+47341	51701	A.normalized-getter	A	normalizedScale	400	0	7	UNNECESSARY	20|unscaled;unscaled;
+47366	51729	A.normalized-getter	A	normalizedScale	400	2	0	UP	2.0|unscaled;unscaled;
+47367	51730	A.normalized-getter	A	normalizedScale	400	2	0	DOWN	2.0|unscaled;unscaled;
+47368	51731	A.normalized-getter	A	normalizedScale	400	2	0	CEILING	2.0|unscaled;unscaled;
+47369	51732	A.normalized-getter	A	normalizedScale	400	2	0	FLOOR	2.0|unscaled;unscaled;
+47370	51733	A.normalized-getter	A	normalizedScale	400	2	0	HALF_UP	2.0|unscaled;unscaled;
+47371	51734	A.normalized-getter	A	normalizedScale	400	2	0	HALF_DOWN	2.0|unscaled;unscaled;
+47372	51735	A.normalized-getter	A	normalizedScale	400	2	0	HALF_EVEN	2.0|unscaled;unscaled;
+47373	51736	A.normalized-getter	A	normalizedScale	400	2	0	UNNECESSARY	2.0|unscaled;unscaled;
+47381	51744	A.normalized-getter	A	normalizedScale	400	2	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+47389	51752	A.normalized-getter	A	normalizedScale	400	2	7	UNNECESSARY	2.0|unscaled;unscaled;
+47438	51804	A.normalized-getter	A	normalizedScale	400	2147483646	0	UP	2.0E-1073741822|unscaled;unscaled;
+47439	51805	A.normalized-getter	A	normalizedScale	400	2147483646	0	DOWN	2.0E-1073741822|unscaled;unscaled;
+47440	51806	A.normalized-getter	A	normalizedScale	400	2147483646	0	CEILING	2.0E-1073741822|unscaled;unscaled;
+47441	51807	A.normalized-getter	A	normalizedScale	400	2147483646	0	FLOOR	2.0E-1073741822|unscaled;unscaled;
+47442	51808	A.normalized-getter	A	normalizedScale	400	2147483646	0	HALF_UP	2.0E-1073741822|unscaled;unscaled;
+47443	51809	A.normalized-getter	A	normalizedScale	400	2147483646	0	HALF_DOWN	2.0E-1073741822|unscaled;unscaled;
+47444	51810	A.normalized-getter	A	normalizedScale	400	2147483646	0	HALF_EVEN	2.0E-1073741822|unscaled;unscaled;
+47445	51811	A.normalized-getter	A	normalizedScale	400	2147483646	0	UNNECESSARY	2.0E-1073741822|unscaled;unscaled;
+47453	51822	A.normalized-getter	A	normalizedScale	400	2147483646	1	UNNECESSARY	!ArithmeticException:Computed square root not exact.|unscaled;unscaled;
+47461	51830	A.normalized-getter	A	normalizedScale	400	2147483646	7	UNNECESSARY	2.0E-1073741822|unscaled;unscaled;

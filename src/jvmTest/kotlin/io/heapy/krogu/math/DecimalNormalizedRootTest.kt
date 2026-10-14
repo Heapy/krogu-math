@@ -32,7 +32,12 @@ class DecimalNormalizedRootTest {
                     catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
                 val a = outcome { expected.sqrt(java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))) }
                 val b = outcome { actual.sqrt(MathContext(precision, mode)) }
-                if (a != b || expectedTrace.toString() != actualTrace.toString())
+                val vector = listOf("A", "normalizedScale", coefficient, scale.toString(), precision.toString(), mode.name)
+                if (DecimalExactRoot563Callbacks.category(vector) != null) {
+                    DecimalExactRoot563Callbacks.retainJdk(vector, "$a|$expectedTrace")
+                    DecimalExactRoot563Callbacks.verifyProbeFields(vector, "$b|$actualTrace")
+                    DecimalExactRoot563Callbacks.verifyControls(vector)
+                } else if (a != b || expectedTrace.toString() != actualTrace.toString())
                     mismatches.add("$coefficient@$scale/$precision/$mode: $a|$expectedTrace <> $b|$actualTrace")
             }
         }
@@ -86,7 +91,12 @@ class DecimalNormalizedRootTest {
                     catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
                 val a = outcome { expected.sqrt(java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))) }
                 val b = outcome { actual.sqrt(MathContext(precision, mode)) }
-                if (a != b || expectedTrace.toString() != actualTrace.toString())
+                val vector = listOf("N", "normalizedRoot", text, first ?: "~", precision.toString(), mode.name)
+                if (DecimalExactRoot563Callbacks.category(vector) != null) {
+                    DecimalExactRoot563Callbacks.retainJdk(vector, "$a|$expectedTrace")
+                    DecimalExactRoot563Callbacks.verifyProbeFields(vector, "$b|$actualTrace")
+                    DecimalExactRoot563Callbacks.verifyControls(vector)
+                } else if (a != b || expectedTrace.toString() != actualTrace.toString())
                     mismatches.add("$text/$precision/$mode/$first: $a|$expectedTrace <> $b|$actualTrace")
             }
         }

@@ -22,6 +22,21 @@ class ScaleBoundaryOracleTest {
                 if (mc == null) a.divide(b) else a.divide(b, mc)
             }
         }
+        fun verifySqrt(label: String, a: BigDecimal, mc: MathContext) {
+            val contract = DecimalExactRoot563Expected.corrected(a.unscaledValue().toString(), a.scale(), mc)
+            if (contract == null) {
+                verify(label) { a.sqrt(mc) }
+                return
+            }
+            assertTrue(expected.hasNext(), "Oracle ended before $label")
+            val diagnostic = expected.next()
+            assertEquals("!ArithmeticException", diagnostic, "retained JDK sqrt defect: $label")
+            val result = a.sqrt(mc)
+            assertEquals(contract.coefficient, result.unscaledValue().toString(), "$count: coefficient $label; JDK=$diagnostic")
+            assertEquals(contract.scale, result.scale(), "$count: scale $label; JDK=$diagnostic")
+            assertEquals(contract.text(), result.toString(), "$count: text $label; JDK=$diagnostic")
+            count++
+        }
         private fun verifyExpected(label: String, contract: String?, action: () -> Any?) {
             assertTrue(expected.hasNext(), "Oracle ended before $label")
             val actual = try { action().toString() } catch (e: Exception) { "!${e::class.simpleName}" }
@@ -58,7 +73,7 @@ class ScaleBoundaryOracleTest {
             }
             for (p in listOf(0, 1, 2, 7)) for (mode in RoundingMode.entries) {
                 val context = MathContext(p, mode)
-                verify("sqrt $a,$context") { a.sqrt(context) }
+                cursor.verifySqrt("sqrt $a,$context", a, context)
                 verify("round $a,$context") { a.round(context) }
                 verify("pow $a,2,$context") { a.pow(2, context) }
             }
@@ -106,7 +121,7 @@ class ScaleBoundaryOracleTest {
                     cursor.verifyAddition("add $a,$b,$context", a, b, context)
                     cursor.verifyDivision("divide $a,$b,$context", a, b, context)
                     verify("multiply $a,$b,$context") { a.multiply(b, context) }
-                    verify("sqrt $a,$context") { a.sqrt(context) }
+                    cursor.verifySqrt("sqrt $a,$context", a, context)
                 }
             }
         }

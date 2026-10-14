@@ -51,7 +51,7 @@ class ScaleBoundaryConformanceTest {
                 }, { a.add(b, mc) })
                 check("divide $label", { divisionReference(a, b, mc) { x.divide(y, jc) } }, { a.divide(b, mc) })
                 check("multiply $label", { x.multiply(y, jc) }, { a.multiply(b, mc) })
-                check("sqrt $x,$mc", { x.sqrt(jc) }, { a.sqrt(mc) })
+                check("sqrt $x,$mc", { sqrtReference(a, mc) { x.sqrt(jc) } }, { a.sqrt(mc) })
             }
         }
         assertEquals(emptyMap(), counts, "$comparisons comparisons; discrepancy counts: $counts\n${failures.joinToString("\n")}")
@@ -87,13 +87,25 @@ class ScaleBoundaryConformanceTest {
             }
             for (p in listOf(0, 1, 2, 7)) for (mode in RoundingMode.entries) {
                 val mc = MathContext(p, mode); val jc = JC(p, JR.valueOf(mode.name))
-                check("sqrt $x,$mc", { x.sqrt(jc) }, { a.sqrt(mc) })
+                check("sqrt $x,$mc", { sqrtReference(a, mc) { x.sqrt(jc) } }, { a.sqrt(mc) })
                 check("round $x,$mc", { x.round(jc) }, { a.round(mc) })
                 check("pow $x,2,$mc", { x.pow(2, jc) }, { a.pow(2, mc) })
             }
         }
         assertEquals(emptyList(), failures, "$comparisons comparisons; first discrepancies:\n${failures.joinToString("\n")}")
         println("$comparisons signed-scale-boundary comparisons passed")
+    }
+
+    private fun sqrtReference(a: BigDecimal, mc: MathContext, reference: () -> JD): Any {
+        val corrected = DecimalExactRoot563Expected.corrected(a.unscaledValue().toString(), a.scale(), mc)
+            ?: return reference()
+        val diagnostic = try { reference().toString() }
+            catch (_: ArithmeticException) { "!ArithmeticException" }
+        assertEquals("!ArithmeticException", diagnostic, "retained JDK sqrt normalization defect: $a $mc")
+        val actual = a.sqrt(mc)
+        assertEquals(corrected.coefficient, actual.unscaledValue().toString(), "sqrt coefficient: $a $mc")
+        assertEquals(corrected.scale, actual.scale(), "sqrt scale: $a $mc")
+        return corrected.text()
     }
 
     private fun divisionReference(a: BigDecimal, b: BigDecimal, mc: MathContext?, reference: () -> JD): Any {

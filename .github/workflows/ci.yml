@@ -30,6 +30,7 @@ jobs:
       - run: kotlinr scripts/generate-decimal-integral-dispatch-oracle.main.kts --check
       - run: kotlinr scripts/generate-decimal-context-dispatch-oracle.main.kts --check
       - run: kotlinr scripts/extract-decimal-context-returned-representations.main.kts --check
+      - run: kotlinr scripts/inventory-decimal-exact-root-callbacks-563.main.kts
       - run: kotlinr scripts/generate-decimal-remainder-array-oracle.main.kts --check
       - run: kotlinr scripts/generate-integer-arithmetic-oracle.main.kts --check
       - run: kotlinr scripts/generate-integer-parser-oracle.main.kts --check

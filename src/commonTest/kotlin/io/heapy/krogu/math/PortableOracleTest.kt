@@ -4,11 +4,19 @@ import kotlin.test.*
 
 class PortableOracleTest {
     @Test fun jdk25BehaviorOnEveryPlatform() {
-        for (v in oracleVectors()) {
+        for ((index, v) in oracleVectors().withIndex()) {
             val actual = try {
                 val result = evaluate(v)
                 if (result is Array<*>) result.joinToString("|") else result.toString()
             } catch (e: Exception) { "!${e::class.simpleName}" }
+            if (DecimalExactRoot563Callbacks.category(v.toList()) != null) {
+                // Only the granted selected internal callbacks move to observations.
+                // Keep every old field/index, genuine probe fields and truthful arithmetic controls.
+                DecimalExactRoot563Callbacks.retain(v, index)
+                DecimalExactRoot563Callbacks.verifyProbeFields(v.toList(), actual)
+                DecimalExactRoot563Callbacks.verifyControls(v.toList())
+                continue
+            }
             val normalization = normalizationContractExpected(v)
             val corrected = normalization ?: scaledDivisionContractExpected(v)
             if (normalization != null)

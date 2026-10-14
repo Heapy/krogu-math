@@ -521,6 +521,12 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val preferred = decimalScale / 2
         if (sign == 0) return BigDecimal(BigInteger.ZERO, preferred)
         val context = mc ?: throw NullPointerException()
+        // Use scale parity and integer squares before normalization, decimal
+        // input formatting, or any precision-derived working scale/power.
+        // A supported radicand can exceed an engine's String limit while its
+        // root coefficient (at most half as many digits) remains supported.
+        val finiteRoot = finiteExactSquareRoot()
+        if (finiteRoot != null) return finiteSquareRootResult(finiteRoot, context, preferred)
         if (context.precision == 0 || context.roundingMode == RoundingMode.UNNECESSARY) {
             val normalized = stripTrailingZeros()
             if (normalized.decimalScale and 1 != 0) throw ArithmeticException("Computed square root not exact.")
@@ -554,6 +560,33 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             if (increment(context.roundingMode, 1, half, root.testBit(0))) root = root.add(BigInteger.ONE)
         }
         return BigDecimal(root, scale).round(context).stripTo(preferred)
+    }
+
+    private fun finiteExactSquareRoot(): Pair<BigInteger, Int>? {
+        if (coefficient.signum() <= 0) return null
+        val odd = decimalScale and 1 != 0
+        val integer = if (odd) {
+            // For odd scale, a finite root requires c = 10*r^2. Dividing by
+            // ten keeps the intermediate within the input's supported range.
+            val qr = coefficient.divideAndRemainder(BigInteger.TEN)
+            if (qr[1].signum() != 0) return null
+            qr[0]
+        } else coefficient
+        val root = integer.sqrtAndRemainder()
+        if (root[1].signum() != 0) return null
+        val scale = if (odd) (decimalScale.toLong() - 1) / 2 else decimalScale.toLong() / 2
+        return root[0] to checkedScale(scale)
+    }
+
+    private fun finiteSquareRootResult(root: Pair<BigInteger, Int>, context: MathContext, preferred: Int): BigDecimal {
+        // Rounding drops at most the root's own digits. The unrounded scale
+        // equals preferred, or is one less for negative odd input scales.
+        // Padding therefore needs at most one zero, never precision-sized powers.
+        val rounded = BigDecimal(root.first, root.second).round(context)
+        val target = if (context.precision == 0) preferred else minOf(preferred.toLong(),
+            rounded.decimalScale.toLong() + context.precision - rounded.storedPrecision()).toInt()
+        return if (rounded.decimalScale < target)
+            rounded.setScaleValue(target, RoundingMode.UNNECESSARY) else rounded
     }
 
     override fun compareTo(other: BigDecimal?): Int {
