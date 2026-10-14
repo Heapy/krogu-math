@@ -61,6 +61,15 @@ Contract-preserving subclasses and documented exception/identity behavior remain
 in scope. Current corpora contain mixed categories; full case classification is
 tracked in kotgent `local:526`, not claimed complete by this policy change.
 
+The first fully classified subset is the 8,192
+[extreme replacement-metadata observations](diagnostics/decimal-context-extreme-metadata/README.md).
+Both operands violate the documented precision invariant in every row. Frozen
+reference data and the original evaluator are retained outside the normal test
+source sets; the public-JDK generator remains reproducible. The standalone input
+classifier checks all rows and the retained data hash independently of the port.
+This classification neither excludes valid extreme-scale inputs nor completes
+the classification of other existing oracle families.
+
 For every new difference:
 
 1. Preserve a minimal input, reference runtime/configuration, port result and
