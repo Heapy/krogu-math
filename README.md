@@ -112,8 +112,10 @@ replacement and throwing callbacks, returned identities, values and scales.
 Inherited decimal integral division adds 1,400 outcomes for context-divide callbacks,
 preferred scales, precision, residual checks and returned subclass identities.
 It also adds 1,176 signed metadata outcomes, including precision and scale endpoints.
-Context division adds 8,000 outcomes for operand callback order, failure precedence,
-all rounding modes, compact/wide coefficients, shared operands and nullable calls.
+Context division adds 75,728 outcomes for operand callback order, failure precedence,
+all rounding modes, compact/wide coefficients, shared operands, nullable calls,
+replacement precision/signum values, compact equality-path boundaries and
+normalization overflow near Long limits.
 Java tests add 3,546 nullable division-family comparisons, including callback results.
 Another 216 portable cases check remainder delegation to replacement pair arrays,
 including bounds failures and returned element identity.

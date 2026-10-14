@@ -5,17 +5,29 @@ import kotlin.test.assertEquals
 
 private class ContextProbe(text: String, val label: String, val mode: String, val trace: StringBuilder) : BigDecimal(text) {
     private var signCalls = 0
+    private var precisionCalls = 0
     override fun signum(): Int {
         signCalls++
         trace.append("$label.sign($signCalls);")
         if (mode == "sign-first" || mode == "sign-second" && signCalls == 2)
             throw IllegalStateException("$label sign callback")
-        return super.signum()
+        return when {
+            mode.startsWith("zero-precision:") -> 1
+            mode.startsWith("sign:") -> mode.substringAfter(':').toInt()
+            mode == "sign-changing" -> if (signCalls == 1) -super.signum() else super.signum()
+            else -> super.signum()
+        }
     }
     override fun precision(): Int {
+        precisionCalls++
         trace.append("$label.precision;")
         if (mode == "precision") throw IllegalStateException("$label precision callback")
-        return super.precision()
+        return when {
+            mode.startsWith("zero-precision:") -> mode.substringAfter(':').toInt()
+            mode.startsWith("precision:") -> mode.substringAfter(':').toInt()
+            mode == "precision-changing" -> super.precision() + precisionCalls
+            else -> super.precision()
+        }
     }
     private fun unexpected(name: String): Nothing {
         trace.append("$label.$name;"); throw IllegalStateException("$label unexpected $name")

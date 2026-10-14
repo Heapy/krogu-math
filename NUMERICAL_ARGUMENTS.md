@@ -670,6 +670,47 @@ steps. The 1,176-case public-JDK matrix checks their observable dispatch and
 failures; this arithmetic argument establishes the signed ceiling and Long bounds,
 not every subclass composition or the complete integral-division contract.
 
+## Context-division replacement metadata
+
+Let `a` and `b` be the stored signed coefficients, `s` the stored scale difference,
+`x` and `y` the reported operand precisions, and `p` the context precision.
+Comparing `abs(a) * 10^-x` with `abs(b) * 10^-y` does not require allocating those
+powers: compare decimal digit counts minus the reported precision, then compare
+the stored digit strings padded on the right when the exponents are equal.
+The intermediate quotient scale is `s + p + y - x - adjustment`, where
+`adjustment` is one when that normalized magnitude comparison is positive.
+This scale uses the reported precisions, even when a subclass supplies values
+inconsistent with its stored coefficient. Dividing the stored coefficients at
+this scale and rounding to the context preserves the observed replacement-getter
+behavior. Int scale/precision inputs keep this expression within Long range;
+the separate scale and power range checks remain necessary.
+
+For ordinary coefficients, exact results strip decimal zeros only toward the
+preferred scale. An exact zero can reduce its scale without changing value.
+The pinned runtime also exposes a compact equality shortcut for subclasses:
+when source precision is at most divisor precision and both operand precisions
+and context precision are below 18, equal normalized compact coefficients are
+treated as a unit ratio. The oracle includes stored-zero inputs reporting nonzero
+sign to distinguish this shortcut from ordinary division. This is black-box
+compatibility evidence, not a mathematical definition of zero divided by zero.
+
+The compact path also exposes a normalization-overflow result for inconsistent
+metadata. If multiplying the compact coefficient by `10^(y-x)` exceeds Long
+range, the observed result is zero at the preferred scale. The guard uses the
+absolute compact value; Long.MIN_VALUE has already been excluded from compact
+storage. Before multiplying by ten, compare with `Long.MAX_VALUE / 10`. If the
+raise exceeds 18, every nonzero magnitude must overflow, since `10^19` exceeds
+Long.MAX_VALUE. Zero never overflows. Thus at most 18 checked multiplications
+decide the result for every nonnegative raise, without allocating a power of ten.
+For ordinary compact values with accurate precision, normalization produces
+fewer than 18 digits in this path, so the guard cannot change their quotient.
+
+The expanded 75,728-case oracle checks these observations, including changing
+getter answers, all rounding modes, the 17/18/19 precision boundaries and values
+on both sides of compact multiplication thresholds. A separate 50,688-case live
+JVM comparison reports zero differences. This does not establish every replacement
+Int value, scale-overflow ordering or subclass composition.
+
 ## Evidence and remaining scope
 
 The main portable oracle includes 1,728 signed midpoint-neighbor Float/Double

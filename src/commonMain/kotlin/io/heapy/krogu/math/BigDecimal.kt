@@ -198,9 +198,15 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         // Avoid constructing an unbounded power of ten for a quotient strictly below 0.1.
         val exponent = quotientExponent(divisor) + decimalScale - divisor.decimalScale +
             if (scaleNumerator) power.toLong() else -power.toLong()
-        if (exponent < -1) return BigDecimal(roundTiny(signum() * divisor.signum(), roundingMode), scale)
+        if (exponent < -1 && coefficient.signum() != 0 && divisor.coefficient.signum() != 0) {
+            val sign = if (checkSourceSign) signum() * divisor.signum()
+                else coefficient.signum() * divisor.coefficient.signum()
+            return BigDecimal(roundTiny(sign, roundingMode), scale)
+        }
         val numerator = if (scaleNumerator && power > 0) coefficient.multiply(tenPow(power.toLong())) else coefficient
         val denominator = if (!scaleNumerator && power > 0) divisor.coefficient.multiply(tenPow(power.toLong())) else divisor.coefficient
+        if (!checkSourceSign && denominator.signum() == 0 && numerator.decimalCompactValue() != null)
+            throw ArithmeticException("/ by zero")
         return BigDecimal(roundedDivide(numerator, denominator, roundingMode), scale)
     }
     private fun failScaledZeroDivision(zeroScale: Int, target: Int): Nothing {
@@ -228,8 +234,13 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         checkDivisionByZero(operand)
         val preferredScale = decimalScale.toLong() - operand.decimalScale
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, saturatedScale(preferredScale))
-        checkDivisionNormalization(operand, context.precision, precision(), operand.precision())
-        val targetScale = context.precision.toLong() - 1 - quotientExponent(operand)
+        val sourceDigits = precision()
+        val divisorDigits = operand.precision()
+        val normalized = compareValues(coefficient.abs(), sourceDigits.toLong(),
+            operand.coefficient.abs(), divisorDigits.toLong())
+        val adjustment = if (normalized > 0) 1 else 0
+        val targetScale = preferredScale + context.precision.toLong() + divisorDigits - sourceDigits - adjustment
+        divisionScale(targetScale)
         val shift = targetScale + operand.decimalScale - decimalScale
         // Public-JDK errors expose the intermediate range check before the
         // preferred/result scale checks. Keep all computations wide until then.
@@ -237,12 +248,36 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             throw ArithmeticException("BigInteger would overflow supported range")
         val preferred = divisionScale(preferredScale)
         val target = checkedScale(targetScale)
+        val compactSource = coefficient.decimalCompactValue()
+        val compactDivisor = operand.coefficient.decimalCompactValue()
+        val compactNormalization = sourceDigits <= divisorDigits && divisorDigits < 18 && context.precision < 18 &&
+            compactSource != null && compactDivisor != null
+        if (compactNormalization && normalizedCompactOverflow(compactSource!!, divisorDigits.toLong() - sourceDigits))
+            return BigDecimal(BigInteger.ZERO, preferred)
+        // The compact equality path treats normalized coefficients as a unit
+        // ratio, including stored zeros whose public signum reports nonzero.
+        if (compactNormalization && normalized == 0) {
+            val sign = if ((coefficient.signum() < 0) != (operand.coefficient.signum() < 0)) -1L else 1L
+            return BigDecimal(BigInteger.valueOf(sign), divisionScale(preferredScale + divisorDigits - sourceDigits))
+        }
         val result = divideScaledCoefficients(operand, target, context.roundingMode, shift >= 0,
             kotlin.math.abs(shift).toInt(), checkSourceSign = false).round(context)
         // Exact quotients use the nearest representable scale to the preferred scale.
         val exact = compareValues(result.coefficient.multiply(operand.coefficient),
             result.decimalScale.toLong() + operand.decimalScale, coefficient, decimalScale.toLong()) == 0
-        return if (exact) result.stripTo(preferred) else result
+        return if (!exact) result
+            else if (result.coefficient.signum() == 0) BigDecimal(BigInteger.ZERO, minOf(result.decimalScale, preferred))
+            else result.stripTo(preferred)
+    }
+    private fun normalizedCompactOverflow(value: Long, raise: Long): Boolean {
+        var magnitude = kotlin.math.abs(value)
+        if (magnitude == 0L) return false
+        if (raise > 18) return true
+        repeat(raise.toInt()) {
+            if (magnitude > Long.MAX_VALUE / 10) return true
+            magnitude *= 10
+        }
+        return false
     }
     private fun checkDivisionNormalization(divisor: BigDecimal, precision: Int,
         sourcePrecision: Int? = null, divisorPrecision: Int? = null) {
