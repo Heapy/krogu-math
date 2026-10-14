@@ -51,3 +51,118 @@ The check verifies all three frozen hashes, row shape, configured-mode coverage
 and aggregate counts. It evaluates no JDK or krogu numerical implementation and
 does not delete, move or rewrite the observations. Other oracle families and the
 full normative classification remain open.
+
+## Contract coverage correspondence
+
+[`contract-coverage.tsv`](contract-coverage.tsv) maps every frozen observation
+to the ordinary/truthful control with the same source text, divisor text,
+divisor topology, context precision and rounding mode. `D00001` through
+`D75728` identify the one-based frozen rows; `C0001` through `C3000` identify
+the distinct five-field keys in first-occurrence order. No metadata mode or
+old result becomes a new mathematical expectation. The map verifies the three
+frozen hashes above and the new control fixture SHA-256
+`1245d75ed6837139c939496e602a085cba37b35dd4d3c98f197bdaece2ce7cc9`.
+
+Every old row has exactly one control correspondence, and every control has
+at least one old row. The 2,736 ordinary pairs have four meaningful base/subclass
+class masks each; 192 self aliases and 72 null-divisor inputs have two each.
+Together they correspond to **11,472 valid-input checks**. Control outcomes
+contain 2,475 coefficient/scale values, 429 arithmetic errors and 96 null errors.
+For successful controls, the map separately records the required canonical-text
+control derived independently from that expected coefficient/scale. Canonical
+`BigDecimal.toString()` spelling is specified; it is not diagnostic wording.
+
+The manifest is a **coverage correspondence, not a passed-test certificate**.
+Its value/error expectations come from the existing new fixture. The 9,580
+successful class-mask controls now include canonical text, and the 24 expanded
+explicit-caller cases are implemented and reviewed. Their separate focused
+JVM/JS/WasmJS/macOS ARM64 run passed in 3m44s: ten methods per target including
+the retained dispatch corpus, with zero failures/errors/skips. Details are in
+[the contract report](../../docs/decimal-context-oracle-classification.md).
+No test implementation, math implementation or JDK arithmetic is executed by
+the mapper itself.
+
+Schema `context-contract-coverage-v2` stores only six columns:
+`old_row_id`, `control_id`, `source_mode_id`, `divisor_mode_id`, `old_kind` and
+`interaction_bits_hex`. The header's `MODE` dictionary recovers each original
+probe mode. `V` and `E` recover `VALUE` and `ERROR`. The three-digit lowercase
+hexadecimal mask combines the header's `FLAG` bits. The input/outcome dictionary
+is the hash-bound control fixture itself, indexed by the one-based `C` ID.
+Together these recover **all 19 logical fields** of the original expanded map,
+without repeating fixture data or constant policy strings per row:
+
+| Logical field(s) | Lossless recovery |
+|---|---|
+| `old_row_id`, `control_id` | Stored directly; IDs retain the original stable `D`/`C` numbering |
+| `source`, `divisor`, `topology`, `context_precision`, `rounding` | First five fields of the `C` row in the bound control fixture |
+| `source_mode`, `divisor_mode` | Header `MODE` entries selected by the two stored mode IDs |
+| `required_valid_outcome` | Sixth field of the `C` control row |
+| `required_canonical_text_control` | `CANONICAL_TEXT:C-id` for a successful control; `NOT_APPLICABLE` for an error control |
+| `old_outcome_kind` | Stored `V` → `VALUE`; `E` → `ERROR` |
+| `old_value_or_error_status` | Constant `UNRESOLVED_POISONED_INTERACTION` |
+| `old_trace_status` | Constant `REFERENCE_OBSERVATION` |
+| `old_message_status` | `REFERENCE_OBSERVATION` when bit `200` is set; otherwise `NOT_RECORDED` |
+| `runtime_identity_status` | Constant `NOT_OBSERVED` |
+| `unresolved_interactions` | Ordered names of set `FLAG` bits except `MESSAGE_RECORDED` |
+| `explicit_caller_language_control` | Constant `EXPLICIT_DIVIDE_CALLER_MATRIX` |
+| `archival_status` | Constant `BLOCKED_UNRESOLVED_FIELDS` |
+
+| Hexadecimal flag | Decoded evidence |
+|---|---|
+| `001` | `POISONED_GETTERS_AND_EXACT_OVERRIDE` (present in every row) |
+| `002` | `INCONSISTENT_METADATA` |
+| `004` | `THROWING_METADATA` |
+| `008` | `NULL_CONTEXT` |
+| `010` | `NULL_DIVISOR` |
+| `020` | `SELF_ALIAS_COUNTERS` |
+| `040` | `INVOKED_EXACT_REPLACEMENT` |
+| `080` | `INJECTED_CALLBACK_FAILURE` |
+| `100` | `ARITHMETIC_CALLBACK_INTERACTION` |
+| `200` | `MESSAGE_RECORDED` (message-status evidence, not an unresolved tag) |
+
+| Manifest field | Meaning and boundary |
+|---|---|
+| `required_valid_outcome` | Required coefficient/scale or error-type control on ordinary/fully truthful operands |
+| `required_canonical_text_control` | Required canonical result spelling for the corresponding successful control; not an expected poisoned result |
+| `old_value_or_error_status` | `UNRESOLVED_POISONED_INTERACTION`; the exact poisoned invocation still needs its own field-level contract analysis |
+| `old_trace_status` | `REFERENCE_OBSERVATION`; internal order, counts, noncalls and exact-override forwarding are not established requirements |
+| `old_message_status` | `REFERENCE_OBSERVATION` when a diagnostic message was recorded; otherwise `NOT_RECORDED` |
+| `runtime_identity_status` | `NOT_OBSERVED`; this evaluator measures neither result identity nor runtime class/cache choices |
+| `unresolved_interactions` | Row-specific metadata, null, self-alias, invoked replacement and failure-path tags, in addition to the latent poisoned callbacks |
+| `explicit_caller_language_control` | Direct base-typed exact/context override calls, original null/self arguments and contexts, caller-owned replacement/exception identity; no inherited-forwarding promise |
+| `archival_status` | `BLOCKED_UNRESOLVED_FIELDS` for every old row; this map authorizes no removal of old assertions |
+
+The explicit caller matrix covers distinct/self/null divisor arguments
+and finite/unlimited/null context arguments. It extends
+`explicitBaseTypedCallerEntersOverridesAndPropagatesTheirException` in
+`DecimalContextContractTest`. These are language controls for a caller entering
+its override, including an override whose mathematical return is deliberately
+replaced. They do not require inherited context division to invoke that override
+internally. The ordinary/truthful partitions separately cover the documented
+null and self arithmetic.
+
+All 58,093 old value prefixes and 17,635 old error prefixes remain unresolved
+as outcomes of the poisoned invocation. This does not declare them unconstrained:
+it keeps their possible required fields open while transferring valid-input
+coverage. In particular, a configured but unused bad getter is not a waiver of
+an inherited method's independent contract. Null/throw/arithmetic precedence and
+self-alias callback counters remain explicit investigation topics. The existing
+fixture, evaluator, generator and assertions stay unchanged.
+
+From the repository root, with Kotlin 2.4.21:
+
+```sh
+JAVA_OPTS='-Xmx512m -Dkotlin.main.kts.compiled.scripts.cache.dir=/private/tmp/krogu-contract526-map-cache' \
+/Users/yoda/.sdkman/candidates/kotlin/2.4.21/bin/kotlin \
+scripts/map-decimal-context-contract-coverage.main.kts --check
+```
+
+Without `--check`, the script regenerates only the TSV manifest. With `--check`,
+it reproduces the manifest byte-for-byte and checks bound hashes, both fixture
+schemas, all row/control counts, first-occurrence control order, complete key
+coverage and the metadata-inventory totals. It also decodes every saved compact
+row, verifies all 19 logical fields against the expanded independently computed
+record, and rechecks its key and original modes against the frozen row. It does
+not establish that any
+poisoned outcome is required, classify other oracle families, or complete
+`local:526`.

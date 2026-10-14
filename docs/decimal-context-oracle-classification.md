@@ -78,12 +78,12 @@ coverage of every possible scale or precision.
 |---|---|---|
 | Numeric quotient and significant-digit rounding | All projected ordinary/truthful inputs, all meaningful class masks | Poisoned/replacement rows are not converted into mathematical controls |
 | Result representation | Exact unscaled coefficient and scale, encoded `coefficient@scale` | Runtime class and unspecified caching remain observations |
-| Canonical result text | Not asserted by these new controls yet | The public `toString` spelling remains required; transfer its coverage before archiving old success fields |
+| Canonical result text | All 9,580 successful operand-class controls, independently derived from expected coefficient/scale | Specified spelling is preserved; poisoned result expectations remain separate |
 | Documented arithmetic and null errors | Exception type only on every projected input | Callback/message/precedence fields remain frozen observations |
 | Self alias and null topology | Actual alias or absent object, including zero/nonzero self division and null contexts | Existing modes and traces remain untouched |
 | Truthful subclass behavior | Delegating sign, precision, scale, coefficient, abs, negate, exact and context divide | Consistent sign/precision alone never certifies the old probes |
-| Explicit Kotlin method entry | Base-typed exact/context calls return a caller-owned replacement and receive the original arguments | No inference about inherited internal forwarding |
-| Direct injected exception | Same exception object from explicit exact/context overrides | No poisoned-getter precedence inference |
+| Explicit Kotlin method entry | Base-typed exact/context calls across distinct/self/null divisors and finite/unlimited/null contexts preserve entry, arguments and caller-owned replacement | No inference about inherited internal forwarding |
+| Direct injected exception | Same exception object and arguments in the same 24-call replacement/throwing matrix | No poisoned-getter precedence inference |
 | Caller-owned `super` | Truthful finite, unlimited and self arithmetic, plus null error | No no-callback, noncall or trace-order assertion |
 
 `DecimalContextContractTest.kt` additionally derives its own bounded witnesses:
@@ -96,6 +96,17 @@ nonterminating exact witness. Dropping the final digit of 9223372036854775808
 rounds upward to 922337203685477581@-1 at precision 18; eighteen nines carry to
 10^18 with a 17-digit coefficient and scale -2. These expectations are derived
 from rational arithmetic and digit retention, separately from generated data.
+
+Canonical expected text uses only the fixture coefficient's digits and scale.
+The adjusted exponent is `digits.length - 1 - scale`, calculated as `Long`.
+Nonnegative scale and exponent at least -6 use plain decimal placement; other
+cases use scientific notation with the signed exponent. Coefficient trailing
+zeros and scale remain intact. Nineteen independent literals cover both sides
+of the -6 threshold, zero, signs, trailing zeros and Int scale endpoints; each
+checks the expected formatter and ordinary/truthful results. Explicit caller
+controls make six exact and eighteen context calls. Each verifies exactly one
+entry into the selected override, its original arguments and the caller-owned
+result or exception identity; this is not an inherited forwarding requirement.
 
 ## Limits of the old observations
 
@@ -143,5 +154,13 @@ run in 8m20s (`/private/tmp/krogu-root-context-double-final.log`). Each target r
 all eight methods in this new suite without failures, errors or skips, alongside
 canonical-Double, scale/operator and retained oracle checks. The complete run
 contained 89 JVM methods and 73 per other target. This finite evidence does not
-close the canonical-text/direct-caller coverage gaps above or the field manifest;
-the old 75,728-row assertions remain required and unchanged.
+close the field-level classification; the old 75,728-row assertions remain
+required and unchanged.
+
+The follow-up canonical-text/direct-caller controls passed the focused four-target
+run in **3m44s** (`/private/tmp/krogu-root-context-text-dispatch.log`). Each target
+ran nine contract methods plus the retained 75,728-row context-dispatch method,
+with zero failures/errors/skips. This preserves all 11,472 value/error checks
+and adds 9,580 canonical-text comparisons, 57 literal assertions and 24 direct
+caller cases on every target. The field correspondence manifest records the
+remaining unresolved poisoned interactions; it does not authorize archival.

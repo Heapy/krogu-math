@@ -240,6 +240,14 @@ The snapshot still lacks `inc`/`dec`, primitive/string `toBigInteger` and
 are tracked in kotgent `local:525`. This contract records the full target, not
 a claim that every migration gap is already closed.
 
+Kotlin/JS 2.4.21 also has a confirmed compiler bug in conversions through
+`kotlin.Number` and generic `<T : Number>` receivers: calls can bypass the
+conversion overrides and return incorrect values. The
+[standalone Number diagnostic](diagnostics/js-number/README.md) reproduces the
+problem without krogu arithmetic and records the upstream issue and failed
+coercion workarounds. A production workaround remains unresolved; full Kotlin/JS
+source and behavioral migration is still open.
+
 During the current unpublished `0.x` phase, release-to-release source and binary
 stability is not established. Changes to public Kotlin calls or behavior must be
 documented. Stable releases must declare supported toolchains and binary

@@ -24,6 +24,11 @@ The independent canonical Double candidate argument, binary-boundary regressions
 and exact coefficient/scale/text corpus are documented in
 [Canonical Double contract](docs/canonical-double-contract.md).
 
+A [stdlib-only compiler diagnostic](diagnostics/js-number/README.md) independently
+reproduces Kotlin/JS 2.4.21 Number/generic conversion corruption and the known
+upstream bug. Bounded runner and coercion checks preserve the failing evidence;
+they do not fix or waive the Kotlin caller contract (`local:557`, `local:525`).
+
 Message-oracle runs and JVM test workers use `-XX:-OmitStackTraceInFastThrow`.
 A repeated scaled-zero-division campaign exposed 6,975 null messages caused by
 HotSpot exception reuse; rerunning with this flag restored the canonical `/ by zero`
@@ -88,9 +93,17 @@ is still open.
 
 New [ordinary and fully delegating context-division controls](docs/decimal-context-oracle-classification.md)
 project all 75,728 input rows to 3,000 distinct numerical/topology/context cases
-and 11,472 meaningful operand-class combinations. They compare values, scales
-and exception types without poisoned getters or internal trace requirements.
+and 11,472 meaningful operand-class combinations. They compare values, scales,
+canonical result text and exception types without poisoned getters or internal
+trace requirements. Separate direct caller tests preserve override entry,
+arguments and result/exception identity for null/self/distinct divisors and
+finite/unlimited/null contexts.
 The old observations remain intact; this addition does not finish their classification.
+
+A frozen [field/control correspondence](diagnostics/decimal-context-dispatch/README.md#contract-coverage-correspondence)
+maps every old row to these valid-input controls and preserves unresolved
+poisoned interactions. Its mechanical checks do not authorize archival or
+declare the remaining outcome fields unconstrained.
 
 For every new difference:
 

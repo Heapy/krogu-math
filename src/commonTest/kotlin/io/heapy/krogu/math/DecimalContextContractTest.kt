@@ -8,7 +8,9 @@ import kotlin.test.assertSame
 import kotlin.test.assertTrue
 
 /** Every override delegates its full public contract; no callback is poisoned or replaced. */
-private class TruthfulContextDecimal(text: String) : BigDecimal(text) {
+private class TruthfulContextDecimal : BigDecimal {
+    constructor(text: String) : super(text)
+    constructor(coefficient: BigInteger, scale: Int) : super(coefficient, scale)
     override fun signum(): Int = super.signum()
     override fun precision(): Int = super.precision()
     override fun scale(): Int = super.scale()
@@ -27,6 +29,28 @@ private fun contextContractOutcome(action: () -> BigDecimal): String = try {
     "${result.unscaledValue()}@${result.scale()}"
 } catch (_: ArithmeticException) { "!ArithmeticException" }
   catch (_: NullPointerException) { "!NullPointerException" }
+
+/** Canonical text derived only from fixture digits and scale, following the public toString contract. */
+private fun expectedContextCanonical(pair: String): String {
+    val coefficient = pair.substringBefore('@')
+    val digits = coefficient.removePrefix("-")
+    val sign = if (coefficient.startsWith('-')) "-" else ""
+    val scale = pair.substringAfter('@').toInt()
+    // Widen before negating/subtracting: Int.MIN_VALUE's exponent exceeds Int.MAX_VALUE.
+    val exponent = digits.length.toLong() - 1L - scale.toLong()
+    val body = if (scale >= 0 && exponent >= -6L) {
+        val point = digits.length.toLong() - scale.toLong()
+        when {
+            scale == 0 -> digits
+            point <= 0L -> "0." + "0".repeat((-point).toInt()) + digits
+            else -> digits.take(point.toInt()) + "." + digits.drop(point.toInt())
+        }
+    } else {
+        val significand = if (digits.length == 1) digits else digits.take(1) + "." + digits.drop(1)
+        significand + "E" + (if (exponent >= 0L) "+" else "") + exponent
+    }
+    return sign + body
+}
 
 class DecimalContextContractTest {
     // Stable index partitions cover every row and every meaningful operand-class mask.
@@ -54,16 +78,56 @@ class DecimalContextContractTest {
                 }
                 val p = row[3].toInt()
                 val context = if (p < 0) null else MathContext(p, RoundingMode.valueOf(row[4]))
-                val actual = contextContractOutcome { source.divide(divisor, context) }
+                var result: BigDecimal? = null
+                val actual = contextContractOutcome { source.divide(divisor, context).also { result = it } }
                 checked++
                 if (actual != row[5]) {
                     failureCount++
                     if (failures.size < 12) failures += "${row.take(5)} mask=$mask expected=${row[5]} actual=$actual"
                 }
+                val value = result
+                if (value != null && !row[5].startsWith('!')) {
+                    val expectedText = expectedContextCanonical(row[5])
+                    val actualText = value.toString()
+                    if (actualText != expectedText) {
+                        failureCount++
+                        if (failures.size < 12) failures += "${row.take(5)} mask=$mask expected text=$expectedText actual text=$actualText"
+                    }
+                }
             }
         }
         assertTrue(checked > 0, "Each deterministic partition must execute controls")
         assertEquals(emptyList<String>(), failures, "$failureCount mismatches in $checked controls")
+    }
+
+    @Test fun canonicalTextLiteralThresholdScaleSignAndLongExponentWitnesses() {
+        val literals = listOf(
+            Triple("1", 6, "0.000001"),
+            Triple("1", 7, "1E-7"),
+            Triple("123", 8, "0.00000123"),
+            Triple("123", 9, "1.23E-7"),
+            Triple("12300", 4, "1.2300"),
+            Triple("12300", 0, "12300"),
+            Triple("12300", -1, "1.2300E+5"),
+            Triple("-12300", 4, "-1.2300"),
+            Triple("-123", 9, "-1.23E-7"),
+            Triple("0", 0, "0"),
+            Triple("0", 2, "0.00"),
+            Triple("0", 6, "0.000000"),
+            Triple("0", 7, "0E-7"),
+            Triple("0", -2, "0E+2"),
+            Triple("1", Int.MIN_VALUE, "1E+2147483648"),
+            Triple("-12", Int.MIN_VALUE, "-1.2E+2147483649"),
+            Triple("123", Int.MAX_VALUE, "1.23E-2147483645"),
+            Triple("0", Int.MIN_VALUE, "0E+2147483648"),
+            Triple("0", Int.MAX_VALUE, "0E-2147483647"),
+        )
+        for ((coefficient, scale, literal) in literals) {
+            assertEquals(literal, expectedContextCanonical("$coefficient@$scale"), "Independent formatter witness")
+            val integer = BigInteger(coefficient)
+            assertEquals(literal, BigDecimal(integer, scale).toString(), "Ordinary formatter witness")
+            assertEquals(literal, TruthfulContextDecimal(integer, scale).toString(), "Truthful formatter witness")
+        }
     }
 
     @Test fun rationalMidpointsCoverBothSignsAndRetainedDigitParity() {
@@ -134,27 +198,47 @@ class DecimalContextContractTest {
     @Test fun explicitBaseTypedCallerEntersOverridesAndPropagatesTheirException() {
         val injected = IllegalStateException("caller-owned sentinel")
         val replacement = BigDecimal("7.00")
-        val divisor = BigDecimal("2.0")
-        val context = MathContext(2, RoundingMode.HALF_EVEN)
-        var exactArgument: BigDecimal? = null
-        var contextArgument: MathContext? = null
-        val replacing: BigDecimal = object : BigDecimal("10.50") {
-            override fun divide(divisor: BigDecimal?): BigDecimal { exactArgument = divisor; return replacement }
+        val distinct = BigDecimal("2.0")
+        val finite = MathContext(2, RoundingMode.HALF_EVEN)
+        val unlimited = MathContext(0)
+        class CallerDecimal(val throwing: Boolean) : BigDecimal("10.50") {
+            var entry: String? = null
+            var entries = 0
+            var divisorArgument: BigDecimal? = null
+            var contextArgument: MathContext? = null
+            override fun divide(divisor: BigDecimal?): BigDecimal {
+                entry = "exact"; entries++; divisorArgument = divisor
+                if (throwing) throw injected
+                return replacement
+            }
             override fun divide(divisor: BigDecimal?, mc: MathContext?): BigDecimal {
-                exactArgument = divisor; contextArgument = mc; return replacement
+                entry = "context"; entries++; divisorArgument = divisor; contextArgument = mc
+                if (throwing) throw injected
+                return replacement
             }
         }
-        assertSame(replacement, replacing.divide(divisor))
-        assertSame(divisor, exactArgument)
-        assertSame(replacement, replacing.divide(divisor, context))
-        assertSame(divisor, exactArgument)
-        assertSame(context, contextArgument)
-        val throwing: BigDecimal = object : BigDecimal("10.50") {
-            override fun divide(divisor: BigDecimal?): BigDecimal = throw injected
-            override fun divide(divisor: BigDecimal?, mc: MathContext?): BigDecimal = throw injected
+        for (throwing in listOf(false, true)) {
+            val probe = CallerDecimal(throwing)
+            val source: BigDecimal = probe
+            // Exact division has no context parameter; context division covers the full 3 x 3 matrix.
+            for (divisor in listOf(distinct, source, null)) {
+                fun checkCall(contextual: Boolean, context: MathContext?) {
+                    probe.entry = null
+                    probe.divisorArgument = distinct
+                    probe.contextArgument = finite
+                    val before = probe.entries
+                    val action = { if (contextual) source.divide(divisor, context) else source.divide(divisor) }
+                    if (throwing) assertSame(injected, assertFailsWith<IllegalStateException>(block = action))
+                    else assertSame(replacement, action())
+                    assertEquals(if (contextual) "context" else "exact", probe.entry)
+                    assertEquals(before + 1, probe.entries)
+                    assertSame(divisor, probe.divisorArgument)
+                    if (contextual) assertSame(context, probe.contextArgument)
+                }
+                checkCall(false, null)
+                for (context in listOf(finite, unlimited, null)) checkCall(true, context)
+            }
         }
-        assertSame(injected, assertFailsWith<IllegalStateException> { throwing.divide(divisor) })
-        assertSame(injected, assertFailsWith<IllegalStateException> { throwing.divide(divisor, context) })
     }
 
     @Test fun callerOwnedSuperInvocationProducesTruthfulArithmetic() {
