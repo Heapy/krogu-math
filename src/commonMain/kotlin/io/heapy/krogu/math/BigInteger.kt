@@ -554,18 +554,36 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             return fromBytes(bytes, 0, bytes.size, false)
         }
         private fun parse(value: String, radix: Int): BigInteger {
-            if (radix !in 2..36 || value.isEmpty()) throw NumberFormatException("Invalid BigInteger")
+            if (radix !in 2..36) throw NumberFormatException("Radix out of range")
+            if (value.isEmpty()) throw NumberFormatException("Zero length BigInteger")
+            if (value.indexOf('-', 1) >= 0 || value.indexOf('+', 1) >= 0)
+                throw NumberFormatException("Illegal embedded sign character")
             var start = 0
             var sign = 1
             if (value[0] == '-' || value[0] == '+') { sign = if (value[0] == '-') -1 else 1; start++ }
-            if (start == value.length) throw NumberFormatException("No digits")
+            if (start == value.length) throw NumberFormatException("Zero length BigInteger")
+            while (start < value.length && value[start].digitToIntOrNull(radix) == 0) start++
+            if (start == value.length) return ZERO
             var n = ZERO
             val base = valueOf(radix.toLong())
             for (i in start until value.length) {
-                val digit = value[i].digitToIntOrNull(radix) ?: throw NumberFormatException("Invalid digit")
+                val digit = value[i].digitToIntOrNull(radix) ?: invalidIntegerDigit(value, radix, start, i)
                 n = n.multiply(base).add(valueOf(digit.toLong()))
             }
             return if (sign < 0) n.negate() else n
+        }
+        private fun invalidIntegerDigit(value: String, radix: Int, start: Int, invalid: Int): Nothing {
+            // The observable diagnostic identifies a group whose radix power fits a signed Int.
+            // Arithmetic itself remains independent of this grouping.
+            var power = radix.toLong()
+            var width = 1
+            while (power * radix <= Int.MAX_VALUE) { power *= radix; width++ }
+            val firstWidth = ((value.length - start - 1) % width) + 1
+            val groupStart = if (invalid < start + firstWidth) start
+                else start + firstWidth + ((invalid - start - firstWidth) / width) * width
+            val groupEnd = if (groupStart == start) start + firstWidth else groupStart + width
+            val suffix = if (radix == 10) "" else " under radix $radix"
+            throw NumberFormatException("For input string: \"${value.substring(groupStart, groupEnd)}\"$suffix")
         }
         private fun fromBytes(bytes: ByteArray, off: Int, len: Int, twos: Boolean): BigInteger {
             if (twos && bytes.isEmpty()) throw NumberFormatException("Zero length BigInteger")

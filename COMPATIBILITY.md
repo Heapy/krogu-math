@@ -22,7 +22,7 @@ are compared independently of this optimization.
 |---|---|---|
 | Every public constructor, method and constant of all four types | `ApiSurfaceTest` compares qualified parameter and return types, static/instance modality, finality and field modifiers, after package relocation | An inventory proves shape, not method behavior |
 | Java source compatibility, including subclassing and virtual dispatch | Compiled `JavaApiContractTest`, `KotlinSubclassContractTest`; real Java Random constructors | Broader Java call-site, null precedence and subclass behavior audit |
-| BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests | Larger and broader operand patterns, supported-range/allocation limits, diagnostics and subclass behavior |
+| BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor values and exact diagnostics | Larger and broader operand patterns, supported-range/allocation limits, other diagnostics and subclass behavior |
 | Infinite two's-complement bit semantics | Portable oracle, seeded JVM operations and algebraic invariants | Structured positive/negative bit boundaries, extreme shift/bit distances |
 | All constructor encodings and validation | Portable byte slice/sign matrix; JVM byte and character range matrix; complete BMP digit/radix corpus and supplementary digit constructors | Extreme integer offsets, compound textual grammar, malformed text fuzzing |
 | Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 207,239 exact portable scale-boundary outcomes; portable fixtures | Wider coefficient/scale/precision combinations and overflow across remaining overloads |
@@ -483,6 +483,17 @@ subtraction trace. Another 196 Java null/throw combinations and three null-opera
 checks constrain direct null forwarding and argument rejection. The existing
 396 wide ordinary arithmetic pairs remain the numerical regression domain;
 broader callback compositions, range failures and detailed NPE messages remain open.
+
+String constructors add 10,156 portable value and exact-message outcomes from
+the pinned JDK. Invalid radix precedes empty text; embedded ASCII signs precede
+digit validation. Leading zero digits, including Unicode zero digits, are removed
+before diagnostic grouping. Invalid digits identify the corresponding group,
+whose radix power fits a positive Int; radix ten omits the radix suffix. The
+independent per-digit arithmetic does not use these groups. Fixtures cover every
+radix 2..36, invalid radix endpoints, both constructor overloads at radix ten,
+Unicode and malformed UTF-16, whitespace/control characters, and invalid digits
+around one-, two- and three-group boundaries. Exhaustive BMP digit acceptance
+remains covered separately; arbitrary-length resource limits are still open.
 
 Exact alignment errors add 882 portable add/subtract outcomes over signed unit
 and zero coefficients and seven scales spanning both Int endpoints. The matrix

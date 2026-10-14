@@ -84,6 +84,8 @@ inputs and 32,768-bit products, including digit carry chains, dense/sparse
 patterns, both signs and quotient/remainder invariants.
 Subtraction dispatch adds 896 portable cases for zero paths, replacement callback
 values, exceptions and aliased operands; Java tests also cover null callback results.
+String-constructor fixtures add 10,156 value and exact-diagnostic cases across all
+radices, invalid radix precedence, signs, Unicode digits and digit-group boundaries.
 JVM tests add seeded random arithmetic, negative bit operations, modular arithmetic, primes,
 rounding, scale boundaries, serialization and API surface checks. Structured JVM
 campaigns add over 213,000 comparisons, including 10,000 canonical Double values.
