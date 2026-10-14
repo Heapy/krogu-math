@@ -24,12 +24,12 @@ are compared independently of this optimization.
 | Java source compatibility, including subclassing and virtual dispatch | Compiled `JavaApiContractTest`, `KotlinSubclassContractTest`; real Java Random constructors | Broader Java call-site, null precedence and subclass behavior audit |
 | BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor values and exact diagnostics | Larger and broader operand patterns, supported-range/allocation limits, other diagnostics and subclass behavior |
 | Infinite two's-complement bit semantics | Portable oracle, seeded JVM operations and algebraic invariants | Structured positive/negative bit boundaries, extreme shift/bit distances |
-| All constructor encodings and validation | Portable byte slice/sign matrix; JVM byte and character range matrix; complete BMP digit/radix corpus and supplementary digit constructors | Extreme integer offsets, compound textual grammar, malformed text fuzzing |
+| All constructor encodings and validation | 25,584 exact byte-constructor outcomes including Int offset/length endpoints and array isolation; 10,156 exact string-constructor outcomes; complete BMP digit/radix corpus and supplementary digit constructors | Larger input/allocation limits, compound textual grammar, malformed text fuzzing |
 | Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 207,239 exact portable scale-boundary outcomes; portable fixtures | Wider coefficient/scale/precision combinations and overflow across remaining overloads |
 | Powers and roots | 10,560 initial JVM comparisons, 13,024 exponent-bit/rounding comparisons, 128 working-precision overflow cases, 2,592 squared-midpoint root fixtures through 129 digits, integer midpoint rounding argument | Sqrt/pow subclass behavior and intermediate/scale-overflow audit; larger exponent/operand combinations |
 | Float/Double conversions and canonical Double factory values | Bitwise oracle comparisons, 1,296 exact decimal midpoint-neighbor outcomes, rational rounding argument, all binary scaling powers from -1074 through 1023, 10,000 seeded canonical Double cases | Exhaustive Float input domain, decimal subclass dispatch and very large cancelling coefficient/scale allocation audit |
 | Prime generation and certainty | 416 portable primality/successor/trace cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions; generation density argument and successor whole-search error budget; exhaustive small byte-payload distribution, primality and successor trial-division checks | Very large certainty beyond the proven bound, witness independence at larger magnitudes, supported-range limits, caller RNG behavior and wider subclass dispatch |
-| Exception conditions and types | Portable fixtures; 7,486 live JVM null/invalid-argument comparisons; 3,462 portable null-precedence outcomes; constructor precedence matrix | Wider invalid-argument domains, extreme offsets and cross-products; exception messages remain unmatched |
+| Exception conditions and types | Portable fixtures; 7,486 live JVM null/invalid-argument comparisons; 3,462 portable null-precedence outcomes; exact integer string/byte constructor diagnostics | Wider invalid-argument domains and cross-products; other exception messages remain unmatched |
 | Equality, ordering, hash codes, immutability | JVM oracle and common invariants; 6,110 portable BigInteger hash outcomes | Full context/enum/hash and subclass audit |
 | JVM serialization and Java adapters | Current-format round trips, validated base state, subclass state, reference identity, cycles and array-alias isolation; exact coefficient/scale conversion | Cross-version serialization and migration to/from java.math streams are explicitly outside scope |
 | Same common behavior on every supported platform | CI matrix for JVM, JS, Wasm, macOS/Linux/Windows Native and iOS simulators; cross-built Linux ARM64 binary executed on ARM64 | Each new common regression must pass on every supported target |
@@ -494,6 +494,18 @@ radix 2..36, invalid radix endpoints, both constructor overloads at radix ten,
 Unicode and malformed UTF-16, whitespace/control characters, and invalid digits
 around one-, two- and three-group boundaries. Exhaustive BMP digit acceptance
 remains covered separately; arbitrary-length resource limits are still open.
+
+Byte constructors add 25,584 portable outcomes across all four overloads, with
+987 distinct pinned JDK values or exact diagnostics. The matrix crosses signum
+endpoints and offset/length endpoints, including Int overflow combinations, over
+empty arrays, zero/sign extension, high-bit inputs and 30-bit limb boundaries.
+Empty two's-complement input precedes slice validation; invalid signum precedes
+signed-magnitude slice validation. Invalid slices now include the original offset,
+length and array size in the diagnostic without overflowing offset plus length.
+Every successful case additionally mutates both the input array and the exported
+byte array, then verifies that the number's value and hash remain unchanged.
+Null precedence remains covered separately; near-allocation-limit byte arrays
+are outside this finite regression domain.
 
 Exact alignment errors add 882 portable add/subtract outcomes over signed unit
 and zero coefficients and seven scales spanning both Int endpoints. The matrix

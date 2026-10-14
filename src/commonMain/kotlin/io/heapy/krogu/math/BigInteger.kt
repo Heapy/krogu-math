@@ -634,7 +634,8 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             return if (signum < 0) n.negate() else n
         }
         private fun checkBounds(bytes: ByteArray, off: Int, len: Int) {
-            if (off < 0 || len < 0 || off > bytes.size - len) throw IndexOutOfBoundsException("Invalid byte range")
+            if (off < 0 || len < 0 || off > bytes.size - len)
+                throw IndexOutOfBoundsException("Range [$off, $off + $len) out of bounds for length ${bytes.size}")
         }
         private fun normalized(sign: Int, words: IntArray): BigInteger {
             var length = words.size

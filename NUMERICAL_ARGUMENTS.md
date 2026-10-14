@@ -239,6 +239,22 @@ formatting. Every pair also checks q*y+r, the remainder bound and its sign.
 These cases corroborate the arguments on each target; they do not exhaust the
 operand domain or establish all subclass behavior, resource limits or diagnostics.
 
+## Byte-slice validation
+
+Let N be the byte-array size. A slice is valid exactly when off>=0, len>=0
+and off+len<=N over mathematical integers. The implementation rejects negative
+off or len first, then compares off with N-len. Since 0<=N,len<=Int.MAX_VALUE,
+N-len is representable as Int. Thus the guard is equivalent to the mathematical
+condition without overflowing. For an accepted slice, off+len<=N also proves
+that computing its end index is safe. Diagnostics print the original operands
+separately rather than adding them.
+
+`IntegerByteOracleTest` compares 25,584 constructor outcomes with the pinned JDK,
+including both Int endpoints, empty inputs, invalid signum precedence and selected
+sign-extension/limb boundaries. Successful cases mutate the input and exported
+arrays and verify stable value and hash. This finite domain does not establish
+the maximum practical allocation size or all byte-packing behavior by itself.
+
 ## Hash packing
 
 The observed JDK hash folds unsigned 32-bit magnitude chunks, most significant
