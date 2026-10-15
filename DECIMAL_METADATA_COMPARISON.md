@@ -234,9 +234,10 @@ digit/scale endpoints. It never loads the port or uses a decimal parser.
 Existing tests/fixtures are unchanged, including DecimalComparisonSubclassTest,
 DecimalContextDispatchOracleTest, DecimalIntegralDispatchOracleTest, the public
 comparison fixture evaluator, DecimalBinaryPrefixTest and conversion suites.
-The older string-based argument in NUMERICAL_ARGUMENTS.md is historical
-baseline evidence and remains untouched; this document supplies its numeric
-replacement within the granted scope.
+At the original 1918 source handoff, the older string-based argument in
+NUMERICAL_ARGUMENTS.md remained untouched as historical baseline evidence;
+this document supplied its numeric replacement. The parent subsequently
+refreshed that summary to describe and reference this scratch-quotient argument.
 
 The seven original common/three original JVM methods passed on V1 under1887;
 those files/assertions remain frozen and must be retained for V2. Three further

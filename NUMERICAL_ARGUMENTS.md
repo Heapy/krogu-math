@@ -521,25 +521,52 @@ is positive.
 
 For nonzero magnitude c*10^-s with d coefficient digits, its adjusted exponent
 is d-s-1. Different adjusted exponents determine magnitude order by disjoint
-decimal decades. Equal exponents reduce comparison to decimal significands:
-padding coefficient digit strings on the right to equal length multiplies each
-by the appropriate positive power of ten. Lexicographic order of equal-length
-decimal strings equals integer order. Normalizing the string comparison result
-preserves order and the pinned JDK's -1/0/1 result domain on every backend.
-Scale arithmetic uses Long; no power of ten proportional to the scale distance
-is constructed. This proves the numeric reduction for truthful metadata and
-supported digit-string sizes. Virtual getter dispatch and replacement metadata
-are constrained separately by public-JDK oracle cases.
+decimal decades. Equal exponents reduce comparison to decimal significands.
+The current implementation uses the exact digit-count and scratch-quotient
+argument in [DECIMAL_METADATA_COMPARISON.md](DECIMAL_METADATA_COMPARISON.md),
+rather than the historical padded-string implementation.
+
+Let L have k more decimal digits than S. Write L=q*10^k+r, where
+0<=r<10^k. Comparing L with S*10^k is equivalent to comparing q with S;
+on quotient equality, a nonzero remainder makes L greater. In-place divisions
+by powers of ten of at most 10^9 produce exactly q. The OR of their nonzero
+remainders is exactly the original remainder's nonzero predicate, even when a
+later division has zero remainder. The scratch comparator uses trimmed active
+length, so retained array capacity cannot change the order. Reversing the
+answer when L is the right operand restores original orientation. Equal digit
+counts need only stored magnitude comparison; zero is handled separately.
+
+The accepted logarithm bound places the exact digit count in {E,E+1}; comparison
+with 10^E selects the correct one, except at the maximal E where the unsupported
+threshold is known to exceed every supported input and is not constructed.
+Every partial quotient is bounded by L, and one scratch array has L's limb count.
+No aligned product or full coefficient string is needed. Scale arithmetic uses
+Long; for public Int scales and truthful precisions it cannot overflow. These
+arguments establish numerical order over the supported representation domain,
+conditional on the referenced integer-kernel and allocation assumptions. They
+do not guarantee maximum-size allocation or execution time (548). Virtual getter
+dispatch and replacement metadata remain separately classified observations;
+explicit override and super calls retain their language meaning.
 
 ## Decimal rational conversion
 
-For an ordinary BigDecimal, separate its sign and write its absolute value as
-`n/d`, where `n` and `d` are positive integers. A negative decimal scale multiplies
-the coefficient by a power of ten; a positive scale supplies that power in the
-denominator. Zero returns positive zero, consistent with the absence of a signed
-decimal zero. Decimal adjusted exponents outside [-400, 400] are respectively
-above both formats' overflow thresholds or below both half-minimum-subnormal
-thresholds. The early infinity/zero results therefore preserve rounding and sign.
+For an ordinary BigDecimal, zero returns positive zero, consistent with the
+absence of a signed decimal zero. Decimal adjusted exponents outside [-400, 400]
+are respectively above both formats' overflow thresholds or below both
+half-minimum-subnormal thresholds. Otherwise the current implementation first
+extracts a bounded coefficient prefix and exact sticky information. The
+[task562 threshold/cell argument](DECIMAL_BINARY_CONVERSION.md) proves that its
+exact endpoint or interior surrogate lies on the same side of every IEEE
+rounding midpoint as the original magnitude. This includes arbitrarily long
+cancelling coefficient/scale cohorts; it does not form a full coefficient string
+or an unsupported power of ten from the original scale.
+
+Write the selected positive surrogate as `n/d`. A negative surrogate scale
+multiplies its coefficient by a power of ten; a positive scale supplies that
+power in the denominator. The prefix division uses current task530
+`divideStored` with both outputs, preserving the quotient and remainder needed
+for sticky information. Its current kernel/selection proof and source binding
+are composed in [the task543 memo](docs/floating-conversion-543-proof-binding.md).
 
 The bit-length difference `b=bitLength(n)-bitLength(d)` places the binary
 exponent in `{b-1,b}`. One exact shifted comparison selects `e=floor(log2(n/d))`.
@@ -569,9 +596,12 @@ These dispatch rules have 594 portable result-and-trace outcomes.
 
 Constructor coefficient subclasses are normalized through their virtual byte
 encoding into an ordinary BigInteger; ordinary coefficient identity is retained.
-This argument assumes exact integer arithmetic and does not settle the practical
-allocation limits for very large cancelling coefficients and
-scales. The portable tests independently check every binary scaling power from
+The task562 prefix proof removes the former coefficient-string ceiling and
+bounds the final rational work below 8192 bits. Prefix extraction still uses a
+possibly large supported divisor and current task530 division. This argument
+assumes exact integer arithmetic and successful required allocations; it does
+not establish practical maximum-domain execution or discharge task548.
+The portable tests independently check every binary scaling power from
 2^-1074 through 2^1023 by IEEE bit encoding, and compare signed exact midpoint
 neighbors with the pinned JDK. They exercise both retained parities, significand
 carry, underflow to signed zero, the subnormal/normal transition and overflow.

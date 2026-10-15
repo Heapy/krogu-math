@@ -184,19 +184,28 @@ squaring/multiplication never exceed 5^trim; restoring the factor 2^trim gives
 exactly the supported divisor 10^trim. Its shift guard accepts trim; the
 early power bound tests 2*trim, which is below Int.MAX_VALUE, and the general
 multiplication lower-bit guard cannot reject a supported actual product.
-In the unchanged binary long division,
-each shifted partial remainder is no larger than the processed prefix of n;
-there are at most b processed bits, so no shift exceeds the supported range.
-The allocated limb arrays are bounded by the input's limb count plus existing
-carry space. No arithmetic kernel is modified.
+The original task562 argument used the then-current binary long division.
+Current `decimalBinaryPrefix` instead calls the normalized stored-limb kernel
+through `divideStored`, requesting **both** quotient and remainder. The
+[task530 kernel proof](docs/division530-proof.md) establishes its exact division
+identity, remainder bounds, primitive/index bounds and input-sized scratch
+storage; the [output-selection proof](docs/division530-selection-proof.md#call-site-inventory-and-choices)
+preserves both outputs for this caller. Its quotient supplies the prefix and
+its remainder supplies the sticky observation. The numerical argument above
+therefore composes with that current kernel, not with the historical binary
+loop. No arithmetic kernel is changed by this documentation binding.
 
 Prefix extraction performs one power and one division by that power, followed
 by formatting at most B+1 digits and removing at most one extra digit. It does
 not repeatedly cancel single zeros or create a coefficient-sized decimal
-string/character array. The unchanged arithmetic kernels can still take very
-large time and O(b) space on huge inputs; availability of that memory/time is
-not guaranteed. Removing the engine's hard string-capacity requirement does
-not claim a measured giant-input run or new asymptotic performance for division.
+string/character array. Current task530 division retains input-sized scratch
+storage and can still require very large time on huge inputs; availability of
+that memory/time is not guaranteed. The supported divisor and bounded formatted
+quotient remove the former hard string-capacity requirement. They do not prove
+maximum-domain allocations can finish or claim a measured giant-input run or
+new asymptotic performance for conversion. The
+[current task543 proof binding](docs/floating-conversion-543-proof-binding.md)
+records the exact source and remaining task548 assumptions.
 No platform decimal parser participates in production conversion.
 
 Compact eligibility is evaluated from the original coefficient and scale,

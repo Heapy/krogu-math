@@ -28,9 +28,11 @@ This addition provides Int/Long/UInt/ULong integer conversions, Int/Long decimal
 conversions with optional context overloads, BigInteger decimal conversions with
 named scale/context defaults, and String throwing/nullable conversions. It uses
 the own constructors and arithmetic; no JDK numerical implementation is called.
-It does not yet supply the floating conversion or additional operator surfaces
-retained in task525's draft. Tasks525 and557 remain open, including Kotlin/JS
-erased Number dispatch.
+The later [floating conversion integration](kotlin-floating-conversion-migration.md)
+adds Float/Double overloads. Increment/decrement, shifts, inversion and named
+bitwise extensions are also present in `OperatorExtensions.kt`; import those
+extensions explicitly when used. Tasks525 and557 remain open, including
+Kotlin/JS erased Number dispatch.
 
 The public Kotlin [integer parsing contract](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/to-big-integer-or-null.html)
 distinguishes invalid text (null for OrNull) from an invalid radix (an
@@ -57,6 +59,8 @@ the three common methods in one suite. Parent independently parsed the archived
 XML and matched all required methods, with zero failures, errors or skips.
 All four borrowed source/test files retained their frozen hashes.
 
-These checks ran separately in task564 after its formatter/harness snapshot was
+Those initial checks ran separately in task564 after its formatter/harness snapshot was
 archived. They do not validate floating conversions, other operators or erased
-Number calls. Supported-platform CI at the integrated head remains required.
+Number calls. Later floating and non-null API integration reports record their
+own platform gates; these historical six/three-method checks are not evidence
+for those additional surfaces.
