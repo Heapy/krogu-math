@@ -20,7 +20,7 @@ unary-context, task577 bitwise and task578 validation/constructor/random changes
 Revision4 retains task525's four non-null extrema result declarations and classifies
 RNG consumption as diagnostics. The exact adopted source passed all four local
 platform gates (1,416 method executions across JVM, JS, Wasm JS and macOS ARM64)
-and all 49 input compiler jobs. A selected public campaign passed 30 adapted
+and all 49 reviewed input-nullability compiler jobs. A selected public campaign passed 30 adapted
 invocations with 115 declared coverage skips. Four original joint-invalid
 constructor calls remain outside that success; their earlier failure is preserved.
 Published-revision CI is recorded separately. The [current verification report](docs/non-null-api-573-verification.md)
@@ -210,20 +210,26 @@ and source guarantees themselves are not waived by that classification.
 
 | Requirement | Evidence | Remaining audit |
 |---|---|---|
-| Kotlin numerical call surface, constants, operators and conversions of all four types | `ApiSurfaceTest` inventories the current JVM shape; `KotlinSubclassContractTest` exercises selected Kotlin calls | Compiler-checked migration matrix and missing stdlib counterparts; Java class/constructor shape is not a library requirement |
-| Java source compatibility inside the TCK harness | Existing `JavaApiContractTest` exercises current real constructors and virtual calls | Test-only adaptation for the applicable TCK; no direct Java consumer source-compatibility promise |
+| Kotlin numerical call surface, constants, operators and conversions of all four types | `ApiSurfaceTest` inventories the current JVM shape; selected Kotlin subclass calls; task573's 49 accepted compiler jobs validate the reviewed input-nullability migration | Complete migration matrix beyond those input slots, including operators/conversions and missing stdlib counterparts (525); Kotlin/JS Number dispatch blocker557 remains open; Java class/constructor shape is not a library requirement |
+| Java source compatibility inside the TCK harness | `JavaApiContractTest` plus the consolidated public campaign's 53 successful port invocations with exact own-JAR/caller binding and explicit adapters | Larger public resource profiles and recorded adaptation losses remain separate; no direct Java consumer source-compatibility promise or official JCK result |
 | BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor outcomes; 11,798 modular reduction/inverse outcomes; 9,176 modular-power outcomes and numerical arguments | Larger operand patterns, supported-range/allocation limits and compound modular subclass behavior |
 | Infinite two's-complement bit semantics | Portable oracle, seeded JVM operations, algebraic invariants and finite-width sign-extension argument; 17,198 bit value/callback/identity outcomes | Multi-gigabyte operands and bit distances, wider changing-metadata subclass compositions |
-| All constructor encodings and validation | 25,584 exact byte-constructor outcomes including Int offset/length endpoints and array isolation; 10,156 exact string-constructor outcomes; complete BMP digit/radix corpus and supplementary digit constructors | Larger input/allocation limits, compound textual grammar, malformed text fuzzing |
+| All constructor encodings and validation | Historical 25,584 byte and 10,156 string outcomes; BMP digit/radix corpus; conditional [lexical/slice](docs/constructor-contract-549-coverage.md), [byte representation](docs/integer-byte-constructor-549-proof.md) and [contextual rounding](docs/contextual-constructor-rounding-549-proof.md) arguments; separate16-call scale-wording diagnostic | Complete overload/error classification, remaining malformed/compound-invalid diagnostic inventory, supported-range/allocation limits548 and the recorded constructor wording tension526 |
 | Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 207,239 exact portable scale-boundary outcomes; 75,728 context callback/metadata outcomes; portable fixtures | Wider coefficient/scale/precision combinations, compact subclass compositions and remaining overloads |
 | Powers and roots | 10,560 initial JVM comparisons, 13,024 exponent-bit/rounding comparisons, 128 working-precision overflow cases, 2,592 squared-midpoint root fixtures through 129 digits, integer midpoint rounding argument; 6,677 integer-power outcomes; 978 integer-root outcomes and independent bounds | Wider decimal-root and integer-power subclass compositions, intermediate/scale-overflow audit and larger operand/allocation domains |
 | Float/Double conversions and canonical Double factory values | Bitwise oracle comparisons, 1,296 exact decimal midpoint-neighbor outcomes, rational rounding argument, all binary scaling powers from -1074 through 1023, 10,000 seeded canonical Double cases | Exhaustive Float input domain, decimal subclass dispatch and very large cancelling coefficient/scale allocation audit |
 | Prime generation and certainty | 416 portable primality/successor/trace cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions; generation density argument and successor whole-search error budget; exhaustive small byte-payload distribution, primality and successor trial-division checks | Very large certainty beyond the proven bound, witness independence at larger magnitudes, supported-range limits, caller RNG behavior and wider subclass dispatch |
-| Exception conditions and types | Portable fixtures; 7,486 live JVM null/invalid-argument comparisons; 3,462 portable null-precedence outcomes; exact integer string/byte constructor diagnostics | Wider invalid-argument domains and cross-products; other exception messages remain unmatched |
+| Exception conditions and types | Historical portable/null/invalid fixtures and constructor diagnostics; reviewed48-input non-null policy implemented by573–578 | Wider documented exception domains and conditions; messages and competing-invalid ordering remain separately classified observations under526 |
 | Equality, ordering, hash codes, immutability | JVM oracle and common invariants; 6,110 portable BigInteger hash outcomes | Full context/enum/hash and subclass audit |
 | Current-format JVM serialization; optional snapshot adapter evidence | Current-format round trips, validated base state, subclass state, reference identity, cycles and array-alias isolation; existing exact coefficient/scale adapters | Java adapters do not constrain the future library shape; cross-version serialization and java.math stream migration are outside scope |
 | Same common behavior on every supported platform | CI matrix for JVM, JS, Wasm, macOS/Linux/Windows Native and iOS simulators; cross-built Linux ARM64 binary executed on ARM64 | Each new common regression must pass on every supported target |
 | Required numerical range | Overflow guards and selected extreme-scale regressions | Supported-range proof and practical large-input tests remain incomplete |
+
+The remaining compatibility obligations include migration525/557, numerical
+range548, decimal dispatch541, powers/roots542 and floating conversions543,
+with the complete requirement audit tracked by553. Benchmarks, compact storage,
+algorithm tuning and additional ergonomic APIs are separate follow-up work;
+their absence alone does not establish a source or numerical-contract failure.
 
 ## Verification commands
 
