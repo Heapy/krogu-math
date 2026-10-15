@@ -73,3 +73,12 @@ the accepted bounds imply `0 <= offset <= offset+len <= size <= Int.MAX_VALUE`.
 The copied substring is exactly the selected UTF-16 sequence and the same parser
 then applies. The context overloads additionally require their separate rounding
 and explicit-dispatch arguments; lexical equivalence alone does not prove them.
+
+The subsequent [contextual integer-coefficient proof](contextual-constructor-rounding-549-proof.md)
+supplies the conditional significant-digit rounding composition for the two
+BigInteger/context constructors, including signed ties, exact carry normalization,
+scale bounds and constructor callback reachability. It reuses existing finite
+controls and separately records16 fresh diagnostic calls concerning the
+two-argument constructor's scale wording. Integer primitive/range/allocation
+assumptions, the wording classification under526 and the complete constructor
+inventory remain open; this does not close the broad549 obligation.
