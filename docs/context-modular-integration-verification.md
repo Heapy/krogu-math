@@ -1,5 +1,9 @@
 # Integrated math validation: tasks 538, 567 and 541
 
+This is the historical ff80 snapshot report. Later task 530 division evidence
+and its exact candidate are recorded in
+[normalized division verification](normalized-division-verification.md).
+
 This report records completed local integration gates and a bounded modPow
 measurement campaign. It does not establish complete public-test coverage,
 official JCK certification or blanket performance acceptance. No new execution

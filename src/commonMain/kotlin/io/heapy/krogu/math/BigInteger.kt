@@ -79,38 +79,115 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return normalized(sign * value.sign, result)
     }
     open fun parallelMultiply(value: BigInteger): BigInteger = multiply(value)
-    open fun divide(value: BigInteger): BigInteger = divideStored(value)[0]
-    open fun remainder(value: BigInteger): BigInteger = divideStored(value)[1]
+    open fun divide(value: BigInteger): BigInteger = quotientStored(value)
+    open fun remainder(value: BigInteger): BigInteger = remainderStored(value)
 
     open fun divideAndRemainder(value: BigInteger): Array<BigInteger> = divideStored(value)
 
-    private fun divideStored(value: BigInteger): Array<BigInteger> {
+    private fun quotientStored(value: BigInteger): BigInteger =
+        selectStoredDivision(value, true, false) { quotient, _ -> quotient }
+
+    private fun remainderStored(value: BigInteger): BigInteger =
+        selectStoredDivision(value, false, true) { _, remainder -> remainder }
+
+    private fun divideStored(value: BigInteger): Array<BigInteger> =
+        selectStoredDivision(value, true, true) { quotient, remainder -> arrayOf(quotient, remainder) }
+
+    // Only the three wrappers above call this selector. An omitted output is ZERO
+    // internally; each single-output wrapper selects only its requested result.
+    private inline fun <T> selectStoredDivision(
+        value: BigInteger,
+        needQuotient: Boolean,
+        needRemainder: Boolean,
+        select: (BigInteger, BigInteger) -> T,
+    ): T {
         if (value.sign == 0) throw ArithmeticException("BigInteger divide by zero")
         // Read stored magnitudes and bits without invoking operand subclass callbacks.
-        if (compareMagnitude(words, value.words) < 0) return arrayOf(ZERO, normalized(sign, words))
+        if (compareMagnitude(words, value.words) < 0)
+            return select(ZERO, if (needRemainder) normalized(sign, words) else ZERO)
         if (value.words.size == 1) {
-            val result = IntArray(words.size)
+            val result = if (needQuotient) IntArray(words.size) else null
             var remainder = 0L
             for (i in words.indices.reversed()) {
                 val part = (remainder shl LIMB_BITS) + words[i]
-                result[i] = (part / value.words[0]).toInt()
+                if (result != null) result[i] = (part / value.words[0]).toInt()
                 remainder = part % value.words[0]
             }
-            return arrayOf(normalized(sign * value.sign, result), normalized(sign, intArrayOf(remainder.toInt())))
+            return select(
+                if (result != null) normalized(sign * value.sign, result) else ZERO,
+                if (needRemainder) normalized(sign, intArrayOf(remainder.toInt())) else ZERO,
+            )
         }
-        // Binary long division: at each step the partial remainder stays below twice b.
-        val b = BigInteger(1, value.words)
-        val result = IntArray(words.size)
-        var rem = ZERO
-        for (bit in magnitudeBits() - 1 downTo 0) {
-            rem = rem.shiftLeft(1)
-            if (words[bit / LIMB_BITS] and (1 shl (bit % LIMB_BITS)) != 0) rem = rem.add(ONE)
-            if (rem >= b) {
-                rem = rem.subtract(b)
-                result[bit / LIMB_BITS] = result[bit / LIMB_BITS] or (1 shl (bit % LIMB_BITS))
+        // Independent radix-2^30 long division. All scratch is local to this call;
+        // neither operand's stored array is ever written or exported as scratch.
+        val n = value.words.size
+        val shift = value.words.last().countLeadingZeroBits() - (32 - LIMB_BITS)
+        val divisor = IntArray(n)
+        normalizeStoredDivision(value.words, divisor, shift) // No top carry for the divisor.
+        val dividend = IntArray(words.size + 1)
+        dividend[words.size] = normalizeStoredDivision(words, dividend, shift)
+        val quotient = if (needQuotient) IntArray(words.size - n + 1) else null
+        val radix = MASK + 1
+        val high = divisor[n - 1].toLong()
+        val next = divisor[n - 2].toLong()
+        for (j in words.size - n downTo 0) {
+            // The n+1 digit window U satisfies 0 <= U < radix * divisor.
+            val top = (dividend[j + n].toLong() shl LIMB_BITS) + dividend[j + n - 1]
+            var estimate = minOf(top / high, MASK)
+            var residual = top - estimate * high
+            // Guard before shifting: residual may be >= radix after capping/correction.
+            // With a normalized high digit, at most two estimate decrements occur.
+            while (residual < radix &&
+                estimate * next > (residual shl LIMB_BITS) + dividend[j + n - 2]) {
+                estimate--
+                residual += high
+            }
+            var borrow = 0L
+            for (i in 0 until n) {
+                val product = estimate * divisor[i] + borrow
+                val difference = dividend[j + i].toLong() - (product and MASK)
+                dividend[j + i] = (difference and MASK).toInt()
+                borrow = (product ushr LIMB_BITS) + if (difference < 0) 1 else 0
+            }
+            val difference = dividend[j + n].toLong() - borrow
+            dividend[j + n] = (difference and MASK).toInt()
+            if (difference < 0) {
+                // The leading-three-digit test leaves at most one excess divisor.
+                estimate--
+                var carry = 0L
+                for (i in 0 until n) {
+                    val sum = dividend[j + i].toLong() + divisor[i] + carry
+                    dividend[j + i] = (sum and MASK).toInt()
+                    carry = sum ushr LIMB_BITS
+                }
+                dividend[j + n] = ((dividend[j + n].toLong() + carry) and MASK).toInt()
+            }
+            if (quotient != null) quotient[j] = estimate.toInt()
+        }
+        val remainder = if (needRemainder) IntArray(n) else null
+        if (remainder != null) {
+            for (i in 0 until n) {
+                remainder[i] = if (shift == 0) dividend[i] else
+                    (dividend[i] ushr shift) or
+                        ((dividend[i + 1].toLong() shl (LIMB_BITS - shift)) and MASK).toInt()
             }
         }
-        return arrayOf(normalized(sign * value.sign, result), normalized(sign, rem.words))
+        // Scratch is dead before output construction; any two requested outputs are disjoint.
+        return select(
+            if (quotient != null) normalized(sign * value.sign, quotient) else ZERO,
+            if (remainder != null) normalized(sign, remainder) else ZERO,
+        )
+    }
+
+    /** Copy source * 2^shift into a distinct target, returning the extra high digit. */
+    private fun normalizeStoredDivision(source: IntArray, target: IntArray, shift: Int): Int {
+        var carry = 0L
+        for (i in source.indices) {
+            val digit = (source[i].toLong() shl shift) or carry
+            target[i] = (digit and MASK).toInt()
+            carry = digit ushr LIMB_BITS
+        }
+        return carry.toInt()
     }
 
     open fun pow(exponent: Int): BigInteger {
@@ -177,7 +254,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         if (sign == 0) return value.abs()
         var a = BigInteger(1, words)
         var b = BigInteger(1, value.words)
-        while (b.sign != 0) { val r = a.divideStored(b)[1]; a = b; b = r }
+        while (b.sign != 0) { val r = a.remainderStored(b); a = b; b = r }
         return normalized(1, a.words)
     }
     open fun mod(m: BigInteger): BigInteger {
@@ -480,7 +557,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         val value = BigInteger(1, words)
         var x = ONE.shiftLeftValue(MagnitudeLimits.initialSqrtShift(bits))
         while (true) {
-            val next = x.add(value.divideStored(x)[0]).shiftRightValue(1)
+            val next = x.add(value.quotientStored(x)).shiftRightValue(1)
             if (compareMagnitude(next.words, x.words) >= 0) return normalized(1, x.words)
             x = next
         }
