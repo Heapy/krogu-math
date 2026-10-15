@@ -25,6 +25,18 @@ not remove that failure; the exact stalled input and cause remain unestablished.
 The historical first smoke run followed execution grant1772, superseding
 code-only comment1753 after560's terminal release and parent integration.
 
+A later [sqrt implementation-range policy preparation](sqrt-implementation-range-559-policy.md)
+introduced a port omission of exactly the main call to
+`scaleOverflowTest`, whose input10/precision1073741825/UP expects an internal
+ArithmeticException. This is an explicit numerical-assertion/input omission with
+one companion SKIP, not an imports-only transformation or an original-call PASS.
+The full method body and host baseline remain; prior unmarked FAILs and the local
+marked ordinal50 timeout remain unchanged. A subsequent
+[focused local run](sqrt-implementation-range-559-verification.md) completed the
+full baseline and retained port assertions:2 PASS/0 FAIL/139 SKIP, including the
+explicit range companion. No adapted118/no-skips result, practical high-precision
+range fix, production cap or official JCK claim follows.
+
 ## Metadata preparation
 
 From the repository root, use Kotlin **2.4.21** and BellSoft **25.0.4+9-LTS**:
@@ -123,11 +135,13 @@ derivatives, framework jars and combined test binaries stay under ignored build
 and are never inserted into library publications. No numerical production
 implementation from OpenJDK, Kotlin stdlib or another library is read or copied.
 
-## Assertion-preserving adaptations
+## Explicit adaptations and lost coverage
 
 Ordinary tests change math imports only. Every generated source has an inverse
 transformation check and unchanged upstream notice. Each test/directive compiles
 in its own directory because upstream class names repeat across subtrees.
+The specifically listed range policies must be distinguished from unchanged
+assertions; SquareRootTests below omits one numerical call on the port.
 
 Four explicit source-specific adaptations retain numerical test bodies:
 
@@ -162,6 +176,18 @@ Four explicit source-specific adaptations retain numerical test bodies:
   startup/cleanup. Both layers wait for termination; owned descendants are tracked
   and cannot outlive a passing parent. Baseline orchestration is thus a controlled
   stronger crash assertion, explicitly separate from untouched numerical code.
+
+The separate **SquareRootTests** range-policy preparation omits only main's unique
+`failures += scaleOverflowTest();` call on the port. The original method, including
+its high-precision numerical invocation and exception assertion, stays in the
+generated source but is not reached from main. An exact unique-line anchor and
+inverse check recover the imports-only source; missing/duplicate anchors fail.
+The original host baseline executes the complete original TEST. The one port
+loss receives an explicit adaptation-companion SKIP even if all retained phases
+later pass. The main invocation's PASS/FAIL, completion/origin checks, resources,
+deadline and cleanup remain the original runner's independent responsibility.
+This is neither an exception catch nor a successful numerical substitute.
+See the [bounded policy and evidence limits](sqrt-implementation-range-559-policy.md).
 
 Only `MutableBigIntegerShiftTests.java` and `MutableBigIntegerBox.java` remain
 excluded: internal mutable limb-shift invariants are not a public numerical API.

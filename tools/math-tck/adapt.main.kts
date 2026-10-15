@@ -2,11 +2,12 @@
 // SPDX-License-Identifier: GPL-2.0-only
 // Source-specific adaptation rules for the pinned GPL-2.0-only OpenJDK tests.
 // Generated files retain their original upstream notices. Assertion changes and lost coverage are explicit below.
-// Original source notices for the six adapted files:
+// Original source notices for the seven adapted files:
 // Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
 // Copyright (c) 1999, 2018, Oracle and/or its affiliates. All rights reserved.
 // Copyright (c) 2003, 2017, Oracle and/or its affiliates. All rights reserved.
 // Copyright (c) 2014, 2022, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
 // Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
 // Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
 
@@ -53,6 +54,19 @@ fun adaptMathTest(path: String, original: String): MathAdaptation {
             }
             check(restored == importOnly) { "Constructor adaptation changed retained source" }
             changes += "Use MathContext.UNLIMITED instead of exactly four null contexts for invalid char-array range tests under the non-null Kotlin constructor policy; retain all original range/numeric operands, five TestNG assertions, method names, annotations and error-cause check. Original joint-invalid precedence is separate lost coverage, not an adapted pass"
+        }
+        "BigDecimal/SquareRootTests.java" -> {
+            val before = "\n        failures += scaleOverflowTest();\n"
+            val after = "\n        // KROGU_REFERENCE_ONLY_SQRT_IMPLEMENTATION_RANGE: original scaleOverflowTest call omitted.\n"
+            val anchor = source.indexOf(before)
+            check(anchor >= 0 && anchor == source.lastIndexOf(before)) { "Pinned SquareRootTests scaleOverflowTest main call changed or duplicated" }
+            check(after !in source) { "SquareRootTests range adaptation already present" }
+            source = source.replaceRange(anchor, anchor + before.length, after)
+            val replacement = source.indexOf(after)
+            check(replacement >= 0 && replacement == source.lastIndexOf(after)) { "SquareRootTests range replacement changed" }
+            check(source.replace(after, before) == importOnly) { "SquareRootTests adaptation changed retained source" }
+            changes += "Port-only reference implementation range classification: omit exactly main's scaleOverflowTest call with a reversible named comment; retain the entire original method body, all other calls/assertions/order/inputs/directives/resources and notices. No production cap, host arithmetic fallback or substituted success"
+            skips += "scaleOverflowTest: original input10 (BigDecimal.valueOf(1,-1)), precision1073741825, UP and its expected ArithmeticException assertion are NOT executed on port; one numerical high-precision call is lost coverage. Original unmarked hosted SquareRootTests FAILs and the marked local ordinal50 timeout remain failure evidence; original host baseline retains the full test. No broad sqrt range/performance or original-call pass is claimed"
         }
         "BigInteger/PrimeTest.java" -> {
             val before = """

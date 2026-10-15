@@ -131,6 +131,13 @@ and inner run-new was absent. It supplies no marked-test outcome. Exact retained
 failure and locator pins are in the linked audit; this does not revise the
 earlier local579 milestone below.
 
+A later separately authorized [marked local locator run](sqrt-public-locator-579-result.md)
+compiled and timed out after reaching BEFORE scaleOverflowTest (51 exact markers;
+all previous phases returned). It uses this e7047 JAR on Darwin/aarch64, not
+the hosted80987 Linux artifact/host. It does not prove the hosted stopped input,
+an internal root cause or a numerical/full-gate pass; the first sandbox failure
+remains preserved separately.
+
 Later actual hosted evidence: exact1b9 normal run38783134507 completed with six
 jobs SUCCESS and the public job FAILURE. Its complete ledger is105 PASS,1 FAIL,
 46 SKIP; port SquareRootTests timed out at120113ms under its original120s/512MiB
