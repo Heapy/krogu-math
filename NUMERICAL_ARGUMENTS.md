@@ -190,6 +190,13 @@ prove every allocation failure or range-error diagnostic.
 
 ## Integer division
 
+The implementation details below record the pre-530 binary kernel. The current
+normalized radix-B kernel and its output selection are proved in
+[division530-proof.md](docs/division530-proof.md) and
+[division530-selection-proof.md](docs/division530-selection-proof.md).
+The signed identities and retained corpus still supply behavioral evidence;
+the historical binary-loop argument does not prove the current kernel.
+
 For ordinary operands, division first checks whether abs(x)<abs(y) using
 normalized stored magnitudes with radix B=2^30. A nonzero magnitude with k
 limbs lies in [B^(k-1), B^k), so limb count decides unequal-length order.

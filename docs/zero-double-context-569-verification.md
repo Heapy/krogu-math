@@ -39,4 +39,12 @@ The unchanged selected public OpenJDK decimal campaign completed both phases: **
 
 The first attempt exited 3 before any numerical test because the sandbox denied process enumeration at the runtime-version precondition. Its incomplete results retain zero executions. That evidence is archived separately; a scoped process-access retry then completed the unchanged campaign. Results are at `build/math-tck/results/1792050088403/`, JSON SHA-256 `bce2ab37139fe0818bdcb5978399a6ba453c0016103264356c6675678e50cbba`.
 
-The combined local, baseline/candidate replay, public-test, failed-infrastructure and publication-provenance evidence is `/private/tmp/krogu-569-final-evidence-v2.tar`, SHA-256 `ecf83dc1df46628e5b050c1876dcf700b54501f6ecd8eb69c6b72df245e07198`. Fresh exact-published-commit six-job CI remains a publication gate; its head/run belong in the final task entry. Prior task 568 results do not satisfy it. No official JCK, full compatibility or performance claim follows.
+The combined local, baseline/candidate replay, public-test, failed-infrastructure and publication-provenance evidence is `/private/tmp/krogu-569-final-evidence-v2.tar`, SHA-256 `ecf83dc1df46628e5b050c1876dcf700b54501f6ecd8eb69c6b72df245e07198`.
+
+## Exact published-head CI
+
+[CI run 38701013714](https://github.com/Heapy/krogu-math/actions/runs/38701013714), attempt 2, completed successfully at exact published commit `99c81a42a5d104e045bcfe6eca2246231d37bf80`, with all six jobs successful. Actual Linux ARM64 job `116335819194` executed 295 tests in 62 cases: all passed, with no skipped or failed methods, in 324,548 ms. Final CI JSON SHA is `49e39548688f861ee642d237794f491c25ecbd9b558a58dc97edf9eb6d1f2124`; raw ARM log SHA is `5dc459597158a0ba4a4efdcd29d39527eecae90edf50d0bb3d35f270fc287c1e`.
+
+Attempt 1's Intel Gradle build succeeded, then artifact upload exhausted HTTP-timeout retries; its dependent ARM job was skipped. The failed-only rerun supplied a successful Intel job and the actual ARM execution while retaining the earlier successful jobs. This is not six fresh executions. The original failure evidence remains preserved.
+
+Final V3 evidence combines V2 with both CI-attempt records and the raw ARM log: `/private/tmp/krogu-569-final-evidence-v3.tar`, SHA-256 `67a672a97fed64dbe350963663094f28b0e773da5a26d00534cd7c6856f8e7fe`. Independent final review accepted the exact-head CI and source binding; task 569 is done. This does not establish later constructor candidates, official JCK, full compatibility or performance.

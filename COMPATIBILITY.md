@@ -8,6 +8,9 @@ common Kotlin. Java source compatibility is required only in the TCK harness,
 where test-only adapters may supply the expected Java call shapes. Public types
 may use interfaces and constructor-like Kotlin factories; real Java constructors
 and direct Java subclass source compatibility are not library requirements.
+Kotlin nullability follows the [nullability policy](docs/kotlin-nullability-policy.md):
+inputs that reject null must be non-null. Migration may require matching caller
+and override edits; task573 implements the reviewed 48-input migration.
 Proven JDK defects are handled as specified below. The objective remains
 **active and unproven**.
 
@@ -30,6 +33,9 @@ The separate [zero sqrt-null validation](docs/zero-sqrt-null-568-verification.md
 records the null-contract repair and its own current execution evidence.
 The [Double zero/null validation](docs/zero-double-context-569-verification.md)
 records the constructor repair, retained JDK observations and fresh target/public gates.
+The [integer arithmetic and bit audit report](docs/integer-audits-544-545-verification.md)
+records the later test-only integration and its four local target gates; exact
+published-head CI remains pending there.
 
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in
@@ -76,7 +82,7 @@ it is not interchangeable with exact `divide(other)`.
 
 | Classification | Evidence needed | Compatibility obligation |
 |---|---|---|
-| Specification guarantee | A public contract clause or Kotlin language/stdlib guarantee, plus an independent expected result where numerical | Preserve it, including specified values, rounding, scale, encodings, text, range, error conditions/types and identity. Kotlin caller compilation and overload resolution must remain compatible after import migration. |
+| Specification guarantee | A public contract clause or Kotlin language/stdlib guarantee, plus an independent expected result where numerical | Preserve it, including specified values, rounding, scale, encodings, text, range, error conditions/types and identity. Kotlin caller compilation and overload resolution remain migration obligations, with explicit caller/override nullability edits permitted by the nullability policy. |
 | Reference observation | Reproducible public inputs and outputs on the pinned runtime | Retain as diagnostic evidence and preserve useful additional behavior when consistent with the contract. Unspecified callback order, allocation/cache choices, exact diagnostic wording and random sequences do not become independent requirements solely from one JDK build. |
 | Proven JDK defect | Minimal public reproducer, the precise violated clause, independent expected behavior and tested JDK version/configuration | Follow the contract, retain the reference counterexample and add a regression for correct behavior. Record every deliberate divergence explicitly. |
 | Unresolved difference | A reproducible mismatch without sufficient normative or mathematical evidence | Investigate; do not silently ignore it or call it a JDK bug because documentation is absent. |
