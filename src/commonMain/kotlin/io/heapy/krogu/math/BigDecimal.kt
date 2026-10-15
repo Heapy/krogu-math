@@ -137,8 +137,15 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val logicalScale = decimalScale.toLong() + operand.decimalScale
         // Preserve exact, low-scale and zero/source behavior. Only mandatory
         // precision reduction of a supported nonzero product rescues HIGH scale.
-        if (logicalScale <= Int.MAX_VALUE || coefficient.signum() == 0 || operand.coefficient.signum() == 0)
-            return multiplyValue(operand).roundValue(context)
+        if (logicalScale <= Int.MAX_VALUE || coefficient.signum() == 0 || operand.coefficient.signum() == 0) {
+            // Retain multiplyValue's scale/sign prefix before raw selection.
+            val scale = scaleForValue(logicalScale, coefficient.signum() == 0)
+            val raw = coefficient.roundedDecimalProduct580(operand.coefficient, scale.toLong(), context)
+            if (raw != null) return BigDecimal(raw.first, raw.second)
+            return BigDecimal(coefficient.multiply(operand.coefficient), scale).roundValue(context)
+        }
+        val raw = coefficient.roundedDecimalProduct580(operand.coefficient, logicalScale, context)
+        if (raw != null) return BigDecimal(raw.first, raw.second)
         val product = BigDecimal(coefficient.multiply(operand.coefficient), 0)
         if (product.storedPrecision() <= context.precision) checkedScale(logicalScale)
         // Rounding decisions depend on the coefficient, not the logical scale.

@@ -62,6 +62,11 @@ The later [inexact sqrt normalization](docs/sqrt-normalization-579-verification.
 records the private-workspace range repair and1501 completed local method
 executions. Its giant boundary witness is symbolic; supported matching-head CI,
 general resource work and broader power/dispatch audits remain separate.
+The subsequent [contextual-product repair](docs/decimal-context-product-580-verification.md)
+rounds a private decimal product before publishing its required coefficient.
+Its four-target campaign completed1517 method executions with no failures or
+skips. Maximum-size witnesses remain symbolic; matching-head hosted gates and
+the broader compatibility tasks remain separate.
 The [integer arithmetic and bit audit report](docs/integer-audits-544-545-verification.md)
 records the later test-only integration, four local target gates and all six CI
 jobs passing on published commit60aea413, including actual Linux ARM64 execution.

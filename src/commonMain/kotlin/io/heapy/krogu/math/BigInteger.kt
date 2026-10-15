@@ -79,6 +79,16 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return normalized(sign * value.sign, result)
     }
     open fun parallelMultiply(value: BigInteger): BigInteger = multiply(value)
+
+    // No public metadata/byte/arithmetic callbacks select this private scratch
+    // route. The helper reads these immutable magnitudes without retaining them.
+    @kotlin.jvm.JvmSynthetic
+    internal fun roundedDecimalProduct580(value: BigInteger, scale: Long, mc: MathContext): Pair<BigInteger, Int>? {
+        if (sign == 0 || value.sign == 0 ||
+            !needsRawDecimalProduct580(magnitudeBits(), value.magnitudeBits())) return null
+        return DecimalProduct580.rounded(sign * value.sign, words, value.words, scale, mc)
+    }
+
     open fun divide(value: BigInteger): BigInteger = quotientStored(value)
     open fun remainder(value: BigInteger): BigInteger = remainderStored(value)
 

@@ -655,6 +655,18 @@ actual local method executions across JVM/JS/Wasm/macOS ARM64. The giant symboli
 witness was not executed; matching-head CI, broader subtype and resource gates
 remain separate.
 
+The subsequent [contextual multiplication construction](docs/decimal-context-product-580-implementation.md)
+uses private base10^9 product cells when an exact public binary coefficient
+cannot conservatively be proved supported. It discards only the digits required
+by the requested precision, applies signed guard/sticky rounding and one exact
+precision-carry drop, then checks the required final coefficient and scale.
+It does not optionally strip zeros to substitute a different cohort. The
+existing HIGH-scale rejection when no precision reduction is required remains.
+The [actual local report](docs/decimal-context-product-580-verification.md)
+separates bounded raw-helper tests, public materialized-path controls and the
+symbolic maximum-size argument. No maximum-size allocation or execution is
+claimed.
+
 ## Decimal powers and working precision
 
 The public [pow contract](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html#pow(int,java.math.MathContext))
