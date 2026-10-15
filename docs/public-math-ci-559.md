@@ -2,9 +2,10 @@
 
 The initial source-only integration and independent review did not execute the
 workflow or script. Root subsequently compiled the entrypoint in the metadata-only
-preflight recorded below. An actual exact-commit GitHub Actions execution remains
-required; source review and metadata preparation supply no public-suite pass or
-official JCK certification.
+preflight recorded below. The subsequent exact-commit GitHub Actions run passed
+all seven jobs, including106 public baseline/port invocations with46 explicit
+coverage skips. Source preparation, hosted results and the remaining large
+profiles are distinguished below; this is not official JCK certification.
 
 ## Artifact and source binding
 
@@ -161,3 +162,67 @@ An exact metadata check passed. No javac, caller audit, numerical JVM test or
 Gradle build was invoked by this preflight. In particular, it does not exercise
 the hosted CI-environment branch or replace the later actual workflow run.
 Evidence is retained at `/private/tmp/krogu-559-ci-preflight-v1`.
+
+## Hosted verification
+
+[Run38754517747, attempt1](https://github.com/Heapy/krogu-math/actions/runs/38754517747)
+completed **seven/seven jobs SUCCESS** on published
+`eaaea5ab29114950ac752afff2bf065bbf6035d5`. The actual public job116503120465
+used entrypoint82b129a8, separately from the earlier local frozen-b730 campaign.
+Its recorded `ciExecution` validates run/attempt, source/workflow commit,
+repository, workflow path and job `public-math`; `executionGrantComment=null`.
+The real hosted CI branch and automatic-memory path were therefore exercised.
+
+Result `1792077270926` is complete=true, officialJck=false, testsExecuted106:
+**106 PASS /0 FAIL /46 SKIP**. All118 unique public IDs are accounted for:
+53 PASS and6 unselected-large-profile SKIP per phase. Additional SKIPs remain
+12 adaptation companions,16 upstream-disabled methods, two commented calls
+and four excluded-private records. Both BigIntegerTest port directives passed
+in100668/102635ms within the original120/400-second limits; adapted PrimeTest
+passed in46812ms. No controlled performance conclusion follows.
+
+All53 port invocations have successful exact-core loading and nonempty caller
+audits with no host-math member owners. All106 raw completion markers, nested
+child proofs, compilations and executed process records pass with no timeout.
+PrimeTest still observes no huge-input branch/Boolean. Host nested-process
+orchestration retains its documented adaptation; no original-source-equivalence
+claim is inferred from the baseline result.
+
+Same-run input artifact11984491074 and evidence artifact11984508646 bind to
+this run/commit. Downloaded input checksums and SOURCE_COMMIT pass. The JAR is
+byte-identical to the accepted current-production ded66 artifact. The evidence
+contains the exact entrypoint, math-tool sources/locks/licenses and raw caller
+dumps/logs/results; no `.jar` or `.class` under `build/math-tck` was distributed.
+The separately owned Apache library JAR remains included as designed.
+
+The other six jobs pass, including actual Linux ARM64 job116503120398.
+One fresh256MiB metadata audit using accepted helper7c7a42ec checked65 suites,
+314 unique RUN/OK IDs, exact accepted common XML inventory/order and no
+omissions/extras/duplicates/failures/skips. All215 source hashes match manifest
+e4a136, and the de5-to-eaa `src` diff is empty. This is a fresh hosted runtime
+log audit, not another local numerical-test execution.
+
+Independent read-only actual review accepted the run/source/artifact bindings,
+all result IDs/counts/guards, source/license packaging and ARM evidence.
+All local helper/compiler calls are terminal and the local mutex was released.
+
+An important remaining boundary is visible in the actual memory metadata:
+auto total16766414848 bytes, free11844018176 bytes. The12 large public SKIPs
+were caused by the four-profile selection, **not an observed capacity failure**.
+Task559 stays open for a separately scoped large-profile attempt with fresh
+capacity gates; task548's full numerical-range proof remains separate.
+This green workflow does not establish full public coverage, full Kotlin/domain
+compatibility, official JCK certification or performance acceptance.
+
+Evidence: `/private/tmp/krogu-eaa-public-ci-evidence-v1`, including source and
+artifact records, raw logs, checksum checks and exact-result audit. The capsule
+excludes the metadata helper's compiled-script cache.
+
+```text
+71af0df7c806f0597460ce9ec43018ec7731df96c7dddfb24ff210b5e7dd3f57  krogu-eaa-public-ci-evidence-v1.tar
+99801aeab40aa1a480f984c209fab332677d3ec973b8312233d3a96841524002  results.json
+a5ad51d84ed49718ebc3ff18f34d51579fbb59e1af9e964c6489d992512333fb  final-run.json
+70beb6c2d4baecc6e9a5106f37cad4162e6a1805657b0d0b866ddf2369f32a68  public-job.raw.log
+7b7d3a7ab578cbfccb3fb1ad617606d61f1c36a6392ede1bdbaf4e6566076d19  arm.raw.log
+bf64dfe291893100a574499832296f6854dbeb93fbf9783e5ef8abab3292647a  arm-audit.log
+```

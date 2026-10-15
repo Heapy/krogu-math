@@ -1,7 +1,7 @@
 # Consolidated public math campaign: task 559
 
 Campaign `1792075080136` completed with **106 PASS / 0 FAIL / 46 SKIP**:
-53 eligible public invocations passed in each of the original baseline and
+53 eligible public invocations passed in each of the host baseline and
 controlled port phases. `complete=true`, `testsExecuted=106`, `officialJck=false`.
 This finite adapted corpus does not establish official JCK certification,
 original-test equivalence, the full numerical domain or all Kotlin contracts.
@@ -44,7 +44,7 @@ or omitted. The remaining34 records describe separately lost or excluded coverag
 
 | Scope | PASS | SKIP |
 |---|---:|---:|
-| Original baseline public invocations |53|6|
+| Host baseline public invocations |53|6|
 | Controlled port public invocations |53|6|
 | Port adaptation companions |0|12|
 | Upstream disabled methods, both phases |0|16|
@@ -103,3 +103,10 @@ a633ba713d787485790f9426dc8319ad17b343926a91306bb63d5bf195fccafa  tools-before.s
 The separate [CI integration](public-math-ci-559.md) must provide its own
 exact-commit hosted execution evidence. The official-JCK access barrier,
 large profiles and broader compatibility tasks remain separate obligations.
+
+The subsequent [hosted CI verification](public-math-ci-559.md#hosted-verification)
+now supplies that separate82b1-entrypoint result:106 PASS /0 FAIL /46 SKIP on
+published eaaea5. It does not replace this frozen-b730 campaign. Both host
+baselines preserve the original numerical assertions; the documented nested-JVM
+orchestration adaptation also applies to its host invocation, so “baseline”
+does not mean every generated host source is byte-identical to upstream.

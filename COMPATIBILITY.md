@@ -69,10 +69,13 @@ pass on published de5, including the actual314-method Linux ARM64 runtime.
 The later [consolidated public OpenJDK campaign](docs/public-math-consolidated-559.md)
 passed106 baseline/controlled-port invocations with0 failures and46 declared
 coverage skips on the current-production ded66 JAR. It covers the unfiltered
-standard, serialization, heavy and512MiB profiles through the frozen b730 harness;
-the subsequent CI entrypoint requires separate hosted evidence. Larger resource
-profiles, explicit adaptation losses and the full Kotlin/domain contract remain
-outside this finite success. This is not official JCK certification.
+standard, serialization, heavy and512MiB profiles through the frozen b730 harness.
+The later [82b1 hosted CI verification](docs/public-math-ci-559.md#hosted-verification)
+independently passes106/0/46 on published eaaea5, with all seven workflow jobs
+successful and actual314/65 Linux ARM64 inventory audited. Larger profiles were
+not selected by that job despite a snapshot above their capacity thresholds; their
+separate attempt, explicit adaptation losses and the full Kotlin/domain contract
+remain outside this finite success. This is not official JCK certification.
 
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in

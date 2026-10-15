@@ -3,9 +3,10 @@
 This harness uses public OpenJDK tests and is separate from official JCK/TCK
 access or certification. The [consolidated campaign](public-math-consolidated-559.md)
 completed106 baseline/port invocations with0 failures and46 explicit coverage
-skips across the four profiles through512MiB. Larger profiles and exact-commit
-hosted [public-suite CI](public-math-ci-559.md) remain separate evidence.
-Task `local:559` remains `in_progress` pending those acceptance checks.
+skips across the four profiles through512MiB. Separate exact-commit hosted
+[public-suite CI](public-math-ci-559.md#hosted-verification) also passes106/0/46
+with all seven workflow jobs successful. Larger profiles remain unexecuted by
+that selection; task `local:559` stays `in_progress` for their separately gated run.
 The historical first smoke run followed execution grant1772, superseding
 code-only comment1753 after560's terminal release and parent integration.
 
