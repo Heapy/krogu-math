@@ -42,17 +42,25 @@ val ciExecution = options["--ci-execution"]?.let { attestation ->
     require(attestation == "$runId:$sha") { "CI attestation must equal GITHUB_RUN_ID:GITHUB_SHA" }
     val repository = environment("GITHUB_REPOSITORY").also { require(it.matches(Regex("[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+"))) }
     val attempt = environment("GITHUB_RUN_ATTEMPT").also { require(it.matches(Regex("[1-9][0-9]*"))) }
+    val job = environment("GITHUB_JOB")
+    val workflowFile = when (job) {
+        "public-math" -> "ci.yml"
+        "public-math-large" -> "public-math-large.yml"
+        else -> error("CI attestation is reserved for the public-math and public-math-large jobs")
+    }
+    if (job == "public-math-large") require(environment("GITHUB_EVENT_NAME") == "workflow_dispatch") {
+        "Large public math execution requires workflow_dispatch"
+    }
     val workflowRef = environment("GITHUB_WORKFLOW_REF").also {
-        require(it.startsWith("$repository/.github/workflows/ci.yml@") && it.substringAfterLast('@').isNotBlank())
+        require(it.startsWith("$repository/.github/workflows/$workflowFile@") && it.substringAfterLast('@').isNotBlank())
     }
     val workflowSha = environment("GITHUB_WORKFLOW_SHA").also { require(it.matches(Regex("[0-9a-f]{40}"))) }
     val workflow = environment("GITHUB_WORKFLOW").also { require(it.isNotBlank()) }
     require(File(environment("GITHUB_WORKSPACE")).canonicalFile == root) { "CI must execute from the checked-out workspace" }
-    require(environment("GITHUB_JOB") == "public-math") { "CI attestation is reserved for the public-math job" }
     mapOf("provider" to "github-actions", "runId" to runId, "runAttempt" to attempt, "sourceCommit" to sha,
         "repository" to repository, "workflow" to workflow,
         "workflowRef" to workflowRef, "workflowSha" to workflowSha,
-        "job" to environment("GITHUB_JOB"), "attestation" to attestation)
+        "job" to job, "attestation" to attestation)
 }
 if (execute) {
     if (ciExecution == null) {
@@ -70,8 +78,15 @@ val autoMemory = if (memoryArgument == "auto") mathMemorySnapshot().also { requi
 val osMemoryGiB = (autoMemory?.getValue("totalBytes")?.let { it.toDouble() / (1024.0 * 1024 * 1024) }
     ?: memoryArgument.toDouble()).also { require(it >= 0 && it.isFinite()) }
 if (execute) require(osMemoryGiB > 0) { "Positive observed or parent-declared actual OS memory capacity is required" }
-if (ciExecution != null) require(mode == "--both" && "--tests" !in options && memoryArgument == "auto" && maxHeapMiB == 512 &&
-    profiles == setOf("standard", "serialization", "heavy", "memory-512m")) { "CI attestation only covers the complete public 512MiB profile selection" }
+if (ciExecution != null) {
+    require(mode == "--both" && "--tests" !in options && memoryArgument == "auto") { "CI attestation requires both complete phases and automatic memory observation" }
+    val selection = when (ciExecution.getValue("job")) {
+        "public-math" -> maxHeapMiB == 512 && profiles == setOf("standard", "serialization", "heavy", "memory-512m")
+        "public-math-large" -> maxHeapMiB == 8192 && profiles == setOf("large-memory-4g", "large-memory-8g", "large-memory-10g")
+        else -> false
+    }
+    require(selection) { "CI attestation does not cover this job's profile/heap selection" }
+}
 check(File(root, ".gitignore").readLines().contains("build/")) { "build/ must be ignored" }
 check(work.toPath().startsWith(File(root, "build").canonicalFile.toPath()))
 work.mkdirs()
@@ -367,7 +382,7 @@ if (execute) {
                 val reports = File(directory, "framework-reports").apply { mkdirs() }
                 val freshMemory = mathMemorySnapshot()
                 val neededMiB = mathHeapMiB(run.vm, decision.getValue("resource")) * if (run.className == "ModPowPowersof2") 2 else 1
-                val freshMemoryGate = decision.getValue("resource") in setOf("large-memory-8g", "large-memory-10g")
+                val freshMemoryGate = decision.getValue("resource") in setOf("large-memory-4g", "large-memory-8g", "large-memory-10g")
                 result["freshMemory"] = freshMemory
                 result["requiredFreeMiBWithMargin"] = neededMiB + 512
                 result["freshMemoryGateRequired"] = freshMemoryGate

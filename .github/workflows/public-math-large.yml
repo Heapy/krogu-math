@@ -1,0 +1,93 @@
+name: Public OpenJDK math large-memory tests
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: public-math-large-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  jvm-jar:
+    name: Build same-run JVM artifact
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: liberica
+          java-version: '25.0.4+9'
+      - uses: gradle/actions/setup-gradle@4c125117fe7c5aed11272ec4213f602f012f89f2 # v5
+      - name: Build own JVM library
+        timeout-minutes: 30
+        run: ./gradlew jvmJar --no-daemon --max-workers=1 "-Dorg.gradle.jvmargs=-Xmx4g -Dfile.encoding=UTF-8" --stacktrace
+      - name: Bind JVM artifact to this checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          mkdir -p build/public-math-large-input
+          cp build/libs/krogu-math-jvm-0.1.0-SNAPSHOT.jar build/public-math-large-input/krogu-math.jar
+          printf '%s\n' "$GITHUB_SHA" > build/public-math-large-input/SOURCE_COMMIT
+          cd build/public-math-large-input
+          sha256sum krogu-math.jar SOURCE_COMMIT > SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: public-math-large-jvm-${{ github.sha }}-${{ github.run_attempt }}
+          path: build/public-math-large-input/
+          if-no-files-found: error
+  public-math-large:
+    name: Large public math invocations (not official JCK)
+    needs: jvm-jar
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: Heapy/setup-main-kts@b0858237748f325b825e752bbac2ec2eb1fb9419 # v1.0.1
+        with:
+          kotlin-version: '2.4.21'
+          java-version: '25.0.4+9'
+          distribution: 'liberica'
+          cache-compiled-scripts: 'false'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: public-math-large-jvm-${{ github.sha }}-${{ github.run_attempt }}
+          path: build/public-math-large-input
+      - name: Verify same-run artifact and source commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(cat build/public-math-large-input/SOURCE_COMMIT)" = "$GITHUB_SHA"
+          cd build/public-math-large-input
+          sha256sum --check SHA256SUMS
+      - name: Run retained large-memory baseline and port invocations
+        timeout-minutes: 150
+        shell: bash
+        env:
+          JAVA_OPTS: -Xmx256m
+          KOTLIN_MAIN_KTS_COMPILED_SCRIPTS_CACHE_DIR: ${{ runner.temp }}/public-math-large-script-cache
+        run: |
+          set -euo pipefail
+          env -u JAVA_TOOL_OPTIONS -u JDK_JAVA_OPTIONS -u _JAVA_OPTIONS -u KOTLIN_OPTS -u JAVACMD -u CLASSPATH \
+            kotlinr -J-Xmx256m tools/run-math-tck.main.kts --both \
+            --port-jar "$PWD/build/public-math-large-input/krogu-math.jar" \
+            --profiles large-memory-4g,large-memory-8g,large-memory-10g \
+            --max-heap-mib 8192 --os-memory-gib auto \
+            --ci-execution "$GITHUB_RUN_ID:$GITHUB_SHA" \
+            --allow-owned-timeout-cleanup 2>&1 | tee build/public-math-large-campaign.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: public-math-large-evidence-${{ github.sha }}-${{ github.run_attempt }}
+          path: |
+            build/math-tck/
+            build/public-math-large-input/
+            build/public-math-large-campaign.log
+            tools/math-tck/
+            tools/run-math-tck.main.kts
+            docs/public-math-large-ci-559.md
+            !build/math-tck/**/*.jar
+            !build/math-tck/**/*.class
+          if-no-files-found: warn
+          compression-level: 1
