@@ -7,6 +7,11 @@ at `/private/tmp/krogu-542-current-composition-after-580.md`, SHA-256
 `c76d3f850bea6ddd40104a03b17cc567e581bd250c5c20a7b67a4b0a804208f1`.
 No giant execution or complete power proof is claimed by this adoption.
 
+The later [accuracy-scope audit](decimal-pow-542-accuracy-scope.md) addresses the
+quantitative-scope question identified below: it derives a conservative bound
+and distinguishes refinement of the documented algorithm from a new universal
+two-ulp gate. The concrete581 division obstructions remain open.
+
 The earlier sqrt working-radicand and contextual exact-product obstructions
 have separate accepted repairs and finite execution evidence. The current
 ordinary sqrt branch composition can use those proofs without reopening them.

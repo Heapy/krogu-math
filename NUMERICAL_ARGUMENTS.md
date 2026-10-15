@@ -694,9 +694,12 @@ incorporates563/565/579 roots and580 products and identifies a remaining
 context-division normalization defect tracked as581: at precision646456993,
 rounded1/3 has a supported required coefficient and scale although its internal
 normalization power does not fit. This witness is symbolic and independently
-source-verified. Quantitative pow error accumulation and the qualified negative
-unit scale boundary remain separate obligations; algorithm binding and finite
-test counts do not settle them.
+source-verified. The [accuracy-scope argument](docs/decimal-pow-542-accuracy-scope.md)
+separately gives a conservative relative-error enclosure under its completing,
+ordinary-leaf assumptions. It does not claim a sharp universal two-ulp theorem
+or turn the API's qualified statement into a stronger acceptance gate. The581
+repair and qualified negative-unit scale question remain separate; no finite
+test count supplies an all-input accuracy argument.
 
 ## Decimal exact primitive conversion
 
