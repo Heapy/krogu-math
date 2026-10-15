@@ -276,8 +276,8 @@ gives exact formulas, excluded boundary cases and the then-pending parent gates.
 
 Generation session 36380 and check session 47559 both exited 0 with frozen
 mapper `37f861df…`, its four unchanged input pins, a 512MiB heap and fresh
-isolated cache. Independent actual review accepted the evidence. The current
-adopted TSV is v5, SHA-256
+isolated cache. Independent actual review accepted the evidence. The TSV
+adopted at that v5 milestone had SHA-256
 `8d9c9bfb5657b684b19e76dcc5b21176f94fa7601e753ced84f3748760d3fd43`.
 All 75,728 compact rows and their six-column header stayed byte-identical to
 v4. Its 104 STATUS records bind eight unchanged required errors and 96
@@ -292,6 +292,54 @@ numerical evaluation or tests ran; fixtures, evaluator and assertions stayed
 unchanged. Local calls are terminal and the mutex released under Root2311.
 Hosted CI for the new mapper remains pending. This finite metadata result
 does not complete the family or authorize archival.
+
+### Historical source-only v6 historical-null-error preparation
+
+The independently reviewed finite policy in
+`/private/tmp/krogu-526-next-input-class-proposal.md` (`f43773e0…`) prepares a
+coherent input-selected class:192 null-context entries plus96 finite-p2/null-
+divisor entries, excluding the original8 required ERROR bindings. Only those
+280 old error-prefix statuses would become
+`REFERENCE_HISTORICAL_NULL_INPUT_ERROR`. The original8 required errors and all96
+v5 reference replacement values remain unchanged. Full records/controls and
+exact modes/kinds/masks guard the generated dictionary; outcomes are checked
+evidence, never selectors.
+
+Current575 Java-to-Kotlin NN rejection remains a separate required NPE boundary
+for all384 null-input entries, alongside the96-key/240-mask ordinary/truthful
+controls. Historical nullable inherited failure precedence against poisoned
+getters or replacement callbacks is not proved by those current tests or an
+empty frozen trace. The new historical-reference status supplies no blanket
+waiver of unaffected contracts and changes no assertions or archival blocks.
+
+Expected v6 totals are8 required ERROR +96 reference VALUE +280 reference
+historical ERROR +75,344 unresolved (57,997 VALUE /17,347 ERROR). All75,728 rows
+remained blocked for archival. During that preparation the adopted TSV was
+still v5 `8d9c9bfb…` with its accepted actual totals above. The successor was
+**UNCOMPILED/UNRUN** at that source-only milestone: no generation/check,
+compiler, helper, numerical operation, probe, tests or build ran then.
+The [source preparation record](decimal-context-value1-policy-526.md#historical-source-only-v6-historical-null-error-preparation)
+contains exact binding/preservation and the then-pending independent
+review/execution gates. No whole-family closure or historical JDK defect is claimed.
+
+### Accepted actual v6 metadata validation
+
+Generation37902 and check48932 exited0 with frozen mapper `08adda6a…`, its four
+unchanged evidence pins and512MiB heap in an isolated validation workspace.
+Independent actual review accepted adoption of v6 TSV
+`bc03df8ef1e68a1d602181901f02466d677ab10cace9d4a3d1a57aee400f1b8f`.
+All75,728 compact rows and their six-column header stayed byte-identical to v5.
+The384 STATUS bindings comprise8 unchanged required ERROR,96 unchanged
+reference VALUE and280 separately classified historical ERROR prefixes.
+There remain75,344 unresolved statuses (57,997 VALUE /17,347 ERROR), with
+every archival block retained. Current575 NN384 and96-key/240-mask truthful
+controls remain independent mandatory obligations, not new execution claims.
+
+The [actual record](decimal-context-value1-policy-526.md#accepted-actual-v6-metadata-validation)
+lists retained logs/diff/source hashes and v5 evidence. This was metadata-only
+generation/check, not production/public-JDK numerical or test execution.
+Fixtures, evaluators and assertions stayed unchanged. Parent owns hosted CI
+and publication; full-family closure and archival permission remain unclaimed.
 
 ## Reproduction and verification
 

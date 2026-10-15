@@ -125,8 +125,8 @@ poisoned value/error statuses or authorize archival.
 
 ## Root2300 actual metadata validation
 
-This retained record describes the earlier v4 adoption; current v5 actual
-validation is recorded in Root2310 below.
+This retained record describes the earlier v4 adoption; later v5 actual
+validation is recorded in Root2310 below, followed by current v6 evidence.
 
 Parent generation session **93225 exited 0**, followed by check session
 **39678 exiting 0**, with the pinned Kotlin 2.4.21/JDK 25.0.4+9 tooling,
@@ -304,7 +304,7 @@ Evidence root: `/private/tmp/krogu-526-value96-validation-WGZEul/`.
 | `evidence/check.log` | `22d10bfc763bdf98d60dcba919009120373045294ec875861b6089e86551aa69` |
 | `evidence/v4-v5.diff` | `12e6ffc5407587c9deec5be9ecfa0996184848ab2a74f7a5c89203169c52fd6b` |
 | Preserved `evidence/v4-original.tsv` | `f8f797e79d706fbed221e3ec73f77778f1f952a938d071e972983ffb45098927` |
-| Current adopted v5 TSV | `8d9c9bfb5657b684b19e76dcc5b21176f94fa7601e753ced84f3748760d3fd43` |
+| Retained adopted v5 TSV | `8d9c9bfb5657b684b19e76dcc5b21176f94fa7601e753ced84f3748760d3fd43` |
 
 Independent actual review accepted the evidence, bounded dictionary and exact
 payload comparison (exit 0). All **75,728 compact rows** and their six-column
@@ -332,3 +332,156 @@ and `6b503c1a6c82dfcc56c8876e63c8e5b7f8556f9771ada092bd85259c2d6e1b23`.
 This documentation update read evidence and hashes and edited only these three
 docs. It ran no scripts, compiler, helper, probe, tests or numerical work and
 changed no mapper, TSV or input. Parent owns final review and publication.
+
+## Historical source-only v6 historical-null-error preparation
+
+This later finite source-only scope implements the independently accepted
+policy proposal `/private/tmp/krogu-526-next-input-class-proposal.md`, SHA-256
+`f43773e09909acb128bb751aa48a8084cef6a37a3fdb5db08bc1709b66952ed7`.
+The prepared mapper SHA-256 is
+`08adda6ad57223c073861141d680bb2e3f11d10ba15ca893f03851a3a60da030`.
+It was **UNCOMPILED/UNRUN** at that source-only milestone: no script, compiler,
+helper, certificate, numerical operation, probe, test, build or metadata
+generation/check ran during preparation. The then-adopted v5 TSV remained
+untouched at `8d9c9bfb5657b684b19e76dcc5b21176f94fa7601e753ced84f3748760d3fd43`,
+with8 required ERROR +96 reference VALUE +75,624 unresolved. Its Root2310 actual
+evidence above is not relabelled as execution of v6.
+
+Before edits the accepted mapper, adopted TSV, three docs and all four pinned
+evidence files were copied into the unique write-bit-removed snapshot
+`/private/tmp/krogu-526-null-errors-v6-predecessor-8JDgiz/`. The nine-entry
+manifest hash is `0281fdf6d7aef07418415c8f0dd0508ec7ad876cce9678c970f3db557a200364`.
+The predecessor mapper is `37f861df762f4b5dc0959b7f4d060edd0f75cf8722d77e0f726e86bf0ac1b12e`.
+Predecessor doc hashes are `214ec13cedc625c06d853d3abb5cd81817db0d0ba762ba3671f0c7af91985f90`
+(diagnostic README), `09360aa48cff493938d7842bb6eb0afd52a9f91256e3d823a9f9fa4437aa80b6`
+(classification) and `cedc5a48f5ae803cedd87287425c517a6fcc4141637be68fabe7bbc752f32667`
+(this record). The dispatch fixture `88fc3c5b…`, control fixture `1245d75e…`,
+generator `0d9e9b11…` and current evaluator `bb61d3f8…` retain their full pins
+above. No evaluator/fixture/generator/assertion was edited.
+
+### Input-generated class and exact guards
+
+Reuse ordered source texts s=`0.00,10.50,-10.50`, source modes
+m=`delegate,sign-first,sign-second,precision`, and the eight rounding modes r
+from v5. Add divisor modes b=`delegate,null` and encoded context precisions
+c=`-1,0,2`, all indexed from zero, matching generator77–80. Divisor text is2.0.
+The stable IDs are:
+
+```text
+D = 7425 + 192*s + 48*m + 24*b + 8*c + r
+C = 609 + 32*s + r                    when b=0,c=0
+C = 617 + 32*s + 8*c + r             when b=1
+```
+
+Select `c=0 || (b=1 && c=2)` from these inputs:192 null-context rows plus96
+finite/null-divisor rows. Exclude the unchanged eight required rows exactly
+s=0,m=0,b=0,c=0. The remaining280 records use72 controls: eight controls have
+three remaining m variants;64 controls have four. The generated order must
+equal an independent frozen-input predicate scan, excluding the required set.
+The source also checks that all384 corpus null-input IDs equal the disjoint
+union of old8, unchanged v5-96 and new280; the384-row task575 obligation stays
+separate from the historical status meaning.
+
+Require the full seven-field old record ending exactly
+`!NullPointerException|`, the full six-field NPE control, original D/C mapping,
+source mode M01/M02/M03/M04 and ERROR kind. Exact divisor modes/masks are:
+
+| Route | Divisor mode | m=0 | m=1/2/3 |
+|---|---|---|---|
+| Null context, ordinary divisor | M01 |009|00d|
+| Null context, null divisor | M06 |019|01d|
+| Finite p2, null divisor | M06 |011|015|
+
+Outcomes and flags are evidence guards after input construction, never selection
+criteria. Construction and compact decoding both check the exact tuples.
+The ordered384-record STATUS dictionary keeps the original8 required records
+and96 v5 reference records, then appends the new280 historical ERROR records.
+The existing six-column payload byte guard, all keys/modes/flags and lossless
+19-field decoder remain protected. Only the280 old error-prefix status fields
+would change. Trace remains reference-only, message NOT_RECORDED, identity
+NOT_OBSERVED, NPE control/canonical NOT_APPLICABLE, explicit caller control and
+every `BLOCKED_UNRESOLVED_FIELDS` archival status remain unchanged.
+
+### Historical provenance and current mandatory rejection
+
+The new status is `REFERENCE_HISTORICAL_NULL_INPUT_ERROR`. It records historical
+nullable ERROR prefixes without claiming their callback/exception precedence
+universally required on poisoned subclasses. Original generator `enter` calls
+`super.divide(v,context)`; its nullable exact override is not the caller's
+explicit entry. The v5 unlimited/null replacement VALUE class therefore remains
+separate. Latent throwing modes are preserved, not erased as supposedly unused.
+
+Current575 JVM Java-to-Kotlin NN NPE rejection remains **required for all384**
+displaced input rows. `everyDisplacedContextDispatchRowUsesExplicitJavaSuper`
+requires that boundary outcome. Independent ordinary/truthful controls remain
+96 distinct keys/240 class masks under
+`everyDisplacedContractMaskUsesOrdinaryOrTruthfulJavaReceiver`. These tests are
+not run by the mapper. No current NN guarantee is weakened, and current replay
+is not proof that the historical JDK rejected v5's96 replacement values.
+The stronger historical nullable failure-precedence theorem remains unproved;
+an empty old trace or a current NN test does not establish it. This conservative
+field classification does not waive other inherited or direct caller contracts.
+
+### Prepared ledger and remaining parent gates
+
+Prospective v6 totals are8 required ERROR,96 reference VALUE,280 reference
+historical ERROR and**75,344 unresolved**:57,997 VALUE and17,347 ERROR.
+The unchanged old totals give17635-8-280=17347 unresolved errors and
+58093-96=57997 unresolved values. All75,728 archival blocks remain. Source
+checks assert this exact partition; these are expected counts, not execution
+results. No old fixture/assertion is removed or archived.
+
+V6 `--check` against preserved v5 would report a mismatch; no such
+pre-generation run occurred. Parent owned independent implementation review,
+separately granted fresh-cache generation/check, exact payload comparison,
+final hashes, actual review and adoption, recorded below. This finite
+preparation closed no whole family/task and acquired/awaited no runtime window.
+
+## Accepted actual v6 metadata validation
+
+Generation session**37902 exited0**, followed by check session**48932 exiting0**,
+in `/private/tmp/krogu-526-null-errors-v6-validation-z6PNyhDR/root`.
+Captured runner commands use512MiB through both JAVA_OPTS and `-J-Xmx512m`,
+with an isolated compiled-script cache. Mapper SHA-256 remained
+`08adda6ad57223c073861141d680bb2e3f11d10ba15ca893f03851a3a60da030`;
+the four evidence inputs retained their full fixture/generator/current-evaluator
+pins above. Independent actual review accepted adoption. Root copied the exact
+v6 TSV into the publication workspace; no source, fixture, evaluator or assertion
+change was required by this metadata execution. Artifact paths below are
+relative to `/private/tmp/krogu-526-null-errors-v6-validation-z6PNyhDR/`.
+
+| Retained artifact | SHA-256 |
+|---|---|
+| `evidence/generate.log` | `5f9d9b30ca5a8986ffa6b9ead447f8b34146c1ce39926cf5f77a32bb84216e57` |
+| `evidence/check.log` | `ab5123743f5e747aa7a0de8d946ca13459fc9b5d2310491baa77c0569a34b98b` |
+| `evidence/v5-v6.diff` | `52a1e4ca75f1ad3e87460d9ff1dae68557b036d44444c3ccdaa6720ba60a71a0` |
+| `evidence/v5-original.tsv` | `8d9c9bfb5657b684b19e76dcc5b21176f94fa7601e753ced84f3748760d3fd43` |
+| Current adopted v6 TSV | `bc03df8ef1e68a1d602181901f02466d677ab10cace9d4a3d1a57aee400f1b8f` |
+
+The retained v5/v6 noncomment payloads compare byte-identically (exit0),
+including all75,728 compact data rows and the six-column header. The exact384
+STATUS bindings preserve8 required ERROR and96 reference VALUE records, and
+append280 `REFERENCE_HISTORICAL_NULL_INPUT_ERROR` records. Only those historical
+error-prefix statuses change; their traces, messages, identities, flags, keys,
+canonical/explicit caller controls and all75,728 archival blocks stay protected.
+The exact decoded ledger is**75,344 unresolved**:57,997 VALUE +17,347 ERROR.
+The correspondence still covers3,000 controls and11,472 class masks; those
+counts describe checked metadata, not a new mathematical test campaign.
+
+Current575 NN NPE obligations for384 displaced entries and the96-key/240-mask
+ordinary/truthful controls remain required and unchanged. This run executes
+neither575 test nor the historical nullable JDK generator. It provides no
+production/JDK numerical result, stronger historical poisoned-callback
+failure-precedence theorem, full-family completion or archival permission.
+Hosted CI and publication remain parent gates.
+
+Before this text-only actual update, the three prepared docs were copied into
+the unique write-bit-removed snapshot
+`/private/tmp/krogu-526-v6-docs-before-actual-iDgILR/`, manifest SHA-256
+`dc572f213a6dad6a376596c60ee5805fa74cdd9887b279102454ab96272b67ad`.
+Prepared doc hashes were `d280754b0c97dea0e761ae389bf36a8f27fc817696932c0f2b2d11a9937b0bb7`
+(README), `af4f562f8770c44bb35179a095fb09e77d1ac18d7f2f14f6433bbdfc4911494f`
+(classification), and `288b8987cd8133761c4915492594e06f84914a820b155247078ed95ef07ea717`
+(this record). This update read evidence/hashes and edited only these three
+docs; it ran no scripts/compiler/helpers, numerical operations, probes, tests,
+builds, Git or tracker commands and changed no mapper, TSV or input.

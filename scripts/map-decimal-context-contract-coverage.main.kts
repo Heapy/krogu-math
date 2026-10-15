@@ -99,6 +99,7 @@ val requiredNullRows = linkedMapOf(
 )
 val requiredNullStatus = "REQUIRED_NULL_ARGUMENT_CONTRACT"
 val replacementStatus = "REFERENCE_CONTRACT_BREAKING_EXACT_OVERRIDE_RESULT"
+val historicalNullErrorStatus = "REFERENCE_HISTORICAL_NULL_INPUT_ERROR"
 val unresolvedStatus = "UNRESOLVED_POISONED_INTERACTION"
 check(requiredNullRows.size == 8 && requiredNullRows.values.map { it.rounding }.toSet() == roundings)
 check(requiredNullRows.values.map { it.controlId }.toSet().size == 8)
@@ -130,6 +131,53 @@ check(replacementRows.getValue("D07457").compact == listOf("D07457", "C0625", "M
 check(frozen.withIndex().filter { (_, row) -> row[0] in replacementSources && row[1] == "2.0" &&
     row[2] in replacementModes && row[3] == "null" && row[4] == "0" && row[5] in replacementRoundings }
     .map { "D${(it.index + 1).toString().padStart(5, '0')}" } == replacementRows.keys.toList())
+// Historical nullable ERROR routes; current575 NN rejection is a separate obligation.
+// Construct inputs first. Frozen outcomes are evidence guards, never selectors.
+data class HistoricalNullErrorBinding(val compact: List<String>, val input: List<String>, val frozen: List<String>)
+val historicalNullErrorRows = linkedMapOf<String, HistoricalNullErrorBinding>()
+val boundaryDivisorModes = listOf("delegate", "null")
+val boundaryPrecisions = listOf("-1", "0", "2")
+for ((s, source) in replacementSources.withIndex()) for ((m, mode) in replacementModes.withIndex())
+    for ((b, divisorMode) in boundaryDivisorModes.withIndex()) for ((c, precision) in boundaryPrecisions.withIndex())
+        for ((r, rounding) in replacementRoundings.withIndex()) {
+            if (c != 0 && !(b == 1 && c == 2)) continue
+            val oldIndex = 7424 + 192 * s + 48 * m + 24 * b + 8 * c + r
+            val controlIndex = if (b == 0) 608 + 32 * s + r else 616 + 32 * s + 8 * c + r
+            val oldId = "D${(oldIndex + 1).toString().padStart(5, '0')}"
+            val controlId = "C${(controlIndex + 1).toString().padStart(4, '0')}"
+            val input = listOf(source, "2.0", if (b == 0) "ordinary" else "null", precision, rounding)
+            val oldRow = listOf(source, "2.0", mode, divisorMode, precision, rounding, "!NullPointerException|")
+            val mask = when {
+                c == 0 && b == 0 -> if (m == 0) "009" else "00d"
+                c == 0 -> if (m == 0) "019" else "01d"
+                else -> if (m == 0) "011" else "015"
+            }
+            val compactRow = listOf(oldId, controlId, "M${(m + 1).toString().padStart(2, '0')}",
+                if (b == 0) "M01" else "M06", "E", mask)
+            check(frozen[oldIndex] == oldRow && controls[controlIndex] == input + "!NullPointerException")
+            check(ids.getValue(input) == controlId && oldId !in replacementRows)
+            if (oldId in requiredNullRows) {
+                check(s == 0 && m == 0 && b == 0 && c == 0)
+                check(requiredNullRows.getValue(oldId) == NullArgumentBinding(controlId, rounding))
+                check(compactRow.drop(2) == listOf("M01", "M01", "E", "009"))
+            } else {
+                check(historicalNullErrorRows.put(oldId, HistoricalNullErrorBinding(compactRow, input, oldRow)) == null)
+            }
+        }
+check(historicalNullErrorRows.size == 280)
+check(historicalNullErrorRows.values.groupingBy { it.compact[1] }.eachCount().let { countsByControl ->
+    countsByControl.size == 72 && countsByControl.values.count { it == 3 } == 8 && countsByControl.values.count { it == 4 } == 64
+})
+val historicalNullErrorPredicateIds = frozen.withIndex().filter { (_, row) ->
+    row[0] in replacementSources && row[1] == "2.0" && row[2] in replacementModes &&
+        row[3] in boundaryDivisorModes && row[5] in replacementRoundings &&
+        (row[4] == "-1" || row[3] == "null" && row[4] == "2")
+}.map { "D${(it.index + 1).toString().padStart(5, '0')}" }
+check(historicalNullErrorPredicateIds.size == 288)
+check(historicalNullErrorPredicateIds.filterNot { it in requiredNullRows } == historicalNullErrorRows.keys.toList())
+val allNullInputIds = frozen.withIndex().filter { (_, row) -> row[3] == "null" || row[4] == "-1" }
+    .map { "D${(it.index + 1).toString().padStart(5, '0')}" }.toSet()
+check(allNullInputIds.size == 384 && allNullInputIds == requiredNullRows.keys + replacementRows.keys + historicalNullErrorRows.keys)
 fun outcomeStatus(oldId: String, controlId: String, input: List<String>, sourceMode: String, divisorMode: String, kind: String): String {
     val replacement = replacementRows[oldId]
     if (replacement != null) {
@@ -139,6 +187,15 @@ fun outcomeStatus(oldId: String, controlId: String, input: List<String>, sourceM
         }
         check(expectedByKey.getValue(input) == "!NullPointerException")
         return replacementStatus
+    }
+    val historicalError = historicalNullErrorRows[oldId]
+    if (historicalError != null) {
+        check(controlId == historicalError.compact[1] && input == historicalError.input &&
+            sourceMode == historicalError.frozen[2] && divisorMode == historicalError.frozen[3] && kind == "ERROR") {
+            "Reviewed historical-null-error input/control/modes/kind changed: $oldId"
+        }
+        check(expectedByKey.getValue(input) == "!NullPointerException")
+        return historicalNullErrorStatus
     }
     val binding = requiredNullRows[oldId] ?: return unresolvedStatus
     check(controlId == binding.controlId && input == listOf("0.00", "2.0", "ordinary", "-1", binding.rounding)) {
@@ -189,13 +246,16 @@ val mapped = frozen.mapIndexed { index, row ->
 check(mapped.all { it.size == columns.size && it.none { value -> '\t' in value || '\n' in value || value.isEmpty() } })
 check(mapped.filter { it[12] == requiredNullStatus }.map { it[0] }.toSet() == requiredNullRows.keys)
 check(mapped.filter { it[12] == replacementStatus }.map { it[0] } == replacementRows.keys.toList())
+check(mapped.filter { it[12] == historicalNullErrorStatus }.map { it[0] } == historicalNullErrorRows.keys.toList())
 check(mapped.all { it[12] == when (it[0]) {
     in requiredNullRows -> requiredNullStatus
     in replacementRows -> replacementStatus
+    in historicalNullErrorRows -> historicalNullErrorStatus
     else -> unresolvedStatus
 } })
-check(mapped.groupingBy { it[12] }.eachCount() == mapOf(requiredNullStatus to 8, replacementStatus to 96, unresolvedStatus to 75624))
-check(mapped.filter { it[12] == unresolvedStatus }.groupingBy { it[11] }.eachCount() == mapOf("VALUE" to 57997, "ERROR" to 17627))
+check(mapped.groupingBy { it[12] }.eachCount() == mapOf(requiredNullStatus to 8, replacementStatus to 96,
+    historicalNullErrorStatus to 280, unresolvedStatus to 75344))
+check(mapped.filter { it[12] == unresolvedStatus }.groupingBy { it[11] }.eachCount() == mapOf("VALUE" to 57997, "ERROR" to 17347))
 check(uses.size == 3000 && uses.values.all { it > 0 } && uses.values.sum() == 75728)
 check(counts == mapOf("mapped_rows" to 75728, "inconsistent_metadata" to 57576,
     "throwing_metadata_only" to 7248, "consistent_metadata" to 10904, "old_error" to 17635, "old_value" to 58093))
@@ -238,6 +298,9 @@ fun decode(compactRow: List<String>): List<String> {
     replacementRows[compactRow[0]]?.let { binding ->
         check(compactRow == binding.compact) { "Reviewed exact-replacement compact binding changed" }
     }
+    historicalNullErrorRows[compactRow[0]]?.let { binding ->
+        check(compactRow == binding.compact) { "Reviewed historical-null-error compact binding changed" }
+    }
     return compactRow.take(2) + control.take(5) + listOf(sourceMode, divisorMode,
         expected, if (expected.startsWith('!')) "NOT_APPLICABLE" else "CANONICAL_TEXT:${compactRow[1]}",
         kind, status, "REFERENCE_OBSERVATION",
@@ -258,16 +321,18 @@ fun validateCompact(compactRows: List<List<String>>) {
 validateCompact(compact)
 val statusHeaderRecords = requiredNullRows.map { (oldId, binding) ->
     listOf(oldId, binding.controlId, "M01", "M01", "E", "009", requiredNullStatus)
-} + replacementRows.values.map { it.compact + replacementStatus }
+} + replacementRows.values.map { it.compact + replacementStatus } +
+    historicalNullErrorRows.values.map { it.compact + historicalNullErrorStatus }
+check(statusHeaderRecords.size == 384)
 fun validateStatusHeaders(text: String) {
     val records = text.lineSequence().filter { it.startsWith("# STATUS ") }
         .map { it.removePrefix("# STATUS ").split(' ') }.toList()
-    check(records == statusHeaderRecords) { "STATUS dictionary differs from the exact eight ERROR and 96 VALUE bindings" }
+    check(records == statusHeaderRecords) { "STATUS dictionary differs from the exact eight required ERROR, 96 reference VALUE and 280 historical ERROR bindings" }
 }
 val generated = buildString {
     appendLine("# SPDX-License-Identifier: Apache-2.0")
-    appendLine("# Schema: context-contract-coverage-v5; six compact columns plus bounded STATUS dictionary, lossless recovery of 19 logical fields")
-    appendLine("# Predecessor mapper SHA-256 78869800d0823040e165e8adb62bf25ee10f2fe91cd5e87f538cc43cf5658b0e (accepted v4 source, not the current mapper digest)")
+    appendLine("# Schema: context-contract-coverage-v6; six compact columns plus bounded STATUS dictionary, lossless recovery of 19 logical fields")
+    appendLine("# Predecessor mapper SHA-256 37f861df762f4b5dc0959b7f4d060edd0f75cf8722d77e0f726e86bf0ac1b12e (accepted v5 source, not the current mapper digest)")
     appendLine("# Historical pre-non-null-migration evaluator SHA-256 $historicalEvaluatorSha256 src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt (provenance only; current source verified separately below)")
     for ((path, hash) in evidence) appendLine("# SHA-256 $hash $path")
     appendLine("# Stable IDs: D = 1-based frozen row; C = 1-based first-occurrence five-field projection")
@@ -283,6 +348,11 @@ val generated = buildString {
     appendLine("# Replacement input class: sources=${replacementSources.joinToString(",")}; source modes=${replacementModes.joinToString(",")}; divisor=2.0; divisor mode=null; precision=0; all eight rounding modes")
     appendLine("# Replacement bindings: D=7457+192*s+48*m+r; C=625+32*s+r; source mode=M(m+1); divisor mode=M06; kind=V; mask=051 if m=0 else 055; indices s=0..2,m=0..3,r=0..7 in listed order")
     appendLine("# Replacement full outcome checked, never selected: 7.00:2|A.exact-null;; control outcome=!NullPointerException; historical nullable probe source is bound by generator SHA-256")
+    appendLine("# Status meaning: REFERENCE_HISTORICAL_NULL_INPUT_ERROR classifies only 280 input-selected historical nullable ERROR prefixes; it does not prove historical poisoned-callback failure precedence or weaken current NN rejection")
+    appendLine("# Historical ERROR inputs: same source/mode/rounding dimensions; divisor modes=delegate,null; context precisions=-1,0,2; select c=0 or (b=1,c=2), then exclude unchanged eight required bindings")
+    appendLine("# Historical ERROR bindings: D=7425+192*s+48*m+24*b+8*c+r; ordinary/null-context C=609+32*s+r; null-divisor C=617+32*s+8*c+r; exact kind E and masks009/00d,019/01d,011/015 checked")
+    appendLine("# Historical ERROR full outcome checked, never selected: !NullPointerException|; all 72 controls retain !NullPointerException; source index dimensions match the pinned generator")
+    appendLine("# Current NN boundary is separate: DecimalBinary575JvmTest.everyDisplacedContextDispatchRowUsesExplicitJavaSuper requires NPE for all 384 null-input rows; everyDisplacedContractMaskUsesOrdinaryOrTruthfulJavaReceiver retains 96 keys/240 class masks; this mapper executes neither test")
     appendLine("# Policy old_message_status=REFERENCE_OBSERVATION if MESSAGE_RECORDED else NOT_RECORDED; runtime_identity_status=NOT_OBSERVED")
     appendLine("# Policy required_canonical_text_control=CANONICAL_TEXT:C-id for a successful control, else NOT_APPLICABLE")
     appendLine("# Policy unresolved_interactions=ordered FLAG names present except MESSAGE_RECORDED")
@@ -293,7 +363,7 @@ val generated = buildString {
     appendLine("# Test extensions/verification are separate; this manifest does not certify them")
     appendLine("# Internal order/count/noncalls/forwarding and diagnostic wording are observations; runtime class/cache/result identity are not measured")
     appendLine("# Unresolved poisoned value/error interactions block archival; bad unused getters never blanket-waive inherited contracts")
-    appendLine("# Status boundary: exactly eight required null-argument error types and 96 reference exact-override value prefixes; 75624 other value/error statuses unresolved (57997 VALUE,17627 ERROR); every row stays blocked for archival")
+    appendLine("# Status boundary: eight required null-argument ERROR types, 96 reference exact-override VALUE prefixes and 280 reference historical-null ERROR prefixes; 75344 other statuses unresolved (57997 VALUE,17347 ERROR); every row stays blocked for archival")
     appendLine(compactColumns.joinToString("\t"))
     compact.forEach { appendLine(it.joinToString("\t")) }
 }
@@ -316,5 +386,5 @@ if ("--check" in args) {
 } else target.writeText(generated)
 println("${if ("--check" in args) "Verified" else "Generated"} ${mapped.size} frozen row mappings to ${ids.size} controls; $maskChecks valid class-mask checks")
 println("Required correspondence: 2475 value/scale/canonical-text controls; 429 arithmetic-error controls; 96 null-error controls")
-println("Old observations: ${counts.getValue("old_value")} values; ${counts.getValue("old_error")} errors; ${requiredNullRows.size} exact null-argument error types required; ${replacementRows.size} exact contract-breaking override value prefixes reference-only; ${mapped.size - requiredNullRows.size - replacementRows.size} poisoned value/error statuses unresolved; all ${mapped.size} rows blocked for archival")
+println("Old observations: ${counts.getValue("old_value")} values; ${counts.getValue("old_error")} errors; ${requiredNullRows.size} exact null-argument error types required; ${replacementRows.size} exact contract-breaking override value prefixes reference-only; ${historicalNullErrorRows.size} historical null-input error prefixes reference-only; ${mapped.size - requiredNullRows.size - replacementRows.size - historicalNullErrorRows.size} poisoned value/error statuses unresolved; all ${mapped.size} rows blocked for archival")
 println("All bound hashes, schemas, ordered projection, counts, control coverage and 19-field lossless decoding verified; no production math or JDK arithmetic evaluated")

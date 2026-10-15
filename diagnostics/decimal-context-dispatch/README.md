@@ -61,7 +61,7 @@ to the ordinary/truthful control with the same source text, divisor text,
 divisor topology, context precision and rounding mode. `D00001` through
 `D75728` identify the one-based frozen rows; `C0001` through `C3000` identify
 the distinct five-field keys in first-occurrence order. No metadata mode or
-old result becomes a new mathematical expectation. The current v5 mapper verifies the
+old result becomes a new mathematical expectation. The accepted v6 mapper verifies the
 same dispatch fixture and generator hashes, the current migrated evaluator
 `bb61d3f8a5f61850fb208f0e8f5ba814c4b3c7c68b0cb658a0db62081ea41300`
 and the control fixture SHA-256
@@ -86,14 +86,15 @@ the retained dispatch corpus, with zero failures/errors/skips. Details are in
 No test implementation, math implementation or JDK arithmetic is executed by
 the mapper itself.
 
-Current schema `context-contract-coverage-v5` stores only six columns:
+Current schema `context-contract-coverage-v6` stores only six columns:
 `old_row_id`, `control_id`, `source_mode_id`, `divisor_mode_id`, `old_kind` and
 `interaction_bits_hex`. The header's `MODE` dictionary recovers each original
 probe mode. `V` and `E` recover `VALUE` and `ERROR`. The three-digit lowercase
 hexadecimal mask combines the header's `FLAG` bits. The input/outcome dictionary
 is the hash-bound control fixture itself, indexed by the one-based `C` ID.
-104 bounded `STATUS` header records classify exactly eight logical error-type
-statuses and 96 reference-only value prefixes for exact D/C/mode/kind/mask bindings;
+384 bounded `STATUS` header records classify exactly eight required error-type
+statuses,96 reference-only value prefixes and280 reference historical error
+prefixes for exact D/C/mode/kind/mask bindings;
 the six-column data stays byte-identical.
 Together these recover **all 19 logical fields** of the original expanded map,
 without repeating fixture data or constant policy strings per row:
@@ -106,7 +107,7 @@ without repeating fixture data or constant policy strings per row:
 | `required_valid_outcome` | Sixth field of the `C` control row |
 | `required_canonical_text_control` | `CANONICAL_TEXT:C-id` for a successful control; `NOT_APPLICABLE` for an error control |
 | `old_outcome_kind` | Stored `V` → `VALUE`; `E` → `ERROR` |
-| `old_value_or_error_status` | Exact eight ERROR bindings → `REQUIRED_NULL_ARGUMENT_CONTRACT`; exact 96 null-divisor/unlimited-context VALUE bindings → `REFERENCE_CONTRACT_BREAKING_EXACT_OVERRIDE_RESULT`; otherwise `UNRESOLVED_POISONED_INTERACTION` |
+| `old_value_or_error_status` | Exact eight ERROR bindings → `REQUIRED_NULL_ARGUMENT_CONTRACT`; exact96 unlimited/null VALUE bindings → `REFERENCE_CONTRACT_BREAKING_EXACT_OVERRIDE_RESULT`; exact280 historical-null ERROR bindings → `REFERENCE_HISTORICAL_NULL_INPUT_ERROR`; otherwise `UNRESOLVED_POISONED_INTERACTION` |
 | `old_trace_status` | Constant `REFERENCE_OBSERVATION` |
 | `old_message_status` | `REFERENCE_OBSERVATION` when bit `200` is set; otherwise `NOT_RECORDED` |
 | `runtime_identity_status` | Constant `NOT_OBSERVED` |
@@ -131,7 +132,7 @@ without repeating fixture data or constant policy strings per row:
 |---|---|
 | `required_valid_outcome` | Required coefficient/scale or error-type control on ordinary/fully truthful operands |
 | `required_canonical_text_control` | Required canonical result spelling for the corresponding successful control; not an expected poisoned result |
-| `old_value_or_error_status` | Eight exact null-context error types are required; 96 exact null-divisor/unlimited-context value prefixes are reference observations of the contract-breaking override; 75,624 other statuses remain unresolved |
+| `old_value_or_error_status` | Eight exact null-context error types are required;96 exact replacement value prefixes and280 historical-null error prefixes are reference observations;75,344 other statuses remain unresolved; current575 NN rejection remains separately required |
 | `old_trace_status` | `REFERENCE_OBSERVATION`; internal order, counts, noncalls and exact-override forwarding are not established requirements |
 | `old_message_status` | `REFERENCE_OBSERVATION` when a diagnostic message was recorded; otherwise `NOT_RECORDED` |
 | `runtime_identity_status` | `NOT_OBSERVED`; this evaluator measures neither result identity nor runtime class/cache choices |
@@ -148,8 +149,9 @@ replaced. They do not require inherited context division to invoke that override
 internally. The ordinary/truthful partitions separately cover the documented
 null and self arithmetic.
 
-57,997 old value prefixes and 17,627 old error-type statuses remain unresolved;
-eight exact null-context error types and 96 reference-only value prefixes are
+57,997 old value prefixes and17,347 old error-type statuses remain unresolved;
+eight required null-context error types,96 reference-only value prefixes and280
+reference historical-null error prefixes are
 classified below. This does not declare other fields unconstrained:
 it keeps their possible required fields open while transferring valid-input
 coverage. In particular, a configured but unused bad getter is not a waiver of
@@ -308,7 +310,7 @@ for exact formulas, guards, preserved predecessor hashes and contract boundaries
 Parent generation session 36380 and check session 47559 exited 0 using mapper
 `37f861df…`, its four unchanged pinned files, the pinned Kotlin/JDK tooling,
 512MiB heap and a fresh isolated compiled-script cache. Independent actual
-review accepted the evidence. The adopted TSV is now v5, SHA-256
+review accepted the evidence. The TSV adopted at that v5 milestone had SHA-256
 `8d9c9bfb5657b684b19e76dcc5b21176f94fa7601e753ced84f3748760d3fd43`.
 All 75,728 compact records and their six-column header remain byte-identical;
 104 STATUS records comprise eight unchanged required ERROR bindings and 96
@@ -324,3 +326,48 @@ math or public-JDK numerical oracle ran; fixtures, evaluator and assertions
 stayed unchanged in this metadata run. Root2311 records terminal local
 calls and released mutex. Hosted CI for this new mapper remains pending;
 full-family closure and archival permission remain unclaimed.
+
+## Historical source-only v6 historical-null-error preparation
+
+The mapper source prepared280 additional input-selected historical ERROR
+prefixes with status `REFERENCE_HISTORICAL_NULL_INPUT_ERROR`. The then-adopted
+TSV remained v5 `8d9c9bfb…`:8 required ERROR +96 reference VALUE +75,624 unresolved.
+No TSV was generated/edited and no script/compiler/helper/numerical/test
+execution occurred during that source preparation. The mapper was
+**UNCOMPILED/UNRUN** at that milestone. A `--check` against preserved v5 would
+differ; no such pre-generation run is claimed.
+
+The class is192 null-context inputs plus96 finite-p2/null-divisor inputs,
+excluding the unchanged original8 required ERROR bindings. Inputs, not frozen
+outcomes, select it; full old rows, NPE controls, D/C/mode/kind/masks and exact
+predicate coverage are checked. The v5 unlimited/null96 VALUE class stays
+separate. The predicted v6 dictionary was384 bindings,8 required ERROR +96 reference
+VALUE +280 reference historical ERROR;75,344 unresolved (57,997 VALUE /
+17,347 ERROR), with every archival block preserved.
+
+Current575 JVM NN boundary NPE remains required for all384 displaced null-input
+rows and the independent96-key/240-mask ordinary/truthful controls. Historical
+nullable ERROR provenance does not establish a universal poisoned-callback
+failure-precedence theorem. Trace/message/identity and every other logical field
+remain unchanged; no fixture or assertion is waived/archived. See the
+[v6 source preparation record](../../docs/decimal-context-value1-policy-526.md#historical-source-only-v6-historical-null-error-preparation)
+for formulas, evidence pins, preservation and later parent gates.
+
+## Accepted actual v6 metadata validation
+
+Generation session37902 and check session48932 exited0 in the isolated
+`/private/tmp/krogu-526-null-errors-v6-validation-z6PNyhDR/root`, using the
+unchanged mapper `08adda6a…`, its four pinned inputs and512MiB script heap.
+Independent actual review accepted adoption. The current adopted TSV is v6,
+SHA-256 `bc03df8ef1e68a1d602181901f02466d677ab10cace9d4a3d1a57aee400f1b8f`.
+Its75,728 compact rows and six-column header remain byte-identical to v5.
+
+The384 exact STATUS records retain8 required ERROR and96 reference VALUE,
+then classify280 historical ERROR prefixes separately. There remain75,344
+unresolved statuses (57,997 VALUE /17,347 ERROR), with all75,728 archival blocks.
+The current575 NN384-entry NPE obligation and96-key/240-mask ordinary/truthful
+controls are unchanged; this metadata run executes none of them. No production
+or public-JDK numerical operation, test, fixture/evaluator/assertion change is
+claimed. The [actual evidence record](../../docs/decimal-context-value1-policy-526.md#accepted-actual-v6-metadata-validation)
+preserves raw hashes and v5 chronology. Hosted CI/publication and full-family
+classification remain parent gates; no archival permission follows.
