@@ -16,8 +16,8 @@ prove every integer operation, runtime or platform implementation.
 
 | Own source | SHA-256 |
 | --- | --- |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `e284f3aac0a09d293784d38265d00656dec632d18a61985c756dc42c0c4d6d31` |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt` | `24e4e63001ea72a2fed9d29361f3707ad59cbe59c0547d47a648993146cf0849` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `66bb59deeeceb4f664681f99ddacc490c3054b5c42c539d3b8a3a44ed2ddb7c2` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt` | `00e392444ce4b13122ec6dcb7ccbee357b437da1e6554cc78876e909346c1599` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/DoubleFormatting.kt` | `9b2a1b8cb1d40a2fdc7db5110b6a8c4e398da0562d5c3d6b02cf928f3c74433f` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/FloatFormatting.kt` | `ba55514c181e52f20ed63fcb2634621f66cea3cc4db084e77cf2df71d1dcf77e` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/NumericExtensions.kt` | `20fdf7c5c76ed4207c03859b4cb60247a16e2ec4337ee674c3a85ce6101e5123` |
@@ -63,6 +63,12 @@ separate raw decimal helper. Conversion methods and their existing digit,
 prefix and integer-division leaves remain unchanged. The table binds that
 successor without changing this proof or relabelling historical conversion CI;
 the fresh four-target evidence is recorded separately.
+
+The later [integral quotient repair](integral-quotient-582-verification.md)
+adds a separate unlimited-integral seam and private bridge/raw helper. Conversion
+methods, digit/prefix extraction and the existing integer-division leaves remain
+unchanged. The table binds that source without changing this argument or
+relabelling earlier conversion CI; its fresh local evidence is recorded separately.
 
 Assume canonical immutable stored magnitudes, exact integer arithmetic and
 decimal digit/prefix/formatting primitives, valid fixed contexts, and successful

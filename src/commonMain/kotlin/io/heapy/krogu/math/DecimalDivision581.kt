@@ -105,6 +105,57 @@ internal object DecimalDivision581 {
         }
     }
 
+    /** Exact integer quotient for negative in-range S; trailing zeros stay symbolic. */
+    fun integral(sign: Int, left: IntArray, right: IntArray, preferred: Int): Pair<BigInteger, Int> {
+        require(sign == -1 || sign == 1)
+        require(left.isNotEmpty() && right.isNotEmpty() && preferred < 0)
+        val scratch = Cells(maxOf(left.size, right.size))
+        val a = decimalChunks(left, scratch)
+        val b = decimalChunks(right, scratch)
+        val inputDigits = a.digits()
+        val lastNonzero = inputDigits - a.trailingZeros()
+        val limit = inputDigits - preferred.toLong()
+        val remainder = DecimalWords(b.size + 1)
+        val trial = DecimalWords(b.size + 1)
+        val quotientDigits = maxOf(1L, minOf(MAX_DIGITS, limit - b.digits() + 1))
+        val quotient = DecimalWords(((quotientDigits + 8) / 9).toInt())
+        var position = 0L
+        var zeros = 0L
+        while (position < limit) {
+            val input = if (position < inputDigits) a.digitFromLeft(position, inputDigits) else 0
+            position++
+            remainder.multiplyAdd(10, input)
+            var digit = 9
+            while (digit > 0) {
+                trial.product(b, digit)
+                if (remainder.compare(trial) >= 0) break
+                digit--
+            }
+            if (digit != 0) remainder.subtract(trial)
+            if (digit == 0) {
+                if (quotient.size != 0) zeros++
+            } else {
+                val digits = if (quotient.size == 0) 1L else quotient.digits() + zeros + 1
+                if (digits > MAX_DIGITS) throw ArithmeticException("BigInteger overflow")
+                if (quotient.size != 0) quotient.appendZeroDigits(zeros)
+                quotient.multiplyAdd(10, digit)
+                zeros = 0
+            }
+            // An unread original nonzero digit prevents the exact zero-tail skip.
+            if (remainder.size == 0 && position >= lastNonzero) {
+                if (quotient.size == 0) return BigInteger.ZERO to preferred
+                zeros += limit - position
+                break
+            }
+        }
+        if (quotient.size == 0) return BigInteger.ZERO to preferred
+        val scale = maxOf(-zeros, preferred.toLong())
+        val padding = zeros + scale
+        if (quotient.digits() + padding > MAX_DIGITS) throw ArithmeticException("BigInteger overflow")
+        quotient.appendZeroDigits(padding)
+        return publish(quotient, sign, scale.toInt())
+    }
+
     private fun exactResult(q: DecimalWords, sign: Int, preferred: Long,
         exponent: Long, kept: Long, precision: Long): Pair<BigInteger, Int> {
         var scale = preferred + kept - 1 - exponent
@@ -279,6 +330,18 @@ internal object DecimalDivision581 {
             }
             trim()
             return remainder.toInt()
+        }
+        // Callers bound the selected coefficient before any shift/allocation.
+        fun appendZeroDigits(count: Long) {
+            check(size > 0 && count >= 0 && digits() + count <= MAX_DIGITS)
+            val whole = (count / 9).toInt()
+            if (whole != 0) {
+                for (i in size - 1 downTo 0) cells[i + whole] = cells[i]
+                for (i in 0 until whole) cells[i] = 0
+                size += whole
+            }
+            val rest = (count % 9).toInt()
+            if (rest != 0) multiplyAdd(powers[rest], 0)
         }
         private fun trim() { while (size > 0 && cells[size - 1] == 0) size-- }
     }

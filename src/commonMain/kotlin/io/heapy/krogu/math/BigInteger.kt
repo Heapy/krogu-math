@@ -105,6 +105,38 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return DecimalDivision581.rounded(sign * value.sign, words, value.words, preferred, mc)
     }
 
+    // Captured public metadata selects this route without any additional callback.
+    @kotlin.jvm.JvmSynthetic
+    internal fun integralDecimalQuotient582(value: BigInteger, sourceScale: Int, divisorScale: Int,
+        sourceDigits: Int, divisorDigits: Int, reportedSourceScale: Int, reportedDivisorScale: Int,
+        sourceSign: Int, magnitude: Int): Pair<BigInteger, Int>? {
+        val preferred = sourceScale.toLong() - divisorScale
+        if (preferred !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong() || sign == 0 || value.sign == 0 ||
+            sourceSign != sign || reportedSourceScale != sourceScale || reportedDivisorScale != divisorScale ||
+            sourceDigits != decimalMagnitudeDigits() || divisorDigits != value.decimalMagnitudeDigits()) return null
+        val exponents = (sourceDigits.toLong() - sourceScale).compareTo(divisorDigits.toLong() - divisorScale)
+        val storedMagnitude = if (exponents != 0) exponents else compareDecimalSignificand(value)
+        if (magnitude.compareTo(0) != storedMagnitude.compareTo(0) || storedMagnitude < 0) return null
+        if (preferred < 0) {
+            val zeros = -preferred
+            // A nonzero final residual then forces a minimal coefficient >H.
+            // Preserve exact supported cohorts through the existing reduced 2/5 escape.
+            if (zeros >= divisorDigits && sourceDigits.toLong() + zeros > 646456993L + 2L * divisorDigits - 1)
+                return DecimalDivision581.largePrecision(sign * value.sign, BigInteger(1, words),
+                    BigInteger(1, value.words), preferred, Int.MAX_VALUE)
+            return DecimalDivision581.integral(sign * value.sign, words, value.words, preferred.toInt())
+        }
+        // B*10^S <= A follows from the checked magnitude prefix. All factors,
+        // the scaled denominator and K*10^S are therefore supported.
+        val power = TEN.pow(preferred.toInt())
+        val absoluteDivisor = BigInteger(1, value.words)
+        val denominator = if (preferred == 0L) absoluteDivisor else absoluteDivisor.multiply(power)
+        val quotient = BigInteger(1, words).quotientStored(denominator)
+        val coefficient = if (preferred == 0L) quotient else quotient.multiply(power)
+        return (if (sign == value.sign || coefficient.sign == 0) coefficient
+            else BigInteger(-1, coefficient.words)) to preferred.toInt()
+    }
+
     open fun divide(value: BigInteger): BigInteger = quotientStored(value)
     open fun remainder(value: BigInteger): BigInteger = remainderStored(value)
 

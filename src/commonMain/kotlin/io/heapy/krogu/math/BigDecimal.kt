@@ -399,16 +399,26 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun divideToIntegralValue(divisor: BigDecimal): BigDecimal {
         val operand = divisor
         val preferred = saturatedScale(decimalScale.toLong() - operand.decimalScale)
-        if (compareMagnitude(operand) < 0 || (signum() == 0 && operand.signum() != 0))
+        val magnitude = compareMagnitude(operand)
+        if (magnitude < 0) return BigDecimal(BigInteger.ZERO, preferred)
+        val sourceSign = signum()
+        if (sourceSign == 0 && operand.signum() != 0)
             return BigDecimal(BigInteger.ZERO, preferred)
-        // A conservative guard-digit budget suffices to recover the integral part.
-        // Keep public metadata calls and their order observable to subclasses.
-        val sourceDigits = precision().toLong()
-        val divisorDigits = 10L * operand.precision()
+        // Retain the historical guard budget and metadata order for fallback.
+        val sourcePrecision = precision()
+        val sourceDigits = sourcePrecision.toLong()
+        val divisorPrecision = operand.precision()
+        val divisorDigits = 10L * divisorPrecision
         val guardDigits = divisorDigits / 3 + if (divisorDigits % 3 > 0) 1 else 0
+        val sourceScale = scale()
+        val divisorScale = operand.scale()
         val digits = sourceDigits + guardDigits +
-            kotlin.math.abs(scale().toLong() - operand.scale()) + 2
-        var result = divide(operand, MathContext(minOf(digits, Int.MAX_VALUE.toLong()).toInt(), RoundingMode.DOWN))
+            kotlin.math.abs(sourceScale.toLong() - divisorScale) + 2
+        val legacyContext = MathContext(minOf(digits, Int.MAX_VALUE.toLong()).toInt(), RoundingMode.DOWN)
+        val integral = coefficient.integralDecimalQuotient582(operand.coefficient, decimalScale,
+            operand.decimalScale, sourcePrecision, divisorPrecision, sourceScale, divisorScale, sourceSign, magnitude)
+        if (integral != null) return BigDecimal(integral.first, integral.second)
+        var result = divide(operand, legacyContext)
         if (result.decimalScale > 0) {
             result = result.setScale(0, RoundingMode.DOWN).integralStrip(preferred, preserveIdentity = true)
         }

@@ -67,6 +67,12 @@ rounds a private decimal product before publishing its required coefficient.
 Its four-target campaign completed1517 method executions with no failures or
 skips. Maximum-size witnesses remain symbolic; matching-head hosted gates and
 the broader compatibility tasks remain separate.
+The subsequent [contextual quotient repair](docs/decimal-context-division-581-verification.md)
+and [integral quotient repair](docs/integral-quotient-582-verification.md) avoid
+oversized normalization intermediates in their reviewed routes. Their fresh
+four-target campaigns completed1538 and1559 method executions respectively,
+with no failures or skips. The separate residual-product obstruction583,
+maximum-size resource assumptions and broader range/dispatch audits remain open.
 The [integer arithmetic and bit audit report](docs/integer-audits-544-545-verification.md)
 records the later test-only integration, four local target gates and all six CI
 jobs passing on published commit60aea413, including actual Linux ARM64 execution.
@@ -150,7 +156,8 @@ unrecorded VM/compiler wording remains an unverified observation. Caller-created
 exceptions and their supplied messages are separate. The
 [MathContext/RoundingMode ledger](docs/context-mode-contract-549-ledger.md)
 records the two small types' complete declared surface and conditional source
-arguments; its noncanonical MathContext-string wording question remains open.
+arguments. Canonical MathContext text and round trips are required; the ledger
+records the retained broader accepted grammar as a compatibility extension.
 Neither memo closes the full549 error/call-site audit.
 
 BigDecimal precision is the number of decimal digits in its unscaled value,

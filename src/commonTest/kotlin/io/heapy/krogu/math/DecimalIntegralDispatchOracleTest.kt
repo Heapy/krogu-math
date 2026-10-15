@@ -35,14 +35,16 @@ private class IntegralSource(text: String, val label: String, val mode: String, 
     fun enter(v: BigDecimal, p: Int): BigDecimal = if (p < 0) super.divideToIntegralValue(v)
         else super.divideToIntegralValue(v, MathContext(p, RoundingMode.UNNECESSARY))
 }
-private fun integralOutcome(a: String, b: String, p: Int, mode: String): String {
+private fun integralOutcome(a: String, b: String, p: Int, mode: String, observe: ((BigDecimal) -> Unit)? = null): String {
     val trace = StringBuilder()
     val source = IntegralSource(a, "A", mode, trace)
     val operand = IntegralSource(b, "B", mode, trace)
     return try {
         val result = source.enter(operand, p)
         val calls = trace.toString()
-        "${result.toString()}:${result.scale()}:${when { result === source -> "source"; result === operand -> "divisor"; result is IntegralResult -> "quotient"; else -> "base" }}|$calls"
+        val diagnostic = "${result.toString()}:${result.scale()}:${when { result === source -> "source"; result === operand -> "divisor"; result is IntegralResult -> "quotient"; else -> "base" }}|$calls"
+        observe?.invoke(result)
+        diagnostic
     } catch (e: Exception) { "!${e::class.simpleName}:${e.message}|$trace" }
 }
 private class IntegralMetadata(text: String, val label: String, val digits: Int, val reportedScale: Int, val trace: StringBuilder) : BigDecimal(text) {
@@ -55,28 +57,59 @@ private class IntegralMetadata(text: String, val label: String, val digits: Int,
         throw IllegalStateException("divide callback")
     }
 }
-private fun metadataOutcome(a: Int, b: Int, aScale: Int, bScale: Int): String {
+private fun metadataOutcome(a: Int, b: Int, aScale: Int, bScale: Int, observe: ((BigDecimal) -> Unit)? = null): String {
     val trace = StringBuilder()
     val source = IntegralMetadata("10.0", "A", a, aScale, trace)
     val divisor = IntegralMetadata("2.0", "B", b, bScale, trace)
-    return try { source.divideToIntegralValue(divisor).toString() + "|$trace" }
+    return try {
+        val result = source.divideToIntegralValue(divisor)
+        val diagnostic = result.toString() + "|$trace"
+        observe?.invoke(result)
+        diagnostic
+    }
         catch (e: Exception) { "!${e::class.simpleName}:${e.message}|$trace" }
 }
 class DecimalIntegralDispatchOracleTest {
     @Test fun signedMetadataAndScaleEndpointsDetermineContextPrecision() {
         val failures = mutableListOf<String>()
-        for (row in jdk25DecimalIntegralMetadataCases()) {
-            val actual = metadataOutcome(row[0].toInt(), row[1].toInt(), row[2].toInt(), row[3].toInt())
-            if (row[4] != actual) failures += row.take(4).toString() + " expected=" + row[4] + " actual=" + actual
+        val rows = jdk25DecimalIntegralMetadataCases()
+        DecimalIntegral582DiagnosticPolicy.bindMetadata(rows)
+        var selected = 0
+        for ((ordinal, row) in rows.withIndex()) {
+            val policy = DecimalIntegral582DiagnosticPolicy.metadataSelected(row)
+            var observed: DecimalIntegral582DiagnosticPolicy.Numeric? = null
+            val observer: ((BigDecimal) -> Unit)? = if (policy) ({ result ->
+                observed = DecimalIntegral582DiagnosticPolicy.Numeric(result.unscaledValue().toString(), result.scale(), result.toString())
+            }) else null
+            val actual = metadataOutcome(row[0].toInt(), row[1].toInt(), row[2].toInt(), row[3].toInt(), observer)
+            if (policy) {
+                selected++
+                DecimalIntegral582DiagnosticPolicy.numericFailure("metadata", ordinal, row, actual, observed,
+                    DecimalIntegral582DiagnosticPolicy.expected("10.0", "2.0"))?.let { failures += it }
+            } else if (row[4] != actual) failures += row.take(4).toString() + " expected=" + row[4] + " actual=" + actual
         }
+        assertEquals(1, selected)
         assertEquals(emptyList<String>(), failures.take(12), failures.size.toString() + " mismatches")
     }
     @Test fun inheritedIntegralDivisionUsesVirtualContextDivision() {
         val failures = mutableListOf<String>()
-        for (row in jdk25DecimalIntegralDispatchCases()) {
-            val actual = integralOutcome(row[0], row[1], row[2].toInt(), row[3])
-            if (row[4] != actual) failures += row.take(4).toString() + " expected=" + row[4] + " actual=" + actual
+        val rows = jdk25DecimalIntegralDispatchCases()
+        DecimalIntegral582DiagnosticPolicy.bindDispatch(rows)
+        var selected = 0
+        for ((ordinal, row) in rows.withIndex()) {
+            val policy = DecimalIntegral582DiagnosticPolicy.dispatchSelected(row)
+            var observed: DecimalIntegral582DiagnosticPolicy.Numeric? = null
+            val observer: ((BigDecimal) -> Unit)? = if (policy) ({ result ->
+                observed = DecimalIntegral582DiagnosticPolicy.Numeric(result.unscaledValue().toString(), result.scale(), result.toString())
+            }) else null
+            val actual = integralOutcome(row[0], row[1], row[2].toInt(), row[3], observer)
+            if (policy) {
+                selected++
+                DecimalIntegral582DiagnosticPolicy.numericFailure("dispatch", ordinal, row, actual, observed,
+                    DecimalIntegral582DiagnosticPolicy.expected(row[0], row[1]))?.let { failures += it }
+            } else if (row[4] != actual) failures += row.take(4).toString() + " expected=" + row[4] + " actual=" + actual
         }
+        assertEquals(420, selected)
         assertEquals(emptyList<String>(), failures.take(12), failures.size.toString() + " mismatches")
     }
 }
