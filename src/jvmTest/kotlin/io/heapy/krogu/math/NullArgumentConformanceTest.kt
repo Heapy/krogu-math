@@ -8,6 +8,7 @@ import java.math.MathContext as JC
 import java.math.RoundingMode as JR
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 /** Invoke actual Java signatures, so null reaches the library rather than a Kotlin caller cast. */
 class NullArgumentConformanceTest {
@@ -56,10 +57,17 @@ class NullArgumentConformanceTest {
     @Test fun nullAndInvalidArgumentPrecedence() {
         val counts = linkedMapOf<String, Int>()
         val examples = mutableListOf<String>()
+        val zeroSqrtRows = mutableSetOf<String>()
         var comparisons = 0
-        fun compare(key: String, label: String, reference: () -> Any?, implementation: () -> Any?) {
+        fun compare(key: String, label: String, reference: () -> Any?, implementation: () -> Any?, zeroSqrtText: String? = null) {
             comparisons++
             val expected = outcome(reference); val actual = outcome(implementation)
+            if (zeroSqrtText != null) {
+                assertTrue(zeroSqrtRows.add(zeroSqrtText), "Duplicate zero/null receiver: $zeroSqrtText")
+                println("$key $label liveHost=$expected required=!NullPointerException actual=$actual")
+                assertEquals("!NullPointerException", actual, "$key $label public null contract; liveHost=$expected")
+                return
+            }
             if (expected != actual) {
                 val count = counts[key] ?: 0; counts[key] = count + 1
                 if (count < 3) examples.add("$key $label expected=$expected actual=$actual")
@@ -84,14 +92,21 @@ class NullArgumentConformanceTest {
                 val target = port.getMethod(method.name, *method.parameterTypes.map { mappings[it] ?: it }.toTypedArray())
                 val instances = if (Modifier.isStatic(method.modifiers)) listOf(null) else receivers
                 for (receiver in instances) for (args in cases(method.parameterTypes)) {
+                    // Select by the exact public signature, ordinary receiver cohort and null input.
+                    val zeroSqrtText = if (jdk == JD::class.java && method.name == "sqrt" &&
+                        method.parameterTypes.contentEquals(arrayOf(JC::class.java)) && args == listOf(null) &&
+                        receiver is JD && receiver.javaClass == JD::class.java &&
+                        (receiver == JD.ZERO || receiver == JD("0.00"))) receiver.toString() else null
                     compare("${jdk.simpleName}.${method.name}(${method.parameterTypes.joinToString { it.simpleName }})",
                         "receiver=$receiver args=${args.joinToString { canonical(it) }}",
                         { method.invoke(receiver, *args.toTypedArray()) },
-                        { target.invoke(adapt(receiver), *args.map(::adapt).toTypedArray()) })
+                        { target.invoke(adapt(receiver), *args.map(::adapt).toTypedArray()) }, zeroSqrtText)
                 }
             }
         }
+        assertEquals(setOf("0", "0.00"), zeroSqrtRows)
+        assertEquals(2, zeroSqrtRows.size)
         assertEquals(emptyMap(), counts, "$comparisons comparisons; discrepancies=$counts\n${examples.joinToString("\n")}")
-        println("$comparisons null/invalid-argument comparisons passed")
+        println("$comparisons null/invalid-argument comparisons: ${comparisons - zeroSqrtRows.size} retained host comparisons, ${zeroSqrtRows.size} public null requirements")
     }
 }

@@ -6,11 +6,20 @@ import kotlin.test.*
 class NullPrecedenceOracleTest {
     @Test fun nullAndInvalidArgumentPrecedenceAcrossPlatforms() {
         val expected = nullPrecedenceExpected().iterator()
+        // Retain these exact frozen observations; the public null contract requires NPE.
+        val zeroSqrtObservations = mapOf("sqrt/null context 0" to "0", "sqrt/null context 0.00" to "0.0")
+        val selected = mutableSetOf<String>()
         var count = 0
         fun verify(label: String, action: () -> Any?) {
             assertTrue(expected.hasNext(), "Oracle ended before $label")
             val actual = try { action().toString() } catch (e: Exception) { "!${e::class.simpleName}" }
-            assertEquals(expected.next(), actual, "$count: $label")
+            val observed = expected.next()
+            if (label in zeroSqrtObservations) {
+                assertTrue(selected.add(label), "Duplicate zero/null key: $label")
+                assertEquals(zeroSqrtObservations.getValue(label), observed, "Frozen observation: $label")
+                println("$label frozen=$observed required=!NullPointerException actual=$actual")
+                assertEquals("!NullPointerException", actual, "$count: $label public null contract")
+            } else assertEquals(observed, actual, "$count: $label")
             count++
         }
         val integers = listOf(-3, -1, 0, 1, 2, 7, 8, 9, 31, 32, 36, 37)
@@ -34,6 +43,9 @@ class NullPrecedenceOracleTest {
             verify("legacy null divide $text,$scale,$mode") { BigDecimal(text).divide(null, scale, mode) }
         for (precision in integers) verify("context/null rounding $precision") { MathContext(precision, null) }
         assertEquals(3462, count)
+        assertEquals(zeroSqrtObservations.keys, selected)
+        assertEquals(2, selected.size)
+        assertEquals(3460, count - selected.size)
         assertFalse(expected.hasNext(), "Unconsumed oracle outcomes")
     }
 }

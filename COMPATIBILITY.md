@@ -17,11 +17,17 @@ independent mathematical reasoning and black-box results supply evidence; a
 runtime result does not override the public contract.
 
 The [contextual-zero and modular integration report](docs/context-modular-integration-verification.md)
-records the latest four local target gates, bounded modPow measurements and
+records the preceding four local target gates, bounded modPow measurements and
 unchanged public-test campaign, including its three retained failures. Direct
 contextual zero-scale behavior and the finite unary observation policy supersede
 earlier broad trace summaries for those exact cases. The report also records
 eight narrowly classified null-context exception types; broader audits remain open.
+
+The later [normalized division report](docs/normalized-division-verification.md)
+records the exact d0 candidate, four target gates, bounded time/allocation pilot
+and selected public campaign, retaining its PrimeTest failure and timing regressions.
+The separate [zero sqrt-null validation](docs/zero-sqrt-null-568-verification.md)
+records the null-contract repair and its own current execution evidence.
 
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in

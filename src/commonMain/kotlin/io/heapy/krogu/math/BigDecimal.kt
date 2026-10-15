@@ -552,9 +552,9 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun sqrt(mc: MathContext?): BigDecimal {
         val sign = signum()
         if (sign < 0) throw ArithmeticException("Attempted square root of negative BigDecimal")
+        val context = mc ?: throw NullPointerException()
         val preferred = decimalScale / 2
         if (sign == 0) return BigDecimal(BigInteger.ZERO, preferred)
-        val context = mc ?: throw NullPointerException()
         // Use scale parity and integer squares before normalization, decimal
         // input formatting, or any precision-derived working scale/power.
         // A supported radicand can exceed an engine's String limit while its

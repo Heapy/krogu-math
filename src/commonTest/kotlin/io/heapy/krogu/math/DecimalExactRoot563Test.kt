@@ -112,7 +112,8 @@ class DecimalExactRoot563Test {
         }
         assertFailsWith<NullPointerException> { BigDecimal("4").sqrt(null) }
         assertFailsWith<ArithmeticException> { BigDecimal("-4").sqrt(null) }
-        assertEquals(-1073741824, BigDecimal(BigInteger.ZERO, Int.MIN_VALUE).sqrt(null).scale())
+        assertFailsWith<NullPointerException> { BigDecimal(BigInteger.ZERO, Int.MIN_VALUE).sqrt(null) }
+        assertEquals(-1073741824, BigDecimal(BigInteger.ZERO, Int.MIN_VALUE).sqrt(MathContext.UNLIMITED).scale())
         val marker = BigDecimal("7.00")
         val failure = IllegalStateException("caller owned")
         val context = MathContext(Int.MAX_VALUE, RoundingMode.HALF_EVEN)
