@@ -16,11 +16,20 @@ prove every integer operation, runtime or platform implementation.
 
 | Own source | SHA-256 |
 | --- | --- |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `df55cb8c8c6a291b59f6ee6daf365c9b4c38e4e1f33583e108183c5a28039fb3` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `8db4e0f6fef21ab6d0e467dd5465bae69ccc52dd47b2162d121a3db1ec1c6615` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt` | `08b4329ea5e902f1043107d42ddb02592be537497f6b0990927e8c67c4ed3f29` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/DoubleFormatting.kt` | `9b2a1b8cb1d40a2fdc7db5110b6a8c4e398da0562d5c3d6b02cf928f3c74433f` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/FloatFormatting.kt` | `ba55514c181e52f20ed63fcb2634621f66cea3cc4db084e77cf2df71d1dcf77e` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/NumericExtensions.kt` | `20fdf7c5c76ed4207c03859b4cb60247a16e2ec4337ee674c3a85ce6101e5123` |
+
+The initial accepted composition bound BigInteger `df55cb8c…`. The subsequent
+[parser-range repair](integer-parser-range-559-proof.md) adds only a conservative
+guard inside its private string parser; all conversion/division methods and
+the remainder of that source are unchanged. Its independently reviewed bound
+cannot reject a supported value. In particular the fixed-size canonical text
+and prefix coefficients used here take the unchanged accumulation path. The
+table records that later source hash without changing the conversion argument
+or relabelling earlier full-suite CI as execution of the parser repair.
 
 Assume canonical immutable stored magnitudes, exact integer arithmetic and
 decimal digit/prefix/formatting primitives, valid fixed contexts, and successful

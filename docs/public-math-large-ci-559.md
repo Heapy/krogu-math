@@ -213,3 +213,99 @@ whole-corpus/full-domain acceptance. Existing vendor/test-revision disclosures
 remain. The unchanged regular workflow and prior accepted eaa records keep
 their original source/artifact/run scope; this candidate's source review and
 metadata preflight do not replace the required actual hosted evidence.
+
+## Actual hosted attempt: two retained port timeouts (root2295)
+
+[Run 38762806007, attempt 1](https://github.com/Heapy/krogu-math/actions/runs/38762806007)
+completed with **FAILURE** at source commit
+`870575e664c4276c2d6d7610632ce638a7c872f8`. The
+[producer 116518231447](https://github.com/Heapy/krogu-math/actions/runs/38762806007/job/116518231447)
+succeeded; the
+[consumer 116518862794](https://github.com/Heapy/krogu-math/actions/runs/38762806007/job/116518862794)
+failed its campaign step and successfully uploaded its evidence afterward.
+This actual attempt supersedes the earlier preflight's unverified-hosted status,
+while preserving that metadata-only history above.
+
+Result 1792079104822 contains **10 PASS / 2 FAIL / 128 SKIP**, with 140 unique
+phase/path/scope/id/method keys and 118 unique public IDs. Twelve public JVMs
+executed: all six baseline invocations passed; four port invocations passed and
+two port invocations timed out. `complete=true` means the result loop finished,
+not that the failed invocations completed their assertions. `officialJck=false`.
+
+| Public test | Baseline | Port |
+| --- | --- | --- |
+| BitLengthOverflow | PASS | PASS |
+| DoubleValueOverflow | PASS | PASS |
+| LargeValueExceptions | PASS | PASS |
+| largeMemory/DivisionOverflow | PASS | PASS |
+| largeMemory/StringConstructorOverflow | PASS | FAIL: original 120s deadline, elapsed 120061ms |
+| largeMemory/SymmetricRangeTests | PASS | FAIL: original 180s deadline, elapsed 180093ms |
+
+Both failed process records retain `timedOut=true`, null exit code and
+`Upstream invocation timeout`. StringConstructorOverflow stdout contains the four
+own-core origin lines and no completion marker. SymmetricRangeTests records
+seed 559, all subsets, the makePositive-overflow marker, then ends at
+`Testing Bug 8021204`; it has no completion marker either. Both stderr files
+are empty. Reaching that last marker does not prove the subsection or any later
+assertion completed. There is no observed arithmetic exception or numerical
+result to reconstruct from these incomplete traces. All ten PASS invocations
+have their raw `HARNESS_COMPLETE` marker.
+
+The original 4096/8192MiB heaps and five 120s/one 180s directive deadlines per phase
+were retained, including subset 0 for SymmetricRangeTests and no test filter.
+All twelve compilations completed successfully. All six port caller audits
+completed successfully with own-core member references and no host-math member
+owners. Each port stdout and class-load log records all four core classes from
+the exact selected JAR, including both timed-out invocations. Source hashes for
+all twelve compiled inputs match the retained source bytes.
+
+Auto total memory was 16766414848 bytes. Every launch's fresh-free gate passed:
+the smallest recorded prelaunch free value was 11759235072 bytes, above its
+applicable 4608/8704MiB threshold. No large invocation was capacity-skipped.
+Those prelaunch observations do not establish an uncontended host, absence of
+later memory pressure, or a cause/performance ratio for the timeouts. These are
+actual FAIL records, not capacity waivers.
+
+The 128 SKIPs are exactly 106 unselected regular-profile invocations
+(90 standard, 10 heavy, 4 serialization, 2 memory-512m), 16 upstream-disabled
+methods, two upstream-commented calls and four private exclusions. There are
+no adaptation-companion records for the selected six large files. Earlier
+regular-profile passes remain in their distinct eaa run; they are not counted
+as fresh passes in this large-only attempt.
+
+CI metadata binds the manual event's run/attempt, source/workflow SHA, repository,
+workflow file and `public-math-large` job; `executionGrantComment` is null.
+The [same-run input artifact 11985724523](https://github.com/Heapy/krogu-math/actions/runs/38762806007/artifacts/11985724523)
+and consumer input copies have matching SHA256SUMS and SOURCE_COMMIT. Both own
+JAR copies hash to accepted current-production `ded66cd6...`. Runtime records
+retain Liberica 25.0.4+9-LTS, Kotlin 2.4.21, Gradle 9.8.1 and seed 559.
+
+Read-only existing-byte checks verified all 57 locked upstream sources, 53
+generated-source hashes, thirteen recorded tool-source hashes, seven retained
+dependency POMs from fourteen dependency records, and the unchanged manifest and
+source/dependency locks. Entrypoint `11e5ddd8`, runner `ed32beb0` and adapter `45db93c7`
+match the frozen executed tooling. The
+[evidence artifact 11986274104](https://github.com/Heapy/krogu-math/actions/runs/38762806007/artifacts/11986274104)
+contains 273 files, including exact sources, locks, GPL text/licensing, logs,
+caller dumps, inventory and results. There is no JAR or class file under its
+math workspace, and no compiled-script cache. Its only JAR is the separate own
+Apache library input, preserving the reviewed packaging boundary.
+
+The retained evidence root is `/private/tmp/krogu-870-large-ci-evidence-v1`.
+This audit read only downloaded bytes and metadata; it ran no compiler, script,
+numerical helper, test, build or benchmark and retried neither failure. Tasks 559
+and 548 remain open: the two incomplete port paths need their own diagnosis,
+reviewed repair if warranted, and separately authorized exact-artifact reruns.
+No test assertion, deadline, source domain or historical FAIL is waived here.
+
+```text
+906b51c11339306b3cd804c428ecd7456e4793960ec353444f6beb5bded82ac5  results.json
+8223608e9b020bb9b4edb03aa261dbeb52234cc2cafbceb388a791d6410e161d  final-run.json
+b3b45689569c3315c223f7ab01f9a4aa2d2dc97104113021cac372d0d9287508  large.raw.log
+94e82fa046dcac9113ef8500ad2cbae860e15527ce92c032320661d1ee8aa93e  public-math-large-campaign.log
+2a12fe962ad34acd51e1119e6904e772cdaee5aa6f6430bf42804954f89ab5b4  inventory.json
+ded66cd6a325b73a9a393e0fd56281d7bf63d571dab4b146e8f1cb9c0dba2fd1  krogu-math.jar
+6ebc1a4377fc5aa243632ee4113eb09bb24e5f93b30300042d7b6d7ca859bc47  port/StringConstructorOverflow/test.stdout.log
+25bc2d865f961a5f1fe6a68c7d293cc833e64a8c7af218ab9d6aa66fb62cbd89  port/SymmetricRangeTests/test.stdout.log
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  both failed test.stderr.log files (empty)
+```

@@ -19,5 +19,14 @@ internal object MagnitudeLimits {
         return bits.toInt()
     }
 
+    // A nonzero leading digit gives n >= radix^(significantDigits-1).
+    // This conservative lower bound can miss oversized values, never supported ones.
+    fun parserDefinitelyOverflows(significantDigits: Int, radix: Int): Boolean {
+        require(significantDigits > 0 && radix in 2..36)
+        val bitsPerDigit = 31 - radix.countLeadingZeroBits()
+        val minimumBits = 1L + (significantDigits.toLong() - 1) * bitsPerDigit
+        return minimumBits > Int.MAX_VALUE
+    }
+
     fun initialSqrtShift(bitLength: Int): Int = ((bitLength.toLong() + 1) / 2).toInt()
 }

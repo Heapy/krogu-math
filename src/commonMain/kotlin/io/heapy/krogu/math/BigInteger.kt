@@ -1063,6 +1063,13 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             if (start == value.length) throw NumberFormatException("Zero length BigInteger")
             while (start < value.length && value[start].digitToIntOrNull(radix) == 0) start++
             if (start == value.length) return ZERO
+            if (MagnitudeLimits.parserDefinitelyOverflows(value.length - start, radix)) {
+                // Invalid text must retain its digit error, even when its length proves
+                // every valid number of this shape is outside the supported range.
+                for (i in start until value.length)
+                    if (value[i].digitToIntOrNull(radix) == null) invalidIntegerDigit(value, radix, start, i)
+                throw ArithmeticException("BigInteger overflow")
+            }
             var n = ZERO
             val base = valueOf(radix.toLong())
             for (i in start until value.length) {
