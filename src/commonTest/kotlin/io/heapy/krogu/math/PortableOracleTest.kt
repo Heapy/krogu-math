@@ -4,6 +4,12 @@ import kotlin.test.*
 
 class PortableOracleTest {
     @Test fun jdk25BehaviorOnEveryPlatform() {
+        val powKeys = buildSet {
+            for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10))
+                for (power in listOf(0, 1, 10, 999999999)) for (mode in RoundingMode.entries)
+                    add(listOf("D", "pow", "1", power.toString(), precision.toString(), mode.name))
+        }
+        val observedPowKeys = mutableSetOf<List<String>>()
         for ((index, v) in oracleVectors().withIndex()) {
             val actual = try {
                 val result = evaluate(v)
@@ -18,13 +24,23 @@ class PortableOracleTest {
                 continue
             }
             val normalization = normalizationContractExpected(v)
-            val corrected = normalization ?: scaledDivisionContractExpected(v)
+            val pow = if (v[0] == "D" && v[1] == "pow" && v[2] == "1" && v.take(6) in powKeys) {
+                assertTrue(observedPowKeys.add(v.take(6)), "duplicate retained pow key ${v.take(6)}")
+                // Preserve the pinned JDK observation separately from exact 1^n = 1.
+                val overflow = v[3] != "0" && v[4].toLong() + v[3].length + 1 > Int.MAX_VALUE
+                assertEquals(if (overflow) "!IllegalArgumentException" else "1", v[6],
+                    "retained pow diagnostic ${v.take(6)}")
+                "1"
+            } else null
+            val corrected = pow ?: normalization ?: scaledDivisionContractExpected(v)
             if (normalization != null)
                 assertTrue(v[6].startsWith("!ArithmeticException"), "retained normalization diagnostic ${v.take(6)}")
             val normalized = if (corrected == "!ArithmeticException" && actual.startsWith("!ArithmeticException:"))
                 "!ArithmeticException" else actual
             assertEquals(corrected ?: v[6], normalized, "${v.take(6)} JDK diagnostic=${v[6]}")
         }
+        assertEquals(128, powKeys.size)
+        assertEquals(powKeys, observedPowKeys, "all original pow boundary observations remain represented")
     }
 
     private fun normalizationContractExpected(v: Array<String>): String? {

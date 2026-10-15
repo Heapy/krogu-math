@@ -502,9 +502,11 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val magnitude = if (n < 0) -n else n
         val exponentDigits = magnitude.toString().length
         if (exponentDigits > mc.precision) throw ArithmeticException("Invalid operation")
-        // The pinned JDK exposes MathContext's negative-precision failure when
-        // this Int sum wraps; this is not a decimal scale overflow.
-        val work = MathContext(mc.precision + exponentDigits + 1, mc.roundingMode)
+        // Every supported coefficient has fewer digits than Int.MAX_VALUE.
+        // Both this cap and a larger mathematical working precision therefore
+        // retain all its digits; an internal context must not wrap negative.
+        val workPrecision = minOf(mc.precision.toLong() + exponentDigits + 1, Int.MAX_VALUE.toLong()).toInt()
+        val work = MathContext(workPrecision, mc.roundingMode)
         var result = ONE
         val bits = 32 - magnitude.countLeadingZeroBits()
         for (i in bits - 1 downTo 0) {
@@ -552,11 +554,20 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val shift = 2L * scale - decimalScale
         val numerator = if (shift >= 0) coefficient.multiply(tenPow(shift)) else coefficient
         val denominator = if (shift < 0) tenPow(-shift) else BigInteger.ONE
-        var root = numerator.divide(denominator).sqrt()
-        val exact = root.multiply(root).multiply(denominator) == numerator
+        val qr = numerator.divideAndRemainder(denominator)
+        var root = qr[0].sqrt()
+        val delta = qr[0].subtract(root.multiply(root))
+        val exact = delta.signum() == 0 && qr[1].signum() == 0
         if (!exact) {
-            val midpoint = root.shiftLeft(1).add(BigInteger.ONE)
-            val half = numerator.shiftLeft(2).compareTo(midpoint.multiply(midpoint).multiply(denominator))
+            // n = q*d+r, a = floor(sqrt(q)), delta = q-a*a.
+            // The midpoint sign is sign((4*(delta-a)-1)*d+4*r).
+            // Unequal delta/a decides it; equality needs only r versus d/4.
+            val rootComparison = delta.compareTo(root)
+            val half = if (rootComparison != 0) rootComparison else {
+                val quarter = denominator.divideAndRemainder(BigInteger.valueOf(4))
+                val remainderComparison = qr[1].compareTo(quarter[0])
+                if (remainderComparison != 0) remainderComparison else -quarter[1].signum()
+            }
             if (increment(context.roundingMode, 1, half, root.testBit(0))) root = root.add(BigInteger.ONE)
         }
         return BigDecimal(root, scale).round(context).stripTo(preferred)

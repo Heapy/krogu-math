@@ -2,17 +2,27 @@ package io.heapy.krogu.math
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class DecimalPowerBoundaryTest {
-    @Test fun workingPrecisionOverflowMatchesJdkConstructorFailure() {
+    @Test fun workingPrecisionOverflowSeparatesReferenceObservationsFromRequiredValues() {
         fun outcome(block: () -> Any): String = try { block().toString() }
             catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
         for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10)) {
             for (power in listOf(0, 1, 10, 999999999)) for (mode in RoundingMode.entries) {
-                val expected = outcome { java.math.BigDecimal.ONE.pow(power,
+                val reference = outcome { java.math.BigDecimal.ONE.pow(power,
                     java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))) }
-                val actual = outcome { BigDecimal.ONE.pow(power, MathContext(precision, mode)) }
-                assertEquals(expected, actual, "precision=$precision power=$power mode=$mode")
+                // Keep all 128 reference values/errors, including exact messages,
+                // as diagnostics. They do not require an internal Int overflow.
+                println("POW_WORKING_PRECISION_REFERENCE\t1@0\t$precision\t$power\t$mode\t$reference")
+                val label = "precision=$precision power=$power mode=$mode"
+                val referenceOverflow = power != 0 &&
+                    precision.toLong() + power.toString().length + 1 > Int.MAX_VALUE
+                if (referenceOverflow) assertTrue(reference.startsWith("!IllegalArgumentException:"), label)
+                else assertEquals("1", reference, label)
+                val actual = BigDecimal.ONE.pow(power, MathContext(precision, mode))
+                assertEquals(BigInteger.ONE, actual.unscaledValue(), label)
+                assertEquals(0, actual.scale(), label)
             }
         }
     }

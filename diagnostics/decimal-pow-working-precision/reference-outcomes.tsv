@@ -1,0 +1,135 @@
+# schema=pow-working-precision-reference-v1; observed reference data, not a compatibility pass
+# XML b64b3906f5ca045b2df94957c8519e79a0f27aa044954000d1258f66f111822b /private/tmp/krogu-root526565525-validation-v1/xml-jvm/TEST-io.heapy.krogu.math.DecimalPowerBoundaryTest.xml
+# supplied_JAR_metadata_only daf2a13324f780b4b592e946c24dc601fc678d37f4954f0907fdbaea02674bdd /private/tmp/krogu-root526565525-validation-v1/artifacts/root-integration-fresh.jar
+# original_test 017338c7d11eba085c936692d67cadf49ef202746531dc49bdd70289003dc938 diagnostics/decimal-pow-working-precision/DecimalPowerBoundaryTest.before.kt.txt
+# revised_test f4ed1092214943950ad2ed7de82b89254130ab598a987b0cc988c4b50c4150e2 src/jvmTest/kotlin/io/heapy/krogu/math/DecimalPowerBoundaryTest.kt
+# auditor_runtime 25.0.4+9-LTS; test runtime/build origins require the separate execution ledger
+source	precision	exponent	mode	original_outcome
+1@0	2147483647	0	UP	1
+1@0	2147483647	0	DOWN	1
+1@0	2147483647	0	CEILING	1
+1@0	2147483647	0	FLOOR	1
+1@0	2147483647	0	HALF_UP	1
+1@0	2147483647	0	HALF_DOWN	1
+1@0	2147483647	0	HALF_EVEN	1
+1@0	2147483647	0	UNNECESSARY	1
+1@0	2147483647	1	UP	!IllegalArgumentException:Digits < 0
+1@0	2147483647	1	DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483647	1	CEILING	!IllegalArgumentException:Digits < 0
+1@0	2147483647	1	FLOOR	!IllegalArgumentException:Digits < 0
+1@0	2147483647	1	HALF_UP	!IllegalArgumentException:Digits < 0
+1@0	2147483647	1	HALF_DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483647	1	HALF_EVEN	!IllegalArgumentException:Digits < 0
+1@0	2147483647	1	UNNECESSARY	!IllegalArgumentException:Digits < 0
+1@0	2147483647	10	UP	!IllegalArgumentException:Digits < 0
+1@0	2147483647	10	DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483647	10	CEILING	!IllegalArgumentException:Digits < 0
+1@0	2147483647	10	FLOOR	!IllegalArgumentException:Digits < 0
+1@0	2147483647	10	HALF_UP	!IllegalArgumentException:Digits < 0
+1@0	2147483647	10	HALF_DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483647	10	HALF_EVEN	!IllegalArgumentException:Digits < 0
+1@0	2147483647	10	UNNECESSARY	!IllegalArgumentException:Digits < 0
+1@0	2147483647	999999999	UP	!IllegalArgumentException:Digits < 0
+1@0	2147483647	999999999	DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483647	999999999	CEILING	!IllegalArgumentException:Digits < 0
+1@0	2147483647	999999999	FLOOR	!IllegalArgumentException:Digits < 0
+1@0	2147483647	999999999	HALF_UP	!IllegalArgumentException:Digits < 0
+1@0	2147483647	999999999	HALF_DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483647	999999999	HALF_EVEN	!IllegalArgumentException:Digits < 0
+1@0	2147483647	999999999	UNNECESSARY	!IllegalArgumentException:Digits < 0
+1@0	2147483646	0	UP	1
+1@0	2147483646	0	DOWN	1
+1@0	2147483646	0	CEILING	1
+1@0	2147483646	0	FLOOR	1
+1@0	2147483646	0	HALF_UP	1
+1@0	2147483646	0	HALF_DOWN	1
+1@0	2147483646	0	HALF_EVEN	1
+1@0	2147483646	0	UNNECESSARY	1
+1@0	2147483646	1	UP	!IllegalArgumentException:Digits < 0
+1@0	2147483646	1	DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483646	1	CEILING	!IllegalArgumentException:Digits < 0
+1@0	2147483646	1	FLOOR	!IllegalArgumentException:Digits < 0
+1@0	2147483646	1	HALF_UP	!IllegalArgumentException:Digits < 0
+1@0	2147483646	1	HALF_DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483646	1	HALF_EVEN	!IllegalArgumentException:Digits < 0
+1@0	2147483646	1	UNNECESSARY	!IllegalArgumentException:Digits < 0
+1@0	2147483646	10	UP	!IllegalArgumentException:Digits < 0
+1@0	2147483646	10	DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483646	10	CEILING	!IllegalArgumentException:Digits < 0
+1@0	2147483646	10	FLOOR	!IllegalArgumentException:Digits < 0
+1@0	2147483646	10	HALF_UP	!IllegalArgumentException:Digits < 0
+1@0	2147483646	10	HALF_DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483646	10	HALF_EVEN	!IllegalArgumentException:Digits < 0
+1@0	2147483646	10	UNNECESSARY	!IllegalArgumentException:Digits < 0
+1@0	2147483646	999999999	UP	!IllegalArgumentException:Digits < 0
+1@0	2147483646	999999999	DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483646	999999999	CEILING	!IllegalArgumentException:Digits < 0
+1@0	2147483646	999999999	FLOOR	!IllegalArgumentException:Digits < 0
+1@0	2147483646	999999999	HALF_UP	!IllegalArgumentException:Digits < 0
+1@0	2147483646	999999999	HALF_DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483646	999999999	HALF_EVEN	!IllegalArgumentException:Digits < 0
+1@0	2147483646	999999999	UNNECESSARY	!IllegalArgumentException:Digits < 0
+1@0	2147483645	0	UP	1
+1@0	2147483645	0	DOWN	1
+1@0	2147483645	0	CEILING	1
+1@0	2147483645	0	FLOOR	1
+1@0	2147483645	0	HALF_UP	1
+1@0	2147483645	0	HALF_DOWN	1
+1@0	2147483645	0	HALF_EVEN	1
+1@0	2147483645	0	UNNECESSARY	1
+1@0	2147483645	1	UP	1
+1@0	2147483645	1	DOWN	1
+1@0	2147483645	1	CEILING	1
+1@0	2147483645	1	FLOOR	1
+1@0	2147483645	1	HALF_UP	1
+1@0	2147483645	1	HALF_DOWN	1
+1@0	2147483645	1	HALF_EVEN	1
+1@0	2147483645	1	UNNECESSARY	1
+1@0	2147483645	10	UP	!IllegalArgumentException:Digits < 0
+1@0	2147483645	10	DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483645	10	CEILING	!IllegalArgumentException:Digits < 0
+1@0	2147483645	10	FLOOR	!IllegalArgumentException:Digits < 0
+1@0	2147483645	10	HALF_UP	!IllegalArgumentException:Digits < 0
+1@0	2147483645	10	HALF_DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483645	10	HALF_EVEN	!IllegalArgumentException:Digits < 0
+1@0	2147483645	10	UNNECESSARY	!IllegalArgumentException:Digits < 0
+1@0	2147483645	999999999	UP	!IllegalArgumentException:Digits < 0
+1@0	2147483645	999999999	DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483645	999999999	CEILING	!IllegalArgumentException:Digits < 0
+1@0	2147483645	999999999	FLOOR	!IllegalArgumentException:Digits < 0
+1@0	2147483645	999999999	HALF_UP	!IllegalArgumentException:Digits < 0
+1@0	2147483645	999999999	HALF_DOWN	!IllegalArgumentException:Digits < 0
+1@0	2147483645	999999999	HALF_EVEN	!IllegalArgumentException:Digits < 0
+1@0	2147483645	999999999	UNNECESSARY	!IllegalArgumentException:Digits < 0
+1@0	2147483637	0	UP	1
+1@0	2147483637	0	DOWN	1
+1@0	2147483637	0	CEILING	1
+1@0	2147483637	0	FLOOR	1
+1@0	2147483637	0	HALF_UP	1
+1@0	2147483637	0	HALF_DOWN	1
+1@0	2147483637	0	HALF_EVEN	1
+1@0	2147483637	0	UNNECESSARY	1
+1@0	2147483637	1	UP	1
+1@0	2147483637	1	DOWN	1
+1@0	2147483637	1	CEILING	1
+1@0	2147483637	1	FLOOR	1
+1@0	2147483637	1	HALF_UP	1
+1@0	2147483637	1	HALF_DOWN	1
+1@0	2147483637	1	HALF_EVEN	1
+1@0	2147483637	1	UNNECESSARY	1
+1@0	2147483637	10	UP	1
+1@0	2147483637	10	DOWN	1
+1@0	2147483637	10	CEILING	1
+1@0	2147483637	10	FLOOR	1
+1@0	2147483637	10	HALF_UP	1
+1@0	2147483637	10	HALF_DOWN	1
+1@0	2147483637	10	HALF_EVEN	1
+1@0	2147483637	10	UNNECESSARY	1
+1@0	2147483637	999999999	UP	1
+1@0	2147483637	999999999	DOWN	1
+1@0	2147483637	999999999	CEILING	1
+1@0	2147483637	999999999	FLOOR	1
+1@0	2147483637	999999999	HALF_UP	1
+1@0	2147483637	999999999	HALF_DOWN	1
+1@0	2147483637	999999999	HALF_EVEN	1
+1@0	2147483637	999999999	UNNECESSARY	1
