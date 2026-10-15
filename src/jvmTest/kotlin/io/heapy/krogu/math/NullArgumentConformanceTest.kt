@@ -58,12 +58,20 @@ class NullArgumentConformanceTest {
         val counts = linkedMapOf<String, Int>()
         val examples = mutableListOf<String>()
         val zeroSqrtRows = mutableSetOf<String>()
+        val zeroDoubleRows = mutableSetOf<String>()
         var comparisons = 0
-        fun compare(key: String, label: String, reference: () -> Any?, implementation: () -> Any?, zeroSqrtText: String? = null) {
+        fun compare(key: String, label: String, reference: () -> Any?, implementation: () -> Any?,
+            zeroSqrtText: String? = null, zeroDoubleKey: String? = null) {
             comparisons++
             val expected = outcome(reference); val actual = outcome(implementation)
             if (zeroSqrtText != null) {
                 assertTrue(zeroSqrtRows.add(zeroSqrtText), "Duplicate zero/null receiver: $zeroSqrtText")
+                println("$key $label liveHost=$expected required=!NullPointerException actual=$actual")
+                assertEquals("!NullPointerException", actual, "$key $label public null contract; liveHost=$expected")
+                return
+            }
+            if (zeroDoubleKey != null) {
+                assertTrue(zeroDoubleRows.add(zeroDoubleKey), "Duplicate signed-zero/null constructor: $zeroDoubleKey")
                 println("$key $label liveHost=$expected required=!NullPointerException actual=$actual")
                 assertEquals("!NullPointerException", actual, "$key $label public null contract; liveHost=$expected")
                 return
@@ -77,9 +85,20 @@ class NullArgumentConformanceTest {
             for (ctor in jdk.constructors) {
                 val target = port.getConstructor(*ctor.parameterTypes.map { mappings[it] ?: it }.toTypedArray())
                 for (args in cases(ctor.parameterTypes)) {
+                    // Input-only selection: exact Double/context constructor and signed-zero bits.
+                    val zeroDoubleKey = if (jdk == JD::class.java &&
+                        ctor.parameterTypes.contentEquals(arrayOf(Double::class.javaPrimitiveType, JC::class.java)) &&
+                        args[1] == null) {
+                        when ((args[0] as Double).toRawBits()) {
+                            Long.MIN_VALUE -> "-0.0"
+                            0L -> "0.0"
+                            else -> null
+                        }
+                    } else null
                     compare("${jdk.simpleName}.new(${ctor.parameterTypes.joinToString { it.simpleName }})",
                         args.joinToString { canonical(it) },
-                        { ctor.newInstance(*args.toTypedArray()) }, { target.newInstance(*args.map(::adapt).toTypedArray()) })
+                        { ctor.newInstance(*args.toTypedArray()) }, { target.newInstance(*args.map(::adapt).toTypedArray()) },
+                        zeroDoubleKey = zeroDoubleKey)
                 }
             }
             val receivers: List<Any> = when (jdk) {
@@ -106,7 +125,9 @@ class NullArgumentConformanceTest {
         }
         assertEquals(setOf("0", "0.00"), zeroSqrtRows)
         assertEquals(2, zeroSqrtRows.size)
+        assertEquals(setOf("-0.0", "0.0"), zeroDoubleRows)
+        assertEquals(2, zeroDoubleRows.size)
         assertEquals(emptyMap(), counts, "$comparisons comparisons; discrepancies=$counts\n${examples.joinToString("\n")}")
-        println("$comparisons null/invalid-argument comparisons: ${comparisons - zeroSqrtRows.size} retained host comparisons, ${zeroSqrtRows.size} public null requirements")
+        println("$comparisons null/invalid-argument comparisons: ${comparisons - zeroSqrtRows.size - zeroDoubleRows.size} retained host comparisons, ${zeroSqrtRows.size + zeroDoubleRows.size} public null requirements")
     }
 }

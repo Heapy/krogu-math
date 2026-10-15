@@ -929,7 +929,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         }
         private fun roundedDouble(value: Double, mc: MathContext?): BigDecimal {
             val exact = fromDouble(value)
-            return if (exact.signum() == 0) exact else exact.round(mc ?: throw NullPointerException())
+            val context = mc ?: throw NullPointerException()
+            return if (exact.signum() == 0) exact else exact.round(context)
         }
         private fun tenPow(exponent: Long): BigInteger {
             if (exponent < 0) throw ArithmeticException("BigInteger overflow")

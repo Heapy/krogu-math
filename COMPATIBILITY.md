@@ -28,6 +28,8 @@ records the exact d0 candidate, four target gates, bounded time/allocation pilot
 and selected public campaign, retaining its PrimeTest failure and timing regressions.
 The separate [zero sqrt-null validation](docs/zero-sqrt-null-568-verification.md)
 records the null-contract repair and its own current execution evidence.
+The [Double zero/null validation](docs/zero-double-context-569-verification.md)
+records the constructor repair, retained JDK observations and fresh target/public gates.
 
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in

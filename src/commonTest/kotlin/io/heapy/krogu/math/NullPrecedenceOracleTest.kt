@@ -8,7 +8,9 @@ class NullPrecedenceOracleTest {
         val expected = nullPrecedenceExpected().iterator()
         // Retain these exact frozen observations; the public null contract requires NPE.
         val zeroSqrtObservations = mapOf("sqrt/null context 0" to "0", "sqrt/null context 0.00" to "0.0")
+        val zeroDoubleObservations = mapOf("double/null context -0.0" to "0", "double/null context 0.0" to "0")
         val selected = mutableSetOf<String>()
+        val selectedDoubles = mutableSetOf<String>()
         var count = 0
         fun verify(label: String, action: () -> Any?) {
             assertTrue(expected.hasNext(), "Oracle ended before $label")
@@ -17,6 +19,11 @@ class NullPrecedenceOracleTest {
             if (label in zeroSqrtObservations) {
                 assertTrue(selected.add(label), "Duplicate zero/null key: $label")
                 assertEquals(zeroSqrtObservations.getValue(label), observed, "Frozen observation: $label")
+                println("$label frozen=$observed required=!NullPointerException actual=$actual")
+                assertEquals("!NullPointerException", actual, "$count: $label public null contract")
+            } else if (label in zeroDoubleObservations) {
+                assertTrue(selectedDoubles.add(label), "Duplicate signed-zero/null key: $label")
+                assertEquals(zeroDoubleObservations.getValue(label), observed, "Frozen observation: $label")
                 println("$label frozen=$observed required=!NullPointerException actual=$actual")
                 assertEquals("!NullPointerException", actual, "$count: $label public null contract")
             } else assertEquals(observed, actual, "$count: $label")
@@ -29,8 +36,15 @@ class NullPrecedenceOracleTest {
             verify("null exponent $a,$m") { BigInteger.valueOf(a).modPow(null, BigInteger.valueOf(m)) }
         for (text in listOf("", "-", "1.0", "1E+", "NaN", "0", "1", "-1", "UP", "HALF_EVEN", "precision=7 roundingMode=UP"))
             verify("string/null context [$text]") { BigDecimal(text, null) }
-        for (d in listOf(Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, -0.0, 0.0, 0.1, 1.0))
-            verify("double/null context $d") { BigDecimal(d, null) }
+        for (d in listOf(Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, -0.0, 0.0, 0.1, 1.0)) {
+            // Keep the signed-zero input keys stable across platform Double formatting.
+            val label = when (d.toRawBits()) {
+                Long.MIN_VALUE -> "double/null context -0.0"
+                0L -> "double/null context 0.0"
+                else -> "double/null context $d"
+            }
+            verify(label) { BigDecimal(d, null) }
+        }
         for (text in listOf("", "0", ".", "1.00"))
             verify("chars/null context [$text]") { BigDecimal(text.toCharArray(), null) }
         for (text in listOf("", "0", ".", "1.00")) for (off in integers) for (len in integers)
@@ -45,7 +59,9 @@ class NullPrecedenceOracleTest {
         assertEquals(3462, count)
         assertEquals(zeroSqrtObservations.keys, selected)
         assertEquals(2, selected.size)
-        assertEquals(3460, count - selected.size)
+        assertEquals(zeroDoubleObservations.keys, selectedDoubles)
+        assertEquals(2, selectedDoubles.size)
+        assertEquals(3458, count - selected.size - selectedDoubles.size)
         assertFalse(expected.hasNext(), "Unconsumed oracle outcomes")
     }
 }
