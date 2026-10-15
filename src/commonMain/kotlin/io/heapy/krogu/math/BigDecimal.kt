@@ -576,14 +576,28 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             return if (rounded.decimalScale < targetScale) rounded.setScaleValue(targetScale, RoundingMode.UNNECESSARY) else rounded
         }
         // A subclass can report a positive sign for a stored zero.
-        if (coefficient.signum() == 0) {
+        val coefficientSign = coefficient.signum()
+        if (coefficientSign == 0) {
             precision()
             return BigDecimal(BigInteger.ZERO, preferred)
         }
         val exponent = adjustedExponent()
         val rootExponent = if (exponent < 0) (exponent - 1) / 2 else exponent / 2
-        val scale = checkedScale(context.precision.toLong() - 1 - rootExponent)
-        val shift = 2L * scale - decimalScale
+        val workingScale = context.precision.toLong() - 1 - rootExponent
+        val shift = 2L * workingScale - decimalScale
+        // Keep the original reported-precision route for misleading metadata.
+        // On the stored-value route a rejected materialization bound selects
+        // raw scratch, never a new public precision/coefficient range limit.
+        if (coefficientSign > 0 && shift > 0 && context.precision > Int.MAX_VALUE / 8) {
+            val digits = storedPrecision()
+            if (exponent == digits.toLong() - decimalScale - 1 &&
+                !DecimalSquareRoot579.canMaterialize(digits, shift, workingScale)) {
+                val result = DecimalSquareRoot579.normalized(coefficient, shift,
+                    context.precision, workingScale, preferred, context.roundingMode)
+                return BigDecimal(result.first, result.second)
+            }
+        }
+        val scale = checkedScale(workingScale)
         val numerator = if (shift >= 0) coefficient.multiply(tenPow(shift)) else coefficient
         val denominator = if (shift < 0) tenPow(-shift) else BigInteger.ONE
         val qr = numerator.divideAndRemainder(denominator)

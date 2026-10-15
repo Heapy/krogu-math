@@ -645,6 +645,16 @@ trailing zeros across all eight rounding modes. This argument assumes valid
 scale/intermediate sizes and ordinary methods; it does not establish the whole
 scale-overflow or subclass-dispatch behavior of sqrt.
 
+The later [inexact-normalization construction](docs/sqrt-normalization-579-implementation.md)
+removes the unsupported doubled working radicand for ordinary supported results.
+It streams decimal pairs into private paged root/remainder/trial buffers, rounds
+and normalizes before final public range checks. Its cheap precision gate proves
+the old path safe where retained; it imposes no smaller precision cap. The
+[separate verification](docs/sqrt-normalization-579-verification.md) records1501
+actual local method executions across JVM/JS/Wasm/macOS ARM64. The giant symbolic
+witness was not executed; matching-head CI, broader subtype and resource gates
+remain separate.
+
 ## Decimal powers and working precision
 
 The public [pow contract](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html#pow(int,java.math.MathContext))

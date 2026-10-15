@@ -17,7 +17,7 @@ prove every integer operation, runtime or platform implementation.
 | Own source | SHA-256 |
 | --- | --- |
 | `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `e4dc75b253c689b0f3c634f02f9e491c9a1dcfae396a11135be4427c69ce7b68` |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt` | `08b4329ea5e902f1043107d42ddb02592be537497f6b0990927e8c67c4ed3f29` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt` | `4ab8f15b10f2aa2093e4e04e2a7e4aa6226a7230be24dead3bbe75bcde9e5cc5` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/DoubleFormatting.kt` | `9b2a1b8cb1d40a2fdc7db5110b6a8c4e398da0562d5c3d6b02cf928f3c74433f` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/FloatFormatting.kt` | `ba55514c181e52f20ed63fcb2634621f66cea3cc4db084e77cf2df71d1dcf77e` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/NumericExtensions.kt` | `20fdf7c5c76ed4207c03859b4cb60247a16e2ec4337ee674c3a85ce6101e5123` |
@@ -43,6 +43,12 @@ only toString(radix) and its private helper for bases2/4/8/16/32. Conversion and
 division methods remain unchanged; canonical decimal and prefix text follows
 the existing base10 path. The table binds that successor without changing the
 numerical argument or relabelling historical conversion CI.
+
+The subsequent [inexact sqrt normalization](sqrt-normalization-579-verification.md)
+changes only sqrt's normalization branch and adds a separate internal helper.
+Every conversion and its digit/prefix/division leaves remain byte-for-byte
+unchanged. The table binds that successor; the conversion proof is unchanged,
+and the new local campaign is recorded separately from historical conversion CI.
 
 Assume canonical immutable stored magnitudes, exact integer arithmetic and
 decimal digit/prefix/formatting primitives, valid fixed contexts, and successful

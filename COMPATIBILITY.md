@@ -58,6 +58,10 @@ The separate [zero sqrt-null validation](docs/zero-sqrt-null-568-verification.md
 records the null-contract repair and its own current execution evidence.
 The [Double zero/null validation](docs/zero-double-context-569-verification.md)
 records the constructor repair, retained JDK observations and fresh target/public gates.
+The later [inexact sqrt normalization](docs/sqrt-normalization-579-verification.md)
+records the private-workspace range repair and1501 completed local method
+executions. Its giant boundary witness is symbolic; supported matching-head CI,
+general resource work and broader power/dispatch audits remain separate.
 The [integer arithmetic and bit audit report](docs/integer-audits-544-545-verification.md)
 records the later test-only integration, four local target gates and all six CI
 jobs passing on published commit60aea413, including actual Linux ARM64 execution.

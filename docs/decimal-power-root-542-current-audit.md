@@ -1,5 +1,12 @@
 # Current decimal power/root domain audit (542)
 
+This records the pre579 source snapshot below. The subsequent
+[inexact-root repair and local verification](sqrt-normalization-579-verification.md)
+address its concrete scaled-radicand obstruction; supported matching-head CI
+remains a separate gate. The conditional contextual-product leaf now has its
+own [580 source witness](decimal-context-product-580-audit.md). The original
+audit and its symbolic, unexecuted witness remain historical evidence.
+
 The first remaining concrete obstruction is **inexact sqrt's scaled radicand**,
 not the repaired working-precision, finite-root or midpoint defects.
 `BigDecimal("2").sqrt(MathContext(400000000, DOWN))` reaches an unsupported
