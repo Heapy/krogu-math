@@ -11,7 +11,10 @@ subsequently completed **12 PASS / 0 FAIL / 128 SKIP**, including full retained
 SymmetricRangeTests completion in34835ms under its original180s/8GiB limit.
 The configured union is 106 regular + 12 large = 118 public baseline/port IDs
 across separately identified artifacts/runs, not official JCK or an all-input
-proof. Normal CI at exact80987 remains a separate pending audit. The accepted580
+proof. [Normal CI at exact80987 failed105/1/46](public-math-80987-regular-failure-559.md):
+port SquareRootTests exceeded its original120-second deadline, while baseline
+passed and the six other workflow jobs succeeded. Its same-source large pass
+does not remove this failure or establish the exact stalled input/cause. The accepted580
 source/JAR has both [local verification and the later hosted large milestone](decimal-context-product-580-verification.md#later-hosted-large-milestone-exact80987);
 this does not combine older regular results into a same-source118 pass. Task `local:559`
 acceptance remains a parent gate, with historical failures and exclusions intact.

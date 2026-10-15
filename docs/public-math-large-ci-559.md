@@ -744,8 +744,13 @@ metadata corrections.
 | Read-only capsule including parent review | `9afb7b39b006d345225af06eb4520b8773e5b362d094313749cb4b5129c9c69f` |
 
 The capsule is `/private/tmp/krogu-80987-large-ci-capsule-v1/evidence.tar`.
-Normal CI at exact80987 remains a separate pending audit; older regular runs
-are not rebound to this JAR and no same-source combined118 pass is claimed.
+The later completed [normal CI audit at exact80987](public-math-80987-regular-failure-559.md)
+records105 PASS /1 FAIL /46 SKIP: port SquareRootTests timed out at120066ms
+under its unchanged120s/512MiB bound; baseline passed in222ms. The six other
+workflow jobs succeeded. Producer/consumer/local580 JARs match this48614577
+artifact, but this large pass does not remove the normal failure. The exact
+stalled input and cause remain unestablished. Older regular runs are not rebound
+to this JAR and no same-source combined118 pass is claimed.
 This is configured public-harness large coverage, not official JCK or an
 all-input proof. The public-test/runtime revision mismatch and broader
 range/rounding/dispatch/Number/JS gates remain separate. This documentation

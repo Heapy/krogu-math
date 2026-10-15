@@ -119,6 +119,18 @@ multiplication's exact-product obstruction.
 
 ## Limits and remaining gates
 
+The latest [normal80987 hosted audit](public-math-80987-regular-failure-559.md)
+also records105 PASS /1 FAIL /46 SKIP, with port SquareRootTests timing out
+at120066ms and baseline passing in222ms under the unchanged120s/512MiB regime.
+Its source225/JAR48614577 includes the later580 contextual-product integration;
+the accepted same-source large12/0/128 pass does not remove this failure or
+establish the exact stopped input/cause. A separate initial local marked-test
+locator attempt compiled its outer supervisor but stopped at a sandbox
+ProcessHandle.descendants sysctl permission error; its direct child exited143
+and inner run-new was absent. It supplies no marked-test outcome. Exact retained
+failure and locator pins are in the linked audit; this does not revise the
+earlier local579 milestone below.
+
 Later actual hosted evidence: exact1b9 normal run38783134507 completed with six
 jobs SUCCESS and the public job FAILURE. Its complete ledger is105 PASS,1 FAIL,
 46 SKIP; port SquareRootTests timed out at120113ms under its original120s/512MiB
