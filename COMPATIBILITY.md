@@ -66,6 +66,14 @@ records six additional common methods, four accepted local target gates and
 the remaining full-domain/dispatch proof limits. All six matching-head CI jobs
 pass on published de5, including the actual314-method Linux ARM64 runtime.
 
+The later [consolidated public OpenJDK campaign](docs/public-math-consolidated-559.md)
+passed106 baseline/controlled-port invocations with0 failures and46 declared
+coverage skips on the current-production ded66 JAR. It covers the unfiltered
+standard, serialization, heavy and512MiB profiles through the frozen b730 harness;
+the subsequent CI entrypoint requires separate hosted evidence. Larger resource
+profiles, explicit adaptation losses and the full Kotlin/domain contract remain
+outside this finite success. This is not official JCK certification.
+
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in
 [Decimal scale contract](docs/decimal-scale-contract.md).

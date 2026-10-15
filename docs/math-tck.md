@@ -1,11 +1,13 @@
 # Public OpenJDK math harness
 
 This harness uses public OpenJDK tests and is separate from official JCK/TCK
-access or certification. Executable runner code has passed a selective host/port
-smoke run; broader campaigns and final review remain open. Task `local:559`
-remains `in_progress`. Code-only comment1753 was superseded by execution grant
-**1772** after560's terminal release and parent integration. This worker has run
-no Gradle/Native build.
+access or certification. The [consolidated campaign](public-math-consolidated-559.md)
+completed106 baseline/port invocations with0 failures and46 explicit coverage
+skips across the four profiles through512MiB. Larger profiles and exact-commit
+hosted [public-suite CI](public-math-ci-559.md) remain separate evidence.
+Task `local:559` remains `in_progress` pending those acceptance checks.
+The historical first smoke run followed execution grant1772, superseding
+code-only comment1753 after560's terminal release and parent integration.
 
 ## Metadata preparation
 

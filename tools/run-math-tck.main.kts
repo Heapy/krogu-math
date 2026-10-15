@@ -25,7 +25,7 @@ val options = linkedMapOf<String, String>()
 var argumentIndex = 1
 while (argumentIndex < args.size) {
     val name = args[argumentIndex++]
-    require(name in setOf("--port-jar", "--profiles", "--max-heap-mib", "--os-memory-gib", "--execution-grant", "--tests", "--allow-owned-timeout-cleanup")) { "Unknown option: $name" }
+    require(name in setOf("--port-jar", "--profiles", "--max-heap-mib", "--os-memory-gib", "--execution-grant", "--ci-execution", "--tests", "--allow-owned-timeout-cleanup")) { "Unknown option: $name" }
     require(name !in options) { "Duplicate option: $name" }
     options[name] = if (name == "--allow-owned-timeout-cleanup") "true" else {
         require(argumentIndex < args.size) { "Missing value: $name" }
@@ -33,17 +33,45 @@ while (argumentIndex < args.size) {
     }
 }
 val execute = mode in setOf("--baseline", "--port", "--both")
+val ciExecution = options["--ci-execution"]?.let { attestation ->
+    require(execute && "--execution-grant" !in options) { "CI and parent-comment execution attestations are mutually exclusive" }
+    fun environment(name: String) = requireNotNull(System.getenv(name)) { "Missing CI environment: $name" }
+    require(environment("GITHUB_ACTIONS") == "true") { "--ci-execution requires GitHub Actions" }
+    val runId = environment("GITHUB_RUN_ID").also { require(it.matches(Regex("[1-9][0-9]*"))) }
+    val sha = environment("GITHUB_SHA").also { require(it.matches(Regex("[0-9a-f]{40}"))) }
+    require(attestation == "$runId:$sha") { "CI attestation must equal GITHUB_RUN_ID:GITHUB_SHA" }
+    val repository = environment("GITHUB_REPOSITORY").also { require(it.matches(Regex("[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+"))) }
+    val attempt = environment("GITHUB_RUN_ATTEMPT").also { require(it.matches(Regex("[1-9][0-9]*"))) }
+    val workflowRef = environment("GITHUB_WORKFLOW_REF").also {
+        require(it.startsWith("$repository/.github/workflows/ci.yml@") && it.substringAfterLast('@').isNotBlank())
+    }
+    val workflowSha = environment("GITHUB_WORKFLOW_SHA").also { require(it.matches(Regex("[0-9a-f]{40}"))) }
+    val workflow = environment("GITHUB_WORKFLOW").also { require(it.isNotBlank()) }
+    require(File(environment("GITHUB_WORKSPACE")).canonicalFile == root) { "CI must execute from the checked-out workspace" }
+    require(environment("GITHUB_JOB") == "public-math") { "CI attestation is reserved for the public-math job" }
+    mapOf("provider" to "github-actions", "runId" to runId, "runAttempt" to attempt, "sourceCommit" to sha,
+        "repository" to repository, "workflow" to workflow,
+        "workflowRef" to workflowRef, "workflowSha" to workflowSha,
+        "job" to environment("GITHUB_JOB"), "attestation" to attestation)
+}
 if (execute) {
-    val grant = options["--execution-grant"].orEmpty()
-    require(grant.matches(Regex("[0-9]+")) && grant != "1753") { "Explicit parent execution-grant comment ID required; comment1753 is CODE-ONLY" }
+    if (ciExecution == null) {
+        val grant = options["--execution-grant"].orEmpty()
+        require(grant.matches(Regex("[0-9]+")) && grant != "1753") { "Explicit parent execution-grant comment ID required; comment1753 is CODE-ONLY" }
+    }
     require(options["--allow-owned-timeout-cleanup"] == "true") { "Execution requires authorization for timeout cleanup of this runner's own child processes" }
     require(KotlinVersion.CURRENT.toString() == "2.4.21") { "Kotlin 2.4.21 required" }
 }
 val profiles = (options["--profiles"] ?: "standard,serialization").split(',').toSet()
 require(profiles.isNotEmpty() && profiles.all { it in setOf("standard", "serialization", "heavy", "memory-512m", "large-memory-4g", "large-memory-8g", "large-memory-10g") })
 val maxHeapMiB = (options["--max-heap-mib"] ?: "512").toInt().also { require(it > 0) }
-val osMemoryGiB = (options["--os-memory-gib"] ?: "0").toDouble().also { require(it >= 0 && it.isFinite()) }
-if (execute) require(osMemoryGiB > 0) { "Parent-approved actual OS memory capacity is required" }
+val memoryArgument = options["--os-memory-gib"] ?: "0"
+val autoMemory = if (memoryArgument == "auto") mathMemorySnapshot().also { require(it.getValue("totalBytes") > 0) { "Observed physical memory unavailable" } } else null
+val osMemoryGiB = (autoMemory?.getValue("totalBytes")?.let { it.toDouble() / (1024.0 * 1024 * 1024) }
+    ?: memoryArgument.toDouble()).also { require(it >= 0 && it.isFinite()) }
+if (execute) require(osMemoryGiB > 0) { "Positive observed or parent-declared actual OS memory capacity is required" }
+if (ciExecution != null) require(mode == "--both" && "--tests" !in options && memoryArgument == "auto" && maxHeapMiB == 512 &&
+    profiles == setOf("standard", "serialization", "heavy", "memory-512m")) { "CI attestation only covers the complete public 512MiB profile selection" }
 check(File(root, ".gitignore").readLines().contains("build/")) { "build/ must be ignored" }
 check(work.toPath().startsWith(File(root, "build").canonicalFile.toPath()))
 work.mkdirs()
@@ -201,6 +229,7 @@ val report = linkedMapOf<String, Any?>(
     "metadataJvm" to mapOf("version" to System.getProperty("java.runtime.version"), "vendor" to System.getProperty("java.vendor")),
     "os" to mapOf("name" to System.getProperty("os.name"), "arch" to System.getProperty("os.arch")),
     "mode" to mode, "preparedSources" to prepared, "testsExecuted" to 0,
+    "memoryInput" to memoryArgument, "autoMemorySnapshot" to autoMemory, "ciExecution" to ciExecution,
     "results" to mapOf("PASS" to 0, "FAIL" to 0, "SKIP" to 0, "NOT_RUN" to manifest.count { it["runner"] != "none" }),
     "files" to inventory,
     "dependencies" to dependencies, "plan" to planned,
@@ -228,7 +257,8 @@ if (execute) {
     val results = mutableListOf<Map<String, Any?>>()
     val metadata = linkedMapOf<String, Any?>(
         "schema" to 1, "phase" to "public-tests-execution", "officialJck" to false,
-        "executionGrantComment" to options["--execution-grant"], "upstreamCommit" to revision, "tag" to tag,
+        "executionGrantComment" to options["--execution-grant"], "ciExecution" to ciExecution,
+        "memoryInput" to memoryArgument, "autoMemorySnapshot" to autoMemory, "upstreamCommit" to revision, "tag" to tag,
         "runtimeRelease" to release, "kotlin" to "2.4.21", "gradle" to "9.8.1",
         "os" to report["os"], "declaredOsMemoryGiB" to osMemoryGiB, "grantedMaxHeapMiB" to maxHeapMiB,
         "profiles" to profiles.toList(), "seed" to 559L, "BigIntegerTestSubset" to 0, "SymmetricRangeTestsSubset" to 0,
