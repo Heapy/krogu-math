@@ -236,10 +236,10 @@ Parent generation session 93225 and check session 39678 both exited 0 using the
 frozen mapper `78869800…`, its four pinned source files, a 512MiB script heap and
 a fresh isolated compiled-script cache. Independent read-only actual review
 accepted the evidence. All 75,728 compact data records and their six-column
-header stayed byte-identical; only the bounded metadata changed. The current
-publication-workspace TSV is v4, SHA-256
+header stayed byte-identical; only the bounded metadata changed. The TSV
+adopted at that v4 milestone had SHA-256
 `f8f797e79d706fbed221e3ec73f77778f1f952a938d071e972983ffb45098927`.
-It has exactly nine status bindings: eight required error types, one reference-only
+It had exactly nine status bindings: eight required error types, one reference-only
 value prefix and 75,719 unresolved statuses; every archival block remains.
 
 The [actual validation record](decimal-context-value1-policy-526.md#root2300-actual-metadata-validation)
@@ -247,6 +247,51 @@ gives full source/log hashes and retained v3 evidence. This was metadata-only
 validation: no mathematical test or old public-JDK oracle rerun. Adoption was
 not yet committed or pushed at this documentation handoff; root owns publication
 and CI. Fixtures, evaluators and assertions remain unchanged.
+
+### Historical source-only v5 class preparation
+
+The source-only mapper constructed one bounded class from inputs: source
+texts `0.00`, `10.50`, `-10.50`; source modes `delegate`, `sign-first`,
+`sign-second`, `precision`; divisor text `2.0`, null divisor, unlimited non-null
+context and all eight roundings. Its 96 VALUE bindings include D07457 and add
+95 reference-only classifications under the same public null-rejection argument.
+Historical exact override acceptance of null and its returned `7.00` are
+contract-breaking replacement behavior. The direct entry remains
+`enter -> super.divide(null, unlimitedContext)`; later exact forwarding is
+diagnostic, not required. Latent throwing modes do not waive inherited contracts.
+
+Full frozen rows, 24 NPE controls and exact D/C/mode/kind/051-or-055 masks are
+guarded after input-only selection. All other logical fields and compact payload
+bytes stay protected. Expected v5 counts are eight required errors, 96
+reference-only values and 75,624 unresolved statuses (57,997 VALUE / 17,627 ERROR),
+with every archival block. The then-adopted v4 TSV remained unchanged during
+that preparation: eight required / one reference-only / 75,719 unresolved.
+The successor was **UNCOMPILED/UNRUN** at that milestone; no script, compiler,
+helper, test, probe, numerical operation or metadata validation ran during its
+source preparation. This is not family closure or a JDK bug claim.
+The [class preparation record](decimal-context-value1-policy-526.md#historical-source-only-v5-class-preparation)
+gives exact formulas, excluded boundary cases and the then-pending parent gates.
+
+### Root2310: accepted actual v5 metadata validation
+
+Generation session 36380 and check session 47559 both exited 0 with frozen
+mapper `37f861df…`, its four unchanged input pins, a 512MiB heap and fresh
+isolated cache. Independent actual review accepted the evidence. The current
+adopted TSV is v5, SHA-256
+`8d9c9bfb5657b684b19e76dcc5b21176f94fa7601e753ced84f3748760d3fd43`.
+All 75,728 compact rows and their six-column header stayed byte-identical to
+v4. Its 104 STATUS records bind eight unchanged required errors and 96
+reference-only values (24 mask051 / 72 mask055), including D07457, hence 95
+new classifications. There remain 75,624 unresolved statuses (57,997 VALUE /
+17,627 ERROR) and all 75,728 archival blocks. The metadata correspondence still
+has 3,000 controls and 11,472 class-mask checks.
+
+The [actual validation record](decimal-context-value1-policy-526.md#root2310-accepted-actual-v5-metadata-validation)
+preserves exact logs/diff/pins and v4 evidence. No production or public-JDK
+numerical evaluation or tests ran; fixtures, evaluator and assertions stayed
+unchanged. Local calls are terminal and the mutex released under Root2311.
+Hosted CI for the new mapper remains pending. This finite metadata result
+does not complete the family or authorize archival.
 
 ## Reproduction and verification
 

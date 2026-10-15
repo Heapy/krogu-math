@@ -12,6 +12,9 @@ completion of the 75,728-row family.
 
 ## Exact binding and unchanged contracts
 
+This section records the accepted v4 one-row policy. The later v5 class
+extension and its actual metadata validation are recorded below.
+
 Only `D07457 C0625 M01 M06 V 051` gains the logical
 `old_value_or_error_status` value
 `REFERENCE_CONTRACT_BREAKING_EXACT_OVERRIDE_RESULT`. D07457 is zero-based frozen
@@ -122,6 +125,9 @@ poisoned value/error statuses or authorize archival.
 
 ## Root2300 actual metadata validation
 
+This retained record describes the earlier v4 adoption; current v5 actual
+validation is recorded in Root2310 below.
+
 Parent generation session **93225 exited 0**, followed by check session
 **39678 exiting 0**, with the pinned Kotlin 2.4.21/JDK 25.0.4+9 tooling,
 512MiB script heap and fresh isolated compiled-script cache. The frozen mapper
@@ -164,3 +170,165 @@ The original v3 artifact and earlier readonly predecessor snapshot remain intact
 At this documentation handoff adoption is not yet committed or pushed; root
 owns subsequent CI, commit and publication. This documentation update itself
 performed only source/evidence reads, hashing and the three owned text edits.
+
+## Historical source-only v5 class preparation
+
+This later finite source-only scope replaced individual-row transcription with
+one independently constructed input class. The prepared v5 mapper was
+**UNCOMPILED/UNRUN** at that milestone: no script, compiler, helper, certificate,
+probe, numerical operation, test or build ran during its preparation. No TSV
+was generated or edited. The then-adopted TSV remained v4, SHA-256
+`f8f797e79d706fbed221e3ec73f77778f1f952a938d071e972983ffb45098927`,
+with eight required / one reference-only / 75,719 unresolved statuses. The
+accepted v4 execution above did not validate the successor. Its separately
+accepted actual execution is recorded below.
+
+Before editing, the accepted v4 mapper and all three docs were copied into the
+unique write-bit-removed snapshot
+`/private/tmp/krogu-526-value96-source-predecessor-r0K17F/`. Its `SHA256SUMS`
+hash is `77341fa457083a5bd5afd7ff67a39c4708d08f1befceebe43b8fe90eb46b8404`.
+Preserved mapper SHA-256 is `78869800d0823040e165e8adb62bf25ee10f2fe91cd5e87f538cc43cf5658b0e`;
+the docs are `2d04c32de6948de138d008487f5863b74f47764245fb3c1931e36f80c656a374`,
+`9b416bbeeb1dc90ae64a43d90c40129484d982630d92c3efcb0f6e5fd25bb365`
+and `123832e2d83ae39d023fc41348b861bb5587ba25c9e14f4d13830f35b45145a0`.
+Parent identifies current local provenance as `c373…` and published provenance
+as `495cb…`; neither is a claim that v5 has been published or executed.
+
+### Input construction and exact guards
+
+Use these independently ordered dimensions, matching the pinned generator's
+null-input loop, not any recorded outcome:
+
+| Dimension | Values in index order |
+|---|---|
+| `s` | `0.00`, `10.50`, `-10.50` |
+| `m` | `delegate`, `sign-first`, `sign-second`, `precision` |
+| `r` | `UP`, `DOWN`, `CEILING`, `FLOOR`, `HALF_UP`, `HALF_DOWN`, `HALF_EVEN`, `UNNECESSARY` |
+| Fixed fields | divisor text `2.0`; divisor mode `null`; context precision `0` |
+
+For every `s=0..2`, `m=0..3`, `r=0..7`, the one-based numeric stable IDs are:
+
+```text
+D = 7457 + 192*s + 48*m + r
+C = 625 + 32*s + r
+source mode ID = M01/M02/M03/M04 according to m
+divisor mode ID = M06
+old kind = V
+mask = 051 when m=0, otherwise 055
+```
+
+The source also scans frozen input fields only and requires that this predicate
+denote exactly the constructed D list in order. It then checks the full old
+seven-field row, including exact `7.00:2|A.exact-null;`, and full six-field
+control, including exact `!NullPointerException`. Outcomes and traces are
+checked evidence, never selectors. It checks 96 unique D IDs and 24 C IDs, each
+used four times. The three control ranges are C0625–C0632, C0657–C0664 and
+C0689–C0696. D07457/C0625 retains its accepted tuple.
+
+Both logical construction and compact decoding require the full input, source
+mode, null divisor, VALUE kind and exact compact tuple. Mask `051` preserves
+poisoned getters, null divisor and invoked replacement; `055` additionally
+preserves latent throwing metadata. Neither mask has null-context, inconsistent
+metadata or recorded-message bits. The STATUS dictionary is exactly the original
+eight unchanged required ERROR tuples followed by these 96 VALUE tuples in
+constructed order. The existing fixture, generator and migrated evaluator pins
+are unchanged; historical `2ed00a5d…` remains provenance only. The unchanged
+payload guard must still refuse any six-column header/data byte change, and
+the decoder must still recover every one of the 19 logical fields.
+
+### Contract argument and excluded boundaries
+
+This generalizes the accepted D07457 argument, not a rule that every poisoned
+subclass is unconstrained. The public null-object-argument contract supplies
+NPE. The historical nullable exact override instead returns `7.00` for null;
+that replacement therefore violates the underlying exact-divide null contract
+for every input in this class. Changing the source text, a latent source
+getter mode or the non-null context's rounding mode does not repair that
+violation. The 24 ordinary/truthful controls retain NPE. The class's recorded
+entry is explicitly `enter -> super.divide(null, unlimitedContext)`, not an
+explicit one-argument override call. Its later `A.exact-null;` is an internal
+forwarding observation, never a required callback or absence of other calls.
+Well-typed direct caller-owned override entry/result/exception controls remain
+independent. The user's non-null input and permitted Kotlin override-migration
+policy does not require current common code to accept null. All class inputs
+remain selected for task575's Java explicit-super NPE replay; no assertion is
+changed or newly claimed to have run here.
+
+These boundaries prevent trace-only or name-only expansion:
+
+- Context precision `-1` means a null context and is excluded, even for the same
+  receiver/null divisor. Precision `2` is a finite context and is excluded.
+- Source mode `precision` is M04 with a latent throwing getter. It is distinct
+  from the context precision field `0`, and from replacement mode `precision:0`;
+  the latter is not a class member.
+- Non-null divisor mode `delegate` and self aliases are excluded even if an old
+  result is `7.00` or a trace includes `.exact;`. Non-null exact replacements
+  require their own numerical/contract analysis.
+- Other source/divisor texts, probe modes, contextual operations and explicit
+  one-argument null calls are excluded. No other API's null behavior or
+  mathematical return is classified by this construction.
+
+### Conditional counts and later parent gates
+
+The class has **96 total** VALUE bindings, including D07457, so adds **95**
+reference-only statuses to adopted v4. Conditional v5 totals are eight required
+ERROR statuses, 96 reference-only VALUE statuses and **75,624 unresolved**:
+58,093 old values minus 96 = 57,997 unresolved VALUE statuses; 17,635 old errors
+minus eight = 17,627 unresolved ERROR statuses. Source checks enforce these
+counts. All 75,728 rows retain `BLOCKED_UNRESOLVED_FIELDS`; trace/message/identity,
+canonical control, explicit caller control, modes, flags and keys remain intact.
+
+These are source-derived expectations, not metadata or mathematical results.
+Running v5 `--check` against the preserved v4 TSV would differ; no such
+pre-generation run is claimed. Root owned independent source review and a
+separately granted isolated generation/check, exact payload comparison, artifact
+hashes, actual review and adoption. No full-family resolution or archival
+permission follows from this finite preparation.
+
+## Root2310: accepted actual v5 metadata validation
+
+Generation session **36380 exited 0**, followed by check session **47559 exiting
+0**, using pinned Kotlin 2.4.21/JDK 25.0.4+9, a 512MiB heap and a fresh isolated
+compiled-script cache. Mapper SHA-256 remained
+`37f861df762f4b5dc0959b7f4d060edd0f75cf8722d77e0f726e86bf0ac1b12e`;
+the dispatch fixture `88fc3c5b…`, control fixture `1245d75e…`, migrated evaluator
+`bb61d3f8…` and historical generator `0d9e9b11…` remained unchanged at the full
+pins recorded above. No production or public-JDK numerical evaluation, tests,
+fixture/evaluator/assertion changes were performed in this metadata run.
+
+Evidence root: `/private/tmp/krogu-526-value96-validation-WGZEul/`.
+
+| Artifact | SHA-256 |
+|---|---|
+| `evidence/generate.log` | `717dbd87f141b9a4b498c8ca7ee47d60e8e76099db390d13ab862ee367c6ab64` |
+| `evidence/check.log` | `22d10bfc763bdf98d60dcba919009120373045294ec875861b6089e86551aa69` |
+| `evidence/v4-v5.diff` | `12e6ffc5407587c9deec5be9ecfa0996184848ab2a74f7a5c89203169c52fd6b` |
+| Preserved `evidence/v4-original.tsv` | `f8f797e79d706fbed221e3ec73f77778f1f952a938d071e972983ffb45098927` |
+| Current adopted v5 TSV | `8d9c9bfb5657b684b19e76dcc5b21176f94fa7601e753ced84f3748760d3fd43` |
+
+Independent actual review accepted the evidence, bounded dictionary and exact
+payload comparison (exit 0). All **75,728 compact rows** and their six-column
+header stayed byte-identical to v4, retaining all keys and flags. Exactly 104
+STATUS bindings comprise the original eight required ERROR tuples and 96
+reference-only VALUE tuples: 24 mask051 and 72 mask055. D07457 is included,
+therefore **95 statuses are new** relative to v4. There remain **75,624
+unresolved statuses** (57,997 VALUE / 17,627 ERROR), with all **75,728 archival
+blocks**. The lossless 19-field mapping retains 3,000 controls and 11,472
+class-mask correspondence checks. These are metadata checks, not a new run of
+11,472 mathematical tests.
+
+Root adopted the exact v5 TSV hash in the publication workspace. Root2311
+records that all local invocations are terminal and mutex `cfc74…` was released
+(empty mutex revision 776). Hosted CI for the new mapper remains pending; this
+record makes no hosted acceptance, full-family completion or archival claim.
+
+Before this text-only actual update, the prepared mapper and all three docs
+were preserved write-bit-removed at
+`/private/tmp/krogu-526-value96-docs-before-actual-E8Kvbu/`, manifest SHA-256
+`0f2727346b77b38ce1363838bba7e3d77b6c5c7ca53f0ddde37cc291a44eff5c`.
+The three prepared docs had SHA-256 `e4f197ff567f92799ebf3d2bec0cff1e5153305fa2c6f7490c05c01d382b7d7a`,
+`6221fd30ccfa740ad0a6d48aebdd958f4301f925a0316c0a2592fc8fe82d2004`
+and `6b503c1a6c82dfcc56c8876e63c8e5b7f8556f9771ada092bd85259c2d6e1b23`.
+This documentation update read evidence and hashes and edited only these three
+docs. It ran no scripts, compiler, helper, probe, tests or numerical work and
+changed no mapper, TSV or input. Parent owns final review and publication.

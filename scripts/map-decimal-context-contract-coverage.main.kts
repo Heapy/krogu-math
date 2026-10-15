@@ -102,18 +102,39 @@ val replacementStatus = "REFERENCE_CONTRACT_BREAKING_EXACT_OVERRIDE_RESULT"
 val unresolvedStatus = "UNRESOLVED_POISONED_INTERACTION"
 check(requiredNullRows.size == 8 && requiredNullRows.values.map { it.rounding }.toSet() == roundings)
 check(requiredNullRows.values.map { it.controlId }.toSet().size == 8)
-// One reviewed VALUE binding only. Full generator hash above binds the historical nullable ContextProbe.
-val replacementCompact = listOf("D07457", "C0625", "M01", "M06", "V", "051")
-val replacementInput = listOf("0.00", "2.0", "null", "0", "UP")
-val replacementFrozen = listOf("0.00", "2.0", "delegate", "null", "0", "UP", "7.00:2|A.exact-null;")
-val replacementControl = replacementInput + "!NullPointerException"
-check(frozen[7456] == replacementFrozen && controls[624] == replacementControl)
-check(ids.getValue(replacementInput) == replacementCompact[1])
-check(replacementCompact[0] !in requiredNullRows)
+// Bounded input construction, not outcome selection. The generator pin binds the historical nullable override.
+data class ReplacementBinding(val compact: List<String>, val input: List<String>, val frozen: List<String>, val control: List<String>)
+val replacementSources = listOf("0.00", "10.50", "-10.50")
+val replacementModes = listOf("delegate", "sign-first", "sign-second", "precision")
+val replacementRoundings = listOf("UP", "DOWN", "CEILING", "FLOOR", "HALF_UP", "HALF_DOWN", "HALF_EVEN", "UNNECESSARY")
+check(replacementRoundings.toSet() == roundings)
+val replacementRows = linkedMapOf<String, ReplacementBinding>()
+for ((s, source) in replacementSources.withIndex()) for ((m, mode) in replacementModes.withIndex())
+    for ((r, rounding) in replacementRoundings.withIndex()) {
+        val oldIndex = 7456 + 192 * s + 48 * m + r
+        val controlIndex = 624 + 32 * s + r
+        val oldId = "D${(oldIndex + 1).toString().padStart(5, '0')}"
+        val controlId = "C${(controlIndex + 1).toString().padStart(4, '0')}"
+        val input = listOf(source, "2.0", "null", "0", rounding)
+        val oldRow = listOf(source, "2.0", mode, "null", "0", rounding, "7.00:2|A.exact-null;")
+        val control = input + "!NullPointerException"
+        val compactRow = listOf(oldId, controlId, "M${(m + 1).toString().padStart(2, '0')}", "M06", "V", if (m == 0) "051" else "055")
+        check(frozen[oldIndex] == oldRow && controls[controlIndex] == control)
+        check(ids.getValue(input) == controlId)
+        check(oldId !in requiredNullRows && replacementRows.put(oldId, ReplacementBinding(compactRow, input, oldRow, control)) == null)
+    }
+check(replacementRows.size == 96)
+check(replacementRows.values.groupingBy { it.compact[1] }.eachCount().let { it.size == 24 && it.values.all { uses -> uses == 4 } })
+check(replacementRows.getValue("D07457").compact == listOf("D07457", "C0625", "M01", "M06", "V", "051"))
+// Verify that the source-input predicate denotes exactly the constructed class; never select by old value/trace.
+check(frozen.withIndex().filter { (_, row) -> row[0] in replacementSources && row[1] == "2.0" &&
+    row[2] in replacementModes && row[3] == "null" && row[4] == "0" && row[5] in replacementRoundings }
+    .map { "D${(it.index + 1).toString().padStart(5, '0')}" } == replacementRows.keys.toList())
 fun outcomeStatus(oldId: String, controlId: String, input: List<String>, sourceMode: String, divisorMode: String, kind: String): String {
-    if (oldId == replacementCompact[0]) {
-        check(controlId == replacementCompact[1] && input == replacementInput &&
-            sourceMode == "delegate" && divisorMode == "null" && kind == "VALUE") {
+    val replacement = replacementRows[oldId]
+    if (replacement != null) {
+        check(controlId == replacement.compact[1] && input == replacement.input &&
+            sourceMode == replacement.frozen[2] && divisorMode == "null" && kind == "VALUE") {
             "Reviewed exact-replacement input/control/modes/kind changed: $oldId"
         }
         check(expectedByKey.getValue(input) == "!NullPointerException")
@@ -167,13 +188,14 @@ val mapped = frozen.mapIndexed { index, row ->
 }
 check(mapped.all { it.size == columns.size && it.none { value -> '\t' in value || '\n' in value || value.isEmpty() } })
 check(mapped.filter { it[12] == requiredNullStatus }.map { it[0] }.toSet() == requiredNullRows.keys)
-check(mapped.filter { it[12] == replacementStatus }.map { it[0] } == listOf(replacementCompact[0]))
+check(mapped.filter { it[12] == replacementStatus }.map { it[0] } == replacementRows.keys.toList())
 check(mapped.all { it[12] == when (it[0]) {
     in requiredNullRows -> requiredNullStatus
-    replacementCompact[0] -> replacementStatus
+    in replacementRows -> replacementStatus
     else -> unresolvedStatus
 } })
-check(mapped.groupingBy { it[12] }.eachCount() == mapOf(requiredNullStatus to 8, replacementStatus to 1, unresolvedStatus to 75719))
+check(mapped.groupingBy { it[12] }.eachCount() == mapOf(requiredNullStatus to 8, replacementStatus to 96, unresolvedStatus to 75624))
+check(mapped.filter { it[12] == unresolvedStatus }.groupingBy { it[11] }.eachCount() == mapOf("VALUE" to 57997, "ERROR" to 17627))
 check(uses.size == 3000 && uses.values.all { it > 0 } && uses.values.sum() == 75728)
 check(counts == mapOf("mapped_rows" to 75728, "inconsistent_metadata" to 57576,
     "throwing_metadata_only" to 7248, "consistent_metadata" to 10904, "old_error" to 17635, "old_value" to 58093))
@@ -213,8 +235,9 @@ fun decode(compactRow: List<String>): List<String> {
     val status = outcomeStatus(compactRow[0], compactRow[1], control.take(5), sourceMode, divisorMode, kind)
     if (compactRow[0] in requiredNullRows)
         check(compactRow.drop(2) == listOf("M01", "M01", "E", "009")) { "Reviewed null-argument modes/kind/mask changed" }
-    if (compactRow[0] == replacementCompact[0])
-        check(compactRow == replacementCompact) { "Reviewed exact-replacement compact binding changed" }
+    replacementRows[compactRow[0]]?.let { binding ->
+        check(compactRow == binding.compact) { "Reviewed exact-replacement compact binding changed" }
+    }
     return compactRow.take(2) + control.take(5) + listOf(sourceMode, divisorMode,
         expected, if (expected.startsWith('!')) "NOT_APPLICABLE" else "CANONICAL_TEXT:${compactRow[1]}",
         kind, status, "REFERENCE_OBSERVATION",
@@ -235,16 +258,16 @@ fun validateCompact(compactRows: List<List<String>>) {
 validateCompact(compact)
 val statusHeaderRecords = requiredNullRows.map { (oldId, binding) ->
     listOf(oldId, binding.controlId, "M01", "M01", "E", "009", requiredNullStatus)
-} + listOf(replacementCompact + replacementStatus)
+} + replacementRows.values.map { it.compact + replacementStatus }
 fun validateStatusHeaders(text: String) {
     val records = text.lineSequence().filter { it.startsWith("# STATUS ") }
         .map { it.removePrefix("# STATUS ").split(' ') }.toList()
-    check(records == statusHeaderRecords) { "STATUS dictionary differs from the exact eight ERROR and one VALUE bindings" }
+    check(records == statusHeaderRecords) { "STATUS dictionary differs from the exact eight ERROR and 96 VALUE bindings" }
 }
 val generated = buildString {
     appendLine("# SPDX-License-Identifier: Apache-2.0")
-    appendLine("# Schema: context-contract-coverage-v4; six compact columns plus bounded STATUS dictionary, lossless recovery of 19 logical fields")
-    appendLine("# Predecessor mapper SHA-256 e94afbc73c76202fcc7c1453f809df5ba659237f1d5acfb97928889ccd316497 (reviewed v3 source, not the current mapper digest)")
+    appendLine("# Schema: context-contract-coverage-v5; six compact columns plus bounded STATUS dictionary, lossless recovery of 19 logical fields")
+    appendLine("# Predecessor mapper SHA-256 78869800d0823040e165e8adb62bf25ee10f2fe91cd5e87f538cc43cf5658b0e (accepted v4 source, not the current mapper digest)")
     appendLine("# Historical pre-non-null-migration evaluator SHA-256 $historicalEvaluatorSha256 src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt (provenance only; current source verified separately below)")
     for ((path, hash) in evidence) appendLine("# SHA-256 $hash $path")
     appendLine("# Stable IDs: D = 1-based frozen row; C = 1-based first-occurrence five-field projection")
@@ -256,9 +279,10 @@ val generated = buildString {
     appendLine("# Logical fields: ${columns.joinToString(",")}")
     appendLine("# Policy old_value_or_error_status=STATUS override for its exact D/C/mode/kind/mask binding, else UNRESOLVED_POISONED_INTERACTION; old_trace_status=REFERENCE_OBSERVATION")
     appendLine("# Status meaning: REQUIRED_NULL_ARGUMENT_CONTRACT requires exception TYPE only; trace/message/noncalls/identity are not promoted to requirements")
-    appendLine("# Status meaning: REFERENCE_CONTRACT_BREAKING_EXACT_OVERRIDE_RESULT classifies only D07457's old value prefix; C0625 still requires NullPointerException; no inherited forwarding requirement or general unsupported status")
-    appendLine("# Exact replacement D07457 frozen fields: ${replacementFrozen.joinToString("\\t")}")
-    appendLine("# Exact replacement C0625 control fields: ${replacementControl.joinToString("\\t")}; historical nullable probe source is bound by generator SHA-256")
+    appendLine("# Status meaning: REFERENCE_CONTRACT_BREAKING_EXACT_OVERRIDE_RESULT classifies only the 96 exact null-divisor/unlimited-context VALUE bindings; their 24 controls still require NullPointerException; no inherited forwarding requirement or general unsupported status")
+    appendLine("# Replacement input class: sources=${replacementSources.joinToString(",")}; source modes=${replacementModes.joinToString(",")}; divisor=2.0; divisor mode=null; precision=0; all eight rounding modes")
+    appendLine("# Replacement bindings: D=7457+192*s+48*m+r; C=625+32*s+r; source mode=M(m+1); divisor mode=M06; kind=V; mask=051 if m=0 else 055; indices s=0..2,m=0..3,r=0..7 in listed order")
+    appendLine("# Replacement full outcome checked, never selected: 7.00:2|A.exact-null;; control outcome=!NullPointerException; historical nullable probe source is bound by generator SHA-256")
     appendLine("# Policy old_message_status=REFERENCE_OBSERVATION if MESSAGE_RECORDED else NOT_RECORDED; runtime_identity_status=NOT_OBSERVED")
     appendLine("# Policy required_canonical_text_control=CANONICAL_TEXT:C-id for a successful control, else NOT_APPLICABLE")
     appendLine("# Policy unresolved_interactions=ordered FLAG names present except MESSAGE_RECORDED")
@@ -269,7 +293,7 @@ val generated = buildString {
     appendLine("# Test extensions/verification are separate; this manifest does not certify them")
     appendLine("# Internal order/count/noncalls/forwarding and diagnostic wording are observations; runtime class/cache/result identity are not measured")
     appendLine("# Unresolved poisoned value/error interactions block archival; bad unused getters never blanket-waive inherited contracts")
-    appendLine("# Status boundary: exactly eight required null-argument error types and one reference exact-override value prefix; 75719 other value/error statuses unresolved; every row stays blocked for archival")
+    appendLine("# Status boundary: exactly eight required null-argument error types and 96 reference exact-override value prefixes; 75624 other value/error statuses unresolved (57997 VALUE,17627 ERROR); every row stays blocked for archival")
     appendLine(compactColumns.joinToString("\t"))
     compact.forEach { appendLine(it.joinToString("\t")) }
 }
@@ -292,5 +316,5 @@ if ("--check" in args) {
 } else target.writeText(generated)
 println("${if ("--check" in args) "Verified" else "Generated"} ${mapped.size} frozen row mappings to ${ids.size} controls; $maskChecks valid class-mask checks")
 println("Required correspondence: 2475 value/scale/canonical-text controls; 429 arithmetic-error controls; 96 null-error controls")
-println("Old observations: ${counts.getValue("old_value")} values; ${counts.getValue("old_error")} errors; ${requiredNullRows.size} exact null-argument error types required; 1 exact contract-breaking override value prefix reference-only; ${mapped.size - requiredNullRows.size - 1} poisoned value/error statuses unresolved; all ${mapped.size} rows blocked for archival")
+println("Old observations: ${counts.getValue("old_value")} values; ${counts.getValue("old_error")} errors; ${requiredNullRows.size} exact null-argument error types required; ${replacementRows.size} exact contract-breaking override value prefixes reference-only; ${mapped.size - requiredNullRows.size - replacementRows.size} poisoned value/error statuses unresolved; all ${mapped.size} rows blocked for archival")
 println("All bound hashes, schemas, ordered projection, counts, control coverage and 19-field lossless decoding verified; no production math or JDK arithmetic evaluated")
