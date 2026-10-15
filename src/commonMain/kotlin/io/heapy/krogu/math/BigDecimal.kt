@@ -992,7 +992,10 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             val qr = numerator.divideAndRemainder(denominator)
             if (qr[1].signum() == 0) return qr[0]
             val sign = numerator.signum() * denominator.signum()
-            val half = qr[1].abs().shiftLeft(1).compareTo(denominator.abs())
+            val remainder = qr[1].abs()
+            val divisor = denominator.abs()
+            // For 0 < r < d, compare(2r, d) = compare(r, d-r); both operands fit.
+            val half = remainder.compareTo(divisor.subtract(remainder))
             return if (increment(mode, sign, half, qr[0].testBit(0))) qr[0].add(BigInteger.valueOf(sign.toLong())) else qr[0]
         }
         private fun roundTiny(sign: Int, mode: RoundingMode): BigInteger =

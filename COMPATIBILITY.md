@@ -73,6 +73,11 @@ oversized normalization intermediates in their reviewed routes. Their fresh
 four-target campaigns completed1538 and1559 method executions respectively,
 with no failures or skips. The separate residual-product obstruction583,
 maximum-size resource assumptions and broader range/dispatch audits remain open.
+The [midpoint refinement](docs/scaled-division-midpoint-584-proof.md) compares
+the remainder with its complement instead of constructing twice the remainder,
+so that an unnecessary midpoint temporary cannot reject a supported result.
+Its giant range witness is symbolic; fresh local results are recorded separately
+in the [584 verification report](docs/scaled-division-midpoint-584-verification.md).
 The [integer arithmetic and bit audit report](docs/integer-audits-544-545-verification.md)
 records the later test-only integration, four local target gates and all six CI
 jobs passing on published commit60aea413, including actual Linux ARM64 execution.

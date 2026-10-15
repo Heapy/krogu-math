@@ -17,7 +17,7 @@ prove every integer operation, runtime or platform implementation.
 | Own source | SHA-256 |
 | --- | --- |
 | `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `66bb59deeeceb4f664681f99ddacc490c3054b5c42c539d3b8a3a44ed2ddb7c2` |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt` | `00e392444ce4b13122ec6dcb7ccbee357b437da1e6554cc78876e909346c1599` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt` | `a925bf9144044fe23e4bb618b6777b7f2f90d1f591d9a0856f3651bcaaaf3e50` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/DoubleFormatting.kt` | `9b2a1b8cb1d40a2fdc7db5110b6a8c4e398da0562d5c3d6b02cf928f3c74433f` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/FloatFormatting.kt` | `ba55514c181e52f20ed63fcb2634621f66cea3cc4db084e77cf2df71d1dcf77e` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/NumericExtensions.kt` | `20fdf7c5c76ed4207c03859b4cb60247a16e2ec4337ee674c3a85ce6101e5123` |
@@ -69,6 +69,14 @@ adds a separate unlimited-integral seam and private bridge/raw helper. Conversio
 methods, digit/prefix extraction and the existing integer-division leaves remain
 unchanged. The table binds that source without changing this argument or
 relabelling earlier conversion CI; its fresh local evidence is recorded separately.
+
+The subsequent [midpoint refinement](scaled-division-midpoint-584-proof.md)
+changes one shared rounding leaf: comparison of `2r` with `d` becomes comparison
+of `r` with `d-r`, for `0<r<d`. The relations are identical, including ties, and
+both new operands fit whenever the denominator fits. The conversion assembly,
+digit/prefix extraction and integer-division leaves stay unchanged; the ratio
+argument below binds the refined midpoint operation. Earlier conversion CI
+retains its original source and scope.
 
 Assume canonical immutable stored magnitudes, exact integer arithmetic and
 decimal digit/prefix/formatting primitives, valid fixed contexts, and successful
@@ -191,15 +199,16 @@ comparison selects the correct one. The grid quantum is fixed at `2^-149` or
 `BigDecimal.roundedDivide` uses exact quotient/remainder and
 HALF_EVEN. Its public pair call is on newly created base integers and reaches
 the same current task530 both-output kernel. A zero remainder returns exactly;
-otherwise comparison of twice the full remainder with the positive denominator
-and quotient parity handles every tie class.
+otherwise the exact comparison of the remainder with denominator minus remainder,
+followed by quotient parity, handles every tie class.
 
 The task562 bound keeps final rational intermediates below 8192 bits. One
 conservative check is that a coefficient of at most 1094 digits and a power
 of at most 1493 decimal places give pre-alignment magnitudes below 5976 bits
 using `10<2^4`; binary alignment adds at most 1074 bits, and the half comparison
-one further bit. Initial exponent comparisons align to the larger operand's
-bit length rather than adding two arbitrary operand lengths. These are small
+uses magnitudes no larger than its denominator. Initial exponent comparisons
+align to the larger operand's bit length rather than adding two arbitrary
+operand lengths. These are small
 mathematical magnitudes, not a claim about all internal allocation behavior.
 
 The rounded significand fits Long and converts exactly to Double. Multiplication
