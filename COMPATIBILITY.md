@@ -104,8 +104,13 @@ separate attempt, explicit adaptation losses and the full Kotlin/domain contract
 remain outside this finite success. This is not official JCK certification.
 The later [e36 large-profile campaign](docs/public-math-large-e36-verification-559.md)
 passed12 invocations with0 failures and128 declared skips on its exact234-source
-checkout. Its separately running normal CI and the later583 source are outside
-that large-only result.
+checkout. The [same-source normal campaign](docs/public-math-e36-regular-559.md)
+subsequently passed106 invocations with0 failures and47 explicit skips; together
+their disjoint PASS sets cover all59 retained primary plans in both phases.
+The13 omitted port calls/phases remain explicit losses, and this is not official
+JCK certification. The [supported-platform audit](docs/e36-supported-platform-verification.md)
+records5,233 successful method executions across13 target instances, with iOS
+device compilation separate. Later583 and585 sources are outside those e36 results.
 The subsequent [f58 large-profile campaign](docs/public-math-large-f58-verification-559.md)
 also passed12 invocations with0 failures and128 declared skips, now bound to the
 exact236-source checkout and the same391b73 own JAR as local583 validation.
@@ -117,6 +122,10 @@ rounding of an oversized exact sum and exact cancellation of an oversized
 aligned term can have supported final coefficients. The current addition path
 can reject those intermediates first. Its maximum-size witnesses are symbolic,
 not executed JDK failures;541/P1 and548 remain open pending the repair.
+Separate task586 records the earlier stickyAt equality obstruction: a nonzero
+D-digit coefficient is below10^D, so its zero quotient can be selected without
+constructing that unsupported divisor. Both585 and586 still require integrated
+source/runtime acceptance; their symbolic witnesses are not execution claims.
 
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in
