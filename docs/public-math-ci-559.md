@@ -124,9 +124,11 @@ The harness only marks `complete=true` after its full result loop finishes.
 An `always()` upload step requests the ignored `build/math-tck/` evidence workspace,
 verified input JAR/commit/checksums and campaign log, named
 `public-math-evidence-${{ github.sha }}-${{ github.run_attempt }}`. This includes
-pinned downloaded test sources, generated/baseline sources, dependency POMs
-and notices, inventory, result JSON, caller dumps, stdout/stderr,
+pinned downloaded test sources, generated/baseline sources, dependency POMs,
+inventory, result JSON, caller dumps, stdout/stderr,
 class-load logs, framework reports and nested-child evidence when produced.
+Dependency-notice text is also intended evidence; the historical omission and
+prepared directory-name correction are recorded below.
 The artifact also retains the exact `tools/math-tck/` directory and entrypoint,
 including the GPL-2.0 text, licensing/provenance notes, source/dependency locks,
 adapters, runner and Java harness sources, plus this CI contract document.
@@ -204,6 +206,8 @@ log audit, not another local numerical-test execution.
 
 Independent read-only actual review accepted the run/source/artifact bindings,
 all result IDs/counts/guards, source/license packaging and ARM evidence.
+The later notice audit below narrows that packaging acceptance: it did not
+establish preservation of extracted dependency notices.
 All local helper/compiler calls are terminal and the local mutex was released.
 
 An important remaining boundary is visible in the actual memory metadata:
@@ -226,3 +230,58 @@ a5ad51d84ed49718ebc3ff18f34d51579fbb59e1af9e964c6489d992512333fb  final-run.json
 7b7d3a7ab578cbfccb3fb1ad617606d61f1c36a6392ede1bdbaf4e6566076d19  arm.raw.log
 bf64dfe291893100a574499832296f6854dbeb93fbf9783e5ef8abab3292647a  arm-audit.log
 ```
+
+## Dependency-notice omission and source-only correction
+
+Later read-only inspection found that the eaa artifact and the regular
+870575e6 artifact retain the top-level GPL text, `LICENSING.md`, exact sources,
+locks and dependency POMs, but **not the extracted dependency-notice tree**.
+The executed entrypoint wrote `notices/<dependency>.jar/entries.json` and
+numbered text files. The workflow's `!build/math-tck/**/*.jar` exclusion removed
+those `.jar`-named directories along with actual JAR binaries. Earlier artifact
+descriptions must not be read as complete dependency-notice preservation.
+The old artifacts, hashes, numerical outcomes and adverse packaging evidence
+remain unchanged.
+
+The prepared source correction changes only the directory name to
+`notices/<dependency>.jar.notices/`. Each child is still `entries.json` or a
+numbered `.txt` file; neither that directory nor its children ends in `.jar` or
+`.class`, so the existing binary exclusions no longer select this notice tree.
+The parent name derives from the same validated, pinned dependency basename;
+adding the fixed `.notices` suffix adds no path separator or traversal. ZIP
+entry names remain metadata only, never output paths. Dependency checksums,
+selected entries, text bytes, tests, flags, deadlines and binary exclusions do
+not change.
+
+The source preparation was **UNCOMPILED/UNRUN**; actual extraction is recorded
+below and hosted upload preservation remains pending. No compiled test/framework binaries are newly
+included. The frozen pre-edit entrypoint `11e5ddd8…` and both reports were
+preserved read-only at `/private/tmp/krogu-559-notice-source-before-IWZu4n/`.
+The historical regular870 metadata audit is retained at
+`/private/tmp/krogu-870-regular-ci-evidence-v1/REPORT.md`, SHA-256
+`ec096b20b2fa230bbd84d264f6cb8d5a18eefb9a967aa7529f1ba39b17f47e4f`;
+its public results remain 106 PASS / 0 FAIL / 46 SKIP, with the notice omission
+explicitly unresolved by that run. No historical artifact is relabeled as
+containing the future correction.
+
+Root2306 subsequently ran one metadata-only `--prepare` in the fresh isolated
+`/private/tmp/krogu-notice559-validation-jhPGz0/root`, using the exact c373789
+tools archive plus only the corrected entrypoint (`8383d062…`). Kotlin2.4.21
+and Liberica25.0.4 ran with a 256MiB heap and fresh script cache. Session91146
+exited0:57 pinned public TEST sources and14 dependency records verified,
+53 generated sources prepared, no javac/Gradle/math test invocation.
+
+Actual extraction produced seven `.jar.notices` directories, seven JSON indices
+and ten text files. All ten text files match their exact pinned ZIP entries
+byte-for-byte. Four archives have empty matching-entry indices; no missing
+notice text is invented for them. None of the17 output paths has a `.jar` or
+`.class` path segment. The existing upload exclusions therefore do not select
+this tree, but actual hosted preservation still needs inspection of a new
+artifact. The entrypoint hash remained unchanged; the compiler invocation and
+all owned calls are terminal and the sole local window was explicitly released.
+
+The retained prepare log is `7010f02548206d9bff5f42969ba8819e5a90bc37fa87c2cad1a8dc9007d578f3`;
+the metadata audit is `a29b7441e0aaf743351d1735a9e5356a08bc4dd6016dc268cf5d9a0ad62ea13f`.
+An initial JavaScript orchestration cell had an invalid regex and executed no
+calls; the preparation script was not repeated. This metadata validation is
+neither a new numerical test result nor repair of an old hosted artifact.

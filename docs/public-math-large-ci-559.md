@@ -198,7 +198,7 @@ An outer cancellation can leave incomplete evidence and never implies a pass.
 
 An `always()` upload requests `public-math-large-evidence-${{ github.sha }}-${{ github.run_attempt }}`
 containing the ignored math workspace's exact upstream/generated/baseline test
-sources, dependency POMs/notices, inventory, JSON results, stdout/stderr,
+sources, dependency POMs, inventory, JSON results, stdout/stderr,
 class-load logs, framework XML and caller dumps. It also includes the verified
 own input JAR/source/checksum records, campaign log, exact math tooling/locks,
 GPL text/licensing/provenance and this contract document. Explicit exclusions
@@ -207,6 +207,8 @@ the existing combined dependency/test-binary distribution boundary. The own
 Apache library input JAR is separate and retained. The temporary compiled-script
 cache is outside all uploaded paths. Startup failures may have only partial
 evidence; `always()` cannot guarantee upload after infrastructure/job termination.
+Dependency-notice text is also intended evidence, but the historical directory
+name was excluded; see the source-only packaging correction below.
 
 This is a controlled public OpenJDK test harness, not official JCK or a new
 whole-corpus/full-domain acceptance. Existing vendor/test-revision disclosures
@@ -290,6 +292,8 @@ contains 273 files, including exact sources, locks, GPL text/licensing, logs,
 caller dumps, inventory and results. There is no JAR or class file under its
 math workspace, and no compiled-script cache. Its only JAR is the separate own
 Apache library input, preserving the reviewed packaging boundary.
+This binary-exclusion check did not establish dependency-notice preservation;
+the later packaging correction below records the missing notice tree.
 
 The retained evidence root is `/private/tmp/krogu-870-large-ci-evidence-v1`.
 This audit read only downloaded bytes and metadata; it ran no compiler, script,
@@ -409,6 +413,8 @@ There is no JAR or class file under `build/math-tck` and no compiled-script
 cache. Its only JAR is the separate own Apache library input. Dependency JAR
 contents are not redistributed or inspected by this audit; retained POMs and
 lock metadata record the dependency provenance.
+The extracted dependency-notice tree is absent; the later source-only
+correction below does not change this historical artifact.
 
 Evidence is retained at `/private/tmp/krogu-88ef-large-ci-evidence-v1`.
 This audit read existing bytes and appended only this report section; it ran
@@ -432,3 +438,33 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  port/StringCon
 8c3429822512c039dca32d0cc52035b75ed8081dde90c22825c0da4182fbfa19  port/SymmetricRangeTests/test.stdout.log
 792c0bd066eb800e1dac920505c2d708a3c5e7c347ad4f3e549337dd5b76dc3b  port/SymmetricRangeTests/test.stderr.log
 ```
+
+## Dependency-notice omission and source-only correction
+
+Read-only inspection of both retained large evidence artifacts (870575e6 and
+88ef6235) found their GPL text, `LICENSING.md`, exact sources/locks, raw results
+and dependency POMs, but no extracted dependency-notice tree. The executed
+entrypoint used `notices/<dependency>.jar/`, which the unchanged
+`!build/math-tck/**/*.jar` exclusion removed as a directory. Source notices
+retained inside test sources are distinct from those missing dependency notice
+files. Earlier preparation descriptions of intended dependency-notice uploads
+are not proof of actual preservation; historical results and artifact hashes
+remain intact.
+
+The separately prepared one-line source change writes instead to
+`notices/<dependency>.jar.notices/`, retaining `entries.json` and numbered text
+files beneath it. The pinned validated basename and fixed suffix contain no
+new separator/traversal; ZIP entry names are not used as output paths. The new
+directory and its text children do not match either binary exclusion, while
+dependency/test JARs and `.class` files stay excluded. Extraction selection,
+dependency hashes, tests, flags and deadlines are unchanged.
+
+This correction was **SOURCE-ONLY, UNCOMPILED/UNRUN** at preparation. Root2306
+then validated actual extraction in one isolated metadata-only `--prepare`:
+seven directories/indices and ten text files, all ten exact ZIP-entry byte
+comparisons passing, with no excluded `.jar`/`.class` output path segment.
+The entrypoint remains `8383d062…`; no Java test compiler or numerical harness
+ran. Actual hosted notice preservation remains a separate gate. The old artifacts are not repaired or
+relabeled. The [regular CI correction](public-math-ci-559.md#dependency-notice-omission-and-source-only-correction)
+records the shared pre-edit snapshot, actual metadata hashes/limits and the
+historical regular870 audit.

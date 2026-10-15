@@ -217,7 +217,7 @@ for (dependency in dependencies) {
     check(digest(dependency.getValue("officialAlgorithm"), bytes) == dependency.getValue("officialChecksum")) { "Official dependency checksum mismatch: $path" }
     if (file.extension == "jar" && mode != "--verify") ZipFile(file).use { zip ->
         val entries = zip.entries().asSequence().filter { !it.isDirectory && !it.name.endsWith(".class") && Regex("(?i)license|notice|copyright").containsMatchIn(it.name) }.toList()
-        val notices = File(work, "notices/${file.name}").apply { mkdirs() }
+        val notices = File(work, "notices/${file.name}.notices").apply { mkdirs() }
         File(notices, "entries.json").writeText(json(entries.mapIndexed { index, entry -> mapOf("entry" to entry.name, "file" to "$index.txt") }))
         for ((index, entry) in entries.withIndex()) File(notices, "$index.txt").writeBytes(zip.getInputStream(entry).use { it.readBytes() })
     }
