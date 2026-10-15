@@ -82,3 +82,12 @@ controls and separately records16 fresh diagnostic calls concerning the
 two-argument constructor's scale wording. Integer primitive/range/allocation
 assumptions, the wording classification under526 and the complete constructor
 inventory remain open; this does not close the broad549 obligation.
+
+The [byte-constructor representation proof](integer-byte-constructor-549-proof.md)
+covers arbitrary accepted stable slices, unsigned and two's-complement values,
+30-bit packing/carry bounds, sign validation and post-return array isolation.
+It also proves the effective-byte-count guard does not prematurely reject a
+required-range magnitude; actual trimmed bit length is checked separately.
+Independent source review accepted this argument against the recorded source
+hashes. It adds no runtime or maximal-allocation evidence and leaves the
+separate548 obligations and complete549 inventory open.
