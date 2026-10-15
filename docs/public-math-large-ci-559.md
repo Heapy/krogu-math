@@ -556,3 +556,87 @@ no speedup claim or full public/domain/JCK acceptance follows.
 | Original Symmetric TEST source | `da79e08429dc3072acb25e75d161943ae5cda872c7d183c487b33633039bc8a5` |
 | Port Symmetric stdout | `97153617b84fb72026ed6feb03013d8bad99658cea81b9e5d1a15662fce58130` |
 | Port Symmetric stderr (empty) | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+
+## Actual hosted success: 35086 original large invocations
+
+[Run38776732952](https://github.com/Heapy/krogu-math/actions/runs/38776732952),
+attempt1, succeeded at exact commit
+`35086ecf44b72618449575510bfb5b45fe4ded57`. Producer116566215748 and
+consumer116566721588 both succeeded. The actual ledger has **12 PASS / 0 FAIL /
+128 SKIP**: six original large invocations on the baseline and six on the port.
+All twelve were compiled and executed once, with exit0, no timeout and no
+caught-OOM-incomplete flag. Every fresh capacity gate passed; none was
+capacity-skipped. The 140 semantic records and 118 public IDs are unique, and
+the public ID set exactly matches the retained 59-plan inventory across both
+phases. `complete=true` accompanies actual execution and completion here.
+
+Port SymmetricRangeTests completed in **35296ms**, under the original **180s /
+8GiB** bound; baseline completed in 24382ms. The command retains
+`-Xmx8g -XX:+CompactStrings -Dsubset=0`, seed559 and the original main entry.
+Stdout reaches every later section through formatting, byte-array construction,
+primitive conversions, serialization and exact conversions, then ends
+`HARNESS_COMPLETE port SymmetricRangeTests`; stderr is empty. Its scheduled
+retained public assertions returned without an escaping failure. Disabled,
+commented, private and other unselected coverage is not inferred. These elapsed
+times document completion, not a benchmark or speedup ratio.
+
+All original heaps/VM flags and 120/180s per-process deadlines remain. Observed
+total memory was 16766414848 bytes; fresh free observations were 11762241536–
+11893616640 bytes. The required gates were 4608MiB for 4g processes and 8704MiB
+for the others. This establishes observed eligibility on that host, not a
+general allocation or full numerical-range proof.
+
+The [producer artifact11994501033](https://github.com/Heapy/krogu-math/actions/runs/38776732952/artifacts/11994501033)
+and consumer own input verify `SOURCE_COMMIT` and `SHA256SUMS`. Both JARs are
+byte-identical to both focused-format local copies at `856fc0d4…`. All 220
+source-manifest checks pass against the focused and publication trees, using
+manifest `849d826d…`, with parent binding that source set to35086. The executed
+entrypoint remains `8383d062…` and helper runner `ed32beb0…`. Runtime remains
+Liberica25.0.4+9-LTS, Kotlin2.4.21 and Gradle9.8.1, with the existing
+public-test/runtime revision mismatch disclosure. All six caller audits,
+six loading guards and 24 core-class origin records bind to the own JAR.
+All 72 referenced raw files exist; existing-byte checks pass for 57 locked
+upstream sources, 53 generated sources, 12 compiled inputs, 13 tooling sources
+and seven dependency POMs.
+
+The [evidence artifact11994182103](https://github.com/Heapy/krogu-math/actions/runs/38776732952/artifacts/11994182103)
+has 290 files, including all 17 dependency-notice files byte-identical to the
+approved local validation tree. GPL text, `LICENSING.md`, sources, locks,
+POMs and raw evidence remain; dependency/test JARs, `.class` files and compiled
+script cache remain excluded. The only evidence JAR is the separate own library
+input. Both original artifact ZIPs are retained and locally rehashed to their
+GitHub API digests. Earlier missing-notice artifacts and all older failed
+campaigns remain unchanged.
+
+Independent parent metadata review accepted the actual results and checked all
+318 original evidence-index entries. The evidence is retained at
+`/private/tmp/krogu-35086-large-ci-evidence-v1/`. This later run supplies the
+runtime evidence absent at the earlier 8e6 formatting-candidate milestone; it
+does not rewrite that earlier timeout or any older assertion failure. The
+configured public ID union is **106 regular + 12 large = 118 baseline/port
+invocation IDs**, across separately identified artifacts and runs. That is
+configured public-harness coverage, including its documented adaptations and
+exclusions, not official JCK or an all-input/full-domain proof. **Normal CI at
+exact35086 remains pending separately**; earlier regular successes are not
+rebound to this JAR. Task559 acceptance and task548's domain obligations remain
+separate parent gates. This text update ran no compiler, script, helper,
+numerical operation, probe, test, build or API campaign.
+
+| Evidence | SHA-256 |
+|---|---|
+| Frozen `REPORT.md` | `0128b0754471827a43eeb687b30b3126d5aceefab407db7d5be0e22f7bcce45d` |
+| 318-entry `evidence-index.sha256` | `ea49bb667e0a1644d45e08a6e3cf8bff1b7f3178e7b8a987e88d56a5aa953b9e` |
+| Independent `root-actual-audit.json` | `75056d334db69490632c24073662da9fc7fe49dd3e489084955b9b48af9b5701` |
+| `root-index-check.txt` | `94239c77daea5d5539b42fc9e3306388ef799e572eb59cc82ec83e08fee58777` |
+| `results.json` | `e70113b1ec4d6ae0347399353a4cac66a83f5ef96170d65eb1c7cfcdb30b027a` |
+| `large.raw.log` | `8aa9dfb9d4681af9b21f1b03c1bb96f5653ca3b39b47382fc1053873579c63c0` |
+| `public-math-large-campaign.log` | `8cbed42285586ad4206fb70eed782feb78dda2022d0e74f37866fcef5dd99fc6` |
+| `inventory.json` | `6609913a5eb32211c7be78d917564ae450d929ab96169154d963e1767068fb53` |
+| Own focused/producer/consumer JAR | `856fc0d43404d03c7fe3e0947d2b9d14eb853ed1fae41ac57167c8d12e229dfd` |
+| Source220 manifest | `849d826ddad5ff05976a19847807c6bbacd510a7a7c8b1dd61e83181a6c6cdae` |
+| Hosted/local notice list | `74a6769a33892aa21031cf5240ea145d3395d8b4df1e962f6a964e9d390fed1c` |
+| Symmetric port stdout | `e8f709bf63f9732dc73ee111811593f361b524788062183a3c610279add9a3af` |
+| Symmetric port stderr (empty) | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| Producer ZIP | `0be0de492be24cdb5a17169f5cdf6c272413eca233add24ad110341aa25a97bf` |
+| Evidence ZIP | `33fc8020debc2b12c92cefdb51d24678d73b495bfabf11c6c47d48ed20f17572` |
+| Read-only evidence capsule including parent audit | `f5d5fc6707c5117425124b15537894c6268b064149921e651b55fc9deec5de78` |

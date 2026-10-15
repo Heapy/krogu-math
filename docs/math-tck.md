@@ -5,8 +5,14 @@ access or certification. The [consolidated campaign](public-math-consolidated-55
 completed106 baseline/port invocations with0 failures and46 explicit coverage
 skips across the four profiles through512MiB. Separate exact-commit hosted
 [public-suite CI](public-math-ci-559.md#hosted-verification) also passes106/0/46
-with all seven workflow jobs successful. Larger profiles remain unexecuted by
-that selection; task `local:559` stays `in_progress` for their separately gated run.
+with all seven workflow jobs successful. Larger profiles were unexecuted by
+that selection. The separately gated [exact35086 large hosted run](public-math-large-ci-559.md#actual-hosted-success-35086-original-large-invocations)
+subsequently completed **12 PASS / 0 FAIL / 128 SKIP**, including full retained
+SymmetricRangeTests completion in 35296ms under its original 180s/8GiB limit.
+The configured union is 106 regular + 12 large = 118 public baseline/port IDs
+across separately identified artifacts/runs, not official JCK or an all-input
+proof. Normal CI at exact35086 remains pending separately; task `local:559`
+acceptance remains a parent gate, with historical failures and exclusions intact.
 The historical first smoke run followed execution grant1772, superseding
 code-only comment1753 after560's terminal release and parent integration.
 
