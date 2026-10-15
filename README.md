@@ -228,6 +228,11 @@ evidence and remaining gates. The [revision4 contract review](docs/non-null-573/
 preserves earlier failures and the RNG observation classification. Focused handoffs
 retain their historical source milestones and displaced execution accounting.
 
+The later [decimal finite-control audit](docs/decimal-overload-541-verification.md)
+adds six common methods covering the39-entry inventory and selected explicit
+dispatch/identity rules. All four local targets pass. Broader numerical-domain
+proofs and the matching published-head CI remain separate.
+
 ## Source and behavioral compatibility contract
 
 The intended migration is **Java → Kotlin using java.math → Kotlin using

@@ -324,3 +324,46 @@ expectations and appropriately qualified Z1; two documentation findings were
 corrected: the shared context-rounding rule now excludes integral/remainder
 semantics, and the representability paragraph counts the five-digit text input.
 Kotlin source plausibility is a read-only assessment, not compilation evidence.
+
+## Normative finite-control tranche (four local gates passed; CI pending)
+
+The exact revision3 tests passed all four complete local target gates: JVM145
+suites/498 methods, and JS/Wasm JS/macOS ARM64 each65 suites/314 methods, totaling
+1440 method executions across targets. Independent actual review accepted all
+four gates. The [current validation report](decimal-overload-541-verification.md)
+records the evidence. Future exact published-head CI for this tranche remains
+pending; these finite local passes do not establish full task541 completion.
+
+The37-row signature table above records original `bbdd` nullability, with two
+adjacent rows making39 entries. Task573 subsequently migrated all48 reviewed
+inputs to non-null, and task525 migrated all four min/max results to non-null.
+Current caller and actual-super controls use those non-null signatures. Three
+equals inputs and four OrNull results remain nullable. Older Java-null outcomes
+retain their separately classified diagnostic scope; the historical table is
+not a current nullable Kotlin calling contract.
+
+The companion `DecimalOverloadDispatch541Test.kt` names finite direct controls
+for all 39 inventory entries in three behavior families: binary/division/
+integral/scale, unary/order/formatting/adjacent entries, and caller-owned
+override identity. Entries01–18,26–37,39 have ordinary and truthful direct
+receivers; unary entries19–25 and zero stripping38 use ordinary receivers in
+that class. Selected actual `super` helpers and the
+caller class cover explicit base entry and virtual replacement. It uses literal
+or direct algebraic representations, signed and unequal-scale values,
+exact addition, zero cancellation and valid domain errors. These finite cases
+do not establish a separate truthful override or universal `super` proof for
+every row.
+`DecimalUlp541ContractTest.kt` supplies the separate row-39 source argument and
+the documented no-context `plus()` identity controls.
+
+New remainder controls have zero results only. Existing
+`DecimalOverloadContract541Test` lines36–67 retain the distinct signed nonzero
+remainder, context/rounding, quotient-cohort and failure controls; the new class
+does not replace or enlarge that retained finite domain.
+
+The original source-preparation status of this tranche is historical; the four
+local passes are recorded above and future CI remains pending. This does
+not close P1–P6 full-domain
+proofs, resource-sized text or coefficient behavior, or unspecified forged
+metadata/internal callback behavior. Original scope classifications, G1–G6
+residual work and full-domain/resource limits remain unchanged.

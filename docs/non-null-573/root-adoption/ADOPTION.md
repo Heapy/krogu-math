@@ -56,5 +56,6 @@ the independently accepted adapted public campaign (30 PASS /0 FAIL /115 SKIP).
 Those documentation changes do not alter the accepted source manifest.
 The original adoption-stage document hashes are retained separately in
 `adoption-stage-artifacts.sha256`; they describe that earlier milestone, not the
-current README/COMPATIBILITY bytes. `artifacts.sha256` binds the current integration
-documents. Current verification and remaining CI status are in the linked report.
+current README/COMPATIBILITY bytes. `artifacts.sha256` binds the completed d499
+integration snapshot, not later worktree documentation. Current verification
+and remaining CI status are in the linked report.

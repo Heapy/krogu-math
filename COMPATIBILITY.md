@@ -60,6 +60,9 @@ records the constructor repair, retained JDK observations and fresh target/publi
 The [integer arithmetic and bit audit report](docs/integer-audits-544-545-verification.md)
 records the later test-only integration, four local target gates and all six CI
 jobs passing on published commit60aea413, including actual Linux ARM64 execution.
+The later [decimal normative finite-control report](docs/decimal-overload-541-verification.md)
+records six additional common methods, four accepted local target gates and
+the remaining full-domain/dispatch proof limits. Its matching-head CI is pending.
 
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in
