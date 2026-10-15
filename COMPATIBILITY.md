@@ -94,7 +94,7 @@ pass on published de5, including the actual314-method Linux ARM64 runtime.
 
 The later [consolidated public OpenJDK campaign](docs/public-math-consolidated-559.md)
 passed106 baseline/controlled-port invocations with0 failures and46 declared
-coverage skips on the current-production ded66 JAR. It covers the unfiltered
+coverage skips on the then-production ded66 JAR. It covers the unfiltered
 standard, serialization, heavy and512MiB profiles through the frozen b730 harness.
 The later [82b1 hosted CI verification](docs/public-math-ci-559.md#hosted-verification)
 independently passes106/0/46 on published eaaea5, with all seven workflow jobs
@@ -110,22 +110,28 @@ their disjoint PASS sets cover all59 retained primary plans in both phases.
 The13 omitted port calls/phases remain explicit losses, and this is not official
 JCK certification. The [supported-platform audit](docs/e36-supported-platform-verification.md)
 records5,233 successful method executions across13 target instances, with iOS
-device compilation separate. Later583 and585 sources are outside those e36 results.
+device compilation separate. Later583/585/586 sources are outside those e36 results.
 The subsequent [f58 large-profile campaign](docs/public-math-large-f58-verification-559.md)
 also passed12 invocations with0 failures and128 declared skips, now bound to the
 exact236-source checkout and the same391b73 own JAR as local583 validation.
 The harness and original large profiles were unchanged. Its separate normal
 CI and the full numerical/range contract are outside that large-only result.
+The [same-f58 supported-platform audit](docs/f58-supported-platform-verification.md)
+records5,289 successful method executions across13 target instances, including
+the actual349-method Linux ARM64 run; iOS device coverage is compilation only.
+All seven workflow jobs subsequently completed successfully. The separate public
+ledger audit and source240585/586 revision are outside those platform results.
 
-Task585 records a later source-confirmed addition range defect: both finite
+The [585/586 repair and local verification](docs/decimal-sum-sticky-585-586-verification.md)
+address the later source-confirmed addition range defect: both finite
 rounding of an oversized exact sum and exact cancellation of an oversized
-aligned term can have supported final coefficients. The current addition path
-can reject those intermediates first. Its maximum-size witnesses are symbolic,
-not executed JDK failures;541/P1 and548 remain open pending the repair.
-Separate task586 records the earlier stickyAt equality obstruction: a nonzero
-D-digit coefficient is below10^D, so its zero quotient can be selected without
-constructing that unsupported divisor. Both585 and586 still require integrated
-source/runtime acceptance; their symbolic witnesses are not execution claims.
+aligned term can have supported final coefficients. The private raw sum now
+rounds or cancels before publication. The separate586 stickyAt equality repair
+selects a nonzero truthfulD-digit coefficient's zero quotient without building10^D.
+All1,610 source-derived method executions pass on JVM/JS/Wasm/macOS ARM64 with
+the frozen240-source composition and fresh own JAR. Maximum-size witnesses stay
+symbolic, not executed JDK failures. Matching hosted/public gates and the broader
+541/P1/548 obligations remain separate.
 
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in

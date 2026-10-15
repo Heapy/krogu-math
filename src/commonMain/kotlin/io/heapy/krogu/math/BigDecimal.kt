@@ -59,7 +59,12 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         return if (result.coefficient.signum() == 0) ZERO else result
     }
 
-    open fun add(augend: BigDecimal): BigDecimal = addValue(augend)
+    open fun add(augend: BigDecimal): BigDecimal = rawSum585(augend, false, null) ?: addValue(augend)
+    private fun rawSum585(other: BigDecimal, subtract: Boolean, mc: MathContext?): BigDecimal? {
+        val result = coefficient.alignedDecimalSum585(other.coefficient, decimalScale,
+            other.decimalScale, subtract, mc) ?: return null
+        return BigDecimal(result.first, result.second)
+    }
     private fun addValue(augend: BigDecimal): BigDecimal {
         val scale = maxOf(decimalScale, augend.decimalScale)
         return BigDecimal(scaledCoefficient(scale).add(augend.scaledCoefficient(scale)), scale)
@@ -80,13 +85,14 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         checkAdditionAlignment(augend, mc)
         if (kotlin.math.abs(decimalScale.toLong() - augend.decimalScale) < 10000 ||
             kotlin.math.abs(adjustedExponent() - augend.adjustedExponent()) <= mc.precision.toLong() + 3)
-            return addValue(augend).roundValue(mc)
+            return rawSum585(augend, false, mc) ?: addValue(augend).roundValue(mc)
         // Keep a guard digit plus a sticky digit when the exponent gap is enormous.
         // Replacing a remote tail by a signed sticky unit preserves every rounding decision.
         val large = if (adjustedExponent() > augend.adjustedExponent()) this else augend
         val small = if (large === this) augend else this
         val workingScale = maxOf(large.decimalScale.toLong(), mc.precision.toLong() + 2L - large.adjustedExponent())
-        val result = large.addValue(small.stickyAt(workingScale)).roundValue(mc)
+        val sticky = small.stickyAt(workingScale)
+        val result = large.rawSum585(sticky, false, mc) ?: large.addValue(sticky).roundValue(mc)
         val preferred = maxOf(decimalScale, augend.decimalScale)
         return if (result.signum() == 0) result.setScale(preferred) else result.stripTo(preferred)
     }
@@ -105,7 +111,14 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     private fun stickyAt(scale: Long): BigDecimal {
         if (signum() == 0 || decimalScale.toLong() <= scale) return this
         val drop = decimalScale.toLong() - scale
-        if (drop <= precision()) {
+        val reportedPrecision = precision()
+        if (drop == reportedPrecision.toLong() && coefficient.decimalCompactValue() != 0L &&
+            drop == storedPrecision().toLong()) {
+            // A nonzero D-digit coefficient is strictly below 10^D.
+            // Its quotient is zero and its remainder supplies the signed tail.
+            return BigDecimal(BigInteger.valueOf(signum().toLong()), checkedScale(scale + 1))
+        }
+        if (drop <= reportedPrecision) {
             val divisor = tenPow(drop)
             val qr = coefficient.divideAndRemainder(divisor)
             val sticky = if (qr[1].signum() == 0) qr[0] else qr[0].multiply(BigInteger.TEN).add(BigInteger.valueOf(signum().toLong()))
@@ -117,6 +130,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     }
     open fun subtract(subtrahend: BigDecimal): BigDecimal {
         val operand = subtrahend
+        rawSum585(operand, true, null)?.let { return it }
         val scale = maxOf(decimalScale, operand.decimalScale)
         return BigDecimal(scaledCoefficient(scale).subtract(operand.scaledCoefficient(scale)), scale)
     }

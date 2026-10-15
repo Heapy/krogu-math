@@ -1,0 +1,14 @@
+# 585 source-only handoff
+
+Prepared only in `/private/tmp/krogu-math-task-585-qyVNWLdx/root`; publication sources were not edited. See [the code-bound conditional proof](decimal-sum-585-proof.md) for exact source hashes, original pins, selectors, arithmetic/cohort proof, live workspace and remaining gates. The accepted private proposal/finding remain separate and unchanged.
+
+Owned delta is two narrowly changed production files, one new production helper, one new common test class, one new JVM test class, and these two new documents. BigDecimal keeps old addValue and every zero, p0, subtract delegation, check/selection/sticky/strip prefix; BigInteger adds one nonvirtual synthetic bridge. Existing kernels including538/581/582/583/584, tests, fixtures, generators, serializers, public signatures/layout/caches and other proofs remain unchanged. Read-only original BI/BD copies and their manifest are in sibling `evidence/originals`.
+
+Prepared tests, all UNCOMPILED/UNRUN:
+
+- Four common methods. Bounded Long quotient/remainder oracle checks17568 matrix calls plus152 all-discard-position calls; endpoint matrix adds512, exact/cohort/zero literals add3. A separate32-call signed virtual-gap literal matrix exercises the real8192-cell page boundary, borrow, low sticky and carry using two one-word inputs and only nine-digit published results. Total18267 direct helper invocations are prescribed, not observed. They assert input isolation/alias safety and precise coefficient/scale or explicit raw arithmetic decline. Public bounded controls and symbolic sign-aware/no-rescue selector assertions are additional checks. All oracle products/sums fit Long; no giant coefficient input or fake smaller magnitude cap is used.
+- Two JVM methods. Current-own-format restored truthful coefficient subtypes plus transitively truthful old arithmetic returns check literal ties, signed rounding, exact cohorts, finite/no-context add and subtract, and add with an explicit unlimited context. Separate direct caller result/exception and explicit super/p0 delegation controls remain required. These bounded public cases take the materialized path; they do not claim giant public bridge execution.
+
+Source review must precede compilation or execution. No compiler, script, numerical/model/helper/certificate/probe/test/build/benchmark/process, Git or tracker operation was run. There is no held/reserved runtime window, subprocess campaign, retry, timeout waiver or promised future run. The parent owns independent review, any later execution grant, evidence, integration and task disposition.
+
+The source finding repairs are conditional on supported canonical stable stored inputs, truthful reached API leaves and548 normal allocation/kernel completion. Existing stickyAt's equal-drop-H prefix remains the separate586 candidate; broader P1/541/526/548 and full compatibility stay open. No performance/giant-capacity/JCK/full-goal acceptance is claimed.

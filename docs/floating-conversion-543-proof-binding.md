@@ -1,9 +1,10 @@
 # Floating conversions: current exhaustive-class proof binding (543)
 
-This is a finite source-only composition of existing own arguments. No
-production source, test, fixture, generator, timeout or toolchain was changed.
+This document composes existing own arguments and binds separately captured
+finite local execution evidence. Preparing it changed no production source,
+test, fixture, generator, timeout or toolchain.
 No script, compiler, numerical helper, certificate, probe, test, build or
-benchmark was executed for this milestone. Historical execution records below
+benchmark was executed by this documentation step. Historical execution records below
 remain observations of their named artifacts, not fresh results of this memo.
 
 The task543 acceptance route permits a checkable argument over exhaustive input
@@ -12,12 +13,26 @@ or all primitive bit patterns; they do not require enumeration of all `2^32`
 Float patterns. They are conditional on the stated leaf contracts and do not
 prove every integer operation, runtime or platform implementation.
 
-## Exact current source and assumptions
+## Exact locally validated source binding and assumptions
+
+The following table binds the locally validated585/586 composition at
+`/private/tmp/krogu-585-586-validation-g0etGe15/root`. Its240-source manifest SHA-256 is
+`e3539c0bda309350d72ebb89656a9f54e3c7f720fe943616153050e2be493aa9`.
+The [separate local verification](decimal-sum-sticky-585-586-verification.md)
+records1,610 passing method executions: JVM545 and JS/Wasm/macOS ARM355 each,
+with zero missing/extra/duplicate/nonpass outcomes. Its own JVM JAR SHA-256 is
+`1cacc5b41ede2e154e9c7baf948bd1748f4d424932f3fb7e4a592085b1ed00e1`.
+The captured actual report SHA-256 is
+`d1a477399b3d925290c72cb2be05fa2acd424b96159e86402e2f6b2e9af3bade`.
+This is finite local evidence, not an all-input proof. Matching hosted/public
+gates for this240-source revision remain pending. Independent actual-adoption
+review and publication remain separate;
+this documentation draft performs no execution.
 
 | Own source | SHA-256 |
 | --- | --- |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `d6d531742a7b12bd6cc09cf6b98daca11f70b5207687ecd4c04c5a11d655a9b2` |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt` | `1f65c1d99d3144989068dfbdc8ffa70a32ceab2fc0a6ea2a4eb3ac142e03bf3e` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `12fd0a14164bfd81b004c66673ae37ea40719bf3552f171ba20b434a296d8602` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt` | `5dd07b9f985c53f09e5c551d30b0ae0c4faeea705343285a91eac1d9282f1e1c` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/DoubleFormatting.kt` | `9b2a1b8cb1d40a2fdc7db5110b6a8c4e398da0562d5c3d6b02cf928f3c74433f` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/FloatFormatting.kt` | `ba55514c181e52f20ed63fcb2634621f66cea3cc4db084e77cf2df71d1dcf77e` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/NumericExtensions.kt` | `20fdf7c5c76ed4207c03859b4cb60247a16e2ec4337ee674c3a85ce6101e5123` |
@@ -84,6 +99,24 @@ check, with a separate stored bridge and raw certificate. The conversion
 methods, refined midpoint leaf, digit/prefix extraction and existing integer
 division leaves remain unchanged. The table binds that successor without
 relabelling previous conversion CI or extending this proof's resource premises.
+
+The [aligned sum585](decimal-sum-585-proof.md) and
+[sticky equality586](decimal-sticky-equality-586-proof.md) composition changes
+decimal add/subtract integration and the private remote-tail equality branch,
+and adds a separate raw helper. Against the f58/583 baseline (BigInteger
+`d6d531742a7b12bd6cc09cf6b98daca11f70b5207687ecd4c04c5a11d655a9b2`,
+BigDecimal `1f65c1d99d3144989068dfbdc8ffa70a32ceab2fc0a6ea2a4eb3ac142e03bf3e`),
+the only integer-source change is the18-line nonvirtual
+`alignedDecimalSum585` bridge inserted after `parallelMultiply`; every preexisting
+integer body is byte-identical. The decimal diff contains only the exact/finite
+sum seams, their private wrapper and `stickyAt` equality refinement.
+`binaryValue`, `fromDouble`, `roundedDouble`, `roundValue`, the refined
+`roundedDivide`, constructors, scale adjustment and digit/prefix leaves remain
+unchanged. The unchanged canonical formatters use integer add/subtract, not the
+new decimal sum seams, and conversion does not enter remote-tail preparation.
+The conversion argument therefore retains its stated premises; this source
+comparison supplies no new runtime, range, allocation or platform guarantee.
+All historical execution evidence below remains bound to its original sources.
 
 Assume canonical immutable stored magnitudes, exact integer arithmetic and
 decimal digit/prefix/formatting primitives, valid fixed contexts, and successful

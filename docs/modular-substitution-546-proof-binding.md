@@ -11,11 +11,34 @@ change, fixture waiver, numerical execution or whole546/548 acceptance.
 
 | File | SHA-256 |
 | --- | --- |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `d6d531742a7b12bd6cc09cf6b98daca11f70b5207687ecd4c04c5a11d655a9b2` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` (locally validated composition) | `12fd0a14164bfd81b004c66673ae37ea40719bf3552f171ba20b434a296d8602` |
+| `BigInteger.kt` baseline for line references and historical583 execution | `d6d531742a7b12bd6cc09cf6b98daca11f70b5207687ecd4c04c5a11d655a9b2` |
 | `docs/division530-proof.md` | `29726dd6473f79aac5fb267cfb599227077eddb2e5581c358c1870b5021fded3` |
 | `docs/division530-selection-proof.md` | `c5c69c26619f21d28084f4005dc81c5930b7b19d8cb25c24be25566a73d57aa7` |
 | `docs/odd-modulus-context-538-implementation.md` | `6cdb5d63468a85703a3d6f0a1beecb3e8fd962f0b924b4c6b460a3a8252138f6` |
 | `docs/odd-modulus-context-538-tiny-fallback.md` | `780e680657eea9cbdd463ccaf7f96c99f1b51e6f49794045b9119e64401992b3` |
+
+The locally validated585/586 composition is
+`/private/tmp/krogu-585-586-validation-g0etGe15/root`, with240-source manifest
+`e3539c0bda309350d72ebb89656a9f54e3c7f720fe943616153050e2be493aa9`.
+All BigInteger line numbers and ranges below refer explicitly to the preserved
+`d6d53174…` baseline, not current file positions. The current `12fd0a14…` source
+adds exactly18 lines after baseline line82: the nonvirtual
+`alignedDecimalSum585` bridge. Every preceding/following existing byte is
+unchanged, so all cited baseline regions occur18 lines later in that source.
+The modular, inverse, CRT, odd/even powering, bounded residue and integer
+arithmetic/division leaves do not enter this decimal-only bridge. BigDecimal's
+new sum seams and private sticky equality586 branch are outside their call graph.
+The conditional proof below is unchanged; no new math waiver, numerical cap,
+API/layout/cache or serialization condition is introduced. The separate
+[local verification](decimal-sum-sticky-585-586-verification.md) records1,610
+passing exact method executions across JVM/JS/Wasm/macOS ARM, with source240
+unchanged and own JAR
+`1cacc5b41ede2e154e9c7baf948bd1748f4d424932f3fb7e4a592085b1ed00e1`.
+This is finite integration evidence, not a new all-class modular execution.
+Matching hosted/public gates for this240-source revision remain pending.
+Independent actual-adoption review and publication
+remain separate; this draft performs no execution or publication adoption.
 
 The [modular-power and inverse arguments](../NUMERICAL_ARGUMENTS.md#modular-exponentiation)
 provide the residue, Euclidean and CRT invariants; the dedicated proofs above
@@ -119,10 +142,13 @@ vary one nondelegate position; the compound538 probe deliberately poisons unused
 leaves. These facts neither exhaust truthful graphs nor invalidate this
 transitive source argument. All fixtures and assertions remain unchanged.
 
-The [current583 local report](decimal-residual-583-verification.md), SHA-256
+The [historical583 local report](decimal-residual-583-verification.md), SHA-256
 `43809d15ca7ee37613a613c934be9fec47b8db88288027af1a26d327463824fc`,
-records1,584 exact method executions on JVM/JS/Wasm/macOS ARM64 with the pinned
-BigInteger source. That is finite integration evidence, not a new modular
+records1,584 exact method executions on JVM/JS/Wasm/macOS ARM64 with baseline
+BigInteger `d6d53174…` and its236-source integration. Those executions are not
+results for the current `12fd0a14…` revision; its local run is recorded separately
+above. That is finite integration evidence,
+not a new modular
 campaign, proof of every graph, hostile callback policy, practical maximum
 allocation or all546/548/public-TCK/JCK acceptance. This binding adds no test
 execution and requires no unbounded fuzz or language-mirroring test campaign.

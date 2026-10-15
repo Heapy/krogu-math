@@ -8,13 +8,14 @@ blocks uniform conditional on previous history, and witness blocks uniform
 conditional on previous history and the current candidate. It establishes no
 unconditional theorem about actual platform PRNGs,
 hostile callbacks,548 allocation capacity, whole547 or full-project acceptance.
-No numerical run or fixture/assertion change accompanies this document.
+Preparing this document performs no numerical run or fixture/assertion change.
 
 ## Current binding
 
 | File | SHA-256 |
 | --- | --- |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `d6d531742a7b12bd6cc09cf6b98daca11f70b5207687ecd4c04c5a11d655a9b2` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` (locally validated composition) | `12fd0a14164bfd81b004c66673ae37ea40719bf3552f171ba20b434a296d8602` |
+| `BigInteger.kt` baseline for line references and historical583 execution | `d6d531742a7b12bd6cc09cf6b98daca11f70b5207687ecd4c04c5a11d655a9b2` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/PrimalityCertainty.kt` | `93f0c4743f9a7d8d9acdedd283760904bbfd2caf55e5e4973dd6331d2aa57479` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/PrimeSearchLimits.kt` | `66e7d92b5d6091067ee02679534060fc9d8559328c7fafc45805b3d7493c3a85` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/PlatformRandom.kt` | `e408e6fad2a92acec592520ea3eaf1c414493a6db708db9ef9ae686b1303f3d0` |
@@ -23,6 +24,32 @@ No numerical run or fixture/assertion change accompanies this document.
 | `src/commonMain/kotlin/io/heapy/krogu/math/RandomFactories.kt` | `d66f6002d3e2f32b1a2f03143984eee2da55a2fc7edda2bf6e8bdada41257c20` |
 | `docs/prime-search-range-559-proof.md` | `002d68d8fb6162ec27c356273a5f0b0d34f2d238d83b3653e0064a5367f16d5f` |
 | `docs/platform-random-validation-549-proof.md` | `20921ad4f1e4729849871b6b129ebf2c628ca7329cee065f2cd36986bd0a3f59` |
+
+This table binds the locally validated585/586 composition at
+`/private/tmp/krogu-585-586-validation-g0etGe15/root`, whose240-source manifest is
+`e3539c0bda309350d72ebb89656a9f54e3c7f720fe943616153050e2be493aa9`.
+All BigInteger line numbers and ranges below use the preserved `d6d53174…`
+baseline. The new `12fd0a14…` file adds only18 lines after baseline line82 for
+the nonvirtual decimal-only `alignedDecimalSum585` bridge; every preexisting byte
+before/after that insertion is unchanged. All cited BigInteger regions therefore
+occur18 lines later in the current source. PrimalityCertainty and other named
+files keep their existing line references and hashes.
+
+Primality predicates, candidate generation, successor search, RNG adapters,
+round budgets/constants and their modular/integer leaves remain unchanged and
+do not enter the bridge. BigDecimal's sum seams and private sticky equality586
+branch are outside these call graphs. The conditional probability argument,
+actual-PRNG assumptions and resource/callback limits below are unchanged. No new
+math waiver, cap, API/layout/cache or serialization condition is introduced.
+The separate [local verification](decimal-sum-sticky-585-586-verification.md)
+records1,610 passing method executions across JVM/JS/Wasm/macOS ARM with unchanged
+source240 and own JAR
+`1cacc5b41ede2e154e9c7baf948bd1748f4d424932f3fb7e4a592085b1ed00e1`.
+This is finite integration evidence, not a new probability experiment or proof
+of actual-PRNG premises. Matching hosted/public gates for this240-source revision
+remain pending; independent actual-adoption review and publication remain
+separate. This draft executes nothing and adopts
+no historical run as a new pass.
 
 Current modular leaves/context/fallback and their precise proof pins are bound
 in [modular substitution546](modular-substitution-546-proof-binding.md). The
@@ -145,10 +172,12 @@ decisions/successors, exhaustive small byte multiplicities, callback diagnostics
 and finite conclusive-threshold liveness. None proves ideal platform randomness
 or practical billion-round completion above the deterministic cutoff.
 
-The [current583 local report](decimal-residual-583-verification.md), SHA-256
+The [historical583 local report](decimal-residual-583-verification.md), SHA-256
 `43809d15ca7ee37613a613c934be9fec47b8db88288027af1a26d327463824fc`, records
-the pinned236-source integration's1,584 exact method executions across four local
-targets. This is existing finite evidence, not a new547 campaign or an all-input
+the baseline `d6d53174…`236-source integration's1,584 exact method executions across
+four local targets, not execution of current `12fd0a14…`, whose new local result
+is recorded separately above. This is existing finite
+evidence, not a new547 campaign or an all-input
 probability experiment. All old assertions/fixtures remain active. Conditional
 budget refinement does not close actual-PRNG guarantees,546/548 kernels/capacity,
 hostile callback policy, other targets, matching hosted/public gates or JCK.

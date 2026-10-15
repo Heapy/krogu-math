@@ -80,6 +80,24 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     }
     open fun parallelMultiply(value: BigInteger): BigInteger = multiply(value)
 
+    // Stored, nonvirtual certification only. Null retains the entire old sum
+    // expression; unsupported aligned intermediates are never published here.
+    @kotlin.jvm.JvmSynthetic
+    internal fun alignedDecimalSum585(value: BigInteger, leftScale: Int, rightScale: Int,
+        subtract: Boolean, mc: MathContext?): Pair<BigInteger, Int>? {
+        val precision = mc?.precision ?: 0
+        // Equal-scale exact output is itself the required public coefficient.
+        // Two H-digit inputs sum to <=H+1 digits, so p>H cannot reduce it.
+        if (leftScale == rightScale && (precision == 0 || precision > 646456993)) return null
+        val rightSign = if (subtract) -value.sign else value.sign
+        if (materializedDecimalSum585(sign, rightSign, magnitudeBits(), value.magnitudeBits(),
+                leftScale, rightScale)) return null
+        val leftDigits = if (sign == 0) 0 else decimalMagnitudeDigits()
+        val rightDigits = if (value.sign == 0) 0 else value.decimalMagnitudeDigits()
+        if (!certifiedDecimalSumSpan585(leftDigits, rightDigits, leftScale, rightScale, precision)) return null
+        return DecimalSum585.sum(sign, words, leftScale, rightSign, value.words, rightScale, mc)
+    }
+
     // No public metadata/byte/arithmetic callbacks select this private scratch
     // route. The helper reads these immutable magnitudes without retaining them.
     @kotlin.jvm.JvmSynthetic
