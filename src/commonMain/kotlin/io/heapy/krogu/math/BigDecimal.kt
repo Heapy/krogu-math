@@ -431,9 +431,15 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         if (compareMagnitude(operand) < 0) return divideToIntegralValue(operand)
         val preferred = saturatedScale(decimalScale.toLong() - operand.decimalScale)
         var result = divide(operand, MathContext(context.precision, RoundingMode.DOWN))
-        if (result.scale() < 0) {
-            val residual = subtract(result.multiply(operand))
-            if (residual.compareMagnitude(operand) >= 0) throw ArithmeticException("Division impossible")
+        val resultScale = result.scale()
+        if (resultScale < 0) {
+            val certified = if (resultScale == result.decimalScale)
+                coefficient.certifiedDecimalResidual583(operand.coefficient, decimalScale,
+                    operand.decimalScale, result.coefficient, result.decimalScale) else null
+            if (certified == null) {
+                val residual = subtract(result.multiply(operand))
+                if (residual.compareMagnitude(operand) >= 0) throw ArithmeticException("Division impossible")
+            }
         } else if (result.scale() > 0) {
             result = result.setScale(0, RoundingMode.DOWN)
         }
@@ -457,13 +463,19 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     }
     open fun divideAndRemainder(divisor: BigDecimal): Array<BigDecimal> {
         val quotient = divideToIntegralValue(divisor)
-        return arrayOf(quotient, subtract(quotient.multiply(divisor)))
+        val residual = coefficient.certifiedDecimalResidual583(divisor.coefficient, decimalScale,
+            divisor.decimalScale, quotient.coefficient, quotient.decimalScale)
+        return arrayOf(quotient, if (residual == null) subtract(quotient.multiply(divisor))
+            else BigDecimal(residual.first, residual.second))
     }
     open fun divideAndRemainder(divisor: BigDecimal, mc: MathContext): Array<BigDecimal> {
         val context = mc
         if (context.precision == 0) return divideAndRemainder(divisor)
         val quotient = divideToIntegralValue(divisor, context)
-        return arrayOf(quotient, subtract(quotient.multiply(divisor)))
+        val residual = coefficient.certifiedDecimalResidual583(divisor.coefficient, decimalScale,
+            divisor.decimalScale, quotient.coefficient, quotient.decimalScale)
+        return arrayOf(quotient, if (residual == null) subtract(quotient.multiply(divisor))
+            else BigDecimal(residual.first, residual.second))
     }
     open fun remainder(divisor: BigDecimal): BigDecimal = remainderElement(divideAndRemainder(divisor))
     open fun remainder(divisor: BigDecimal, mc: MathContext): BigDecimal = remainderElement(divideAndRemainder(divisor, mc))

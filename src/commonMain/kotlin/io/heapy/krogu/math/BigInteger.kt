@@ -137,6 +137,37 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             else BigInteger(-1, coefficient.words)) to preferred.toInt()
     }
 
+    // Decline preserves the whole old multiply/subtract chain. No public metadata callbacks.
+    @kotlin.jvm.JvmSynthetic
+    internal fun certifiedDecimalResidual583(value: BigInteger, sourceScale: Int, divisorScale: Int,
+        quotient: BigInteger, quotientScale: Int): Pair<BigInteger, Int>? {
+        if (value.sign == 0 || materializedDecimalResidual583(magnitudeBits(), value.magnitudeBits(),
+                quotient.magnitudeBits(), sourceScale, divisorScale, quotientScale)) return null
+        val preferred = sourceScale.toLong() - divisorScale
+        if (preferred !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong() ||
+            quotientScale.toLong() > maxOf(preferred, 0L)) return null
+        if (sign == 0) return if (quotient.sign == 0 && quotientScale.toLong() == preferred)
+            ZERO to sourceScale else null
+        val sourceDigits = decimalMagnitudeDigits()
+        val divisorDigits = value.decimalMagnitudeDigits()
+        val exponents = (sourceDigits.toLong() - sourceScale).compareTo(divisorDigits.toLong() - divisorScale)
+        val magnitude = if (exponents != 0) exponents else compareDecimalSignificand(value)
+        if (quotient.sign == 0) return if (quotientScale.toLong() == preferred && magnitude < 0)
+            BigInteger(sign, words) to sourceScale else null
+        if (quotient.sign != sign * value.sign || magnitude < 0) return null
+        if (preferred < 0)
+            return DecimalDivision581.certifiedResidual583(sign, words, value.words, quotient.words,
+                preferred.toInt(), divisorScale, quotientScale)
+        // B*10^S <= A, so power, denominator, quotient and residual are supported.
+        val absoluteDivisor = BigInteger(1, value.words)
+        val denominator = if (preferred == 0L) absoluteDivisor
+            else absoluteDivisor.multiply(TEN.pow(preferred.toInt()))
+        val qr = BigInteger(1, words).divideStored(denominator)
+        if (!DecimalDivision581.matchesInteger583(quotient.words, quotientScale, qr[0].words)) return null
+        val residual = qr[1]
+        return (if (sign < 0 && residual.sign != 0) BigInteger(-1, residual.words) else residual) to sourceScale
+    }
+
     open fun divide(value: BigInteger): BigInteger = quotientStored(value)
     open fun remainder(value: BigInteger): BigInteger = remainderStored(value)
 

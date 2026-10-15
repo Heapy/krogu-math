@@ -15,6 +15,19 @@ internal fun materializedDecimalDivision581(leftBits: Int, rightBits: Int, preci
         4L * precision + rightBits <= Int.MAX_VALUE
 }
 
+// Sufficient only: uncertainty selects certification, never an arithmetic rejection.
+internal fun materializedDecimalResidual583(sourceBits: Int, divisorBits: Int, quotientBits: Int,
+    sourceScale: Int, divisorScale: Int, quotientScale: Int): Boolean {
+    val productScale = quotientScale.toLong() + divisorScale
+    if (productScale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong()) return false
+    val scale = maxOf(sourceScale.toLong(), productScale)
+    val sourceRaise = scale - sourceScale
+    val productRaise = scale - productScale
+    if (sourceRaise !in 0L..646456992L || productRaise !in 0L..646456992L) return false
+    return maxOf(sourceBits, 1).toLong() + 4L * sourceRaise <= Int.MAX_VALUE - 1L &&
+        maxOf(quotientBits, 1).toLong() + maxOf(divisorBits, 1) + 4L * productRaise <= Int.MAX_VALUE - 1L
+}
+
 /** Unscaled quotient digits; no public normalized numerator/denominator. */
 internal object DecimalDivision581 {
     private const val BASE = 1_000_000_000
@@ -154,6 +167,92 @@ internal object DecimalDivision581 {
         if (quotient.digits() + padding > MAX_DIGITS) throw ArithmeticException("BigInteger overflow")
         quotient.appendZeroDigits(padding)
         return publish(quotient, sign, scale.toInt())
+    }
+
+    /** Stored integer view only; no candidate power-of-ten magnitude is built. */
+    fun matchesInteger583(candidate: IntArray, scale: Int, integer: IntArray): Boolean {
+        val scratch = Cells(maxOf(candidate.size, integer.size))
+        val coefficient = if (candidate.isEmpty()) null else decimalChunks(candidate, scratch)
+        val expected = integerView583(coefficient, scale) ?: return false
+        if (integer.isEmpty()) return expected.length == 0L
+        val actual = decimalChunks(integer, scratch)
+        if (actual.digits() != expected.length) return false
+        var position = 0L
+        while (position < expected.length) {
+            if (actual.digitFromLeft(position, expected.length) != expected.digit(position)) return false
+            position++
+        }
+        return true
+    }
+
+    /** Residual-only second pass; selected quotient digits are checked, not accumulated. */
+    fun certifiedResidual583(sign: Int, left: IntArray, right: IntArray, candidate: IntArray,
+        preferred: Int, divisorScale: Int, quotientScale: Int): Pair<BigInteger, Int>? {
+        require(sign == -1 || sign == 1)
+        require(left.isNotEmpty() && right.isNotEmpty() && preferred < 0 && quotientScale <= 0)
+        if (candidate.isEmpty() && quotientScale != preferred) return null
+        val scratch = Cells(maxOf(left.size, right.size, candidate.size))
+        val a = decimalChunks(left, scratch)
+        val b = decimalChunks(right, scratch)
+        val q = if (candidate.isEmpty()) null else decimalChunks(candidate, scratch)
+        val expected = integerView583(q, quotientScale) ?: return null
+        val inputDigits = a.digits()
+        val lastNonzero = inputDigits - a.trailingZeros()
+        val limit = inputDigits - preferred.toLong()
+        val remainder = DecimalWords(b.size + 1)
+        val trial = DecimalWords(b.size + 1)
+        var position = 0L
+        var emitted = 0L
+        var started = false
+        while (position < limit) {
+            val input = if (position < inputDigits) a.digitFromLeft(position, inputDigits) else 0
+            position++
+            remainder.multiplyAdd(10, input)
+            var digit = 9
+            while (digit > 0) {
+                trial.product(b, digit)
+                if (remainder.compare(trial) >= 0) break
+                digit--
+            }
+            if (digit != 0) remainder.subtract(trial)
+            if (digit != 0) started = true
+            if (started) {
+                if (emitted >= expected.length || digit != expected.digit(emitted)) return null
+                emitted++
+            }
+            if (remainder.size == 0 && position >= lastNonzero) {
+                val remaining = limit - position
+                if (started) {
+                    if (emitted + remaining != expected.length || !expected.zeroTail(emitted)) return null
+                    emitted += remaining
+                } else if (expected.length != 0L) return null
+                break
+            }
+        }
+        if (emitted != expected.length) return null
+        val removed = minOf(-preferred.toLong(), -quotientScale.toLong())
+        val scale = divisorScale.toLong() - removed
+        check(scale in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong())
+        if (remainder.size == 0) return BigInteger.ZERO to scale.toInt()
+        remainder.removeZeroDigits583(removed)
+        return publish(remainder, sign, scale.toInt())
+    }
+
+    private class IntegerView583(val coefficient: DecimalWords?, val length: Long,
+        private val coefficientDigits: Long, private val lastNonzero: Long) {
+        fun digit(position: Long): Int {
+            check(position in 0L until length)
+            return if (position < coefficientDigits) coefficient!!.digitFromLeft(position, coefficientDigits) else 0
+        }
+        fun zeroTail(position: Long): Boolean = position >= lastNonzero
+    }
+
+    private fun integerView583(coefficient: DecimalWords?, scale: Int): IntegerView583? {
+        if (coefficient == null) return IntegerView583(null, 0, 0, 0)
+        val digits = coefficient.digits()
+        val zeros = coefficient.trailingZeros()
+        if (scale > 0 && zeros < scale.toLong()) return null
+        return IntegerView583(coefficient, digits - scale.toLong(), digits, digits - zeros)
     }
 
     private fun exactResult(q: DecimalWords, sign: Int, preferred: Long,
@@ -342,6 +441,27 @@ internal object DecimalDivision581 {
             }
             val rest = (count % 9).toInt()
             if (rest != 0) multiplyAdd(powers[rest], 0)
+        }
+        // Exact suffix removal after the selected quotient has been certified.
+        fun removeZeroDigits583(count: Long) {
+            check(size > 0 && count >= 0 && count <= trailingZeros())
+            val whole = (count / 9).toInt()
+            for (i in 0 until whole) check(cells[i] == 0)
+            val remaining = size - whole
+            for (i in 0 until remaining) cells[i] = cells[i + whole]
+            size = remaining
+            val rest = (count % 9).toInt()
+            if (rest != 0) {
+                val factor = powers[rest]
+                var residual = 0L
+                for (i in size - 1 downTo 0) {
+                    val part = residual * BASE + cells[i]
+                    cells[i] = (part / factor).toInt()
+                    residual = part % factor
+                }
+                check(residual == 0L)
+            }
+            trim()
         }
         private fun trim() { while (size > 0 && cells[size - 1] == 0) size-- }
     }

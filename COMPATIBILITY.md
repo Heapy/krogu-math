@@ -71,13 +71,19 @@ The subsequent [contextual quotient repair](docs/decimal-context-division-581-ve
 and [integral quotient repair](docs/integral-quotient-582-verification.md) avoid
 oversized normalization intermediates in their reviewed routes. Their fresh
 four-target campaigns completed1538 and1559 method executions respectively,
-with no failures or skips. The separate residual-product obstruction583,
-maximum-size resource assumptions and broader range/dispatch audits remain open.
+with no failures or skips. Maximum-size resource assumptions and broader
+range/dispatch audits remain open.
 The [midpoint refinement](docs/scaled-division-midpoint-584-proof.md) compares
 the remainder with its complement instead of constructing twice the remainder,
 so that an unnecessary midpoint temporary cannot reject a supported result.
 Its giant range witness is symbolic; fresh local results are recorded separately
 in the [584 verification report](docs/scaled-division-midpoint-584-verification.md).
+The subsequent [residual repair](docs/decimal-residual-583-verification.md)
+certifies the selected integral quotient and computes its remainder without
+publishing an oversized intermediate product. It also repairs the earlier
+finite-context integral admission check. Its four-target campaign completed1584
+method executions without failures or skips; broader scale/cohort combinations,
+resource limits and matching published-head gates remain separate.
 The [integer arithmetic and bit audit report](docs/integer-audits-544-545-verification.md)
 records the later test-only integration, four local target gates and all six CI
 jobs passing on published commit60aea413, including actual Linux ARM64 execution.
@@ -96,6 +102,10 @@ successful and actual314/65 Linux ARM64 inventory audited. Larger profiles were
 not selected by that job despite a snapshot above their capacity thresholds; their
 separate attempt, explicit adaptation losses and the full Kotlin/domain contract
 remain outside this finite success. This is not official JCK certification.
+The later [e36 large-profile campaign](docs/public-math-large-e36-verification-559.md)
+passed12 invocations with0 failures and128 declared skips on its exact234-source
+checkout. Its separately running normal CI and the later583 source are outside
+that large-only result.
 
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in
@@ -105,6 +115,11 @@ Representable exact/context division despite an unsupported intermediate scale,
 including rounding carries, is documented in the [division normalization contract](docs/decimal-division-normalization-contract.md).
 
 Division with a preferred scale outside Int is tracked in the [preferred-scale division contract](docs/decimal-division-preferred-scale-contract.md).
+
+The [integral/remainder endpoint report](docs/decimal-residual-583-verification.md)
+records small-coefficient inputs with supported quotient/remainder pairs and
+their pinned-JDK `Overflow` observations. The independent required results,
+ordinary-scale controls and precise divergence scope are retained together.
 
 The portable equality/order/hash laws, context/enum contracts and mutation/alias
 witnesses are documented in [Value identity and immutability](docs/value-identity-contract.md).

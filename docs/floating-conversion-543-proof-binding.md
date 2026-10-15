@@ -16,8 +16,8 @@ prove every integer operation, runtime or platform implementation.
 
 | Own source | SHA-256 |
 | --- | --- |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `66bb59deeeceb4f664681f99ddacc490c3054b5c42c539d3b8a3a44ed2ddb7c2` |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt` | `a925bf9144044fe23e4bb618b6777b7f2f90d1f591d9a0856f3651bcaaaf3e50` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `d6d531742a7b12bd6cc09cf6b98daca11f70b5207687ecd4c04c5a11d655a9b2` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt` | `1f65c1d99d3144989068dfbdc8ffa70a32ceab2fc0a6ea2a4eb3ac142e03bf3e` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/DoubleFormatting.kt` | `9b2a1b8cb1d40a2fdc7db5110b6a8c4e398da0562d5c3d6b02cf928f3c74433f` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/FloatFormatting.kt` | `ba55514c181e52f20ed63fcb2634621f66cea3cc4db084e77cf2df71d1dcf77e` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/NumericExtensions.kt` | `20fdf7c5c76ed4207c03859b4cb60247a16e2ec4337ee674c3a85ce6101e5123` |
@@ -77,6 +77,13 @@ both new operands fit whenever the denominator fits. The conversion assembly,
 digit/prefix extraction and integer-division leaves stay unchanged; the ratio
 argument below binds the refined midpoint operation. Earlier conversion CI
 retains its original source and scope.
+
+The later [certified residual route](decimal-residual-583-implementation.md)
+changes decimal pair/remainder composition and the finite integral admission
+check, with a separate stored bridge and raw certificate. The conversion
+methods, refined midpoint leaf, digit/prefix extraction and existing integer
+division leaves remain unchanged. The table binds that successor without
+relabelling previous conversion CI or extending this proof's resource premises.
 
 Assume canonical immutable stored magnitudes, exact integer arithmetic and
 decimal digit/prefix/formatting primitives, valid fixed contexts, and successful
