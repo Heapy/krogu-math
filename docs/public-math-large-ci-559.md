@@ -309,3 +309,126 @@ ded66cd6a325b73a9a393e0fd56281d7bf63d571dab4b146e8f1cb9c0dba2fd1  krogu-math.jar
 25bc2d865f961a5f1fe6a68c7d293cc833e64a8c7af218ab9d6aa66fb62cbd89  port/SymmetricRangeTests/test.stdout.log
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  both failed test.stderr.log files (empty)
 ```
+
+## Second hosted attempt: parser witness passes, later range assertion fails
+
+The separately authorized manual
+[run 38767320539, attempt 1](https://github.com/Heapy/krogu-math/actions/runs/38767320539)
+executed source `88ef623506607944aad9e17dfc713ef8495d95a4` after the
+[parser range guard and its focused validation](integer-parser-range-559-proof.md).
+The [producer 116533816367](https://github.com/Heapy/krogu-math/actions/runs/38767320539/job/116533816367)
+succeeded. The [consumer 116534300818](https://github.com/Heapy/krogu-math/actions/runs/38767320539/job/116534300818)
+failed its campaign step and successfully uploaded the retained evidence.
+The event is `workflow_dispatch`; CI metadata records the same source/workflow
+SHA, run/attempt, repository, workflow file and `public-math-large` job.
+`executionGrantComment` remains null.
+
+Result 1792080974229 contains **11 PASS / 1 FAIL / 128 SKIP**, with twelve executed
+public JVMs, 140 unique phase/path/scope/id/method keys and 118 unique public IDs.
+All six baseline invocations passed. The port passed BitLengthOverflow,
+DoubleValueOverflow, LargeValueExceptions, DivisionOverflow and
+StringConstructorOverflow; SymmetricRangeTests failed. `complete=true` records
+completion of the result loop, and `officialJck=false` remains explicit.
+
+| Public test | Baseline | Port |
+| --- | --- | --- |
+| BitLengthOverflow | PASS | PASS |
+| DoubleValueOverflow | PASS | PASS |
+| LargeValueExceptions | PASS | PASS |
+| largeMemory/DivisionOverflow | PASS | PASS |
+| largeMemory/StringConstructorOverflow | PASS, 3710ms | PASS, 3808ms |
+| largeMemory/SymmetricRangeTests | PASS, 26263ms | FAIL, exit 1 after 4683ms |
+
+StringConstructorOverflow stdout records `Overflow is reported by
+ArithmeticException, as expected` followed by
+`HARNESS_COMPLETE port StringConstructorOverflow`; its stderr is empty. This
+is actual acceptance of that retained oversized-text witness on the new JAR.
+The elapsed values are trace observations, not a performance acceptance claim.
+
+SymmetricRangeTests stdout records seed 559, all subsets, the makePositive
+overflow marker, `Testing Bug 8021204`, then
+`Testing overflow in BitSieve.sieveSingle`. The pinned public test source shows
+that reaching the latter marker requires the giant hex constructor assertion
+to complete by its expected `ArithmeticException` catch. The process then exits
+1 with `timedOut=false`, rather than exhausting its original deadline:
+
+```text
+java.lang.RuntimeException: new BigInteger(bitLength, 0, null).bitLength()=671088639
+    at SymmetricRangeTests.testOverflowInBitSieve(SymmetricRangeTests.java:123)
+    at SymmetricRangeTests.main(SymmetricRangeTests.java:639)
+```
+
+The diagnostic literal contains `null`, but line 122 actually calls
+`new BigInteger(bitLength, 0, RANDOM)`, where `bitLength=(5 << 27)-1` and
+`RANDOM` is initialized by `RandomFactory.getRandom()`. The retained support
+source returns `new Random(getSeed())`, so this observed call uses a non-null
+random generator. The uncaught assertion reports a normally returned value
+with bit length 671088639 where this public test expected an arithmetic range
+exception. It is not evidence about null acceptance. The subsequent
+`nextProbablePrime()` assertion in that method was not reached; no outcome for
+it or the later subsets is reconstructed from this trace. Classification of
+this remaining range-policy assertion is separate work; this report introduces
+no production cutoff, adapter, assertion waiver or JDK defect claim.
+
+The command retained both phases, the exact three large profiles, auto memory,
+8192MiB maximum heap, seed 559, subset 0 and no test filter. Workflow `25d97734`,
+entrypoint `11e5ddd8`, runner `ed32beb0`, adapter `45db93c7`, manifest and both
+locks are unchanged from the first hosted attempt. The same six paths retain
+their original directives: five 120s deadlines and one 180s deadline per phase,
+with 4096MiB for LargeValueExceptions and 8192MiB for the other five paths.
+All twelve compilations exited 0 without timeout. All six port caller audits
+exited 0 with nonempty own-core member references and empty host-math member
+lists. All six port class-load logs record the four own core classes from the
+selected JAR, and all six core-origin guards passed. Every PASS has its raw
+completion marker; the failed invocation has none. No execution timed out,
+no owned descendant PID is retained, and no incomplete caught-OOM assertion is
+recorded.
+
+Auto total memory was 16766402560 bytes. All twelve fresh-free gates passed;
+the minimum recorded prelaunch free memory was 11744198656 bytes, above its
+applicable 4608/8704MiB threshold. No invocation was capacity-skipped. This is
+prelaunch capacity evidence, not a guarantee about subsequent host contention.
+The unchanged 128 SKIPs are 106 unselected regular-profile invocations,
+16 upstream-disabled methods, two commented calls and four private exclusions.
+There are no adaptation-companion records in this selected large-file scope.
+
+The [same-run producer artifact 11988464079](https://github.com/Heapy/krogu-math/actions/runs/38767320539/artifacts/11988464079)
+and consumer input have matching `SOURCE_COMMIT` and verified `SHA256SUMS`.
+Their own JARs and the local focused-validation `artifacts/own.jar` are byte
+identical at `4f733787...`; this differs from the first attempt's `ded66cd6...`.
+Runtime metadata retains Liberica 25.0.4+9-LTS, Kotlin 2.4.21 and Gradle 9.8.1.
+Read-only checks verified all 57 locked upstream source hashes, 53 generated
+source hashes, twelve compiled-input hashes, thirteen tool-source hashes and
+seven retained dependency POM hashes from fourteen dependency records. The
+retained tooling directory also matches the reviewed local tooling bytes.
+
+The [evidence artifact 11989293059](https://github.com/Heapy/krogu-math/actions/runs/38767320539/artifacts/11989293059)
+contains 273 files, including the sources, GPL text, licensing, provenance,
+locks, exact entrypoint, raw process logs, caller dumps, inventory and results.
+There is no JAR or class file under `build/math-tck` and no compiled-script
+cache. Its only JAR is the separate own Apache library input. Dependency JAR
+contents are not redistributed or inspected by this audit; retained POMs and
+lock metadata record the dependency provenance.
+
+Evidence is retained at `/private/tmp/krogu-88ef-large-ci-evidence-v1`.
+This audit read existing bytes and appended only this report section; it ran
+no script, compiler, numerical helper, test, build, probe or benchmark and
+retried no invocation. The first `870575e6` result remains **10 PASS / 2 FAIL /
+128 SKIP**, including its two raw timeout failures. This second attempt
+establishes the parser witness pass and exposes a later retained assertion
+failure on a new artifact; it does not establish full SymmetricRangeTests,
+all public tests, task559/task548 closure, performance acceptance or official
+JCK compliance.
+
+```text
+88a26fedb77eafa0e9e660449b4d63d8ab4916eb552bebc19b80c7a1dd11ece5  results.json
+d54c02c190bd748b623c679bcd7b9f1245a4876f4c8054b0c51e06c5d8133883  final-run.json
+a124ce7a6c8545f3a218c2f715ac4b4c77006bb3869df753380e30624618a5f4  large.raw.log
+f72d5d96f111247a4ee9dbc43e33d212c5d0575e47ca7287cb3dda0de6e47b07  public-math-large-campaign.log
+48d1b83331db7640e514bfee68bb6579ecdafc67fbed16fd7cd5e7660409d5d4  inventory.json
+4f7337871a3b32761cc6c25e0dc36a92f56ef759723cb0baf1dd699430ab0ed0  krogu-math.jar
+1355f1bebb1420f9413ab2cf0ff959eefc1362bbc0679c7efa1ee44f7711b2b2  port/StringConstructorOverflow/test.stdout.log
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  port/StringConstructorOverflow/test.stderr.log (empty)
+8c3429822512c039dca32d0cc52035b75ed8081dde90c22825c0da4182fbfa19  port/SymmetricRangeTests/test.stdout.log
+792c0bd066eb800e1dac920505c2d708a3c5e7c347ad4f3e549337dd5b76dc3b  port/SymmetricRangeTests/test.stderr.log
+```

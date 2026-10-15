@@ -16,7 +16,7 @@ prove every integer operation, runtime or platform implementation.
 
 | Own source | SHA-256 |
 | --- | --- |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `8db4e0f6fef21ab6d0e467dd5465bae69ccc52dd47b2162d121a3db1ec1c6615` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `5a4aa675afc9cdfdff6c8761dba45c9636de5533e70fabbd6ea808dc6fa08781` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt` | `08b4329ea5e902f1043107d42ddb02592be537497f6b0990927e8c67c4ed3f29` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/DoubleFormatting.kt` | `9b2a1b8cb1d40a2fdc7db5110b6a8c4e398da0562d5c3d6b02cf928f3c74433f` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/FloatFormatting.kt` | `ba55514c181e52f20ed63fcb2634621f66cea3cc4db084e77cf2df71d1dcf77e` |
@@ -30,6 +30,13 @@ cannot reject a supported value. In particular the fixed-size canonical text
 and prefix coefficients used here take the unchanged accumulation path. The
 table records that later source hash without changing the conversion argument
 or relabelling earlier full-suite CI as execution of the parser repair.
+
+The subsequent [prime-search range policy](prime-search-range-559-proof.md)
+changes only the two generation overloads and successor search. Its unchanged
+region hashes bind every conversion and division method to the parser baseline.
+Conversions do not enter prime generation or successor search. The table now
+binds that source revision; neither this proof nor historical conversion test
+results are relabelled as a full-suite execution of the prime-search change.
 
 Assume canonical immutable stored magnitudes, exact integer arithmetic and
 decimal digit/prefix/formatting primitives, valid fixed contexts, and successful

@@ -34,7 +34,7 @@ to your repositories, and depend on `io.heapy.krogu:krogu-math:0.1.0-SNAPSHOT`.
 ## Implementation
 
 * BigInteger: immutable sign and little-endian base-2^30 limbs; addition,
-  schoolbook multiplication, binary long division, arithmetic shifts, infinite
+  schoolbook multiplication, normalized limb division, arithmetic shifts, infinite
   two's-complement bit operations, extended Euclidean inverse, modular powers,
   integer square roots, Miller–Rabin primality tests and prime generation.
 * BigDecimal: an integer coefficient and signed 32-bit decimal scale; exact and
@@ -51,6 +51,14 @@ The code was written independently against the
 [Java SE 25 API specification](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/package-summary.html).
 OpenJDK and third-party big-number implementation sources are not incorporated.
 The oracle uses only public JDK methods and their observable results.
+
+Probable-prime generation and successor search support magnitudes of at most
+500,000,000 bits. Larger requests throw `ArithmeticException`; a successor
+search also stops if its next candidate crosses that boundary. This chosen
+limit preserves the Java API's required prime-value range through
+`2^500000000`. It does not cap other integer operations or `isProbablePrime`,
+or guarantee memory or running time at the limit. See the
+[range argument and validation](docs/prime-search-range-559-proof.md).
 
 ## Platforms and verification
 

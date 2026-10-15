@@ -765,13 +765,15 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     open fun nextProbablePrime(): BigInteger {
         if (sign < 0) throw ArithmeticException("start < 0: $this")
         if (sign == 0 || (words.size == 1 && words[0] == 1)) return TWO
+        PrimeSearchLimits.checkBitLength(magnitudeBits())
         var n = add(ONE).setBit(0)
         var candidateIndex = ONE
-        while (!n.passesPrimeTest(PrimalityCertainty.successorRounds(candidateIndex.bitLength()))) {
+        while (true) {
+            PrimeSearchLimits.checkBitLength(n.magnitudeBits())
+            if (n.passesPrimeTest(PrimalityCertainty.successorRounds(candidateIndex.bitLength()))) return n
             n = n.add(TWO)
             candidateIndex = candidateIndex.add(ONE)
         }
-        return n
     }
 
     override fun compareTo(other: BigInteger): Int {
@@ -1029,6 +1031,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         internal fun primeValue(bitLength: Int, certainty: Int, rnd: Random): BigInteger = generatePrime(bitLength, certainty, rnd)
         private fun generatePrime(bitLength: Int, certainty: Int, rnd: PlatformRandom): BigInteger {
             if (bitLength < 2) throw ArithmeticException("bitLength < 2")
+            PrimeSearchLimits.checkBitLength(bitLength)
             return generatePrime(bitLength, certainty, rnd.asCommonRandom())
         }
         private fun randomBits(numBits: Int, rnd: PlatformRandom): BigInteger {
@@ -1038,6 +1041,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         }
         private fun generatePrime(bitLength: Int, certainty: Int, rnd: Random): BigInteger {
             if (bitLength < 2) throw ArithmeticException("bitLength < 2")
+            PrimeSearchLimits.checkBitLength(bitLength)
             if (bitLength == 2) return BigInteger(valueOf(rnd.nextInt(2, 4).toLong()))
             val rounds = PrimalityCertainty.generationRounds(bitLength, certainty)
             while (true) {
