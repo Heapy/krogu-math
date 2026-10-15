@@ -16,6 +16,15 @@ This memo records source and test evidence for integer and decimal constructor v
 
 ## Bounded remaining work for 549
 
+The later [JVM PlatformRandom validation proof](platform-random-validation-549-proof.md)
+accounts for all non-null negative-bit random constructors and all bitLength<2
+prime constructor/static calls, plus the numerical zero-bit result. It verifies
+the actual java.util.Random typealias and public routes. Existing compiled
+call-shape evidence is distinct from dedicated isolated invalid-size assertions;
+no mirror tests or callback/identity guarantee are added. This closes that narrow
+bridge validation lemma, subject to its recorded language/runtime premises;
+positive RNG/primality and the full error ledger remain separate.
+
 The evidence does not justify saying “constructor coverage complete.” The remaining proof obligation is complete call-site coverage and exception classification outside the finite families above: every public constructor overload and every validation path still needs to be accounted for, with common-platform and JVM-only evidence distinguished. Existing generated or TCK rows prove only their enumerated domains.
 
 Diagnostic messages are observations, not mathematical or grammar requirements. In particular, `NumberFormatException` wording, offending substring grouping, wrapped-cause absence, and compound-invalid ordering should be reported as compatibility observations unless a separate project policy explicitly freezes them.

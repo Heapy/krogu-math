@@ -15,6 +15,10 @@ proof. Normal CI at exact80987 remains a separate pending audit. The accepted580
 source/JAR has both [local verification and the later hosted large milestone](decimal-context-product-580-verification.md#later-hosted-large-milestone-exact80987);
 this does not combine older regular results into a same-source118 pass. Task `local:559`
 acceptance remains a parent gate, with historical failures and exclusions intact.
+The later [regular1b9 campaign failed105/1/46](public-math-1b9-regular-failure-559.md):
+the port SquareRootTests invocation exceeded its unchanged120-second deadline.
+The six other workflow jobs succeeded. Its same-source large12/0/128 pass does
+not remove that failure; the exact stalled input and cause remain unestablished.
 The historical first smoke run followed execution grant1772, superseding
 code-only comment1753 after560's terminal release and parent integration.
 

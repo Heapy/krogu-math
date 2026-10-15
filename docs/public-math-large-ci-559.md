@@ -682,7 +682,9 @@ the recorded required margin. No test was rerun for that correction.
 | Root index check | `10c6f84369e8a1f1e527506b71b289dc829f2afaeaa734543a205f60d062d750` |
 | Read-only capsule | `9c5bc769ad79994f95c7c86f832a7cf6818afd33ef0c2371e3108fad6338b183` |
 
-Normal CI at exact1b9 remains a separate pending audit. This run does not cover
+Normal CI at exact1b9 subsequently failed its public SquareRootTests deadline;
+the [complete regular ledger](public-math-1b9-regular-failure-559.md) is105/1/46,
+with the other six workflow jobs successful. This large run does not cover
 the later580 source/JAR48614577, official JCK or all mathematical input classes.
 The public test tag/runtime revision difference remains recorded. Task559 and
 the broader range, dispatch and Number/JS gates remain open.

@@ -119,6 +119,16 @@ multiplication's exact-product obstruction.
 
 ## Limits and remaining gates
 
+Later actual hosted evidence: exact1b9 normal run38783134507 completed with six
+jobs SUCCESS and the public job FAILURE. Its complete ledger is105 PASS,1 FAIL,
+46 SKIP; port SquareRootTests timed out at120113ms under its original120s/512MiB
+regime, while baseline passed in231ms. See the [retained failure audit](public-math-1b9-regular-failure-559.md).
+The producer/consumer JAR is this e7047 artifact; no failing assertion or exact
+stalled input was recorded. The separately accepted same-source large12/0/128
+run is documented in the [large evidence report](public-math-large-ci-559.md#actual-hosted-success-1b9-and-the-accepted579-artifact).
+Matching full-workflow acceptance therefore remains open. The pending text
+below describes the earlier local milestone, not a later all-seven pass.
+
 Matching-head supported CI and hosted public campaigns for this new source/JAR
 remain pending. The previous35086 large12/0/128 result is historical evidence
 for its own856fc JAR, not this e7047 JAR. Official JCK has not run.
