@@ -135,6 +135,17 @@ All1,610 source-derived method executions pass on JVM/JS/Wasm/macOS ARM64 with
 the frozen240-source composition and fresh own JAR. Maximum-size witnesses stay
 symbolic, not executed JDK failures. Matching hosted/public gates and the broader
 541/P1/548 obligations remain separate.
+The [same-source large-profile report](docs/public-math-large-2e767-verification-559.md)
+subsequently confirms12PASS/0FAIL/128SKIP with all selected fresh-memory gates,
+original profiles/limits and producer/consumer/local JAR1cacc provenance verified.
+The separate normal/platform run remains outside that large-only result.
+
+Subsequent source/spec audits track587, the inexact sqrt precision/cohort rule,
+and588, contextual lexical conversion before full-coefficient materialization.
+They remain open: a numerically equal shorter sqrt cohort is not itself a proof
+of the prescribed representation, and supported BigInteger-input constructor
+proofs do not settle all String/char-array context inputs. Giant lexical/range
+witnesses are unexecuted; no JDK runtime defect is claimed for them.
 
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in
