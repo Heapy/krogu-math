@@ -142,6 +142,56 @@ claim to have tested other releases and does not change the project toolchain.
 
 ## Evidence snapshots
 
+### Executed backend-phase listing
+
+The new `phase-list` mode executed under parent1919 after the combined four-target
+math gates and public PowTests/SquareRootTests were terminal. It is a separate
+diagnostic step for task557. A fresh source-bound script cache compiled the
+unchanged own fixture to KLIB, then added `-Xlist-phases`
+only to the JS linking command. It does not execute the fixture in Node.
+
+The pinned2.4.21 advanced-help capture from the earlier root baseline replay
+`krogu-js-number-baseline-8594182732502465407/advanced.log` advertises that flag,
+as well as phase-dump/filter controls. Its SHA-256 is
+`e3092e9d313cb594157a25cd6c3a25faa374aa0f6ccd728209513158fe1def17`.
+The mode checks the current compiler's help again before using the flag, retains
+the existing direct compiler/time/heap/output bounds, and fails if the link log
+reaches its512KiB capture limit. Existing numerical modes and both fixture
+sources are unchanged.
+
+An exit0 for this mode means only that the requested compiler commands finished;
+its final marker explicitly reports `number_tests_executed=false` and
+`node_exit=NOT_RUN`. Inspect the actual captured phase names and log before
+selecting a later phase dump or disable experiment. No phase names are guessed,
+no phase is disabled here, and no generated stdlib numerical helper body is
+inspected. Unknown or unhelpful listing output is inconclusive. A later probe
+must distinguish KLIB creation from JS linking and verify both Number and
+generic callers plus concrete controls; listing phases is no compatibility fix.
+
+Actual parent run: script exit0; KLIB and JS-link commands exit0, all owned
+processes terminal without timeout/cleanup. The version-only CLI exit1 is the
+already documented identity-preflight behavior. Runner SHA256 is
+`7d5fd8544fad3e2e18fdc5a7b795d156288faf5577721698930de6a4098de6b7`;
+the unchanged fixture is `2a2785f98fc7d9a77e85dd9fe639a57bc028596a0f1d0ec026752f717a28fe26`.
+Scratch directory: `krogu-js-number-phase-list-296742234258679469` beneath the
+same macOS temporary root as the retained snapshots below. Full parent log is
+`/private/tmp/krogu-root526565525-validation-v1/js-phase-list.log`, SHA256
+`8262ee6a05c13cd0bcd92114ecd4cec34f2a0a112612341c74654303d5fd2337`.
+
+The actual [phase catalog](phase-list-2.4.21.txt), SHA256
+`804d07a1e01283af9db5097282b888f1695efa694027c8035c5f1c3235007381`,
+contains `JsBridgesConstruction`, `AutoboxingTransformer` and `CallsLowering`.
+These are observed phase names, not identified causes. No phase was disabled,
+no own-caller IR dump was produced, and no compiler integration was validated.
+The terminal marker explicitly reports `number_tests_executed=false` and
+`node_exit=NOT_RUN`; task557 and both original Number regressions remain open.
+
+The official KT-79282 record was rechecked through its public API on2026-10-15:
+it still reports Bug/Backend.JS/Backlog and no Planned for or Available in value.
+This remains an external bug diagnosis, not a waiver of Number/generic dispatch.
+
+### Retained executed snapshots
+
 The baseline and ES2015 snapshots use the same fixture hash:
 `2a2785f98fc7d9a77e85dd9fe639a57bc028596a0f1d0ec026752f717a28fe26`.
 Their runner snapshot predates addition of the coercion mode; the executed
@@ -180,7 +230,8 @@ Independent review found that terminating only the historical shell launcher
 could leave its JVM descendant alive and make an unbounded reader join hang.
 The current runner directly launches the installed JVM compiler, bounds process
 cleanup and reader joins, and treats cleanup/capture failure as a failed run.
-No generated caller or Number fixture was changed. Current runner SHA-256:
+No generated caller or Number fixture was changed. The executed parent-replay
+runner snapshot, before the prepared `phase-list` addition, has SHA-256:
 `2e90330308727dcb2a79d7d42d678b59894a96d4ea22b0a0a2c637d9ea1d10c3`.
 
 Parent replay on the same pinned toolchain completed:

@@ -24,6 +24,8 @@ For integral and String conversions, explicitly import krogu's `toBigInteger`,
 [Kotlin conversion imports](docs/kotlin-conversion-extensions.md).
 For increment/decrement, shifts, complements and named or aliased bitwise calls,
 see [Kotlin operator migration](docs/kotlin-operator-migration.md).
+Float/Double conversions use the same explicit `toBigDecimal` import; see
+[floating conversion semantics](docs/kotlin-floating-conversion-migration.md).
 
 This is an initial implementation (`0.1.0-SNAPSHOT`), not a published Maven Central
 release. To consume locally, run `./gradlew publishToMavenLocal`, add `mavenLocal()`
@@ -57,6 +59,9 @@ in-process compilers when compiling the multiplatform oracle suites.
 
 Build pins: **Gradle 9.8.1**, **Kotlin 2.4.21**, **BellSoft Liberica JDK 25.0.4+9**.
 The Gradle distribution checksum and CI action revisions are pinned.
+The latest combined local checks for powers, square-root midpoint rounding and
+floating conversion imports are recorded in
+[the integration verification report](docs/math-port-integration-verification.md).
 
 | Platform | Target | Verification |
 |---|---|---|

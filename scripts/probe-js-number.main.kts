@@ -1,6 +1,6 @@
 #!/usr/bin/env kotlin
 
-// Usage: kotlin scripts/probe-js-number.main.kts [baseline|es2015|bigint|noinline|coercion|timeout-check]
+// Usage: kotlin scripts/probe-js-number.main.kts [baseline|es2015|bigint|noinline|coercion|timeout-check|phase-list]
 // No project build or dependencies. Each invocation creates a fresh scratch snapshot.
 import java.io.File
 import java.nio.file.Files
@@ -12,7 +12,7 @@ import kotlin.system.exitProcess
 
 val mode = args.singleOrNull() ?: if (args.isEmpty()) "baseline" else error("Expected one mode")
 val flags = when (mode) {
-    "baseline", "coercion", "timeout-check" -> emptyList()
+    "baseline", "coercion", "timeout-check", "phase-list" -> emptyList()
     "es2015" -> listOf("-target", "es2015")
     "bigint" -> listOf("-target", "es2015", "-Xes-long-as-bigint")
     "noinline" -> listOf("-Xno-inline")
@@ -103,14 +103,30 @@ val versionExit = command("compiler-version", compilerCommand + "-version", 30)
 check(versionExit in 0..1 && File(scratch, "compiler-version.log").readText().contains("kotlinc-js 2.4.21"))
 check(command("help", compilerCommand + "-help", 30) == 0)
 check(command("advanced", compilerCommand + "-X", 30) == 0)
+if (mode == "phase-list") {
+    check(Regex("(?m)^\\s*-Xlist-phases(?:\\s|$)")
+        .containsMatchIn(File(scratch, "advanced.log").readText())) {
+        "Pinned compiler help does not advertise -Xlist-phases; no phase name will be guessed"
+    }
+}
 val klibDir = File(scratch, "klib").also { it.mkdir() }
 val jsDir = File(scratch, "js").also { it.mkdir() }
 val common = listOf("-libraries", stdlib.path, "-ir-output-name", "number-probe", "-module-kind", "commonjs") + flags
 check(command("compile-klib", compilerCommand + listOf(fixture.path, "-ir-output-dir", klibDir.path) + common) == 0)
 val klib = File(klibDir, "number-probe.klib")
 record("SHA256 ${hash(klib)} ${klib.path}")
+val linkFlags = if (mode == "phase-list") listOf("-Xlist-phases") else emptyList()
 check(command("compile-js", compilerCommand + listOf("-Xir-produce-js", "-Xinclude=${klib.path}",
-    "-ir-output-dir", jsDir.path, "-main", "call") + common) == 0)
+    "-ir-output-dir", jsDir.path, "-main", "call") + common + linkFlags) == 0)
+if (mode == "phase-list") {
+    check(File(scratch, "compile-js.log").length() < 524288) {
+        "Phase-list output reached the capture limit; retain this incomplete evidence"
+    }
+    // This reports a compiler diagnostic request, not passing Number behavior.
+    // Read the actual phase names before designing any later phase-local probe.
+    record("FINAL phase_listing_requested=true number_tests_executed=false node_exit=NOT_RUN evidence=$scratch")
+    exitProcess(0)
+}
 val js = File(jsDir, "number-probe.js")
 record("SHA256 ${hash(js)} ${js.path}")
 // Execute the unchanged compiler output. Never splice calls or inspect runtime helper bodies.

@@ -74,8 +74,16 @@ The other 138 harness records were outside this targeted selection. This does
 not replace the earlier broad corpus ledger or resolve its prime timeouts and
 large-memory coverage gaps. Official JCK was not run.
 
-Supported-platform CI at the new integrated head remains the final task 563
-acceptance gate; earlier-head CI does not prove that gate.
+The final task563 gate subsequently passed at exact published head
+`6efbd7b454b1b4cc4e05ba961f2af921cb3f3787`, which contains implementation
+`ad1ae346db371c70ad889dea519c96cbcf2301c7`:
+[CI38653170751](https://github.com/Heapy/krogu-math/actions/runs/38653170751)
+completed successfully with all six jobs successful. The final actual Linux
+ARM64 execution ran217 tests from47 cases, all217 passing; all four root-family
+methods and both callback-contract methods have explicit successful records.
+Task563 is DONE. This closes the finite-exact-root defect only; the later
+midpoint/power/floating changes, broader542/526, public-corpus barriers and
+official JCK remain separate work.
 
 `scripts/inventory-decimal-exact-root-callbacks-563.main.kts` can verify the frozen
 callback projection and path structure from the integrated repository root.
