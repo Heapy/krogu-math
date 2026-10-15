@@ -24,7 +24,8 @@ and all 49 input compiler jobs. A selected public campaign passed 30 adapted
 invocations with 115 declared coverage skips. Four original joint-invalid
 constructor calls remain outside that success; their earlier failure is preserved.
 Published-revision CI is recorded separately. The [current verification report](docs/non-null-api-573-verification.md)
-records accepted evidence and remaining gates; this does not establish full
+records accepted evidence, including all six jobs passing on published de5,
+and remaining broader obligations; this does not establish full
 compatibility or JCK conformance.
 The first48-input JVM run compiled and executed492 methods, with one test-counter
 failure retained in the [revision3 handoff](docs/non-null-573/POST_REVIEW_HANDOFF.md).
@@ -62,7 +63,8 @@ records the later test-only integration, four local target gates and all six CI
 jobs passing on published commit60aea413, including actual Linux ARM64 execution.
 The later [decimal normative finite-control report](docs/decimal-overload-541-verification.md)
 records six additional common methods, four accepted local target gates and
-the remaining full-domain/dispatch proof limits. Its matching-head CI is pending.
+the remaining full-domain/dispatch proof limits. All six matching-head CI jobs
+pass on published de5, including the actual314-method Linux ARM64 runtime.
 
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in

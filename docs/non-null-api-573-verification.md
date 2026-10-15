@@ -1,6 +1,6 @@
 # Non-null Kotlin API: tasks573–578 and extrema results525
 
-The adopted candidate passes all four local platform gates, its48-input compiler campaign and30 adapted selected public invocations. Exact published-head CI remains open. This report does not establish full Kotlin compatibility or JCK conformance.
+The adopted candidate passes all four local platform gates, its48-input compiler campaign and30 adapted selected public invocations. All six CI jobs also pass on published de5d2a17bae64feee587fe119eabf519891ce1b5. This report does not establish full Kotlin compatibility or JCK conformance.
 
 ## Scope and source
 
@@ -93,7 +93,7 @@ The fresh revised campaign1792066692563 terminated0, complete=true, officialJck=
 
 Success evidence: `/private/tmp/krogu-573525-public-success-evidence-v2.tar`, SHA-256 `de8f3839b8c6793d4125d2e787ab11e6325fb16b3e69703a836dd0f4be06ac84`. Raw JSON SHA is `58591a9fdd5fd8c59c42a846d8c995e2046ae5923f30d308e723479fd2eeec0b`; campaign-log SHA is `2db7d0f8c6aa0c60a5525029b4bac373474e0598ba4a6fca0f8d5b7bf1232992`. Adapter SHA is `05c05df6ce1c92d75eef368d7d9730f67df8ce3cef3919072431b15e37e4ad2f`; manifest SHA is `05b30e6abf14c9584146e22d2b720ece8898770b7e9562bea1b9884ec60e40e7`. Official JCK, the full public corpus, previous PrimeTest failure and broader range/resource gaps remain separate.
 
-All-six CI success at published60 certifies the earlier544/545 integration; it does not certify the later API integration. Tasks573–578 remain open until exact published-head CI. Task549 retains broader grammar/call-site/exception-matrix obligations beyond this nullability milestone. Broader525/526, the known compiler issue557 and official JCK status remain separate.
+All-six CI success at published60 certifies the earlier544/545 integration; the later de5 gate recorded below certifies this API integration and the two added541 test classes. Task549 retains broader call-site/exception-matrix obligations beyond this nullability milestone. Broader525/526, the known compiler issue557 and official JCK status remain separate.
 
 ## Publication and static-auditor correction
 
@@ -105,8 +105,49 @@ The narrow correction updates the anchor to `sqrt(mc: MathContext)` and requires
 
 The published-worktree222-input snapshot is `4d46984e070e5900c4548b96fec03528f9d560dbf3d6a877e27ca42164f6d7d9`. It differs from the accepted runtime snapshot only in pre-existing Windows wrapper CRLF normalization: worktree, runtime and published `gradlew.bat` all resolve to Git blob `3185a43f78fabec15ca99b0ca6bf1e666218d5ca`. All213 source files and other build inputs match; no blanket raw-manifest equality is claimed.
 
-A corrected published-head all-six CI gate remains required. Earlier successful local/public results retain their exact artifact and source scope.
+A corrected published-head all-six CI gate completed as recorded below. Earlier successful local/public results retain their exact artifact and source scope.
 
-The next publication also adds the independently validated [541 finite-control tranche](decimal-overload-541-verification.md): exactly two common test classes, with all213 API-integration base sources unchanged. Its215-source snapshot passes145/498 JVM and65/314 on each common local target (1440 method executions). Production code, the ded66 public-test JAR and existing public runner/adapters are unchanged. No new public campaign or fresh JAR is claimed for this test-only addition. The forthcoming CI must certify its actual combined published SHA; the older failed d499 run cannot supply that gate.
+The combined de5 publication also adds the independently validated [541 finite-control tranche](decimal-overload-541-verification.md): exactly two common test classes, with all213 API-integration base sources unchanged. Its215-source snapshot passes145/498 JVM and65/314 on each common local target (1440 method executions). Production code, the ded66 public-test JAR and existing public runner/adapters are unchanged. No new public campaign or fresh JAR is claimed for this test-only addition. The actual matching-head gate follows; the older failed d499 run cannot supply it.
 
 The573 root-adoption document checksums retain the completed d499 integration snapshot. Later541 additions to README/COMPATIBILITY are separate documentation changes; those older snapshot hashes are not claims about the evolving worktree.
+
+## Completed matching-head CI
+
+[Compatibility run38741870826](https://github.com/Heapy/krogu-math/actions/runs/38741870826), attempt1, completed successfully on exact published `de5d2a17bae64feee587fe119eabf519891ce1b5`.
+
+| Job | ID | Status |
+| --- | --- | --- |
+| Linux JVM/JS/Wasm/x64 and ARM cross-build |116445351684|PASS|
+| Windows JVM/Native |116445352388|PASS|
+| Intel macOS JVM/Native/iOS simulator |116445352534|PASS|
+| ARM macOS JVM/Native/iOS simulator and device compilation |116445352586|PASS|
+| Oracle and static inventory |116445352615|PASS|
+| Actual Linux ARM64 execution |116459826155|PASS|
+
+The actual ARM job uses `ubuntu-24.04-arm` and runs `./test.kexe`.
+The reviewed auditor `7c7a42ec71183aa4af353a0736c187318c9dee37eafbb0e499b229d40e891b9b`
+compiled/executed once with a fresh cache and256MiB heap under parent grant2254;
+outer invocation37022 terminated0. Its314 unique native RUN IDs and314 unique
+OK IDs exactly equal the65-suite accepted Wasm XML inventory, in identical
+start/pass order, with no missing/extra/duplicate/failure/skip anomalies.
+Reference XML hashes match the previously accepted source-derived Wasm audit;
+all215 current sources match manifest
+`e4a136545f2fe00f0f3c9a9e80fd6f6a54fbad96b04dc155e0992cbb83c52962`.
+No numerical probe or new public campaign ran during this metadata check.
+
+Evidence: `/private/tmp/krogu-de5-ci-evidence-v1.tar`, SHA-256
+`e68e83d7557ede9c0cb85eb8e8e258c86496f9cac828a01e4acbe6347533f7e9`.
+It contains final run/jobs JSON, the raw ARM log, auditor and invocation,
+reference XML/source binding and hash checks; compiled caches are excluded.
+
+```text
+9deba6501a12d4a8e4d9929fbe38fb636f541d2139d1bf71d8478e015abb6474  run-final.json
+c4b0265f8b52efaeaa16631e54e4b25aa858855eed3f616e5f21d54e7501f46d  jobs-final.json
+fbf84ea282e1e1956b7ba0308535269039cd94a1d5f89c44a654032463271e00  linux-arm64.log
+bf64dfe291893100a574499832296f6854dbeb93fbf9783e5ef8abab3292647a  arm-audit.log
+```
+
+The first d499 failed CI gate remains preserved. This later success supplies
+the focused573–578 publication gate; full525/526/541/549, supported-range and
+official JCK obligations remain open. Local8184 contains documentation only;
+this is not a claim that CI executed on that later documentation commit.

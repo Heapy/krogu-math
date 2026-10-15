@@ -230,8 +230,9 @@ retain their historical source milestones and displaced execution accounting.
 
 The later [decimal finite-control audit](docs/decimal-overload-541-verification.md)
 adds six common methods covering the39-entry inventory and selected explicit
-dispatch/identity rules. All four local targets pass. Broader numerical-domain
-proofs and the matching published-head CI remain separate.
+dispatch/identity rules. All four local targets and all six matching-head CI
+jobs pass on published `de5d2a1`, including Linux ARM64 execution. Broader
+numerical-domain proofs remain open.
 
 ## Source and behavioral compatibility contract
 

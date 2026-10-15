@@ -1,7 +1,8 @@
 # Decimal normative finite controls — task541
 
 The six new common methods passed all four complete local target inventories.
-The exact tested sources are adopted in root; published-head CI remains pending. This is a finite audit tranche,
+The exact tested sources are adopted in root; all six CI jobs pass on published
+de5d2a17bae64feee587fe119eabf519891ce1b5. This is a finite audit tranche,
 not completion of task541 or its G1–G6/P1–P6 obligations.
 
 The isolated snapshot is based on ec195b2cb672ad774c5aaebe05be516e51575fd5.
@@ -78,10 +79,17 @@ Captured Gradle processes10271/11598/14324/15594 were absent after their
 respective terminal invocations; each auditor ran separately after its build.
 
 Root adoption preserves all213 base sources and the exact215-source manifest
-above. Matching published-head all-six CI remains open.
-Prospective ARM auditor7c7a42ec... is source-reviewed but uncompiled/unrun;
-it requires a314/65 log from the matching future publication and the accepted
-source-bound Wasm XML. It cannot certify the earlier308-method d499 run.
+above. Matching published-head CI38741870826 attempt1 completed successfully
+on de5, including actual Linux ARM64 job116459826155. Auditor7c7a42ec...
+compiled/executed with a fresh cache and256MiB heap; outer37022 terminated0.
+It matched all314 unique native starts/passes against all65 accepted source-bound
+Wasm XML suites, with no missing/extra/duplicate/failure/skip anomalies.
+The raw ARM log is fbf84ea282e1e1956b7ba0308535269039cd94a1d5f89c44a654032463271e00;
+audit output bf64dfe291893100a574499832296f6854dbeb93fbf9783e5ef8abab3292647a.
+Final CI evidence capsule e68e83d7557ede9c0cb85eb8e8e258c86496f9cac828a01e4acbe6347533f7e9
+and complete job/source bindings are recorded in the
+[API integration report](non-null-api-573-verification.md#completed-matching-head-ci).
+The earlier308-method d499 run remains a separate failed publication gate.
 Official JCK, full public-suite, numerical resource and overall compatibility
 claims remain outside this tranche.
 
