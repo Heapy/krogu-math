@@ -84,7 +84,9 @@ val detection = production.substringAfter("    private fun finiteExactSquareRoot
     .substringBefore("    private fun finiteSquareRootResult(")
 for (forbidden in listOf("toString(", "precision(", "storedPrecision(", "adjustedExponent(", "stripTrailingZeros(", "tenPow("))
     check(forbidden !in detection) { "Whole-input conversion or precision-derived detection: $forbidden" }
-val entry = production.substringAfter("    open fun sqrt(mc: MathContext?): BigDecimal {")
+val entryMarker = "    open fun sqrt(mc: MathContext): BigDecimal {"
+check(production.split(entryMarker).size == 2) { "Expected exactly one non-null sqrt entry marker" }
+val entry = production.substringAfter(entryMarker)
     .substringBefore("    private fun finiteExactSquareRoot(")
 check(entry.indexOf("if (finiteRoot != null) return finiteSquareRootResult") in 0 until entry.indexOf("stripTrailingZeros()"))
 check(entry.indexOf("if (finiteRoot != null) return finiteSquareRootResult") < entry.indexOf("adjustedExponent()"))
