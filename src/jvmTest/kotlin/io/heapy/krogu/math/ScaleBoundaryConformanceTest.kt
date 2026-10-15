@@ -65,6 +65,7 @@ class ScaleBoundaryConformanceTest {
         val inputs = listOf(-1000L, -100, -3, -1, 0, 1, 3, 100, 1000).flatMap { n -> scales.map { JD.valueOf(n, it) } }
         val failures = mutableListOf<String>()
         var comparisons = 0
+        var directZeroRounds = 0
         fun outcome(action: () -> Any?): String = try { action().toString() }
             catch (e: Exception) { "!${e.javaClass.simpleName}" }
         fun check(label: String, reference: () -> Any?, implementation: () -> Any?) {
@@ -90,10 +91,24 @@ class ScaleBoundaryConformanceTest {
             for (p in listOf(0, 1, 2, 7)) for (mode in RoundingMode.entries) {
                 val mc = MathContext(p, mode); val jc = JC(p, JR.valueOf(mode.name))
                 check("sqrt $x,$mc", { sqrtReference(a, mc) { x.sqrt(jc) } }, { a.sqrt(mc) })
-                check("round $x,$mc", { x.round(jc) }, { a.round(mc) })
+                // x/a are ordinary values copied from literal stored coefficients.
+                if (x.unscaledValue() == java.math.BigInteger.ZERO && x.scale() != 0) {
+                    directZeroRounds++
+                    val diagnostic = x.round(jc).toString()
+                    assertEquals(x.toString(), diagnostic, "retained task567 JDK round: $x $mc")
+                    check("round $x,$mc; JDK=$diagnostic", { "0" }, {
+                        val result = a.round(mc)
+                        assertEquals(BigInteger.ZERO, result.unscaledValue(), "round coefficient: $x $mc")
+                        assertEquals(0, result.scale(), "round scale: $x $mc")
+                        result
+                    })
+                    println("567_DIRECT_ZERO_OBSERVATION\tround $x,$mc\tfrozen=$diagnostic")
+                } else check("round $x,$mc", { x.round(jc) }, { a.round(mc) })
                 check("pow $x,2,$mc", { x.pow(2, jc) }, { a.pow(2, mc) })
             }
         }
+        assertEquals(139239, comparisons)
+        assertEquals(256, directZeroRounds)
         assertEquals(emptyList(), failures, "$comparisons comparisons; first discrepancies:\n${failures.joinToString("\n")}")
         println("$comparisons signed-scale-boundary comparisons passed")
     }

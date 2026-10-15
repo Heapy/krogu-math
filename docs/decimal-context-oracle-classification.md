@@ -127,6 +127,30 @@ wording are observations here. Some callback, null and arithmetic failure
 precedence interactions remain unresolved. None of the old assertions are
 archived or removed by this addition.
 
+### Eight required null-context exception types
+
+Rows `D07425`–`D07432` map to `C0609`–`C0616`: source `0.00`, divisor `2.0`,
+ordinary topology, both modes `delegate`, null context and all eight rounding
+modes. Their compact records retain `M01/M01/E/009`. The public null-argument
+contract requires `NullPointerException` for these exact calls. The caller
+explicitly enters `super.divide(divisor, null)`; current source rejects the
+context before any latent poisoned getter or replacement callback can execute.
+This path explanation does not make internal noncalls or trace order mandatory.
+
+Only their exception-type status becomes `REQUIRED_NULL_ARGUMENT_CONTRACT`.
+The frozen `!NullPointerException|` strings, reference traces, unobserved identity,
+latent flags and every archival block remain. The other 75,720 poisoned outcome
+statuses remain unresolved. In particular, this classification does not extend
+to the null-divisor/unlimited-context replacement below.
+
+The revised mapper validates exact IDs, inputs, modes, controls and masks and
+losslessly recovers all 19 fields. Isolated generation and final checking passed;
+all 75,729 noncomment lines of the six-column payload stayed byte-identical.
+The original artifact is retained, and the expected first check against its old
+header remains a recorded failure. The [integration report](context-modular-integration-verification.md)
+records hashes and verification scope. No mathematical code, frozen fixture or
+existing assertion changed for this metadata update.
+
 ### Null arguments and an unlimited-context replacement
 
 Frozen row `D07457` illustrates why a null input alone does not settle an old

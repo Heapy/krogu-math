@@ -82,12 +82,14 @@ the retained dispatch corpus, with zero failures/errors/skips. Details are in
 No test implementation, math implementation or JDK arithmetic is executed by
 the mapper itself.
 
-Schema `context-contract-coverage-v2` stores only six columns:
+Schema `context-contract-coverage-v3` stores only six columns:
 `old_row_id`, `control_id`, `source_mode_id`, `divisor_mode_id`, `old_kind` and
 `interaction_bits_hex`. The header's `MODE` dictionary recovers each original
 probe mode. `V` and `E` recover `VALUE` and `ERROR`. The three-digit lowercase
 hexadecimal mask combines the header's `FLAG` bits. The input/outcome dictionary
 is the hash-bound control fixture itself, indexed by the one-based `C` ID.
+Eight bounded `STATUS` header records override only the logical error-type
+status for exact D/C/mode/kind/mask bindings; the six-column data stays byte-identical.
 Together these recover **all 19 logical fields** of the original expanded map,
 without repeating fixture data or constant policy strings per row:
 
@@ -99,7 +101,7 @@ without repeating fixture data or constant policy strings per row:
 | `required_valid_outcome` | Sixth field of the `C` control row |
 | `required_canonical_text_control` | `CANONICAL_TEXT:C-id` for a successful control; `NOT_APPLICABLE` for an error control |
 | `old_outcome_kind` | Stored `V` → `VALUE`; `E` → `ERROR` |
-| `old_value_or_error_status` | Constant `UNRESOLVED_POISONED_INTERACTION` |
+| `old_value_or_error_status` | Exact eight `STATUS` bindings below → `REQUIRED_NULL_ARGUMENT_CONTRACT`; otherwise `UNRESOLVED_POISONED_INTERACTION` |
 | `old_trace_status` | Constant `REFERENCE_OBSERVATION` |
 | `old_message_status` | `REFERENCE_OBSERVATION` when bit `200` is set; otherwise `NOT_RECORDED` |
 | `runtime_identity_status` | Constant `NOT_OBSERVED` |
@@ -124,7 +126,7 @@ without repeating fixture data or constant policy strings per row:
 |---|---|
 | `required_valid_outcome` | Required coefficient/scale or error-type control on ordinary/fully truthful operands |
 | `required_canonical_text_control` | Required canonical result spelling for the corresponding successful control; not an expected poisoned result |
-| `old_value_or_error_status` | `UNRESOLVED_POISONED_INTERACTION`; the exact poisoned invocation still needs its own field-level contract analysis |
+| `old_value_or_error_status` | Eight exact null-context error types below are `REQUIRED_NULL_ARGUMENT_CONTRACT`; all other rows remain `UNRESOLVED_POISONED_INTERACTION` |
 | `old_trace_status` | `REFERENCE_OBSERVATION`; internal order, counts, noncalls and exact-override forwarding are not established requirements |
 | `old_message_status` | `REFERENCE_OBSERVATION` when a diagnostic message was recorded; otherwise `NOT_RECORDED` |
 | `runtime_identity_status` | `NOT_OBSERVED`; this evaluator measures neither result identity nor runtime class/cache choices |
@@ -141,13 +143,36 @@ replaced. They do not require inherited context division to invoke that override
 internally. The ordinary/truthful partitions separately cover the documented
 null and self arithmetic.
 
-All 58,093 old value prefixes and 17,635 old error prefixes remain unresolved
-as outcomes of the poisoned invocation. This does not declare them unconstrained:
+All 58,093 old value prefixes and 17,627 old error-type statuses remain unresolved;
+eight exact null-context error types are classified below. This does not declare other fields unconstrained:
 it keeps their possible required fields open while transferring valid-input
 coverage. In particular, a configured but unused bad getter is not a waiver of
 an inherited method's independent contract. Null/throw/arithmetic precedence and
 self-alias callback counters remain explicit investigation topics. The existing
 fixture, evaluator, generator and assertions stay unchanged.
+
+### Eight exact null-context exception types
+
+Only D07425–D07432, respectively C0609–C0616 in UP/DOWN/CEILING/FLOOR/HALF_UP/
+HALF_DOWN/HALF_EVEN/UNNECESSARY order, receive `REQUIRED_NULL_ARGUMENT_CONTRACT`.
+Their exact source/divisor are `0.00`/`2.0`, ordinary topology, both mode IDs
+M01 (`delegate`), context precision−1 (null), old kind E and mask009. Selection
+uses these inputs and stable IDs, never the recorded outcome. The complete
+frozen `!NullPointerException|` observation remains asserted as provenance.
+
+The required field is exception TYPE only, under the public null-object-argument
+contract for the caller's direct `super.divide(divisor,null)` entry. Current
+source rejects null context before metadata/exact calls; this explains the
+observation without making no-callback/trace ordering a requirement. Trace stays
+`REFERENCE_OBSERVATION`, identity `NOT_OBSERVED`, and latent poisoned-callback/
+null-context tags and `BLOCKED_UNRESOLVED_FIELDS` remain. D07457/C0625 and every
+other row are untouched. No assertion, fixture or production change or archival
+permission follows. Independent review accepted the isolated generation/check
+and byte-comparison evidence: all75,729 noncomment lines stayed identical,
+and only the eight logical error-type statuses changed. The original v2 data,
+expected first-check failure and exact new metadata are retained in
+`/private/tmp/krogu-526-null8-validation-v1/`; see the
+[integration report](../../docs/context-modular-integration-verification.md).
 
 From the repository root, with Kotlin 2.4.21:
 
@@ -163,6 +188,6 @@ schemas, all row/control counts, first-occurrence control order, complete key
 coverage and the metadata-inventory totals. It also decodes every saved compact
 row, verifies all 19 logical fields against the expanded independently computed
 record, and rechecks its key and original modes against the frozen row. It does
-not establish that any
-poisoned outcome is required, classify other oracle families, or complete
+not establish required fields beyond the eight exact null-context error types,
+classify other oracle families, or complete
 `local:526`.

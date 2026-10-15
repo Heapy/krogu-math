@@ -23,14 +23,14 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     }
     private fun readObjectNoData(): Unit = invalidSerializedState("Missing BigDecimal data")
     constructor(value: BigInteger) : this(value, 0)
-    constructor(value: BigInteger, mc: MathContext) : this(BigDecimal(value).round(mc))
-    constructor(unscaledVal: BigInteger, scale: Int, mc: MathContext) : this(BigDecimal(unscaledVal, scale).round(mc))
+    constructor(value: BigInteger, mc: MathContext) : this(BigDecimal(value).roundValue(mc))
+    constructor(unscaledVal: BigInteger, scale: Int, mc: MathContext) : this(BigDecimal(unscaledVal, scale).roundValue(mc))
     constructor(value: Int) : this(value.toLong())
     constructor(value: Long) : this(BigInteger.valueOf(value), 0)
     constructor(value: Int, mc: MathContext) : this(value.toLong(), mc)
-    constructor(value: Long, mc: MathContext) : this(BigDecimal(value).round(mc))
+    constructor(value: Long, mc: MathContext) : this(BigDecimal(value).roundValue(mc))
     constructor(value: String) : this(parse(value))
-    constructor(value: String, mc: MathContext?) : this(parse(value).round(mc ?: throw NullPointerException()))
+    constructor(value: String, mc: MathContext?) : this(parse(value).roundValue(mc ?: throw NullPointerException()))
     constructor(value: CharArray) : this(value, 0, value.size)
     constructor(value: CharArray, offset: Int, len: Int) : this(characters(value, offset, len))
     constructor(value: CharArray, mc: MathContext?) : this(value, 0, value.size, mc)
@@ -44,11 +44,20 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     private fun storedPrecision(): Int = coefficient.decimalMagnitudeDigits()
     open fun signum(): Int = coefficient.signum()
     open fun abs(): BigDecimal = if (signum() < 0) negate() else this
-    open fun abs(mc: MathContext?): BigDecimal = if (signum() < 0) negate(mc) else plus(mc)
+    open fun abs(mc: MathContext?): BigDecimal = if (signum() < 0) negate(mc) else contextualUnaryRound(mc)
     open fun negate(): BigDecimal = BigDecimal(coefficient.negate(), decimalScale)
-    open fun negate(mc: MathContext?): BigDecimal = negate().plus(mc)
+    open fun negate(mc: MathContext?): BigDecimal = negate().contextualUnaryRound(mc)
+    private fun contextualUnaryRound(mc: MathContext?): BigDecimal =
+        // Unary cohort compatibility is separate from the direct plus/round rule.
+        // Keep virtual plus on nonzero replacements, including their null handling.
+        if (coefficient.signum() == 0) roundValue(mc ?: throw NullPointerException()) else plus(mc)
     open fun plus(): BigDecimal = this
-    open fun plus(mc: MathContext?): BigDecimal = roundValue(mc ?: throw NullPointerException())
+    open fun plus(mc: MathContext?): BigDecimal {
+        val result = roundValue(mc ?: throw NullPointerException())
+        // Direct plus/round specifies scale zero even for unlimited precision.
+        // Constructors and arithmetic retain their own preferred scales.
+        return if (result.coefficient.signum() == 0) ZERO else result
+    }
 
     open fun add(augend: BigDecimal?): BigDecimal = addValue(augend ?: throw NullPointerException())
     private fun addValue(augend: BigDecimal): BigDecimal {
@@ -71,13 +80,13 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         checkAdditionAlignment(augend, mc)
         if (kotlin.math.abs(decimalScale.toLong() - augend.decimalScale) < 10000 ||
             kotlin.math.abs(adjustedExponent() - augend.adjustedExponent()) <= mc.precision.toLong() + 3)
-            return addValue(augend).round(mc)
+            return addValue(augend).roundValue(mc)
         // Keep a guard digit plus a sticky digit when the exponent gap is enormous.
         // Replacing a remote tail by a signed sticky unit preserves every rounding decision.
         val large = if (adjustedExponent() > augend.adjustedExponent()) this else augend
         val small = if (large === this) augend else this
         val workingScale = maxOf(large.decimalScale.toLong(), mc.precision.toLong() + 2L - large.adjustedExponent())
-        val result = large.addValue(small.stickyAt(workingScale)).round(mc)
+        val result = large.addValue(small.stickyAt(workingScale)).roundValue(mc)
         val preferred = maxOf(decimalScale, augend.decimalScale)
         return if (result.signum() == 0) result.setScale(preferred) else result.stripTo(preferred)
     }
@@ -129,7 +138,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         // Preserve exact, low-scale and zero/source behavior. Only mandatory
         // precision reduction of a supported nonzero product rescues HIGH scale.
         if (logicalScale <= Int.MAX_VALUE || coefficient.signum() == 0 || operand.coefficient.signum() == 0)
-            return multiplyValue(operand).round(context)
+            return multiplyValue(operand).roundValue(context)
         val product = BigDecimal(coefficient.multiply(operand.coefficient), 0)
         if (product.storedPrecision() <= context.precision) checkedScale(logicalScale)
         // Rounding decisions depend on the coefficient, not the logical scale.
@@ -302,7 +311,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             return BigDecimal(BigInteger.valueOf(sign), divisionScale(preferredScale + divisorDigits - sourceDigits))
         }
         val result = divideScaledCoefficients(operand, target, context.roundingMode, shift >= 0,
-            kotlin.math.abs(shift), checkSourceSign = false).round(context)
+            kotlin.math.abs(shift), checkSourceSign = false).roundValue(context)
         // Exact quotients use the nearest representable scale to the preferred scale.
         val exact = compareValues(result.coefficient.multiply(operand.coefficient),
             result.decimalScale.toLong() + operand.decimalScale, coefficient, decimalScale.toLong()) == 0
@@ -444,6 +453,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     }
 
     open fun round(mc: MathContext?): BigDecimal = plus(mc)
+    // Precision reduction only; internal callers retain operation-specific scales.
     private fun roundValue(mc: MathContext): BigDecimal {
         if (mc.precision == 0) return this
         var result = this
@@ -536,7 +546,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             if (magnitude and (1 shl i) != 0) result = result.multiply(this, work)
         }
         if (n < 0) result = ONE.divide(result, work)
-        return result.round(mc)
+        return result.roundValue(mc)
     }
 
     open fun sqrt(mc: MathContext?): BigDecimal {
@@ -559,7 +569,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             if (root[1].signum() != 0 || (context.precision > 0 && root[0].abs().toString().length > context.precision))
                 throw ArithmeticException("Computed square root not exact.")
             val exact = BigDecimal(root[0], normalized.decimalScale / 2).stripTo(preferred)
-            val rounded = exact.round(context)
+            val rounded = exact.roundValue(context)
             val targetScale = if (context.precision == 0) preferred else minOf(preferred.toLong(),
                 rounded.decimalScale.toLong() + context.precision - rounded.storedPrecision()).toInt()
             if (rounded.coefficient.signum() == 0) return BigDecimal(BigInteger.ZERO, targetScale)
@@ -592,7 +602,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             }
             if (increment(context.roundingMode, 1, half, root.testBit(0))) root = root.add(BigInteger.ONE)
         }
-        return BigDecimal(root, scale).round(context).stripTo(preferred)
+        return BigDecimal(root, scale).roundValue(context).stripTo(preferred)
     }
 
     private fun finiteExactSquareRoot(): Pair<BigInteger, Int>? {
@@ -615,7 +625,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         // Rounding drops at most the root's own digits. The unrounded scale
         // equals preferred, or is one less for negative odd input scales.
         // Padding therefore needs at most one zero, never precision-sized powers.
-        val rounded = BigDecimal(root.first, root.second).round(context)
+        val rounded = BigDecimal(root.first, root.second).roundValue(context)
         val target = if (context.precision == 0) preferred else minOf(preferred.toLong(),
             rounded.decimalScale.toLong() + context.precision - rounded.storedPrecision()).toInt()
         return if (rounded.decimalScale < target)

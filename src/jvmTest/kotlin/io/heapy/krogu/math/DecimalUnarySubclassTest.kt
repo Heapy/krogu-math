@@ -1,6 +1,7 @@
 package io.heapy.krogu.math
 
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class DecimalUnarySubclassTest {
@@ -42,6 +43,8 @@ class DecimalUnarySubclassTest {
     }
     @Test fun unaryDispatchMatchesJdk() {
         val mismatches = mutableListOf<String>()
+        var truthfulDirectZeros = 0
+        val observedFiniteKeys = mutableSetOf<List<String>>()
         for (text in listOf("0.00", "-123.456", "123.456", "1.2345678901234567890")) {
             for (sign in -1..1) for (precision in listOf(0, 1, 7)) for (mode in listOf(RoundingMode.HALF_EVEN, RoundingMode.UNNECESSARY)) {
                 for (op in listOf("abs", "absContext", "negate", "negateContext", "plus", "plusContext")) {
@@ -77,11 +80,32 @@ class DecimalUnarySubclassTest {
                         val r = when (op) { "abs" -> actual.abs(); "absContext" -> actual.abs(mc); "negate" -> actual.negate(); "negateContext" -> actual.negate(mc); "plus" -> actual.plus(); else -> actual.plus(mc) }
                         "${BigDecimal(r.unscaledValue(), r.scale())}|${r === actual}|${r.javaClass == BigDecimal::class.java}"
                     } catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
-                    if (a != b || expectedTrace.toString() != actualTrace.toString())
-                        mismatches.add("$text/$sign/$precision/$mode/$op: $a|$expectedTrace <> $b|$actualTrace")
+                    val truthfulDirectZero = text == "0.00" && sign == 0 && op == "plusContext"
+                    if (truthfulDirectZero) truthfulDirectZeros++
+                    if (truthfulDirectZero)
+                        println("567_DIRECT_ZERO_OBSERVATION\t$text/$sign/$precision/$mode/$op\tfrozen=$a|$expectedTrace\tactual=$b|$actualTrace")
+                    val key = listOf("C", "$op:$sign", text, "0", "$precision", mode.name)
+                    val finiteDirect = key in FiniteZeroPolicy567.directUnaryKeys
+                    val finiteAbs = key in FiniteZeroPolicy567.absKeys
+                    if (finiteDirect || finiteAbs) {
+                        assertTrue(observedFiniteKeys.add(key), "duplicate finite unary key $key")
+                        println("567_FINITE_OBSERVATION\t$key\thost=$a|$expectedTrace\tactual=$b|$actualTrace")
+                    }
+                    if (finiteAbs) {
+                        assertEquals("0.00|true|false", a, "retained abs representation $key")
+                        assertEquals("sign;plusContext;", expectedTrace.toString(), "retained abs trace $key")
+                        assertEquals(BigInteger.ZERO, actual.unscaledValue(), "immutable abs coefficient $key")
+                        assertEquals(2, actual.scale(), "immutable abs scale $key")
+                    }
+                    val required = if (truthfulDirectZero || finiteDirect) "0|false|true" else a
+                    val requiredTrace = if (finiteAbs) "sign;" else expectedTrace.toString()
+                    if (required != b || requiredTrace != actualTrace.toString())
+                        mismatches.add("$text/$sign/$precision/$mode/$op: required=$required JDK=$a|$expectedTrace <> $b|$actualTrace")
                 }
             }
         }
+        assertEquals(6, truthfulDirectZeros)
+        assertEquals(FiniteZeroPolicy567.directUnaryKeys + FiniteZeroPolicy567.absKeys, observedFiniteKeys)
         assertTrue(mismatches.isEmpty(), "${mismatches.size} mismatches\n${mismatches.take(24).joinToString("\n")}")
     }
 }

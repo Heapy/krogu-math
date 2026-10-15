@@ -1,11 +1,14 @@
 package io.heapy.krogu.math
 
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class DecimalRoundSubclassTest {
     @Test fun roundGetterReplacementMatchesJdk() {
         val mismatches = mutableListOf<String>()
+        var truthfulZeroRounds = 0
+        val observedFiniteKeys = mutableSetOf<List<String>>()
         for (text in listOf("0.00", "-123.456", "999.99", "1.2345678901234567890")) {
             for (replacement in listOf(-1, 0, 1, 3, 9)) for (precision in listOf(0, 1, 7)) for (mode in RoundingMode.entries) for (behavior in listOf("super", "replace", "throw", "sequence")) {
                 val expectedTrace = StringBuilder()
@@ -38,10 +41,24 @@ class DecimalRoundSubclassTest {
                     val result = actual.round(MathContext(precision, mode))
                     "${BigDecimal(result.unscaledValue(), result.scale())}|${result === actual}|${result.javaClass == BigDecimal::class.java}"
                 } catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
-                if (a != b || expectedTrace.toString() != actualTrace.toString())
-                    mismatches.add("$text/$replacement/$precision/$mode/$behavior: $a|$expectedTrace <> $b|$actualTrace")
+                val truthfulZero = text == "0.00" && replacement == 1 && behavior in listOf("super", "sequence")
+                if (truthfulZero) truthfulZeroRounds++
+                if (truthfulZero)
+                    println("567_DIRECT_ZERO_OBSERVATION\t$text/$replacement/$precision/$mode/$behavior\tfrozen=$a|$expectedTrace\tactual=$b|$actualTrace")
+                val key = listOf("S", behavior, text, "$replacement", "$precision", mode.name)
+                val finite = key in FiniteZeroPolicy567.roundKeys
+                if (finite) {
+                    assertTrue(observedFiniteKeys.add(key), "duplicate finite round key $key")
+                    println("567_FINITE_OBSERVATION\t$key\thost=$a|$expectedTrace\tactual=$b|$actualTrace")
+                }
+                val required = if (truthfulZero || finite) "0|false|true" else a
+                // Keep the complete exact trace comparison, including the explicit plus override.
+                if (required != b || expectedTrace.toString() != actualTrace.toString())
+                    mismatches.add("$text/$replacement/$precision/$mode/$behavior: required=$required JDK=$a|$expectedTrace <> $b|$actualTrace")
             }
         }
+        assertEquals(48, truthfulZeroRounds)
+        assertEquals(FiniteZeroPolicy567.roundKeys, observedFiniteKeys)
         assertTrue(mismatches.isEmpty(), "${mismatches.size} mismatches\n${mismatches.take(20).joinToString("\n")}")
     }
 }

@@ -3,6 +3,13 @@ package io.heapy.krogu.math
 import kotlin.test.*
 
 class PortableOracleTest {
+    private val directZeroDecimalKeys = setOf(
+        listOf("D", "round", "0.00", "0", "5", "UP"),
+        listOf("D", "round", "0E+20", "0", "9", "HALF_EVEN"),
+        listOf("D", "round", "0E-8", "0", "10", "UP"),
+        listOf("D", "round", "0E-9", "0", "11", "HALF_DOWN"),
+        listOf("D", "round", "0E-10", "0", "17", "HALF_DOWN"),
+    )
     @Test fun jdk25BehaviorOnEveryPlatform() {
         val powKeys = buildSet {
             for (precision in listOf(Int.MAX_VALUE, Int.MAX_VALUE - 1, Int.MAX_VALUE - 2, Int.MAX_VALUE - 10))
@@ -17,6 +24,9 @@ class PortableOracleTest {
             listOf("T", "intScale", "1", "2147483647", "0", "HALF_UP") to "intScale;",
         )
         val observedTruthfulScaleKeys = mutableSetOf<List<String>>()
+        val observedDirectZeroKeys = mutableSetOf<List<String>>()
+        val directZeroCounts = mutableMapOf<String, Int>()
+        val observedFiniteKeys = mutableSetOf<List<String>>()
         var ordinaryMismatchCount = 0
         val ordinaryMismatchExamples = mutableListOf<String>()
         for ((index, v) in oracleVectors().withIndex()) {
@@ -53,7 +63,18 @@ class PortableOracleTest {
                 assertTrue(v[6] == "!ArithmeticException" || v[6].startsWith("!ArithmeticException:") || v[6] == scaleRounding,
                     "retained task566 diagnostic ${v.take(6)}: ${v[6]}")
             }
-            val corrected = pow ?: scaleRounding ?: normalization ?: scaledDivisionContractExpected(v)
+            val directZero = directZeroContractExpected(v)
+            if (directZero != null) {
+                assertTrue(observedDirectZeroKeys.add(v.take(6)), "duplicate task567 key ${v.take(6)}")
+                directZeroCounts[v[0]] = (directZeroCounts[v[0]] ?: 0) + 1
+                println("567_DIRECT_ZERO_OBSERVATION\tindex=$index\t${v.take(6).joinToString("\t")}\tfrozen=${v[6]}\tactual=$actual")
+            }
+            val finite = FiniteZeroPolicy567.required(v.take(6), v[6])
+            if (finite != null) {
+                assertTrue(observedFiniteKeys.add(v.take(6)), "duplicate finite task567 key ${v.take(6)}")
+                println("567_FINITE_OBSERVATION\tindex=$index\t${v.take(6).joinToString("\t")}\tfrozen=${v[6]}\tactual=$actual")
+            }
+            val corrected = finite ?: directZero ?: pow ?: scaleRounding ?: normalization ?: scaledDivisionContractExpected(v)
             if (normalization != null)
                 assertTrue(v[6].startsWith("!ArithmeticException"), "retained normalization diagnostic ${v.take(6)}")
             val normalized = if (corrected == "!ArithmeticException" && actual.startsWith("!ArithmeticException:"))
@@ -69,7 +90,44 @@ class PortableOracleTest {
         assertEquals(powKeys, observedPowKeys, "all original pow boundary observations remain represented")
         assertEquals(4, truthfulScalePrefixes.size)
         assertEquals(truthfulScalePrefixes.keys, observedTruthfulScaleKeys, "all four task566 truthful observations remain represented")
+        assertEquals(mapOf("D" to 5, "L" to 160, "S" to 48, "C" to 6), directZeroCounts,
+            "only the finite task567 direct-zero domain is adapted")
+        assertEquals(180, FiniteZeroPolicy567.roundKeys.size)
+        assertEquals(12, FiniteZeroPolicy567.directUnaryKeys.size)
+        assertEquals(12, FiniteZeroPolicy567.absKeys.size)
+        assertEquals(8, FiniteZeroPolicy567.nullAbsKeys.size)
+        assertEquals(FiniteZeroPolicy567.keys, observedFiniteKeys, "complete exact finite input set")
         assertEquals(0, ordinaryMismatchCount, "ordinary oracle mismatches (first80):\n${ordinaryMismatchExamples.joinToString("\n")}")
+    }
+
+    private fun directZeroContractExpected(v: Array<String>): String? {
+        // These literal inputs prove stored zero independently of virtual signum.
+        // Preserve full host observations, including old self/base flags and traces.
+        if (v[0] == "D" && v.take(6) in directZeroDecimalKeys) {
+            assertEquals(v[2], v[6], "retained complete D zero diagnostic ${v.take(6)}")
+            return "0"
+        }
+        if (v[0] == "L" && v[1] == "round" && v[2] == "0" &&
+            v[3].toInt() in listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, Int.MIN_VALUE + 2, Int.MIN_VALUE + 3, Int.MAX_VALUE) &&
+            v[4].toInt() in listOf(0, 1, 2, 7) && v[5] in RoundingMode.entries.map { it.name }) {
+            assertEquals("0E${if (v[3].toInt() < 0) "+" else "-"}${kotlin.math.abs(v[3].toLong())}", v[6],
+                "retained complete L zero diagnostic ${v.take(6)}")
+            return "0" // Deliberately excludes L/constructor.
+        }
+        if (v[0] == "S" && v[1] in listOf("super", "sequence") && v[2] == "0.00" && v[3] == "1" &&
+            v[4].toInt() in listOf(0, 1, 7) && v[5] in RoundingMode.entries.map { it.name }) {
+            val trace = if (v[4] == "0") "plus;" else "plus;precision;"
+            assertEquals("0.00|true|false|$trace", v[6], "retained complete truthful S diagnostic ${v.take(6)}")
+            // Scale2 cannot remain self after becoming scale0; only the base ZERO
+            // selected by inherited plus supplies this representation (no class override).
+            return "0|false|true|$trace"
+        }
+        if (v[0] == "C" && v[1] == "plusContext:0" && v[2] == "0.00" && v[3] == "0" &&
+            v[4].toInt() in listOf(0, 1, 7) && v[5] in listOf("HALF_EVEN", "UNNECESSARY")) {
+            assertEquals("0.00|true|false|plusContext;", v[6], "retained complete truthful C diagnostic ${v.take(6)}")
+            return "0|false|true|plusContext;"
+        }
+        return null
     }
 
     private fun verifyHighMultiplyObservation(v: Array<String>, actual: String): Boolean {

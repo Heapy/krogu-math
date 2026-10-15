@@ -83,6 +83,31 @@ val columns = listOf("old_row_id", "control_id", "source", "divisor", "topology"
 val counts = sortedMapOf<String, Int>()
 fun count(name: String) { counts[name] = (counts[name] ?: 0) + 1 }
 val uses = ids.values.associateWith { 0 }.toMutableMap()
+// Exactly eight reviewed inputs; the reference outcome is checked, never used to select a row.
+data class NullArgumentBinding(val controlId: String, val rounding: String)
+val requiredNullRows = linkedMapOf(
+    "D07425" to NullArgumentBinding("C0609", "UP"),
+    "D07426" to NullArgumentBinding("C0610", "DOWN"),
+    "D07427" to NullArgumentBinding("C0611", "CEILING"),
+    "D07428" to NullArgumentBinding("C0612", "FLOOR"),
+    "D07429" to NullArgumentBinding("C0613", "HALF_UP"),
+    "D07430" to NullArgumentBinding("C0614", "HALF_DOWN"),
+    "D07431" to NullArgumentBinding("C0615", "HALF_EVEN"),
+    "D07432" to NullArgumentBinding("C0616", "UNNECESSARY"),
+)
+val requiredNullStatus = "REQUIRED_NULL_ARGUMENT_CONTRACT"
+val unresolvedStatus = "UNRESOLVED_POISONED_INTERACTION"
+check(requiredNullRows.size == 8 && requiredNullRows.values.map { it.rounding }.toSet() == roundings)
+check(requiredNullRows.values.map { it.controlId }.toSet().size == 8)
+fun outcomeStatus(oldId: String, controlId: String, input: List<String>, sourceMode: String, divisorMode: String, kind: String): String {
+    val binding = requiredNullRows[oldId] ?: return unresolvedStatus
+    check(controlId == binding.controlId && input == listOf("0.00", "2.0", "ordinary", "-1", binding.rounding)) {
+        "Reviewed null-argument input/control changed: $oldId"
+    }
+    check(sourceMode == "delegate" && divisorMode == "delegate" && kind == "ERROR")
+    check(expectedByKey.getValue(input) == "!NullPointerException")
+    return requiredNullStatus
+}
 val mapped = frozen.mapIndexed { index, row ->
     val input = key(row)
     val id = ids.getValue(input)
@@ -112,12 +137,18 @@ val mapped = frozen.mapIndexed { index, row ->
         if (exception && prefix.startsWith("!ArithmeticException:")) add("ARITHMETIC_CALLBACK_INTERACTION")
     }.joinToString(";")
     val message = if (exception && ':' in prefix) "REFERENCE_OBSERVATION" else "NOT_RECORDED"
-    listOf("D${(index + 1).toString().padStart(5, '0')}", id) + input + listOf(row[2], row[3], expected,
+    val oldId = "D${(index + 1).toString().padStart(5, '0')}"
+    val kind = if (exception) "ERROR" else "VALUE"
+    val status = outcomeStatus(oldId, id, input, row[2], row[3], kind)
+    if (oldId in requiredNullRows) check(row[6] == "!NullPointerException|") { "Reviewed frozen observation changed: $oldId" }
+    listOf(oldId, id) + input + listOf(row[2], row[3], expected,
         if (expected.startsWith('!')) "NOT_APPLICABLE" else "CANONICAL_TEXT:$id",
-        if (exception) "ERROR" else "VALUE", "UNRESOLVED_POISONED_INTERACTION", "REFERENCE_OBSERVATION", message,
+        kind, status, "REFERENCE_OBSERVATION", message,
         "NOT_OBSERVED", unresolved, "EXPLICIT_DIVIDE_CALLER_MATRIX", "BLOCKED_UNRESOLVED_FIELDS")
 }
 check(mapped.all { it.size == columns.size && it.none { value -> '\t' in value || '\n' in value || value.isEmpty() } })
+check(mapped.filter { it[12] == requiredNullStatus }.map { it[0] }.toSet() == requiredNullRows.keys)
+check(mapped.all { it[12] == if (it[0] in requiredNullRows) requiredNullStatus else unresolvedStatus })
 check(uses.size == 3000 && uses.values.all { it > 0 } && uses.values.sum() == 75728)
 check(counts == mapOf("mapped_rows" to 75728, "inconsistent_metadata" to 57576,
     "throwing_metadata_only" to 7248, "consistent_metadata" to 10904, "old_error" to 17635, "old_value" to 58093))
@@ -126,6 +157,7 @@ val modes = frozen.flatMap { listOf(it[2], it[3]) }.distinct()
 check(modes.size < 100)
 val modeIds = modes.withIndex().associate { (index, mode) -> mode to "M${(index + 1).toString().padStart(2, '0')}" }
 val modesById = modeIds.entries.associate { (mode, id) -> id to mode }
+check(modeIds.getValue("delegate") == "M01")
 val flags = linkedMapOf(
     1 to "POISONED_GETTERS_AND_EXACT_OVERRIDE", 2 to "INCONSISTENT_METADATA", 4 to "THROWING_METADATA",
     8 to "NULL_CONTEXT", 16 to "NULL_DIVISOR", 32 to "SELF_ALIAS_COUNTERS", 64 to "INVOKED_EXACT_REPLACEMENT",
@@ -150,9 +182,15 @@ fun decode(compactRow: List<String>): List<String> {
     val bits = compactRow[5].toInt(16)
     check(bits and 1 == 1 && bits and 1023.inv() == 0) { "Unknown or missing interaction bits" }
     val tags = flags.filter { (bit, _) -> bit != 512 && bits and bit != 0 }.values.joinToString(";")
-    return compactRow.take(2) + control.take(5) + listOf(modesById.getValue(compactRow[2]), modesById.getValue(compactRow[3]),
+    val sourceMode = modesById.getValue(compactRow[2])
+    val divisorMode = modesById.getValue(compactRow[3])
+    val kind = if (compactRow[4] == "E") "ERROR" else "VALUE"
+    val status = outcomeStatus(compactRow[0], compactRow[1], control.take(5), sourceMode, divisorMode, kind)
+    if (compactRow[0] in requiredNullRows)
+        check(compactRow.drop(2) == listOf("M01", "M01", "E", "009")) { "Reviewed null-argument modes/kind/mask changed" }
+    return compactRow.take(2) + control.take(5) + listOf(sourceMode, divisorMode,
         expected, if (expected.startsWith('!')) "NOT_APPLICABLE" else "CANONICAL_TEXT:${compactRow[1]}",
-        if (compactRow[4] == "E") "ERROR" else "VALUE", "UNRESOLVED_POISONED_INTERACTION", "REFERENCE_OBSERVATION",
+        kind, status, "REFERENCE_OBSERVATION",
         if (bits and 512 != 0) "REFERENCE_OBSERVATION" else "NOT_RECORDED", "NOT_OBSERVED", tags,
         "EXPLICIT_DIVIDE_CALLER_MATRIX", "BLOCKED_UNRESOLVED_FIELDS")
 }
@@ -168,17 +206,28 @@ fun validateCompact(compactRows: List<List<String>>) {
     check(compactRows.map { it[1] }.toSet() == ids.values.toSet())
 }
 validateCompact(compact)
+val statusHeaderRecords = requiredNullRows.map { (oldId, binding) ->
+    listOf(oldId, binding.controlId, "M01", "M01", "E", "009", requiredNullStatus)
+}
+fun validateStatusHeaders(text: String) {
+    val records = text.lineSequence().filter { it.startsWith("# STATUS ") }
+        .map { it.removePrefix("# STATUS ").split(' ') }.toList()
+    check(records == statusHeaderRecords) { "STATUS dictionary differs from the exact eight reviewed bindings" }
+}
 val generated = buildString {
     appendLine("# SPDX-License-Identifier: Apache-2.0")
-    appendLine("# Schema: context-contract-coverage-v2; six compact columns, lossless recovery of 19 logical fields")
+    appendLine("# Schema: context-contract-coverage-v3; six compact columns plus bounded STATUS dictionary, lossless recovery of 19 logical fields")
+    appendLine("# Predecessor mapper SHA-256 9557d63ad7856466623c87a6cd6750ea1e5dec2aaf1d08cae000abb145eb4e58 (reviewed historical source, not the current mapper digest)")
     for ((path, hash) in evidence) appendLine("# SHA-256 $hash $path")
     appendLine("# Stable IDs: D = 1-based frozen row; C = 1-based first-occurrence five-field projection")
     appendLine("# Control lookup: C row of the bound contract fixture supplies source/divisor/topology/context_precision/rounding/required_valid_outcome")
     appendLine("# Kind: V = VALUE; E = ERROR; flag mask is three-digit lowercase hexadecimal")
     for ((mode, id) in modeIds) appendLine("# MODE $id $mode")
     for ((bit, name) in flags) appendLine("# FLAG ${bit.toString(16).padStart(3, '0')} $name")
+    for (record in statusHeaderRecords) appendLine("# STATUS ${record.joinToString(" ")}")
     appendLine("# Logical fields: ${columns.joinToString(",")}")
-    appendLine("# Policy old_value_or_error_status=UNRESOLVED_POISONED_INTERACTION; old_trace_status=REFERENCE_OBSERVATION")
+    appendLine("# Policy old_value_or_error_status=STATUS override for its exact D/C/mode/kind/mask binding, else UNRESOLVED_POISONED_INTERACTION; old_trace_status=REFERENCE_OBSERVATION")
+    appendLine("# Status meaning: REQUIRED_NULL_ARGUMENT_CONTRACT requires exception TYPE only; trace/message/noncalls/identity are not promoted to requirements")
     appendLine("# Policy old_message_status=REFERENCE_OBSERVATION if MESSAGE_RECORDED else NOT_RECORDED; runtime_identity_status=NOT_OBSERVED")
     appendLine("# Policy required_canonical_text_control=CANONICAL_TEXT:C-id for a successful control, else NOT_APPLICABLE")
     appendLine("# Policy unresolved_interactions=ordered FLAG names present except MESSAGE_RECORDED")
@@ -189,17 +238,28 @@ val generated = buildString {
     appendLine("# Test extensions/verification are separate; this manifest does not certify them")
     appendLine("# Internal order/count/noncalls/forwarding and diagnostic wording are observations; runtime class/cache/result identity are not measured")
     appendLine("# Unresolved poisoned value/error interactions block archival; bad unused getters never blanket-waive inherited contracts")
+    appendLine("# Null8 boundary: only the eight STATUS exception types are required; every row stays blocked for archival")
     appendLine(compactColumns.joinToString("\t"))
     compact.forEach { appendLine(it.joinToString("\t")) }
 }
 val target = File("diagnostics/decimal-context-dispatch/contract-coverage.tsv")
+validateStatusHeaders(generated)
+check(target.exists()) { "The bounded classification requires the preserved existing compact payload" }
+val existingText = target.readText()
+val existingPayload = existingText.split('\n').filterNot { it.startsWith('#') }.joinToString("\n")
+val expectedPayload = buildString {
+    appendLine(compactColumns.joinToString("\t"))
+    compact.forEach { appendLine(it.joinToString("\t")) }
+}
+check(existingPayload == expectedPayload) { "Compact header/data bytes changed; refuse classification expansion or row rewrite" }
 if ("--check" in args) {
-    check(target.exists() && target.readText() == generated) { "Contract coverage manifest differs" }
+    check(existingText == generated) { "Contract coverage manifest differs" }
+    validateStatusHeaders(existingText)
     val saved = target.readLines().filterNot { it.startsWith('#') }
     check(saved.first().split('\t') == compactColumns)
     validateCompact(saved.drop(1).map { it.split('\t') })
 } else target.writeText(generated)
 println("${if ("--check" in args) "Verified" else "Generated"} ${mapped.size} frozen row mappings to ${ids.size} controls; $maskChecks valid class-mask checks")
 println("Required correspondence: 2475 value/scale/canonical-text controls; 429 arithmetic-error controls; 96 null-error controls")
-println("Old observations: ${counts.getValue("old_value")} values; ${counts.getValue("old_error")} errors; all ${mapped.size} poisoned value/error interactions unresolved and blocked for archival")
+println("Old observations: ${counts.getValue("old_value")} values; ${counts.getValue("old_error")} errors; ${requiredNullRows.size} exact null-argument error types required; ${mapped.size - requiredNullRows.size} poisoned value/error statuses unresolved; all ${mapped.size} rows blocked for archival")
 println("All bound hashes, schemas, ordered projection, counts, control coverage and 19-field lossless decoding verified; no production math or JDK arithmetic evaluated")

@@ -1,11 +1,13 @@
 package io.heapy.krogu.math
 
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class DecimalMultiplicationSubclassTest {
     @Test fun roundingScaleValidationMatchesJdk() {
         val mismatches = mutableListOf<String>()
+        var directZeroRounds = 0
         for (coefficient in listOf("0", "123", "999")) {
             for (scale in listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, Int.MIN_VALUE + 2, Int.MIN_VALUE + 3, 0, Int.MAX_VALUE)) {
                 for (precision in listOf(0, 1, 2, 7)) for (mode in RoundingMode.entries) for (constructor in listOf(false, true)) {
@@ -17,10 +19,16 @@ class DecimalMultiplicationSubclassTest {
                         else java.math.BigDecimal(java.math.BigInteger(coefficient), scale).round(expectedContext) }
                     val b = outcome { if (constructor) BigDecimal(BigInteger(coefficient), scale, actualContext)
                         else BigDecimal(BigInteger(coefficient), scale).round(actualContext) }
-                    if (a != b) mismatches.add("$coefficient@$scale/$precision/$mode/$constructor: $a <> $b")
+                    val directZero = !constructor && coefficient == "0" && scale != 0
+                    if (directZero) directZeroRounds++
+                    if (directZero)
+                        println("567_DIRECT_ZERO_OBSERVATION\t$coefficient@$scale/$precision/$mode/$constructor\tfrozen=$a\tactual=$b")
+                    val required = if (directZero) "0" else a
+                    if (required != b) mismatches.add("$coefficient@$scale/$precision/$mode/$constructor: required=$required JDK=$a <> $b")
                 }
             }
         }
+        assertEquals(160, directZeroRounds)
         assertTrue(mismatches.isEmpty(), "${mismatches.size} mismatches\n${mismatches.take(30).joinToString("\n")}")
     }
     @Test fun multiplicationMatchesJdkDispatchAndScaleValidation() {

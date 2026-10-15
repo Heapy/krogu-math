@@ -225,6 +225,12 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         var base = BigInteger(1, words).mod(m)
         var result = ONE.mod(m)
         val bits = power.magnitudeBits()
+        val trivialBase = base.sign == 0 || (base.words.size == 1 && base.words[0] == 1)
+        // If a^e < m, every original loop product is also below m; avoid context setup.
+        val belowModulus = power.words.size == 1 &&
+            power.words[0].toLong() * base.magnitudeBits().toLong() <= m.magnitudeBits().toLong() - 1
+        val context = if (bits == 0 || trivialBase || belowModulus) null else OddModulusContext.create(m)
+        if (context != null) return context.pow(base, power, bits)
         for (i in 0 until bits) {
             if (power.words[i / LIMB_BITS] and (1 shl (i % LIMB_BITS)) != 0)
                 result = result.multiplyMod(base, m)
@@ -232,6 +238,170 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         }
         return if (result.sign == 0) BigInteger(result) else result
     }
+
+    /** Fixed-modulus parameters only; mutable digits belong to one invocation's workspace. */
+    private class OddModulusContext private constructor(
+        private val modulus: IntArray,
+        private val rho: Long,
+        private val oneMont: IntArray,
+        private val r2: IntArray,
+    ) {
+        private class Workspace(size: Int) {
+            val scratch = IntArray(size + 2)
+            val input = IntArray(size)
+            val factor = IntArray(size)
+            val result = IntArray(size)
+            val next = IntArray(size)
+        }
+
+        fun pow(base: BigInteger, power: BigInteger, bits: Int): BigInteger {
+            val workspace = Workspace(modulus.size)
+            base.words.copyInto(workspace.input)
+            var factor = workspace.factor
+            var result = workspace.result
+            var next = workspace.next
+            // MM(x,R^2 mod m) encodes x; the multiplicative identity is R mod m.
+            multiply(workspace.input, r2, factor, workspace.scratch)
+            oneMont.copyInto(result)
+            for (i in 0 until bits) {
+                if (power.words[i / LIMB_BITS] and (1 shl (i % LIMB_BITS)) != 0) {
+                    multiply(result, factor, next, workspace.scratch)
+                    val previous = result
+                    result = next
+                    next = previous
+                }
+                if (i + 1 < bits) {
+                    multiply(factor, factor, next, workspace.scratch)
+                    val previous = factor
+                    factor = next
+                    next = previous
+                }
+            }
+            // A null second operand denotes ordinary one, without another digit array.
+            multiply(result, null, next, workspace.scratch)
+            if (next.all { it == 0 }) return BigInteger(ZERO)
+            // normalized may trim again; neither copy may alias any mutable workspace slot.
+            return normalized(1, next.copyOf())
+        }
+
+        /**
+         * MM(a,b) = ab/R mod m, B=2^30 and R=B^n. Inputs are canonical padded
+         * residues (b=null means ordinary one). Output/scratch are distinct from
+         * both inputs and every context array; a===b is allowed for squaring.
+         */
+        private fun multiply(a: IntArray, b: IntArray?, out: IntArray, scratch: IntArray) {
+            val n = modulus.size
+            scratch.fill(0)
+            for (i in 0 until n) {
+                val word = if (b == null) { if (i == 0) 1L else 0L } else b[i].toLong()
+                addProduct(a, word, scratch)
+                val q = (scratch[0].toLong() * rho) and MASK
+                addProduct(modulus, q, scratch)
+                // The low digit is zero. Retain both high cells during the division by B.
+                for (j in 0..n) scratch[j] = scratch[j + 1]
+                scratch[n + 1] = 0
+            }
+            // T<2m; its n-th digit can be one, even when the low n digits are <m.
+            if (scratch[n] != 0 || compareLow(scratch, modulus) >= 0) {
+                var borrow = 0L
+                for (j in 0 until n) {
+                    val difference = scratch[j].toLong() - modulus[j] - borrow
+                    scratch[j] = (difference and MASK).toInt()
+                    borrow = if (difference < 0) 1 else 0
+                }
+                scratch[n] = (scratch[n].toLong() - borrow).toInt()
+            }
+            // Canonicality proves scratch[n]==0; no significant high cell is truncated.
+            scratch.copyInto(out, endIndex = n)
+        }
+
+        private fun addProduct(a: IntArray, word: Long, scratch: IntArray) {
+            var carry = 0L
+            for (j in a.indices) {
+                // <=(B-1)^2+2(B-1)=B^2-1; carry remains <=B-1.
+                val sum = a[j].toLong() * word + scratch[j] + carry
+                scratch[j] = (sum and MASK).toInt()
+                carry = sum ushr LIMB_BITS
+            }
+            val high = scratch[a.size].toLong() + carry
+            scratch[a.size] = (high and MASK).toInt()
+            // The unshifted value is <2BR, so this cell never overflows the radix.
+            scratch[a.size + 1] = (scratch[a.size + 1].toLong() + (high ushr LIMB_BITS)).toInt()
+        }
+
+        companion object {
+            private const val MAX_WORDS = 4096
+
+            fun create(m: BigInteger): OddModulusContext? {
+                val n = m.words.size
+                if (m.sign <= 0 || n == 0 || n > MAX_WORDS ||
+                    m.words[0] and 1 == 0 || (n == 1 && m.words[0] == 1)) return null
+                // Resource checks precede allocations/narrowing; the cap is an optimization,
+                // never a new numerical rejection or an exception/OOM retry policy.
+                val size = n.toLong()
+                val scratchCells = size + 2
+                val setupSteps = 2L * LIMB_BITS * size
+                val payloadCells = 16L * size + 8
+                val payloadBytes = 4L * payloadCells
+                if (scratchCells > Int.MAX_VALUE || setupSteps > Int.MAX_VALUE ||
+                    payloadCells > Int.MAX_VALUE || payloadBytes > Int.MAX_VALUE) return null
+
+                val modulus = m.words.copyOf()
+                // Lift the inverse one bit at a time. All positive products are <B^2.
+                var inverse = 1L
+                for (bit in 1 until LIMB_BITS) {
+                    if ((modulus[0].toLong() * inverse) and (1L shl bit) != 0L)
+                        inverse += 1L shl bit
+                }
+                val rho = ((1L shl LIMB_BITS) - inverse) and MASK
+                val oneMont = IntArray(n)
+                val r2 = IntArray(n)
+                val gap = IntArray(n)
+                r2[0] = 1
+                val half = (setupSteps / 2).toInt()
+                for (step in 0 until setupSteps.toInt()) {
+                    doubleResidue(r2, modulus, gap)
+                    if (step + 1 == half) r2.copyInto(oneMont)
+                }
+                return OddModulusContext(modulus, rho, oneMont, r2)
+            }
+
+            /** Compare the low b.size digits; the caller handles any extra high cell. */
+            private fun compareLow(a: IntArray, b: IntArray): Int {
+                for (j in b.lastIndex downTo 0) {
+                    if (a[j] != b[j]) return a[j].compareTo(b[j])
+                }
+                return 0
+            }
+
+            private fun doubleResidue(value: IntArray, modulus: IntArray, gap: IntArray) {
+                var borrow = 0L
+                for (j in modulus.indices) {
+                    val difference = modulus[j].toLong() - value[j] - borrow
+                    gap[j] = (difference and MASK).toInt()
+                    borrow = if (difference < 0) 1 else 0
+                }
+                if (compareLow(value, gap) >= 0) {
+                    // value-(m-value)=2value-m, in [0,m); safe with output==value.
+                    borrow = 0L
+                    for (j in value.indices) {
+                        val difference = value[j].toLong() - gap[j] - borrow
+                        value[j] = (difference and MASK).toInt()
+                        borrow = if (difference < 0) 1 else 0
+                    }
+                } else {
+                    // Here 2value<m<R, so the final carry is provably zero.
+                    var carry = 0L
+                    for (j in value.indices) {
+                        val sum = value[j].toLong() * 2 + carry
+                        value[j] = (sum and MASK).toInt()
+                        carry = sum ushr LIMB_BITS
+                    }
+                }
+            }
+        }
+    }
+
     private fun moduloPowerOfTwo(bits: Int): BigInteger {
         if (bitLength() <= bits) return this
         if (bits == 0) return ZERO

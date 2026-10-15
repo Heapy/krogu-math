@@ -16,6 +16,13 @@ OpenJDK or other numerical libraries must not be used. Public API specifications
 independent mathematical reasoning and black-box results supply evidence; a
 runtime result does not override the public contract.
 
+The [contextual-zero and modular integration report](docs/context-modular-integration-verification.md)
+records the latest four local target gates, bounded modPow measurements and
+unchanged public-test campaign, including its three retained failures. Direct
+contextual zero-scale behavior and the finite unary observation policy supersede
+earlier broad trace summaries for those exact cases. The report also records
+eight narrowly classified null-context exception types; broader audits remain open.
+
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in
 [Decimal scale contract](docs/decimal-scale-contract.md).

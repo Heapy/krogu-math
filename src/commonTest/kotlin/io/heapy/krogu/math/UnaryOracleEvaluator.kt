@@ -35,6 +35,10 @@ internal fun evaluateUnaryOracle(v: Array<String>): String {
             }
         }
         val result = outcome { (if (operation == "nullAbs") value.abs(null) else value.negate(null)).toString() }
+        if (v.take(6) in FiniteZeroPolicy567.nullAbsKeys) {
+            kotlin.test.assertEquals(BigInteger.ZERO, value.unscaledValue(), "immutable finite null abs coefficient")
+            kotlin.test.assertEquals(2, value.scale(), "immutable finite null abs scale")
+        }
         return "$result|$trace"
     }
     val sign = argument.toInt()
@@ -57,6 +61,10 @@ internal fun evaluateUnaryOracle(v: Array<String>): String {
             "plus" -> value.plus()
             "plusContext" -> value.plus(context)
             else -> error("Unknown unary operation $operation")
+        }
+        if (v.take(6) in FiniteZeroPolicy567.absKeys) {
+            kotlin.test.assertEquals(BigInteger.ZERO, value.unscaledValue(), "immutable finite abs coefficient")
+            kotlin.test.assertEquals(2, value.scale(), "immutable finite abs scale")
         }
         "${BigDecimal(r.unscaledValue(), r.scale())}|${r === value}|${r::class == BigDecimal::class}"
     }

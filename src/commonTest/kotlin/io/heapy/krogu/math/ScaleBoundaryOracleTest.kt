@@ -9,8 +9,26 @@ class ScaleBoundaryOracleTest {
     private class OracleCursor(offset: Int) {
         private val expected = scaleBoundaryExpected().drop(offset).iterator()
         private var count = offset
+        private var directZeroRounds = 0
         fun verify(label: String, action: () -> Any?) {
             verifyExpected(label, null, action = action)
+        }
+        fun verifyRound(label: String, a: BigDecimal, mc: MathContext) {
+            if (a.unscaledValue() != BigInteger.ZERO || a.scale() == 0) {
+                verify(label) { a.round(mc) }
+                return
+            }
+            // Only ordinary direct zero: consume the original field at its original cursor.
+            assertTrue(expected.hasNext(), "Oracle ended before $label")
+            val diagnostic = expected.next()
+            assertEquals(a.toString(), diagnostic, "retained task567 JDK round: $label")
+            val result = a.round(mc)
+            assertEquals(BigInteger.ZERO, result.unscaledValue(), "$count: coefficient $label; JDK=$diagnostic")
+            assertEquals(0, result.scale(), "$count: scale $label; JDK=$diagnostic")
+            assertEquals("0", result.toString(), "$count: text $label; JDK=$diagnostic")
+            println("567_DIRECT_ZERO_OBSERVATION\tcursor=$count\t$label\tfrozen=$diagnostic\tactual=$result")
+            directZeroRounds++
+            count++
         }
         fun verifyAddition(label: String, a: BigDecimal, b: BigDecimal, mc: MathContext) {
             val rounding = DecimalScaleRounding566Expected.addition(a, b, mc)
@@ -60,8 +78,9 @@ class ScaleBoundaryOracleTest {
             assertEquals(contract ?: diagnostic, actual, "$count: $label; JDK=$diagnostic")
             count++
         }
-        fun finish(end: Int, requireEnd: Boolean = false) {
+        fun finish(end: Int, requireEnd: Boolean = false, expectedDirectZeroRounds: Int = 0) {
             assertEquals(end, count)
+            assertEquals(expectedDirectZeroRounds, directZeroRounds, "task567 direct ordinary zero round fields")
             if (requireEnd) assertFalse(expected.hasNext(), "Unconsumed oracle outcomes")
         }
     }
@@ -87,11 +106,11 @@ class ScaleBoundaryOracleTest {
             for (p in listOf(0, 1, 2, 7)) for (mode in RoundingMode.entries) {
                 val context = MathContext(p, mode)
                 cursor.verifySqrt("sqrt $a,$context", a, context)
-                verify("round $a,$context") { a.round(context) }
+                cursor.verifyRound("round $a,$context", a, context)
                 verify("pow $a,2,$context") { a.pow(2, context) }
             }
         }
-        cursor.finish(139239)
+        cursor.finish(139239, expectedDirectZeroRounds = 256)
     }
 
     @Test fun wideCoefficientsBatch00() = wideBatch(0)

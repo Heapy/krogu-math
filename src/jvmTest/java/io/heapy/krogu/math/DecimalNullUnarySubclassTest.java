@@ -1,8 +1,11 @@
 package io.heapy.krogu.math;
 
 import java.util.concurrent.Callable;
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class DecimalNullUnarySubclassTest {
     private static String outcome(Callable<?> action) {
@@ -10,6 +13,10 @@ public class DecimalNullUnarySubclassTest {
         catch (Exception e) { return "!" + e.getClass().getSimpleName() + (e instanceof IllegalStateException ? ":" + e.getMessage() : ""); }
     }
     @Test public void nullUnaryContextsReachSubclassCallbacks() {
+        // Ten source-selected inputs; the preserved V2 run observed only the first failure.
+        Set<String> selected = new HashSet<>(), observed = new HashSet<>();
+        for (int sign : new int[] {0, 1}) for (String behavior : new String[] {"return", "self", "null", "throw", "super"})
+            assertTrue(selected.add("0.00/" + sign + "/" + behavior + "/true"));
         for (String text : new String[] {"0.00", "1", "-1"}) for (int sign : new int[] {-1, 0, 1}) {
             for (String behavior : new String[] {"return", "self", "null", "throw", "super"}) for (boolean abs : new boolean[] {false, true}) {
                 StringBuilder et = new StringBuilder(), at = new StringBuilder();
@@ -55,8 +62,17 @@ public class DecimalNullUnarySubclassTest {
                 };
                 String a = outcome(() -> abs ? expected.abs(null) : expected.negate(null));
                 String b = outcome(() -> abs ? actual.abs(null) : actual.negate(null));
-                assertEquals(text + "/" + sign + "/" + behavior + "/" + abs, a + "|" + et, b + "|" + at);
+                String key = text + "/" + sign + "/" + behavior + "/" + abs;
+                if (selected.contains(key)) {
+                    assertTrue("duplicate finite null-unary key " + key, observed.add(key));
+                    System.out.println("567_FINITE_OBSERVATION\t" + key + "\thost=" + a + "|" + et + "\tactual=" + b + "|" + at);
+                    assertEquals(key, "!NullPointerException|sign;", b + "|" + at);
+                    assertEquals(key, BigInteger.ZERO, actual.unscaledValue());
+                    assertEquals(key, 2, actual.scale());
+                } else assertEquals(key, a + "|" + et, b + "|" + at);
             }
         }
+        assertEquals(10, selected.size());
+        assertEquals(selected, observed);
     }
 }

@@ -2,9 +2,10 @@
 
 SPDX-License-Identifier: Apache-2.0
 
-This root `local:526` classification/repair slice also addresses a specific
-`local:542` gap. **Source and tests are prepared; compilation and execution are
-UNRUN.** Native528 owns the sole local execution window under grant1887.
+This root `local:526` classification/repair slice addresses a specific
+`local:542` gap and was published in commit
+`d660475bc14b26ca365b8880d1d65bfe52d6db4f`. Compilation and execution completed;
+the source-phase and subsequent execution records are distinguished below.
 This does not complete either task or the remaining pow/sqrt domain audit.
 
 ## Required value and reference observation
@@ -105,7 +106,13 @@ Independent review accepted the exact correction; full JVM retry and all three
 other targets subsequently passed. The combined package gates total1059
 successful method executions, with no failures/errors/skips/omissions. See the
 [executed integration report](math-port-integration-verification.md) for exact
-counts, initial failure, fresh JAR and remaining fresh-published-head CI gate.
+counts, initial failure, fresh JAR and the CI gate that remained at that milestone.
+The published successor `bbdd2f4a7c3d3729f2597205b794f2853cc28e67`, retaining
+this repair and its tests, subsequently passed all six
+[Compatibility CI jobs](https://github.com/Heapy/krogu-math/actions/runs/38672668098),
+including execution of 250 common methods on Linux ARM64. This closes the
+internal working-precision overflow gap for supported unit results; the broader
+`local:542` proof and coverage obligations remain open.
 
 The metadata-only
 [`audit-decimal-pow-working-precision.main.kts`](../scripts/audit-decimal-pow-working-precision.main.kts)

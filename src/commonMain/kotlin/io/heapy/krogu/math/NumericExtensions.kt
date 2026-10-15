@@ -22,4 +22,7 @@ fun Float.toBigDecimal(mathContext: MathContext): BigDecimal = BigDecimal(decima
 
 /** Uses the existing canonical binary64 factory, preserving its coefficient and scale. */
 fun Double.toBigDecimal(): BigDecimal = BigDecimal.valueOf(this)
-fun Double.toBigDecimal(mathContext: MathContext): BigDecimal = BigDecimal.valueOf(this).round(mathContext)
+fun Double.toBigDecimal(mathContext: MathContext): BigDecimal {
+    val canonical = BigDecimal.valueOf(this)
+    return BigDecimal(canonical.unscaledValue(), canonical.scale(), mathContext)
+}

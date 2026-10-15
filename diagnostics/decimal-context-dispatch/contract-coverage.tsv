@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0
-# Schema: context-contract-coverage-v2; six compact columns, lossless recovery of 19 logical fields
+# Schema: context-contract-coverage-v3; six compact columns plus bounded STATUS dictionary, lossless recovery of 19 logical fields
+# Predecessor mapper SHA-256 9557d63ad7856466623c87a6cd6750ea1e5dec2aaf1d08cae000abb145eb4e58 (reviewed historical source, not the current mapper digest)
 # SHA-256 88fc3c5bc8277a048a83a9ad9b6546bd8a23ae1ad9a10126409d857367391026 src/commonTest/kotlin/io/heapy/krogu/math/Jdk25DecimalContextDispatchResults.kt
 # SHA-256 2ed00a5dd3c7ec038e61f5be078697b84609606549c26b1bda1249fce860c781 src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt
 # SHA-256 0d9e9b11af4c27892758e78d6b80639b763fcec66ffbe27721d373864a501188 scripts/generate-decimal-context-dispatch-oracle.main.kts
@@ -45,8 +46,17 @@
 # FLAG 080 INJECTED_CALLBACK_FAILURE
 # FLAG 100 ARITHMETIC_CALLBACK_INTERACTION
 # FLAG 200 MESSAGE_RECORDED
+# STATUS D07425 C0609 M01 M01 E 009 REQUIRED_NULL_ARGUMENT_CONTRACT
+# STATUS D07426 C0610 M01 M01 E 009 REQUIRED_NULL_ARGUMENT_CONTRACT
+# STATUS D07427 C0611 M01 M01 E 009 REQUIRED_NULL_ARGUMENT_CONTRACT
+# STATUS D07428 C0612 M01 M01 E 009 REQUIRED_NULL_ARGUMENT_CONTRACT
+# STATUS D07429 C0613 M01 M01 E 009 REQUIRED_NULL_ARGUMENT_CONTRACT
+# STATUS D07430 C0614 M01 M01 E 009 REQUIRED_NULL_ARGUMENT_CONTRACT
+# STATUS D07431 C0615 M01 M01 E 009 REQUIRED_NULL_ARGUMENT_CONTRACT
+# STATUS D07432 C0616 M01 M01 E 009 REQUIRED_NULL_ARGUMENT_CONTRACT
 # Logical fields: old_row_id,control_id,source,divisor,topology,context_precision,rounding,source_mode,divisor_mode,required_valid_outcome,required_canonical_text_control,old_outcome_kind,old_value_or_error_status,old_trace_status,old_message_status,runtime_identity_status,unresolved_interactions,explicit_caller_language_control,archival_status
-# Policy old_value_or_error_status=UNRESOLVED_POISONED_INTERACTION; old_trace_status=REFERENCE_OBSERVATION
+# Policy old_value_or_error_status=STATUS override for its exact D/C/mode/kind/mask binding, else UNRESOLVED_POISONED_INTERACTION; old_trace_status=REFERENCE_OBSERVATION
+# Status meaning: REQUIRED_NULL_ARGUMENT_CONTRACT requires exception TYPE only; trace/message/noncalls/identity are not promoted to requirements
 # Policy old_message_status=REFERENCE_OBSERVATION if MESSAGE_RECORDED else NOT_RECORDED; runtime_identity_status=NOT_OBSERVED
 # Policy required_canonical_text_control=CANONICAL_TEXT:C-id for a successful control, else NOT_APPLICABLE
 # Policy unresolved_interactions=ordered FLAG names present except MESSAGE_RECORDED
@@ -57,6 +67,7 @@
 # Test extensions/verification are separate; this manifest does not certify them
 # Internal order/count/noncalls/forwarding and diagnostic wording are observations; runtime class/cache/result identity are not measured
 # Unresolved poisoned value/error interactions block archival; bad unused getters never blanket-waive inherited contracts
+# Null8 boundary: only the eight STATUS exception types are required; every row stays blocked for archival
 old_row_id	control_id	source_mode_id	divisor_mode_id	old_kind	interaction_bits_hex
 D00001	C0001	M01	M01	V	041
 D00002	C0002	M01	M01	V	041

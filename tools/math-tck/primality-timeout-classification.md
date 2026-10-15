@@ -39,3 +39,37 @@ public inputs individually and retain exact returned results before selecting
 any performance fix. No new math probe was launched after parent1790 requested
 terminal handoff. No timeout is waived, no production source was edited, and no
 JDK/stdlib/thirdparty numerical implementation was consulted.
+
+## Later integrated campaign: the failure phase changed
+
+Campaign `results/1792039864274/results.json` used fresh integrated JAR
+`80ea49801d8de21aafc4ac76488a389363c706e3b1e2d801b8e346660e43fb68`, the same
+seed559, subset0, original deadlines and 512MiB child heaps. Its final ledger
+is 17 PASS, 3 FAIL and 120 SKIP. These results supplement the historical campaign
+above; they do not rewrite it or establish a global public-test pass.
+
+Both port BigIntegerTest directives still timed out, at 120.218s and 400.229s.
+Their retained stderr now records `Prime: Passed` and `nextProbablePrime: Passed`.
+The last completed marker is modular inverse for 2760 bits; the next TEST segment
+is 1000 cases of 8000-bit inverse and inverse-product remainder verification.
+This locates the next uncompleted phase without proving a particular internal
+bottleneck. Task530 investigates stored division separately.
+
+PrimeTest completed its known-prime, non-prime and first19 Mersenne sections,
+then exited1 in 22.001s at `checkHugeFails`, rather than timing out. That TEST
+requires `ArithmeticException` for `2^500000001+1` and discards the Boolean from
+`isProbablePrime(1)`. A normal return therefore fails this assertion without
+demonstrating a false positive. The value is divisible by3; own-source analysis
+predicts small-factor rejection, but the returned Boolean was not recorded.
+
+Independent review classifies this exact exception cutoff as a permitted range
+difference: the [public API](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigInteger.html)
+states a minimum probable-prime range through2^500000000, with no mandatory
+ceiling at that value. No production cap or test modification was made.
+The original PrimeTest FAIL remains in the ledger. This is neither a proof of
+the port's full primality range nor a JCK result.
+
+All seven selected BigDecimal files passed in both phases. All ten port core
+loading checks and twelve bytecode audits passed; no caught OOM was recorded.
+See the [integration report](../../docs/context-modular-integration-verification.md)
+for the complete frozen evidence and remaining work.
