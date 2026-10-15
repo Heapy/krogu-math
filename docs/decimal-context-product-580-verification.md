@@ -128,8 +128,11 @@ helper, probe, test or build and grants no further execution.
 The earlier floating-conversion binding is preserved read-only at
 `/private/tmp/krogu-580-floating-binding-original.je0jHlAb/floating-conversion-543-proof-binding.md`,
 SHA-256 `8eec9e86fe8ee9a2c0d30400192a6e41d297ec0916d4bef505939a3229793ac8`.
-Its successor changes only the two source pins and one paragraph: all conversion
-methods and their digit/prefix/division leaves remain byte-for-byte unchanged.
+Its original580 successor changed only the two source pins and one paragraph:
+all conversion methods and their digit/prefix/division leaves remained
+byte-for-byte unchanged. A later reference-only cleanup replaced five stale
+line references with the same method names. That cleanup changes neither the
+source pins nor the numerical argument.
 
 ## Remaining gates
 
@@ -139,3 +142,40 @@ own source/JARs; their successes or failures are not relabelled. Official JCK
 has not run. These finite local passes do not close task548, broader541/526
 classification,542 power composition, Number/JS migration or the full project
 goal, and do not claim an all-input execution or performance acceptance.
+
+## Later hosted large milestone: exact80987
+
+The preceding pending-hosted wording records the local milestone. A subsequent
+original [large hosted run38788102914](https://github.com/Heapy/krogu-math/actions/runs/38788102914),
+attempt1 at `80987e04f11a5abd8bc45b4646bcfe5bd0312043`, now supplies separately
+reviewed execution evidence for this580 source/JAR. Producer and consumer both
+succeeded; their own JARs match the fresh local JAR48614577 above, and all225
+source pins in manifestb2315fea match the exact-ref archive.
+
+The actual ledger has **12 PASS / 0 FAIL / 128 SKIP**,140 distinct semantic
+records and the exact118 public IDs. All12 selected large invocations compiled,
+exited0, passed their fresh capacity gates and emitted unique completion
+markers, with no timeout/incomplete caught-OOM assertion. Six caller audits
+and24 own core-origin observations pass. Port SymmetricRangeTests completes
+in34835ms under its unchanged180s/8GiB limit, reaching byteValueExact and its
+final marker with empty stderr. This does not execute the giant symbolic580
+product witness or establish a speedup, all-input proof or universal resource bound.
+
+The290-file evidence artifact preserves all17 approved notices, exact sources,
+locks, POMs and raw logs within the documented public-test artifact boundary.
+Root independently verified all891 original evidence-index entries. Initial
+metadata-only guessed paths/wrong checksum cwd were corrected against unchanged
+bytes, without numerical execution. The [large campaign record](public-math-large-ci-559.md#actual-hosted-success-80987-and-the-accepted580-artifact)
+retains the complete scope, failures/exclusions history and binding details.
+
+| Hosted evidence | SHA-256 |
+|---|---|
+| Original report | `0b13f05cb7ab2763831763d6f258b16384b631560b99d8b379b4269f7c06173a` |
+| 891-entry original index | `85346c1f0006e78fafe7664ad2be10128c3a2c2710c8a5d11c6f30e19b0d58bb` |
+| Parent-reviewed read-only capsule | `9afb7b39b006d345225af06eb4520b8773e5b362d094313749cb4b5129c9c69f` |
+
+The capsule is `/private/tmp/krogu-80987-large-ci-capsule-v1/evidence.tar`.
+Normal CI at exact80987 remains a separate pending audit; no older regular
+success is rebound into a same-source combined118 pass. Official JCK has not
+run. Broad548,541/526,542 and Number/JS obligations remain separate. This later
+documentation milestone grants no additional execution or task transition.

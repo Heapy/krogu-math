@@ -686,3 +686,66 @@ Normal CI at exact1b9 remains a separate pending audit. This run does not cover
 the later580 source/JAR48614577, official JCK or all mathematical input classes.
 The public test tag/runtime revision difference remains recorded. Task559 and
 the broader range, dispatch and Number/JS gates remain open.
+
+## Actual hosted success: 80987 and the accepted580 artifact
+
+The original [run38788102914](https://github.com/Heapy/krogu-math/actions/runs/38788102914),
+attempt1, completed producer116605263036 and consumer116606010123 successfully
+at exact `80987e04f11a5abd8bc45b4646bcfe5bd0312043`. Its actual ledger records
+**12 PASS / 0 FAIL / 128 SKIP**, six selected large executions per phase.
+All12 compiled and executed with exit0, no timeout or incomplete caught-OOM
+assertions, passed their fresh memory gates and emitted exactly one completion
+marker each. All140 phase/id/path/scope/directive/method records are distinct,
+and the public ID set exactly matches the118 IDs from the59-plan inventory.
+The128 SKIPs retain106 unselected public,16 upstream-disabled, two commented
+and four private-support records; no selected large invocation was capacity-skipped.
+
+SymmetricRangeTests completed in23896ms baseline and **34835ms port**, under
+its original **180s / 8GiB** bound. Port output reaches byteValueExact and the
+final completion marker; stderr is empty. Original profiles, seed559,
+assertions, VM flags, heaps up to8192MiB and120/180-second deadlines remain.
+All74 referenced raw paths exist. Fresh free memory observations ranged from
+11684245504 to11879956480 bytes, satisfying the4608/8704MiB gates on that host.
+These observations establish bounded invocation completion, not performance,
+an uncontended-host claim or a universal memory/time guarantee.
+
+Producer, consumer and the accepted fresh local580 JAR are byte-identical:
+`4861457772e98ef1716c1c4094c5e5422ee9b0d26235e50d10bb082c4f660df2`.
+All225 accepted source pins, manifest
+`b2315fea5e93c1d3b0e28c88a33f6b1e78c942cc524b2e18f90023cca05bbb5a`,
+match the exact-ref own source archive. All six existing caller audits and
+24 own core-origin records pass. The290-file evidence artifact retains the17
+approved notice files byte-identical to relative-path list74a6769a, exact
+tool/upstream/prepared sources, POMs, locks and raw logs. No dependency/test
+JARs, class files or compiled-script cache are distributed beneath build/math-tck;
+the own input JAR is separate. Both original artifact ZIP hashes match their
+GitHub API digests. Earlier notice omissions, failures and timeouts remain intact.
+
+The evidence workspace is `/private/tmp/krogu-80987-large-ci-evidence-v1`.
+Root independently accepted the actual ledger, raw markers, origins and JAR
+binding, and verified all891 original index entries. Initial root metadata
+reads used guessed paths and the wrong checksum working directory; corrected
+path/cwd checks passed against unchanged evidence, without a numerical rerun.
+The read-only capsule includes the independent parent audit and its preserved
+metadata corrections.
+
+| Evidence | SHA-256 |
+|---|---|
+| Original frozen report | `0b13f05cb7ab2763831763d6f258b16384b631560b99d8b379b4269f7c06173a` |
+| 891-entry original index | `85346c1f0006e78fafe7664ad2be10128c3a2c2710c8a5d11c6f30e19b0d58bb` |
+| Independent actual audit | `05895c7f7992ce43abae09fa24bcf9f51ba3c262023ae6183d55466bb818933d` |
+| Correct root index check | `c404a3bd32c9d4e2401f0c33bd8e20059789184b1f4651ed23c964d55145f467` |
+| Results JSON | `eea43b83c9787048b36eb8ce4bd16fba9be1ba9ba17d4a4804bfd13cc1dd35a6` |
+| Producer original ZIP | `7379c1bec1147ac7db02d6eff04a9b8a133eb1cf3458fe8f6696d7f6ecd2cb26` |
+| Evidence original ZIP | `723e14ca864902adc3497d9043d801fc0266d3b5b92ee786e50e54fdb06066a3` |
+| Approved hosted notice list | `74a6769a33892aa21031cf5240ea145d3395d8b4df1e962f6a964e9d390fed1c` |
+| Read-only capsule including parent review | `9afb7b39b006d345225af06eb4520b8773e5b362d094313749cb4b5129c9c69f` |
+
+The capsule is `/private/tmp/krogu-80987-large-ci-capsule-v1/evidence.tar`.
+Normal CI at exact80987 remains a separate pending audit; older regular runs
+are not rebound to this JAR and no same-source combined118 pass is claimed.
+This is configured public-harness large coverage, not official JCK or an
+all-input proof. The public-test/runtime revision mismatch and broader
+range/rounding/dispatch/Number/JS gates remain separate. This documentation
+update ran no compiler, script, helper, numerical operation, test, build or
+workflow; task acceptance and publication remain parent decisions.

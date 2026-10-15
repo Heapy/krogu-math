@@ -686,6 +686,18 @@ the error message. Base one avoids enormous allocations in the successful
 near-Int.MAX_VALUE precision cases. These observations do not prove every
 intermediate-size limit, subclass call sequence or every exponent/input pair.
 
+Those pinned-runtime working-precision failures are historical observations;
+the own [Long working-precision repair](docs/decimal-pow-working-precision.md)
+has its separate conditional cap argument. The
+[current composition audit](docs/decimal-power-root-542-composition-after-580.md)
+incorporates563/565/579 roots and580 products and identifies a remaining
+context-division normalization defect tracked as581: at precision646456993,
+rounded1/3 has a supported required coefficient and scale although its internal
+normalization power does not fit. This witness is symbolic and independently
+source-verified. Quantitative pow error accumulation and the qualified negative
+unit scale boundary remain separate obligations; algorithm binding and finite
+test counts do not settle them.
+
 ## Decimal exact primitive conversion
 
 For an ordinary nonzero decimal with coefficient precision d and scale s, let

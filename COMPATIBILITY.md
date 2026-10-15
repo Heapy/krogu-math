@@ -144,6 +144,15 @@ does not add an identity guarantee. Dynamic dispatch of an explicit overridable
 call follows the language contract; internal call counts/order require their own
 documented guarantee before becoming normative.
 
+The [549 NPE audit](docs/npe-message-policy-549-audit.md) applies this distinction
+to the current normalization helpers: null rejection remains required, while
+unrecorded VM/compiler wording remains an unverified observation. Caller-created
+exceptions and their supplied messages are separate. The
+[MathContext/RoundingMode ledger](docs/context-mode-contract-549-ledger.md)
+records the two small types' complete declared surface and conditional source
+arguments; its noncanonical MathContext-string wording question remains open.
+Neither memo closes the full549 error/call-site audit.
+
 BigDecimal precision is the number of decimal digits in its unscaled value,
 with zero having precision one. An override reporting negative or inconsistent
 precision violates that invariant. Such a probe can reveal implementation

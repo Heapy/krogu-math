@@ -133,7 +133,7 @@ existing power kernel and allocation contracts. No `10^D` is requested.
 
 The positive working view is an exact base integer. At the `decimalBinaryPrefix()`
 both-output call, `divideStored` enters `selectStoredDivision` with
-`needQuotient=true, needRemainder=true` (`:93-94`). The current task530 proofs
+`needQuotient=true, needRemainder=true` in `divideStored`. The current task530 proofs
 give `n=q*10^t+r`, `0<=r<10^t`, with primitive/index bounds and input-sized
 normalized scratch storage. The [selection inventory](division530-selection-proof.md#call-site-inventory-and-choices)
 explicitly lists this both-output caller. Neither a quotient-only nor a
@@ -162,7 +162,7 @@ allocations or bounded running time.
 
 ## Decimal ratio and bounded final rounding
 
-`BigDecimal.kt:788-827` uses the stored lower estimate for safe early exits,
+`BigDecimal.binaryValue` uses the stored lower estimate for safe early exits,
 then the exact returned digit count for the remaining adjusted exponent. All
 original coefficient/scale differences use Long; an Int coefficient digit count
 and Int scale cannot overflow it. Subsequent surrogate scale arithmetic also
@@ -175,7 +175,7 @@ The exact positive ratio `n/d` is rounded on a binary grid. The bit-length
 difference places its exponent in two adjacent possibilities; one shifted
 comparison selects the correct one. The grid quantum is fixed at `2^-149` or
 `2^-1074` for subnormals and follows the binade for normal values.
-`roundedDivide` (`BigDecimal.kt:957-963`) uses exact quotient/remainder and
+`BigDecimal.roundedDivide` uses exact quotient/remainder and
 HALF_EVEN. Its public pair call is on newly created base integers and reaches
 the same current task530 both-output kernel. A zero remainder returns exactly;
 otherwise comparison of twice the full remainder with the positive denominator
@@ -198,7 +198,7 @@ primitive IEEE behavior; it does not waive a concrete compiler/runtime defect.
 
 ## Exact Double constructor and context edges
 
-`BigDecimal.kt:912-928` rejects every nonfinite input before decomposition and
+`BigDecimal.fromDouble` rejects every nonfinite input before decomposition and
 returns coefficient zero/scale zero for both signed zeros. For a finite nonzero
 magnitude let `f` be its exponent field and `t` its fraction. The decoded value
 is `M*2^e`, with `M=t,e=-1074` for subnormals and
@@ -214,7 +214,7 @@ The maximum scale is 1074. Even the loose bound
 `M*5^1074<2^(53+3*1074)=2^3275` keeps all constructor values small; positive
 binary shifts produce fewer than 1025 bits. The final sign application is exact.
 
-`roundedDouble` (`:930-933`) first obtains that exact **base** decimal. For a
+`BigDecimal.roundedDouble` first obtains that exact **base** decimal. For a
 valid context, zero retains scale zero; nonzero calls `exact.round(context)`.
 The receiver is the fresh base value, so a constructing decimal subclass's
 override is not reached. The public base round/plus path composes with the
