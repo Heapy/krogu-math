@@ -1,5 +1,13 @@
 # Kotlin floating conversion migration
 
+The preparation-phase UNRUN status retained at the end is historical. The
+[later integration report](math-port-integration-verification.md) records actual
+JVM, JS, Wasm and macOS ARM64 execution of the six common and four JVM floating
+methods within its complete selection. Subsequent
+[API integration gates](non-null-api-573-verification.md) retain these tests.
+These finite executions and the conditional argument below do not close the
+full conversion-domain and resource obligations in task543.
+
 Explicitly import the extensions as well as the result and context types:
 
 ```kotlin

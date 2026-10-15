@@ -33,8 +33,9 @@ variable assignment rules; an alias to the old number keeps its value.
 BigInteger `shl(n: Int)`, `shr(n: Int)` and `inv()` call the public
 `shiftLeft(n)`, `shiftRight(n)` and `not()` methods. Negative shift distances
 retain their public arithmetic behavior. Existing open `and`, `or` and `xor`
-members gain the `infix` modifier without changing their implementations,
-nullable operands or existing parameter name `value`. Ordinary infix member
+members gain the `infix` modifier without changing their implementations
+or existing parameter name `value`. Task577 subsequently makes their operands
+non-null, with matching caller/override edits. Ordinary infix member
 calls need no extension import. Top-level `and(other: BigInteger)`, `or(other:
 BigInteger)` and `xor(other: BigInteger)` extensions additionally preserve the
 standard-library named operand and alias-import forms. Each delegates to its
@@ -94,7 +95,8 @@ their truthful `toInt` narrowing implementations fixed those fixtures; assertion
 and production code stayed unchanged. The original failure log is retained.
 Supported-platform CI at the integrated head remains required.
 
-This is a selected task525 source migration addition. Floating conversion
-extensions, the existing Kotlin/JS erased Number dispatch gap in task557, and
+This is a selected task525 source migration addition. The later
+[floating conversion tranche](kotlin-floating-conversion-migration.md) records
+its own accepted scope. The existing Kotlin/JS erased Number dispatch gap in task557 and
 the archived task525 campaign's enabled Number failures remain open. These
 finite checks provide no full migration, performance or TCK acceptance claim.

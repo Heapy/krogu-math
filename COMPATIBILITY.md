@@ -798,11 +798,14 @@ base type, errors and call traces. These close the selected getter-replacement
 domain noted above; extreme replacement
 precisions, other unary operations and returned-subclass combinations remain open.
 
-Null round/plus callbacks add 16 portable outcomes and a compiled Java call-site
-test. round forwards a null context to overridden plus, whose replacement value,
-source return or callback exception is preserved; the base plus validates null
-before its private calculation. Kotlin signatures now use MathContext? for both
-methods, including subclass overrides. The Kotlin plus(BigDecimal) operator is
+The historical null round/plus matrix contains 16 outcomes and a compiled Java
+call-site test. It records the pinned JDK forwarding a null context to overridden
+plus before base validation. Task576 migrates both Kotlin inputs and their
+overrides to non-null MathContext. The displaced null calls now execute at real
+Java boundaries: base, inherited and actual-super entries require own entry
+NPE, while their original internal forwarding and VM-message observations
+remain diagnostics. Explicit calls to caller-owned Java overrides retain their
+language dispatch, replacement-result and exception obligations. The Kotlin plus(BigDecimal) operator is
 JvmSynthetic so Java plus(null) resolves to the JDK-compatible MathContext
 overload instead of failing as ambiguous. The cases compare NPE classes, callback
 exception messages and traces; detailed NPE diagnostics remain unverified.
@@ -814,9 +817,12 @@ reads virtual signum, then calls virtual negate(context) or plus(context) direct
 negate(context) calls plus(context) on the object returned by virtual negate(),
 preserving replacement results and exceptions instead of invoking that object's
 round override. The selected matrices exposed 72 dispatch differences in each
-of these two chains. abs/negate context signatures now use MathContext? to forward
-null to callbacks before base validation. Kotlin overrides use the nullable
-parameter too. Broader returned-subclass combinations, extreme unary scales and
+of these two chains in the historical comparison. Task576 makes the abs/negate
+context inputs and migrated Kotlin overrides non-null as well. Valid non-null
+dispatch controls remain common; the historical null-context outcomes are
+retained at Java boundaries under the same base/inherited/actual-super entry-NPE
+policy and diagnostic classification. Explicit caller-owned override calls
+retain their dispatch, result and exception obligations. Broader returned-subclass combinations, extreme unary scales and
 detailed NPE messages remain open.
 
 Addition/subtraction routing adds 747 portable cases: 648 subtraction callback
@@ -953,6 +959,13 @@ radix 2..36, invalid radix endpoints, both constructor overloads at radix ten,
 Unicode and malformed UTF-16, whitespace/control characters, and invalid digits
 around one-, two- and three-group boundaries. Exhaustive BMP digit acceptance
 remains covered separately; arbitrary-length resource limits are still open.
+
+The [constructor coverage map and conditional lexical argument](docs/constructor-contract-549-coverage.md)
+distinguish existing common/JVM cases, grammar and scale correctness, the four
+adapted public char-range methods and their lost joint-invalid coverage.
+The diagnostic ordering described here records the pinned observations; it
+does not establish a universal exception-priority requirement. Broader task549
+call-site and exception classification and task548 range obligations remain open.
 
 Byte constructors add 25,584 portable outcomes across all four overloads, with
 987 distinct pinned JDK values or exact diagnostics. The matrix crosses signum
