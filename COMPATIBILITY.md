@@ -119,8 +119,11 @@ CI and the full numerical/range contract are outside that large-only result.
 The [same-f58 supported-platform audit](docs/f58-supported-platform-verification.md)
 records5,289 successful method executions across13 target instances, including
 the actual349-method Linux ARM64 run; iOS device coverage is compilation only.
-All seven workflow jobs subsequently completed successfully. The separate public
-ledger audit and source240585/586 revision are outside those platform results.
+All seven workflow jobs subsequently completed successfully. The separate
+[same-f58 public ledger audit](docs/public-math-f58-regular-559.md) confirms106
+normal PASS/0FAIL/47SKIP. Together with its12 large PASS records, their disjoint
+sets cover all118 retained primary IDs; all13 adaptation losses remain explicit.
+The source240585/586 revision is outside those f58 results.
 
 The [585/586 repair and local verification](docs/decimal-sum-sticky-585-586-verification.md)
 address the later source-confirmed addition range defect: both finite
