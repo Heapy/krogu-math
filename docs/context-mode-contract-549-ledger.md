@@ -28,6 +28,16 @@ and the exact own accepted language are proved below, but their full normative
 equivalence is not assumed. No JDK defect, whole549 closure or all-platform runtime
 certification follows from this memo.
 
+Project compatibility policy retains the existing equivalent precision lexemes
+as a compatibility extension: plus signs, leading zeros, negative zero and the
+accepted decimal digit characters continue to parse to the checked settings.
+Canonical output and canonical roundtrip remain required. The wording ambiguity
+does not justify changing this already shared JDK/port behavior, declaring a JDK
+bug, or weakening range/format validation. Its normative interpretation remains
+qualified; no parser change is planned from this item. The independent follow-up
+is retained at `/private/tmp/krogu-549-context-string-classification.md`, SHA-256
+`e50d48a88a7a0b5164feb2c72c6f855a751818e3d16d230821b50f55e667327a`.
+
 The governing migration is Java -> Kotlin/java.math -> Kotlin/krogu-math. Rejecting
 inputs stay NN, matching Kotlin caller/override edits are allowed, Java source
 shape is only a TCK/adapter concern, and legacy/cross-format serialization is

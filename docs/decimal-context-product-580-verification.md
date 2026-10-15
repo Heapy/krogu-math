@@ -175,7 +175,11 @@ retains the complete scope, failures/exclusions history and binding details.
 | Parent-reviewed read-only capsule | `9afb7b39b006d345225af06eb4520b8773e5b362d094313749cb4b5129c9c69f` |
 
 The capsule is `/private/tmp/krogu-80987-large-ci-capsule-v1/evidence.tar`.
-Normal CI at exact80987 remains a separate pending audit; no older regular
-success is rebound into a same-source combined118 pass. Official JCK has not
-run. Broad548,541/526,542 and Number/JS obligations remain separate. This later
-documentation milestone grants no additional execution or task transition.
+The later [normal80987 audit](public-math-80987-regular-failure-559.md) records
+six supported CI jobs SUCCESS and a separate public-job FAILURE: SquareRootTests
+timed out, leaving the public ledger105/1/46. These job conclusions are retained
+API evidence, not an independent recount of every platform XML. They supply the
+matching-source supported-CI gate for this product repair; the unrelated sqrt
+failure remains open under559/579. No older regular success is rebound into a
+same-source combined118 pass. Official JCK has not run. Broad548,541/526,542 and
+Number/JS obligations remain separate. This documentation grants no execution.
