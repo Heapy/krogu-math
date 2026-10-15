@@ -254,7 +254,8 @@ selected entries, text bytes, tests, flags, deadlines and binary exclusions do
 not change.
 
 The source preparation was **UNCOMPILED/UNRUN**; actual extraction is recorded
-below and hosted upload preservation remains pending. No compiled test/framework binaries are newly
+below. Hosted upload preservation was pending at that milestone; the later
+8e6 large-run confirmation is recorded below. No compiled test/framework binaries are newly
 included. The frozen pre-edit entrypoint `11e5ddd8…` and both reports were
 preserved read-only at `/private/tmp/krogu-559-notice-source-before-IWZu4n/`.
 The historical regular870 metadata audit is retained at
@@ -276,7 +277,7 @@ and ten text files. All ten text files match their exact pinned ZIP entries
 byte-for-byte. Four archives have empty matching-entry indices; no missing
 notice text is invented for them. None of the17 output paths has a `.jar` or
 `.class` path segment. The existing upload exclusions therefore do not select
-this tree, but actual hosted preservation still needs inspection of a new
+this tree, but actual hosted preservation then still needed inspection of a new
 artifact. The entrypoint hash remained unchanged; the compiler invocation and
 all owned calls are terminal and the sole local window was explicitly released.
 
@@ -285,3 +286,22 @@ the metadata audit is `a29b7441e0aaf743351d1735a9e5356a08bc4dd6016dc268cf5d9a0ad
 An initial JavaScript orchestration cell had an invalid regex and executed no
 calls; the preparation script was not repeated. This metadata validation is
 neither a new numerical test result nor repair of an old hosted artifact.
+
+### Actual shared notice upload: 8e6 large workflow
+
+The separately authorized [large run38772275107](https://github.com/Heapy/krogu-math/actions/runs/38772275107)
+at exact commit `8e6d6b6b8c0cbb3ee2ccb7d102d3454b9115397d` used entrypoint
+`8383d062…`. Its hosted evidence contains all **17 notice files: seven JSON
+indices and ten texts**, with every relative path and byte hash identical to
+the local root2306 validation tree. The hosted notice-list SHA-256 is
+`74a6769a33892aa21031cf5240ea145d3395d8b4df1e962f6a964e9d390fed1c`.
+Top-level GPL text, `LICENSING.md`, sources, locks and dependency POMs remain;
+dependency/test binaries and the compiled-script cache remain excluded. Four
+indices are intentionally empty, matching the extraction's existing selection.
+
+This establishes actual notice preservation in the **LARGE workflow**.
+Preservation by a newer **regular** job has not yet been observed. The old eaa
+and regular870 artifacts still lack extracted notices and are not repaired or
+relabeled. The large run itself has 11 PASS / one timeout / 128 SKIP; packaging
+acceptance does not turn that mathematical timeout into a pass. Full result,
+artifact and raw-log hashes are in the [8e6 large-run report](public-math-large-ci-559.md#actual-hosted-attempt-8e6-timeout-in-the-tostring-section).

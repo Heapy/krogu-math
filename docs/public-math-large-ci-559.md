@@ -464,7 +464,95 @@ then validated actual extraction in one isolated metadata-only `--prepare`:
 seven directories/indices and ten text files, all ten exact ZIP-entry byte
 comparisons passing, with no excluded `.jar`/`.class` output path segment.
 The entrypoint remains `8383d062…`; no Java test compiler or numerical harness
-ran. Actual hosted notice preservation remains a separate gate. The old artifacts are not repaired or
+ran in that metadata preparation. Hosted notice preservation was then a separate
+gate; the actual 8e6 upload below now supplies that evidence for the large
+workflow. The old artifacts are not repaired or
 relabeled. The [regular CI correction](public-math-ci-559.md#dependency-notice-omission-and-source-only-correction)
 records the shared pre-edit snapshot, actual metadata hashes/limits and the
 historical regular870 audit.
+
+## Actual hosted attempt: 8e6 timeout in the toString section
+
+[Run38772275107](https://github.com/Heapy/krogu-math/actions/runs/38772275107),
+attempt1, executed exact commit
+`8e6d6b6b8c0cbb3ee2ccb7d102d3454b9115397d`. Producer job116550897068 succeeded;
+consumer116551738101 failed. The retained ledger has **140 unique semantic
+records / 118 unique public invocation IDs**, with **11 PASS / 1 FAIL /
+128 SKIP**. All twelve original large invocations were attempted once:
+baseline 6 PASS, port 5 PASS plus one timeout. The 128 skips retain 106 unselected
+regular-profile invocations, sixteen upstream-disabled methods, two commented
+calls and four private-internal exclusions. `complete=true` describes the
+completed ledger loop, not completion of the timed-out invocation's assertions.
+
+The only failure is `port/BigInteger/largeMemory/SymmetricRangeTests/run-1`:
+**timeout 180076ms** under its original 180s bound, exitCode=null. Raw stderr is
+empty; the final stdout marker is `Testing BigInteger.toString`. Original public
+TEST source lines449–454 pass actual radix 16,
+`BigInteger.valueOf(-1).shiftLeft(Integer.MAX_VALUE - 1)`, expected length
+`(1 << 29) + 1`, prefix `"-4"` and fill `'0'`. The diagnostic string alone is
+not the argument evidence. Helper lines434–446 call `bi.toString(radix)`, then
+check length, prefix and remaining characters. The timeout does not distinguish
+argument evaluation, formatting or that validation loop. Later byte-array,
+primitive-conversion, serialization and exact-conversion assertions have no
+reached/completed claim. StringConstructorOverflow and the other four port
+invocations passed, as did all six baseline invocations.
+
+Every large invocation passed its fresh observed capacity gate: 4608MiB for
+the 4g processes and 8704MiB for the 8g processes. Total observed memory was
+16766410752 bytes. No invocation was capacity-skipped. Original heap/VM flags,
+seed 559, subset 0 and 120/180s deadlines remain. This timeout is not a capacity
+waiver, performance ratio or permission to extend a deadline.
+
+The [same-run producer artifact11992455858](https://github.com/Heapy/krogu-math/actions/runs/38772275107/artifacts/11992455858)
+and consumer copies verify SOURCE_COMMIT and SHA256SUMS and compare byte-identical
+at own JAR `de97f2b5…`, the same artifact bound by parent to the focused-prime
+validation. This hosted run is fresh evidence for that JAR; older runs keep
+their own artifacts. Runtime is Liberica25.0.4+9-LTS, Kotlin2.4.21 and Gradle9.8.1;
+the existing public-test/runtime revision mismatch disclosure remains. The
+executed entrypoint is `8383d062…` and helper runner `ed32beb0…`.
+
+All twelve compilations, six port caller audits and six core-loading guards
+passed. All 24 recorded core-class origins name the own JAR; all 72 referenced
+raw paths exist. Read-only byte checks verified 57 locked upstream sources,
+53 generated sources, twelve compiled inputs, thirteen tooling sources and
+seven dependency POMs. No compiler, script, helper, numerical operation, probe,
+test, build or retry was executed by the evidence audit.
+
+The [hosted evidence artifact11992282760](https://github.com/Heapy/krogu-math/actions/runs/38772275107/artifacts/11992282760)
+has 290 files, including **all 17 dependency-notice files**: seven JSON indices
+and ten text files. Its complete relative-path SHA-256 list is byte-identical
+to `/private/tmp/krogu-notice559-validation-jhPGz0/root/build/math-tck/notices`.
+Four indices intentionally contain no matching entry; the ten retained texts
+are eight JUnit, one SLF4J and one TestNG. This confirms hosted preservation of
+the existing extraction selection. Top-level GPL text, `LICENSING.md`, exact
+sources, locks, POMs and raw evidence remain. No JAR/class file under the math
+workspace or compiled-script cache is distributed; the own Apache library input
+JAR remains separate. Earlier missing-notice artifacts are unchanged, and
+notice preservation by a newer regular job is not established by this large run.
+
+Evidence is retained at `/private/tmp/krogu-8e6-large-ci-evidence-v1/`.
+Independent actual review accepted this bounded evidence. The first870 attempt
+still has its two timeouts; the 88ef constructor/assertion failure remains a
+separate failed artifact. This attempt's 11 PASS / 1 TIMEOUT does not relabel either
+older failure or establish later unreached assertions. A separately scoped
+formatting candidate has no accepted runtime or timing result in this report;
+no speedup claim or full public/domain/JCK acceptance follows.
+
+| Evidence | SHA-256 |
+|---|---|
+| `REPORT.md` | `910992c04c1c635e5999598313f588a9519ae283bf1a5ecd6af486c9f29ee147` |
+| 313-entry `evidence-index.sha256` | `ea9226220fcc9e9a4ea1fb1d82d9f2287b31c29ac6f24cb04db5fe3479a67c63` |
+| `results.json` | `662e160efbf3e078781ec3a71f5aa3444a977e574d6919eed4594fb678b147e0` |
+| `run.json` | `867a7082e2a08550d986aaa5c18aa2aaf75a02f8f4ae142a23f266c68f7c0c8e` |
+| `jobs.json` | `3fbc678fd130cafdef0c3bc05eee18606f048a8e7d6ae2bf9744dd714db40d92` |
+| `artifacts.json` | `6f531c73737bb6f6e1fd14a935cc27f36dbdbceb6100fc3f215780626f762bb2` |
+| `large.raw.log` | `9dddb48a80483d5181b2ea81a5ed1e9a3f18fc43247d0c0b3cc6d1c2b5002ab3` |
+| `public-math-large-campaign.log` | `3476bd4bd36198ebab7b5133edd5651e4b6d10f47afdcf6198c775f39148513d` |
+| `inventory.json` | `21ddd1c7ef0795425afc649245bfbeea567368aba96b22a2c640b254f38dcb28` |
+| Own producer/consumer JAR | `de97f2b5b68620c9b94c433999222421d53b742de82c44f9e3c2b5932a7d299e` |
+| Executed entrypoint | `8383d062feac7a3b2e8eda8f9e2844f7d2dbe6ac8d4e5c575f3fc92f58ad1265` |
+| Executed helper runner | `ed32beb00f4c6896cfd783f2286f95336fee3cc2616420b9a83687c4c5f32ea0` |
+| Hosted/local notice-list | `74a6769a33892aa21031cf5240ea145d3395d8b4df1e962f6a964e9d390fed1c` |
+| Original Symmetric TEST source | `da79e08429dc3072acb25e75d161943ae5cda872c7d183c487b33633039bc8a5` |
+| Port Symmetric stdout | `97153617b84fb72026ed6feb03013d8bad99658cea81b9e5d1a15662fce58130` |
+| Port Symmetric stderr (empty) | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
