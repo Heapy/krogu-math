@@ -89,6 +89,22 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return DecimalProduct580.rounded(sign * value.sign, words, value.words, scale, mc)
     }
 
+    @kotlin.jvm.JvmSynthetic
+    internal fun roundedDecimalQuotient581(value: BigInteger, preferred: Long, target: Long, shift: Long,
+        sourceDigits: Int, divisorDigits: Int, normalized: Int, mc: MathContext): Pair<BigInteger, Int>? {
+        if (sign == 0 || value.sign == 0) return null
+        // A proved sufficient bound keeps ordinary materialized calls unchanged.
+        if (materializedDecimalDivision581(magnitudeBits(), value.magnitudeBits(), mc.precision,
+                preferred, target, shift)) return null
+        // Eligibility reads stored metadata; public prefix callbacks already ran.
+        if (sourceDigits != decimalMagnitudeDigits() || divisorDigits != value.decimalMagnitudeDigits() ||
+            normalized != compareDecimalSignificand(value)) return null
+        if (mc.precision > 646456993)
+            return DecimalDivision581.largePrecision(sign * value.sign, BigInteger(1, words),
+                BigInteger(1, value.words), preferred, mc.precision)
+        return DecimalDivision581.rounded(sign * value.sign, words, value.words, preferred, mc)
+    }
+
     open fun divide(value: BigInteger): BigInteger = quotientStored(value)
     open fun remainder(value: BigInteger): BigInteger = remainderStored(value)
 

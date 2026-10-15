@@ -281,6 +281,9 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val adjustment = if (normalized > 0) 1 else 0
         val targetScale = preferredScale + context.precision.toLong() + divisorDigits - sourceDigits - adjustment
         val shift = targetScale + operand.decimalScale - decimalScale
+        val streamed = coefficient.roundedDecimalQuotient581(operand.coefficient, preferredScale,
+            targetScale, shift, sourceDigits, divisorDigits, normalized, context)
+        if (streamed != null) return BigDecimal(streamed.first, streamed.second)
         // Only observed truthful metadata enters the mathematical repair. No
         // extra virtual calls or runtime-class exclusions change old probes.
         if ((preferredScale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong() ||

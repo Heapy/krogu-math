@@ -35,6 +35,7 @@ class PortableOracleTest {
         val commonComparisons = mutableMapOf<Int, List<String>>()
         val rngRows = mutableSetOf<List<String>>()
         val rngOrdinals = mutableListOf<Int>()
+        val division581Policy = DecimalDivision581DiagnosticPolicy.Recorder(portable = true)
         for ((index, v) in oracleVectors().withIndex()) {
             val selectedGroups = (if (ComparisonRows574.isMoved(v)) 1 else 0) +
                 (if (DecimalBinary575Rows.nd(v)) 1 else 0) + (if (UnaryNull576Rows.selected(v)) 1 else 0) +
@@ -62,7 +63,15 @@ class PortableOracleTest {
                 rngOrdinals += index
                 continue // Exact 25-row JVM counterpart: Validation578RngTest.
             }
-            val actual = try {
+            val division581Input = DecimalDivision581DiagnosticPolicy.portableInput(index, v)
+            val division581Actual = division581Input?.let { input ->
+                DecimalDivision581DiagnosticPolicy.capture {
+                    BigDecimal(BigInteger(v[2].substringBefore('@')), input.sourceScale).divide(
+                        BigDecimal(BigInteger(v[3].substringBefore('@')), input.divisorScale),
+                        MathContext(input.precision, RoundingMode.valueOf(input.mode)))
+                }
+            }
+            val actual = division581Actual?.text ?: try {
                 val result = evaluate(v)
                 if (result is Array<*>) result.joinToString("|") else result.toString()
             } catch (e: Exception) { "!${e::class.simpleName}" }
@@ -82,6 +91,12 @@ class PortableOracleTest {
                 continue
             }
             val normalization = normalizationContractExpected(v)
+            if (division581Actual != null) {
+                if (normalization != null)
+                    assertTrue(v[6].startsWith("!ArithmeticException"), "retained normalization diagnostic ${v.take(6)}")
+                division581Policy.portable(index, v, normalization ?: v[6], division581Actual)
+                continue // Only the bound 735 ordinary G/divide records; all other branches stay active.
+            }
             val pow = if (v[0] == "D" && v[1] == "pow" && v[2] == "1" && v.take(6) in powKeys) {
                 assertTrue(observedPowKeys.add(v.take(6)), "duplicate retained pow key ${v.take(6)}")
                 // Preserve the pinned JDK observation separately from exact 1^n = 1.
@@ -142,6 +157,7 @@ class PortableOracleTest {
         assertEquals(UnaryNull576Rows.expected, unaryNullRows, "exact JVM unary partition, including original ordinals")
         assertEquals(FiniteZeroPolicy567.keys - FiniteZeroPolicy567.nullAbsKeys, observedFiniteKeys,
             "valid finite inputs remain common; all eight nullAbs keys execute in UnaryNull576VectorsTest")
+        division581Policy.finish()
         assertEquals(0, ordinaryMismatchCount, "ordinary oracle mismatches (first80):\n${ordinaryMismatchExamples.joinToString("\n")}")
     }
 
