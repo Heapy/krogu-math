@@ -16,7 +16,7 @@ prove every integer operation, runtime or platform implementation.
 
 | Own source | SHA-256 |
 | --- | --- |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `5a4aa675afc9cdfdff6c8761dba45c9636de5533e70fabbd6ea808dc6fa08781` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` | `e4dc75b253c689b0f3c634f02f9e491c9a1dcfae396a11135be4427c69ce7b68` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt` | `08b4329ea5e902f1043107d42ddb02592be537497f6b0990927e8c67c4ed3f29` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/DoubleFormatting.kt` | `9b2a1b8cb1d40a2fdc7db5110b6a8c4e398da0562d5c3d6b02cf928f3c74433f` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/FloatFormatting.kt` | `ba55514c181e52f20ed63fcb2634621f66cea3cc4db084e77cf2df71d1dcf77e` |
@@ -37,6 +37,12 @@ region hashes bind every conversion and division method to the parser baseline.
 Conversions do not enter prime generation or successor search. The table now
 binds that source revision; neither this proof nor historical conversion test
 results are relabelled as a full-suite execution of the prime-search change.
+
+The later [power-of-two radix formatter](power-of-two-radix-559-proof.md) changes
+only toString(radix) and its private helper for bases2/4/8/16/32. Conversion and
+division methods remain unchanged; canonical decimal and prefix text follows
+the existing base10 path. The table binds that successor without changing the
+numerical argument or relabelling historical conversion CI.
 
 Assume canonical immutable stored magnitudes, exact integer arithmetic and
 decimal digit/prefix/formatting primitives, valid fixed contexts, and successful
@@ -72,7 +78,7 @@ and platform evidence for those partitions.
 
 ## Integer extraction and primitive assembly
 
-`BigInteger.kt:953-971` matches the existing guard/sticky argument. For a
+`BigInteger.floatingValue()` matches the existing guard/sticky argument. For a
 nonzero original magnitude with at most 63 bits, it calls virtual `toLong()`.
 Double converts the returned Long once. Float reconstructs an exact base
 integer from that Long and re-enters with dispatch disabled; even a replacement
@@ -100,7 +106,7 @@ random integer conversion campaigns.
 
 ## Current decimal prefix and division composition
 
-`BigInteger.kt:854-867,934-946` separates two helpers: the stored lower digit
+`decimalDigitLowerBound()` and `decimalMagnitudeDigits()` separate the stored lower digit
 estimate and the exact digit-count helper added for task528. Prefix extraction
 uses the **lower estimate**, not `decimalMagnitudeDigits()`. Task562 proves
 `E<=D<=E+1` for that estimate over supported stored bit lengths; task528 reuses
@@ -112,8 +118,8 @@ For prefix budget `B` (159 for Float, 1093 for Double), the actual code chooses
 `t<=646456992`. The power is supported whenever the input is, subject to the
 existing power kernel and allocation contracts. No `10^D` is requested.
 
-The positive working view is an exact base integer. At
-`BigInteger.kt:941`, `divideStored` enters `selectStoredDivision` with
+The positive working view is an exact base integer. At the `decimalBinaryPrefix()`
+both-output call, `divideStored` enters `selectStoredDivision` with
 `needQuotient=true, needRemainder=true` (`:93-94`). The current task530 proofs
 give `n=q*10^t+r`, `0<=r<10^t`, with primitive/index bounds and input-sized
 normalized scratch storage. The [selection inventory](division530-selection-proof.md#call-site-inventory-and-choices)

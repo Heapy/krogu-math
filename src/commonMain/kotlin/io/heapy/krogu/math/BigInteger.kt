@@ -807,9 +807,15 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     open fun toString(radix: Int): String {
         if (sign == 0) return "0"
         val r = if (radix in 2..36) radix else 10
+        val magnitude = abs()
+        if (radix in 2..36 && this::class == BigInteger::class && magnitude::class == BigInteger::class && magnitude.sign > 0) {
+            when (r) {
+                2, 4, 8, 16, 32 -> return magnitude.toPowerOfTwoString(r, sign < 0)
+            }
+        }
         val divisor = valueOf(r.toLong())
         val text = StringBuilder()
-        var value = abs()
+        var value = magnitude
         while (value.sign != 0) {
             val qr = value.divideAndRemainder(divisor)
             text.append("0123456789abcdefghijklmnopqrstuvwxyz"[qr[1].toInt()])
@@ -817,6 +823,34 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         }
         if (sign < 0) text.append('-')
         return text.reverse().toString()
+    }
+    private fun toPowerOfTwoString(radix: Int, negative: Boolean): String {
+        val bitsPerDigit = when (radix) {
+            2 -> 1
+            4 -> 2
+            8 -> 3
+            16 -> 4
+            else -> 5
+        }
+        val top = words.last()
+        val bitLength = (words.size - 1).toLong() * LIMB_BITS + (32 - top.countLeadingZeroBits())
+        val digitCountLong = (bitLength + bitsPerDigit - 1) / bitsPerDigit
+        val capacityLong = digitCountLong + if (negative) 1 else 0
+        if (capacityLong > Int.MAX_VALUE.toLong()) plainStringTooLarge()
+        val digitCount = digitCountLong.toInt()
+        val mask = (1L shl bitsPerDigit) - 1
+        val text = StringBuilder(capacityLong.toInt())
+        if (negative) text.append('-')
+        for (index in digitCount - 1 downTo 0) {
+            val bit = index.toLong() * bitsPerDigit
+            val word = (bit / LIMB_BITS).toInt()
+            val offset = (bit % LIMB_BITS).toInt()
+            var digit = words[word].toLong() ushr offset
+            if (offset + bitsPerDigit > LIMB_BITS && word + 1 < words.size)
+                digit = digit or (words[word + 1].toLong() shl (LIMB_BITS - offset))
+            text.append("0123456789abcdefghijklmnopqrstuvwxyz"[(digit and mask).toInt()])
+        }
+        return text.toString()
     }
     open fun toByteArray(): ByteArray {
         val length = bitLength() / 8 + 1
