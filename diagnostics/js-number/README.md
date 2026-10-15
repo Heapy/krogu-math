@@ -266,3 +266,162 @@ does not meet that condition. A compiler fix or separately justified compiler
 integration needs its own review and consumer verification before any toolchain
 change. Until then this remains a demonstrated external compiler bug with no
 validated production workaround.
+
+## Prepared filtered IR captures (task557/comment1939)
+
+Status: **PREPARED / UNCOMPILED / UNRUN**. This source-only addition has not
+compiled the runner, fixture or library, and has not executed any probe. The
+task528 worker owns the execution window. These commands require a later
+explicit execution grant; they are recorded here for review.
+
+The new compile-only modes select the unchanged own `NumberProbe.kt` fixture:
+`ir-number` requests the singular default-package FQName `numberValues`, and
+`ir-generic` requests `genericValues`. Each invocation accepts at most one
+checkpoint, exactly `AutoboxingTransformer`, `CallsLowering` or
+`MainFunctionCallWrapperLowering`; omission selects `CallsLowering`. The three
+names occur once each in the retained, SHA-256-pinned phase catalog. This does
+not imply that they are adjacent or that the last selected name is the final
+phase in the whole catalog. No comma-separated FQName or phase grammar is
+assumed, and the runner does not run a multi-checkpoint campaign internally.
+
+Exact example commands, to invoke separately and serially after the grant:
+
+```sh
+JAVA_HOME=/Users/yoda/.sdkman/candidates/java/25.0.4-librca \
+JAVA_OPTS=-Xmx256m \
+KOTLIN_MAIN_KTS_COMPILED_SCRIPTS_CACHE_DIR=/private/tmp/number-ir-number-source-bound-cache \
+/Users/yoda/.sdkman/candidates/kotlin/2.4.21/bin/kotlin \
+scripts/probe-js-number.main.kts ir-number CallsLowering
+
+JAVA_HOME=/Users/yoda/.sdkman/candidates/java/25.0.4-librca \
+JAVA_OPTS=-Xmx256m \
+KOTLIN_MAIN_KTS_COMPILED_SCRIPTS_CACHE_DIR=/private/tmp/number-ir-generic-source-bound-cache \
+/Users/yoda/.sdkman/candidates/kotlin/2.4.21/bin/kotlin \
+scripts/probe-js-number.main.kts ir-generic CallsLowering
+```
+
+Use fresh caches keyed by the actual runner source and launch options. Replacing
+the final argument with either other allowed checkpoint requests that one
+checkpoint only; it needs its own later authorized invocation. All seven
+existing modes retain their original one-argument interface, fixtures, options,
+process ownership and child timeouts.
+
+At runtime the new modes first require the pinned compiler's current advanced
+help to advertise `-Xdump-directory`, `-Xdump-fqname` and `-Xphases-to-dump`.
+They verify the retained catalog hash
+`804d07a1e01283af9db5097282b888f1695efa694027c8035c5f1c3235007381`
+and the exact checkpoint names, and retain a catalog copy. Both source-to-KLIB
+and KLIB-to-JS commands request before/after dumps for the same single
+checkpoint and FQName, in distinct `ir-klib` and `ir-js` directories. The KLIB
+handoff, commands and log hashes are retained. There is no phase disabling,
+plugin, toolchain change, broader-filter fallback or generated-code rewrite.
+
+The runner inventories dump metadata only: relative path, byte size and SHA-256.
+It does not print or interpret dump text or generated foreign helper bodies.
+Before hashing any dump, the complete stage inventory must have at most 256
+entries, 128 regular files, 8 MiB per file, 64 MiB total and relative paths no
+longer than 1024 characters. Symlinks, path escapes and nonregular files are
+rejected. These are **post-execution inventory bounds**, not a hard disk quota
+while a compiler is writing. The existing 120-second compiler child timeout
+and 512 MiB compiler heap are separate limits. Each new-mode command's log must
+remain strictly below its 512 KiB capture limit; reaching that limit fails the
+diagnostic while preserving the captured evidence. Compilation logs remain in
+the scratch directory and their text is not echoed by these new modes.
+
+Stage inventories are attempted even after a compilation failure, and failed
+command logs are preserved even when no dumps exist. Empty KLIB or JS stage
+dumps are explicitly `INCONCLUSIVE_EMPTY`; no wider FQName is substituted.
+Files that exist are only `CAPTURED_UNINTERPRETED`, not proof that both requested
+snapshots or the selected declaration were emitted. A successful process exit
+can therefore still have `INCONCLUSIVE_EMPTY_STAGE`. No fixture executes in
+Node: the marker is `diagnostic_requested=true number_tests_executed=false
+node_exit=NOT_RUN`, with a separate compilation-completion flag. These modes
+provide no passing compatibility result or numerical fix.
+
+A later authorized inspection must remain restricted to our selected caller
+declarations and distinguish observed IR from inference. Missing KLIB dumps do
+not locate the change in creation versus linking. A link-stage pre-checkpoint
+snapshot is not necessarily the linker's initial input, so an already changed
+call there does not establish that the linker received it changed. If own
+virtual calls survive from the earliest retained IR through the last retained
+post-checkpoint snapshot while generated own caller JS uses conversion helpers,
+that would suggest a later code-generation step; it would not identify a cause
+without coverage of the intervening stages. The enabled Number regressions and
+task557 remain open.
+
+## Executed filtered own-caller IR observations
+
+Parent grant1959 subsequently executed all six separate compile-only requests
+with pinned Kotlin2.4.21. Each source-to-KLIB and KLIB-to-JS command exited0,
+without timeout; every final marker reports `compilation_complete=true`,
+`number_tests_executed=false` and `node_exit=NOT_RUN`. The unchanged runner SHA
+is `0be51d8187aa69922260f8c40b5d6dba702e3cb08972e43d2a1210e3cb67d8ed`;
+the unchanged own fixture SHA is
+`2a2785f98fc7d9a77e85dd9fe639a57bc028596a0f1d0ec026752f717a28fe26`.
+These are compiler observations, not passing Number conversions or a fix.
+
+Independent read-only inspection covered only the two own filtered function
+declarations and their generated caller expressions. No `kotlin` module dump,
+compiler implementation, foreign numerical implementation or helper body was
+read or copied. The [retained own evidence](ir-2.4.21/) consists of twelve
+byte-identical filtered `.ir` files plus two four-line own generated-function
+extracts. Its [SHA-256 manifest](ir-2.4.21/SHA256SUMS) has SHA256
+`ac97d8bddc692fde5a4bf146dfcf2b2e3f58221c8191f19d4823eb889bba5b83`.
+
+| Own caller | Checkpoint | Before | After |
+|---|---|---|---|
+| `numberValues(Number)` | `AutoboxingTransformer` | six abstract `Number.to*` calls | same six abstract calls |
+| `genericValues<T : Number>(T)` | `AutoboxingTransformer` | six abstract `Number.to*` calls | same six abstract calls |
+| `numberValues(Number)` | `CallsLowering` | six abstract `Number.to*` calls | `numberToByte/Short/Int/Long`, then `numberToDouble` twice |
+| `genericValues<T : Number>(T)` | `CallsLowering` | six abstract `Number.to*` calls | `numberToByte/Short/Int/Long`, then `numberToDouble` twice |
+| `numberValues(Number)` | `MainFunctionCallWrapperLowering` | helper calls above | same helper calls |
+| `genericValues<T : Number>(T)` | `MainFunctionCallWrapperLowering` | helper calls above | same helper calls |
+
+The Float and Double calls share a helper callee after `CallsLowering`, but
+their IR expression types remain `kotlin.Float` and `kotlin.Double`, respectively.
+Both own generated JS extracts contain the sequence
+`numberToByte(n), numberToShort(n), numberToInt(n), numberToLong(n), numberToDouble(n), numberToDouble(n)`.
+Thus the selected own caller's abstract-member-to-helper transition is directly
+observed across the link-stage `CallsLowering` checkpoint; it is already present
+before the wrapper checkpoint. A later-code-generation explanation is not
+needed for this observed transition. This does not identify an implementation
+line, prove an available compiler-extension hook, or validate a workaround.
+
+All six KLIB-stage dump inventories were empty. The runner correctly retained
+`INCONCLUSIVE_EMPTY_STAGE` despite successful compilation. These empty stages
+do not establish what source-to-KLIB creation stored, the linker's initial IR,
+or how arbitrary dependency KLIB bodies would be exposed to an extension.
+The observed transition is bounded to these two unchanged own callers, this
+toolchain and these captured checkpoints. `MainFunctionCallWrapperLowering`
+is not the final phase in the full retained catalog. Task557, its original
+runtime failures and the required Number/generic contract remain open.
+
+Raw parent logs are under `/private/tmp/krogu-root528566-validation-v1/`.
+Each log records exact commands, scratch path, artifact/log hashes and inventories.
+The six scratch directories below share the previously recorded macOS temporary
+root; only their `ir-js/number-probe` files were copied. Generated own expressions
+come from the corresponding `calls` run at JS lines16011–16014 (`numberValues`)
+and16015–16018 (`genericValues`).
+
+| Parent log | Scratch suffix after `krogu-js-number-` | Log SHA256 |
+|---|---|---|
+| `ir-number-autoboxing.log` | `ir-number-6213828803047340637` | `aba84a956f3b582f0493a9590de175902a0566d9a766ef5f61e024213558f426` |
+| `ir-number-calls.log` | `ir-number-12803194276896711278` | `45049fac0a5095b129fc3f4be64388fd6152b378e283c4c3ae3ccde04991fd7d` |
+| `ir-number-wrapper.log` | `ir-number-2794343950002915113` | `dc8a0ddcf2947640eef785543c0ba08e81d4d1f3130da77db463e70e474fd7c3` |
+| `ir-generic-autoboxing.log` | `ir-generic-664303791751482094` | `657f9fcaec7b2b1777476f0c100d70d410c4ec7122861415ef77fcbd7dccd4b3` |
+| `ir-generic-calls.log` | `ir-generic-12843427968005766800` | `ac8c66bcc7825d87691907149b6fbf95fa260174debd354a4a4d2b226ab961c9` |
+| `ir-generic-wrapper.log` | `ir-generic-16464321004112994592` | `4fcb3bb3e19932c4342e700ffa52162cbf2ef24cee86a173ca8bcf8733286709` |
+
+The public YouTrack REST record was checked again on2026-10-15; its
+[retained response](KT-79282-2026-10-15.json) still reports Bug/Backend.JS,
+Backlog, and empty Planned for/Available in fields. This corroborates the
+independently reproduced external compiler cause; it does not promise a fixed
+release. Task557 can submit that investigation result for review under its
+explicit external-cause acceptance alternative. Task525's required Number and
+generic contract remains unsatisfied on pinned Kotlin/JS2.4.21.
+
+No library-only workaround has been validated. A future toolchain fix must run
+the enabled Number/generic and concrete/throwing controls, exact low-bit/Long
+and distinct Float/Double witnesses, and all supported platform checks before
+claiming compatibility. Compiler plugins, phase disabling, generated-code edits,
+type redesign and platform skips are not supplied or silently accepted here.

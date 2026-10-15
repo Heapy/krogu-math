@@ -1,0 +1,23 @@
+// --- IR for genericValues after CallsLowering
+FUN name:genericValues visibility:private modality:FINAL returnType:kotlin.collections.List<kotlin.Any>
+  TYPE_PARAMETER name:T index:0 variance: superTypes:[kotlin.Number] reified:false
+  VALUE_PARAMETER kind:Regular name:n index:0 type:T of <root>.genericValues
+  BLOCK_BODY
+    CALL 'internal final fun <init properties NumberProbe.kt> (): kotlin.Unit declared in <root>' type=kotlin.Unit origin=PROPERTY_INIT_FUN_CALL
+    RETURN type=kotlin.Nothing from='private final fun genericValues <T> (n: T of <root>.genericValues): kotlin.collections.List<kotlin.Any> declared in <root>'
+      CALL 'public final fun listOf <T> (vararg elements: T of kotlin.collections.listOf): kotlin.collections.List<T of kotlin.collections.listOf> declared in kotlin.collections' type=kotlin.collections.List<kotlin.Any> origin=null
+        TYPE_ARG T: kotlin.Any
+        ARG elements: CALL 'internal final fun arrayLiteral (a: kotlin.Any?): kotlin.Any? declared in kotlin' type=kotlin.Array<out kotlin.Any> origin=null
+          ARG a: VARARG type=kotlin.Array<out kotlin.Any> varargElementType=kotlin.Any
+            CALL 'internal final fun numberToByte (a: dynamic): kotlin.Byte declared in kotlin.js' type=kotlin.Byte origin=null
+              ARG a: GET_VAR 'n: T of <root>.genericValues declared in <root>.genericValues' type=T of <root>.genericValues origin=null
+            CALL 'internal final fun numberToShort (a: dynamic): kotlin.Short declared in kotlin.js' type=kotlin.Short origin=null
+              ARG a: GET_VAR 'n: T of <root>.genericValues declared in <root>.genericValues' type=T of <root>.genericValues origin=null
+            CALL 'internal final fun numberToInt (a: dynamic): kotlin.Int declared in kotlin.js' type=kotlin.Int origin=null
+              ARG a: GET_VAR 'n: T of <root>.genericValues declared in <root>.genericValues' type=T of <root>.genericValues origin=null
+            CALL 'internal final fun numberToLong (a: dynamic): kotlin.Long declared in kotlin.js.internal.boxedLong' type=kotlin.Long origin=null
+              ARG a: GET_VAR 'n: T of <root>.genericValues declared in <root>.genericValues' type=T of <root>.genericValues origin=null
+            CALL 'internal final fun numberToDouble (a: dynamic): kotlin.Double declared in kotlin.js' type=kotlin.Float origin=null
+              ARG a: GET_VAR 'n: T of <root>.genericValues declared in <root>.genericValues' type=T of <root>.genericValues origin=null
+            CALL 'internal final fun numberToDouble (a: dynamic): kotlin.Double declared in kotlin.js' type=kotlin.Double origin=null
+              ARG a: GET_VAR 'n: T of <root>.genericValues declared in <root>.genericValues' type=T of <root>.genericValues origin=null

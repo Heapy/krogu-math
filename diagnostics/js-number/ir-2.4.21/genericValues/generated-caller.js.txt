@@ -1,0 +1,4 @@
+  function genericValues(n) {
+    _init_properties_NumberProbe_kt__gnvgdx();
+    return listOf_0([numberToByte(n), numberToShort(n), numberToInt(n), numberToLong(n), numberToDouble(n), numberToDouble(n)]);
+  }

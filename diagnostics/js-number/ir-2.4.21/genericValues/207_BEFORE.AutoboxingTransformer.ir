@@ -1,0 +1,23 @@
+// --- IR for genericValues before AutoboxingTransformer
+FUN name:genericValues visibility:private modality:FINAL returnType:kotlin.collections.List<kotlin.Any>
+  TYPE_PARAMETER name:T index:0 variance: superTypes:[kotlin.Number] reified:false
+  VALUE_PARAMETER kind:Regular name:n index:0 type:T of <root>.genericValues
+  BLOCK_BODY
+    CALL 'internal final fun <init properties NumberProbe.kt> (): kotlin.Unit declared in <root>' type=kotlin.Unit origin=PROPERTY_INIT_FUN_CALL
+    RETURN type=kotlin.Nothing from='private final fun genericValues <T> (n: T of <root>.genericValues): kotlin.collections.List<kotlin.Any> declared in <root>'
+      CALL 'public final fun listOf <T> (vararg elements: T of kotlin.collections.listOf): kotlin.collections.List<T of kotlin.collections.listOf> declared in kotlin.collections' type=kotlin.collections.List<kotlin.Any> origin=null
+        TYPE_ARG T: kotlin.Any
+        ARG elements: CALL 'internal final fun arrayLiteral (a: kotlin.Any?): kotlin.Any? declared in kotlin' type=kotlin.Array<out kotlin.Any> origin=null
+          ARG a: VARARG type=kotlin.Array<out kotlin.Any> varargElementType=kotlin.Any
+            CALL 'public abstract fun toByte (): kotlin.Byte declared in kotlin.Number' type=kotlin.Byte origin=null
+              ARG <this>: GET_VAR 'n: T of <root>.genericValues declared in <root>.genericValues' type=T of <root>.genericValues origin=null
+            CALL 'public abstract fun toShort (): kotlin.Short declared in kotlin.Number' type=kotlin.Short origin=null
+              ARG <this>: GET_VAR 'n: T of <root>.genericValues declared in <root>.genericValues' type=T of <root>.genericValues origin=null
+            CALL 'public abstract fun toInt (): kotlin.Int declared in kotlin.Number' type=kotlin.Int origin=null
+              ARG <this>: GET_VAR 'n: T of <root>.genericValues declared in <root>.genericValues' type=T of <root>.genericValues origin=null
+            CALL 'public abstract fun toLong (): kotlin.Long declared in kotlin.Number' type=kotlin.Long origin=null
+              ARG <this>: GET_VAR 'n: T of <root>.genericValues declared in <root>.genericValues' type=T of <root>.genericValues origin=null
+            CALL 'public abstract fun toFloat (): kotlin.Float declared in kotlin.Number' type=kotlin.Float origin=null
+              ARG <this>: GET_VAR 'n: T of <root>.genericValues declared in <root>.genericValues' type=T of <root>.genericValues origin=null
+            CALL 'public abstract fun toDouble (): kotlin.Double declared in kotlin.Number' type=kotlin.Double origin=null
+              ARG <this>: GET_VAR 'n: T of <root>.genericValues declared in <root>.genericValues' type=T of <root>.genericValues origin=null
