@@ -152,6 +152,18 @@ Matching-head supported CI and hosted public campaigns for this new source/JAR
 remain pending. The previous35086 large12/0/128 result is historical evidence
 for its own856fc JAR, not this e7047 JAR. Official JCK has not run.
 
+That pending statement records the original local milestone. A later exact
+[da608 hosted audit](public-math-da608-regular-559.md) records all six supported
+platform/oracle jobs as API SUCCESS conclusions. Its229-source checkout retains
+the579 helper and regressions unchanged, alongside the later580/581 repairs;
+its own JAR is487cca, so this is successor-source evidence rather than a
+relabelled e7047 execution. No platform XML was independently recounted in that
+audit. Its public campaign remains105 PASS /1 FAIL /46 SKIP: the unchanged
+SquareRootTests timed out at120112ms, with no exact stopped input inferred.
+The separately prepared sqrt adapter and582/584 are outside that hosted run.
+This supplies the supported-CI milestone without claiming all-seven workflow,
+public-suite or official JCK acceptance.
+
 The ordinary theorem and the stated truthful coefficient-leaf composition do
 not waive dishonest/changing sign, precision, division results or conversions.
 Affected inherited callback staging remains541/526 classification; explicit
