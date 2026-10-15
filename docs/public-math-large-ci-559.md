@@ -640,3 +640,49 @@ numerical operation, probe, test, build or API campaign.
 | Producer ZIP | `0be0de492be24cdb5a17169f5cdf6c272413eca233add24ad110341aa25a97bf` |
 | Evidence ZIP | `33fc8020debc2b12c92cefdb51d24678d73b495bfabf11c6c47d48ed20f17572` |
 | Read-only evidence capsule including parent audit | `f5d5fc6707c5117425124b15537894c6268b064149921e651b55fc9deec5de78` |
+
+## Actual hosted success: 1b9 and the accepted579 artifact
+
+The original [run38783275927](https://github.com/Heapy/krogu-math/actions/runs/38783275927),
+attempt1, completed both jobs successfully at exact
+`1b9a5f2e04e4147145465fca829a45abd63cc5fa`. Its complete ledger records
+**12 PASS / 0 FAIL / 128 SKIP**, with six selected executions in each phase.
+All12 compiled and exited0, passed their fresh-memory gates and emitted their
+unique completion markers, without timeout or incomplete caught-OOM assertions.
+The140 records have distinct phase/id/path/scope/directive/method keys and cover
+the exact118 public IDs. No selected large invocation was skipped for capacity.
+
+SymmetricRangeTests completed in21298ms baseline and29061ms port, within the
+unchanged180-second limit. Port output reaches byteValueExact and the final
+completion marker; stderr is empty. The original profiles, heaps up to8192MiB,
+seed559, assertions and120/180-second child bounds were retained. This is a
+completed test invocation, not a benchmark or a universal resource guarantee.
+
+The producer, consumer and accepted local579 JAR are byte-identical:
+`e7047f824deb0e4f9170ad223037a0d42f49cdfa3025eed16b776ece9be9c5ea`.
+All223 accepted source pins match the exact-ref own source archive. All six
+port caller guards and24 core-origin records pass. The290-file evidence artifact
+preserves the17 approved notice files, exact tools/upstream/prepared sources,
+POMs, locks and raw logs; both original ZIP digests match API metadata. Earlier
+notice omissions, failures and timeouts remain historical evidence.
+
+Root independently inspected the raw ledger, completion/origin records and
+all869 evidence-index entries. The retained workspace is
+`/private/tmp/krogu-1b9-large-ci-evidence-v1`; its read-only capsule is
+`/private/tmp/krogu-1b9-large-ci-capsule-v1/evidence.tar`.
+An initial metadata display incorrectly looked for a nonexistent
+freshMemory.pass field; the corrected audit compares observed free bytes with
+the recorded required margin. No test was rerun for that correction.
+
+| Evidence | SHA-256 |
+|---|---|
+| Frozen report | `7099d8f49fd498c431f672b66d48448eedfcb1e49405429db742b00800ab50b3` |
+| 869-entry index | `0361d23d376923d5c8f6ecd01d11cdf57e14ff0c98b38328a3f1ffae4937bc3c` |
+| Independent actual audit | `91e858e2b89c82e9fee3a2014139c653a154baaccb1e3c6c1a64d97827d08344` |
+| Root index check | `10c6f84369e8a1f1e527506b71b289dc829f2afaeaa734543a205f60d062d750` |
+| Read-only capsule | `9c5bc769ad79994f95c7c86f832a7cf6818afd33ef0c2371e3108fad6338b183` |
+
+Normal CI at exact1b9 remains a separate pending audit. This run does not cover
+the later580 source/JAR48614577, official JCK or all mathematical input classes.
+The public test tag/runtime revision difference remains recorded. Task559 and
+the broader range, dispatch and Number/JS gates remain open.

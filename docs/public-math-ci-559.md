@@ -305,3 +305,67 @@ and regular870 artifacts still lack extracted notices and are not repaired or
 relabeled. The large run itself has 11 PASS / one timeout / 128 SKIP; packaging
 acceptance does not turn that mathematical timeout into a pass. Full result,
 artifact and raw-log hashes are in the [8e6 large-run report](public-math-large-ci-559.md#actual-hosted-attempt-8e6-timeout-in-the-tostring-section).
+
+## Subsequent actual regular result: exact 8e6
+
+[Compatibility run38772258915](https://github.com/Heapy/krogu-math/actions/runs/38772258915),
+attempt1, completed with **all seven jobs SUCCESS** at exact commit
+`8e6d6b6b8c0cbb3ee2ccb7d102d3454b9115397d`. Its regular public ledger is
+**106 PASS / 0 FAIL / 46 SKIP**, complete=true, with 106 actual compile/execution
+records and correctly bound completion markers. Baseline and port each pass 53
+invocations. All 53 port origin/baseline guards, 63 caller audits and two nested
+child proofs pass; all 666 referenced raw paths exist. Original four profiles,
+512MiB heaps, flags, seed559, subset0 and per-process deadlines are retained.
+The 46 skips retain twelve unselected large invocations, sixteen upstream-disabled,
+two commented calls, four private-internal exclusions and twelve adaptation
+companions; none is relabeled as a pass.
+
+The same-run producer/consumer JAR and `SOURCE_COMMIT` verify at
+`de97f2b5b68620c9b94c433999222421d53b742de82c44f9e3c2b5932a7d299e`.
+The exact8e6 archive contains 219 own source files. Independently derived test
+declarations yield 68 common suites/324 methods and 148 JVM suites/508 methods.
+All 1136 platform XMLs across twelve exact workflow OS/target groups match those
+source inventories without omissions, extras, duplicates, failures, errors or
+skips. ARM raw has 324 unique RUN and 324 unique OK entries in identical order,
+equal to both the source common set and same-run Wasm XML; its 68-suite/324-test
+summary appears once with no FAILED/SKIPPED marker. A prior 65/314 inventory was
+not reused or forced onto this source revision.
+
+This later regular artifact also confirms the notice preservation that was
+still unobserved at the preceding historical LARGE-report milestone. Its 896
+files include **all 17 notice files**, seven JSON indices and ten texts,
+byte-identical by relative path/hash to the approved local tree (`74a6769a…`).
+GPL text, `LICENSING.md`, sources, locks and POMs remain. Dependency/test binaries
+under the math workspace and compiled-script caches stay excluded; the own input
+JAR is separate. All seven artifact ZIPs were retained and locally rehashed to
+their API digests. The old eaa/regular870 missing-notice artifacts remain unchanged.
+
+The parent independently rechecked the raw public JSON, ARM/source inventory
+and all 2631 frozen index entries. An initial metadata-key projection omitted
+phase/method and collapsed distinct disabled/commented/excluded records; that
+rejected audit is preserved read-only as `f915620e…`. The corrected key
+`[phase,id,path,scope,directive,method]` identifies all 152 semantic records
+uniquely, with 118 distinct public invocation IDs and zero audit issues. This
+was a metadata correction, not an artifact/result rewrite or runtime retry.
+
+Evidence is retained at `/private/tmp/krogu-8e6-regular-ci-evidence-v1/`.
+This is exact8e6/source219/JARde97 regular and platform evidence. Its separate
+8e6 LARGE run remains **11 PASS / 1 TIMEOUT / 128 SKIP**, a distinct failed
+campaign on that JAR. This report supplies no new35086 or1b9 result, official
+JCK certification, all-input/domain proof or performance claim. At the parent
+scope grant for this text update, published1b9's matching normal CI was pending
+and large run38783275927 was running; neither is accepted by this historical
+record. All older failures retain their original sources, JARs and coverage
+limits. This text update ran no compiler, script, helper, numerical operation,
+test, probe, build or API campaign.
+
+| Evidence | SHA-256 |
+|---|---|
+| Frozen `REPORT.md` | `e5b1d818e5c7baa17a1fbed58bd70dd978e44391df3de1c6a06e08cd3ef43325` |
+| 2631-entry `evidence-index.sha256` | `6b5ee365c96d660dc0d3b4365b33c31cb4f44f08cad748f0a693cca8381fcc8c` |
+| Corrected `root-actual-audit.json` | `b85615d21e99c87e53637d398dbf63bcc98581d3b76fd2f8bdd37254858be7e0` |
+| Preserved rejected key-projection audit | `f915620efb3db53917a9f0a4f0a82b474d792dd12781f045dfb32e8952590443` |
+| Public `results.json` | `95fe9d27663e11ef7ea371a57912c57654853221bb9d500a8fb3774d34c945cd` |
+| `arm.raw.log` | `57c2a1e6c1d64ed649ece5220c20a8940682a26c8ded6e0506b718d9730fd2bb` |
+| `platform-source-arm-audit.json` | `2f0b6e46c4dd63b52b8d0d0efd3af985ad24c350225c5a937d250c359bc57254` |
+| Read-only evidence capsule including parent audit | `230f323f4f8672454e0cde6d69dfb6eb6c6df3f19d80e2c22f2e49daf69acf17` |
