@@ -1,8 +1,9 @@
 # SPDX-License-Identifier: Apache-2.0
-# Schema: context-contract-coverage-v3; six compact columns plus bounded STATUS dictionary, lossless recovery of 19 logical fields
-# Predecessor mapper SHA-256 9557d63ad7856466623c87a6cd6750ea1e5dec2aaf1d08cae000abb145eb4e58 (reviewed historical source, not the current mapper digest)
+# Schema: context-contract-coverage-v4; six compact columns plus bounded STATUS dictionary, lossless recovery of 19 logical fields
+# Predecessor mapper SHA-256 e94afbc73c76202fcc7c1453f809df5ba659237f1d5acfb97928889ccd316497 (reviewed v3 source, not the current mapper digest)
+# Historical pre-non-null-migration evaluator SHA-256 2ed00a5dd3c7ec038e61f5be078697b84609606549c26b1bda1249fce860c781 src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt (provenance only; current source verified separately below)
 # SHA-256 88fc3c5bc8277a048a83a9ad9b6546bd8a23ae1ad9a10126409d857367391026 src/commonTest/kotlin/io/heapy/krogu/math/Jdk25DecimalContextDispatchResults.kt
-# SHA-256 2ed00a5dd3c7ec038e61f5be078697b84609606549c26b1bda1249fce860c781 src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt
+# SHA-256 bb61d3f8a5f61850fb208f0e8f5ba814c4b3c7c68b0cb658a0db62081ea41300 src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt
 # SHA-256 0d9e9b11af4c27892758e78d6b80639b763fcec66ffbe27721d373864a501188 scripts/generate-decimal-context-dispatch-oracle.main.kts
 # SHA-256 1245d75ed6837139c939496e602a085cba37b35dd4d3c98f197bdaece2ce7cc9 src/commonTest/kotlin/io/heapy/krogu/math/Jdk25DecimalContextContractResults.kt
 # Stable IDs: D = 1-based frozen row; C = 1-based first-occurrence five-field projection
@@ -54,9 +55,13 @@
 # STATUS D07430 C0614 M01 M01 E 009 REQUIRED_NULL_ARGUMENT_CONTRACT
 # STATUS D07431 C0615 M01 M01 E 009 REQUIRED_NULL_ARGUMENT_CONTRACT
 # STATUS D07432 C0616 M01 M01 E 009 REQUIRED_NULL_ARGUMENT_CONTRACT
+# STATUS D07457 C0625 M01 M06 V 051 REFERENCE_CONTRACT_BREAKING_EXACT_OVERRIDE_RESULT
 # Logical fields: old_row_id,control_id,source,divisor,topology,context_precision,rounding,source_mode,divisor_mode,required_valid_outcome,required_canonical_text_control,old_outcome_kind,old_value_or_error_status,old_trace_status,old_message_status,runtime_identity_status,unresolved_interactions,explicit_caller_language_control,archival_status
 # Policy old_value_or_error_status=STATUS override for its exact D/C/mode/kind/mask binding, else UNRESOLVED_POISONED_INTERACTION; old_trace_status=REFERENCE_OBSERVATION
 # Status meaning: REQUIRED_NULL_ARGUMENT_CONTRACT requires exception TYPE only; trace/message/noncalls/identity are not promoted to requirements
+# Status meaning: REFERENCE_CONTRACT_BREAKING_EXACT_OVERRIDE_RESULT classifies only D07457's old value prefix; C0625 still requires NullPointerException; no inherited forwarding requirement or general unsupported status
+# Exact replacement D07457 frozen fields: 0.00\t2.0\tdelegate\tnull\t0\tUP\t7.00:2|A.exact-null;
+# Exact replacement C0625 control fields: 0.00\t2.0\tnull\t0\tUP\t!NullPointerException; historical nullable probe source is bound by generator SHA-256
 # Policy old_message_status=REFERENCE_OBSERVATION if MESSAGE_RECORDED else NOT_RECORDED; runtime_identity_status=NOT_OBSERVED
 # Policy required_canonical_text_control=CANONICAL_TEXT:C-id for a successful control, else NOT_APPLICABLE
 # Policy unresolved_interactions=ordered FLAG names present except MESSAGE_RECORDED
@@ -67,7 +72,7 @@
 # Test extensions/verification are separate; this manifest does not certify them
 # Internal order/count/noncalls/forwarding and diagnostic wording are observations; runtime class/cache/result identity are not measured
 # Unresolved poisoned value/error interactions block archival; bad unused getters never blanket-waive inherited contracts
-# Null8 boundary: only the eight STATUS exception types are required; every row stays blocked for archival
+# Status boundary: exactly eight required null-argument error types and one reference exact-override value prefix; 75719 other value/error statuses unresolved; every row stays blocked for archival
 old_row_id	control_id	source_mode_id	divisor_mode_id	old_kind	interaction_bits_hex
 D00001	C0001	M01	M01	V	041
 D00002	C0002	M01	M01	V	041

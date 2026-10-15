@@ -1,10 +1,12 @@
 # Decimal context contract controls
 
-This scoped `local:526` addition supplies independent ordinary and fully truthful
-subclass controls for context division. It does not complete the classification
-of the old context-dispatch family or the full task. The old fixture, evaluator,
-generator and whole-string assertions remain unchanged and are still required
-by the existing suite.
+The original scoped `local:526` addition supplied independent ordinary and fully
+truthful subclass controls for context division without changing the old fixture,
+evaluator, generator or whole-string assertions at that stage. The later 575
+non-null migration separately retains selected historical null observations and
+requires real JVM boundary rejection. The one-row analysis below distinguishes
+those scopes; it changes no fixture, evaluator, generator or assertion and does
+not complete the context-dispatch family or the full task.
 
 ## Contract basis
 
@@ -127,7 +129,7 @@ wording are observations here. Some callback, null and arithmetic failure
 precedence interactions remain unresolved. None of the old assertions are
 archived or removed by this addition.
 
-### Eight required null-context exception types
+### Historical v3 milestone: eight required null-context exception types
 
 Rows `D07425`–`D07432` map to `C0609`–`C0616`: source `0.00`, divisor `2.0`,
 ordinary topology, both modes `delegate`, null context and all eight rounding
@@ -139,8 +141,8 @@ This path explanation does not make internal noncalls or trace order mandatory.
 
 Only their exception-type status becomes `REQUIRED_NULL_ARGUMENT_CONTRACT`.
 The frozen `!NullPointerException|` strings, reference traces, unobserved identity,
-latent flags and every archival block remain. The other 75,720 poisoned outcome
-statuses remain unresolved. In particular, this classification does not extend
+latent flags and every archival block remained. At this v3 milestone the other
+75,720 poisoned outcome statuses remained unresolved. This classification did not extend
 to the null-divisor/unlimited-context replacement below.
 
 The revised mapper validates exact IDs, inputs, modes, controls and masks and
@@ -172,13 +174,79 @@ poisoned-probe, null-divisor and invoked-exact-replacement flags (`001`, `010`,
 tab-separated fixture records, not physical Kotlin source lines, because the
 fixtures contain multiple string chunks.
 
-Current source ordering can explain an invocation, but it cannot independently
-prove a required internal-forwarding or callback-precedence rule. This row's old
-value/error status remains `UNRESOLVED_POISONED_INTERACTION`, its trace remains
-`REFERENCE_OBSERVATION`, and archival remains blocked. Explicit caller entry and
-caller-owned result/exception identity are covered by the separate language
-controls. This analysis changes no fixture, assertion or numerical code, and
-does not claim a JDK defect or waive the inherited method's contract.
+For **D07457 alone**, classify the old `7.00:2` prefix as a reference observation
+of a **contract-breaking exact-division override**, not a required numerical
+result of inherited contextual division: that override returns normally for a
+null argument instead of rejecting it. C0625's required valid-control outcome
+remains `NullPointerException`. The recorded `A.exact-null;` is an internal
+forwarding observation, not a required callback, order or noncall; trace status
+stays `REFERENCE_OBSERVATION`, message status `NOT_RECORDED`, and result identity
+`NOT_OBSERVED`. The explicit language entry in this row is
+`ContextProbe.enter -> super.divide(null, unlimitedContext)`. It does not
+explicitly call the one-argument override. Separate well-typed/reachable direct
+caller controls require selected override entry and caller-owned result/exception
+identity; they do not require inherited exact forwarding. The historical nullable
+probe is not the current non-null Kotlin API: input-only selection sends old
+ordinal 7456 to the real Java explicit-super replay in `DecimalBinary575JvmTest`,
+requiring NPE and retaining the old observation separately; C0625/ordinal 624 has
+its ordinary/truthful JVM counterpart. Permitted override-nullability edits do
+not preserve a requirement to accept null. This one-row analysis neither declares
+a JDK bug, waives inherited contracts nor invalidates truthful subclasses.
+
+At the original source-only field-analysis milestone no new manifest status
+was materialized. The preserved v3 mapper has no D07457 binding: its `requiredNullRows` and
+`validateStatusHeaders` permit exactly the eight reviewed error rows
+D07425–D07432. Consequently the stored v3
+`old_value_or_error_status` for D07457 was
+`UNRESOLVED_POISONED_INTERACTION`; that analysis changed no TSV or count. Its
+materialized counts were eight required error-type statuses and 75,720 unresolved statuses
+(58,093 value and 17,627 error), with every row blocked for archival. Recording
+the new one-row value-prefix analysis in executable metadata required the bounded
+successor policy and separate validation below, not an unvalidated ninth header.
+The frozen observation/control and all current assertions remain intact.
+No script, compiler, helper, numerical operation, probe or test ran for this
+source-only analysis; exact NPE text and inherited internal traces are not newly
+promoted to requirements.
+
+### Historical source-only v4 preparation
+
+The source-only successor mapper adds exactly
+`D07457 C0625 M01 M06 V 051` with the value-prefix status
+`REFERENCE_CONTRACT_BREAKING_EXACT_OVERRIDE_RESULT`. It pins the full seven-field
+old row, the full six-field C0625 NPE control and the historical generator source
+containing the nullable probe. The eight required error bindings are unchanged.
+No generic unsupported status or trace/identity/archival exemption is added.
+The compact payload guard still refuses any change to its header or 75,728 rows;
+all other logical selectors, interaction flags and archival blocks remain.
+
+The prepared mapper's bounded policy predicted eight required error-type
+statuses, one reference-only value
+prefix, and **75,719 unresolved statuses**: 58,092 value and 17,627 error. These
+were source-derived expected counts, not results of a run at that milestone.
+The materialized v3 TSV then remained at eight required / 75,720 unresolved. The successor
+separately verifies the migrated common evaluator hash `bb61d3f8…` while retaining
+the old `2ed00a5d…` pin as explicitly historical provenance; no evaluator or
+assertion is edited. No predecessor check on current sources is claimed.
+The [source preparation record](decimal-context-value1-policy-526.md) lists full
+pins, predecessor preservation and exact field scope.
+
+### Root2300: accepted actual v4 metadata validation
+
+Parent generation session 93225 and check session 39678 both exited 0 using the
+frozen mapper `78869800…`, its four pinned source files, a 512MiB script heap and
+a fresh isolated compiled-script cache. Independent read-only actual review
+accepted the evidence. All 75,728 compact data records and their six-column
+header stayed byte-identical; only the bounded metadata changed. The current
+publication-workspace TSV is v4, SHA-256
+`f8f797e79d706fbed221e3ec73f77778f1f952a938d071e972983ffb45098927`.
+It has exactly nine status bindings: eight required error types, one reference-only
+value prefix and 75,719 unresolved statuses; every archival block remains.
+
+The [actual validation record](decimal-context-value1-policy-526.md#root2300-actual-metadata-validation)
+gives full source/log hashes and retained v3 evidence. This was metadata-only
+validation: no mathematical test or old public-JDK oracle rerun. Adoption was
+not yet committed or pushed at this documentation handoff; root owns publication
+and CI. Fixtures, evaluators and assertions remain unchanged.
 
 ## Reproduction and verification
 

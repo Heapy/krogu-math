@@ -29,6 +29,10 @@ jobs:
       - run: kotlinr scripts/generate-decimal-pair-dispatch-oracle.main.kts --check
       - run: kotlinr scripts/generate-decimal-integral-dispatch-oracle.main.kts --check
       - run: kotlinr scripts/generate-decimal-context-dispatch-oracle.main.kts --check
+      - name: Verify context-dispatch field classification
+        run: kotlinr -J-Xmx512m scripts/map-decimal-context-contract-coverage.main.kts --check
+        env:
+          JAVA_OPTS: -Xmx512m
       - run: kotlinr scripts/extract-decimal-context-returned-representations.main.kts --check
       - run: kotlinr scripts/inventory-decimal-exact-root-callbacks-563.main.kts
       - run: kotlinr scripts/generate-decimal-remainder-array-oracle.main.kts --check
