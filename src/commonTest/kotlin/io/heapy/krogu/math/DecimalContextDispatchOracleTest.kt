@@ -36,16 +36,16 @@ private class ContextProbe(text: String, val label: String, val mode: String, va
     override fun unscaledValue(): BigInteger = unexpected("unscaled")
     override fun abs(): BigDecimal = unexpected("abs")
     override fun negate(): BigDecimal = unexpected("negate")
-    override fun divide(v: BigDecimal?): BigDecimal {
+    override fun divide(v: BigDecimal): BigDecimal {
         trace.append("$label.exact${if (v == null) "-null" else ""};"); return BigDecimal("7.00")
     }
-    fun enter(v: BigDecimal?, p: Int, rounding: String): BigDecimal =
-        super.divide(v, if (p < 0) null else MathContext(p, RoundingMode.valueOf(rounding)))
+    fun enter(v: BigDecimal, p: Int, rounding: String): BigDecimal =
+        super.divide(v, MathContext(p, RoundingMode.valueOf(rounding)))
 }
 private fun contextOutcome(a: String, b: String, aMode: String, bMode: String, p: Int, rounding: String): String {
     val trace = StringBuilder()
     val source = ContextProbe(a, "A", aMode, trace)
-    val divisor = if (bMode == "self") source else if (bMode == "null") null else ContextProbe(b, "B", bMode, trace)
+    val divisor = if (bMode == "self") source else ContextProbe(b, "B", bMode, trace)
     return try {
         val result = source.enter(divisor, p, rounding)
         val calls = trace.toString()
@@ -55,10 +55,14 @@ private fun contextOutcome(a: String, b: String, aMode: String, bMode: String, p
 class DecimalContextDispatchOracleTest {
     @Test fun contextDivisionPreservesOperandCallOrderAndFailurePrecedence() {
         val failures = mutableListOf<String>()
-        for (row in jdk25DecimalContextDispatchCases()) {
+        val moved = mutableSetOf<Int>()
+        for ((index, row) in jdk25DecimalContextDispatchCases().withIndex()) {
+            if (DecimalBinary575Rows.contextDispatch(row)) { moved.add(index); continue }
             val actual = contextOutcome(row[0], row[1], row[2], row[3], row[4].toInt(), row[5])
             if (row[6] != actual) failures += row.take(6).toString() + " expected=" + row[6] + " actual=" + actual
         }
         assertEquals(emptyList<String>(), failures.take(12), failures.size.toString() + " mismatches")
+        assertEquals(384, moved.size, "Exact null-input rows replayed through Java explicit super")
+        assertEquals(DecimalBinary575Rows.contextDispatchOrdinals, moved)
     }
 }

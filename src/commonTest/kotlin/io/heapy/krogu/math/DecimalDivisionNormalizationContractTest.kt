@@ -11,8 +11,8 @@ class DecimalDivisionNormalizationContractTest {
         override fun signum() = super.signum()
         override fun scale() = super.scale()
         override fun unscaledValue() = super.unscaledValue()
-        override fun divide(divisor: BigDecimal?) = super.divide(divisor)
-        override fun divide(divisor: BigDecimal?, mc: MathContext?) = super.divide(divisor, mc)
+        override fun divide(divisor: BigDecimal) = super.divide(divisor)
+        override fun divide(divisor: BigDecimal, mc: MathContext) = super.divide(divisor, mc)
     }
 
     @Test fun exactCancellationAndReducedTerminatingDenominators() {

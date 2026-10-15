@@ -17,10 +17,11 @@ class DoubleZeroContext569DiagnosticTest {
     }
 
     private data class Outcome(val coefficient: String? = null, val scale: Int? = null, val exception: String? = null)
-    private fun observe(action: () -> Any): Outcome = try {
+    private fun observe(action: () -> Any?): Outcome = try {
         when (val result = action()) {
             is JD -> Outcome(result.unscaledValue().toString(), result.scale())
             is BigDecimal -> Outcome(result.unscaledValue().toString(), result.scale())
+            null -> Outcome(exception = "returned-null")
             else -> error("Unexpected result type")
         }
     } catch (e: Exception) { Outcome(exception = e.javaClass.simpleName) }
@@ -33,7 +34,7 @@ class DoubleZeroContext569DiagnosticTest {
             val key = value.toRawBits()
             assertTrue(seen.add(key), "Duplicate signed-zero bits: $key")
             val rawHost = observe { JD(value, hostContext) }
-            val actual = observe { BigDecimal(value, ownContext) }
+            val actual = observe { Validation578Boundary.decimal(value, ownContext) }
             println("doubleBits=$key/null rawHost=$rawHost required=NullPointerException actual=$actual")
             // Existing frozen null-oracle rows record zero for these two exact inputs.
             assertEquals(Outcome("0", 0), rawHost, "$key historical host observation")
@@ -62,11 +63,13 @@ class DoubleZeroContext569DiagnosticTest {
         // Literal historical observations from the unchanged seven-row Double/null oracle cohort.
         for (value in listOf(Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, 0.1, 1.0)) {
             val historical = if (value.isFinite()) "NullPointerException" else "NumberFormatException"
-            val rawHost = observe { JD(value, null as JC?) }
-            val actual = observe { BigDecimal(value, null) }
+            val hostContext: JC? = null
+            val rawHost = observe { JD(value, hostContext) }
+            val actual = observe { Validation578Boundary.decimal(value, null) }
             println("doubleBits=${value.toRawBits()}/null rawHost=$rawHost actual=$actual")
             assertEquals(Outcome(exception = historical), rawHost, "Historical host observation for $value")
-            assertEquals(rawHost, actual, "Retained comparison for $value")
+            if (value.isFinite()) assertEquals(Outcome(exception = "NullPointerException"), actual, "$value null contract")
+            else assertTrue(actual.exception != null, "$value compound-invalid rejection; priority is diagnostic")
         }
         // Finite control with real rounding and a separately specified decimal result.
         val rawHost = observe { JD(1.25, JC(2, JR.HALF_EVEN)) }

@@ -169,8 +169,8 @@ class ValueIdentityConformanceTest {
         assertTrue(BigDecimal("4294967297.00").equals(decimal))
         assertEquals(jDecimal.hashCode(), decimal.hashCode())
         assertFailsWith<NullPointerException> { JInteger.ONE.compareTo(null) }
-        assertFailsWith<NullPointerException> { BigInteger.ONE.compareTo(null) }
+        assertFailsWith<NullPointerException> { ComparisonNull574.compareIntegerNull(BigInteger.ONE) }
         assertFailsWith<NullPointerException> { JDecimal.ONE.compareTo(null) }
-        assertFailsWith<NullPointerException> { BigDecimal.ONE.compareTo(null) }
+        assertFailsWith<NullPointerException> { ComparisonNull574.compareDecimalNull(BigDecimal.ONE) }
     }
 }

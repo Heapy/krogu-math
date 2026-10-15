@@ -207,10 +207,26 @@ Compatibility with older krogu-math streams or `java.math` streams, and migratio
 between these formats, are outside the project requirements. Non-JVM platforms
 do not depend on Java serialization.
 
-Kotlin overrides of exact/context division, integral division, pairs and remainder
-use nullable operand/context parameters to preserve Java validation and delegation
-order. The base implementation checks arguments at the corresponding computation
-stage; zero-precision and remainder delegation can be handled by an override first.
+Task573's input migration covers all 48 reviewed slots:
+`BigInteger`/`BigDecimal` comparison inputs; exact and MathContext overloads of
+decimal add, subtract, multiply, divide, integral division, pairs and remainder;
+decimal abs, negate, plus and round contexts; integer bitwise operands; and the
+reviewed constructor, random, modPow, legacy-divide and sqrt inputs. Kotlin overrides use matching
+non-null types, and both numbers implement `Comparable<T>`. Task525 additionally
+makes the four member `min`/`max` results non-null. Three equals inputs and four
+OrNull results remain nullable.
+Valid common mathematical coverage remains; ill-typed null calls have actual
+JVM Java counterparts with separate direct override, inherited and explicit-super
+contracts. The revision4 source passed all four local platform gates (1,416 method
+executions across JVM, JS, Wasm JS and macOS ARM64) and all 49 input compiler jobs.
+The selected public campaign passed 30 adapted invocations with 115 declared
+coverage skips. Four original joint-invalid constructor calls remain excluded
+from that success; their earlier failure is preserved. Published-revision CI
+results are recorded separately.
+See the [current verification report](docs/non-null-api-573-verification.md) for
+evidence and remaining gates. The [revision4 contract review](docs/non-null-573/RNG_CONTRACT_REVIEW.md)
+preserves earlier failures and the RNG observation classification. Focused handoffs
+retain their historical source milestones and displaced execution accounting.
 
 ## Source and behavioral compatibility contract
 
@@ -246,10 +262,11 @@ Decimal `/` retains the dividend scale and rounds `HALF_EVEN`, matching Kotlin
 stdlib. The named `divide(other)` method remains exact. For example,
 `BigDecimal("1") / BigDecimal("3")` is zero at scale zero, while
 `BigDecimal("1.00") / BigDecimal("3")` is `0.33` at scale two.
-The snapshot still lacks `inc`/`dec`, primitive/string `toBigInteger` and
-`toBigDecimal` extensions, and nullable parsing helpers; these import-only gaps
-are tracked in kotgent `local:525`. This contract records the full target, not
-a claim that every migration gap is already closed.
+The library provides `inc`/`dec`, primitive/string `toBigInteger` and
+`toBigDecimal` extensions, and nullable parsing helpers in
+`io.heapy.krogu.math`. Migrated callers must import these extensions.
+Broader migration checks remain tracked in kotgent `local:525`; the available
+helpers do not establish full migration compatibility.
 
 Kotlin/JS 2.4.21 also has a confirmed compiler bug in conversions through
 `kotlin.Number` and generic `<T : Number>` receivers: calls can bypass the

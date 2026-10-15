@@ -21,13 +21,13 @@ private class IntegralSource(text: String, val label: String, val mode: String, 
     override fun scale(): Int { trace.append("$label.scale;"); return super.scale() }
     override fun signum(): Int { trace.append("$label.sign;"); return super.signum() }
     override fun abs(): BigDecimal { trace.append("$label.abs;"); return super.abs() }
-    override fun compareTo(v: BigDecimal?): Int { trace.append("$label.compare;"); return super.compareTo(v) }
-    override fun subtract(v: BigDecimal?): BigDecimal { trace.append("$label.subtract;"); return super.subtract(v) }
-    override fun divideToIntegralValue(v: BigDecimal?): BigDecimal {
+    override fun compareTo(v: BigDecimal): Int { trace.append("$label.compare;"); return super.compareTo(v) }
+    override fun subtract(v: BigDecimal): BigDecimal { trace.append("$label.subtract;"); return super.subtract(v) }
+    override fun divideToIntegralValue(v: BigDecimal): BigDecimal {
         trace.append("$label.integral;"); return super.divideToIntegralValue(v)
     }
-    override fun divide(v: BigDecimal?, mc: MathContext?): BigDecimal {
-        val context = mc ?: throw NullPointerException()
+    override fun divide(v: BigDecimal, mc: MathContext): BigDecimal {
+        val context = mc
         trace.append("$label.divide(${context.precision},${context.roundingMode});")
         if (mode == "throw") throw IllegalStateException("divide callback")
         return if (mode == "source") this else IntegralResult(mode, trace)
@@ -49,8 +49,8 @@ private class IntegralMetadata(text: String, val label: String, val digits: Int,
     override fun signum(): Int { trace.append("$label.sign;"); return super.signum() }
     override fun precision(): Int { trace.append("$label.precision;"); return digits }
     override fun scale(): Int { trace.append("$label.scale;"); return reportedScale }
-    override fun divide(v: BigDecimal?, mc: MathContext?): BigDecimal {
-        val context = mc ?: throw NullPointerException()
+    override fun divide(v: BigDecimal, mc: MathContext): BigDecimal {
+        val context = mc
         trace.append("$label.divide(${context.precision},${context.roundingMode});")
         throw IllegalStateException("divide callback")
     }

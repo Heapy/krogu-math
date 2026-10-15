@@ -1,0 +1,977 @@
+# JDK 25 conformance audit
+
+Objective: full Kotlin source and behavioral compatibility for the migration
+**Java → Kotlin using java.math → Kotlin using krogu-math**, with the public
+Java SE 25 numerical contract and documented Kotlin stdlib operators/extensions
+exposed in `io.heapy.krogu.math`. Arithmetic remains independent Apache-2.0
+common Kotlin. Java source compatibility is required only in the TCK harness,
+where test-only adapters may supply the expected Java call shapes. Public types
+may use interfaces and constructor-like Kotlin factories; real Java constructors
+and direct Java subclass source compatibility are not library requirements.
+Kotlin nullability follows the [nullability policy](docs/kotlin-nullability-policy.md):
+inputs that reject null must be non-null. Migration may require matching caller
+and override edits; task573 implements the reviewed 48-input migration.
+Proven JDK defects are handled as specified below. The objective remains
+**active and unproven**.
+
+Reference runtime: BellSoft Liberica **25.0.4+9**. Implementation source from
+OpenJDK or other numerical libraries must not be used. Public API specifications,
+independent mathematical reasoning and black-box results supply evidence; a
+runtime result does not override the public contract.
+
+The [contextual-zero and modular integration report](docs/context-modular-integration-verification.md)
+records the preceding four local target gates, bounded modPow measurements and
+unchanged public-test campaign, including its three retained failures. Direct
+contextual zero-scale behavior and the finite unary observation policy supersede
+earlier broad trace summaries for those exact cases. The report also records
+eight narrowly classified null-context exception types; broader audits remain open.
+
+The later [normalized division report](docs/normalized-division-verification.md)
+records the exact d0 candidate, four target gates, bounded time/allocation pilot
+and selected public campaign, retaining its PrimeTest failure and timing regressions.
+The separate [zero sqrt-null validation](docs/zero-sqrt-null-568-verification.md)
+records the null-contract repair and its own current execution evidence.
+The [Double zero/null validation](docs/zero-double-context-569-verification.md)
+records the constructor repair, retained JDK observations and fresh target/public gates.
+The [integer arithmetic and bit audit report](docs/integer-audits-544-545-verification.md)
+records the later test-only integration, four local target gates and all six CI
+jobs passing on published commit60aea413, including actual Linux ARM64 execution.
+
+Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
+retained JDK diagnostics and deliberate numerical divergences are documented in
+[Decimal scale contract](docs/decimal-scale-contract.md).
+
+Representable exact/context division despite an unsupported intermediate scale,
+including rounding carries, is documented in the [division normalization contract](docs/decimal-division-normalization-contract.md).
+
+Division with a preferred scale outside Int is tracked in the [preferred-scale division contract](docs/decimal-division-preferred-scale-contract.md).
+
+The portable equality/order/hash laws, context/enum contracts and mutation/alias
+witnesses are documented in [Value identity and immutability](docs/value-identity-contract.md).
+
+The independent canonical Double candidate argument, binary-boundary regressions
+and exact coefficient/scale/text corpus are documented in
+[Canonical Double contract](docs/canonical-double-contract.md).
+
+A [stdlib-only compiler diagnostic](diagnostics/js-number/README.md) independently
+reproduces Kotlin/JS 2.4.21 Number/generic conversion corruption and the known
+upstream bug. Bounded runner and coercion checks preserve the failing evidence;
+they do not fix or waive the Kotlin caller contract (`local:557`, `local:525`).
+
+Message-oracle runs and JVM test workers use `-XX:-OmitStackTraceInFastThrow`.
+A repeated scaled-zero-division campaign exposed 6,975 null messages caused by
+HotSpot exception reuse; rerunning with this flag restored the canonical `/ by zero`
+message in every such case. The generator verifies the effective VM option.
+This diagnostic configuration follows [Oracle's documented flag](https://www.oracle.com/java/technologies/javase/release-notes-introduction.html)
+for disabling preallocated exceptions; numerical values and exception classes
+are compared independently of this optimization.
+
+## Normative contract and oracle classification
+
+The public [Java SE 25 package contract](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/package-summary.html)
+and documentation of [BigInteger](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigInteger.html),
+[BigDecimal](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html),
+[MathContext](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/MathContext.html)
+and [RoundingMode](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/RoundingMode.html)
+define the numerical and behavioral requirements. Kotlin source migration also
+includes documented [operators](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/div.html),
+[numeric conversions](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/to-big-decimal.html)
+and [string conversions](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/to-big-decimal.html).
+For example, Kotlin decimal `/` keeps the dividend scale and rounds HALF_EVEN;
+it is not interchangeable with exact `divide(other)`.
+
+| Classification | Evidence needed | Compatibility obligation |
+|---|---|---|
+| Specification guarantee | A public contract clause or Kotlin language/stdlib guarantee, plus an independent expected result where numerical | Preserve it, including specified values, rounding, scale, encodings, text, range, error conditions/types and identity. Kotlin caller compilation and overload resolution remain migration obligations, with explicit caller/override nullability edits permitted by the nullability policy. |
+| Reference observation | Reproducible public inputs and outputs on the pinned runtime | Retain as diagnostic evidence and preserve useful additional behavior when consistent with the contract. Unspecified callback order, allocation/cache choices, exact diagnostic wording and random sequences do not become independent requirements solely from one JDK build. |
+| Proven JDK defect | Minimal public reproducer, the precise violated clause, independent expected behavior and tested JDK version/configuration | Follow the contract, retain the reference counterexample and add a regression for correct behavior. Record every deliberate divergence explicitly. |
+| Unresolved difference | A reproducible mismatch without sufficient normative or mathematical evidence | Investigate; do not silently ignore it or call it a JDK bug because documentation is absent. |
+| Contract-violating subclass input | A specific overridden method violating a documented invariant or method contract | Keep the probe as diagnostic evidence; it does not establish a required numerical outcome. This classification does not waive Kotlin extensibility or contract-preserving overrides. |
+
+Documented identities remain requirements: for example BigDecimal `plus()` returns
+its receiver, `min`/`max` ties return the receiver, and stripping a numerical zero
+returns `ZERO`. Where `setScale` permits reuse or allocation, one runtime's choice
+does not add an identity guarantee. Dynamic dispatch of an explicit overridable
+call follows the language contract; internal call counts/order require their own
+documented guarantee before becoming normative.
+
+BigDecimal precision is the number of decimal digits in its unscaled value,
+with zero having precision one. An override reporting negative or inconsistent
+precision violates that invariant. Such a probe can reveal implementation
+mechanics, but cannot alone prove either a JDK defect or a required port result.
+Contract-preserving subclasses and documented exception/identity behavior remain
+in scope. Current corpora contain mixed categories; full case classification is
+tracked in kotgent `local:526`, not claimed complete by this policy change.
+
+The first fully classified subset is the 8,192
+[extreme replacement-metadata observations](diagnostics/decimal-context-extreme-metadata/README.md).
+Both operands violate the documented precision invariant in every row. Frozen
+reference data and the original evaluator are retained outside the normal test
+source sets; the public-JDK generator remains reproducible. The standalone input
+classifier checks all rows and the retained data hash independently of the port.
+This classification neither excludes valid extreme-scale inputs nor completes
+the classification of other existing oracle families.
+
+An [input-only inventory of the tracked context-dispatch corpus](diagnostics/decimal-context-dispatch/README.md)
+also covers all 75,728 rows: 57,576 configure inconsistent sign/precision returns,
+7,248 have throwing metadata callbacks without inconsistent returns, and 10,904
+have consistent returned metadata. Other replacement callbacks prevent treating
+the last category as certified contract-preserving subclasses. The fixture and
+all current assertions remain unchanged; field-level normative classification
+is still open.
+
+New [ordinary and fully delegating context-division controls](docs/decimal-context-oracle-classification.md)
+project all 75,728 input rows to 3,000 distinct numerical/topology/context cases
+and 11,472 meaningful operand-class combinations. They compare values, scales,
+canonical result text and exception types without poisoned getters or internal
+trace requirements. Separate direct caller tests preserve override entry,
+arguments and result/exception identity for null/self/distinct divisors and
+finite/unlimited/null contexts.
+The old observations remain intact; this addition does not finish their classification.
+
+A frozen [field/control correspondence](diagnostics/decimal-context-dispatch/README.md#contract-coverage-correspondence)
+maps every old row to these valid-input controls and preserves unresolved
+poisoned interactions. Its mechanical checks do not authorize archival or
+declare the remaining outcome fields unconstrained.
+
+For every new difference:
+
+1. Preserve a minimal input, reference runtime/configuration, port result and
+   reproducible command, including any preceding callbacks.
+2. Locate the public contract and determine whether the input and overrides
+   satisfy it. Use independent mathematics or compiler-checked Kotlin migration
+   examples to establish the expected result.
+3. Assign one of the categories above with evidence. A numerical mismatch on a
+   valid input remains a port defect until the reference result is shown to
+   violate the governing contract; lack of a specified internal detail is not
+   proof of a bug.
+4. For a proven reference defect, retain diagnostic oracle data, document the
+   divergence and require a correct-behavior regression before removing any
+   emulation. For observations or invalid overrides, do not silently delete
+   evidence or exclude entire methods/subclass families.
+5. Verify required behavior on the supported common targets and Kotlin call
+   surfaces. Java call-shape adaptation belongs to the TCK harness and does not
+   constrain the library to JDK-shaped classes or constructors.
+
+The migration boundaries and release-to-release policy are stated in
+[README.md](README.md#source-and-behavioral-compatibility-contract). JVM assignability
+to `java.math`, its binary ABI and legacy/cross-format serialization are outside
+requirements. Current krogu serialization round trips remain supported. Official
+TCK/JCK has not been run; existing Java fixtures and differential suites are not
+an official TCK result or certification.
+
+Official kit scope, access barriers and the requirements for an authorized run
+are documented in [TCK/JCK applicability](docs/tck-applicability.md).
+
+## Requirements and current evidence
+
+Campaign descriptions below preserve observations from the pinned runtime.
+Statements about what an implementation "must" do to match those observations
+do not establish additional public guarantees. Their normative classification
+is governed by the policy above and remains work in kotgent `local:526`; numerical
+and source guarantees themselves are not waived by that classification.
+
+| Requirement | Evidence | Remaining audit |
+|---|---|---|
+| Kotlin numerical call surface, constants, operators and conversions of all four types | `ApiSurfaceTest` inventories the current JVM shape; `KotlinSubclassContractTest` exercises selected Kotlin calls | Compiler-checked migration matrix and missing stdlib counterparts; Java class/constructor shape is not a library requirement |
+| Java source compatibility inside the TCK harness | Existing `JavaApiContractTest` exercises current real constructors and virtual calls | Test-only adaptation for the applicable TCK; no direct Java consumer source-compatibility promise |
+| BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor outcomes; 11,798 modular reduction/inverse outcomes; 9,176 modular-power outcomes and numerical arguments | Larger operand patterns, supported-range/allocation limits and compound modular subclass behavior |
+| Infinite two's-complement bit semantics | Portable oracle, seeded JVM operations, algebraic invariants and finite-width sign-extension argument; 17,198 bit value/callback/identity outcomes | Multi-gigabyte operands and bit distances, wider changing-metadata subclass compositions |
+| All constructor encodings and validation | 25,584 exact byte-constructor outcomes including Int offset/length endpoints and array isolation; 10,156 exact string-constructor outcomes; complete BMP digit/radix corpus and supplementary digit constructors | Larger input/allocation limits, compound textual grammar, malformed text fuzzing |
+| Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 207,239 exact portable scale-boundary outcomes; 75,728 context callback/metadata outcomes; portable fixtures | Wider coefficient/scale/precision combinations, compact subclass compositions and remaining overloads |
+| Powers and roots | 10,560 initial JVM comparisons, 13,024 exponent-bit/rounding comparisons, 128 working-precision overflow cases, 2,592 squared-midpoint root fixtures through 129 digits, integer midpoint rounding argument; 6,677 integer-power outcomes; 978 integer-root outcomes and independent bounds | Wider decimal-root and integer-power subclass compositions, intermediate/scale-overflow audit and larger operand/allocation domains |
+| Float/Double conversions and canonical Double factory values | Bitwise oracle comparisons, 1,296 exact decimal midpoint-neighbor outcomes, rational rounding argument, all binary scaling powers from -1074 through 1023, 10,000 seeded canonical Double cases | Exhaustive Float input domain, decimal subclass dispatch and very large cancelling coefficient/scale allocation audit |
+| Prime generation and certainty | 416 portable primality/successor/trace cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions; generation density argument and successor whole-search error budget; exhaustive small byte-payload distribution, primality and successor trial-division checks | Very large certainty beyond the proven bound, witness independence at larger magnitudes, supported-range limits, caller RNG behavior and wider subclass dispatch |
+| Exception conditions and types | Portable fixtures; 7,486 live JVM null/invalid-argument comparisons; 3,462 portable null-precedence outcomes; exact integer string/byte constructor diagnostics | Wider invalid-argument domains and cross-products; other exception messages remain unmatched |
+| Equality, ordering, hash codes, immutability | JVM oracle and common invariants; 6,110 portable BigInteger hash outcomes | Full context/enum/hash and subclass audit |
+| Current-format JVM serialization; optional snapshot adapter evidence | Current-format round trips, validated base state, subclass state, reference identity, cycles and array-alias isolation; existing exact coefficient/scale adapters | Java adapters do not constrain the future library shape; cross-version serialization and java.math stream migration are outside scope |
+| Same common behavior on every supported platform | CI matrix for JVM, JS, Wasm, macOS/Linux/Windows Native and iOS simulators; cross-built Linux ARM64 binary executed on ARM64 | Each new common regression must pass on every supported target |
+| Required numerical range | Overflow guards and selected extreme-scale regressions | Supported-range proof and practical large-input tests remain incomplete |
+
+## Verification commands
+
+```shell
+./gradlew jvmTest jsNodeTest wasmJsNodeTest macosArm64Test
+export JAVA_TOOL_OPTIONS=-XX:-OmitStackTraceInFastThrow
+kotlinr scripts/generate-oracle.main.kts --check
+kotlinr scripts/generate-scale-oracle.main.kts --check
+kotlinr scripts/generate-null-oracle.main.kts --check
+kotlinr scripts/generate-character-oracle.main.kts --check
+kotlinr scripts/generate-prime-oracle.main.kts --check
+kotlinr scripts/generate-prime-prefix-oracle.main.kts --check
+kotlinr scripts/generate-integer-arithmetic-oracle.main.kts --check
+kotlinr scripts/generate-integer-parser-oracle.main.kts --check
+kotlinr scripts/generate-integer-bytes-oracle.main.kts --check
+kotlinr scripts/generate-integer-division-oracle.main.kts --check
+kotlinr scripts/generate-integer-pow-oracle.main.kts --check
+kotlinr scripts/generate-integer-gcd-oracle.main.kts --check
+kotlinr scripts/generate-integer-sqrt-oracle.main.kts --check
+kotlinr scripts/generate-integer-bits-oracle.main.kts --check
+kotlinr scripts/generate-integer-inverse-oracle.main.kts --check
+kotlinr scripts/generate-integer-modpow-oracle.main.kts --check
+kotlinr scripts/generate-context-oracle.main.kts --check
+kotlinr scripts/generate-hash-oracle.main.kts --check
+```
+
+Use the appropriate Native host test tasks for other OS/architectures. CI
+cross-compiles Linux ARM64 tests on Linux x64 and executes them on ARM64. Device
+iOS builds are compiled; simulator targets execute the shared behavioral suite.
+
+`DecimalConformanceTest` defaults to 213,505 comparisons. Its canonical Double
+campaign can be extended with
+`JAVA_TOOL_OPTIONS=-Dkrogu.campaign.doubles=100000 ./gradlew jvmTest --tests '*doubleCanonicalizationCampaign*'`.
+Failure output includes reproducible public inputs. Passing a finite corpus must
+not be promoted into a claim that all numerical or API contracts are satisfied.
+
+Kotlin decimal operator division has six portable specification-led tests and
+11,560 live JVM comparisons of actual Kotlin `/` expressions against stdlib.
+The matrix covers signed compact and wide coefficients, differing/negative
+scales, HALF_EVEN midpoint parity, zero divisors and source scale endpoints with
+bounded coefficient rescaling. Values, scales and exception types are compared.
+Separate checks keep named exact division distinct:
+`BigDecimal("1").divide(BigDecimal("2"))` returns `0.5`, while exact division by
+`BigDecimal("3")` throws for a nonterminating expansion. These tests cover the
+operator contract, not the entire Kotlin migration surface.
+
+`ScaleBoundaryOracleTest` compares all 207,239 outcomes individually on every
+target. Its separate generator stores complete expected results in JVM-safe
+string chunks, not hashes. `ScaleBoundaryConformanceTest` also regenerates each
+reference result against the live pinned JDK. The corpus covers compact signed
+coefficients, both scale endpoints and their neighbors, zero operands, exact and
+context division, addition, multiplication, roots, powers, canonical parsing,
+engineering text and trailing-zero removal. Its 68,000-case wide-coefficient
+extension includes powers of ten and their immediate neighbors, up to 512-bit
+coefficients, precisions around 17/18/19 digits, and very remote signed tails.
+
+`NullArgumentConformanceTest` invokes public Java signatures by reflection so
+null reaches the library, not a caller-side Kotlin cast. It compares all public
+constructors and reference-argument methods over a bounded invalid-argument
+matrix. `NullPrecedenceOracleTest` replays 3,462 cases for the affected contracts
+on every target, including zero/negative square roots, invalid text, legacy
+rounding constants, sign/magnitude validation and nullable contexts. Public
+nullability is relaxed only where the oracle requires a particular validation
+order or intentionally ignores a null argument; global parameter assertions
+remain enabled.
+
+`CharacterOracleTest` verifies all 2,293,760 BMP-character/valid-radix pairs,
+131,072 single-character BigInteger/BigDecimal constructor outcomes, every
+valid digit character in every integer radix, and all 390 supplementary digit
+code points accepted by JDK 25 `Character.digit(codePoint, 36)`. The generator
+checks the complete public-JDK results before losslessly encoding the BMP map
+as 41 arithmetic ranges. It distinguishes constructor failures from failures
+in test-result conversion. Supplementary UTF-16 constructor behavior is stored
+explicitly, rather than inferred from code-point digit classification.
+
+For positive certainty and absolute values strictly below
+`3317044064679887385961981`, the first thirteen prime bases give a conclusive
+Miller–Rabin decision ([Sorenson–Webster, Theorem 1.1](https://arxiv.org/html/1509.00864v1)).
+This removes the billion-round `Int.MAX_VALUE`-certainty path in that domain
+without weakening the result. Larger inputs retain the probability-driven
+random-witness path; extreme certainty there still needs work. Non-positive
+certainty retains the JDK's unconditional `true`. The portable oracle includes
+strong pseudoprimes to initial basis subsets, both strict-boundary neighbors,
+signed primes through 81 bits, and ordinary-strength 89/127-bit primes.
+Prime generation now adds ceil(log2(bitLength)) certainty bits before computing
+its random-witness budget, accounting for conditioning on candidate acceptance.
+The density bound and explicit RNG assumptions are described in
+[NUMERICAL_ARGUMENTS.md](NUMERICAL_ARGUMENTS.md#primality-and-prime-generation).
+Successor search assigns 50+bitLength(i) rounds to its ith odd candidate;
+the union bound over all candidates stays below the returned-value error limit.
+The unbounded index uses BigInteger, and round budgets use Long. Both arguments
+still rely on independent uniform witnesses. Portable successor fixtures cover
+81..256-bit binary boundaries, the composite gap after 64!+1, source callback
+traces and negative-start diagnostics; independent trial division checks every
+start from 0 through 4096.
+
+A separate 78-case primality-prefix oracle checks certainty endpoints and
+stable callback paths before randomized witnesses. For positive odd values
+other than one, virtual bitLength now runs after abs/equality/parity checks
+and before the private small-prime shortcuts. A throwing getter therefore
+propagates its error even for stored three, five or nine, matching JDK's exact
+prefix and message. Non-positive certainty bypasses all callbacks; zero, one,
+two and even values retain their earlier returns. In these negative-input
+fixtures, delegated abs returns an ordinary base object, so the original
+subclass getter is not called.
+These cases do not assert a deterministic count for random witness callbacks
+or establish behavior for replacement length values and compound overrides.
+
+Binary constructors now pack bytes directly into limbs, including stripped
+negative sign extension and a final complement carry. JVM checks compare all
+65,536 two-byte encodings and seeded inputs through 65,536 bytes with JDK;
+portable regressions include 131,072-byte sign padding and carry boundaries.
+Checked sizing rejects magnitudes beyond the supported bit-length range and
+avoids Int overflow in division allocation and the initial square-root shift.
+Boundary arithmetic is tested without allocating the largest possible arrays;
+actual multi-gigabyte execution remains unverified. Modular exponentiation has
+a bounded-residue multiplication fallback so an oversized intermediate product
+does not alone reject an otherwise representable result. Its arithmetic is
+compared with full-precision JDK products on seeded operands through 512 bits.
+
+MathContext string parsing uses a single bounded integer scan rather than
+arbitrary-precision arithmetic and repeated parsing. The public-JDK oracle
+checks every BMP code unit in single-digit, compound-digit and separator
+positions (196,608 outcomes), 1,115 compound grammar/error-precedence cases,
+and four precision tokens through one million characters. Common tests compare
+the exact exception message and absence of a cause as well as successful
+precision and rounding mode. Overflow/invalid syntax produces `bad string
+format`; negative precision is rejected with `Digits < 0` only after a valid
+rounding mode has been parsed. This closes those MathContext message mismatches;
+the broader exception-message audit remains open.
+
+Bit-query and bit-update routines work on stored limbs and two's-complement
+words. Bit operations invoke virtual `bitLength()` to select a signed 32-bit-word
+width; negative `bitCount()` invokes virtual `getLowestSetBit()`. They bypass
+overridable arithmetic operations and neighboring public bit updates.
+Black-box Java subclass fixtures reproduce
+the former `andNot`/`setBit` failures and compare the corrected dispatch and
+returned base-class type with JDK; common subclass fixtures run on every target.
+The main oracle now contains 75,638 vectors, including 8,888 added signed
+power/adjacent-value, dense-value, byte/30-bit-limb/32-bit-word boundary and
+extreme-shift cases. Negative bit length/count are computed without constructing
+`abs(n)-1`. `andNot` complements individual words directly, so it does not
+require the potentially unrepresentable separate value `not(operand)`.
+The largest supported magnitudes still require the range audit noted above;
+these tests do not allocate multi-gigabyte integers or complete the broader
+subclass-dispatch audit for arithmetic, shifts and conversions.
+
+A separate 17,198-case public-JDK bit oracle compares all four binary operations,
+complement, bit queries and bit updates, including source and operand callbacks,
+throwing and replacement metadata, self aliases, zero-result identities and
+signed power neighbors through 4,097-bit inputs. Each result is a fresh base
+instance, including zero and unchanged updates. Negative bit addresses fail
+before metadata callbacks; Java null operands fail after the source bitLength
+callback (24 live Java comparisons). The four binary operand parameters are
+nullable in Kotlin to preserve that Java order; Kotlin overrides must use the
+same nullable parameter. Fake negative/huge bitLength values, changing callback
+results and allocation-scale bit addresses still require a broader audit.
+Six additional common cases cover updates at `Int.MAX_VALUE`: unchanged zero/-1
+values still return fresh instances; unsupported results report `BigInteger would
+overflow supported range`. The public-JDK experiment is reproducible with
+`JAVA_OPTS=-Xmx1g kotlinr scripts/generate-integer-bits-oracle.main.kts --check-extreme`.
+It needs that heap because JDK allocates large sign-extension arrays; the port
+avoids those arrays for these endpoint cases. Allocation timing is not asserted.
+
+The separate modular reduction/inverse oracle has 11,798 public-JDK outcomes.
+It checks modulus validation before callbacks, virtual modulus equals(ONE),
+conditional source mod/remainder calls, virtual reduced-value equals(ONE),
+replaced/throwing results, self aliases and canonical ZERO/ONE shortcuts. Working
+Euclidean values bypass source and modulus arithmetic/metadata overrides. The
+non-invertible diagnostic now includes JDK's final period. Wide cases through
+1,025-bit moduli additionally check residue bounds, the inverse congruence and
+failure gcds. Java tests add 720 nullable/throwing callback comparisons and ten
+null-modulus comparisons. Broader compound callback replacements and supported
+range/allocation proofs still require audit.
+
+The modular-power oracle adds 9,176 exact outcomes, including callback arguments
+and source/exponent/modulus replacement or throwing hooks. Zero exponents,
+one/zero/minus-one bases and odd-modulus exponent-one results now retain JDK's
+shortcuts and identities. Odd-modulus binary powering reads stored exponent bits;
+the power-of-two path uses virtual exponent bit queries and the observed odd-base
+period reduction. Even moduli use independently implemented CRT recombination.
+Negative powers invert the computed residue, preserving a source inverse callback
+when the odd exponent-one path returned the source. Normal inputs additionally
+check residue bounds, full small powers and inverse-power congruences.
+The negative replacement -7 from the exponent's negate callback is covered:
+the odd path reads the magnitude bits, while the binary-modulus path retains its
+public bit-query behavior. For base three, replacement -7 and modulus seventeen,
+the result is fourteen rather than six.
+
+Java tests add 5,040 nullable/throwing callback comparisons, 30 null-argument
+precedence comparisons and seven stable primality parity-callback comparisons.
+Primality witness callback counts can depend on JDK's random witnesses and are
+not asserted as a fixed count. Factory checks establish stable cached values
+from -16 through 16, public constant aliases and the negative-one equality
+argument. Division remainders and two-bit generated primes retain fresh-instance
+behavior despite the factory cache. The oracle generator also verifies these
+observations directly against the pinned JDK.
+
+The generator includes an expensive JDK exponent-one/false-equality case; it
+eventually produces a result and is retained. Timing is not asserted. Broader
+callback compositions, fake modulus parity/lowest-bit results, wide exponent and
+modulus domains, and allocation behavior at the full supported range remain
+unproven. The large-range numeric paths use bounded residue multiplication and
+bounded CRT addition; their feasibility at multi-gigabyte sizes is not established.
+
+Shift routines use private left/right helpers and a private lowest-set-bit
+query, so negative distances and negative rounding do not dispatch through
+overridden public methods. Java black-box fixtures compare both directions,
+signs, zero, 30-bit boundaries and extreme distances with JDK. They also compare
+whether the source object is retained and whether the result has the base type.
+Zero shifts return canonical ZERO even for a zero-valued subclass; a zero
+distance on a nonzero value retains the source. Common subclass regressions
+include 120-bit powers and neighboring negative values to exercise discarded-bit
+rounding, plus Int.MIN_VALUE/Int.MAX_VALUE distances. The existing structured
+oracle independently supplies normal-value results at the extreme distances.
+Broader dispatch behavior in arithmetic and conversions remains unverified.
+
+Primitive conversion subclass fixtures compare actual Java call traces with
+JDK across zero, signs, precision boundaries and overflow-to-infinity boundaries.
+`intValue` reads the low magnitude directly instead of calling overridable
+`longValue`. Inherited byte/short conversion still delegates to virtual intValue,
+as JDK Number does. Nonzero magnitudes below 2^63 use virtual longValue for
+Float/Double; zero and larger magnitudes do not. Larger conversions extract
+the mantissa and guard/sticky information from private limbs without abs,
+shiftRight, testBit, bitLength or getLowestSetBit overrides. The oracle adds 64
+portable subclass cases with replacement Long values, including values just
+above Float halfway points that would be double-rounded by a Long→Double→Float
+path. Floating numerical-range proof and exhaustive Float-domain verification
+remain open. Exact conversion dispatch evidence is described below.
+
+Exact BigInteger conversions now reject oversized magnitudes before consulting
+overridden bitLength: the threshold is 32 magnitude bits for int/short/byte
+and 64 for long. Within those thresholds they consult bitLength and delegate
+to the corresponding virtual primitive conversion. Short/byte exact methods
+do not go through intValueExact. Java poison overrides reproduce the previous
+failures. An additional 1,248 portable JDK cases cross 26 signed boundary values,
+12 replacement bitLength results and all four exact methods; they compare
+results, exact error messages, absence of causes and call traces. This includes
+both sides of 2^32 and 2^64, so the early-rejection branches are exercised on
+every target. The broad arithmetic/conversion subclass audit is still ongoing.
+
+`NUMERICAL_ARGUMENTS.md` derives BigInteger guard/sticky rounding, carry,
+finite/infinity thresholds, absence of a second Float rounding, and ordinary
+signed exact-conversion range checks. The main oracle adds 1,728 Float/Double
+outcomes immediately below, at and above binary midpoints, varying retained
+parity, exponent and sign. This strengthens the integer conversion algorithm
+audit without closing the BigDecimal/subnormal, exhaustive Float-domain,
+compiler/runtime and practical largest-magnitude requirements.
+
+BigInteger hashCode now repacks unsigned 32-bit magnitude chunks directly from
+private 30-bit limbs. It does not call overridable abs/testBit and does not
+construct intermediate BigIntegers. A Java poison-subclass fixture reproduces
+the former failure. A separate portable JDK oracle compares 5,760 signed powers
+and neighbors through two 480-bit alignment cycles, plus 350 dense-byte cases
+through 65,536 bytes. The common hash fixtures use poison subclasses throughout
+and independently encode structured powers as byte arrays. JVM seeded large
+binary inputs also compare hash results with JDK. The packing argument is
+recorded in `NUMERICAL_ARGUMENTS.md`; broader hash/equality and subclass behavior
+for the other public types remains part of the audit.
+
+## Completion gate
+
+Every required row above must have direct, current evidence at the required scope
+and no unresolved mismatch in the required contract. Proven reference defects
+must have retained reproducers, an explicit violated contract and correct-behavior
+regressions. Required API contracts need specification-led tests
+and algorithmic reasoning in addition to random examples. Every discovered
+common mismatch must have a portable regression and pass the complete target
+matrix. Reference observations, unspecified diagnostics and contract-violating
+subclass inputs must be classified transparently rather than silently disappearing
+from the audit. Specified diagnostics, current-format serialization, range
+guarantees and other required behavior cannot be replaced by a narrower claim.
+
+JVM serialization supports round trips of the current implementation, including
+subclass state, shared references and cycles. Deserialization validates base-class
+state and detaches integer limb arrays. Legacy proxies, older binary formats and
+interchange or migration with `java.math` streams are not compatibility requirements.
+This exception does not narrow mathematical API compatibility.
+
+Decimal floating conversion now distinguishes compact no-dispatch paths from
+general paths that call virtual signum once and bypass virtual precision.
+The public-JDK matrix contributes 594 portable result-and-call-trace outcomes,
+covering zero, both primitive mantissa boundaries, compact Long limits, scales
+around 10/22 and extreme exponents. A separate seeded JVM matrix compares 25,959
+ordinary Long-coefficient/scale combinations. BigInteger subclass coefficients
+are normalized through virtual toByteArray at construction, as confirmed by a
+public-JDK probe; common tests exercise all four coefficient constructors,
+replacement encodings, invalid empty encoding and ordinary coefficient identity.
+Other decimal virtual calls and compound invalid-argument precedence remain open.
+
+A 735-case portable division matrix combines signed scale endpoints, small
+divisors and near-Int.MAX_VALUE precision under HALF_UP, comparing results,
+exception types and messages. It initially exposed 408 message differences. The
+JVM matrix extends these inputs across all eight modes (5,880 comparisons), all
+matching the pinned JDK. Context division now
+checks normalization and intermediate range before preferred/result scale, and
+uses the observed narrowed-Int sign for normalization error wording. All 735
+cases match; the existing 207,239 scale-boundary comparisons also pass. The same
+matrix is included in the portable oracle. This is evidence for this domain,
+not a complete exception-message audit of every division overload or input domain.
+
+An additional 1,176 exact-division cases initially exposed 523 message differences.
+Exact division now reports the pinned JDK's complete nonterminating-result message
+for arithmetic failures while constructing the exact result, including scale
+failures, after checking division by zero. Zero divided by zero is distinguished
+as Division undefined for exact, context and integral quotient families. These
+cases and 96 zero-divisor cases across quotient/remainder/pair overloads are in
+the portable corpus. Scale-bound division follows different primitive or
+BigInteger zero-divisor error paths. A 210,912-case JVM campaign compares compact
+boundaries, signed scale endpoints, power-of-ten boundaries and all eight rounding
+modes. All cases match; 1,088 representative outcomes are in the portable corpus.
+The error classifier preserves the observed rescaling order and Int wrap without
+allocating an intermediate numeric value for an operation that must fail. Operand
+subclasses and the full nonzero-divisor message domain remain
+separate audits.
+
+A public-JDK composition oracle adds 1,440 portable BigDecimal quotient/remainder
+pair outcomes. Exact pairs call the exact virtual integral-quotient overload;
+context pairs with zero precision delegate to the exact virtual pair overload.
+Finite contexts call the context integral-quotient overload. The returned quotient
+then receives virtual multiply before source subtract, and remainder overloads
+select the second element of the corresponding virtual pair. Replacement and
+throwing callbacks constrain this order, returned source/divisor/quotient identities,
+values and scales. The matrix includes zero divisors whose quotient callbacks
+replace division, both source signs and positive/negative preferred scales. It
+isolates composition using overridden integral-quotient methods; null callback
+inputs remain a separate audit.
+
+An inherited integral-division oracle adds 1,400 portable outcomes for both operand
+signs, zero divisors, smaller dividends, preferred scales, exact division and context
+precisions 0, 1, 2 and 7. Public-JDK probes exposed a bypassed context-divide override:
+source 10.50, divisor 2.0 and an override returning 7.9 formerly produced 5.0 here,
+instead of the JDK's 7.0. Both integral overloads now call virtual context divide
+with DOWN. Exact division preserves its observed metadata call order and guard-digit
+budget; context division checks the residual when the returned scale is negative.
+The oracle constrains callbacks on returned quotient subclasses, zero scale,
+source aliases and fresh base results. Exact division only strips after truncating
+a fractional result; finite-context stripping materializes a base value even when
+the scale stays unchanged. Divide exceptions are propagated, including replacements
+that bypass the ordinary zero-divisor failure. Poisoned metadata, nullable callback
+results, all callback compositions, delegated context-divide traces and full-range
+resource behavior remain unproven.
+
+The integral oracle adds 1,176 signed metadata cases, combining 14 reported source
+precisions, 14 divisor precisions and six scale pairs, including both Int endpoints.
+The former positive-only ceiling expression caused 143 differences. It now rounds
+the guard-digit term toward positive infinity for either sign. With equal input
+scales, source precision 0 and divisor precision -1 reject the negative context
+precision with `IllegalArgumentException: Digits < 0`; source precision 1 and divisor
+precision -1 dispatch context divide with precision 0. The oracle also preserves
+the observed upper precision cap and narrowing of negative Long budgets to Int;
+it does not introduce a lower saturation absent from the pinned runtime. Call
+order and failures match the JDK for this matrix. Changing getters, different
+stored-scale comparisons and nullable callbacks still need separate audits.
+
+A context-division dispatch oracle adds 6,656 portable outcomes across all eight
+rounding modes, precisions 0, 1, 2 and 7, both signs, zero operands, compact and
+wide coefficients, and throwing getters on both operands. It exposed 2,160
+differences: source precision must be queried before divisor precision, and the
+source signum check must not be repeated in the coefficient kernel. Cached context
+metadata now preserves that order; the scale-bound and exact paths retain their
+separate dispatch. Results, scales, call counts and exception precedence match
+the pinned JDK for this matrix. A zero-precision context delegates directly to
+virtual exact divide. Operand scale, unscaledValue, abs and negate overrides are
+not invoked in the tested finite-context paths. Broader replacement getter domains
+remain separate audits.
+
+The context matrix now contains 8,000 outcomes: the original 6,656, another 768
+with the same object used for both operands, and 576 nullable operand/context
+cases. Shared signum counters and repeated precision calls follow the pinned JDK.
+NullPointerException diagnostics generated by the VM/compiler are not compared;
+their type and preceding callbacks are checked.
+
+The context oracle now contains 25,040 outcomes. An additional 10,896 cases replace
+signum with -1, 0 or 1, precision with -1, 0, 1, 2, 7 or 19, or use changing getter
+answers. This extension exposed 1,917 differences: reported precision determines
+the coefficient normalization and intermediate quotient scale, rather than only
+the overflow check. Nonzero replacement signs select the nonzero path without
+replacing the stored coefficient sign. Private rounding must not make further
+virtual signum calls. Exact stored-zero quotients reduce their scale toward the
+preferred scale; a stored zero divisor reporting nonzero can reach primitive or
+integer division and its corresponding diagnostic.
+
+Another 6,144 cases cover pairs of stored zeros reporting nonzero sign, with
+reported precisions -1, 0, 1, 2, 17, 18, 19 and 20, context precisions 1, 17, 18
+and 19, three scale pairs and all eight rounding modes. The pinned JDK's compact
+equality path returns a unit ratio when source precision does not exceed divisor
+precision and both operand/context precisions are below 18. Outside this tested
+path, division by the stored zero fails. The port preserves this observable
+subclass behavior. All 25,040 value, scale, trace and error outcomes match the
+pinned JDK on JVM; wider getter values, compact overflow boundaries and other
+subclass compositions remain unproven.
+
+Another 50,688 outcomes near Long and compact digit boundaries bring the portable
+context oracle to 75,728. They exposed 3,136 further differences, initially found
+by a smaller 8,448-case probe with 192 differences. For example, Long.MAX_VALUE
+divided by 3 with source precision reported as 0 and context precision 1 returns
+zero in the pinned JDK's compact path. The port now preserves this result: when
+compact normalization selected by reported precision overflows Long, this path
+returns zero at the preferred scale, including UNNECESSARY rounding mode.
+The guard checks multiplication by ten without overflowing or allocating large
+powers. Ordinary precisions keep normalized compact values within range.
+
+The independent `scripts/audit-decimal-context-compact-overflow.main.kts` live
+comparison now reports zero differences across the same 50,688 outcomes.
+It writes differences to `build/reports/compatibility/decimal-context-compact-overflow.txt`;
+its `--check` mode fails if any recur. Build `jvmJar`, then run it with that JAR
+on the Kotlin runner classpath as documented in its header. The finite matrix
+does not prove every replacement Int value, allocation boundary or composition.
+The complete 75,728-case oracle and the existing common suites pass locally on
+JVM, JS, Wasm JS and macOS ARM64 Native. The full supported-platform CI result
+for each published head remains a separate requirement.
+
+JVM tests add 90 context-divide and 3,456 integral quotient/remainder/pair
+comparisons with nullable operands, nullable contexts, source aliases, callback
+replacements, null callback results, exceptions and inherited delegation. The
+integral family exposed 300 differences caused by Kotlin entry checks before
+virtual delegation. Division-family operand/context parameters are now nullable:
+zero-precision contexts forward the operand to the exact override before operand
+validation, and remainder forwards both arguments to the corresponding pair
+override before validation. Base computations validate arguments when needed.
+The Java method descriptors stay the same; Kotlin overrides must mirror the
+nullable parameter types. All 3,546 live JVM comparisons match the pinned JDK.
+The expanded JVM matrix includes empty and single-element pair arrays, null
+arrays and null second elements. It checks exception types and preceding callbacks;
+VM/compiler-generated NullPointerException messages are not compared.
+
+A further 216 portable remainder cases cover replacement pair arrays of lengths
+0 through 3, both overloads, source identity, nullable arguments and contexts.
+Lengths 0 and 1 throw ArrayIndexOutOfBoundsException with the pinned JDK message
+after invoking the pair override. This requires an explicit bounds check on JS,
+where an unchecked array access otherwise returns undefined. Longer arrays return
+the second element unchanged. Other replacement getter and callback combinations
+remain unproven.
+
+Scale-bound division adds 12,000 nonzero-divisor outcomes across all modes,
+including returned values and exact messages. The initial wide-Long rescaling
+rejected some values returned by the pinned JDK and accepted some calls it
+rejects. The scale-bound overload now follows the observed checked scale stages
+and Int raises, including wraparound. For example, coefficient one at scale
+Int.MIN_VALUE divided by ONE with target scale zero returns ONE in the reference
+runtime. The fixture preserves that observed endpoint behavior. Context division
+uses the shared coefficient-rounding kernel with a separately checked Long raise,
+so these scale-bound stages do not change context arithmetic. Existing scale,
+context, exact-division and zero-divisor campaigns also pass. Operand subclasses,
+wider coefficient domains and resource-limit behavior remain open.
+
+SetScale adds 6,776 value-and-message comparisons spanning both scale endpoints,
+18/19-digit rescaling boundaries, compact/inflated coefficients, zero and every
+rounding mode. The initial 3,072 differences were diagnostic messages. Both
+increase and decrease now validate a positive scale distance before the power-of-ten
+range guard, matching the pinned Underflow and integer-range messages. The JVM
+matrix and existing scale-boundary tests pass; the same cases are portable fixtures.
+
+Decimal exact primitive conversion adds 560 value/message cases. The initial 315
+message differences are resolved by long-range/fraction guards before rescaling,
+followed by narrow-width checks. Another 72 public-call traces and 27 replacement
+longValueExact cases constrain the legacy-Int setScale delegation and virtual
+conversion guards. Canonical toString uses stored digit length and private plain
+layout, with observed signum dispatch outside scale zero and the nonnegative
+small-compact scale-two fast path. Its 264 getter-replacement cases compare text
+and calls. Another 336 portable cases cover plain and engineering layouts,
+including overridden signum/precision and whether engineering formatting calls
+the public plain formatter. Another 150 portable cases compare two successive
+calls after changing the subclass signum result, for all three formatters.
+Canonical text retains the first successful result;
+its cache is volatile and transient on JVM. JVM regressions compare repeated
+calls with a changing subclass getter, current-format serialization after a warm
+cache, and concurrent readers. Wider subclass callback domains remain open.
+
+Power/root getter dispatch adds 504 portable cases across seven signed/zero/
+fractional inputs, three precisions, all eight rounding modes and sqrt/exact pow/
+context pow. Exact pow uses stored coefficient zero detection rather than virtual
+signum; sqrt reads virtual signum once. The cases compare result text, exact
+arithmetic error messages and signum/precision/scale callback traces. Inexact
+square roots now retain the JDK message's terminating period. Replacement getter
+values, additional overridable methods, exponent domains and resource limits
+remain part of the broader power/root audit.
+
+Another 1,320 portable square-root cases replace signum or precision results.
+The zero/sign replacement domain spans scales -4 through 20 and all rounding
+modes. A stored zero reporting a positive sign follows the nonzero context
+dispatch, then returns the preferred zero scale; finite UNNECESSARY precision
+also caps that scale at precision minus one. This corrects odd-scale and
+high-precision zero layouts without changing the ordinary zero early return.
+The 240 precision replacements also retain the pinned JDK's observable behavior
+when the reported digit count differs from the stored coefficient's precision.
+
+Exact square roots (unlimited precision or UNNECESSARY) normalize through the
+public stripTrailingZeros method. Another 840 portable cases exercise ordinary
+normalization and replacement values 9, 0, -4 and 0.04. They compare results,
+exception messages and callback traces, including the absence of public
+scaleByPowerOfTen/double conversion calls. The normalized value supplies the
+coefficient and scale for exact root extraction; the original scale still supplies
+the preferred result scale, padded only as far as finite precision allows.
+stripTrailingZeros itself checks the stored coefficient for zero and bypasses
+virtual signum. The broader replacement-method domain remains open.
+
+Returned normalization subclasses add 1,344 portable cases. Exact-root handling
+rejects an odd stored normalized scale before invoking coefficient getters. The
+first virtual unscaledValue result selects the coefficient-one shortcut; otherwise
+a second call supplies the integer root input. Cases vary the first result across
+one, zero, signed nonsquares, ordinary values and a throwing callback, while
+tracking the absence of virtual scale/signum/precision calls on the returned object.
+Finite exact contexts validate the extracted integer root's digit count before
+removing coefficient zeros, matching the pinned rejection of an unnormalized
+4.00 replacement at precision one. Extreme normalized scales, additional returned
+subclass methods and large-input resource behavior remain open.
+
+A further 2,808 normalized-root cases cross nine coefficients with thirteen
+scales (both Int endpoints and neighboring/ordinary values), three precisions
+and all rounding modes. They distinguish the normalized zero's root scale from
+the original preferred scale and cover trailing-zero integer roots at MIN_VALUE.
+The final zero scale now uses the normalized root scale when applying finite
+precision, then adjusts toward the original preferred scale. An extra check that
+renormalized the extracted root before doubling its scale has been removed:
+the reference accepts the unnormalized 100/400 coefficient replacements at
+MIN_VALUE. Ordinary input normalization still validates its own scale. The matrix
+uses bounded coefficients and matching source/replacement scales to avoid large
+power-of-ten allocations; it does not establish resource behavior for distant
+source/replacement scales.
+For the rounded branches, source coefficient four has adjusted exponent -s;
+the scaling shift is 2p-2 or 2p-1. With tested positive precisions one and seven,
+the largest constructed decimal power is therefore 10^13, even at Int scale
+endpoints. Exact branches use only the small supplied integer coefficients.
+
+Exact decimal powers add 686 portable value/message/callback cases across seven
+coefficients, seven scales, seven exponents and direct/unlimited-context overloads.
+After exponent validation and the exponent-zero shortcut, scale multiplication is
+validated before coefficient exponentiation. This corrects 16 cases where a
+coefficient-range error masked the pinned Overflow/Underflow scale error, and
+avoids coefficient growth for an invalid result scale. The same matrix confirms
+zero-scale saturation and virtual pow delegation from the unlimited overload.
+Another 45 direct BigInteger power cases constrain negative exponents, zero
+exponents, zero and signed unit values, and supported-range failures. The power range
+guard now reports `BigInteger would overflow supported range`, matching 24
+additional decimal-message differences. Large exponents in this corpus either
+retain a zero/unit coefficient or violate the bit-length lower bound before
+allocation; it does not test feasible multi-gigabyte powers or certify the full
+range/exception-message audit.
+
+Point movement adds 3,402 portable cases across six coefficients (including zero,
+both signs and an inflated value), seven scales, nine signed distances, three
+replacement signs and all three movement methods. Scale overflow and zero
+saturation inspect the stored coefficient, bypassing virtual signum/precision.
+Zero-distance left/right movement preserves the source object only when its
+scale is nonnegative; a negative scale is normalized to zero. scaleByPowerOfTen
+still returns a base instance. Result text, exact errors, source identity, base
+type and public call traces are compared with JDK, including MIN_VALUE distances
+and the absence of delegation to neighboring public movement methods.
+Selected negative result scales are either within four places of zero or beyond
+the supported power-of-ten range, so the corpus avoids large successful power
+allocations. Wider distances, caller-overridden result inspectors and practical
+large-input allocation behavior remain open.
+
+Multiplication adds 5,400 portable cases with replacement source getters, signed/
+zero/inflated coefficients, both scale endpoints, direct and context overloads,
+and HALF_EVEN/UNNECESSARY rounding. Scale validation checks the stored left
+coefficient. Finite contexts use the private multiplication path; only unlimited
+contexts delegate through public multiply. Exact errors, call traces, source
+identity and result base type are included. A separate 1,152-case matrix compares
+round and the BigInteger/scale/context constructor across all rounding modes,
+carry-producing coefficients and scale neighbors. Rounding validates the reduced
+scale before coefficient division and uses the sign of its narrowed Int for the
+pinned overflow diagnostic, fixing 108 multiplication outcomes where Underflow
+was replaced by Overflow or Rounding necessary. Public round getter replacements,
+other constructor overloads, right-operand subclasses and larger products remain
+open. Products here have at most 22 digits, keeping precision-reduction powers
+small even at extreme scales.
+
+Public round/plus dispatch adds 1,920 portable cases across zero, negative,
+carry-producing and inflated values, five replacement precisions, three context
+precisions and all rounding modes. round delegates to virtual plus even for an
+unlimited context; plus performs the private rounding calculation. Replacement
+plus results and callback exceptions propagate directly. Each rounding step
+reads precision once, so a changing subclass getter cannot supply a second
+value for the same reduction. Cases compare stored numerical state, identity,
+base type, errors and call traces. These close the selected getter-replacement
+domain noted above; extreme replacement
+precisions, other unary operations and returned-subclass combinations remain open.
+
+Null round/plus callbacks add 16 portable outcomes and a compiled Java call-site
+test. round forwards a null context to overridden plus, whose replacement value,
+source return or callback exception is preserved; the base plus validates null
+before its private calculation. Kotlin signatures now use MathContext? for both
+methods, including subclass overrides. The Kotlin plus(BigDecimal) operator is
+JvmSynthetic so Java plus(null) resolves to the JDK-compatible MathContext
+overload instead of failing as ambiguous. The cases compare NPE classes, callback
+exception messages and traces; detailed NPE diagnostics remain unverified.
+
+Unary operations add 600 portable outcomes: 432 result/identity/type/trace cases,
+96 returned-negation callback cases across all rounding modes and null/ordinary
+contexts, and 72 null-context callback cases also exercised from Java. abs(context)
+reads virtual signum, then calls virtual negate(context) or plus(context) directly.
+negate(context) calls plus(context) on the object returned by virtual negate(),
+preserving replacement results and exceptions instead of invoking that object's
+round override. The selected matrices exposed 72 dispatch differences in each
+of these two chains. abs/negate context signatures now use MathContext? to forward
+null to callbacks before base validation. Kotlin overrides use the nullable
+parameter too. Broader returned-subclass combinations, extreme unary scales and
+detailed NPE messages remain open.
+
+Addition/subtraction routing adds 747 portable cases: 648 subtraction callback
+cross-products, 27 exact-add sign replacements and 72 finite additions with scale
+gaps through 20,002. Exact subtraction aligns stored coefficients directly,
+bypassing source add and right-operand negate overrides. Unlimited context
+subtraction delegates to public subtract; finite context subtraction preserves
+virtual right negate followed by left add(context). Finite addition's ordinary
+and remote-tail paths use private exact addition. Exact alignment checks stored
+zero coefficients, so a replacement signum cannot suppress decimal scaling.
+Replacement values, throwing callbacks, exact errors and call traces are compared
+with JDK; the original subtraction matrix exposed 364 differences. The selected
+JVM checks also rerun the numerical decimal, scale and null campaigns. Null
+callback operands, broader getter replacement domains and full range/allocation
+behavior remain open.
+
+Min/max delegation adds 204 portable cases: 120 custom-comparison outcomes and
+84 ordinary/null-base outcomes. Both methods invoke virtual compareTo once,
+including null operands, preserve source identity on ties and can return the
+selected null operand when a subclass comparison permits it. Callback exceptions
+propagate before argument rejection. compareTo accepts a nullable operand while
+its base implementation still rejects null. The common class implements
+Comparable<BigDecimal?>; Java Comparable<BigDecimal> assignment and collection
+sorting are compiled and exercised. Kotlin member min/max now have nullable
+return types. Ordinary Kotlin sorted/minOf/maxOf remain usable with non-null
+result types, as checked in common tests. Source/operand identities, callback
+traces, selected null results and NPE classes match JDK in this domain. Broader
+callback compositions, returned subclasses and detailed NPE messages remain open.
+
+BigInteger min/max add 498 portable cases: 168 custom-comparison outcomes and
+330 ordinary min/max/compareTo outcomes, including null and signed 30/63/64-bit
+boundaries. Both integer extrema pass the operand to virtual
+compareTo before base null validation, select the operand on ties, propagate
+callback exceptions and can select null when the override permits it. Comparator
+results include Int.MIN_VALUE and Int.MAX_VALUE. The common class now implements
+Comparable<BigInteger?>, with nullable compareTo arguments and member min/max
+return types; Kotlin subclass overrides must accept nullable comparison arguments.
+The base comparison still rejects null. Java Comparable<BigInteger>, Java
+collection sorting, erased bridge dispatch/type checks and non-null Kotlin
+sorted/minOf/maxOf results are compiled and tested. Public JVM method descriptors
+remain unchanged. These cases constrain result identity and exception classes;
+detailed null messages and broader callback compositions remain open.
+
+The initial quotient magnitude comparison now reads stored limbs directly rather
+than invoking public compareTo. An overridden comparison no longer changes
+division or leaks a callback into integer formatting. Another 318 portable JDK
+outcomes cover divide/remainder/pairs with both divisor signs and one-/multi-limb
+magnitudes, plus every radix 2..36 for signed/zero inputs, while source compareTo
+throws if called. These cases also constrain formatting of a selected min/max
+source. Broader combinations with formatting overrides remain a separate audit.
+
+Division adds 3,216 portable callback/value/identity cases through 8,192-bit
+dividends, including both operand signs, zero divisors, one-/multi-limb divisors
+and self aliases. Public divide and remainder now enter a private implementation
+rather than virtual divideAndRemainder. Stored magnitude comparisons and direct
+bit reads prevent operand abs, negate, signum, bitLength, compareTo, testBit and
+arithmetic overrides from changing inherited division. The multi-limb reduction
+uses a base-class divisor view. Nonzero remainders are normalized into base values,
+including the smaller-dividend path, preserving the observed result type and
+identity. Small-remainder cases cross both signs, quotient parity and 29/30/90-bit
+divisors with remainders 0, 1, 2 and 10; a final add of ONE must not leak that
+constant as the returned remainder. Callback modes include delegation, replacements,
+exceptions and empty pair arrays. The pair cases explicitly enter the inherited base implementation
+via super; a user's direct call to its own override still dispatches normally.
+Another 294 live Java cases cover null/throw callback returns, null operands and
+self aliases. Detailed null diagnostics, wider identity combinations and extreme
+resource limits remain open.
+
+Integer powers add 6,677 portable outcomes over exponent endpoints and compact
+boundaries, both signs, unit/zero identities and individual callback replacements
+or exceptions. Negative/zero exponents precede all callbacks; positive exponents
+first consult virtual equals(ONE), then stored zero and exponent-one paths.
+General powers extract factors of two through virtual abs, lowest-set-bit and
+shiftRight calls, then consult the shifted value's bitLength. Working products
+use base-class values, bypassing the source multiply override. The observed
+compact path reads the leading unsigned 32-bit magnitude word, uses unsigned
+64-bit arithmetic and creates a separate result object, including wrapped zero.
+False metadata can expose masked shifts, a period-64 leading-word-two path, or an
+empty-magnitude array exception; the JVM exception is the Java array-index subtype.
+Another 336 Java cases cover null/throw abs, negate and shiftRight callbacks and
+their precedence. Wider callback compositions, cached identities beyond public
+constants and near-allocation-limit powers remain open.
+
+Integer GCD adds 1,602 portable callback/value/identity outcomes, including zero
+in either position, both zero, both signs and self aliases. A stored zero operand
+delegates only to source abs; otherwise a stored zero source delegates only to
+operand abs. These paths forward replacement values and identities without
+normalization. Two nonzero stored magnitudes use base-class working views and
+private division, bypassing source/operand abs, negate, remainder, pair, equality,
+comparison and bit metadata overrides. The result is a separate positive base
+value. Wide cases include shared 1,024-bit factors, a 4,096-bit dividend and
+consecutive Fibonacci numbers after 750 recurrence steps. Another 168 live Java
+cases verify null/throw abs and negate callbacks, null arguments and self aliases.
+Wider callback graphs, detailed NPE messages and resource limits remain open.
+
+Integer square roots add 978 portable value/callback/identity outcomes across
+both APIs. The inherited implementations use a private common root routine;
+they bypass source comparison, bit metadata, arithmetic and the other public
+root overload. Zero roots and zero remainders are canonical ZERO; nonzero roots
+and remainders are separate base-class values. Probes enter each inherited API
+through super, including throwing/replacement overrides and empty pair arrays.
+Direct calls to user overrides still dispatch normally. Numerical cases cover
+small square neighbors and roots around powers of two through exponent 4,096
+(inputs through 8,193 bits). Every successful case checks the floor-root
+inequalities; pairs also check shape, reconstruction and remainder bounds.
+Another 180 Java null/throw callback cases constrain inherited sqrt/pair, divide,
+multiply and subtract independence. Larger input/allocation domains and decimal
+root subclass compositions remain open.
+
+Integer subtraction adds 896 portable dispatch cases. A stored zero operand
+returns the source without callbacks; only a stored zero source and nonzero
+operand delegate to operand.negate. Other paths use stored signed magnitudes,
+bypassing source.add and public negation. Fixtures cover both signs, zero,
+30-bit boundaries and larger values, distinct and self operands, callback
+replacement objects and exceptions, result identity and call order. Observation
+captures the trace before formatting and uses known values for returned source
+or operand objects, so unrelated formatting overrides do not alter the measured
+subtraction trace. Another 196 Java null/throw combinations and three null-operand
+checks constrain direct null forwarding and argument rejection. The existing
+396 wide ordinary arithmetic pairs remain the numerical regression domain;
+broader callback compositions, range failures and detailed NPE messages remain open.
+
+String constructors add 10,156 portable value and exact-message outcomes from
+the pinned JDK. Invalid radix precedes empty text; embedded ASCII signs precede
+digit validation. Leading zero digits, including Unicode zero digits, are removed
+before diagnostic grouping. Invalid digits identify the corresponding group,
+whose radix power fits a positive Int; radix ten omits the radix suffix. The
+independent per-digit arithmetic does not use these groups. Fixtures cover every
+radix 2..36, invalid radix endpoints, both constructor overloads at radix ten,
+Unicode and malformed UTF-16, whitespace/control characters, and invalid digits
+around one-, two- and three-group boundaries. Exhaustive BMP digit acceptance
+remains covered separately; arbitrary-length resource limits are still open.
+
+Byte constructors add 25,584 portable outcomes across all four overloads, with
+987 distinct pinned JDK values or exact diagnostics. The matrix crosses signum
+endpoints and offset/length endpoints, including Int overflow combinations, over
+empty arrays, zero/sign extension, high-bit inputs and 30-bit limb boundaries.
+Empty two's-complement input precedes slice validation; invalid signum precedes
+signed-magnitude slice validation. Invalid slices now include the original offset,
+length and array size in the diagnostic without overflowing offset plus length.
+Every successful case additionally mutates both the input array and the exported
+byte array, then verifies that the number's value and hash remain unchanged.
+Null precedence remains covered separately; near-allocation-limit byte arrays
+are outside this finite regression domain.
+
+Exact alignment errors add 882 portable add/subtract outcomes over signed unit
+and zero coefficients and seven scales spanning both Int endpoints. The matrix
+exposed 384 diagnostic differences. A nonzero coefficient's positive alignment
+distance is validated as an Int before the power-of-ten range check; oversized
+distances report Underflow. The positive power range guard now uses the JDK
+message `BigInteger would overflow supported range`. Zero coefficients bypass
+unnecessary scaling. Selected distances are small or far beyond supported range,
+so this campaign does not allocate near-limit integers. The broader range and
+exception-message audit remains open.
+
+Nullable binary delegation adds 288 portable outcomes and a compiled Java matrix
+for add/subtract/multiply, direct and context overloads, null/ordinary operands,
+null/unlimited/finite contexts and four exact-callback behaviors. Unlimited
+contexts forward the operand to the public exact override before operand
+validation. Finite contexts validate before private calculation. Context-null
+controls reject without invoking the exact callback. Binary operand and context
+parameters now use nullable Kotlin types; subclass overrides use them too.
+Base numeric behavior, callback replacements, callback exception messages and
+traces are compared. NPE classes are checked separately from their still-open
+detailed diagnostic audit. More callback compositions remain open.
+
+Java returned-null callback checks add 94 cases to the three null-context/operand
+matrices (470 JVM cases total). The observer uses String.valueOf so a returned
+null is distinguished from an NPE thrown by the library. The added domain covers
+58 forwarded null results and 36 controls where null/finite contexts prevent
+exact-callback delegation. Round/plus, abs/negate and unlimited binary overloads
+match the pinned JDK in these Java-only interop cases without another arithmetic
+change. Other runtime interop surfaces, chained returned-null callbacks and
+detailed NPE diagnostics remain open.
+
+Comparison adds 8,215 portable outcomes: 7,425 getter/sign combinations, 225
+ordinary text pairs, 400 extreme-scale pairs and 165 self comparisons with
+changing sign getters. Same-scale compact operands compare stored coefficients
+without getters. General paths read each virtual sign once; stored-zero and
+same-scale magnitude paths bypass precision, while different-scale nonzero
+magnitudes read virtual precision. Scale getters are bypassed. Magnitude string
+comparison now normalizes its result to -1/0/1, correcting ordinary results such
+as 1 versus 9.0 returning -8 instead of the pinned -1. Sign direction uses positive
+versus negative branching, including the selected replacement signs +/-2.
+Long boundaries and adjacent inflated values constrain compact-path selection.
+The numerical order argument assumes truthful getter metadata; broader dynamic
+getter domains, null comparison/min/max callbacks and large-input allocation
+behavior remain open.

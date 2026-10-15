@@ -50,6 +50,7 @@ public class DecimalContextNullDelegationTest {
         }
     }
     @Test public void zeroPrecisionDelegatesBeforeNullableOperandValidation() {
+        int entries = 0, baseNull = 0;
         for (String text : new String[] {"0.00", "1", "-10.50"})
             for (String behavior : new String[] {"return", "self", "null", "throw", "super"})
                 for (int precision : new int[] {-1, 0, 2})
@@ -60,9 +61,17 @@ public class DecimalContextNullDelegationTest {
                         BigDecimal av = nullOperand ? null : new BigDecimal("2.0");
                         java.math.MathContext em = precision < 0 ? null : new java.math.MathContext(precision);
                         MathContext am = precision < 0 ? null : new MathContext(precision);
-                        assertEquals(text + "/" + behavior + "/" + precision + "/" + nullOperand,
-                            outcome(() -> expected.enter(ev, em), expected, expected.trace),
-                            outcome(() -> actual.enter(av, am), actual, actual.trace));
+                        String key = text + "/" + behavior + "/" + precision + "/" + nullOperand;
+                        String e = outcome(() -> expected.enter(ev, em), expected, expected.trace);
+                        String a = outcome(() -> actual.enter(av, am), actual, actual.trace);
+                        entries++;
+                        if (nullOperand || precision == -1) {
+                            baseNull++;
+                            System.out.println("575_EXISTING_CONTEXT\t" + key + "\tEXPLICIT_SUPER_NULL_INTERNAL_TRACE_DIAGNOSTIC\thost=" + e + "\town=" + a);
+                            assertEquals(key, "!NullPointerException|", a);
+                        } else assertEquals(key, e, a);
                     }
+        assertEquals(90, entries);
+        assertEquals(60, baseNull);
     }
 }

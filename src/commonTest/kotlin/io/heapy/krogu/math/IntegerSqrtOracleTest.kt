@@ -13,7 +13,7 @@ class IntegerSqrtOracleTest {
         override fun sqrtAndRemainder(): Array<BigInteger> { call("pair"); return when (mode) {
             "replace" -> arrayOf(replacement, replacement); "empty-pair" -> emptyArray(); else -> super.sqrtAndRemainder()
         } }
-        override fun compareTo(other: BigInteger?): Int { call("compare"); return if (mode == "replace") -1 else super.compareTo(other) }
+        override fun compareTo(other: BigInteger): Int { call("compare"); return if (mode == "replace") -1 else super.compareTo(other) }
         override fun bitLength(): Int { call("bits"); return if (mode == "replace") 1 else super.bitLength() }
         override fun signum(): Int { call("signum"); return if (mode == "replace") -1 else super.signum() }
         override fun divide(value: BigInteger): BigInteger { call("divide"); return if (mode == "replace") replacement else super.divide(value) }

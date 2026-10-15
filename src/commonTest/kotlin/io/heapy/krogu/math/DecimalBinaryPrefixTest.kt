@@ -139,7 +139,7 @@ class DecimalBinaryPrefixTest {
                 override fun pow(exponent: Int): BigInteger = error("virtual pow")
                 override fun shiftLeft(n: Int): BigInteger = error("virtual shiftLeft")
                 override fun shiftRight(n: Int): BigInteger = error("virtual shiftRight")
-                override fun compareTo(other: BigInteger?): Int = error("virtual compareTo")
+                override fun compareTo(other: BigInteger): Int = error("virtual compareTo")
                 override fun testBit(n: Int): Boolean = error("virtual testBit")
                 override fun getLowestSetBit(): Int = error("virtual getLowestSetBit")
             }

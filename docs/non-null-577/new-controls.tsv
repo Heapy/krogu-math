@@ -1,0 +1,5 @@
+ordinal	operation	ordinary_Java_entry	direct_Java_override_return	direct_Java_override_throw	real_Java_super
+0	and	NPE	replacement identity and and; trace	marker identity and and; trace	NPE bypassing throwing direct override
+1	or	NPE	replacement identity and or; trace	marker identity and or; trace	NPE bypassing throwing direct override
+2	xor	NPE	replacement identity and xor; trace	marker identity and xor; trace	NPE bypassing throwing direct override
+3	andNot	NPE	replacement identity and andNot; trace	marker identity and andNot; trace	NPE bypassing throwing direct override

@@ -3,19 +3,19 @@ package io.heapy.krogu.math
 import kotlin.test.*
 
 class ZeroUnaryPrecision567Test {
-    @Test fun storedZeroUnaryKeepsPrecisionSentinelAndNullStaging() {
+    @Test fun storedZeroUnaryKeepsPrecisionSentinel() {
         for (negate in listOf(false, true)) for (precision in listOf(0, 1, 7)) for (mode in RoundingMode.entries) {
             val sentinel = IllegalStateException("precision sentinel")
             val trace = StringBuilder()
             val zero = object : BigDecimal("0.00") {
                 override fun precision(): Int { trace.append("precision;"); throw sentinel }
                 override fun signum(): Int { trace.append("sign;"); return 0 }
-                override fun plus(mc: MathContext?): BigDecimal = error("internal plus must not be called")
+                override fun plus(mc: MathContext): BigDecimal = error("internal plus must not be called")
             }
             val receiver = object : BigDecimal("-1.00") {
                 override fun negate(): BigDecimal { trace.append("negate;"); return zero }
             }
-            fun invoke(context: MathContext?): BigDecimal = if (negate) receiver.negate(context) else zero.abs(context)
+            fun invoke(context: MathContext): BigDecimal = if (negate) receiver.negate(context) else zero.abs(context)
             val prefix = if (negate) "negate;" else "sign;"
             if (precision == 0) {
                 assertSame(zero, invoke(MathContext(precision, mode)))
@@ -24,9 +24,7 @@ class ZeroUnaryPrecision567Test {
                 assertSame(sentinel, assertFailsWith<IllegalStateException> { invoke(MathContext(precision, mode)) })
                 assertEquals("${prefix}precision;", trace.toString())
             }
-            trace.clear()
-            assertFailsWith<NullPointerException> { invoke(null) }
-            assertEquals(prefix, trace.toString())
+            // All 48 null executions are retained by UnaryNull576StandaloneTest.precisionSentinel.
             assertEquals(BigInteger.ZERO, zero.unscaledValue())
             assertEquals(2, zero.scale())
             assertEquals(BigInteger("-100"), receiver.unscaledValue())

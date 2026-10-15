@@ -7,16 +7,7 @@ import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 
 class DoubleZeroContext569Test {
-    @Test fun bothSignedZerosRequireContextThroughKotlinConstruction() {
-        val context: MathContext? = null
-        val seen = mutableSetOf<Long>()
-        for (value in listOf(0.0, -0.0)) {
-            assertTrue(seen.add(value.toRawBits()), "Duplicate input bits")
-            assertFailsWith<NullPointerException>("bits=${value.toRawBits()}") { BigDecimal(value, context) }
-        }
-        assertEquals(setOf(0L, Long.MIN_VALUE), seen)
-        assertEquals(2, seen.size)
-    }
+    // Both signed-zero null entries move to Validation578StandaloneTest's exact JVM ledger.
 
     @Test fun validContextsKeepZeroCoefficientAndScaleZero() {
         var count = 0
@@ -25,7 +16,7 @@ class DoubleZeroContext569Test {
             assertEquals(BigInteger.ZERO, exact.unscaledValue())
             assertEquals(0, exact.scale())
             for (precision in listOf(0, 1, 7, Int.MAX_VALUE)) for (mode in RoundingMode.entries) {
-                val context: MathContext? = MathContext(precision, mode)
+                val context = MathContext(precision, mode)
                 val result = BigDecimal(value, context)
                 val label = "bits=${value.toRawBits()} p$precision/$mode"
                 assertEquals(BigInteger.ZERO, result.unscaledValue(), "$label coefficient")
@@ -37,8 +28,7 @@ class DoubleZeroContext569Test {
     }
 
     @Test fun finiteNonzeroNullAndValidControls() {
-        for (value in listOf(0.1, 1.0, -1.25, Double.MIN_VALUE, Double.MAX_VALUE))
-            assertFailsWith<NullPointerException>("bits=${value.toRawBits()}") { BigDecimal(value, null) }
+        // Five finite null entries are retained at the Java constructor boundary.
         // Exact binary fractions have independently known decimal coefficients/scales.
         for ((value, fields) in listOf(1.0 to ("1" to 0), -1.0 to ("-1" to 0),
             0.5 to ("5" to 1), -1.25 to ("-125" to 2))) {
@@ -67,7 +57,7 @@ class DoubleZeroContext569Test {
     @Test fun retainedNonfiniteValidationStaging() {
         // Historical staging controls only; these competing-invalid inputs do not set a global order.
         for (value in listOf(Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY)) {
-            assertFailsWith<NumberFormatException> { BigDecimal(value, null) }
+            // The three nonfinite/null competing-invalid observations are JVM diagnostics.
             assertFailsWith<NumberFormatException> { BigDecimal(value) }
             for (mode in RoundingMode.entries)
                 assertFailsWith<NumberFormatException> { BigDecimal(value, MathContext(7, mode)) }

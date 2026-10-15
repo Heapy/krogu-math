@@ -1,0 +1,15 @@
+src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
+src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextContractTest.kt
+src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt
+src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroUnaryPrecision567Test.kt
+src/jvmTest/java/io/heapy/krogu/math/DecimalNullRoundSubclassTest.java
+src/jvmTest/java/io/heapy/krogu/math/DecimalNullUnarySubclassTest.java
+src/jvmTest/java/io/heapy/krogu/math/ZeroNullForwarding567Test.java
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalRoundSubclassTest.kt
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt
+src/commonTest/kotlin/io/heapy/krogu/math/UnaryNull576Rows.kt
+src/jvmTest/java/io/heapy/krogu/math/UnaryNull576Boundary.java
+src/jvmTest/java/io/heapy/krogu/math/UnaryNull576StandaloneTest.java
+src/jvmTest/kotlin/io/heapy/krogu/math/UnaryNull576VectorsTest.kt

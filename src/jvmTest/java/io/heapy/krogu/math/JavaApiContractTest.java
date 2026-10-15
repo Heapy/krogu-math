@@ -62,12 +62,37 @@ public class JavaApiContractTest {
     }
     @Test public void nullableRandomCallsRemainUnambiguous() {
         // Like JDK, (int, null) is ambiguous with the sign/magnitude constructor.
-        assertThrows(NullPointerException.class, () -> new BigInteger(8, (Random) null));
+        Random random = null;
+        assertThrows(NullPointerException.class, () -> new BigInteger(8, random));
         assertThrows(NullPointerException.class, () -> new BigInteger(8, 100, null));
         assertThrows(NullPointerException.class, () -> BigInteger.probablePrime(8, null));
-        assertEquals(BigInteger.ZERO, new BigInteger(0, (Random) null));
-        assertThrows(IllegalArgumentException.class, () -> new BigInteger(-1, (Random) null));
-        assertThrows(ArithmeticException.class, () -> new BigInteger(1, 100, null));
-        assertThrows(ArithmeticException.class, () -> BigInteger.probablePrime(1, null));
+        assertThrows(NullPointerException.class, () -> new BigInteger(0, random));
+        // Original own/JDK zero-null result was 0; the own public contract now requires NPE.
+        System.out.println("RNG zero/null frozenOwn=0 frozenHost=0 requiredOwn=NullPointerException");
+        randomDiagnostic("random/-1", "IllegalArgumentException", () -> new BigInteger(-1, random));
+        randomDiagnostic("prime/1/100", "ArithmeticException", () -> new BigInteger(1, 100, null));
+        randomDiagnostic("probablePrime/1", "ArithmeticException", () -> BigInteger.probablePrime(1, null));
+    }
+    private static void randomDiagnostic(String key, String frozen, java.util.concurrent.Callable<?> action) {
+        Exception e = assertThrows(Exception.class, action::call);
+        System.out.println(key + " compound-invalid-priority frozen=" + frozen
+            + " actual=" + e.getClass().getSimpleName() + " message=" + e.getMessage());
+    }
+    @Test public void zeroBitsReturnsZeroAndRecordsRandomConsumption() {
+        int[] draws = {0};
+        Random counted = new Random(42) {
+            @Override public void nextBytes(byte[] bytes) { draws[0]++; super.nextBytes(bytes); }
+            @Override protected int next(int bits) { draws[0]++; return super.next(bits); }
+        };
+        assertEquals(BigInteger.ZERO, new BigInteger(0, counted));
+        System.out.println("578_JAVA_ZERO_RANDOM_OBSERVATION\trequests=" + draws[0]);
+        Random afterZero = new Random(42), untouched = new Random(42);
+        assertEquals(BigInteger.ZERO, new BigInteger(0, afterZero));
+        BigInteger untouchedNext = new BigInteger(128, untouched);
+        BigInteger afterZeroNext = new BigInteger(128, afterZero);
+        assertTrue(untouchedNext.signum() >= 0 && untouchedNext.bitLength() <= 128);
+        assertTrue(afterZeroNext.signum() >= 0 && afterZeroNext.bitLength() <= 128);
+        System.out.println("578_JAVA_SEEDED_RANDOM_OBSERVATION\tuntouched=" + untouchedNext
+            + "\tafterZero=" + afterZeroNext);
     }
 }

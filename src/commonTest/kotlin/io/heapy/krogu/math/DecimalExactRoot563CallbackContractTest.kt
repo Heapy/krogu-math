@@ -24,19 +24,19 @@ class DecimalExactRoot563CallbackContractTest {
     }
 
     @Test fun explicitRootEntryAndExceptionIdentityAcrossContexts() {
-        val contexts = listOf<MathContext?>(null) + listOf(0, 1, 7, Int.MAX_VALUE)
+        val contexts = listOf(0, 1, 7, Int.MAX_VALUE)
             .flatMap { p -> RoundingMode.entries.map { MathContext(p, it) } }
         val marker = BigDecimal("7.00")
         for (text in listOf("1", "4.00", "0.0004")) for (context in contexts) {
             var entries = 0
             val replacement: BigDecimal = object : BigDecimal(text) {
-                override fun sqrt(mc: MathContext?): BigDecimal { entries++; assertSame(context, mc); return marker }
+                override fun sqrt(mc: MathContext): BigDecimal { entries++; assertSame(context, mc); return marker }
             }
             assertSame(marker, replacement.sqrt(context))
             assertEquals(1, entries)
             val failure = IllegalStateException("caller-owned root")
             val throwing: BigDecimal = object : BigDecimal(text) {
-                override fun sqrt(mc: MathContext?): BigDecimal { assertSame(context, mc); throw failure }
+                override fun sqrt(mc: MathContext): BigDecimal { assertSame(context, mc); throw failure }
             }
             assertSame(failure, assertFailsWith<IllegalStateException> { throwing.sqrt(context) })
         }

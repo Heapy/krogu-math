@@ -12,8 +12,8 @@ class DecimalDivisionPreferredScaleContractTest {
         override fun signum() = super.signum()
         override fun scale() = super.scale()
         override fun unscaledValue() = super.unscaledValue()
-        override fun divide(divisor: BigDecimal?) = super.divide(divisor)
-        override fun divide(divisor: BigDecimal?, mc: MathContext?) = super.divide(divisor, mc)
+        override fun divide(divisor: BigDecimal) = super.divide(divisor)
+        override fun divide(divisor: BigDecimal, mc: MathContext) = super.divide(divisor, mc)
     }
 
     @Test fun lowExactAndUnlimitedWitness() {
@@ -57,9 +57,7 @@ class DecimalDivisionPreferredScaleContractTest {
             val zero = input(0, 1, mask and 2 != 0)
             assertFailsWith<ArithmeticException> { a.divide(zero) }
             assertFailsWith<ArithmeticException> { a.divide(zero, MathContext(1, mode)) }
-            assertFailsWith<NullPointerException> { a.divide(null) }
-            assertFailsWith<NullPointerException> { a.divide(null, MathContext(1, mode)) }
-            assertFailsWith<NullPointerException> { a.divide(BigDecimal.ONE, null) }
+            // All 4 masks x 8 modes x 3 null controls replay in DecimalBinary575StandaloneTest.
         }
         for (mode in RoundingMode.entries) {
             assertEquals(Int.MIN_VALUE, BigDecimal.valueOf(0, Int.MIN_VALUE)

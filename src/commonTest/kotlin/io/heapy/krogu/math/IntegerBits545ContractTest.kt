@@ -102,7 +102,7 @@ class IntegerBits545ContractTest {
             return super.getLowestSetBit()
         }
 
-        override fun xor(value: BigInteger?): BigInteger {
+        override fun xor(value: BigInteger): BigInteger {
             events += "direct-enter"
             // Value-preserving composition, even for a self operand.
             val result = super.xor(value).not().not()

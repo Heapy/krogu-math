@@ -25,7 +25,7 @@ internal fun evaluateAdditionOracle(v: Array<String>): String {
     if (op[0] == "wideAdd") {
         val left = v[2].split('@'); val right = v[3].split('@')
         val value = object : BigDecimal(BigInteger(left[0]), left[1].toInt()) {
-            override fun add(augend: BigDecimal?): BigDecimal { trace.append("add;"); throw IllegalStateException("exact add callback") }
+            override fun add(augend: BigDecimal): BigDecimal { trace.append("add;"); throw IllegalStateException("exact add callback") }
         }
         val result = outcome { value.add(BigDecimal(BigInteger(right[0]), right[1].toInt()), MathContext(precision, mode)) }
         return "$result|$trace"
@@ -33,15 +33,15 @@ internal fun evaluateAdditionOracle(v: Array<String>): String {
     check(op[0] == "subtract")
     val leftBehavior = op[1]; val rightBehavior = op[2]
     val value = object : BigDecimal(v[2]) {
-        override fun add(augend: BigDecimal?): BigDecimal {
+        override fun add(augend: BigDecimal): BigDecimal {
             trace.append("add;")
             return when (leftBehavior) { "replace" -> BigDecimal("42"); "throw" -> throw IllegalStateException("add callback"); else -> super.add(augend) }
         }
-        override fun add(augend: BigDecimal?, mc: MathContext?): BigDecimal {
+        override fun add(augend: BigDecimal, mc: MathContext): BigDecimal {
             trace.append("addContext;")
             return when (leftBehavior) { "replace" -> BigDecimal("43"); "throw" -> throw IllegalStateException("add context callback"); else -> super.add(augend, mc) }
         }
-        override fun subtract(subtrahend: BigDecimal?): BigDecimal { trace.append("subtract;"); return super.subtract(subtrahend) }
+        override fun subtract(subtrahend: BigDecimal): BigDecimal { trace.append("subtract;"); return super.subtract(subtrahend) }
     }
     val other = object : BigDecimal(v[3]) {
         override fun negate(): BigDecimal {

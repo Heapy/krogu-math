@@ -75,6 +75,19 @@ class ValueIdentityContractTest {
         }
     }
 
+    @Test fun integerMinAndMaxTiesReturnTheDistinctArgumentIncludingTruthfulSubclasses() {
+        for (mask in 0..3) {
+            val a = if (mask and 1 == 0) BigInteger("2") else DelegatingInteger("2")
+            val b = if (mask and 2 == 0) BigInteger("2") else DelegatingInteger("2")
+            assertNotSame(a, b)
+            assertEquals(0, a.compareTo(b))
+            assertSame(b, a.min(b), "min argument b, mask=$mask")
+            assertSame(b, a.max(b), "max argument b, mask=$mask")
+            assertSame(a, b.min(a), "min argument a, mask=$mask")
+            assertSame(a, b.max(a), "max argument a, mask=$mask")
+        }
+    }
+
     private fun <T> ordering(values: List<T>, compare: (T, T) -> Int) {
         for (a in values) {
             assertEquals(0, compare(a, a), "self comparison")
@@ -100,8 +113,7 @@ class ValueIdentityContractTest {
         assertEquals(decimalTexts, decimals.toSet().sorted().map { it.toString() })
         assertEquals(listOf("-2.00", "-0.1", "0.0", "2", "10"),
             decimals.sorted().distinctBy { it.stripTrailingZeros() }.map { it.toString() })
-        assertFailsWith<NullPointerException> { BigInteger.ONE.compareTo(null) }
-        assertFailsWith<NullPointerException> { BigDecimal.ONE.compareTo(null) }
+        // The two ill-typed null calls move to ComparisonNull574JvmTest.commonIdentityNullChecks.
     }
 
     @Test fun mutableInputSlicesCannotChangeCollectionKeys() {
@@ -246,7 +258,7 @@ class ValueIdentityContractTest {
             equalityClass(constant, MathContext(precision, mode), MathContext(constant.toString()))
         }
         assertFailsWith<IllegalArgumentException> { MathContext(-1) }
-        assertFailsWith<NullPointerException> { MathContext(1, null) }
+        // Null rounding mode entry retained in Validation578StandaloneTest (JVM).
     }
 
     @Suppress("DEPRECATION")

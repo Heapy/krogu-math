@@ -15,7 +15,7 @@ class IntegerDivisionDispatchOracleTest {
         override fun negate(): BigInteger { call("negate"); return if (mode == "replace") replacement else super.negate() }
         override fun signum(): Int { call("signum"); return if (mode == "replace") -7 else super.signum() }
         override fun bitLength(): Int { call("bitLength"); return if (mode == "replace") 1 else super.bitLength() }
-        override fun compareTo(other: BigInteger?): Int { call("compare"); return if (mode == "replace") 0 else super.compareTo(other) }
+        override fun compareTo(other: BigInteger): Int { call("compare"); return if (mode == "replace") 0 else super.compareTo(other) }
         override fun testBit(n: Int): Boolean { call("testBit"); return if (mode == "replace") false else super.testBit(n) }
         override fun add(value: BigInteger): BigInteger { call("add"); return if (mode == "replace") replacement else super.add(value) }
         override fun subtract(value: BigInteger): BigInteger { call("subtract"); return if (mode == "replace") replacement else super.subtract(value) }

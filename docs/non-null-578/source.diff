@@ -1,0 +1,1223 @@
+diff -ruN /private/tmp/task578-original/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
+--- /private/tmp/task578-original/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt	2026-10-15 13:38:15.843281629 +0300
++++ src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt	2026-10-15 13:39:39.847446168 +0300
+@@ -30,13 +30,13 @@
+     constructor(value: Int, mc: MathContext) : this(value.toLong(), mc)
+     constructor(value: Long, mc: MathContext) : this(BigDecimal(value).roundValue(mc))
+     constructor(value: String) : this(parse(value))
+-    constructor(value: String, mc: MathContext?) : this(parse(value).roundValue(mc ?: throw NullPointerException()))
++    constructor(value: String, mc: MathContext) : this(parse(value).roundValue(mc))
+     constructor(value: CharArray) : this(value, 0, value.size)
+     constructor(value: CharArray, offset: Int, len: Int) : this(characters(value, offset, len))
+-    constructor(value: CharArray, mc: MathContext?) : this(value, 0, value.size, mc)
+-    constructor(value: CharArray, offset: Int, len: Int, mc: MathContext?) : this(characters(value, offset, len), mc)
++    constructor(value: CharArray, mc: MathContext) : this(value, 0, value.size, mc)
++    constructor(value: CharArray, offset: Int, len: Int, mc: MathContext) : this(characters(value, offset, len), mc)
+     constructor(value: Double) : this(fromDouble(value))
+-    constructor(value: Double, mc: MathContext?) : this(roundedDouble(value, mc))
++    constructor(value: Double, mc: MathContext) : this(roundedDouble(value, mc))
+ 
+     open fun unscaledValue(): BigInteger = coefficient
+     open fun scale(): Int = decimalScale
+@@ -203,14 +203,14 @@
+     }
+     open fun divide(divisor: BigDecimal, roundingMode: RoundingMode): BigDecimal = divide(divisor, decimalScale, roundingMode)
+     @Deprecated("Use RoundingMode")
+-    open fun divide(divisor: BigDecimal?, roundingMode: Int): BigDecimal {
++    open fun divide(divisor: BigDecimal, roundingMode: Int): BigDecimal {
+         val mode = RoundingMode.valueOf(roundingMode)
+-        return divide(divisor ?: throw NullPointerException(), mode)
++        return divide(divisor, mode)
+     }
+     @Deprecated("Use RoundingMode")
+-    open fun divide(divisor: BigDecimal?, scale: Int, roundingMode: Int): BigDecimal {
++    open fun divide(divisor: BigDecimal, scale: Int, roundingMode: Int): BigDecimal {
+         val mode = RoundingMode.valueOf(roundingMode)
+-        return divide(divisor ?: throw NullPointerException(), scale, mode)
++        return divide(divisor, scale, mode)
+     }
+     open fun divide(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode): BigDecimal {
+         if (divisor.signum() == 0) failScaledZeroDivision(divisor.decimalScale, scale)
+@@ -549,10 +549,10 @@
+         return result.roundValue(mc)
+     }
+ 
+-    open fun sqrt(mc: MathContext?): BigDecimal {
++    open fun sqrt(mc: MathContext): BigDecimal {
+         val sign = signum()
+         if (sign < 0) throw ArithmeticException("Attempted square root of negative BigDecimal")
+-        val context = mc ?: throw NullPointerException()
++        val context = mc
+         val preferred = decimalScale / 2
+         if (sign == 0) return BigDecimal(BigInteger.ZERO, preferred)
+         // Use scale parity and integer squares before normalization, decimal
+@@ -927,9 +927,9 @@
+             else { scale = -exponent; coefficient = coefficient.multiply(BigInteger.valueOf(5).pow(scale)) }
+             return BigDecimal(if (value < 0) coefficient.negate() else coefficient, scale)
+         }
+-        private fun roundedDouble(value: Double, mc: MathContext?): BigDecimal {
++        private fun roundedDouble(value: Double, mc: MathContext): BigDecimal {
+             val exact = fromDouble(value)
+-            val context = mc ?: throw NullPointerException()
++            val context = mc
+             return if (exact.signum() == 0) exact else exact.round(context)
+         }
+         private fun tenPow(exponent: Long): BigInteger {
+diff -ruN /private/tmp/task578-original/src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt
+--- /private/tmp/task578-original/src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt	2026-10-15 13:38:15.843741835 +0300
++++ src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt	2026-10-15 13:39:39.762205557 +0300
+@@ -33,9 +33,9 @@
+     constructor(value: ByteArray) : this(fromBytes(value, 0, value.size, true))
+     constructor(value: ByteArray, off: Int, len: Int) : this(fromBytes(value, off, len, true))
+     constructor(signum: Int, magnitude: ByteArray) : this(signum, magnitude, 0, magnitude.size)
+-    constructor(signum: Int, magnitude: ByteArray?, off: Int, len: Int) : this(signedBytes(signum, magnitude, off, len))
+-    constructor(numBits: Int, rnd: PlatformRandom?) : this(randomBits(numBits, rnd))
+-    constructor(bitLength: Int, certainty: Int, rnd: PlatformRandom?) : this(generatePrime(bitLength, certainty, rnd))
++    constructor(signum: Int, magnitude: ByteArray, off: Int, len: Int) : this(signedBytes(signum, magnitude, off, len))
++    constructor(numBits: Int, rnd: PlatformRandom) : this(randomBits(numBits, rnd))
++    constructor(bitLength: Int, certainty: Int, rnd: PlatformRandom) : this(generatePrime(bitLength, certainty, rnd))
+ 
+     open fun signum(): Int = sign
+     open fun abs(): BigInteger = if (sign < 0) negate() else this
+@@ -262,9 +262,9 @@
+         val r = remainder(m)
+         return if (r.sign < 0) r.add(m) else r
+     }
+-    open fun modPow(exponent: BigInteger?, m: BigInteger): BigInteger {
++    open fun modPow(exponent: BigInteger, m: BigInteger): BigInteger {
+         if (m.sign <= 0) throw ArithmeticException("BigInteger: modulus not positive")
+-        val power = exponent ?: throw NullPointerException()
++        val power = exponent
+         if (power.sign == 0) return if (m == ONE) ZERO else ONE
+         if (this == ONE) return if (m == ONE) ZERO else ONE
+         if (this == ZERO && power.sign >= 0) return ZERO
+@@ -1024,17 +1024,17 @@
+         }
+         @kotlin.jvm.JvmSynthetic
+         @JvmStatic open fun probablePrime(bitLength: Int, rnd: Random): BigInteger = generatePrime(bitLength, 100, rnd)
+-        @JvmStatic open fun probablePrime(bitLength: Int, rnd: PlatformRandom?): BigInteger = generatePrime(bitLength, 100, rnd)
++        @JvmStatic open fun probablePrime(bitLength: Int, rnd: PlatformRandom): BigInteger = generatePrime(bitLength, 100, rnd)
+         internal fun randomValue(numBits: Int, rnd: Random): BigInteger = randomBits(numBits, rnd)
+         internal fun primeValue(bitLength: Int, certainty: Int, rnd: Random): BigInteger = generatePrime(bitLength, certainty, rnd)
+-        private fun generatePrime(bitLength: Int, certainty: Int, rnd: PlatformRandom?): BigInteger {
++        private fun generatePrime(bitLength: Int, certainty: Int, rnd: PlatformRandom): BigInteger {
+             if (bitLength < 2) throw ArithmeticException("bitLength < 2")
+-            return generatePrime(bitLength, certainty, (rnd ?: throw NullPointerException()).asCommonRandom())
++            return generatePrime(bitLength, certainty, rnd.asCommonRandom())
+         }
+-        private fun randomBits(numBits: Int, rnd: PlatformRandom?): BigInteger {
++        private fun randomBits(numBits: Int, rnd: PlatformRandom): BigInteger {
+             require(numBits >= 0) { "numBits must be non-negative" }
+             if (numBits == 0) return ZERO
+-            return randomBits(numBits, (rnd ?: throw NullPointerException()).asCommonRandom())
++            return randomBits(numBits, rnd.asCommonRandom())
+         }
+         private fun generatePrime(bitLength: Int, certainty: Int, rnd: Random): BigInteger {
+             if (bitLength < 2) throw ArithmeticException("bitLength < 2")
+@@ -1120,9 +1120,9 @@
+             if (buffer != 0L) result[word] = buffer.toInt()
+             return normalized(if (negative) -1 else 1, result)
+         }
+-        private fun signedBytes(signum: Int, bytes: ByteArray?, off: Int, len: Int): BigInteger {
++        private fun signedBytes(signum: Int, bytes: ByteArray, off: Int, len: Int): BigInteger {
+             if (signum !in -1..1) throw NumberFormatException("Invalid signum value")
+-            val magnitude = bytes ?: throw NullPointerException()
++            val magnitude = bytes
+             if (signum == 0) {
+                 checkBounds(magnitude, off, len)
+                 for (i in off until off + len)
+diff -ruN /private/tmp/task578-original/src/commonMain/kotlin/io/heapy/krogu/math/MathContext.kt src/commonMain/kotlin/io/heapy/krogu/math/MathContext.kt
+--- /private/tmp/task578-original/src/commonMain/kotlin/io/heapy/krogu/math/MathContext.kt	2026-10-15 13:38:15.844065417 +0300
++++ src/commonMain/kotlin/io/heapy/krogu/math/MathContext.kt	2026-10-15 13:39:39.807285601 +0300
+@@ -2,9 +2,9 @@
+ 
+ /** Immutable decimal precision and rounding policy; zero precision means unlimited. */
+ @Suppress("NON_FINAL_MEMBER_IN_FINAL_CLASS")
+-class MathContext(open val precision: Int, roundingMode: RoundingMode?) : MathSerializable {
++class MathContext(open val precision: Int, roundingMode: RoundingMode) : MathSerializable {
+     init { require(precision >= 0) { "Digits < 0" } }
+-    open val roundingMode: RoundingMode = roundingMode ?: throw NullPointerException()
++    open val roundingMode: RoundingMode = roundingMode
+     private fun readObject(stream: MathObjectInputStream) {
+         restoreSerializedFields(stream)
+         val restored: RoundingMode? = roundingMode
+diff -ruN /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563CallbackContractTest.kt src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563CallbackContractTest.kt
+--- /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563CallbackContractTest.kt	2026-10-15 13:38:15.847871774 +0300
++++ src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563CallbackContractTest.kt	2026-10-15 13:42:02.586209158 +0300
+@@ -24,19 +24,19 @@
+     }
+ 
+     @Test fun explicitRootEntryAndExceptionIdentityAcrossContexts() {
+-        val contexts = listOf<MathContext?>(null) + listOf(0, 1, 7, Int.MAX_VALUE)
++        val contexts = listOf(0, 1, 7, Int.MAX_VALUE)
+             .flatMap { p -> RoundingMode.entries.map { MathContext(p, it) } }
+         val marker = BigDecimal("7.00")
+         for (text in listOf("1", "4.00", "0.0004")) for (context in contexts) {
+             var entries = 0
+             val replacement: BigDecimal = object : BigDecimal(text) {
+-                override fun sqrt(mc: MathContext?): BigDecimal { entries++; assertSame(context, mc); return marker }
++                override fun sqrt(mc: MathContext): BigDecimal { entries++; assertSame(context, mc); return marker }
+             }
+             assertSame(marker, replacement.sqrt(context))
+             assertEquals(1, entries)
+             val failure = IllegalStateException("caller-owned root")
+             val throwing: BigDecimal = object : BigDecimal(text) {
+-                override fun sqrt(mc: MathContext?): BigDecimal { assertSame(context, mc); throw failure }
++                override fun sqrt(mc: MathContext): BigDecimal { assertSame(context, mc); throw failure }
+             }
+             assertSame(failure, assertFailsWith<IllegalStateException> { throwing.sqrt(context) })
+         }
+diff -ruN /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563Callbacks.kt src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563Callbacks.kt
+--- /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563Callbacks.kt	2026-10-15 13:38:15.848143065 +0300
++++ src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563Callbacks.kt	2026-10-15 13:42:02.567505535 +0300
+@@ -67,8 +67,8 @@
+         override fun scale() = super.scale()
+         override fun unscaledValue() = super.unscaledValue()
+         override fun stripTrailingZeros() = super.stripTrailingZeros()
+-        override fun sqrt(mc: MathContext?) = super.sqrt(mc)
+-        fun inheritedRoot(mc: MathContext?) = super.sqrt(mc)
++        override fun sqrt(mc: MathContext) = super.sqrt(mc)
++        fun inheritedRoot(mc: MathContext) = super.sqrt(mc)
+     }
+ 
+     fun expected(v: List<String>): DecimalExactRoot563Expected.Result {
+diff -ruN /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563Test.kt src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563Test.kt
+--- /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563Test.kt	2026-10-15 13:38:15.848575730 +0300
++++ src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563Test.kt	2026-10-15 13:42:02.548598372 +0300
+@@ -13,8 +13,8 @@
+         override fun scale() = super.scale()
+         override fun unscaledValue() = super.unscaledValue()
+         override fun stripTrailingZeros() = super.stripTrailingZeros()
+-        override fun sqrt(mc: MathContext?) = super.sqrt(mc)
+-        fun inheritedRoot(mc: MathContext?) = super.sqrt(mc)
++        override fun sqrt(mc: MathContext) = super.sqrt(mc)
++        fun inheritedRoot(mc: MathContext) = super.sqrt(mc)
+     }
+ 
+     private fun assertResult(expected: DecimalExactRoot563Expected.Result, actual: BigDecimal, label: String) {
+@@ -110,16 +110,14 @@
+             }
+             assertFailsWith<ArithmeticException> { BigDecimal("225").sqrt(MathContext(1, RoundingMode.UNNECESSARY)) }
+         }
+-        assertFailsWith<NullPointerException> { BigDecimal("4").sqrt(null) }
+-        assertFailsWith<ArithmeticException> { BigDecimal("-4").sqrt(null) }
+-        assertFailsWith<NullPointerException> { BigDecimal(BigInteger.ZERO, Int.MIN_VALUE).sqrt(null) }
++        // Three null entries are preserved in Validation578StandaloneTest, including negative priority.
+         assertEquals(-1073741824, BigDecimal(BigInteger.ZERO, Int.MIN_VALUE).sqrt(MathContext.UNLIMITED).scale())
+         val marker = BigDecimal("7.00")
+         val failure = IllegalStateException("caller owned")
+         val context = MathContext(Int.MAX_VALUE, RoundingMode.HALF_EVEN)
+         var entries = 0
+         val replacement: BigDecimal = object : BigDecimal("4") {
+-            override fun sqrt(mc: MathContext?): BigDecimal {
++            override fun sqrt(mc: MathContext): BigDecimal {
+                 entries++
+                 assertSame(context, mc)
+                 return marker
+@@ -128,7 +126,7 @@
+         assertSame(marker, replacement.sqrt(context))
+         assertEquals(1, entries)
+         val throwing: BigDecimal = object : BigDecimal("4") {
+-            override fun sqrt(mc: MathContext?): BigDecimal { assertSame(context, mc); throw failure }
++            override fun sqrt(mc: MathContext): BigDecimal { assertSame(context, mc); throw failure }
+         }
+         assertSame(failure, assertFailsWith<IllegalStateException> { throwing.sqrt(context) })
+     }
+diff -ruN /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/DecimalSqrtMidpoint565Test.kt src/commonTest/kotlin/io/heapy/krogu/math/DecimalSqrtMidpoint565Test.kt
+--- /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/DecimalSqrtMidpoint565Test.kt	2026-10-15 13:38:15.849651558 +0300
++++ src/commonTest/kotlin/io/heapy/krogu/math/DecimalSqrtMidpoint565Test.kt	2026-10-15 13:43:55.133716291 +0300
+@@ -55,8 +55,8 @@
+         override fun scale() = super.scale()
+         override fun unscaledValue() = super.unscaledValue()
+         override fun stripTrailingZeros() = super.stripTrailingZeros()
+-        override fun sqrt(mc: MathContext?) = super.sqrt(mc)
+-        fun inheritedRoot(mc: MathContext?) = super.sqrt(mc)
++        override fun sqrt(mc: MathContext) = super.sqrt(mc)
++        fun inheritedRoot(mc: MathContext) = super.sqrt(mc)
+     }
+ 
+     private fun assertResult(c: String, s: Int, actual: BigDecimal, label: String) {
+@@ -120,18 +120,18 @@
+ 
+     @Test fun explicitOverrideSuperAndDirectExceptionIdentity() {
+         val marker = BigDecimal("7.00")
+-        val contexts = listOf<MathContext?>(null) + listOf(0, 1, 7)
++        val contexts = listOf(0, 1, 7)
+             .flatMap { p -> RoundingMode.entries.map { MathContext(p, it) } }
+         for (context in contexts) {
+             var entries = 0
+             val replacement: BigDecimal = object : BigDecimal("4.001") {
+-                override fun sqrt(mc: MathContext?): BigDecimal { entries++; assertSame(context, mc); return marker }
++                override fun sqrt(mc: MathContext): BigDecimal { entries++; assertSame(context, mc); return marker }
+             }
+             assertSame(marker, replacement.sqrt(context))
+             assertEquals(1, entries)
+             val failure = IllegalStateException("caller-owned midpoint root")
+             val throwing: BigDecimal = object : BigDecimal("4.001") {
+-                override fun sqrt(mc: MathContext?): BigDecimal { assertSame(context, mc); throw failure }
++                override fun sqrt(mc: MathContext): BigDecimal { assertSame(context, mc); throw failure }
+             }
+             assertSame(failure, assertFailsWith<IllegalStateException> { throwing.sqrt(context) })
+         }
+@@ -145,6 +145,6 @@
+         }
+         assertSame(failure, assertFailsWith<IllegalStateException> { throwingPrecision.sqrt(MathContext(1)) })
+         assertFailsWith<ArithmeticException> { Truthful(BigInteger("4001"), 3).inheritedRoot(MathContext(0)) }
+-        assertFailsWith<NullPointerException> { Truthful(BigInteger("4001"), 3).inheritedRoot(null) }
++        // Null explicit-super entry retained by Validation578StandaloneTest.
+     }
+ }
+diff -ruN /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/DoubleZeroContext569Test.kt src/commonTest/kotlin/io/heapy/krogu/math/DoubleZeroContext569Test.kt
+--- /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/DoubleZeroContext569Test.kt	2026-10-15 13:38:15.850435721 +0300
++++ src/commonTest/kotlin/io/heapy/krogu/math/DoubleZeroContext569Test.kt	2026-10-15 13:42:02.529024878 +0300
+@@ -7,16 +7,7 @@
+ import kotlin.test.assertTrue
+ 
+ class DoubleZeroContext569Test {
+-    @Test fun bothSignedZerosRequireContextThroughKotlinConstruction() {
+-        val context: MathContext? = null
+-        val seen = mutableSetOf<Long>()
+-        for (value in listOf(0.0, -0.0)) {
+-            assertTrue(seen.add(value.toRawBits()), "Duplicate input bits")
+-            assertFailsWith<NullPointerException>("bits=${value.toRawBits()}") { BigDecimal(value, context) }
+-        }
+-        assertEquals(setOf(0L, Long.MIN_VALUE), seen)
+-        assertEquals(2, seen.size)
+-    }
++    // Both signed-zero null entries move to Validation578StandaloneTest's exact JVM ledger.
+ 
+     @Test fun validContextsKeepZeroCoefficientAndScaleZero() {
+         var count = 0
+@@ -25,7 +16,7 @@
+             assertEquals(BigInteger.ZERO, exact.unscaledValue())
+             assertEquals(0, exact.scale())
+             for (precision in listOf(0, 1, 7, Int.MAX_VALUE)) for (mode in RoundingMode.entries) {
+-                val context: MathContext? = MathContext(precision, mode)
++                val context = MathContext(precision, mode)
+                 val result = BigDecimal(value, context)
+                 val label = "bits=${value.toRawBits()} p$precision/$mode"
+                 assertEquals(BigInteger.ZERO, result.unscaledValue(), "$label coefficient")
+@@ -37,8 +28,7 @@
+     }
+ 
+     @Test fun finiteNonzeroNullAndValidControls() {
+-        for (value in listOf(0.1, 1.0, -1.25, Double.MIN_VALUE, Double.MAX_VALUE))
+-            assertFailsWith<NullPointerException>("bits=${value.toRawBits()}") { BigDecimal(value, null) }
++        // Five finite null entries are retained at the Java constructor boundary.
+         // Exact binary fractions have independently known decimal coefficients/scales.
+         for ((value, fields) in listOf(1.0 to ("1" to 0), -1.0 to ("-1" to 0),
+             0.5 to ("5" to 1), -1.25 to ("-125" to 2))) {
+@@ -67,7 +57,7 @@
+     @Test fun retainedNonfiniteValidationStaging() {
+         // Historical staging controls only; these competing-invalid inputs do not set a global order.
+         for (value in listOf(Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY)) {
+-            assertFailsWith<NumberFormatException> { BigDecimal(value, null) }
++            // The three nonfinite/null competing-invalid observations are JVM diagnostics.
+             assertFailsWith<NumberFormatException> { BigDecimal(value) }
+             for (mode in RoundingMode.entries)
+                 assertFailsWith<NumberFormatException> { BigDecimal(value, MathContext(7, mode)) }
+diff -ruN /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/NullPrecedenceOracleTest.kt src/commonTest/kotlin/io/heapy/krogu/math/NullPrecedenceOracleTest.kt
+--- /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/NullPrecedenceOracleTest.kt	2026-10-15 13:38:15.957569357 +0300
++++ src/commonTest/kotlin/io/heapy/krogu/math/NullPrecedenceOracleTest.kt	1970-01-01 03:00:00.000000000 +0300
+@@ -1,67 +0,0 @@
+-package io.heapy.krogu.math
+-
+-import kotlin.test.*
+-
+-@Suppress("DEPRECATION")
+-class NullPrecedenceOracleTest {
+-    @Test fun nullAndInvalidArgumentPrecedenceAcrossPlatforms() {
+-        val expected = nullPrecedenceExpected().iterator()
+-        // Retain these exact frozen observations; the public null contract requires NPE.
+-        val zeroSqrtObservations = mapOf("sqrt/null context 0" to "0", "sqrt/null context 0.00" to "0.0")
+-        val zeroDoubleObservations = mapOf("double/null context -0.0" to "0", "double/null context 0.0" to "0")
+-        val selected = mutableSetOf<String>()
+-        val selectedDoubles = mutableSetOf<String>()
+-        var count = 0
+-        fun verify(label: String, action: () -> Any?) {
+-            assertTrue(expected.hasNext(), "Oracle ended before $label")
+-            val actual = try { action().toString() } catch (e: Exception) { "!${e::class.simpleName}" }
+-            val observed = expected.next()
+-            if (label in zeroSqrtObservations) {
+-                assertTrue(selected.add(label), "Duplicate zero/null key: $label")
+-                assertEquals(zeroSqrtObservations.getValue(label), observed, "Frozen observation: $label")
+-                println("$label frozen=$observed required=!NullPointerException actual=$actual")
+-                assertEquals("!NullPointerException", actual, "$count: $label public null contract")
+-            } else if (label in zeroDoubleObservations) {
+-                assertTrue(selectedDoubles.add(label), "Duplicate signed-zero/null key: $label")
+-                assertEquals(zeroDoubleObservations.getValue(label), observed, "Frozen observation: $label")
+-                println("$label frozen=$observed required=!NullPointerException actual=$actual")
+-                assertEquals("!NullPointerException", actual, "$count: $label public null contract")
+-            } else assertEquals(observed, actual, "$count: $label")
+-            count++
+-        }
+-        val integers = listOf(-3, -1, 0, 1, 2, 7, 8, 9, 31, 32, 36, 37)
+-        for (sign in integers) for (off in integers) for (len in integers)
+-            verify("signed null bytes $sign,$off,$len") { BigInteger(sign, null, off, len) }
+-        for (a in listOf(-10L, -1, 0, 1, 10)) for (m in listOf(-10L, -1, 0, 1, 10))
+-            verify("null exponent $a,$m") { BigInteger.valueOf(a).modPow(null, BigInteger.valueOf(m)) }
+-        for (text in listOf("", "-", "1.0", "1E+", "NaN", "0", "1", "-1", "UP", "HALF_EVEN", "precision=7 roundingMode=UP"))
+-            verify("string/null context [$text]") { BigDecimal(text, null) }
+-        for (d in listOf(Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, -0.0, 0.0, 0.1, 1.0)) {
+-            // Keep the signed-zero input keys stable across platform Double formatting.
+-            val label = when (d.toRawBits()) {
+-                Long.MIN_VALUE -> "double/null context -0.0"
+-                0L -> "double/null context 0.0"
+-                else -> "double/null context $d"
+-            }
+-            verify(label) { BigDecimal(d, null) }
+-        }
+-        for (text in listOf("", "0", ".", "1.00"))
+-            verify("chars/null context [$text]") { BigDecimal(text.toCharArray(), null) }
+-        for (text in listOf("", "0", ".", "1.00")) for (off in integers) for (len in integers)
+-            verify("char slice/null context [$text],$off,$len") { BigDecimal(text.toCharArray(), off, len, null) }
+-        val decimals = listOf("-10.00", "-1.01", "0", "0.00", "1", "1.00", "10.10")
+-        for (text in decimals) verify("sqrt/null context $text") { BigDecimal(text).sqrt(null) }
+-        for (text in decimals) for (mode in integers)
+-            verify("legacy null divide $text,$mode") { BigDecimal(text).divide(null, mode) }
+-        for (text in decimals) for (scale in integers) for (mode in integers)
+-            verify("legacy null divide $text,$scale,$mode") { BigDecimal(text).divide(null, scale, mode) }
+-        for (precision in integers) verify("context/null rounding $precision") { MathContext(precision, null) }
+-        assertEquals(3462, count)
+-        assertEquals(zeroSqrtObservations.keys, selected)
+-        assertEquals(2, selected.size)
+-        assertEquals(zeroDoubleObservations.keys, selectedDoubles)
+-        assertEquals(2, selectedDoubles.size)
+-        assertEquals(3458, count - selected.size - selectedDoubles.size)
+-        assertFalse(expected.hasNext(), "Unconsumed oracle outcomes")
+-    }
+-}
+diff -ruN /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/OddModulusContext538Test.kt src/commonTest/kotlin/io/heapy/krogu/math/OddModulusContext538Test.kt
+--- /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/OddModulusContext538Test.kt	2026-10-15 13:38:15.957935105 +0300
++++ src/commonTest/kotlin/io/heapy/krogu/math/OddModulusContext538Test.kt	2026-10-15 13:42:02.622194661 +0300
+@@ -157,8 +157,7 @@
+         val computedOne = BigInteger("16").modPow(two, m)
+         assertEquals(one, computedOne)
+         assertNotSame(one, computedOne)
+-        assertFailsWith<ArithmeticException> { a.modPow(null, BigInteger.ZERO) }
+-        assertFailsWith<NullPointerException> { a.modPow(null, m) }
++        // Two null exponent entries retained in Validation578StandaloneTest (JVM).
+ 
+         val trace = mutableListOf<String>()
+         val source = object : BigInteger("3") {
+diff -ruN /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt
+--- /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt	2026-10-15 13:38:15.958633352 +0300
++++ src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt	2026-10-15 13:43:55.174630729 +0300
+@@ -29,7 +29,14 @@
+         val observedFiniteKeys = mutableSetOf<List<String>>()
+         var ordinaryMismatchCount = 0
+         val ordinaryMismatchExamples = mutableListOf<String>()
++        val rngRows = mutableSetOf<List<String>>()
++        val rngOrdinals = mutableListOf<Int>()
+         for ((index, v) in oracleVectors().withIndex()) {
++            if (v[0] == "R") {
++                assertTrue(rngRows.add(v.take(6)), "duplicate RNG key at $index")
++                rngOrdinals += index
++                continue // Exact 25-row JVM counterpart: Validation578RngTest.
++            }
+             val actual = try {
+                 val result = evaluate(v)
+                 if (result is Array<*>) result.joinToString("|") else result.toString()
+@@ -87,6 +94,7 @@
+             }
+         }
+         assertEquals(128, powKeys.size)
++        Validation578RngRows.assertPartition(rngRows, rngOrdinals)
+         assertEquals(powKeys, observedPowKeys, "all original pow boundary observations remain represented")
+         assertEquals(4, truthfulScalePrefixes.size)
+         assertEquals(truthfulScalePrefixes.keys, observedTruthfulScaleKeys, "all four task566 truthful observations remain represented")
+@@ -485,16 +493,6 @@
+             val value = object : BigInteger(v[2]) { override fun toLong(): Long = v[3].toLong() }
+             return "${value.toInt()}|${value.toDouble().toBits()}|${value.toFloat().toBits()}"
+         }
+-        if (v[0] == "R") {
+-            val bits = v[2].toInt()
+-            val random: PlatformRandom? = null
+-            return when (op) {
+-                "random" -> BigInteger(bits, random)
+-                "prime" -> BigInteger(bits, v[3].toInt(), random)
+-                "probablePrime" -> BigInteger.probablePrime(bits, random)
+-                else -> error("Unknown random operation $op")
+-            }
+-        }
+         if (v[0] == "B") {
+             val bytes = if (v[2].isEmpty()) byteArrayOf() else v[2].split(',').map { it.toByte() }.toByteArray()
+             return if (op == "twos") BigInteger(bytes, p, v[3].toInt()) else BigInteger(v[5].toInt(), bytes, p, v[3].toInt())
+diff -ruN /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/RandomIntegerDistributionTest.kt src/commonTest/kotlin/io/heapy/krogu/math/RandomIntegerDistributionTest.kt
+--- /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/RandomIntegerDistributionTest.kt	2026-10-15 13:38:15.959031225 +0300
++++ src/commonTest/kotlin/io/heapy/krogu/math/RandomIntegerDistributionTest.kt	2026-10-15 13:47:57.076596543 +0300
+@@ -7,6 +7,20 @@
+ import kotlin.test.assertTrue
+ 
+ class RandomIntegerDistributionTest {
++    @Test fun zeroBitsDoesNotDrawOrAdvanceSeededRandom() {
++        var draws = 0
++        val counted = object : Random() {
++            override fun nextBits(bitCount: Int): Int { draws++; return 0 }
++            override fun nextBytes(array: ByteArray): ByteArray { draws++; return array }
++        }
++        assertEquals(BigInteger.ZERO, BigInteger(0, counted))
++        assertEquals(0, draws)
++        val afterZero = Random(42)
++        val untouched = Random(42)
++        assertEquals(BigInteger.ZERO, BigInteger(0, afterZero))
++        assertEquals(BigInteger(128, untouched), BigInteger(128, afterZero))
++    }
++
+     private class PayloadRandom(var payload: Int) : Random() {
+         override fun nextBits(bitCount: Int): Int = error("Expected byte sampling")
+         override fun nextBytes(array: ByteArray): ByteArray {
+diff -ruN /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/Validation578RngRows.kt src/commonTest/kotlin/io/heapy/krogu/math/Validation578RngRows.kt
+--- /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/Validation578RngRows.kt	1970-01-01 03:00:00.000000000 +0300
++++ src/commonTest/kotlin/io/heapy/krogu/math/Validation578RngRows.kt	2026-10-15 13:44:55.716153386 +0300
+@@ -0,0 +1,20 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math
++
++import kotlin.test.assertEquals
++
++/** Input-only common/JVM partition, independent of observed exceptions. */
++internal object Validation578RngRows {
++    val keys: Set<List<String>> = buildSet {
++        for (bits in -1..3) {
++            add(listOf("R", "random", "$bits", "0", "0", "HALF_EVEN"))
++            add(listOf("R", "probablePrime", "$bits", "0", "0", "HALF_EVEN"))
++            for (certainty in -1..1) add(listOf("R", "prime", "$bits", "$certainty", "0", "HALF_EVEN"))
++        }
++    }
++    fun assertPartition(seen: Set<List<String>>, ordinals: List<Int>) {
++        assertEquals(25, keys.size)
++        assertEquals(keys, seen)
++        assertEquals((75613..75637).toList(), ordinals)
++    }
++}
+diff -ruN /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/ValueIdentityContractTest.kt src/commonTest/kotlin/io/heapy/krogu/math/ValueIdentityContractTest.kt
+--- /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/ValueIdentityContractTest.kt	2026-10-15 13:38:15.959637722 +0300
++++ src/commonTest/kotlin/io/heapy/krogu/math/ValueIdentityContractTest.kt	2026-10-15 13:42:02.659231033 +0300
+@@ -246,7 +246,7 @@
+             equalityClass(constant, MathContext(precision, mode), MathContext(constant.toString()))
+         }
+         assertFailsWith<IllegalArgumentException> { MathContext(-1) }
+-        assertFailsWith<NullPointerException> { MathContext(1, null) }
++        // Null rounding mode entry retained in Validation578StandaloneTest (JVM).
+     }
+ 
+     @Suppress("DEPRECATION")
+diff -ruN /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt
+--- /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt	2026-10-15 13:38:15.959906304 +0300
++++ src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt	2026-10-15 13:42:02.640688784 +0300
+@@ -178,8 +178,7 @@
+             assertFields("0", 0, BigDecimal(0L, mc))
+             assertFields("0", 0, BigDecimal(0.0, mc))
+         }
+-        assertFailsWith<NullPointerException> { BigDecimal("0.00", null) }
+-        assertFailsWith<NullPointerException> { BigDecimal("0.00".toCharArray(), null) }
++        // These two constructor null entries are retained in Validation578StandaloneTest (JVM).
+     }
+ 
+     @Test fun cancellationAndZeroAdditionRetainPreferredScale() {
+diff -ruN /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/ZeroSqrtNull568Test.kt src/commonTest/kotlin/io/heapy/krogu/math/ZeroSqrtNull568Test.kt
+--- /private/tmp/task578-original/src/commonTest/kotlin/io/heapy/krogu/math/ZeroSqrtNull568Test.kt	2026-10-15 13:38:15.960190011 +0300
++++ src/commonTest/kotlin/io/heapy/krogu/math/ZeroSqrtNull568Test.kt	2026-10-15 13:48:19.435262359 +0300
+@@ -13,8 +13,8 @@
+         override fun scale() = super.scale()
+         override fun unscaledValue() = super.unscaledValue()
+         override fun stripTrailingZeros() = super.stripTrailingZeros()
+-        override fun sqrt(mc: MathContext?) = super.sqrt(mc)
+-        fun inheritedRoot(mc: MathContext?) = super.sqrt(mc)
++        override fun sqrt(mc: MathContext) = super.sqrt(mc)
++        fun inheritedRoot(mc: MathContext) = super.sqrt(mc)
+     }
+ 
+     // Literal preferred scales, including negative odd scales (division toward zero).
+@@ -24,17 +24,7 @@
+         (Int.MAX_VALUE - 1) to 1073741823, Int.MAX_VALUE to 1073741823,
+     )
+ 
+-    @Test fun ordinaryTruthfulAndCallerSuperZerosRequireContext() {
+-        for (text in listOf("0", "0.00"))
+-            assertFailsWith<NullPointerException>(text) { BigDecimal(text).sqrt(null) }
+-        for ((scale, _) in zeroScales) {
+-            val ordinary = BigDecimal(BigInteger.ZERO, scale)
+-            val truthful = Truthful(BigInteger.ZERO, scale)
+-            assertFailsWith<NullPointerException>("ordinary zero@$scale") { ordinary.sqrt(null) }
+-            assertFailsWith<NullPointerException>("truthful zero@$scale") { truthful.sqrt(null) }
+-            assertFailsWith<NullPointerException>("caller super zero@$scale") { truthful.inheritedRoot(null) }
+-        }
+-    }
++    // The 35 null entries are preserved by Validation578StandaloneTest on the JVM.
+ 
+     @Test fun validContextsKeepZeroAndPreferredScale() {
+         for ((scale, preferred) in zeroScales) {
+@@ -52,17 +42,7 @@
+     }
+ 
+     @Test fun nonzeroAndNegativeEntryControlsRemain() {
+-        for (text in listOf("4", "2")) {
+-            val truthful = Truthful(BigInteger(text), 0)
+-            assertFailsWith<NullPointerException>(text) { BigDecimal(text).sqrt(null) }
+-            assertFailsWith<NullPointerException>("truthful $text") { truthful.sqrt(null) }
+-            assertFailsWith<NullPointerException>("caller super $text") { truthful.inheritedRoot(null) }
+-        }
+-        // Retained competing-invalid observation; this does not impose a global error order.
+-        val negative = Truthful(BigInteger("-4"), 0)
+-        assertFailsWith<ArithmeticException> { BigDecimal("-4").sqrt(null) }
+-        assertFailsWith<ArithmeticException> { negative.sqrt(null) }
+-        assertFailsWith<ArithmeticException> { negative.inheritedRoot(null) }
++        // Six nonzero and three competing-invalid null entries move to the JVM ledger.
+         for (mode in RoundingMode.entries) {
+             val context = MathContext(7, mode)
+             val result = BigDecimal("4.00").sqrt(context)
+@@ -72,18 +52,18 @@
+         }
+     }
+ 
+-    @Test fun explicitOverridesKeepResultAndExceptionIdentityIncludingNullContext() {
++    @Test fun explicitOverridesKeepResultAndExceptionIdentity() {
+         val marker = BigDecimal("7.00")
+         val failure = IllegalStateException("caller owned")
+-        for (context in listOf(null, MathContext.UNLIMITED, MathContext(7, RoundingMode.HALF_EVEN))) {
++        for (context in listOf(MathContext.UNLIMITED, MathContext(7, RoundingMode.HALF_EVEN))) {
+             val replacement: BigDecimal = object : BigDecimal("0.00") {
+-                override fun sqrt(mc: MathContext?): BigDecimal {
++                override fun sqrt(mc: MathContext): BigDecimal {
+                     assertSame(context, mc)
+                     return marker
+                 }
+             }
+             val throwing: BigDecimal = object : BigDecimal("0.00") {
+-                override fun sqrt(mc: MathContext?): BigDecimal {
++                override fun sqrt(mc: MathContext): BigDecimal {
+                     assertSame(context, mc)
+                     throw failure
+                 }
+diff -ruN /private/tmp/task578-original/src/jvmTest/java/io/heapy/krogu/math/IntegerModPowNullTest.java src/jvmTest/java/io/heapy/krogu/math/IntegerModPowNullTest.java
+--- /private/tmp/task578-original/src/jvmTest/java/io/heapy/krogu/math/IntegerModPowNullTest.java	2026-10-15 13:38:15.962831958 +0300
++++ src/jvmTest/java/io/heapy/krogu/math/IntegerModPowNullTest.java	2026-10-15 13:44:55.822400942 +0300
+@@ -55,12 +55,27 @@
+             }
+     }
+     @Test public void nullArgumentPrecedence(){
++        java.util.Set<String> keys = new java.util.LinkedHashSet<>();
++        int nullExponent = 0;
+         for(String a:new String[]{"0","3"})for(String e:new String[]{null,"0","-1"})for(String m:new String[]{null,"-1","0","1","17"}){
+             StringBuilder et=new StringBuilder(),at=new StringBuilder();
+             Reference ra=new Reference(a,"A",et,"mod",false),re=e==null?null:new Reference(e,"E",et,"neg",false),rm=m==null?null:new Reference(m,"M",et,"",false);
+             Actual aa=new Actual(a,"A",at,"mod",false),ae=e==null?null:new Actual(e,"E",at,"neg",false),am=m==null?null:new Actual(m,"M",at,"",false);
+-            assertEquals(a+"/"+e+"/"+m,outcome(()->ra.inherited(re,rm),et),outcome(()->aa.inherited(ae,am),at));
++            String key=a+"/"+e+"/"+m;
++            org.junit.Assert.assertTrue(keys.add(key));
++            String host=outcome(()->ra.inherited(re,rm),et), own=outcome(()->aa.inherited(ae,am),at);
++            if(e==null) {
++                nullExponent++;
++                System.out.println("modPow578 ordinal="+(keys.size()-1)+" key="+key+" class="
++                    +(m==null || m.equals("-1") || m.equals("0") ? "compound-invalid-priority" : "ordinary-null")
++                    +" host="+host+" own="+own);
++                if(m!=null && (m.equals("1") || m.equals("17")))
++                    assertEquals(key,"!NullPointerException",own.substring(0,own.indexOf('|')));
++                else org.junit.Assert.assertTrue(key,own.startsWith("!"));
++            } else assertEquals(key,host,own);
+         }
++        assertEquals(30, keys.size());
++        assertEquals(10, nullExponent);
+     }
+     @Test public void primalityParityCallbackPrecedesWitnesses(){
+         for(String text:new String[]{"0","1","2","97","65537","2147483647","-97"}) {
+diff -ruN /private/tmp/task578-original/src/jvmTest/java/io/heapy/krogu/math/JavaApiContractTest.java src/jvmTest/java/io/heapy/krogu/math/JavaApiContractTest.java
+--- /private/tmp/task578-original/src/jvmTest/java/io/heapy/krogu/math/JavaApiContractTest.java	2026-10-15 13:38:15.963172373 +0300
++++ src/jvmTest/java/io/heapy/krogu/math/JavaApiContractTest.java	2026-10-15 13:48:19.406567243 +0300
+@@ -62,12 +62,32 @@
+     }
+     @Test public void nullableRandomCallsRemainUnambiguous() {
+         // Like JDK, (int, null) is ambiguous with the sign/magnitude constructor.
+-        assertThrows(NullPointerException.class, () -> new BigInteger(8, (Random) null));
++        Random random = null;
++        assertThrows(NullPointerException.class, () -> new BigInteger(8, random));
+         assertThrows(NullPointerException.class, () -> new BigInteger(8, 100, null));
+         assertThrows(NullPointerException.class, () -> BigInteger.probablePrime(8, null));
+-        assertEquals(BigInteger.ZERO, new BigInteger(0, (Random) null));
+-        assertThrows(IllegalArgumentException.class, () -> new BigInteger(-1, (Random) null));
+-        assertThrows(ArithmeticException.class, () -> new BigInteger(1, 100, null));
+-        assertThrows(ArithmeticException.class, () -> BigInteger.probablePrime(1, null));
++        assertThrows(NullPointerException.class, () -> new BigInteger(0, random));
++        // Original own/JDK zero-null result was 0; the own public contract now requires NPE.
++        System.out.println("RNG zero/null frozenOwn=0 frozenHost=0 requiredOwn=NullPointerException");
++        randomDiagnostic("random/-1", "IllegalArgumentException", () -> new BigInteger(-1, random));
++        randomDiagnostic("prime/1/100", "ArithmeticException", () -> new BigInteger(1, 100, null));
++        randomDiagnostic("probablePrime/1", "ArithmeticException", () -> BigInteger.probablePrime(1, null));
++    }
++    private static void randomDiagnostic(String key, String frozen, java.util.concurrent.Callable<?> action) {
++        Exception e = assertThrows(Exception.class, action::call);
++        System.out.println(key + " compound-invalid-priority frozen=" + frozen
++            + " actual=" + e.getClass().getSimpleName() + " message=" + e.getMessage());
++    }
++    @Test public void zeroBitsConsumesNoRandomness() {
++        int[] draws = {0};
++        Random counted = new Random(42) {
++            @Override public void nextBytes(byte[] bytes) { draws[0]++; super.nextBytes(bytes); }
++            @Override protected int next(int bits) { draws[0]++; return super.next(bits); }
++        };
++        assertEquals(BigInteger.ZERO, new BigInteger(0, counted));
++        assertEquals(0, draws[0]);
++        Random afterZero = new Random(42), untouched = new Random(42);
++        assertEquals(BigInteger.ZERO, new BigInteger(0, afterZero));
++        assertEquals(new BigInteger(128, untouched), new BigInteger(128, afterZero));
+     }
+ }
+diff -ruN /private/tmp/task578-original/src/jvmTest/java/io/heapy/krogu/math/OddModulusContext538NullTest.java src/jvmTest/java/io/heapy/krogu/math/OddModulusContext538NullTest.java
+--- /private/tmp/task578-original/src/jvmTest/java/io/heapy/krogu/math/OddModulusContext538NullTest.java	2026-10-15 13:38:15.963323581 +0300
++++ src/jvmTest/java/io/heapy/krogu/math/OddModulusContext538NullTest.java	2026-10-15 13:44:55.801841786 +0300
+@@ -7,9 +7,11 @@
+ 
+ /** Java-only returned-null controls at the unchanged public/private entry boundary. */
+ public class OddModulusContext538NullTest {
+-    @Test public void validationPrecedesNullableExponent() {
++    @Test public void nullExponentAndInvalidModulusAreSeparateContracts() {
+         BigInteger a = new BigInteger("3");
+-        assertThrows(ArithmeticException.class, () -> a.modPow(null, BigInteger.ZERO));
++        Exception competing = assertThrows(Exception.class, () -> a.modPow(null, BigInteger.ZERO));
++        System.out.println("538 3/null/0 compound-invalid-priority frozen=ArithmeticException actual="
++            + competing.getClass().getSimpleName() + " message=" + competing.getMessage());
+         assertThrows(NullPointerException.class, () -> a.modPow(null, new BigInteger("17")));
+         assertThrows(NullPointerException.class, () -> a.modPow(BigInteger.TWO, null));
+     }
+diff -ruN /private/tmp/task578-original/src/jvmTest/java/io/heapy/krogu/math/Validation578Boundary.java src/jvmTest/java/io/heapy/krogu/math/Validation578Boundary.java
+--- /private/tmp/task578-original/src/jvmTest/java/io/heapy/krogu/math/Validation578Boundary.java	1970-01-01 03:00:00.000000000 +0300
++++ src/jvmTest/java/io/heapy/krogu/math/Validation578Boundary.java	2026-10-15 13:48:19.377344626 +0300
+@@ -0,0 +1,46 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math;
++
++/** Actual Java entry points. No casts, null assertions, or manufactured exceptions. */
++public final class Validation578Boundary {
++    private Validation578Boundary() {}
++    public static BigInteger signedBytes(int sign, byte[] bytes, int off, int len) {
++        return new BigInteger(sign, bytes, off, len);
++    }
++    public static BigInteger modPow(BigInteger receiver, BigInteger exponent, BigInteger modulus) {
++        return receiver.modPow(exponent, modulus);
++    }
++    public static BigDecimal decimal(String value, MathContext context) { return new BigDecimal(value, context); }
++    public static BigDecimal decimal(double value, MathContext context) { return new BigDecimal(value, context); }
++    public static BigDecimal decimal(char[] value, MathContext context) { return new BigDecimal(value, context); }
++    public static BigDecimal decimal(char[] value, int off, int len, MathContext context) {
++        return new BigDecimal(value, off, len, context);
++    }
++    public static BigDecimal sqrt(BigDecimal receiver, MathContext context) { return receiver.sqrt(context); }
++    public static BigDecimal divide(BigDecimal receiver, BigDecimal divisor, int mode) { return receiver.divide(divisor, mode); }
++    public static BigDecimal divide(BigDecimal receiver, BigDecimal divisor, int scale, int mode) {
++        return receiver.divide(divisor, scale, mode);
++    }
++    public static MathContext context(int precision, RoundingMode mode) { return new MathContext(precision, mode); }
++    public static BigInteger random(String operation, int bits, int certainty) {
++        java.util.Random random = null;
++        return switch (operation) {
++            case "random" -> new BigInteger(bits, random);
++            case "prime" -> new BigInteger(bits, certainty, random);
++            case "probablePrime" -> BigInteger.probablePrime(bits, random);
++            default -> throw new AssertionError("Unknown RNG operation " + operation);
++        };
++    }
++
++    public static class TruthfulRoot extends BigDecimal {
++        public TruthfulRoot(BigInteger coefficient, int scale) { super(coefficient, scale); }
++        @Override public int signum() { return super.signum(); }
++        @Override public int precision() { return super.precision(); }
++        @Override public int scale() { return super.scale(); }
++        @Override public BigInteger unscaledValue() { return super.unscaledValue(); }
++        @Override public BigDecimal stripTrailingZeros() { return super.stripTrailingZeros(); }
++        @Override public BigDecimal sqrt(MathContext context) { return super.sqrt(context); }
++        // This must remain an invokespecial Java super call, never reflection.
++        public BigDecimal inheritedRoot(MathContext context) { return super.sqrt(context); }
++    }
++}
+diff -ruN /private/tmp/task578-original/src/jvmTest/java/io/heapy/krogu/math/Validation578StandaloneTest.java src/jvmTest/java/io/heapy/krogu/math/Validation578StandaloneTest.java
+--- /private/tmp/task578-original/src/jvmTest/java/io/heapy/krogu/math/Validation578StandaloneTest.java	1970-01-01 03:00:00.000000000 +0300
++++ src/jvmTest/java/io/heapy/krogu/math/Validation578StandaloneTest.java	2026-10-15 13:43:55.154271363 +0300
+@@ -0,0 +1,113 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math;
++
++import java.util.LinkedHashSet;
++import java.util.Set;
++import java.util.concurrent.Callable;
++import org.junit.Test;
++import static org.junit.Assert.*;
++
++/** Exact counterparts of the 73 displaced standalone common null executions. */
++public class Validation578StandaloneTest {
++    private final Set<String> keys = new LinkedHashSet<>();
++    private void key(String key) {
++        assertTrue("duplicate " + key, keys.add(key));
++        System.out.println("standalone578 ordinal=" + (keys.size() - 1) + " key=" + key);
++    }
++    private void npe(String key, Callable<?> action) {
++        key(key);
++        assertThrows(key, NullPointerException.class, action::call);
++    }
++    private void diagnostic(String key, String historical, Callable<?> action) {
++        key(key);
++        Exception failure = assertThrows(key, Exception.class, action::call);
++        System.out.println(key + " class=compound-invalid-priority frozen=" + historical
++            + " actual=" + failure.getClass().getSimpleName() + " message=" + failure.getMessage());
++    }
++    private void direct(String prefix, String text, String message) {
++        BigDecimal marker = new BigDecimal("7.00");
++        IllegalStateException failure = new IllegalStateException(message);
++        int[] entries = {0};
++        BigDecimal replacement = new BigDecimal(text) {
++            @Override public BigDecimal sqrt(MathContext context) {
++                assertNull(context); entries[0]++; return marker;
++            }
++        };
++        BigDecimal throwing = new BigDecimal(text) {
++            @Override public BigDecimal sqrt(MathContext context) { assertNull(context); throw failure; }
++        };
++        key(prefix + "/return");
++        assertSame(marker, replacement.sqrt(null));
++        assertEquals(1, entries[0]);
++        key(prefix + "/throw");
++        assertSame(failure, assertThrows(IllegalStateException.class, () -> throwing.sqrt(null)));
++    }
++
++    @Test public void everyDisplacedStandaloneExecution() {
++        for (String text : new String[]{"0", "0.00"})
++            npe("568/text/" + text, () -> new BigDecimal(text).sqrt(null));
++        int[] scales = {Integer.MIN_VALUE, Integer.MIN_VALUE + 1, -3, -2, -1, 0, 1, 2, 3,
++            Integer.MAX_VALUE - 1, Integer.MAX_VALUE};
++        for (int scale : scales) {
++            BigDecimal ordinary = new BigDecimal(BigInteger.ZERO, scale);
++            Validation578Boundary.TruthfulRoot truthful = new Validation578Boundary.TruthfulRoot(BigInteger.ZERO, scale);
++            npe("568/zero/ordinary/" + scale, () -> ordinary.sqrt(null));
++            npe("568/zero/truthful/" + scale, () -> truthful.sqrt(null));
++            npe("568/zero/super/" + scale, () -> truthful.inheritedRoot(null));
++        }
++        assertEquals(35, keys.size());
++        for (String text : new String[]{"4", "2"}) {
++            Validation578Boundary.TruthfulRoot truthful = new Validation578Boundary.TruthfulRoot(new BigInteger(text), 0);
++            npe("568/nonzero/ordinary/" + text, () -> new BigDecimal(text).sqrt(null));
++            npe("568/nonzero/truthful/" + text, () -> truthful.sqrt(null));
++            npe("568/nonzero/super/" + text, () -> truthful.inheritedRoot(null));
++        }
++        Validation578Boundary.TruthfulRoot negative = new Validation578Boundary.TruthfulRoot(new BigInteger("-4"), 0);
++        diagnostic("568/negative/ordinary", "ArithmeticException", () -> new BigDecimal("-4").sqrt(null));
++        diagnostic("568/negative/truthful", "ArithmeticException", () -> negative.sqrt(null));
++        diagnostic("568/negative/super", "ArithmeticException", () -> negative.inheritedRoot(null));
++        direct("568/direct/0.00", "0.00", "caller owned");
++        assertEquals(46, keys.size());
++        Set<Long> bits = new LinkedHashSet<>();
++        for (double value : new double[]{0.0, -0.0}) {
++            assertTrue(bits.add(Double.doubleToRawLongBits(value)));
++            npe("569/zero/" + Double.doubleToRawLongBits(value), () -> new BigDecimal(value, null));
++        }
++        assertEquals(Set.of(0L, Long.MIN_VALUE), bits);
++        for (double value : new double[]{0.1, 1.0, -1.25, Double.MIN_VALUE, Double.MAX_VALUE})
++            npe("569/finite/" + Double.doubleToRawLongBits(value), () -> new BigDecimal(value, null));
++        for (double value : new double[]{Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY})
++            diagnostic("569/nonfinite/" + Double.doubleToRawLongBits(value), "NumberFormatException", () -> new BigDecimal(value, null));
++        assertEquals(56, keys.size());
++        npe("563/root/4", () -> new BigDecimal("4").sqrt(null));
++        diagnostic("563/root/-4", "ArithmeticException", () -> new BigDecimal("-4").sqrt(null));
++        npe("563/root/zero-min-scale", () -> new BigDecimal(BigInteger.ZERO, Integer.MIN_VALUE).sqrt(null));
++        for (String text : new String[]{"1", "4.00", "0.0004"})
++            direct("563/callback/" + text, text, "caller-owned root");
++        direct("565/direct/4.001", "4.001", "caller-owned midpoint root");
++        npe("565/super/4.001", () -> new Validation578Boundary.TruthfulRoot(new BigInteger("4001"), 3).inheritedRoot(null));
++        diagnostic("538/modPow/3/null/0", "ArithmeticException", () -> new BigInteger("3").modPow(null, BigInteger.ZERO));
++        npe("538/modPow/3/null/17", () -> new BigInteger("3").modPow(null, new BigInteger("17")));
++        npe("567/string/0.00", () -> new BigDecimal("0.00", null));
++        npe("567/chars/0.00", () -> new BigDecimal("0.00".toCharArray(), null));
++        npe("identity/context/1", () -> new MathContext(1, null));
++        assertEquals(73, keys.size());
++    }
++
++    @Test public void callerModPowOverrideAndActualSuperAreDistinct() {
++        BigInteger marker = new BigInteger("7");
++        IllegalStateException failure = new IllegalStateException("caller modPow");
++        class Caller extends BigInteger {
++            Caller() { super("3"); }
++            @Override public BigInteger modPow(BigInteger e, BigInteger m) { assertNull(e); return marker; }
++            BigInteger parent(BigInteger e, BigInteger m) { return super.modPow(e, m); }
++        }
++        Caller caller = new Caller();
++        assertSame(marker, caller.modPow(null, BigInteger.TEN));
++        assertThrows(NullPointerException.class, () -> caller.parent(null, BigInteger.TEN));
++        BigInteger throwing = new BigInteger("3") {
++            @Override public BigInteger modPow(BigInteger e, BigInteger m) { assertNull(e); throw failure; }
++        };
++        assertSame(failure, assertThrows(IllegalStateException.class, () -> throwing.modPow(null, BigInteger.TEN)));
++    }
++}
+diff -ruN /private/tmp/task578-original/src/jvmTest/kotlin/io/heapy/krogu/math/DoubleZeroContext569DiagnosticTest.kt src/jvmTest/kotlin/io/heapy/krogu/math/DoubleZeroContext569DiagnosticTest.kt
+--- /private/tmp/task578-original/src/jvmTest/kotlin/io/heapy/krogu/math/DoubleZeroContext569DiagnosticTest.kt	2026-10-15 13:38:15.966944564 +0300
++++ src/jvmTest/kotlin/io/heapy/krogu/math/DoubleZeroContext569DiagnosticTest.kt	2026-10-15 13:47:57.026182680 +0300
+@@ -17,10 +17,11 @@
+     }
+ 
+     private data class Outcome(val coefficient: String? = null, val scale: Int? = null, val exception: String? = null)
+-    private fun observe(action: () -> Any): Outcome = try {
++    private fun observe(action: () -> Any?): Outcome = try {
+         when (val result = action()) {
+             is JD -> Outcome(result.unscaledValue().toString(), result.scale())
+             is BigDecimal -> Outcome(result.unscaledValue().toString(), result.scale())
++            null -> Outcome(exception = "returned-null")
+             else -> error("Unexpected result type")
+         }
+     } catch (e: Exception) { Outcome(exception = e.javaClass.simpleName) }
+@@ -33,7 +34,7 @@
+             val key = value.toRawBits()
+             assertTrue(seen.add(key), "Duplicate signed-zero bits: $key")
+             val rawHost = observe { JD(value, hostContext) }
+-            val actual = observe { BigDecimal(value, ownContext) }
++            val actual = observe { Validation578Boundary.decimal(value, ownContext) }
+             println("doubleBits=$key/null rawHost=$rawHost required=NullPointerException actual=$actual")
+             // Existing frozen null-oracle rows record zero for these two exact inputs.
+             assertEquals(Outcome("0", 0), rawHost, "$key historical host observation")
+@@ -62,11 +63,13 @@
+         // Literal historical observations from the unchanged seven-row Double/null oracle cohort.
+         for (value in listOf(Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, 0.1, 1.0)) {
+             val historical = if (value.isFinite()) "NullPointerException" else "NumberFormatException"
+-            val rawHost = observe { JD(value, null as JC?) }
+-            val actual = observe { BigDecimal(value, null) }
++            val hostContext: JC? = null
++            val rawHost = observe { JD(value, hostContext) }
++            val actual = observe { Validation578Boundary.decimal(value, null) }
+             println("doubleBits=${value.toRawBits()}/null rawHost=$rawHost actual=$actual")
+             assertEquals(Outcome(exception = historical), rawHost, "Historical host observation for $value")
+-            assertEquals(rawHost, actual, "Retained comparison for $value")
++            if (value.isFinite()) assertEquals(Outcome(exception = "NullPointerException"), actual, "$value null contract")
++            else assertTrue(actual.exception != null, "$value compound-invalid rejection; priority is diagnostic")
+         }
+         // Finite control with real rounding and a separately specified decimal result.
+         val rawHost = observe { JD(1.25, JC(2, JR.HALF_EVEN)) }
+diff -ruN /private/tmp/task578-original/src/jvmTest/kotlin/io/heapy/krogu/math/NullArgumentConformanceTest.kt src/jvmTest/kotlin/io/heapy/krogu/math/NullArgumentConformanceTest.kt
+--- /private/tmp/task578-original/src/jvmTest/kotlin/io/heapy/krogu/math/NullArgumentConformanceTest.kt	2026-10-15 13:38:15.967803393 +0300
++++ src/jvmTest/kotlin/io/heapy/krogu/math/NullArgumentConformanceTest.kt	2026-10-15 13:48:19.348747218 +0300
+@@ -12,6 +12,45 @@
+ 
+ /** Invoke actual Java signatures, so null reaches the library rather than a Kotlin caller cast. */
+ class NullArgumentConformanceTest {
++    // Exact owned JVM signatures and null parameter positions. No observed-result selection.
++    private val validationSlots = mapOf(
++        "BigInteger.new(int,byte[],int,int)" to 1,
++        "BigInteger.new(int,Random)" to 1,
++        "BigInteger.new(int,int,Random)" to 2,
++        "BigInteger.probablePrime(int,Random)" to 1,
++        "BigInteger.modPow(BigInteger,BigInteger)" to 0,
++        "BigDecimal.new(String,MathContext)" to 1,
++        "BigDecimal.new(char[],MathContext)" to 1,
++        "BigDecimal.new(char[],int,int,MathContext)" to 3,
++        "BigDecimal.new(double,MathContext)" to 1,
++        "BigDecimal.divide(BigDecimal,int)" to 0,
++        "BigDecimal.divide(BigDecimal,int,int)" to 0,
++        "BigDecimal.sqrt(MathContext)" to 0,
++        "MathContext.new(int,RoundingMode)" to 1,
++    )
++    private fun signature(owner: Class<*>, name: String, types: Array<Class<*>>) =
++        "${owner.simpleName}.$name(${types.joinToString(",") { it.simpleName }})"
++    private fun ordinaryValidation(key: String, receiver: Any?, args: List<Any?>): Boolean {
++        val slot = validationSlots.getValue(key)
++        if (args.withIndex().any { it.index != slot && it.value == null }) return false
++        return when (key) {
++            "BigInteger.new(int,byte[],int,int)" -> args[0] in listOf(-1, 0, 1) && (args[2] as Int) >= 0 && (args[3] as Int) >= 0
++            "BigInteger.new(int,Random)" -> (args[0] as Int) >= 0
++            "BigInteger.new(int,int,Random)", "BigInteger.probablePrime(int,Random)" -> (args[0] as Int) >= 2
++            "BigInteger.modPow(BigInteger,BigInteger)" -> (args[1] as JI).signum() > 0
++            "BigDecimal.new(String,MathContext)" -> args[0] in listOf("1.0", "0", "1", "-1")
++            "BigDecimal.new(char[],MathContext)" -> (args[0] as CharArray).concatToString() in listOf("0", "1.00")
++            "BigDecimal.new(char[],int,int,MathContext)" -> {
++                val chars = args[0] as CharArray; val off = args[1] as Int; val len = args[2] as Int
++                off >= 0 && len > 0 && off <= chars.size - len && chars.concatToString(off, off + len) != "."
++            }
++            "BigDecimal.new(double,MathContext)" -> (args[0] as Double).isFinite()
++            "BigDecimal.divide(BigDecimal,int)", "BigDecimal.divide(BigDecimal,int,int)" -> (args.last() as Int) in 0..7
++            "BigDecimal.sqrt(MathContext)" -> (receiver as JD).signum() >= 0
++            "MathContext.new(int,RoundingMode)" -> (args[0] as Int) >= 0
++            else -> error("Unclassified owned signature $key")
++        }
++    }
+     private val mappings: Map<Class<*>, Class<*>> = mapOf(JI::class.java to BigInteger::class.java,
+         JD::class.java to BigDecimal::class.java, JC::class.java to MathContext::class.java,
+         JR::class.java to RoundingMode::class.java)
+@@ -60,10 +99,23 @@
+         val zeroSqrtRows = mutableSetOf<String>()
+         val zeroDoubleRows = mutableSetOf<String>()
+         var comparisons = 0
++        val ownedCounts = linkedMapOf<String, Int>()
++        val ownedKeys = mutableSetOf<String>()
++        var ownedOrdinary = 0
+         fun compare(key: String, label: String, reference: () -> Any?, implementation: () -> Any?,
+-            zeroSqrtText: String? = null, zeroDoubleKey: String? = null) {
++            zeroSqrtText: String? = null, zeroDoubleKey: String? = null,
++            ownedSignature: String? = null, ordinary: Boolean = false) {
+             comparisons++
+             val expected = outcome(reference); val actual = outcome(implementation)
++            if (ownedSignature != null) {
++                assertTrue(ownedKeys.add("$ownedSignature/$label"), "duplicate owned reflection key")
++                ownedCounts[ownedSignature] = (ownedCounts[ownedSignature] ?: 0) + 1
++                println("578 signature=$ownedSignature key=$label class=${if (ordinary) "ordinary-null" else "compound-invalid-priority"} liveHost=$expected actual=$actual")
++                if (ordinary) {
++                    ownedOrdinary++
++                    assertEquals("!NullPointerException", actual, "$ownedSignature/$label public null contract")
++                } else assertTrue(actual.startsWith("!"), "$ownedSignature/$label must reject invalid inputs")
++            }
+             if (zeroSqrtText != null) {
+                 assertTrue(zeroSqrtRows.add(zeroSqrtText), "Duplicate zero/null receiver: $zeroSqrtText")
+                 println("$key $label liveHost=$expected required=!NullPointerException actual=$actual")
+@@ -76,7 +128,7 @@
+                 assertEquals("!NullPointerException", actual, "$key $label public null contract; liveHost=$expected")
+                 return
+             }
+-            if (expected != actual) {
++            if (ownedSignature == null && expected != actual) {
+                 val count = counts[key] ?: 0; counts[key] = count + 1
+                 if (count < 3) examples.add("$key $label expected=$expected actual=$actual")
+             }
+@@ -85,6 +137,8 @@
+             for (ctor in jdk.constructors) {
+                 val target = port.getConstructor(*ctor.parameterTypes.map { mappings[it] ?: it }.toTypedArray())
+                 for (args in cases(ctor.parameterTypes)) {
++                    val signature = signature(jdk, "new", ctor.parameterTypes)
++                    val owned = validationSlots[signature]?.let { args[it] == null } == true
+                     // Input-only selection: exact Double/context constructor and signed-zero bits.
+                     val zeroDoubleKey = if (jdk == JD::class.java &&
+                         ctor.parameterTypes.contentEquals(arrayOf(Double::class.javaPrimitiveType, JC::class.java)) &&
+@@ -98,7 +152,8 @@
+                     compare("${jdk.simpleName}.new(${ctor.parameterTypes.joinToString { it.simpleName }})",
+                         args.joinToString { canonical(it) },
+                         { ctor.newInstance(*args.toTypedArray()) }, { target.newInstance(*args.map(::adapt).toTypedArray()) },
+-                        zeroDoubleKey = zeroDoubleKey)
++                        zeroDoubleKey = zeroDoubleKey, ownedSignature = signature.takeIf { owned },
++                        ordinary = owned && ordinaryValidation(signature, null, args))
+                 }
+             }
+             val receivers: List<Any> = when (jdk) {
+@@ -111,6 +166,8 @@
+                 val target = port.getMethod(method.name, *method.parameterTypes.map { mappings[it] ?: it }.toTypedArray())
+                 val instances = if (Modifier.isStatic(method.modifiers)) listOf(null) else receivers
+                 for (receiver in instances) for (args in cases(method.parameterTypes)) {
++                    val signature = signature(jdk, method.name, method.parameterTypes)
++                    val owned = validationSlots[signature]?.let { args[it] == null } == true
+                     // Select by the exact public signature, ordinary receiver cohort and null input.
+                     val zeroSqrtText = if (jdk == JD::class.java && method.name == "sqrt" &&
+                         method.parameterTypes.contentEquals(arrayOf(JC::class.java)) && args == listOf(null) &&
+@@ -119,7 +176,8 @@
+                     compare("${jdk.simpleName}.${method.name}(${method.parameterTypes.joinToString { it.simpleName }})",
+                         "receiver=$receiver args=${args.joinToString { canonical(it) }}",
+                         { method.invoke(receiver, *args.toTypedArray()) },
+-                        { target.invoke(adapt(receiver), *args.map(::adapt).toTypedArray()) }, zeroSqrtText)
++                        { target.invoke(adapt(receiver), *args.map(::adapt).toTypedArray()) }, zeroSqrtText,
++                        ownedSignature = signature.takeIf { owned }, ordinary = owned && ordinaryValidation(signature, receiver, args))
+                 }
+             }
+         }
+@@ -127,7 +185,17 @@
+         assertEquals(2, zeroSqrtRows.size)
+         assertEquals(setOf("-0.0", "0.0"), zeroDoubleRows)
+         assertEquals(2, zeroDoubleRows.size)
++        assertEquals(mapOf(
++            "BigInteger.new(int,byte[],int,int)" to 1728, "BigInteger.new(int,Random)" to 12,
++            "BigInteger.new(int,int,Random)" to 144, "BigInteger.probablePrime(int,Random)" to 12,
++            "BigInteger.modPow(BigInteger,BigInteger)" to 30, "BigDecimal.new(String,MathContext)" to 12,
++            "BigDecimal.new(char[],MathContext)" to 5, "BigDecimal.new(char[],int,int,MathContext)" to 720,
++            "BigDecimal.new(double,MathContext)" to 7, "BigDecimal.divide(BigDecimal,int)" to 84,
++            "BigDecimal.divide(BigDecimal,int,int)" to 1008, "BigDecimal.sqrt(MathContext)" to 7,
++            "MathContext.new(int,RoundingMode)" to 12), ownedCounts)
++        assertEquals(3781, ownedKeys.size)
++        assertEquals(819, ownedOrdinary)
+         assertEquals(emptyMap(), counts, "$comparisons comparisons; discrepancies=$counts\n${examples.joinToString("\n")}")
+-        println("$comparisons null/invalid-argument comparisons: ${comparisons - zeroSqrtRows.size - zeroDoubleRows.size} retained host comparisons, ${zeroSqrtRows.size + zeroDoubleRows.size} public null requirements")
++        println("$comparisons null/invalid-argument comparisons: ${comparisons - ownedKeys.size} retained host comparisons, $ownedOrdinary owned null requirements, ${ownedKeys.size - ownedOrdinary} owned compound diagnostics")
+     }
+ }
+diff -ruN /private/tmp/task578-original/src/jvmTest/kotlin/io/heapy/krogu/math/NullPrecedenceOracleTest.kt src/jvmTest/kotlin/io/heapy/krogu/math/NullPrecedenceOracleTest.kt
+--- /private/tmp/task578-original/src/jvmTest/kotlin/io/heapy/krogu/math/NullPrecedenceOracleTest.kt	1970-01-01 03:00:00.000000000 +0300
++++ src/jvmTest/kotlin/io/heapy/krogu/math/NullPrecedenceOracleTest.kt	2026-10-15 13:48:49.667763190 +0300
+@@ -0,0 +1,96 @@
++package io.heapy.krogu.math
++
++import kotlin.test.*
++
++@Suppress("DEPRECATION")
++class NullPrecedenceOracleTest {
++    @Test fun exactFrozenRowsThroughJavaBoundaries() {
++        val expected = nullPrecedenceExpected().iterator()
++        // Retain these exact frozen observations; the public null contract requires NPE.
++        val zeroSqrtObservations = mapOf("sqrt/null context 0" to "0", "sqrt/null context 0.00" to "0.0")
++        val zeroDoubleObservations = mapOf("double/null context -0.0" to "0", "double/null context 0.0" to "0")
++        val selected = mutableSetOf<String>()
++        val selectedDoubles = mutableSetOf<String>()
++        var count = 0
++        val keys = mutableSetOf<String>()
++        val partitions = linkedMapOf<String, Int>()
++        var ordinary = 0
++        fun verify(label: String, validOtherInputs: Boolean, action: () -> Any?) {
++            assertTrue(expected.hasNext(), "Oracle ended before $label")
++            assertTrue(keys.add(label), "Duplicate row $count: $label")
++            val family = label.substringBefore(' ')
++            partitions[family] = (partitions[family] ?: 0) + 1
++            var message: String? = null
++            val actual = try { action().toString() } catch (e: Exception) { message = e.message; "!${e::class.simpleName}" }
++            val observed = expected.next()
++            println("ordinal=$count key=$label class=${if (validOtherInputs) "ordinary-null" else "compound-invalid-priority"} frozen=$observed actual=$actual message=$message")
++            if (validOtherInputs) {
++                ordinary++
++                assertEquals("!NullPointerException", actual, "$count: $label public null contract")
++            } else assertTrue(actual.startsWith("!"), "$count: $label must reject invalid inputs")
++            if (label in zeroSqrtObservations) {
++                assertTrue(selected.add(label), "Duplicate zero/null key: $label")
++                assertEquals(zeroSqrtObservations.getValue(label), observed, "Frozen observation: $label")
++                println("$label frozen=$observed required=!NullPointerException actual=$actual")
++                assertEquals("!NullPointerException", actual, "$count: $label public null contract")
++            } else if (label in zeroDoubleObservations) {
++                assertTrue(selectedDoubles.add(label), "Duplicate signed-zero/null key: $label")
++                assertEquals(zeroDoubleObservations.getValue(label), observed, "Frozen observation: $label")
++                println("$label frozen=$observed required=!NullPointerException actual=$actual")
++                assertEquals("!NullPointerException", actual, "$count: $label public null contract")
++            }
++            count++
++        }
++        val integers = listOf(-3, -1, 0, 1, 2, 7, 8, 9, 31, 32, 36, 37)
++        for (sign in integers) for (off in integers) for (len in integers)
++            verify("signed null bytes $sign,$off,$len", sign in -1..1 && off >= 0 && len >= 0) { Validation578Boundary.signedBytes(sign, null, off, len) }
++        assertEquals(1728, count)
++        for (a in listOf(-10L, -1, 0, 1, 10)) for (m in listOf(-10L, -1, 0, 1, 10))
++            verify("null exponent $a,$m", m > 0) { Validation578Boundary.modPow(BigInteger.valueOf(a), null, BigInteger.valueOf(m)) }
++        assertEquals(1753, count)
++        for (text in listOf("", "-", "1.0", "1E+", "NaN", "0", "1", "-1", "UP", "HALF_EVEN", "precision=7 roundingMode=UP"))
++            verify("string/null context [$text]", text in listOf("1.0", "0", "1", "-1")) { Validation578Boundary.decimal(text, null) }
++        assertEquals(1764, count)
++        for (d in listOf(Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, -0.0, 0.0, 0.1, 1.0)) {
++            // Keep the signed-zero input keys stable across platform Double formatting.
++            val label = when (d.toRawBits()) {
++                Long.MIN_VALUE -> "double/null context -0.0"
++                0L -> "double/null context 0.0"
++                else -> "double/null context $d"
++            }
++            verify(label, d.isFinite()) { Validation578Boundary.decimal(d, null) }
++        }
++        assertEquals(1771, count)
++        for (text in listOf("", "0", ".", "1.00"))
++            verify("chars/null context [$text]", text == "0" || text == "1.00") { Validation578Boundary.decimal(text.toCharArray(), null) }
++        assertEquals(1775, count)
++        for (text in listOf("", "0", ".", "1.00")) for (off in integers) for (len in integers)
++            verify("char slice/null context [$text],$off,$len", off >= 0 && len > 0 && off <= text.length - len &&
++                text.substring(off, off + len) !in listOf("", ".")) { Validation578Boundary.decimal(text.toCharArray(), off, len, null) }
++        assertEquals(2351, count)
++        val decimals = listOf("-10.00", "-1.01", "0", "0.00", "1", "1.00", "10.10")
++        for (text in decimals) verify("sqrt/null context $text", !text.startsWith('-')) { Validation578Boundary.sqrt(BigDecimal(text), null) }
++        assertEquals(2358, count)
++        for (text in decimals) for (mode in integers)
++            verify("legacy null divide $text,$mode", mode in 0..7) { Validation578Boundary.divide(BigDecimal(text), null, mode) }
++        assertEquals(2442, count)
++        for (text in decimals) for (scale in integers) for (mode in integers)
++            verify("legacy null divide $text,$scale,$mode", mode in 0..7) { Validation578Boundary.divide(BigDecimal(text), null, scale, mode) }
++        assertEquals(3450, count)
++        for (precision in integers) verify("context/null rounding $precision", precision >= 0) { Validation578Boundary.context(precision, null) }
++        assertEquals(3462, count)
++        assertEquals(3462, keys.size)
++        assertEquals(mapOf("signed" to 1728, "null" to 25, "string/null" to 11,
++            "double/null" to 7, "chars/null" to 4, "char" to 576, "sqrt/null" to 7,
++            "legacy" to 1092, "context/null" to 12), partitions)
++        // 300 signed + 10 exponent + 4 strings + 4 doubles + 2 arrays + 6 slices
++        // + 5 roots + (28 + 336) legacy divides + 10 contexts.
++        assertEquals(705, ordinary)
++        assertEquals(zeroSqrtObservations.keys, selected)
++        assertEquals(2, selected.size)
++        assertEquals(zeroDoubleObservations.keys, selectedDoubles)
++        assertEquals(2, selectedDoubles.size)
++        assertEquals(3458, count - selected.size - selectedDoubles.size)
++        assertFalse(expected.hasNext(), "Unconsumed oracle outcomes")
++    }
++}
+diff -ruN /private/tmp/task578-original/src/jvmTest/kotlin/io/heapy/krogu/math/Validation578RngTest.kt src/jvmTest/kotlin/io/heapy/krogu/math/Validation578RngTest.kt
+--- /private/tmp/task578-original/src/jvmTest/kotlin/io/heapy/krogu/math/Validation578RngTest.kt	1970-01-01 03:00:00.000000000 +0300
++++ src/jvmTest/kotlin/io/heapy/krogu/math/Validation578RngTest.kt	2026-10-15 13:48:49.645763322 +0300
+@@ -0,0 +1,31 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math
++
++import kotlin.test.*
++
++class Validation578RngTest {
++    @Test fun exactPortableRngRowsReachJava() {
++        val keys = mutableSetOf<List<String>>()
++        val ordinals = mutableListOf<Int>()
++        var ordinary = 0
++        for ((index, row) in oracleVectors().withIndex()) if (row[0] == "R") {
++            assertTrue(keys.add(row.take(6)), "duplicate RNG row $index")
++            ordinals += index
++            val bits = row[2].toInt()
++            val validOtherInputs = if (row[1] == "random") bits >= 0 else bits >= 2
++            val actual = try {
++                val result: Any? = Validation578Boundary.random(row[1], bits, row[3].toInt())
++                result.toString()
++            } catch (e: Exception) { "!${e::class.simpleName}" }
++            println("R578 ordinal=$index key=${row.take(6)} class=${if (validOtherInputs) "ordinary-null" else "compound-invalid-priority"} frozen=${row[6]} actual=$actual")
++            if (validOtherInputs) {
++                ordinary++
++                assertEquals("!NullPointerException", actual, "$index ${row.take(6)}")
++            } else assertTrue(actual.startsWith("!"), "invalid input must be rejected: $index")
++            if (row[1] == "random" && bits == 0) assertEquals("0", row[6], "retain original host difference")
++        }
++        Validation578RngRows.assertPartition(keys, ordinals)
++        assertEquals(12, ordinary)
++        assertEquals(13, keys.size - ordinary)
++    }
++}
+diff -ruN /private/tmp/task578-original/src/jvmTest/kotlin/io/heapy/krogu/math/ZeroSqrtNull568DiagnosticTest.kt src/jvmTest/kotlin/io/heapy/krogu/math/ZeroSqrtNull568DiagnosticTest.kt
+--- /private/tmp/task578-original/src/jvmTest/kotlin/io/heapy/krogu/math/ZeroSqrtNull568DiagnosticTest.kt	2026-10-15 13:38:15.968948805 +0300
++++ src/jvmTest/kotlin/io/heapy/krogu/math/ZeroSqrtNull568DiagnosticTest.kt	2026-10-15 13:47:56.998024978 +0300
+@@ -29,21 +29,12 @@
+         fun inheritedRoot(mc: JC?) = super.sqrt(mc)
+     }
+ 
+-    private class Truthful(c: BigInteger, s: Int) : BigDecimal(c, s) {
+-        override fun signum() = super.signum()
+-        override fun precision() = super.precision()
+-        override fun scale() = super.scale()
+-        override fun unscaledValue() = super.unscaledValue()
+-        override fun stripTrailingZeros() = super.stripTrailingZeros()
+-        override fun sqrt(mc: MathContext?) = super.sqrt(mc)
+-        fun inheritedRoot(mc: MathContext?) = super.sqrt(mc)
+-    }
+-
+     private data class Outcome(val coefficient: String? = null, val scale: Int? = null, val exception: String? = null)
+-    private fun observe(action: () -> Any): Outcome = try {
++    private fun observe(action: () -> Any?): Outcome = try {
+         when (val result = action()) {
+             is JD -> Outcome(result.unscaledValue().toString(), result.scale())
+             is BigDecimal -> Outcome(result.unscaledValue().toString(), result.scale())
++            null -> Outcome(exception = "returned-null")
+             else -> error("Unexpected result type")
+         }
+     } catch (e: Exception) { Outcome(exception = e.javaClass.simpleName) }
+@@ -55,7 +46,7 @@
+         for (scale in listOf(0, 2)) {
+             val text = if (scale == 0) "0" else "0.00"
+             val jdk = TruthfulJdk(JI.ZERO, scale)
+-            val own = Truthful(BigInteger.ZERO, scale)
++            val own = Validation578Boundary.TruthfulRoot(BigInteger.ZERO, scale)
+             for (origin in listOf("ordinary", "truthful", "callerSuper")) {
+                 val key = "$origin:0@$scale/null"
+                 assertTrue(seen.add(key), "Duplicate key: $key")
+@@ -68,8 +59,8 @@
+                 }
+                 val actual = observe {
+                     when (origin) {
+-                        "ordinary" -> BigDecimal(text).sqrt(null)
+-                        "truthful" -> own.sqrt(null)
++                        "ordinary" -> Validation578Boundary.sqrt(BigDecimal(text), null)
++                        "truthful" -> Validation578Boundary.sqrt(own, null)
+                         else -> own.inheritedRoot(null)
+                     }
+                 }
+@@ -87,7 +78,7 @@
+         for ((scale, preferred) in listOf(Int.MIN_VALUE to -1073741824, -3 to -1, 0 to 0, 2 to 1,
+             Int.MAX_VALUE to 1073741823)) {
+             val jdk = TruthfulJdk(JI.ZERO, scale)
+-            val own = Truthful(BigInteger.ZERO, scale)
++            val own = Validation578Boundary.TruthfulRoot(BigInteger.ZERO, scale)
+             for (precision in listOf(0, 7)) for (mode in RoundingMode.entries) {
+                 val jc = JC(precision, JR.valueOf(mode.name))
+                 val mc = MathContext(precision, mode)

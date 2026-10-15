@@ -7,6 +7,28 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class RandomIntegerDistributionTest {
+    @Test fun zeroBitsReturnsZeroAndRecordsRandomConsumption() {
+        var draws = 0
+        var emptyByteRequests = 0
+        val counted = object : Random() {
+            override fun nextBits(bitCount: Int): Int { draws++; return 0 }
+            override fun nextBytes(array: ByteArray): ByteArray {
+                if (array.isEmpty()) emptyByteRequests++ else draws++
+                return array
+            }
+        }
+        assertEquals(BigInteger.ZERO, BigInteger(0, counted))
+        println("578_ZERO_RANDOM_OBSERVATION\tpositiveRequests=$draws\temptyByteRequests=$emptyByteRequests")
+        val afterZero = Random(42)
+        val untouched = Random(42)
+        assertEquals(BigInteger.ZERO, BigInteger(0, afterZero))
+        val untouchedNext = BigInteger(128, untouched)
+        val afterZeroNext = BigInteger(128, afterZero)
+        assertTrue(untouchedNext.signum() >= 0 && untouchedNext.bitLength() <= 128)
+        assertTrue(afterZeroNext.signum() >= 0 && afterZeroNext.bitLength() <= 128)
+        println("578_SEEDED_RANDOM_OBSERVATION\tuntouched=$untouchedNext\tafterZero=$afterZeroNext")
+    }
+
     private class PayloadRandom(var payload: Int) : Random() {
         override fun nextBits(bitCount: Int): Int = error("Expected byte sampling")
         override fun nextBytes(array: ByteArray): ByteArray {

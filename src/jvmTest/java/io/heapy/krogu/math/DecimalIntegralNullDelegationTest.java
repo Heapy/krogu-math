@@ -143,7 +143,7 @@ private static class Actual extends BigDecimal {
         }
     }
     @Test public void nullableArgumentsAndCallbackResultsPreserveInheritedComposition() {
-        int comparisons = 0, differences = 0;
+        int comparisons = 0, differences = 0, baseNull = 0;
         StringBuilder failures = new StringBuilder();
         for (String text : new String[] {"0.00", "1", "-10.50"})
             for (String behavior : new String[] {"return", "self", "null", "throw", "super", "empty", "short", "null-element"})
@@ -160,6 +160,13 @@ private static class Actual extends BigDecimal {
                                 String e = outcome(() -> expected.enter(op, ev, em), expected, expected.trace);
                                 String a = outcome(() -> actual.enter(op, av, am), actual, actual.trace);
                                 comparisons++;
+                                if (nullOperand || op.endsWith("-context") && precision == -1) {
+                                    baseNull++;
+                                    String key = text + "/" + behavior + "/" + hook + "/" + op + "/" + precision + "/" + nullOperand;
+                                    System.out.println("575_EXISTING_INTEGRAL\t" + key + "\tEXPLICIT_SUPER_NULL_CALLBACK_OR_ARRAY_DIAGNOSTIC\thost=" + e + "\town=" + a);
+                                    assertEquals(key, "!NullPointerException|", a);
+                                    continue;
+                                }
                                 if (!e.equals(a)) {
                                     differences++;
                                     if (differences <= 12) failures.append(text).append('/').append(behavior).append('/').append(hook)
@@ -168,6 +175,7 @@ private static class Actual extends BigDecimal {
                                 }
                             }
         assertEquals("comparison count", 3456, comparisons);
+        assertEquals("exact null-input partition", 2016, baseNull);
         assertEquals(differences + " mismatches:\n" + failures, 0, differences);
     }
 }

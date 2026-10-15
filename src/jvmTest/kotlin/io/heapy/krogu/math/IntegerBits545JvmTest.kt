@@ -2,6 +2,7 @@
 package io.heapy.krogu.math
 
 import java.math.BigInteger as JI
+import java.lang.reflect.InvocationTargetException
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -25,7 +26,7 @@ class IntegerBits545JvmTest {
     private class Own(text: String, val events: MutableList<String>) : BigInteger(text) {
         override fun bitLength(): Int { events += "bits"; return super.bitLength() }
         override fun getLowestSetBit(): Int { events += "lowest"; return super.getLowestSetBit() }
-        override fun xor(value: BigInteger?): BigInteger {
+        override fun xor(value: BigInteger): BigInteger {
             events += "direct-enter"
             val result = super.xor(value).not().not()
             events += "direct-exit"
@@ -94,7 +95,18 @@ class IntegerBits545JvmTest {
         }
     }
 
-    private fun failure(action: () -> Any): String = try {
+    // Real inherited JVM entry; reflection does not represent explicit super.
+    private fun xorNullBoundary(value: BigInteger): Any? = try {
+        BigInteger::class.java.getMethod("xor", BigInteger::class.java).invoke(value, null)
+    } catch (failure: InvocationTargetException) {
+        throw failure.targetException
+    } catch (failure: ReflectiveOperationException) {
+        throw AssertionError("null-XOR adapter lookup/access failure", failure)
+    } catch (failure: IllegalArgumentException) {
+        throw AssertionError("null-XOR adapter argument failure", failure)
+    }
+
+    private fun failure(action: () -> Any?): String = try {
         "returned:${action()}"
     } catch (failure: Exception) {
         "${failure.javaClass.name}:${failure.message}"
@@ -132,18 +144,24 @@ class IntegerBits545JvmTest {
         // Direct caller dispatch and exception identity are explicit-language obligations.
         assertSame(marker, assertFailsWith<IllegalStateException> { own.bitLength() })
         assertSame(marker, assertFailsWith<IllegalStateException> { host.bitLength() })
-        val ownActions: List<() -> Any> = listOf(
+        val ownActions: List<() -> Any?> = listOf(
             { own.clearBit(-1) }, { own.flipBit(Int.MIN_VALUE) },
-            { own.xor(null) }, { own.xor(own) }, { own.not() },
+            { xorNullBoundary(own) }, { own.xor(own) }, { own.not() },
         )
         val hostActions: List<() -> Any> = listOf(
             { host.clearBit(-1) }, { host.flipBit(Int.MIN_VALUE) },
             { host.xor(null) }, { host.xor(host) }, { host.not() },
         )
+        assertEquals(5, ownActions.size)
+        assertEquals(5, hostActions.size)
         for (index in ownActions.indices) {
             ownEvents.clear()
             hostEvents.clear()
-            val actual = failure(ownActions[index])
+            val actual = if (index == 2) {
+                // Same retained ordinal; only the null-entry outcome becomes normative.
+                val rejected = assertFailsWith<NullPointerException> { ownActions[index]() }
+                "${rejected.javaClass.name}:${rejected.message}"
+            } else failure(ownActions[index])
             val observed = failure(hostActions[index])
             println("bits545 competing=$index own=$actual host=$observed " +
                 "ownTrace=$ownEvents hostTrace=$hostEvents")

@@ -2,8 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-only
 // Source-specific adaptation rules for the pinned GPL-2.0-only OpenJDK tests.
 // Generated files retain their original upstream notices. No assertions deleted.
-// Original source notices for the four adapted files:
+// Original source notices for the five adapted files:
 // Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 1999, 2018, Oracle and/or its affiliates. All rights reserved.
 // Copyright (c) 2003, 2017, Oracle and/or its affiliates. All rights reserved.
 // Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
 // Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
@@ -29,6 +30,29 @@ fun adaptMathTest(path: String, original: String): MathAdaptation {
     val changes = mutableListOf("Redirect math imports; retain original assertions, directives and notices")
     val skips = mutableListOf<String>()
     when (path.substringAfter("test/jdk/java/math/")) {
+        "BigDecimal/Constructor.java" -> {
+            val calls = listOf(
+                "charArrayConstructorNegativeOffset" to "new BigDecimal(new char[5], -1, 4, null)",
+                "charArrayConstructorNegativeLength" to "new BigDecimal(new char[5], 0, -1, null)",
+                "charArrayConstructorIntegerOverflow" to "new BigDecimal(new char[5], Integer.MAX_VALUE - 5,\n                6, null)",
+                "charArrayConstructorIndexOutOfBounds" to "new BigDecimal(new char[5], 1, 5, null)",
+            )
+            val replacements = calls.map { (method, before) ->
+                check(source.split(before).size == 2) { "Pinned Constructor call changed: $method" }
+                val after = before.removeSuffix("null)") + "io.heapy.krogu.math.MathContext.UNLIMITED)"
+                check(after !in source) { "Constructor adaptation already present: $method" }
+                source = source.replace(before, after)
+                skips += "$method: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call"
+                before to after
+            }
+            var restored = source
+            for ((before, after) in replacements) {
+                check(restored.split(after).size == 2) { "Constructor replacement changed: $before" }
+                restored = restored.replace(after, before)
+            }
+            check(restored == importOnly) { "Constructor adaptation changed retained source" }
+            changes += "Use MathContext.UNLIMITED instead of exactly four null contexts for invalid char-array range tests under the non-null Kotlin constructor policy; retain all original range/numeric operands, five TestNG assertions, method names, annotations and error-cause check. Original joint-invalid precedence is separate lost coverage, not an adapted pass"
+        }
         "BigInteger/ModPowPowersof2.java" -> {
             source = adaptMathChildOrchestration(source)
             changes += "Replace parent child-process scaffold only; preserve nested ModTester math body and literal success; prove child exit and binding in both phases"

@@ -67,8 +67,8 @@ internal object DecimalExactRoot563Callbacks {
         override fun scale() = super.scale()
         override fun unscaledValue() = super.unscaledValue()
         override fun stripTrailingZeros() = super.stripTrailingZeros()
-        override fun sqrt(mc: MathContext?) = super.sqrt(mc)
-        fun inheritedRoot(mc: MathContext?) = super.sqrt(mc)
+        override fun sqrt(mc: MathContext) = super.sqrt(mc)
+        fun inheritedRoot(mc: MathContext) = super.sqrt(mc)
     }
 
     fun expected(v: List<String>): DecimalExactRoot563Expected.Result {

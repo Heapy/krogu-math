@@ -1,0 +1,289 @@
+diff --git a/src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt b/src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt
+index a73b92e..dfb3603 100644
+--- a/src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt
++++ b/src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt
+@@ -672,14 +672,14 @@ open class BigInteger private constructor(private val sign: Int, private val wor
+         for (i in result.indices) result[i] = result[i].inv() and MASK.toInt()
+         return bitwiseResult(result, width)
+     }
+-    open infix fun and(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a and b }
+-    open infix fun or(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a or b }
+-    open infix fun xor(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a xor b }
+-    open fun andNot(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a and b.inv() }
++    open infix fun and(value: BigInteger): BigInteger = bitwise(value) { a, b -> a and b }
++    open infix fun or(value: BigInteger): BigInteger = bitwise(value) { a, b -> a or b }
++    open infix fun xor(value: BigInteger): BigInteger = bitwise(value) { a, b -> a xor b }
++    open fun andNot(value: BigInteger): BigInteger = bitwise(value) { a, b -> a and b.inv() }
+     // Public bitLength is intentionally virtual, including on a subclass operand.
+     private fun bitwiseLength32(): Int = (bitLength() ushr 5) + 1
+-    private fun bitwise(value: BigInteger?, op: (Int, Int) -> Int): BigInteger {
+-        val width = maxOf(bitwiseLength32(), value!!.bitwiseLength32()).toLong() * 32
++    private fun bitwise(value: BigInteger, op: (Int, Int) -> Int): BigInteger {
++        val width = maxOf(bitwiseLength32(), value.bitwiseLength32()).toLong() * 32
+         val length = ((width + LIMB_BITS - 1) / LIMB_BITS).toInt()
+         val a = twosComplement(length)
+         val b = value.twosComplement(length)
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/BitwiseSubclassTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/BitwiseSubclassTest.kt
+index 7282745..5d6eef0 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/BitwiseSubclassTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/BitwiseSubclassTest.kt
+@@ -11,7 +11,7 @@ class BitwiseSubclassTest {
+     }
+     private class LogicalChild(text: String) : ArithmeticChild(text) {
+         override fun not(): BigInteger = error("not override called")
+-        override fun and(value: BigInteger?): BigInteger = error("and override called")
++        override fun and(value: BigInteger): BigInteger = error("and override called")
+         override fun testBit(n: Int): Boolean = error("testBit override called")
+         override fun setBit(n: Int): BigInteger = error("setBit override called")
+         override fun clearBit(n: Int): BigInteger = error("clearBit override called")
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/IntegerBits545ContractTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/IntegerBits545ContractTest.kt
+index 1410363..18c4cd0 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/IntegerBits545ContractTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/IntegerBits545ContractTest.kt
+@@ -102,7 +102,7 @@ class IntegerBits545ContractTest {
+             return super.getLowestSetBit()
+         }
+ 
+-        override fun xor(value: BigInteger?): BigInteger {
++        override fun xor(value: BigInteger): BigInteger {
+             events += "direct-enter"
+             // Value-preserving composition, even for a self operand.
+             val result = super.xor(value).not().not()
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/IntegerBitsOracleTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/IntegerBitsOracleTest.kt
+index 12cce51..2a85e9a 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/IntegerBitsOracleTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/IntegerBitsOracleTest.kt
+@@ -14,10 +14,10 @@ private class BitProbe(text: String, val trace: StringBuilder, val mode: String)
+     override fun toByteArray(): ByteArray { call("bytes"); return super.toByteArray() }
+     override fun testBit(n: Int): Boolean { call("test"); return super.testBit(n) }
+     override fun not(): BigInteger { call("not"); return super.not() }
+-    override fun and(value: BigInteger?): BigInteger { call("and"); return super.and(value) }
+-    override fun or(value: BigInteger?): BigInteger { call("or"); return super.or(value) }
+-    override fun xor(value: BigInteger?): BigInteger { call("xor"); return super.xor(value) }
+-    override fun andNot(value: BigInteger?): BigInteger { call("andNot"); return super.andNot(value) }
++    override fun and(value: BigInteger): BigInteger { call("and"); return super.and(value) }
++    override fun or(value: BigInteger): BigInteger { call("or"); return super.or(value) }
++    override fun xor(value: BigInteger): BigInteger { call("xor"); return super.xor(value) }
++    override fun andNot(value: BigInteger): BigInteger { call("andNot"); return super.andNot(value) }
+     override fun setBit(n: Int): BigInteger { call("set"); return super.setBit(n) }
+     override fun clearBit(n: Int): BigInteger { call("clear"); return super.clearBit(n) }
+     override fun flipBit(n: Int): BigInteger { call("flip"); return super.flipBit(n) }
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinOperatorMigrationContractTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinOperatorMigrationContractTest.kt
+index 25adf72..d46a15b 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinOperatorMigrationContractTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinOperatorMigrationContractTest.kt
+@@ -149,15 +149,15 @@ class KotlinOperatorMigrationContractTest {
+             override fun shiftLeft(n: Int): BigInteger = result("left:$n")
+             override fun shiftRight(n: Int): BigInteger = result("right:$n")
+             override fun not(): BigInteger = result("not")
+-            override fun and(value: BigInteger?): BigInteger {
++            override fun and(value: BigInteger): BigInteger {
+                 assertSame(BigInteger.TEN, value)
+                 return result("and")
+             }
+-            override fun or(value: BigInteger?): BigInteger {
++            override fun or(value: BigInteger): BigInteger {
+                 assertSame(BigInteger.TEN, value)
+                 return result("or")
+             }
+-            override fun xor(value: BigInteger?): BigInteger {
++            override fun xor(value: BigInteger): BigInteger {
+                 assertSame(BigInteger.TEN, value)
+                 return result("xor")
+             }
+diff --git a/src/jvmTest/java/io/heapy/krogu/math/IntegerBitsNullTest.java b/src/jvmTest/java/io/heapy/krogu/math/IntegerBitsNullTest.java
+index a243f6a..e5a973c 100644
+--- a/src/jvmTest/java/io/heapy/krogu/math/IntegerBitsNullTest.java
++++ b/src/jvmTest/java/io/heapy/krogu/math/IntegerBitsNullTest.java
+@@ -2,8 +2,14 @@
+ package io.heapy.krogu.math;
+ 
+ import java.util.concurrent.Callable;
++import java.util.ArrayList;
++import java.util.Arrays;
++import java.util.List;
+ import org.junit.Test;
+ import static org.junit.Assert.assertEquals;
++import static org.junit.Assert.assertNull;
++import static org.junit.Assert.assertSame;
++import static org.junit.Assert.assertThrows;
+ 
+ public class IntegerBitsNullTest {
+     private static class Reference extends java.math.BigInteger {
+@@ -25,26 +31,99 @@ public class IntegerBitsNullTest {
+             if (fail) throw new IllegalStateException("bits callback");
+             return super.bitLength();
+         }
++        BigInteger explicitSuperNull(int operation) {
++            return switch (operation) {
++                case 0 -> super.and(null); case 1 -> super.or(null);
++                case 2 -> super.xor(null); case 3 -> super.andNot(null);
++                default -> throw new AssertionError("Unknown operation " + operation);
++            };
++        }
++    }
++    // Frozen loop order from published60. These keys are checked against actual executions.
++    private static final List<String> NULL_KEYS = Arrays.asList(
++        "0/false/0", "0/false/1", "0/false/2", "0/false/3",
++        "0/true/0", "0/true/1", "0/true/2", "0/true/3",
++        "-1/false/0", "-1/false/1", "-1/false/2", "-1/false/3",
++        "-1/true/0", "-1/true/1", "-1/true/2", "-1/true/3",
++        "18446744073709551617/false/0", "18446744073709551617/false/1",
++        "18446744073709551617/false/2", "18446744073709551617/false/3",
++        "18446744073709551617/true/0", "18446744073709551617/true/1",
++        "18446744073709551617/true/2", "18446744073709551617/true/3");
++
++    private static BigInteger nullOperand(BigInteger receiver, int operation) {
++        return switch (operation) {
++            case 0 -> receiver.and(null); case 1 -> receiver.or(null);
++            case 2 -> receiver.xor(null); case 3 -> receiver.andNot(null);
++            default -> throw new AssertionError("Unknown operation " + operation);
++        };
+     }
+     private static String outcome(Callable<?> action, StringBuilder trace) {
+         try { Object value = action.call(); return value + "|" + trace; }
+         catch (Exception e) { return "!" + e.getClass().getSimpleName() + "|" + trace; }
+     }
+-    @Test public void sourceMetadataRunsBeforeNullOperandFailure() {
++    @Test public void baseRejectsNullAndRetainsCallbackFirstDiagnostics() {
++        List<String> executed = new ArrayList<>();
+         for (String text : new String[] {"0", "-1", "18446744073709551617"})
+             for (boolean fail : new boolean[] {false, true}) for (int op = 0; op < 4; op++) {
+                 Reference expected = new Reference(text, fail);
+                 Actual actual = new Actual(text, fail);
+                 final int operation = op;
+-                assertEquals(text + "/" + fail + "/" + op,
+-                    outcome(() -> switch (operation) {
++                String key = text + "/" + fail + "/" + op;
++                assertEquals(NULL_KEYS.get(executed.size()), key);
++                executed.add(key);
++                String observedHost = outcome(() -> switch (operation) {
+                         case 0 -> expected.and(null); case 1 -> expected.or(null);
+                         case 2 -> expected.xor(null); default -> expected.andNot(null);
+-                    }, expected.trace),
+-                    outcome(() -> switch (operation) {
+-                        case 0 -> actual.and(null); case 1 -> actual.or(null);
+-                        case 2 -> actual.xor(null); default -> actual.andNot(null);
+-                    }, actual.trace));
++                    }, expected.trace);
++                NullPointerException rejected = assertThrows(key, NullPointerException.class,
++                    () -> nullOperand(actual, operation));
++                // Historical callback-first outcomes remain diagnostic; no host-equality waiver.
++                String historical = fail ? "!IllegalStateException|bits;" : "!NullPointerException|bits;";
++                System.out.println("bits577 ordinal=" + (executed.size() - 1) + " key=" + key
++                    + " frozenCallbackFirst=" + historical + " liveHost=" + observedHost
++                    + " required=!NullPointerException actual=!" + rejected.getClass().getSimpleName()
++                    + "|" + actual.trace + " message=" + rejected.getMessage());
+             }
++        assertEquals(24, executed.size());
++        assertEquals(NULL_KEYS, executed);
++    }
++
++    private static class Direct extends Actual {
++        final BigInteger replacement = new BigInteger("701");
++        final IllegalStateException marker = new IllegalStateException("direct bitwise override");
++        boolean throwMarker;
++        Direct() { super("-1", true); }
++        private BigInteger body(String method, BigInteger value) {
++            trace.append(method).append(';');
++            assertNull(value);
++            if (throwMarker) throw marker;
++            return replacement;
++        }
++        @Override public BigInteger and(BigInteger value) { return body("and", value); }
++        @Override public BigInteger or(BigInteger value) { return body("or", value); }
++        @Override public BigInteger xor(BigInteger value) { return body("xor", value); }
++        @Override public BigInteger andNot(BigInteger value) { return body("andNot", value); }
++    }
++
++    @Test public void ordinaryEntryDirectJavaOverrideAndRealSuperAreDistinct() {
++        String[] methods = {"and", "or", "xor", "andNot"};
++        for (int op = 0; op < methods.length; op++) {
++            final int operation = op;
++            assertThrows(methods[op], NullPointerException.class,
++                () -> nullOperand(new BigInteger("-1"), operation));
++            Direct direct = new Direct();
++            BigInteger baseTyped = direct;
++            assertSame(direct.replacement, nullOperand(baseTyped, operation));
++            assertEquals(methods[op] + ";", direct.trace.toString());
++            direct.trace.setLength(0);
++            direct.throwMarker = true;
++            assertSame(direct.marker, assertThrows(IllegalStateException.class,
++                () -> nullOperand(baseTyped, operation)));
++            assertEquals(methods[op] + ";", direct.trace.toString());
++            direct.trace.setLength(0);
++            // Actual's explicit super invokes BigInteger, bypassing Direct's throwing override.
++            assertThrows(NullPointerException.class, () -> direct.explicitSuperNull(operation));
++            System.out.println("bits577 super=" + methods[op] + " trace=" + direct.trace);
++        }
+     }
+ }
+diff --git a/src/jvmTest/kotlin/io/heapy/krogu/math/IntegerBits545JvmTest.kt b/src/jvmTest/kotlin/io/heapy/krogu/math/IntegerBits545JvmTest.kt
+index 111021d..bbc9a1e 100644
+--- a/src/jvmTest/kotlin/io/heapy/krogu/math/IntegerBits545JvmTest.kt
++++ b/src/jvmTest/kotlin/io/heapy/krogu/math/IntegerBits545JvmTest.kt
+@@ -2,6 +2,7 @@
+ package io.heapy.krogu.math
+ 
+ import java.math.BigInteger as JI
++import java.lang.reflect.InvocationTargetException
+ import kotlin.test.Test
+ import kotlin.test.assertEquals
+ import kotlin.test.assertFailsWith
+@@ -25,7 +26,7 @@ class IntegerBits545JvmTest {
+     private class Own(text: String, val events: MutableList<String>) : BigInteger(text) {
+         override fun bitLength(): Int { events += "bits"; return super.bitLength() }
+         override fun getLowestSetBit(): Int { events += "lowest"; return super.getLowestSetBit() }
+-        override fun xor(value: BigInteger?): BigInteger {
++        override fun xor(value: BigInteger): BigInteger {
+             events += "direct-enter"
+             val result = super.xor(value).not().not()
+             events += "direct-exit"
+@@ -94,7 +95,18 @@ class IntegerBits545JvmTest {
+         }
+     }
+ 
+-    private fun failure(action: () -> Any): String = try {
++    // Real inherited JVM entry; reflection does not represent explicit super.
++    private fun xorNullBoundary(value: BigInteger): Any? = try {
++        BigInteger::class.java.getMethod("xor", BigInteger::class.java).invoke(value, null)
++    } catch (failure: InvocationTargetException) {
++        throw failure.targetException
++    } catch (failure: ReflectiveOperationException) {
++        throw AssertionError("null-XOR adapter lookup/access failure", failure)
++    } catch (failure: IllegalArgumentException) {
++        throw AssertionError("null-XOR adapter argument failure", failure)
++    }
++
++    private fun failure(action: () -> Any?): String = try {
+         "returned:${action()}"
+     } catch (failure: Exception) {
+         "${failure.javaClass.name}:${failure.message}"
+@@ -132,18 +144,24 @@ class IntegerBits545JvmTest {
+         // Direct caller dispatch and exception identity are explicit-language obligations.
+         assertSame(marker, assertFailsWith<IllegalStateException> { own.bitLength() })
+         assertSame(marker, assertFailsWith<IllegalStateException> { host.bitLength() })
+-        val ownActions: List<() -> Any> = listOf(
++        val ownActions: List<() -> Any?> = listOf(
+             { own.clearBit(-1) }, { own.flipBit(Int.MIN_VALUE) },
+-            { own.xor(null) }, { own.xor(own) }, { own.not() },
++            { xorNullBoundary(own) }, { own.xor(own) }, { own.not() },
+         )
+         val hostActions: List<() -> Any> = listOf(
+             { host.clearBit(-1) }, { host.flipBit(Int.MIN_VALUE) },
+             { host.xor(null) }, { host.xor(host) }, { host.not() },
+         )
++        assertEquals(5, ownActions.size)
++        assertEquals(5, hostActions.size)
+         for (index in ownActions.indices) {
+             ownEvents.clear()
+             hostEvents.clear()
+-            val actual = failure(ownActions[index])
++            val actual = if (index == 2) {
++                // Same retained ordinal; only the null-entry outcome becomes normative.
++                val rejected = assertFailsWith<NullPointerException> { ownActions[index]() }
++                "${rejected.javaClass.name}:${rejected.message}"
++            } else failure(ownActions[index])
+             val observed = failure(hostActions[index])
+             println("bits545 competing=$index own=$actual host=$observed " +
+                 "ownTrace=$ownEvents hostTrace=$hostEvents")

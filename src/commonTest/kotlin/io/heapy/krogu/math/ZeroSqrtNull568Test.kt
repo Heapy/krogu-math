@@ -13,8 +13,8 @@ class ZeroSqrtNull568Test {
         override fun scale() = super.scale()
         override fun unscaledValue() = super.unscaledValue()
         override fun stripTrailingZeros() = super.stripTrailingZeros()
-        override fun sqrt(mc: MathContext?) = super.sqrt(mc)
-        fun inheritedRoot(mc: MathContext?) = super.sqrt(mc)
+        override fun sqrt(mc: MathContext) = super.sqrt(mc)
+        fun inheritedRoot(mc: MathContext) = super.sqrt(mc)
     }
 
     // Literal preferred scales, including negative odd scales (division toward zero).
@@ -24,17 +24,7 @@ class ZeroSqrtNull568Test {
         (Int.MAX_VALUE - 1) to 1073741823, Int.MAX_VALUE to 1073741823,
     )
 
-    @Test fun ordinaryTruthfulAndCallerSuperZerosRequireContext() {
-        for (text in listOf("0", "0.00"))
-            assertFailsWith<NullPointerException>(text) { BigDecimal(text).sqrt(null) }
-        for ((scale, _) in zeroScales) {
-            val ordinary = BigDecimal(BigInteger.ZERO, scale)
-            val truthful = Truthful(BigInteger.ZERO, scale)
-            assertFailsWith<NullPointerException>("ordinary zero@$scale") { ordinary.sqrt(null) }
-            assertFailsWith<NullPointerException>("truthful zero@$scale") { truthful.sqrt(null) }
-            assertFailsWith<NullPointerException>("caller super zero@$scale") { truthful.inheritedRoot(null) }
-        }
-    }
+    // The 35 null entries are preserved by Validation578StandaloneTest on the JVM.
 
     @Test fun validContextsKeepZeroAndPreferredScale() {
         for ((scale, preferred) in zeroScales) {
@@ -52,17 +42,7 @@ class ZeroSqrtNull568Test {
     }
 
     @Test fun nonzeroAndNegativeEntryControlsRemain() {
-        for (text in listOf("4", "2")) {
-            val truthful = Truthful(BigInteger(text), 0)
-            assertFailsWith<NullPointerException>(text) { BigDecimal(text).sqrt(null) }
-            assertFailsWith<NullPointerException>("truthful $text") { truthful.sqrt(null) }
-            assertFailsWith<NullPointerException>("caller super $text") { truthful.inheritedRoot(null) }
-        }
-        // Retained competing-invalid observation; this does not impose a global error order.
-        val negative = Truthful(BigInteger("-4"), 0)
-        assertFailsWith<ArithmeticException> { BigDecimal("-4").sqrt(null) }
-        assertFailsWith<ArithmeticException> { negative.sqrt(null) }
-        assertFailsWith<ArithmeticException> { negative.inheritedRoot(null) }
+        // Six nonzero and three competing-invalid null entries move to the JVM ledger.
         for (mode in RoundingMode.entries) {
             val context = MathContext(7, mode)
             val result = BigDecimal("4.00").sqrt(context)
@@ -72,18 +52,18 @@ class ZeroSqrtNull568Test {
         }
     }
 
-    @Test fun explicitOverridesKeepResultAndExceptionIdentityIncludingNullContext() {
+    @Test fun explicitOverridesKeepResultAndExceptionIdentity() {
         val marker = BigDecimal("7.00")
         val failure = IllegalStateException("caller owned")
-        for (context in listOf(null, MathContext.UNLIMITED, MathContext(7, RoundingMode.HALF_EVEN))) {
+        for (context in listOf(MathContext.UNLIMITED, MathContext(7, RoundingMode.HALF_EVEN))) {
             val replacement: BigDecimal = object : BigDecimal("0.00") {
-                override fun sqrt(mc: MathContext?): BigDecimal {
+                override fun sqrt(mc: MathContext): BigDecimal {
                     assertSame(context, mc)
                     return marker
                 }
             }
             val throwing: BigDecimal = object : BigDecimal("0.00") {
-                override fun sqrt(mc: MathContext?): BigDecimal {
+                override fun sqrt(mc: MathContext): BigDecimal {
                     assertSame(context, mc)
                     throw failure
                 }

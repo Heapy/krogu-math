@@ -13,16 +13,16 @@ class DecimalOverloadContract541Test {
         override fun precision(): Int = super.precision()
         override fun scale(): Int = super.scale()
         override fun unscaledValue(): BigInteger = super.unscaledValue()
-        override fun divideToIntegralValue(divisor: BigDecimal?): BigDecimal = super.divideToIntegralValue(divisor)
-        override fun divideToIntegralValue(divisor: BigDecimal?, mc: MathContext?): BigDecimal =
+        override fun divideToIntegralValue(divisor: BigDecimal): BigDecimal = super.divideToIntegralValue(divisor)
+        override fun divideToIntegralValue(divisor: BigDecimal, mc: MathContext): BigDecimal =
             super.divideToIntegralValue(divisor, mc)
-        override fun remainder(divisor: BigDecimal?): BigDecimal = super.remainder(divisor)
-        override fun remainder(divisor: BigDecimal?, mc: MathContext?): BigDecimal = super.remainder(divisor, mc)
-        override fun divideAndRemainder(divisor: BigDecimal?): Array<BigDecimal> = super.divideAndRemainder(divisor)
-        override fun divideAndRemainder(divisor: BigDecimal?, mc: MathContext?): Array<BigDecimal> =
+        override fun remainder(divisor: BigDecimal): BigDecimal = super.remainder(divisor)
+        override fun remainder(divisor: BigDecimal, mc: MathContext): BigDecimal = super.remainder(divisor, mc)
+        override fun divideAndRemainder(divisor: BigDecimal): Array<BigDecimal> = super.divideAndRemainder(divisor)
+        override fun divideAndRemainder(divisor: BigDecimal, mc: MathContext): Array<BigDecimal> =
             super.divideAndRemainder(divisor, mc)
 
-        fun integralViaSuper(divisor: BigDecimal?, mc: MathContext?): BigDecimal =
+        fun integralViaSuper(divisor: BigDecimal, mc: MathContext): BigDecimal =
             super.divideToIntegralValue(divisor, mc)
     }
 
@@ -76,7 +76,7 @@ class DecimalOverloadContract541Test {
             var throwing = false
             var operand: BigDecimal? = null
             var context: MathContext? = null
-            override fun divideToIntegralValue(divisor: BigDecimal?, mc: MathContext?): BigDecimal {
+            override fun divideToIntegralValue(divisor: BigDecimal, mc: MathContext): BigDecimal {
                 operand = divisor
                 context = mc
                 if (throwing) throw failure
@@ -87,7 +87,7 @@ class DecimalOverloadContract541Test {
         val source: BigDecimal = caller
         val distinct = BigDecimal("5.0")
         // Only the explicit call's override is constrained. No internal call count/order is asserted.
-        for (divisor in listOf(distinct, source, null)) for (context in listOf(finite, MathContext.UNLIMITED, null)) {
+        for (divisor in listOf(distinct, source)) for (context in listOf(finite, MathContext.UNLIMITED)) {
             caller.throwing = false
             assertSame(replacement, source.divideToIntegralValue(divisor, context))
             assertSame(divisor, caller.operand)
@@ -101,8 +101,7 @@ class DecimalOverloadContract541Test {
         representation("3", 0, truthful.integralViaSuper(Truthful("5.0"), finite))
         representation("30", 1, truthful.integralViaSuper(Truthful("5.0"), MathContext.UNLIMITED))
         representation("1", 0, truthful.integralViaSuper(truthful, finite))
-        assertFailsWith<NullPointerException> { truthful.integralViaSuper(null, finite) }
-        assertFailsWith<NullPointerException> { truthful.integralViaSuper(distinct, null) }
+        // Ten direct-override and two explicit-super null executions move to JVM Java.
         assertFailsWith<ArithmeticException> { truthful.integralViaSuper(BigDecimal.ZERO, finite) }
     }
 

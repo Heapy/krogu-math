@@ -1,0 +1,133 @@
+diff --git a/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt b/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
+index 0bdabcc..8104d0a 100644
+--- a/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
++++ b/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
+@@ -59,15 +59,15 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         return if (result.coefficient.signum() == 0) ZERO else result
+     }
+ 
+-    open fun add(augend: BigDecimal?): BigDecimal = addValue(augend ?: throw NullPointerException())
++    open fun add(augend: BigDecimal): BigDecimal = addValue(augend)
+     private fun addValue(augend: BigDecimal): BigDecimal {
+         val scale = maxOf(decimalScale, augend.decimalScale)
+         return BigDecimal(scaledCoefficient(scale).add(augend.scaledCoefficient(scale)), scale)
+     }
+-    open fun add(augend: BigDecimal?, mc: MathContext?): BigDecimal {
+-        val context = mc ?: throw NullPointerException()
++    open fun add(augend: BigDecimal, mc: MathContext): BigDecimal {
++        val context = mc
+         if (context.precision == 0) return add(augend)
+-        return addContextValue(augend ?: throw NullPointerException(), context)
++        return addContextValue(augend, context)
+     }
+     private fun addContextValue(augend: BigDecimal, mc: MathContext): BigDecimal {
+         val preferredScale = maxOf(decimalScale, augend.decimalScale)
+@@ -115,25 +115,25 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         // a whole unit can carry through 999... or cancel a retained +1 digit.
+         return BigDecimal(BigInteger.valueOf(signum().toLong()), checkedScale(scale + 1))
+     }
+-    open fun subtract(subtrahend: BigDecimal?): BigDecimal {
+-        val operand = subtrahend ?: throw NullPointerException()
++    open fun subtract(subtrahend: BigDecimal): BigDecimal {
++        val operand = subtrahend
+         val scale = maxOf(decimalScale, operand.decimalScale)
+         return BigDecimal(scaledCoefficient(scale).subtract(operand.scaledCoefficient(scale)), scale)
+     }
+-    open fun subtract(subtrahend: BigDecimal?, mc: MathContext?): BigDecimal {
+-        val context = mc ?: throw NullPointerException()
++    open fun subtract(subtrahend: BigDecimal, mc: MathContext): BigDecimal {
++        val context = mc
+         return if (context.precision == 0) subtract(subtrahend)
+-            else add((subtrahend ?: throw NullPointerException()).negate(), context)
++            else add(subtrahend.negate(), context)
+     }
+-    open fun multiply(multiplicand: BigDecimal?): BigDecimal = multiplyValue(multiplicand ?: throw NullPointerException())
++    open fun multiply(multiplicand: BigDecimal): BigDecimal = multiplyValue(multiplicand)
+     private fun multiplyValue(multiplicand: BigDecimal): BigDecimal {
+         val scale = scaleForValue(decimalScale.toLong() + multiplicand.decimalScale, coefficient.signum() == 0)
+         return BigDecimal(coefficient.multiply(multiplicand.coefficient), scale)
+     }
+-    open fun multiply(multiplicand: BigDecimal?, mc: MathContext?): BigDecimal {
+-        val context = mc ?: throw NullPointerException()
++    open fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal {
++        val context = mc
+         if (context.precision == 0) return multiply(multiplicand)
+-        val operand = multiplicand ?: throw NullPointerException()
++        val operand = multiplicand
+         val logicalScale = decimalScale.toLong() + operand.decimalScale
+         // Preserve exact, low-scale and zero/source behavior. Only mandatory
+         // precision reduction of a supported nonzero product rescues HIGH scale.
+@@ -147,8 +147,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         return BigDecimal(rounded.coefficient, checkedScale(logicalScale + rounded.decimalScale))
+     }
+ 
+-    open fun divide(divisor: BigDecimal?): BigDecimal {
+-        val operand = divisor ?: throw NullPointerException()
++    open fun divide(divisor: BigDecimal): BigDecimal {
++        val operand = divisor
+         checkDivisionByZero(operand)
+         return try { divideExactly(operand) }
+         catch (_: ArithmeticException) {
+@@ -260,10 +260,10 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         }
+         throw ArithmeticException("/ by zero")
+     }
+-    open fun divide(divisor: BigDecimal?, mc: MathContext?): BigDecimal {
+-        val context = mc ?: throw NullPointerException()
++    open fun divide(divisor: BigDecimal, mc: MathContext): BigDecimal {
++        val context = mc
+         if (context.precision == 0) return divide(divisor)
+-        val operand = divisor ?: throw NullPointerException()
++        val operand = divisor
+         checkDivisionByZero(operand)
+         val preferredScale = decimalScale.toLong() - operand.decimalScale
+         if (signum() == 0) return BigDecimal(BigInteger.ZERO, saturatedScale(preferredScale))
+@@ -386,8 +386,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         val length = maxOf(a.length, b.length)
+         return a.padEnd(length, '0').compareTo(b.padEnd(length, '0'))
+     }
+-    open fun divideToIntegralValue(divisor: BigDecimal?): BigDecimal {
+-        val operand = divisor ?: throw NullPointerException()
++    open fun divideToIntegralValue(divisor: BigDecimal): BigDecimal {
++        val operand = divisor
+         val preferred = saturatedScale(decimalScale.toLong() - operand.decimalScale)
+         if (compareMagnitude(operand) < 0 || (signum() == 0 && operand.signum() != 0))
+             return BigDecimal(BigInteger.ZERO, preferred)
+@@ -404,10 +404,10 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         }
+         return if (preferred > result.decimalScale) result.setScale(preferred, ROUND_UNNECESSARY) else result
+     }
+-    open fun divideToIntegralValue(divisor: BigDecimal?, mc: MathContext?): BigDecimal {
+-        val context = mc ?: throw NullPointerException()
++    open fun divideToIntegralValue(divisor: BigDecimal, mc: MathContext): BigDecimal {
++        val context = mc
+         if (context.precision == 0) return divideToIntegralValue(divisor)
+-        val operand = divisor ?: throw NullPointerException()
++        val operand = divisor
+         if (compareMagnitude(operand) < 0) return divideToIntegralValue(operand)
+         val preferred = saturatedScale(decimalScale.toLong() - operand.decimalScale)
+         var result = divide(operand, MathContext(context.precision, RoundingMode.DOWN))
+@@ -435,18 +435,18 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         val stripped = stripTo(preferred)
+         return if (preserveIdentity) stripped else BigDecimal(stripped.coefficient, stripped.decimalScale)
+     }
+-    open fun divideAndRemainder(divisor: BigDecimal?): Array<BigDecimal> {
++    open fun divideAndRemainder(divisor: BigDecimal): Array<BigDecimal> {
+         val quotient = divideToIntegralValue(divisor)
+         return arrayOf(quotient, subtract(quotient.multiply(divisor)))
+     }
+-    open fun divideAndRemainder(divisor: BigDecimal?, mc: MathContext?): Array<BigDecimal> {
+-        val context = mc ?: throw NullPointerException()
++    open fun divideAndRemainder(divisor: BigDecimal, mc: MathContext): Array<BigDecimal> {
++        val context = mc
+         if (context.precision == 0) return divideAndRemainder(divisor)
+         val quotient = divideToIntegralValue(divisor, context)
+         return arrayOf(quotient, subtract(quotient.multiply(divisor)))
+     }
+-    open fun remainder(divisor: BigDecimal?): BigDecimal = remainderElement(divideAndRemainder(divisor))
+-    open fun remainder(divisor: BigDecimal?, mc: MathContext?): BigDecimal = remainderElement(divideAndRemainder(divisor, mc))
++    open fun remainder(divisor: BigDecimal): BigDecimal = remainderElement(divideAndRemainder(divisor))
++    open fun remainder(divisor: BigDecimal, mc: MathContext): BigDecimal = remainderElement(divideAndRemainder(divisor, mc))
+     private fun remainderElement(pair: Array<BigDecimal>): BigDecimal {
+         if (pair.size < 2) arrayIndexFailure(1, pair.size)
+         return pair[1]

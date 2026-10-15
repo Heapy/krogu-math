@@ -1,0 +1,30 @@
+cohort	ordinal	key	previous_requirement_or_observation	current_execution	current_requirement
+IntegerBitsNullTest	0	0/false/0	!NullPointerException|bits;	Java inherited and(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	1	0/false/1	!NullPointerException|bits;	Java inherited or(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	2	0/false/2	!NullPointerException|bits;	Java inherited xor(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	3	0/false/3	!NullPointerException|bits;	Java inherited andNot(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	4	0/true/0	!IllegalStateException|bits;	Java inherited and(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	5	0/true/1	!IllegalStateException|bits;	Java inherited or(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	6	0/true/2	!IllegalStateException|bits;	Java inherited xor(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	7	0/true/3	!IllegalStateException|bits;	Java inherited andNot(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	8	-1/false/0	!NullPointerException|bits;	Java inherited and(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	9	-1/false/1	!NullPointerException|bits;	Java inherited or(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	10	-1/false/2	!NullPointerException|bits;	Java inherited xor(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	11	-1/false/3	!NullPointerException|bits;	Java inherited andNot(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	12	-1/true/0	!IllegalStateException|bits;	Java inherited and(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	13	-1/true/1	!IllegalStateException|bits;	Java inherited or(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	14	-1/true/2	!IllegalStateException|bits;	Java inherited xor(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	15	-1/true/3	!IllegalStateException|bits;	Java inherited andNot(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	16	18446744073709551617/false/0	!NullPointerException|bits;	Java inherited and(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	17	18446744073709551617/false/1	!NullPointerException|bits;	Java inherited or(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	18	18446744073709551617/false/2	!NullPointerException|bits;	Java inherited xor(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	19	18446744073709551617/false/3	!NullPointerException|bits;	Java inherited andNot(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	20	18446744073709551617/true/0	!IllegalStateException|bits;	Java inherited and(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	21	18446744073709551617/true/1	!IllegalStateException|bits;	Java inherited or(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	22	18446744073709551617/true/2	!IllegalStateException|bits;	Java inherited xor(null)	NPE; callbacks diagnostic
+IntegerBitsNullTest	23	18446744073709551617/true/3	!IllegalStateException|bits;	Java inherited andNot(null)	NPE; callbacks diagnostic
+IntegerBits545JvmTest	0	competing=0/clearBit(-1)	diagnostic	unchanged Kotlin action	diagnostic
+IntegerBits545JvmTest	1	competing=1/flipBit(MIN_VALUE)	diagnostic	unchanged Kotlin action	diagnostic
+IntegerBits545JvmTest	2	competing=2/xor(null)	diagnostic	reflection exact xor(BigInteger) inherited receiver	NPE; callback trace/message/live host diagnostic
+IntegerBits545JvmTest	3	competing=3/xor(self)	diagnostic	unchanged Kotlin action	diagnostic
+IntegerBits545JvmTest	4	competing=4/not()	diagnostic	unchanged Kotlin action	diagnostic

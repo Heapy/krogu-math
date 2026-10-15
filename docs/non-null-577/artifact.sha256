@@ -1,0 +1,8 @@
+42716fe7a1e5bf5c71e960f02757a6160eb3167c17cf09e0b7ed59067a3c3b6d  docs/non-null-577/SOURCE-HANDOFF.txt
+469c1fbcbd9728e27740b756a72f078d24cdb2a30d7d3c78a60b7d3dc1184fd8  docs/non-null-577/rows.tsv
+42aa125e6c35058175ed2ef466c21936a870e48aeb88c8a7dafd09656761af2f  docs/non-null-577/new-controls.tsv
+2ffb262d7c47a47e9915c3b9492b7ec336aa4e89eebb610a8257aee63602cd06  docs/non-null-577/active-source.patch
+d9cb03e25a684e67be5d22fa3508877621168f6025fdcab47c8d605e64b33b46  docs/non-null-577/changed-source.sha256
+fba8d73408889ec6593888e3c6803908ef763ce9569005872afff9fbdc4530cb  docs/non-null-577/baseline-tracked.sha256
+d08f5d56ec7f58737c10aa37edfa264cf31688096d8cc96e11217bb0732bc42b  docs/non-null-577/preservation-check.txt
+fbecfd1e9fd767a88f3e28f86bd5237214baa5136479332bbf7d8f4e994bc84e  docs/non-null-577/originals/IntegerBitsNullTest.java.txt

@@ -50,7 +50,7 @@ class DecimalChunkComparisonTest {
         override fun signum(): Int = super.signum()
         override fun abs(): BigInteger = super.abs()
         override fun toString(): String = super.toString()
-        override fun compareTo(other: BigInteger?): Int = super.compareTo(other)
+        override fun compareTo(other: BigInteger): Int = super.compareTo(other)
     }
 
     @Test fun scratchNeverMutatesOrRetainsOrdinaryOrTruthfulInputMagnitudes() {

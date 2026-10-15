@@ -12,6 +12,45 @@ import kotlin.test.assertTrue
 
 /** Invoke actual Java signatures, so null reaches the library rather than a Kotlin caller cast. */
 class NullArgumentConformanceTest {
+    // Exact owned JVM signatures and null parameter positions. No observed-result selection.
+    private val validationSlots = mapOf(
+        "BigInteger.new(int,byte[],int,int)" to 1,
+        "BigInteger.new(int,Random)" to 1,
+        "BigInteger.new(int,int,Random)" to 2,
+        "BigInteger.probablePrime(int,Random)" to 1,
+        "BigInteger.modPow(BigInteger,BigInteger)" to 0,
+        "BigDecimal.new(String,MathContext)" to 1,
+        "BigDecimal.new(char[],MathContext)" to 1,
+        "BigDecimal.new(char[],int,int,MathContext)" to 3,
+        "BigDecimal.new(double,MathContext)" to 1,
+        "BigDecimal.divide(BigDecimal,int)" to 0,
+        "BigDecimal.divide(BigDecimal,int,int)" to 0,
+        "BigDecimal.sqrt(MathContext)" to 0,
+        "MathContext.new(int,RoundingMode)" to 1,
+    )
+    private fun signature(owner: Class<*>, name: String, types: Array<Class<*>>) =
+        "${owner.simpleName}.$name(${types.joinToString(",") { it.simpleName }})"
+    private fun ordinaryValidation(key: String, receiver: Any?, args: List<Any?>): Boolean {
+        val slot = validationSlots.getValue(key)
+        if (args.withIndex().any { it.index != slot && it.value == null }) return false
+        return when (key) {
+            "BigInteger.new(int,byte[],int,int)" -> args[0] in listOf(-1, 0, 1) && (args[2] as Int) >= 0 && (args[3] as Int) >= 0
+            "BigInteger.new(int,Random)" -> (args[0] as Int) >= 0
+            "BigInteger.new(int,int,Random)", "BigInteger.probablePrime(int,Random)" -> (args[0] as Int) >= 2
+            "BigInteger.modPow(BigInteger,BigInteger)" -> (args[1] as JI).signum() > 0
+            "BigDecimal.new(String,MathContext)" -> args[0] in listOf("1.0", "0", "1", "-1")
+            "BigDecimal.new(char[],MathContext)" -> (args[0] as CharArray).concatToString() in listOf("0", "1.00")
+            "BigDecimal.new(char[],int,int,MathContext)" -> {
+                val chars = args[0] as CharArray; val off = args[1] as Int; val len = args[2] as Int
+                off >= 0 && len > 0 && off <= chars.size - len && chars.concatToString(off, off + len) != "."
+            }
+            "BigDecimal.new(double,MathContext)" -> (args[0] as Double).isFinite()
+            "BigDecimal.divide(BigDecimal,int)", "BigDecimal.divide(BigDecimal,int,int)" -> (args.last() as Int) in 0..7
+            "BigDecimal.sqrt(MathContext)" -> (receiver as JD).signum() >= 0
+            "MathContext.new(int,RoundingMode)" -> (args[0] as Int) >= 0
+            else -> error("Unclassified owned signature $key")
+        }
+    }
     private val mappings: Map<Class<*>, Class<*>> = mapOf(JI::class.java to BigInteger::class.java,
         JD::class.java to BigDecimal::class.java, JC::class.java to MathContext::class.java,
         JR::class.java to RoundingMode::class.java)
@@ -60,10 +99,23 @@ class NullArgumentConformanceTest {
         val zeroSqrtRows = mutableSetOf<String>()
         val zeroDoubleRows = mutableSetOf<String>()
         var comparisons = 0
+        val ownedCounts = linkedMapOf<String, Int>()
+        val ownedKeys = mutableSetOf<String>()
+        var ownedOrdinary = 0
         fun compare(key: String, label: String, reference: () -> Any?, implementation: () -> Any?,
-            zeroSqrtText: String? = null, zeroDoubleKey: String? = null) {
+            zeroSqrtText: String? = null, zeroDoubleKey: String? = null,
+            ownedSignature: String? = null, ordinary: Boolean = false) {
             comparisons++
             val expected = outcome(reference); val actual = outcome(implementation)
+            if (ownedSignature != null) {
+                assertTrue(ownedKeys.add("$ownedSignature/$label"), "duplicate owned reflection key")
+                ownedCounts[ownedSignature] = (ownedCounts[ownedSignature] ?: 0) + 1
+                println("578 signature=$ownedSignature key=$label class=${if (ordinary) "ordinary-null" else "compound-invalid-priority"} liveHost=$expected actual=$actual")
+                if (ordinary) {
+                    ownedOrdinary++
+                    assertEquals("!NullPointerException", actual, "$ownedSignature/$label public null contract")
+                } else assertTrue(actual.startsWith("!"), "$ownedSignature/$label must reject invalid inputs")
+            }
             if (zeroSqrtText != null) {
                 assertTrue(zeroSqrtRows.add(zeroSqrtText), "Duplicate zero/null receiver: $zeroSqrtText")
                 println("$key $label liveHost=$expected required=!NullPointerException actual=$actual")
@@ -76,7 +128,7 @@ class NullArgumentConformanceTest {
                 assertEquals("!NullPointerException", actual, "$key $label public null contract; liveHost=$expected")
                 return
             }
-            if (expected != actual) {
+            if (ownedSignature == null && expected != actual) {
                 val count = counts[key] ?: 0; counts[key] = count + 1
                 if (count < 3) examples.add("$key $label expected=$expected actual=$actual")
             }
@@ -85,6 +137,8 @@ class NullArgumentConformanceTest {
             for (ctor in jdk.constructors) {
                 val target = port.getConstructor(*ctor.parameterTypes.map { mappings[it] ?: it }.toTypedArray())
                 for (args in cases(ctor.parameterTypes)) {
+                    val signature = signature(jdk, "new", ctor.parameterTypes)
+                    val owned = validationSlots[signature]?.let { args[it] == null } == true
                     // Input-only selection: exact Double/context constructor and signed-zero bits.
                     val zeroDoubleKey = if (jdk == JD::class.java &&
                         ctor.parameterTypes.contentEquals(arrayOf(Double::class.javaPrimitiveType, JC::class.java)) &&
@@ -98,7 +152,8 @@ class NullArgumentConformanceTest {
                     compare("${jdk.simpleName}.new(${ctor.parameterTypes.joinToString { it.simpleName }})",
                         args.joinToString { canonical(it) },
                         { ctor.newInstance(*args.toTypedArray()) }, { target.newInstance(*args.map(::adapt).toTypedArray()) },
-                        zeroDoubleKey = zeroDoubleKey)
+                        zeroDoubleKey = zeroDoubleKey, ownedSignature = signature.takeIf { owned },
+                        ordinary = owned && ordinaryValidation(signature, null, args))
                 }
             }
             val receivers: List<Any> = when (jdk) {
@@ -111,6 +166,8 @@ class NullArgumentConformanceTest {
                 val target = port.getMethod(method.name, *method.parameterTypes.map { mappings[it] ?: it }.toTypedArray())
                 val instances = if (Modifier.isStatic(method.modifiers)) listOf(null) else receivers
                 for (receiver in instances) for (args in cases(method.parameterTypes)) {
+                    val signature = signature(jdk, method.name, method.parameterTypes)
+                    val owned = validationSlots[signature]?.let { args[it] == null } == true
                     // Select by the exact public signature, ordinary receiver cohort and null input.
                     val zeroSqrtText = if (jdk == JD::class.java && method.name == "sqrt" &&
                         method.parameterTypes.contentEquals(arrayOf(JC::class.java)) && args == listOf(null) &&
@@ -119,7 +176,8 @@ class NullArgumentConformanceTest {
                     compare("${jdk.simpleName}.${method.name}(${method.parameterTypes.joinToString { it.simpleName }})",
                         "receiver=$receiver args=${args.joinToString { canonical(it) }}",
                         { method.invoke(receiver, *args.toTypedArray()) },
-                        { target.invoke(adapt(receiver), *args.map(::adapt).toTypedArray()) }, zeroSqrtText)
+                        { target.invoke(adapt(receiver), *args.map(::adapt).toTypedArray()) }, zeroSqrtText,
+                        ownedSignature = signature.takeIf { owned }, ordinary = owned && ordinaryValidation(signature, receiver, args))
                 }
             }
         }
@@ -127,7 +185,17 @@ class NullArgumentConformanceTest {
         assertEquals(2, zeroSqrtRows.size)
         assertEquals(setOf("-0.0", "0.0"), zeroDoubleRows)
         assertEquals(2, zeroDoubleRows.size)
+        assertEquals(mapOf(
+            "BigInteger.new(int,byte[],int,int)" to 1728, "BigInteger.new(int,Random)" to 12,
+            "BigInteger.new(int,int,Random)" to 144, "BigInteger.probablePrime(int,Random)" to 12,
+            "BigInteger.modPow(BigInteger,BigInteger)" to 30, "BigDecimal.new(String,MathContext)" to 12,
+            "BigDecimal.new(char[],MathContext)" to 5, "BigDecimal.new(char[],int,int,MathContext)" to 720,
+            "BigDecimal.new(double,MathContext)" to 7, "BigDecimal.divide(BigDecimal,int)" to 84,
+            "BigDecimal.divide(BigDecimal,int,int)" to 1008, "BigDecimal.sqrt(MathContext)" to 7,
+            "MathContext.new(int,RoundingMode)" to 12), ownedCounts)
+        assertEquals(3781, ownedKeys.size)
+        assertEquals(819, ownedOrdinary)
         assertEquals(emptyMap(), counts, "$comparisons comparisons; discrepancies=$counts\n${examples.joinToString("\n")}")
-        println("$comparisons null/invalid-argument comparisons: ${comparisons - zeroSqrtRows.size - zeroDoubleRows.size} retained host comparisons, ${zeroSqrtRows.size + zeroDoubleRows.size} public null requirements")
+        println("$comparisons null/invalid-argument comparisons: ${comparisons - ownedKeys.size} retained host comparisons, $ownedOrdinary owned null requirements, ${ownedKeys.size - ownedOrdinary} owned compound diagnostics")
     }
 }

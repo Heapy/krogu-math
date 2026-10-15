@@ -13,8 +13,8 @@ class DecimalExactRoot563Test {
         override fun scale() = super.scale()
         override fun unscaledValue() = super.unscaledValue()
         override fun stripTrailingZeros() = super.stripTrailingZeros()
-        override fun sqrt(mc: MathContext?) = super.sqrt(mc)
-        fun inheritedRoot(mc: MathContext?) = super.sqrt(mc)
+        override fun sqrt(mc: MathContext) = super.sqrt(mc)
+        fun inheritedRoot(mc: MathContext) = super.sqrt(mc)
     }
 
     private fun assertResult(expected: DecimalExactRoot563Expected.Result, actual: BigDecimal, label: String) {
@@ -110,16 +110,14 @@ class DecimalExactRoot563Test {
             }
             assertFailsWith<ArithmeticException> { BigDecimal("225").sqrt(MathContext(1, RoundingMode.UNNECESSARY)) }
         }
-        assertFailsWith<NullPointerException> { BigDecimal("4").sqrt(null) }
-        assertFailsWith<ArithmeticException> { BigDecimal("-4").sqrt(null) }
-        assertFailsWith<NullPointerException> { BigDecimal(BigInteger.ZERO, Int.MIN_VALUE).sqrt(null) }
+        // Three null entries are preserved in Validation578StandaloneTest, including negative priority.
         assertEquals(-1073741824, BigDecimal(BigInteger.ZERO, Int.MIN_VALUE).sqrt(MathContext.UNLIMITED).scale())
         val marker = BigDecimal("7.00")
         val failure = IllegalStateException("caller owned")
         val context = MathContext(Int.MAX_VALUE, RoundingMode.HALF_EVEN)
         var entries = 0
         val replacement: BigDecimal = object : BigDecimal("4") {
-            override fun sqrt(mc: MathContext?): BigDecimal {
+            override fun sqrt(mc: MathContext): BigDecimal {
                 entries++
                 assertSame(context, mc)
                 return marker
@@ -128,7 +126,7 @@ class DecimalExactRoot563Test {
         assertSame(marker, replacement.sqrt(context))
         assertEquals(1, entries)
         val throwing: BigDecimal = object : BigDecimal("4") {
-            override fun sqrt(mc: MathContext?): BigDecimal { assertSame(context, mc); throw failure }
+            override fun sqrt(mc: MathContext): BigDecimal { assertSame(context, mc); throw failure }
         }
         assertSame(failure, assertFailsWith<IllegalStateException> { throwing.sqrt(context) })
     }

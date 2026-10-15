@@ -27,9 +27,41 @@ class PortableOracleTest {
         val observedDirectZeroKeys = mutableSetOf<List<String>>()
         val directZeroCounts = mutableMapOf<String, Int>()
         val observedFiniteKeys = mutableSetOf<List<String>>()
+        val unaryNullRows = linkedMapOf<Int, List<String>>()
         var ordinaryMismatchCount = 0
+        val jvmBinaryRows = mutableSetOf<Int>()
         val ordinaryMismatchExamples = mutableListOf<String>()
+        val movedComparisons = mutableMapOf<Int, List<String>>()
+        val commonComparisons = mutableMapOf<Int, List<String>>()
+        val rngRows = mutableSetOf<List<String>>()
+        val rngOrdinals = mutableListOf<Int>()
         for ((index, v) in oracleVectors().withIndex()) {
+            val selectedGroups = (if (ComparisonRows574.isMoved(v)) 1 else 0) +
+                (if (DecimalBinary575Rows.nd(v)) 1 else 0) + (if (UnaryNull576Rows.selected(v)) 1 else 0) +
+                (if (v[0] == "R") 1 else 0)
+            assertTrue(selectedGroups <= 1, "one JVM counterpart group per original oracle execution $index")
+            if (ComparisonRows574.isMoved(v)) {
+                assertNull(movedComparisons.put(index, v.take(6)), "duplicate comparison ordinal $index")
+                assertEquals(ComparisonRows574.moved[index], v.take(6), "JVM comparison counterpart $index")
+                // Account for the exact input before evaluation, without synthesizing an outcome.
+                // ComparisonNull574JvmTest executes this row through a real Java boundary.
+                println("574_MOVED_TO_JVM\tindex=$index\t${v.take(6).joinToString("\t")}\tfrozen=${v[6]}")
+                continue
+            }
+            if (ComparisonRows574.isComparison(v)) commonComparisons[index] = v.take(6)
+            if (DecimalBinary575Rows.nd(v)) {
+                assertTrue(jvmBinaryRows.add(index))
+                continue // Exact ordinal/key/frozen observation replayed by DecimalBinary575JvmTest.
+            }
+            if (UnaryNull576Rows.selected(v)) {
+                assertNull(unaryNullRows.put(index, v.take(6)), "duplicate unary ordinal $index")
+                continue // Exact counterpart: UnaryNull576VectorsTest, using real Java calls.
+            }
+            if (v[0] == "R") {
+                assertTrue(rngRows.add(v.take(6)), "duplicate RNG key at $index")
+                rngOrdinals += index
+                continue // Exact 25-row JVM counterpart: Validation578RngTest.
+            }
             val actual = try {
                 val result = evaluate(v)
                 if (result is Array<*>) result.joinToString("|") else result.toString()
@@ -87,6 +119,17 @@ class PortableOracleTest {
             }
         }
         assertEquals(128, powKeys.size)
+        assertEquals(ComparisonRows574.moved, movedComparisons, "every displaced comparison has a JVM counterpart")
+        assertEquals(ComparisonRows574.common, commonComparisons, "every valid comparison still executes in common")
+        assertEquals(mapOf("IM" to 114, "MM" to 72), movedComparisons.values.groupingBy { it[0] }.eachCount())
+        assertEquals(mapOf("IM" to 384, "MM" to 132), commonComparisons.values.groupingBy { it[0] }.eachCount())
+        assertEquals(180, jvmBinaryRows.size, "ND rows assigned to real Java boundary replay")
+        assertEquals(DecimalBinary575Rows.ndOrdinals, jvmBinaryRows)
+        assertEquals(478, movedComparisons.size + jvmBinaryRows.size + unaryNullRows.size,
+            "186 comparison + 180 binary + 112 unary original oracle executions move exactly once")
+        Validation578RngRows.assertPartition(rngRows, rngOrdinals)
+        assertEquals(503, movedComparisons.size + jvmBinaryRows.size + unaryNullRows.size + rngRows.size,
+            "all 478 G1–G4 and 25 RNG original oracle executions move exactly once")
         assertEquals(powKeys, observedPowKeys, "all original pow boundary observations remain represented")
         assertEquals(4, truthfulScalePrefixes.size)
         assertEquals(truthfulScalePrefixes.keys, observedTruthfulScaleKeys, "all four task566 truthful observations remain represented")
@@ -96,7 +139,9 @@ class PortableOracleTest {
         assertEquals(12, FiniteZeroPolicy567.directUnaryKeys.size)
         assertEquals(12, FiniteZeroPolicy567.absKeys.size)
         assertEquals(8, FiniteZeroPolicy567.nullAbsKeys.size)
-        assertEquals(FiniteZeroPolicy567.keys, observedFiniteKeys, "complete exact finite input set")
+        assertEquals(UnaryNull576Rows.expected, unaryNullRows, "exact JVM unary partition, including original ordinals")
+        assertEquals(FiniteZeroPolicy567.keys - FiniteZeroPolicy567.nullAbsKeys, observedFiniteKeys,
+            "valid finite inputs remain common; all eight nullAbs keys execute in UnaryNull576VectorsTest")
         assertEquals(0, ordinaryMismatchCount, "ordinary oracle mismatches (first80):\n${ordinaryMismatchExamples.joinToString("\n")}")
     }
 
@@ -230,32 +275,14 @@ class PortableOracleTest {
         if (v[0] == "ND") return evaluateNullableBinaryOracle(v)
         if (v[0] == "O") return evaluateAdditionOracle(v)
         if (v[0] == "C") return evaluateUnaryOracle(v)
-        if (v[0] == "K") {
-            val operation = op.substringBefore(':')
-            val behavior = op.substringAfter(':')
-            val trace = StringBuilder()
-            val value = object : BigDecimal(v[2]) {
-                override fun plus(mc: MathContext?): BigDecimal {
-                    trace.append("plus:").append(mc == null).append(';')
-                    return when (behavior) {
-                        "return" -> BigDecimal("42.00")
-                        "self" -> this
-                        "throw" -> throw IllegalStateException("plus callback")
-                        else -> super.plus(mc)
-                    }
-                }
-            }
-            val result = try { (if (operation == "round") value.round(null) else value.plus(null)).toString() }
-                catch (e: Exception) { "!${e::class.simpleName}" + if (e is IllegalStateException) ":${e.message}" else "" }
-            return "$result|$trace"
-        }
+        check(v[0] != "K") { "K rows execute in UnaryNull576VectorsTest" }
         if (v[0] == "S") {
             val trace = StringBuilder()
             val value = object : BigDecimal(v[2]) {
                 private var calls = 0
                 override fun precision(): Int { trace.append("precision;"); return if (op == "sequence" && calls++ > 0) 1 else v[3].toInt() }
                 override fun signum(): Int { trace.append("sign;"); return super.signum() }
-                override fun plus(mc: MathContext?): BigDecimal {
+                override fun plus(mc: MathContext): BigDecimal {
                     trace.append("plus;")
                     return when (op) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
                 }
@@ -277,8 +304,8 @@ class PortableOracleTest {
             val value = object : BigDecimal(BigInteger(v[2].substringBefore('@')), v[2].substringAfter('@').toInt()) {
                 override fun signum(): Int { trace.append("sign;"); return sign }
                 override fun precision(): Int { trace.append("precision;"); return 1 }
-                override fun multiply(multiplicand: BigDecimal?): BigDecimal { trace.append("exact;"); return super.multiply(multiplicand) }
-                override fun multiply(multiplicand: BigDecimal?, mc: MathContext?): BigDecimal { trace.append("context;"); return super.multiply(multiplicand, mc) }
+                override fun multiply(multiplicand: BigDecimal): BigDecimal { trace.append("exact;"); return super.multiply(multiplicand) }
+                override fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal { trace.append("context;"); return super.multiply(multiplicand, mc) }
             }
             val other = BigDecimal(BigInteger(v[3].substringBefore('@')), v[3].substringAfter('@').toInt())
             val result = try {
@@ -484,16 +511,6 @@ class PortableOracleTest {
         if (v[0] == "P") {
             val value = object : BigInteger(v[2]) { override fun toLong(): Long = v[3].toLong() }
             return "${value.toInt()}|${value.toDouble().toBits()}|${value.toFloat().toBits()}"
-        }
-        if (v[0] == "R") {
-            val bits = v[2].toInt()
-            val random: PlatformRandom? = null
-            return when (op) {
-                "random" -> BigInteger(bits, random)
-                "prime" -> BigInteger(bits, v[3].toInt(), random)
-                "probablePrime" -> BigInteger.probablePrime(bits, random)
-                else -> error("Unknown random operation $op")
-            }
         }
         if (v[0] == "B") {
             val bytes = if (v[2].isEmpty()) byteArrayOf() else v[2].split(',').map { it.toByte() }.toByteArray()

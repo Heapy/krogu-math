@@ -1,0 +1,155 @@
+Task576 G4 terminal SOURCE milestone
+ALL UNCOMPILED/UNRUN. No runtime acceptance. Changes are not committed.
+
+Scope and identity
+------------------
+Linked ref-less task local:576 remained in_progress in session ffa5af99.
+Workspace /private/tmp/krogu-math-task-576, branch task/576-unary-context-nonnull.
+Initial/final HEAD: 60aea413e0c7af007844aace6ec28ecdfa019b67; initially clean.
+Parent573 body and terminal2174, SOURCE-HANDOFF, slots, inactive all48 patch and
+focused indices were read. No all48 patch was applied. No foreign implementation
+source was read. The modern-kotlin and kotgent:work-task instructions were read;
+the user's strict source-only/terminal-comment instructions govern this handoff.
+
+Implemented active source
+-------------------------
+BigDecimal abs/negate/plus/round(MathContext) now have non-null Kotlin context
+parameters, as does contextualUnaryRound. Only redundant helper/body null checks
+were removed. Stored-zero cohort handling, valid-context virtual dispatch and
+arithmetic/rounding kernels are otherwise unchanged. G4 is four public input slots.
+Other groups, constructors, equals inputs, min/max results and OrNull results are
+unchanged in this focused tree. This is not aggregate48 completion.
+
+Affected Kotlin overrides and callers were migrated in the common oracle,
+zero/context contracts and JVM subclass tests. Valid common mathematical, scale,
+precision, ordinary/truthful, identity, sentinel and explicit-super checks remain.
+The former null-only ordering test also gains valid-context common controls.
+The 544V3/545V2 files are byte-identical to baseline60, including their accepted
+assertion/wrapper/trace fixes. Serialization source and current-own roundtrip tests
+are unchanged; legacy serialization is not introduced.
+
+Java boundaries execute actual library methods with null. Direct Java override
+bodies can return markers/null or throw their own sentinel. Inherited library
+methods and explicit Java super calls require a library NPE on null context.
+All super controls use actual super.method(...), not reflection. No caller-side
+null casts/!!, manufactured adapter NPE, failure-selected exclusions, or blanket
+host-equality waiver was introduced. New Java adapters are only in jvmTest.
+
+Exact moved vector accounting: 112 common executions
+----------------------------------------------------
+UnaryNull576Rows is an input-only selector plus an independently enumerated map of
+original oracle ordinals to exact six-field keys. PortableOracleTest asserts this
+map before completing its common partition. UnaryNull576VectorsTest separately
+executes every selected row through UnaryNull576Boundary and asserts the same map.
+The immutable Jdk25Vectors fixture supplies the complete original outcome for every
+diagnostic. vector-rows.txt records all112 original ordinals, keys and outcomes.
+
+K: ordinals60091..60106,16 rows: texts[0.00,-123.45], behaviors[return,self,throw,super],
+operations[round,plus]. Eight direct Java plus overrides and eight inherited round.
+C returnedNegate:60539..60546(super),60571..60578(replace),60603..60610(throw),
+eight rounding modes per block, precision=-1. All24 inherited negate entry.
+C nullAbs/nullNegate:60635..60706,72 rows: texts[0.00,1,-1], signs[-1,0,1],
+behaviors[return,self,throw,super], operations[nullAbs,nullNegate]. 36 inherited
+abs entries and36 direct Java negate overrides.
+Total direct44 / inherited68. All eight finite567 nullAbs keys retain receiver
+coefficient ZERO and scale2 checks in the Java adapter, with exact-key coverage
+asserted by the JVM test. The other204 finite567 valid keys remain common.
+
+Normative outcome checks are explicit: base/inherited null requires NPE; direct
+Java overrides require their selected result/exception. The explicit override entry
+trace remains checked. Historical inherited callback traces and VM NPE messages
+are diagnostics, printed alongside frozen outcome, key, ordinal, current trace and
+raw exception class/message. No old fixture observation is rewritten.
+
+Exact moved standalone accounting: 330 common executions
+--------------------------------------------------------
+UnaryNull576StandaloneTest reconstructs each original receiver/override family in
+Java and preserves real explicit-super routes. Each method independently enumerates
+its expected keys, checks uniqueness and exact expected/observed ordered key lists,
+asserts the literal count, and prints a zero-based per-family ordinal, full key,
+historical assertion descriptor, actual result/raw exception and callback trace.
+These historical descriptors label old source assertions, not new observations.
+
+Original ZeroContextScale567Test function -> JVM method / dimensions / ordinal range
+noContextPlusRetainsIdentityAndNullContextStillFails -> noContextNulls:
+  7 scales x3 coefficients[0,-7,7] x (ordinary2 + truthful4 routes) =126,0..125.
+  Routes plus,round; truthful additionally actual super.plus and super.round.
+explicitOverridesKeepResultAndExceptionIdentityEvenWithNullContext -> explicitOverrides:
+  2 fail modes x6 routes =12,0..11. plus direct/inheritedRound/superRound,
+  round direct, plus superPlus, round superRound. Direct marker/sentinel identity kept.
+unaryContractsAndExplicitDelegationRemainIntact -> zeroUnary:
+  7 scales x2 ordinary/truthful x2 abs/negate =28,0..27.
+same original function -> returnedUnary:
+  2 fail modes x2 returned.abs/source.negate routes =4,0..3.
+unaryZeroSeamUsesStoredCoefficientAndKeepsExplicitCalls -> zeroSeam:
+  7 scales x2 fail modes x5 routes =70,0..69. source.negate, returned.plus,
+  returned.round, returned.superRound, returned.superPlus. Direct identity kept.
+unaryOrderingAndExplicitAbsNegateOverridesKeepNullSemantics -> ordering:
+  3 signs x2 fail modes x7 routes =42,0..41. inherited value.abs, explicit
+  abs/negate, actual super.abs/super.negate, throwing abs/negate. Direct identity kept.
+Original ZeroUnaryPrecision567Test.storedZeroUnaryKeepsPrecisionSentinelAndNullStaging
+  -> precisionSentinel:2 negate flags x3 precisions[0,1,7] x8 modes =48,0..47.
+  Its valid-call precursor, exact sentinel identity and immutable receiver fields
+  are retained in Java as well as the common valid test.
+Scales in all seven-scale families: MIN_VALUE,-7,-1,0,1,7,MAX_VALUE.
+Total:126+12+28+4+70+42+48=330. With vectors:442 moved common executions.
+Java-null boundary coverage is JVM-only; no JS/Native null-boundary claim is made.
+
+Existing JVM coverage retained and classified
+--------------------------------------------
+DecimalUnarySubclassTest:24 existing precision=-1 rows now use the Java boundary
+on the original Kotlin receiver. Exact behavior/mode keys are asserted; all72
+valid returnedNegate rows and other valid unary dispatch cases remain unchanged.
+DecimalNullRoundSubclassTest:all20 original text/behavior/route keys; direct plus
+keeps callback result/trace checks, ten inherited round cases require NPE.
+DecimalNullUnarySubclassTest:all90 original text/sign/behavior/route keys;45 inherited
+abs require NPE,45 direct negate keep own callback outcomes and entry markers.
+All ten finite567 zero keys, including Java null-return behavior, remain checked.
+ZeroNullForwarding567Test:all12 original context/route keys retained. The two null
+inherited/super round rows require NPE. Direct plus(null) and all nine valid-context
+null-return controls remain. Old trace/outcome evidence is retained as diagnostics.
+Existing NullArgumentConformanceTest already invokes ordinary unary signatures via
+reflection and expects NPE; G4 introduces no competing-invalid parameter there.
+
+Independent review and source checks
+------------------------------------
+Read-only reviewer /root/source_review found no actionable issues: G4-only source,
+Kotlin caller/override coherence, genuine Java boundaries/super calls,112 vector
+ordinal/key pairs (44 direct/68 inherited),330 standalone rows, valid common
+assertion retention and frozen-data preservation were inspected. This is not a
+compiler or runtime verdict. Discovery agent scope_map was also read-only.
+git diff --check passed. All source writes are inside this worktree. No staging,
+commit, rebase, checkout, push, task review/done/unlink, project reset or root/runtime
+edit occurred. No compiler, Kotlin script/helper/certificate, Gradle/toolchain, test,
+JAR/build, Java numerical probe, harness, benchmark, allocation or timing run occurred.
+
+Preservation and artifacts
+-------------------------
+Before-change originals archive: /private/tmp/krogu-math-task-576-originals.tar
+SHA256 7493bfc7081091b6c0c5088893c41bd360a9f209ac79a165dfff7ab784c9bb8b
+baseline-tracked.sha256 records all404 initially tracked files.
+SHA256 fba8d73408889ec6593888e3c6803908ef763ce9569005872afff9fbdc4530cb
+preservation-check.txt:393 unchanged files OK; exactly the11 intended tracked
+source edits report changed hashes. All frozen fixtures/generators/raw diagnostics,
+build/toolchain files and accepted544/545 files are within the unchanged393.
+Four new active source files supplement the11 changed tracked files.
+source-files.txt and source.sha256 enumerate all15 exact production/test hashes.
+source.sha256 SHA256 8c33159f1fa1e10aba88f67d1d6157d46ffca6031db59c587dccfa9880fa727f
+Production BigDecimal.kt SHA256 699100258995e70f8dc2bf34bb0a574a6856aa78823872bdd9f43274c51c526e
+source.patch includes all15 active files (tracked diff plus four new-file diffs).
+source.patch SHA256 296fd6c24d267d9e2fa748e3adac077d4ee3ef2bbb4b47ba3faa766a4a8a74c3
+vector-rows.txt SHA256 1762ace41dfa97efa62ca84218454d96883c378137c95600ae614fdf992b1e66
+AcceptedUnaryInputs576.kt.txt and RejectedUnaryInputs576.kt.txt are source fixtures
+outside source sets for parent-owned compiler checks; no fixture was compiled.
+
+Parent continuation
+-------------------
+Root owns integration with other focused groups (including overlapping BigDecimal,
+PortableOracleTest and ZeroContextScale567Test hunks), pinned Kotlin2.4.21 /
+Gradle9.8.1 / Liberica25.0.4+9-LTS verification, all local targets, current own
+serialization roundtrip, fresh own JAR/public tests and exact published-head all6CI.
+Compile each negative fixture body independently and verify its specific input
+error. Recheck all current source hashes after any integration conflict resolution.
+This worker ends at the terminal SOURCE milestone for immediate native archival;
+it does not wait for a runtime grant. Task closure/aggregate goal remain root-owned.
+ALL UNCOMPILED/UNRUN. No official JCK or full compatibility claim.

@@ -16,7 +16,7 @@ private class InverseProbe(text: String, val label: String, val trace: StringBui
     override fun mod(m: BigInteger): BigInteger { call("mod"); return replace("mod") { super.mod(m) } }
     override fun remainder(m: BigInteger): BigInteger { call("rem"); return replace("rem") { super.remainder(m) } }
     override fun equals(value: Any?): Boolean { call("equals"); return when (mode) { "equals:true" -> true; "equals:false" -> false; else -> super.equals(value) } }
-    override fun compareTo(value: BigInteger?): Int { call("compare"); return super.compareTo(value) }
+    override fun compareTo(value: BigInteger): Int { call("compare"); return super.compareTo(value) }
     override fun signum(): Int { call("sign"); return super.signum() }
     override fun bitLength(): Int { call("bits"); return super.bitLength() }
     override fun getLowestSetBit(): Int { call("lowest"); return super.getLowestSetBit() }

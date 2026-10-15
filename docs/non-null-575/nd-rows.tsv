@@ -1,0 +1,181 @@
+fixture_ordinal	source_line	category	operation	input0	input1	precision	mode	frozen_observation
+62339	67599	ND	add:return	0.00	~	-2	HALF_UP	42.00|add:true;
+62340	67600	ND	subtract:return	0.00	~	-2	HALF_UP	42.00|subtract:true;
+62341	67601	ND	multiply:return	0.00	~	-2	HALF_UP	42.00|multiply:true;
+62342	67602	ND	add:return	0.00	2	-1	HALF_UP	!NullPointerException|
+62343	67603	ND	subtract:return	0.00	2	-1	HALF_UP	!NullPointerException|
+62344	67604	ND	multiply:return	0.00	2	-1	HALF_UP	!NullPointerException|
+62345	67605	ND	add:return	0.00	~	-1	HALF_UP	!NullPointerException|
+62346	67606	ND	subtract:return	0.00	~	-1	HALF_UP	!NullPointerException|
+62347	67607	ND	multiply:return	0.00	~	-1	HALF_UP	!NullPointerException|
+62351	67614	ND	add:return	0.00	~	0	HALF_UP	42.00|add:true;
+62352	67615	ND	subtract:return	0.00	~	0	HALF_UP	42.00|subtract:true;
+62353	67616	ND	multiply:return	0.00	~	0	HALF_UP	42.00|multiply:true;
+62357	67620	ND	add:return	0.00	~	1	HALF_UP	!NullPointerException|
+62358	67621	ND	subtract:return	0.00	~	1	HALF_UP	!NullPointerException|
+62359	67622	ND	multiply:return	0.00	~	1	HALF_UP	!NullPointerException|
+62363	67626	ND	add:self	0.00	~	-2	HALF_UP	0.00|add:true;
+62364	67627	ND	subtract:self	0.00	~	-2	HALF_UP	0.00|subtract:true;
+62365	67628	ND	multiply:self	0.00	~	-2	HALF_UP	0.00|multiply:true;
+62366	67629	ND	add:self	0.00	2	-1	HALF_UP	!NullPointerException|
+62367	67630	ND	subtract:self	0.00	2	-1	HALF_UP	!NullPointerException|
+62368	67631	ND	multiply:self	0.00	2	-1	HALF_UP	!NullPointerException|
+62369	67632	ND	add:self	0.00	~	-1	HALF_UP	!NullPointerException|
+62370	67633	ND	subtract:self	0.00	~	-1	HALF_UP	!NullPointerException|
+62371	67634	ND	multiply:self	0.00	~	-1	HALF_UP	!NullPointerException|
+62375	67638	ND	add:self	0.00	~	0	HALF_UP	0.00|add:true;
+62376	67639	ND	subtract:self	0.00	~	0	HALF_UP	0.00|subtract:true;
+62377	67640	ND	multiply:self	0.00	~	0	HALF_UP	0.00|multiply:true;
+62381	67644	ND	add:self	0.00	~	1	HALF_UP	!NullPointerException|
+62382	67645	ND	subtract:self	0.00	~	1	HALF_UP	!NullPointerException|
+62383	67646	ND	multiply:self	0.00	~	1	HALF_UP	!NullPointerException|
+62387	67650	ND	add:throw	0.00	~	-2	HALF_UP	!IllegalStateException:operation callback|add:true;
+62388	67651	ND	subtract:throw	0.00	~	-2	HALF_UP	!IllegalStateException:operation callback|subtract:true;
+62389	67652	ND	multiply:throw	0.00	~	-2	HALF_UP	!IllegalStateException:operation callback|multiply:true;
+62390	67653	ND	add:throw	0.00	2	-1	HALF_UP	!NullPointerException|
+62391	67654	ND	subtract:throw	0.00	2	-1	HALF_UP	!NullPointerException|
+62392	67655	ND	multiply:throw	0.00	2	-1	HALF_UP	!NullPointerException|
+62393	67656	ND	add:throw	0.00	~	-1	HALF_UP	!NullPointerException|
+62394	67657	ND	subtract:throw	0.00	~	-1	HALF_UP	!NullPointerException|
+62395	67658	ND	multiply:throw	0.00	~	-1	HALF_UP	!NullPointerException|
+62399	67662	ND	add:throw	0.00	~	0	HALF_UP	!IllegalStateException:operation callback|add:true;
+62400	67666	ND	subtract:throw	0.00	~	0	HALF_UP	!IllegalStateException:operation callback|subtract:true;
+62401	67667	ND	multiply:throw	0.00	~	0	HALF_UP	!IllegalStateException:operation callback|multiply:true;
+62405	67671	ND	add:throw	0.00	~	1	HALF_UP	!NullPointerException|
+62406	67672	ND	subtract:throw	0.00	~	1	HALF_UP	!NullPointerException|
+62407	67673	ND	multiply:throw	0.00	~	1	HALF_UP	!NullPointerException|
+62411	67677	ND	add:super	0.00	~	-2	HALF_UP	!NullPointerException|add:true;
+62412	67678	ND	subtract:super	0.00	~	-2	HALF_UP	!NullPointerException|subtract:true;
+62413	67679	ND	multiply:super	0.00	~	-2	HALF_UP	!NullPointerException|multiply:true;
+62414	67680	ND	add:super	0.00	2	-1	HALF_UP	!NullPointerException|
+62415	67681	ND	subtract:super	0.00	2	-1	HALF_UP	!NullPointerException|
+62416	67682	ND	multiply:super	0.00	2	-1	HALF_UP	!NullPointerException|
+62417	67683	ND	add:super	0.00	~	-1	HALF_UP	!NullPointerException|
+62418	67684	ND	subtract:super	0.00	~	-1	HALF_UP	!NullPointerException|
+62419	67685	ND	multiply:super	0.00	~	-1	HALF_UP	!NullPointerException|
+62423	67689	ND	add:super	0.00	~	0	HALF_UP	!NullPointerException|add:true;
+62424	67690	ND	subtract:super	0.00	~	0	HALF_UP	!NullPointerException|subtract:true;
+62425	67691	ND	multiply:super	0.00	~	0	HALF_UP	!NullPointerException|multiply:true;
+62429	67695	ND	add:super	0.00	~	1	HALF_UP	!NullPointerException|
+62430	67696	ND	subtract:super	0.00	~	1	HALF_UP	!NullPointerException|
+62431	67697	ND	multiply:super	0.00	~	1	HALF_UP	!NullPointerException|
+62435	67701	ND	add:return	1	~	-2	HALF_UP	42.00|add:true;
+62436	67702	ND	subtract:return	1	~	-2	HALF_UP	42.00|subtract:true;
+62437	67703	ND	multiply:return	1	~	-2	HALF_UP	42.00|multiply:true;
+62438	67704	ND	add:return	1	2	-1	HALF_UP	!NullPointerException|
+62439	67705	ND	subtract:return	1	2	-1	HALF_UP	!NullPointerException|
+62440	67706	ND	multiply:return	1	2	-1	HALF_UP	!NullPointerException|
+62441	67707	ND	add:return	1	~	-1	HALF_UP	!NullPointerException|
+62442	67708	ND	subtract:return	1	~	-1	HALF_UP	!NullPointerException|
+62443	67709	ND	multiply:return	1	~	-1	HALF_UP	!NullPointerException|
+62447	67713	ND	add:return	1	~	0	HALF_UP	42.00|add:true;
+62448	67714	ND	subtract:return	1	~	0	HALF_UP	42.00|subtract:true;
+62449	67715	ND	multiply:return	1	~	0	HALF_UP	42.00|multiply:true;
+62453	67722	ND	add:return	1	~	1	HALF_UP	!NullPointerException|
+62454	67723	ND	subtract:return	1	~	1	HALF_UP	!NullPointerException|
+62455	67724	ND	multiply:return	1	~	1	HALF_UP	!NullPointerException|
+62459	67728	ND	add:self	1	~	-2	HALF_UP	1|add:true;
+62460	67729	ND	subtract:self	1	~	-2	HALF_UP	1|subtract:true;
+62461	67730	ND	multiply:self	1	~	-2	HALF_UP	1|multiply:true;
+62462	67731	ND	add:self	1	2	-1	HALF_UP	!NullPointerException|
+62463	67732	ND	subtract:self	1	2	-1	HALF_UP	!NullPointerException|
+62464	67733	ND	multiply:self	1	2	-1	HALF_UP	!NullPointerException|
+62465	67734	ND	add:self	1	~	-1	HALF_UP	!NullPointerException|
+62466	67735	ND	subtract:self	1	~	-1	HALF_UP	!NullPointerException|
+62467	67736	ND	multiply:self	1	~	-1	HALF_UP	!NullPointerException|
+62471	67740	ND	add:self	1	~	0	HALF_UP	1|add:true;
+62472	67741	ND	subtract:self	1	~	0	HALF_UP	1|subtract:true;
+62473	67742	ND	multiply:self	1	~	0	HALF_UP	1|multiply:true;
+62477	67746	ND	add:self	1	~	1	HALF_UP	!NullPointerException|
+62478	67747	ND	subtract:self	1	~	1	HALF_UP	!NullPointerException|
+62479	67748	ND	multiply:self	1	~	1	HALF_UP	!NullPointerException|
+62483	67752	ND	add:throw	1	~	-2	HALF_UP	!IllegalStateException:operation callback|add:true;
+62484	67753	ND	subtract:throw	1	~	-2	HALF_UP	!IllegalStateException:operation callback|subtract:true;
+62485	67754	ND	multiply:throw	1	~	-2	HALF_UP	!IllegalStateException:operation callback|multiply:true;
+62486	67755	ND	add:throw	1	2	-1	HALF_UP	!NullPointerException|
+62487	67756	ND	subtract:throw	1	2	-1	HALF_UP	!NullPointerException|
+62488	67757	ND	multiply:throw	1	2	-1	HALF_UP	!NullPointerException|
+62489	67758	ND	add:throw	1	~	-1	HALF_UP	!NullPointerException|
+62490	67759	ND	subtract:throw	1	~	-1	HALF_UP	!NullPointerException|
+62491	67760	ND	multiply:throw	1	~	-1	HALF_UP	!NullPointerException|
+62495	67764	ND	add:throw	1	~	0	HALF_UP	!IllegalStateException:operation callback|add:true;
+62496	67765	ND	subtract:throw	1	~	0	HALF_UP	!IllegalStateException:operation callback|subtract:true;
+62497	67766	ND	multiply:throw	1	~	0	HALF_UP	!IllegalStateException:operation callback|multiply:true;
+62501	67773	ND	add:throw	1	~	1	HALF_UP	!NullPointerException|
+62502	67774	ND	subtract:throw	1	~	1	HALF_UP	!NullPointerException|
+62503	67775	ND	multiply:throw	1	~	1	HALF_UP	!NullPointerException|
+62507	67779	ND	add:super	1	~	-2	HALF_UP	!NullPointerException|add:true;
+62508	67780	ND	subtract:super	1	~	-2	HALF_UP	!NullPointerException|subtract:true;
+62509	67781	ND	multiply:super	1	~	-2	HALF_UP	!NullPointerException|multiply:true;
+62510	67782	ND	add:super	1	2	-1	HALF_UP	!NullPointerException|
+62511	67783	ND	subtract:super	1	2	-1	HALF_UP	!NullPointerException|
+62512	67784	ND	multiply:super	1	2	-1	HALF_UP	!NullPointerException|
+62513	67785	ND	add:super	1	~	-1	HALF_UP	!NullPointerException|
+62514	67786	ND	subtract:super	1	~	-1	HALF_UP	!NullPointerException|
+62515	67787	ND	multiply:super	1	~	-1	HALF_UP	!NullPointerException|
+62519	67791	ND	add:super	1	~	0	HALF_UP	!NullPointerException|add:true;
+62520	67792	ND	subtract:super	1	~	0	HALF_UP	!NullPointerException|subtract:true;
+62521	67793	ND	multiply:super	1	~	0	HALF_UP	!NullPointerException|multiply:true;
+62525	67797	ND	add:super	1	~	1	HALF_UP	!NullPointerException|
+62526	67798	ND	subtract:super	1	~	1	HALF_UP	!NullPointerException|
+62527	67799	ND	multiply:super	1	~	1	HALF_UP	!NullPointerException|
+62531	67803	ND	add:return	-1	~	-2	HALF_UP	42.00|add:true;
+62532	67804	ND	subtract:return	-1	~	-2	HALF_UP	42.00|subtract:true;
+62533	67805	ND	multiply:return	-1	~	-2	HALF_UP	42.00|multiply:true;
+62534	67806	ND	add:return	-1	2	-1	HALF_UP	!NullPointerException|
+62535	67807	ND	subtract:return	-1	2	-1	HALF_UP	!NullPointerException|
+62536	67808	ND	multiply:return	-1	2	-1	HALF_UP	!NullPointerException|
+62537	67809	ND	add:return	-1	~	-1	HALF_UP	!NullPointerException|
+62538	67810	ND	subtract:return	-1	~	-1	HALF_UP	!NullPointerException|
+62539	67811	ND	multiply:return	-1	~	-1	HALF_UP	!NullPointerException|
+62543	67815	ND	add:return	-1	~	0	HALF_UP	42.00|add:true;
+62544	67816	ND	subtract:return	-1	~	0	HALF_UP	42.00|subtract:true;
+62545	67817	ND	multiply:return	-1	~	0	HALF_UP	42.00|multiply:true;
+62549	67821	ND	add:return	-1	~	1	HALF_UP	!NullPointerException|
+62550	67825	ND	subtract:return	-1	~	1	HALF_UP	!NullPointerException|
+62551	67826	ND	multiply:return	-1	~	1	HALF_UP	!NullPointerException|
+62555	67830	ND	add:self	-1	~	-2	HALF_UP	-1|add:true;
+62556	67831	ND	subtract:self	-1	~	-2	HALF_UP	-1|subtract:true;
+62557	67832	ND	multiply:self	-1	~	-2	HALF_UP	-1|multiply:true;
+62558	67833	ND	add:self	-1	2	-1	HALF_UP	!NullPointerException|
+62559	67834	ND	subtract:self	-1	2	-1	HALF_UP	!NullPointerException|
+62560	67835	ND	multiply:self	-1	2	-1	HALF_UP	!NullPointerException|
+62561	67836	ND	add:self	-1	~	-1	HALF_UP	!NullPointerException|
+62562	67837	ND	subtract:self	-1	~	-1	HALF_UP	!NullPointerException|
+62563	67838	ND	multiply:self	-1	~	-1	HALF_UP	!NullPointerException|
+62567	67842	ND	add:self	-1	~	0	HALF_UP	-1|add:true;
+62568	67843	ND	subtract:self	-1	~	0	HALF_UP	-1|subtract:true;
+62569	67844	ND	multiply:self	-1	~	0	HALF_UP	-1|multiply:true;
+62573	67848	ND	add:self	-1	~	1	HALF_UP	!NullPointerException|
+62574	67849	ND	subtract:self	-1	~	1	HALF_UP	!NullPointerException|
+62575	67850	ND	multiply:self	-1	~	1	HALF_UP	!NullPointerException|
+62579	67854	ND	add:throw	-1	~	-2	HALF_UP	!IllegalStateException:operation callback|add:true;
+62580	67855	ND	subtract:throw	-1	~	-2	HALF_UP	!IllegalStateException:operation callback|subtract:true;
+62581	67856	ND	multiply:throw	-1	~	-2	HALF_UP	!IllegalStateException:operation callback|multiply:true;
+62582	67857	ND	add:throw	-1	2	-1	HALF_UP	!NullPointerException|
+62583	67858	ND	subtract:throw	-1	2	-1	HALF_UP	!NullPointerException|
+62584	67859	ND	multiply:throw	-1	2	-1	HALF_UP	!NullPointerException|
+62585	67860	ND	add:throw	-1	~	-1	HALF_UP	!NullPointerException|
+62586	67861	ND	subtract:throw	-1	~	-1	HALF_UP	!NullPointerException|
+62587	67862	ND	multiply:throw	-1	~	-1	HALF_UP	!NullPointerException|
+62591	67866	ND	add:throw	-1	~	0	HALF_UP	!IllegalStateException:operation callback|add:true;
+62592	67867	ND	subtract:throw	-1	~	0	HALF_UP	!IllegalStateException:operation callback|subtract:true;
+62593	67868	ND	multiply:throw	-1	~	0	HALF_UP	!IllegalStateException:operation callback|multiply:true;
+62597	67872	ND	add:throw	-1	~	1	HALF_UP	!NullPointerException|
+62598	67873	ND	subtract:throw	-1	~	1	HALF_UP	!NullPointerException|
+62599	67874	ND	multiply:throw	-1	~	1	HALF_UP	!NullPointerException|
+62603	67881	ND	add:super	-1	~	-2	HALF_UP	!NullPointerException|add:true;
+62604	67882	ND	subtract:super	-1	~	-2	HALF_UP	!NullPointerException|subtract:true;
+62605	67883	ND	multiply:super	-1	~	-2	HALF_UP	!NullPointerException|multiply:true;
+62606	67884	ND	add:super	-1	2	-1	HALF_UP	!NullPointerException|
+62607	67885	ND	subtract:super	-1	2	-1	HALF_UP	!NullPointerException|
+62608	67886	ND	multiply:super	-1	2	-1	HALF_UP	!NullPointerException|
+62609	67887	ND	add:super	-1	~	-1	HALF_UP	!NullPointerException|
+62610	67888	ND	subtract:super	-1	~	-1	HALF_UP	!NullPointerException|
+62611	67889	ND	multiply:super	-1	~	-1	HALF_UP	!NullPointerException|
+62615	67893	ND	add:super	-1	~	0	HALF_UP	!NullPointerException|add:true;
+62616	67894	ND	subtract:super	-1	~	0	HALF_UP	!NullPointerException|subtract:true;
+62617	67895	ND	multiply:super	-1	~	0	HALF_UP	!NullPointerException|multiply:true;
+62621	67899	ND	add:super	-1	~	1	HALF_UP	!NullPointerException|
+62622	67900	ND	subtract:super	-1	~	1	HALF_UP	!NullPointerException|
+62623	67901	ND	multiply:super	-1	~	1	HALF_UP	!NullPointerException|

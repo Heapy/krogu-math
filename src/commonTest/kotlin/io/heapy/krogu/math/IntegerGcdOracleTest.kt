@@ -25,7 +25,7 @@ class IntegerGcdOracleTest {
         private fun poison(name: String): Nothing { trace.append("$label.$name;"); throw IllegalStateException("$name callback") }
         override fun equals(other: Any?): Boolean = poison("equals")
         override fun signum(): Int = poison("signum")
-        override fun compareTo(other: BigInteger?): Int = poison("compare")
+        override fun compareTo(other: BigInteger): Int = poison("compare")
         override fun bitLength(): Int = poison("bits")
         override fun getLowestSetBit(): Int = poison("lowest")
         override fun shiftRight(n: Int): BigInteger = poison("right")

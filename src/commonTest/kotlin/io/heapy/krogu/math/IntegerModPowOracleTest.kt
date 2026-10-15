@@ -11,7 +11,7 @@ private class ModPowProbe(val text: String, val label: String, val trace: String
     private fun txt(value: BigInteger): String = if(value is ModPowProbe) value.text else value.toString()
     private fun call(name: String, detail: String="") { trace.append("$label.$name$detail;"); if(mode=="$name:throw") throw IllegalStateException("$name callback") }
     override fun equals(value: Any?): Boolean { call("equals", "(${if(value is BigInteger)txt(value!!)else value})"); return when(mode) { "equals:true" -> true; "equals:false" -> false; else -> super.equals(value) } }
-    override fun compareTo(value: BigInteger?): Int { call("compare","(${txt(value!!)})"); return when(mode) { "compare:positive" -> 1; "compare:negative" -> -1; else -> super.compareTo(value) } }
+    override fun compareTo(value: BigInteger): Int { call("compare","(${txt(value)})"); return when(mode) { "compare:positive" -> 1; "compare:negative" -> -1; else -> super.compareTo(value) } }
     override fun mod(value: BigInteger): BigInteger { call("mod","(${txt(value!!)})"); return when(mode) {
         "mod:self" -> this; "mod:fixed","mod:zero","mod:one","mod:negative" -> fixed; else -> super.mod(value)
     } }

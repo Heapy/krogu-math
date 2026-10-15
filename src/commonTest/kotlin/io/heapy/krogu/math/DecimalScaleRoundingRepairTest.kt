@@ -15,12 +15,12 @@ class DecimalScaleRoundingRepairTest {
         override fun signum() = super.signum()
         override fun scale() = super.scale()
         override fun unscaledValue() = super.unscaledValue()
-        override fun add(augend: BigDecimal?, mc: MathContext?) = super.add(augend, mc)
-        override fun multiply(multiplicand: BigDecimal?, mc: MathContext?) = super.multiply(multiplicand, mc)
+        override fun add(augend: BigDecimal, mc: MathContext) = super.add(augend, mc)
+        override fun multiply(multiplicand: BigDecimal, mc: MathContext) = super.multiply(multiplicand, mc)
         override fun setScale(newScale: Int, roundingMode: Int) = super.setScale(newScale, roundingMode)
         override fun setScale(newScale: Int, roundingMode: RoundingMode) = super.setScale(newScale, roundingMode)
-        fun addBase(b: BigDecimal?, mc: MathContext?) = super.add(b, mc)
-        fun multiplyBase(b: BigDecimal?, mc: MathContext?) = super.multiply(b, mc)
+        fun addBase(b: BigDecimal, mc: MathContext) = super.add(b, mc)
+        fun multiplyBase(b: BigDecimal, mc: MathContext) = super.multiply(b, mc)
         fun scaleBase(s: Int, mode: RoundingMode) = super.setScale(s, mode)
         fun scaleBase(s: Int, mode: Int) = super.setScale(s, mode)
         fun scaleBase(s: Int) = super.setScale(s)
@@ -191,26 +191,20 @@ class DecimalScaleRoundingRepairTest {
         val replacement = BigDecimal("7.00")
         class Caller(private val fail: Boolean) : BigDecimal(1) {
             private fun answer(): BigDecimal { if (fail) throw sentinel; return replacement }
-            override fun add(augend: BigDecimal?, mc: MathContext?) = answer()
-            override fun multiply(multiplicand: BigDecimal?, mc: MathContext?) = answer()
+            override fun add(augend: BigDecimal, mc: MathContext) = answer()
+            override fun multiply(multiplicand: BigDecimal, mc: MathContext) = answer()
             override fun setScale(newScale: Int, roundingMode: Int) = answer()
             override fun setScale(newScale: Int, roundingMode: RoundingMode) = answer()
         }
         for (fail in listOf(false, true)) {
             val x: BigDecimal = Caller(fail)
-            for (call in listOf<() -> BigDecimal>({ x.add(null, null) }, { x.multiply(null, null) },
+            for (call in listOf<() -> BigDecimal>({ x.add(BigDecimal.ONE, MathContext.UNLIMITED) }, { x.multiply(BigDecimal.ONE, MathContext.UNLIMITED) },
                 { x.setScale(0, RoundingMode.DOWN) }, { x.setScale(0, 1) }, { x.setScale(0) })) {
                 if (fail) assertSame(sentinel, assertFailsWith<IllegalStateException>(block = call))
                 else assertSame(replacement, call())
             }
         }
-        val x = Truthful(1, Int.MAX_VALUE)
-        for (mc in listOf(MathContext(0), MathContext(1))) {
-            assertFailsWith<NullPointerException> { x.addBase(null, mc) }
-            assertFailsWith<NullPointerException> { x.multiplyBase(null, mc) }
-        }
-        assertFailsWith<NullPointerException> { x.addBase(BigDecimal.ZERO, null) }
-        assertFailsWith<NullPointerException> { x.multiplyBase(BigDecimal.ONE, null) }
+        // Four direct-override and six explicit-super null executions replay on JVM.
     }
 
     private fun input(c: Long, s: Int, truthful: Boolean): BigDecimal =

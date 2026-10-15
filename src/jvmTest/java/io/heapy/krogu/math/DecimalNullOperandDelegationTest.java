@@ -10,6 +10,7 @@ public class DecimalNullOperandDelegationTest {
         catch (Exception e) { return "!" + e.getClass().getSimpleName() + (e instanceof IllegalStateException ? ":" + e.getMessage() : ""); }
     }
     @Test public void binaryDelegationAndValidationMatchJdk() {
+        int entries = 0, baseNull = 0, directNull = 0;
         for (String text : new String[] {"0.00", "1", "-1"}) for (String behavior : new String[] {"return", "self", "null", "throw", "super"}) {
             for (int precision : new int[] {-2, -1, 0, 1}) for (boolean nullOperand : new boolean[] {false, true}) for (String op : new String[] {"add", "subtract", "multiply"}) {
                 StringBuilder et = new StringBuilder(), at = new StringBuilder();
@@ -49,8 +50,20 @@ public class DecimalNullOperandDelegationTest {
                     if (precision == -2) return op.equals("add") ? actual.add(ar) : op.equals("subtract") ? actual.subtract(ar) : actual.multiply(ar);
                     return op.equals("add") ? actual.add(ar, am) : op.equals("subtract") ? actual.subtract(ar, am) : actual.multiply(ar, am);
                 });
-                assertEquals(text + "/" + behavior + "/" + precision + "/" + nullOperand + "/" + op, a + "|" + et, b + "|" + at);
+                String key = text + "/" + behavior + "/" + precision + "/" + nullOperand + "/" + op;
+                entries++;
+                if (precision != -2 && (nullOperand || precision == -1)) {
+                    baseNull++;
+                    System.out.println("575_EXISTING_BINARY\t" + key + "\tBASE_NULL_INTERNAL_TRACE_DIAGNOSTIC\thost=" + a + "|" + et + "\town=" + b + "|" + at);
+                    assertEquals(key, "!NullPointerException|", b + "|" + at);
+                } else {
+                    if (precision == -2 && nullOperand) directNull++;
+                    assertEquals(key, a + "|" + et, b + "|" + at);
+                }
             }
         }
+        assertEquals(360, entries);
+        assertEquals(180, baseNull);
+        assertEquals(45, directNull);
     }
 }

@@ -149,15 +149,15 @@ class KotlinOperatorMigrationContractTest {
             override fun shiftLeft(n: Int): BigInteger = result("left:$n")
             override fun shiftRight(n: Int): BigInteger = result("right:$n")
             override fun not(): BigInteger = result("not")
-            override fun and(value: BigInteger?): BigInteger {
+            override fun and(value: BigInteger): BigInteger {
                 assertSame(BigInteger.TEN, value)
                 return result("and")
             }
-            override fun or(value: BigInteger?): BigInteger {
+            override fun or(value: BigInteger): BigInteger {
                 assertSame(BigInteger.TEN, value)
                 return result("or")
             }
-            override fun xor(value: BigInteger?): BigInteger {
+            override fun xor(value: BigInteger): BigInteger {
                 assertSame(BigInteger.TEN, value)
                 return result("xor")
             }
@@ -193,13 +193,13 @@ class KotlinOperatorMigrationContractTest {
         val calls = mutableListOf<String>()
         var fail = false
         val receiver: BigDecimal = object : BigDecimal("1.25") {
-            override fun add(augend: BigDecimal?): BigDecimal {
+            override fun add(augend: BigDecimal): BigDecimal {
                 assertEquals(BigDecimal.ONE, augend)
                 calls += "add"
                 if (fail) throw marker
                 return replacement
             }
-            override fun subtract(subtrahend: BigDecimal?): BigDecimal {
+            override fun subtract(subtrahend: BigDecimal): BigDecimal {
                 assertEquals(BigDecimal.ONE, subtrahend)
                 calls += "subtract"
                 if (fail) throw marker

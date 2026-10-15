@@ -16,12 +16,12 @@ private class TruthfulContextDecimal : BigDecimal {
     override fun scale(): Int = super.scale()
     override fun unscaledValue(): BigInteger = super.unscaledValue()
     override fun abs(): BigDecimal = super.abs()
-    override fun abs(mc: MathContext?): BigDecimal = super.abs(mc)
+    override fun abs(mc: MathContext): BigDecimal = super.abs(mc)
     override fun negate(): BigDecimal = super.negate()
-    override fun negate(mc: MathContext?): BigDecimal = super.negate(mc)
-    override fun divide(divisor: BigDecimal?): BigDecimal = super.divide(divisor)
-    override fun divide(divisor: BigDecimal?, mc: MathContext?): BigDecimal = super.divide(divisor, mc)
-    fun divideViaSuper(divisor: BigDecimal?, mc: MathContext?): BigDecimal = super.divide(divisor, mc)
+    override fun negate(mc: MathContext): BigDecimal = super.negate(mc)
+    override fun divide(divisor: BigDecimal): BigDecimal = super.divide(divisor)
+    override fun divide(divisor: BigDecimal, mc: MathContext): BigDecimal = super.divide(divisor, mc)
+    fun divideViaSuper(divisor: BigDecimal, mc: MathContext): BigDecimal = super.divide(divisor, mc)
 }
 
 private fun contextContractOutcome(action: () -> BigDecimal): String = try {
@@ -65,19 +65,20 @@ class DecimalContextContractTest {
         val failures = mutableListOf<String>()
         var failureCount = 0
         var checked = 0
+        val moved = mutableSetOf<Int>()
         for ((index, row) in cases.withIndex()) {
+            if (DecimalBinary575Rows.contextContract(row)) { moved.add(index); continue }
             if (index % 4 != partition) continue
             val masks = if (row[2] == "ordinary") 0..3 else 0..1
             for (mask in masks) {
                 val source: BigDecimal = if (mask and 1 == 0) BigDecimal(row[0]) else TruthfulContextDecimal(row[0])
-                val divisor: BigDecimal? = when (row[2]) {
+                val divisor: BigDecimal = when (row[2]) {
                     "self" -> source
-                    "null" -> null
                     "ordinary" -> if (mask and 2 == 0) BigDecimal(row[1]) else TruthfulContextDecimal(row[1])
                     else -> error("Unknown control topology ${row[2]}")
                 }
                 val p = row[3].toInt()
-                val context = if (p < 0) null else MathContext(p, RoundingMode.valueOf(row[4]))
+                val context = MathContext(p, RoundingMode.valueOf(row[4]))
                 var result: BigDecimal? = null
                 val actual = contextContractOutcome { source.divide(divisor, context).also { result = it } }
                 checked++
@@ -97,6 +98,8 @@ class DecimalContextContractTest {
             }
         }
         assertTrue(checked > 0, "Each deterministic partition must execute controls")
+        assertEquals(96, moved.size, "240 null-input mask executions replayed on JVM")
+        assertEquals(DecimalBinary575Rows.contextContractOrdinals, moved)
         assertEquals(emptyList<String>(), failures, "$failureCount mismatches in $checked controls")
     }
 
@@ -175,9 +178,7 @@ class DecimalContextContractTest {
             val nonzero = decimal("-10.50")
             assertFailsWith<ArithmeticException> { zero.divide(zero, halfEven) }
             assertEquals("1@0", contextContractOutcome { nonzero.divide(nonzero, halfEven) })
-            assertFailsWith<NullPointerException> { nonzero.divide(null, halfEven) }
-            assertFailsWith<NullPointerException> { nonzero.divide(decimal("2.0"), null as MathContext?) }
-            assertFailsWith<NullPointerException> { nonzero.divide(null, null as MathContext?) }
+            // Six ordinary/truthful null controls moved to DecimalBinary575StandaloneTest.
             // Dropping the last of nineteen digits rounds ...5808 upward to ...581 * 10.
             assertEquals("922337203685477581@-1", contextContractOutcome {
                 decimal("9223372036854775808").divide(decimal("1"), MathContext(18, RoundingMode.HALF_EVEN))
@@ -206,12 +207,12 @@ class DecimalContextContractTest {
             var entries = 0
             var divisorArgument: BigDecimal? = null
             var contextArgument: MathContext? = null
-            override fun divide(divisor: BigDecimal?): BigDecimal {
+            override fun divide(divisor: BigDecimal): BigDecimal {
                 entry = "exact"; entries++; divisorArgument = divisor
                 if (throwing) throw injected
                 return replacement
             }
-            override fun divide(divisor: BigDecimal?, mc: MathContext?): BigDecimal {
+            override fun divide(divisor: BigDecimal, mc: MathContext): BigDecimal {
                 entry = "context"; entries++; divisorArgument = divisor; contextArgument = mc
                 if (throwing) throw injected
                 return replacement
@@ -220,9 +221,9 @@ class DecimalContextContractTest {
         for (throwing in listOf(false, true)) {
             val probe = CallerDecimal(throwing)
             val source: BigDecimal = probe
-            // Exact division has no context parameter; context division covers the full 3 x 3 matrix.
-            for (divisor in listOf(distinct, source, null)) {
-                fun checkCall(contextual: Boolean, context: MathContext?) {
+            // Null rows of the original 3 x 3 matrix use Java overrides on JVM.
+            for (divisor in listOf(distinct, source)) {
+                fun checkCall(contextual: Boolean, context: MathContext) {
                     probe.entry = null
                     probe.divisorArgument = distinct
                     probe.contextArgument = finite
@@ -235,8 +236,8 @@ class DecimalContextContractTest {
                     assertSame(divisor, probe.divisorArgument)
                     if (contextual) assertSame(context, probe.contextArgument)
                 }
-                checkCall(false, null)
-                for (context in listOf(finite, unlimited, null)) checkCall(true, context)
+                checkCall(false, unlimited)
+                for (context in listOf(finite, unlimited)) checkCall(true, context)
             }
         }
     }
@@ -251,6 +252,6 @@ class DecimalContextContractTest {
         })
         // Internal dispatch remains free: all participating overrides are truthful.
         assertEquals("1@0", contextContractOutcome { source.divideViaSuper(source, MathContext(2)) })
-        assertFailsWith<NullPointerException> { source.divideViaSuper(null, MathContext(2)) }
+        // The explicit-super null control is retained in DecimalBinary575StandaloneTest.
     }
 }

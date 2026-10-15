@@ -1,0 +1,1381 @@
+diff --git a/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt b/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
+index 0bdabcc..8104d0a 100644
+--- a/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
++++ b/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
+@@ -59,15 +59,15 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         return if (result.coefficient.signum() == 0) ZERO else result
+     }
+ 
+-    open fun add(augend: BigDecimal?): BigDecimal = addValue(augend ?: throw NullPointerException())
++    open fun add(augend: BigDecimal): BigDecimal = addValue(augend)
+     private fun addValue(augend: BigDecimal): BigDecimal {
+         val scale = maxOf(decimalScale, augend.decimalScale)
+         return BigDecimal(scaledCoefficient(scale).add(augend.scaledCoefficient(scale)), scale)
+     }
+-    open fun add(augend: BigDecimal?, mc: MathContext?): BigDecimal {
+-        val context = mc ?: throw NullPointerException()
++    open fun add(augend: BigDecimal, mc: MathContext): BigDecimal {
++        val context = mc
+         if (context.precision == 0) return add(augend)
+-        return addContextValue(augend ?: throw NullPointerException(), context)
++        return addContextValue(augend, context)
+     }
+     private fun addContextValue(augend: BigDecimal, mc: MathContext): BigDecimal {
+         val preferredScale = maxOf(decimalScale, augend.decimalScale)
+@@ -115,25 +115,25 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         // a whole unit can carry through 999... or cancel a retained +1 digit.
+         return BigDecimal(BigInteger.valueOf(signum().toLong()), checkedScale(scale + 1))
+     }
+-    open fun subtract(subtrahend: BigDecimal?): BigDecimal {
+-        val operand = subtrahend ?: throw NullPointerException()
++    open fun subtract(subtrahend: BigDecimal): BigDecimal {
++        val operand = subtrahend
+         val scale = maxOf(decimalScale, operand.decimalScale)
+         return BigDecimal(scaledCoefficient(scale).subtract(operand.scaledCoefficient(scale)), scale)
+     }
+-    open fun subtract(subtrahend: BigDecimal?, mc: MathContext?): BigDecimal {
+-        val context = mc ?: throw NullPointerException()
++    open fun subtract(subtrahend: BigDecimal, mc: MathContext): BigDecimal {
++        val context = mc
+         return if (context.precision == 0) subtract(subtrahend)
+-            else add((subtrahend ?: throw NullPointerException()).negate(), context)
++            else add(subtrahend.negate(), context)
+     }
+-    open fun multiply(multiplicand: BigDecimal?): BigDecimal = multiplyValue(multiplicand ?: throw NullPointerException())
++    open fun multiply(multiplicand: BigDecimal): BigDecimal = multiplyValue(multiplicand)
+     private fun multiplyValue(multiplicand: BigDecimal): BigDecimal {
+         val scale = scaleForValue(decimalScale.toLong() + multiplicand.decimalScale, coefficient.signum() == 0)
+         return BigDecimal(coefficient.multiply(multiplicand.coefficient), scale)
+     }
+-    open fun multiply(multiplicand: BigDecimal?, mc: MathContext?): BigDecimal {
+-        val context = mc ?: throw NullPointerException()
++    open fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal {
++        val context = mc
+         if (context.precision == 0) return multiply(multiplicand)
+-        val operand = multiplicand ?: throw NullPointerException()
++        val operand = multiplicand
+         val logicalScale = decimalScale.toLong() + operand.decimalScale
+         // Preserve exact, low-scale and zero/source behavior. Only mandatory
+         // precision reduction of a supported nonzero product rescues HIGH scale.
+@@ -147,8 +147,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         return BigDecimal(rounded.coefficient, checkedScale(logicalScale + rounded.decimalScale))
+     }
+ 
+-    open fun divide(divisor: BigDecimal?): BigDecimal {
+-        val operand = divisor ?: throw NullPointerException()
++    open fun divide(divisor: BigDecimal): BigDecimal {
++        val operand = divisor
+         checkDivisionByZero(operand)
+         return try { divideExactly(operand) }
+         catch (_: ArithmeticException) {
+@@ -260,10 +260,10 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         }
+         throw ArithmeticException("/ by zero")
+     }
+-    open fun divide(divisor: BigDecimal?, mc: MathContext?): BigDecimal {
+-        val context = mc ?: throw NullPointerException()
++    open fun divide(divisor: BigDecimal, mc: MathContext): BigDecimal {
++        val context = mc
+         if (context.precision == 0) return divide(divisor)
+-        val operand = divisor ?: throw NullPointerException()
++        val operand = divisor
+         checkDivisionByZero(operand)
+         val preferredScale = decimalScale.toLong() - operand.decimalScale
+         if (signum() == 0) return BigDecimal(BigInteger.ZERO, saturatedScale(preferredScale))
+@@ -386,8 +386,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         val length = maxOf(a.length, b.length)
+         return a.padEnd(length, '0').compareTo(b.padEnd(length, '0'))
+     }
+-    open fun divideToIntegralValue(divisor: BigDecimal?): BigDecimal {
+-        val operand = divisor ?: throw NullPointerException()
++    open fun divideToIntegralValue(divisor: BigDecimal): BigDecimal {
++        val operand = divisor
+         val preferred = saturatedScale(decimalScale.toLong() - operand.decimalScale)
+         if (compareMagnitude(operand) < 0 || (signum() == 0 && operand.signum() != 0))
+             return BigDecimal(BigInteger.ZERO, preferred)
+@@ -404,10 +404,10 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         }
+         return if (preferred > result.decimalScale) result.setScale(preferred, ROUND_UNNECESSARY) else result
+     }
+-    open fun divideToIntegralValue(divisor: BigDecimal?, mc: MathContext?): BigDecimal {
+-        val context = mc ?: throw NullPointerException()
++    open fun divideToIntegralValue(divisor: BigDecimal, mc: MathContext): BigDecimal {
++        val context = mc
+         if (context.precision == 0) return divideToIntegralValue(divisor)
+-        val operand = divisor ?: throw NullPointerException()
++        val operand = divisor
+         if (compareMagnitude(operand) < 0) return divideToIntegralValue(operand)
+         val preferred = saturatedScale(decimalScale.toLong() - operand.decimalScale)
+         var result = divide(operand, MathContext(context.precision, RoundingMode.DOWN))
+@@ -435,18 +435,18 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         val stripped = stripTo(preferred)
+         return if (preserveIdentity) stripped else BigDecimal(stripped.coefficient, stripped.decimalScale)
+     }
+-    open fun divideAndRemainder(divisor: BigDecimal?): Array<BigDecimal> {
++    open fun divideAndRemainder(divisor: BigDecimal): Array<BigDecimal> {
+         val quotient = divideToIntegralValue(divisor)
+         return arrayOf(quotient, subtract(quotient.multiply(divisor)))
+     }
+-    open fun divideAndRemainder(divisor: BigDecimal?, mc: MathContext?): Array<BigDecimal> {
+-        val context = mc ?: throw NullPointerException()
++    open fun divideAndRemainder(divisor: BigDecimal, mc: MathContext): Array<BigDecimal> {
++        val context = mc
+         if (context.precision == 0) return divideAndRemainder(divisor)
+         val quotient = divideToIntegralValue(divisor, context)
+         return arrayOf(quotient, subtract(quotient.multiply(divisor)))
+     }
+-    open fun remainder(divisor: BigDecimal?): BigDecimal = remainderElement(divideAndRemainder(divisor))
+-    open fun remainder(divisor: BigDecimal?, mc: MathContext?): BigDecimal = remainderElement(divideAndRemainder(divisor, mc))
++    open fun remainder(divisor: BigDecimal): BigDecimal = remainderElement(divideAndRemainder(divisor))
++    open fun remainder(divisor: BigDecimal, mc: MathContext): BigDecimal = remainderElement(divideAndRemainder(divisor, mc))
+     private fun remainderElement(pair: Array<BigDecimal>): BigDecimal {
+         if (pair.size < 2) arrayIndexFailure(1, pair.size)
+         return pair[1]
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/AdditionOracleEvaluator.kt b/src/commonTest/kotlin/io/heapy/krogu/math/AdditionOracleEvaluator.kt
+index 37da649..87cc64d 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/AdditionOracleEvaluator.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/AdditionOracleEvaluator.kt
+@@ -25,7 +25,7 @@ internal fun evaluateAdditionOracle(v: Array<String>): String {
+     if (op[0] == "wideAdd") {
+         val left = v[2].split('@'); val right = v[3].split('@')
+         val value = object : BigDecimal(BigInteger(left[0]), left[1].toInt()) {
+-            override fun add(augend: BigDecimal?): BigDecimal { trace.append("add;"); throw IllegalStateException("exact add callback") }
++            override fun add(augend: BigDecimal): BigDecimal { trace.append("add;"); throw IllegalStateException("exact add callback") }
+         }
+         val result = outcome { value.add(BigDecimal(BigInteger(right[0]), right[1].toInt()), MathContext(precision, mode)) }
+         return "$result|$trace"
+@@ -33,15 +33,15 @@ internal fun evaluateAdditionOracle(v: Array<String>): String {
+     check(op[0] == "subtract")
+     val leftBehavior = op[1]; val rightBehavior = op[2]
+     val value = object : BigDecimal(v[2]) {
+-        override fun add(augend: BigDecimal?): BigDecimal {
++        override fun add(augend: BigDecimal): BigDecimal {
+             trace.append("add;")
+             return when (leftBehavior) { "replace" -> BigDecimal("42"); "throw" -> throw IllegalStateException("add callback"); else -> super.add(augend) }
+         }
+-        override fun add(augend: BigDecimal?, mc: MathContext?): BigDecimal {
++        override fun add(augend: BigDecimal, mc: MathContext): BigDecimal {
+             trace.append("addContext;")
+             return when (leftBehavior) { "replace" -> BigDecimal("43"); "throw" -> throw IllegalStateException("add context callback"); else -> super.add(augend, mc) }
+         }
+-        override fun subtract(subtrahend: BigDecimal?): BigDecimal { trace.append("subtract;"); return super.subtract(subtrahend) }
++        override fun subtract(subtrahend: BigDecimal): BigDecimal { trace.append("subtract;"); return super.subtract(subtrahend) }
+     }
+     val other = object : BigDecimal(v[3]) {
+         override fun negate(): BigDecimal {
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextContractTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextContractTest.kt
+index 7197c7f..735dd97 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextContractTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextContractTest.kt
+@@ -19,9 +19,9 @@ private class TruthfulContextDecimal : BigDecimal {
+     override fun abs(mc: MathContext?): BigDecimal = super.abs(mc)
+     override fun negate(): BigDecimal = super.negate()
+     override fun negate(mc: MathContext?): BigDecimal = super.negate(mc)
+-    override fun divide(divisor: BigDecimal?): BigDecimal = super.divide(divisor)
+-    override fun divide(divisor: BigDecimal?, mc: MathContext?): BigDecimal = super.divide(divisor, mc)
+-    fun divideViaSuper(divisor: BigDecimal?, mc: MathContext?): BigDecimal = super.divide(divisor, mc)
++    override fun divide(divisor: BigDecimal): BigDecimal = super.divide(divisor)
++    override fun divide(divisor: BigDecimal, mc: MathContext): BigDecimal = super.divide(divisor, mc)
++    fun divideViaSuper(divisor: BigDecimal, mc: MathContext): BigDecimal = super.divide(divisor, mc)
+ }
+ 
+ private fun contextContractOutcome(action: () -> BigDecimal): String = try {
+@@ -65,19 +65,20 @@ class DecimalContextContractTest {
+         val failures = mutableListOf<String>()
+         var failureCount = 0
+         var checked = 0
++        val moved = mutableSetOf<Int>()
+         for ((index, row) in cases.withIndex()) {
++            if (DecimalBinary575Rows.contextContract(row)) { moved.add(index); continue }
+             if (index % 4 != partition) continue
+             val masks = if (row[2] == "ordinary") 0..3 else 0..1
+             for (mask in masks) {
+                 val source: BigDecimal = if (mask and 1 == 0) BigDecimal(row[0]) else TruthfulContextDecimal(row[0])
+-                val divisor: BigDecimal? = when (row[2]) {
++                val divisor: BigDecimal = when (row[2]) {
+                     "self" -> source
+-                    "null" -> null
+                     "ordinary" -> if (mask and 2 == 0) BigDecimal(row[1]) else TruthfulContextDecimal(row[1])
+                     else -> error("Unknown control topology ${row[2]}")
+                 }
+                 val p = row[3].toInt()
+-                val context = if (p < 0) null else MathContext(p, RoundingMode.valueOf(row[4]))
++                val context = MathContext(p, RoundingMode.valueOf(row[4]))
+                 var result: BigDecimal? = null
+                 val actual = contextContractOutcome { source.divide(divisor, context).also { result = it } }
+                 checked++
+@@ -97,6 +98,8 @@ class DecimalContextContractTest {
+             }
+         }
+         assertTrue(checked > 0, "Each deterministic partition must execute controls")
++        assertEquals(96, moved.size, "240 null-input mask executions replayed on JVM")
++        assertEquals(DecimalBinary575Rows.contextContractOrdinals, moved)
+         assertEquals(emptyList<String>(), failures, "$failureCount mismatches in $checked controls")
+     }
+ 
+@@ -175,9 +178,7 @@ class DecimalContextContractTest {
+             val nonzero = decimal("-10.50")
+             assertFailsWith<ArithmeticException> { zero.divide(zero, halfEven) }
+             assertEquals("1@0", contextContractOutcome { nonzero.divide(nonzero, halfEven) })
+-            assertFailsWith<NullPointerException> { nonzero.divide(null, halfEven) }
+-            assertFailsWith<NullPointerException> { nonzero.divide(decimal("2.0"), null as MathContext?) }
+-            assertFailsWith<NullPointerException> { nonzero.divide(null, null as MathContext?) }
++            // Six ordinary/truthful null controls moved to DecimalBinary575StandaloneTest.
+             // Dropping the last of nineteen digits rounds ...5808 upward to ...581 * 10.
+             assertEquals("922337203685477581@-1", contextContractOutcome {
+                 decimal("9223372036854775808").divide(decimal("1"), MathContext(18, RoundingMode.HALF_EVEN))
+@@ -206,12 +207,12 @@ class DecimalContextContractTest {
+             var entries = 0
+             var divisorArgument: BigDecimal? = null
+             var contextArgument: MathContext? = null
+-            override fun divide(divisor: BigDecimal?): BigDecimal {
++            override fun divide(divisor: BigDecimal): BigDecimal {
+                 entry = "exact"; entries++; divisorArgument = divisor
+                 if (throwing) throw injected
+                 return replacement
+             }
+-            override fun divide(divisor: BigDecimal?, mc: MathContext?): BigDecimal {
++            override fun divide(divisor: BigDecimal, mc: MathContext): BigDecimal {
+                 entry = "context"; entries++; divisorArgument = divisor; contextArgument = mc
+                 if (throwing) throw injected
+                 return replacement
+@@ -220,9 +221,9 @@ class DecimalContextContractTest {
+         for (throwing in listOf(false, true)) {
+             val probe = CallerDecimal(throwing)
+             val source: BigDecimal = probe
+-            // Exact division has no context parameter; context division covers the full 3 x 3 matrix.
+-            for (divisor in listOf(distinct, source, null)) {
+-                fun checkCall(contextual: Boolean, context: MathContext?) {
++            // Null rows of the original 3 x 3 matrix use Java overrides on JVM.
++            for (divisor in listOf(distinct, source)) {
++                fun checkCall(contextual: Boolean, context: MathContext) {
+                     probe.entry = null
+                     probe.divisorArgument = distinct
+                     probe.contextArgument = finite
+@@ -235,8 +236,8 @@ class DecimalContextContractTest {
+                     assertSame(divisor, probe.divisorArgument)
+                     if (contextual) assertSame(context, probe.contextArgument)
+                 }
+-                checkCall(false, null)
+-                for (context in listOf(finite, unlimited, null)) checkCall(true, context)
++                checkCall(false, unlimited)
++                for (context in listOf(finite, unlimited)) checkCall(true, context)
+             }
+         }
+     }
+@@ -251,6 +252,6 @@ class DecimalContextContractTest {
+         })
+         // Internal dispatch remains free: all participating overrides are truthful.
+         assertEquals("1@0", contextContractOutcome { source.divideViaSuper(source, MathContext(2)) })
+-        assertFailsWith<NullPointerException> { source.divideViaSuper(null, MathContext(2)) }
++        // The explicit-super null control is retained in DecimalBinary575StandaloneTest.
+     }
+ }
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt
+index 2b2788c..8dd38e0 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt
+@@ -36,16 +36,16 @@ private class ContextProbe(text: String, val label: String, val mode: String, va
+     override fun unscaledValue(): BigInteger = unexpected("unscaled")
+     override fun abs(): BigDecimal = unexpected("abs")
+     override fun negate(): BigDecimal = unexpected("negate")
+-    override fun divide(v: BigDecimal?): BigDecimal {
++    override fun divide(v: BigDecimal): BigDecimal {
+         trace.append("$label.exact${if (v == null) "-null" else ""};"); return BigDecimal("7.00")
+     }
+-    fun enter(v: BigDecimal?, p: Int, rounding: String): BigDecimal =
+-        super.divide(v, if (p < 0) null else MathContext(p, RoundingMode.valueOf(rounding)))
++    fun enter(v: BigDecimal, p: Int, rounding: String): BigDecimal =
++        super.divide(v, MathContext(p, RoundingMode.valueOf(rounding)))
+ }
+ private fun contextOutcome(a: String, b: String, aMode: String, bMode: String, p: Int, rounding: String): String {
+     val trace = StringBuilder()
+     val source = ContextProbe(a, "A", aMode, trace)
+-    val divisor = if (bMode == "self") source else if (bMode == "null") null else ContextProbe(b, "B", bMode, trace)
++    val divisor = if (bMode == "self") source else ContextProbe(b, "B", bMode, trace)
+     return try {
+         val result = source.enter(divisor, p, rounding)
+         val calls = trace.toString()
+@@ -55,10 +55,14 @@ private fun contextOutcome(a: String, b: String, aMode: String, bMode: String, p
+ class DecimalContextDispatchOracleTest {
+     @Test fun contextDivisionPreservesOperandCallOrderAndFailurePrecedence() {
+         val failures = mutableListOf<String>()
+-        for (row in jdk25DecimalContextDispatchCases()) {
++        val moved = mutableSetOf<Int>()
++        for ((index, row) in jdk25DecimalContextDispatchCases().withIndex()) {
++            if (DecimalBinary575Rows.contextDispatch(row)) { moved.add(index); continue }
+             val actual = contextOutcome(row[0], row[1], row[2], row[3], row[4].toInt(), row[5])
+             if (row[6] != actual) failures += row.take(6).toString() + " expected=" + row[6] + " actual=" + actual
+         }
+         assertEquals(emptyList<String>(), failures.take(12), failures.size.toString() + " mismatches")
++        assertEquals(384, moved.size, "Exact null-input rows replayed through Java explicit super")
++        assertEquals(DecimalBinary575Rows.contextDispatchOrdinals, moved)
+     }
+ }
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalDivisionNormalizationContractTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalDivisionNormalizationContractTest.kt
+index e18af2d..875e4f6 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalDivisionNormalizationContractTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalDivisionNormalizationContractTest.kt
+@@ -11,8 +11,8 @@ class DecimalDivisionNormalizationContractTest {
+         override fun signum() = super.signum()
+         override fun scale() = super.scale()
+         override fun unscaledValue() = super.unscaledValue()
+-        override fun divide(divisor: BigDecimal?) = super.divide(divisor)
+-        override fun divide(divisor: BigDecimal?, mc: MathContext?) = super.divide(divisor, mc)
++        override fun divide(divisor: BigDecimal) = super.divide(divisor)
++        override fun divide(divisor: BigDecimal, mc: MathContext) = super.divide(divisor, mc)
+     }
+ 
+     @Test fun exactCancellationAndReducedTerminatingDenominators() {
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalDivisionPreferredScaleContractTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalDivisionPreferredScaleContractTest.kt
+index 00abf1a..a230dbf 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalDivisionPreferredScaleContractTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalDivisionPreferredScaleContractTest.kt
+@@ -12,8 +12,8 @@ class DecimalDivisionPreferredScaleContractTest {
+         override fun signum() = super.signum()
+         override fun scale() = super.scale()
+         override fun unscaledValue() = super.unscaledValue()
+-        override fun divide(divisor: BigDecimal?) = super.divide(divisor)
+-        override fun divide(divisor: BigDecimal?, mc: MathContext?) = super.divide(divisor, mc)
++        override fun divide(divisor: BigDecimal) = super.divide(divisor)
++        override fun divide(divisor: BigDecimal, mc: MathContext) = super.divide(divisor, mc)
+     }
+ 
+     @Test fun lowExactAndUnlimitedWitness() {
+@@ -57,9 +57,7 @@ class DecimalDivisionPreferredScaleContractTest {
+             val zero = input(0, 1, mask and 2 != 0)
+             assertFailsWith<ArithmeticException> { a.divide(zero) }
+             assertFailsWith<ArithmeticException> { a.divide(zero, MathContext(1, mode)) }
+-            assertFailsWith<NullPointerException> { a.divide(null) }
+-            assertFailsWith<NullPointerException> { a.divide(null, MathContext(1, mode)) }
+-            assertFailsWith<NullPointerException> { a.divide(BigDecimal.ONE, null) }
++            // All 4 masks x 8 modes x 3 null controls replay in DecimalBinary575StandaloneTest.
+         }
+         for (mode in RoundingMode.entries) {
+             assertEquals(Int.MIN_VALUE, BigDecimal.valueOf(0, Int.MIN_VALUE)
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalIntegralDispatchOracleTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalIntegralDispatchOracleTest.kt
+index 0c5e1a3..baf1ee1 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalIntegralDispatchOracleTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalIntegralDispatchOracleTest.kt
+@@ -22,12 +22,12 @@ private class IntegralSource(text: String, val label: String, val mode: String,
+     override fun signum(): Int { trace.append("$label.sign;"); return super.signum() }
+     override fun abs(): BigDecimal { trace.append("$label.abs;"); return super.abs() }
+     override fun compareTo(v: BigDecimal?): Int { trace.append("$label.compare;"); return super.compareTo(v) }
+-    override fun subtract(v: BigDecimal?): BigDecimal { trace.append("$label.subtract;"); return super.subtract(v) }
+-    override fun divideToIntegralValue(v: BigDecimal?): BigDecimal {
++    override fun subtract(v: BigDecimal): BigDecimal { trace.append("$label.subtract;"); return super.subtract(v) }
++    override fun divideToIntegralValue(v: BigDecimal): BigDecimal {
+         trace.append("$label.integral;"); return super.divideToIntegralValue(v)
+     }
+-    override fun divide(v: BigDecimal?, mc: MathContext?): BigDecimal {
+-        val context = mc ?: throw NullPointerException()
++    override fun divide(v: BigDecimal, mc: MathContext): BigDecimal {
++        val context = mc
+         trace.append("$label.divide(${context.precision},${context.roundingMode});")
+         if (mode == "throw") throw IllegalStateException("divide callback")
+         return if (mode == "source") this else IntegralResult(mode, trace)
+@@ -49,8 +49,8 @@ private class IntegralMetadata(text: String, val label: String, val digits: Int,
+     override fun signum(): Int { trace.append("$label.sign;"); return super.signum() }
+     override fun precision(): Int { trace.append("$label.precision;"); return digits }
+     override fun scale(): Int { trace.append("$label.scale;"); return reportedScale }
+-    override fun divide(v: BigDecimal?, mc: MathContext?): BigDecimal {
+-        val context = mc ?: throw NullPointerException()
++    override fun divide(v: BigDecimal, mc: MathContext): BigDecimal {
++        val context = mc
+         trace.append("$label.divide(${context.precision},${context.roundingMode});")
+         throw IllegalStateException("divide callback")
+     }
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalOverloadContract541Test.kt b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalOverloadContract541Test.kt
+index 2b202b4..f1fca77 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalOverloadContract541Test.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalOverloadContract541Test.kt
+@@ -13,16 +13,16 @@ class DecimalOverloadContract541Test {
+         override fun precision(): Int = super.precision()
+         override fun scale(): Int = super.scale()
+         override fun unscaledValue(): BigInteger = super.unscaledValue()
+-        override fun divideToIntegralValue(divisor: BigDecimal?): BigDecimal = super.divideToIntegralValue(divisor)
+-        override fun divideToIntegralValue(divisor: BigDecimal?, mc: MathContext?): BigDecimal =
++        override fun divideToIntegralValue(divisor: BigDecimal): BigDecimal = super.divideToIntegralValue(divisor)
++        override fun divideToIntegralValue(divisor: BigDecimal, mc: MathContext): BigDecimal =
+             super.divideToIntegralValue(divisor, mc)
+-        override fun remainder(divisor: BigDecimal?): BigDecimal = super.remainder(divisor)
+-        override fun remainder(divisor: BigDecimal?, mc: MathContext?): BigDecimal = super.remainder(divisor, mc)
+-        override fun divideAndRemainder(divisor: BigDecimal?): Array<BigDecimal> = super.divideAndRemainder(divisor)
+-        override fun divideAndRemainder(divisor: BigDecimal?, mc: MathContext?): Array<BigDecimal> =
++        override fun remainder(divisor: BigDecimal): BigDecimal = super.remainder(divisor)
++        override fun remainder(divisor: BigDecimal, mc: MathContext): BigDecimal = super.remainder(divisor, mc)
++        override fun divideAndRemainder(divisor: BigDecimal): Array<BigDecimal> = super.divideAndRemainder(divisor)
++        override fun divideAndRemainder(divisor: BigDecimal, mc: MathContext): Array<BigDecimal> =
+             super.divideAndRemainder(divisor, mc)
+ 
+-        fun integralViaSuper(divisor: BigDecimal?, mc: MathContext?): BigDecimal =
++        fun integralViaSuper(divisor: BigDecimal, mc: MathContext): BigDecimal =
+             super.divideToIntegralValue(divisor, mc)
+     }
+ 
+@@ -76,7 +76,7 @@ class DecimalOverloadContract541Test {
+             var throwing = false
+             var operand: BigDecimal? = null
+             var context: MathContext? = null
+-            override fun divideToIntegralValue(divisor: BigDecimal?, mc: MathContext?): BigDecimal {
++            override fun divideToIntegralValue(divisor: BigDecimal, mc: MathContext): BigDecimal {
+                 operand = divisor
+                 context = mc
+                 if (throwing) throw failure
+@@ -87,7 +87,7 @@ class DecimalOverloadContract541Test {
+         val source: BigDecimal = caller
+         val distinct = BigDecimal("5.0")
+         // Only the explicit call's override is constrained. No internal call count/order is asserted.
+-        for (divisor in listOf(distinct, source, null)) for (context in listOf(finite, MathContext.UNLIMITED, null)) {
++        for (divisor in listOf(distinct, source)) for (context in listOf(finite, MathContext.UNLIMITED)) {
+             caller.throwing = false
+             assertSame(replacement, source.divideToIntegralValue(divisor, context))
+             assertSame(divisor, caller.operand)
+@@ -101,8 +101,7 @@ class DecimalOverloadContract541Test {
+         representation("3", 0, truthful.integralViaSuper(Truthful("5.0"), finite))
+         representation("30", 1, truthful.integralViaSuper(Truthful("5.0"), MathContext.UNLIMITED))
+         representation("1", 0, truthful.integralViaSuper(truthful, finite))
+-        assertFailsWith<NullPointerException> { truthful.integralViaSuper(null, finite) }
+-        assertFailsWith<NullPointerException> { truthful.integralViaSuper(distinct, null) }
++        // Ten direct-override and two explicit-super null executions move to JVM Java.
+         assertFailsWith<ArithmeticException> { truthful.integralViaSuper(BigDecimal.ZERO, finite) }
+     }
+ 
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalPairDispatchOracleTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalPairDispatchOracleTest.kt
+index 6af234b..fdb00d9 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalPairDispatchOracleTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalPairDispatchOracleTest.kt
+@@ -4,12 +4,12 @@ import kotlin.test.Test
+ import kotlin.test.assertEquals
+ 
+ private class PairQuotient(val trace: StringBuilder, val mode: String, val original: BigDecimal) : BigDecimal("3.0") {
+-    override fun multiply(v: BigDecimal?): BigDecimal {
++    override fun multiply(v: BigDecimal): BigDecimal {
+         trace.append("multiply;")
+         return when (mode) {
+             "multiply-throw" -> throw IllegalStateException("multiply callback")
+             "multiply-source" -> original
+-            "multiply-divisor" -> v ?: throw NullPointerException()
++            "multiply-divisor" -> v
+             else -> super.multiply(v)
+         }
+     }
+@@ -19,34 +19,34 @@ private class PairSource(text: String, val trace: StringBuilder, val mode: Strin
+         if (mode == "integral-throw") throw IllegalStateException("integral callback")
+         return PairQuotient(trace, mode, this)
+     }
+-    override fun divideToIntegralValue(v: BigDecimal?): BigDecimal {
++    override fun divideToIntegralValue(v: BigDecimal): BigDecimal {
+         trace.append("integral;")
+         return quotient()
+     }
+-    override fun divideToIntegralValue(v: BigDecimal?, mc: MathContext?): BigDecimal {
+-        val context = mc ?: throw NullPointerException()
++    override fun divideToIntegralValue(v: BigDecimal, mc: MathContext): BigDecimal {
++        val context = mc
+         trace.append("integral(${context.precision},${context.roundingMode});")
+         return quotient()
+     }
+-    override fun divideAndRemainder(v: BigDecimal?): Array<BigDecimal> {
++    override fun divideAndRemainder(v: BigDecimal): Array<BigDecimal> {
+         trace.append("pair;")
+         if (mode == "pair-throw") throw IllegalStateException("pair callback")
+         if (mode == "pair-replace") return arrayOf(BigDecimal("7.0"), this)
+         return super.divideAndRemainder(v)
+     }
+-    override fun divideAndRemainder(v: BigDecimal?, mc: MathContext?): Array<BigDecimal> {
+-        val context = mc ?: throw NullPointerException()
++    override fun divideAndRemainder(v: BigDecimal, mc: MathContext): Array<BigDecimal> {
++        val context = mc
+         trace.append("pair(${context.precision},${context.roundingMode});")
+         if (mode == "pair-throw") throw IllegalStateException("pair callback")
+         if (mode == "pair-replace") return arrayOf(BigDecimal("7.0"), this)
+         return super.divideAndRemainder(v, mc)
+     }
+-    override fun subtract(v: BigDecimal?): BigDecimal {
+-        trace.append("subtract(${if (v === this) "source" else v!!.toString()});")
++    override fun subtract(v: BigDecimal): BigDecimal {
++        trace.append("subtract(${if (v === this) "source" else v.toString()});")
+         return when (mode) {
+             "subtract-throw" -> throw IllegalStateException("subtract callback")
+             "subtract-source" -> this
+-            "subtract-product" -> v ?: throw NullPointerException()
++            "subtract-product" -> v
+             else -> super.subtract(v)
+         }
+     }
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalRemainderArrayOracleTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalRemainderArrayOracleTest.kt
+index cfa4c9a..64d1bf5 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalRemainderArrayOracleTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalRemainderArrayOracleTest.kt
+@@ -5,20 +5,21 @@ import kotlin.test.assertEquals
+ 
+ private class ArrayProbe(text: String, val length: Int, val trace: StringBuilder) : BigDecimal(text) {
+     private fun pair(): Array<BigDecimal> = Array(length) { if (it == 1) this else BigDecimal("7.0") }
+-    override fun divideAndRemainder(v: BigDecimal?): Array<BigDecimal> {
++    override fun divideAndRemainder(v: BigDecimal): Array<BigDecimal> {
+         trace.append("pair(${v == null});"); return pair()
+     }
+-    override fun divideAndRemainder(v: BigDecimal?, mc: MathContext?): Array<BigDecimal> {
++    override fun divideAndRemainder(v: BigDecimal, mc: MathContext): Array<BigDecimal> {
+         trace.append("pair(${v == null},${mc?.precision});"); return pair()
+     }
+-    fun enter(op: String, v: BigDecimal?, mc: MathContext?): BigDecimal =
++    fun enter(op: String, v: BigDecimal, mc: MathContext): BigDecimal =
+         if (op == "exact") super.remainder(v) else super.remainder(v, mc)
+ }
+ private fun arrayOutcome(text: String, length: Int, op: String, operand: String, precision: Int): String {
+     val trace = StringBuilder()
+     val source = ArrayProbe(text, length, trace)
+-    val divisor = when (operand) { "null" -> null; "self" -> source; else -> BigDecimal("2.0") }
+-    val mc = if (precision < 0) null else MathContext(precision)
++    val divisor = when (operand) { "self" -> source; else -> BigDecimal("2.0") }
++    // Exact remainder has no context slot; retain its -1 input key.
++    val mc = MathContext(if (op == "exact" && precision < 0) 0 else precision)
+     return try {
+         val result = source.enter(op, divisor, mc)
+         val calls = trace.toString()
+@@ -27,8 +28,12 @@ private fun arrayOutcome(text: String, length: Int, op: String, operand: String,
+ }
+ class DecimalRemainderArrayOracleTest {
+     @Test fun replacementPairArraysPreserveBoundsFailuresAndSecondElementIdentity() {
+-        for (row in jdk25DecimalRemainderArrayCases()) {
++        val moved = mutableSetOf<Int>()
++        for ((index, row) in jdk25DecimalRemainderArrayCases().withIndex()) {
++            if (DecimalBinary575Rows.array(row)) { moved.add(index); continue }
+             assertEquals(row[5], arrayOutcome(row[0], row[1].toInt(), row[2], row[3], row[4].toInt()), row.take(5).toString())
+         }
++        assertEquals(96, moved.size, "Exact null-input rows replayed through Java explicit super")
++        assertEquals(DecimalBinary575Rows.arrayOrdinals, moved)
+     }
+ }
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalScaleRoundingRepairTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalScaleRoundingRepairTest.kt
+index e9ff6ff..d125abc 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalScaleRoundingRepairTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalScaleRoundingRepairTest.kt
+@@ -15,12 +15,12 @@ class DecimalScaleRoundingRepairTest {
+         override fun signum() = super.signum()
+         override fun scale() = super.scale()
+         override fun unscaledValue() = super.unscaledValue()
+-        override fun add(augend: BigDecimal?, mc: MathContext?) = super.add(augend, mc)
+-        override fun multiply(multiplicand: BigDecimal?, mc: MathContext?) = super.multiply(multiplicand, mc)
++        override fun add(augend: BigDecimal, mc: MathContext) = super.add(augend, mc)
++        override fun multiply(multiplicand: BigDecimal, mc: MathContext) = super.multiply(multiplicand, mc)
+         override fun setScale(newScale: Int, roundingMode: Int) = super.setScale(newScale, roundingMode)
+         override fun setScale(newScale: Int, roundingMode: RoundingMode) = super.setScale(newScale, roundingMode)
+-        fun addBase(b: BigDecimal?, mc: MathContext?) = super.add(b, mc)
+-        fun multiplyBase(b: BigDecimal?, mc: MathContext?) = super.multiply(b, mc)
++        fun addBase(b: BigDecimal, mc: MathContext) = super.add(b, mc)
++        fun multiplyBase(b: BigDecimal, mc: MathContext) = super.multiply(b, mc)
+         fun scaleBase(s: Int, mode: RoundingMode) = super.setScale(s, mode)
+         fun scaleBase(s: Int, mode: Int) = super.setScale(s, mode)
+         fun scaleBase(s: Int) = super.setScale(s)
+@@ -191,26 +191,20 @@ class DecimalScaleRoundingRepairTest {
+         val replacement = BigDecimal("7.00")
+         class Caller(private val fail: Boolean) : BigDecimal(1) {
+             private fun answer(): BigDecimal { if (fail) throw sentinel; return replacement }
+-            override fun add(augend: BigDecimal?, mc: MathContext?) = answer()
+-            override fun multiply(multiplicand: BigDecimal?, mc: MathContext?) = answer()
++            override fun add(augend: BigDecimal, mc: MathContext) = answer()
++            override fun multiply(multiplicand: BigDecimal, mc: MathContext) = answer()
+             override fun setScale(newScale: Int, roundingMode: Int) = answer()
+             override fun setScale(newScale: Int, roundingMode: RoundingMode) = answer()
+         }
+         for (fail in listOf(false, true)) {
+             val x: BigDecimal = Caller(fail)
+-            for (call in listOf<() -> BigDecimal>({ x.add(null, null) }, { x.multiply(null, null) },
++            for (call in listOf<() -> BigDecimal>({ x.add(BigDecimal.ONE, MathContext.UNLIMITED) }, { x.multiply(BigDecimal.ONE, MathContext.UNLIMITED) },
+                 { x.setScale(0, RoundingMode.DOWN) }, { x.setScale(0, 1) }, { x.setScale(0) })) {
+                 if (fail) assertSame(sentinel, assertFailsWith<IllegalStateException>(block = call))
+                 else assertSame(replacement, call())
+             }
+         }
+-        val x = Truthful(1, Int.MAX_VALUE)
+-        for (mc in listOf(MathContext(0), MathContext(1))) {
+-            assertFailsWith<NullPointerException> { x.addBase(null, mc) }
+-            assertFailsWith<NullPointerException> { x.multiplyBase(null, mc) }
+-        }
+-        assertFailsWith<NullPointerException> { x.addBase(BigDecimal.ZERO, null) }
+-        assertFailsWith<NullPointerException> { x.multiplyBase(BigDecimal.ONE, null) }
++        // Four direct-override and six explicit-super null executions replay on JVM.
+     }
+ 
+     private fun input(c: Long, s: Int, truthful: Boolean): BigDecimal =
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/NullableBinaryOracleEvaluator.kt b/src/commonTest/kotlin/io/heapy/krogu/math/NullableBinaryOracleEvaluator.kt
+index 69c0f7b..fe254d4 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/NullableBinaryOracleEvaluator.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/NullableBinaryOracleEvaluator.kt
+@@ -6,7 +6,7 @@ internal fun evaluateNullableBinaryOracle(v: Array<String>): String {
+     val precision = v[4].toInt()
+     val trace = StringBuilder()
+     val value = object : BigDecimal(v[2]) {
+-        private fun callback(operand: BigDecimal?, base: () -> BigDecimal): BigDecimal {
++        private fun callback(operand: BigDecimal, base: () -> BigDecimal): BigDecimal {
+             trace.append(operation).append(':').append(operand == null).append(';')
+             return when (behavior) {
+                 "return" -> BigDecimal("42.00")
+@@ -16,12 +16,14 @@ internal fun evaluateNullableBinaryOracle(v: Array<String>): String {
+                 else -> error("Unknown callback behavior $behavior")
+             }
+         }
+-        override fun add(augend: BigDecimal?): BigDecimal = callback(augend) { super.add(augend) }
+-        override fun subtract(subtrahend: BigDecimal?): BigDecimal = callback(subtrahend) { super.subtract(subtrahend) }
+-        override fun multiply(multiplicand: BigDecimal?): BigDecimal = callback(multiplicand) { super.multiply(multiplicand) }
++        override fun add(augend: BigDecimal): BigDecimal = callback(augend) { super.add(augend) }
++        override fun subtract(subtrahend: BigDecimal): BigDecimal = callback(subtrahend) { super.subtract(subtrahend) }
++        override fun multiply(multiplicand: BigDecimal): BigDecimal = callback(multiplicand) { super.multiply(multiplicand) }
+     }
+-    val operand = if (v[3] == "~") null else BigDecimal(v[3])
+-    val context = if (precision < 0) null else MathContext(precision, RoundingMode.valueOf(v[5]))
++    require(!DecimalBinary575Rows.nd(v)) { "Null inputs execute in DecimalBinary575JvmTest" }
++    val operand = BigDecimal(v[3])
++    // -2 selects the exact overload and never supplies this context.
++    val context = MathContext(if (precision == -2) 0 else precision, RoundingMode.valueOf(v[5]))
+     val result = try {
+         val computed = if (precision == -2) when (operation) {
+             "add" -> value.add(operand)
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt
+index 2dd7229..829450c 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt
+@@ -28,8 +28,13 @@ class PortableOracleTest {
+         val directZeroCounts = mutableMapOf<String, Int>()
+         val observedFiniteKeys = mutableSetOf<List<String>>()
+         var ordinaryMismatchCount = 0
++        val jvmBinaryRows = mutableSetOf<Int>()
+         val ordinaryMismatchExamples = mutableListOf<String>()
+         for ((index, v) in oracleVectors().withIndex()) {
++            if (DecimalBinary575Rows.nd(v)) {
++                assertTrue(jvmBinaryRows.add(index))
++                continue // Exact ordinal/key/frozen observation replayed by DecimalBinary575JvmTest.
++            }
+             val actual = try {
+                 val result = evaluate(v)
+                 if (result is Array<*>) result.joinToString("|") else result.toString()
+@@ -87,6 +92,8 @@ class PortableOracleTest {
+             }
+         }
+         assertEquals(128, powKeys.size)
++        assertEquals(180, jvmBinaryRows.size, "ND rows assigned to real Java boundary replay")
++        assertEquals(DecimalBinary575Rows.ndOrdinals, jvmBinaryRows)
+         assertEquals(powKeys, observedPowKeys, "all original pow boundary observations remain represented")
+         assertEquals(4, truthfulScalePrefixes.size)
+         assertEquals(truthfulScalePrefixes.keys, observedTruthfulScaleKeys, "all four task566 truthful observations remain represented")
+@@ -277,8 +284,8 @@ class PortableOracleTest {
+             val value = object : BigDecimal(BigInteger(v[2].substringBefore('@')), v[2].substringAfter('@').toInt()) {
+                 override fun signum(): Int { trace.append("sign;"); return sign }
+                 override fun precision(): Int { trace.append("precision;"); return 1 }
+-                override fun multiply(multiplicand: BigDecimal?): BigDecimal { trace.append("exact;"); return super.multiply(multiplicand) }
+-                override fun multiply(multiplicand: BigDecimal?, mc: MathContext?): BigDecimal { trace.append("context;"); return super.multiply(multiplicand, mc) }
++                override fun multiply(multiplicand: BigDecimal): BigDecimal { trace.append("exact;"); return super.multiply(multiplicand) }
++                override fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal { trace.append("context;"); return super.multiply(multiplicand, mc) }
+             }
+             val other = BigDecimal(BigInteger(v[3].substringBefore('@')), v[3].substringAfter('@').toInt())
+             val result = try {
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinOperatorMigrationContractTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinOperatorMigrationContractTest.kt
+index 25adf72..99cf3fa 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinOperatorMigrationContractTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinOperatorMigrationContractTest.kt
+@@ -193,13 +193,13 @@ class KotlinOperatorMigrationContractTest {
+         val calls = mutableListOf<String>()
+         var fail = false
+         val receiver: BigDecimal = object : BigDecimal("1.25") {
+-            override fun add(augend: BigDecimal?): BigDecimal {
++            override fun add(augend: BigDecimal): BigDecimal {
+                 assertEquals(BigDecimal.ONE, augend)
+                 calls += "add"
+                 if (fail) throw marker
+                 return replacement
+             }
+-            override fun subtract(subtrahend: BigDecimal?): BigDecimal {
++            override fun subtract(subtrahend: BigDecimal): BigDecimal {
+                 assertEquals(BigDecimal.ONE, subtrahend)
+                 calls += "subtract"
+                 if (fail) throw marker
+diff --git a/src/jvmTest/java/io/heapy/krogu/math/DecimalContextNullDelegationTest.java b/src/jvmTest/java/io/heapy/krogu/math/DecimalContextNullDelegationTest.java
+index 430ad5e..1dfc4c5 100644
+--- a/src/jvmTest/java/io/heapy/krogu/math/DecimalContextNullDelegationTest.java
++++ b/src/jvmTest/java/io/heapy/krogu/math/DecimalContextNullDelegationTest.java
+@@ -50,6 +50,7 @@ public class DecimalContextNullDelegationTest {
+         }
+     }
+     @Test public void zeroPrecisionDelegatesBeforeNullableOperandValidation() {
++        int entries = 0, baseNull = 0;
+         for (String text : new String[] {"0.00", "1", "-10.50"})
+             for (String behavior : new String[] {"return", "self", "null", "throw", "super"})
+                 for (int precision : new int[] {-1, 0, 2})
+@@ -60,9 +61,17 @@ public class DecimalContextNullDelegationTest {
+                         BigDecimal av = nullOperand ? null : new BigDecimal("2.0");
+                         java.math.MathContext em = precision < 0 ? null : new java.math.MathContext(precision);
+                         MathContext am = precision < 0 ? null : new MathContext(precision);
+-                        assertEquals(text + "/" + behavior + "/" + precision + "/" + nullOperand,
+-                            outcome(() -> expected.enter(ev, em), expected, expected.trace),
+-                            outcome(() -> actual.enter(av, am), actual, actual.trace));
++                        String key = text + "/" + behavior + "/" + precision + "/" + nullOperand;
++                        String e = outcome(() -> expected.enter(ev, em), expected, expected.trace);
++                        String a = outcome(() -> actual.enter(av, am), actual, actual.trace);
++                        entries++;
++                        if (nullOperand || precision == -1) {
++                            baseNull++;
++                            System.out.println("575_EXISTING_CONTEXT\t" + key + "\tEXPLICIT_SUPER_NULL_INTERNAL_TRACE_DIAGNOSTIC\thost=" + e + "\town=" + a);
++                            assertEquals(key, "!NullPointerException|", a);
++                        } else assertEquals(key, e, a);
+                     }
++        assertEquals(90, entries);
++        assertEquals(60, baseNull);
+     }
+ }
+diff --git a/src/jvmTest/java/io/heapy/krogu/math/DecimalIntegralNullDelegationTest.java b/src/jvmTest/java/io/heapy/krogu/math/DecimalIntegralNullDelegationTest.java
+index 630f565..3a68b08 100644
+--- a/src/jvmTest/java/io/heapy/krogu/math/DecimalIntegralNullDelegationTest.java
++++ b/src/jvmTest/java/io/heapy/krogu/math/DecimalIntegralNullDelegationTest.java
+@@ -143,7 +143,7 @@ private static class Actual extends BigDecimal {
+         }
+     }
+     @Test public void nullableArgumentsAndCallbackResultsPreserveInheritedComposition() {
+-        int comparisons = 0, differences = 0;
++        int comparisons = 0, differences = 0, baseNull = 0;
+         StringBuilder failures = new StringBuilder();
+         for (String text : new String[] {"0.00", "1", "-10.50"})
+             for (String behavior : new String[] {"return", "self", "null", "throw", "super", "empty", "short", "null-element"})
+@@ -160,6 +160,13 @@ private static class Actual extends BigDecimal {
+                                 String e = outcome(() -> expected.enter(op, ev, em), expected, expected.trace);
+                                 String a = outcome(() -> actual.enter(op, av, am), actual, actual.trace);
+                                 comparisons++;
++                                if (nullOperand || op.endsWith("-context") && precision == -1) {
++                                    baseNull++;
++                                    String key = text + "/" + behavior + "/" + hook + "/" + op + "/" + precision + "/" + nullOperand;
++                                    System.out.println("575_EXISTING_INTEGRAL\t" + key + "\tEXPLICIT_SUPER_NULL_CALLBACK_OR_ARRAY_DIAGNOSTIC\thost=" + e + "\town=" + a);
++                                    assertEquals(key, "!NullPointerException|", a);
++                                    continue;
++                                }
+                                 if (!e.equals(a)) {
+                                     differences++;
+                                     if (differences <= 12) failures.append(text).append('/').append(behavior).append('/').append(hook)
+@@ -168,6 +175,7 @@ private static class Actual extends BigDecimal {
+                                 }
+                             }
+         assertEquals("comparison count", 3456, comparisons);
++        assertEquals("exact null-input partition", 2016, baseNull);
+         assertEquals(differences + " mismatches:\n" + failures, 0, differences);
+     }
+ }
+diff --git a/src/jvmTest/java/io/heapy/krogu/math/DecimalNullOperandDelegationTest.java b/src/jvmTest/java/io/heapy/krogu/math/DecimalNullOperandDelegationTest.java
+index ab8260a..2a3dccd 100644
+--- a/src/jvmTest/java/io/heapy/krogu/math/DecimalNullOperandDelegationTest.java
++++ b/src/jvmTest/java/io/heapy/krogu/math/DecimalNullOperandDelegationTest.java
+@@ -10,6 +10,7 @@ public class DecimalNullOperandDelegationTest {
+         catch (Exception e) { return "!" + e.getClass().getSimpleName() + (e instanceof IllegalStateException ? ":" + e.getMessage() : ""); }
+     }
+     @Test public void binaryDelegationAndValidationMatchJdk() {
++        int entries = 0, baseNull = 0, directNull = 0;
+         for (String text : new String[] {"0.00", "1", "-1"}) for (String behavior : new String[] {"return", "self", "null", "throw", "super"}) {
+             for (int precision : new int[] {-2, -1, 0, 1}) for (boolean nullOperand : new boolean[] {false, true}) for (String op : new String[] {"add", "subtract", "multiply"}) {
+                 StringBuilder et = new StringBuilder(), at = new StringBuilder();
+@@ -49,8 +50,20 @@ public class DecimalNullOperandDelegationTest {
+                     if (precision == -2) return op.equals("add") ? actual.add(ar) : op.equals("subtract") ? actual.subtract(ar) : actual.multiply(ar);
+                     return op.equals("add") ? actual.add(ar, am) : op.equals("subtract") ? actual.subtract(ar, am) : actual.multiply(ar, am);
+                 });
+-                assertEquals(text + "/" + behavior + "/" + precision + "/" + nullOperand + "/" + op, a + "|" + et, b + "|" + at);
++                String key = text + "/" + behavior + "/" + precision + "/" + nullOperand + "/" + op;
++                entries++;
++                if (precision != -2 && (nullOperand || precision == -1)) {
++                    baseNull++;
++                    System.out.println("575_EXISTING_BINARY\t" + key + "\tBASE_NULL_INTERNAL_TRACE_DIAGNOSTIC\thost=" + a + "|" + et + "\town=" + b + "|" + at);
++                    assertEquals(key, "!NullPointerException|", b + "|" + at);
++                } else {
++                    if (precision == -2 && nullOperand) directNull++;
++                    assertEquals(key, a + "|" + et, b + "|" + at);
++                }
+             }
+         }
++        assertEquals(360, entries);
++        assertEquals(180, baseNull);
++        assertEquals(45, directNull);
+     }
+ }
+diff --git a/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalMultiplicationSubclassTest.kt b/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalMultiplicationSubclassTest.kt
+index 8787965..b19dbc3 100644
+--- a/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalMultiplicationSubclassTest.kt
++++ b/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalMultiplicationSubclassTest.kt
+@@ -49,8 +49,8 @@ class DecimalMultiplicationSubclassTest {
+                     val actual = object : BigDecimal(BigInteger(left), leftScale) {
+                         override fun signum(): Int { actualTrace.append("sign;"); return sign }
+                         override fun precision(): Int { actualTrace.append("precision;"); return 1 }
+-                        override fun multiply(multiplicand: BigDecimal?): BigDecimal { actualTrace.append("exact;"); return super.multiply(multiplicand) }
+-                        override fun multiply(multiplicand: BigDecimal?, mc: MathContext?): BigDecimal { actualTrace.append("context;"); return super.multiply(multiplicand, mc) }
++                        override fun multiply(multiplicand: BigDecimal): BigDecimal { actualTrace.append("exact;"); return super.multiply(multiplicand) }
++                        override fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal { actualTrace.append("context;"); return super.multiply(multiplicand, mc) }
+                     }
+                     val expectedRight = java.math.BigDecimal(java.math.BigInteger(right), rightScale)
+                     val actualRight = BigDecimal(BigInteger(right), rightScale)
+diff --git a/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalSubtractionSubclassTest.kt b/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalSubtractionSubclassTest.kt
+index 55058f8..9560d6c 100644
+--- a/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalSubtractionSubclassTest.kt
++++ b/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalSubtractionSubclassTest.kt
+@@ -33,7 +33,7 @@ class DecimalSubtractionSubclassTest {
+                     override fun add(value: java.math.BigDecimal): java.math.BigDecimal { et.append("add;"); throw IllegalStateException("exact add callback") }
+                 }
+                 val actual = object : BigDecimal(BigInteger(coefficient), leftScale) {
+-                    override fun add(augend: BigDecimal?): BigDecimal { at.append("add;"); throw IllegalStateException("exact add callback") }
++                    override fun add(augend: BigDecimal): BigDecimal { at.append("add;"); throw IllegalStateException("exact add callback") }
+                 }
+                 fun outcome(block: () -> Any): String = try { block().toString() } catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
+                 val a = outcome { expected.add(java.math.BigDecimal(java.math.BigInteger.ONE, rightScale), java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))) }
+@@ -63,15 +63,15 @@ class DecimalSubtractionSubclassTest {
+                         override fun subtract(value: java.math.BigDecimal): java.math.BigDecimal { et.append("subtract;"); return super.subtract(value) }
+                     }
+                     val actual = object : BigDecimal(left) {
+-                        override fun add(augend: BigDecimal?): BigDecimal {
++                        override fun add(augend: BigDecimal): BigDecimal {
+                             at.append("add;")
+                             return when (leftBehavior) { "replace" -> BigDecimal("42"); "throw" -> throw IllegalStateException("add callback"); else -> super.add(augend) }
+                         }
+-                        override fun add(augend: BigDecimal?, mc: MathContext?): BigDecimal {
++                        override fun add(augend: BigDecimal, mc: MathContext): BigDecimal {
+                             at.append("addContext;")
+                             return when (leftBehavior) { "replace" -> BigDecimal("43"); "throw" -> throw IllegalStateException("add context callback"); else -> super.add(augend, mc) }
+                         }
+-                        override fun subtract(subtrahend: BigDecimal?): BigDecimal { at.append("subtract;"); return super.subtract(subtrahend) }
++                        override fun subtract(subtrahend: BigDecimal): BigDecimal { at.append("subtract;"); return super.subtract(subtrahend) }
+                     }
+                     val expectedRight = object : java.math.BigDecimal(right) {
+                         override fun toByte(): Byte = super.toInt().toByte()
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalBinary575Rows.kt b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalBinary575Rows.kt
+new file mode 100644
+index 0000000..f5f706a
+--- /dev/null
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalBinary575Rows.kt
+@@ -0,0 +1,35 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math
++
++/** Input-only partitions. Frozen observations never determine where a row executes. */
++internal object DecimalBinary575Rows {
++    // Published60 fixture ordinals, independently transcribed from the preserved source ledger.
++    val ndOrdinals: Set<Int> = buildSet {
++        repeat(12) { block ->
++            val base = 62336 + 24 * block
++            addAll((base + 3)..(base + 11))
++            addAll((base + 15)..(base + 17))
++            addAll((base + 21)..(base + 23))
++        }
++    }
++    val contextDispatchOrdinals: Set<Int> = buildSet {
++        addAll(7424..7431)
++        repeat(11) { block -> addAll((7448 + 48 * block)..(7479 + 48 * block)) }
++        addAll(7976..7999)
++    }
++    val contextContractOrdinals: Set<Int> = (608..703).toSet()
++    val arrayOrdinals: Set<Int> = buildSet {
++        repeat(12) { block ->
++            val base = 18 * block
++            addAll(base..(base + 2))
++            addAll((base + 9)..(base + 12))
++            add(base + 15)
++        }
++    }
++    fun nd(row: Array<String>): Boolean =
++        row[0] == "ND" && (row[3] == "~" || row[4] == "-1")
++    fun contextDispatch(row: Array<String>): Boolean = row[3] == "null" || row[4].toInt() < 0
++    fun contextContract(row: Array<String>): Boolean = row[2] == "null" || row[3].toInt() < 0
++    fun array(row: Array<String>): Boolean =
++        row[3] == "null" || (row[2] == "context" && row[4].toInt() < 0)
++}
+diff --git a/src/jvmTest/java/io/heapy/krogu/math/DecimalBinary575Adapter.java b/src/jvmTest/java/io/heapy/krogu/math/DecimalBinary575Adapter.java
+new file mode 100644
+index 0000000..40e63c5
+--- /dev/null
++++ b/src/jvmTest/java/io/heapy/krogu/math/DecimalBinary575Adapter.java
+@@ -0,0 +1,184 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math;
++
++/** Real Java entry points. No caller null assertions/casts and no synthetic NPEs. */
++public final class DecimalBinary575Adapter {
++    private DecimalBinary575Adapter() {}
++
++    private static class Binary extends BigDecimal {
++        final String operation, behavior;
++        final StringBuilder trace = new StringBuilder();
++        Binary(String text, String operation, String behavior) {
++            super(text); this.operation = operation; this.behavior = behavior;
++        }
++        private BigDecimal callback(BigDecimal operand) {
++            trace.append(operation).append(':').append(operand == null).append(';');
++            return switch (behavior) {
++                case "return" -> new BigDecimal("42.00");
++                case "self" -> this;
++                case "throw" -> throw new IllegalStateException("operation callback");
++                case "super" -> null; // Caller below invokes the actual Java super method.
++                default -> throw new AssertionError(behavior);
++            };
++        }
++        @Override public BigDecimal add(BigDecimal v) {
++            BigDecimal result = callback(v); return behavior.equals("super") ? super.add(v) : result;
++        }
++        @Override public BigDecimal subtract(BigDecimal v) {
++            BigDecimal result = callback(v); return behavior.equals("super") ? super.subtract(v) : result;
++        }
++        @Override public BigDecimal multiply(BigDecimal v) {
++            BigDecimal result = callback(v); return behavior.equals("super") ? super.multiply(v) : result;
++        }
++    }
++
++    public static String nd(String[] row) {
++        String[] operation = row[1].split(":");
++        int precision = Integer.parseInt(row[4]);
++        Binary source = new Binary(row[2], operation[0], operation[1]);
++        BigDecimal operand = row[3].equals("~") ? null : new BigDecimal(row[3]);
++        MathContext context = precision < 0 ? null : new MathContext(precision, RoundingMode.valueOf(row[5]));
++        String result;
++        try {
++            BigDecimal value = switch (operation[0]) {
++                case "add" -> precision == -2 ? source.add(operand) : source.add(operand, context);
++                case "subtract" -> precision == -2 ? source.subtract(operand) : source.subtract(operand, context);
++                case "multiply" -> precision == -2 ? source.multiply(operand) : source.multiply(operand, context);
++                default -> throw new AssertionError(operation[0]);
++            };
++            result = String.valueOf(value);
++        } catch (Exception e) {
++            result = "!" + e.getClass().getSimpleName() +
++                (e instanceof IllegalStateException ? ":" + e.getMessage() : "");
++        }
++        return result + "|" + source.trace;
++    }
++
++    private static class ContextProbe extends BigDecimal {
++        final String label, mode;
++        final StringBuilder trace;
++        int signCalls, precisionCalls;
++        ContextProbe(String text, String label, String mode, StringBuilder trace) {
++            super(text); this.label = label; this.mode = mode; this.trace = trace;
++        }
++        @Override public int signum() {
++            signCalls++;
++            trace.append(label).append(".sign(").append(signCalls).append(");");
++            if (mode.equals("sign-first") || mode.equals("sign-second") && signCalls == 2)
++                throw new IllegalStateException(label + " sign callback");
++            if (mode.startsWith("zero-precision:")) return 1;
++            if (mode.startsWith("sign:")) return Integer.parseInt(mode.substring(5));
++            if (mode.equals("sign-changing")) return signCalls == 1 ? -super.signum() : super.signum();
++            return super.signum();
++        }
++        @Override public int precision() {
++            precisionCalls++;
++            trace.append(label).append(".precision;");
++            if (mode.equals("precision")) throw new IllegalStateException(label + " precision callback");
++            if (mode.startsWith("zero-precision:") || mode.startsWith("precision:"))
++                return Integer.parseInt(mode.substring(mode.indexOf(':') + 1));
++            return super.precision() + (mode.equals("precision-changing") ? precisionCalls : 0);
++        }
++        private RuntimeException unexpected(String name) {
++            trace.append(label).append('.').append(name).append(';');
++            return new IllegalStateException(label + " unexpected " + name);
++        }
++        @Override public int scale() { throw unexpected("scale"); }
++        @Override public BigInteger unscaledValue() { throw unexpected("unscaled"); }
++        @Override public BigDecimal abs() { throw unexpected("abs"); }
++        @Override public BigDecimal negate() { throw unexpected("negate"); }
++        @Override public BigDecimal divide(BigDecimal v) {
++            trace.append(label).append(".exact").append(v == null ? "-null" : "").append(';');
++            return new BigDecimal("7.00");
++        }
++        BigDecimal enter(BigDecimal v, MathContext mc) { return super.divide(v, mc); }
++    }
++
++    public static String contextDispatch(String[] row) {
++        StringBuilder trace = new StringBuilder();
++        ContextProbe source = new ContextProbe(row[0], "A", row[2], trace);
++        BigDecimal operand = row[3].equals("self") ? source : row[3].equals("null") ? null :
++            new ContextProbe(row[1], "B", row[3], trace);
++        int precision = Integer.parseInt(row[4]);
++        MathContext context = precision < 0 ? null : new MathContext(precision, RoundingMode.valueOf(row[5]));
++        BigDecimal result;
++        try {
++            result = source.enter(operand, context);
++        } catch (Exception e) {
++            return "!" + e.getClass().getSimpleName() + (e instanceof NullPointerException ? "" : ":" + e.getMessage()) + "|" + trace;
++        }
++        String calls = trace.toString();
++        return result == null ? "null|" + calls : result.toString() + ":" + result.scale() + "|" + calls;
++    }
++
++    private static class ArrayProbe extends BigDecimal {
++        final int length;
++        final StringBuilder trace = new StringBuilder();
++        ArrayProbe(String text, int length) { super(text); this.length = length; }
++        private BigDecimal[] pair() {
++            BigDecimal[] result = new BigDecimal[length];
++            for (int i = 0; i < length; i++) result[i] = i == 1 ? this : new BigDecimal("7.0");
++            return result;
++        }
++        @Override public BigDecimal[] divideAndRemainder(BigDecimal v) {
++            trace.append("pair(").append(v == null).append(");"); return pair();
++        }
++        @Override public BigDecimal[] divideAndRemainder(BigDecimal v, MathContext mc) {
++            trace.append("pair(").append(v == null).append(',').append(mc == null ? null : mc.getPrecision()).append(");");
++            return pair();
++        }
++        BigDecimal enter(String op, BigDecimal v, MathContext mc) {
++            return op.equals("exact") ? super.remainder(v) : super.remainder(v, mc);
++        }
++    }
++    public static String array(String[] row) {
++        ArrayProbe source = new ArrayProbe(row[0], Integer.parseInt(row[1]));
++        BigDecimal operand = row[3].equals("null") ? null : row[3].equals("self") ? source : new BigDecimal("2.0");
++        int precision = Integer.parseInt(row[4]);
++        MathContext mc = precision < 0 ? null : new MathContext(precision);
++        BigDecimal result;
++        try {
++            result = source.enter(row[2], operand, mc);
++        } catch (Exception e) {
++            return "!" + e.getClass().getSimpleName() + ":" + e.getMessage() + "|" + source.trace;
++        }
++        String calls = source.trace.toString();
++        return (result == source ? "source" : String.valueOf(result)) + "|" + calls;
++    }
++
++    public static class Truthful extends BigDecimal {
++        public Truthful(String text) { super(text); }
++        public Truthful(long coefficient, int scale) { super(BigInteger.valueOf(coefficient), scale); }
++        @Override public int signum() { return super.signum(); }
++        @Override public int precision() { return super.precision(); }
++        @Override public int scale() { return super.scale(); }
++        @Override public BigInteger unscaledValue() { return super.unscaledValue(); }
++        @Override public BigDecimal abs() { return super.abs(); }
++        @Override public BigDecimal abs(MathContext mc) { return super.abs(mc); }
++        @Override public BigDecimal negate() { return super.negate(); }
++        @Override public BigDecimal negate(MathContext mc) { return super.negate(mc); }
++        @Override public BigDecimal divide(BigDecimal v) { return super.divide(v); }
++        @Override public BigDecimal divide(BigDecimal v, MathContext mc) { return super.divide(v, mc); }
++        public BigDecimal divideBase(BigDecimal v, MathContext mc) { return super.divide(v, mc); }
++        public BigDecimal integralBase(BigDecimal v, MathContext mc) { return super.divideToIntegralValue(v, mc); }
++        public BigDecimal addBase(BigDecimal v, MathContext mc) { return super.add(v, mc); }
++        public BigDecimal multiplyBase(BigDecimal v, MathContext mc) { return super.multiply(v, mc); }
++    }
++    public static String contextContract(String[] row, int mask) {
++        BigDecimal source = (mask & 1) == 0 ? new BigDecimal(row[0]) : new Truthful(row[0]);
++        BigDecimal operand = switch (row[2]) {
++            case "null" -> null;
++            case "self" -> source;
++            case "ordinary" -> (mask & 2) == 0 ? new BigDecimal(row[1]) : new Truthful(row[1]);
++            default -> throw new AssertionError(row[2]);
++        };
++        int precision = Integer.parseInt(row[3]);
++        MathContext mc = precision < 0 ? null : new MathContext(precision, RoundingMode.valueOf(row[4]));
++        BigDecimal result;
++        try {
++            result = source.divide(operand, mc);
++        } catch (ArithmeticException e) { return "!ArithmeticException"; }
++          catch (NullPointerException e) { return "!NullPointerException"; }
++        return result == null ? "null" : result.unscaledValue().toString() + "@" + result.scale();
++    }
++}
+diff --git a/src/jvmTest/java/io/heapy/krogu/math/DecimalBinary575BoundaryTest.java b/src/jvmTest/java/io/heapy/krogu/math/DecimalBinary575BoundaryTest.java
+new file mode 100644
+index 0000000..68d5b0d
+--- /dev/null
++++ b/src/jvmTest/java/io/heapy/krogu/math/DecimalBinary575BoundaryTest.java
+@@ -0,0 +1,54 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math;
++
++import java.util.LinkedHashSet;
++import java.util.Set;
++import org.junit.Test;
++import static org.junit.Assert.*;
++
++public class DecimalBinary575BoundaryTest {
++    private static Object exact(BigDecimal source, String operation, BigDecimal operand) {
++        return switch (operation) {
++            case "add" -> source.add(operand);
++            case "subtract" -> source.subtract(operand);
++            case "multiply" -> source.multiply(operand);
++            case "divide" -> source.divide(operand);
++            case "divideToIntegralValue" -> source.divideToIntegralValue(operand);
++            case "divideAndRemainder" -> source.divideAndRemainder(operand);
++            case "remainder" -> source.remainder(operand);
++            default -> throw new AssertionError(operation);
++        };
++    }
++    private static Object contextual(BigDecimal source, String operation, BigDecimal operand, MathContext context) {
++        return switch (operation) {
++            case "add" -> source.add(operand, context);
++            case "subtract" -> source.subtract(operand, context);
++            case "multiply" -> source.multiply(operand, context);
++            case "divide" -> source.divide(operand, context);
++            case "divideToIntegralValue" -> source.divideToIntegralValue(operand, context);
++            case "divideAndRemainder" -> source.divideAndRemainder(operand, context);
++            case "remainder" -> source.remainder(operand, context);
++            default -> throw new AssertionError(operation);
++        };
++    }
++    @Test public void allTwentyOneSlotsRejectNullAtOrdinaryJavaEntry() {
++        Set<String> slots = new LinkedHashSet<>();
++        BigDecimal source = new BigDecimal("17.25");
++        for (String operation : new String[] {"add", "subtract", "multiply", "divide",
++                "divideToIntegralValue", "divideAndRemainder", "remainder"}) {
++            assertTrue(slots.add(operation + "(BigDecimal)#0"));
++            try { exact(source, operation, null); fail(operation); }
++            catch (NullPointerException expected) { /* The invoked library method rejected null. */ }
++            for (int slot = 0; slot < 2; slot++) {
++                assertTrue(slots.add(operation + "(BigDecimal,MathContext)#" + slot));
++                for (MathContext context : new MathContext[] {MathContext.UNLIMITED, new MathContext(2)}) {
++                    try {
++                        contextual(source, operation, slot == 0 ? null : new BigDecimal("5.0"), slot == 1 ? null : context);
++                        fail(operation + " slot " + slot);
++                    } catch (NullPointerException expected) { /* Actual target exception. */ }
++                }
++            }
++        }
++        assertEquals(21, slots.size());
++    }
++}
+diff --git a/src/jvmTest/java/io/heapy/krogu/math/DecimalBinary575StandaloneTest.java b/src/jvmTest/java/io/heapy/krogu/math/DecimalBinary575StandaloneTest.java
+new file mode 100644
+index 0000000..0021d93
+--- /dev/null
++++ b/src/jvmTest/java/io/heapy/krogu/math/DecimalBinary575StandaloneTest.java
+@@ -0,0 +1,154 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math;
++
++import java.util.LinkedHashSet;
++import java.util.Set;
++import java.util.concurrent.Callable;
++import org.junit.Test;
++import static org.junit.Assert.*;
++
++/** Exact counterparts of standalone common executions made ill-typed by the non-null API. */
++public class DecimalBinary575StandaloneTest {
++    private final Set<String> executed = new LinkedHashSet<>();
++    private void npe(String key, Callable<?> action) throws Exception {
++        assertTrue("duplicate execution " + key, executed.add(key));
++        try { action.call(); fail("library accepted null: " + key); }
++        catch (NullPointerException expected) {
++            System.out.println("575_STANDALONE\t" + key + "\tTARGET_NPE\t" + expected);
++        }
++    }
++    private static class Caller extends BigDecimal {
++        final BigDecimal replacement = new BigDecimal("7.00");
++        final IllegalStateException failure;
++        boolean throwing;
++        BigDecimal operand;
++        MathContext context;
++        String entry;
++        int entries;
++        Caller(String text, String message) { super(text); failure = new IllegalStateException(message); }
++        BigDecimal answer(String entry, BigDecimal operand, MathContext context) {
++            this.entry = entry; this.operand = operand; this.context = context; entries++;
++            if (throwing) throw failure;
++            return replacement;
++        }
++        @Override public BigDecimal divide(BigDecimal v) { return answer("exact", v, null); }
++        @Override public BigDecimal divide(BigDecimal v, MathContext mc) { return answer("context", v, mc); }
++        @Override public BigDecimal divideToIntegralValue(BigDecimal v, MathContext mc) { return answer("integral", v, mc); }
++        @Override public BigDecimal add(BigDecimal v, MathContext mc) { return answer("add", v, mc); }
++        @Override public BigDecimal multiply(BigDecimal v, MathContext mc) { return answer("multiply", v, mc); }
++    }
++    private void direct(String key, Caller source, BigDecimal operand, MathContext context,
++                        String entry, Callable<BigDecimal> action) throws Exception {
++        assertTrue(executed.add(key));
++        int before = source.entries;
++        if (source.throwing) {
++            try { action.call(); fail(key); }
++            catch (IllegalStateException failure) { assertSame(source.failure, failure); }
++        } else assertSame(source.replacement, action.call());
++        assertEquals(before + 1, source.entries);
++        assertEquals(entry, source.entry);
++        assertSame(operand, source.operand);
++        assertSame(context, source.context);
++    }
++
++    @Test public void contextStandaloneRows() throws Exception {
++        MathContext missing = null;
++        for (boolean truthful : new boolean[] {false, true}) {
++            BigDecimal source = truthful ? new DecimalBinary575Adapter.Truthful("-10.50") : new BigDecimal("-10.50");
++            BigDecimal divisor = truthful ? new DecimalBinary575Adapter.Truthful("2.0") : new BigDecimal("2.0");
++            MathContext finite = new MathContext(2, RoundingMode.HALF_EVEN);
++            npe("context-errors/" + truthful + "/operand", () -> source.divide(null, finite));
++            npe("context-errors/" + truthful + "/context", () -> source.divide(divisor, missing));
++            npe("context-errors/" + truthful + "/both", () -> source.divide(null, missing));
++        }
++        assertEquals(6, executed.size());
++        for (boolean throwing : new boolean[] {false, true}) {
++            Caller caller = new Caller("10.50", "caller-owned sentinel");
++            caller.throwing = throwing;
++            BigDecimal source = caller;
++            BigDecimal[] operands = {new BigDecimal("2.0"), source, null};
++            MathContext[] contexts = {new MathContext(2, RoundingMode.HALF_EVEN), MathContext.UNLIMITED, null};
++            for (int operandIndex = 0; operandIndex < operands.length; operandIndex++) {
++                BigDecimal operand = operands[operandIndex];
++                if (operand == null)
++                    direct("context-direct/" + throwing + "/" + operandIndex + "/exact", caller, operand, null,
++                        "exact", () -> source.divide(operand));
++                for (int contextIndex = 0; contextIndex < contexts.length; contextIndex++) {
++                    MathContext context = contexts[contextIndex];
++                    if (operand == null || context == null)
++                        direct("context-direct/" + throwing + "/" + operandIndex + "/" + contextIndex,
++                            caller, operand, context, "context", () -> source.divide(operand, context));
++                }
++            }
++        }
++        assertEquals(18, executed.size()); // Six required-NPE + twelve caller-owned override executions.
++        DecimalBinary575Adapter.Truthful source = new DecimalBinary575Adapter.Truthful("10.50");
++        npe("context-super/null", () -> source.divideBase(null, new MathContext(2)));
++        assertEquals(19, executed.size());
++    }
++
++    private static class IntegralTruthful extends DecimalBinary575Adapter.Truthful {
++        IntegralTruthful(String text) { super(text); }
++        @Override public BigDecimal divideToIntegralValue(BigDecimal v) { return super.divideToIntegralValue(v); }
++        @Override public BigDecimal divideToIntegralValue(BigDecimal v, MathContext mc) { return super.divideToIntegralValue(v, mc); }
++        @Override public BigDecimal remainder(BigDecimal v) { return super.remainder(v); }
++        @Override public BigDecimal remainder(BigDecimal v, MathContext mc) { return super.remainder(v, mc); }
++        @Override public BigDecimal[] divideAndRemainder(BigDecimal v) { return super.divideAndRemainder(v); }
++        @Override public BigDecimal[] divideAndRemainder(BigDecimal v, MathContext mc) { return super.divideAndRemainder(v, mc); }
++        @Override public BigDecimal integralBase(BigDecimal v, MathContext mc) { return super.divideToIntegralValue(v, mc); }
++    }
++    @Test public void integralStandaloneRows() throws Exception {
++        Caller caller = new Caller("17.25", "541 caller sentinel");
++        BigDecimal source = caller;
++        BigDecimal distinct = new BigDecimal("5.0");
++        MathContext finite = new MathContext(1, RoundingMode.UNNECESSARY);
++        BigDecimal[] operands = {distinct, source, null};
++        MathContext[] contexts = {finite, MathContext.UNLIMITED, null};
++        for (int i = 0; i < operands.length; i++) for (int j = 0; j < contexts.length; j++) {
++            BigDecimal operand = operands[i]; MathContext context = contexts[j];
++            if (operand != null && context != null) continue;
++            for (boolean throwing : new boolean[] {false, true}) {
++                caller.throwing = throwing;
++                direct("integral-direct/" + i + "/" + j + "/" + throwing, caller, operand, context,
++                    "integral", () -> source.divideToIntegralValue(operand, context));
++            }
++        }
++        assertEquals(10, executed.size());
++        IntegralTruthful truthful = new IntegralTruthful("17.25");
++        npe("integral-super/operand", () -> truthful.integralBase(null, finite));
++        npe("integral-super/context", () -> truthful.integralBase(distinct, null));
++        assertEquals(12, executed.size());
++    }
++
++    @Test public void preferredScaleStandaloneRows() throws Exception {
++        MathContext missing = null;
++        for (int mask = 0; mask < 4; mask++) for (RoundingMode mode : RoundingMode.values()) {
++            BigDecimal source = (mask & 1) == 0 ? BigDecimal.valueOf(1, Integer.MIN_VALUE) :
++                new DecimalBinary575Adapter.Truthful(1, Integer.MIN_VALUE);
++            String key = "preferred/" + mask + "/" + mode;
++            npe(key + "/exact", () -> source.divide(null));
++            npe(key + "/operand", () -> source.divide(null, new MathContext(1, mode)));
++            npe(key + "/context", () -> source.divide(BigDecimal.ONE, missing));
++        }
++        assertEquals(96, executed.size()); // Keep duplicate receiver masks as distinct original executions.
++    }
++
++    @Test public void scaleRoundingStandaloneRows() throws Exception {
++        for (boolean throwing : new boolean[] {false, true}) {
++            Caller caller = new Caller("1", "caller sentinel"); caller.throwing = throwing;
++            BigDecimal source = caller;
++            direct("scale-direct/" + throwing + "/add", caller, null, null, "add", () -> source.add(null, null));
++            direct("scale-direct/" + throwing + "/multiply", caller, null, null, "multiply", () -> source.multiply(null, null));
++        }
++        assertEquals(4, executed.size());
++        DecimalBinary575Adapter.Truthful source = new DecimalBinary575Adapter.Truthful(1, Integer.MAX_VALUE);
++        for (int precision : new int[] {0, 1}) {
++            MathContext context = new MathContext(precision);
++            npe("scale-super/add/" + precision, () -> source.addBase(null, context));
++            npe("scale-super/multiply/" + precision, () -> source.multiplyBase(null, context));
++        }
++        npe("scale-super/add/context", () -> source.addBase(BigDecimal.ZERO, null));
++        npe("scale-super/multiply/context", () -> source.multiplyBase(BigDecimal.ONE, null));
++        assertEquals(10, executed.size());
++    }
++}
+diff --git a/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalBinary575JvmTest.kt b/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalBinary575JvmTest.kt
+new file mode 100644
+index 0000000..ebe7221
+--- /dev/null
++++ b/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalBinary575JvmTest.kt
+@@ -0,0 +1,81 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math
++
++import kotlin.test.Test
++import kotlin.test.assertEquals
++import kotlin.test.assertTrue
++
++class DecimalBinary575JvmTest {
++    private fun retain(family: String, index: Int, row: Array<String>, actual: String, route: String) {
++        println("575_NULL_ROW\t$family\tindex=$index\tkey=${row.dropLast(1).joinToString("\t")}\tfrozen=${row.last()}\tactual=$actual\troute=$route")
++    }
++
++    @Test fun everyDisplacedNdRowUsesItsOriginalJavaOverrideAndInputs() {
++        val indices = mutableSetOf<Int>()
++        val keys = mutableSetOf<List<String>>()
++        var direct = 0
++        for ((index, row) in oracleVectors().withIndex()) {
++            if (!DecimalBinary575Rows.nd(row)) continue
++            assertTrue(indices.add(index))
++            assertTrue(keys.add(row.take(6)))
++            val actual = DecimalBinary575Adapter.nd(row)
++            val isDirect = row[4] == "-2"
++            retain("ND", index, row, actual, if (isDirect) "DIRECT_JAVA_OVERRIDE" else "INHERITED_BASE_NULL")
++            if (isDirect) {
++                direct++
++                // Caller-owned Java overrides execute even for null. "super" reaches the library.
++                assertEquals(row[6], actual, "direct override ${row.take(6)}")
++            } else assertEquals("!NullPointerException|", actual, "base entry ${row.take(6)}")
++        }
++        assertEquals(180, indices.size)
++        assertEquals(DecimalBinary575Rows.ndOrdinals, indices)
++        assertEquals(180, keys.size)
++        assertEquals(36, direct)
++    }
++
++    @Test fun everyDisplacedContextDispatchRowUsesExplicitJavaSuper() {
++        val indices = mutableSetOf<Int>()
++        for ((index, row) in jdk25DecimalContextDispatchCases().withIndex()) {
++            if (!DecimalBinary575Rows.contextDispatch(row)) continue
++            assertTrue(indices.add(index))
++            val actual = DecimalBinary575Adapter.contextDispatch(row)
++            retain("CONTEXT_DISPATCH", index, row, actual, "EXPLICIT_SUPER_NULL_INTERNAL_TRACE_DIAGNOSTIC")
++            assertEquals("!NullPointerException|", actual, row.take(6).toString())
++        }
++        assertEquals(384, indices.size)
++        assertEquals(DecimalBinary575Rows.contextDispatchOrdinals, indices)
++    }
++
++    @Test fun everyDisplacedContractMaskUsesOrdinaryOrTruthfulJavaReceiver() {
++        val executions = mutableSetOf<Pair<Int, Int>>()
++        val indices = mutableSetOf<Int>()
++        for ((index, row) in jdk25DecimalContextContractCases().withIndex()) {
++            if (!DecimalBinary575Rows.contextContract(row)) continue
++            assertTrue(indices.add(index))
++            for (mask in if (row[2] == "ordinary") 0..3 else 0..1) {
++                assertTrue(executions.add(index to mask))
++                val actual = DecimalBinary575Adapter.contextContract(row, mask)
++                retain("CONTEXT_CONTRACT/mask=$mask", index, row, actual, "ORDINARY_OR_TRUTHFUL_NULL")
++                assertEquals("!NullPointerException", actual, row.take(5).toString())
++            }
++        }
++        assertEquals(96, indices.size)
++        assertEquals(DecimalBinary575Rows.contextContractOrdinals, indices)
++        assertEquals(240, executions.size)
++    }
++
++    @Test fun everyDisplacedArrayRowUsesExplicitSuperAndRetainsMalformedArrayDiagnostic() {
++        val indices = mutableSetOf<Int>()
++        for ((index, row) in jdk25DecimalRemainderArrayCases().withIndex()) {
++            if (!DecimalBinary575Rows.array(row)) continue
++            assertTrue(indices.add(index))
++            val actual = DecimalBinary575Adapter.array(row)
++            retain("ARRAY", index, row, actual, "EXPLICIT_SUPER_NULL_COMPETING_ARRAY_FAILURE_DIAGNOSTIC")
++            // VM NPE text is retained, never required; actual target must reject null before a pair callback.
++            assertTrue(actual.startsWith("!NullPointerException:"), row.take(5).toString())
++            assertEquals("", actual.substringAfter('|'))
++        }
++        assertEquals(96, indices.size)
++        assertEquals(DecimalBinary575Rows.arrayOrdinals, indices)
++    }
++}

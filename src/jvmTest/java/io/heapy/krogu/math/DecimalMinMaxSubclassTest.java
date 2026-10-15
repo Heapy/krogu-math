@@ -9,7 +9,8 @@ public class DecimalMinMaxSubclassTest {
         try { Object result = action.call(); return String.valueOf(result) + "|" + (result == source) + "|" + (result == operand); }
         catch (Exception e) { return "!" + e.getClass().getSimpleName() + (e instanceof IllegalStateException ? ":" + e.getMessage() : ""); }
     }
-    @Test public void minMaxForwardArgumentsToVirtualComparison() {
+    @Test public void minMaxRejectNullAndForwardValidArgumentsToVirtualComparison() {
+        int nullRows = 0, validRows = 0;
         for (String text : new String[] {"0.00", "1", "-1"}) for (int comparison : new int[] {-2, -1, 0, 1, 2}) {
             for (boolean throwing : new boolean[] {false, true}) for (boolean nullOperand : new boolean[] {false, true}) for (boolean min : new boolean[] {false, true}) {
                 StringBuilder et = new StringBuilder(), at = new StringBuilder();
@@ -31,9 +32,19 @@ public class DecimalMinMaxSubclassTest {
                 BigDecimal ar = nullOperand ? null : new BigDecimal("2");
                 String a = outcome(() -> min ? expected.min(er) : expected.max(er), expected, er);
                 String b = outcome(() -> min ? actual.min(ar) : actual.max(ar), actual, ar);
-                assertEquals(text + "/" + comparison + "/" + throwing + "/" + nullOperand + "/" + min, a + "|" + et, b + "|" + at);
+                String key = text + "/" + comparison + "/" + throwing + "/" + nullOperand + "/" + min;
+                if (nullOperand) {
+                    nullRows++;
+                    System.out.println("574_DECIMAL_SUBCLASS_NULL\t" + key + "\thost=" + a + "|" + et + "\town=" + b + "|" + at);
+                    assertEquals(key + " public null contract", "!NullPointerException", b);
+                } else {
+                    validRows++;
+                    assertEquals(key, a + "|" + et, b + "|" + at);
+                }
             }
         }
+        assertEquals(60, nullRows);
+        assertEquals(60, validRows);
     }
     @Test public void javaComparableAndCollectionSortingRemainUsable() {
         Comparable<BigDecimal> value = new BigDecimal("1");

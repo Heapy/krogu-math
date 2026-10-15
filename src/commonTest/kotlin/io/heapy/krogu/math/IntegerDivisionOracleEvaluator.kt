@@ -4,7 +4,7 @@ package io.heapy.krogu.math
 internal fun evaluateIntegerDivisionOracle(v: Array<String>): String {
     val trace = StringBuilder()
     val value = object : BigInteger(v[2]) {
-        override fun compareTo(other: BigInteger?): Int {
+        override fun compareTo(other: BigInteger): Int {
             trace.append("compare;")
             throw IllegalStateException("comparison callback")
         }

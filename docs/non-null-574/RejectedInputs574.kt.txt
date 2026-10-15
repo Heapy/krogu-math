@@ -1,0 +1,10 @@
+// Source only: compile each function independently; require the input type mismatch at its call.
+// An unrelated compilation failure does not satisfy a negative fixture.
+package io.heapy.krogu.math
+
+fun rejectedIntegerCompare574(a: BigInteger, b: BigInteger?) = a.compareTo(b)
+fun rejectedIntegerMin574(a: BigInteger, b: BigInteger?) = a.min(b)
+fun rejectedIntegerMax574(a: BigInteger, b: BigInteger?) = a.max(b)
+fun rejectedDecimalCompare574(a: BigDecimal, b: BigDecimal?) = a.compareTo(b)
+fun rejectedDecimalMin574(a: BigDecimal, b: BigDecimal?) = a.min(b)
+fun rejectedDecimalMax574(a: BigDecimal, b: BigDecimal?) = a.max(b)

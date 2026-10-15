@@ -11,7 +11,7 @@ class BitwiseSubclassTest {
     }
     private class LogicalChild(text: String) : ArithmeticChild(text) {
         override fun not(): BigInteger = error("not override called")
-        override fun and(value: BigInteger?): BigInteger = error("and override called")
+        override fun and(value: BigInteger): BigInteger = error("and override called")
         override fun testBit(n: Int): Boolean = error("testBit override called")
         override fun setBit(n: Int): BigInteger = error("setBit override called")
         override fun clearBit(n: Int): BigInteger = error("clearBit override called")

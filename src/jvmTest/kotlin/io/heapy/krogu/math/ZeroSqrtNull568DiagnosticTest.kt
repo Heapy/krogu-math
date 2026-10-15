@@ -29,21 +29,12 @@ class ZeroSqrtNull568DiagnosticTest {
         fun inheritedRoot(mc: JC?) = super.sqrt(mc)
     }
 
-    private class Truthful(c: BigInteger, s: Int) : BigDecimal(c, s) {
-        override fun signum() = super.signum()
-        override fun precision() = super.precision()
-        override fun scale() = super.scale()
-        override fun unscaledValue() = super.unscaledValue()
-        override fun stripTrailingZeros() = super.stripTrailingZeros()
-        override fun sqrt(mc: MathContext?) = super.sqrt(mc)
-        fun inheritedRoot(mc: MathContext?) = super.sqrt(mc)
-    }
-
     private data class Outcome(val coefficient: String? = null, val scale: Int? = null, val exception: String? = null)
-    private fun observe(action: () -> Any): Outcome = try {
+    private fun observe(action: () -> Any?): Outcome = try {
         when (val result = action()) {
             is JD -> Outcome(result.unscaledValue().toString(), result.scale())
             is BigDecimal -> Outcome(result.unscaledValue().toString(), result.scale())
+            null -> Outcome(exception = "returned-null")
             else -> error("Unexpected result type")
         }
     } catch (e: Exception) { Outcome(exception = e.javaClass.simpleName) }
@@ -55,7 +46,7 @@ class ZeroSqrtNull568DiagnosticTest {
         for (scale in listOf(0, 2)) {
             val text = if (scale == 0) "0" else "0.00"
             val jdk = TruthfulJdk(JI.ZERO, scale)
-            val own = Truthful(BigInteger.ZERO, scale)
+            val own = Validation578Boundary.TruthfulRoot(BigInteger.ZERO, scale)
             for (origin in listOf("ordinary", "truthful", "callerSuper")) {
                 val key = "$origin:0@$scale/null"
                 assertTrue(seen.add(key), "Duplicate key: $key")
@@ -68,8 +59,8 @@ class ZeroSqrtNull568DiagnosticTest {
                 }
                 val actual = observe {
                     when (origin) {
-                        "ordinary" -> BigDecimal(text).sqrt(null)
-                        "truthful" -> own.sqrt(null)
+                        "ordinary" -> Validation578Boundary.sqrt(BigDecimal(text), null)
+                        "truthful" -> Validation578Boundary.sqrt(own, null)
                         else -> own.inheritedRoot(null)
                     }
                 }
@@ -87,7 +78,7 @@ class ZeroSqrtNull568DiagnosticTest {
         for ((scale, preferred) in listOf(Int.MIN_VALUE to -1073741824, -3 to -1, 0 to 0, 2 to 1,
             Int.MAX_VALUE to 1073741823)) {
             val jdk = TruthfulJdk(JI.ZERO, scale)
-            val own = Truthful(BigInteger.ZERO, scale)
+            val own = Validation578Boundary.TruthfulRoot(BigInteger.ZERO, scale)
             for (precision in listOf(0, 7)) for (mode in RoundingMode.entries) {
                 val jc = JC(precision, JR.valueOf(mode.name))
                 val mc = MathContext(precision, mode)

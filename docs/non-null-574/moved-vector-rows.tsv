@@ -1,0 +1,187 @@
+fixture_source_line	global_ordinal_zero_based	category	operation	input0	input1	precision	mode	frozen_observation	partition	counterpart
+76611	70841	MM	min:return	0.00	~	-2	HALF_EVEN	0.00|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76612	70842	MM	max:return	0.00	~	-2	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76615	70845	MM	min:throw	0.00	~	-2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76616	70846	MM	max:throw	0.00	~	-2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76619	70849	MM	min:return	0.00	~	-1	HALF_EVEN	0.00|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76623	70850	MM	max:return	0.00	~	-1	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76626	70853	MM	min:throw	0.00	~	-1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76627	70854	MM	max:throw	0.00	~	-1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76630	70857	MM	min:return	0.00	~	0	HALF_EVEN	0.00|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76631	70858	MM	max:return	0.00	~	0	HALF_EVEN	0.00|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76634	70861	MM	min:throw	0.00	~	0	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76635	70862	MM	max:throw	0.00	~	0	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76638	70865	MM	min:return	0.00	~	1	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76639	70866	MM	max:return	0.00	~	1	HALF_EVEN	0.00|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76642	70869	MM	min:throw	0.00	~	1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76643	70870	MM	max:throw	0.00	~	1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76646	70873	MM	min:return	0.00	~	2	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76647	70874	MM	max:return	0.00	~	2	HALF_EVEN	0.00|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76650	70877	MM	min:throw	0.00	~	2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76651	70878	MM	max:throw	0.00	~	2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76654	70881	MM	min:return	1	~	-2	HALF_EVEN	1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76655	70882	MM	max:return	1	~	-2	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76658	70885	MM	min:throw	1	~	-2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76659	70886	MM	max:throw	1	~	-2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76662	70889	MM	min:return	1	~	-1	HALF_EVEN	1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76663	70890	MM	max:return	1	~	-1	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76666	70893	MM	min:throw	1	~	-1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76667	70894	MM	max:throw	1	~	-1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76670	70897	MM	min:return	1	~	0	HALF_EVEN	1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76671	70898	MM	max:return	1	~	0	HALF_EVEN	1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76677	70901	MM	min:throw	1	~	0	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76678	70902	MM	max:throw	1	~	0	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76681	70905	MM	min:return	1	~	1	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76682	70906	MM	max:return	1	~	1	HALF_EVEN	1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76685	70909	MM	min:throw	1	~	1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76686	70910	MM	max:throw	1	~	1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76689	70913	MM	min:return	1	~	2	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76690	70914	MM	max:return	1	~	2	HALF_EVEN	1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76693	70917	MM	min:throw	1	~	2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76694	70918	MM	max:throw	1	~	2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76697	70921	MM	min:return	-1	~	-2	HALF_EVEN	-1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76698	70922	MM	max:return	-1	~	-2	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76701	70925	MM	min:throw	-1	~	-2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76702	70926	MM	max:throw	-1	~	-2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76705	70929	MM	min:return	-1	~	-1	HALF_EVEN	-1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76706	70930	MM	max:return	-1	~	-1	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76709	70933	MM	min:throw	-1	~	-1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76710	70934	MM	max:throw	-1	~	-1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76713	70937	MM	min:return	-1	~	0	HALF_EVEN	-1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76714	70938	MM	max:return	-1	~	0	HALF_EVEN	-1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76717	70941	MM	min:throw	-1	~	0	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76718	70942	MM	max:throw	-1	~	0	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76721	70945	MM	min:return	-1	~	1	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76722	70946	MM	max:return	-1	~	1	HALF_EVEN	-1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76725	70949	MM	min:throw	-1	~	1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76729	70950	MM	max:throw	-1	~	1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76732	70953	MM	min:return	-1	~	2	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76733	70954	MM	max:return	-1	~	2	HALF_EVEN	-1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76736	70957	MM	min:throw	-1	~	2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76737	70958	MM	max:throw	-1	~	2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76740	70961	IM	min:return	0	~	-2147483648	HALF_EVEN	0|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76741	70962	IM	max:return	0	~	-2147483648	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76744	70965	IM	min:throw	0	~	-2147483648	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76745	70966	IM	max:throw	0	~	-2147483648	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76748	70969	IM	min:return	0	~	-2	HALF_EVEN	0|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76749	70970	IM	max:return	0	~	-2	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76752	70973	IM	min:throw	0	~	-2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76753	70974	IM	max:throw	0	~	-2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76756	70977	IM	min:return	0	~	-1	HALF_EVEN	0|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76757	70978	IM	max:return	0	~	-1	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76760	70981	IM	min:throw	0	~	-1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76761	70982	IM	max:throw	0	~	-1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76764	70985	IM	min:return	0	~	0	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76765	70986	IM	max:return	0	~	0	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76768	70989	IM	min:throw	0	~	0	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76769	70990	IM	max:throw	0	~	0	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76772	70993	IM	min:return	0	~	1	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76773	70994	IM	max:return	0	~	1	HALF_EVEN	0|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76776	70997	IM	min:throw	0	~	1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76777	70998	IM	max:throw	0	~	1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76783	71001	IM	min:return	0	~	2	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76784	71002	IM	max:return	0	~	2	HALF_EVEN	0|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76787	71005	IM	min:throw	0	~	2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76788	71006	IM	max:throw	0	~	2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76791	71009	IM	min:return	0	~	2147483647	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76792	71010	IM	max:return	0	~	2147483647	HALF_EVEN	0|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76795	71013	IM	min:throw	0	~	2147483647	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76796	71014	IM	max:throw	0	~	2147483647	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76799	71017	IM	min:return	1	~	-2147483648	HALF_EVEN	1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76800	71018	IM	max:return	1	~	-2147483648	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76803	71021	IM	min:throw	1	~	-2147483648	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76804	71022	IM	max:throw	1	~	-2147483648	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76807	71025	IM	min:return	1	~	-2	HALF_EVEN	1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76808	71026	IM	max:return	1	~	-2	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76811	71029	IM	min:throw	1	~	-2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76812	71030	IM	max:throw	1	~	-2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76815	71033	IM	min:return	1	~	-1	HALF_EVEN	1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76816	71034	IM	max:return	1	~	-1	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76819	71037	IM	min:throw	1	~	-1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76820	71038	IM	max:throw	1	~	-1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76823	71041	IM	min:return	1	~	0	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76824	71042	IM	max:return	1	~	0	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76827	71045	IM	min:throw	1	~	0	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76828	71046	IM	max:throw	1	~	0	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76831	71049	IM	min:return	1	~	1	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76835	71050	IM	max:return	1	~	1	HALF_EVEN	1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76838	71053	IM	min:throw	1	~	1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76839	71054	IM	max:throw	1	~	1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76842	71057	IM	min:return	1	~	2	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76843	71058	IM	max:return	1	~	2	HALF_EVEN	1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76846	71061	IM	min:throw	1	~	2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76847	71062	IM	max:throw	1	~	2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76850	71065	IM	min:return	1	~	2147483647	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76851	71066	IM	max:return	1	~	2147483647	HALF_EVEN	1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76854	71069	IM	min:throw	1	~	2147483647	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76855	71070	IM	max:throw	1	~	2147483647	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76858	71073	IM	min:return	-1	~	-2147483648	HALF_EVEN	-1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76859	71074	IM	max:return	-1	~	-2147483648	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76862	71077	IM	min:throw	-1	~	-2147483648	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76863	71078	IM	max:throw	-1	~	-2147483648	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76866	71081	IM	min:return	-1	~	-2	HALF_EVEN	-1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76867	71082	IM	max:return	-1	~	-2	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76870	71085	IM	min:throw	-1	~	-2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76871	71086	IM	max:throw	-1	~	-2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76874	71089	IM	min:return	-1	~	-1	HALF_EVEN	-1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76875	71090	IM	max:return	-1	~	-1	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76878	71093	IM	min:throw	-1	~	-1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76879	71094	IM	max:throw	-1	~	-1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76882	71097	IM	min:return	-1	~	0	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76883	71098	IM	max:return	-1	~	0	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76889	71101	IM	min:throw	-1	~	0	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76890	71102	IM	max:throw	-1	~	0	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76893	71105	IM	min:return	-1	~	1	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76894	71106	IM	max:return	-1	~	1	HALF_EVEN	-1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76897	71109	IM	min:throw	-1	~	1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76898	71110	IM	max:throw	-1	~	1	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76901	71113	IM	min:return	-1	~	2	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76902	71114	IM	max:return	-1	~	2	HALF_EVEN	-1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76905	71117	IM	min:throw	-1	~	2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76906	71118	IM	max:throw	-1	~	2	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76909	71121	IM	min:return	-1	~	2147483647	HALF_EVEN	null|false|true|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76910	71122	IM	max:return	-1	~	2147483647	HALF_EVEN	-1|true|false|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76913	71125	IM	min:throw	-1	~	2147483647	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76914	71126	IM	max:throw	-1	~	2147483647	HALF_EVEN	!IllegalStateException:comparison callback|compare:true;	INHERITED_NULL_REJECTION_CALLBACK_TRACE_DIAGNOSTIC	ComparisonNull574JvmTest/ComparisonNull574.vector
+76948	71157	IM	baseMin	-9223372036854775809	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+76949	71158	IM	baseMax	-9223372036854775809	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+76950	71159	IM	baseCompare	-9223372036854775809	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+76981	71190	IM	baseMin	-9223372036854775808	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+76982	71191	IM	baseMax	-9223372036854775808	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+76983	71192	IM	baseCompare	-9223372036854775808	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77017	71223	IM	baseMin	-1073741824	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77018	71224	IM	baseMax	-1073741824	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77019	71225	IM	baseCompare	-1073741824	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77053	71256	IM	baseMin	-1	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77054	71257	IM	baseMax	-1	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77055	71258	IM	baseCompare	-1	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77086	71289	IM	baseMin	0	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77087	71290	IM	baseMax	0	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77088	71291	IM	baseCompare	0	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77122	71322	IM	baseMin	1	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77123	71323	IM	baseMax	1	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77124	71324	IM	baseCompare	1	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77158	71355	IM	baseMin	1073741824	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77159	71356	IM	baseMax	1073741824	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77160	71357	IM	baseCompare	1073741824	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77191	71388	IM	baseMin	9223372036854775807	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77192	71389	IM	baseMax	9223372036854775807	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77193	71390	IM	baseCompare	9223372036854775807	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77227	71421	IM	baseMin	9223372036854775808	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77228	71422	IM	baseMax	9223372036854775808	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77229	71423	IM	baseCompare	9223372036854775808	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77263	71454	IM	baseMin	18446744073709551616	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77264	71455	IM	baseMax	18446744073709551616	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77265	71456	IM	baseCompare	18446744073709551616	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77614	71787	MM	baseMin	0	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77615	71788	MM	baseMax	0	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77631	71801	MM	baseMin	0.00	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77632	71802	MM	baseMax	0.00	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77645	71815	MM	baseMin	1	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77646	71816	MM	baseMax	1	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77659	71829	MM	baseMin	1.00	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77660	71830	MM	baseMax	1.00	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77673	71843	MM	baseMin	-1	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77674	71844	MM	baseMax	-1	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77690	71857	MM	baseMin	2	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector
+77691	71858	MM	baseMax	2	~	0	HALF_EVEN	!NullPointerException|	BASE_NULL_REJECTION	ComparisonNull574JvmTest/ComparisonNull574.vector

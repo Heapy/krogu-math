@@ -3,6 +3,9 @@ package io.heapy.krogu.math;
 import java.util.concurrent.Callable;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class DecimalNullRoundSubclassTest {
     private static String outcome(Callable<?> action) {
@@ -13,7 +16,11 @@ public class DecimalNullRoundSubclassTest {
         }
     }
 
-    @Test public void nullContextReachesOverriddenPlusBeforeValidation() {
+    @Test public void directJavaPlusAndInheritedRoundHaveDistinctNullContracts() {
+        Set<String> expectedKeys = new LinkedHashSet<>(), observed = new LinkedHashSet<>();
+        for (String text : new String[] {"0.00", "-123.45"})
+            for (String behavior : new String[] {"return", "self", "null", "throw", "super"})
+                for (boolean round : new boolean[] {false, true}) expectedKeys.add(text + "/" + behavior + "/" + round);
         for (String text : new String[] {"0.00", "-123.45"}) {
             for (String behavior : new String[] {"return", "self", "null", "throw", "super"}) for (boolean round : new boolean[] {false, true}) {
                 StringBuilder expectedTrace = new StringBuilder();
@@ -40,8 +47,14 @@ public class DecimalNullRoundSubclassTest {
                 };
                 String a = outcome(() -> round ? expected.round(null) : expected.plus(null));
                 String b = outcome(() -> round ? actual.round(null) : actual.plus(null));
-                assertEquals(text + "/" + behavior + "/" + round, a + "|" + expectedTrace, b + "|" + actualTrace);
+                String key = text + "/" + behavior + "/" + round;
+                assertTrue(observed.add(key));
+                System.out.println("576_NULL_ROUND\t" + key + "\thost=" + a + "|" + expectedTrace + "\tactual=" + b + "|" + actualTrace);
+                if (round) assertEquals(key, "!NullPointerException", b);
+                else assertEquals(key, a + "|" + expectedTrace, b + "|" + actualTrace);
             }
         }
+        assertEquals(20, observed.size());
+        assertEquals(expectedKeys, observed);
     }
 }

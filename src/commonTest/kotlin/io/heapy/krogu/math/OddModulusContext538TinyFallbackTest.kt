@@ -32,19 +32,19 @@ class OddModulusContext538TinyFallbackTest {
 
         // Suppress only public reduction: private reduction must still run before the guard.
         val multiple = object : BigInteger("17") {
-            override fun compareTo(other: BigInteger?): Int = -1
+            override fun compareTo(other: BigInteger): Int = -1
         }
         val computedZero = multiple.modPow(two, m)
         assertEquals(zero, computedZero)
         assertNotSame(zero, computedZero)
         val next = object : BigInteger("18") {
-            override fun compareTo(other: BigInteger?): Int = -1
+            override fun compareTo(other: BigInteger): Int = -1
         }
         val computedOne = next.modPow(two, m)
         assertEquals(one, computedOne)
         assertNotSame(one, computedOne)
         val unitModulusSource = object : BigInteger("2") {
-            override fun compareTo(other: BigInteger?): Int = -1
+            override fun compareTo(other: BigInteger): Int = -1
         }
         val unitZero = unitModulusSource.modPow(two, one)
         assertEquals(zero, unitZero)
@@ -62,7 +62,7 @@ class OddModulusContext538TinyFallbackTest {
         val trace = mutableListOf<String>()
         val source = object : BigInteger("2") {
             override fun equals(other: Any?): Boolean { trace += "equals"; return super.equals(other) }
-            override fun compareTo(other: BigInteger?): Int { trace += "compare"; return super.compareTo(other) }
+            override fun compareTo(other: BigInteger): Int { trace += "compare"; return super.compareTo(other) }
             override fun multiply(value: BigInteger): BigInteger = error("source multiply")
             override fun bitLength(): Int = error("source length")
         }

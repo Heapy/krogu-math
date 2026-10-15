@@ -7,6 +7,7 @@ import kotlin.test.assertTrue
 class DecimalUnarySubclassTest {
     @Test fun negateContextUsesReturnedPlusCallback() {
         val mismatches = mutableListOf<String>()
+        val nullKeys = mutableSetOf<String>()
         for (behavior in listOf("super", "replace", "throw")) for (precision in listOf(-1, 0, 1, 7)) for (mode in RoundingMode.entries) {
             val expectedTrace = StringBuilder()
             val actualTrace = StringBuilder()
@@ -20,11 +21,11 @@ class DecimalUnarySubclassTest {
                 override fun round(mc: java.math.MathContext?): java.math.BigDecimal { expectedTrace.append("round;"); return java.math.BigDecimal("99") }
             }
             val actualResult = object : BigDecimal("12.34") {
-                override fun plus(mc: MathContext?): BigDecimal {
+                override fun plus(mc: MathContext): BigDecimal {
                     actualTrace.append("plus;")
                     return when (behavior) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
                 }
-                override fun round(mc: MathContext?): BigDecimal { actualTrace.append("round;"); return BigDecimal("99") }
+                override fun round(mc: MathContext): BigDecimal { actualTrace.append("round;"); return BigDecimal("99") }
             }
             val expected = object : java.math.BigDecimal("1") {
                 override fun toByte(): Byte = super.toInt().toByte()
@@ -32,13 +33,25 @@ class DecimalUnarySubclassTest {
                 override fun negate(): java.math.BigDecimal = expectedResult
             }
             val actual = object : BigDecimal("1") { override fun negate(): BigDecimal = actualResult }
-            fun outcome(block: () -> Any): String = try { block().toString() }
+            fun outcome(block: () -> Any?): String = try { block().toString() }
                 catch (e: Exception) { "!${e::class.simpleName}" + if (e is NullPointerException) "" else ":${e.message}" }
             val a = outcome { expected.negate(if (precision < 0) null else java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))) }
-            val b = outcome { actual.negate(if (precision < 0) null else MathContext(precision, mode)) }
-            if (a != b || expectedTrace.toString() != actualTrace.toString())
+            val b = outcome {
+                if (precision < 0) UnaryNull576Boundary.call(actual, "negate", null)
+                else actual.negate(MathContext(precision, mode))
+            }
+            if (precision < 0) {
+                val key = "$behavior/$precision/$mode"
+                assertTrue(nullKeys.add(key), key)
+                println("576_RETURNED_NEGATE\t$key\thost=$a|$expectedTrace\tactual=$b|$actualTrace")
+                assertEquals("!NullPointerException", b, key)
+            } else if (a != b || expectedTrace.toString() != actualTrace.toString())
                 mismatches.add("$behavior/$precision/$mode: $a|$expectedTrace <> $b|$actualTrace")
         }
+        assertEquals(buildSet {
+            for (behavior in listOf("super", "replace", "throw")) for (mode in RoundingMode.entries)
+                add("$behavior/-1/$mode")
+        }, nullKeys)
         assertTrue(mismatches.isEmpty(), "${mismatches.size} mismatches\n${mismatches.take(16).joinToString("\n")}")
     }
     @Test fun unaryDispatchMatchesJdk() {
@@ -65,10 +78,10 @@ class DecimalUnarySubclassTest {
                         override fun signum(): Int { actualTrace.append("sign;"); return sign }
                         override fun abs(): BigDecimal { actualTrace.append("abs;"); return super.abs() }
                         override fun negate(): BigDecimal { actualTrace.append("negate;"); return super.negate() }
-                        override fun negate(mc: MathContext?): BigDecimal { actualTrace.append("negateContext;"); return super.negate(mc) }
+                        override fun negate(mc: MathContext): BigDecimal { actualTrace.append("negateContext;"); return super.negate(mc) }
                         override fun plus(): BigDecimal { actualTrace.append("plus;"); return super.plus() }
-                        override fun plus(mc: MathContext?): BigDecimal { actualTrace.append("plusContext;"); return super.plus(mc) }
-                        override fun round(mc: MathContext?): BigDecimal { actualTrace.append("round;"); return super.round(mc) }
+                        override fun plus(mc: MathContext): BigDecimal { actualTrace.append("plusContext;"); return super.plus(mc) }
+                        override fun round(mc: MathContext): BigDecimal { actualTrace.append("round;"); return super.round(mc) }
                     }
                     val a = try {
                         val mc = java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))

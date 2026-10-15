@@ -1,0 +1,12 @@
+package io.heapy.krogu.math
+
+// Compiler input for the parent. SOURCE ONLY: not compiled in task576.
+fun acceptedUnaryInputs(value: BigDecimal, mc: MathContext): List<BigDecimal> =
+    listOf(value.abs(mc), value.negate(mc), value.plus(mc), value.round(mc))
+
+class AcceptedUnaryOverride : BigDecimal("0.00") {
+    override fun abs(mc: MathContext): BigDecimal = super.abs(mc)
+    override fun negate(mc: MathContext): BigDecimal = super.negate(mc)
+    override fun plus(mc: MathContext): BigDecimal = super.plus(mc)
+    override fun round(mc: MathContext): BigDecimal = super.round(mc)
+}

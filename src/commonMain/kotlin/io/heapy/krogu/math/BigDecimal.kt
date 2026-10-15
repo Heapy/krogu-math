@@ -8,7 +8,7 @@ import kotlin.math.pow
 // Preserve virtual java.lang.Number methods instead of Kotlin's default final bridges.
 @Suppress("INAPPLICABLE_JVM_NAME", "DEPRECATION")
 open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
-    Number(), Comparable<BigDecimal?>, MathSerializable {
+    Number(), Comparable<BigDecimal>, MathSerializable {
 
     // A public-JDK constructor probe shows that subclass coefficients are
     // normalized through their virtual byte encoding before being retained.
@@ -30,13 +30,13 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     constructor(value: Int, mc: MathContext) : this(value.toLong(), mc)
     constructor(value: Long, mc: MathContext) : this(BigDecimal(value).roundValue(mc))
     constructor(value: String) : this(parse(value))
-    constructor(value: String, mc: MathContext?) : this(parse(value).roundValue(mc ?: throw NullPointerException()))
+    constructor(value: String, mc: MathContext) : this(parse(value).roundValue(mc))
     constructor(value: CharArray) : this(value, 0, value.size)
     constructor(value: CharArray, offset: Int, len: Int) : this(characters(value, offset, len))
-    constructor(value: CharArray, mc: MathContext?) : this(value, 0, value.size, mc)
-    constructor(value: CharArray, offset: Int, len: Int, mc: MathContext?) : this(characters(value, offset, len), mc)
+    constructor(value: CharArray, mc: MathContext) : this(value, 0, value.size, mc)
+    constructor(value: CharArray, offset: Int, len: Int, mc: MathContext) : this(characters(value, offset, len), mc)
     constructor(value: Double) : this(fromDouble(value))
-    constructor(value: Double, mc: MathContext?) : this(roundedDouble(value, mc))
+    constructor(value: Double, mc: MathContext) : this(roundedDouble(value, mc))
 
     open fun unscaledValue(): BigInteger = coefficient
     open fun scale(): Int = decimalScale
@@ -44,30 +44,30 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     private fun storedPrecision(): Int = coefficient.decimalMagnitudeDigits()
     open fun signum(): Int = coefficient.signum()
     open fun abs(): BigDecimal = if (signum() < 0) negate() else this
-    open fun abs(mc: MathContext?): BigDecimal = if (signum() < 0) negate(mc) else contextualUnaryRound(mc)
+    open fun abs(mc: MathContext): BigDecimal = if (signum() < 0) negate(mc) else contextualUnaryRound(mc)
     open fun negate(): BigDecimal = BigDecimal(coefficient.negate(), decimalScale)
-    open fun negate(mc: MathContext?): BigDecimal = negate().contextualUnaryRound(mc)
-    private fun contextualUnaryRound(mc: MathContext?): BigDecimal =
+    open fun negate(mc: MathContext): BigDecimal = negate().contextualUnaryRound(mc)
+    private fun contextualUnaryRound(mc: MathContext): BigDecimal =
         // Unary cohort compatibility is separate from the direct plus/round rule.
-        // Keep virtual plus on nonzero replacements, including their null handling.
-        if (coefficient.signum() == 0) roundValue(mc ?: throw NullPointerException()) else plus(mc)
+        // Keep virtual plus on nonzero replacements with a valid context.
+        if (coefficient.signum() == 0) roundValue(mc) else plus(mc)
     open fun plus(): BigDecimal = this
-    open fun plus(mc: MathContext?): BigDecimal {
-        val result = roundValue(mc ?: throw NullPointerException())
+    open fun plus(mc: MathContext): BigDecimal {
+        val result = roundValue(mc)
         // Direct plus/round specifies scale zero even for unlimited precision.
         // Constructors and arithmetic retain their own preferred scales.
         return if (result.coefficient.signum() == 0) ZERO else result
     }
 
-    open fun add(augend: BigDecimal?): BigDecimal = addValue(augend ?: throw NullPointerException())
+    open fun add(augend: BigDecimal): BigDecimal = addValue(augend)
     private fun addValue(augend: BigDecimal): BigDecimal {
         val scale = maxOf(decimalScale, augend.decimalScale)
         return BigDecimal(scaledCoefficient(scale).add(augend.scaledCoefficient(scale)), scale)
     }
-    open fun add(augend: BigDecimal?, mc: MathContext?): BigDecimal {
-        val context = mc ?: throw NullPointerException()
+    open fun add(augend: BigDecimal, mc: MathContext): BigDecimal {
+        val context = mc
         if (context.precision == 0) return add(augend)
-        return addContextValue(augend ?: throw NullPointerException(), context)
+        return addContextValue(augend, context)
     }
     private fun addContextValue(augend: BigDecimal, mc: MathContext): BigDecimal {
         val preferredScale = maxOf(decimalScale, augend.decimalScale)
@@ -115,25 +115,25 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         // a whole unit can carry through 999... or cancel a retained +1 digit.
         return BigDecimal(BigInteger.valueOf(signum().toLong()), checkedScale(scale + 1))
     }
-    open fun subtract(subtrahend: BigDecimal?): BigDecimal {
-        val operand = subtrahend ?: throw NullPointerException()
+    open fun subtract(subtrahend: BigDecimal): BigDecimal {
+        val operand = subtrahend
         val scale = maxOf(decimalScale, operand.decimalScale)
         return BigDecimal(scaledCoefficient(scale).subtract(operand.scaledCoefficient(scale)), scale)
     }
-    open fun subtract(subtrahend: BigDecimal?, mc: MathContext?): BigDecimal {
-        val context = mc ?: throw NullPointerException()
+    open fun subtract(subtrahend: BigDecimal, mc: MathContext): BigDecimal {
+        val context = mc
         return if (context.precision == 0) subtract(subtrahend)
-            else add((subtrahend ?: throw NullPointerException()).negate(), context)
+            else add(subtrahend.negate(), context)
     }
-    open fun multiply(multiplicand: BigDecimal?): BigDecimal = multiplyValue(multiplicand ?: throw NullPointerException())
+    open fun multiply(multiplicand: BigDecimal): BigDecimal = multiplyValue(multiplicand)
     private fun multiplyValue(multiplicand: BigDecimal): BigDecimal {
         val scale = scaleForValue(decimalScale.toLong() + multiplicand.decimalScale, coefficient.signum() == 0)
         return BigDecimal(coefficient.multiply(multiplicand.coefficient), scale)
     }
-    open fun multiply(multiplicand: BigDecimal?, mc: MathContext?): BigDecimal {
-        val context = mc ?: throw NullPointerException()
+    open fun multiply(multiplicand: BigDecimal, mc: MathContext): BigDecimal {
+        val context = mc
         if (context.precision == 0) return multiply(multiplicand)
-        val operand = multiplicand ?: throw NullPointerException()
+        val operand = multiplicand
         val logicalScale = decimalScale.toLong() + operand.decimalScale
         // Preserve exact, low-scale and zero/source behavior. Only mandatory
         // precision reduction of a supported nonzero product rescues HIGH scale.
@@ -147,8 +147,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         return BigDecimal(rounded.coefficient, checkedScale(logicalScale + rounded.decimalScale))
     }
 
-    open fun divide(divisor: BigDecimal?): BigDecimal {
-        val operand = divisor ?: throw NullPointerException()
+    open fun divide(divisor: BigDecimal): BigDecimal {
+        val operand = divisor
         checkDivisionByZero(operand)
         return try { divideExactly(operand) }
         catch (_: ArithmeticException) {
@@ -203,14 +203,14 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     }
     open fun divide(divisor: BigDecimal, roundingMode: RoundingMode): BigDecimal = divide(divisor, decimalScale, roundingMode)
     @Deprecated("Use RoundingMode")
-    open fun divide(divisor: BigDecimal?, roundingMode: Int): BigDecimal {
+    open fun divide(divisor: BigDecimal, roundingMode: Int): BigDecimal {
         val mode = RoundingMode.valueOf(roundingMode)
-        return divide(divisor ?: throw NullPointerException(), mode)
+        return divide(divisor, mode)
     }
     @Deprecated("Use RoundingMode")
-    open fun divide(divisor: BigDecimal?, scale: Int, roundingMode: Int): BigDecimal {
+    open fun divide(divisor: BigDecimal, scale: Int, roundingMode: Int): BigDecimal {
         val mode = RoundingMode.valueOf(roundingMode)
-        return divide(divisor ?: throw NullPointerException(), scale, mode)
+        return divide(divisor, scale, mode)
     }
     open fun divide(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode): BigDecimal {
         if (divisor.signum() == 0) failScaledZeroDivision(divisor.decimalScale, scale)
@@ -260,10 +260,10 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         }
         throw ArithmeticException("/ by zero")
     }
-    open fun divide(divisor: BigDecimal?, mc: MathContext?): BigDecimal {
-        val context = mc ?: throw NullPointerException()
+    open fun divide(divisor: BigDecimal, mc: MathContext): BigDecimal {
+        val context = mc
         if (context.precision == 0) return divide(divisor)
-        val operand = divisor ?: throw NullPointerException()
+        val operand = divisor
         checkDivisionByZero(operand)
         val preferredScale = decimalScale.toLong() - operand.decimalScale
         if (signum() == 0) return BigDecimal(BigInteger.ZERO, saturatedScale(preferredScale))
@@ -386,8 +386,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val length = maxOf(a.length, b.length)
         return a.padEnd(length, '0').compareTo(b.padEnd(length, '0'))
     }
-    open fun divideToIntegralValue(divisor: BigDecimal?): BigDecimal {
-        val operand = divisor ?: throw NullPointerException()
+    open fun divideToIntegralValue(divisor: BigDecimal): BigDecimal {
+        val operand = divisor
         val preferred = saturatedScale(decimalScale.toLong() - operand.decimalScale)
         if (compareMagnitude(operand) < 0 || (signum() == 0 && operand.signum() != 0))
             return BigDecimal(BigInteger.ZERO, preferred)
@@ -404,10 +404,10 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         }
         return if (preferred > result.decimalScale) result.setScale(preferred, ROUND_UNNECESSARY) else result
     }
-    open fun divideToIntegralValue(divisor: BigDecimal?, mc: MathContext?): BigDecimal {
-        val context = mc ?: throw NullPointerException()
+    open fun divideToIntegralValue(divisor: BigDecimal, mc: MathContext): BigDecimal {
+        val context = mc
         if (context.precision == 0) return divideToIntegralValue(divisor)
-        val operand = divisor ?: throw NullPointerException()
+        val operand = divisor
         if (compareMagnitude(operand) < 0) return divideToIntegralValue(operand)
         val preferred = saturatedScale(decimalScale.toLong() - operand.decimalScale)
         var result = divide(operand, MathContext(context.precision, RoundingMode.DOWN))
@@ -435,24 +435,24 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val stripped = stripTo(preferred)
         return if (preserveIdentity) stripped else BigDecimal(stripped.coefficient, stripped.decimalScale)
     }
-    open fun divideAndRemainder(divisor: BigDecimal?): Array<BigDecimal> {
+    open fun divideAndRemainder(divisor: BigDecimal): Array<BigDecimal> {
         val quotient = divideToIntegralValue(divisor)
         return arrayOf(quotient, subtract(quotient.multiply(divisor)))
     }
-    open fun divideAndRemainder(divisor: BigDecimal?, mc: MathContext?): Array<BigDecimal> {
-        val context = mc ?: throw NullPointerException()
+    open fun divideAndRemainder(divisor: BigDecimal, mc: MathContext): Array<BigDecimal> {
+        val context = mc
         if (context.precision == 0) return divideAndRemainder(divisor)
         val quotient = divideToIntegralValue(divisor, context)
         return arrayOf(quotient, subtract(quotient.multiply(divisor)))
     }
-    open fun remainder(divisor: BigDecimal?): BigDecimal = remainderElement(divideAndRemainder(divisor))
-    open fun remainder(divisor: BigDecimal?, mc: MathContext?): BigDecimal = remainderElement(divideAndRemainder(divisor, mc))
+    open fun remainder(divisor: BigDecimal): BigDecimal = remainderElement(divideAndRemainder(divisor))
+    open fun remainder(divisor: BigDecimal, mc: MathContext): BigDecimal = remainderElement(divideAndRemainder(divisor, mc))
     private fun remainderElement(pair: Array<BigDecimal>): BigDecimal {
         if (pair.size < 2) arrayIndexFailure(1, pair.size)
         return pair[1]
     }
 
-    open fun round(mc: MathContext?): BigDecimal = plus(mc)
+    open fun round(mc: MathContext): BigDecimal = plus(mc)
     // Precision reduction only; internal callers retain operation-specific scales.
     private fun roundValue(mc: MathContext): BigDecimal {
         if (mc.precision == 0) return this
@@ -549,10 +549,10 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         return result.roundValue(mc)
     }
 
-    open fun sqrt(mc: MathContext?): BigDecimal {
+    open fun sqrt(mc: MathContext): BigDecimal {
         val sign = signum()
         if (sign < 0) throw ArithmeticException("Attempted square root of negative BigDecimal")
-        val context = mc ?: throw NullPointerException()
+        val context = mc
         val preferred = decimalScale / 2
         if (sign == 0) return BigDecimal(BigInteger.ZERO, preferred)
         // Use scale parity and integer squares before normalization, decimal
@@ -632,8 +632,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             rounded.setScaleValue(target, RoundingMode.UNNECESSARY) else rounded
     }
 
-    override fun compareTo(other: BigDecimal?): Int {
-        val operand = other ?: throw NullPointerException()
+    override fun compareTo(other: BigDecimal): Int {
+        val operand = other
         if (decimalScale == operand.decimalScale) {
             val left = coefficient.decimalCompactValue()
             val right = operand.coefficient.decimalCompactValue()
@@ -658,8 +658,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         // exact stored digit counts; it is independent of those answers.
         return left.compareDecimalSignificand(right)
     }
-    open fun min(value: BigDecimal?): BigDecimal? = if (compareTo(value) <= 0) this else value
-    open fun max(value: BigDecimal?): BigDecimal? = if (compareTo(value) >= 0) this else value
+    open fun min(value: BigDecimal): BigDecimal = if (compareTo(value) <= 0) this else value
+    open fun max(value: BigDecimal): BigDecimal = if (compareTo(value) >= 0) this else value
     override fun equals(other: Any?): Boolean = other is BigDecimal && decimalScale == other.decimalScale && coefficient == other.coefficient
     override fun hashCode(): Int = 31 * coefficient.hashCode() + decimalScale
     private fun adjustedExponent(): Long = precision().toLong() - decimalScale - 1
@@ -927,9 +927,9 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             else { scale = -exponent; coefficient = coefficient.multiply(BigInteger.valueOf(5).pow(scale)) }
             return BigDecimal(if (value < 0) coefficient.negate() else coefficient, scale)
         }
-        private fun roundedDouble(value: Double, mc: MathContext?): BigDecimal {
+        private fun roundedDouble(value: Double, mc: MathContext): BigDecimal {
             val exact = fromDouble(value)
-            val context = mc ?: throw NullPointerException()
+            val context = mc
             return if (exact.signum() == 0) exact else exact.round(context)
         }
         private fun tenPow(exponent: Long): BigInteger {

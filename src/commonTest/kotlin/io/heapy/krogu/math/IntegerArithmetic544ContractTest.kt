@@ -107,7 +107,7 @@ class IntegerArithmetic544ContractTest {
         override fun gcd(value: BigInteger): BigInteger = traced("gcd") { plain(super.gcd(value)).add(ZERO) }
         override fun pow(exponent: Int): BigInteger = traced("pow") { plain(super.pow(exponent)).add(ZERO) }
         override fun sqrt(): BigInteger = traced("sqrt") { plain(super.sqrt()).add(ZERO) }
-        override fun compareTo(other: BigInteger?): Int {
+        override fun compareTo(other: BigInteger): Int {
             events += "compare:enter"
             val result = super.compareTo(other)
             events += "compare:exit"

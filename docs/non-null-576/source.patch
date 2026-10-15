@@ -1,0 +1,1113 @@
+diff --git a/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt b/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
+index 0bdabcc..6ca8591 100644
+--- a/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
++++ b/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
+@@ -44,16 +44,16 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+     private fun storedPrecision(): Int = coefficient.decimalMagnitudeDigits()
+     open fun signum(): Int = coefficient.signum()
+     open fun abs(): BigDecimal = if (signum() < 0) negate() else this
+-    open fun abs(mc: MathContext?): BigDecimal = if (signum() < 0) negate(mc) else contextualUnaryRound(mc)
++    open fun abs(mc: MathContext): BigDecimal = if (signum() < 0) negate(mc) else contextualUnaryRound(mc)
+     open fun negate(): BigDecimal = BigDecimal(coefficient.negate(), decimalScale)
+-    open fun negate(mc: MathContext?): BigDecimal = negate().contextualUnaryRound(mc)
+-    private fun contextualUnaryRound(mc: MathContext?): BigDecimal =
++    open fun negate(mc: MathContext): BigDecimal = negate().contextualUnaryRound(mc)
++    private fun contextualUnaryRound(mc: MathContext): BigDecimal =
+         // Unary cohort compatibility is separate from the direct plus/round rule.
+-        // Keep virtual plus on nonzero replacements, including their null handling.
+-        if (coefficient.signum() == 0) roundValue(mc ?: throw NullPointerException()) else plus(mc)
++        // Keep virtual plus on nonzero replacements with a valid context.
++        if (coefficient.signum() == 0) roundValue(mc) else plus(mc)
+     open fun plus(): BigDecimal = this
+-    open fun plus(mc: MathContext?): BigDecimal {
+-        val result = roundValue(mc ?: throw NullPointerException())
++    open fun plus(mc: MathContext): BigDecimal {
++        val result = roundValue(mc)
+         // Direct plus/round specifies scale zero even for unlimited precision.
+         // Constructors and arithmetic retain their own preferred scales.
+         return if (result.coefficient.signum() == 0) ZERO else result
+@@ -452,7 +452,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         return pair[1]
+     }
+ 
+-    open fun round(mc: MathContext?): BigDecimal = plus(mc)
++    open fun round(mc: MathContext): BigDecimal = plus(mc)
+     // Precision reduction only; internal callers retain operation-specific scales.
+     private fun roundValue(mc: MathContext): BigDecimal {
+         if (mc.precision == 0) return this
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextContractTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextContractTest.kt
+index 7197c7f..765c408 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextContractTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextContractTest.kt
+@@ -16,9 +16,9 @@ private class TruthfulContextDecimal : BigDecimal {
+     override fun scale(): Int = super.scale()
+     override fun unscaledValue(): BigInteger = super.unscaledValue()
+     override fun abs(): BigDecimal = super.abs()
+-    override fun abs(mc: MathContext?): BigDecimal = super.abs(mc)
++    override fun abs(mc: MathContext): BigDecimal = super.abs(mc)
+     override fun negate(): BigDecimal = super.negate()
+-    override fun negate(mc: MathContext?): BigDecimal = super.negate(mc)
++    override fun negate(mc: MathContext): BigDecimal = super.negate(mc)
+     override fun divide(divisor: BigDecimal?): BigDecimal = super.divide(divisor)
+     override fun divide(divisor: BigDecimal?, mc: MathContext?): BigDecimal = super.divide(divisor, mc)
+     fun divideViaSuper(divisor: BigDecimal?, mc: MathContext?): BigDecimal = super.divide(divisor, mc)
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt b/src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt
+index 2dd7229..081d5dc 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt
+@@ -27,9 +27,14 @@ class PortableOracleTest {
+         val observedDirectZeroKeys = mutableSetOf<List<String>>()
+         val directZeroCounts = mutableMapOf<String, Int>()
+         val observedFiniteKeys = mutableSetOf<List<String>>()
++        val unaryNullRows = linkedMapOf<Int, List<String>>()
+         var ordinaryMismatchCount = 0
+         val ordinaryMismatchExamples = mutableListOf<String>()
+         for ((index, v) in oracleVectors().withIndex()) {
++            if (UnaryNull576Rows.selected(v)) {
++                unaryNullRows[index] = v.take(6)
++                continue // Exact counterpart: UnaryNull576VectorsTest, using real Java calls.
++            }
+             val actual = try {
+                 val result = evaluate(v)
+                 if (result is Array<*>) result.joinToString("|") else result.toString()
+@@ -96,7 +101,9 @@ class PortableOracleTest {
+         assertEquals(12, FiniteZeroPolicy567.directUnaryKeys.size)
+         assertEquals(12, FiniteZeroPolicy567.absKeys.size)
+         assertEquals(8, FiniteZeroPolicy567.nullAbsKeys.size)
+-        assertEquals(FiniteZeroPolicy567.keys, observedFiniteKeys, "complete exact finite input set")
++        assertEquals(UnaryNull576Rows.expected, unaryNullRows, "exact JVM unary partition, including original ordinals")
++        assertEquals(FiniteZeroPolicy567.keys - FiniteZeroPolicy567.nullAbsKeys, observedFiniteKeys,
++            "valid finite inputs remain common; all eight nullAbs keys execute in UnaryNull576VectorsTest")
+         assertEquals(0, ordinaryMismatchCount, "ordinary oracle mismatches (first80):\n${ordinaryMismatchExamples.joinToString("\n")}")
+     }
+ 
+@@ -230,32 +237,14 @@ class PortableOracleTest {
+         if (v[0] == "ND") return evaluateNullableBinaryOracle(v)
+         if (v[0] == "O") return evaluateAdditionOracle(v)
+         if (v[0] == "C") return evaluateUnaryOracle(v)
+-        if (v[0] == "K") {
+-            val operation = op.substringBefore(':')
+-            val behavior = op.substringAfter(':')
+-            val trace = StringBuilder()
+-            val value = object : BigDecimal(v[2]) {
+-                override fun plus(mc: MathContext?): BigDecimal {
+-                    trace.append("plus:").append(mc == null).append(';')
+-                    return when (behavior) {
+-                        "return" -> BigDecimal("42.00")
+-                        "self" -> this
+-                        "throw" -> throw IllegalStateException("plus callback")
+-                        else -> super.plus(mc)
+-                    }
+-                }
+-            }
+-            val result = try { (if (operation == "round") value.round(null) else value.plus(null)).toString() }
+-                catch (e: Exception) { "!${e::class.simpleName}" + if (e is IllegalStateException) ":${e.message}" else "" }
+-            return "$result|$trace"
+-        }
++        check(v[0] != "K") { "K rows execute in UnaryNull576VectorsTest" }
+         if (v[0] == "S") {
+             val trace = StringBuilder()
+             val value = object : BigDecimal(v[2]) {
+                 private var calls = 0
+                 override fun precision(): Int { trace.append("precision;"); return if (op == "sequence" && calls++ > 0) 1 else v[3].toInt() }
+                 override fun signum(): Int { trace.append("sign;"); return super.signum() }
+-                override fun plus(mc: MathContext?): BigDecimal {
++                override fun plus(mc: MathContext): BigDecimal {
+                     trace.append("plus;")
+                     return when (op) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
+                 }
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt b/src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt
+index 0853c4c..c996965 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt
+@@ -1,6 +1,7 @@
+ package io.heapy.krogu.math
+ 
+ internal fun evaluateUnaryOracle(v: Array<String>): String {
++    require(!UnaryNull576Rows.selected(v)) { "Null unary rows execute at the JVM Java boundary" }
+     val operation = v[1].substringBefore(':')
+     val argument = v[1].substringAfter(':')
+     val trace = StringBuilder()
+@@ -10,35 +11,14 @@ internal fun evaluateUnaryOracle(v: Array<String>): String {
+         catch (e: Exception) { "!${e::class.simpleName}" + if (e is NullPointerException) "" else ":${e.message}" }
+     if (operation == "returnedNegate") {
+         val returned = object : BigDecimal(v[3]) {
+-            override fun plus(mc: MathContext?): BigDecimal {
++            override fun plus(mc: MathContext): BigDecimal {
+                 trace.append("plus;")
+                 return when (argument) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
+             }
+-            override fun round(mc: MathContext?): BigDecimal { trace.append("round;"); return BigDecimal("99") }
++            override fun round(mc: MathContext): BigDecimal { trace.append("round;"); return BigDecimal("99") }
+         }
+         val value = object : BigDecimal(v[2]) { override fun negate(): BigDecimal = returned }
+-        val result = outcome { value.negate(if (precision < 0) null else MathContext(precision, mode)).toString() }
+-        return "$result|$trace"
+-    }
+-    if (operation == "nullAbs" || operation == "nullNegate") {
+-        val sign = v[3].toInt()
+-        val value = object : BigDecimal(v[2]) {
+-            override fun signum(): Int { trace.append("sign;"); return sign }
+-            override fun negate(): BigDecimal { trace.append("negate;"); return super.negate() }
+-            override fun plus(mc: MathContext?): BigDecimal {
+-                trace.append("plus:").append(mc == null).append(';')
+-                return when (argument) { "return" -> BigDecimal("42.00"); "self" -> this; "throw" -> throw IllegalStateException("context callback"); else -> super.plus(mc) }
+-            }
+-            override fun negate(mc: MathContext?): BigDecimal {
+-                trace.append("negateContext:").append(mc == null).append(';')
+-                return when (argument) { "return" -> BigDecimal("42.00"); "self" -> this; "throw" -> throw IllegalStateException("context callback"); else -> super.negate(mc) }
+-            }
+-        }
+-        val result = outcome { (if (operation == "nullAbs") value.abs(null) else value.negate(null)).toString() }
+-        if (v.take(6) in FiniteZeroPolicy567.nullAbsKeys) {
+-            kotlin.test.assertEquals(BigInteger.ZERO, value.unscaledValue(), "immutable finite null abs coefficient")
+-            kotlin.test.assertEquals(2, value.scale(), "immutable finite null abs scale")
+-        }
++        val result = outcome { value.negate(MathContext(precision, mode)).toString() }
+         return "$result|$trace"
+     }
+     val sign = argument.toInt()
+@@ -46,10 +26,10 @@ internal fun evaluateUnaryOracle(v: Array<String>): String {
+         override fun signum(): Int { trace.append("sign;"); return sign }
+         override fun abs(): BigDecimal { trace.append("abs;"); return super.abs() }
+         override fun negate(): BigDecimal { trace.append("negate;"); return super.negate() }
+-        override fun negate(mc: MathContext?): BigDecimal { trace.append("negateContext;"); return super.negate(mc) }
++        override fun negate(mc: MathContext): BigDecimal { trace.append("negateContext;"); return super.negate(mc) }
+         override fun plus(): BigDecimal { trace.append("plus;"); return super.plus() }
+-        override fun plus(mc: MathContext?): BigDecimal { trace.append("plusContext;"); return super.plus(mc) }
+-        override fun round(mc: MathContext?): BigDecimal { trace.append("round;"); return super.round(mc) }
++        override fun plus(mc: MathContext): BigDecimal { trace.append("plusContext;"); return super.plus(mc) }
++        override fun round(mc: MathContext): BigDecimal { trace.append("round;"); return super.round(mc) }
+     }
+     val result = outcome {
+         val context = MathContext(precision, mode)
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt b/src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt
+index f19b5ff..3da14c1 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt
+@@ -17,10 +17,10 @@ class ZeroContextScale567Test {
+         override fun precision() = super.precision()
+         override fun signum() = super.signum()
+         override fun plus() = super.plus()
+-        override fun plus(mc: MathContext?) = super.plus(mc)
+-        override fun round(mc: MathContext?) = super.round(mc)
+-        fun plusBase(mc: MathContext?) = super.plus(mc)
+-        fun roundBase(mc: MathContext?) = super.round(mc)
++        override fun plus(mc: MathContext) = super.plus(mc)
++        override fun round(mc: MathContext) = super.round(mc)
++        fun plusBase(mc: MathContext) = super.plus(mc)
++        fun roundBase(mc: MathContext) = super.round(mc)
+     }
+ 
+     private fun input(c: Long, s: Int, truthful: Boolean): BigDecimal =
+@@ -54,17 +54,12 @@ class ZeroContextScale567Test {
+             }
+     }
+ 
+-    @Test fun noContextPlusRetainsIdentityAndNullContextStillFails() {
++    @Test fun noContextPlusRetainsIdentity() {
+         for (s in scales) for (c in listOf(0L, -7L, 7L)) for (truthful in listOf(false, true)) {
+             val x = input(c, s, truthful)
+             assertSame(x, x.plus())
+             assertFields(c.toString(), s, x)
+-            assertFailsWith<NullPointerException> { x.plus(null) }
+-            assertFailsWith<NullPointerException> { x.round(null) }
+-            if (x is Truthful) {
+-                assertFailsWith<NullPointerException> { x.plusBase(null) }
+-                assertFailsWith<NullPointerException> { x.roundBase(null) }
+-            }
++            // 126 null calls (including real super calls) moved to UnaryNull576StandaloneTest.
+         }
+     }
+ 
+@@ -123,25 +118,25 @@ class ZeroContextScale567Test {
+         }
+     }
+ 
+-    @Test fun explicitOverridesKeepResultAndExceptionIdentityEvenWithNullContext() {
++    @Test fun explicitOverridesKeepResultAndExceptionIdentity() {
+         val replacement = BigDecimal("0.000")
+         val failure = IllegalStateException("caller sentinel")
+         class PlusCaller(private val fail: Boolean) : BigDecimal("0.00") {
+-            override fun plus(mc: MathContext?): BigDecimal {
++            override fun plus(mc: MathContext): BigDecimal {
+                 if (fail) throw failure
+                 return replacement
+             }
+-            fun plusBase(mc: MathContext?) = super.plus(mc)
+-            fun roundBase(mc: MathContext?) = super.round(mc)
++            fun plusBase(mc: MathContext) = super.plus(mc)
++            fun roundBase(mc: MathContext) = super.round(mc)
+         }
+         class RoundCaller(private val fail: Boolean) : BigDecimal("0.00") {
+-            override fun round(mc: MathContext?): BigDecimal {
++            override fun round(mc: MathContext): BigDecimal {
+                 if (fail) throw failure
+                 return replacement
+             }
+-            fun roundBase(mc: MathContext?) = super.round(mc)
++            fun roundBase(mc: MathContext) = super.round(mc)
+         }
+-        for (mc in listOf(null, MathContext(0), MathContext(1))) for (fail in listOf(false, true)) {
++        for (mc in listOf(MathContext(0), MathContext(1))) for (fail in listOf(false, true)) {
+             val plus = PlusCaller(fail)
+             val round = RoundCaller(fail)
+             // Inherited round and caller-owned super.round still dispatch virtual plus.
+@@ -151,14 +146,9 @@ class ZeroContextScale567Test {
+                 else assertSame(replacement, call())
+             }
+             // Explicit super.plus bypasses the plus override; super.round bypasses round only.
+-            if (mc == null) {
+-                assertFailsWith<NullPointerException> { plus.plusBase(mc) }
+-                assertFailsWith<NullPointerException> { round.roundBase(mc) }
+-            } else {
+-                assertCanonicalZero(plus.plusBase(mc))
+-                assertCanonicalZero(round.roundBase(mc))
+-                assertCanonicalZero(round.plus(mc))
+-            }
++            assertCanonicalZero(plus.plusBase(mc))
++            assertCanonicalZero(round.roundBase(mc))
++            assertCanonicalZero(round.plus(mc))
+         }
+     }
+ 
+@@ -238,14 +228,13 @@ class ZeroContextScale567Test {
+                 assertFields("0", s, zero.abs(mc))
+                 assertFields("0", s, zero.negate(mc))
+             }
+-            assertFailsWith<NullPointerException> { zero.abs(null) }
+-            assertFailsWith<NullPointerException> { zero.negate(null) }
++            // 28 zero null calls retained by UnaryNull576StandaloneTest.zeroUnary.
+         }
+         val replacement = BigDecimal("0.000")
+         val failure = IllegalStateException("unary caller sentinel")
+         for (fail in listOf(false, true)) {
+             val returned = object : BigDecimal("12.34") {
+-                override fun plus(mc: MathContext?): BigDecimal {
++                override fun plus(mc: MathContext): BigDecimal {
+                     if (fail) throw failure
+                     return replacement
+                 }
+@@ -253,7 +242,7 @@ class ZeroContextScale567Test {
+             val source = object : BigDecimal("0.00") {
+                 override fun negate() = returned
+             }
+-            for (mc in listOf(null, MathContext(0), MathContext(1)))
++            for (mc in listOf(MathContext(0), MathContext(1)))
+                 for (call in listOf<() -> BigDecimal>({ returned.abs(mc) }, { source.negate(mc) })) {
+                     if (fail) assertSame(failure, assertFailsWith<IllegalStateException>(block = call))
+                     else assertSame(replacement, call())
+@@ -268,13 +257,13 @@ class ZeroContextScale567Test {
+             val trace = StringBuilder()
+             val returned = object : BigDecimal(BigInteger.ZERO, s) {
+                 override fun signum(): Int { trace.append("sign;"); return 1 }
+-                override fun plus(mc: MathContext?): BigDecimal {
++                override fun plus(mc: MathContext): BigDecimal {
+                     trace.append("plus;")
+                     if (fail) throw failure
+                     return replacement
+                 }
+-                fun plusBase(mc: MathContext?) = super.plus(mc)
+-                fun roundBase(mc: MathContext?) = super.round(mc)
++                fun plusBase(mc: MathContext) = super.plus(mc)
++                fun roundBase(mc: MathContext) = super.round(mc)
+             }
+             val source = object : BigDecimal("-1") {
+                 override fun negate(): BigDecimal { trace.append("negate;"); return returned }
+@@ -287,30 +276,28 @@ class ZeroContextScale567Test {
+                 assertFields("0", s, source.abs(MathContext(p, mode)))
+                 assertEquals("negate;", trace.toString())
+             }
+-            trace.clear()
+-            assertFailsWith<NullPointerException> { source.negate(null) }
+-            assertEquals("negate;", trace.toString())
++            // Null seam and explicit Java overrides retained by UnaryNull576StandaloneTest.zeroSeam.
+             // Explicit language calls still honor the override, even on stored zero.
+-            for (mc in listOf(null, MathContext(0), MathContext(1))) {
++            for (mc in listOf(MathContext(0), MathContext(1))) {
+                 for (call in listOf<() -> BigDecimal>({ returned.plus(mc) },
+                     { returned.round(mc) }, { returned.roundBase(mc) })) {
+                     if (fail) assertSame(failure, assertFailsWith<IllegalStateException>(block = call))
+                     else assertSame(replacement, call())
+                 }
+-                if (mc == null) assertFailsWith<NullPointerException> { returned.plusBase(mc) }
+-                else assertCanonicalZero(returned.plusBase(mc))
++                assertCanonicalZero(returned.plusBase(mc))
+             }
+         }
+     }
+ 
+-    @Test fun unaryOrderingAndExplicitAbsNegateOverridesKeepNullSemantics() {
++    @Test fun unaryOrderingAndExplicitAbsNegateOverridesKeepValidSemantics() {
+         val trace = StringBuilder()
+         val replacement = BigDecimal("0.000")
+         val failure = IllegalStateException("unary dispatch")
++        val context = MathContext(1)
+         for (sign in listOf(-1, 0, 1)) for (fail in listOf(false, true)) {
+             val value = object : BigDecimal("0.00") {
+                 override fun signum(): Int { trace.append("sign;"); return sign }
+-                override fun negate(mc: MathContext?): BigDecimal {
++                override fun negate(mc: MathContext): BigDecimal {
+                     trace.append("negateContext;")
+                     if (fail) throw failure
+                     return replacement
+@@ -318,39 +305,38 @@ class ZeroContextScale567Test {
+             }
+             trace.clear()
+             if (sign < 0) {
+-                if (fail) assertSame(failure, assertFailsWith<IllegalStateException> { value.abs(null) })
+-                else assertSame(replacement, value.abs(null))
++                if (fail) assertSame(failure, assertFailsWith<IllegalStateException> { value.abs(context) })
++                else assertSame(replacement, value.abs(context))
+                 assertEquals("sign;negateContext;", trace.toString())
+             } else {
+-                assertFailsWith<NullPointerException> { value.abs(null) }
++                assertFields("0", 2, value.abs(context))
+                 assertEquals("sign;", trace.toString())
+             }
+             val explicit = object : BigDecimal("0.00") {
+-                override fun abs(mc: MathContext?): BigDecimal {
++                override fun abs(mc: MathContext): BigDecimal {
+                     if (fail) throw failure
+                     return replacement
+                 }
+-                override fun negate(mc: MathContext?): BigDecimal {
++                override fun negate(mc: MathContext): BigDecimal {
+                     if (fail) throw failure
+                     return replacement
+                 }
+-                fun absBase(mc: MathContext?) = super.abs(mc)
+-                fun negateBase(mc: MathContext?) = super.negate(mc)
++                fun absBase(mc: MathContext) = super.abs(mc)
++                fun negateBase(mc: MathContext) = super.negate(mc)
+             }
+-            for (call in listOf<() -> BigDecimal>({ explicit.abs(null) }, { explicit.negate(null) })) {
++            for (call in listOf<() -> BigDecimal>({ explicit.abs(context) }, { explicit.negate(context) })) {
+                 if (fail) assertSame(failure, assertFailsWith<IllegalStateException>(block = call))
+                 else assertSame(replacement, call())
+             }
+-            assertFailsWith<NullPointerException> { explicit.absBase(null) }
+-            assertFailsWith<NullPointerException> { explicit.negateBase(null) }
++            // All seven null routes per sign/fail are retained in the JVM ordering test.
+             assertFields("0", 2, explicit.absBase(MathContext(1)))
+             assertFields("0", 2, explicit.negateBase(MathContext(1)))
+             val throwing = object : BigDecimal("0.00") {
+                 override fun signum(): Int = throw failure
+                 override fun negate(): BigDecimal = throw failure
+             }
+-            assertSame(failure, assertFailsWith<IllegalStateException> { throwing.abs(null) })
+-            assertSame(failure, assertFailsWith<IllegalStateException> { throwing.negate(null) })
++            assertSame(failure, assertFailsWith<IllegalStateException> { throwing.abs(context) })
++            assertSame(failure, assertFailsWith<IllegalStateException> { throwing.negate(context) })
+         }
+     }
+ 
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/ZeroUnaryPrecision567Test.kt b/src/commonTest/kotlin/io/heapy/krogu/math/ZeroUnaryPrecision567Test.kt
+index c66d4cd..4b4511b 100644
+--- a/src/commonTest/kotlin/io/heapy/krogu/math/ZeroUnaryPrecision567Test.kt
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/ZeroUnaryPrecision567Test.kt
+@@ -3,19 +3,19 @@ package io.heapy.krogu.math
+ import kotlin.test.*
+ 
+ class ZeroUnaryPrecision567Test {
+-    @Test fun storedZeroUnaryKeepsPrecisionSentinelAndNullStaging() {
++    @Test fun storedZeroUnaryKeepsPrecisionSentinel() {
+         for (negate in listOf(false, true)) for (precision in listOf(0, 1, 7)) for (mode in RoundingMode.entries) {
+             val sentinel = IllegalStateException("precision sentinel")
+             val trace = StringBuilder()
+             val zero = object : BigDecimal("0.00") {
+                 override fun precision(): Int { trace.append("precision;"); throw sentinel }
+                 override fun signum(): Int { trace.append("sign;"); return 0 }
+-                override fun plus(mc: MathContext?): BigDecimal = error("internal plus must not be called")
++                override fun plus(mc: MathContext): BigDecimal = error("internal plus must not be called")
+             }
+             val receiver = object : BigDecimal("-1.00") {
+                 override fun negate(): BigDecimal { trace.append("negate;"); return zero }
+             }
+-            fun invoke(context: MathContext?): BigDecimal = if (negate) receiver.negate(context) else zero.abs(context)
++            fun invoke(context: MathContext): BigDecimal = if (negate) receiver.negate(context) else zero.abs(context)
+             val prefix = if (negate) "negate;" else "sign;"
+             if (precision == 0) {
+                 assertSame(zero, invoke(MathContext(precision, mode)))
+@@ -24,9 +24,7 @@ class ZeroUnaryPrecision567Test {
+                 assertSame(sentinel, assertFailsWith<IllegalStateException> { invoke(MathContext(precision, mode)) })
+                 assertEquals("${prefix}precision;", trace.toString())
+             }
+-            trace.clear()
+-            assertFailsWith<NullPointerException> { invoke(null) }
+-            assertEquals(prefix, trace.toString())
++            // All 48 null executions are retained by UnaryNull576StandaloneTest.precisionSentinel.
+             assertEquals(BigInteger.ZERO, zero.unscaledValue())
+             assertEquals(2, zero.scale())
+             assertEquals(BigInteger("-100"), receiver.unscaledValue())
+diff --git a/src/jvmTest/java/io/heapy/krogu/math/DecimalNullRoundSubclassTest.java b/src/jvmTest/java/io/heapy/krogu/math/DecimalNullRoundSubclassTest.java
+index 46b25b4..e798532 100644
+--- a/src/jvmTest/java/io/heapy/krogu/math/DecimalNullRoundSubclassTest.java
++++ b/src/jvmTest/java/io/heapy/krogu/math/DecimalNullRoundSubclassTest.java
+@@ -3,6 +3,9 @@ package io.heapy.krogu.math;
+ import java.util.concurrent.Callable;
+ import org.junit.Test;
+ import static org.junit.Assert.assertEquals;
++import static org.junit.Assert.assertTrue;
++import java.util.LinkedHashSet;
++import java.util.Set;
+ 
+ public class DecimalNullRoundSubclassTest {
+     private static String outcome(Callable<?> action) {
+@@ -13,7 +16,11 @@ public class DecimalNullRoundSubclassTest {
+         }
+     }
+ 
+-    @Test public void nullContextReachesOverriddenPlusBeforeValidation() {
++    @Test public void directJavaPlusAndInheritedRoundHaveDistinctNullContracts() {
++        Set<String> expectedKeys = new LinkedHashSet<>(), observed = new LinkedHashSet<>();
++        for (String text : new String[] {"0.00", "-123.45"})
++            for (String behavior : new String[] {"return", "self", "null", "throw", "super"})
++                for (boolean round : new boolean[] {false, true}) expectedKeys.add(text + "/" + behavior + "/" + round);
+         for (String text : new String[] {"0.00", "-123.45"}) {
+             for (String behavior : new String[] {"return", "self", "null", "throw", "super"}) for (boolean round : new boolean[] {false, true}) {
+                 StringBuilder expectedTrace = new StringBuilder();
+@@ -40,8 +47,14 @@ public class DecimalNullRoundSubclassTest {
+                 };
+                 String a = outcome(() -> round ? expected.round(null) : expected.plus(null));
+                 String b = outcome(() -> round ? actual.round(null) : actual.plus(null));
+-                assertEquals(text + "/" + behavior + "/" + round, a + "|" + expectedTrace, b + "|" + actualTrace);
++                String key = text + "/" + behavior + "/" + round;
++                assertTrue(observed.add(key));
++                System.out.println("576_NULL_ROUND\t" + key + "\thost=" + a + "|" + expectedTrace + "\tactual=" + b + "|" + actualTrace);
++                if (round) assertEquals(key, "!NullPointerException", b);
++                else assertEquals(key, a + "|" + expectedTrace, b + "|" + actualTrace);
+             }
+         }
++        assertEquals(20, observed.size());
++        assertEquals(expectedKeys, observed);
+     }
+ }
+diff --git a/src/jvmTest/java/io/heapy/krogu/math/DecimalNullUnarySubclassTest.java b/src/jvmTest/java/io/heapy/krogu/math/DecimalNullUnarySubclassTest.java
+index 188bbb2..463ee1a 100644
+--- a/src/jvmTest/java/io/heapy/krogu/math/DecimalNullUnarySubclassTest.java
++++ b/src/jvmTest/java/io/heapy/krogu/math/DecimalNullUnarySubclassTest.java
+@@ -12,7 +12,11 @@ public class DecimalNullUnarySubclassTest {
+         try { return String.valueOf(action.call()); }
+         catch (Exception e) { return "!" + e.getClass().getSimpleName() + (e instanceof IllegalStateException ? ":" + e.getMessage() : ""); }
+     }
+-    @Test public void nullUnaryContextsReachSubclassCallbacks() {
++    @Test public void inheritedAbsRejectsNullAndDirectJavaNegateStillDispatches() {
++        Set<String> expectedKeys = new HashSet<>(), allObserved = new HashSet<>();
++        for (String text : new String[] {"0.00", "1", "-1"}) for (int sign : new int[] {-1, 0, 1})
++            for (String behavior : new String[] {"return", "self", "null", "throw", "super"})
++                for (boolean abs : new boolean[] {false, true}) expectedKeys.add(text + "/" + sign + "/" + behavior + "/" + abs);
+         // Ten source-selected inputs; the preserved V2 run observed only the first failure.
+         Set<String> selected = new HashSet<>(), observed = new HashSet<>();
+         for (int sign : new int[] {0, 1}) for (String behavior : new String[] {"return", "self", "null", "throw", "super"})
+@@ -63,16 +67,25 @@ public class DecimalNullUnarySubclassTest {
+                 String a = outcome(() -> abs ? expected.abs(null) : expected.negate(null));
+                 String b = outcome(() -> abs ? actual.abs(null) : actual.negate(null));
+                 String key = text + "/" + sign + "/" + behavior + "/" + abs;
++                assertTrue(allObserved.add(key));
++                System.out.println("576_NULL_UNARY\t" + key + "\thost=" + a + "|" + et + "\tactual=" + b + "|" + at);
++                if (abs) assertEquals(key, "!NullPointerException", b);
++                else {
++                    assertEquals(key, a, b);
++                    assertTrue(key, at.toString().startsWith("negateContext:true;"));
++                }
+                 if (selected.contains(key)) {
+                     assertTrue("duplicate finite null-unary key " + key, observed.add(key));
+                     System.out.println("567_FINITE_OBSERVATION\t" + key + "\thost=" + a + "|" + et + "\tactual=" + b + "|" + at);
+-                    assertEquals(key, "!NullPointerException|sign;", b + "|" + at);
++                    assertEquals(key, "!NullPointerException", b);
+                     assertEquals(key, BigInteger.ZERO, actual.unscaledValue());
+                     assertEquals(key, 2, actual.scale());
+-                } else assertEquals(key, a + "|" + et, b + "|" + at);
++                }
+             }
+         }
+         assertEquals(10, selected.size());
+         assertEquals(selected, observed);
++        assertEquals(90, allObserved.size());
++        assertEquals(expectedKeys, allObserved);
+     }
+ }
+diff --git a/src/jvmTest/java/io/heapy/krogu/math/ZeroNullForwarding567Test.java b/src/jvmTest/java/io/heapy/krogu/math/ZeroNullForwarding567Test.java
+index e30c759..01fb804 100644
+--- a/src/jvmTest/java/io/heapy/krogu/math/ZeroNullForwarding567Test.java
++++ b/src/jvmTest/java/io/heapy/krogu/math/ZeroNullForwarding567Test.java
+@@ -3,6 +3,10 @@ package io.heapy.krogu.math;
+ import org.junit.Test;
+ import static org.junit.Assert.assertEquals;
+ import static org.junit.Assert.assertNull;
++import static org.junit.Assert.assertThrows;
++import static org.junit.Assert.assertTrue;
++import java.util.LinkedHashSet;
++import java.util.Set;
+ 
+ public class ZeroNullForwarding567Test {
+     // Null violates the override's value contract. This tests explicit Java dispatch only.
+@@ -16,17 +20,30 @@ public class ZeroNullForwarding567Test {
+         BigDecimal callerSuperRound(MathContext context) { return super.round(context); }
+     }
+ 
+-    @Test public void explicitZeroPlusRoundAndCallerSuperRoundRetainNull() {
++    @Test public void explicitZeroPlusKeepsNullReturnAndBaseRoundRejectsNullInput() {
++        Set<String> expected = new LinkedHashSet<>(), observed = new LinkedHashSet<>();
++        for (String context : new String[] {"null", "0", "1", "7"}) for (int op = 0; op < 3; op++) expected.add(context + "/" + op);
+         for (MathContext context : new MathContext[] {null, new MathContext(0), new MathContext(1), new MathContext(7)}) {
+             for (int operation = 0; operation < 3; operation++) {
+                 NullPlus value = new NullPlus();
+-                BigDecimal result = operation == 0 ? value.plus(context)
+-                    : operation == 1 ? value.round(context) : value.callerSuperRound(context);
+-                assertNull(result);
+-                assertEquals("plus:" + (context == null) + ";", value.trace.toString());
++                String key = (context == null ? "null" : String.valueOf(context.getPrecision())) + "/" + operation;
++                assertTrue(observed.add(key));
++                if (context == null && operation != 0) {
++                    final int route = operation;
++                    assertThrows(NullPointerException.class, () -> {
++                        if (route == 1) value.round(null); else value.callerSuperRound(null);
++                    });
++                    System.out.println("576_ZERO_NULL_FORWARD\t" + key + "\thistorical=null|plus:true;\tactual=NPE|" + value.trace);
++                } else {
++                    BigDecimal result = operation == 0 ? value.plus(context)
++                        : operation == 1 ? value.round(context) : value.callerSuperRound(context);
++                    assertNull(result);
++                    assertEquals("plus:" + (context == null) + ";", value.trace.toString());
++                }
+                 assertEquals(BigInteger.ZERO, value.unscaledValue());
+                 assertEquals(2, value.scale());
+             }
+         }
++        assertEquals(12, observed.size()); assertEquals(expected, observed);
+     }
+ }
+diff --git a/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalRoundSubclassTest.kt b/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalRoundSubclassTest.kt
+index 67c18fa..f5fa143 100644
+--- a/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalRoundSubclassTest.kt
++++ b/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalRoundSubclassTest.kt
+@@ -28,7 +28,7 @@ class DecimalRoundSubclassTest {
+                     private var calls = 0
+                     override fun precision(): Int { actualTrace.append("precision;"); return if (behavior == "sequence" && calls++ > 0) 1 else replacement }
+                     override fun signum(): Int { actualTrace.append("sign;"); return super.signum() }
+-                    override fun plus(mc: MathContext?): BigDecimal {
++                    override fun plus(mc: MathContext): BigDecimal {
+                         actualTrace.append("plus;")
+                         return when (behavior) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
+                     }
+diff --git a/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt b/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt
+index 98c78ce..79d9837 100644
+--- a/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt
++++ b/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt
+@@ -7,6 +7,7 @@ import kotlin.test.assertTrue
+ class DecimalUnarySubclassTest {
+     @Test fun negateContextUsesReturnedPlusCallback() {
+         val mismatches = mutableListOf<String>()
++        val nullKeys = mutableSetOf<String>()
+         for (behavior in listOf("super", "replace", "throw")) for (precision in listOf(-1, 0, 1, 7)) for (mode in RoundingMode.entries) {
+             val expectedTrace = StringBuilder()
+             val actualTrace = StringBuilder()
+@@ -20,11 +21,11 @@ class DecimalUnarySubclassTest {
+                 override fun round(mc: java.math.MathContext?): java.math.BigDecimal { expectedTrace.append("round;"); return java.math.BigDecimal("99") }
+             }
+             val actualResult = object : BigDecimal("12.34") {
+-                override fun plus(mc: MathContext?): BigDecimal {
++                override fun plus(mc: MathContext): BigDecimal {
+                     actualTrace.append("plus;")
+                     return when (behavior) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
+                 }
+-                override fun round(mc: MathContext?): BigDecimal { actualTrace.append("round;"); return BigDecimal("99") }
++                override fun round(mc: MathContext): BigDecimal { actualTrace.append("round;"); return BigDecimal("99") }
+             }
+             val expected = object : java.math.BigDecimal("1") {
+                 override fun toByte(): Byte = super.toInt().toByte()
+@@ -32,13 +33,25 @@ class DecimalUnarySubclassTest {
+                 override fun negate(): java.math.BigDecimal = expectedResult
+             }
+             val actual = object : BigDecimal("1") { override fun negate(): BigDecimal = actualResult }
+-            fun outcome(block: () -> Any): String = try { block().toString() }
++            fun outcome(block: () -> Any?): String = try { block().toString() }
+                 catch (e: Exception) { "!${e::class.simpleName}" + if (e is NullPointerException) "" else ":${e.message}" }
+             val a = outcome { expected.negate(if (precision < 0) null else java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))) }
+-            val b = outcome { actual.negate(if (precision < 0) null else MathContext(precision, mode)) }
+-            if (a != b || expectedTrace.toString() != actualTrace.toString())
++            val b = outcome {
++                if (precision < 0) UnaryNull576Boundary.call(actual, "negate", null)
++                else actual.negate(MathContext(precision, mode))
++            }
++            if (precision < 0) {
++                val key = "$behavior/$precision/$mode"
++                assertTrue(nullKeys.add(key), key)
++                println("576_RETURNED_NEGATE\t$key\thost=$a|$expectedTrace\tactual=$b|$actualTrace")
++                assertEquals("!NullPointerException", b, key)
++            } else if (a != b || expectedTrace.toString() != actualTrace.toString())
+                 mismatches.add("$behavior/$precision/$mode: $a|$expectedTrace <> $b|$actualTrace")
+         }
++        assertEquals(buildSet {
++            for (behavior in listOf("super", "replace", "throw")) for (mode in RoundingMode.entries)
++                add("$behavior/-1/$mode")
++        }, nullKeys)
+         assertTrue(mismatches.isEmpty(), "${mismatches.size} mismatches\n${mismatches.take(16).joinToString("\n")}")
+     }
+     @Test fun unaryDispatchMatchesJdk() {
+@@ -65,10 +78,10 @@ class DecimalUnarySubclassTest {
+                         override fun signum(): Int { actualTrace.append("sign;"); return sign }
+                         override fun abs(): BigDecimal { actualTrace.append("abs;"); return super.abs() }
+                         override fun negate(): BigDecimal { actualTrace.append("negate;"); return super.negate() }
+-                        override fun negate(mc: MathContext?): BigDecimal { actualTrace.append("negateContext;"); return super.negate(mc) }
++                        override fun negate(mc: MathContext): BigDecimal { actualTrace.append("negateContext;"); return super.negate(mc) }
+                         override fun plus(): BigDecimal { actualTrace.append("plus;"); return super.plus() }
+-                        override fun plus(mc: MathContext?): BigDecimal { actualTrace.append("plusContext;"); return super.plus(mc) }
+-                        override fun round(mc: MathContext?): BigDecimal { actualTrace.append("round;"); return super.round(mc) }
++                        override fun plus(mc: MathContext): BigDecimal { actualTrace.append("plusContext;"); return super.plus(mc) }
++                        override fun round(mc: MathContext): BigDecimal { actualTrace.append("round;"); return super.round(mc) }
+                     }
+                     val a = try {
+                         val mc = java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/UnaryNull576Rows.kt b/src/commonTest/kotlin/io/heapy/krogu/math/UnaryNull576Rows.kt
+new file mode 100644
+index 0000000..a5bec6b
+--- /dev/null
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/UnaryNull576Rows.kt
+@@ -0,0 +1,25 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math
++
++/** Input-only partition. Ordinals refer to the unchanged oracleVectors() sequence. */
++internal object UnaryNull576Rows {
++    fun selected(v: Array<String>): Boolean = v[0] == "K" ||
++        (v[0] == "C" && (v[1].startsWith("nullAbs:") || v[1].startsWith("nullNegate:") ||
++            (v[1].startsWith("returnedNegate:") && v[4].toInt() < 0)))
++
++    val expected: Map<Int, List<String>> = buildMap {
++        var ordinal = 60091
++        for (text in listOf("0.00", "-123.45"))
++            for (behavior in listOf("return", "self", "throw", "super"))
++                for (operation in listOf("round", "plus"))
++                    put(ordinal++, listOf("K", "$operation:$behavior", text, "0", "0", "HALF_EVEN"))
++        for ((start, behavior) in listOf(60539 to "super", 60571 to "replace", 60603 to "throw"))
++            for ((offset, mode) in RoundingMode.entries.withIndex())
++                put(start + offset, listOf("C", "returnedNegate:$behavior", "1", "12.34", "-1", mode.name))
++        ordinal = 60635
++        for (text in listOf("0.00", "1", "-1")) for (sign in -1..1)
++            for (behavior in listOf("return", "self", "throw", "super"))
++                for (operation in listOf("nullAbs", "nullNegate"))
++                    put(ordinal++, listOf("C", "$operation:$behavior", text, "$sign", "0", "HALF_EVEN"))
++    }
++}
+diff --git a/src/jvmTest/java/io/heapy/krogu/math/UnaryNull576Boundary.java b/src/jvmTest/java/io/heapy/krogu/math/UnaryNull576Boundary.java
+new file mode 100644
+index 0000000..8be48b8
+--- /dev/null
++++ b/src/jvmTest/java/io/heapy/krogu/math/UnaryNull576Boundary.java
+@@ -0,0 +1,100 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math;
++
++/** Java boundary: no adapter null checks, casts, or synthesized target exceptions. */
++public final class UnaryNull576Boundary {
++    public static BigDecimal call(BigDecimal receiver, String operation, MathContext context) {
++        switch (operation) {
++            case "abs": return receiver.abs(context);
++            case "negate": return receiver.negate(context);
++            case "plus": return receiver.plus(context);
++            case "round": return receiver.round(context);
++            default: throw new AssertionError("Unknown operation " + operation);
++        }
++    }
++
++    public static final class Observation {
++        public final String outcome;
++        public final String trace;
++        public final String diagnostic;
++        Observation(String outcome, String trace, String diagnostic) {
++            this.outcome = outcome; this.trace = trace; this.diagnostic = diagnostic;
++        }
++    }
++
++    public static Observation vector(String[] v) {
++        String operation = v[1].substring(0, v[1].indexOf(':'));
++        String behavior = v[1].substring(v[1].indexOf(':') + 1);
++        StringBuilder trace = new StringBuilder();
++        BigDecimal value;
++        if (v[0].equals("K")) {
++            value = new BigDecimal(v[2]) {
++                @Override public BigDecimal plus(MathContext mc) {
++                    trace.append("plus:").append(mc == null).append(';');
++                    switch (behavior) {
++                        case "return": return new BigDecimal("42.00");
++                        case "self": return this;
++                        case "throw": throw new IllegalStateException("plus callback");
++                        case "super": return super.plus(mc);
++                        default: throw new AssertionError(behavior);
++                    }
++                }
++            };
++        } else if (operation.equals("returnedNegate")) {
++            BigDecimal returned = new BigDecimal(v[3]) {
++                @Override public BigDecimal plus(MathContext mc) {
++                    trace.append("plus;");
++                    switch (behavior) {
++                        case "replace": return new BigDecimal("42.00");
++                        case "throw": throw new IllegalStateException("plus callback");
++                        case "super": return super.plus(mc);
++                        default: throw new AssertionError(behavior);
++                    }
++                }
++                @Override public BigDecimal round(MathContext mc) { trace.append("round;"); return new BigDecimal("99"); }
++            };
++            value = new BigDecimal(v[2]) { @Override public BigDecimal negate() { return returned; } };
++        } else {
++            int sign = Integer.parseInt(v[3]);
++            value = new BigDecimal(v[2]) {
++                @Override public int signum() { trace.append("sign;"); return sign; }
++                @Override public BigDecimal negate() { trace.append("negate;"); return super.negate(); }
++                @Override public BigDecimal plus(MathContext mc) {
++                    trace.append("plus:").append(mc == null).append(';');
++                    switch (behavior) {
++                        case "return": return new BigDecimal("42.00");
++                        case "self": return this;
++                        case "throw": throw new IllegalStateException("context callback");
++                        case "super": return super.plus(mc);
++                        default: throw new AssertionError(behavior);
++                    }
++                }
++                @Override public BigDecimal negate(MathContext mc) {
++                    trace.append("negateContext:").append(mc == null).append(';');
++                    switch (behavior) {
++                        case "return": return new BigDecimal("42.00");
++                        case "self": return this;
++                        case "throw": throw new IllegalStateException("context callback");
++                        case "super": return super.negate(mc);
++                        default: throw new AssertionError(behavior);
++                    }
++                }
++            };
++        }
++        String method = operation.equals("nullAbs") ? "abs"
++            : operation.equals("nullNegate") || operation.equals("returnedNegate") ? "negate" : operation;
++        String outcome, diagnostic;
++        try { outcome = String.valueOf(call(value, method, null)); diagnostic = outcome; }
++        catch (Exception error) {
++            outcome = "!" + error.getClass().getSimpleName()
++                + (error instanceof IllegalStateException ? ":" + error.getMessage() : "");
++            diagnostic = error.getClass().getName() + ":" + error.getMessage();
++        }
++        // Retain the eight finite-zero immutable receiver controls, now at the real boundary.
++        if (operation.equals("nullAbs") && v[2].equals("0.00") && Integer.parseInt(v[3]) >= 0) {
++            org.junit.Assert.assertEquals(BigInteger.ZERO, value.unscaledValue());
++            org.junit.Assert.assertEquals(2, value.scale());
++        }
++        return new Observation(outcome, trace.toString(), diagnostic);
++    }
++}
+diff --git a/src/jvmTest/java/io/heapy/krogu/math/UnaryNull576StandaloneTest.java b/src/jvmTest/java/io/heapy/krogu/math/UnaryNull576StandaloneTest.java
+new file mode 100644
+index 0000000..4f941a3
+--- /dev/null
++++ b/src/jvmTest/java/io/heapy/krogu/math/UnaryNull576StandaloneTest.java
+@@ -0,0 +1,258 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math;
++
++import java.util.LinkedHashSet;
++import java.util.ArrayList;
++import java.util.Set;
++import java.util.concurrent.Callable;
++import org.junit.Test;
++import static org.junit.Assert.*;
++
++/** Exact null-call counterparts of ZeroContextScale567Test and ZeroUnaryPrecision567Test.
++ * Valid-context mathematical tests remain common. Every super route here is Java invokespecial.
++ */
++public class UnaryNull576StandaloneTest {
++    private static final int[] SCALES = {Integer.MIN_VALUE, -7, -1, 0, 1, 7, Integer.MAX_VALUE};
++    private static final boolean[] FLAGS = {false, true};
++
++    private static final class Rows {
++        final String family;
++        final Set<String> expected = new LinkedHashSet<>(), seen = new LinkedHashSet<>();
++        Rows(String family) { this.family = family; }
++        void expect(String key) { assertTrue("duplicate expected " + key, expected.add(key)); }
++        void verify(String key, Callable<BigDecimal> call, BigDecimal replacement,
++                    IllegalStateException sentinel, boolean reject, StringBuilder trace, String historical) {
++            assertTrue("unexpected " + family + "/" + key, expected.contains(key));
++            assertTrue("duplicate " + family + "/" + key, seen.add(key));
++            BigDecimal result = null;
++            Exception failure = null;
++            try { result = call.call(); } catch (Exception error) { failure = error; }
++            if (reject) assertTrue(key + ": expected library NPE, got " + failure, failure instanceof NullPointerException);
++            else if (sentinel != null) assertSame(key, sentinel, failure);
++            else { assertNull(key, failure); assertSame(key, replacement, result); }
++            System.out.println("576_STANDALONE\t" + family + "\tordinal=" + (seen.size() - 1) + "\t" + key
++                + "\thistorical-assertion=" + historical + "\tactual="
++                + (failure == null ? String.valueOf(result) : failure.getClass().getName() + ":" + failure.getMessage())
++                + "\ttrace=" + trace);
++        }
++        void finish(int count) {
++            assertEquals(count, expected.size());
++            assertEquals(new ArrayList<>(expected), new ArrayList<>(seen));
++        }
++    }
++
++    private static class Truthful extends BigDecimal {
++        Truthful(long c, int s) { super(BigInteger.valueOf(c), s); }
++        @Override public BigInteger unscaledValue() { return super.unscaledValue(); }
++        @Override public int scale() { return super.scale(); }
++        @Override public int precision() { return super.precision(); }
++        @Override public int signum() { return super.signum(); }
++        @Override public BigDecimal plus() { return super.plus(); }
++        @Override public BigDecimal plus(MathContext mc) { return super.plus(mc); }
++        @Override public BigDecimal round(MathContext mc) { return super.round(mc); }
++        BigDecimal plusBase(MathContext mc) { return super.plus(mc); }
++        BigDecimal roundBase(MathContext mc) { return super.round(mc); }
++    }
++
++    @Test public void noContextNulls() {
++        Rows rows = new Rows("ZeroContextScale567.noContextPlus");
++        for (int scale : SCALES) for (long c : new long[] {0, -7, 7}) for (boolean truthful : FLAGS)
++            for (String route : truthful ? new String[] {"plus", "round", "plusBase", "roundBase"} : new String[] {"plus", "round"})
++                rows.expect(scale + "/" + c + "/" + truthful + "/" + route);
++        for (int scale : SCALES) for (long c : new long[] {0, -7, 7}) for (boolean truthful : FLAGS) {
++            BigDecimal value = truthful ? new Truthful(c, scale) : new BigDecimal(BigInteger.valueOf(c), scale);
++            assertSame(value, value.plus());
++            for (String route : truthful ? new String[] {"plus", "round", "plusBase", "roundBase"} : new String[] {"plus", "round"}) {
++                rows.verify(scale + "/" + c + "/" + truthful + "/" + route,
++                    () -> route.equals("plusBase") ? ((Truthful) value).plusBase(null)
++                        : route.equals("roundBase") ? ((Truthful) value).roundBase(null)
++                        : UnaryNull576Boundary.call(value, route, null), null, null, true, new StringBuilder(), "NPE");
++            }
++            assertEquals(BigInteger.valueOf(c), value.unscaledValue());
++            assertEquals(scale, value.scale());
++        }
++        rows.finish(126);
++    }
++
++    @Test public void explicitOverrides() {
++        Rows rows = new Rows("ZeroContextScale567.explicitOverrides");
++        String[] routes = {"plus.direct", "plus.inheritedRound", "plus.superRound", "round.direct", "plus.superPlus", "round.superRound"};
++        for (boolean fail : FLAGS) for (String route : routes) rows.expect(fail + "/" + route);
++        BigDecimal replacement = new BigDecimal("0.000");
++        IllegalStateException failure = new IllegalStateException("caller sentinel");
++        class PlusCaller extends BigDecimal {
++            final boolean fail;
++            PlusCaller(boolean fail) { super("0.00"); this.fail = fail; }
++            @Override public BigDecimal plus(MathContext mc) { if (fail) throw failure; return replacement; }
++            BigDecimal plusBase(MathContext mc) { return super.plus(mc); }
++            BigDecimal roundBase(MathContext mc) { return super.round(mc); }
++        }
++        class RoundCaller extends BigDecimal {
++            final boolean fail;
++            RoundCaller(boolean fail) { super("0.00"); this.fail = fail; }
++            @Override public BigDecimal round(MathContext mc) { if (fail) throw failure; return replacement; }
++            BigDecimal roundBase(MathContext mc) { return super.round(mc); }
++        }
++        for (boolean fail : FLAGS) {
++            PlusCaller plus = new PlusCaller(fail); RoundCaller round = new RoundCaller(fail);
++            for (String route : routes) {
++                boolean direct = route.equals("plus.direct") || route.equals("round.direct");
++                rows.verify(fail + "/" + route, () -> {
++                    switch (route) {
++                        case "plus.direct": return plus.plus(null);
++                        case "plus.inheritedRound": return plus.round(null);
++                        case "plus.superRound": return plus.roundBase(null);
++                        case "round.direct": return round.round(null);
++                        case "plus.superPlus": return plus.plusBase(null);
++                        case "round.superRound": return round.roundBase(null);
++                        default: throw new AssertionError(route);
++                    }
++                }, replacement, fail ? failure : null, !direct, new StringBuilder(),
++                    route.endsWith("superPlus") || route.equals("round.superRound") ? "NPE" : fail ? "caller-sentinel" : "replacement-identity");
++            }
++        }
++        rows.finish(12);
++    }
++
++    @Test public void zeroUnary() {
++        Rows rows = new Rows("ZeroContextScale567.zeroUnary");
++        for (int scale : SCALES) for (boolean truthful : FLAGS) for (String op : new String[] {"abs", "negate"})
++            rows.expect(scale + "/" + truthful + "/" + op);
++        for (int scale : SCALES) for (boolean truthful : FLAGS) {
++            BigDecimal zero = truthful ? new Truthful(0, scale) : new BigDecimal(BigInteger.ZERO, scale);
++            for (String op : new String[] {"abs", "negate"}) rows.verify(scale + "/" + truthful + "/" + op,
++                () -> UnaryNull576Boundary.call(zero, op, null), null, null, true, new StringBuilder(), "NPE");
++            assertEquals(BigInteger.ZERO, zero.unscaledValue()); assertEquals(scale, zero.scale());
++        }
++        rows.finish(28);
++    }
++
++    @Test public void returnedUnary() {
++        Rows rows = new Rows("ZeroContextScale567.returnedUnary");
++        for (boolean fail : FLAGS) for (String op : new String[] {"returned.abs", "source.negate"}) rows.expect(fail + "/" + op);
++        BigDecimal replacement = new BigDecimal("0.000");
++        IllegalStateException failure = new IllegalStateException("unary caller sentinel");
++        for (boolean fail : FLAGS) {
++            BigDecimal returned = new BigDecimal("12.34") {
++                @Override public BigDecimal plus(MathContext mc) { if (fail) throw failure; return replacement; }
++            };
++            BigDecimal source = new BigDecimal("0.00") { @Override public BigDecimal negate() { return returned; } };
++            rows.verify(fail + "/returned.abs", () -> returned.abs(null), null, null, true, new StringBuilder(), fail ? "sentinel" : "replacement");
++            rows.verify(fail + "/source.negate", () -> source.negate(null), null, null, true, new StringBuilder(), fail ? "sentinel" : "replacement");
++        }
++        rows.finish(4);
++    }
++
++    @Test public void zeroSeam() {
++        Rows rows = new Rows("ZeroContextScale567.zeroSeam");
++        String[] routes = {"source.negate", "returned.plus", "returned.round", "returned.superRound", "returned.superPlus"};
++        for (int scale : SCALES) for (boolean fail : FLAGS) for (String route : routes) rows.expect(scale + "/" + fail + "/" + route);
++        BigDecimal replacement = new BigDecimal("0.000");
++        IllegalStateException failure = new IllegalStateException("explicit zero plus");
++        for (int scale : SCALES) for (boolean fail : FLAGS) {
++            StringBuilder trace = new StringBuilder();
++            class Returned extends BigDecimal {
++                Returned() { super(BigInteger.ZERO, scale); }
++                @Override public int signum() { trace.append("sign;"); return 1; }
++                @Override public BigDecimal plus(MathContext mc) { trace.append("plus;"); if (fail) throw failure; return replacement; }
++                BigDecimal plusBase(MathContext mc) { return super.plus(mc); }
++                BigDecimal roundBase(MathContext mc) { return super.round(mc); }
++            }
++            Returned returned = new Returned();
++            BigDecimal source = new BigDecimal("-1") { @Override public BigDecimal negate() { trace.append("negate;"); return returned; } };
++            for (String route : routes) {
++                trace.setLength(0);
++                rows.verify(scale + "/" + fail + "/" + route, () -> {
++                    switch (route) {
++                        case "source.negate": return source.negate(null);
++                        case "returned.plus": return returned.plus(null);
++                        case "returned.round": return returned.round(null);
++                        case "returned.superRound": return returned.roundBase(null);
++                        case "returned.superPlus": return returned.plusBase(null);
++                        default: throw new AssertionError(route);
++                    }
++                }, replacement, fail ? failure : null, !route.equals("returned.plus"), trace,
++                    route.equals("source.negate") ? "NPE|negate;" : route.endsWith("superPlus") ? "NPE" : fail ? "sentinel" : "replacement");
++            }
++            assertEquals(BigInteger.ZERO, returned.unscaledValue()); assertEquals(scale, returned.scale());
++        }
++        rows.finish(70);
++    }
++
++    @Test public void ordering() {
++        Rows rows = new Rows("ZeroContextScale567.ordering");
++        String[] routes = {"value.abs", "explicit.abs", "explicit.negate", "explicit.superAbs", "explicit.superNegate", "throwing.abs", "throwing.negate"};
++        for (int sign : new int[] {-1, 0, 1}) for (boolean fail : FLAGS) for (String route : routes) rows.expect(sign + "/" + fail + "/" + route);
++        BigDecimal replacement = new BigDecimal("0.000");
++        IllegalStateException failure = new IllegalStateException("unary dispatch");
++        for (int sign : new int[] {-1, 0, 1}) for (boolean fail : FLAGS) {
++            StringBuilder trace = new StringBuilder();
++            BigDecimal value = new BigDecimal("0.00") {
++                @Override public int signum() { trace.append("sign;"); return sign; }
++                @Override public BigDecimal negate(MathContext mc) { trace.append("negateContext;"); if (fail) throw failure; return replacement; }
++            };
++            class Explicit extends BigDecimal {
++                Explicit() { super("0.00"); }
++                @Override public BigDecimal abs(MathContext mc) { if (fail) throw failure; return replacement; }
++                @Override public BigDecimal negate(MathContext mc) { if (fail) throw failure; return replacement; }
++                BigDecimal absBase(MathContext mc) { return super.abs(mc); }
++                BigDecimal negateBase(MathContext mc) { return super.negate(mc); }
++            }
++            Explicit explicit = new Explicit();
++            BigDecimal throwing = new BigDecimal("0.00") {
++                @Override public int signum() { throw failure; }
++                @Override public BigDecimal negate() { throw failure; }
++            };
++            for (String route : routes) {
++                trace.setLength(0);
++                boolean direct = route.equals("explicit.abs") || route.equals("explicit.negate");
++                rows.verify(sign + "/" + fail + "/" + route, () -> {
++                    switch (route) {
++                        case "value.abs": return value.abs(null);
++                        case "explicit.abs": return explicit.abs(null);
++                        case "explicit.negate": return explicit.negate(null);
++                        case "explicit.superAbs": return explicit.absBase(null);
++                        case "explicit.superNegate": return explicit.negateBase(null);
++                        case "throwing.abs": return throwing.abs(null);
++                        case "throwing.negate": return throwing.negate(null);
++                        default: throw new AssertionError(route);
++                    }
++                }, replacement, fail ? failure : null, !direct, trace,
++                    route.startsWith("throwing") ? "sentinel" : direct ? (fail ? "sentinel" : "replacement")
++                        : route.equals("value.abs") ? (sign < 0 ? "sign;negateContext; with sentinel/replacement" : "NPE|sign;") : "NPE");
++            }
++            assertEquals(BigInteger.ZERO, explicit.unscaledValue()); assertEquals(2, explicit.scale());
++        }
++        rows.finish(42);
++    }
++
++    @Test public void precisionSentinel() {
++        Rows rows = new Rows("ZeroUnaryPrecision567.precisionSentinel");
++        for (boolean negate : FLAGS) for (int precision : new int[] {0, 1, 7}) for (RoundingMode mode : RoundingMode.values())
++            rows.expect(negate + "/" + precision + "/" + mode);
++        for (boolean negate : FLAGS) for (int precision : new int[] {0, 1, 7}) for (RoundingMode mode : RoundingMode.values()) {
++            IllegalStateException sentinel = new IllegalStateException("precision sentinel");
++            StringBuilder trace = new StringBuilder();
++            BigDecimal zero = new BigDecimal("0.00") {
++                @Override public int precision() { trace.append("precision;"); throw sentinel; }
++                @Override public int signum() { trace.append("sign;"); return 0; }
++                @Override public BigDecimal plus(MathContext mc) { throw new AssertionError("internal plus must not be called"); }
++            };
++            BigDecimal receiver = new BigDecimal("-1.00") { @Override public BigDecimal negate() { trace.append("negate;"); return zero; } };
++            // Preserve the valid-call precursor and sentinel identity from the original common row.
++            MathContext mc = new MathContext(precision, mode);
++            try {
++                BigDecimal result = negate ? receiver.negate(mc) : zero.abs(mc);
++                assertEquals(0, precision); assertSame(zero, result);
++            } catch (IllegalStateException error) { assertTrue(precision > 0); assertSame(sentinel, error); }
++            String prefix = negate ? "negate;" : "sign;";
++            assertEquals(prefix + (precision == 0 ? "" : "precision;"), trace.toString());
++            trace.setLength(0);
++            rows.verify(negate + "/" + precision + "/" + mode, () -> negate ? receiver.negate(null) : zero.abs(null),
++                null, null, true, trace, "NPE|" + prefix);
++            assertEquals(BigInteger.ZERO, zero.unscaledValue()); assertEquals(2, zero.scale());
++            assertEquals(new BigInteger("-100"), receiver.unscaledValue()); assertEquals(2, receiver.scale());
++        }
++        rows.finish(48);
++    }
++}
+diff --git a/src/jvmTest/kotlin/io/heapy/krogu/math/UnaryNull576VectorsTest.kt b/src/jvmTest/kotlin/io/heapy/krogu/math/UnaryNull576VectorsTest.kt
+new file mode 100644
+index 0000000..6933697
+--- /dev/null
++++ b/src/jvmTest/kotlin/io/heapy/krogu/math/UnaryNull576VectorsTest.kt
+@@ -0,0 +1,43 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math
++
++import kotlin.test.Test
++import kotlin.test.assertEquals
++import kotlin.test.assertTrue
++
++class UnaryNull576VectorsTest {
++    @Test fun everyDisplacedRowExecutesAtJavaBoundary() {
++        val observed = linkedMapOf<Int, List<String>>()
++        val finite = mutableSetOf<List<String>>()
++        var direct = 0
++        for ((ordinal, v) in oracleVectors().withIndex()) {
++            if (!UnaryNull576Rows.selected(v)) continue
++            assertTrue(observed.put(ordinal, v.take(6)) == null)
++            val result = UnaryNull576Boundary.vector(v)
++            val operation = v[1].substringBefore(':')
++            val behavior = v[1].substringAfter(':')
++            val directOverride = (v[0] == "K" && operation == "plus") || operation == "nullNegate"
++            val required = if (directOverride) {
++                direct++
++                when (behavior) {
++                    "return" -> "42.00"
++                    "self" -> v[2]
++                    "throw" -> "!IllegalStateException:" + if (v[0] == "K") "plus callback" else "context callback"
++                    "super" -> "!NullPointerException"
++                    else -> error("Unknown direct behavior $behavior")
++                }
++            } else "!NullPointerException"
++            assertEquals(required, result.outcome, "ordinal=$ordinal ${v.take(6)}")
++            if (directOverride) assertTrue(result.trace.startsWith(
++                if (v[0] == "K") "plus:true;" else "negateContext:true;"), "explicit Java override entered")
++            if (v.take(6) in FiniteZeroPolicy567.nullAbsKeys) assertTrue(finite.add(v.take(6)))
++            println("576_UNARY_NULL\tordinal=$ordinal\t${v.take(6).joinToString("\t")}\t" +
++                "route=${if (directOverride) "direct-java-override" else "inherited-base"}\t" +
++                "frozen=${v[6]}\tactual=${result.outcome}|${result.trace}\traw=${result.diagnostic}")
++        }
++        assertEquals(112, observed.size)
++        assertEquals(44, direct)
++        assertEquals(UnaryNull576Rows.expected, observed, "exact original ordinals and six-field keys")
++        assertEquals(FiniteZeroPolicy567.nullAbsKeys, finite)
++    }
++}

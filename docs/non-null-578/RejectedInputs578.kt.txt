@@ -1,0 +1,18 @@
+// SOURCE ONLY. Compile each function independently with the package/imports.
+// Require a nullability error at its argument, never merely any compilation failure.
+// UNCOMPILED/UNRUN; these are 13 separate negative obligations.
+package fixture578
+import io.heapy.krogu.math.*
+fun signed(bytes: ByteArray?) = BigInteger(1, bytes, 0, 1)
+fun random(rng: PlatformRandom?) = BigInteger(8, rng)
+fun prime(rng: PlatformRandom?) = BigInteger(8, 100, rng)
+fun probablePrime(rng: PlatformRandom?) = BigInteger.probablePrime(8, rng)
+fun exponent(value: BigInteger?) = BigInteger.TWO.modPow(value, BigInteger.TEN)
+fun text(mc: MathContext?) = BigDecimal("1", mc)
+fun chars(mc: MathContext?) = BigDecimal(charArrayOf('1'), mc)
+fun slice(mc: MathContext?) = BigDecimal(charArrayOf('1'), 0, 1, mc)
+fun double(mc: MathContext?) = BigDecimal(1.0, mc)
+fun legacy(divisor: BigDecimal?) = BigDecimal.ONE.divide(divisor, 0)
+fun legacyScaled(divisor: BigDecimal?) = BigDecimal.ONE.divide(divisor, 0, 0)
+fun root(mc: MathContext?) = BigDecimal.ONE.sqrt(mc)
+fun context(mode: RoundingMode?) = MathContext(1, mode)

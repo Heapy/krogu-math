@@ -1,0 +1,26 @@
+// SOURCE ONLY. Positive compiler fixture; not a source-set file. UNCOMPILED/UNRUN.
+package fixture578
+import io.heapy.krogu.math.*
+fun accepted(rng: PlatformRandom, bytes: ByteArray, context: MathContext, mode: RoundingMode) {
+    BigInteger(1, bytes, 0, bytes.size)
+    BigInteger(8, rng)
+    BigInteger(8, 100, rng)
+    BigInteger.probablePrime(8, rng)
+    BigInteger.TWO.modPow(BigInteger.TWO, BigInteger.TEN)
+    BigDecimal("1", context)
+    BigDecimal(charArrayOf('1'), context)
+    BigDecimal(charArrayOf('1'), 0, 1, context)
+    BigDecimal(1.0, context)
+    BigDecimal.ONE.divide(BigDecimal.TWO, 0)
+    BigDecimal.ONE.divide(BigDecimal.TWO, 0, 0)
+    BigDecimal.ONE.sqrt(context)
+    MathContext(1, mode)
+}
+class Root : BigDecimal("1") {
+    override fun sqrt(mc: MathContext): BigDecimal = super.sqrt(mc)
+    override fun divide(divisor: BigDecimal, roundingMode: Int): BigDecimal = super.divide(divisor, roundingMode)
+    override fun divide(divisor: BigDecimal, scale: Int, roundingMode: Int): BigDecimal = super.divide(divisor, scale, roundingMode)
+}
+class Integer : BigInteger("1") {
+    override fun modPow(exponent: BigInteger, m: BigInteger): BigInteger = super.modPow(exponent, m)
+}

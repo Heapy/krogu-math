@@ -137,7 +137,7 @@ class OddModulusContext538Test {
         assertEquals(1, lyingParity.parityCalls)
         // Prevent the public reduction so m=1 reaches the private factory check.
         val source = object : BigInteger("2") {
-            override fun compareTo(other: BigInteger?): Int = -1
+            override fun compareTo(other: BigInteger): Int = -1
         }
         val zero = source.modPow(two, one)
         assertEquals(BigInteger.ZERO, zero)
@@ -157,13 +157,12 @@ class OddModulusContext538Test {
         val computedOne = BigInteger("16").modPow(two, m)
         assertEquals(one, computedOne)
         assertNotSame(one, computedOne)
-        assertFailsWith<ArithmeticException> { a.modPow(null, BigInteger.ZERO) }
-        assertFailsWith<NullPointerException> { a.modPow(null, m) }
+        // Two null exponent entries retained in Validation578StandaloneTest (JVM).
 
         val trace = mutableListOf<String>()
         val source = object : BigInteger("3") {
             override fun equals(other: Any?): Boolean { trace += "equals"; return super.equals(other) }
-            override fun compareTo(other: BigInteger?): Int { trace += "compare"; return super.compareTo(other) }
+            override fun compareTo(other: BigInteger): Int { trace += "compare"; return super.compareTo(other) }
             override fun multiply(value: BigInteger): BigInteger = error("source multiply")
             override fun bitLength(): Int = error("source length")
         }

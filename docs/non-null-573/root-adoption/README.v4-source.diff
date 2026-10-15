@@ -1,0 +1,27 @@
+--- README.md	2026-10-15 04:00:16.954630878 +0300
++++ /private/tmp/krogu-573525-combined-source-v4/candidate/README.md	2026-10-15 14:25:18.032016411 +0300
+@@ -207,10 +207,20 @@
+ between these formats, are outside the project requirements. Non-JVM platforms
+ do not depend on Java serialization.
+ 
+-Kotlin overrides of exact/context division, integral division, pairs and remainder
+-use nullable operand/context parameters to preserve Java validation and delegation
+-order. The base implementation checks arguments at the corresponding computation
+-stage; zero-precision and remainder delegation can be handled by an override first.
++Task573's input migration covers all 48 reviewed slots:
++`BigInteger`/`BigDecimal` comparison inputs; exact and MathContext overloads of
++decimal add, subtract, multiply, divide, integral division, pairs and remainder;
++decimal abs, negate, plus and round contexts; integer bitwise operands; and the
++reviewed constructor, random, modPow, legacy-divide and sqrt inputs. Kotlin overrides use matching
++non-null types, and both numbers implement `Comparable<T>`. Task525 additionally
++makes the four member `min`/`max` results non-null. Three equals inputs and four
++OrNull results remain nullable.
++Valid common mathematical coverage remains; ill-typed null calls have actual
++JVM Java counterparts with separate direct override, inherited and explicit-super
++contracts. **The revised combined candidate is uncompiled/unrun.** The
++[revision4 contract review](docs/non-null-573/RNG_CONTRACT_REVIEW.md) records both
++retained test failures, the RNG observation classification, the separate result-type
++witness and pending verification. Focused handoffs retain displaced execution accounting.
+ 
+ ## Source and behavioral compatibility contract
+ 

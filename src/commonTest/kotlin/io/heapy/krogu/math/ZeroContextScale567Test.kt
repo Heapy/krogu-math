@@ -17,10 +17,10 @@ class ZeroContextScale567Test {
         override fun precision() = super.precision()
         override fun signum() = super.signum()
         override fun plus() = super.plus()
-        override fun plus(mc: MathContext?) = super.plus(mc)
-        override fun round(mc: MathContext?) = super.round(mc)
-        fun plusBase(mc: MathContext?) = super.plus(mc)
-        fun roundBase(mc: MathContext?) = super.round(mc)
+        override fun plus(mc: MathContext) = super.plus(mc)
+        override fun round(mc: MathContext) = super.round(mc)
+        fun plusBase(mc: MathContext) = super.plus(mc)
+        fun roundBase(mc: MathContext) = super.round(mc)
     }
 
     private fun input(c: Long, s: Int, truthful: Boolean): BigDecimal =
@@ -54,17 +54,12 @@ class ZeroContextScale567Test {
             }
     }
 
-    @Test fun noContextPlusRetainsIdentityAndNullContextStillFails() {
+    @Test fun noContextPlusRetainsIdentity() {
         for (s in scales) for (c in listOf(0L, -7L, 7L)) for (truthful in listOf(false, true)) {
             val x = input(c, s, truthful)
             assertSame(x, x.plus())
             assertFields(c.toString(), s, x)
-            assertFailsWith<NullPointerException> { x.plus(null) }
-            assertFailsWith<NullPointerException> { x.round(null) }
-            if (x is Truthful) {
-                assertFailsWith<NullPointerException> { x.plusBase(null) }
-                assertFailsWith<NullPointerException> { x.roundBase(null) }
-            }
+            // 126 null calls (including real super calls) moved to UnaryNull576StandaloneTest.
         }
     }
 
@@ -123,25 +118,25 @@ class ZeroContextScale567Test {
         }
     }
 
-    @Test fun explicitOverridesKeepResultAndExceptionIdentityEvenWithNullContext() {
+    @Test fun explicitOverridesKeepResultAndExceptionIdentity() {
         val replacement = BigDecimal("0.000")
         val failure = IllegalStateException("caller sentinel")
         class PlusCaller(private val fail: Boolean) : BigDecimal("0.00") {
-            override fun plus(mc: MathContext?): BigDecimal {
+            override fun plus(mc: MathContext): BigDecimal {
                 if (fail) throw failure
                 return replacement
             }
-            fun plusBase(mc: MathContext?) = super.plus(mc)
-            fun roundBase(mc: MathContext?) = super.round(mc)
+            fun plusBase(mc: MathContext) = super.plus(mc)
+            fun roundBase(mc: MathContext) = super.round(mc)
         }
         class RoundCaller(private val fail: Boolean) : BigDecimal("0.00") {
-            override fun round(mc: MathContext?): BigDecimal {
+            override fun round(mc: MathContext): BigDecimal {
                 if (fail) throw failure
                 return replacement
             }
-            fun roundBase(mc: MathContext?) = super.round(mc)
+            fun roundBase(mc: MathContext) = super.round(mc)
         }
-        for (mc in listOf(null, MathContext(0), MathContext(1))) for (fail in listOf(false, true)) {
+        for (mc in listOf(MathContext(0), MathContext(1))) for (fail in listOf(false, true)) {
             val plus = PlusCaller(fail)
             val round = RoundCaller(fail)
             // Inherited round and caller-owned super.round still dispatch virtual plus.
@@ -151,14 +146,9 @@ class ZeroContextScale567Test {
                 else assertSame(replacement, call())
             }
             // Explicit super.plus bypasses the plus override; super.round bypasses round only.
-            if (mc == null) {
-                assertFailsWith<NullPointerException> { plus.plusBase(mc) }
-                assertFailsWith<NullPointerException> { round.roundBase(mc) }
-            } else {
-                assertCanonicalZero(plus.plusBase(mc))
-                assertCanonicalZero(round.roundBase(mc))
-                assertCanonicalZero(round.plus(mc))
-            }
+            assertCanonicalZero(plus.plusBase(mc))
+            assertCanonicalZero(round.roundBase(mc))
+            assertCanonicalZero(round.plus(mc))
         }
     }
 
@@ -178,8 +168,7 @@ class ZeroContextScale567Test {
             assertFields("0", 0, BigDecimal(0L, mc))
             assertFields("0", 0, BigDecimal(0.0, mc))
         }
-        assertFailsWith<NullPointerException> { BigDecimal("0.00", null) }
-        assertFailsWith<NullPointerException> { BigDecimal("0.00".toCharArray(), null) }
+        // These two constructor null entries are retained in Validation578StandaloneTest (JVM).
     }
 
     @Test fun cancellationAndZeroAdditionRetainPreferredScale() {
@@ -238,14 +227,13 @@ class ZeroContextScale567Test {
                 assertFields("0", s, zero.abs(mc))
                 assertFields("0", s, zero.negate(mc))
             }
-            assertFailsWith<NullPointerException> { zero.abs(null) }
-            assertFailsWith<NullPointerException> { zero.negate(null) }
+            // 28 zero null calls retained by UnaryNull576StandaloneTest.zeroUnary.
         }
         val replacement = BigDecimal("0.000")
         val failure = IllegalStateException("unary caller sentinel")
         for (fail in listOf(false, true)) {
             val returned = object : BigDecimal("12.34") {
-                override fun plus(mc: MathContext?): BigDecimal {
+                override fun plus(mc: MathContext): BigDecimal {
                     if (fail) throw failure
                     return replacement
                 }
@@ -253,7 +241,7 @@ class ZeroContextScale567Test {
             val source = object : BigDecimal("0.00") {
                 override fun negate() = returned
             }
-            for (mc in listOf(null, MathContext(0), MathContext(1)))
+            for (mc in listOf(MathContext(0), MathContext(1)))
                 for (call in listOf<() -> BigDecimal>({ returned.abs(mc) }, { source.negate(mc) })) {
                     if (fail) assertSame(failure, assertFailsWith<IllegalStateException>(block = call))
                     else assertSame(replacement, call())
@@ -268,13 +256,13 @@ class ZeroContextScale567Test {
             val trace = StringBuilder()
             val returned = object : BigDecimal(BigInteger.ZERO, s) {
                 override fun signum(): Int { trace.append("sign;"); return 1 }
-                override fun plus(mc: MathContext?): BigDecimal {
+                override fun plus(mc: MathContext): BigDecimal {
                     trace.append("plus;")
                     if (fail) throw failure
                     return replacement
                 }
-                fun plusBase(mc: MathContext?) = super.plus(mc)
-                fun roundBase(mc: MathContext?) = super.round(mc)
+                fun plusBase(mc: MathContext) = super.plus(mc)
+                fun roundBase(mc: MathContext) = super.round(mc)
             }
             val source = object : BigDecimal("-1") {
                 override fun negate(): BigDecimal { trace.append("negate;"); return returned }
@@ -287,30 +275,28 @@ class ZeroContextScale567Test {
                 assertFields("0", s, source.abs(MathContext(p, mode)))
                 assertEquals("negate;", trace.toString())
             }
-            trace.clear()
-            assertFailsWith<NullPointerException> { source.negate(null) }
-            assertEquals("negate;", trace.toString())
+            // Null seam and explicit Java overrides retained by UnaryNull576StandaloneTest.zeroSeam.
             // Explicit language calls still honor the override, even on stored zero.
-            for (mc in listOf(null, MathContext(0), MathContext(1))) {
+            for (mc in listOf(MathContext(0), MathContext(1))) {
                 for (call in listOf<() -> BigDecimal>({ returned.plus(mc) },
                     { returned.round(mc) }, { returned.roundBase(mc) })) {
                     if (fail) assertSame(failure, assertFailsWith<IllegalStateException>(block = call))
                     else assertSame(replacement, call())
                 }
-                if (mc == null) assertFailsWith<NullPointerException> { returned.plusBase(mc) }
-                else assertCanonicalZero(returned.plusBase(mc))
+                assertCanonicalZero(returned.plusBase(mc))
             }
         }
     }
 
-    @Test fun unaryOrderingAndExplicitAbsNegateOverridesKeepNullSemantics() {
+    @Test fun unaryOrderingAndExplicitAbsNegateOverridesKeepValidSemantics() {
         val trace = StringBuilder()
         val replacement = BigDecimal("0.000")
         val failure = IllegalStateException("unary dispatch")
+        val context = MathContext(1)
         for (sign in listOf(-1, 0, 1)) for (fail in listOf(false, true)) {
             val value = object : BigDecimal("0.00") {
                 override fun signum(): Int { trace.append("sign;"); return sign }
-                override fun negate(mc: MathContext?): BigDecimal {
+                override fun negate(mc: MathContext): BigDecimal {
                     trace.append("negateContext;")
                     if (fail) throw failure
                     return replacement
@@ -318,39 +304,38 @@ class ZeroContextScale567Test {
             }
             trace.clear()
             if (sign < 0) {
-                if (fail) assertSame(failure, assertFailsWith<IllegalStateException> { value.abs(null) })
-                else assertSame(replacement, value.abs(null))
+                if (fail) assertSame(failure, assertFailsWith<IllegalStateException> { value.abs(context) })
+                else assertSame(replacement, value.abs(context))
                 assertEquals("sign;negateContext;", trace.toString())
             } else {
-                assertFailsWith<NullPointerException> { value.abs(null) }
+                assertFields("0", 2, value.abs(context))
                 assertEquals("sign;", trace.toString())
             }
             val explicit = object : BigDecimal("0.00") {
-                override fun abs(mc: MathContext?): BigDecimal {
+                override fun abs(mc: MathContext): BigDecimal {
                     if (fail) throw failure
                     return replacement
                 }
-                override fun negate(mc: MathContext?): BigDecimal {
+                override fun negate(mc: MathContext): BigDecimal {
                     if (fail) throw failure
                     return replacement
                 }
-                fun absBase(mc: MathContext?) = super.abs(mc)
-                fun negateBase(mc: MathContext?) = super.negate(mc)
+                fun absBase(mc: MathContext) = super.abs(mc)
+                fun negateBase(mc: MathContext) = super.negate(mc)
             }
-            for (call in listOf<() -> BigDecimal>({ explicit.abs(null) }, { explicit.negate(null) })) {
+            for (call in listOf<() -> BigDecimal>({ explicit.abs(context) }, { explicit.negate(context) })) {
                 if (fail) assertSame(failure, assertFailsWith<IllegalStateException>(block = call))
                 else assertSame(replacement, call())
             }
-            assertFailsWith<NullPointerException> { explicit.absBase(null) }
-            assertFailsWith<NullPointerException> { explicit.negateBase(null) }
+            // All seven null routes per sign/fail are retained in the JVM ordering test.
             assertFields("0", 2, explicit.absBase(MathContext(1)))
             assertFields("0", 2, explicit.negateBase(MathContext(1)))
             val throwing = object : BigDecimal("0.00") {
                 override fun signum(): Int = throw failure
                 override fun negate(): BigDecimal = throw failure
             }
-            assertSame(failure, assertFailsWith<IllegalStateException> { throwing.abs(null) })
-            assertSame(failure, assertFailsWith<IllegalStateException> { throwing.negate(null) })
+            assertSame(failure, assertFailsWith<IllegalStateException> { throwing.abs(context) })
+            assertSame(failure, assertFailsWith<IllegalStateException> { throwing.negate(context) })
         }
     }
 

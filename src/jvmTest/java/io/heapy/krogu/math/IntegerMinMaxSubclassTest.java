@@ -10,7 +10,8 @@ public class IntegerMinMaxSubclassTest {
         catch (Exception e) { return "!" + e.getClass().getSimpleName() + (e instanceof IllegalStateException ? ":" + e.getMessage() : ""); }
     }
 
-    @Test public void extremaForwardNullToVirtualComparisonAndPreserveIdentity() {
+    @Test public void extremaRejectNullAndPreserveValidVirtualComparisonAndIdentity() {
+        int nullRows = 0, validRows = 0;
         for (String text : new String[] {"0", "1", "-1"})
             for (int comparison : new int[] {Integer.MIN_VALUE, -2, -1, 0, 1, 2, Integer.MAX_VALUE})
                 for (boolean throwing : new boolean[] {false, true})
@@ -35,8 +36,18 @@ public class IntegerMinMaxSubclassTest {
                             BigInteger ar = nullOperand ? null : new BigInteger("2");
                             String a = outcome(() -> min ? expected.min(er) : expected.max(er), expected, er);
                             String b = outcome(() -> min ? actual.min(ar) : actual.max(ar), actual, ar);
-                            assertEquals(text + "/" + comparison + "/" + throwing + "/" + nullOperand + "/" + min, a + "|" + et, b + "|" + at);
+                            String key = text + "/" + comparison + "/" + throwing + "/" + nullOperand + "/" + min;
+                            if (nullOperand) {
+                                nullRows++;
+                                System.out.println("574_INTEGER_SUBCLASS_NULL\t" + key + "\thost=" + a + "|" + et + "\town=" + b + "|" + at);
+                                assertEquals(key + " public null contract", "!NullPointerException", b);
+                            } else {
+                                validRows++;
+                                assertEquals(key, a + "|" + et, b + "|" + at);
+                            }
                         }
+        assertEquals(84, nullRows);
+        assertEquals(84, validRows);
     }
 
     @Test public void javaComparableAndCollectionSortingRemainUsable() {

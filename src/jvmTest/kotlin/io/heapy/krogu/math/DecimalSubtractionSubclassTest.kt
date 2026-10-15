@@ -33,7 +33,7 @@ class DecimalSubtractionSubclassTest {
                     override fun add(value: java.math.BigDecimal): java.math.BigDecimal { et.append("add;"); throw IllegalStateException("exact add callback") }
                 }
                 val actual = object : BigDecimal(BigInteger(coefficient), leftScale) {
-                    override fun add(augend: BigDecimal?): BigDecimal { at.append("add;"); throw IllegalStateException("exact add callback") }
+                    override fun add(augend: BigDecimal): BigDecimal { at.append("add;"); throw IllegalStateException("exact add callback") }
                 }
                 fun outcome(block: () -> Any): String = try { block().toString() } catch (e: Exception) { "!${e::class.simpleName}:${e.message}" }
                 val a = outcome { expected.add(java.math.BigDecimal(java.math.BigInteger.ONE, rightScale), java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))) }
@@ -63,15 +63,15 @@ class DecimalSubtractionSubclassTest {
                         override fun subtract(value: java.math.BigDecimal): java.math.BigDecimal { et.append("subtract;"); return super.subtract(value) }
                     }
                     val actual = object : BigDecimal(left) {
-                        override fun add(augend: BigDecimal?): BigDecimal {
+                        override fun add(augend: BigDecimal): BigDecimal {
                             at.append("add;")
                             return when (leftBehavior) { "replace" -> BigDecimal("42"); "throw" -> throw IllegalStateException("add callback"); else -> super.add(augend) }
                         }
-                        override fun add(augend: BigDecimal?, mc: MathContext?): BigDecimal {
+                        override fun add(augend: BigDecimal, mc: MathContext): BigDecimal {
                             at.append("addContext;")
                             return when (leftBehavior) { "replace" -> BigDecimal("43"); "throw" -> throw IllegalStateException("add context callback"); else -> super.add(augend, mc) }
                         }
-                        override fun subtract(subtrahend: BigDecimal?): BigDecimal { at.append("subtract;"); return super.subtract(subtrahend) }
+                        override fun subtract(subtrahend: BigDecimal): BigDecimal { at.append("subtract;"); return super.subtract(subtrahend) }
                     }
                     val expectedRight = object : java.math.BigDecimal(right) {
                         override fun toByte(): Byte = super.toInt().toByte()

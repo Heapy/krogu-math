@@ -1,0 +1,8 @@
+package io.heapy.krogu.math
+
+// Parent must compile each body independently and require its specific null-input error.
+// A different error or one error for the combined file does not prove all four slots.
+fun rejectedAbs(value: BigDecimal) = value.abs(null)
+fun rejectedNegate(value: BigDecimal) = value.negate(null)
+fun rejectedPlus(value: BigDecimal, mc: MathContext?) = value.plus(mc)
+fun rejectedRound(value: BigDecimal) = value.round(null)

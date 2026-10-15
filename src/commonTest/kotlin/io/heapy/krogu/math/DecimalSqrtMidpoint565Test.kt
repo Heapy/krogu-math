@@ -55,8 +55,8 @@ class DecimalSqrtMidpoint565Test {
         override fun scale() = super.scale()
         override fun unscaledValue() = super.unscaledValue()
         override fun stripTrailingZeros() = super.stripTrailingZeros()
-        override fun sqrt(mc: MathContext?) = super.sqrt(mc)
-        fun inheritedRoot(mc: MathContext?) = super.sqrt(mc)
+        override fun sqrt(mc: MathContext) = super.sqrt(mc)
+        fun inheritedRoot(mc: MathContext) = super.sqrt(mc)
     }
 
     private fun assertResult(c: String, s: Int, actual: BigDecimal, label: String) {
@@ -120,18 +120,18 @@ class DecimalSqrtMidpoint565Test {
 
     @Test fun explicitOverrideSuperAndDirectExceptionIdentity() {
         val marker = BigDecimal("7.00")
-        val contexts = listOf<MathContext?>(null) + listOf(0, 1, 7)
+        val contexts = listOf(0, 1, 7)
             .flatMap { p -> RoundingMode.entries.map { MathContext(p, it) } }
         for (context in contexts) {
             var entries = 0
             val replacement: BigDecimal = object : BigDecimal("4.001") {
-                override fun sqrt(mc: MathContext?): BigDecimal { entries++; assertSame(context, mc); return marker }
+                override fun sqrt(mc: MathContext): BigDecimal { entries++; assertSame(context, mc); return marker }
             }
             assertSame(marker, replacement.sqrt(context))
             assertEquals(1, entries)
             val failure = IllegalStateException("caller-owned midpoint root")
             val throwing: BigDecimal = object : BigDecimal("4.001") {
-                override fun sqrt(mc: MathContext?): BigDecimal { assertSame(context, mc); throw failure }
+                override fun sqrt(mc: MathContext): BigDecimal { assertSame(context, mc); throw failure }
             }
             assertSame(failure, assertFailsWith<IllegalStateException> { throwing.sqrt(context) })
         }
@@ -145,6 +145,6 @@ class DecimalSqrtMidpoint565Test {
         }
         assertSame(failure, assertFailsWith<IllegalStateException> { throwingPrecision.sqrt(MathContext(1)) })
         assertFailsWith<ArithmeticException> { Truthful(BigInteger("4001"), 3).inheritedRoot(MathContext(0)) }
-        assertFailsWith<NullPointerException> { Truthful(BigInteger("4001"), 3).inheritedRoot(null) }
+        // Null explicit-super entry retained by Validation578StandaloneTest.
     }
 }

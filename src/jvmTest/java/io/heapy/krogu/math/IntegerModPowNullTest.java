@@ -55,12 +55,27 @@ private static class Actual extends BigInteger {
             }
     }
     @Test public void nullArgumentPrecedence(){
+        java.util.Set<String> keys = new java.util.LinkedHashSet<>();
+        int nullExponent = 0;
         for(String a:new String[]{"0","3"})for(String e:new String[]{null,"0","-1"})for(String m:new String[]{null,"-1","0","1","17"}){
             StringBuilder et=new StringBuilder(),at=new StringBuilder();
             Reference ra=new Reference(a,"A",et,"mod",false),re=e==null?null:new Reference(e,"E",et,"neg",false),rm=m==null?null:new Reference(m,"M",et,"",false);
             Actual aa=new Actual(a,"A",at,"mod",false),ae=e==null?null:new Actual(e,"E",at,"neg",false),am=m==null?null:new Actual(m,"M",at,"",false);
-            assertEquals(a+"/"+e+"/"+m,outcome(()->ra.inherited(re,rm),et),outcome(()->aa.inherited(ae,am),at));
+            String key=a+"/"+e+"/"+m;
+            org.junit.Assert.assertTrue(keys.add(key));
+            String host=outcome(()->ra.inherited(re,rm),et), own=outcome(()->aa.inherited(ae,am),at);
+            if(e==null) {
+                nullExponent++;
+                System.out.println("modPow578 ordinal="+(keys.size()-1)+" key="+key+" class="
+                    +(m==null || m.equals("-1") || m.equals("0") ? "compound-invalid-priority" : "ordinary-null")
+                    +" host="+host+" own="+own);
+                if(m!=null && (m.equals("1") || m.equals("17")))
+                    assertEquals(key,"!NullPointerException",own.substring(0,own.indexOf('|')));
+                else org.junit.Assert.assertTrue(key,own.startsWith("!"));
+            } else assertEquals(key,host,own);
         }
+        assertEquals(30, keys.size());
+        assertEquals(10, nullExponent);
     }
     @Test public void primalityParityCallbackPrecedesWitnesses(){
         for(String text:new String[]{"0","1","2","97","65537","2147483647","-97"}) {

@@ -1,0 +1,117 @@
+--- COMPATIBILITY.md	2026-10-15 14:01:05.011102455 +0300
++++ /private/tmp/krogu-573525-combined-source-v4/candidate/COMPATIBILITY.md	2026-10-15 14:25:18.074415486 +0300
+@@ -14,6 +14,24 @@
+ Proven JDK defects are handled as specified below. The objective remains
+ **active and unproven**.
+ 
++The task573 source composition contains G1–G7: all 48 reviewed input
++slots. It combines task574 comparison, task575 decimal binary/context, task576
++unary-context, task577 bitwise and task578 validation/constructor/random changes.
++Revision4 retains task525's four non-null extrema result declarations and classifies
++RNG consumption as diagnostics; this revised candidate is **uncompiled/unrun**.
++The first48-input JVM run compiled and executed492 methods, with one test-counter
++failure retained in the [revision3 handoff](docs/non-null-573/POST_REVIEW_HANDOFF.md).
++The next V3 run reached an unsupported seeded-state equality assertion and also
++failed one method. Both failures and the subsequent contract classification are
++preserved in the [revision4 review](docs/non-null-573/RNG_CONTRACT_REVIEW.md).
++Historical runtime and callback
++summaries below remain evidence of the published baseline; they do not accept
++the composed migration. Exact Java boundary contracts, preserved diagnostics and
++all 5227 reassigned common executions are described in the
++[integration handoff](docs/non-null-573/INTEGRATION_HANDOFF.md), with the subsequent
++revision3 changes linked above. Nullable equals inputs and OrNull results retain
++their declarations; extrema results become non-null under task525.
++
+ Reference runtime: BellSoft Liberica **25.0.4+9**. Implementation source from
+ OpenJDK or other numerical libraries must not be used. Public API specifications,
+ independent mathematical reasoning and black-box results supply evidence; a
+@@ -34,8 +52,8 @@
+ The [Double zero/null validation](docs/zero-double-context-569-verification.md)
+ records the constructor repair, retained JDK observations and fresh target/public gates.
+ The [integer arithmetic and bit audit report](docs/integer-audits-544-545-verification.md)
+-records the later test-only integration, four local target gates and all six CI
+-jobs passing on published commit60aea413, including actual Linux ARM64 execution.
++records the later test-only integration and its four local target gates; exact
++published-head CI remains pending there.
+ 
+ Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
+ retained JDK diagnostics and deliberate numerical divergences are documented in
+@@ -339,10 +357,13 @@
+ throwing and replacement metadata, self aliases, zero-result identities and
+ signed power neighbors through 4,097-bit inputs. Each result is a fresh base
+ instance, including zero and unchanged updates. Negative bit addresses fail
+-before metadata callbacks; Java null operands fail after the source bitLength
+-callback (24 live Java comparisons). The four binary operand parameters are
+-nullable in Kotlin to preserve that Java order; Kotlin overrides must use the
+-same nullable parameter. Fake negative/huge bitLength values, changing callback
++before metadata callbacks. The published baseline recorded null operand failure
++after the source bitLength callback in24 live Java comparisons. Task577's source
++migrates the four binary operands and Kotlin overrides to non-null. The same24
++Java rows retain their historical/live-host observations while requiring an actual
++own NPE. Four ordinary, eight caller-owned direct override and four actual Java
++super controls distinguish these entry routes. These source changes remain
++uncompiled/unrun. Fake negative/huge bitLength values, changing callback
+ results and allocation-scale bit addresses still require a broader audit.
+ Six additional common cases cover updates at `Int.MAX_VALUE`: unchanged zero/-1
+ values still return fresh instances; unsupported results report `BigInteger would
+@@ -803,32 +824,34 @@
+ callback operands, broader getter replacement domains and full range/allocation
+ behavior remain open.
+ 
+-Min/max delegation adds 204 portable cases: 120 custom-comparison outcomes and
+-84 ordinary/null-base outcomes. Both methods invoke virtual compareTo once,
+-including null operands, preserve source identity on ties and can return the
+-selected null operand when a subclass comparison permits it. Callback exceptions
+-propagate before argument rejection. compareTo accepts a nullable operand while
+-its base implementation still rejects null. The common class implements
+-Comparable<BigDecimal?>; Java Comparable<BigDecimal> assignment and collection
+-sorting are compiled and exercised. Kotlin member min/max now have nullable
+-return types. Ordinary Kotlin sorted/minOf/maxOf remain usable with non-null
+-result types, as checked in common tests. Source/operand identities, callback
+-traces, selected null results and NPE classes match JDK in this domain. Broader
+-callback compositions, returned subclasses and detailed NPE messages remain open.
+-
+-BigInteger min/max add 498 portable cases: 168 custom-comparison outcomes and
+-330 ordinary min/max/compareTo outcomes, including null and signed 30/63/64-bit
+-boundaries. Both integer extrema pass the operand to virtual
+-compareTo before base null validation, select the operand on ties, propagate
+-callback exceptions and can select null when the override permits it. Comparator
+-results include Int.MIN_VALUE and Int.MAX_VALUE. The common class now implements
+-Comparable<BigInteger?>, with nullable compareTo arguments and member min/max
+-return types; Kotlin subclass overrides must accept nullable comparison arguments.
+-The base comparison still rejects null. Java Comparable<BigInteger>, Java
+-collection sorting, erased bridge dispatch/type checks and non-null Kotlin
+-sorted/minOf/maxOf results are compiled and tested. Public JVM method descriptors
+-remain unchanged. These cases constrain result identity and exception classes;
+-detailed null messages and broader callback compositions remain open.
++The frozen decimal min/max corpus contains 204 cases (120 custom-comparison and
++84 base cases). The integer corpus contains 498 (168 custom-comparison and 330
++base min/max/compareTo cases), including signed 30/63/64-bit boundaries and
++Int.MIN_VALUE/Int.MAX_VALUE comparator answers. Their historical null forwarding,
++selected-null results and callback-first exceptions remain frozen observations.
++
++Task574 migrates the six comparison inputs and both Comparable type arguments
++to non-null Kotlin types. Kotlin overrides migrate with them. Task525 separately
++makes the four member min/max results non-null after a paired compiler witness.
++Valid extrema still use virtual
++comparison and retain their tie identities: decimal selects the receiver and
++integer selects the argument. Ordinary ordering and mathematical assertions stay
++in common tests, including distinct-equal ordinary/truthful subclass controls.
++
++Exactly 132 decimal and 384 integer frozen rows remain executable in common;
++72 decimal and 114 integer invalid-null rows move to actual Java library calls.
++The shared input-only ledger checks every six-field key and global source ordinal.
++The JVM counterpart requires library NPE while retaining the full frozen outcome,
++actual callback trace and VM message as diagnostics. Existing Java subclass
++matrices retain all 144 valid assertions and classify their 144 null rows
++separately. Direct Java overrides, virtual reflection, inherited/base boundaries
++and all six explicit Java super calls have distinct controls. Reflection does not
++stand in for explicit super. Java sorting and erased bridge checks are retained.
++
++These are **uncompiled/unrun source changes**, not new runtime acceptance.
++See [task574 handoff and exact row ledger](docs/non-null-574/SOURCE-HANDOFF.md).
++Detailed VM messages, unspecified internal callback order and broader callback
++compositions do not become stronger host-parity promises.
+ 
+ The initial quotient magnitude comparison now reads stored limbs directly rather
+ than invoking public compareTo. An overridden comparison no longer changes

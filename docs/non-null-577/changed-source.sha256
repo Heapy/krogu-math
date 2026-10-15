@@ -1,0 +1,7 @@
+974c118390c12c96809553d67a5e7363f8f8cb49dc08bd7a0e4f294a5b69d0f7  src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt
+b91dd3407841da61ac101e170520e01b4f3a51875af2b2807be5ce4842789551  src/commonTest/kotlin/io/heapy/krogu/math/BitwiseSubclassTest.kt
+3bb936ea46e22dcd11d01b9af8357cebd3aca6def4abdc01674f0057266a95f5  src/commonTest/kotlin/io/heapy/krogu/math/IntegerBits545ContractTest.kt
+3badeb64cb2e2e91668afaf29658ea982b931056dcb8b44a258bd9312804dd84  src/commonTest/kotlin/io/heapy/krogu/math/IntegerBitsOracleTest.kt
+b4db3bd0d0860c0afba49ae29c3b4258e1eb9e30bb66bb817e7ab83027d9737f  src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinOperatorMigrationContractTest.kt
+d68b164422ae540578d1b44c69e1e8337b192aa2cdd35ac01ce818ee669afe54  src/jvmTest/java/io/heapy/krogu/math/IntegerBitsNullTest.java
+54d7b0581240df20ca0dd99fe06fb50777070004447ed997ac4f8cd0c20b1a10  src/jvmTest/kotlin/io/heapy/krogu/math/IntegerBits545JvmTest.kt

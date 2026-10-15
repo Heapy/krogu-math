@@ -44,7 +44,7 @@ class DecimalNumericMetadataTest {
                 override fun toString(radix: Int): String = error("radix toString")
                 override fun divideAndRemainder(value: BigInteger): Array<BigInteger> = error("divideAndRemainder")
                 override fun pow(exponent: Int): BigInteger = error("pow")
-                override fun compareTo(other: BigInteger?): Int = error("compareTo")
+                override fun compareTo(other: BigInteger): Int = error("compareTo")
             }
             val magnitude = text.removePrefix("-")
             assertEquals(magnitude.length, value.decimalMagnitudeDigits())

@@ -14,10 +14,10 @@ private class BitProbe(text: String, val trace: StringBuilder, val mode: String)
     override fun toByteArray(): ByteArray { call("bytes"); return super.toByteArray() }
     override fun testBit(n: Int): Boolean { call("test"); return super.testBit(n) }
     override fun not(): BigInteger { call("not"); return super.not() }
-    override fun and(value: BigInteger?): BigInteger { call("and"); return super.and(value) }
-    override fun or(value: BigInteger?): BigInteger { call("or"); return super.or(value) }
-    override fun xor(value: BigInteger?): BigInteger { call("xor"); return super.xor(value) }
-    override fun andNot(value: BigInteger?): BigInteger { call("andNot"); return super.andNot(value) }
+    override fun and(value: BigInteger): BigInteger { call("and"); return super.and(value) }
+    override fun or(value: BigInteger): BigInteger { call("or"); return super.or(value) }
+    override fun xor(value: BigInteger): BigInteger { call("xor"); return super.xor(value) }
+    override fun andNot(value: BigInteger): BigInteger { call("andNot"); return super.andNot(value) }
     override fun setBit(n: Int): BigInteger { call("set"); return super.setBit(n) }
     override fun clearBit(n: Int): BigInteger { call("clear"); return super.clearBit(n) }
     override fun flipBit(n: Int): BigInteger { call("flip"); return super.flipBit(n) }

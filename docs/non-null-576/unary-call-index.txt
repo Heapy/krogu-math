@@ -1,0 +1,83 @@
+src/jvmTest/kotlin/io/heapy/krogu/math/ScaleBoundaryConformanceTest.kt:100:                        val result = a.round(mc)
+src/jvmTest/kotlin/io/heapy/krogu/math/ScaleBoundaryConformanceTest.kt:106:                } else check("round $x,$mc", { x.round(jc) }, { a.round(mc) })
+src/jvmTest/kotlin/io/heapy/krogu/math/JdkOracleTest.kt:128:            same("round $label", { x.round(jc) }, { a.round(mc) })
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalRoundSubclassTest.kt:22:                    override fun plus(mc: java.math.MathContext): java.math.BigDecimal {
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalRoundSubclassTest.kt:24:                        return when (behavior) { "replace" -> java.math.BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalRoundSubclassTest.kt:31:                    override fun plus(mc: MathContext): BigDecimal {
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalRoundSubclassTest.kt:33:                        return when (behavior) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalRoundSubclassTest.kt:37:                    val result = expected.round(java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name)))
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalRoundSubclassTest.kt:41:                    val result = actual.round(MathContext(precision, mode))
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:17:                override fun plus(mc: java.math.MathContext?): java.math.BigDecimal {
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:19:                    return when (behavior) { "replace" -> java.math.BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:21:                override fun round(mc: java.math.MathContext?): java.math.BigDecimal { expectedTrace.append("round;"); return java.math.BigDecimal("99") }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:24:                override fun plus(mc: MathContext): BigDecimal {
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:26:                    return when (behavior) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:28:                override fun round(mc: MathContext): BigDecimal { actualTrace.append("round;"); return BigDecimal("99") }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:38:            val a = outcome { expected.negate(if (precision < 0) null else java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))) }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:41:                else actual.negate(MathContext(precision, mode))
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:72:                        override fun negate(mc: java.math.MathContext): java.math.BigDecimal { expectedTrace.append("negateContext;"); return super.negate(mc) }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:74:                        override fun plus(mc: java.math.MathContext?): java.math.BigDecimal { expectedTrace.append("plusContext;"); return super.plus(mc) }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:75:                        override fun round(mc: java.math.MathContext?): java.math.BigDecimal { expectedTrace.append("round;"); return super.round(mc) }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:81:                        override fun negate(mc: MathContext): BigDecimal { actualTrace.append("negateContext;"); return super.negate(mc) }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:83:                        override fun plus(mc: MathContext): BigDecimal { actualTrace.append("plusContext;"); return super.plus(mc) }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:84:                        override fun round(mc: MathContext): BigDecimal { actualTrace.append("round;"); return super.round(mc) }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:88:                        val r = when (op) { "abs" -> expected.abs(); "absContext" -> expected.abs(mc); "negate" -> expected.negate(); "negateContext" -> expected.negate(mc); "plus" -> expected.plus(); else -> expected.plus(mc) }
+src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt:93:                        val r = when (op) { "abs" -> actual.abs(); "absContext" -> actual.abs(mc); "negate" -> actual.negate(); "negateContext" -> actual.negate(mc); "plus" -> actual.plus(); else -> actual.plus(mc) }
+src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt:14:            override fun plus(mc: MathContext): BigDecimal {
+src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt:16:                return when (argument) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
+src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt:18:            override fun round(mc: MathContext): BigDecimal { trace.append("round;"); return BigDecimal("99") }
+src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt:21:        val result = outcome { value.negate(MathContext(precision, mode)).toString() }
+src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt:29:        override fun negate(mc: MathContext): BigDecimal { trace.append("negateContext;"); return super.negate(mc) }
+src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt:31:        override fun plus(mc: MathContext): BigDecimal { trace.append("plusContext;"); return super.plus(mc) }
+src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt:32:        override fun round(mc: MathContext): BigDecimal { trace.append("round;"); return super.round(mc) }
+src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt:38:            "absContext" -> value.abs(context)
+src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt:40:            "negateContext" -> value.negate(context)
+src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt:42:            "plusContext" -> value.plus(context)
+src/commonTest/kotlin/io/heapy/krogu/math/DecimalScaleContractTest.kt:136:                    assertEquals(expected, decimalOutcome { a.subtract(b.negate(), mc) }, "subtract $mc")
+src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt:247:                override fun plus(mc: MathContext): BigDecimal {
+src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt:249:                    return when (op) { "replace" -> BigDecimal("42.00"); "throw" -> throw IllegalStateException("plus callback"); else -> super.plus(mc) }
+src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt:262:                    else BigDecimal(BigInteger(v[2]), v[3].toInt()).round(context)).toString()
+src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt:575:            "round" -> a.round(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextContractTest.kt:19:    override fun abs(mc: MathContext): BigDecimal = super.abs(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextContractTest.kt:21:    override fun negate(mc: MathContext): BigDecimal = super.negate(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:20:        override fun plus(mc: MathContext) = super.plus(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:21:        override fun round(mc: MathContext) = super.round(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:22:        fun plusBase(mc: MathContext) = super.plus(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:23:        fun roundBase(mc: MathContext) = super.round(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:46:                assertCanonicalZero(x.plus(mc))
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:47:                assertCanonicalZero(x.round(mc))
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:71:                assertFields(c.toString(), s, x.plus(mc))
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:72:                assertFields(c.toString(), s, x.round(mc))
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:104:            val calls = mutableListOf<() -> BigDecimal>({ x.plus(mc) }, { x.round(mc) })
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:125:            override fun plus(mc: MathContext): BigDecimal {
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:129:            fun plusBase(mc: MathContext) = super.plus(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:130:            fun roundBase(mc: MathContext) = super.round(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:133:            override fun round(mc: MathContext): BigDecimal {
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:137:            fun roundBase(mc: MathContext) = super.round(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:143:            for (call in listOf<() -> BigDecimal>({ plus.plus(mc) }, { plus.round(mc) },
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:144:                { plus.roundBase(mc) }, { round.round(mc) })) {
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:151:            assertCanonicalZero(round.plus(mc))
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:228:                assertFields("0", s, zero.abs(mc))
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:229:                assertFields("0", s, zero.negate(mc))
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:237:                override fun plus(mc: MathContext): BigDecimal {
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:246:                for (call in listOf<() -> BigDecimal>({ returned.abs(mc) }, { source.negate(mc) })) {
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:260:                override fun plus(mc: MathContext): BigDecimal {
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:265:                fun plusBase(mc: MathContext) = super.plus(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:266:                fun roundBase(mc: MathContext) = super.round(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:282:                for (call in listOf<() -> BigDecimal>({ returned.plus(mc) },
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:283:                    { returned.round(mc) }, { returned.roundBase(mc) })) {
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:300:                override fun negate(mc: MathContext): BigDecimal {
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:308:                if (fail) assertSame(failure, assertFailsWith<IllegalStateException> { value.abs(context) })
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:309:                else assertSame(replacement, value.abs(context))
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:312:                assertFields("0", 2, value.abs(context))
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:316:                override fun abs(mc: MathContext): BigDecimal {
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:320:                override fun negate(mc: MathContext): BigDecimal {
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:324:                fun absBase(mc: MathContext) = super.abs(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:325:                fun negateBase(mc: MathContext) = super.negate(mc)
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:327:            for (call in listOf<() -> BigDecimal>({ explicit.abs(context) }, { explicit.negate(context) })) {
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:338:            assertSame(failure, assertFailsWith<IllegalStateException> { throwing.abs(context) })
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt:339:            assertSame(failure, assertFailsWith<IllegalStateException> { throwing.negate(context) })
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroUnaryPrecision567Test.kt:13:                override fun plus(mc: MathContext): BigDecimal = error("internal plus must not be called")
+src/commonTest/kotlin/io/heapy/krogu/math/ZeroUnaryPrecision567Test.kt:18:            fun invoke(context: MathContext): BigDecimal = if (negate) receiver.negate(context) else zero.abs(context)
+src/commonTest/kotlin/io/heapy/krogu/math/ScaleBoundaryOracleTest.kt:18:                verify(label) { a.round(mc) }
+src/commonTest/kotlin/io/heapy/krogu/math/ScaleBoundaryOracleTest.kt:25:            val result = a.round(mc)

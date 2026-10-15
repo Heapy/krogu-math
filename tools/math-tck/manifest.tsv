@@ -1,7 +1,7 @@
 path	disposition	resource	runner	adaptation	reason	lostCoverage
 test/jdk/java/math/BigDecimal/AddTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
 test/jdk/java/math/BigDecimal/CompareToTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
-test/jdk/java/math/BigDecimal/Constructor.java	selected	standard	testng	imports-only	Public test; retain assertions and input domain	none planned; execution pending
+test/jdk/java/math/BigDecimal/Constructor.java	adapted	standard	testng	four-non-null-contexts	Use MathContext.UNLIMITED for exactly four null contexts in invalid char-array range calls under the non-null Kotlin constructor policy; retain range operands, five TestNG assertions and error-cause check	Original joint-invalid range/null-context precedence in four port calls is not executed; four adaptation-companion SKIPs retain lost coverage and frozen campaign1792066236575 FAIL
 test/jdk/java/math/BigDecimal/ConstructorUnscaledValue.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
 test/jdk/java/math/BigDecimal/DivideMcTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending
 test/jdk/java/math/BigDecimal/DivideTests.java	selected	standard	main	imports-only	Public test; retain assertions and input domain	none planned; execution pending

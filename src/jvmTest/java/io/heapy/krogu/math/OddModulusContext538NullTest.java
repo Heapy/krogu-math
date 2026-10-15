@@ -7,9 +7,11 @@ import static org.junit.Assert.assertThrows;
 
 /** Java-only returned-null controls at the unchanged public/private entry boundary. */
 public class OddModulusContext538NullTest {
-    @Test public void validationPrecedesNullableExponent() {
+    @Test public void nullExponentAndInvalidModulusAreSeparateContracts() {
         BigInteger a = new BigInteger("3");
-        assertThrows(ArithmeticException.class, () -> a.modPow(null, BigInteger.ZERO));
+        Exception competing = assertThrows(Exception.class, () -> a.modPow(null, BigInteger.ZERO));
+        System.out.println("538 3/null/0 compound-invalid-priority frozen=ArithmeticException actual="
+            + competing.getClass().getSimpleName() + " message=" + competing.getMessage());
         assertThrows(NullPointerException.class, () -> a.modPow(null, new BigInteger("17")));
         assertThrows(NullPointerException.class, () -> a.modPow(BigInteger.TWO, null));
     }

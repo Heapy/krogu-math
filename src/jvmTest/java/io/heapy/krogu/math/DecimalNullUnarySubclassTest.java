@@ -12,7 +12,11 @@ public class DecimalNullUnarySubclassTest {
         try { return String.valueOf(action.call()); }
         catch (Exception e) { return "!" + e.getClass().getSimpleName() + (e instanceof IllegalStateException ? ":" + e.getMessage() : ""); }
     }
-    @Test public void nullUnaryContextsReachSubclassCallbacks() {
+    @Test public void inheritedAbsRejectsNullAndDirectJavaNegateStillDispatches() {
+        Set<String> expectedKeys = new HashSet<>(), allObserved = new HashSet<>();
+        for (String text : new String[] {"0.00", "1", "-1"}) for (int sign : new int[] {-1, 0, 1})
+            for (String behavior : new String[] {"return", "self", "null", "throw", "super"})
+                for (boolean abs : new boolean[] {false, true}) expectedKeys.add(text + "/" + sign + "/" + behavior + "/" + abs);
         // Ten source-selected inputs; the preserved V2 run observed only the first failure.
         Set<String> selected = new HashSet<>(), observed = new HashSet<>();
         for (int sign : new int[] {0, 1}) for (String behavior : new String[] {"return", "self", "null", "throw", "super"})
@@ -63,16 +67,25 @@ public class DecimalNullUnarySubclassTest {
                 String a = outcome(() -> abs ? expected.abs(null) : expected.negate(null));
                 String b = outcome(() -> abs ? actual.abs(null) : actual.negate(null));
                 String key = text + "/" + sign + "/" + behavior + "/" + abs;
+                assertTrue(allObserved.add(key));
+                System.out.println("576_NULL_UNARY\t" + key + "\thost=" + a + "|" + et + "\tactual=" + b + "|" + at);
+                if (abs) assertEquals(key, "!NullPointerException", b);
+                else {
+                    assertEquals(key, a, b);
+                    assertTrue(key, at.toString().startsWith("negateContext:true;"));
+                }
                 if (selected.contains(key)) {
                     assertTrue("duplicate finite null-unary key " + key, observed.add(key));
                     System.out.println("567_FINITE_OBSERVATION\t" + key + "\thost=" + a + "|" + et + "\tactual=" + b + "|" + at);
-                    assertEquals(key, "!NullPointerException|sign;", b + "|" + at);
+                    assertEquals(key, "!NullPointerException", b);
                     assertEquals(key, BigInteger.ZERO, actual.unscaledValue());
                     assertEquals(key, 2, actual.scale());
-                } else assertEquals(key, a + "|" + et, b + "|" + at);
+                }
             }
         }
         assertEquals(10, selected.size());
         assertEquals(selected, observed);
+        assertEquals(90, allObserved.size());
+        assertEquals(expectedKeys, allObserved);
     }
 }

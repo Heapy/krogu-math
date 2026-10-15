@@ -6,7 +6,7 @@ internal fun evaluateNullableBinaryOracle(v: Array<String>): String {
     val precision = v[4].toInt()
     val trace = StringBuilder()
     val value = object : BigDecimal(v[2]) {
-        private fun callback(operand: BigDecimal?, base: () -> BigDecimal): BigDecimal {
+        private fun callback(operand: BigDecimal, base: () -> BigDecimal): BigDecimal {
             trace.append(operation).append(':').append(operand == null).append(';')
             return when (behavior) {
                 "return" -> BigDecimal("42.00")
@@ -16,12 +16,14 @@ internal fun evaluateNullableBinaryOracle(v: Array<String>): String {
                 else -> error("Unknown callback behavior $behavior")
             }
         }
-        override fun add(augend: BigDecimal?): BigDecimal = callback(augend) { super.add(augend) }
-        override fun subtract(subtrahend: BigDecimal?): BigDecimal = callback(subtrahend) { super.subtract(subtrahend) }
-        override fun multiply(multiplicand: BigDecimal?): BigDecimal = callback(multiplicand) { super.multiply(multiplicand) }
+        override fun add(augend: BigDecimal): BigDecimal = callback(augend) { super.add(augend) }
+        override fun subtract(subtrahend: BigDecimal): BigDecimal = callback(subtrahend) { super.subtract(subtrahend) }
+        override fun multiply(multiplicand: BigDecimal): BigDecimal = callback(multiplicand) { super.multiply(multiplicand) }
     }
-    val operand = if (v[3] == "~") null else BigDecimal(v[3])
-    val context = if (precision < 0) null else MathContext(precision, RoundingMode.valueOf(v[5]))
+    require(!DecimalBinary575Rows.nd(v)) { "Null inputs execute in DecimalBinary575JvmTest" }
+    val operand = BigDecimal(v[3])
+    // -2 selects the exact overload and never supplies this context.
+    val context = MathContext(if (precision == -2) 0 else precision, RoundingMode.valueOf(v[5]))
     val result = try {
         val computed = if (precision == -2) when (operation) {
             "add" -> value.add(operand)

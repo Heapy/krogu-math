@@ -10,7 +10,7 @@ import kotlin.random.Random
 // generates final bridges; JavaApiContractTest checks Java and Kotlin dispatch.
 @Suppress("INAPPLICABLE_JVM_NAME")
 open class BigInteger private constructor(private val sign: Int, private val words: IntArray) :
-    Number(), Comparable<BigInteger?>, MathSerializable {
+    Number(), Comparable<BigInteger>, MathSerializable {
 
     private constructor(value: BigInteger) : this(value.sign, value.words)
     private fun readObject(stream: MathObjectInputStream) {
@@ -33,9 +33,9 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     constructor(value: ByteArray) : this(fromBytes(value, 0, value.size, true))
     constructor(value: ByteArray, off: Int, len: Int) : this(fromBytes(value, off, len, true))
     constructor(signum: Int, magnitude: ByteArray) : this(signum, magnitude, 0, magnitude.size)
-    constructor(signum: Int, magnitude: ByteArray?, off: Int, len: Int) : this(signedBytes(signum, magnitude, off, len))
-    constructor(numBits: Int, rnd: PlatformRandom?) : this(randomBits(numBits, rnd))
-    constructor(bitLength: Int, certainty: Int, rnd: PlatformRandom?) : this(generatePrime(bitLength, certainty, rnd))
+    constructor(signum: Int, magnitude: ByteArray, off: Int, len: Int) : this(signedBytes(signum, magnitude, off, len))
+    constructor(numBits: Int, rnd: PlatformRandom) : this(randomBits(numBits, rnd))
+    constructor(bitLength: Int, certainty: Int, rnd: PlatformRandom) : this(generatePrime(bitLength, certainty, rnd))
 
     open fun signum(): Int = sign
     open fun abs(): BigInteger = if (sign < 0) negate() else this
@@ -262,9 +262,9 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         val r = remainder(m)
         return if (r.sign < 0) r.add(m) else r
     }
-    open fun modPow(exponent: BigInteger?, m: BigInteger): BigInteger {
+    open fun modPow(exponent: BigInteger, m: BigInteger): BigInteger {
         if (m.sign <= 0) throw ArithmeticException("BigInteger: modulus not positive")
-        val power = exponent ?: throw NullPointerException()
+        val power = exponent
         if (power.sign == 0) return if (m == ONE) ZERO else ONE
         if (this == ONE) return if (m == ONE) ZERO else ONE
         if (this == ZERO && power.sign >= 0) return ZERO
@@ -672,14 +672,14 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         for (i in result.indices) result[i] = result[i].inv() and MASK.toInt()
         return bitwiseResult(result, width)
     }
-    open infix fun and(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a and b }
-    open infix fun or(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a or b }
-    open infix fun xor(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a xor b }
-    open fun andNot(value: BigInteger?): BigInteger = bitwise(value) { a, b -> a and b.inv() }
+    open infix fun and(value: BigInteger): BigInteger = bitwise(value) { a, b -> a and b }
+    open infix fun or(value: BigInteger): BigInteger = bitwise(value) { a, b -> a or b }
+    open infix fun xor(value: BigInteger): BigInteger = bitwise(value) { a, b -> a xor b }
+    open fun andNot(value: BigInteger): BigInteger = bitwise(value) { a, b -> a and b.inv() }
     // Public bitLength is intentionally virtual, including on a subclass operand.
     private fun bitwiseLength32(): Int = (bitLength() ushr 5) + 1
-    private fun bitwise(value: BigInteger?, op: (Int, Int) -> Int): BigInteger {
-        val width = maxOf(bitwiseLength32(), value!!.bitwiseLength32()).toLong() * 32
+    private fun bitwise(value: BigInteger, op: (Int, Int) -> Int): BigInteger {
+        val width = maxOf(bitwiseLength32(), value.bitwiseLength32()).toLong() * 32
         val length = ((width + LIMB_BITS - 1) / LIMB_BITS).toInt()
         val a = twosComplement(length)
         val b = value.twosComplement(length)
@@ -774,12 +774,12 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return n
     }
 
-    override fun compareTo(other: BigInteger?): Int {
-        val operand = other ?: throw NullPointerException()
+    override fun compareTo(other: BigInteger): Int {
+        val operand = other
         return if (sign != operand.sign) sign.compareTo(operand.sign) else sign * compareMagnitude(words, operand.words)
     }
-    open fun min(value: BigInteger?): BigInteger? = if (compareTo(value) < 0) this else value
-    open fun max(value: BigInteger?): BigInteger? = if (compareTo(value) > 0) this else value
+    open fun min(value: BigInteger): BigInteger = if (compareTo(value) < 0) this else value
+    open fun max(value: BigInteger): BigInteger = if (compareTo(value) > 0) this else value
     override fun equals(other: Any?): Boolean = other is BigInteger && sign == other.sign && words.contentEquals(other.words)
     override fun hashCode(): Int {
         var hash = 0
@@ -1024,17 +1024,17 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         }
         @kotlin.jvm.JvmSynthetic
         @JvmStatic open fun probablePrime(bitLength: Int, rnd: Random): BigInteger = generatePrime(bitLength, 100, rnd)
-        @JvmStatic open fun probablePrime(bitLength: Int, rnd: PlatformRandom?): BigInteger = generatePrime(bitLength, 100, rnd)
+        @JvmStatic open fun probablePrime(bitLength: Int, rnd: PlatformRandom): BigInteger = generatePrime(bitLength, 100, rnd)
         internal fun randomValue(numBits: Int, rnd: Random): BigInteger = randomBits(numBits, rnd)
         internal fun primeValue(bitLength: Int, certainty: Int, rnd: Random): BigInteger = generatePrime(bitLength, certainty, rnd)
-        private fun generatePrime(bitLength: Int, certainty: Int, rnd: PlatformRandom?): BigInteger {
+        private fun generatePrime(bitLength: Int, certainty: Int, rnd: PlatformRandom): BigInteger {
             if (bitLength < 2) throw ArithmeticException("bitLength < 2")
-            return generatePrime(bitLength, certainty, (rnd ?: throw NullPointerException()).asCommonRandom())
+            return generatePrime(bitLength, certainty, rnd.asCommonRandom())
         }
-        private fun randomBits(numBits: Int, rnd: PlatformRandom?): BigInteger {
+        private fun randomBits(numBits: Int, rnd: PlatformRandom): BigInteger {
             require(numBits >= 0) { "numBits must be non-negative" }
             if (numBits == 0) return ZERO
-            return randomBits(numBits, (rnd ?: throw NullPointerException()).asCommonRandom())
+            return randomBits(numBits, rnd.asCommonRandom())
         }
         private fun generatePrime(bitLength: Int, certainty: Int, rnd: Random): BigInteger {
             if (bitLength < 2) throw ArithmeticException("bitLength < 2")
@@ -1120,9 +1120,9 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             if (buffer != 0L) result[word] = buffer.toInt()
             return normalized(if (negative) -1 else 1, result)
         }
-        private fun signedBytes(signum: Int, bytes: ByteArray?, off: Int, len: Int): BigInteger {
+        private fun signedBytes(signum: Int, bytes: ByteArray, off: Int, len: Int): BigInteger {
             if (signum !in -1..1) throw NumberFormatException("Invalid signum value")
-            val magnitude = bytes ?: throw NullPointerException()
+            val magnitude = bytes
             if (signum == 0) {
                 checkBounds(magnitude, off, len)
                 for (i in off until off + len)

@@ -1,0 +1,25 @@
+// Source-only compiler fixture. Compile later with the pinned toolchain; not executed by task574.
+package io.heapy.krogu.math
+
+fun acceptedInteger574(a: BigInteger, b: BigInteger) {
+    val order: Comparable<BigInteger> = a
+    val comparison: Int = order.compareTo(b)
+    val minimum: BigInteger? = a.min(b)
+    val maximum: BigInteger? = a.max(b)
+}
+fun acceptedDecimal574(a: BigDecimal, b: BigDecimal) {
+    val order: Comparable<BigDecimal> = a
+    val comparison: Int = order.compareTo(b)
+    val minimum: BigDecimal? = a.min(b)
+    val maximum: BigDecimal? = a.max(b)
+}
+class IntegerOverride574 : BigInteger("1") {
+    override fun compareTo(other: BigInteger): Int = super.compareTo(other)
+    override fun min(value: BigInteger): BigInteger? = super.min(value)
+    override fun max(value: BigInteger): BigInteger? = super.max(value)
+}
+class DecimalOverride574 : BigDecimal("1.00") {
+    override fun compareTo(other: BigDecimal): Int = super.compareTo(other)
+    override fun min(value: BigDecimal): BigDecimal? = super.min(value)
+    override fun max(value: BigDecimal): BigDecimal? = super.max(value)
+}

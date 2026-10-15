@@ -1,0 +1,109 @@
+Task577 terminal SOURCE implementation milestone
+ALL UNCOMPILED/UNRUN. Changes are not committed.
+
+Identity and scope
+Local:577 remains in_progress and linked to session 2f78d78f. Project is active.
+Checkout: /private/tmp/krogu-math-task-577
+Branch: task/577-bitwise-nonnull
+Initial/final HEAD: 60aea413e0c7af007844aace6ec28ecdfa019b67
+Initial status was clean. No Git mutations or task transitions occurred.
+
+Actual active source is implemented, not merely an inactive proposal. Exactly
+four public BigInteger inputs (and/or/xor/andNot, parameter0) and their private
+bitwise helper input changed from BigInteger? to BigInteger. The helper's old
+value!! is now value. The other44 migration slots, constructors, equals(Any?),
+all nullable result declarations, shifts, caches, serialization and numerical
+kernels are unchanged. No foreign implementation source or bodies were used.
+
+All10 affected own Kotlin overrides migrated: four BitProbe overrides, one
+LogicalChild override, three migration-contract overrides, and the common/JVM
+published545 xor overrides. JDK platform-type xor override remains nullable.
+For nonnull inputs, the same helper, operand order, virtual bitLength calls,
+two-complement arrays, word operation, mask and result conversion remain. Existing
+valid mathematical, alias, marker, identity, metadata, truthful override and
+explicit-super assertions remain on their original platforms and paths.
+This is a source argument, not proof of generated guards or runtime acceptance.
+
+Null entry and exact row accounting
+Common invalid-null executions displaced: 0. Common bitwise callers already use
+nonnull operands; no fixture selector or common assertion was removed. All frozen
+17,198 bit-oracle rows and main oracle rows/generators are byte-identical.
+
+IntegerBitsNullTest retains every original 3 texts x 2 fail modes x 4 operations
+in the same zero-based ordinal order: 24 own + 24 live-host executions. An explicit
+24-key literal list is compared against execution order and the final list/count.
+rows.tsv lists each ordinal/key and historical callback-first outcome. The original
+test source is copied verbatim under originals/ and also exists in the initial
+archive. The historical !NullPointerException|bits; and
+!IllegalStateException|bits; strings describe the old callback-first partition;
+they are not new observations. Future execution reports these beside live host,
+new own exception/message and trace. Every own inherited null entry must actually
+throw NPE, including fail=true: no caller-side substitute exception is generated.
+Internal callbacks/messages remain diagnostics, not a blanket waiver of outcomes.
+
+The new Java test adds16 calls (new-controls.tsv): four ordinary base entries
+require NPE; four direct override calls return the exact replacement object and
+record the operation; four direct throwing calls preserve exact marker identity
+and operation trace; four real Java super calls require NPE. Actual's super bridge
+lexically invokes BigInteger.and/or/xor/andNot and bypasses Direct's throwing
+overrides. Reflection is not mislabeled as super. Direct Java override bodies
+explicitly assert that the null argument arrived. Existing valid Kotlin direct
+override/marker and super controls remain intact.
+
+Published545 keeps all five own/host diagnostic actions at original ordinals0..4;
+only own ordinal2 xor(null) changes to exact xor(BigInteger) reflection on the
+same inherited receiver. InvocationTargetException is unwrapped; lookup/access/
+argument failures become AssertionError, never acceptable target observations.
+Any? preserves returned-null observability without caller assertions. Ordinal2
+requires actual target NPE; all five actions retain trace/message/live-host
+reporting and explicit size5 assertions. Existing standalone explicit caller
+metadata marker assertions and all accepted545 nonnull assertions are retained.
+The existing ordinary reflection null-conformance matrix remains unchanged.
+
+Preservation and exact source evidence
+Before editing, archived the entire checkout except Git administration:
+/private/tmp/task577-source-baseline/initial-tree.tar
+SHA256 37792cf0c269201a6b1e06db88f38f2c2887bd748b0b6a56b3e1d884ffdb8c5f
+baseline-tracked.sha256 records all404 initial tracked files.
+SHA256 fba8d73408889ec6593888e3c6803908ef763ce9569005872afff9fbdc4530cb
+preservation-check.txt: 397 byte-identical, exactly7 intentional source changes.
+The seven expected FAILED entries are the files in changed-source.sha256;
+they are intentional source edits, not test failures. Every fixture, generator,
+raw observation, accepted544 source, build descriptor and frozen history file
+is among the397 unchanged entries. No other worktree or runtime was edited.
+
+active-source.patch is the exact diff against HEAD of those7 active source files:
+125 insertions,28 deletions. It records implemented edits; do not apply it again
+inside this checkout. SHA256:
+2ffb262d7c47a47e9915c3b9492b7ec336aa4e89eebb610a8257aee63602cd06
+changed-source.sha256 contains all seven final file hashes, including BigInteger:
+974c118390c12c96809553d67a5e7363f8f8cb49dc08bd7a0e4f294a5b69d0f7
+Original IntegerBitsNullTest.java.txt SHA256:
+fbecfd1e9fd767a88f3e28f86bd5237214baa5136479332bbf7d8f4e994bc84e
+artifact.sha256 covers this handoff and accompanying evidence files.
+
+Independent review and permitted checks
+Independent read-only agent source_review found no actionable findings. It checked
+all10 overrides/callers, zero displaced common null calls, exact24 key/order
+retention, direct override return/marker identity, inherited entry versus real
+super, published545 reflection ordinal2 and preservation of valid assertions.
+git diff --check is clean. Final changed-source hashes rechecked successfully.
+Exploration's jbcontext index was unavailable; direct symbol/source inspection
+was used. Parent573 handoff, G5 patch/slots, indices and545 pattern were read.
+
+No compiler, Kotlin script, helper/certificate, Gradle/toolchain, Java probe,
+test, build/JAR, harness, benchmark, timing or allocation execution occurred.
+No prior runtime acceptance is claimed for these changed sources.
+
+Parent handoff
+No unresolved focused source blocker. End this source session and archive it now;
+do not wait for a runtime grant. Root af5f5ab4 / linked526 owns integration with
+other groups, pinned Gradle9.8.1/Kotlin2.4.21/Liberica25.0.4+9-LTS compiler and
+boundary replay, full retained targets, current own serialization roundtrips,
+public tests, exact published-head all6CI and closure. Java source compatibility
+is TCK-only; legacy streams remain excluded. No official JCK/full compatibility
+claim is made. During aggregate integration, update COMPATIBILITY.md:342-345:
+its published nullable-bitwise/callback-first language is historical after G5.
+It is preserved here with other baseline documentation for root's combined edit.
+
+ALL UNCOMPILED/UNRUN. Changes are not committed. No review/done/unlink performed.

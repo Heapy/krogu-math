@@ -158,7 +158,7 @@ class Division530Test {
         override fun negate(): BigInteger = callback()
         override fun signum(): Int = callback()
         override fun bitLength(): Int = callback()
-        override fun compareTo(other: BigInteger?): Int = callback()
+        override fun compareTo(other: BigInteger): Int = callback()
         override fun testBit(n: Int): Boolean = callback()
         override fun add(value: BigInteger): BigInteger = callback()
         override fun subtract(value: BigInteger): BigInteger = callback()
