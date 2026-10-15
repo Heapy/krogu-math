@@ -33,7 +33,8 @@ The returned-composite probability of rejection sampling needs a separate
 bound from a single candidate's error probability. Let p be the fraction
 of actual primes among candidates and q the probability that one draw
 is composite and nevertheless accepted. The eventual returned-composite
-probability is q/(p+q), less than q/p. Using only c bits of candidate-test
+probability is q/(p+q). If q=0 this probability is zero; otherwise it is
+strictly less than q/p. Using only c bits of candidate-test
 certainty does not by itself establish c bits for the returned value.
 
 For b>=6, set x=2^b. Rosser–Schoenfeld's Corollary 1, inequalities (3.5)
@@ -47,7 +48,8 @@ also greater than 1/b. For b=2 both possible outputs are prime.
 
 `PrimalityCertainty.generationRounds` therefore uses
 r=ceil((c+ceil(log2(b)))/2) for positive c. Then
-q/p < b*2^(-2*r) <= 2^-c. The additions use Long: even c=Int.MAX_VALUE
+for q>0, q/p < b*2^(-2*r) <= 2^-c; the q=0 case also meets the strict
+requested bound. The additions use Long: even c=Int.MAX_VALUE
 and b=Int.MAX_VALUE yield the positive Int round count 1,073,741,839.
 The portable budget test checks the integer inequality 2^(2*r-c)>=b,
 including power-of-two neighbors and Int endpoints. Independent trial
@@ -84,7 +86,9 @@ biased or repeating caller RNG remains a separate audit.
 Extreme certainty can require a very large number of rounds; the public
 [JDK contract](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigInteger.html#isProbablePrime(int))
 explicitly permits long execution. Practical large-input performance and
-supported-range behavior remain unproven here.
+supported-range behavior remain unproven here. The
+[current source binding](docs/primality-547-proof-binding.md) separates the
+whole-domain round-budget argument from these randomness and completion premises.
 
 ## Binary floating-point rounding
 
@@ -311,9 +315,12 @@ For positive `m`, ordinary positive powering keeps a residue `r` and a base
 `b`, initially `r=1 mod m` and `b=a mod m`. At bit `i`, `b` is congruent to
 `a^(2^i)`. Multiplying `r` by `b` when the exponent bit is set incorporates
 exactly that exponent contribution; squaring `b` advances the invariant.
-There are finitely many stored exponent bits. The odd-modulus implementation
-uses this independent binary algorithm; public equality selects the observed
-exponent-one identity shortcut before the stored-bit loop.
+There are finitely many stored exponent bits. The odd-modulus binary fallback
+uses this invariant; eligible moduli instead enter the own Montgomery context,
+whose carry, conversion and workspace argument is bound in the
+[current modular ledger](docs/modular-substitution-546-proof-binding.md).
+Public equality selects the observed exponent-one identity shortcut before
+either powering route.
 
 For even `m`, write `m=q*B`, with odd `q` and `B=2^p`. These factors are coprime.
 Compute residues `u=a^e mod q` and `v=a^e mod B`. Let `s=B^(-1) mod q` and
@@ -382,7 +389,10 @@ working loop. Replacement negative reductions supply their magnitude to that
 loop, matching the black-box JDK outcomes; fake equality can select a constant
 shortcut. Those observations are checked separately from ordinary mathematical
 invariants. The proof above assumes truthful callbacks and does not cover every
-composition of replacement objects.
+composition of replacement objects. The
+[current modular substitution ledger](docs/modular-substitution-546-proof-binding.md)
+extends the value argument to finite, completing graphs of transitively truthful
+returned objects; false or changing numerical answers remain a separate class.
 
 ## Integer powers
 

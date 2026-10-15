@@ -106,6 +106,17 @@ The later [e36 large-profile campaign](docs/public-math-large-e36-verification-5
 passed12 invocations with0 failures and128 declared skips on its exact234-source
 checkout. Its separately running normal CI and the later583 source are outside
 that large-only result.
+The subsequent [f58 large-profile campaign](docs/public-math-large-f58-verification-559.md)
+also passed12 invocations with0 failures and128 declared skips, now bound to the
+exact236-source checkout and the same391b73 own JAR as local583 validation.
+The harness and original large profiles were unchanged. Its separate normal
+CI and the full numerical/range contract are outside that large-only result.
+
+Task585 records a later source-confirmed addition range defect: both finite
+rounding of an oversized exact sum and exact cancellation of an oversized
+aligned term can have supported final coefficients. The current addition path
+can reject those intermediates first. Its maximum-size witnesses are symbolic,
+not executed JDK failures;541/P1 and548 remain open pending the repair.
 
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in
@@ -260,13 +271,13 @@ and source guarantees themselves are not waived by that classification.
 |---|---|---|
 | Kotlin numerical call surface, constants, operators and conversions of all four types | `ApiSurfaceTest` inventories the current JVM shape; selected Kotlin subclass calls; task573's 49 accepted compiler jobs validate the reviewed input-nullability migration | Complete migration matrix beyond those input slots, including operators/conversions and missing stdlib counterparts (525); Kotlin/JS Number dispatch blocker557 remains open; Java class/constructor shape is not a library requirement |
 | Java source compatibility inside the TCK harness | `JavaApiContractTest` plus the consolidated public campaign's 53 successful port invocations with exact own-JAR/caller binding and explicit adapters | Larger public resource profiles and recorded adaptation losses remain separate; no direct Java consumer source-compatibility promise or official JCK result |
-| BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor outcomes; 11,798 modular reduction/inverse outcomes; 9,176 modular-power outcomes and numerical arguments | Larger operand patterns, supported-range/allocation limits and compound modular subclass behavior |
+| BigInteger signed arithmetic and exact results | Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor outcomes; 11,798 modular reduction/inverse outcomes; 9,176 modular-power outcomes; [transitively truthful modular substitution argument](docs/modular-substitution-546-proof-binding.md) | Kernel completion and supported-range/allocation548 remain premises; false/changing callback fields retain their separate classification, with no universal inherited trace guarantee |
 | Infinite two's-complement bit semantics | Portable oracle, seeded JVM operations, algebraic invariants and finite-width sign-extension argument; 17,198 bit value/callback/identity outcomes | Multi-gigabyte operands and bit distances, wider changing-metadata subclass compositions |
 | All constructor encodings and validation | Historical 25,584 byte and 10,156 string outcomes; BMP digit/radix corpus; conditional [lexical/slice](docs/constructor-contract-549-coverage.md), [byte representation](docs/integer-byte-constructor-549-proof.md) and [contextual rounding](docs/contextual-constructor-rounding-549-proof.md) arguments; separate16-call scale-wording diagnostic | Complete overload/error classification, remaining malformed/compound-invalid diagnostic inventory, supported-range/allocation limits548 and the recorded constructor wording tension526 |
 | Decimal rounding, precision, preferred scales, comparisons and text | 192,000 structured JVM comparisons; 207,239 exact portable scale-boundary outcomes; 75,728 context callback/metadata outcomes; portable fixtures | Wider coefficient/scale/precision combinations, compact subclass compositions and remaining overloads |
 | Powers and roots | 10,560 initial JVM comparisons, 13,024 exponent-bit/rounding comparisons, 128 working-precision overflow cases, 2,592 squared-midpoint root fixtures through 129 digits, integer midpoint rounding argument; 6,677 integer-power outcomes; 978 integer-root outcomes and independent bounds | Wider decimal-root and integer-power subclass compositions, intermediate/scale-overflow audit and larger operand/allocation domains |
 | Float/Double conversions and canonical factory values | Bitwise oracle comparisons, midpoint/canonical boundary fixtures, all binary scaling powers from -1074 through 1023, and the independently reviewed [current exhaustive-class composition](docs/floating-conversion-543-proof-binding.md) for integer/decimal rounding, exact Double construction and canonical Float/Double selection | Ordinary conversion mathematics is covered conditionally by that proof; maximum-domain allocations548, broader decimal subtype classification541 and Kotlin/JS erased Number dispatch557 remain separate |
-| Prime generation and certainty | 416 portable primality/successor/trace cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions; generation density argument and successor whole-search error budget; exhaustive small byte-payload distribution, primality and successor trial-division checks | Very large certainty beyond the proven bound, witness independence at larger magnitudes, supported-range limits, caller RNG behavior and wider subclass dispatch |
+| Prime generation and certainty | 416 portable primality/successor/trace cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions; [whole-domain conditional certainty and sampling argument](docs/primality-547-proof-binding.md); exhaustive small byte-payload distribution, primality and successor trial-division checks | Actual history-conditioned platform/caller randomness, truthful kernel and capacity completion548, and false/changing callback classification remain separate; no practical billion-round completion claim |
 | Exception conditions and types | Historical portable/null/invalid fixtures and constructor diagnostics; reviewed48-input non-null policy implemented by573–578 | Wider documented exception domains and conditions; messages and competing-invalid ordering remain separately classified observations under526 |
 | Equality, ordering, hash codes, immutability | JVM oracle and common invariants; 6,110 portable BigInteger hash outcomes | Full context/enum/hash and subclass audit |
 | Current-format JVM serialization; optional snapshot adapter evidence | Current-format round trips, validated base state, subclass state, reference identity, cycles and array-alias isolation; existing exact coefficient/scale adapters | Java adapters do not constrain the future library shape; cross-version serialization and java.math stream migration are outside scope |
@@ -358,7 +369,11 @@ For positive certainty and absolute values strictly below
 Miller–Rabin decision ([Sorenson–Webster, Theorem 1.1](https://arxiv.org/html/1509.00864v1)).
 This removes the billion-round `Int.MAX_VALUE`-certainty path in that domain
 without weakening the result. Larger inputs retain the probability-driven
-random-witness path; extreme certainty there still needs work. Non-positive
+random-witness path. Its round-budget arithmetic covers all positive Int
+certainties under fresh independent uniform witnesses; practical completion,
+actual platform/caller randomness and supported-range kernels remain separate
+obligations in the [current proof binding](docs/primality-547-proof-binding.md).
+Non-positive
 certainty retains the JDK's unconditional `true`. The portable oracle includes
 strong pseudoprimes to initial basis subsets, both strict-boundary neighbors,
 signed primes through 81 bits, and ordinary-strength 89/127-bit primes.
@@ -453,8 +468,10 @@ Euclidean values bypass source and modulus arithmetic/metadata overrides. The
 non-invertible diagnostic now includes JDK's final period. Wide cases through
 1,025-bit moduli additionally check residue bounds, the inverse congruence and
 failure gcds. Java tests add 720 nullable/throwing callback comparisons and ten
-null-modulus comparisons. Broader compound callback replacements and supported
-range/allocation proofs still require audit.
+null-modulus comparisons. The [current substitution ledger](docs/modular-substitution-546-proof-binding.md)
+supplies a conditional argument for transitively truthful compound callbacks,
+including returned subtypes and aliases. False/changing replacements remain
+diagnostic classes; supported-range/allocation548 is a separate premise.
 
 The modular-power oracle adds 9,176 exact outcomes, including callback arguments
 and source/exponent/modulus replacement or throwing hooks. Zero exponents,
