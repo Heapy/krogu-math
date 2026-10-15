@@ -1,11 +1,12 @@
 #!/usr/bin/env kotlinr
 // SPDX-License-Identifier: GPL-2.0-only
 // Source-specific adaptation rules for the pinned GPL-2.0-only OpenJDK tests.
-// Generated files retain their original upstream notices. No assertions deleted.
-// Original source notices for the five adapted files:
+// Generated files retain their original upstream notices. Assertion changes and lost coverage are explicit below.
+// Original source notices for the six adapted files:
 // Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
 // Copyright (c) 1999, 2018, Oracle and/or its affiliates. All rights reserved.
 // Copyright (c) 2003, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2014, 2022, Oracle and/or its affiliates. All rights reserved.
 // Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
 // Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
 
@@ -27,7 +28,7 @@ fun adaptMathTest(path: String, original: String): MathAdaptation {
     }
     check(source.replace("io.heapy.krogu.math.", "java.math.") == original)
     val importOnly = source
-    val changes = mutableListOf("Redirect math imports; retain original assertions, directives and notices")
+    val changes = mutableListOf("Redirect math imports; retain original source, directives and notices except explicitly listed adaptations")
     val skips = mutableListOf<String>()
     when (path.substringAfter("test/jdk/java/math/")) {
         "BigDecimal/Constructor.java" -> {
@@ -52,6 +53,34 @@ fun adaptMathTest(path: String, original: String): MathAdaptation {
             }
             check(restored == importOnly) { "Constructor adaptation changed retained source" }
             changes += "Use MathContext.UNLIMITED instead of exactly four null contexts for invalid char-array range tests under the non-null Kotlin constructor policy; retain all original range/numeric operands, five TestNG assertions, method names, annotations and error-cause check. Original joint-invalid precedence is separate lost coverage, not an adapted pass"
+        }
+        "BigInteger/PrimeTest.java" -> {
+            val before = """
+                |    private static boolean checkHugeFails() {
+                |        try {
+                |            // huge odd integer
+                |            BigInteger a = BigInteger.ONE.shiftLeft(500_000_000 + 1)
+                |                    .setBit(0);
+                |            a.isProbablePrime(1);
+                |            // not expected to reach here
+                |            return false;
+                |        } catch (ArithmeticException e) {
+                |            // this is the expected behavior
+                |            return true;
+                |        }
+                |    }
+            """.trimMargin()
+            val after = before.replace(
+                "            a.isProbablePrime(1);\n            // not expected to reach here\n            return false;",
+                "            // A normal result must identify this multiple of 3 as composite.\n            return !a.isProbablePrime(1);",
+            )
+            check(source.split(before).size == 2) { "Pinned PrimeTest huge-range method changed" }
+            check(after != before && after !in source) { "PrimeTest range adaptation already present or unchanged" }
+            source = source.replace(before, after)
+            check(source.split(after).size == 2) { "PrimeTest range replacement changed" }
+            check(source.replace(after, before) == importOnly) { "PrimeTest range adaptation changed retained source" }
+            changes += "Port-only range policy: retain huge operand, certainty 1, main call and original ArithmeticException catch; require false on normal return instead of requiring the range exception. Normal true fails; other exceptions remain uncaught"
+            skips += "checkHugeFails: original mandatory-cutoff expectation above the public minimum prime-domain guarantee is not executed on the port; original frozen campaign1792044478663 PrimeTest FAIL remains FAIL, not an adapted pass. A normal false result is newly checked, not historically observed; original host-baseline behavior is retained separately"
         }
         "BigInteger/ModPowPowersof2.java" -> {
             source = adaptMathChildOrchestration(source)

@@ -207,7 +207,8 @@ classes are audited with javap: host java/math member owners fail, core referenc
 are required, and only the two explicit source-specific host bridge names are
 permitted. Class-load logs and completion markers must also be present. This
 proves binding for the retained caller code, not branch coverage or full compatibility.
-No such execution evidence exists yet.
+At the initial preparation stage, no such execution evidence existed; the later
+campaign reports below record the execution evidence and its exact scope.
 
 `build/math-tck/results/<timestamp>/results.json` is checkpointed after each
 invocation and includes PASS/FAIL/SKIP, source/adaptation scope, commands, raw logs,
@@ -314,3 +315,23 @@ artifact/result hashes, four-target regressions and integration limits.
 This targeted follow-up resolves those two failure witnesses on that JAR. It
 does not replace the original broad campaign, its three primality timeouts or
 ten capacity skips, and does not establish a full corpus or official JCK pass.
+
+## Later division and PrimeTest follow-ups
+
+The [normalized-division report](normalized-division-verification.md#public-workload-and-publication)
+records the later d0-JAR campaign1792044478663:19PASS/1PrimeTestFAIL/120SKIP.
+Both original BigIntegerTest directives completed in41632/42003ms within
+unchanged120/400-second limits. Those later passes resolve the earlier timeout
+witnesses on that artifact; they do not rewrite the original broad ledger.
+PrimeTest completed its first19 Mersenne checks and failed only its mandatory
+exception-cutoff expectation above the API's minimum supported prime range.
+
+A subsequent [port-only range-policy adaptation](prime-test-range-policy-559.md)
+preserves that original FAIL, the original host baseline and one explicit
+lost-cutoff companion. Targeted campaign1792074254976 on current-production
+JARded66 completed original baseline and adapted port PrimeTest:
+**2PASS/0FAIL/139SKIP**, complete=true, officialJck=false. All other public files
+were filtered; this is not a refreshed full-corpus ledger. The adapted PASS
+does not record the huge-input branch/Boolean or prove broader range support.
+The historical103/5/10, later19/1/120 and current30-adapted/115SKIP campaigns
+remain distinct evidence with their original source/artifact/coverage scopes.
