@@ -50,7 +50,9 @@ class ScaleBoundaryConformanceTest {
                     additionReference(x, y, jc, a, b, mc)
                 }, { a.add(b, mc) })
                 check("divide $label", { divisionReference(a, b, mc) { x.divide(y, jc) } }, { a.divide(b, mc) })
-                check("multiply $label", { x.multiply(y, jc) }, { a.multiply(b, mc) })
+                check("multiply $label", {
+                    scaleRoundingReference("multiply $label", DecimalScaleRounding566Expected.multiplication(a, b, mc)) { x.multiply(y, jc) }
+                }, { a.multiply(b, mc) })
                 check("sqrt $x,$mc", { sqrtReference(a, mc) { x.sqrt(jc) } }, { a.sqrt(mc) })
             }
         }
@@ -118,10 +120,21 @@ class ScaleBoundaryConformanceTest {
     }
 
     private fun additionReference(x: JD, y: JD, jc: JC, a: BigDecimal, b: BigDecimal, mc: MathContext): Any {
+        val corrected = DecimalScaleRounding566Expected.addition(a, b, mc)
+        if (corrected != null)
+            return scaleRoundingReference("add $x,$y,$mc", corrected) { x.add(y, jc) }
         if (!DecimalScaleContractExpected.affectedAddition(a, b, mc)) return x.add(y, jc)
         val diagnostic = try { x.add(y, jc).toString() }
             catch (_: ArithmeticException) { "!ArithmeticException" }
         assertEquals("!ArithmeticException", diagnostic, "retained JDK addition defect")
         return DecimalScaleContractExpected.addition(a, b, mc)
+    }
+
+    private fun scaleRoundingReference(label: String, corrected: String?, reference: () -> JD): Any {
+        if (corrected == null) return reference()
+        val diagnostic = try { reference().toString() }
+            catch (e: ArithmeticException) { "!ArithmeticException:${e.message}" }
+        println("566_JDK_OBSERVATION\t$label\t$diagnostic")
+        return corrected
     }
 }

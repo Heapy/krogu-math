@@ -12,13 +12,20 @@ class SetScaleBoundaryTest {
         fun outcome(block: () -> Any): String = try { block().toString() }
             catch (failure: Exception) { "!${failure.javaClass.simpleName}:${failure.message}" }
         for (coefficient in coefficients) for (scale in scales) for (target in scales) for (mode in RoundingMode.entries) {
-            val expected = outcome { java.math.BigDecimal(java.math.BigInteger(coefficient), scale)
+            val diagnostic = outcome { java.math.BigDecimal(java.math.BigInteger(coefficient), scale)
                 .setScale(target, java.math.RoundingMode.valueOf(mode.name)) }
-            val actual = outcome { BigDecimal(BigInteger(coefficient), scale).setScale(target, mode) }
+            val source = BigDecimal(BigInteger(coefficient), scale)
+            val corrected = DecimalScaleRounding566Expected.setScale(source, target, mode)
+            if (corrected != null)
+                println("566_JDK_OBSERVATION\tsetScale\t$coefficient@$scale\ttarget=$target\tmode=$mode\t$diagnostic")
+            val expected = corrected ?: diagnostic
+            val observed = outcome { source.setScale(target, mode) }
+            val actual = if (corrected != null && observed.startsWith("!ArithmeticException:"))
+                "!ArithmeticException" else observed
             if (expected != actual) {
                 val transition = "$expected -> $actual"
                 transitions[transition] = (transitions[transition] ?: 0) + 1
-                examples.putIfAbsent(transition, "$coefficient@$scale target=$target mode=$mode")
+                examples.putIfAbsent(transition, "$coefficient@$scale target=$target mode=$mode JDK=$diagnostic port=$observed")
             }
         }
         assertTrue(transitions.isEmpty(), "$transitions\n$examples")

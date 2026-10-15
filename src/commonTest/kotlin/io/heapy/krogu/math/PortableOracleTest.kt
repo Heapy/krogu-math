@@ -10,11 +10,27 @@ class PortableOracleTest {
                     add(listOf("D", "pow", "1", power.toString(), precision.toString(), mode.name))
         }
         val observedPowKeys = mutableSetOf<List<String>>()
+        val truthfulScalePrefixes = mapOf(
+            listOf("T", "integer", "1", "2147483647", "0", "HALF_UP") to "integerExact;intScale;",
+            listOf("T", "scale", "1", "2147483647", "0", "HALF_UP") to "scale;intScale;",
+            listOf("T", "enumScale", "1", "2147483647", "0", "HALF_UP") to "enumScale;intScale;",
+            listOf("T", "intScale", "1", "2147483647", "0", "HALF_UP") to "intScale;",
+        )
+        val observedTruthfulScaleKeys = mutableSetOf<List<String>>()
+        var ordinaryMismatchCount = 0
+        val ordinaryMismatchExamples = mutableListOf<String>()
         for ((index, v) in oracleVectors().withIndex()) {
             val actual = try {
                 val result = evaluate(v)
                 if (result is Array<*>) result.joinToString("|") else result.toString()
             } catch (e: Exception) { "!${e::class.simpleName}" }
+            val truthfulPrefix = truthfulScalePrefixes[v.take(6)]
+            if (truthfulPrefix != null) {
+                assertTrue(observedTruthfulScaleKeys.add(v.take(6)), "duplicate task566 truthful key ${v.take(6)}")
+                verifyTruthfulScaleObservation(v, actual, truthfulPrefix)
+                continue
+            }
+            if (verifyHighMultiplyObservation(v, actual)) continue
             if (DecimalExactRoot563Callbacks.category(v.toList()) != null) {
                 // Only the granted selected internal callbacks move to observations.
                 // Keep every old field/index, genuine probe fields and truthful arithmetic controls.
@@ -32,15 +48,86 @@ class PortableOracleTest {
                     "retained pow diagnostic ${v.take(6)}")
                 "1"
             } else null
-            val corrected = pow ?: normalization ?: scaledDivisionContractExpected(v)
+            val scaleRounding = scaleRoundingContractExpected(v)
+            if (scaleRounding != null) {
+                assertTrue(v[6] == "!ArithmeticException" || v[6].startsWith("!ArithmeticException:") || v[6] == scaleRounding,
+                    "retained task566 diagnostic ${v.take(6)}: ${v[6]}")
+            }
+            val corrected = pow ?: scaleRounding ?: normalization ?: scaledDivisionContractExpected(v)
             if (normalization != null)
                 assertTrue(v[6].startsWith("!ArithmeticException"), "retained normalization diagnostic ${v.take(6)}")
             val normalized = if (corrected == "!ArithmeticException" && actual.startsWith("!ArithmeticException:"))
                 "!ArithmeticException" else actual
-            assertEquals(corrected ?: v[6], normalized, "${v.take(6)} JDK diagnostic=${v[6]}")
+            val required = corrected ?: v[6]
+            if (required != normalized) {
+                ordinaryMismatchCount++
+                if (ordinaryMismatchExamples.size < 80)
+                    ordinaryMismatchExamples += "index=$index ${v.take(6)} required=$required actual=$actual JDK diagnostic=${v[6]}"
+            }
         }
         assertEquals(128, powKeys.size)
         assertEquals(powKeys, observedPowKeys, "all original pow boundary observations remain represented")
+        assertEquals(4, truthfulScalePrefixes.size)
+        assertEquals(truthfulScalePrefixes.keys, observedTruthfulScaleKeys, "all four task566 truthful observations remain represented")
+        assertEquals(0, ordinaryMismatchCount, "ordinary oracle mismatches (first80):\n${ordinaryMismatchExamples.joinToString("\n")}")
+    }
+
+    private fun verifyHighMultiplyObservation(v: Array<String>, actual: String): Boolean {
+        if (v[0] != "L" || v[1] !in listOf("multiply:-1", "multiply:0", "multiply:1") || v[4].toInt() <= 0) return false
+        fun stored(text: String) = BigDecimal(BigInteger(text.substringBefore('@')), text.substringAfter('@').toInt())
+        val required = DecimalScaleRounding566Expected.multiplication(stored(v[2]), stored(v[3]),
+            MathContext(v[4].toInt(), RoundingMode.valueOf(v[5]))) ?: return false
+        assertEquals("!ArithmeticException:Underflow|context;", v[6], "retained full task566 HIGH L diagnostic ${v.take(6)}")
+        println("566_HIGH_L_OBSERVATION\t${v.take(6).joinToString("\t")}\tfrozen=${v[6]}\tactual=$actual")
+        val fields = actual.split('|')
+        if (required == "!ArithmeticException") {
+            assertEquals(2, fields.size, "HIGH L error outcome/trace ${v.take(6)}: $actual")
+            val category = if (fields[0].startsWith("!ArithmeticException:")) "!ArithmeticException" else fields[0]
+            assertEquals(required, category, "independent HIGH L category ${v.take(6)}: $actual")
+            assertEquals("context;", fields[1], "exact HIGH L dispatch ${v.take(6)}: $actual")
+        } else {
+            assertEquals(listOf(required, "false", "true", "context;"), fields,
+                "independent HIGH L value, distinct/base flags and exact dispatch ${v.take(6)}: $actual")
+        }
+        return true
+    }
+
+    private fun verifyTruthfulScaleObservation(v: Array<String>, actual: String, wrapperPrefix: String) {
+        val frozen = "!ArithmeticException:BigInteger would overflow supported range|${wrapperPrefix}sign;"
+        assertEquals(frozen, v[6], "retained complete task566 truthful diagnostic ${v.take(6)}")
+        println("566_TRUTHFUL_SCALE_OBSERVATION\t${v.take(6).joinToString("\t")}\tfrozen=${v[6]}\tactual=$actual")
+        // These four T receivers only trace and forward their getters to super.
+        // Model the stored 1@MAX independently; do not use a callback answer as an oracle.
+        val mode = if (v[1] == "integer" || v[1] == "scale") RoundingMode.UNNECESSARY else RoundingMode.HALF_UP
+        val expected = assertNotNull(DecimalScaleRounding566Expected.setScale(
+            BigDecimal(BigInteger.ONE, Int.MAX_VALUE), 0, mode))
+        val fields = actual.split('|')
+        assertEquals(2, fields.size, "complete outcome and trace ${v.take(6)}: $actual")
+        val outcome = if (fields[0].startsWith("!ArithmeticException:")) "!ArithmeticException" else fields[0]
+        assertEquals(expected, outcome, "independent task566 truthful result ${v.take(6)}; actual=$actual")
+        assertTrue(fields[1].startsWith(wrapperPrefix), "explicit wrapper dispatch ${v.take(6)}: $actual")
+        val privateTrace = fields[1].removePrefix(wrapperPrefix)
+        assertTrue(Regex("(?:sign;)*").matches(privateTrace),
+            "only inherited sign-read multiplicity is observational ${v.take(6)}: $actual")
+    }
+
+    private fun scaleRoundingContractExpected(v: Array<String>): String? {
+        val mode = if (v[0] in listOf("G", "D") && v[1] in listOf("setScale", "scale", "add", "multiply"))
+            RoundingMode.valueOf(v[5]) else return null
+        if (v[0] == "G" && v[1] == "setScale") {
+            val a = BigDecimal(BigInteger(v[2].substringBefore('@')), v[2].substringAfter('@').toInt())
+            return DecimalScaleRounding566Expected.setScale(a, v[4].toInt(), mode)
+        }
+        if (v[0] != "D") return null
+        val a = try { BigDecimal(v[2]) } catch (_: NumberFormatException) { return null }
+        if (v[1] == "scale") return DecimalScaleRounding566Expected.setScale(a, v[4].toInt(), mode)
+        val b = try { BigDecimal(v[3]) } catch (_: NumberFormatException) { return null }
+        val mc = MathContext(v[4].toInt().coerceAtLeast(0), mode)
+        return when (v[1]) {
+            "add" -> DecimalScaleRounding566Expected.addition(a, b, mc)
+            "multiply" -> DecimalScaleRounding566Expected.multiplication(a, b, mc)
+            else -> null
+        }
     }
 
     private fun normalizationContractExpected(v: Array<String>): String? {

@@ -18,6 +18,16 @@ class JdkOracleTest {
     private fun same(label: String, jdk: () -> Any?, common: () -> Any?) {
         assertEquals(outcome(jdk), outcome(common), label)
     }
+    private fun sameSetScale(label: String, reference: JDecimal, source: BigDecimal, target: Int) {
+        val fullDiagnostic = try { reference.setScale(target, JRound.HALF_EVEN).toString() }
+            catch (e: Exception) { "!${e.javaClass.simpleName}:${e.message}" }
+        val corrected = DecimalScaleRounding566Expected.setScale(source, target, RoundingMode.HALF_EVEN)
+        if (corrected != null)
+            println("566_JDK_OBSERVATION\t$label\ttarget=$target\t$fullDiagnostic")
+        val diagnostic = if (fullDiagnostic.startsWith("!")) fullDiagnostic.substringBefore(':') else fullDiagnostic
+        assertEquals(corrected ?: diagnostic, outcome { source.setScale(target, RoundingMode.HALF_EVEN) },
+            "$label; JDK=$fullDiagnostic")
+    }
     private fun integer(bits: Int = random.nextInt(1, 512)): String {
         val bytes = random.nextBytes((bits + 7) / 8)
         return JInteger(bytes).toString()
@@ -186,8 +196,8 @@ class JdkOracleTest {
             same("extreme strip $s", { x.stripTrailingZeros() }, { a.stripTrailingZeros() })
             assertEquals(x.toDouble().toBits(), a.toDouble().toBits())
             assertEquals(x.toLong(), a.toLong())
-            same("tiny setScale $s", { x.setScale(-10, JRound.HALF_EVEN) }, { a.setScale(-10, RoundingMode.HALF_EVEN) })
-            same("tiny setScale zero $s", { x.setScale(0, JRound.HALF_EVEN) }, { a.setScale(0, RoundingMode.HALF_EVEN) })
+            sameSetScale("tiny setScale $s", x, a, -10)
+            sameSetScale("tiny setScale zero $s", x, a, 0)
             val diagnostic = outcome { x.divide(JDecimal.ONE, 0, JRound.HALF_EVEN) }
             val expected = if (DecimalScaleContractExpected.affectedScaledDivision(a, BigDecimal.ONE, 0))
                 DecimalScaleContractExpected.scaledDivide(a, BigDecimal.ONE, 0, RoundingMode.HALF_EVEN)

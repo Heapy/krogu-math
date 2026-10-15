@@ -1,0 +1,58 @@
+// SPDX-License-Identifier: Apache-2.0
+package io.heapy.krogu.math
+
+import kotlin.test.Test
+import kotlin.test.assertEquals
+
+/** PREPARED / UNCOMPILED / UNRUN. Public black-box observations are not oracle replacements. */
+class DecimalScaleRoundingRepairJvmTest {
+    @Test fun mandatoryPairsAndRetainedPublicJdkObservations() {
+        val mismatches = mutableListOf<String>()
+        fun observe(label: String, expected: String, port: () -> BigDecimal, jdk: () -> java.math.BigDecimal) {
+            val actual = try { port().let { "${it.unscaledValue()}@${it.scale()}" } }
+                catch (_: ArithmeticException) { "!ArithmeticException" }
+            val reference = try { jdk().let { "${it.unscaledValue()}@${it.scale()}" } }
+                catch (e: ArithmeticException) { "!ArithmeticException:${e.message}" }
+            println("task566\t$label\texpected=$expected\tport=$actual\tjdk-observation=$reference")
+            if (actual != expected) mismatches += "$label expected=$expected actual=$actual"
+        }
+        for (sign in listOf(-1L, 1L)) for (mode in RoundingMode.entries) {
+            val rm = java.math.RoundingMode.valueOf(mode.name)
+            val mc = MathContext(1, mode)
+            val jmc = java.math.MathContext(1, rm)
+            fun own(c: Long, s: Int) = BigDecimal.valueOf(c, s)
+            fun ref(c: Long, s: Int) = java.math.BigDecimal.valueOf(c, s)
+            val tiny = when (mode) {
+                RoundingMode.UNNECESSARY -> "!ArithmeticException"
+                RoundingMode.UP -> "$sign@0"
+                RoundingMode.CEILING -> "${if (sign > 0) 1 else 0}@0"
+                RoundingMode.FLOOR -> "${if (sign < 0) -1 else 0}@0"
+                else -> "0@0"
+            }
+            observe("tiny $sign $mode", tiny,
+                { own(sign, Int.MAX_VALUE).setScale(0, mode) },
+                { ref(sign, Int.MAX_VALUE).setScale(0, rm) })
+            observe("multiply $sign $mode", "$sign@${Int.MAX_VALUE}",
+                { own(sign, Int.MAX_VALUE).multiply(own(10, 1), mc) },
+                { ref(sign, Int.MAX_VALUE).multiply(ref(10, 1), jmc) })
+            // 99 requires two drops only when rounding carries: 99 -> 10 -> 1.
+            val carry = when (mode) {
+                RoundingMode.UNNECESSARY, RoundingMode.DOWN -> false
+                RoundingMode.CEILING -> sign > 0
+                RoundingMode.FLOOR -> sign < 0
+                else -> true
+            }
+            observe("carry-only rescue $sign $mode", if (carry) "$sign@${Int.MAX_VALUE}" else "!ArithmeticException",
+                { own(sign * 99, Int.MAX_VALUE).multiply(own(1, 2), mc) },
+                { ref(sign * 99, Int.MAX_VALUE).multiply(ref(1, 2), jmc) })
+            observe("add $sign $mode", "$sign@${Int.MIN_VALUE}",
+                { own(sign, Int.MIN_VALUE).add(own(0, Int.MAX_VALUE), mc) },
+                { ref(sign, Int.MIN_VALUE).add(ref(0, Int.MAX_VALUE), jmc) })
+            observe("reversed add $sign $mode", "$sign@${Int.MIN_VALUE}",
+                { own(0, Int.MAX_VALUE).add(own(sign, Int.MIN_VALUE), mc) },
+                { ref(0, Int.MAX_VALUE).add(ref(sign, Int.MIN_VALUE), jmc) })
+        }
+        // Check only independent port expectations, after retaining every bounded observation.
+        assertEquals(emptyList(), mismatches)
+    }
+}

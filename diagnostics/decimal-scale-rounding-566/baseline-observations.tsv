@@ -1,0 +1,103 @@
+jar	/private/tmp/krogu-root526565525-validation-v1/artifacts/root-integration-fresh.jar	sha256=daf2a13324f780b4b592e946c24dc601fc678d37f4954f0907fdbaea02674bdd
+jdk	BellSoft	25.0.4+9-LTS
+loaded-class	io.heapy.krogu.math.BigDecimal	file:/private/tmp/krogu-root526565525-validation-v1/artifacts/root-integration-fresh.jar
+loaded-class	io.heapy.krogu.math.BigInteger	file:/private/tmp/krogu-root526565525-validation-v1/artifacts/root-integration-fresh.jar
+loaded-class	io.heapy.krogu.math.MathContext	file:/private/tmp/krogu-root526565525-validation-v1/artifacts/root-integration-fresh.jar
+loaded-class	io.heapy.krogu.math.RoundingMode	file:/private/tmp/krogu-root526565525-validation-v1/artifacts/root-integration-fresh.jar
+case	independent-expectation	port-outcome	public-jdk-observation
+setScale sign=-1 mode=UP legacy=false	-1@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=-1 mode=UP legacy=true	-1@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=-1 mode=UP	-1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=-1 mode=UP	-1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=UP reverse=false	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=UP reverse=true	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=-1 mode=DOWN legacy=false	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=-1 mode=DOWN legacy=true	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=-1 mode=DOWN	-1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=-1 mode=DOWN	!ArithmeticException	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=DOWN reverse=false	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=DOWN reverse=true	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=-1 mode=CEILING legacy=false	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=-1 mode=CEILING legacy=true	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=-1 mode=CEILING	-1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=-1 mode=CEILING	!ArithmeticException	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=CEILING reverse=false	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=CEILING reverse=true	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=-1 mode=FLOOR legacy=false	-1@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=-1 mode=FLOOR legacy=true	-1@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=-1 mode=FLOOR	-1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=-1 mode=FLOOR	-1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=FLOOR reverse=false	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=FLOOR reverse=true	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=-1 mode=HALF_UP legacy=false	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=-1 mode=HALF_UP legacy=true	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=-1 mode=HALF_UP	-1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=-1 mode=HALF_UP	-1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=HALF_UP reverse=false	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=HALF_UP reverse=true	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=-1 mode=HALF_DOWN legacy=false	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=-1 mode=HALF_DOWN legacy=true	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=-1 mode=HALF_DOWN	-1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=-1 mode=HALF_DOWN	-1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=HALF_DOWN reverse=false	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=HALF_DOWN reverse=true	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=-1 mode=HALF_EVEN legacy=false	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=-1 mode=HALF_EVEN legacy=true	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=-1 mode=HALF_EVEN	-1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=-1 mode=HALF_EVEN	-1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=HALF_EVEN reverse=false	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=HALF_EVEN reverse=true	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=-1 mode=UNNECESSARY legacy=false	!ArithmeticException	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=-1 mode=UNNECESSARY legacy=true	!ArithmeticException	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=-1 mode=UNNECESSARY	-1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=-1 mode=UNNECESSARY	!ArithmeticException	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=UNNECESSARY reverse=false	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=-1 mode=UNNECESSARY reverse=true	-1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=1 mode=UP legacy=false	1@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=1 mode=UP legacy=true	1@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=1 mode=UP	1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=1 mode=UP	1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=UP reverse=false	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=UP reverse=true	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=1 mode=DOWN legacy=false	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=1 mode=DOWN legacy=true	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=1 mode=DOWN	1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=1 mode=DOWN	!ArithmeticException	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=DOWN reverse=false	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=DOWN reverse=true	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=1 mode=CEILING legacy=false	1@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=1 mode=CEILING legacy=true	1@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=1 mode=CEILING	1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=1 mode=CEILING	1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=CEILING reverse=false	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=CEILING reverse=true	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=1 mode=FLOOR legacy=false	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=1 mode=FLOOR legacy=true	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=1 mode=FLOOR	1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=1 mode=FLOOR	!ArithmeticException	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=FLOOR reverse=false	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=FLOOR reverse=true	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=1 mode=HALF_UP legacy=false	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=1 mode=HALF_UP legacy=true	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=1 mode=HALF_UP	1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=1 mode=HALF_UP	1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=HALF_UP reverse=false	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=HALF_UP reverse=true	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=1 mode=HALF_DOWN legacy=false	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=1 mode=HALF_DOWN legacy=true	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=1 mode=HALF_DOWN	1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=1 mode=HALF_DOWN	1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=HALF_DOWN reverse=false	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=HALF_DOWN reverse=true	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=1 mode=HALF_EVEN legacy=false	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=1 mode=HALF_EVEN legacy=true	0@0	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=1 mode=HALF_EVEN	1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=1 mode=HALF_EVEN	1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=HALF_EVEN reverse=false	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=HALF_EVEN reverse=true	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+setScale sign=1 mode=UNNECESSARY legacy=false	!ArithmeticException	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+setScale sign=1 mode=UNNECESSARY legacy=true	!ArithmeticException	!ArithmeticException:BigInteger would overflow supported range	!ArithmeticException:BigInteger would overflow supported range
+multiply sign=1 mode=UNNECESSARY	1@2147483647	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+carry-only multiply sign=1 mode=UNNECESSARY	!ArithmeticException	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=UNNECESSARY reverse=false	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow
+add sign=1 mode=UNNECESSARY reverse=true	1@-2147483648	!ArithmeticException:Underflow	!ArithmeticException:Underflow

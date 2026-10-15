@@ -10,12 +10,21 @@ class ScaleBoundaryOracleTest {
         private val expected = scaleBoundaryExpected().drop(offset).iterator()
         private var count = offset
         fun verify(label: String, action: () -> Any?) {
-            verifyExpected(label, null, action)
+            verifyExpected(label, null, action = action)
         }
         fun verifyAddition(label: String, a: BigDecimal, b: BigDecimal, mc: MathContext) {
+            val rounding = DecimalScaleRounding566Expected.addition(a, b, mc)
+            if (rounding != null) {
+                verifyExpected(label, rounding, task566 = true) { a.add(b, mc) }
+                return
+            }
             val contract = if (DecimalScaleContractExpected.affectedAddition(a, b, mc))
                 DecimalScaleContractExpected.addition(a, b, mc) else null
             verifyExpected(label, contract) { a.add(b, mc) }
+        }
+        fun verifyMultiplication(label: String, a: BigDecimal, b: BigDecimal, mc: MathContext) {
+            val rounding = DecimalScaleRounding566Expected.multiplication(a, b, mc)
+            verifyExpected(label, rounding, task566 = rounding != null) { a.multiply(b, mc) }
         }
         fun verifyDivision(label: String, a: BigDecimal, b: BigDecimal, mc: MathContext? = null) {
             verifyExpected(label, DivisionNormalizationExpected.correctedText(a, b, mc) ?: PreferredScaleStringModel.correctedText(a, b, mc)) {
@@ -37,13 +46,17 @@ class ScaleBoundaryOracleTest {
             assertEquals(contract.text(), result.toString(), "$count: text $label; JDK=$diagnostic")
             count++
         }
-        private fun verifyExpected(label: String, contract: String?, action: () -> Any?) {
+        private fun verifyExpected(label: String, contract: String?, task566: Boolean = false, action: () -> Any?) {
             assertTrue(expected.hasNext(), "Oracle ended before $label")
             val actual = try { action().toString() } catch (e: Exception) { "!${e::class.simpleName}" }
             val diagnostic = expected.next()
             // Keep consuming and checking the frozen JDK defect, while requiring
             // the bounded exact-intermediate contract for this proved domain.
-            if (contract != null) assertEquals("!ArithmeticException", diagnostic, "retained JDK defect: $label")
+            if (contract != null) {
+                if (task566 && diagnostic != "!ArithmeticException")
+                    assertEquals(contract, diagnostic, "retained task566 JDK value: $label")
+                else assertEquals("!ArithmeticException", diagnostic, "retained JDK defect: $label")
+            }
             assertEquals(contract ?: diagnostic, actual, "$count: $label; JDK=$diagnostic")
             count++
         }
@@ -120,7 +133,7 @@ class ScaleBoundaryOracleTest {
                 if (selected) {
                     cursor.verifyAddition("add $a,$b,$context", a, b, context)
                     cursor.verifyDivision("divide $a,$b,$context", a, b, context)
-                    verify("multiply $a,$b,$context") { a.multiply(b, context) }
+                    cursor.verifyMultiplication("multiply $a,$b,$context", a, b, context)
                     cursor.verifySqrt("sqrt $a,$context", a, context)
                 }
             }

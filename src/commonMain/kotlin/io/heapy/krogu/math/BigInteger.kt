@@ -607,6 +607,75 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     internal fun decimalDigitLowerBound(): Int = if (sign == 0) 1 else
         (((magnitudeBits() - 1).toLong() * 1292913986L) ushr 32).toInt() + 1
 
+    // Exact stored decimal digit count. The accepted estimate E has D in
+    // {E,E+1}. At maximal E, 10^E needs 2147483648 bits and every supported
+    // magnitude is below it. Every smaller threshold is supported.
+    // See DECIMAL_METADATA_COMPARISON.md for the bounds and comparison proof.
+    @kotlin.jvm.JvmSynthetic
+    internal fun decimalMagnitudeDigits(): Int {
+        if (sign == 0) return 1
+        val lower = decimalDigitLowerBound()
+        if (lower == 646456993) return lower
+        val threshold = TEN.pow(lower)
+        return lower + if (compareMagnitude(words, threshold.words) >= 0) 1 else 0
+    }
+
+    // Compare positive decimal significands, ignoring the signs and scales.
+    // Drop decimal chunks in one local scratch array; no padded integer or
+    // multi-word division remainder objects are constructed.
+    @kotlin.jvm.JvmSynthetic
+    internal fun compareDecimalSignificand(other: BigInteger): Int {
+        if (sign == 0 || other.sign == 0)
+            return (if (sign == 0) 0 else 1).compareTo(if (other.sign == 0) 0 else 1)
+        val difference = decimalMagnitudeDigits() - other.decimalMagnitudeDigits()
+        if (difference == 0) return compareMagnitude(words, other.words)
+        val longer = if (difference > 0) this else other
+        val shorter = if (difference > 0) other else this
+        // Every partial quotient is nonzero and no larger than the input.
+        val quotient = longer.words.copyOf()
+        var length = quotient.size
+        var drop = if (difference > 0) difference else -difference
+        var sticky = false
+        while (drop >= 9) {
+            // Always divide before testing sticky: later passes still change q.
+            val remainder = divideDecimalChunk(quotient, length, 1_000_000_000)
+            sticky = sticky || remainder != 0
+            while (length > 0 && quotient[length - 1] == 0) length--
+            drop -= 9
+        }
+        if (drop > 0) {
+            var divisor = 1
+            repeat(drop) { divisor *= 10 }
+            val remainder = divideDecimalChunk(quotient, length, divisor)
+            sticky = sticky || remainder != 0
+            while (length > 0 && quotient[length - 1] == 0) length--
+        }
+        val quotientOrder = compareDecimalScratch(quotient, length, shorter.words)
+        val order = if (quotientOrder != 0) quotientOrder else if (sticky) 1 else 0
+        return if (difference > 0) order else -order
+    }
+
+    // For 0 < divisor <= 10^9 < 2^30, part < divisor*2^30 < 2^60.
+    // Quotient limbs therefore fit 30 bits; the final remainder fits Int.
+    private fun divideDecimalChunk(magnitude: IntArray, length: Int, divisor: Int): Int {
+        var remainder = 0L
+        for (i in length - 1 downTo 0) {
+            val part = (remainder shl LIMB_BITS) + magnitude[i]
+            magnitude[i] = (part / divisor).toInt()
+            remainder = part % divisor
+        }
+        return remainder.toInt()
+    }
+
+    private fun compareDecimalScratch(magnitude: IntArray, length: Int, other: IntArray): Int {
+        if (length != other.size) return length.compareTo(other.size)
+        for (i in length - 1 downTo 0) {
+            val order = magnitude[i].compareTo(other[i])
+            if (order != 0) return order
+        }
+        return 0
+    }
+
     internal class DecimalBinaryPrefix(
         val magnitude: BigInteger,
         val decimalDigits: Int,
