@@ -215,6 +215,16 @@ map 75,728 diagnostic inputs to 3,000 valid numerical/context/topology controls
 and 11,472 meaningful class combinations. That is context-division finite
 coverage, not evidence that all 37 overloads or poisoned interactions are done.
 Likewise 1,440 pair and 1,400+1,176 integral observations are not P4 proofs.
+
+The later [integral guard argument and counterexample](integral-guard-582-obstruction.md)
+separate sufficient truncation precision from intermediate feasibility. For
+supported consecutive D=150000000-digit coefficients A=B+1 and B ending in3,
+the required integral result is1@0, but the no-context guard requests an
+unsupported650000002-digit nonterminating contextual quotient. Task582 tracks
+the source-proved obstruction, including no-context pair/remainder and unlimited
+delegation. The witness is symbolic and UNRUN; a correct581 contextual leaf does
+not remove this separate composition failure. Existing finite controls and the
+remaining P4 obligations are retained.
 The [scale](decimal-scale-contract.md), [normalization](decimal-division-normalization-contract.md),
 [preferred-scale](decimal-division-preferred-scale-contract.md) and
 [task566 proof](decimal-scale-rounding-566-proof.md) documents retain the
