@@ -13,6 +13,7 @@ require(logs.toSet().size == 3 && output !in logs)
 data class Row(val id: String, val sample: Int, val count: Long, val wall: Long, val cpu: Long, val bytes: Long, val peak: Long)
 val rows = mutableListOf<List<Row>>()
 val orders = mutableListOf<String>()
+val identities = mutableSetOf<String>()
 var expectedActive: Set<String>? = null
 for (log in logs) {
     check(File(log.path + ".exit").readText().trim() == "0") { "Nonterminal/nonzero fork: $log" }
@@ -21,6 +22,9 @@ for (log in logs) {
     val processors = Regex("processors=([0-9]+)").find(runtime)!!.groupValues[1].toInt().also { check(it >= 1) }
     val order = Regex("order=(forward|reverse)$").find(runtime)!!.groupValues[1]
     orders += order
+    val identity = Regex("pid=([0-9]+) start_ms=([0-9]+) ").find(runtime)!!
+    check(identity.groupValues[1].toLong() > 0 && identity.groupValues[2].toLong() > 0)
+    check(identities.add(identity.value)) { "Repeated JVM fork identity" }
     check(lines.single { it.startsWith("# main=") }.startsWith("# main=$mainSha probe=$probeSha "))
     check(lines.count { it == "PASS_PAR539,artifact_recheck" } == 1)
     val ids = buildSet {

@@ -16,6 +16,7 @@ private val nativePermits539 = AtomicInt(2)
 internal class ParallelNativeCandidate539(
     private val workers: Int,
     private val processors: Int = Platform.getAvailableProcessors(),
+    private val registrationFault539: ((future: Boolean, index: Int) -> Unit)? = null,
     private val operation: (MagnitudeMultiplication.ParallelFrame539, Int) -> IntArray = { frame, index -> frame.child(index) },
 ) {
     init { require(workers in 1..2 && processors >= 1) }
@@ -55,6 +56,13 @@ internal class ParallelNativeCandidate539(
         return false
     }
 
+    private fun suppress539(primary: Throwable, cleanup: Throwable) {
+        if (primary !== cleanup) {
+            // Suppression itself can allocate: never replace the primary failure.
+            try { primary.addSuppressed(cleanup) } catch (_: Throwable) { }
+        }
+    }
+
     private fun execute(frame: MagnitudeMultiplication.ParallelFrame539): IntArray {
         val owners = arrayOfNulls<Worker>(workers)
         val futures = arrayOfNulls<Future<Outcome>>(workers)
@@ -65,9 +73,28 @@ internal class ParallelNativeCandidate539(
                 for (index in 0 until workers) {
                     val job = Job(frame, index, operation)
                     val worker = Worker.start(errorReporting = false, name = "krogu539-child-$index")
-                    owners[index] = worker // Nonallocating registration immediately after start.
+                    // Worker/Future are value classes: nullable generic stores may
+                    // BOX/allocate. Keep each local nonnullable handle until its
+                    // owner registration succeeds; clean up from that local on failure.
+                    try {
+                        registrationFault539?.invoke(false, index)
+                        owners[index] = worker
+                    } catch (problem: Throwable) {
+                        try { worker.requestTermination(processScheduledJobs = true).result }
+                        catch (cleanup: Throwable) { suppress539(problem, cleanup) }
+                        throw problem
+                    }
                     // Only producer captures job; Worker job function captures no external state.
-                    futures[index] = worker.execute(TransferMode.SAFE, { job }, { payload -> payload.run() })
+                    val future = worker.execute(TransferMode.SAFE, { job }, { payload -> payload.run() })
+                    try {
+                        registrationFault539?.invoke(true, index)
+                        futures[index] = future
+                    } catch (problem: Throwable) {
+                        // Accepted work must be consumed even if boxing its Future fails.
+                        try { future.result.failure?.let { suppress539(problem, it) } }
+                        catch (cleanup: Throwable) { suppress539(problem, cleanup) }
+                        throw problem
+                    }
                 }
                 for (index in workers..2) values[index] = operation(frame, index)
             } catch (problem: Throwable) { primary = problem }

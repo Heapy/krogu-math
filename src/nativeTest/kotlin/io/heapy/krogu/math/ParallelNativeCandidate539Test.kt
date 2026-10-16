@@ -1,7 +1,9 @@
-@file:OptIn(kotlin.concurrent.atomics.ExperimentalAtomicApi::class)
+@file:OptIn(kotlin.concurrent.atomics.ExperimentalAtomicApi::class,
+    kotlin.native.concurrent.ObsoleteWorkersApi::class, kotlin.ExperimentalStdlibApi::class)
 package io.heapy.krogu.math
 
 import kotlin.concurrent.atomics.AtomicInt
+import kotlin.native.concurrent.Worker
 import kotlin.test.Test
 import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
@@ -44,5 +46,25 @@ class ParallelNativeCandidate539Test {
         }
         assertContentEquals(expected(), afterFailure.multiply(a, b, policy))
         assertEquals(3, calls.load())
+    }
+
+    @Test fun registrationFailuresJoinLocalHandlesAndPriorAcceptedChildren() {
+        Worker.current // Ensure the test caller is registered before the baseline.
+        val baseline = Worker.activeWorkers.map { it.id }.toSet()
+        for (futureStore in listOf(false, true)) {
+            val marker = IllegalStateException("registration $futureStore")
+            val candidate = ParallelNativeCandidate539(2, processors = 4,
+                registrationFault539 = { future, index -> if (index == 1 && future == futureStore) throw marker })
+            val observed = try { candidate.multiply(a, b, policy); null } catch (problem: Throwable) { problem }
+            assertSame(marker, observed)
+            assertEquals(baseline, Worker.activeWorkers.map { it.id }.toSet(), "No unregistered or prior owned Worker may survive")
+            val calls = AtomicInt(0)
+            val next = ParallelNativeCandidate539(2, processors = 4) { frame, index ->
+                calls.fetchAndAdd(1); frame.child(index)
+            }
+            assertContentEquals(expected(), next.multiply(a, b, policy))
+            assertEquals(3, calls.load(), "Both global permits must be available after registration failure")
+            assertEquals(baseline, Worker.activeWorkers.map { it.id }.toSet())
+        }
     }
 }

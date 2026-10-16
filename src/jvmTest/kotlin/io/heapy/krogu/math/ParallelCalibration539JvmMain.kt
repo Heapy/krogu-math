@@ -33,7 +33,7 @@ object ParallelCalibration539JvmMain {
         check(allocations.isThreadAllocatedMemorySupported)
         allocations.isThreadAllocatedMemoryEnabled = true
         check(allocations.totalThreadAllocatedBytes >= 0) { "All-thread allocation observation unavailable" }
-        println("# parallel539 java=${System.getProperty("java.vendor")} ${System.getProperty("java.runtime.version")} arch=${System.getProperty("os.arch")} processors=${Runtime.getRuntime().availableProcessors()} order=${args[0]}")
+        println("# parallel539 java=${System.getProperty("java.vendor")} ${System.getProperty("java.runtime.version")} arch=${System.getProperty("os.arch")} processors=${Runtime.getRuntime().availableProcessors()} pid=${ProcessHandle.current().pid()} start_ms=${ManagementFactory.getRuntimeMXBean().startTime} order=${args[0]}")
         println("# main=${args[3]} probe=${args[5]} CPU=whole_process allocation=approx_all_threads heap_peak=sum_pool_peaks_upper_bound RSS=external_including_reference_preparation")
         println("# setup_rows=one_fresh_executor_plus_first_product_and_shutdown_not_await_termination; steady_rows=reused_warm_executor")
         val policy = MultiplicationPolicy539(64, 16, 384)

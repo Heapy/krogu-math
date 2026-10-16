@@ -36,7 +36,12 @@ orders its read-only input. Child output/arena belongs exclusively to that child
 until its Future is terminal. Parent combines only after every accepted Future
 has been consumed. Only the middle output is mutated during recombination.
 
-All started Workers are registered immediately in preallocated owner slots.
+Worker/Future are value classes: nullable generic owner-slot stores may box and
+allocate. Each still-local nonnullable handle remains owned through registration.
+A failed Worker registration terminates/joins that local Worker; failed accepted
+Future registration consumes that local Future before outer cleanup drains all
+previous owners. Primary failure identity survives best-effort cleanup suppression.
+Deterministic second-worker registration-fault tests cover both boundaries.
 Failure at a later start or submission joins prior accepted Futures, requests
 termination for every created Worker and joins termination before releasing
 permits/returning. Preserve the first arithmetic exception; do not retry OOM or
