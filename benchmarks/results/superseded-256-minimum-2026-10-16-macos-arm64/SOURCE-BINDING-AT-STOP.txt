@@ -1,0 +1,1 @@
+Source and artifact hashes matched their prelaunch manifests at controlled stop before calibration patch. Original runner did not finish; this is incomplete diagnostic data, not a complete campaign.

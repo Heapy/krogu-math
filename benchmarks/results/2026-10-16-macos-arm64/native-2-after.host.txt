@@ -1,0 +1,32 @@
+timestamp_utc=2026-10-16T12:18:03.046019Z
+15:18  up 45 days, 23:12, 1 user, load averages: 4.09 5.72 8.68
+vm.swapusage: total = 9216.00M  used = 8448.38M  free = 767.62M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                   114394.
+Pages active:                                 663893.
+Pages inactive:                               648896.
+Pages speculative:                             10340.
+Pages throttled:                                   0.
+Pages wired down:                             321014.
+Pages purgeable:                               35304.
+"Translation faults":                    79875850780.
+Pages copy-on-write:                      2383903880.
+Pages zero filled:                       57896613780.
+Pages reactivated:                       20840709851.
+Pages purged:                             4021976224.
+File-backed pages:                            503366.
+Anonymous pages:                              819763.
+Pages stored in compressor:                  2505009.
+Pages occupied by compressor:                 540866.
+Decompressions:                          21592929363.
+Compressions:                            23376143624.
+Pageins:                                  2733935080.
+Pageouts:                                   19760835.
+Swapins:                                    81749656.
+Swapouts:                                  100725809.
+Processes reporting >=10% CPU at snapshot (ps; not continuous monitoring):
+PID  PPID  %CPU %MEM COMM
+  403     1  40.0  0.3 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+37231     1  10.3  0.0 /usr/libexec/trustd
+72034 72010  22.2  0.3 /Applications/Firefox.app/Contents/MacOS/plugin-container.app/Contents/MacOS/plugin-container
+46207  1430  21.7  0.9 /Users/yoda/.local/bin/codex

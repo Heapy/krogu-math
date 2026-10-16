@@ -1,0 +1,1 @@
+Source and artifact SHA-256 manifests match before and after the entire campaign.

@@ -1,0 +1,8 @@
+/Users/yoda/.gradle/nodejs/node-v26.2.0-darwin-arm64/bin/node
+--expose-gc
+/private/tmp/krogu-math-527/benchmarks/build/compileSync/wasmJs/main/productionExecutable/kotlin/krogu-math-benchmarks.mjs
+5
+5
+100
+reverse
+5

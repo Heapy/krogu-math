@@ -1,0 +1,63 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :kmpPartiallyResolvedDependenciesChecker
+> Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :compileKotlinJvm UP-TO-DATE
+> Task :compileJvmMainJava NO-SOURCE
+> Task :jvmProcessResources NO-SOURCE
+> Task :processJvmMainResources SKIPPED
+> Task :jvmMainClasses UP-TO-DATE
+> Task :jvmJar UP-TO-DATE
+> Task :benchmarks:kmpPartiallyResolvedDependenciesChecker
+> Task :benchmarks:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :benchmarks:compileKotlinJvm UP-TO-DATE
+> Task :benchmarks:compileJvmMainJava NO-SOURCE
+> Task :benchmarks:jvmProcessResources NO-SOURCE
+> Task :benchmarks:processJvmMainResources SKIPPED
+> Task :benchmarks:jvmMainClasses UP-TO-DATE
+> Task :benchmarks:jvmClasspath
+> Task :compileKotlinJs UP-TO-DATE
+> Task :benchmarks:compileKotlinJs UP-TO-DATE
+> Task :benchmarks:jsProcessResources NO-SOURCE
+> Task :benchmarks:jsMainClasses UP-TO-DATE
+> Task :benchmarks:compileProductionExecutableKotlinJs UP-TO-DATE
+> Task :benchmarks:jsProductionExecutableCompileSync UP-TO-DATE
+> Task :compileKotlinWasmJs UP-TO-DATE
+> Task :benchmarks:compileKotlinWasmJs UP-TO-DATE
+> Task :benchmarks:wasmJsProcessResources NO-SOURCE
+> Task :benchmarks:wasmJsMainClasses UP-TO-DATE
+> Task :benchmarks:compileProductionExecutableKotlinWasmJs UP-TO-DATE
+> Task :benchmarks:kotlinWasmBinaryenSetup UP-TO-DATE
+> Task :benchmarks:compileProductionExecutableKotlinWasmJsOptimize UP-TO-DATE
+> Task :benchmarks:wasmJsProductionExecutableCompileSync UP-TO-DATE
+> Task :downloadKotlinNativeDistribution UP-TO-DATE
+> Task :compileKotlinMacosArm64 UP-TO-DATE
+> Task :exportCrossCompilationMetadataForMacosArm64ApiElements UP-TO-DATE
+> Task :benchmarks:downloadKotlinNativeDistribution UP-TO-DATE
+> Task :benchmarks:compileKotlinMacosArm64 UP-TO-DATE
+> Task :benchmarks:validateLocalSwiftPMDependencies
+> Task :benchmarks:computeLocalPackageDependencyInputFiles UP-TO-DATE
+> Task :benchmarks:fingerprintSyntheticPackage UP-TO-DATE
+> Task :benchmarks:generateSyntheticLinkageSwiftPMImportProjectForCinteropsAndLdDump SKIPPED
+> Task :serializeSwiftPMDependenciesMetadataForLockFiles UP-TO-DATE
+> Task :benchmarks:serializeSwiftPMDependenciesMetadataForLockFiles UP-TO-DATE
+> Task :generateUmbrellaPackageIdentifierBasedResolutionForDefault SKIPPED
+> Task :fetchUmbrellaPackageIdentifierForDefault SKIPPED
+> Task :benchmarks:syncPersistedPackageResolvedToSynthetic SKIPPED
+> Task :benchmarks:fetchSyntheticImportProjectPackages SKIPPED
+> Task :benchmarks:fingerprintXcodebuildMacosx UP-TO-DATE
+> Task :benchmarks:dumpXcodebuildArgsMacosx SKIPPED
+> Task :benchmarks:convertSyntheticImportProjectIntoDefFileMacosx UP-TO-DATE
+> Task :benchmarks:linkReleaseExecutableMacosArm64 UP-TO-DATE
+
+[Incubating] Problems report is available at: file:///private/tmp/krogu-math-527/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 9s
+29 actionable tasks: 4 executed, 25 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.1/userguide/configuration_cache_enabling.html

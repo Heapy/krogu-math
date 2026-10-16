@@ -1,0 +1,32 @@
+timestamp_utc=2026-10-16T11:59:30.704393Z
+14:59  up 45 days, 22:54, 1 user, load averages: 13.34 13.49 12.61
+vm.swapusage: total = 10240.00M  used = 8526.00M  free = 1714.00M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                    12698.
+Pages active:                                 677869.
+Pages inactive:                               701185.
+Pages speculative:                              1990.
+Pages throttled:                                   0.
+Pages wired down:                             336693.
+Pages purgeable:                               14028.
+"Translation faults":                    79844329113.
+Pages copy-on-write:                      2382344355.
+Pages zero filled:                       57879119871.
+Pages reactivated:                       20835755353.
+Pages purged:                             4021731679.
+File-backed pages:                            387670.
+Anonymous pages:                              993374.
+Pages stored in compressor:                  2590554.
+Pages occupied by compressor:                 569037.
+Decompressions:                          21588964387.
+Compressions:                            23371561760.
+Pageins:                                  2733249131.
+Pageouts:                                   19751756.
+Swapins:                                    81711578.
+Swapouts:                                  100693306.
+Processes reporting >=10% CPU at snapshot (ps; not continuous monitoring):
+PID  PPID  %CPU %MEM COMM
+  334     1  15.5  0.0 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd
+  403     1  39.6  0.3 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+33835     1  11.7  0.3 /Applications/DaisyDisk.app/Contents/MacOS/DaisyDisk
+72034 72010  27.7  0.3 /Applications/Firefox.app/Contents/MacOS/plugin-container.app/Contents/MacOS/plugin-container

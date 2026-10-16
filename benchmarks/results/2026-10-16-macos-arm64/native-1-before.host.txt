@@ -1,0 +1,30 @@
+timestamp_utc=2026-10-16T12:16:27.482803Z
+15:16  up 45 days, 23:11, 1 user, load averages: 5.51 6.37 9.24
+vm.swapusage: total = 9216.00M  used = 8448.38M  free = 767.62M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                   146391.
+Pages active:                                 644227.
+Pages inactive:                               647900.
+Pages speculative:                              6448.
+Pages throttled:                                   0.
+Pages wired down:                             312576.
+Pages purgeable:                               17809.
+"Translation faults":                    79873486662.
+Pages copy-on-write:                      2383817340.
+Pages zero filled:                       57894667304.
+Pages reactivated:                       20840709778.
+Pages purged:                             4021972771.
+File-backed pages:                            491434.
+Anonymous pages:                              807141.
+Pages stored in compressor:                  2508710.
+Pages occupied by compressor:                 541839.
+Decompressions:                          21592924652.
+Compressions:                            23376143624.
+Pageins:                                  2733913681.
+Pageouts:                                   19760835.
+Swapins:                                    81749466.
+Swapouts:                                  100725809.
+Processes reporting >=10% CPU at snapshot (ps; not continuous monitoring):
+PID  PPID  %CPU %MEM COMM
+  403     1  34.9  0.3 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+72034 72010  27.9  0.3 /Applications/Firefox.app/Contents/MacOS/plugin-container.app/Contents/MacOS/plugin-container

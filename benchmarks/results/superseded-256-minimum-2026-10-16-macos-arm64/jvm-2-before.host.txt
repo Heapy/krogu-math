@@ -1,0 +1,32 @@
+timestamp_utc=2026-10-16T11:54:06.266311Z
+14:54  up 45 days, 22:48, 1 user, load averages: 5.14 10.60 11.53
+vm.swapusage: total = 13312.00M  used = 11791.12M  free = 1520.88M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                    45679.
+Pages active:                                 608925.
+Pages inactive:                               599870.
+Pages speculative:                              8440.
+Pages throttled:                                   0.
+Pages wired down:                             378223.
+Pages purgeable:                               31219.
+"Translation faults":                    79830868292.
+Pages copy-on-write:                      2381939110.
+Pages zero filled:                       57869816464.
+Pages reactivated:                       20833303025.
+Pages purged:                             4021588848.
+File-backed pages:                            322854.
+Anonymous pages:                              894381.
+Pages stored in compressor:                  3085274.
+Pages occupied by compressor:                 657374.
+Decompressions:                          21587034112.
+Compressions:                            23369431793.
+Pageins:                                  2732954843.
+Pageouts:                                   19747801.
+Swapins:                                    81612543.
+Swapouts:                                  100638800.
+Processes reporting >=10% CPU at snapshot (ps; not continuous monitoring):
+PID  PPID  %CPU %MEM COMM
+  403     1  35.7  0.3 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+63014     1  11.4  2.8 /Applications/Firefox.app/Contents/MacOS/firefox
+74371     1  13.6  0.2 /Library/SystemExtensions/52B32A9A-6A60-42C6-A35C-9F87BC1F065E/io.tailscale.ipn.macsys.network-extension.systemextension/Contents/MacOS/io.tailscale.ipn.macsys.network-extension
+78651 63014  55.5  2.0 /Applications/Firefox.app/Contents/MacOS/plugin-container.app/Contents/MacOS/plugin-container

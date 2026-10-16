@@ -1,0 +1,13 @@
+Running jvm fork 1/3 -> /private/tmp/krogu-math-527/benchmarks/results/2026-10-16-macos-arm64
+Running jvm fork 2/3 -> /private/tmp/krogu-math-527/benchmarks/results/2026-10-16-macos-arm64
+Running jvm fork 3/3 -> /private/tmp/krogu-math-527/benchmarks/results/2026-10-16-macos-arm64
+Running js fork 1/3 -> /private/tmp/krogu-math-527/benchmarks/results/2026-10-16-macos-arm64
+Running js fork 2/3 -> /private/tmp/krogu-math-527/benchmarks/results/2026-10-16-macos-arm64
+Running js fork 3/3 -> /private/tmp/krogu-math-527/benchmarks/results/2026-10-16-macos-arm64
+Running wasm fork 1/3 -> /private/tmp/krogu-math-527/benchmarks/results/2026-10-16-macos-arm64
+Running wasm fork 2/3 -> /private/tmp/krogu-math-527/benchmarks/results/2026-10-16-macos-arm64
+Running wasm fork 3/3 -> /private/tmp/krogu-math-527/benchmarks/results/2026-10-16-macos-arm64
+Running native fork 1/3 -> /private/tmp/krogu-math-527/benchmarks/results/2026-10-16-macos-arm64
+Running native fork 2/3 -> /private/tmp/krogu-math-527/benchmarks/results/2026-10-16-macos-arm64
+Running native fork 3/3 -> /private/tmp/krogu-math-527/benchmarks/results/2026-10-16-macos-arm64
+Completed: /private/tmp/krogu-math-527/benchmarks/results/2026-10-16-macos-arm64

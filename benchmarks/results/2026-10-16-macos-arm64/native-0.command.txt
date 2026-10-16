@@ -1,0 +1,6 @@
+/private/tmp/krogu-math-527/benchmarks/build/bin/macosArm64/releaseExecutable/benchmarks.kexe
+5
+5
+100
+forward
+0

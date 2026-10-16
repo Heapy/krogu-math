@@ -1,0 +1,3 @@
+Command: kotlinr benchmarks/check-results.main.kts benchmarks/results/2026-10-16-macos-arm64
+Exit: 0
+Validated 4800 measurements in 12 process forks; all workload digests agree across measured implementations/platforms. Wrote summary.csv

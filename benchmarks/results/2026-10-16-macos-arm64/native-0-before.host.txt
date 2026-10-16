@@ -1,0 +1,31 @@
+timestamp_utc=2026-10-16T12:15:39.148719Z
+15:15  up 45 days, 23:10, 1 user, load averages: 6.44 6.70 9.53
+vm.swapusage: total = 9216.00M  used = 8448.38M  free = 767.62M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                   116029.
+Pages active:                                 660393.
+Pages inactive:                               653037.
+Pages speculative:                              5884.
+Pages throttled:                                   0.
+Pages wired down:                             321675.
+Pages purgeable:                               24021.
+"Translation faults":                    79871873540.
+Pages copy-on-write:                      2383757484.
+Pages zero filled:                       57893404463.
+Pages reactivated:                       20840709732.
+Pages purged:                             4021970075.
+File-backed pages:                            486614.
+Anonymous pages:                              832700.
+Pages stored in compressor:                  2509841.
+Pages occupied by compressor:                 542271.
+Decompressions:                          21592923005.
+Compressions:                            23376143624.
+Pageins:                                  2733900940.
+Pageouts:                                   19760835.
+Swapins:                                    81749438.
+Swapouts:                                  100725809.
+Processes reporting >=10% CPU at snapshot (ps; not continuous monitoring):
+PID  PPID  %CPU %MEM COMM
+  403     1  38.9  0.3 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+72034 72010  28.4  0.3 /Applications/Firefox.app/Contents/MacOS/plugin-container.app/Contents/MacOS/plugin-container
+81339 81239 100.0  1.4 /opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/Resources/Python.app/Contents/MacOS/Python

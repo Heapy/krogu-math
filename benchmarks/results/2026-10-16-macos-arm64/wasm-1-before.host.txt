@@ -1,0 +1,31 @@
+timestamp_utc=2026-10-16T12:14:06.413691Z
+15:14  up 45 days, 23:08, 1 user, load averages: 5.43 6.67 9.83
+vm.swapusage: total = 9216.00M  used = 8456.38M  free = 759.62M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                    94882.
+Pages active:                                 665536.
+Pages inactive:                               634292.
+Pages speculative:                             31154.
+Pages throttled:                                   0.
+Pages wired down:                             321789.
+Pages purgeable:                               30746.
+"Translation faults":                    79870747049.
+Pages copy-on-write:                      2383689987.
+Pages zero filled:                       57892627635.
+Pages reactivated:                       20840709631.
+Pages purged:                             4021965543.
+File-backed pages:                            522768.
+Anonymous pages:                              808214.
+Pages stored in compressor:                  2531195.
+Pages occupied by compressor:                 552047.
+Decompressions:                          21592900643.
+Compressions:                            23376143624.
+Pageins:                                  2733878260.
+Pageouts:                                   19760689.
+Swapins:                                    81749382.
+Swapouts:                                  100725809.
+Processes reporting >=10% CPU at snapshot (ps; not continuous monitoring):
+PID  PPID  %CPU %MEM COMM
+  403     1  31.7  0.3 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+72034 72010  26.0  0.3 /Applications/Firefox.app/Contents/MacOS/plugin-container.app/Contents/MacOS/plugin-container
+74371     1  15.8  0.2 /Library/SystemExtensions/52B32A9A-6A60-42C6-A35C-9F87BC1F065E/io.tailscale.ipn.macsys.network-extension.systemextension/Contents/MacOS/io.tailscale.ipn.macsys.network-extension

@@ -1,0 +1,30 @@
+timestamp_utc=2026-10-16T12:08:19.486730Z
+15:08  up 45 days, 23:03, 1 user, load averages: 4.59 11.13 12.55
+vm.swapusage: total = 9216.00M  used = 8456.38M  free = 759.62M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                   175945.
+Pages active:                                 566287.
+Pages inactive:                               563679.
+Pages speculative:                             63142.
+Pages throttled:                                   0.
+Pages wired down:                             344341.
+Pages purgeable:                               18600.
+"Translation faults":                    79865920331.
+Pages copy-on-write:                      2383350149.
+Pages zero filled:                       57889893075.
+Pages reactivated:                       20840709300.
+Pages purged:                             4021957475.
+File-backed pages:                            486370.
+Anonymous pages:                              706738.
+Pages stored in compressor:                  2577086.
+Pages occupied by compressor:                 586176.
+Decompressions:                          21592853808.
+Compressions:                            23376143624.
+Pageins:                                  2733747785.
+Pageouts:                                   19760618.
+Swapins:                                    81749092.
+Swapouts:                                  100725809.
+Processes reporting >=10% CPU at snapshot (ps; not continuous monitoring):
+PID  PPID  %CPU %MEM COMM
+  403     1  37.2  0.3 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+78525 78524  88.0  0.2 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang

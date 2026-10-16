@@ -1,0 +1,3 @@
+# Preserve verbatim tool output, including JVM/Gradle trailing spaces.
+*.log -whitespace
+environment.txt -whitespace

@@ -1,0 +1,66 @@
+timestamp_utc=2026-10-16T12:07:06.944218Z
+git_head=a809e79be2085b4b8886ccbc846337af0cf918d2
+git_status=?? benchmarks/results/
+host=Darwin ruslans-macbook-pro.tail872780.ts.net 25.6.0 Darwin Kernel Version 25.6.0: Fri Jul 31 19:17:26 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_T6041 arm64
+cpu=Apple M4 Max
+forks=3 warmup=5 samples=5 batch_ms=100 platforms=[jvm, js, wasm, native]
+java_command=/Users/yoda/.sdkman/candidates/java/25.0.4-librca/bin/java -Xms256m -Xmx1g -XX:+UseG1GC
+Property settings:
+    file.encoding = UTF-8
+    file.separator = /
+    java.class.path = 
+    java.class.version = 69.0
+    java.home = /Users/yoda/.sdkman/candidates/java/25.0.4-librca
+    java.io.tmpdir = /var/folders/yh/h124ks9x1vqd0v6sz6slshkc0000gn/T/
+    java.library.path = /Users/yoda/Library/Java/Extensions
+        /Library/Java/Extensions
+        /Network/Library/Java/Extensions
+        /System/Library/Java/Extensions
+        /usr/lib/java
+        .
+    java.runtime.name = OpenJDK Runtime Environment
+    java.runtime.version = 25.0.4+9-LTS
+    java.specification.name = Java Platform API Specification
+    java.specification.vendor = Oracle Corporation
+    java.specification.version = 25
+    java.vendor = BellSoft
+    java.vendor.url = https://bell-sw.com/
+    java.vendor.url.bug = https://bell-sw.com/support
+    java.version = 25.0.4
+    java.version.date = 2026-07-21
+    java.vm.compressedOopsMode = Zero based
+    java.vm.info = mixed mode, sharing
+    java.vm.name = OpenJDK 64-Bit Server VM
+    java.vm.specification.name = Java Virtual Machine Specification
+    java.vm.specification.vendor = Oracle Corporation
+    java.vm.specification.version = 25
+    java.vm.vendor = BellSoft
+    java.vm.version = 25.0.4+9-LTS
+    jdk.debug = release
+    line.separator = \n 
+    native.encoding = UTF-8
+    os.arch = aarch64
+    os.name = Mac OS X
+    os.version = 26.6.2
+    path.separator = :
+    stderr.encoding = UTF-8
+    stdin.encoding = UTF-8
+    stdout.encoding = UTF-8
+    sun.arch.data.model = 64
+    sun.boot.library.path = /Users/yoda/.sdkman/candidates/java/25.0.4-librca/lib
+    sun.cpu.endian = little
+    sun.io.unicode.encoding = UnicodeBig
+    sun.java.launcher = SUN_STANDARD
+    sun.jnu.encoding = UTF-8
+    sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+    user.country = US
+    user.dir = /private/tmp/krogu-math-527
+    user.home = /Users/yoda
+    user.language = en
+    user.name = yoda
+
+openjdk version "25.0.4" 2026-07-21 LTS
+OpenJDK Runtime Environment (build 25.0.4+9-LTS)
+OpenJDK 64-Bit Server VM (build 25.0.4+9-LTS, mixed mode, sharing)
+node=/Users/yoda/.gradle/nodejs/node-v26.2.0-darwin-arm64/bin/node v26.2.0
+gradle=9.8.1 kotlin=2.4.21 native=2.4.21; JS/Wasm production executable; Native release

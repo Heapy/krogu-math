@@ -1,0 +1,30 @@
+timestamp_utc=2026-10-16T12:09:31.376901Z
+15:09  up 45 days, 23:04, 1 user, load averages: 3.84 9.45 11.79
+vm.swapusage: total = 9216.00M  used = 8456.38M  free = 759.62M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                   183140.
+Pages active:                                 593883.
+Pages inactive:                               550416.
+Pages speculative:                             67941.
+Pages throttled:                                   0.
+Pages wired down:                             320608.
+Pages purgeable:                               20750.
+"Translation faults":                    79867978045.
+Pages copy-on-write:                      2383486014.
+Pages zero filled:                       57890843295.
+Pages reactivated:                       20840709348.
+Pages purged:                             4021959252.
+File-backed pages:                            500536.
+Anonymous pages:                              711704.
+Pages stored in compressor:                  2569526.
+Pages occupied by compressor:                 583210.
+Decompressions:                          21592860857.
+Compressions:                            23376143624.
+Pageins:                                  2733781520.
+Pageouts:                                   19760618.
+Swapins:                                    81749203.
+Swapouts:                                  100725809.
+Processes reporting >=10% CPU at snapshot (ps; not continuous monitoring):
+PID  PPID  %CPU %MEM COMM
+  403     1  29.3  0.3 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+74371     1  20.9  0.2 /Library/SystemExtensions/52B32A9A-6A60-42C6-A35C-9F87BC1F065E/io.tailscale.ipn.macsys.network-extension.systemextension/Contents/MacOS/io.tailscale.ipn.macsys.network-extension
