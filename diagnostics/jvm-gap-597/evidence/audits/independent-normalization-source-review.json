@@ -1,0 +1,9 @@
+{
+  "status": "SOURCE_PASS_UNRUN_AT_REVIEW",
+  "files": {
+    "src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt": "8a25fa9a813517b60ea83aa268580dffeb87645b4854855e7507ea946b1dade8",
+    "src/commonTest/kotlin/io/heapy/krogu/math/DecimalMetadata597Test.kt": "2bdc9470678f708f50097e436d656e49f91a985ecc115a8782bce3818bb06609",
+    "src/jvmTest/kotlin/io/heapy/krogu/math/CompactNormalization597JvmTest.kt": "83e5f672c5a0c0246b8479ee30a60996947311c037921a48e02c76baea84920f"
+  },
+  "proof": "independent-fix-review.md residual compact normalization section"
+}

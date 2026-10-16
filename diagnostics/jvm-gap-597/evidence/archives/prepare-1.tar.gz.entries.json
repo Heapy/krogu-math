@@ -1,0 +1,42 @@
+[
+  {
+    "path": "build-current.command.txt",
+    "bytes": 100,
+    "sha256": "d660283b8ca3dd9a497f93478d6507171db0b940fc735a418de07928c92b6661"
+  },
+  {
+    "path": "build-current.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "build-current.stdout.txt",
+    "bytes": 3989,
+    "sha256": "643657fffe545e57f0e9a800fbeb0d30a6bbd35f25369e2d974d31fb7f2e926f"
+  },
+  {
+    "path": "build-probe.command.txt",
+    "bytes": 518,
+    "sha256": "593e2d4a969fdf70f6eb37013134710fb9d2ed6a4a2ff9beb618ab1611563bc3"
+  },
+  {
+    "path": "build-probe.stderr.txt",
+    "bytes": 149,
+    "sha256": "e915658b42a65cfed901f3a0c40aa2df4bae834f63e955dc326e6dff04682777"
+  },
+  {
+    "path": "build-probe.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "current.jar",
+    "bytes": 232031,
+    "sha256": "1f730223b9b5fb809c1101fd5a7f581574550fde74192369251234582e470cb6"
+  },
+  {
+    "path": "sources-before.sha256",
+    "bytes": 5070,
+    "sha256": "ce6a23267f0f9a95144696a92bc376c9c3b148ee1aeb3a338b3d1a3ef1053132"
+  }
+]

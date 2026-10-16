@@ -1,0 +1,90 @@
+{
+  "status": "PASS raw JFR+control audit",
+  "profiles": 1,
+  "controls": 1,
+  "cases": [
+    {
+      "case": "decimal/small/divide",
+      "main_thread_java_id": 3,
+      "raw_events": 3973,
+      "excluded_other_thread_events": 0,
+      "allocation_sample_events": 3010,
+      "cpu_samples": 963,
+      "own_cpu_samples": 955,
+      "own_cpu_fraction": 0.9916926272066459,
+      "inclusive_pow_samples": 0,
+      "inclusive_metadata_samples": 0,
+      "estimated_allocation_weight": 66110194712,
+      "own_estimated_allocation_weight": 66110194712,
+      "estimated_over_exact_allocation": 1.06414830337811,
+      "profile": {
+        "operations": 22806528,
+        "elapsed_ns": 10023675342,
+        "thread_cpu_ns": 9859061234,
+        "exact_allocated_bytes": 62124982488,
+        "ns_per_op": 439.50904504184064,
+        "cpu_ns_per_op": 432.2911946088418,
+        "bytes_per_op": 2724.0000094709726
+      },
+      "control": {
+        "operations": 21889024,
+        "elapsed_ns": 10034685645,
+        "thread_cpu_ns": 9885005351,
+        "exact_allocated_bytes": 59625701592,
+        "ns_per_op": 458.43458552560406,
+        "cpu_ns_per_op": 451.5964417143496,
+        "bytes_per_op": 2724.0000098679593
+      },
+      "profile_over_control_ns_ratio": 0.9587170316522586,
+      "profile_over_control_cpu_ratio": 0.9572511089055058,
+      "profile_over_control_bytes_ratio": 0.9999999998542634,
+      "inclusive_normalization_paths": {
+        "io.heapy.krogu.math.BigInteger.toString": 555,
+        "io.heapy.krogu.math.BigDecimal.quotientExponent": 591,
+        "io.heapy.krogu.math.BigDecimal.normalizedComparison": 306
+      },
+      "top_allocation_estimates": [
+        {
+          "type_and_own_leaf": "io.heapy.krogu.math.BigInteger@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "estimated_bytes": 23628081048
+        },
+        {
+          "type_and_own_leaf": "[I@io.heapy.krogu.math.BigInteger.divideStored",
+          "estimated_bytes": 13485075000
+        },
+        {
+          "type_and_own_leaf": "[Lio.heapy.krogu.math.BigInteger;@io.heapy.krogu.math.BigInteger.divideStored",
+          "estimated_bytes": 11436548632
+        },
+        {
+          "type_and_own_leaf": "[B@io.heapy.krogu.math.BigInteger.toString",
+          "estimated_bytes": 6564089552
+        },
+        {
+          "type_and_own_leaf": "[I@io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "estimated_bytes": 3438094264
+        },
+        {
+          "type_and_own_leaf": "[I@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "estimated_bytes": 2470305544
+        },
+        {
+          "type_and_own_leaf": "java.lang.String@io.heapy.krogu.math.BigInteger.toString",
+          "estimated_bytes": 1660105864
+        },
+        {
+          "type_and_own_leaf": "[I@io.heapy.krogu.math.BigInteger$Companion.subtractMagnitude",
+          "estimated_bytes": 1286737552
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "one10sprofile+one10scontrol per case, not fork confidence interval",
+    "CPU leaf partitions main-thread samples; inclusive paths overlap and must not be summed",
+    "JFR allocation weights are sampled estimates; exact ThreadMXBean current-thread bytes remain separate",
+    "unknown own-frame and other-thread events are explicitly counted",
+    "processVmHWM includes setup/JFR/dump/attribution, not per-operation residency",
+    "No foreign numerical implementation body inspected"
+  ]
+}

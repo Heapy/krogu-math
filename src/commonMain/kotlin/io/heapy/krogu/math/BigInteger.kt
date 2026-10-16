@@ -1132,7 +1132,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         if (sign == 0) return 1
         val lower = decimalDigitLowerBound()
         if (lower == 646456993) return lower
-        val threshold = TEN.pow(lower)
+        val threshold = DecimalPowers597.lookup(lower) ?: TEN.pow(lower)
         return lower + if (compareMagnitude(words, threshold.words) >= 0) 1 else 0
     }
 

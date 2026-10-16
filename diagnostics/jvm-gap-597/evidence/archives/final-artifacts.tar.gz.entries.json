@@ -1,0 +1,462 @@
+[
+  {
+    "path": "after-sources/diagnostics/jvm-gap-597/Gap597Probe.kt",
+    "bytes": 13047,
+    "sha256": "72a74bdb9f8ea4c206a04450295f31ffb85a889121e159c67f6d4ed43b9c8e74"
+  },
+  {
+    "path": "after-sources/scripts/profile-jvm-gap-597.main.kts",
+    "bytes": 8965,
+    "sha256": "3743ece8675784cbd74bf1dfb131bf40ff6a2a8632855f234455e6fb3e2272db"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt",
+    "bytes": 71234,
+    "sha256": "8a25fa9a813517b60ea83aa268580dffeb87645b4854855e7507ea946b1dade8"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt",
+    "bytes": 74476,
+    "sha256": "693576da9c76670225fe970898d65ac616bfb1e41035f96c32ad6a57009adcec"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/BigIntegerProperties.kt",
+    "bytes": 223,
+    "sha256": "1915e919d8061c32efdf2c8e053f4fb46410b9f4e1c594265111153b6040b900"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalAccumulator.kt",
+    "bytes": 9824,
+    "sha256": "f3d9a5716d1fcdfc8ab367ea4ad486e09d96ba8d972834972cc846ce56a48b00"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalDivision581.kt",
+    "bytes": 24662,
+    "sha256": "553de7bece22f88526e029d0a931cf0fccc99a73d90534e588911b19d46bc193"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalKey.kt",
+    "bytes": 3385,
+    "sha256": "dbc3dcead3ef066e4f95deeb232ea42d455197d19a3f8d1529ea2fbd46df3058"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalPower593.kt",
+    "bytes": 16725,
+    "sha256": "851cf8b6bd0839d418c0ff71a5fc365daebf2ffb5bb5599de7e8f44fa5050f9c"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalPowers597.kt",
+    "bytes": 768,
+    "sha256": "848b3e7accc28e6d5d883db9003b097c8871b4a550eb581b575bdb4859037ad1"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalProduct580.kt",
+    "bytes": 8217,
+    "sha256": "2ef14e2a2d52b75286f2e5830301a75fe586ed41cb3fbbacb9fd96c346d5234d"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalSignedWork535.kt",
+    "bytes": 13077,
+    "sha256": "b03392b1e74e4ce5cdbf1a57d8cbdf1b21358779c393295a91559fd2eea92e72"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalSquareRoot579.kt",
+    "bytes": 8748,
+    "sha256": "2feb17a4d791fd586dce4c19053dcb189302ddddd73ebd41cbd0202aef6f7283"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalSum585.kt",
+    "bytes": 13148,
+    "sha256": "f89ca4fb38988f58b0ce764c54ef50f95338b69400a8ef202d5078e89c8179c5"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalText588.kt",
+    "bytes": 11054,
+    "sha256": "e70e9ff7488caab985056cbfcf349048301cd3700dbdcfff235d987846407d7c"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/DoubleFormatting.kt",
+    "bytes": 5517,
+    "sha256": "9b2a1b8cb1d40a2fdc7db5110b6a8c4e398da0562d5c3d6b02cf928f3c74433f"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/ExplicitDecimal.kt",
+    "bytes": 3755,
+    "sha256": "f9b9d29da234ee056d3a2b4344407402b290666044b5c73c402af45cda9dc574"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/FloatFormatting.kt",
+    "bytes": 4315,
+    "sha256": "ba55514c181e52f20ed63fcb2634621f66cea3cc4db084e77cf2df71d1dcf77e"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/MagnitudeLimits.kt",
+    "bytes": 1469,
+    "sha256": "5bf687bb968d22908a36b8898f19649bdbdf7e5a2596575f1808053fca0e4769"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/MagnitudeMultiplication.kt",
+    "bytes": 8650,
+    "sha256": "441c63b71850be20154c2ea5f256ecdbc69dae44d04ad7551bc6544b2195c6a0"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/MathContext.kt",
+    "bytes": 3328,
+    "sha256": "d3690387b1345f90cc927044a1a450983dd0d2ce6e3e47054384c31979fd5261"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/MathSerializable.kt",
+    "bytes": 486,
+    "sha256": "90543924afe5b8ca928b44e759708caa11b25f429f6382ee6d4c4e019aa196c8"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/NumberConversions.kt",
+    "bytes": 2386,
+    "sha256": "f65b8db60dc39e6bbf00ba62c3dc297223f188660382b82653a3da8339c2c7d3"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/NumericExtensions.kt",
+    "bytes": 1547,
+    "sha256": "20fdf7c5c76ed4207c03859b4cb60247a16e2ec4337ee674c3a85ce6101e5123"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/OperatorExtensions.kt",
+    "bytes": 2060,
+    "sha256": "64480aa0f56a42de39e34f3cda92b4a1b444ab19eea0cd6a93fafae864e63368"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/PlainStringAllocation.kt",
+    "bytes": 201,
+    "sha256": "74ed828dfe1fc0e72a1bb81f0dfb572b8729b6394b91d68ceea4bb029b4a8fc1"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/PlatformRandom.kt",
+    "bytes": 779,
+    "sha256": "e408e6fad2a92acec592520ea3eaf1c414493a6db708db9ef9ae686b1303f3d0"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/PowArrayBounds.kt",
+    "bytes": 189,
+    "sha256": "8831e7d736ca6cc895558b38ccdbc73c305ef2534649d3547a232379a9d16361"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/PrimalityCertainty.kt",
+    "bytes": 1140,
+    "sha256": "93f0c4743f9a7d8d9acdedd283760904bbfd2caf55e5e4973dd6331d2aa57479"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/PrimeSearchLimits.kt",
+    "bytes": 386,
+    "sha256": "66e7d92b5d6091067ee02679534060fc9d8559328c7fafc45805b3d7493c3a85"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/RandomFactories.kt",
+    "bytes": 490,
+    "sha256": "d66f6002d3e2f32b1a2f03143984eee2da55a2fc7edda2bf6e8bdada41257c20"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/RoundingMode.kt",
+    "bytes": 477,
+    "sha256": "e47d7aa314ddaa9c79ba13b79a00beadb8be96cbb473cd4ad2dfae3e0501a5ee"
+  },
+  {
+    "path": "after-sources/src/commonMain/kotlin/io/heapy/krogu/math/TextExtensions.kt",
+    "bytes": 1178,
+    "sha256": "e182d830cff8c096cc61fcbbbe79c1b09ace88dfacdc65df705e8404660ff977"
+  },
+  {
+    "path": "after-sources/src/commonTest/kotlin/io/heapy/krogu/math/DecimalMetadata597Test.kt",
+    "bytes": 2832,
+    "sha256": "2bdc9470678f708f50097e436d656e49f91a985ecc115a8782bce3818bb06609"
+  },
+  {
+    "path": "after-sources/src/jvmMain/kotlin/io/heapy/krogu/math/JavaMath.kt",
+    "bytes": 1518,
+    "sha256": "ca29d078e3c849a76b31b9b0d6ed72b01385631f7d7c5c05902eb1ed77015101"
+  },
+  {
+    "path": "after-sources/src/jvmMain/kotlin/io/heapy/krogu/math/MathSerializable.kt",
+    "bytes": 795,
+    "sha256": "d83417db569273de52a6009cb89a99612be496ed0ee005d2eab8dc6c92306598"
+  },
+  {
+    "path": "after-sources/src/jvmMain/kotlin/io/heapy/krogu/math/PlainStringAllocationJvm.kt",
+    "bytes": 190,
+    "sha256": "d38901a90aad1fe497e630cc37d6a3d30f711bda3d0dc88c3cfba578cf628bfa"
+  },
+  {
+    "path": "after-sources/src/jvmMain/kotlin/io/heapy/krogu/math/PlatformRandomJvm.kt",
+    "bytes": 80,
+    "sha256": "5acb4c2184f981699c5fec755bf223ab61a441af84275c5151da6cc4fde345fb"
+  },
+  {
+    "path": "after-sources/src/jvmMain/kotlin/io/heapy/krogu/math/PowArrayBounds.kt",
+    "bytes": 318,
+    "sha256": "85aec8fb091af53f7ae084b1e4b5f1d98fe01ef5bc4103e32297ec4051d56c78"
+  },
+  {
+    "path": "after-sources/src/jvmTest/kotlin/io/heapy/krogu/math/CompactNormalization597JvmTest.kt",
+    "bytes": 4091,
+    "sha256": "83e5f672c5a0c0246b8479ee30a60996947311c037921a48e02c76baea84920f"
+  },
+  {
+    "path": "after-sources/src/jvmTest/kotlin/io/heapy/krogu/math/DecimalMetadata597JvmTest.kt",
+    "bytes": 1478,
+    "sha256": "a6703b89b91fe9d7a8f1d7c305f5b4b046d9ce3dcc9ba9ba04e6948dd5490284"
+  },
+  {
+    "path": "after597.jar",
+    "bytes": 234409,
+    "sha256": "de9435a2f08df94c09e78f1300b017844a083bd527a8d3e6f884f372044b61df"
+  },
+  {
+    "path": "before-sources/benchmarks/src/commonMain/kotlin/bench/Workloads.kt",
+    "bytes": 2698,
+    "sha256": "74dbf5a3894c0329acc7c6dc7003c25bb0e85d161e83972fc0e80748b14092a0"
+  },
+  {
+    "path": "before-sources/benchmarks/src/jvmMain/kotlin/bench/JdkWorkloads.kt",
+    "bytes": 2675,
+    "sha256": "6e8b28db6d981314626b0157471c71e00da847f95c7eb12e54bbda9b741d3362"
+  },
+  {
+    "path": "before-sources/build.gradle.kts",
+    "bytes": 2237,
+    "sha256": "b883bf096dd0c80f1dfec459af4a439c26232c92f0cdff6687dca23cd631efe6"
+  },
+  {
+    "path": "before-sources/diagnostics/jvm-gap-597/Gap597Probe.kt",
+    "bytes": 13047,
+    "sha256": "72a74bdb9f8ea4c206a04450295f31ffb85a889121e159c67f6d4ed43b9c8e74"
+  },
+  {
+    "path": "before-sources/scripts/profile-jvm-gap-597.main.kts",
+    "bytes": 8965,
+    "sha256": "3743ece8675784cbd74bf1dfb131bf40ff6a2a8632855f234455e6fb3e2272db"
+  },
+  {
+    "path": "before-sources/settings.gradle.kts",
+    "bytes": 198,
+    "sha256": "b6222260bfdc4ad8e82c645846b2a1bf7337d07444356defbc83090a731458f1"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt",
+    "bytes": 68469,
+    "sha256": "bd03fc2707b1219ca2e1ad747e9810285c3255fdc692d3941993fb37dd2b1afd"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt",
+    "bytes": 74442,
+    "sha256": "084c380518cda48d6d730f9aa849786110ad5e6e5ba28349387e04e7cde75438"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/BigIntegerProperties.kt",
+    "bytes": 223,
+    "sha256": "1915e919d8061c32efdf2c8e053f4fb46410b9f4e1c594265111153b6040b900"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalAccumulator.kt",
+    "bytes": 9824,
+    "sha256": "f3d9a5716d1fcdfc8ab367ea4ad486e09d96ba8d972834972cc846ce56a48b00"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalDivision581.kt",
+    "bytes": 24662,
+    "sha256": "553de7bece22f88526e029d0a931cf0fccc99a73d90534e588911b19d46bc193"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalKey.kt",
+    "bytes": 3385,
+    "sha256": "dbc3dcead3ef066e4f95deeb232ea42d455197d19a3f8d1529ea2fbd46df3058"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalPower593.kt",
+    "bytes": 16725,
+    "sha256": "851cf8b6bd0839d418c0ff71a5fc365daebf2ffb5bb5599de7e8f44fa5050f9c"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalProduct580.kt",
+    "bytes": 8217,
+    "sha256": "2ef14e2a2d52b75286f2e5830301a75fe586ed41cb3fbbacb9fd96c346d5234d"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalSignedWork535.kt",
+    "bytes": 13077,
+    "sha256": "b03392b1e74e4ce5cdbf1a57d8cbdf1b21358779c393295a91559fd2eea92e72"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalSquareRoot579.kt",
+    "bytes": 8748,
+    "sha256": "2feb17a4d791fd586dce4c19053dcb189302ddddd73ebd41cbd0202aef6f7283"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalSum585.kt",
+    "bytes": 13148,
+    "sha256": "f89ca4fb38988f58b0ce764c54ef50f95338b69400a8ef202d5078e89c8179c5"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/DecimalText588.kt",
+    "bytes": 11054,
+    "sha256": "e70e9ff7488caab985056cbfcf349048301cd3700dbdcfff235d987846407d7c"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/DoubleFormatting.kt",
+    "bytes": 5517,
+    "sha256": "9b2a1b8cb1d40a2fdc7db5110b6a8c4e398da0562d5c3d6b02cf928f3c74433f"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/ExplicitDecimal.kt",
+    "bytes": 3755,
+    "sha256": "f9b9d29da234ee056d3a2b4344407402b290666044b5c73c402af45cda9dc574"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/FloatFormatting.kt",
+    "bytes": 4315,
+    "sha256": "ba55514c181e52f20ed63fcb2634621f66cea3cc4db084e77cf2df71d1dcf77e"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/MagnitudeLimits.kt",
+    "bytes": 1469,
+    "sha256": "5bf687bb968d22908a36b8898f19649bdbdf7e5a2596575f1808053fca0e4769"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/MagnitudeMultiplication.kt",
+    "bytes": 8650,
+    "sha256": "441c63b71850be20154c2ea5f256ecdbc69dae44d04ad7551bc6544b2195c6a0"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/MathContext.kt",
+    "bytes": 3328,
+    "sha256": "d3690387b1345f90cc927044a1a450983dd0d2ce6e3e47054384c31979fd5261"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/MathSerializable.kt",
+    "bytes": 486,
+    "sha256": "90543924afe5b8ca928b44e759708caa11b25f429f6382ee6d4c4e019aa196c8"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/NumberConversions.kt",
+    "bytes": 2386,
+    "sha256": "f65b8db60dc39e6bbf00ba62c3dc297223f188660382b82653a3da8339c2c7d3"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/NumericExtensions.kt",
+    "bytes": 1547,
+    "sha256": "20fdf7c5c76ed4207c03859b4cb60247a16e2ec4337ee674c3a85ce6101e5123"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/OperatorExtensions.kt",
+    "bytes": 2060,
+    "sha256": "64480aa0f56a42de39e34f3cda92b4a1b444ab19eea0cd6a93fafae864e63368"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/PlainStringAllocation.kt",
+    "bytes": 201,
+    "sha256": "74ed828dfe1fc0e72a1bb81f0dfb572b8729b6394b91d68ceea4bb029b4a8fc1"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/PlatformRandom.kt",
+    "bytes": 779,
+    "sha256": "e408e6fad2a92acec592520ea3eaf1c414493a6db708db9ef9ae686b1303f3d0"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/PowArrayBounds.kt",
+    "bytes": 189,
+    "sha256": "8831e7d736ca6cc895558b38ccdbc73c305ef2534649d3547a232379a9d16361"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/PrimalityCertainty.kt",
+    "bytes": 1140,
+    "sha256": "93f0c4743f9a7d8d9acdedd283760904bbfd2caf55e5e4973dd6331d2aa57479"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/PrimeSearchLimits.kt",
+    "bytes": 386,
+    "sha256": "66e7d92b5d6091067ee02679534060fc9d8559328c7fafc45805b3d7493c3a85"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/RandomFactories.kt",
+    "bytes": 490,
+    "sha256": "d66f6002d3e2f32b1a2f03143984eee2da55a2fc7edda2bf6e8bdada41257c20"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/RoundingMode.kt",
+    "bytes": 477,
+    "sha256": "e47d7aa314ddaa9c79ba13b79a00beadb8be96cbb473cd4ad2dfae3e0501a5ee"
+  },
+  {
+    "path": "before-sources/src/commonMain/kotlin/io/heapy/krogu/math/TextExtensions.kt",
+    "bytes": 1178,
+    "sha256": "e182d830cff8c096cc61fcbbbe79c1b09ace88dfacdc65df705e8404660ff977"
+  },
+  {
+    "path": "before-sources/src/jvmMain/kotlin/io/heapy/krogu/math/JavaMath.kt",
+    "bytes": 1518,
+    "sha256": "ca29d078e3c849a76b31b9b0d6ed72b01385631f7d7c5c05902eb1ed77015101"
+  },
+  {
+    "path": "before-sources/src/jvmMain/kotlin/io/heapy/krogu/math/MathSerializable.kt",
+    "bytes": 795,
+    "sha256": "d83417db569273de52a6009cb89a99612be496ed0ee005d2eab8dc6c92306598"
+  },
+  {
+    "path": "before-sources/src/jvmMain/kotlin/io/heapy/krogu/math/PlainStringAllocationJvm.kt",
+    "bytes": 190,
+    "sha256": "d38901a90aad1fe497e630cc37d6a3d30f711bda3d0dc88c3cfba578cf628bfa"
+  },
+  {
+    "path": "before-sources/src/jvmMain/kotlin/io/heapy/krogu/math/PlatformRandomJvm.kt",
+    "bytes": 80,
+    "sha256": "5acb4c2184f981699c5fec755bf223ab61a441af84275c5151da6cc4fde345fb"
+  },
+  {
+    "path": "before-sources/src/jvmMain/kotlin/io/heapy/krogu/math/PowArrayBounds.kt",
+    "bytes": 318,
+    "sha256": "85aec8fb091af53f7ae084b1e4b5f1d98fe01ef5bc4103e32297ec4051d56c78"
+  },
+  {
+    "path": "before597.jar",
+    "bytes": 232031,
+    "sha256": "1f730223b9b5fb809c1101fd5a7f581574550fde74192369251234582e470cb6"
+  },
+  {
+    "path": "kotlin-stdlib-jdk7.jar",
+    "bytes": 940,
+    "sha256": "6fce867d4c24c92a8b64c966317d3ac1d4b787a00e1aa6d2b76b1cedd3a0c082"
+  },
+  {
+    "path": "kotlin-stdlib-jdk8.jar",
+    "bytes": 946,
+    "sha256": "eb83cbc07ee68fcd5f229b2ed1d66c7a0175c56ac1dca1457cce4b1702004259"
+  },
+  {
+    "path": "kotlin-stdlib.jar",
+    "bytes": 1853315,
+    "sha256": "bd8250210584cb659847dce9cda660f8e9906e5def7fbebcea93dc6dcb6a88a3"
+  },
+  {
+    "path": "lineage.json",
+    "bytes": 527,
+    "sha256": "ac078a3cda504a12e0c8d09fa79a10e7689468247f60f6830fcacd687d15612e"
+  },
+  {
+    "path": "normalization-source-before.json",
+    "bytes": 5705,
+    "sha256": "0f76e5a06e146dab832c382b2404982cc6f8eea12b1086acfff911d826e1365a"
+  },
+  {
+    "path": "probe.jar",
+    "bytes": 30194,
+    "sha256": "d30394216cd721dcb02b2fa73ce2b3d2474dd19d78c3371a8bdd9096696f8559"
+  },
+  {
+    "path": "remote-final-driver.sh",
+    "bytes": 4828,
+    "sha256": "41594cf7e8b49e3849622922a0b3cf293f5091c4d288a004b302f39bff60b865"
+  },
+  {
+    "path": "transfer.sha256",
+    "bytes": 12223,
+    "sha256": "d75451f0dc37a100093b556337bc2913ec4b8a17241b14f4700c944e9b351b65"
+  }
+]

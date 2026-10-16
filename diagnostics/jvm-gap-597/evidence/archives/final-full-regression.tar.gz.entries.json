@@ -1,0 +1,2452 @@
+[
+  {
+    "path": "gradle.log",
+    "bytes": 61905,
+    "sha256": "a1616f868311a5168769d32620412fec43da5e3fb0ff8bd4bdab642d1d28472e"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.BitwiseSubclassTest.xml",
+    "bytes": 505,
+    "sha256": "7063950f161fd2bb111982cefc9ac90f3db0a6b4ddcbb1917cbb9c4ec72f2b4d"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest.xml",
+    "bytes": 5003,
+    "sha256": "e0c934d9b2f9f38a24dc7b0092f213ed36cd0df2015f483f5fe64790b14a342f"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.CharacterOracleTest.xml",
+    "bytes": 1332,
+    "sha256": "5fc2ddc5af64c49916db084a0dcdc0b35c2c94b63e4472f80a1021924c8e858f"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.ConstructorRandom549Test.xml",
+    "bytes": 855,
+    "sha256": "5fa52f865205444768baced423bc2fbdaa31fdd4204f3695792e796123cefc9b"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalAccumulator535Test.xml",
+    "bytes": 1490,
+    "sha256": "a9232a04389219e473fc2919964a668382e1be85bd300aa6a22242c771af6e50"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalBinaryCancellationTest.xml",
+    "bytes": 1204,
+    "sha256": "6ca6266a4c2dda5d13787d0ee7806acdd792851762bd4aabfbc8cad482a6a1be"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalBinaryPrefixTest.xml",
+    "bytes": 1221,
+    "sha256": "fed93928f9cc531e9093f5299873775f422ae462a6205bb623b009c1030b25c0"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalChunkComparisonTest.xml",
+    "bytes": 888,
+    "sha256": "3e0415865d2ba180dc2b1ac5c6b6d1aac9527949773ec4008cd7e5ab40b86f98"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalCoefficientSubclassTest.xml",
+    "bytes": 835,
+    "sha256": "81b21102fb2778fda4644f8823c375fc0d4eb18dc7ff2e529db28267d16484cf"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalComparableContractTest.xml",
+    "bytes": 528,
+    "sha256": "921b752050bfa558750cc696628345cf1c1fb9b94e25d507bd45f19e0778965e"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalContextContractTest.xml",
+    "bytes": 1824,
+    "sha256": "61518d8b04c1ff49b06cf8d9966d132607486fd68c29dd7fcf0668a186b4c7ca"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalContextDispatchOracleTest.xml",
+    "bytes": 557,
+    "sha256": "0213263bccf040fb3c053425b4762e800014971b2f8ecdcc58f3f24b880f4617"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalContextDivision581Test.xml",
+    "bytes": 1176,
+    "sha256": "97bbc8602a0285405d7355cee2f42ae7f6b5d2ff64f3d76884e3a06d16b05bc8"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalContextProduct580Test.xml",
+    "bytes": 1025,
+    "sha256": "9add93c5f901b86a2bc873b1717c020b02f77ad957e3c25598863f04b71eebe1"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalContextReturnedRepresentationContractTest.xml",
+    "bytes": 790,
+    "sha256": "90be16099cddf6dd359bcf41de3dfcf358ec111e63e836c5e5067b6cec8f3607"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalDivisionNormalization594Test.xml",
+    "bytes": 925,
+    "sha256": "0b1634a4ed82a6de361d2c10d7adf9031b0bf200a503ad606d04bfbb7d757c11"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalDivisionNormalizationContractTest.xml",
+    "bytes": 1384,
+    "sha256": "d432b81c7d291fd9fde356c6ac8bcb97007fe0ce5d0db16fb91d0ced958690b4"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalDivisionPreferredScaleContractTest.xml",
+    "bytes": 1656,
+    "sha256": "7f4f7c5e5e5f8f41ba342d01280d89e54bf0561cd7aa2b1e7d908cdbeef0d8c6"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalExactChars589Test.xml",
+    "bytes": 1050,
+    "sha256": "67319c9afb0cf31070fca892e5df811659676ca4887d6e4ea20fe28bb5d33c09"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalExactLowResidual590Test.xml",
+    "bytes": 899,
+    "sha256": "e3165feb0be0dd55f379658e1fa8724585e5ca3b91cde6b92d2ab07cc9d88e0f"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalExactRoot563CallbackContractTest.xml",
+    "bytes": 728,
+    "sha256": "91a1f9786b26c13f364e40fdd6679a2fb1e349e2c9d7bf5f3158bf9acb51ba7e"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalExactRoot563Test.xml",
+    "bytes": 942,
+    "sha256": "c2cffd56672949bf9a1ccdee658eae7657ed904ec47e31f49108f9ab1e183607"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalFixedScale592Test.xml",
+    "bytes": 880,
+    "sha256": "3902818ee76dafdd639fc41dfa184e1e8c3d2684255c0fd6d354dc44d7e7136c"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalIntegral582CallerContractTest.xml",
+    "bytes": 552,
+    "sha256": "78be803d9789bd1b3b57184e1199de9245de875807c484896acb2f45579b9b07"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalIntegralDispatchOracleTest.xml",
+    "bytes": 134190,
+    "sha256": "1bc352bd2fc39fbce0de267eafbdcd9a79d315e1399b51fd1bf8eed6f3cba699"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalIntegralQuotient582Test.xml",
+    "bytes": 1057,
+    "sha256": "0c2c1638b41522f2b95948f269242ebde8e26677492fd05fb94d37a3aa0473bb"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalKey536Test.xml",
+    "bytes": 1078,
+    "sha256": "6557814fc490f2e0db162a5b40d98016900baa895771bd4a98e5ca9d2adb75f0"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalMetadata597Test.xml",
+    "bytes": 868,
+    "sha256": "ee3ebbe425a0fab130e2680cbabaadd3244335afa1e7dd92374934e13a8e612b"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalNumericMetadataTest.xml",
+    "bytes": 1571,
+    "sha256": "d4d3a32b4e510985b2960db3bd149dcac2e99544f0b7f00904f75e88f86790cd"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalOperatorContractTest.xml",
+    "bytes": 1365,
+    "sha256": "f6fdb9a116662c721e5ee1e6a7aba25ecbda28ca8c172f9c9460e192415c2265"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalOverloadContract541Test.xml",
+    "bytes": 931,
+    "sha256": "4d355f68b6b2d4112a76a206093312c136b5dbd9e39e8af3edd9414616b0948a"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalOverloadDispatch541Test.xml",
+    "bytes": 920,
+    "sha256": "bf0a5da3f30611ada61327ea44b4f2e9435620a1cc0d4789a24b44172dd808b5"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalPairDispatchOracleTest.xml",
+    "bytes": 545,
+    "sha256": "ea0a80a649a251afda035c96cf28b239fd7a2d7cd63cb25235d367010b9f8fb6"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalPowWorkingPrecisionContractTest.xml",
+    "bytes": 1455,
+    "sha256": "1479baaa119a1e46f6923d6e4e7d7deac7da910def1c659509b02b9779b5e23b"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalPower593Test.xml",
+    "bytes": 1206,
+    "sha256": "03b42d0a4a649630a62159b6cb1ca978dc7140aac4451b734667658d249e8dde"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalPrimitiveLowBits591Test.xml",
+    "bytes": 908,
+    "sha256": "94ccef952285be7d0b85896b98b7877e513c635adf70bd4cffc15e2d619ee2da"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalRemainderArrayOracleTest.xml",
+    "bytes": 558,
+    "sha256": "14237f39c1dcd367e1715bc1076c7f931576cc9529de137c894e5323a131d676"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalResidual583Test.xml",
+    "bytes": 1043,
+    "sha256": "5de287220851122d414132689b3828b13ea466f0b2662e637481295b574d96bd"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalScaleContractTest.xml",
+    "bytes": 1638,
+    "sha256": "e4fc7646f7afce99686e7aeeea10d7470968b1782b7f675b6eb6e967aaf83fa0"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalScaleRoundingRepairTest.xml",
+    "bytes": 1537,
+    "sha256": "857a19c00a9844ea97a0b476a609881c95e2914dd118d4e9a7ccb7ba172a4818"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalScaling533Test.xml",
+    "bytes": 1150,
+    "sha256": "f0dd63d946381a793ac1b276faeab24af36ec28f532990ed0baa5a2e1911aca0"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalSqrtMidpoint565Test.xml",
+    "bytes": 991,
+    "sha256": "8d49e4b0a04ed68a43a8809c9c5da187eea72668e689f2e7de3e2fd91c032f3b"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalSquareRootCohort587Test.xml",
+    "bytes": 1045,
+    "sha256": "abd0d6d534064d1fed243451228d585ae5b43ed68ba487816f172af4f070f374"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalSquareRootNormalization579Test.xml",
+    "bytes": 900,
+    "sha256": "80a5d30231bce87302f44208ae28c4968514277a05f7b8ae613be4bba7549170"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalStickyEquality586Test.xml",
+    "bytes": 718,
+    "sha256": "7376ea81345c20ffe3e5c444c92c23dce4cd853631f9a9f14fd798bc0efbfe67"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalSum585Test.xml",
+    "bytes": 973,
+    "sha256": "aaa0b5dec6cb75705c6890bcab5a8236278708349947502050019baf9515ba08"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalTextRounding588Test.xml",
+    "bytes": 1044,
+    "sha256": "3e5d831c21bc85b8dc30cd10bf98daa2b6207b24a27b4a9274b838e11378fd95"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DecimalUlp541ContractTest.xml",
+    "bytes": 905,
+    "sha256": "de6cdf684834ee1dc607c9d494b64aabf22e4c2cc6bc8c781e7edbad2c6147c8"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.Division530SelectionTest.xml",
+    "bytes": 676,
+    "sha256": "abda91f1cfe0f0638a55f46554f0e776b9e527a02dbc3686082c0df81cfb634b"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.Division530Test.xml",
+    "bytes": 1443,
+    "sha256": "3a17c0bff5208d348e616ed6b8bae886e455f06f65ad56c6a71309bdff01395f"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.DoubleZeroContext569Test.xml",
+    "bytes": 810,
+    "sha256": "058cf8619196879ca6105d917949b88a4b3b11817b048e6d0cbfc804f5708b8d"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.ExplicitDecimal534Test.xml",
+    "bytes": 1001,
+    "sha256": "3b94a4b46fe180b29cb0b22c5be28096a3612466ebbde8d0f9f57ada1a53fa6f"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.FloatingPowerTest.xml",
+    "bytes": 654,
+    "sha256": "b7b964ae589d1afbfdb376c2044d742b662ff12962ba08e13f08acc26ae8f904"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.HashOracleTest.xml",
+    "bytes": 641,
+    "sha256": "c297e311da699d1c6e608f8986131ec2ac0a4f6392df5be3f658df3bdef5528d"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerArithmetic544ContractTest.xml",
+    "bytes": 1771,
+    "sha256": "a0f373fc9dc875bf5abfd2e2363c666b1c1517a86068bfe4ab0fd37c74728a0b"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerArithmeticOracleTest.xml",
+    "bytes": 1068,
+    "sha256": "18b8987cddd8a56b11b723258532ab8f4cf865a1484b81fa99235b8e74bf02ac"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerBits545ContractTest.xml",
+    "bytes": 1345,
+    "sha256": "af349d70c46660d94e936303d3490e56b91a0e7dbb7df08963929c3f889c6f39"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerBitsOracleTest.xml",
+    "bytes": 1360,
+    "sha256": "d3e14e539da1a885e73c0d6faff8f58f05d2d36e87d560b74536e8aa8c5de8b6"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerByteOracleTest.xml",
+    "bytes": 504,
+    "sha256": "a59705791d0314321f0154d15d3ba22feabfe138b4f00fa1f6bf3ddfc8874c36"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerComparableContractTest.xml",
+    "bytes": 528,
+    "sha256": "2a0b4aff5f58fd0d4c3e9243763b808dc5cb3eac21a7d14774879a81de4d8a49"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerDivisionDispatchOracleTest.xml",
+    "bytes": 526,
+    "sha256": "0c373927f2cc38facdae7f282ef5a22a9df06e9b9673830ef250c35bff56b1ce"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerGcdOracleTest.xml",
+    "bytes": 640,
+    "sha256": "2ef958f64f6653b3d068ccc8a494bc5cfad214a0e0248208a45697eff0735c13"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerInverseOracleTest.xml",
+    "bytes": 1014,
+    "sha256": "d0b844cea5f00613a6ae948c7b8a93c3222bb7ab3c585314242a217e83d65216"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerModPowOracleTest.xml",
+    "bytes": 1165,
+    "sha256": "6bdadbcbced1cdf2dab69fa9225ccb89ce1607d14d88326d8f328e936907f152"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+    "bytes": 1203,
+    "sha256": "fd87a70e6b7ccec1a666e42a224294817768f4cfe470088688437e923a887a0f"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerParserOracleTest.xml",
+    "bytes": 512,
+    "sha256": "d25de4e6b3f6cdb1533a047e88cb3faaacc1ca5c5967e96505eade6c57f68d57"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerParserRange559Test.xml",
+    "bytes": 1028,
+    "sha256": "a2ef79501ff5075502c72bbafd725a536893d491017faa6fcea4e410a3e3036e"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerPowOracleTest.xml",
+    "bytes": 507,
+    "sha256": "72071423a7ddee4d5e5df36a29c3bd760aa0fc6a253342d2ee7fce2ab21af697"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerSqrtOracleTest.xml",
+    "bytes": 1176,
+    "sha256": "ebd052199393ae986733de81f6a1cb86d4155f0da9f18d40feffa42b44c9b63c"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerSubtractDispatchOracleTest.xml",
+    "bytes": 542,
+    "sha256": "e39d76efa347c2a93c36b7e3e6fb836178fec45c737e78a27af007cbfa8e7939"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.MagnitudeLimitsTest.xml",
+    "bytes": 636,
+    "sha256": "9dc526cbcfc5ac120802ff7930d0e9dded1fa36c47c4c23755d1a02efef14076"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.MathContextGrammarTest.xml",
+    "bytes": 1619,
+    "sha256": "468cc1c58fa1406078661361b61f24e43eff3510995e600157a000fe083588cb"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.ModulusReuse538Test.xml",
+    "bytes": 845,
+    "sha256": "230ca3dbfe6706902b86e877650d7feae8d7118dcf35f777b2fd3a384c1056c8"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.OddModulusContext538Test.xml",
+    "bytes": 1401,
+    "sha256": "a537e883a852cf3a51c9347111ad319fbdaa961386f48b0bdf4a5bc5a0283ba8"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.OddModulusContext538TinyFallbackTest.xml",
+    "bytes": 850,
+    "sha256": "7fedea26afbd558d6ec6c07bfdf1656361b3002e0d2f69a6395c09e601498790"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.PlainStringPreflightTest.xml",
+    "bytes": 810,
+    "sha256": "b0c587511195262dd78a9a322dc15bb9878bf9c383796ad60f6625875774df16"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.PortableOracleTest.xml",
+    "bytes": 349783,
+    "sha256": "91f31c1f02a4f992dc52b20d0f189a822e4023269806f9ed2a27e96b5db151f4"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.PowerOfTwoRadix559Test.xml",
+    "bytes": 679,
+    "sha256": "dd400474c526f3c21deedb754fdfa5412ed9f265eac13c01e15cbe0d21419215"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.PrimalityCertaintyTest.xml",
+    "bytes": 1017,
+    "sha256": "c7b3775f2cfff6c537e67552b89ff75045f807d9b9df199871071657f96532fe"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.PrimeOracleTest.xml",
+    "bytes": 1645,
+    "sha256": "645d0cd9ae47fdda55416ff7ac73086638b25c29b7629e79ebb7b27d02c72f4f"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.PrimePrefixOracleTest.xml",
+    "bytes": 507,
+    "sha256": "cb5790c53f497f8573ecfe909c3c096e224aefb00caf2ed238a8f00d31f9db5f"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.PrimeSearchRange559Test.xml",
+    "bytes": 883,
+    "sha256": "cbdba672a67ba05037b47ed3c423236a4f8820d121a93a06d94be3c155b8ee87"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.RandomIntegerDistributionTest.xml",
+    "bytes": 904,
+    "sha256": "18d803bcda18af21169210473dde160a20d2521008498cd18bc10be4389bcd10"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.ScaleBoundaryOracleTest.xml",
+    "bytes": 9088957,
+    "sha256": "715d3244736e5bef5a1214ff60e930cbb90cfa5301cfcff85330b93de8bd9239"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.ScaledDivisionMidpoint584Test.xml",
+    "bytes": 707,
+    "sha256": "2365680b9a602eee4e82bccfff4b7c51d078b914ae56233bab6d2c3853b4f9dd"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.ShiftSubclassTest.xml",
+    "bytes": 505,
+    "sha256": "38437604bfcb1e54cb55f0d98465e14592ae7e741b5476b69f521b4cdc34266e"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.SqrtCohort587ComparisonTest.xml",
+    "bytes": 1488,
+    "sha256": "0801909a4c01bc91b7e54c9bbbf5ac3b8aa3441c18800d4ff452fd435eba1589"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.ValueIdentityContractTest.xml",
+    "bytes": 2209,
+    "sha256": "45cb5a304ff7774ab45159c2facb6ed951e0632ead71b2d40cb8e569b58726ee"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test.xml",
+    "bytes": 2275,
+    "sha256": "f1d3a297a5f79c1e96ce6aef533ba0ce1b77f4a1a1a042f63196490be3fa6254"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.ZeroSqrtNull568Test.xml",
+    "bytes": 801,
+    "sha256": "f0e7be46b965ed2e6b82064539d7a1f58b837c6483141bd18aa58200c3d61c11"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.ZeroUnaryPrecision567Test.xml",
+    "bytes": 676,
+    "sha256": "1a32a4a2a0bf17c5a3abd91cd64c955ec0efdb972771e2fa1a6ad55242e90428"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test.xml",
+    "bytes": 961,
+    "sha256": "a894e4bd6526b34ec9f8297170ca647f3ebd0b6dce9e4e4bf1780717a04ef04b"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest.xml",
+    "bytes": 958,
+    "sha256": "e0ee095340e3ba2c4fedd90ec09faba3e5e50b4c30959007228064ca191b8e8d"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest.xml",
+    "bytes": 1523,
+    "sha256": "2cd5b0fd6f23243f142c6eb9f575d19e5bd079b7cfc0bc3888ac2f0352f5b208"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest.xml",
+    "bytes": 980,
+    "sha256": "f8e5c98abb7f3a1ec4d5ed3b5334cb6a0899e46ceb9f6d5c46510b86dbdb938d"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest.xml",
+    "bytes": 1149,
+    "sha256": "f2bc135361e9914fb1e998b3dfa3270e18eecc5fa6751726cdd3be35d1f9f99c"
+  },
+  {
+    "path": "jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest.xml",
+    "bytes": 1732,
+    "sha256": "01f1ca53dcd25bb73d1153328b32f83a6e47c17fe08eaf46f7b3e17ac0d6c9bd"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ApiSurfaceTest.xml",
+    "bytes": 444,
+    "sha256": "c7e9e2e6c03923e22dad4a4f7b1f1275002d0ef57356a0a795ccb5659d8960fd"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.BinaryRepresentationConformanceTest.xml",
+    "bytes": 759,
+    "sha256": "e9e2dd87de03cb51e8cecbba83c22e563157666efbd97e1dbc6f08e766099cad"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.BitwiseSubclassContractTest.xml",
+    "bytes": 924,
+    "sha256": "58a581273b14191f3eaac4bb401b82a447f303b0f6972c78f488b67c9d802e89"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.BitwiseSubclassTest.xml",
+    "bytes": 465,
+    "sha256": "40fdd8e2223734a32748a7dcebadffb66fc12aa04b6c0482ac7f9de22352ff44"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.CanonicalDoubleConformanceTest.xml",
+    "bytes": 473,
+    "sha256": "1469a12ae070a1369a5fe300d255bff0471cbd89313345b5b3060e150cae199d"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.CanonicalDoubleTest.xml",
+    "bytes": 4414,
+    "sha256": "915fa6bcc33c893da81fd60a47291111174d2111e871c100b55085b4ecf2237e"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.CharacterOracleTest.xml",
+    "bytes": 1200,
+    "sha256": "2f1e1d9f383275f2d6aeb6911ccba83b18514d58f8790d1af68f6cb5f80e037d"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.CompactNormalization597JvmTest.xml",
+    "bytes": 690,
+    "sha256": "014d77c865df5b57159741d850bbdc80cf2ad847ad668d3e210dda12c3868235"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ComparisonDispatch574Test.xml",
+    "bytes": 6052,
+    "sha256": "29276e693aa7f0f0134b7413b05c91abc75c0d0b978d24740ef9286fe308c910"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ComparisonNull574JvmTest.xml",
+    "bytes": 50971,
+    "sha256": "f253c4afe75168459a8ae9542ad6a12e2bb2a0f8ac233209d200e76520f96476"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ConstructorRandom549Test.xml",
+    "bytes": 785,
+    "sha256": "3c9c391e0177576af396ebe517a0d01eba63c87f35a63197f57e9c6fd00bdce2"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalAccumulator535JvmTest.xml",
+    "bytes": 513,
+    "sha256": "4605caab3f7d7a7beaaf4e8f0aa2de4771aac4db24d4f2aebe16a715d684bb6c"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalAccumulator535Test.xml",
+    "bytes": 1364,
+    "sha256": "2de52a9c9ad33a944902b7bc8a87d74b31ec9c66a10582750e42521a1659e159"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalAlignmentErrorTest.xml",
+    "bytes": 469,
+    "sha256": "162bbaae51a48a711bf09959bfde823251260f0e74087e8a271c2233b3f1e697"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalBinary575BoundaryTest.xml",
+    "bytes": 493,
+    "sha256": "e099af667114a2850b9a9470d4dfed487edc8273b4ad76b309ad977a69edc51f"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalBinary575JvmTest.xml",
+    "bytes": 173430,
+    "sha256": "a4aab60f7f3d3725c0b3010fa3284e9671e284cc3c106a899c9848d26526ac7e"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalBinary575StandaloneTest.xml",
+    "bytes": 21764,
+    "sha256": "2e1d2b050271187e919650191ff3ea445484b4e3d9a07eab96afd7597de27817"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalBinaryCancellationJdkTest.xml",
+    "bytes": 678,
+    "sha256": "d540a8fc405f4ef96470441371630f4b79ec5e822ff42a5cb8a141f76b71daa2"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalBinaryCancellationTest.xml",
+    "bytes": 1095,
+    "sha256": "952c4fad03c21a19dd9fa27a71aedc5f527b1534f67daa5c18c39f8b5ac63924"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalBinaryPrefixTest.xml",
+    "bytes": 1123,
+    "sha256": "cf9a0762e2bb3e7483ff281032bfe93548410a2b7c1d10d99d77e9e27296fce1"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalChunkComparisonTest.xml",
+    "bytes": 820,
+    "sha256": "e6e35665b400d5decd296aaca8672a6d5f32e41cb4344d464cbf211cb59eb1c2"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalCoefficientSubclassTest.xml",
+    "bytes": 765,
+    "sha256": "a94dea9f1e3267094699102d45593ed254ea7366309a817ba8c5b8322dfc05fd"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalCompactFloatingTest.xml",
+    "bytes": 785,
+    "sha256": "e1fb62ade14c2fa8e2dfe79ec37571ca9427b1e654178be682b4f7485cba4018"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalComparableContractTest.xml",
+    "bytes": 490,
+    "sha256": "70fd08f19dfe720b5d1f11fd114ec64cecfa12f9d1a6da65599ebfdc6d885199"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalComparisonSubclassTest.xml",
+    "bytes": 753,
+    "sha256": "54d368be2fd1ef32067e3932f3b38f604b39b0e86ba39d7188905b89e52ef2e3"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalConformanceTest.xml",
+    "bytes": 275896,
+    "sha256": "613a6dd4bae96ff56c88d66e987084d9d3b9de28b7b0328fcba81f0971d03b20"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalContextContractTest.xml",
+    "bytes": 1668,
+    "sha256": "e5ac4b587b6b4698df82af7fcba8bb06a35f21025b8bd03604dfb52f4d9c9dfc"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalContextDispatchOracleTest.xml",
+    "bytes": 515,
+    "sha256": "67b83d655a229dc64f64ce165da32011452589d816dd5b9957c1115da3ca5724"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalContextDivision581SubtypeJvmTest.xml",
+    "bytes": 531,
+    "sha256": "b71cb18ebd58e2485ed1a3d3261010d58a64a48c4a156f8f0d8fe3e9370dc480"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalContextDivision581Test.xml",
+    "bytes": 1080,
+    "sha256": "5da62d38bc07d63b83571c280c1a7b43c61b135efdb5a7c59bcf4f2339bec56b"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalContextNullDelegationTest.xml",
+    "bytes": 9002,
+    "sha256": "b41579dfb340e8c37028fcace76b3f2255ea00d4c13d9d6a5dccb517c9b80651"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalContextProduct580Test.xml",
+    "bytes": 939,
+    "sha256": "8b5be8eadfe3f169387a894318982417318c52690add6aa2cc5cd0c536c882bb"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalContextReturnedRepresentationContractTest.xml",
+    "bytes": 737,
+    "sha256": "3ecc409b2ef5023de081db51af3a79dfdf80721f63f452541d4707081c74bd3c"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalDivisionNormalization594SubtypeJvmTest.xml",
+    "bytes": 549,
+    "sha256": "4a8bf3ddb7971368fcb67a5fa13e6b2c7db2961d9b61fc43e981b97469a96103"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalDivisionNormalization594Test.xml",
+    "bytes": 859,
+    "sha256": "ea48e4f8af1ee3edc93277aa93711dc3541c5f4653e8379112aa92fa81b29614"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalDivisionNormalizationContractTest.xml",
+    "bytes": 1269,
+    "sha256": "afbe129e70abb6f086cd2db8340a5481762b4aa9da68351a1fcb7f3523300c6b"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalDivisionPrecisionTest.xml",
+    "bytes": 2290404,
+    "sha256": "af439f633b27ef57436dd12bfe04f7cb4052478ba8f8152f7464e5e0785effb1"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalDivisionPreferredScaleContractTest.xml",
+    "bytes": 1514,
+    "sha256": "74271bae6418469c22dbcdcb6bdaa1086f5a350870b6b412fb7d5ca3adbb43d1"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalExactChars589Test.xml",
+    "bytes": 968,
+    "sha256": "de1c14a44bd6e57b6c52b6269e161fc7b0537f70aae15e329f8b2a82f79cf507"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalExactConversionTest.xml",
+    "bytes": 493,
+    "sha256": "466c8b6fe6d0401836a03d49722b715da533f6cf211e036e84ec748ebcfda2d7"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalExactLowResidual590Test.xml",
+    "bytes": 831,
+    "sha256": "9080337791aa46e054666f24d4643e83e601b66b61c89620e6b71fdb2524ec9d"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalExactRoot563CallbackContractTest.xml",
+    "bytes": 676,
+    "sha256": "1b234bd1000e5282b29cdfcc5c0d204d51f2ddf8894fc0cbe53e7153c46e1c95"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalExactRoot563DiagnosticTest.xml",
+    "bytes": 506,
+    "sha256": "8bc1ed4a23e5bea687c556eb4e62d4e80ff76d82e93db7da63f09093951b3001"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalExactRoot563Test.xml",
+    "bytes": 860,
+    "sha256": "08baa45b3fa1890fc91f67283e259cc7b01c52d4d83f4c00d6c5be6d632b4288"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalFixedScale592Test.xml",
+    "bytes": 808,
+    "sha256": "6ef671ab206025d929f34f89d9eeb75953039a130e191f15454ca9417ff010fc"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalFormattingSubclassTest.xml",
+    "bytes": 487,
+    "sha256": "15610c546e40fcee18fe5686634b3a96d12c72392ea9037388f0082822780c28"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalIntegral582CallerContractTest.xml",
+    "bytes": 512,
+    "sha256": "938c0765152e799d16d8a7c6005701169b06203a3b412760952b38093bdbbabf"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalIntegralDispatchOracleTest.xml",
+    "bytes": 134131,
+    "sha256": "49325d9cfd72d4e0f27c5f6b989459e85d64a1648604dad310404cccfe0c782d"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalIntegralNullDelegationTest.xml",
+    "bytes": 351205,
+    "sha256": "2294de4e7fb0a6785bd73239da2200a3a3343b79b02eade683e597bddabf6ed9"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalIntegralQuotient582SubtypeJvmTest.xml",
+    "bytes": 528,
+    "sha256": "f263fd350daeb4d854507954f24d7907e07666e093e896a8ea5a042997bd31ac"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalIntegralQuotient582Test.xml",
+    "bytes": 975,
+    "sha256": "12ae6437d93519c10b93f92b56f46b9664bae786ebcde3aa9163b673f6349af1"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalKey536JvmTest.xml",
+    "bytes": 585,
+    "sha256": "80e47e0cec3dd693ec047ab2ce4048b09cadd3fa66ee14be16228a83cdeb2fbc"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalKey536Test.xml",
+    "bytes": 976,
+    "sha256": "290bbe94f72d21f3fdf747d5082a7f3548a88dc4839c0cb204b8c74d6ded33e1"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalMetadata597JvmTest.xml",
+    "bytes": 502,
+    "sha256": "dd737029b80c675b94376b8dd2f726e838982d977292b497c7bbfc1809dcd538"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalMetadata597Test.xml",
+    "bytes": 794,
+    "sha256": "1f4625833f4a39fd4716ccaf7fe9f297c5725466ad8e918d9a26d935c3f35c0f"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalMinMaxSubclassTest.xml",
+    "bytes": 8006,
+    "sha256": "64e4ec98ad181b54dcb911f1e592ccef790c1e5f6fbf2420a953177e41f6e423"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalMultiplicationSubclassTest.xml",
+    "bytes": 26888,
+    "sha256": "df57313b263afba564dd6feda7958148c5998222574f992b68350fa504c819a0"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalNormalizedRootTest.xml",
+    "bytes": 617,
+    "sha256": "36541868a966f9aa0fca7aadae14b99c4543bec49822d2020ad2ac919a845a3e"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalNullOperandDelegationTest.xml",
+    "bytes": 25101,
+    "sha256": "1f0b4ec8fe3792d086885ad39b3f6a76bbe0dbcdb1119b6d726b561e448e0268"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalNullRoundSubclassTest.xml",
+    "bytes": 2418,
+    "sha256": "8248210f501442ac90fed6d9b32e5be95ee6f99d5eb3f48180dc64c99a73c784"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalNullUnarySubclassTest.xml",
+    "bytes": 11370,
+    "sha256": "7afbacc21617115c55610635c78cc60f26219184fc45cf121b5fd8ef2aed95db"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalNumericMetadataJdkTest.xml",
+    "bytes": 848,
+    "sha256": "05fece3b9346ce02d5d3969a032a1b3d61da5ca9e1750c30330760faaca31648"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalNumericMetadataTest.xml",
+    "bytes": 1445,
+    "sha256": "fb83a2f34d4aa1d9b339bcc6f1da59ed9e6b6d6360fdba02ab6627692429fa2c"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalOperatorConformanceTest.xml",
+    "bytes": 822,
+    "sha256": "c5cf201bd13367ca63c6ecb638e460848ab11b185b7bc177683026e0d9df856d"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalOperatorContractTest.xml",
+    "bytes": 1243,
+    "sha256": "dca4d4c68547bddefbf1bbcbe67285831ac8127847dcfba500cc40dfdd48037b"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalOverloadContract541Test.xml",
+    "bytes": 861,
+    "sha256": "747976fbf47f9ed2df4f1460e1eb647b3b36404b58e3691f73ac69f9f2d914d9"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalOverloadDispatch541Test.xml",
+    "bytes": 852,
+    "sha256": "746334a87500245cdef5289dd45cb15df4fc93c25a55d5c5f10a803031d6d48a"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalPairDispatchOracleTest.xml",
+    "bytes": 507,
+    "sha256": "88a30bb49edeb445febb2972616c0a0a928597baecd9acf5b07f6728e623f04d"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalPointMovementTest.xml",
+    "bytes": 486,
+    "sha256": "c9b45011cb8d3587d2c67fa9709de5f802de57feff3f467b746af76b3408c1a2"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalPowWorkingPrecisionContractTest.xml",
+    "bytes": 1347,
+    "sha256": "a93df1ec69041b8f64d5d082770a601e9b50a4ff41a44447a1a25623a5f8edf1"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalPower593SubtypeJvmTest.xml",
+    "bytes": 513,
+    "sha256": "583ce8f0c5bc4b3f4ecc7c32c68f1d59bdd157a96276c06eb59454c21385dd8f"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalPower593Test.xml",
+    "bytes": 1108,
+    "sha256": "5441b025c8fc57cb6e67857433c190b982ef312ec44782928616dc81f65af17d"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalPowerBoundaryTest.xml",
+    "bytes": 10710,
+    "sha256": "3449bef752edb71ca35d6d3f88aad595a58c020a3362892a5d9bdfd4d225b263"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalPowerSubclassTest.xml",
+    "bytes": 882,
+    "sha256": "6a039f08428158d28dd9ad5a4953220a2c6507287e44fa7ceade87ae6ba664e4"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalPowerValidationTest.xml",
+    "bytes": 489,
+    "sha256": "284fe279a05cc4ce922495586af57aa0a5da19d243c7040fb48335bd9061a86f"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalPrimitiveLowBits591Test.xml",
+    "bytes": 839,
+    "sha256": "f7fdce0a430099baed691e4ca7518c58a46293628821637457f114333eb7684a"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalRemainderArrayOracleTest.xml",
+    "bytes": 520,
+    "sha256": "4627de5045fb462c044b73c44bbb3366538dc074fb5bc3b705d76063e7d7f483"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalResidual583SubtypeJvmTest.xml",
+    "bytes": 514,
+    "sha256": "9c68ea5c3ba0acc5164c1126bda13d3d5991971f65fbbc12ecdffdf2a6a5f3a4"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalResidual583Test.xml",
+    "bytes": 957,
+    "sha256": "6a79766324a89311a3072d3ec62a1e8d7a46c25cf7ba43b8eb472603601dc717"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalRoundSubclassTest.xml",
+    "bytes": 28357,
+    "sha256": "395a15bc481189de9e119ecf30293ce111f3ae0ad2a219a609e3cb38d237bda0"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalScaleContractTest.xml",
+    "bytes": 1494,
+    "sha256": "91f6ede5074c4ed9abc0e1418145742d6e8fd1da28d8dbd0656a9eb0ccb60878"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalScaleRoundingRepairJvmTest.xml",
+    "bytes": 11228,
+    "sha256": "db454892cf1745b4edf517bb43b5ec31e9e4d57b8b36a7efd98fe32f0d987720"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalScaleRoundingRepairTest.xml",
+    "bytes": 1411,
+    "sha256": "56ba40e7a62cfb64f595cc460cde3f5a4125e167a15138cf7cc7f195adc2a6a2"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalScaling533JvmTest.xml",
+    "bytes": 622,
+    "sha256": "83af71cff595e15e3053a646a88cda0b1533ded2c6874a81101c6374ee9e83b0"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalScaling533Test.xml",
+    "bytes": 1052,
+    "sha256": "c3b06236386f4eaf3a4ea5b4658b4f33503f41330c689af3bda571d53e9165f0"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalSqrtMidpoint565JdkTest.xml",
+    "bytes": 652,
+    "sha256": "353198327032c88ab64dca0b9552c1c34daae38a4d96696ec114d0d04466794f"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalSqrtMidpoint565Test.xml",
+    "bytes": 911,
+    "sha256": "9b0d7fcd183c239e1b7032e608df086e5cb4cfad1050862fdc3f55c794cb2c46"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalSquareRoot579SubtypeJvmTest.xml",
+    "bytes": 525,
+    "sha256": "02f89552b8f6d8d4d0f8822f128ac305616f36edac457d7ff6dc9f7a2d277adb"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalSquareRootCohort587Test.xml",
+    "bytes": 961,
+    "sha256": "ca9ef9ad7ac3b00942a9def310a7b266192b4f3cb11126ac12e561070fe926fb"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalSquareRootNormalization579Test.xml",
+    "bytes": 828,
+    "sha256": "918e9d9094bdffa597f5c566aac9d5a85cd0285576b41cf2a3b9b12b91ec7c7d"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalStickyEquality586Test.xml",
+    "bytes": 660,
+    "sha256": "83e538cef405d34eb254710f35e98a48601c3f942e435245ea79208490c01598"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalStringCacheTest.xml",
+    "bytes": 776,
+    "sha256": "1488f981ec0073715ba2390b96824cb316a8d308d441cd7b0e0ce9153669dc5e"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalSubtractionSubclassTest.xml",
+    "bytes": 757,
+    "sha256": "d0b4bfa282a2c200dd8e3a1bc2b0bf0bb7d38191c8ee4e40bb8014e7d61a3ef5"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalSum585SubtypeJvmTest.xml",
+    "bytes": 687,
+    "sha256": "886edf643cd8cb6f06a3b77dbdba606a3b5e911666d5930ff40e442dd18789d3"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalSum585Test.xml",
+    "bytes": 891,
+    "sha256": "60f95b08f7bec60a3f786cb874c258155824487db7f05a3c6d9ead94a0edd86b"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalText588CallerJvmTest.xml",
+    "bytes": 513,
+    "sha256": "b97b813f5008cb56846b69ac17bfbfcc92a84683397de02f15adacc1c1c7afaa"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalTextRounding588Test.xml",
+    "bytes": 962,
+    "sha256": "431aa2941208db3040adc49e735bf4f9563e1ab724f1f0772cdf44a808596495"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalUlp541ContractTest.xml",
+    "bytes": 837,
+    "sha256": "9051b50091e9cabd3c8ec0d42a418f47b982d779e50d5ad37a8f6ea608f7d770"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DecimalUnarySubclassTest.xml",
+    "bytes": 6969,
+    "sha256": "cb3216bf5a7e1e8fcccb3a96c92360d0e25f69b871836e34d29cadacf7e53396"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.Division530JvmTest.xml",
+    "bytes": 702,
+    "sha256": "4b69864b13d3db6b4ebcf4786b5bec74b7ffeb29cbb9261f501c37f16c5b555c"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.Division530SelectionJvmTest.xml",
+    "bytes": 493,
+    "sha256": "fec3b6fda7711fe0c2106ebbb0b768ceb0f146a082bff5f686c251d3e82b2359"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.Division530SelectionTest.xml",
+    "bytes": 622,
+    "sha256": "91c5c648512348f51481a5dff18ac962bf6ae50148fc55983990bb5fd0a1caf8"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.Division530Test.xml",
+    "bytes": 1297,
+    "sha256": "b87b586317ce6bf4fc26615ded2ebd814c21f28e690a6b719481b28482192e8c"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DoubleZeroContext569DiagnosticTest.xml",
+    "bytes": 11540,
+    "sha256": "2f66c1f5d2291f4b759906e69f963f81cb78005f78b0ee6ccfec2d539005491d"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.DoubleZeroContext569Test.xml",
+    "bytes": 742,
+    "sha256": "0bfa06938b547ceb335374cf4ac2b1b3c584cc9e2ae120dfec4ada0a77a9e723"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ExactConversionSubclassTest.xml",
+    "bytes": 637,
+    "sha256": "8eafc7e4029e1e110e9e05a57b14e1841423272d7111dc788e6aeca6cc6f3081"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ExplicitDecimal534JavaTest.xml",
+    "bytes": 486,
+    "sha256": "941e1143383de3eca3bbffac7b34e61a4dc8c71f9090a7ac16b17dc448a2a141"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ExplicitDecimal534JvmTest.xml",
+    "bytes": 502,
+    "sha256": "b409cba9ca5e341631fd46f32d806626b6f6806975a2c7b790fcb22b593e349b"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ExplicitDecimal534Test.xml",
+    "bytes": 917,
+    "sha256": "5b18fae8b2a2ca28bafcd68acd7fb8904ddc1e4dd68679ed2ad24b79b8eb8757"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.FloatingPowerTest.xml",
+    "bytes": 600,
+    "sha256": "10130b6303699a512bc49f029be8205d142cc389e1ef8ba6b047e5e7ffa75c20"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.HashOracleTest.xml",
+    "bytes": 588,
+    "sha256": "c3ed1e60a4e726141479087e73789a6d7a7167507705bee4db383a9aae8ca9ee"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.HashSubclassContractTest.xml",
+    "bytes": 477,
+    "sha256": "ab827556ed2adea85fc46968ad6172ec9d5c07f2c6773c966d9c6ac87df60266"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerArithmetic544ContractTest.xml",
+    "bytes": 1627,
+    "sha256": "2a8234d88692ec1fd34f561e3863304526cca0eed723df980e6f6640f5144761"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerArithmetic544JvmTest.xml",
+    "bytes": 4240,
+    "sha256": "8f77ff7ef85b5da452a46ec7f868e3593b30e165f4a27f8f935992b0b35fa93a"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerArithmeticOracleTest.xml",
+    "bytes": 974,
+    "sha256": "baafb75f427ef869230e8693b1915514eb8eae12d4dd9e505f5147e1eafc3a6f"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerBits545ContractTest.xml",
+    "bytes": 1229,
+    "sha256": "bc6862166515aceab10c9889ff61c0b3009e8654debd61fb4a534fe64ff461d7"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerBits545JvmTest.xml",
+    "bytes": 3717,
+    "sha256": "a176ebf553ebcdaed8717a013604c0db91e9a71fc2fade6842cde54089bb4419"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerBitsNullTest.xml",
+    "bytes": 7788,
+    "sha256": "cb8414ff5face68298e9906840f6d01666ec1f33911b2e68d61c09cc11fa34d8"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerBitsOracleTest.xml",
+    "bytes": 1216,
+    "sha256": "1b8355dd1b1c48705034c225be7086d8a096df228662c71496fde84c246e0b55"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerByteOracleTest.xml",
+    "bytes": 462,
+    "sha256": "89bb71739c822ebefc6a2c774212fe378bcffe558ff1b99bdcd50f75aa16dfcd"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerComparableContractTest.xml",
+    "bytes": 486,
+    "sha256": "64ca0078ef14f7f8a60742f5c8320889593b682afb3a15e671b55243efc35a71"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerDivisionDispatchOracleTest.xml",
+    "bytes": 484,
+    "sha256": "7f89cf0d12e4c70d291cbadf4e7bf839aee5b5faad3e6e3cd9af382c6a273276"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerDivisionSubclassTest.xml",
+    "bytes": 500,
+    "sha256": "9fdfd2ec46925dc7c90431cedd4ff5ea20edefc1e954ca2a815c2092def1fad8"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerGcdOracleTest.xml",
+    "bytes": 586,
+    "sha256": "fba669450b54f26049bdcb4d6d250e475f4c4871fda5f0057c29f6431a0787be"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerGcdSubclassTest.xml",
+    "bytes": 491,
+    "sha256": "e6de837e3b42a68b38bf9214df08a59c8615caad09466193c8bbda150c6e0b2e"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerInverseNullTest.xml",
+    "bytes": 604,
+    "sha256": "4e3172c3a7d6365cae05b9353b27d7867db44a0b861a45dc518a223305a571fc"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerInverseOracleTest.xml",
+    "bytes": 915,
+    "sha256": "a8a6c823faeb21fe6aa9773b3527e7ae83cf2e804258ba5f2646b1bdde46d5e0"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerMinMaxSubclassTest.xml",
+    "bytes": 11232,
+    "sha256": "79d0b08f46c5e9e042021f08a3f7ef3f321b0e836580092d066a67b09a0fb29a"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerModPowNullTest.xml",
+    "bytes": 1874,
+    "sha256": "c5854ce5ed927436f3c81e3e284bba44734b33cfffd1c93dce998009f48c7893"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerModPowOracleTest.xml",
+    "bytes": 1051,
+    "sha256": "813093e31690b57f75e39b96fbb84a25e31ff67d76dd244a38033d72ff85007b"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerMultiplication532JvmTest.xml",
+    "bytes": 512,
+    "sha256": "f5ed9493a81d864af41bb5a72e0b8f223a5c2cc426af6c0ec0b47f9a045e4bf5"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+    "bytes": 1102,
+    "sha256": "3d4a89afe5d3b300a27fff827796704ec2cb5982e7ab4a5f1db4fffb1574f998"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerParserOracleTest.xml",
+    "bytes": 474,
+    "sha256": "32690aace86e13c362f2d15102941e07e9906982a215bf832044abd3d0117b42"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerParserRange559Test.xml",
+    "bytes": 942,
+    "sha256": "73b1cd461044e37e66828fa98194a3dbde744728a6f6619db0c1ec1a58231ff2"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerPowOracleTest.xml",
+    "bytes": 465,
+    "sha256": "15545761d5234129023731c2de5172d76561356c5c93501713a64894ab7aa406"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerPowSubclassTest.xml",
+    "bytes": 468,
+    "sha256": "db3846ff29b2789e398c58f0b68d32a27eb3eab841e50567ca1f408ef0fd022a"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerSqrtOracleTest.xml",
+    "bytes": 1062,
+    "sha256": "46d5387ebab5f1ae8d08e116e5e20cf31ff5ae39a6a00f7a903ec77096490292"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerSqrtSubclassTest.xml",
+    "bytes": 487,
+    "sha256": "c40c2151efd6bb370cd0ada0aa967e9dc33202d11328311c049dcd262b04b5f6"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerSubtractDispatchOracleTest.xml",
+    "bytes": 504,
+    "sha256": "71fea5ba52b33fc3918726f1e0e23e31f005aac32326b9cfc43407185a3de882"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.IntegerSubtractSubclassTest.xml",
+    "bytes": 646,
+    "sha256": "e8bfbbc96a3281bb7704593bc1f25120d16f2af85a7987620caff5c3f9ec91a8"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.JavaApiContractTest.xml",
+    "bytes": 1720,
+    "sha256": "206a3a0b6a16c371bda8fe8ff8d379adf3c61b577fb3c9e460fb9810f79b0577"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.JdkOracleTest.xml",
+    "bytes": 153950,
+    "sha256": "486423f0ddb00c3a9f0e0f32b1eb6a9374636be3643e566f36d0aade0924f338"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.KotlinSubclassContractTest.xml",
+    "bytes": 482,
+    "sha256": "367631a2e87a06bb390ebb43bfc86a50d1993fdab230bee81a54cb087c457805"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.MagnitudeLimitsTest.xml",
+    "bytes": 582,
+    "sha256": "3a81b1146cd114bc956e2ad28a8c99ce699f0a6302ee927c5984dfec5bb8d237"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.MathContextGrammarTest.xml",
+    "bytes": 1441,
+    "sha256": "ec139f2ee2a71640bc0a82c0008bb03d885c2c5dbe525b3f6d287192124f8833"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ModulusReuse538JvmTest.xml",
+    "bytes": 637,
+    "sha256": "157f0ec9248a919584c2813d981dd19ca3fcb731b8b0ba2071de49fef0efb653"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ModulusReuse538Test.xml",
+    "bytes": 778,
+    "sha256": "428e115bc7fed77a9e312fcf0b855510dba79eb2cc16fec4a82286d8b0a13565"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.NullArgumentConformanceTest.xml",
+    "bytes": 627350,
+    "sha256": "3d6b8307ca01cb87d9005a3b2197eb2a2c9139656e53b0be22243c92182ef3ff"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.NullPrecedenceOracleTest.xml",
+    "bytes": 854160,
+    "sha256": "a4d022e7192f1a189814996c5d0323c652bd5942d2aad48ef7f5c3fec84e68c4"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.OddModulusContext538JvmTest.xml",
+    "bytes": 741,
+    "sha256": "299b04d39c9f8058ec4514d1dff8aa7e52b65c4ab98969735a2889e84fd7febe"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.OddModulusContext538NullTest.xml",
+    "bytes": 1012,
+    "sha256": "4a566b3b15163521e02ed18fe5144462c275940222bdaacadfb1e833d08f563e"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.OddModulusContext538Test.xml",
+    "bytes": 1271,
+    "sha256": "3c7bbca4e34f67dbd81ec5b3b14513ba9f4defb6958f0de93c3081d722805e68"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.OddModulusContext538TinyFallbackTest.xml",
+    "bytes": 782,
+    "sha256": "abb493c67ad600f81bd4555b018ccb6f44b4d5411a2513e33a866dd24acb45fa"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.PlainStringPreflightJvmTest.xml",
+    "bytes": 642,
+    "sha256": "898683f13b41a545d5d1b0d58270f15bad477b5a98d669573cf6ee507b4ff101"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.PlainStringPreflightTest.xml",
+    "bytes": 740,
+    "sha256": "84c0ac77dc94b0f57ef77131fa9b06e0dfe937df61b95ec33e0d4bc336a89bb1"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.PortableOracleTest.xml",
+    "bytes": 349695,
+    "sha256": "5ebfd7b1bb40b735177b9bad8241d44396c56871160c919c01931c78e0d11d42"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.PowerOfTwoRadix559Test.xml",
+    "bytes": 621,
+    "sha256": "723347c6fd26240ab3cd2ba79c4b5dd6af34dbb1611d0d432cd3921a7cf05515"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.PrimalityCertaintyTest.xml",
+    "bytes": 931,
+    "sha256": "eeecbf4c8bdb9cacda0da4a1cb9f520bb164f51c09221ade548080209f6e3504"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.PrimalityConformanceTest.xml",
+    "bytes": 480,
+    "sha256": "674222dfada0cf825c0145496c5dd0bc6ee749d043a5cff577b24ac336a3b09a"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.PrimeOracleTest.xml",
+    "bytes": 1471,
+    "sha256": "71235a8cc578255167170ef21f77ec71f683bb932fd7c9d6145873e5b09879e4"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.PrimePrefixOracleTest.xml",
+    "bytes": 469,
+    "sha256": "aaf32c453d1e81f5ac7b2485020e60feffe994ab8216917ca31fef5690f7c4c8"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.PrimeSearchRange559Test.xml",
+    "bytes": 809,
+    "sha256": "6b1f7c5c25fe04efa04458f0a22b96e3a4ccccba3754f768492370e66800b51a"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.PrimitiveConversionSubclassTest.xml",
+    "bytes": 933,
+    "sha256": "86099deebd98a5abac085e658050f8896927d02604a8c22ecbe5b7236661959a"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.RandomIntegerDistributionTest.xml",
+    "bytes": 850,
+    "sha256": "bcfcfb52def7811617910399eb1973be71d158d136bd0b36ec2067123f5e50c9"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ScaleBoundaryConformanceTest.xml",
+    "bytes": 10157413,
+    "sha256": "260d7a1ffb799363208fa30ab5529fb4ced1958a065ea8d376b527e50036d632"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ScaleBoundaryOracleTest.xml",
+    "bytes": 9088754,
+    "sha256": "75865889dd06e2b4d9057b65d86f4d1d1cba8053eefc960efb88e7f197f649b1"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ScaledDivisionBoundaryTest.xml",
+    "bytes": 484,
+    "sha256": "c48bec9cb952be19f5fe9804444faba3dace931db5979bde1f36b079b39e7c11"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ScaledDivisionMidpoint584Test.xml",
+    "bytes": 655,
+    "sha256": "1e7b50c1c961111ac715eca4fbae6efa8710e862cb0275eb89015b817abc7f6c"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ScaledDivisionZeroTest.xml",
+    "bytes": 491,
+    "sha256": "acf2278c33e63818152dd61061057c3624b802ea7920ed479ce8ef7da972a27d"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.SerializationConformanceTest.xml",
+    "bytes": 1189,
+    "sha256": "596cba43ee3982658dc394e9b2e900ad941423a7691705b03adaefcd5c719579"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.SetScaleBoundaryTest.xml",
+    "bytes": 191924,
+    "sha256": "fad4b20d705ea2361df222e55b131ee4ff271d185baba5339e5eb50b695f3394"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ShiftSubclassContractTest.xml",
+    "bytes": 628,
+    "sha256": "bfee35c3b17df374a1f5c5fd3f4ea15045595c08e2cadfa8d60fe0e0fbdede26"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ShiftSubclassTest.xml",
+    "bytes": 467,
+    "sha256": "31eff815a9f12addddeb2ff4e9df5681ffb9498228b14935173599f59cf4929b"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.SqrtCohort587ComparisonTest.xml",
+    "bytes": 1354,
+    "sha256": "09962fb6c6fa001081126fb908be2fc8f60b0043328e397c70d20bd71a50e3c1"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.UnaryNull576StandaloneTest.xml",
+    "bytes": 81111,
+    "sha256": "cc9c53fef55bb6b40134b7c10938a7b68e80cd7f7d124a6484fb7007bc217f48"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.UnaryNull576VectorsTest.xml",
+    "bytes": 30376,
+    "sha256": "f72f54c165481cad6768f1094ce0ae29d0d2e6ab6102af35f124381c6fe6f4b2"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.Validation578RngTest.xml",
+    "bytes": 3943,
+    "sha256": "b76e9647dd7162c13312bd42346325140e64694561d3802a7c470581c9b41719"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.Validation578StandaloneTest.xml",
+    "bytes": 6129,
+    "sha256": "e794607db0b9b49df238329f12a512d4f903381901a0a39c07c31f0185eb514c"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ValueIdentityConformanceTest.xml",
+    "bytes": 1150,
+    "sha256": "a77b92d84a9b319bbe40e6179c510e3438370c9808b1e4d092a2eede708124b5"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ValueIdentityContractTest.xml",
+    "bytes": 2017,
+    "sha256": "d24cb73201497ff2255d3bc4d4f5f18cec7768331341dfdcf267975bcc52ac71"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ZeroContextScale567Test.xml",
+    "bytes": 2079,
+    "sha256": "2fd88eb11a6536d5b7be2478af07501cfcf3cbea93e367a6c362258d3df238d7"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ZeroNullForwarding567Test.xml",
+    "bytes": 636,
+    "sha256": "553f78c406afc6a16815d426f21bf45885227db306385c03759b8d7addecd2e9"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ZeroSqrtNull568DiagnosticTest.xml",
+    "bytes": 37215,
+    "sha256": "2f2e193e13be69cba20b69f2bfd04738068270e4472fd72a07115094c36a0585"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ZeroSqrtNull568Test.xml",
+    "bytes": 733,
+    "sha256": "2969adf680504478583c60c9205700b8b5209e0f849f165e82bb259586d539e0"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.ZeroUnaryPrecision567Test.xml",
+    "bytes": 624,
+    "sha256": "3d58e4163ebf900c80e6551ba9e50839fa4ef5082b5616a56c36852d62a620a1"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.migration.KotlinArithmeticOperator595JvmTest.xml",
+    "bytes": 702,
+    "sha256": "c303f57de1002123eed3d4c11d53d5730f0f1cd94b270f713b02733e256e29c1"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test.xml",
+    "bytes": 883,
+    "sha256": "e2014912ac113e37e96654543b92735941b50bfeaee2199089c06e6409b8275d"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.migration.KotlinConversionExtensionsConformanceTest.xml",
+    "bytes": 909,
+    "sha256": "edffb8c8cb1d1ed9e19b3806f0c8aa8475e81ef1b3acca710f91f178279dc5d0"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest.xml",
+    "bytes": 872,
+    "sha256": "085e8931290ab79a9639531e8600b4aac0651f79fe27b9bbef090f52a1360bb7"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.migration.KotlinFloatingConversionConformanceTest.xml",
+    "bytes": 1084,
+    "sha256": "792ac6da7a37706f8922335b62d40fe6845f594089bc51c7451db14a6925ca04"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest.xml",
+    "bytes": 1401,
+    "sha256": "c2c8ccc0cc768a8934fbda92f4f050ab52ac76f36d823ed0aa55d6d347061e9b"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyConformanceTest.xml",
+    "bytes": 733,
+    "sha256": "050c61a8a81bbc21d35285563124d40007ee6a600bd2408be86a3c5c1fc087d0"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest.xml",
+    "bytes": 900,
+    "sha256": "09a87d1aec3d3b5dd5e3ae78a11ea7e64380c8a118f9e057de60b36034df2272"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest.xml",
+    "bytes": 1055,
+    "sha256": "f18adf9f68647484621307ce8c3e77103befc46ba5908f309381f4cf455d703e"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.migration.KotlinOperatorMigrationConformanceTest.xml",
+    "bytes": 1434,
+    "sha256": "e0a3d1af1b405251b06918e1b9d1090c291583d23b67324eb50c21870f4ffa72"
+  },
+  {
+    "path": "jvmTest/TEST-io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest.xml",
+    "bytes": 1592,
+    "sha256": "268f279560466f55956dddd0d82c8cab267f346a55d6a5bdcbbb3ac3c03180b2"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.BitwiseSubclassTest.xml",
+    "bytes": 513,
+    "sha256": "424a17d9b340688a9ef673950bdc3382ed6aee85b3bd0ac2a550790b92d60a2c"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.CanonicalDoubleTest.xml",
+    "bytes": 5194,
+    "sha256": "f0f352f39ca9cd1cfa84d7a1e52dacbe03021b24875b6b6999487e161a7a9cdd"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.CharacterOracleTest.xml",
+    "bytes": 1376,
+    "sha256": "480fb6963bcc4defb12cdeb5d7caa82eb08e75f3747afb197234a5ff27c4c515"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.ConstructorRandom549Test.xml",
+    "bytes": 879,
+    "sha256": "f9be4d8b4814415544ead4223bd1c300356c5ae94f2a001ddc736210adfdc4a5"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalAccumulator535Test.xml",
+    "bytes": 1534,
+    "sha256": "4e5b6226f0655373d53ec71a4412eaa8cbf526b29d4cc770ea54582f11847523"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalBinaryCancellationTest.xml",
+    "bytes": 1235,
+    "sha256": "8577cc885d29824b16514bc5faaf6b5749a411600d507bd425e8ba27d1f05a4d"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalBinaryPrefixTest.xml",
+    "bytes": 1255,
+    "sha256": "07f1f9b2184508e1a4f066b139dcd38f8977a5674e0ba9887c4d808137c73541"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalChunkComparisonTest.xml",
+    "bytes": 908,
+    "sha256": "d9352f738f51640fd76838eed776620087872a0b7297556e006257512446a153"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalCoefficientSubclassTest.xml",
+    "bytes": 857,
+    "sha256": "e90ce50d16526333be412f92cb5b9ce64e6cc00bafb1c73cfe47d8e1f64fb4d9"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalComparableContractTest.xml",
+    "bytes": 538,
+    "sha256": "de47181d53a0bb5d7a1828a9719bbe7b0125b82717242cf60253cc45659147f7"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalContextContractTest.xml",
+    "bytes": 1882,
+    "sha256": "67673eb1b27bb1445c61807b00241208624b99922de7e196f767c8e497391b26"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalContextDispatchOracleTest.xml",
+    "bytes": 567,
+    "sha256": "c5449a60418109ea23961f655c546322b3e6df55b27627f002261932e4ee3fb8"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalContextDivision581Test.xml",
+    "bytes": 1212,
+    "sha256": "6f21bed22b44eba28cf25b07c6eb16813d7d4ea41ea76da3ef6324b683047735"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalContextProduct580Test.xml",
+    "bytes": 1049,
+    "sha256": "6e535060e28e626532032a77769be55a87bc1ee30ca42cf07e9a7b79eb157037"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalContextReturnedRepresentationContractTest.xml",
+    "bytes": 806,
+    "sha256": "a5af0b6391b8ecfecb90ff8903f0e408e59131eabcf4ddeff829eac10d8819ae"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalDivisionNormalization594Test.xml",
+    "bytes": 947,
+    "sha256": "5c651aaf1e651b418ed4002d6851f1e719625b66eac3033e5cab31b7d1ee17ed"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalDivisionNormalizationContractTest.xml",
+    "bytes": 1423,
+    "sha256": "7d02db5f30bffe4b5b02508b732660d32ed1ad78fb75383644346dbeda4d6156"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalDivisionPreferredScaleContractTest.xml",
+    "bytes": 1712,
+    "sha256": "7116e0df084db674e264e6b01298a210a236d11936f47436347c8c041c005892"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalExactChars589Test.xml",
+    "bytes": 1084,
+    "sha256": "53cb33640b476396d7f3f9c4407b7edaf0f18484e25ec67d1e105b9012b4c941"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalExactLowResidual590Test.xml",
+    "bytes": 921,
+    "sha256": "22c54afbc13b501cac558a25b5b43a0fe0220bf7c0efc06a1e16a8c2ed4914bc"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalExactRoot563CallbackContractTest.xml",
+    "bytes": 744,
+    "sha256": "72f069064d8f9e2a31b010cb3ba5ba4951b21863dae052bf2e39037bed35e17a"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalExactRoot563Test.xml",
+    "bytes": 974,
+    "sha256": "6224be391e90171fbbfb24afc5d242c32899d474826502df0ec14870553fa112"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalFixedScale592Test.xml",
+    "bytes": 898,
+    "sha256": "3b5f5aa28e17e3a328d13fffe33c862c4cf71bd221d1c9c1fd704db25d971dd2"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalIntegral582CallerContractTest.xml",
+    "bytes": 562,
+    "sha256": "16d477ffbe538b40117740fefce26d09a7a84ed69fcf1bbf2be18ef4e9e2194c"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalIntegralDispatchOracleTest.xml",
+    "bytes": 134206,
+    "sha256": "66187bb4a9003d414102c90a9517aef2d2096277dfb98e54b3a8de3d8e6e549d"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalIntegralQuotient582Test.xml",
+    "bytes": 1085,
+    "sha256": "3c06565e82d0756ada0d6e6bd464accf00f2a7be781260b30b40f1865b51ad7a"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalKey536Test.xml",
+    "bytes": 1110,
+    "sha256": "6eea09383bebf4484ac368a44e7ef205ed669116622fb4b00ca2a9b2beb1e317"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalMetadata597Test.xml",
+    "bytes": 886,
+    "sha256": "1c0cfc81b9c441d4801ab32e939629611128bb7f7666e2e79ce5f1c34ac5452f"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalNumericMetadataTest.xml",
+    "bytes": 1617,
+    "sha256": "19e2bf7d919f12eaf5086d15297efcb1f9786a9aa1beb59db0954337c600ecdb"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalOperatorContractTest.xml",
+    "bytes": 1405,
+    "sha256": "bb02b9ead8af13ff6bab939f19f9ba21c8d33b17f3e5ddce2843a53104d3442d"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalOverloadContract541Test.xml",
+    "bytes": 951,
+    "sha256": "809103fabc1674fe598d9f3599695cba0b34d9ad2b620de8889268787327f8a7"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalOverloadDispatch541Test.xml",
+    "bytes": 942,
+    "sha256": "e93db4b2b3272add221158fe9f0c050565a2e63a6494dd1cfb78b497c9850b16"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalPairDispatchOracleTest.xml",
+    "bytes": 555,
+    "sha256": "e4ee371ea6a7b8b95bbfa0f1d65dbefd768c1a128eae9849241bf3de6f83011d"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalPowWorkingPrecisionContractTest.xml",
+    "bytes": 1499,
+    "sha256": "97c9e71082461e6e3a61ef4eb090363dae975c93bd682a2fc3a1dd89ad8febc3"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalPower593Test.xml",
+    "bytes": 1240,
+    "sha256": "5024a6017904b71c2f8c7b56847defe7ca6d932c20597a9b3d1ff886f030fd58"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalPrimitiveLowBits591Test.xml",
+    "bytes": 930,
+    "sha256": "266b14b8ffbfaf847aaa770b31564fe5d4ba3ae767fc2ae651759836ad63d580"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalRemainderArrayOracleTest.xml",
+    "bytes": 568,
+    "sha256": "001088a9947d4319a86f58119bb8dad9e2fb7044d5518c891170c8abcaa015a4"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalResidual583Test.xml",
+    "bytes": 1067,
+    "sha256": "ccb1569907748b3c1b374d7476ed14f7a7e0769a3f5572c1603b1c8ebd36cd01"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalScaleContractTest.xml",
+    "bytes": 1686,
+    "sha256": "d3c8574d31a18a57b9585f336785318df80d81de9c906788b51ecfdd0938f898"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalScaleRoundingRepairTest.xml",
+    "bytes": 1583,
+    "sha256": "92cca543d09fe0dc2078bc69faa6801059e32fd6251b64e43c59a54a1ef99b24"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalScaling533Test.xml",
+    "bytes": 1184,
+    "sha256": "68bd4a8aa64401bf25a72e39070cc410a58d08a410947aa40b3cf0fda96a9e69"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalSqrtMidpoint565Test.xml",
+    "bytes": 1019,
+    "sha256": "e0f97fb509c43f9281825151cf8ac89e9af30951ec66b0f185bde9f05c65d8dc"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalSquareRootCohort587Test.xml",
+    "bytes": 1073,
+    "sha256": "36d2943afff8ffe02f6d850a8c96fbe54ee198c961316108805b0380c5f766c4"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalSquareRootNormalization579Test.xml",
+    "bytes": 922,
+    "sha256": "ce01b3fb0b5e69ca73420b1a48d8274f5a3b471eb7a0bdf07c520269ebca58e6"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalStickyEquality586Test.xml",
+    "bytes": 728,
+    "sha256": "9180ca29ef3b7ff5e9a410f0eb8365f2475701fa1178041caa8f3901dbb50a47"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalSum585Test.xml",
+    "bytes": 1001,
+    "sha256": "0158eb8b07a02bc9fba811062ec9075489bcaafed4f671b236d1cae7245cd620"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalTextRounding588Test.xml",
+    "bytes": 1074,
+    "sha256": "6ea7d0e359ff85f7cee2bf28e31e27a67004204cd731d744a221ca79a97abb08"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DecimalUlp541ContractTest.xml",
+    "bytes": 927,
+    "sha256": "913f186d7096f517e25c9afafd159c9f8eb12b5cb6744df2877df2cf9696cee9"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.Division530SelectionTest.xml",
+    "bytes": 692,
+    "sha256": "f1a8f398082546d853e1fb075144f3bcc66805f54ebe1ad49ffeaf27b9eb6479"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.Division530Test.xml",
+    "bytes": 1493,
+    "sha256": "f13d569dfebbf34528188bfd454b5c718870475de7d89a68404ec13fc5865efc"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.DoubleZeroContext569Test.xml",
+    "bytes": 832,
+    "sha256": "b972a0d364366cc040d453e73a997b43e42fddb80143f847ce307754aef7f635"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.ExplicitDecimal534Test.xml",
+    "bytes": 1027,
+    "sha256": "02f9a8ea80759bbacddb7d762b1322b3680cf10128f66ffbf5a6615b75db2a2f"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.FloatingPowerTest.xml",
+    "bytes": 670,
+    "sha256": "ebff74a9007666acdcd65e49b878f632ec023e15e2131d5b0cfb8e06e20fb036"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.HashOracleTest.xml",
+    "bytes": 661,
+    "sha256": "da0b007cd4e09a7e9e8996e62346f77717bb9591867a5aa6b236e000520286b8"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerArithmetic544ContractTest.xml",
+    "bytes": 1823,
+    "sha256": "539af26bf4fb72980ad16c0ca53117e8c6bc2b7b7e46522fc4ffc3b351e27bad"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerArithmeticOracleTest.xml",
+    "bytes": 1102,
+    "sha256": "bafedf8d7e692cefbe6b23b7e3037508e1406b73d71a01e3a0ab7d5e69314d47"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerBits545ContractTest.xml",
+    "bytes": 1385,
+    "sha256": "97ac02675e98ab05b64ac0fc0a5873660b9da8060eca23bc0bae4d649cfc5311"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerBitsOracleTest.xml",
+    "bytes": 1412,
+    "sha256": "9c8030df8b12ecbed6972f38a11f172f5f945d1c8bb456722ce69ebf7eaee167"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerByteOracleTest.xml",
+    "bytes": 514,
+    "sha256": "46533c4c89e92842dde6d3cc818a9dc37e1be98d152aab2d302a84b5f3fb52c7"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerComparableContractTest.xml",
+    "bytes": 538,
+    "sha256": "8d65acc6082e6938d4a44111062a9feca6ab638089fd74e0d46ea3d6d3c414fa"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerDivisionDispatchOracleTest.xml",
+    "bytes": 536,
+    "sha256": "8ddcdde1b86c3582cff73e8fff02a7277e258436fe8e39e0bb4e8cdf4aec6a88"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerGcdOracleTest.xml",
+    "bytes": 654,
+    "sha256": "09a7a57f4010d7c8399623aef645e4c287feeacc0d46cd272fda1926691a798b"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerInverseOracleTest.xml",
+    "bytes": 1048,
+    "sha256": "04954a6f9732572909d89d53b0b11f3a18c5bf8cd501d89dc5daf24dfef7b212"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerModPowOracleTest.xml",
+    "bytes": 1199,
+    "sha256": "d2ba25ce3f118cc5f4257571b93d9c454ba0aee3b524f313dd5dc1ffeb8f47e0"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+    "bytes": 1235,
+    "sha256": "22c2f98109a5f3e76e67e372cae8976c90156556a7ca5be0e71be71ce5dda69c"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerParserOracleTest.xml",
+    "bytes": 522,
+    "sha256": "f9fbbc55e6b8d84f3cea393b109e570a811bfc5060b371c98c2b05c22f59aa09"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerParserRange559Test.xml",
+    "bytes": 1056,
+    "sha256": "4cfabc1ceb4d6598d3d2aec5a98a854d5f01340286dd5eee0b40d3b5c0c26b3b"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerPowOracleTest.xml",
+    "bytes": 513,
+    "sha256": "9be1c16abe2e49f08c73150f0daedd1393c879f05471949d7689eace012ce6af"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerSqrtOracleTest.xml",
+    "bytes": 1218,
+    "sha256": "6f404d4fe195633961272211455eab8df5fd578a8d582e311701f0a438c1ca70"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerSubtractDispatchOracleTest.xml",
+    "bytes": 552,
+    "sha256": "93e1f7f07aa9cc6ff35873959bf8030676985b038323692ed7e7bdc0186973b2"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.MagnitudeLimitsTest.xml",
+    "bytes": 652,
+    "sha256": "5c08a9693d6c1929b49d23d27f4cab1d9fcea2919b1a461d90e940033e4e1fbe"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.MathContextGrammarTest.xml",
+    "bytes": 1677,
+    "sha256": "1e3fd572c3c0837c52e44519d5025887b8272d282a42d752cdd5b4ccc5f2fddb"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.ModulusReuse538Test.xml",
+    "bytes": 867,
+    "sha256": "1b0f33769b70d51fb8fea1e283afa79dba75be24be5ce5ed9bd3786b34319943"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.OddModulusContext538Test.xml",
+    "bytes": 1447,
+    "sha256": "3ebb098f08498d1c55ef0ceb91170eca66643cfea44f66642d8e8178fcbfdf85"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.OddModulusContext538TinyFallbackTest.xml",
+    "bytes": 872,
+    "sha256": "864ce055b2272e8f829e00e469c9dee0a12160c6297020283e8de3469f3c5807"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.PlainStringPreflightTest.xml",
+    "bytes": 832,
+    "sha256": "46350312e0d015efe090b2df47c3d460470f7d2de44e6867e09ce362f1640243"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.PortableOracleTest.xml",
+    "bytes": 349811,
+    "sha256": "9c14da0a5f6e1a68ddc2153aafc2a112d6057bc4e32a4f2d08d4b79bf285dad3"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.PowerOfTwoRadix559Test.xml",
+    "bytes": 695,
+    "sha256": "3f62cb7c42d385504423b62ab867a7649543f0354a6cfd1814670b55aadf41a1"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.PrimalityCertaintyTest.xml",
+    "bytes": 1043,
+    "sha256": "0a6a28f5dd7ba00185eb0f33f59b89872429f23f9bca1f61e8225a7d9ac63623"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.PrimeOracleTest.xml",
+    "bytes": 1705,
+    "sha256": "4d43295747ac789ac00627c09003b8c15075529c5281b0630fd29668914fea27"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.PrimePrefixOracleTest.xml",
+    "bytes": 517,
+    "sha256": "a3e2970de8d03c4d5a953290d0201799510438315dc9a5c19863d6c739e88225"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.PrimeSearchRange559Test.xml",
+    "bytes": 905,
+    "sha256": "c4dea10de8158a9cc86ec915a3dda3721fab0ada9699cd6bdcd5a5fa7d8cc61d"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.RandomIntegerDistributionTest.xml",
+    "bytes": 924,
+    "sha256": "4c2f5c6bae57e33929f5b9b2f079b60c29ef7d2124ea7b04fe03178a10154261"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.ScaleBoundaryOracleTest.xml",
+    "bytes": 9089032,
+    "sha256": "445f59e010624098d4d6b0aa445baac69b9f887b2d3ef5a58d1bbfc98b56b90e"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.ScaledDivisionMidpoint584Test.xml",
+    "bytes": 723,
+    "sha256": "905e36e33b29705c6dbc55d10e29a82bb2a0256b0d5a7985210dd120a6aa67da"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.ShiftSubclassTest.xml",
+    "bytes": 519,
+    "sha256": "155e7acf26fa2bf134bc339d04420a2c107c1db3fa6cf08f06b31e569d521b56"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.SqrtCohort587ComparisonTest.xml",
+    "bytes": 1532,
+    "sha256": "aff6ce2d71b66a5c7fe8bb1c5b04d73db24246497990971f21cb349e1adbfad0"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.ValueIdentityContractTest.xml",
+    "bytes": 2279,
+    "sha256": "a2fbefde04505997e84b33d4948d24dd511de1ea99f732b6089c4b04d22597f0"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.ZeroContextScale567Test.xml",
+    "bytes": 2351,
+    "sha256": "c39194f27c3cc50a702395f98a6b1d61e199e4b1bab0278f55e554c376fc8074"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.ZeroSqrtNull568Test.xml",
+    "bytes": 823,
+    "sha256": "a9e6660a86c5fa02a5a49d72d63ef093a922b61fefa1d61e75364883c8534a53"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.ZeroUnaryPrecision567Test.xml",
+    "bytes": 692,
+    "sha256": "f03da9a14a4f122463ecc016efbbca2623892644a46b64d9e8be38b25b3e3c64"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test.xml",
+    "bytes": 985,
+    "sha256": "5bad03347ab474d7e24ae952248304f73dc3238938a59d984dd8a3537be648e4"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest.xml",
+    "bytes": 978,
+    "sha256": "37612c59c76422ddd891273b1857cad8c7b32df1088f65f5b47f4b131f931205"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest.xml",
+    "bytes": 1563,
+    "sha256": "b07700a19df5c21c11e50ed4777e1a88e883fe63baffefef65350173b0aae63c"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest.xml",
+    "bytes": 1002,
+    "sha256": "e8eb4bedfd3c642e6d9551d8e22018da02d9f3e2d5086740f2e766eb7edf7307"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest.xml",
+    "bytes": 1177,
+    "sha256": "afe95b11cb58b69fb14a36f7eb5786c9e6bffd0e09b7a0f500b9317daf68f784"
+  },
+  {
+    "path": "macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest.xml",
+    "bytes": 1778,
+    "sha256": "44d7e1551db3cab6930815a98ceabee1f716f4865639c1bc37059d49311da5c2"
+  },
+  {
+    "path": "source-before.json",
+    "bytes": 5705,
+    "sha256": "0f76e5a06e146dab832c382b2404982cc6f8eea12b1086acfff911d826e1365a"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 653,
+    "sha256": "eb0f1b041b8398448fbb698e3544fc4845399987cc758e6637a647231b8aba5d"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.BitwiseSubclassTest.xml",
+    "bytes": 515,
+    "sha256": "d5c42b8f979a4c1187adad3ef088f620a4c1da972564792948d2f955323a40fd"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest.xml",
+    "bytes": 5236,
+    "sha256": "4a9eb7a0cdc5dd05a721cc2fad2cec2e961843c299ae43360f3b064ea33d6c68"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.CharacterOracleTest.xml",
+    "bytes": 1386,
+    "sha256": "b2d88b1f8cb7c539b7c0a2561175cff8b4d8089a075467a5b49a057a5a5c5ee6"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.ConstructorRandom549Test.xml",
+    "bytes": 881,
+    "sha256": "54cb3eedd8df12f47d14c3d26fb94b892b110e81ffd5bab7a9ecabf163329d65"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalAccumulator535Test.xml",
+    "bytes": 1550,
+    "sha256": "63538f14fbfc3b359fc6b570b00fbe4cc9a583f2ac59675d6bc4d16af7cb3533"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalBinaryCancellationTest.xml",
+    "bytes": 1243,
+    "sha256": "76d929705ee110cbcb0762b09ccfe55a4c384de342c23ba3d1239f35ab3f47f6"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalBinaryPrefixTest.xml",
+    "bytes": 1261,
+    "sha256": "72fdc31915a467bac80afe6ec0aede55049c8d20fd158cac6169eb7053d1c94c"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalChunkComparisonTest.xml",
+    "bytes": 914,
+    "sha256": "8d7f9ff8f4f5505d6da341f451f522e746f61103ef9b815082c074ecba250c38"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalCoefficientSubclassTest.xml",
+    "bytes": 863,
+    "sha256": "030ba88903fb0b6e9264e9f3cc467749eccad6c4f8472d0c7569ecd4f0ebb2cf"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalComparableContractTest.xml",
+    "bytes": 540,
+    "sha256": "7d10992d8912dda4fc4953a652f6690b3eda14f1327484d795380de0f4254b94"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalContextContractTest.xml",
+    "bytes": 1900,
+    "sha256": "eee42685c4621cb89f724e2d89a0d32ab4c0ca095d88e42da282872ca7c02727"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalContextDispatchOracleTest.xml",
+    "bytes": 565,
+    "sha256": "9c6cfd332f70cf090994841da1aed06c0438998c9ac43d5ae1830895386b9648"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalContextDivision581Test.xml",
+    "bytes": 1220,
+    "sha256": "3463b11ffaece3185a5aa930ce8f36ad293a2fc763cad6ac20cc21559101eac7"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalContextProduct580Test.xml",
+    "bytes": 1057,
+    "sha256": "39f7ed5703f8a3e4abebd09a751f7f261facef74646fa2c82ee55d99aebd3bce"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalContextReturnedRepresentationContractTest.xml",
+    "bytes": 810,
+    "sha256": "d6f1bb437e7d2dabf9e2b026b25290ff7e74cb69286f92596cea1a6cd98a0786"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalDivisionNormalization594Test.xml",
+    "bytes": 957,
+    "sha256": "eb02a2f48967eb639aff7e4ef619a49052ae2ab6a2d7f9e0994da23591cafdc0"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalDivisionNormalizationContractTest.xml",
+    "bytes": 1433,
+    "sha256": "05769b8806d1fcebbccc2f64864f357e7710e3f82adcbfac146266a225dca69f"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalDivisionPreferredScaleContractTest.xml",
+    "bytes": 1724,
+    "sha256": "866f87edf02e20972d1860a07f6a0364b78fd119d4fa3c85565c9de306e923b6"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalExactChars589Test.xml",
+    "bytes": 1086,
+    "sha256": "21c3738932cfedc65a1a29afde0437e03af8c7826168550fc80f63e993cf4240"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalExactLowResidual590Test.xml",
+    "bytes": 927,
+    "sha256": "cd2a63c700298aba8ba272b96cd8975d537f710cfd9a31e25e451b83f3bd384e"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalExactRoot563CallbackContractTest.xml",
+    "bytes": 752,
+    "sha256": "555dd241f230595cdbf2348aafbc758b5b04cd0d11ab33e1927bf6ca5004cd4c"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalExactRoot563Test.xml",
+    "bytes": 978,
+    "sha256": "faa8586c5d05ad4825b230902e515e819c54ed0c7b9fe40246d3fe78c24dffbf"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalFixedScale592Test.xml",
+    "bytes": 906,
+    "sha256": "a43d78b61fd2444a0e18171f22553d1b5d90efbc734110bfd4a65714deb9c66c"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalIntegral582CallerContractTest.xml",
+    "bytes": 564,
+    "sha256": "200912ed22201af0d5b92e62f6d3f8323fee5e7c11db22793965762aed3b5da3"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalIntegralDispatchOracleTest.xml",
+    "bytes": 134208,
+    "sha256": "00707ebc68580566e3afe67b6867099be8bc74e89e9981d4705bd70f08ff619d"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalIntegralQuotient582Test.xml",
+    "bytes": 1093,
+    "sha256": "a38cb99d7bcc16f4bc77926abaa85f25b2e4be165f9a9f077e06ac2a36580b3e"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalKey536Test.xml",
+    "bytes": 1116,
+    "sha256": "f0e78f50f35d539f28c86a40433e8104c17465df28d655395aaf393811c85917"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalMetadata597Test.xml",
+    "bytes": 892,
+    "sha256": "ae30792059ed2f0e1d9263f5e21eace0b5cbd870bb5e9249cc4b0bd95b65d1cf"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalNumericMetadataTest.xml",
+    "bytes": 1633,
+    "sha256": "26fad0b5dbc0eded096e69f1fb98896ca7312e1dd916d2ff6bec5e21731bed53"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalOperatorContractTest.xml",
+    "bytes": 1417,
+    "sha256": "ade46469380ba0c1d08a1c86641165b7c5d548363c4aeb755bddd79c8c4f0bf4"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalOverloadContract541Test.xml",
+    "bytes": 957,
+    "sha256": "ae73f81b4544bb88f062d4a66d05c916bb46018339f58e79a8096e09e5f163d4"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalOverloadDispatch541Test.xml",
+    "bytes": 948,
+    "sha256": "76c4da296893214a2c8e453c8de1a115c1f6a23e5a79a439892fbff89c77fc6a"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalPairDispatchOracleTest.xml",
+    "bytes": 557,
+    "sha256": "35c1d18f8e052c7097fc7b0e4fac8cf9d51d72e440d5e79ca1d636ed7dc83518"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalPowWorkingPrecisionContractTest.xml",
+    "bytes": 1511,
+    "sha256": "590602eb46bc73a2be23be516ae99ddefc4255a967ef3fd9201256c78fca5f92"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalPower593Test.xml",
+    "bytes": 1250,
+    "sha256": "26b42696e3678432d67528a308a5c9837a74c0d27a0324a85d9ef04a8893c5a5"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalPrimitiveLowBits591Test.xml",
+    "bytes": 936,
+    "sha256": "26a396eabf13f9229e35fc202c0a3948c8f762fb0dfcb7cf058f93c1386170bc"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalRemainderArrayOracleTest.xml",
+    "bytes": 570,
+    "sha256": "63f65d47295ef9fdcc1786c472866df6c6ee5a4b1266715638bfd870245128ab"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalResidual583Test.xml",
+    "bytes": 1075,
+    "sha256": "93d025baa4ca8275c8e40dbe010b24124709e2412a75300163bdff8ef061d447"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalScaleContractTest.xml",
+    "bytes": 1702,
+    "sha256": "62f3a0b475a4d4da41982906291314149e042b4953fc8c41a9816cd4738a3f02"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalScaleRoundingRepairTest.xml",
+    "bytes": 1593,
+    "sha256": "66010063e61a5784ed25a38a7cec7459ba722da857970f74e94c1ab42c0c2e66"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalScaling533Test.xml",
+    "bytes": 1194,
+    "sha256": "786e1ecf32a1612dbc1c8bb07b0ceee4431737d68a88d8cc65aa2f84f49dfa7b"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalSqrtMidpoint565Test.xml",
+    "bytes": 1027,
+    "sha256": "e7dcea15f613d2fce4a06afcdd495daea8f391969cb91808468d12a7e2e7dd74"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalSquareRootCohort587Test.xml",
+    "bytes": 1081,
+    "sha256": "a8bbafd6606abc07dab3975c9a26b83b0e6b0ea8b19c02c3284594db2934c6d0"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalSquareRootNormalization579Test.xml",
+    "bytes": 924,
+    "sha256": "6090e2ef62dd8f531222c3dbae13bac3bff13b0c1e85b590a73e402c914c1538"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalStickyEquality586Test.xml",
+    "bytes": 732,
+    "sha256": "9d558c735d408de82eac8bb9187b6e70c6e30cfcd8b0a81f95e827ccedbcde5c"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalSum585Test.xml",
+    "bytes": 1009,
+    "sha256": "30d61dc778260d911ffd20b77f55f9f8190403a39d9f84202401611b015a7714"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalTextRounding588Test.xml",
+    "bytes": 1084,
+    "sha256": "c66fd2d64d9f41cc48313f3ab5c22ef159283c9ff189228c0c53e8a05991027d"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DecimalUlp541ContractTest.xml",
+    "bytes": 933,
+    "sha256": "f2fe0c607d57d46ebe4a97dc6c8c8de7e653e0aab079b9e9a37af917d48165cc"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.Division530SelectionTest.xml",
+    "bytes": 696,
+    "sha256": "56798071a8bae68ce5c63c2eba455100fac1b6959d12fac886dc4982d6312511"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.Division530Test.xml",
+    "bytes": 1509,
+    "sha256": "42ca0c9d379bcc6bd00d47a72ec1fa512dd49536fe5008757e64cbd6c3802d25"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.DoubleZeroContext569Test.xml",
+    "bytes": 838,
+    "sha256": "835167d232d7051c044b8bf0a15120ba1776431ca8dc12462b37ebc39527e43e"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.ExplicitDecimal534Test.xml",
+    "bytes": 1035,
+    "sha256": "07211b42e4036e6fe3f887e863c51d352179b04561e7e035f6a052f0defabcca"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.FloatingPowerTest.xml",
+    "bytes": 674,
+    "sha256": "f47ccc3b398fb01934b42c3ec2426e360f16f943c1edf40cb5ab4a183752cdeb"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.HashOracleTest.xml",
+    "bytes": 661,
+    "sha256": "04b657cb89a834aabc9ef2d1271d71f174105a717b9f5fb12d431a037314cd33"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerArithmetic544ContractTest.xml",
+    "bytes": 1841,
+    "sha256": "61312d35d2cf41d95ef6d424a9197840ea3dafa4b4e5026cb902f9d6a27a64a0"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerArithmeticOracleTest.xml",
+    "bytes": 1112,
+    "sha256": "eb1789722f3f739016a9a48caed6b2a89603a4a1b91529988b0d1ffde9c22d19"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerBits545ContractTest.xml",
+    "bytes": 1397,
+    "sha256": "9e97a5a5a12e9f6c12be7369c0fb0b1fa0c6086a08410a673abb89c8ccd34ffa"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerBitsOracleTest.xml",
+    "bytes": 1420,
+    "sha256": "7d519301c6e4835ca13c34e4b87593e23cb4a9ecff283c7ca798e5f1430a3875"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerByteOracleTest.xml",
+    "bytes": 512,
+    "sha256": "52d5be960905b4e4511a45a35aca2abaaf32b9790b52c3e8ddd4b65290968904"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerComparableContractTest.xml",
+    "bytes": 540,
+    "sha256": "a395b386f3dcef3b2d6dbec1ec1b553730399cd977a5679b3e3f7b70bd42a357"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerDivisionDispatchOracleTest.xml",
+    "bytes": 534,
+    "sha256": "947cc90b2d4dc2481136047ef9a8d1aeaac18761e8ce6eee2c5b37e143764d98"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerGcdOracleTest.xml",
+    "bytes": 658,
+    "sha256": "a6ec74479a81c58a8819f19f874c67b0a07bd2dcf291bcbaa6dd97c139fbb807"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerInverseOracleTest.xml",
+    "bytes": 1058,
+    "sha256": "18922d2c657f799f8479a036cff3fdfb725458dd20432155d19e612657b5ebb2"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerModPowOracleTest.xml",
+    "bytes": 1215,
+    "sha256": "61f963bff24e3e40ced867aad5cf83d6a09df730e3d90448648abe40dfd09fe9"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+    "bytes": 1241,
+    "sha256": "9ad097e333df7d3bd929b7224f87cc043dade61cb070fa1153cf40470acc32a1"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerParserOracleTest.xml",
+    "bytes": 524,
+    "sha256": "e996f06560488b87f499a0e6ac05276a351a19d3c506112f1168e359dfa1005b"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerParserRange559Test.xml",
+    "bytes": 1064,
+    "sha256": "6bf6a261a2f4514d8cf63155d0886373559abaa63b1ce0582ef372380de5fe21"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerPowOracleTest.xml",
+    "bytes": 515,
+    "sha256": "b04c392358dee072fbc5e4331be402491f784bcabcc0e96600476009a73e68d5"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerSqrtOracleTest.xml",
+    "bytes": 1222,
+    "sha256": "ee3a8db5702e1fff564c6373574477515be07a93a47ac570d9377e17c40101f5"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerSubtractDispatchOracleTest.xml",
+    "bytes": 554,
+    "sha256": "80a761e41599e0bfe6921fcac7bb3e6f52aad0a960cb5af331d7d6a77a27b1ef"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.MagnitudeLimitsTest.xml",
+    "bytes": 656,
+    "sha256": "bd8b6a3c1e50237841e88694c8ae6365ec928362204accb89befbb824d5c839e"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.MathContextGrammarTest.xml",
+    "bytes": 1695,
+    "sha256": "e00bdca40d8fe3bc7771aea8155236fbebffe1ea37513ded0512e40291fb1c95"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.ModulusReuse538Test.xml",
+    "bytes": 873,
+    "sha256": "eab346bbd1442b52623eb973b842fdb4c8451aae8bb9597cd8f6b5640ae90e2c"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.OddModulusContext538Test.xml",
+    "bytes": 1457,
+    "sha256": "648fc1804390704d544d09f51251b5599cdf9726066d132b1c5f0c1025b614ef"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.OddModulusContext538TinyFallbackTest.xml",
+    "bytes": 878,
+    "sha256": "4e482280d499b506be34c1d2916f82bec114dd951bf1b2cc93671d5af1c778cc"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.PlainStringPreflightTest.xml",
+    "bytes": 838,
+    "sha256": "891daff6e43b7d9e3ff21c8098ce96446089c4b611a9d394c72b24ba8c544f45"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.PortableOracleTest.xml",
+    "bytes": 349819,
+    "sha256": "cf97419b2406e709d6ecadcc40587e30556c018857784f53523602e95830f8d0"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.PowerOfTwoRadix559Test.xml",
+    "bytes": 701,
+    "sha256": "7d649cb4e521df2ec7f4e8c07bb12efd5c6bf25a0174c8fd063b44e57a542583"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.PrimalityCertaintyTest.xml",
+    "bytes": 1047,
+    "sha256": "e7a93f8d78d0e3961a536267a1c3597d9552b8201b5961cc4ed4b8357c5b3afc"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.PrimeOracleTest.xml",
+    "bytes": 1721,
+    "sha256": "8f8782c33b89aa9788cb9d5d2536c89ef0a95a189491a00dbfde7085b7f38930"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.PrimePrefixOracleTest.xml",
+    "bytes": 519,
+    "sha256": "cecb4a84de4f3d17d2b3913e7cc8af795f75e47d0ee4a7f6d1c11161bec20abb"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.PrimeSearchRange559Test.xml",
+    "bytes": 911,
+    "sha256": "44e922868936654114f0819897c3f9dd0c820c1d4036ffa95aea39120dba2903"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.RandomIntegerDistributionTest.xml",
+    "bytes": 924,
+    "sha256": "af12d06ea0aeb544cd96c86c02bb3d568543b165541ccf1ed98b5c6ea667f844"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.ScaleBoundaryOracleTest.xml",
+    "bytes": 9089050,
+    "sha256": "63a53c89cb48cdb64df72fcb4814bf26f095648fdfa0e4a6897c4aaf37962ec0"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.ScaledDivisionMidpoint584Test.xml",
+    "bytes": 727,
+    "sha256": "b24b52496c155d02d34cd692bbd6d53eb0c11a25360119cfe8da9539729d9ce3"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.ShiftSubclassTest.xml",
+    "bytes": 517,
+    "sha256": "17998e69ea93ccdcf94d3bdd1236ebeac6fc120c597b220bc3a50acc6166ab5a"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.SqrtCohort587ComparisonTest.xml",
+    "bytes": 1548,
+    "sha256": "c030610ccd6ad6328ea3231ffe5378409b7172011bac8fdc3561f220485ecb60"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.ValueIdentityContractTest.xml",
+    "bytes": 2301,
+    "sha256": "5b6301c70092e8ae85406a5599bc577a1c38782d93de056febe8925e8e3e812a"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test.xml",
+    "bytes": 2375,
+    "sha256": "64831f88e86e12edd7b6c149fb18904f75813f85313fa46b43798ed8727f4a1e"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.ZeroSqrtNull568Test.xml",
+    "bytes": 829,
+    "sha256": "b63a227ce6d3cc18fcff702385b78cc1a548fa8c8539ea0c2cd4bf4540dbe7be"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.ZeroUnaryPrecision567Test.xml",
+    "bytes": 696,
+    "sha256": "74ef6121d579cddfc1012418875cb6e25f9d58404ea92930ec5858f3bda2374c"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test.xml",
+    "bytes": 989,
+    "sha256": "1a6425065a7aff2f678a9f167bd26701b4dafb4d8730bb48448170dbf7a22e85"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest.xml",
+    "bytes": 988,
+    "sha256": "f9adbb73c21f58aa380ad341f7239613a583b90f4ed9c01c3038d6a77c82b49e"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest.xml",
+    "bytes": 1575,
+    "sha256": "c84d7b54e5dac58faf2b8a2104c91d110664aa378fa38d81e24764d75017fefc"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest.xml",
+    "bytes": 1008,
+    "sha256": "f3f2e7d298d58c8ae380c479210424ccf5a7e480f02ec20de80c8b21fe136d4b"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest.xml",
+    "bytes": 1185,
+    "sha256": "d9cbe314ac0ba7e32ae7cf3207b09afab83dd04453dd054c7620325b11543edc"
+  },
+  {
+    "path": "wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest.xml",
+    "bytes": 1792,
+    "sha256": "ce4a2974912505bfb16b661c6ab60d335d18c5e7c70a8ec8c6fbd4373b6a331e"
+  }
+]

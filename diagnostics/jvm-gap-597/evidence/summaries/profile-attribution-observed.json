@@ -1,0 +1,1678 @@
+[
+  {
+    "case": "decimal/large-scale/divide",
+    "operations": 8060928,
+    "elapsedNs": 10048883972,
+    "threadCpuNs": 9764905286,
+    "exactAllocatedBytes": 34000994520,
+    "cpuSamples": 944,
+    "ownCpuSamples": 938,
+    "estimatedAllocationBytes": 36808442920,
+    "ownEstimatedAllocationBytes": 36808442920,
+    "metrics": {
+      "cpu-leaf-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 210
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 112
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 103
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.school",
+          "weight": 96
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 96
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 83
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyWithSquareEntry",
+          "weight": 67
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideDecimalChunk",
+          "weight": 47
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 29
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 27
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalSignificand$io_heapy_krogu_krogu_math",
+          "weight": 24
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.compareValues",
+          "weight": 7
+        },
+        {
+          "path": "<no-own-frame>",
+          "weight": 6
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$roundedDivide",
+          "weight": 6
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.addMagnitude",
+          "weight": 6
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.increment",
+          "weight": 6
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.subtractMagnitude",
+          "weight": 5
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.divide",
+          "weight": 5
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.divideScaledCoefficients",
+          "weight": 3
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.quotientExponent",
+          "weight": 3
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.roundedDivide",
+          "weight": 1
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideAndRemainder",
+          "weight": 1
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalCompactValue$io_heapy_krogu_krogu_math",
+          "weight": 1
+        }
+      ],
+      "cpu-inclusive-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.divide",
+          "weight": 938
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 762
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 650
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.compareValues",
+          "weight": 528
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$compareValues",
+          "weight": 528
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalSignificand$io_heapy_krogu_krogu_math",
+          "weight": 339
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyWithSquareEntry",
+          "weight": 259
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyAdaptive",
+          "weight": 259
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.multiply",
+          "weight": 259
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.divideScaledCoefficients",
+          "weight": 238
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 192
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply$default",
+          "weight": 192
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.quotientExponent",
+          "weight": 158
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.storedPrecision",
+          "weight": 158
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.precision",
+          "weight": 158
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 109
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRight",
+          "weight": 109
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.roundValue",
+          "weight": 105
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.school",
+          "weight": 96
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 91
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftPower",
+          "weight": 91
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$roundedDivide",
+          "weight": 61
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.roundedDivide",
+          "weight": 55
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideDecimalChunk",
+          "weight": 47
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideAndRemainder",
+          "weight": 29
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 29
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$normalized",
+          "weight": 29
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 28
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.add",
+          "weight": 11
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.subtract",
+          "weight": 8
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.addMagnitude",
+          "weight": 6
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$addMagnitude",
+          "weight": 6
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.increment",
+          "weight": 6
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.subtractMagnitude",
+          "weight": 5
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$subtractMagnitude",
+          "weight": 5
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalCompactValue$io_heapy_krogu_krogu_math",
+          "weight": 1
+        }
+      ],
+      "allocation-estimated-bytes": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 8744497000
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 8029853864
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 4395951344
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 3378398216
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 3234155200
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 2745197152
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.pow",
+          "weight": 2404763376
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.compareDecimalSignificand$io_heapy_krogu_krogu_math",
+          "weight": 2134959752
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.subtractMagnitude",
+          "weight": 700601360
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.addMagnitude",
+          "weight": 554076112
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal@io.heapy.krogu.math.BigDecimal.divideScaledCoefficients",
+          "weight": 405863048
+        },
+        {
+          "path": "[Lio.heapy.krogu.math.BigInteger;@io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 80126496
+        }
+      ]
+    }
+  },
+  {
+    "case": "decimal/large-scale/precision",
+    "operations": 231735296,
+    "elapsedNs": 10040195072,
+    "threadCpuNs": 9721804097,
+    "exactAllocatedBytes": 37077647576,
+    "cpuSamples": 940,
+    "ownCpuSamples": 906,
+    "estimatedAllocationBytes": 39146457072,
+    "ownEstimatedAllocationBytes": 39146457072,
+    "metrics": {
+      "cpu-leaf-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 341
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 233
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 217
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 107
+        },
+        {
+          "path": "<no-own-frame>",
+          "weight": 34
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 7
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.equals",
+          "weight": 1
+        }
+      ],
+      "cpu-inclusive-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 906
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.storedPrecision",
+          "weight": 906
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.precision",
+          "weight": 906
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 689
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 233
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftPower",
+          "weight": 233
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 114
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRight",
+          "weight": 114
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 7
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$normalized",
+          "weight": 7
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.equals",
+          "weight": 1
+        }
+      ],
+      "allocation-estimated-bytes": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 11754973544
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.pow",
+          "weight": 9140244432
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 6729267888
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 6139314424
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 5382656784
+        }
+      ]
+    }
+  },
+  {
+    "case": "decimal/negative-scale/divide",
+    "operations": 8060928,
+    "elapsedNs": 10019623041,
+    "threadCpuNs": 9685729084,
+    "exactAllocatedBytes": 33807532248,
+    "cpuSamples": 945,
+    "ownCpuSamples": 940,
+    "estimatedAllocationBytes": 35650213368,
+    "ownEstimatedAllocationBytes": 35650213368,
+    "metrics": {
+      "cpu-leaf-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 182
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 142
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 119
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 111
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 88
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.school",
+          "weight": 85
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyWithSquareEntry",
+          "weight": 54
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 41
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideDecimalChunk",
+          "weight": 34
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 21
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalSignificand$io_heapy_krogu_krogu_math",
+          "weight": 14
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.subtractMagnitude",
+          "weight": 7
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.divide",
+          "weight": 7
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideAndRemainder",
+          "weight": 7
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.quotientExponent",
+          "weight": 5
+        },
+        {
+          "path": "<no-own-frame>",
+          "weight": 5
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$roundedDivide",
+          "weight": 5
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.addMagnitude",
+          "weight": 5
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.increment",
+          "weight": 4
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$compareValues",
+          "weight": 3
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalScratch",
+          "weight": 3
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.compareValues",
+          "weight": 3
+        }
+      ],
+      "cpu-inclusive-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.divide",
+          "weight": 940
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 776
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 657
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$compareValues",
+          "weight": 485
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.compareValues",
+          "weight": 482
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.multiply",
+          "weight": 324
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalSignificand$io_heapy_krogu_krogu_math",
+          "weight": 321
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.divideScaledCoefficients",
+          "weight": 240
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.storedPrecision",
+          "weight": 194
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.precision",
+          "weight": 194
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 182
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$normalized",
+          "weight": 182
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyWithSquareEntry",
+          "weight": 180
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyAdaptive",
+          "weight": 180
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.quotientExponent",
+          "weight": 159
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.roundValue",
+          "weight": 129
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 126
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply$default",
+          "weight": 126
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 118
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftPower",
+          "weight": 118
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 94
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRight",
+          "weight": 94
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.school",
+          "weight": 85
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$roundedDivide",
+          "weight": 58
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.roundedDivide",
+          "weight": 53
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideDecimalChunk",
+          "weight": 34
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideAndRemainder",
+          "weight": 29
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 22
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.add",
+          "weight": 13
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.subtractMagnitude",
+          "weight": 7
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$subtractMagnitude",
+          "weight": 7
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.subtract",
+          "weight": 7
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.addMagnitude",
+          "weight": 5
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$addMagnitude",
+          "weight": 5
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.increment",
+          "weight": 4
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalScratch",
+          "weight": 3
+        }
+      ],
+      "allocation-estimated-bytes": [
+        {
+          "path": "[I@io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 7487838760
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 7272647032
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 7098097096
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 5281346376
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 3609768264
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.pow",
+          "weight": 3120448808
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 947378960
+        },
+        {
+          "path": "[Lio.heapy.krogu.math.BigInteger;@io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 582357648
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.compareDecimalSignificand$io_heapy_krogu_krogu_math",
+          "weight": 204244560
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.subtractMagnitude",
+          "weight": 45562160
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal@io.heapy.krogu.math.BigDecimal.divideScaledCoefficients",
+          "weight": 523704
+        }
+      ]
+    }
+  },
+  {
+    "case": "decimal/negative-scale/precision",
+    "operations": 233832448,
+    "elapsedNs": 10025931436,
+    "threadCpuNs": 9674559747,
+    "exactAllocatedBytes": 37413191896,
+    "cpuSamples": 941,
+    "ownCpuSamples": 906,
+    "estimatedAllocationBytes": 39488080376,
+    "ownEstimatedAllocationBytes": 39488080376,
+    "metrics": {
+      "cpu-leaf-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 303
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 255
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 208
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 134
+        },
+        {
+          "path": "<no-own-frame>",
+          "weight": 35
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 6
+        }
+      ],
+      "cpu-inclusive-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 906
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.storedPrecision",
+          "weight": 906
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.precision",
+          "weight": 906
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 651
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 208
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftPower",
+          "weight": 208
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 140
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRight",
+          "weight": 140
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 6
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$normalized",
+          "weight": 6
+        }
+      ],
+      "allocation-estimated-bytes": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 13240519264
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 7701425632
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 7568534160
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.pow",
+          "weight": 5523987016
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 5453614304
+        }
+      ]
+    }
+  },
+  {
+    "case": "decimal/small/divide",
+    "operations": 7995392,
+    "elapsedNs": 10002639834,
+    "threadCpuNs": 9861443614,
+    "exactAllocatedBytes": 50027167960,
+    "cpuSamples": 966,
+    "ownCpuSamples": 963,
+    "estimatedAllocationBytes": 53467334352,
+    "ownEstimatedAllocationBytes": 53467334352,
+    "metrics": {
+      "cpu-leaf-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 216
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 160
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyWithSquareEntry",
+          "weight": 86
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 80
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.school",
+          "weight": 76
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 67
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.toString",
+          "weight": 55
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 52
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 37
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideDecimalChunk",
+          "weight": 35
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 34
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalSignificand$io_heapy_krogu_krogu_math",
+          "weight": 15
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideAndRemainder",
+          "weight": 14
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.normalizedComparison",
+          "weight": 10
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.compareValues",
+          "weight": 6
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.divide",
+          "weight": 5
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareTo",
+          "weight": 4
+        },
+        {
+          "path": "<no-own-frame>",
+          "weight": 3
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$roundedDivide",
+          "weight": 3
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$compareValues",
+          "weight": 3
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.subtractMagnitude",
+          "weight": 2
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalScratch",
+          "weight": 2
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.addMagnitude",
+          "weight": 1
+        }
+      ],
+      "cpu-inclusive-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.divide",
+          "weight": 963
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 544
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 507
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$compareValues",
+          "weight": 414
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.compareValues",
+          "weight": 411
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.divideScaledCoefficients",
+          "weight": 376
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.multiply",
+          "weight": 370
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalSignificand$io_heapy_krogu_krogu_math",
+          "weight": 241
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.quotientExponent",
+          "weight": 216
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 216
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$normalized",
+          "weight": 216
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.toString",
+          "weight": 206
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyWithSquareEntry",
+          "weight": 196
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyAdaptive",
+          "weight": 196
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideAndRemainder",
+          "weight": 178
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 164
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.storedPrecision",
+          "weight": 154
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.precision",
+          "weight": 154
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 110
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply$default",
+          "weight": 110
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.roundValue",
+          "weight": 106
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.tenPow",
+          "weight": 104
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$tenPow",
+          "weight": 104
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.normalizedComparison",
+          "weight": 99
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.school",
+          "weight": 76
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 56
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftPower",
+          "weight": 56
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 44
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRight",
+          "weight": 44
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$roundedDivide",
+          "weight": 40
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.roundedDivide",
+          "weight": 37
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideDecimalChunk",
+          "weight": 35
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.add",
+          "weight": 4
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareTo",
+          "weight": 4
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.subtractMagnitude",
+          "weight": 2
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$subtractMagnitude",
+          "weight": 2
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.subtract",
+          "weight": 2
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalScratch",
+          "weight": 2
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.addMagnitude",
+          "weight": 1
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$addMagnitude",
+          "weight": 1
+        }
+      ],
+      "allocation-estimated-bytes": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 22654469976
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 6824377456
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 5784765160
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 5721457840
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 3322371968
+        },
+        {
+          "path": "[Lio.heapy.krogu.math.BigInteger;@io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 2967806720
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.pow",
+          "weight": 2029702008
+        },
+        {
+          "path": "[B@io.heapy.krogu.math.BigInteger.toString",
+          "weight": 1599380368
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 1379433528
+        },
+        {
+          "path": "java.lang.String@io.heapy.krogu.math.BigInteger.toString",
+          "weight": 736850728
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.compareDecimalSignificand$io_heapy_krogu_krogu_math",
+          "weight": 175963976
+        },
+        {
+          "path": "[B@io.heapy.krogu.math.BigDecimal.normalizedComparison",
+          "weight": 151350296
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal@io.heapy.krogu.math.BigDecimal.divideScaledCoefficients",
+          "weight": 62844400
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.subtractMagnitude",
+          "weight": 36135472
+        },
+        {
+          "path": "java.lang.StringBuilder@io.heapy.krogu.math.BigDecimal.normalizedComparison",
+          "weight": 19377064
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.addMagnitude",
+          "weight": 1047392
+        }
+      ]
+    }
+  },
+  {
+    "case": "decimal/small/precision",
+    "operations": 404750336,
+    "elapsedNs": 10018949712,
+    "threadCpuNs": 9907786243,
+    "exactAllocatedBytes": 42094035160,
+    "cpuSamples": 974,
+    "ownCpuSamples": 815,
+    "estimatedAllocationBytes": 43792783976,
+    "ownEstimatedAllocationBytes": 43792783976,
+    "metrics": {
+      "cpu-leaf-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 410
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 247
+        },
+        {
+          "path": "<no-own-frame>",
+          "weight": 159
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 152
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 5
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.equals",
+          "weight": 1
+        }
+      ],
+      "cpu-inclusive-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 815
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.storedPrecision",
+          "weight": 815
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.precision",
+          "weight": 815
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 568
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 157
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRight",
+          "weight": 157
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 5
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$normalized",
+          "weight": 5
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.equals",
+          "weight": 1
+        }
+      ],
+      "allocation-estimated-bytes": [
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 21977620288
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.pow",
+          "weight": 18960217552
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 2809384856
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 45561280
+        }
+      ]
+    }
+  },
+  {
+    "case": "decimal/wide/divide",
+    "operations": 4980736,
+    "elapsedNs": 10026015702,
+    "threadCpuNs": 9912387977,
+    "exactAllocatedBytes": 40632844504,
+    "cpuSamples": 977,
+    "ownCpuSamples": 975,
+    "estimatedAllocationBytes": 43632035424,
+    "ownEstimatedAllocationBytes": 43632035424,
+    "metrics": {
+      "cpu-leaf-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 313
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyWithSquareEntry",
+          "weight": 156
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.school",
+          "weight": 140
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 75
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 55
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 51
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 43
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideDecimalChunk",
+          "weight": 40
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 35
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 23
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalSignificand$io_heapy_krogu_krogu_math",
+          "weight": 16
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.subtractMagnitude",
+          "weight": 6
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideAndRemainder",
+          "weight": 4
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.normalizeStoredDivision",
+          "weight": 4
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.quotientExponent",
+          "weight": 3
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalCompactValue$io_heapy_krogu_krogu_math",
+          "weight": 3
+        },
+        {
+          "path": "<no-own-frame>",
+          "weight": 2
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$roundedDivide",
+          "weight": 2
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalScratch",
+          "weight": 2
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.compareValues",
+          "weight": 2
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.divide",
+          "weight": 2
+        }
+      ],
+      "cpu-inclusive-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.divide",
+          "weight": 975
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 849
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 806
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.multiply",
+          "weight": 632
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.compareValues",
+          "weight": 557
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$compareValues",
+          "weight": 557
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalSignificand$io_heapy_krogu_krogu_math",
+          "weight": 399
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyWithSquareEntry",
+          "weight": 351
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyAdaptive",
+          "weight": 351
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 313
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$normalized",
+          "weight": 313
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.divideScaledCoefficients",
+          "weight": 234
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 195
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply$default",
+          "weight": 195
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.quotientExponent",
+          "weight": 184
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.storedPrecision",
+          "weight": 171
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.precision",
+          "weight": 171
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.school",
+          "weight": 140
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.roundValue",
+          "weight": 74
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 55
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRight",
+          "weight": 55
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.access$roundedDivide",
+          "weight": 42
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideDecimalChunk",
+          "weight": 40
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal$Companion.roundedDivide",
+          "weight": 40
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 35
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftPower",
+          "weight": 35
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideAndRemainder",
+          "weight": 32
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 28
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.subtractMagnitude",
+          "weight": 6
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$subtractMagnitude",
+          "weight": 6
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.subtract",
+          "weight": 6
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.normalizeStoredDivision",
+          "weight": 4
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalCompactValue$io_heapy_krogu_krogu_math",
+          "weight": 3
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.compareDecimalScratch",
+          "weight": 2
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.add",
+          "weight": 2
+        }
+      ],
+      "allocation-estimated-bytes": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 14487022432
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 11218371584
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 10034459016
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 2685018632
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 2206354312
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.compareDecimalSignificand$io_heapy_krogu_krogu_math",
+          "weight": 2193785480
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.pow",
+          "weight": 370256592
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.divideStored",
+          "weight": 306365360
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal@io.heapy.krogu.math.BigDecimal.divideScaledCoefficients",
+          "weight": 58654792
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.subtractMagnitude",
+          "weight": 46609496
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.addMagnitude",
+          "weight": 25137728
+        }
+      ]
+    }
+  },
+  {
+    "case": "decimal/wide/precision",
+    "operations": 59768832,
+    "elapsedNs": 10062679121,
+    "threadCpuNs": 9918150733,
+    "exactAllocatedBytes": 43989860568,
+    "cpuSamples": 978,
+    "ownCpuSamples": 963,
+    "estimatedAllocationBytes": 47712372512,
+    "ownEstimatedAllocationBytes": 47712372512,
+    "metrics": {
+      "cpu-leaf-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 341
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.school",
+          "weight": 175
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyWithSquareEntry",
+          "weight": 151
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 97
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 88
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 44
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 40
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 26
+        },
+        {
+          "path": "<no-own-frame>",
+          "weight": 15
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.equals",
+          "weight": 1
+        }
+      ],
+      "cpu-inclusive-samples": [
+        {
+          "path": "io.heapy.krogu.math.BigInteger.decimalMagnitudeDigits$io_heapy_krogu_krogu_math",
+          "weight": 963
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.storedPrecision",
+          "weight": 963
+        },
+        {
+          "path": "io.heapy.krogu.math.BigDecimal.precision",
+          "weight": 963
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.pow",
+          "weight": 919
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.multiply",
+          "weight": 751
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyWithSquareEntry",
+          "weight": 414
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiplyAdaptive",
+          "weight": 414
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 341
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger$Companion.access$normalized",
+          "weight": 341
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 263
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.multiply$default",
+          "weight": 263
+        },
+        {
+          "path": "io.heapy.krogu.math.MagnitudeMultiplication.school",
+          "weight": 175
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 41
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftPower",
+          "weight": 41
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 27
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.shiftRight",
+          "weight": 27
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger.equals",
+          "weight": 1
+        }
+      ],
+      "allocation-estimated-bytes": [
+        {
+          "path": "[I@io.heapy.krogu.math.MagnitudeMultiplication.multiply",
+          "weight": 17400687720
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 14616140984
+        },
+        {
+          "path": "io.heapy.krogu.math.BigInteger@io.heapy.krogu.math.BigInteger$Companion.normalized",
+          "weight": 12380270344
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftRightValue",
+          "weight": 1684471160
+        },
+        {
+          "path": "[I@io.heapy.krogu.math.BigInteger.shiftLeftValue",
+          "weight": 1630802304
+        }
+      ]
+    }
+  }
+]

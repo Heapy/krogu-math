@@ -1,0 +1,446 @@
+{
+  "status": "1200OBSERVED_PENDING_INDEPENDENT_AUDIT",
+  "rows": 1200,
+  "cases": [
+    {
+      "workload": "decimal/large-scale/divide",
+      "eras": {
+        "original527": {
+          "ns": 1045.5552215576172,
+          "bytes": 4378.0
+        },
+        "post533": {
+          "ns": 1023.9382781982422,
+          "bytes": 4218.0
+        },
+        "current": {
+          "ns": 1040.761703491211,
+          "bytes": 4218.0
+        },
+        "jdk": {
+          "ns": 49.76449203491211,
+          "bytes": 300.0
+        }
+      },
+      "currentJdkRatio": 20.91374112210506
+    },
+    {
+      "workload": "decimal/large-scale/precision",
+      "eras": {
+        "original527": {
+          "ns": 37.72507953643799,
+          "bytes": 160.0
+        },
+        "post533": {
+          "ns": 40.20487308502197,
+          "bytes": 160.0
+        },
+        "current": {
+          "ns": 38.511098861694336,
+          "bytes": 160.0
+        },
+        "jdk": {
+          "ns": 3.219064712524414,
+          "bytes": 0.0
+        }
+      },
+      "currentJdkRatio": 11.963443515707906
+    },
+    {
+      "workload": "decimal/negative-scale/divide",
+      "eras": {
+        "original527": {
+          "ns": 1051.5438537597656,
+          "bytes": 4378.0
+        },
+        "post533": {
+          "ns": 1030.0406494140625,
+          "bytes": 4218.0
+        },
+        "current": {
+          "ns": 1054.731674194336,
+          "bytes": 4218.0
+        },
+        "jdk": {
+          "ns": 51.3859748840332,
+          "bytes": 300.0
+        }
+      },
+      "currentJdkRatio": 20.52567216199814
+    },
+    {
+      "workload": "decimal/negative-scale/precision",
+      "eras": {
+        "original527": {
+          "ns": 38.04558181762695,
+          "bytes": 160.0
+        },
+        "post533": {
+          "ns": 39.896284103393555,
+          "bytes": 160.0
+        },
+        "current": {
+          "ns": 38.24344062805176,
+          "bytes": 160.0
+        },
+        "jdk": {
+          "ns": 3.1378211975097656,
+          "bytes": 0.0
+        }
+      },
+      "currentJdkRatio": 12.187896703101654
+    },
+    {
+      "workload": "decimal/small/divide",
+      "eras": {
+        "original527": {
+          "ns": 1206.5648803710938,
+          "bytes": 6233.0
+        },
+        "post533": {
+          "ns": 1190.6987609863281,
+          "bytes": 6233.0
+        },
+        "current": {
+          "ns": 1281.0912780761719,
+          "bytes": 6233.0
+        },
+        "jdk": {
+          "ns": 43.46940612792969,
+          "bytes": 232.0
+        }
+      },
+      "currentJdkRatio": 29.47110145250071
+    },
+    {
+      "workload": "decimal/small/precision",
+      "eras": {
+        "original527": {
+          "ns": 25.709967613220215,
+          "bytes": 104.0
+        },
+        "post533": {
+          "ns": 24.331390380859375,
+          "bytes": 104.0
+        },
+        "current": {
+          "ns": 25.67930793762207,
+          "bytes": 104.0
+        },
+        "jdk": {
+          "ns": 2.150575637817383,
+          "bytes": 0.0
+        }
+      },
+      "currentJdkRatio": 11.940667180478234
+    },
+    {
+      "workload": "decimal/wide/divide",
+      "eras": {
+        "original527": {
+          "ns": 1951.9757385253906,
+          "bytes": 8238.0
+        },
+        "post533": {
+          "ns": 1909.4355773925781,
+          "bytes": 8158.0
+        },
+        "current": {
+          "ns": 1948.0680847167969,
+          "bytes": 8158.0
+        },
+        "jdk": {
+          "ns": 83.81636905670166,
+          "bytes": 336.0
+        }
+      },
+      "currentJdkRatio": 23.242095865533514
+    },
+    {
+      "workload": "decimal/wide/precision",
+      "eras": {
+        "original527": {
+          "ns": 162.83323860168457,
+          "bytes": 712.0
+        },
+        "post533": {
+          "ns": 154.31340789794922,
+          "bytes": 712.0
+        },
+        "current": {
+          "ns": 160.44225692749023,
+          "bytes": 712.0
+        },
+        "jdk": {
+          "ns": 3.0624446868896484,
+          "bytes": 0.0
+        }
+      },
+      "currentJdkRatio": 52.3902546270778
+    },
+    {
+      "workload": "precision-construction/large-scale/string",
+      "eras": {
+        "original527": {
+          "ns": 630.6422805786133,
+          "bytes": 3083.484619140625
+        },
+        "post533": {
+          "ns": 643.5886001586914,
+          "bytes": 3083.484619140625
+        },
+        "current": {
+          "ns": 649.3567123413086,
+          "bytes": 3083.484619140625
+        },
+        "jdk": {
+          "ns": 81.57602119445801,
+          "bytes": 279.9980773925781
+        }
+      },
+      "currentJdkRatio": 7.960141998019188
+    },
+    {
+      "workload": "precision-construction/negative-scale/string",
+      "eras": {
+        "original527": {
+          "ns": 647.2123031616211,
+          "bytes": 3083.484619140625
+        },
+        "post533": {
+          "ns": 653.3468170166016,
+          "bytes": 3083.484619140625
+        },
+        "current": {
+          "ns": 662.5237350463867,
+          "bytes": 3083.484619140625
+        },
+        "jdk": {
+          "ns": 80.7443904876709,
+          "bytes": 279.9980773925781
+        }
+      },
+      "currentJdkRatio": 8.205198293589811
+    },
+    {
+      "workload": "precision-construction/small/string",
+      "eras": {
+        "original527": {
+          "ns": 167.93519973754883,
+          "bytes": 819.4961547851562
+        },
+        "post533": {
+          "ns": 173.8156394958496,
+          "bytes": 819.4961547851562
+        },
+        "current": {
+          "ns": 172.45230293273926,
+          "bytes": 819.4923095703125
+        },
+        "jdk": {
+          "ns": 15.72713565826416,
+          "bytes": 87.99807739257812
+        }
+      },
+      "currentJdkRatio": 10.965270897381782
+    },
+    {
+      "workload": "precision-construction/wide/string",
+      "eras": {
+        "original527": {
+          "ns": 1916.5081481933594,
+          "bytes": 9240.4384765625
+        },
+        "post533": {
+          "ns": 1925.9662170410156,
+          "bytes": 9240.4384765625
+        },
+        "current": {
+          "ns": 1921.6488952636719,
+          "bytes": 9240.4384765625
+        },
+        "jdk": {
+          "ns": 171.8660945892334,
+          "bytes": 375.99615478515625
+        }
+      },
+      "currentJdkRatio": 11.181081992096736
+    },
+    {
+      "workload": "precision-first/large-scale/coefficient",
+      "eras": {
+        "original527": {
+          "ns": 45.895416259765625,
+          "bytes": 175.96923828125
+        },
+        "post533": {
+          "ns": 55.751617431640625,
+          "bytes": 175.96923828125
+        },
+        "current": {
+          "ns": 55.0716552734375,
+          "bytes": 175.96923828125
+        },
+        "jdk": {
+          "ns": 9.76483154296875,
+          "bytes": 15.96923828125
+        }
+      },
+      "currentJdkRatio": 5.639795733403339
+    },
+    {
+      "workload": "precision-first/large-scale/string",
+      "eras": {
+        "original527": {
+          "ns": 47.14654541015625,
+          "bytes": 175.96923828125
+        },
+        "post533": {
+          "ns": 52.76933288574219,
+          "bytes": 175.96923828125
+        },
+        "current": {
+          "ns": 60.31776428222656,
+          "bytes": 175.96923828125
+        },
+        "jdk": {
+          "ns": 5.2743682861328125,
+          "bytes": 15.96923828125
+        }
+      },
+      "currentJdkRatio": 11.436016791017789
+    },
+    {
+      "workload": "precision-first/negative-scale/coefficient",
+      "eras": {
+        "original527": {
+          "ns": 44.20518493652344,
+          "bytes": 175.96923828125
+        },
+        "post533": {
+          "ns": 48.69105529785156,
+          "bytes": 175.96923828125
+        },
+        "current": {
+          "ns": 49.88349914550781,
+          "bytes": 175.96923828125
+        },
+        "jdk": {
+          "ns": 10.832962036132812,
+          "bytes": 15.96923828125
+        }
+      },
+      "currentJdkRatio": 4.604788512977692
+    },
+    {
+      "workload": "precision-first/negative-scale/string",
+      "eras": {
+        "original527": {
+          "ns": 48.38774108886719,
+          "bytes": 175.96923828125
+        },
+        "post533": {
+          "ns": 51.58988952636719,
+          "bytes": 175.96923828125
+        },
+        "current": {
+          "ns": 54.17137145996094,
+          "bytes": 175.96923828125
+        },
+        "jdk": {
+          "ns": 6.4993743896484375,
+          "bytes": 15.96923828125
+        }
+      },
+      "currentJdkRatio": 8.334859359116125
+    },
+    {
+      "workload": "precision-first/small/coefficient",
+      "eras": {
+        "original527": {
+          "ns": 42.67997741699219,
+          "bytes": 119.96923828125
+        },
+        "post533": {
+          "ns": 37.53874206542969,
+          "bytes": 119.96923828125
+        },
+        "current": {
+          "ns": 50.94688415527344,
+          "bytes": 119.96923828125
+        },
+        "jdk": {
+          "ns": 5.7570037841796875,
+          "bytes": 15.96923828125
+        }
+      },
+      "currentJdkRatio": 8.849548491747749
+    },
+    {
+      "workload": "precision-first/small/string",
+      "eras": {
+        "original527": {
+          "ns": 39.27647399902344,
+          "bytes": 119.96923828125
+        },
+        "post533": {
+          "ns": 41.28619384765625,
+          "bytes": 119.96923828125
+        },
+        "current": {
+          "ns": 45.11711120605469,
+          "bytes": 119.96923828125
+        },
+        "jdk": {
+          "ns": 3.9694061279296875,
+          "bytes": 15.96923828125
+        }
+      },
+      "currentJdkRatio": 11.36621190978669
+    },
+    {
+      "workload": "precision-first/wide/coefficient",
+      "eras": {
+        "original527": {
+          "ns": 168.27413940429688,
+          "bytes": 727.96923828125
+        },
+        "post533": {
+          "ns": 170.1051025390625,
+          "bytes": 727.96923828125
+        },
+        "current": {
+          "ns": 166.2967071533203,
+          "bytes": 727.96923828125
+        },
+        "jdk": {
+          "ns": 15.082916259765625,
+          "bytes": 15.96923828125
+        }
+      },
+      "currentJdkRatio": 11.025500923645943
+    },
+    {
+      "workload": "precision-first/wide/string",
+      "eras": {
+        "original527": {
+          "ns": 165.9035186767578,
+          "bytes": 727.96923828125
+        },
+        "post533": {
+          "ns": 166.97068786621094,
+          "bytes": 727.96923828125
+        },
+        "current": {
+          "ns": 182.0472412109375,
+          "bytes": 727.96923828125
+        },
+        "jdk": {
+          "ns": 6.0118560791015625,
+          "bytes": 15.96923828125
+        }
+      },
+      "currentJdkRatio": 30.281370481201442
+    }
+  ]
+}

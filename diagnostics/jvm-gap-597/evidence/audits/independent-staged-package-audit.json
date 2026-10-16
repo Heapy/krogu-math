@@ -1,0 +1,20 @@
+{
+  "status": "PASS staged package; final full gate still pending",
+  "indexed_entries": 47,
+  "sha_lines": 48,
+  "all_package_files_indexed": true,
+  "archive_verified_entries": {
+    "completed-correctness.tar.gz": 12,
+    "final-artifacts.tar.gz": 92,
+    "first-fix-artifacts.tar.gz": 91,
+    "initial-artifacts.tar.gz": 60,
+    "prepare-1.tar.gz": 8,
+    "prepare-2.tar.gz": 11,
+    "remote-results.tar.gz": 912
+  },
+  "independent_audits_byte_identical_to_reviewed_sources": true,
+  "pending": [
+    "final source unfiltered four-target terminal/XML",
+    "final report/count/source/index refresh and integration"
+  ]
+}

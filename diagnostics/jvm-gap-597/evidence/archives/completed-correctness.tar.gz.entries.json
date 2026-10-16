@@ -1,0 +1,62 @@
+[
+  {
+    "path": "after597.jar",
+    "bytes": 233629,
+    "sha256": "47ec988d79aca123f1d8070863519776b442f7cb20ecb16860c0d0f972513203"
+  },
+  {
+    "path": "first-fix-full-regression/gradle.log",
+    "bytes": 61503,
+    "sha256": "ceb9ce72b59f395d106000209ab535ba77c1d3a0062c50d70df2ee017fb81edb"
+  },
+  {
+    "path": "first-fix-full-regression/jsNodeTest.tar.gz",
+    "bytes": 460487,
+    "sha256": "466a568a7c89bc09ad4012ba17e7abb8821b162a02d1874af544c680e7fa7869"
+  },
+  {
+    "path": "first-fix-full-regression/jvmTest.tar.gz",
+    "bytes": 1109710,
+    "sha256": "06918d04271c94a94e0d4d5f2a4c632a8d9ceded9731e91a105d10ca7272c00f"
+  },
+  {
+    "path": "first-fix-full-regression/macosArm64Test.tar.gz",
+    "bytes": 459877,
+    "sha256": "4233d2c4371a3930bbaccb2e749c3f258e2b29e7be6e96d97650dab869f331d2"
+  },
+  {
+    "path": "first-fix-full-regression/summary.json",
+    "bytes": 529,
+    "sha256": "904c88bc5e65b5cffdc525e7821e0c3fb99eb41e20098f0bd2a450405cc17d17"
+  },
+  {
+    "path": "first-fix-full-regression/wasmJsNodeTest.tar.gz",
+    "bytes": 459477,
+    "sha256": "33ce7dba8226489cccd1b9a1519a076006f292436d0ae41b7cbec8c0255a8086"
+  },
+  {
+    "path": "focused-jvm-summary.json",
+    "bytes": 463,
+    "sha256": "830e5a550832681a1f248a0373750f69003890cf4ca389bc0046e3ef5f0ec9d3"
+  },
+  {
+    "path": "focused-jvm-xml.tar.gz",
+    "bytes": 689,
+    "sha256": "698d69b3f020e0d2f0844ec18e02862e166a825183cb7347b7bcd1eaa69fd09f"
+  },
+  {
+    "path": "normalization-focused/gradle.log",
+    "bytes": 21822,
+    "sha256": "074b1833466b931e109287bc9fda6bf602e4b201d72d3c28631054aaf92df041"
+  },
+  {
+    "path": "normalization-focused/summary.json",
+    "bytes": 164,
+    "sha256": "960e101199f117adc54670397441e474b0f096f39921607a7db4e97b129eeed8"
+  },
+  {
+    "path": "normalization-focused/xml.tar.gz",
+    "bytes": 877,
+    "sha256": "875aa4fd2cc4582d62b5f043f30c45ec2045966a2e1d18f8b7a0242b27c3cdf8"
+  }
+]

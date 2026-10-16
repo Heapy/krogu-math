@@ -1,0 +1,385 @@
+{
+  "status": "900OBSERVED_PENDING_INDEPENDENT_REVIEW",
+  "cases": [
+    {
+      "case": "decimal/large-scale/divide",
+      "eras": {
+        "before597": {
+          "ns": 1095.5528106689453,
+          "bytes": 4218.0
+        },
+        "after597": {
+          "ns": 197.9819450378418,
+          "bytes": 548.0
+        },
+        "jdk": {
+          "ns": 50.68015480041504,
+          "bytes": 300.0
+        }
+      },
+      "afterBeforeRatio": 0.18071419570997577,
+      "afterJdkRatio": 3.9064984275900523
+    },
+    {
+      "case": "decimal/large-scale/precision",
+      "eras": {
+        "before597": {
+          "ns": 38.08962631225586,
+          "bytes": 160.0
+        },
+        "after597": {
+          "ns": 3.6680660247802734,
+          "bytes": 0.0
+        },
+        "jdk": {
+          "ns": 3.49765682220459,
+          "bytes": 0.0
+        }
+      },
+      "afterBeforeRatio": 0.09630091917179096,
+      "afterJdkRatio": 1.048720961271516
+    },
+    {
+      "case": "decimal/negative-scale/divide",
+      "eras": {
+        "before597": {
+          "ns": 1075.0106658935547,
+          "bytes": 4218.0
+        },
+        "after597": {
+          "ns": 195.83281326293945,
+          "bytes": 548.0
+        },
+        "jdk": {
+          "ns": 53.058794021606445,
+          "bytes": 300.0
+        }
+      },
+      "afterBeforeRatio": 0.18216825141931234,
+      "afterJdkRatio": 3.6908643868383626
+    },
+    {
+      "case": "decimal/negative-scale/precision",
+      "eras": {
+        "before597": {
+          "ns": 38.14947509765625,
+          "bytes": 160.0
+        },
+        "after597": {
+          "ns": 3.05789852142334,
+          "bytes": 0.0
+        },
+        "jdk": {
+          "ns": 3.092601776123047,
+          "bytes": 0.0
+        }
+      },
+      "afterBeforeRatio": 0.0801557167849789,
+      "afterJdkRatio": 0.9887786216228551
+    },
+    {
+      "case": "decimal/small/divide",
+      "eras": {
+        "before597": {
+          "ns": 1205.5906982421875,
+          "bytes": 6233.0
+        },
+        "after597": {
+          "ns": 460.23607635498047,
+          "bytes": 2724.0
+        },
+        "jdk": {
+          "ns": 43.21553897857666,
+          "bytes": 232.0
+        }
+      },
+      "afterBeforeRatio": 0.38175151568938614,
+      "afterJdkRatio": 10.649782167084261
+    },
+    {
+      "case": "decimal/small/precision",
+      "eras": {
+        "before597": {
+          "ns": 24.13910961151123,
+          "bytes": 104.0
+        },
+        "after597": {
+          "ns": 2.988663673400879,
+          "bytes": 0.0
+        },
+        "jdk": {
+          "ns": 3.0845947265625,
+          "bytes": 0.0
+        }
+      },
+      "afterBeforeRatio": 0.12381002122695003,
+      "afterJdkRatio": 0.968899949048241
+    },
+    {
+      "case": "decimal/wide/divide",
+      "eras": {
+        "before597": {
+          "ns": 1917.8346557617188,
+          "bytes": 8158.0
+        },
+        "after597": {
+          "ns": 277.3886070251465,
+          "bytes": 624.0
+        },
+        "jdk": {
+          "ns": 89.11121082305908,
+          "bytes": 336.0
+        }
+      },
+      "afterBeforeRatio": 0.1446363513099487,
+      "afterJdkRatio": 3.1128362465631243
+    },
+    {
+      "case": "decimal/wide/precision",
+      "eras": {
+        "before597": {
+          "ns": 151.97010231018066,
+          "bytes": 712.0
+        },
+        "after597": {
+          "ns": 3.0619306564331055,
+          "bytes": 0.0
+        },
+        "jdk": {
+          "ns": 3.210097312927246,
+          "bytes": 0.0
+        }
+      },
+      "afterBeforeRatio": 0.020148243699826627,
+      "afterJdkRatio": 0.9538435623439
+    },
+    {
+      "case": "precision-construction/large-scale/string",
+      "eras": {
+        "before597": {
+          "ns": 649.9233703613281,
+          "bytes": 3083.484619140625
+        },
+        "after597": {
+          "ns": 601.6488800048828,
+          "bytes": 2931.484619140625
+        },
+        "jdk": {
+          "ns": 83.01161766052246,
+          "bytes": 279.9980773925781
+        }
+      },
+      "afterBeforeRatio": 0.9257227966281519,
+      "afterJdkRatio": 7.24776720368632
+    },
+    {
+      "case": "precision-construction/negative-scale/string",
+      "eras": {
+        "before597": {
+          "ns": 632.8597793579102,
+          "bytes": 3083.484619140625
+        },
+        "after597": {
+          "ns": 605.866569519043,
+          "bytes": 2931.484619140625
+        },
+        "jdk": {
+          "ns": 79.92631816864014,
+          "bytes": 279.9980773925781
+        }
+      },
+      "afterBeforeRatio": 0.9573472501819374,
+      "afterJdkRatio": 7.5803137614909
+    },
+    {
+      "case": "precision-construction/small/string",
+      "eras": {
+        "before597": {
+          "ns": 175.6991195678711,
+          "bytes": 819.4961547851562
+        },
+        "after597": {
+          "ns": 148.01221466064453,
+          "bytes": 723.4961547851562
+        },
+        "jdk": {
+          "ns": 18.282733917236328,
+          "bytes": 87.99807739257812
+        }
+      },
+      "afterBeforeRatio": 0.8424186474279324,
+      "afterJdkRatio": 8.09573750461378
+    },
+    {
+      "case": "precision-construction/wide/string",
+      "eras": {
+        "before597": {
+          "ns": 1933.1185913085938,
+          "bytes": 9240.4384765625
+        },
+        "after597": {
+          "ns": 1780.6125793457031,
+          "bytes": 8536.4384765625
+        },
+        "jdk": {
+          "ns": 167.10676383972168,
+          "bytes": 375.99615478515625
+        }
+      },
+      "afterBeforeRatio": 0.9211088173024842,
+      "afterJdkRatio": 10.655538641473274
+    },
+    {
+      "case": "precision-first/large-scale/coefficient",
+      "eras": {
+        "before597": {
+          "ns": 44.80085754394531,
+          "bytes": 175.96923828125
+        },
+        "after597": {
+          "ns": 14.662673950195312,
+          "bytes": 15.96923828125
+        },
+        "jdk": {
+          "ns": 9.620498657226562,
+          "bytes": 15.96923828125
+        }
+      },
+      "afterBeforeRatio": 0.32728556447413193,
+      "afterJdkRatio": 1.5241074784809885
+    },
+    {
+      "case": "precision-first/large-scale/string",
+      "eras": {
+        "before597": {
+          "ns": 53.95953369140625,
+          "bytes": 175.96923828125
+        },
+        "after597": {
+          "ns": 17.6324462890625,
+          "bytes": 15.96923828125
+        },
+        "jdk": {
+          "ns": 5.0004425048828125,
+          "bytes": 15.96923828125
+        }
+      },
+      "afterBeforeRatio": 0.32677165799656815,
+      "afterJdkRatio": 3.5261771876878574
+    },
+    {
+      "case": "precision-first/negative-scale/coefficient",
+      "eras": {
+        "before597": {
+          "ns": 44.62779235839844,
+          "bytes": 175.96923828125
+        },
+        "after597": {
+          "ns": 14.908035278320312,
+          "bytes": 15.96923828125
+        },
+        "jdk": {
+          "ns": 9.403411865234375,
+          "bytes": 15.96923828125
+        }
+      },
+      "afterBeforeRatio": 0.33405271671509856,
+      "afterJdkRatio": 1.5853857612508966
+    },
+    {
+      "case": "precision-first/negative-scale/string",
+      "eras": {
+        "before597": {
+          "ns": 49.23243713378906,
+          "bytes": 175.96923828125
+        },
+        "after597": {
+          "ns": 17.638107299804688,
+          "bytes": 15.96923828125
+        },
+        "jdk": {
+          "ns": 4.8042755126953125,
+          "bytes": 15.96923828125
+        }
+      },
+      "afterBeforeRatio": 0.3582619168714553,
+      "afterJdkRatio": 3.671335512127882
+    },
+    {
+      "case": "precision-first/small/coefficient",
+      "eras": {
+        "before597": {
+          "ns": 37.67942810058594,
+          "bytes": 119.96923828125
+        },
+        "after597": {
+          "ns": 20.158859252929688,
+          "bytes": 15.96923828125
+        },
+        "jdk": {
+          "ns": 6.770721435546875,
+          "bytes": 15.96923828125
+        }
+      },
+      "afterBeforeRatio": 0.5350096927988195,
+      "afterJdkRatio": 2.977357648639025
+    },
+    {
+      "case": "precision-first/small/string",
+      "eras": {
+        "before597": {
+          "ns": 44.04304504394531,
+          "bytes": 119.96923828125
+        },
+        "after597": {
+          "ns": 24.567367553710938,
+          "bytes": 15.96923828125
+        },
+        "jdk": {
+          "ns": 4.1953887939453125,
+          "bytes": 15.96923828125
+        }
+      },
+      "afterBeforeRatio": 0.557803565334733,
+      "afterJdkRatio": 5.855802348799232
+    },
+    {
+      "case": "precision-first/wide/coefficient",
+      "eras": {
+        "before597": {
+          "ns": 166.7764129638672,
+          "bytes": 727.96923828125
+        },
+        "after597": {
+          "ns": 19.12451171875,
+          "bytes": 15.96923828125
+        },
+        "jdk": {
+          "ns": 12.277511596679688,
+          "bytes": 15.96923828125
+        }
+      },
+      "afterBeforeRatio": 0.11467156163679697,
+      "afterJdkRatio": 1.5576863086752861
+    },
+    {
+      "case": "precision-first/wide/string",
+      "eras": {
+        "before597": {
+          "ns": 172.83595275878906,
+          "bytes": 727.96923828125
+        },
+        "after597": {
+          "ns": 21.233596801757812,
+          "bytes": 15.96923828125
+        },
+        "jdk": {
+          "ns": 7.4245758056640625,
+          "bytes": 15.96923828125
+        }
+      },
+      "afterBeforeRatio": 0.1228540501141655,
+      "afterJdkRatio": 2.859907065068838
+    }
+  ]
+}

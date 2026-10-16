@@ -15,6 +15,10 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     private val coefficient: BigInteger = if (coefficient::class == BigInteger::class) coefficient
         else BigInteger(coefficient.toByteArray())
 
+    @kotlin.concurrent.Volatile
+    @kotlin.jvm.Transient
+    private var cachedStoredPrecision597: Int = 0
+
     private constructor(value: BigDecimal) : this(value.coefficient, value.decimalScale)
     private fun readObject(stream: MathObjectInputStream) {
         restoreSerializedFields(stream)
@@ -44,7 +48,13 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun unscaledValue(): BigInteger = coefficient
     open fun scale(): Int = decimalScale
     open fun precision(): Int = storedPrecision()
-    private fun storedPrecision(): Int = coefficient.decimalMagnitudeDigits()
+    private fun storedPrecision(): Int {
+        // Stream-restored coefficient subtypes retain their original route.
+        if (coefficient::class != BigInteger::class) return coefficient.decimalMagnitudeDigits()
+        val cached = cachedStoredPrecision597
+        if (cached != 0) return cached
+        return coefficient.decimalMagnitudeDigits().also { cachedStoredPrecision597 = it }
+    }
     open fun signum(): Int = coefficient.signum()
     open fun abs(): BigDecimal = if (signum() < 0) negate() else this
     open fun abs(mc: MathContext): BigDecimal = if (signum() < 0) negate(mc) else contextualUnaryRound(mc)
@@ -406,6 +416,20 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         return narrowed
     }
     private fun quotientExponent(divisor: BigDecimal): Long {
+        // Ordinary immutable coefficients need no decimal text. Preserve the
+        // complete legacy callback sequence for coefficient subtypes and MIN.
+        if (coefficient::class == BigInteger::class && divisor.coefficient::class == BigInteger::class) {
+            val left = coefficient.decimalCompactValue()
+            val right = divisor.coefficient.decimalCompactValue()
+            if (left != null && right != null) {
+                val a = if (left < 0L) -left else left
+                val b = if (right < 0L) -right else right
+                val ad = compactDigits597(a)
+                val bd = compactDigits597(b)
+                return ad.toLong() - bd + divisor.decimalScale.toLong() - decimalScale -
+                    if (compareCompactSignificands597(a, ad, b, bd) < 0) 1 else 0
+            }
+        }
         if (coefficient.decimalCompactValue() == null || divisor.coefficient.decimalCompactValue() == null)
             return coefficient.decimalMagnitudeDigits().toLong() - divisor.coefficient.decimalMagnitudeDigits() +
                 divisor.decimalScale.toLong() - decimalScale - if (coefficient.compareDecimalSignificand(divisor.coefficient) < 0) 1 else 0
@@ -414,12 +438,44 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         return a.length.toLong() - b.length + divisor.decimalScale.toLong() - decimalScale - if (normalizedComparison(divisor) < 0) 1 else 0
     }
     private fun normalizedComparison(divisor: BigDecimal): Int {
+        if (coefficient::class == BigInteger::class && divisor.coefficient::class == BigInteger::class) {
+            val left = coefficient.decimalCompactValue()
+            val right = divisor.coefficient.decimalCompactValue()
+            if (left != null && right != null) {
+                val a = if (left < 0L) -left else left
+                val b = if (right < 0L) -right else right
+                return compareCompactSignificands597(a, compactDigits597(a), b, compactDigits597(b))
+            }
+        }
         if (coefficient.decimalCompactValue() == null || divisor.coefficient.decimalCompactValue() == null)
             return coefficient.compareDecimalSignificand(divisor.coefficient)
         val a = coefficient.abs().toString()
         val b = divisor.coefficient.abs().toString()
         val length = maxOf(a.length, b.length)
         return a.padEnd(length, '0').compareTo(b.padEnd(length, '0'))
+    }
+    private fun compactDigits597(value: Long): Int {
+        var rest = value
+        var digits = 1
+        while (rest >= 10L) { rest /= 10L; digits++ }
+        return digits
+    }
+    private fun compareCompactSignificands597(a: Long, ad: Int, b: Long, bd: Int): Int {
+        if (ad == bd) return a.compareTo(b)
+        val longer = if (ad > bd) a else b
+        val shorter = if (ad > bd) b else a
+        var factor = 1L
+        repeat(kotlin.math.abs(ad - bd)) { factor *= 10L }
+        // Difference <=18: factor fits. Prefix inequality decides; on equality
+        // any discarded nonzero suffix makes the longer significand greater.
+        val prefix = longer / factor
+        val comparison = when {
+            prefix < shorter -> -1
+            prefix > shorter -> 1
+            longer % factor != 0L -> 1
+            else -> 0
+        }
+        return if (ad > bd) comparison else -comparison
     }
     open fun divideToIntegralValue(divisor: BigDecimal): BigDecimal {
         val operand = divisor
@@ -1070,6 +1126,7 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             if (exponent < 0) throw ArithmeticException("BigInteger overflow")
             if (exponent > 646456992L) throw ArithmeticException("BigInteger would overflow supported range")
             if (exponent < SMALL_TEN_POWERS.size) return SMALL_TEN_POWERS[exponent.toInt()]
+            DecimalPowers597.lookup(exponent.toInt())?.let { return it }
             return BigInteger.TEN.pow(exponent.toInt())
         }
         // Fully initialized immutable bounded table: 19 references, no dynamic

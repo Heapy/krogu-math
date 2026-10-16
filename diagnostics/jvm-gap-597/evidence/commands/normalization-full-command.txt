@@ -1,0 +1,4 @@
+cwd=/Users/yoda/dev/pet/krogu-math
+JAVA_HOME=/Users/yoda/.sdkman/candidates/java/25.0.4-librca ./.codex-work/597/worktree/gradlew -p .codex-work/597/worktree --no-daemon :jvmTest :jsNodeTest :wasmJsNodeTest :macosArm64Test --console=plain
+stdout+stderr=.codex-work/597/normalization-full-regression.log
+handle=24166

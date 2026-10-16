@@ -46,7 +46,7 @@ fun run(command: List<String>, name: String, seconds: Long) {
     File(output,"$name.command.txt").writeText(command.joinToString("\n",postfix="\n"))
     val builder=ProcessBuilder(command).directory(root).redirectOutput(File(output,"$name.stdout.txt"))
         .redirectError(File(output,"$name.stderr.txt"))
-    listOf("JAVA_TOOL_OPTIONS","JDK_JAVA_OPTIONS","_JAVA_OPTIONS","KOTLIN_OPTS","JAVACMD","JAVA_OPTS").forEach { builder.environment().remove(it) }
+    listOf("JAVA_TOOL_OPTIONS","JDK_JAVA_OPTIONS","_JAVA_OPTIONS","KOTLIN_OPTS","KOTLIN_RUNNER","JAVACMD","JAVA_OPTS").forEach { builder.environment().remove(it) }
     builder.environment()["JAVA_HOME"]=System.getProperty("java.home")
     println("${Instant.now()} launch $name")
     val child=builder.start();println("$name pid=${child.pid()}")

@@ -1,0 +1,3 @@
+cwd=/Users/yoda/dev/pet/krogu-math
+JAVA_HOME=/Users/yoda/.sdkman/candidates/java/25.0.4-librca ./.codex-work/597/worktree/gradlew -p .codex-work/597/worktree --no-daemon :jvmTest --tests '*DecimalMetadata597*' --tests '*CompactNormalization597*' :jvmJar --console=plain
+stdout+stderr=.codex-work/597/normalization-focused.log

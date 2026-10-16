@@ -1,0 +1,43 @@
+{
+  "status": "PASS final acceptance source/XML/report/index delta; integration pending",
+  "index_entries": 51,
+  "sha_lines": 52,
+  "new_full_archive_members_verified": 490,
+  "counts": {
+    "jsNodeTest": {
+      "tests": 433,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "jvmTest": {
+      "tests": 643,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "macosArm64Test": {
+      "tests": 433,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "wasmJsNodeTest": {
+      "tests": 433,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "final_source_597_methods_discovered": true,
+  "full_build_success_logs": [
+    [
+      "gradle.log",
+      true
+    ]
+  ],
+  "previous_archive_audits_retained_not_repeated": true,
+  "final_source_files_unchanged": 41,
+  "measured_candidate_jar_unchanged": true,
+  "latest_report_matrix_refresh_sha_verified": true
+}
