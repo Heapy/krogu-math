@@ -873,6 +873,63 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     @kotlin.jvm.Transient
     private var stringCache: String? = null
 
+    /**
+     * Stream the selected existing layout, without scale-sized padding or a whole result String.
+     * maxChars is opt-in; ordinary values are fully planned before the first destination write.
+     * A subtype retains its existing virtual formatter (whose own allocations cannot be bounded here).
+     */
+    fun appendTo(destination: Appendable, format: DecimalTextFormat = DecimalTextFormat.CANONICAL,
+        maxChars: Long? = null): Long {
+        checkTextLimit537(0, maxChars)
+        if (this::class != BigDecimal::class || coefficient::class != BigInteger::class) {
+            val text = legacyText537(format)
+            checkTextLimit537(text.length.toLong(), maxChars)
+            destination.append(text)
+            return text.length.toLong()
+        }
+        val layout = textLayout537(format, maxChars)
+        layout.write(AppendableSink537(destination))
+        return layout.length
+    }
+
+    /** Returns the characters written; a short or invalid slice is unchanged by this writer. */
+    fun writeTo(destination: CharArray, offset: Int = 0, length: Int = destination.size - offset,
+        format: DecimalTextFormat = DecimalTextFormat.CANONICAL): Int {
+        checkTextBuffer537(destination, offset, length)
+        if (this::class != BigDecimal::class || coefficient::class != BigInteger::class) {
+            val text = legacyText537(format)
+            checkTextLimit537(text.length.toLong(), length.toLong())
+            ArraySink537(destination, offset).text(text, 0, text.length)
+            return text.length
+        }
+        val layout = textLayout537(format, length.toLong())
+        layout.write(ArraySink537(destination, offset))
+        return layout.length.toInt()
+    }
+
+    private fun legacyText537(format: DecimalTextFormat): String = when (format) {
+        DecimalTextFormat.CANONICAL -> toString()
+        DecimalTextFormat.PLAIN -> toPlainString()
+        DecimalTextFormat.ENGINEERING -> toEngineeringString()
+    }
+
+    private fun textLayout537(format: DecimalTextFormat, maxChars: Long?): DecimalLayout537 {
+        val sign = coefficient.signum()
+        val prefix = if (sign < 0) 1L else 0L
+        val lowerDigits = coefficient.decimalDigitLowerBound().toLong()
+        val lowerLength = when {
+            format == DecimalTextFormat.PLAIN && decimalScale < 0 && sign == 0 -> 1L
+            format == DecimalTextFormat.PLAIN && decimalScale <= 0 -> lowerDigits - decimalScale.toLong() + prefix
+            format == DecimalTextFormat.PLAIN -> maxOf(lowerDigits + 1, decimalScale.toLong() + 2) + prefix
+            else -> lowerDigits + prefix
+        }
+        checkTextLimit537(lowerLength, maxChars)
+        val digits = coefficient.radixDigits537(10, maxChars?.minus(prefix))
+        val layout = DecimalLayout537(digits, decimalScale, sign < 0, format)
+        checkTextLimit537(layout.length, maxChars)
+        return layout
+    }
+
     override fun toString(): String {
         stringCache?.let { return it }
         return canonicalStringValue().also { stringCache = it }
@@ -1065,40 +1122,24 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         @JvmStatic open fun valueOf(unscaledVal: Long, scale: Int): BigDecimal = BigDecimal(BigInteger.valueOf(unscaledVal), scale)
         @JvmStatic open fun valueOf(value: Double): BigDecimal = BigDecimal(decimalDoubleString(value))
 
-        private fun parse(value: String): BigDecimal {
-            if (value.isEmpty()) throw NumberFormatException("Empty BigDecimal")
-            var i = 0
-            var negative = false
-            if (value[i] == '-' || value[i] == '+') { negative = value[i] == '-'; i++ }
-            val digits = StringBuilder()
-            var point = false
-            var fraction = 0L
-            while (i < value.length && value[i] != 'e' && value[i] != 'E') {
-                val c = value[i++]
-                if (c == '.' && !point) { point = true; continue }
-                val d = c.digitToIntOrNull(10) ?: throw NumberFormatException("Invalid decimal digit")
-                digits.append(('0'.code + d).toChar())
-                if (point) fraction++
-            }
-            if (digits.isEmpty()) throw NumberFormatException("No digits")
-            var exponent = 0L
-            if (i < value.length) {
-                i++
-                var expSign = 1
-                if (i < value.length && (value[i] == '+' || value[i] == '-')) { if (value[i] == '-') expSign = -1; i++ }
-                if (i == value.length) throw NumberFormatException("No exponent digits")
-                while (i < value.length) {
-                    val d = value[i++].digitToIntOrNull(10) ?: throw NumberFormatException("Invalid exponent")
-                    exponent = exponent * 10 + d
-                    if (exponent > Int.MAX_VALUE.toLong() + 1 + fraction) throw NumberFormatException("Exponent overflow")
-                }
-                exponent *= expSign
-            }
-            val scale = fraction - exponent
-            if (scale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong()) throw NumberFormatException("Scale out of range")
-            val number = BigInteger(digits.toString())
-            return BigDecimal(if (negative) number.negate() else number, scale.toInt())
-        }
+        /** Coherent sequence parsing; no call to an arbitrary CharSequence.toString(). */
+        @JvmStatic fun parseText(value: CharSequence, mc: MathContext = MathContext.UNLIMITED): BigDecimal =
+            DecimalText588.parse(value, 0, value.length, mc)
+
+        @JvmStatic fun parseText(value: CharSequence, offset: Int, length: Int,
+            mc: MathContext = MathContext.UNLIMITED): BigDecimal = DecimalText588.parse(value, offset, length, mc)
+
+        /** Opt-in length limit; range/configuration checks precede character traversal. */
+        @JvmStatic fun parseTextBounded(value: CharSequence, offset: Int, length: Int, maxInputChars: Int,
+            mc: MathContext = MathContext.UNLIMITED): BigDecimal =
+            DecimalText588.parseBounded(value, offset, length, maxInputChars, mc)
+
+        @JvmStatic fun parseCharsBounded(value: CharArray, offset: Int, length: Int, maxInputChars: Int,
+            mc: MathContext = MathContext.UNLIMITED): BigDecimal =
+            DecimalText588.parseBounded(value, offset, length, maxInputChars, mc)
+
+        private fun parse(value: String): BigDecimal = DecimalText588.parse(value, MathContext.UNLIMITED)
+
         private fun fromDouble(value: Double): BigDecimal {
             if (!value.isFinite()) throw NumberFormatException("Infinite or NaN")
             if (value == 0.0) return ZERO

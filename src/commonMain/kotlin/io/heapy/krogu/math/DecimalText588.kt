@@ -15,25 +15,27 @@ internal object DecimalText588 {
     private const val PAGE = 8192
     private val powers = intArrayOf(1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000)
 
-    fun parse(value: String, context: MathContext): BigDecimal = parse(Input(value, null), context)
+    fun parse(value: String, context: MathContext): BigDecimal = parse(NumericText537.of(value), context)
+
+    fun parse(value: CharSequence, offset: Int, length: Int, context: MathContext): BigDecimal =
+        parse(NumericText537.of(value, offset, length), context)
+
+    fun parseBounded(value: CharSequence, offset: Int, length: Int, maxInputChars: Int,
+        context: MathContext): BigDecimal = parse(NumericText537.of(value, offset, length).within(maxInputChars), context)
+
+    fun parseBounded(value: CharArray, offset: Int, length: Int, maxInputChars: Int,
+        context: MathContext): BigDecimal = parse(NumericText537.of(value, offset, length).within(maxInputChars), context)
 
     fun parse(value: CharArray, offset: Int, length: Int, context: MathContext): BigDecimal {
-        if (offset < 0 || length < 0 || offset > value.size - length)
-            throw NumberFormatException("Bad character range")
-        // No whole String: a supported CharArray need not fit the platform's
-        // String type. This is an owned copy, not an atomic concurrent snapshot.
-        return parse(Input(null, value.copyOfRange(offset, offset + length)), context)
-    }
-
-    private class Input(val text: String?, val characters: CharArray?) {
-        val length: Int = text?.length ?: checkNotNull(characters).size
-        operator fun get(index: Int): Char = if (text != null) text[index] else checkNotNull(characters)[index]
+        // No whole String or slice copy. Concurrently changing input is unsupported;
+        // this synchronous reader does not promise an atomic snapshot.
+        return parse(NumericText537.of(value, offset, length), context)
     }
 
     private class Lexical(val sign: Int, val scale: Int, val first: Int,
         val digits: Long, val guard: Int, val sticky: Boolean)
 
-    private fun scan(input: Input, precision: Int): Lexical {
+    private fun scan(input: NumericText537, precision: Int): Lexical {
         if (input.length == 0) throw NumberFormatException("Empty BigDecimal")
         var i = 0
         var sign = 1
@@ -50,7 +52,7 @@ internal object DecimalText588 {
             val at = i
             val c = input[i++]
             if (c == '.' && !point) { point = true; continue }
-            val digit = c.digitToIntOrNull(10) ?: throw NumberFormatException("Invalid decimal digit")
+            val digit = numericDigit537(c, 10) ?: throw NumberFormatException("Invalid decimal digit")
             seenDigit = true
             if (point) fraction++
             if (first < 0 && digit != 0) first = at
@@ -73,7 +75,7 @@ internal object DecimalText588 {
             }
             if (i == input.length) throw NumberFormatException("No exponent digits")
             while (i < input.length) {
-                val digit = input[i++].digitToIntOrNull(10) ?: throw NumberFormatException("Invalid exponent")
+                val digit = numericDigit537(input[i++], 10) ?: throw NumberFormatException("Invalid exponent")
                 // Before a step exponent<=L+1+fraction<=2^32-1;
                 // the provisional next value is <2^36, safely Long.
                 exponent = exponent * 10 + digit
@@ -88,11 +90,13 @@ internal object DecimalText588 {
         return Lexical(sign, scale.toInt(), first, digits, guard, sticky)
     }
 
-    private fun parse(input: Input, context: MathContext): BigDecimal {
+    private fun parse(input: NumericText537, context: MathContext): BigDecimal {
         val lexical = scan(input, context.precision)
         if (lexical.digits == 0L) return BigDecimal(BigInteger.ZERO, lexical.scale)
         val kept = retainedDecimalText588(lexical.digits, context.precision)
         if (kept > MAX_DIGITS) overflow()
+        if (context.precision == 0)
+            return BigDecimal(BigInteger.decimalPrefix537(input, lexical.first, kept.toInt(), lexical.sign), lexical.scale)
         val drop = lexical.digits - kept
         // Preserve ordinary scale-before-inexactness priority. No endpoint
         // padding or optional zero stripping is part of constructor rounding.
@@ -133,7 +137,7 @@ internal object DecimalText588 {
 
     private fun overflow(): Nothing = throw ArithmeticException("BigInteger overflow")
 
-    private fun prefix(input: Input, first: Int, kept: Int): Digits {
+    private fun prefix(input: NumericText537, first: Int, kept: Int): Digits {
         val result = Digits(((kept.toLong() + 8) / 9 + 1).toInt())
         var i = first
         var consumed = 0
@@ -143,7 +147,7 @@ internal object DecimalText588 {
             val c = input[i++]
             if (c == '.') continue
             // Same immutable reader, already completely validated by scan.
-            block = block * 10 + c.digitToInt(10)
+            block = block * 10 + checkNotNull(numericDigit537(c, 10))
             consumed++
             inBlock++
             if (inBlock == 9) {

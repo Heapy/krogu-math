@@ -1029,6 +1029,16 @@ open class BigInteger private constructor(private val sign: Int, private val wor
                 2, 4, 8, 16, 32 -> return magnitude.toPowerOfTwoString(r, sign < 0)
             }
         }
+        if (this::class == BigInteger::class && magnitude::class == BigInteger::class && magnitude.sign > 0) {
+            val digits = radixDigits537(r)
+            val length = digits.length + if (sign < 0) 1 else 0
+            if (length > Int.MAX_VALUE) plainStringTooLarge()
+            return buildString(length.toInt()) {
+                val sink = AppendableSink537(this)
+                if (sign < 0) sink.character('-')
+                digits.write(sink)
+            }
+        }
         val divisor = valueOf(r.toLong())
         val text = StringBuilder()
         var value = magnitude
@@ -1039,6 +1049,96 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         }
         if (sign < 0) text.append('-')
         return text.reverse().toString()
+    }
+
+    /**
+     * Write without a whole result String. Invalid radix falls back to decimal, as in toString.
+     * An opt-in limit is checked before output. Subtypes retain their virtual formatter;
+     * allocation performed by arbitrary user callbacks is outside this writer's control.
+     */
+    fun appendTo(destination: Appendable, radix: Int = 10, maxChars: Long? = null): Long {
+        checkTextLimit537(0, maxChars)
+        if (this::class != BigInteger::class) {
+            val text = toString(radix)
+            checkTextLimit537(text.length.toLong(), maxChars)
+            destination.append(text)
+            return text.length.toLong()
+        }
+        val prefix = if (sign < 0) 1L else 0L
+        checkTextLimit537(prefix + 1, maxChars)
+        val digits = radixDigits537(if (radix in 2..36) radix else 10, maxChars?.minus(prefix))
+        val length = prefix + digits.length
+        checkTextLimit537(length, maxChars)
+        val sink = AppendableSink537(destination)
+        if (sign < 0) sink.character('-')
+        digits.write(sink)
+        return length
+    }
+
+    /** Capacity/range failures occur before modifying the destination slice. */
+    fun writeTo(destination: CharArray, offset: Int = 0, length: Int = destination.size - offset,
+        radix: Int = 10): Int {
+        checkTextBuffer537(destination, offset, length)
+        if (this::class != BigInteger::class) {
+            val text = toString(radix)
+            checkTextLimit537(text.length.toLong(), length.toLong())
+            ArraySink537(destination, offset).text(text, 0, text.length)
+            return text.length
+        }
+        val prefix = if (sign < 0) 1L else 0L
+        checkTextLimit537(prefix + 1, length.toLong())
+        val digits = radixDigits537(if (radix in 2..36) radix else 10, length - prefix)
+        val required = prefix + digits.length
+        checkTextLimit537(required, length.toLong())
+        val sink = ArraySink537(destination, offset)
+        if (sign < 0) sink.character('-')
+        digits.write(sink)
+        return required.toInt()
+    }
+
+    @kotlin.jvm.JvmSynthetic
+    internal fun radixDigits537(radix: Int, maxDigits: Long? = null): RadixDigits537 {
+        require(radix in 2..36)
+        val upperBits = 32 - (radix - 1).countLeadingZeroBits()
+        val lowerDigits = if (sign == 0) 1L else (magnitudeBits() - 1).toLong() / upperBits + 1
+        checkTextLimit537(lowerDigits, maxDigits)
+        if (sign == 0) return RadixDigits537(intArrayOf(0), 1, radix, 1)
+        var power = radix
+        var width = 1
+        while (power.toLong() * radix <= Int.MAX_VALUE) { power *= radix; width++ }
+        if ((radix and (radix - 1)) == 0) {
+            val bitsPerDigit = radix.countTrailingZeroBits()
+            val bitsPerChunk = bitsPerDigit * width
+            val bitLength = magnitudeBits().toLong()
+            val digits = (bitLength + bitsPerDigit - 1) / bitsPerDigit
+            checkTextLimit537(digits, maxDigits)
+            val count = ((bitLength + bitsPerChunk - 1) / bitsPerChunk).toInt()
+            val chunks = IntArray(count)
+            for (index in chunks.indices) {
+                val bit = index.toLong() * bitsPerChunk
+                val word = (bit / LIMB_BITS).toInt()
+                val offset = (bit % LIMB_BITS).toInt()
+                var chunk = words[word].toLong() ushr offset
+                if (offset + bitsPerChunk > LIMB_BITS && word + 1 < words.size)
+                    chunk = chunk or (words[word + 1].toLong() shl (LIMB_BITS - offset))
+                chunks[index] = (chunk and (power - 1).toLong()).toInt()
+            }
+            return RadixDigits537(chunks, count, radix, width)
+        }
+        val scratch = words.copyOf()
+        var remaining = scratch.size
+        var chunks = IntArray(4)
+        var count = 0
+        while (remaining > 0) {
+            if (count == chunks.size) {
+                val next = minOf(Int.MAX_VALUE.toLong(), chunks.size.toLong() * 2).toInt()
+                if (next == chunks.size) plainStringTooLarge()
+                chunks = chunks.copyOf(next)
+            }
+            chunks[count++] = divideDecimalChunk(scratch, remaining, power)
+            while (remaining > 0 && scratch[remaining - 1] == 0) remaining--
+        }
+        return RadixDigits537(chunks, count, radix, width)
     }
     private fun toPowerOfTwoString(radix: Int, negative: Boolean): String {
         val bitsPerDigit = when (radix) {
@@ -1171,7 +1271,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return if (difference > 0) order else -order
     }
 
-    // For 0 < divisor <= 10^9 < 2^30, part < divisor*2^30 < 2^60.
+    // For 0 < divisor <= Int.MAX_VALUE, part < divisor*2^30 < 2^61.
     // Quotient limbs therefore fit 30 bits; the final remainder fits Int.
     private fun divideDecimalChunk(magnitude: IntArray, length: Int, divisor: Int): Int {
         var remainder = 0L
@@ -1315,33 +1415,137 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             if (bytes.isNotEmpty()) bytes[0] = (bytes[0].toInt() and (255 ushr ((8 - numBits % 8) % 8))).toByte()
             return fromBytes(bytes, 0, bytes.size, false)
         }
-        private fun parse(value: String, radix: Int): BigInteger {
+        /** Parse a coherent character sequence without materializing its String representation. */
+        @JvmStatic fun parseText(value: CharSequence, radix: Int = 10): BigInteger =
+            parse(NumericText537.of(value), radix)
+
+        /** Slice bounds and malformed text use NumberFormatException, like decimal character parsing. */
+        @JvmStatic fun parseText(value: CharSequence, offset: Int, length: Int, radix: Int = 10): BigInteger =
+            parse(NumericText537.of(value, offset, length), radix)
+
+        /** The caller must keep this array slice unchanged throughout the synchronous call. */
+        @JvmStatic fun parseChars(value: CharArray, offset: Int = 0, length: Int = value.size - offset,
+            radix: Int = 10): BigInteger = parse(NumericText537.of(value, offset, length), radix)
+
+        /** Opt-in input limit, checked before character traversal or magnitude allocation. */
+        @JvmStatic fun parseTextBounded(value: CharSequence, offset: Int, length: Int,
+            maxInputChars: Int, radix: Int = 10): BigInteger =
+            parse(NumericText537.of(value, offset, length).within(maxInputChars), radix)
+
+        @JvmStatic fun parseCharsBounded(value: CharArray, offset: Int, length: Int,
+            maxInputChars: Int, radix: Int = 10): BigInteger =
+            parse(NumericText537.of(value, offset, length).within(maxInputChars), radix)
+
+        private fun parse(value: String, radix: Int): BigInteger = parse(NumericText537.of(value), radix)
+
+        /** Fully validated decimal significand; no intermediate digit String or byte encoding. */
+        @kotlin.jvm.JvmSynthetic
+        internal fun decimalPrefix537(value: NumericText537, first: Int, digits: Int, sign: Int): BigInteger {
+            val builder = ParsedMagnitude537()
+            var index = first
+            var remaining = digits
+            var width = (digits - 1) % 9 + 1
+            while (remaining > 0) {
+                var power = 1
+                var block = 0
+                var count = 0
+                while (count < width) {
+                    val c = value[index++]
+                    if (c == '.') continue
+                    block = block * 10 + checkNotNull(numericDigit537(c, 10))
+                    power *= 10
+                    count++
+                }
+                builder.multiplyAdd(power, block)
+                remaining -= width
+                width = 9
+            }
+            return builder.publish(sign)
+        }
+
+        private fun parse(value: NumericText537, radix: Int): BigInteger {
             if (radix !in 2..36) throw NumberFormatException("Radix out of range")
-            if (value.isEmpty()) throw NumberFormatException("Zero length BigInteger")
-            if (value.indexOf('-', 1) >= 0 || value.indexOf('+', 1) >= 0)
-                throw NumberFormatException("Illegal embedded sign character")
+            if (value.length == 0) throw NumberFormatException("Zero length BigInteger")
+            for (index in 1 until value.length)
+                if (value[index] == '-' || value[index] == '+')
+                    throw NumberFormatException("Illegal embedded sign character")
             var start = 0
             var sign = 1
             if (value[0] == '-' || value[0] == '+') { sign = if (value[0] == '-') -1 else 1; start++ }
             if (start == value.length) throw NumberFormatException("Zero length BigInteger")
-            while (start < value.length && value[start].digitToIntOrNull(radix) == 0) start++
+            while (start < value.length && numericDigit537(value[start], radix) == 0) start++
             if (start == value.length) return ZERO
             if (MagnitudeLimits.parserDefinitelyOverflows(value.length - start, radix)) {
                 // Invalid text must retain its digit error, even when its length proves
                 // every valid number of this shape is outside the supported range.
                 for (i in start until value.length)
-                    if (value[i].digitToIntOrNull(radix) == null) invalidIntegerDigit(value, radix, start, i)
+                    if (numericDigit537(value[i], radix) == null) invalidIntegerDigit(value, radix, start, i)
                 throw ArithmeticException("BigInteger overflow")
             }
-            var n = ZERO
-            val base = valueOf(radix.toLong())
-            for (i in start until value.length) {
-                val digit = value[i].digitToIntOrNull(radix) ?: invalidIntegerDigit(value, radix, start, i)
-                n = n.multiply(base).add(valueOf(digit.toLong()))
+            var groupPower = radix
+            var groupWidth = 1
+            while (groupPower.toLong() * radix <= Int.MAX_VALUE) {
+                groupPower *= radix
+                groupWidth++
             }
-            return if (sign < 0) n.negate() else n
+            val builder = ParsedMagnitude537()
+            var index = start
+            var width = (value.length - start - 1) % groupWidth + 1
+            val radixUpperBits = 32 - (radix - 1).countLeadingZeroBits()
+            while (index < value.length) {
+                // Every prefix of this group fits if this conservative upper bound fits.
+                // Otherwise retain old per-digit overflow/bad-digit exception precedence.
+                if (builder.bits().toLong() + width.toLong() * radixUpperBits > Int.MAX_VALUE) {
+                    var n = builder.publish(1)
+                    val base = valueOf(radix.toLong())
+                    for (at in index until value.length) {
+                        val digit = numericDigit537(value[at], radix) ?: invalidIntegerDigit(value, radix, start, at)
+                        n = n.multiply(base).add(valueOf(digit.toLong()))
+                    }
+                    return if (sign < 0) n.negate() else n
+                }
+                var block = 0
+                var power = 1
+                repeat(width) {
+                    val digit = numericDigit537(value[index], radix) ?: invalidIntegerDigit(value, radix, start, index)
+                    block = block * radix + digit
+                    power *= radix
+                    index++
+                }
+                builder.multiplyAdd(power, block)
+                width = groupWidth
+            }
+            return builder.publish(sign)
         }
-        private fun invalidIntegerDigit(value: String, radix: Int, start: Int, invalid: Int): Nothing {
+
+        /** Mutable only during parsing; each multiply-add is below B*Int.MAX_VALUE < 2^61. */
+        private class ParsedMagnitude537 {
+            private var words = IntArray(4)
+            private var size = 0
+            fun bits(): Int = if (size == 0) 0 else (size - 1) * LIMB_BITS + 32 - words[size - 1].countLeadingZeroBits()
+            fun multiplyAdd(power: Int, block: Int) {
+                var carry = block.toLong()
+                for (index in 0 until size) {
+                    val part = words[index].toLong() * power + carry
+                    words[index] = (part and MASK).toInt()
+                    carry = part ushr LIMB_BITS
+                }
+                while (carry != 0L) {
+                    if (size == words.size) {
+                        val next = minOf((Int.MAX_VALUE.toLong() + LIMB_BITS - 1) / LIMB_BITS,
+                            words.size.toLong() * 2).toInt()
+                        if (next == words.size) throw ArithmeticException("BigInteger overflow")
+                        words = words.copyOf(next)
+                    }
+                    words[size++] = (carry and MASK).toInt()
+                    carry = carry ushr LIMB_BITS
+                }
+                if (size > 0) MagnitudeLimits.checkedBitLength(size, words[size - 1])
+            }
+            fun publish(sign: Int): BigInteger = normalized(sign, words.copyOf(size))
+        }
+
+        private fun invalidIntegerDigit(value: NumericText537, radix: Int, start: Int, invalid: Int): Nothing {
             // The observable diagnostic identifies a group whose radix power fits a signed Int.
             // Arithmetic itself remains independent of this grouping.
             var power = radix.toLong()
@@ -1352,7 +1556,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
                 else start + firstWidth + ((invalid - start - firstWidth) / width) * width
             val groupEnd = if (groupStart == start) start + firstWidth else groupStart + width
             val suffix = if (radix == 10) "" else " under radix $radix"
-            throw NumberFormatException("For input string: \"${value.substring(groupStart, groupEnd)}\"$suffix")
+            throw NumberFormatException("For input string: \"${value.diagnostic(groupStart, groupEnd)}\"$suffix")
         }
         private fun fromBytes(bytes: ByteArray, off: Int, len: Int, twos: Boolean): BigInteger {
             if (twos && bytes.isEmpty()) throw NumberFormatException("Zero length BigInteger")
