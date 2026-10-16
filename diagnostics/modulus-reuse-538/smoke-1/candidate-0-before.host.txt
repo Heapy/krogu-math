@@ -1,0 +1,29 @@
+timestamp=2026-10-16T14:06:48.832868Z
+17:06  up 46 days,  1:01, 1 user, load averages: 4.51 6.15 7.13
+vm.swapusage: total = 10240.00M  used = 9404.25M  free = 835.75M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                    61073.
+Pages active:                                 667594.
+Pages inactive:                               658356.
+Pages speculative:                              8337.
+Pages throttled:                                   0.
+Pages wired down:                             357227.
+Pages purgeable:                               38728.
+"Translation faults":                    80075630550.
+Pages copy-on-write:                      2395104376.
+Pages zero filled:                       58024925511.
+Pages reactivated:                       20865063933.
+Pages purged:                             4025140539.
+File-backed pages:                            401850.
+Anonymous pages:                              932437.
+Pages stored in compressor:                  2626347.
+Pages occupied by compressor:                 547052.
+Decompressions:                          21609622754.
+Compressions:                            23395933884.
+Pageins:                                  2741894081.
+Pageouts:                                   19786704.
+Swapins:                                    81787535.
+Swapouts:                                  100825393.
+CPU/executable snapshots >=10%, no argument lists:
+  403     1  31.4  0.5 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+55224     1  12.8  1.0 /Applications/Telegram.localized/Telegram.app/Contents/MacOS/Telegram

@@ -1,0 +1,8 @@
+node=/Users/yoda/.gradle/nodejs/node-v24.16.0-darwin-arm64/bin/node
+node_sha256=1ee75375e33b94fc34b3b19aede049e11dae90efb63b374dc96d6bdace70c4b8
+script_sha256=771e7cd7b936e99be416d17a57eda9387d2731a620caa5a8006b6a6241d6395c
+child_deadline_seconds=180
+three_alternating_pairs=true
+allocation_metric=NA
+internal_Random_Default_unseeded=true
+fixed_inputs_and_expected_truth=unchanged_PrimeOracleTest_and_Jdk25PrimeResults_source_hashes

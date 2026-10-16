@@ -1,0 +1,32 @@
+timestamp=2026-10-16T14:20:54.014222Z
+17:20  up 46 days,  1:15, 1 user, load averages: 16.75 11.26 8.37
+vm.swapusage: total = 10240.00M  used = 9076.12M  free = 1163.88M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                    18515.
+Pages active:                                 472906.
+Pages inactive:                               474825.
+Pages speculative:                              2998.
+Pages throttled:                                   0.
+Pages wired down:                             353790.
+Pages purgeable:                                2052.
+"Translation faults":                    80105703657.
+Pages copy-on-write:                      2396701173.
+Pages zero filled:                       58039744996.
+Pages reactivated:                       20869665064.
+Pages purged:                             4025711010.
+File-backed pages:                            323760.
+Anonymous pages:                              626969.
+Pages stored in compressor:                  3275646.
+Pages occupied by compressor:                 975910.
+Decompressions:                          21612916517.
+Compressions:                            23400328966.
+Pageins:                                  2742687269.
+Pageouts:                                   19851681.
+Swapins:                                    81807509.
+Swapouts:                                  100825393.
+CPU/executable snapshots >=10%, no argument lists:
+  403     1  31.3  0.3 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+59617     1  10.2  0.1 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU
+70936 70921 795.3  6.5 /Users/yoda/.sdkman/candidates/java/25.0.4-librca/bin/java
+71554 61220  55.7  3.5 /Users/yoda/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64-headless
+72630     1  26.2  0.1 /usr/libexec/mobileassetd

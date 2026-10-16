@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 # Task 538: candidate-local witness reuse
 
-Source milestone, initially **uncompiled and unrun**. This extends the already accepted odd-modulus context; it does not adopt the historical V6 exact-power guard. The source base is integrated main `33f5550894eb747b791c122c854b881a363119df`. Final execution must first rebase onto the integrated task 532/533 implementations and independently review that composed code. Historical worktrees, capsules, failed runs and published V6 adverse observations stay unchanged.
+The implementation extends the accepted odd-modulus context with candidate-local witness reuse; it does not adopt the historical V6 exact-power guard. It was rebased and independently reviewed on accepted 532/533, then composed with accepted additive 534 at parent `781d961b973274771999d0805d2238b7b8831511`. Historical capsules, failed runs and published V6 adverse observations remain separate. Actual commands, raw observations, source/artifact hashes and limits are recorded in [the evidence report](../diagnostics/modulus-reuse-538/REPORT.md).
 
 ## Change and public boundaries
 
@@ -59,17 +59,9 @@ Before runtime, independently review the diagnostic and freeze it. Run paired fr
 
 No execution result is claimed by this source document. Required next gates are independent composed-source review; JVM/JS/Wasm/macOS ARM64 modular/inverse/primality contracts with exact inventories; fresh matched JAR origins/hashes; actual setup/total-reuse measurements and one-witness/tiny-prime controls; and the unchanged public primality/BigInteger acceptance inputs, assertions, certainty/round budgets, 512 MiB and original 120/400 s directives.
 
-The production milestone is now rebased on accepted 532+533 main
-`943635476c052bb6377f20d79d2bcb856c2c104e` and independently source-reviewed at
-`33abf131a30ac13069fca592cd93c07c94e64ab4`; accepted additive 534 must still be
-included before execution. The supplemental `scripts/check-known-primes-538.main.kts`
-is independently source-reviewed and remains uncompiled/unrun. It records actual
-public `isProbablePrime(100)` outcomes for Mersenne exponents
-521/607/1279/2203/2281/3217/4253, requiring all seven TRUE results. It uses serial
-512 MiB children with a 120-second deadline including script compilation, exact
-JAR/script/runtime/origin checks, and owned-only bounded timeout cleanup with
-survivor reporting. A false result or deadline is a failure, with no inferred
-Boolean outcome for a timeout; original public acceptance remains a separate gate.
+The frozen candidate passed 187 focused methods and 1898 unfiltered methods across JVM/Java, JS, Wasm and macOS ARM64, with no failures, errors or skips. Three alternating JVM process pairs produced all 3900 required observations over 130 cases. The selected original public harness executions passed under unchanged 120/400-second directives and 512 MiB; one existing adaptation-companion skip remains separately disclosed. Seven strict public `isProbablePrime(100)` checks returned TRUE for Mersenne exponents 521/607/1279/2203/2281/3217/4253 under serial 120-second child deadlines including script compilation. These are named coverage and actual outcomes, not certification of the entire public math corpus.
+
+Measurements were taken on a shared host. Allocation reductions in repeated witnesses are clearer than timing: individual forks include adverse observations and the early-composite case adds 24 allocated bytes. Tested reuse points are nonmonotonic; no universal setup cutoff or speedup is inferred. The full JS run had broad inflation in unchanged methods as well as primality; the bounded, separately named paired original-fixture diagnostic is documented with its raw evidence in the report.
 
 The public harness's documented adapters/resource skips remain separate from original coverage. Current `docs/public-math-consolidated-559.md` records historical 106 PASS/46 SKIP on its named artifact, including adapted PrimeTest; it does not certify this new implementation or restore the skipped original huge-range expectation. Strict known-prime Mersenne checks and actual Boolean outcomes remain explicit evidence. No constant-time, cryptographic, full-domain empirical, universal speedup or uncontended-host claim is made.
 

@@ -1,0 +1,6 @@
+jar=/Users/yoda/dev/pet/krogu-math/.codex-work/538/artifacts/candidate.jar
+jar_sha256=7f084311aea30b74f68db340e28e2ea60e7f4ce2decd7d219d603456f51be79b
+script_sha256=750ec058be6e4bbe425d2d74e5a0704f2d8174d93e87086fbf2fa55d634f8352
+certainty=100
+child_deadline_seconds=120_including_script_compilation
+internal_witness_randomness_not_seeded=true

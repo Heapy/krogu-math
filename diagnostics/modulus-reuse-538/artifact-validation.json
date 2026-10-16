@@ -1,0 +1,50 @@
+[
+  {
+    "artifact": "baseline.jar",
+    "sha256": "91f0d6a48b8f677f468cbd8b6cee0a617a6d456b96b8132cbd1488c9e92adbf8",
+    "pass": true
+  },
+  {
+    "artifact": "candidate.jar",
+    "sha256": "7f084311aea30b74f68db340e28e2ea60e7f4ce2decd7d219d603456f51be79b",
+    "pass": true
+  },
+  {
+    "artifact": "paired-js-baseline-modules.tar.gz",
+    "verified_files": 10,
+    "pass": true
+  },
+  {
+    "artifact": "paired-js-candidate-modules.tar.gz",
+    "verified_files": 10,
+    "pass": true
+  },
+  {
+    "archive_read_roundtrip": "measured-jvm-jars.tar.gz",
+    "pass": true
+  },
+  {
+    "archive_read_roundtrip": "paired-js-candidate-modules.tar.gz",
+    "pass": true
+  },
+  {
+    "archive_read_roundtrip": "focused-other-targets-xml.tar.gz",
+    "pass": true
+  },
+  {
+    "archive_read_roundtrip": "full-regression-xml.tar.gz",
+    "pass": true
+  },
+  {
+    "archive_read_roundtrip": "public-selected-raw.tar.gz",
+    "pass": true
+  },
+  {
+    "archive_read_roundtrip": "focused-jvm-xml.tar.gz",
+    "pass": true
+  },
+  {
+    "archive_read_roundtrip": "paired-js-baseline-modules.tar.gz",
+    "pass": true
+  }
+]

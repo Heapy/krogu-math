@@ -1,0 +1,30 @@
+timestamp=2026-10-16T14:10:44.414823Z
+17:10  up 46 days,  1:05, 1 user, load averages: 3.33 4.82 6.32
+vm.swapusage: total = 10240.00M  used = 9364.25M  free = 875.75M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                    41629.
+Pages active:                                 635158.
+Pages inactive:                               625007.
+Pages speculative:                             17184.
+Pages throttled:                                   0.
+Pages wired down:                             382924.
+Pages purgeable:                               33494.
+"Translation faults":                    80082105369.
+Pages copy-on-write:                      2395616486.
+Pages zero filled:                       58028169994.
+Pages reactivated:                       20865653643.
+Pages purged:                             4025185057.
+File-backed pages:                            402659.
+Anonymous pages:                              874690.
+Pages stored in compressor:                  2675391.
+Pages occupied by compressor:                 597509.
+Decompressions:                          21610160269.
+Compressions:                            23396606656.
+Pageins:                                  2742084135.
+Pageouts:                                   19787402.
+Swapins:                                    81790005.
+Swapouts:                                  100825393.
+CPU/executable snapshots >=10%, no argument lists:
+  403     1  38.6  0.4 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+ 4723 72010  14.2  1.9 /Applications/Firefox.app/Contents/MacOS/plugin-container.app/Contents/MacOS/plugin-container
+72031 72010  15.0  0.3 /Applications/Firefox.app/Contents/MacOS/gpu-helper.app/Contents/MacOS/Firefox GPU Helper

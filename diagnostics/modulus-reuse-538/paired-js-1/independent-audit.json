@@ -1,0 +1,190 @@
+{
+  "status": "PASS_METADATA",
+  "rows": 108,
+  "processes": 6,
+  "origins": [
+    {
+      "variant": "baseline",
+      "fork": 0,
+      "core": {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree/build/js/packages/krogu-math-test/kotlin/krogu-math.js",
+        "sha256": "a0bb4af4224929a0342ed8ccf6f1ae1055a6d48d57853fcc8bbadf6f90708599"
+      },
+      "loadedModules": 76
+    },
+    {
+      "variant": "baseline",
+      "fork": 1,
+      "core": {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree/build/js/packages/krogu-math-test/kotlin/krogu-math.js",
+        "sha256": "a0bb4af4224929a0342ed8ccf6f1ae1055a6d48d57853fcc8bbadf6f90708599"
+      },
+      "loadedModules": 76
+    },
+    {
+      "variant": "baseline",
+      "fork": 2,
+      "core": {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree/build/js/packages/krogu-math-test/kotlin/krogu-math.js",
+        "sha256": "a0bb4af4224929a0342ed8ccf6f1ae1055a6d48d57853fcc8bbadf6f90708599"
+      },
+      "loadedModules": 76
+    },
+    {
+      "variant": "candidate",
+      "fork": 0,
+      "core": {
+        "path": "/private/tmp/krogu-math-538/build/js/packages/krogu-math-test/kotlin/krogu-math.js",
+        "sha256": "3690831609dfcdfae771cc1c4554c73e386b3ad705d6c42ecc489225afbeb2ca"
+      },
+      "loadedModules": 76
+    },
+    {
+      "variant": "candidate",
+      "fork": 1,
+      "core": {
+        "path": "/private/tmp/krogu-math-538/build/js/packages/krogu-math-test/kotlin/krogu-math.js",
+        "sha256": "3690831609dfcdfae771cc1c4554c73e386b3ad705d6c42ecc489225afbeb2ca"
+      },
+      "loadedModules": 76
+    },
+    {
+      "variant": "candidate",
+      "fork": 2,
+      "core": {
+        "path": "/private/tmp/krogu-math-538/build/js/packages/krogu-math-test/kotlin/krogu-math.js",
+        "sha256": "3690831609dfcdfae771cc1c4554c73e386b3ad705d6c42ecc489225afbeb2ca"
+      },
+      "loadedModules": 76
+    }
+  ],
+  "cases": [
+    {
+      "title": "io.heapy.krogu.math PrimeOracleTest successorsAt257Bits",
+      "baselineForkMediansNs": [
+        948541167.0,
+        952958042.0,
+        953667125.0
+      ],
+      "candidateForkMediansNs": [
+        879508541.0,
+        866788000.0,
+        1248390375.0
+      ],
+      "ratios": [
+        0.9272223194926447,
+        0.9095762476392428,
+        1.3090420569965646
+      ],
+      "aggregateRatio": 0.9229247272567747
+    },
+    {
+      "title": "io.heapy.krogu.math PrimeOracleTest successorsInLower256BitHalf",
+      "baselineForkMediansNs": [
+        615897250.0,
+        622383458.0,
+        773203792.0
+      ],
+      "candidateForkMediansNs": [
+        539814541.0,
+        538342709.0,
+        601876250.0
+      ],
+      "ratios": [
+        0.8764685034719671,
+        0.8649695008442849,
+        0.7784186474864055
+      ],
+      "aggregateRatio": 0.8680617118843799
+    },
+    {
+      "title": "io.heapy.krogu.math PrimeOracleTest successorsInUpper256BitHalf",
+      "baselineForkMediansNs": [
+        648251875.0,
+        641396959.0,
+        742988583.0
+      ],
+      "candidateForkMediansNs": [
+        578239875.0,
+        573673125.0,
+        739322708.0
+      ],
+      "ratios": [
+        0.8919987697683096,
+        0.8944119814574923,
+        0.9950660412772453
+      ],
+      "aggregateRatio": 0.8919987697683096
+    },
+    {
+      "title": "io.heapy.krogu.math PrimeOracleTest successorsThrough255Bits",
+      "baselineForkMediansNs": [
+        531763834.0,
+        536220458.0,
+        774124959.0
+      ],
+      "candidateForkMediansNs": [
+        454066083.0,
+        445137416.0,
+        674039459.0
+      ],
+      "ratios": [
+        0.8538867331094202,
+        0.8301388157778941,
+        0.8707114415619818
+      ],
+      "aggregateRatio": 0.8444218072738955
+    },
+    {
+      "title": "io.heapy.krogu.math OddModulusContext538Test carryHeavyAndNearRadixPowers",
+      "baselineForkMediansNs": [
+        40404834.0,
+        40009250.0,
+        55413291.0
+      ],
+      "candidateForkMediansNs": [
+        40470250.0,
+        39981250.0,
+        51841875.0
+      ],
+      "ratios": [
+        1.0016190142001327,
+        0.9993001618375751,
+        0.9355494695306944
+      ],
+      "aggregateRatio": 1.0016190142001327
+    },
+    {
+      "title": "io.heapy.krogu.math Division530Test literalMultiLimbSignedDivision",
+      "baselineForkMediansNs": [
+        894888.03125,
+        893509.09375,
+        1165295.5625
+      ],
+      "candidateForkMediansNs": [
+        890050.78125,
+        897097.65625,
+        1085904.9375
+      ],
+      "ratios": [
+        0.9945945751523314,
+        1.0040162573890983,
+        0.9318708252611234
+      ],
+      "aggregateRatio": 1.0024691636527014
+    }
+  ],
+  "lineage": {
+    "baseline_commit": "781d961b973274771999d0805d2238b7b8831511",
+    "candidate_source_commit": "be76fb7fea5de133cc22b685b89faa025d0adb2f",
+    "production_files_byte_identical_to_frozen_before_full_manifests": true,
+    "prior_full_regression_terminal_exit": 0,
+    "selected_original_methods": 6,
+    "process_pairs": 3,
+    "sample_count_per_method": 3,
+    "artifact_tree_manifests": "baseline-before.sha256 and candidate-before.sha256",
+    "new_script_does_not_modify_production_or_test_source": true,
+    "command": "JAVA_HOME=/Users/yoda/.sdkman/candidates/java/25.0.4-librca /Users/yoda/.sdkman/candidates/kotlin/current/bin/kotlinr scripts/check-primality-js-538.main.kts /Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree /private/tmp/krogu-math-538 /Users/yoda/.gradle/nodejs/node-v24.16.0-darwin-arm64/bin/node /Users/yoda/dev/pet/krogu-math/.codex-work/538/paired-js-1"
+  },
+  "limits": "Original assertion-bearing fixture callbacks; shared host, unseeded Random.Default; not operation-throughput or universal speedup proof."
+}

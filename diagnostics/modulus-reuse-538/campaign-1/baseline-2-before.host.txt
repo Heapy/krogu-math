@@ -1,0 +1,32 @@
+timestamp=2026-10-16T14:17:54.949714Z
+17:17  up 46 days,  1:12, 1 user, load averages: 8.65 6.53 6.38
+vm.swapusage: total = 10240.00M  used = 9092.12M  free = 1147.88M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                    18818.
+Pages active:                                 616565.
+Pages inactive:                               574099.
+Pages speculative:                             45007.
+Pages throttled:                                   0.
+Pages wired down:                             314595.
+Pages purgeable:                               35415.
+"Translation faults":                    80093817784.
+Pages copy-on-write:                      2396385498.
+Pages zero filled:                       58035330592.
+Pages reactivated:                       20867304026.
+Pages purged:                             4025323303.
+File-backed pages:                            416046.
+Anonymous pages:                              819625.
+Pages stored in compressor:                  2867049.
+Pages occupied by compressor:                 730485.
+Decompressions:                          21611037764.
+Compressions:                            23397850033.
+Pageins:                                  2742422652.
+Pageouts:                                   19789447.
+Swapins:                                    81806628.
+Swapouts:                                  100825393.
+CPU/executable snapshots >=10%, no argument lists:
+  334     1 140.7  0.0 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd
+  403     1  17.6  0.3 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+71034 70936  95.8  1.7 /Users/yoda/.sdkman/candidates/java/25.0.4-librca/bin/java
+71078 69960  95.2  1.9 /opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/Resources/Python.app/Contents/MacOS/Python
+71035 53585 176.0  2.6 npm ci

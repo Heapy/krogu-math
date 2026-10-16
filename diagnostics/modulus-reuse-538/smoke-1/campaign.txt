@@ -1,0 +1,4 @@
+start=2026-10-16T14:05:59.548495Z
+script_sha256=345c63dd9325ef1767ae0836f8eb243f26242c7d554dc142b5209fd7c2c2dd58
+forks=1 warmup=1 samples=1
+JAVA_OPTS=-Xms64m -Xmx512m -XX:+UseSerialGC -XX:ActiveProcessorCount=1 -XX:-OmitStackTraceInFastThrow

@@ -1,0 +1,318 @@
+{
+  "node": "v24.16.0",
+  "mocha": "11.7.6",
+  "titles": [
+    "io.heapy.krogu.math PrimeOracleTest successorsAt257Bits",
+    "io.heapy.krogu.math PrimeOracleTest successorsInLower256BitHalf",
+    "io.heapy.krogu.math PrimeOracleTest successorsInUpper256BitHalf",
+    "io.heapy.krogu.math PrimeOracleTest successorsThrough255Bits",
+    "io.heapy.krogu.math OddModulusContext538Test carryHeavyAndNearRadixPowers",
+    "io.heapy.krogu.math Division530Test literalMultiLimbSignedDivision"
+  ],
+  "loaded": [
+    {
+      "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/538/paired-js-1/probe.cjs",
+      "sha256": "bb2d85734110a10648f471ae2ba33b3abe6bd18fd0ffd361f99351cdc1199cfd"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/ansi-styles/index.js",
+      "sha256": "d3f197d370760ddd8753c1355b4bdb585a787f1baa92bb8ed217f170c138b594"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/chalk/node_modules/supports-color/index.js",
+      "sha256": "479fd04f71a0fed642baa7e57c7e0701ae6f4a450bde8179f96815e6a26752b0"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/chalk/source/index.js",
+      "sha256": "a7eda1e88414e0e3f050a09621a35e8d656550077da044606c16b053148f6459"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/chalk/source/util.js",
+      "sha256": "9d5cbee8050b580d28fc1de92987ee0237cf609415da8dc781920074f278c016"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/debug/src/common.js",
+      "sha256": "dbe83d2bb5837f3c4d7fe537b8004c585987270eceed5b06b8e078deb0ae214a"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/debug/src/index.js",
+      "sha256": "aa127ff1752b7d9c7415c5c7bb6994d9aa722b81bcbcab4bd48316b013d23bf3"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/debug/src/node.js",
+      "sha256": "d7b26d7c92f8ea7794b77ce11f3c11cd18c9084df7c357e3c7025344fa28aac6"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/convert/dmp.js",
+      "sha256": "2dbdc729d4e33b203a7626a8873e09e610a94ddaf4556c5238374d74eac7410e"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/convert/xml.js",
+      "sha256": "cec51df4a209d2d2a409daf9ef5e611b4ca49e17783be47c515b7107f3e35a58"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/diff/array.js",
+      "sha256": "09a034f96fc23827d69cfd8dc68a76d9fb8e333461ea9c7bd192bbd883dbbf11"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/diff/base.js",
+      "sha256": "8529cc7b3ded5b035da7edc4c50c82e3d624df01e436b7fc370416ad95ddb7a0"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/diff/character.js",
+      "sha256": "3576be020bb96d076d2129d9fb64b0fcad0a51ff5c55adc9d4c7c6916f610f95"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/diff/css.js",
+      "sha256": "020c65aebad5c885f685a89b51f1a11465c1553a8855f51a5e116e4caf8733c3"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/diff/json.js",
+      "sha256": "9a1a6236f5d3a8f03d9988eb7d3cad5b684397aa2b3522552bc743973407d70d"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/diff/line.js",
+      "sha256": "f67389d2fbe9522cae247aaa9fce05250f1c19196c93a4a4d5f3bf06469b5af7"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/diff/sentence.js",
+      "sha256": "95a8abfa3db14d2cf4f0b440cde9cd3c102deeba8da8dd7217e81c0abc031251"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/diff/word.js",
+      "sha256": "62502a8dc79f477ebbd7434cf2d531ed56bbf9b35850fc49dfbc61f399816f14"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/index.js",
+      "sha256": "ed9fa05cfc3115e1f4a599641ba05bc1fbdffb1f3a12629dafd09ac6b6d84c64"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/patch/apply.js",
+      "sha256": "33dc374d50822943ad497a595b4c7615a8a3721a9090f2f86db62e194c7fa223"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/patch/create.js",
+      "sha256": "ee198e219d6ad27984120c208aded70fc4d4b862924c35b85e301360216c3fef"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/patch/line-endings.js",
+      "sha256": "c7bbcd72d8fc604d4be20738561d380006a236bbcd9217cdeaef7a9e1fca0bcd"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/patch/parse.js",
+      "sha256": "70730e44cca4fa172c35e51b793508cc6ed25d86bc2fd711ff93f08f4dc914ba"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/patch/reverse.js",
+      "sha256": "4113bedc10ee730295ca8b61b2cad367df6ec7a241db27e6b513a2a20654d67f"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/util/distance-iterator.js",
+      "sha256": "8eadec2b70e19d8a3d8eeac0fcb47d0c231672925296ee65fdf8ec34876021c5"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/util/params.js",
+      "sha256": "b0beab18375d35253fb5393de39fc529df3cb8cf071762e8fb4a174be5f2d1d2"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/diff/libcjs/util/string.js",
+      "sha256": "ab23a3de73a75365cfb3c5788818e935f2935e357bff19c500ee0035288a9054"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/escape-string-regexp/index.js",
+      "sha256": "d7170b45e3faf26da2fcb2b4a2fac19af142b44d2ec5ae7760700896749a5886"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/has-flag/index.js",
+      "sha256": "e9e921d4734fee9405bef5886c010c80a8f10fe958e5d71bd5d8eed5e616e78d"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/he/he.js",
+      "sha256": "76c554d5bbfd032fe620595076a50abea5124b9cbd4e9ffe6ac94a4f855aeceb"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/is-unicode-supported/index.js",
+      "sha256": "829f72de40b2e50f54b0376ee804e11b3096d990b5c7407596b9a7c566e6582b"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/log-symbols/index.js",
+      "sha256": "81f30457e60b11588fb7915901b5768e15befad0902c245856f7863ac827e6e5"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/index.js",
+      "sha256": "8c1e9b9aaa12bfa8cc044dde1ecc63299cf590fd77fca3bf997c424e5d1366dc"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/context.js",
+      "sha256": "5c3c052ebde73071135e6054b17b2caf40389be6addb03aaf44ec2a856949311"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/error-constants.js",
+      "sha256": "caa2fd2894cae0d070164d4981700c4bc4a04b95503d62cf9733e74fffd5dd40"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/errors.js",
+      "sha256": "1fd64e87255b08d666c0ef8dd338a3475e0fbb014c588308ff27be9b329379d1"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/hook.js",
+      "sha256": "fb6fa6afbdd294a7ebee2cc977c02c13ceb4dc4e170568c195b61cb15e49b2d5"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/interfaces/bdd.js",
+      "sha256": "777b1caea15974360a102dd7e7913f0f558e9c069bb5323c3fca77bdc2597344"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/interfaces/common.js",
+      "sha256": "91a6c3d8e39ae16ed3a4d8d2c4436ac601b36193c58ace830f0479b8c722983c"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/interfaces/exports.js",
+      "sha256": "6c6775ab70000db022f689e83728352b7748eeeef88e6faba32e472736552b13"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/interfaces/index.js",
+      "sha256": "e8b1e7d9832264b0a0d98d13ffc1ffde087609349414cb314a401e3783343170"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/interfaces/qunit.js",
+      "sha256": "ef9ecc572ebe217c671cd33617e55813031a9db56f8dc478ef1d9bd6913429f4"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/interfaces/tdd.js",
+      "sha256": "b28c937546ff4b7e619e8b2dac8b4589109a86c96944fafd39f0d4ffd29be2ae"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/mocha.js",
+      "sha256": "3948125df0453dd4155b9abc65e3e8177994f381d89b4250f609603ffffc6869"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/mocharc.json",
+      "sha256": "56d552fe592ebae6ef9891557e50fbb2056e0c9d507e020e779a78d325b29c6e"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/nodejs/esm-utils.js",
+      "sha256": "8715438114b2746d8169e73b21913f00802bac31d0ae2acf5bebac31e2176ec6"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/pending.js",
+      "sha256": "fbe289b6b4beabc87f73d555c7ea6df14181d568135f04d900b86462f03beef5"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/base.js",
+      "sha256": "db461b4c1669d17164f44d934f8ced9d19b9a879501219dde6501ec0e5c6fa3d"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/doc.js",
+      "sha256": "f1e89c1e0e5ae4ebe0638ac1c62d0cc0ec5e1568820116bb6dda34ae00e9f51f"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/dot.js",
+      "sha256": "4aabb0e1dd1a7fee41cd6c2b9a3b7cdb00dc988cda3160ee4424250c24fe0623"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/html.js",
+      "sha256": "8abd0636edbf59c2a8ce7d086154fa31f9d96e754bc9e2634983e9bd161e24eb"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/index.js",
+      "sha256": "890c41928af259b89e3f1f02b7345831f898a594fdee4384870fd77a53ea91a1"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/json-stream.js",
+      "sha256": "7cc139e27ba8f01ea3910dfd247ed63f1dfd158ebbb615bd07b3cafef6b11099"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/json.js",
+      "sha256": "5a7cd414072288739843a7981894738038a866508bce61d144dfa007bba32881"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/landing.js",
+      "sha256": "60801c53d9a1d9218e6f8a2eed2ddea0271f9d68f5156884edebd7397b58f4db"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/list.js",
+      "sha256": "417a50ea75116963201bd3a8a6e714f4fc1bffe3868108e0263d9ad80cd6051f"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/markdown.js",
+      "sha256": "682755c1c4f90da9b96a01b239d959a679888b9d733bc4fb6d041a79e4be6ac5"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/min.js",
+      "sha256": "05faef16cbadde8bd5a3818b81d42a45fa114688bfb96b5cca64e78cb0ac4ccd"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/nyan.js",
+      "sha256": "af87cf0f11ac59b13fdfe57a8ca539c543b2172df008976b69a06abf341f0d9f"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/progress.js",
+      "sha256": "4836fbfbff22be7e8171101dceda846325f99c96dde09bf7161acf4c24137b4d"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/spec.js",
+      "sha256": "a5f4a42637b40e1b0f3a9944840afc321bcdfeb5062cc8237330c86704912a21"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/tap.js",
+      "sha256": "f715f9d87f72f9d42dd37d171e62b1b4b3c14ad8ecb89221872205982e79914c"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/reporters/xunit.js",
+      "sha256": "ef26d7aa45703f7096a6459c277fca7aecd49144eb6ed89b57ebf56e4e18c82b"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/runnable.js",
+      "sha256": "27adb9d627f516542994de7810d926c9ee122e1a0a1d5e5a27e319c31a6afe4c"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/runner.js",
+      "sha256": "765f34dc850b8f8c2c51d689fc2a20d7c3ea83950dd2a6f5936ac124180fd369"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/stats-collector.js",
+      "sha256": "97b44fa004ca9fccfecae0d2cb1d689927f55df2d67ba7aeeb10226143f8fe3b"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/suite.js",
+      "sha256": "c739a07c06d1f6a96ee045d928eea25d197b18b658501351aaba94abfd3569e5"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/test.js",
+      "sha256": "d93198d5cecbd899a237c56c897cf17562d6768a7937a38626f64cde69a77981"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/lib/utils.js",
+      "sha256": "2598ebf2c7300705e5af9b8761b156f8bb443eabe3f6dead404f527f70ab1124"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/mocha/package.json",
+      "sha256": "4b228538e8ddb3aed9e2c70e56d2ed3872aa7ec5b4b6b77d10a54a31de3ffaf1"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/ms/index.js",
+      "sha256": "e5f0b6a946a9b2b356a28557728410717df54ea2f599edb619f9839df6b7b0e9"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/node_modules/supports-color/index.js",
+      "sha256": "36ebfad20a03171d97e85fcdd39563c91b56cc0c579b8f7369f7503b7e156b82"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/packages/krogu-math-test/kotlin/kotlin-kotlin-stdlib.js",
+      "sha256": "8d26afba3e0efab3e93573ddf8f0e8ccf9841c69028e1a0897b3ad3544aa5246"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/packages/krogu-math-test/kotlin/kotlin-kotlin-test.js",
+      "sha256": "0ba30ae14e9634d11ce375261476a0519f22cbbc237b14ade1954578060a816d"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/packages/krogu-math-test/kotlin/krogu-math-test.js",
+      "sha256": "3239743b7640c52002a7c07a78759ec64b75004af67a24f024c9f7a07e1a31dc"
+    },
+    {
+      "path": "/private/tmp/krogu-math-538/build/js/packages/krogu-math-test/kotlin/krogu-math.js",
+      "sha256": "3690831609dfcdfae771cc1c4554c73e386b3ad705d6c42ecc489225afbeb2ca"
+    }
+  ]
+}

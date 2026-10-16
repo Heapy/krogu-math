@@ -1,0 +1,2 @@
+exponent,certainty,result,elapsed_ns,cpu_ns,allocated_bytes,input_sha256,artifact_sha256
+2281,100,true,1229483417,1229407000,384792,6678da2e833ee4283b148fa8b248f2a5b0bd6b8092167c4b9df94557bc236980,7f084311aea30b74f68db340e28e2ea60e7f4ce2decd7d219d603456f51be79b

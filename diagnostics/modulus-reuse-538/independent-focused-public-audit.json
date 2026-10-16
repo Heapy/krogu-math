@@ -1,0 +1,147 @@
+{
+  "public": [
+    {
+      "id": "baseline/BigInteger/BigIntegerTest/run-1",
+      "status": "PASS",
+      "directive": "main BigIntegerTest",
+      "coreLoadingVerified": null,
+      "caughtOomAssertionsIncomplete": false,
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMillis": 5871
+    },
+    {
+      "id": "baseline/BigInteger/BigIntegerTest/run-2",
+      "status": "PASS",
+      "directive": "main/timeout=400 BigIntegerTest",
+      "coreLoadingVerified": null,
+      "caughtOomAssertionsIncomplete": false,
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMillis": 5843
+    },
+    {
+      "id": "baseline/BigInteger/PrimeTest/run-1",
+      "status": "PASS",
+      "directive": "main PrimeTest",
+      "coreLoadingVerified": null,
+      "caughtOomAssertionsIncomplete": false,
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMillis": 1125
+    },
+    {
+      "id": "port/BigInteger/BigIntegerTest/run-1",
+      "status": "PASS",
+      "directive": "main BigIntegerTest",
+      "coreLoadingVerified": true,
+      "caughtOomAssertionsIncomplete": false,
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMillis": 37174
+    },
+    {
+      "id": "port/BigInteger/BigIntegerTest/run-2",
+      "status": "PASS",
+      "directive": "main/timeout=400 BigIntegerTest",
+      "coreLoadingVerified": true,
+      "caughtOomAssertionsIncomplete": false,
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMillis": 37474
+    },
+    {
+      "id": "port/BigInteger/PrimeTest/run-1",
+      "status": "PASS",
+      "directive": "main PrimeTest",
+      "coreLoadingVerified": true,
+      "caughtOomAssertionsIncomplete": false,
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMillis": 21504
+    },
+    {
+      "id": "port/BigInteger/PrimeTest/run-1/adaptation-1",
+      "status": "SKIP",
+      "directive": null,
+      "coreLoadingVerified": null,
+      "caughtOomAssertionsIncomplete": null,
+      "exitCode": null,
+      "timedOut": null,
+      "elapsedMillis": null
+    }
+  ],
+  "strict": [
+    {
+      "exponent": "521",
+      "certainty": "100",
+      "result": "true",
+      "elapsed_ns": "33853250",
+      "cpu_ns": "33845000",
+      "allocated_bytes": "357784",
+      "input_sha256": "06514590f94c1d4595274279dfb1568077269f22e4258a5c9f928fe07e832e0e",
+      "artifact_sha256": "7f084311aea30b74f68db340e28e2ea60e7f4ce2decd7d219d603456f51be79b"
+    },
+    {
+      "exponent": "607",
+      "certainty": "100",
+      "result": "true",
+      "elapsed_ns": "37668333",
+      "cpu_ns": "37673000",
+      "allocated_bytes": "360368",
+      "input_sha256": "152016fe6f4d2b0ebac00c9988ef3ff8c2d63973a274db0e088e9fa2ae6ce6c2",
+      "artifact_sha256": "7f084311aea30b74f68db340e28e2ea60e7f4ce2decd7d219d603456f51be79b"
+    },
+    {
+      "exponent": "1279",
+      "certainty": "100",
+      "result": "true",
+      "elapsed_ns": "223409917",
+      "cpu_ns": "223402000",
+      "allocated_bytes": "369680",
+      "input_sha256": "aaa42d44bf59eb3b901c42a4f1b4404b4d483d07bcf4dfb920cb1518da372239",
+      "artifact_sha256": "7f084311aea30b74f68db340e28e2ea60e7f4ce2decd7d219d603456f51be79b"
+    },
+    {
+      "exponent": "2203",
+      "certainty": "100",
+      "result": "true",
+      "elapsed_ns": "1080210458",
+      "cpu_ns": "1080095000",
+      "allocated_bytes": "383272",
+      "input_sha256": "b42001346f06c6e642863f610cb02a35dca625166991cd700f5afc68d746a2ea",
+      "artifact_sha256": "7f084311aea30b74f68db340e28e2ea60e7f4ce2decd7d219d603456f51be79b"
+    },
+    {
+      "exponent": "2281",
+      "certainty": "100",
+      "result": "true",
+      "elapsed_ns": "1229483417",
+      "cpu_ns": "1229407000",
+      "allocated_bytes": "384792",
+      "input_sha256": "6678da2e833ee4283b148fa8b248f2a5b0bd6b8092167c4b9df94557bc236980",
+      "artifact_sha256": "7f084311aea30b74f68db340e28e2ea60e7f4ce2decd7d219d603456f51be79b"
+    },
+    {
+      "exponent": "3217",
+      "certainty": "100",
+      "result": "true",
+      "elapsed_ns": "3616291292",
+      "cpu_ns": "3606838000",
+      "allocated_bytes": "398552",
+      "input_sha256": "aa17a9176f2027bb1b9b8dd0b04f8a8017e7a6816ea454f297aa2be7bf25ed42",
+      "artifact_sha256": "7f084311aea30b74f68db340e28e2ea60e7f4ce2decd7d219d603456f51be79b"
+    },
+    {
+      "exponent": "4253",
+      "certainty": "100",
+      "result": "true",
+      "elapsed_ns": "12131406833",
+      "cpu_ns": "10283357000",
+      "allocated_bytes": "414216",
+      "input_sha256": "834869b2ea80de484a99dda80a931d4f2e65e002541853fbd3edf69b98eee958",
+      "artifact_sha256": "7f084311aea30b74f68db340e28e2ea60e7f4ce2decd7d219d603456f51be79b"
+    }
+  ],
+  "scope": "Metadata audit of retained results; no numerical execution or official TCK certification"
+}

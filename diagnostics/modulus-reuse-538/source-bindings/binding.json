@@ -1,0 +1,28 @@
+{
+  "task": "local:538",
+  "owner": "77fbebb2",
+  "execution_grant_comment": 2571,
+  "baseline": {
+    "commit": "781d961b973274771999d0805d2238b7b8831511",
+    "source_root": "/Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree",
+    "source_manifest": "baseline-before.sha256",
+    "jar": "../artifacts/baseline.jar",
+    "sha256": "91f0d6a48b8f677f468cbd8b6cee0a617a6d456b96b8132cbd1488c9e92adbf8",
+    "build_log": "../logs/baseline-build.log",
+    "build_exit": 0
+  },
+  "candidate": {
+    "commit": "be76fb7fea5de133cc22b685b89faa025d0adb2f",
+    "source_root": "/private/tmp/krogu-math-538",
+    "source_manifest": "candidate-before.sha256",
+    "all_platforms_manifest": "candidate-all-platforms-before.sha256",
+    "jar": "../artifacts/candidate.jar",
+    "sha256": "7f084311aea30b74f68db340e28e2ea60e7f4ce2decd7d219d603456f51be79b",
+    "build_log": "../logs/focused-jvm.log",
+    "build_exit": 0
+  },
+  "production_difference": "Only BigInteger.kt; reviewed private WitnessSession and passesPrimeTest reuse delta. All other common/JVM main files byte-identical.",
+  "jdk": "BellSoft 25.0.4+9-LTS",
+  "kotlin": "2.4.21",
+  "measurement": "COMPLETE: smoke260, campaign3900, focused187, full1898, public6 selected PASS plus separately retained adaptation SKIP, strict7 TRUE, bounded paired JS108. See REPORT.md for limits."
+}

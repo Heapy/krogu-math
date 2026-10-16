@@ -1,0 +1,9 @@
+Verified 57 pinned sources and 14 dependency records; prepared 53 sources.
+Inventory: build/math-tck/inventory.json
+PASS baseline/BigInteger/BigIntegerTest/run-1: Completed retained invocation assertions
+PASS baseline/BigInteger/BigIntegerTest/run-2: Completed retained invocation assertions
+PASS baseline/BigInteger/PrimeTest/run-1: Completed retained invocation assertions
+PASS port/BigInteger/BigIntegerTest/run-1: Completed retained invocation assertions
+PASS port/BigInteger/BigIntegerTest/run-2: Completed retained invocation assertions
+PASS port/BigInteger/PrimeTest/run-1: Completed retained invocation assertions
+Results: /private/tmp/krogu-math-538/build/math-tck/results/1792160701052/results.json

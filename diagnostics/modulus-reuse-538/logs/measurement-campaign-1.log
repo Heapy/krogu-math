@@ -1,0 +1,18 @@
+2026-10-16T14:08:24.455221Z launch baseline-0
+baseline-0 pid=64036 start=2026-10-16T14:08:24.455Z
+baseline-0 exit=0
+2026-10-16T14:10:44.462Z launch candidate-0
+candidate-0 pid=65914 start=2026-10-16T14:10:44.462Z
+candidate-0 exit=0
+2026-10-16T14:13:02.487268Z launch candidate-1
+candidate-1 pid=67193 start=2026-10-16T14:13:02.487Z
+candidate-1 exit=0
+2026-10-16T14:15:33.733353Z launch baseline-1
+baseline-1 pid=68892 start=2026-10-16T14:15:33.733Z
+baseline-1 exit=0
+2026-10-16T14:17:55.029167Z launch baseline-2
+baseline-2 pid=71118 start=2026-10-16T14:17:55.029Z
+baseline-2 exit=0
+2026-10-16T14:20:54.208460Z launch candidate-2
+candidate-2 pid=73037 start=2026-10-16T14:20:54.208Z
+candidate-2 exit=0

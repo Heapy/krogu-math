@@ -1,0 +1,28 @@
+timestamp=2026-10-16T14:23:22.509196Z
+17:23  up 46 days,  1:18, 1 user, load averages: 8.44 10.68 8.66
+vm.swapusage: total = 10240.00M  used = 9658.25M  free = 581.75M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                    77670.
+Pages active:                                 530840.
+Pages inactive:                               512335.
+Pages speculative:                             24501.
+Pages throttled:                                   0.
+Pages wired down:                             365604.
+Pages purgeable:                               26697.
+"Translation faults":                    80113116591.
+Pages copy-on-write:                      2397003156.
+Pages zero filled:                       58042823694.
+Pages reactivated:                       20871445130.
+Pages purged:                             4026259715.
+File-backed pages:                            319890.
+Anonymous pages:                              747786.
+Pages stored in compressor:                  2980127.
+Pages occupied by compressor:                 788491.
+Decompressions:                          21615223467.
+Compressions:                            23402576691.
+Pageins:                                  2742848953.
+Pageouts:                                   19860265.
+Swapins:                                    81808458.
+Swapouts:                                  100862649.
+CPU/executable snapshots >=10%, no argument lists:
+  403     1  38.1  0.4 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer

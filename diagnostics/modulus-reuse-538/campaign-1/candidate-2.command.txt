@@ -1,0 +1,10 @@
+/Users/yoda/.sdkman/candidates/kotlin/2.4.21/bin/kotlinr
+/private/tmp/krogu-math-538/scripts/measure-modulus-reuse-538.main.kts
+--child
+/Users/yoda/dev/pet/krogu-math/.codex-work/538/artifacts/candidate.jar
+7f084311aea30b74f68db340e28e2ea60e7f4ce2decd7d219d603456f51be79b
+candidate
+2
+5
+5
+protocol-538-v1

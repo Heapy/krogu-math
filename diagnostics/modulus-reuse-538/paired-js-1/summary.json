@@ -1,0 +1,272 @@
+{
+  "processes": 6,
+  "rows": 108,
+  "fixture_count": 6,
+  "note": "Three process-pair observations; three samples within a process are not independent forks. Original assertions are outcome checks, allocation NA. No universal claim.",
+  "results": [
+    {
+      "title": "io.heapy.krogu.math PrimeOracleTest successorsAt257Bits",
+      "pairs": [
+        {
+          "fork": 0,
+          "baseline": {
+            "wall_ns": 948541167.0,
+            "process_cpu_ns": 958415000.0
+          },
+          "candidate": {
+            "wall_ns": 879508541.0,
+            "process_cpu_ns": 885007000.0
+          },
+          "candidate_over_baseline_wall": 0.9272223194926447,
+          "candidate_over_baseline_cpu": 0.9234068748924005
+        },
+        {
+          "fork": 1,
+          "baseline": {
+            "wall_ns": 952958042.0,
+            "process_cpu_ns": 962645000.0
+          },
+          "candidate": {
+            "wall_ns": 866788000.0,
+            "process_cpu_ns": 871956000.0
+          },
+          "candidate_over_baseline_wall": 0.9095762476392428,
+          "candidate_over_baseline_cpu": 0.9057918547335726
+        },
+        {
+          "fork": 2,
+          "baseline": {
+            "wall_ns": 953667125.0,
+            "process_cpu_ns": 958208000.0
+          },
+          "candidate": {
+            "wall_ns": 1248390375.0,
+            "process_cpu_ns": 1260674000.0
+          },
+          "candidate_over_baseline_wall": 1.3090420569965646,
+          "candidate_over_baseline_cpu": 1.3156579782260218
+        }
+      ]
+    },
+    {
+      "title": "io.heapy.krogu.math PrimeOracleTest successorsInLower256BitHalf",
+      "pairs": [
+        {
+          "fork": 0,
+          "baseline": {
+            "wall_ns": 615897250.0,
+            "process_cpu_ns": 618083000.0
+          },
+          "candidate": {
+            "wall_ns": 539814541.0,
+            "process_cpu_ns": 540950000.0
+          },
+          "candidate_over_baseline_wall": 0.8764685034719671,
+          "candidate_over_baseline_cpu": 0.8752060807367296
+        },
+        {
+          "fork": 1,
+          "baseline": {
+            "wall_ns": 622383458.0,
+            "process_cpu_ns": 623886000.0
+          },
+          "candidate": {
+            "wall_ns": 538342709.0,
+            "process_cpu_ns": 539305000.0
+          },
+          "candidate_over_baseline_wall": 0.8649695008442849,
+          "candidate_over_baseline_cpu": 0.8644287578179347
+        },
+        {
+          "fork": 2,
+          "baseline": {
+            "wall_ns": 773203792.0,
+            "process_cpu_ns": 776138000.0
+          },
+          "candidate": {
+            "wall_ns": 601876250.0,
+            "process_cpu_ns": 603250000.0
+          },
+          "candidate_over_baseline_wall": 0.7784186474864055,
+          "candidate_over_baseline_cpu": 0.7772457990718146
+        }
+      ]
+    },
+    {
+      "title": "io.heapy.krogu.math PrimeOracleTest successorsInUpper256BitHalf",
+      "pairs": [
+        {
+          "fork": 0,
+          "baseline": {
+            "wall_ns": 648251875.0,
+            "process_cpu_ns": 650649000.0
+          },
+          "candidate": {
+            "wall_ns": 578239875.0,
+            "process_cpu_ns": 579555000.0
+          },
+          "candidate_over_baseline_wall": 0.8919987697683096,
+          "candidate_over_baseline_cpu": 0.8907337135690672
+        },
+        {
+          "fork": 1,
+          "baseline": {
+            "wall_ns": 641396959.0,
+            "process_cpu_ns": 643912000.0
+          },
+          "candidate": {
+            "wall_ns": 573673125.0,
+            "process_cpu_ns": 575347000.0
+          },
+          "candidate_over_baseline_wall": 0.8944119814574923,
+          "candidate_over_baseline_cpu": 0.8935180583682242
+        },
+        {
+          "fork": 2,
+          "baseline": {
+            "wall_ns": 742988583.0,
+            "process_cpu_ns": 745522000.0
+          },
+          "candidate": {
+            "wall_ns": 739322708.0,
+            "process_cpu_ns": 741664000.0
+          },
+          "candidate_over_baseline_wall": 0.9950660412772453,
+          "candidate_over_baseline_cpu": 0.9948251024114647
+        }
+      ]
+    },
+    {
+      "title": "io.heapy.krogu.math PrimeOracleTest successorsThrough255Bits",
+      "pairs": [
+        {
+          "fork": 0,
+          "baseline": {
+            "wall_ns": 531763834.0,
+            "process_cpu_ns": 534900000.0
+          },
+          "candidate": {
+            "wall_ns": 454066083.0,
+            "process_cpu_ns": 457175000.0
+          },
+          "candidate_over_baseline_wall": 0.8538867331094202,
+          "candidate_over_baseline_cpu": 0.8546924658814732
+        },
+        {
+          "fork": 1,
+          "baseline": {
+            "wall_ns": 536220458.0,
+            "process_cpu_ns": 539518000.0
+          },
+          "candidate": {
+            "wall_ns": 445137416.0,
+            "process_cpu_ns": 446265000.0
+          },
+          "candidate_over_baseline_wall": 0.8301388157778941,
+          "candidate_over_baseline_cpu": 0.8271549790739141
+        },
+        {
+          "fork": 2,
+          "baseline": {
+            "wall_ns": 774124959.0,
+            "process_cpu_ns": 775632000.0
+          },
+          "candidate": {
+            "wall_ns": 674039459.0,
+            "process_cpu_ns": 679601000.0
+          },
+          "candidate_over_baseline_wall": 0.8707114415619818,
+          "candidate_over_baseline_cpu": 0.8761899973183159
+        }
+      ]
+    },
+    {
+      "title": "io.heapy.krogu.math OddModulusContext538Test carryHeavyAndNearRadixPowers",
+      "pairs": [
+        {
+          "fork": 0,
+          "baseline": {
+            "wall_ns": 40404834.0,
+            "process_cpu_ns": 41861000.0
+          },
+          "candidate": {
+            "wall_ns": 40470250.0,
+            "process_cpu_ns": 42673000.0
+          },
+          "candidate_over_baseline_wall": 1.0016190142001327,
+          "candidate_over_baseline_cpu": 1.019397529920451
+        },
+        {
+          "fork": 1,
+          "baseline": {
+            "wall_ns": 40009250.0,
+            "process_cpu_ns": 41903000.0
+          },
+          "candidate": {
+            "wall_ns": 39981250.0,
+            "process_cpu_ns": 41526000.0
+          },
+          "candidate_over_baseline_wall": 0.9993001618375751,
+          "candidate_over_baseline_cpu": 0.9910030308092499
+        },
+        {
+          "fork": 2,
+          "baseline": {
+            "wall_ns": 55413291.0,
+            "process_cpu_ns": 57474000.0
+          },
+          "candidate": {
+            "wall_ns": 51841875.0,
+            "process_cpu_ns": 54278000.0
+          },
+          "candidate_over_baseline_wall": 0.9355494695306944,
+          "candidate_over_baseline_cpu": 0.9443922469290462
+        }
+      ]
+    },
+    {
+      "title": "io.heapy.krogu.math Division530Test literalMultiLimbSignedDivision",
+      "pairs": [
+        {
+          "fork": 0,
+          "baseline": {
+            "wall_ns": 894888.03125,
+            "process_cpu_ns": 913156.25
+          },
+          "candidate": {
+            "wall_ns": 890050.78125,
+            "process_cpu_ns": 914000.0
+          },
+          "candidate_over_baseline_wall": 0.9945945751523314,
+          "candidate_over_baseline_cpu": 1.0009239930187195
+        },
+        {
+          "fork": 1,
+          "baseline": {
+            "wall_ns": 893509.09375,
+            "process_cpu_ns": 929187.5
+          },
+          "candidate": {
+            "wall_ns": 897097.65625,
+            "process_cpu_ns": 915343.75
+          },
+          "candidate_over_baseline_wall": 1.0040162573890983,
+          "candidate_over_baseline_cpu": 0.9851012309141051
+        },
+        {
+          "fork": 2,
+          "baseline": {
+            "wall_ns": 1165295.5625,
+            "process_cpu_ns": 1229281.25
+          },
+          "candidate": {
+            "wall_ns": 1085904.9375,
+            "process_cpu_ns": 1105656.25
+          },
+          "candidate_over_baseline_wall": 0.9318708252611234,
+          "candidate_over_baseline_cpu": 0.8994331036937234
+        }
+      ]
+    }
+  ]
+}

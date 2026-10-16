@@ -1,0 +1,3 @@
+750ec058be6e4bbe425d2d74e5a0704f2d8174d93e87086fbf2fa55d634f8352  scripts/check-known-primes-538.main.kts
+345c63dd9325ef1767ae0836f8eb243f26242c7d554dc142b5209fd7c2c2dd58  scripts/measure-modulus-reuse-538.main.kts
+297540b04ca373574a83405c736a0ab43591422957191614fe0143b4fe87ae8b  docs/modulus-reuse-538.md

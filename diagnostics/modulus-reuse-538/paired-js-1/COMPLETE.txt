@@ -1,0 +1,2 @@
+PASS six processes / six exact original assertion callbacks / 108 samples; fixture diagnostic, not operation throughput
+probe_sha256=bb2d85734110a10648f471ae2ba33b3abe6bd18fd0ffd361f99351cdc1199cfd

@@ -1,0 +1,19 @@
+title,sample,count,elapsed_ns,process_cpu_ns,ns_per_fixture,process_cpu_ns_per_fixture,completed_assertion_callbacks
+io.heapy.krogu.math PrimeOracleTest successorsAt257Bits,0,1,966116750,972390000,966116750,972390000,4
+io.heapy.krogu.math PrimeOracleTest successorsAt257Bits,1,1,952958042,962645000,952958042,962645000,5
+io.heapy.krogu.math PrimeOracleTest successorsAt257Bits,2,1,950345250,953139000,950345250,953139000,6
+io.heapy.krogu.math PrimeOracleTest successorsInLower256BitHalf,0,1,622383458,623886000,622383458,623886000,10
+io.heapy.krogu.math PrimeOracleTest successorsInLower256BitHalf,1,1,624591959,626240000,624591959,626240000,11
+io.heapy.krogu.math PrimeOracleTest successorsInLower256BitHalf,2,1,621251625,623425000,621251625,623425000,12
+io.heapy.krogu.math PrimeOracleTest successorsInUpper256BitHalf,0,1,646368000,647946000,646368000,647946000,16
+io.heapy.krogu.math PrimeOracleTest successorsInUpper256BitHalf,1,1,640247375,641886000,640247375,641886000,17
+io.heapy.krogu.math PrimeOracleTest successorsInUpper256BitHalf,2,1,641396959,643912000,641396959,643912000,18
+io.heapy.krogu.math PrimeOracleTest successorsThrough255Bits,0,1,534865708,538180000,534865708,538180000,22
+io.heapy.krogu.math PrimeOracleTest successorsThrough255Bits,1,1,536220458,540011000,536220458,540011000,23
+io.heapy.krogu.math PrimeOracleTest successorsThrough255Bits,2,1,538104542,539518000,538104542,539518000,24
+io.heapy.krogu.math OddModulusContext538Test carryHeavyAndNearRadixPowers,0,1,40024625,42023000,40024625,42023000,31
+io.heapy.krogu.math OddModulusContext538Test carryHeavyAndNearRadixPowers,1,1,39976708,40394000,39976708,40394000,32
+io.heapy.krogu.math OddModulusContext538Test carryHeavyAndNearRadixPowers,2,1,40009250,41903000,40009250,41903000,33
+io.heapy.krogu.math Division530Test literalMultiLimbSignedDivision,0,32,28568750,29734000,892773.4375,929187.5,348
+io.heapy.krogu.math Division530Test literalMultiLimbSignedDivision,1,32,28592291,30014000,893509.09375,937937.5,380
+io.heapy.krogu.math Division530Test literalMultiLimbSignedDivision,2,32,28628333,29088000,894635.40625,909000,412

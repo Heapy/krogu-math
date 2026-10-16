@@ -1,0 +1,32 @@
+timestamp=2026-10-16T14:05:59.552940Z
+17:05  up 46 days, 1 hr, 1 user, load averages: 5.08 6.55 7.33
+vm.swapusage: total = 10240.00M  used = 9404.25M  free = 835.75M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                    14043.
+Pages active:                                 679313.
+Pages inactive:                               671356.
+Pages speculative:                             13648.
+Pages throttled:                                   0.
+Pages wired down:                             368865.
+Pages purgeable:                               76509.
+"Translation faults":                    80074370033.
+Pages copy-on-write:                      2395007317.
+Pages zero filled:                       58024002157.
+Pages reactivated:                       20865045401.
+Pages purged:                             4025129454.
+File-backed pages:                            429640.
+Anonymous pages:                              934677.
+Pages stored in compressor:                  2638761.
+Pages occupied by compressor:                 552451.
+Decompressions:                          21609602710.
+Compressions:                            23395925629.
+Pageins:                                  2741875659.
+Pageouts:                                   19786494.
+Swapins:                                    81787235.
+Swapouts:                                  100825393.
+CPU/executable snapshots >=10%, no argument lists:
+  403     1  42.9  0.5 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+ 9748     1  10.1  0.2 /System/Library/CoreServices/NotificationCenter.app/Contents/MacOS/NotificationCenter
+55224     1  12.2  0.8 /Applications/Telegram.localized/Telegram.app/Contents/MacOS/Telegram
+60620 60612 234.4  1.0 /Users/yoda/.sdkman/candidates/java/25.0.4-librca/bin/java
+74371     1  27.5  0.2 /Library/SystemExtensions/52B32A9A-6A60-42C6-A35C-9F87BC1F065E/io.tailscale.ipn.macsys.network-extension.systemextension/Contents/MacOS/io.tailscale.ipn.macsys.network-extension

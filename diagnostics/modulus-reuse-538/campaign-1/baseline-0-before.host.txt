@@ -1,0 +1,31 @@
+timestamp=2026-10-16T14:08:24.388977Z
+17:08  up 46 days,  1:03, 1 user, load averages: 4.54 5.73 6.86
+vm.swapusage: total = 10240.00M  used = 9380.25M  free = 859.75M  (encrypted)
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                    15190.
+Pages active:                                 643663.
+Pages inactive:                               621823.
+Pages speculative:                             19519.
+Pages throttled:                                   0.
+Pages wired down:                             381280.
+Pages purgeable:                               29802.
+"Translation faults":                    80079321424.
+Pages copy-on-write:                      2395365335.
+Pages zero filled:                       58026660529.
+Pages reactivated:                       20865605244.
+Pages purged:                             4025177165.
+File-backed pages:                            397455.
+Anonymous pages:                              887550.
+Pages stored in compressor:                  2749239.
+Pages occupied by compressor:                 617755.
+Decompressions:                          21609958497.
+Compressions:                            23396438574.
+Pageins:                                  2742026999.
+Pageouts:                                   19787259.
+Swapins:                                    81789309.
+Swapouts:                                  100825393.
+CPU/executable snapshots >=10%, no argument lists:
+  403     1  42.7  0.4 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+63777 63768 127.3  0.4 /Users/yoda/.sdkman/candidates/java/25.0.4-librca/bin/java
+63952 62430  20.5  0.3 /private/tmp/kotdoc-haskell/ghc/lib/ghc-9.12.2/bin/./ghc-9.12.2
+69361     1  15.2  0.0 /usr/libexec/syspolicyd

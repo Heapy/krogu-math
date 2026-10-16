@@ -1,0 +1,12 @@
+{
+  "baseline_commit": "781d961b973274771999d0805d2238b7b8831511",
+  "candidate_source_commit": "be76fb7fea5de133cc22b685b89faa025d0adb2f",
+  "production_files_byte_identical_to_frozen_before_full_manifests": true,
+  "prior_full_regression_terminal_exit": 0,
+  "selected_original_methods": 6,
+  "process_pairs": 3,
+  "sample_count_per_method": 3,
+  "artifact_tree_manifests": "baseline-before.sha256 and candidate-before.sha256",
+  "new_script_does_not_modify_production_or_test_source": true,
+  "command": "JAVA_HOME=/Users/yoda/.sdkman/candidates/java/25.0.4-librca /Users/yoda/.sdkman/candidates/kotlin/current/bin/kotlinr scripts/check-primality-js-538.main.kts /Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree /private/tmp/krogu-math-538 /Users/yoda/.gradle/nodejs/node-v24.16.0-darwin-arm64/bin/node /Users/yoda/dev/pet/krogu-math/.codex-work/538/paired-js-1"
+}

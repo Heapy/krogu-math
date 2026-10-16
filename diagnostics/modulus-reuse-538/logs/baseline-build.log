@@ -1,0 +1,32 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :kmpPartiallyResolvedDependenciesChecker
+> Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+
+> Task :compileKotlinJvm
+w: file:///Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt:335:76 Unnecessary non-null assertion (!!) on a non-null receiver of type 'Long'.
+w: file:///Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt:947:50 Unnecessary non-null assertion (!!) on a non-null receiver of type 'Long'.
+w: file:///Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree/src/commonMain/kotlin/io/heapy/krogu/math/MathSerializable.kt:4:1 'expect'/'actual' classes (including interfaces, objects, annotations, enums, and 'actual' typealiases) are in Beta. Consider using the '-Xexpect-actual-classes' flag to suppress this warning. Also see: https://youtrack.jetbrains.com/issue/KT-61573
+w: file:///Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree/src/commonMain/kotlin/io/heapy/krogu/math/MathSerializable.kt:7:10 'expect'/'actual' classes (including interfaces, objects, annotations, enums, and 'actual' typealiases) are in Beta. Consider using the '-Xexpect-actual-classes' flag to suppress this warning. Also see: https://youtrack.jetbrains.com/issue/KT-61573
+w: file:///Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree/src/commonMain/kotlin/io/heapy/krogu/math/PlatformRandom.kt:8:1 'expect'/'actual' classes (including interfaces, objects, annotations, enums, and 'actual' typealiases) are in Beta. Consider using the '-Xexpect-actual-classes' flag to suppress this warning. Also see: https://youtrack.jetbrains.com/issue/KT-61573
+w: file:///Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree/src/jvmMain/kotlin/io/heapy/krogu/math/MathSerializable.kt:3:1 'expect'/'actual' classes (including interfaces, objects, annotations, enums, and 'actual' typealiases) are in Beta. Consider using the '-Xexpect-actual-classes' flag to suppress this warning. Also see: https://youtrack.jetbrains.com/issue/KT-61573
+w: file:///Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree/src/jvmMain/kotlin/io/heapy/krogu/math/MathSerializable.kt:5:10 'expect'/'actual' classes (including interfaces, objects, annotations, enums, and 'actual' typealiases) are in Beta. Consider using the '-Xexpect-actual-classes' flag to suppress this warning. Also see: https://youtrack.jetbrains.com/issue/KT-61573
+w: file:///Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree/src/jvmMain/kotlin/io/heapy/krogu/math/PlatformRandomJvm.kt:3:1 'expect'/'actual' classes (including interfaces, objects, annotations, enums, and 'actual' typealiases) are in Beta. Consider using the '-Xexpect-actual-classes' flag to suppress this warning. Also see: https://youtrack.jetbrains.com/issue/KT-61573
+
+> Task :compileJvmMainJava NO-SOURCE
+> Task :jvmProcessResources NO-SOURCE
+> Task :processJvmMainResources SKIPPED
+> Task :jvmMainClasses
+> Task :jvmJar
+
+[Incubating] Problems report is available at: file:///Users/yoda/dev/pet/krogu-math/.codex-work/538/baseline-worktree/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 9s
+3 actionable tasks: 3 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.1/userguide/configuration_cache_enabling.html

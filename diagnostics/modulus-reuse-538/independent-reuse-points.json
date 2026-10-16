@@ -1,0 +1,236 @@
+[
+  {
+    "words": 1,
+    "exponent": "tiny",
+    "first_tested_k_above1_lower_all3forks": 4,
+    "observations": [
+      {
+        "k": 1,
+        "reuse_over_fresh_fork_medians": [
+          0.9574592643184701,
+          0.9894084991836194,
+          0.771497327452619
+        ]
+      },
+      {
+        "k": 4,
+        "reuse_over_fresh_fork_medians": [
+          0.4957692440971042,
+          0.4728669508137757,
+          0.4880016643642501
+        ]
+      },
+      {
+        "k": 16,
+        "reuse_over_fresh_fork_medians": [
+          0.344893442232826,
+          0.32106063617380676,
+          0.33041192402642555
+        ]
+      },
+      {
+        "k": 64,
+        "reuse_over_fresh_fork_medians": [
+          0.31853162088997433,
+          0.29979296804379424,
+          0.3448430529345995
+        ]
+      }
+    ]
+  },
+  {
+    "words": 1,
+    "exponent": "dense127",
+    "first_tested_k_above1_lower_all3forks": 16,
+    "observations": [
+      {
+        "k": 1,
+        "reuse_over_fresh_fork_medians": [
+          0.983642549418402,
+          1.00301589069859,
+          0.8111993335849744
+        ]
+      },
+      {
+        "k": 4,
+        "reuse_over_fresh_fork_medians": [
+          0.9997337976371233,
+          0.9304558080880456,
+          1.3812430504334787
+        ]
+      },
+      {
+        "k": 16,
+        "reuse_over_fresh_fork_medians": [
+          0.9419234792749224,
+          0.8986302923853584,
+          0.8529962923976002
+        ]
+      },
+      {
+        "k": 64,
+        "reuse_over_fresh_fork_medians": [
+          0.9089740165573654,
+          0.9117586235663687,
+          1.0953887603352428
+        ]
+      }
+    ]
+  },
+  {
+    "words": 18,
+    "exponent": "tiny",
+    "first_tested_k_above1_lower_all3forks": 4,
+    "observations": [
+      {
+        "k": 1,
+        "reuse_over_fresh_fork_medians": [
+          0.9981794229878744,
+          0.974583834081988,
+          1.1690604504419595
+        ]
+      },
+      {
+        "k": 4,
+        "reuse_over_fresh_fork_medians": [
+          0.3409911495824734,
+          0.3496722946764274,
+          0.36976772108440564
+        ]
+      },
+      {
+        "k": 16,
+        "reuse_over_fresh_fork_medians": [
+          0.17804260541041433,
+          0.19680900668318377,
+          0.15885437821961704
+        ]
+      },
+      {
+        "k": 64,
+        "reuse_over_fresh_fork_medians": [
+          0.13723884009508952,
+          0.14033786294137549,
+          0.1436525030921497
+        ]
+      }
+    ]
+  },
+  {
+    "words": 18,
+    "exponent": "dense127",
+    "first_tested_k_above1_lower_all3forks": 64,
+    "observations": [
+      {
+        "k": 1,
+        "reuse_over_fresh_fork_medians": [
+          1.002392071505322,
+          0.8523495629085024,
+          1.2033274386969652
+        ]
+      },
+      {
+        "k": 4,
+        "reuse_over_fresh_fork_medians": [
+          0.948753648717288,
+          0.5558312576297466,
+          2.0047686998883587
+        ]
+      },
+      {
+        "k": 16,
+        "reuse_over_fresh_fork_medians": [
+          0.9075578040005403,
+          0.8636408374011155,
+          1.1891067275643394
+        ]
+      },
+      {
+        "k": 64,
+        "reuse_over_fresh_fork_medians": [
+          0.9060391463484225,
+          0.8906010925955138,
+          0.8703556640652013
+        ]
+      }
+    ]
+  },
+  {
+    "words": 142,
+    "exponent": "tiny",
+    "first_tested_k_above1_lower_all3forks": 4,
+    "observations": [
+      {
+        "k": 1,
+        "reuse_over_fresh_fork_medians": [
+          1.000183595445917,
+          0.9943778471812746,
+          1.042330246363446
+        ]
+      },
+      {
+        "k": 4,
+        "reuse_over_fresh_fork_medians": [
+          0.32912922834378056,
+          0.3118952798773862,
+          0.34320756439750866
+        ]
+      },
+      {
+        "k": 16,
+        "reuse_over_fresh_fork_medians": [
+          0.16071134540939397,
+          0.14531404185884852,
+          0.16698929910693158
+        ]
+      },
+      {
+        "k": 64,
+        "reuse_over_fresh_fork_medians": [
+          0.11864267075030893,
+          0.10697614913291993,
+          0.11197502956749598
+        ]
+      }
+    ]
+  },
+  {
+    "words": 142,
+    "exponent": "dense127",
+    "first_tested_k_above1_lower_all3forks": 16,
+    "observations": [
+      {
+        "k": 1,
+        "reuse_over_fresh_fork_medians": [
+          0.9713880433334802,
+          1.0070969784206938,
+          1.1114132072434375
+        ]
+      },
+      {
+        "k": 4,
+        "reuse_over_fresh_fork_medians": [
+          0.8976301409823905,
+          0.8945305759104012,
+          1.3193917242178756
+        ]
+      },
+      {
+        "k": 16,
+        "reuse_over_fresh_fork_medians": [
+          0.880180892904441,
+          0.8700829564359691,
+          0.8804935592097595
+        ]
+      },
+      {
+        "k": 64,
+        "reuse_over_fresh_fork_medians": [
+          0.8673822664770282,
+          0.7855532202248577,
+          0.8597453925449571
+        ]
+      }
+    ]
+  }
+]

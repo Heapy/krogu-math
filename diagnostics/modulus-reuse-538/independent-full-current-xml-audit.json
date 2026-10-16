@@ -1,0 +1,26 @@
+{
+  "jvmTest": {
+    "methods": 629,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "jsNodeTest": {
+    "methods": 423,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "wasmJsNodeTest": {
+    "methods": 423,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "macosArm64Test": {
+    "methods": 423,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  }
+}

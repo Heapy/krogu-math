@@ -1,0 +1,7 @@
+3272b9d4cddf825808b447b93a2c3b8f04dc5c25340fb8be5c51b4f7e4b55b1f  docs/modulus-reuse-538.md
+750ec058be6e4bbe425d2d74e5a0704f2d8174d93e87086fbf2fa55d634f8352  scripts/check-known-primes-538.main.kts
+345c63dd9325ef1767ae0836f8eb243f26242c7d554dc142b5209fd7c2c2dd58  scripts/measure-modulus-reuse-538.main.kts
+771e7cd7b936e99be416d17a57eda9387d2731a620caa5a8006b6a6241d6395c  scripts/check-primality-js-538.main.kts
+084c380518cda48d6d730f9aa849786110ad5e6e5ba28349387e04e7cde75438  src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt
+eeb1d27724562856c8962156bc8d263d634bdc7af6964ec1b39828a5dcff3ebf  src/commonTest/kotlin/io/heapy/krogu/math/ModulusReuse538Test.kt
+edec35bf146b88d8fd8bd9ccb9aa83cb9a1f2e29b935e7ce7d81ff5f0e240e5e  src/jvmTest/kotlin/io/heapy/krogu/math/ModulusReuse538JvmTest.kt

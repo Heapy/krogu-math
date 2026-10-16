@@ -1,0 +1,96 @@
+{
+  "rows": 3900,
+  "exact_cases_per_child": 130,
+  "summary_groups": 260,
+  "source_artifact_checks": 108,
+  "prime_cases": {
+    "early-composite": {
+      "baseline": {
+        "median_ns": 625.327751159668,
+        "range_ns": [
+          596.1472244262695,
+          1610.7559204101562
+        ],
+        "allocated": 2016.0,
+        "fork_medians_ns": [
+          625.327751159668,
+          612.4610900878906,
+          1600.6876831054688
+        ]
+      },
+      "candidate": {
+        "median_ns": 646.0151672363281,
+        "range_ns": [
+          636.9851379394531,
+          684.7588272094727
+        ],
+        "allocated": 2040.0,
+        "fork_medians_ns": [
+          638.7456207275391,
+          676.8646240234375,
+          646.0151672363281
+        ]
+      },
+      "candidate_over_baseline": 1.0330825171892586
+    },
+    "fermat": {
+      "baseline": {
+        "median_ns": 3547.162353515625,
+        "range_ns": [
+          2627.1539916992188,
+          7582.10498046875
+        ],
+        "allocated": 20488.0,
+        "fork_medians_ns": [
+          3547.162353515625,
+          2644.5592041015625,
+          6492.12646484375
+        ]
+      },
+      "candidate": {
+        "median_ns": 3181.9890747070312,
+        "range_ns": [
+          2980.1177978515625,
+          3226.3031005859375
+        ],
+        "allocated": 3464.0,
+        "fork_medians_ns": [
+          3181.9890747070312,
+          3044.0088500976562,
+          3197.998046875
+        ]
+      },
+      "candidate_over_baseline": 0.8970519975081864
+    },
+    "mersenne127": {
+      "baseline": {
+        "median_ns": 729149.09375,
+        "range_ns": [
+          652114.2578125,
+          1687560.546875
+        ],
+        "allocated": 35054.5,
+        "fork_medians_ns": [
+          729149.09375,
+          653722.0078125,
+          1494293.625
+        ]
+      },
+      "candidate": {
+        "median_ns": 683495.1171875,
+        "range_ns": [
+          618777.015625,
+          699979.8203125
+        ],
+        "allocated": 10589.125,
+        "fork_medians_ns": [
+          684180.015625,
+          626290.6875,
+          690636.390625
+        ]
+      },
+      "candidate_over_baseline": 0.9373873231773457
+    }
+  },
+  "status": "measurement/source metadata PASS; public gates/full regression still pending"
+}

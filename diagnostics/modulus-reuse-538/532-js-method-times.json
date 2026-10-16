@@ -1,0 +1,2082 @@
+[
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalBinaryCancellationTest",
+    "name": "doubleMidpointsRetainParityAndDistantStickyTails[js, node]",
+    "seconds": 23.208
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalBinaryCancellationTest",
+    "name": "floatMidpointsRetainParityAndDistantStickyTails[js, node]",
+    "seconds": 20.026
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.Division530Test",
+    "name": "unbalancedDenseAndSparseOperands[js, node]",
+    "seconds": 8.486
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PortableOracleTest",
+    "name": "jdk25BehaviorOnEveryPlatform[js, node]",
+    "seconds": 8.429
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ScaleBoundaryOracleTest",
+    "name": "wideCoefficientsBatch03[js, node]",
+    "seconds": 7.399
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ScaleBoundaryOracleTest",
+    "name": "wideCoefficientsBatch00[js, node]",
+    "seconds": 6.426
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ScaleBoundaryOracleTest",
+    "name": "wideCoefficientsBatch09[js, node]",
+    "seconds": 6.342
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ScaleBoundaryOracleTest",
+    "name": "wideCoefficientsBatch06[js, node]",
+    "seconds": 6.272
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ScaleBoundaryOracleTest",
+    "name": "wideCoefficientsBatch01[js, node]",
+    "seconds": 5.354
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBitsOracleTest",
+    "name": "wideBoundaries[js, node]",
+    "seconds": 5.345
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ScaleBoundaryOracleTest",
+    "name": "wideCoefficientsBatch04[js, node]",
+    "seconds": 5.313
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextDispatchOracleTest",
+    "name": "contextDivisionPreservesOperandCallOrderAndFailurePrecedence[js, node]",
+    "seconds": 5.267
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases11[js, node]",
+    "seconds": 4.29
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases12[js, node]",
+    "seconds": 4.289
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases30[js, node]",
+    "seconds": 4.288
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases02[js, node]",
+    "seconds": 4.277
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases05[js, node]",
+    "seconds": 4.275
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases17[js, node]",
+    "seconds": 4.268
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases08[js, node]",
+    "seconds": 4.26
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases22[js, node]",
+    "seconds": 4.26
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ScaleBoundaryOracleTest",
+    "name": "wideCoefficientsBatch08[js, node]",
+    "seconds": 4.258
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases20[js, node]",
+    "seconds": 4.255
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases03[js, node]",
+    "seconds": 4.252
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases00[js, node]",
+    "seconds": 4.233
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases09[js, node]",
+    "seconds": 4.227
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases27[js, node]",
+    "seconds": 4.219
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ScaleBoundaryOracleTest",
+    "name": "wideCoefficientsBatch07[js, node]",
+    "seconds": 4.213
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases14[js, node]",
+    "seconds": 4.207
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases23[js, node]",
+    "seconds": 4.205
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ScaleBoundaryOracleTest",
+    "name": "wideCoefficientsBatch02[js, node]",
+    "seconds": 4.203
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases25[js, node]",
+    "seconds": 4.197
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases31[js, node]",
+    "seconds": 4.194
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases07[js, node]",
+    "seconds": 4.187
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases28[js, node]",
+    "seconds": 4.177
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalStickyEquality586Test",
+    "name": "DecimalStickyEquality586SignedModesAndSubtractDelegation[js, node]",
+    "seconds": 4.176
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases18[js, node]",
+    "seconds": 4.172
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases16[js, node]",
+    "seconds": 4.162
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ScaleBoundaryOracleTest",
+    "name": "wideCoefficientsBatch05[js, node]",
+    "seconds": 3.219
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalStickyEquality586Test",
+    "name": "DecimalStickyEquality586SelectionBoundaryAndOperandOrder[js, node]",
+    "seconds": 3.211
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases15[js, node]",
+    "seconds": 3.204
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases21[js, node]",
+    "seconds": 3.203
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases19[js, node]",
+    "seconds": 3.2
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionNormalizationContractTest",
+    "name": "unsupportedExactCohortDoesNotPreemptRoundedCarry[js, node]",
+    "seconds": 3.194
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases24[js, node]",
+    "seconds": 3.191
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases06[js, node]",
+    "seconds": 3.189
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases04[js, node]",
+    "seconds": 3.186
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases01[js, node]",
+    "seconds": 3.183
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases26[js, node]",
+    "seconds": 3.173
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases10[js, node]",
+    "seconds": 3.168
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases29[js, node]",
+    "seconds": 3.157
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "portableBoundaryCases13[js, node]",
+    "seconds": 3.144
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerDivisionDispatchOracleTest",
+    "name": "ordinaryAndSubclassDivision[js, node]",
+    "seconds": 3.139
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ScaleBoundaryOracleTest",
+    "name": "compactCoefficientsAndScaleEndpoints[js, node]",
+    "seconds": 3.118
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerSqrtOracleTest",
+    "name": "rootBoundariesAt4096Bits[js, node]",
+    "seconds": 2.139
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerModPowOracleTest",
+    "name": "wideBoundaries[js, node]",
+    "seconds": 1.075
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.RandomIntegerDistributionTest",
+    "name": "everySmallBytePayloadHasEqualMultiplicityInTheRequestedRange[js, node]",
+    "seconds": 1.075
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalBinaryCancellationTest",
+    "name": "signedEquivalentCohortsRetainExactRawBits[js, node]",
+    "seconds": 1.075
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimalityCertaintyTest",
+    "name": "boundedSuccessorsNeverSkipATrialDivisionPrime[js, node]",
+    "seconds": 1.074
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalExactRoot563Test",
+    "name": "rootFamiliesAndTrailingZeroCancellation[js, node]",
+    "seconds": 1.073
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionPreferredScaleContractTest",
+    "name": "reducedDenominatorsAndCancellation[js, node]",
+    "seconds": 1.072
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerPowOracleTest",
+    "name": "valuesCallbacksErrorsAndIdentities[js, node]",
+    "seconds": 1.072
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.MathContextGrammarTest",
+    "name": "characters6[js, node]",
+    "seconds": 1.072
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CharacterOracleTest",
+    "name": "bmpConstructors8000tobfff[js, node]",
+    "seconds": 1.071
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalBinaryCancellationTest",
+    "name": "truthfulSubclassKeepsStoredValueAndGeneralPathSignDispatch[js, node]",
+    "seconds": 1.07
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CharacterOracleTest",
+    "name": "bmpConstructors4000to7fff[js, node]",
+    "seconds": 1.07
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionNormalizationContractTest",
+    "name": "exactCancellationAndReducedTerminatingDenominators[js, node]",
+    "seconds": 1.068
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerArithmeticOracleTest",
+    "name": "arithmeticThrough16384Bits[js, node]",
+    "seconds": 1.065
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.MathContextGrammarTest",
+    "name": "characters3[js, node]",
+    "seconds": 1.064
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionPreferredScaleContractTest",
+    "name": "finiteRoundingAndCarryNeighbors[js, node]",
+    "seconds": 1.063
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalBinaryPrefixTest",
+    "name": "stickyTracksEveryDiscardedDigitIncludingAnExtraQuotientDigit[js, node]",
+    "seconds": 1.063
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimeOracleTest",
+    "name": "successorsInUpper256BitHalf[js, node]",
+    "seconds": 1.061
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleContractTest",
+    "name": "DecimalScaleContractZeroAndZeroDivisors[js, node]",
+    "seconds": 1.059
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.MathContextGrammarTest",
+    "name": "characters1[js, node]",
+    "seconds": 1.059
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerSqrtOracleTest",
+    "name": "rootBoundariesThrough2048Bits[js, node]",
+    "seconds": 1.058
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalKey536Test",
+    "name": "hugeSignificandsAndNegativeOrdering[js, node]",
+    "seconds": 1.053
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerParserOracleTest",
+    "name": "stringConstructorValuesAndDiagnostics[js, node]",
+    "seconds": 1.049
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerMultiplication532Test",
+    "name": "squareEntrySelectorMatchesIndependentReferenceAtBoundaries[js, node]",
+    "seconds": 1.046
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimeOracleTest",
+    "name": "primalityCertaintyContracts[js, node]",
+    "seconds": 1.046
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimeOracleTest",
+    "name": "successorsAt257Bits[js, node]",
+    "seconds": 1.046
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalBinaryPrefixTest",
+    "name": "decimalPowersAndTheirImmediateNeighborsHaveIndependentTextExpectations[js, node]",
+    "seconds": 1.044
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.MathContextGrammarTest",
+    "name": "characters4[js, node]",
+    "seconds": 1.044
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalKey536Test",
+    "name": "orderingMatchesDecimalComparison[js, node]",
+    "seconds": 1.042
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleRoundingRepairTest",
+    "name": "contextMultiplicationRequiredReductionAndCarry[js, node]",
+    "seconds": 1.025
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimeOracleTest",
+    "name": "successorsThrough255Bits[js, node]",
+    "seconds": 1.01
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CharacterOracleTest",
+    "name": "bmpConstructorsc000toffff[js, node]",
+    "seconds": 1.005
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ScaledDivisionMidpoint584Test",
+    "name": "signsTiesParityAndWordBoundariesAgainstPrimitiveRationals[js, node]",
+    "seconds": 0.396
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalIntegralDispatchOracleTest",
+    "name": "inheritedIntegralDivisionUsesVirtualContextDivision[js, node]",
+    "seconds": 0.004
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalNumericMetadataTest",
+    "name": "comparisonHandlesEqualDecadesRemaindersSignsAndExtremeScales[js, node]",
+    "seconds": 0.001
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBits545ContractTest",
+    "name": "composedUpdatesCrossLimbAndPublicWordBoundaries[js, node]",
+    "seconds": 0.001
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ConstructorRandom549Test",
+    "name": "nonnullRandomUsesRequiredInvalidBitExceptionCategories[js, node]",
+    "seconds": 0.001
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.BitwiseSubclassTest",
+    "name": "inheritedBitOperationsUseStoredValue[js, node]",
+    "seconds": 0.001
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerGcdOracleTest",
+    "name": "valuesCallbacksAndIdentities[js, node]",
+    "seconds": 0.001
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionNormalization594Test",
+    "name": "exactNoncompactRatiosRetainLengthsPaddingScalesAndSigns[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionNormalization594Test",
+    "name": "fixedScaleNoncompactProductsMatchIndependentRationalsForAllModes[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionNormalization594Test",
+    "name": "noncompactBoundaryStickyZeroAndEndpointErrorsRemainMathematical[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerParserRange559Test",
+    "name": "conservativeBitBoundUsesTheLastNonrejectedCountForEveryRadix[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerParserRange559Test",
+    "name": "symbolicPublicHexWitnessIsRejectedWithoutAllocatingItsText[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerParserRange559Test",
+    "name": "ordinarySignsLeadingZerosAndRadicesKeepTheirValues[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerParserRange559Test",
+    "name": "boundedMalformedTextRetainsDigitAndSignErrors[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+    "name": "literalsPreserveZeroSignsAndLimbBoundariesWithoutChangingTheValue[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+    "name": "importedAndAliasedAccessComposeWithTruthfulVirtualGetterAndSuper[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+    "name": "directGetterExceptionIdentitySurvivesBothPropertyImports[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSqrtMidpoint565Test",
+    "name": "tinyPositiveRemainderAllEightModes[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSqrtMidpoint565Test",
+    "name": "literalNeighborsTiesPrecisionScaleAndWideCohorts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSqrtMidpoint565Test",
+    "name": "exactRootsAndPreferredRepresentationRemain[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSqrtMidpoint565Test",
+    "name": "explicitOverrideSuperAndDirectExceptionIdentity[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPowWorkingPrecisionContractTest",
+    "name": "unitPowersSurviveEveryWorkingPrecisionBoundary[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPowWorkingPrecisionContractTest",
+    "name": "exactMonomialsKeepTheirScaleForEitherExponentSign[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPowWorkingPrecisionContractTest",
+    "name": "exactProductsAndReciprocalsHaveIndependentCoefficientScaleControls[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPowWorkingPrecisionContractTest",
+    "name": "zeroPowersRetainTheirArithmeticAndSaturatedScaleRules[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPowWorkingPrecisionContractTest",
+    "name": "exponentAndUnlimitedContextValidationStillApplies[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPowWorkingPrecisionContractTest",
+    "name": "explicitCallerDispatchSuperAndExceptionIdentityRemainAvailable[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionPreferredScaleContractTest",
+    "name": "lowExactAndUnlimitedWitness[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionPreferredScaleContractTest",
+    "name": "lowFiniteWitnessAllModes[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionPreferredScaleContractTest",
+    "name": "highOneDigitWitnessOnly[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionPreferredScaleContractTest",
+    "name": "hugePrecisionDoesNotPadSmallExactResult[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionPreferredScaleContractTest",
+    "name": "genuineErrorsAndNulls[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionPreferredScaleContractTest",
+    "name": "independentStringModelMatchesLongRationalModel[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalIntegralDispatchOracleTest",
+    "name": "signedMetadataAndScaleEndpointsDetermineContextPrecision[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerArithmetic544ContractTest",
+    "name": "denseCarryBorrowAndProductsHaveIndependentHexExpectations[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerArithmetic544ContractTest",
+    "name": "highestDifferentDigitDominatesAllOpposingLowDigits[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerArithmetic544ContractTest",
+    "name": "denseProductFeedsSignedDivisionEuclidAndFloorRoot[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerArithmetic544ContractTest",
+    "name": "powersCrossCompactUnsignedAndShiftPackingBoundaries[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerArithmetic544ContractTest",
+    "name": "baseTypedKotlinCallsComposeTruthfulOverridesAndSuper[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerArithmetic544ContractTest",
+    "name": "explicitSuperAndSelfAliasRetainValuesAcrossReturnedWrappers[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerArithmetic544ContractTest",
+    "name": "zeroIdentityAndMathematicalErrorsDoNotRequireHugeAllocation[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerArithmetic544ContractTest",
+    "name": "explicitOverrideFailurePreservesTheCallerMarkerBeforeSuperValidation[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+    "name": "erasedGenericAndCollectionCallsPreserveWideLowBitsAndTruncation[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+    "name": "floatAndDoubleRemainDistinctIncludingTiesOverflowAndSignedUnderflow[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+    "name": "builtinNumbersKeepPlatformConversions[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+    "name": "concreteDispatchPreservesAllSubclassOverridesAndThrownIdentity[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerArithmeticOracleTest",
+    "name": "limbBoundariesThrough512Bits[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerArithmeticOracleTest",
+    "name": "arithmeticThrough1024Bits[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerArithmeticOracleTest",
+    "name": "arithmeticThrough4096Bits[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerArithmeticOracleTest",
+    "name": "arithmeticThrough8192Bits[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalOverloadContract541Test",
+    "name": "truthfulIntegralFamiliesKeepExactSignedRemaindersBeyondContextPrecision[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalOverloadContract541Test",
+    "name": "explicitIntegralCallerPreservesArgumentsResultsExceptionsAndOwnedSuper[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalOverloadContract541Test",
+    "name": "truthfulPointMotionAndAlternateTextHaveIndependentLiteralControls[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+    "name": "integerBoundariesAndNamedDecimalDefaultsSelectKroguTypes[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+    "name": "signedRadixAndDecimalTextPreserveValuesAndScale[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+    "name": "nullableParsingDoesNotSwallowConfigurationOrRoundingErrors[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimalityCertaintyTest",
+    "name": "successorBudgetsBoundTheWholeSearchAndExceedIntSafely[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimalityCertaintyTest",
+    "name": "generationBudgetCoversConditioningOnAcceptanceWithoutIntOverflow[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimalityCertaintyTest",
+    "name": "boundedDecisionsAgreeWithIndependentTrialDivision[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalKey536Test",
+    "name": "cohortsShareEqualityHashAndOrdering[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalKey536Test",
+    "name": "originalRepresentationAndCrossTypeEqualityRemainExplicit[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalKey536Test",
+    "name": "keysSnapshotMutableSubclassMetadata[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerMultiplication532Test",
+    "name": "forcedAlgorithmsMatchIndependentSchoolReference[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerMultiplication532Test",
+    "name": "unbalancedBlocksPropagateCarriesAndRespectRatioBoundary[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerMultiplication532Test",
+    "name": "publicSignedSquaresNeighborsAndSharedMagnitudeAliases[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerMultiplication532Test",
+    "name": "virtualParallelDispatchAndCheckedSizing[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalIntegral582CallerContractTest",
+    "name": "explicitContextOverrideAndCallerSuperRemainDistinct[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalOverloadDispatch541Test",
+    "name": "binaryDivisionIntegralAndScaleRowsCoverOrdinaryAndTruthfulReceivers[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalOverloadDispatch541Test",
+    "name": "unaryOrderingFormattingAndAdjacentRowsUseDocumentedFiniteControls[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalOverloadDispatch541Test",
+    "name": "callerOwnedOverridesPreserveDispatchArgumentsResultsAndExceptions[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalBinaryPrefixTest",
+    "name": "binaryPowersAndTheirImmediateNeighborsCrossBinaryDigitBoundaries[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalBinaryPrefixTest",
+    "name": "exactPrefixWidthBoundariesKeepTheCorrectDigitCount[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalBinaryPrefixTest",
+    "name": "storedValueExtractionDoesNotConsultPublicSubclassOverrides[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerSubtractDispatchOracleTest",
+    "name": "subtractionCallbacksValuesAndIdentitiesMatchJdk[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerComparableContractTest",
+    "name": "ordinarySortingAndGenericExtremaAreUsable[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimePrefixOracleTest",
+    "name": "virtualLengthFailuresAndEarlyReturns[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerModPowOracleTest",
+    "name": "negativeOneEqualityArgumentAndFactoryIdentity[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerModPowOracleTest",
+    "name": "ordinaryValuesAndIdentities[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerModPowOracleTest",
+    "name": "sourceCallbacks[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerModPowOracleTest",
+    "name": "exponentCallbacks[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerModPowOracleTest",
+    "name": "modulusCallbacks[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSum585Test",
+    "name": "rawSignedAlignmentAgainstBoundedLongRationalOracle[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSum585Test",
+    "name": "rawVirtualGapBorrowStickyAndRoundingCarryAcrossPage[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSum585Test",
+    "name": "rawScaleEndpointsZeroAndExactPreferredCohorts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSum585Test",
+    "name": "symbolicSafeAndNoRescueGatesAndBoundedPublicControls[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroUnaryPrecision567Test",
+    "name": "storedZeroUnaryKeepsPrecisionSentinel[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroUnaryPrecision567Test",
+    "name": "truthfulNonzeroRoundingRemainsNumericallyCorrect[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerInverseOracleTest",
+    "name": "reductionCallbacks[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerInverseOracleTest",
+    "name": "inverseSourceCallbacks[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerInverseOracleTest",
+    "name": "inverseModulusCallbacks[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerInverseOracleTest",
+    "name": "wideReductions[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerInverseOracleTest",
+    "name": "wideInverses[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+    "name": "integerPrefixAndPostfixKeepAliasesAndCrossSignedBoundaries[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+    "name": "decimalIncrementAndDecrementUseExactPreferredScale[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+    "name": "infixBitsAndSignedShiftsKeepUnboundedTwosComplementValues[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+    "name": "namedOperandsAndAliasImportsKeepBothPublicCallShapes[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+    "name": "integerExtensionsAndInfixMembersPreserveExplicitDispatchAndFailureIdentity[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+    "name": "decimalExtensionsPreserveExplicitExactOverloadDispatchAndFailureIdentity[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+    "name": "callerOwnedIncrementDeclarationsRemainLegalWithoutOverride[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalFixedScale592Test",
+    "name": "directRawCoefficientsMatchIndependentSignedRationalsAndExactPadding[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalFixedScale592Test",
+    "name": "publicEndpointsKeepRequestedScaleAndLegacyValidation[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalFixedScale592Test",
+    "name": "explicitCallerResultsExceptionsAndSuperEntryRemainSeparate[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalNumericMetadataTest",
+    "name": "exactDigitsAtDecimalPowerNeighborsAndEveryScale[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalNumericMetadataTest",
+    "name": "binaryPowerNeighborsAndCompactBoundariesHaveLiteralDigitExpectations[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalNumericMetadataTest",
+    "name": "storedHelpersDoNotDispatchToReplacementIntegerMethods[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalNumericMetadataTest",
+    "name": "normalizedSignificandsMatchAnIndependentBoundedTextModel[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalNumericMetadataTest",
+    "name": "truthfulDirectSuperCallsAndExceptionIdentityKeepTheirOrder[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalNumericMetadataTest",
+    "name": "misleadingPrecisionStillControlsReportedDecadeBeforeStoredSignificands[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBits545ContractTest",
+    "name": "fullTopLimbAndPartialTopLimbDecodeTheSameInfiniteTail[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBits545ContractTest",
+    "name": "negativeFloorHasExactAndInexactLimbBoundaryWitnesses[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBits545ContractTest",
+    "name": "sparseNegativeBorrowChainComposesMaskingAndFloor[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBits545ContractTest",
+    "name": "truthfulCompositionAndSelfAliasWorkThroughBaseTypedCaller[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBits545ContractTest",
+    "name": "directOverrideFailureIsTheCallersException[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+    "name": "primitiveLiteralsPreserveCanonicalTextScaleAndSelectKroguTypes[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+    "name": "floatBitBoundariesRetainAsymmetricAndDecimalTieRegressions[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+    "name": "smallSubnormalsUseTheUnionOfOneAndTwoDigitDecimals[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+    "name": "floatTextDoesNotUseWidenedDoubleOrTheExactBinaryConstructor[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+    "name": "contextsRoundTheSelectedDecimalWithAllEightModes[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+    "name": "nonfiniteInputsRetainNumberFormatErrorsWithAndWithoutContext[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalRemainderArrayOracleTest",
+    "name": "replacementPairArraysPreserveBoundsFailuresAndSecondElementIdentity[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextReturnedRepresentationContractTest",
+    "name": "everyFrozenSuccessfulRepresentationHasDirectOrdinaryAndTruthfulControls[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextReturnedRepresentationContractTest",
+    "name": "independentLiteralThresholdZeroSignAndExtremeScaleWitnesses[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBitsOracleTest",
+    "name": "largestBitAddressValuesAndDiagnostics[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBitsOracleTest",
+    "name": "binaryDispatch[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBitsOracleTest",
+    "name": "notDispatch[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBitsOracleTest",
+    "name": "setDispatch[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBitsOracleTest",
+    "name": "clearDispatch[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBitsOracleTest",
+    "name": "flipDispatch[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerBitsOracleTest",
+    "name": "queryDispatch[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ConstructorRandom549Test",
+    "name": "certaintyFactoryReturnsPositiveSmallPrimes[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ConstructorRandom549Test",
+    "name": "nonpositiveCertaintyStillReturnsPositiveRequestedBitLength[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.FloatingPowerTest",
+    "name": "everyScalingPowerMatchesItsIeeeEncoding[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.FloatingPowerTest",
+    "name": "integerPowersHaveExactFiniteAndInfinityEncodings[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.MagnitudeLimitsTest",
+    "name": "representationBoundaryDoesNotWrap[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.MagnitudeLimitsTest",
+    "name": "largePaddingAndComplementCarry[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroSqrtNull568Test",
+    "name": "validContextsKeepZeroAndPreferredScale[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroSqrtNull568Test",
+    "name": "nonzeroAndNegativeEntryControlsRemain[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroSqrtNull568Test",
+    "name": "explicitOverridesKeepResultAndExceptionIdentity[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ValueIdentityContractTest",
+    "name": "integerEqualityIncludesIndependentConstructionAndTruthfulSubclasses[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ValueIdentityContractTest",
+    "name": "decimalEqualityRequiresTheSameScaleEvenForZero[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ValueIdentityContractTest",
+    "name": "decimalMinAndMaxTiesReturnTheReceiverIncludingTruthfulSubclasses[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ValueIdentityContractTest",
+    "name": "integerMinAndMaxTiesReturnTheDistinctArgumentIncludingTruthfulSubclasses[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ValueIdentityContractTest",
+    "name": "integerAndDecimalOrderComposeWithCommonCollections[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ValueIdentityContractTest",
+    "name": "mutableInputSlicesCannotChangeCollectionKeys[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ValueIdentityContractTest",
+    "name": "integerResultPairSlotsAreIndependentAcrossCalls[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ValueIdentityContractTest",
+    "name": "decimalResultPairSlotsAreIndependentAcrossCalls[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ValueIdentityContractTest",
+    "name": "sharedConstantsRemainStableAfterCompositionsAndOutputMutations[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ValueIdentityContractTest",
+    "name": "everyContextModeAndPrecisionHasFieldBasedIdentity[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ValueIdentityContractTest",
+    "name": "roundingModesHaveStableNamesLegacyMappingAndIsolatedSnapshots[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ShiftSubclassTest",
+    "name": "shiftsUseStoredValueAndMatchResultIdentity[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.Division530Test",
+    "name": "scalarOracleAcrossLimbBoundaries[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.Division530Test",
+    "name": "literalMultiLimbSignedDivision[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.Division530Test",
+    "name": "quotientEstimateCorrectionsCapAndAddBack[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.Division530Test",
+    "name": "everyNormalizationShiftAndTopCarry[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.Division530Test",
+    "name": "detachedResultsAndZeroDivisor[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.Division530Test",
+    "name": "inheritedEntrypointsReadStoredOperands[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.Division530Test",
+    "name": "gcdInverseAndDecimalConsumers[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PlainStringPreflightTest",
+    "name": "impossibleLayoutsFailExplicitly[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PlainStringPreflightTest",
+    "name": "ordinaryLayoutsKeepScaleSignAndZeros[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PlainStringPreflightTest",
+    "name": "subclassDispatchStillOwnsSignAndEarlyReturns[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimeOracleTest",
+    "name": "boundedSuccessorContracts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimeOracleTest",
+    "name": "successorsThrough127Bits[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimeOracleTest",
+    "name": "successorsInLower256BitHalf[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimeOracleTest",
+    "name": "successorsAbove257Bits[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimeOracleTest",
+    "name": "successorCallbackContracts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimeOracleTest",
+    "name": "publishedStrongPseudoprimesAreRejected[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalTextRounding588Test",
+    "name": "actualPrivatePrefixAndPublicCharsAgainstBoundedLongRationals[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalTextRounding588Test",
+    "name": "literalChunkCarryPartialTailUnicodeAndExactCohorts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalTextRounding588Test",
+    "name": "fullSuffixValidationAndInitialVersusRoundingScaleErrors[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalTextRounding588Test",
+    "name": "selectedSliceIsolationAndActualPrecisionRangeClassification[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalExactRoot563Test",
+    "name": "hugePrecisionAndExtremeCohorts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalExactRoot563Test",
+    "name": "independentMidpointAndCarryLiterals[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalExactRoot563Test",
+    "name": "genuineErrorsAndPublicEntryRemain[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalUlp541ContractTest",
+    "name": "ordinaryAndTruthfulUlpKeepsUnitCoefficientAtEverySelectedStoredScale[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalUlp541ContractTest",
+    "name": "noContextPlusKeepsReceiverIdentityAndItsOriginalRepresentation[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalUlp541ContractTest",
+    "name": "explicitUlpAndPlusOverridesKeepCallerOwnedResultsExceptionsAndSuperEntry[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalOperatorContractTest",
+    "name": "scaleZeroDivisionRoundsInsteadOfRequiringAnExactExpansion[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalOperatorContractTest",
+    "name": "halfwayResultsChooseTheEvenEndpointForBothSigns[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalOperatorContractTest",
+    "name": "resultRetainsTheDividendScaleRegardlessOfDivisorScale[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalOperatorContractTest",
+    "name": "negativeDividendScalesAlsoRetainTheirRoundingPlace[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalOperatorContractTest",
+    "name": "zeroDividendsRetainScaleAndZeroDivisorsThrowArithmeticException[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalOperatorContractTest",
+    "name": "namedDivisionStillRequiresAnExactExpansion[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.RandomIntegerDistributionTest",
+    "name": "zeroBitsReturnsZeroAndRecordsRandomConsumption[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test",
+    "name": "directZeroHasLiteralScaleZeroAcrossEntireMetadataRange[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test",
+    "name": "noContextPlusRetainsIdentity[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test",
+    "name": "nonzeroExactRoundingKeepsRepresentableInputCohort[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test",
+    "name": "nonzeroMidpointAndCarryUseLiteralModeSpecificExpectations[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test",
+    "name": "explicitOverridesKeepResultAndExceptionIdentity[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test",
+    "name": "contextualConstructorsRetainTheirOwnZeroScales[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test",
+    "name": "cancellationAndZeroAdditionRetainPreferredScale[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test",
+    "name": "zeroProductsQuotientsAndPowersRetainOperationScales[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test",
+    "name": "unaryContractsAndExplicitDelegationRemainIntact[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test",
+    "name": "unaryZeroSeamUsesStoredCoefficientAndKeepsExplicitCalls[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test",
+    "name": "unaryOrderingAndExplicitAbsNegateOverridesKeepValidSemantics[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ZeroContextScale567Test",
+    "name": "floatingContextZeroRetainsCanonicalFactoryCohort[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.SqrtCohort587ComparisonTest",
+    "name": "threeFrozenKeysRequireLiteralFullFields[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.SqrtCohort587ComparisonTest",
+    "name": "exactAndZeroCohortsRemainAndExactOnlyValuesAreChecked[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.SqrtCohort587ComparisonTest",
+    "name": "directedAndNearestIntervalsRejectWrongNumbers[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.SqrtCohort587ComparisonTest",
+    "name": "finiteHalfwayRootsAndDecadeParityUseActualNeighbors[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.SqrtCohort587ComparisonTest",
+    "name": "largestProfileUsesBoundedLongDigitCertificates[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.SqrtCohort587ComparisonTest",
+    "name": "scalesUseLongAndCanonicalTextIsStrict[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.SqrtCohort587ComparisonTest",
+    "name": "everyRequiredFieldKindAndObservationStageMatters[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalIntegralQuotient582Test",
+    "name": "ordinaryAndTruthfulIntegralCohortsAgainstBoundedRationals[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalIntegralQuotient582Test",
+    "name": "directNegativeStreamKeepsUnreadDigitsDeferredZerosAndInputs[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalIntegralQuotient582Test",
+    "name": "virtualZeroSkipPreferredZerosAndUnlimitedDelegation[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalIntegralQuotient582Test",
+    "name": "capturedMismatchFallbackAndExplicitCallerContracts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPrimitiveLowBits591Test",
+    "name": "storedProductMatchesIndependentBitRingAcrossWordAndCarryBoundaries[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPrimitiveLowBits591Test",
+    "name": "publicScalesRetainLowBitsTruncationAndIntEndpointShortcuts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPrimitiveLowBits591Test",
+    "name": "publicComparisonReturnsRawUnitsAcrossEqualAndDifferentCohorts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionNormalizationContractTest",
+    "name": "roundedCarriesAndNonterminatingCarries[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionNormalizationContractTest",
+    "name": "hugePrecisionUsesSmallExactCohort[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionNormalizationContractTest",
+    "name": "terminatingPlacesCanExceedInputDecimalDigits[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalDivisionNormalizationContractTest",
+    "name": "genuineErrorsAndZero[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.HashOracleTest",
+    "name": "signedPowersAndNeighborsAcrossAllWordAlignments[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.HashOracleTest",
+    "name": "denseBinaryPatternsThrough65536Bytes[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalBinaryCancellationTest",
+    "name": "zeroAtExtremeAndCancellingScalesIsPositiveZero[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalCoefficientSubclassTest",
+    "name": "constructorsNormalizeSubclassByteEncoding[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalCoefficientSubclassTest",
+    "name": "ordinaryCoefficientIdentityIsPreserved[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalCoefficientSubclassTest",
+    "name": "invalidSubclassEncodingIsRejected[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.OddModulusContext538TinyFallbackTest",
+    "name": "trivialTinySignsIdentityAndDispatch[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.OddModulusContext538TinyFallbackTest",
+    "name": "sufficientBoundaryLiteralControls[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.OddModulusContext538TinyFallbackTest",
+    "name": "upperEligibleTinyExponentsSkipSetup[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalChunkComparisonTest",
+    "name": "chunkBoundariesKeepQuotientOrderAndEveryDiscardedRemainder[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalChunkComparisonTest",
+    "name": "scratchNeverMutatesOrRetainsOrdinaryOrTruthfulInputMagnitudes[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalChunkComparisonTest",
+    "name": "truthfulAndReportedExponentControlsKeepTheirDispatchDecision[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.OddModulusContext538Test",
+    "name": "allSmallOddModuliAndResidues[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.OddModulusContext538Test",
+    "name": "carryHeavyAndNearRadixPowers[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.OddModulusContext538Test",
+    "name": "residuesSignsEvenCrtAndInverseFailures[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.OddModulusContext538Test",
+    "name": "storedExponentWordBoundaries[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.OddModulusContext538Test",
+    "name": "squaringAliasesMixedContextsAndDetachedSnapshots[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.OddModulusContext538Test",
+    "name": "sizingCutoffFallbackHasSmallArithmeticWork[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.OddModulusContext538Test",
+    "name": "shortcutsCallbacksNullAndFreshComputedZero[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.Division530SelectionTest",
+    "name": "quotientOnlyNewtonDivisionAtSquareBoundaries[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.Division530SelectionTest",
+    "name": "quotientOnlyNewtonConsumerUsesStoredReceiver[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPower593Test",
+    "name": "genericRecurrenceMatchesIndependentBoundedRationals[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPower593Test",
+    "name": "workAndDestinationRoundsRetainOriginalBaseAndIndependentLiterals[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPower593Test",
+    "name": "terminatingGuardAndLastKeptDigitHaveDistinctWorkSemantics[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPower593Test",
+    "name": "longWorkPrecisionAndOversizedDecimalCountsStaySparseUntilExactReciprocal[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPower593Test",
+    "name": "precisionAbovePublicDigitRangeKeepsExactFactorsAndRejectsNontermination[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextProduct580Test",
+    "name": "rawProductAgainstIndependentLongOracleAllSignsAndModes[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextProduct580Test",
+    "name": "rawScaleRescueCarryAndRequiredCohort[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextProduct580Test",
+    "name": "symbolicFullRangeSelectionIncludesUncertainEdge[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextProduct580Test",
+    "name": "publicSmallProductsRetainScaleZeroAndUnlimitedPolicies[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CharacterOracleTest",
+    "name": "everyBmpCharacterAndValidRadix[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CharacterOracleTest",
+    "name": "bmpConstructors0000to3fff[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CharacterOracleTest",
+    "name": "validDigitCharactersInEveryIntegerRadix[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CharacterOracleTest",
+    "name": "supplementaryCodePointsKeepUtf16ConstructorSemantics[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextContractTest",
+    "name": "ordinaryAndTruthfulControlsPartition0[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextContractTest",
+    "name": "ordinaryAndTruthfulControlsPartition1[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextContractTest",
+    "name": "ordinaryAndTruthfulControlsPartition2[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextContractTest",
+    "name": "ordinaryAndTruthfulControlsPartition3[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextContractTest",
+    "name": "canonicalTextLiteralThresholdScaleSignAndLongExponentWitnesses[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextContractTest",
+    "name": "rationalMidpointsCoverBothSignsAndRetainedDigitParity[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextContractTest",
+    "name": "independentPreferredScaleErrorsAndCoefficientBoundaries[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextContractTest",
+    "name": "explicitBaseTypedCallerEntersOverridesAndPropagatesTheirException[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextContractTest",
+    "name": "callerOwnedSuperInvocationProducesTruthfulArithmetic[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerByteOracleTest",
+    "name": "constructorsAndArrayIsolation[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DoubleZeroContext569Test",
+    "name": "validContextsKeepZeroCoefficientAndScaleZero[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DoubleZeroContext569Test",
+    "name": "finiteNonzeroNullAndValidControls[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DoubleZeroContext569Test",
+    "name": "retainedNonfiniteValidationStaging[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleRoundingRepairTest",
+    "name": "downscaleAcrossEntireSignedScaleDistance[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleRoundingRepairTest",
+    "name": "equalAndIncreasingScaleAndGenuineUnsupportedOutputs[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleRoundingRepairTest",
+    "name": "boundedWideCoefficientsUseIndependentLiteralThresholds[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleRoundingRepairTest",
+    "name": "exactUnlimitedAndUnprovedHighCohortControlsRemainErrors[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleRoundingRepairTest",
+    "name": "zeroContextAdditionBothOrientationsAndSubtraction[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleRoundingRepairTest",
+    "name": "explicitCallerOverridesNullsAndCallerOwnedSuper[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalExactRoot563CallbackContractTest",
+    "name": "completeSelectedBijectionAndTruthfulControls[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalExactRoot563CallbackContractTest",
+    "name": "explicitRootEntryAndExceptionIdentityAcrossContexts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+    "name": "importedAndAliasedArithmeticRetainsIndependentValuesAndDecimalCohorts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+    "name": "callerOwnedSevenMembersAndStaticBaseExtensionsRemainDistinct[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+    "name": "extensionsPreserveReachedVirtualResultOperandAndExceptionIdentity[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PowerOfTwoRadix559Test",
+    "name": "storedLimbsFormatAcrossAllPowerOfTwoRadices[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PowerOfTwoRadix559Test",
+    "name": "signsZeroInvalidRadixAndSubclassesKeepFallbackBehavior[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSquareRootCohort587Test",
+    "name": "independentLiteralGridForOrdinaryAndTruthfulCallerSuper[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSquareRootCohort587Test",
+    "name": "rawInexactZeroTailAndCarryKeepAllSignificantDigits[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSquareRootCohort587Test",
+    "name": "exactFiniteAndZeroCohortsBypassInexactDigitLimit[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSquareRootCohort587Test",
+    "name": "naturalInexactDigitBoundaryAndRequiredRawEligibility[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleContractTest",
+    "name": "DecimalScaleContractBoundedExactWitnesses[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleContractTest",
+    "name": "DecimalScaleContractTinyQuotientsAcrossSignedScaleDistances[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleContractTest",
+    "name": "DecimalScaleContractRoundingOnlyLegacyAndOperator[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleContractTest",
+    "name": "DecimalScaleContractZeroAndTinyRangeGuardWitnesses[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleContractTest",
+    "name": "DecimalScaleContractBoundedRescalingAndHalfwayNeighbors[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleContractTest",
+    "name": "DecimalScaleContractContextAdditionAndSubtraction[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaleContractTest",
+    "name": "DecimalScaleContractTruthfulSubclasses[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.MathContextGrammarTest",
+    "name": "compoundGrammarMatchesOracleIncludingErrors[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.MathContextGrammarTest",
+    "name": "characters0[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.MathContextGrammarTest",
+    "name": "characters2[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.MathContextGrammarTest",
+    "name": "characters5[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.MathContextGrammarTest",
+    "name": "characters7[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.MathContextGrammarTest",
+    "name": "longPrecisionTokens[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalExactLowResidual590Test",
+    "name": "exactCertificateChecksSignsNumericCohortsAndWrongCandidates[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalExactLowResidual590Test",
+    "name": "certificateDeclinesOutsideItsExactSupportedResultClass[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalExactLowResidual590Test",
+    "name": "publicEndpointQuotientPairsAndRemaindersKeepExactLiteralCohorts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalComparableContractTest",
+    "name": "ordinarySortingAndGenericExtremaAreUsable[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerSqrtOracleTest",
+    "name": "callbackAndIdentityCases[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerSqrtOracleTest",
+    "name": "smallExactSquareNeighbors[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerSqrtOracleTest",
+    "name": "rootBoundariesThrough128Bits[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerSqrtOracleTest",
+    "name": "rootBoundariesThrough1024Bits[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalResidual583Test",
+    "name": "residualOnlyStreamAgainstBoundedPrimitiveDivision[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalResidual583Test",
+    "name": "integerCertificateHandlesPaddingFractionsAndVirtualScaleBounds[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalResidual583Test",
+    "name": "realEndpointCasesAdmitFiniteQuotientsAndPreserveRemainderCohorts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalResidual583Test",
+    "name": "selectedQuotientAliasExceptionsAndMismatchFallbackStayObservable[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "asymmetricPowerBoundaryHasTheShortestPermittedCoefficient[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "zeroNonfiniteAndMinimumLengthRules[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.CanonicalDoubleTest",
+    "name": "exactBinaryConstructorRemainsDistinct[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaling533Test",
+    "name": "signedHalfwayStickyAndCarryHaveLiteralResults[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaling533Test",
+    "name": "compactAndChunkedStripPreserveCohortsAtScaleBoundaries[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaling533Test",
+    "name": "wideBinaryFactorsDoNotImplyDecimalTail[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaling533Test",
+    "name": "cacheBoundaryAndExtremeRescaleKeepExactAndFinitePolicies[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalScaling533Test",
+    "name": "initialVirtualPrecisionAndLegacySetScaleDispatchRemain[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalExactChars589Test",
+    "name": "wholeAndSliceRetainExactLiteralCohortsAndScaleEndpoints[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalExactChars589Test",
+    "name": "ownedLeadingZeroSlicesKeepTinyExactCoefficientsAfterSourceMutation[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalExactChars589Test",
+    "name": "malformedSelectedTextAndIntBoundaryRangesStillReject[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalExactChars589Test",
+    "name": "wholeAndSliceSuperConstructionRetainExactFieldsBeforeCallerRounding[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PortableOracleTest",
+    "name": "immutableValuesAndAlgebraicInvariants[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PortableOracleTest",
+    "name": "contextsAndRoundingConstants[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PortableOracleTest",
+    "name": "modularArithmeticAndRandomGeneration[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.IntegerGcdOracleTest",
+    "name": "wideFactorsAndConsecutiveFibonacci[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextDivision581Test",
+    "name": "directStreamAgainstIndependentRationalModel[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextDivision581Test",
+    "name": "directStreamScaleCarryAndRequiredExactCohorts[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextDivision581Test",
+    "name": "sufficientFastPathBoundsAreSymbolicAndConservative[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextDivision581Test",
+    "name": "publicRawBridgeAndLargePrecisionExactEscape[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalContextDivision581Test",
+    "name": "publicZeroP0AndExplicitCallerContractsRemain[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimeSearchRange559Test",
+    "name": "symbolicPrimeSizeBoundaryRetainsTheRequiredBitLengths[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimeSearchRange559Test",
+    "name": "oversizedGenerationRejectsEvenNonpositiveCertaintyWithoutHugeAllocation[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.PrimeSearchRange559Test",
+    "name": "successorRetainsSmallResultsNegativeRejectionAndTruthfulSubclass[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSquareRootNormalization579Test",
+    "name": "rawKernelAgainstBoundedIndependentIntegerOracleAllModes[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSquareRootNormalization579Test",
+    "name": "rawCarryPreferredStopAndLongScaleRescue[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalSquareRootNormalization579Test",
+    "name": "eligibilityIsAChoiceAndPublicScaleParityRegressions[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.ScaledDivisionMidpoint584Test",
+    "name": "compensatedEndpointScalesKeepTheRequestedCohort[js, node]",
+    "seconds": 0.0
+  },
+  {
+    "class": "jsNodeTest.io.heapy.krogu.math.DecimalPairDispatchOracleTest",
+    "name": "compositionPreservesOverloadCallbacksExceptionsAndIdentity[js, node]",
+    "seconds": 0.0
+  }
+]

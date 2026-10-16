@@ -1,0 +1,100 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :kmpPartiallyResolvedDependenciesChecker
+> Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :compileKotlinJvm UP-TO-DATE
+> Task :compileJvmMainJava NO-SOURCE
+> Task :jvmProcessResources NO-SOURCE
+> Task :processJvmMainResources SKIPPED
+> Task :jvmMainClasses UP-TO-DATE
+> Task :jvmJar UP-TO-DATE
+> Task :compileTestKotlinJvm UP-TO-DATE
+> Task :compileJvmTestJava UP-TO-DATE
+> Task :jvmTestProcessResources NO-SOURCE
+> Task :processJvmTestResources SKIPPED
+> Task :jvmTestClasses UP-TO-DATE
+> Task :jvmTest
+> Task :kotlinKotlinNpmCachesSetup
+> Task :kotlinNodeJsSetup UP-TO-DATE
+> Task :kotlinRestoreYarnLock UP-TO-DATE
+> Task :kotlinYarnSetup UP-TO-DATE
+> Task :jsPackageJson UP-TO-DATE
+> Task :jsTestPackageJson UP-TO-DATE
+> Task :benchmarks:jsPackageJson UP-TO-DATE
+> Task :benchmarks:jsTestPackageJson UP-TO-DATE
+> Task :jsPublicPackageJson UP-TO-DATE
+> Task :jsTestPublicPackageJson UP-TO-DATE
+> Task :benchmarks:jsPublicPackageJson UP-TO-DATE
+> Task :benchmarks:jsTestPublicPackageJson UP-TO-DATE
+> Task :kotlinPackageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinWasmNodeJsSetup UP-TO-DATE
+> Task :kotlinWasmYarnSetup UP-TO-DATE
+> Task :kotlinWasmToolingSetup UP-TO-DATE
+> Task :compileKotlinJs UP-TO-DATE
+> Task :jsProcessResources NO-SOURCE
+> Task :jsMainClasses UP-TO-DATE
+> Task :compileTestKotlinJs UP-TO-DATE
+> Task :jsTestProcessResources NO-SOURCE
+> Task :jsTestClasses UP-TO-DATE
+> Task :compileTestDevelopmentExecutableKotlinJs UP-TO-DATE
+> Task :jsTestTestDevelopmentExecutableCompileSync UP-TO-DATE
+> Task :kotlinStoreYarnLock UP-TO-DATE
+Reporter option 'alsoWithHtml' has no effect. Because custom reporterOptions.Base was provided.
+> Task :jsNodeTest
+> Task :kotlinWasmKotlinNpmCachesSetup
+> Task :kotlinWasmRestoreYarnLock
+> Task :wasmJsPackageJson UP-TO-DATE
+> Task :wasmJsTestPackageJson UP-TO-DATE
+> Task :benchmarks:wasmJsPackageJson UP-TO-DATE
+> Task :benchmarks:wasmJsTestPackageJson UP-TO-DATE
+> Task :wasmJsPublicPackageJson UP-TO-DATE
+> Task :wasmJsTestPublicPackageJson UP-TO-DATE
+> Task :benchmarks:wasmJsPublicPackageJson UP-TO-DATE
+> Task :benchmarks:wasmJsTestPublicPackageJson UP-TO-DATE
+> Task :kotlinWasmPackageJsonUmbrella UP-TO-DATE
+> Task :wasmRootPackageJson UP-TO-DATE
+> Task :kotlinWasmNpmInstall UP-TO-DATE
+> Task :compileKotlinWasmJs UP-TO-DATE
+> Task :wasmJsProcessResources NO-SOURCE
+> Task :wasmJsMainClasses UP-TO-DATE
+> Task :compileTestKotlinWasmJs UP-TO-DATE
+> Task :wasmJsTestProcessResources NO-SOURCE
+> Task :wasmJsTestClasses UP-TO-DATE
+> Task :compileTestDevelopmentExecutableKotlinWasmJs UP-TO-DATE
+> Task :kotlinWasmStoreYarnLock UP-TO-DATE
+> Task :wasmJsTestTestDevelopmentExecutableCompileSync UP-TO-DATE
+> Task :wasmJsNodeTest
+> Task :downloadKotlinNativeDistribution UP-TO-DATE
+> Task :compileKotlinMacosArm64 UP-TO-DATE
+> Task :macosArm64ProcessResources NO-SOURCE
+> Task :macosArm64MainKlibrary UP-TO-DATE
+> Task :compileTestKotlinMacosArm64 UP-TO-DATE
+> Task :validateLocalSwiftPMDependencies
+> Task :computeLocalPackageDependencyInputFiles UP-TO-DATE
+> Task :fingerprintSyntheticPackage UP-TO-DATE
+> Task :generateSyntheticLinkageSwiftPMImportProjectForCinteropsAndLdDump SKIPPED
+> Task :serializeSwiftPMDependenciesMetadataForLockFiles UP-TO-DATE
+> Task :benchmarks:serializeSwiftPMDependenciesMetadataForLockFiles UP-TO-DATE
+> Task :generateUmbrellaPackageIdentifierBasedResolutionForDefault SKIPPED
+> Task :fetchUmbrellaPackageIdentifierForDefault SKIPPED
+> Task :syncPersistedPackageResolvedToSynthetic SKIPPED
+> Task :fetchSyntheticImportProjectPackages SKIPPED
+> Task :fingerprintXcodebuildMacosx UP-TO-DATE
+> Task :dumpXcodebuildArgsMacosx SKIPPED
+> Task :convertSyntheticImportProjectIntoDefFileMacosx UP-TO-DATE
+> Task :linkDebugTestMacosArm64 UP-TO-DATE
+> Task :macosArm64Test
+
+[Incubating] Problems report is available at: file:///private/tmp/krogu-math-538/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 18m 54s
+59 actionable tasks: 9 executed, 50 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.1/userguide/configuration_cache_enabling.html
