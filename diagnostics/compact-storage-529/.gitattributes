@@ -1,4 +1,4 @@
 *.zip -text -diff
 *.log -whitespace
 *.patch -whitespace
-measurements.csv -text
+measurements.csv -text -whitespace
