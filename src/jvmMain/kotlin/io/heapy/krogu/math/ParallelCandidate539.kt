@@ -26,6 +26,8 @@ internal class ParallelCandidate539(
     private val workers: Int,
     private val executor: ExecutorService = boundedExecutor(workers),
     private val processors: Int = Runtime.getRuntime().availableProcessors(),
+    // Fault-injection seam is internal; production uses the same shared context.
+    private val workerContext539: ThreadLocal<Boolean> = nested,
     private val childOperation: (MagnitudeMultiplication.ParallelFrame539, Int) -> IntArray = { frame, index -> frame.child(index) },
 ) : AutoCloseable {
     init { require(workers in 1..2 && processors >= 1) }
@@ -56,16 +58,30 @@ internal class ParallelCandidate539(
         @Volatile var value: IntArray? = null
         @Volatile var failure: Throwable? = null
         override fun run() {
-            val previous = nested.get()
+            var previous: Boolean? = null
+            var contextCaptured = false
             try {
-                nested.set(true)
+                // get() can allocate a fresh ThreadLocalMap before any arithmetic.
+                // Every accepted Runnable prefix belongs to the terminal fence.
+                previous = workerContext539.get()
+                contextCaptured = true
+                workerContext539.set(true)
                 value = childOperation(checkNotNull(frame), index)
             } catch (problem: Throwable) {
                 failure = problem
             } finally {
                 frame = null
-                if (previous == null) nested.remove() else nested.set(previous)
-                done.countDown()
+                try {
+                    if (contextCaptured) {
+                        if (previous == null) workerContext539.remove() else workerContext539.set(previous)
+                    }
+                } catch (cleanup: Throwable) {
+                    // Preserve the first failure without allocating suppression or
+                    // retrying arithmetic/context acquisition after OOM.
+                    if (failure == null) failure = cleanup
+                } finally {
+                    done.countDown()
+                }
             }
         }
         fun clear() { frame = null; value = null; failure = null }

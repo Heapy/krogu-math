@@ -178,7 +178,19 @@ open class BigInteger private constructor(
         return normalized(sign * value.sign, MagnitudeMultiplication.multiplyAdaptive(words, valueWords))
     }
 
-    open fun parallelMultiply(value: BigInteger): BigInteger = multiply(value)
+    open fun parallelMultiply(value: BigInteger): BigInteger {
+        // Physical metadata only before exact-class and backend initialization.
+        // Compact/zero/unbalanced/subclass routes retain virtual multiply(value).
+        val leftWords = wideWords ?: return multiply(value)
+        val rightWords = value.wideWords ?: return multiply(value)
+        if (!canParallelMultiply539(leftWords.size, rightWords.size)) return multiply(value)
+        if (this::class != BigInteger::class || value::class != BigInteger::class) return multiply(value)
+        MagnitudeMultiplication.checkBitLengths(magnitudeBits(), value.magnitudeBits())
+        // Borrow each immutable wide magnitude once; preserve shared-input alias.
+        val product = parallelMagnitude539(leftWords, if (value === this) leftWords else rightWords)
+            ?: return multiply(value)
+        return normalized(sign * value.sign, product)
+    }
 
     // Stored, nonvirtual certification only. Null retains the entire old sum
     // expression; unsupported aligned intermediates are never published here.
