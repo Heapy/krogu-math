@@ -31,6 +31,8 @@ private fun inputMask(count: Int, offset: Int): Int = if (count >= 16) 65535 els
 
 fun main(arguments: Array<String>) {
     val args = platformArguments(arguments)
+    if (args.firstOrNull() == "compact529-heap") { compactHeap529(args); return }
+    if (args.firstOrNull() == "compact529") { compact529(args); return }
     val warmup = args.getOrNull(0)?.toInt() ?: 5
     val samples = args.getOrNull(1)?.toInt() ?: 5
     val targetNs = (args.getOrNull(2)?.toLong() ?: 100L) * 1_000_000L
