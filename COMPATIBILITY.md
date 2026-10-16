@@ -268,7 +268,15 @@ and exact coefficient/scale/text corpus are documented in
 A [stdlib-only compiler diagnostic](diagnostics/js-number/README.md) independently
 reproduces Kotlin/JS 2.4.21 Number/generic conversion corruption and the known
 upstream bug. Bounded runner and coercion checks preserve the failing evidence;
-they do not fix or waive the Kotlin caller contract (`local:557`, `local:525`).
+they do not repair the original `Number.toX()` calls. The accepted caller-side
+migration workaround is to explicitly import and call `Number.toKroguByte`,
+`toKroguShort`, `toKroguInt`, `toKroguLong`, `toKroguFloat` and `toKroguDouble`.
+These common extensions select the concrete krogu type's virtual method and
+retain subclass dispatch; other `Number` values keep their platform conversion.
+See [trigger cases, examples and limitations in README](README.md#kotlinjs-converting-through-number).
+This changes the affected Kotlin call sites and does not fix conversions inside
+third-party code or unrelated custom `Number` implementations. Historical
+557/525 failure evidence remains unchanged.
 
 Message-oracle runs and JVM test workers use `-XX:-OmitStackTraceInFastThrow`.
 A repeated scaled-zero-division campaign exposed 6,975 null messages caused by

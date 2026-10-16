@@ -33,6 +33,73 @@ This is an initial implementation (`0.1.0-SNAPSHOT`), not a published Maven Cent
 release. To consume locally, run `./gradlew publishToMavenLocal`, add `mavenLocal()`
 to your repositories, and depend on `io.heapy.krogu:krogu-math:0.1.0-SNAPSHOT`.
 
+## Kotlin/JS: converting through Number
+
+Kotlin/JS 2.4.21 is affected by
+[KT-79282: Virtual calls to custom Number implementors do not work correctly](https://youtrack.jetbrains.com/issue/KT-79282).
+When the receiver's static type is `Number` or a generic `<T : Number>`, the
+compiler can bypass `BigInteger`/`BigDecimal` conversion overrides and produce
+incorrect values, including `NaN` or zero. This also affects elements read from
+`List<Number>` and other APIs that expose values as `Number`:
+
+```kotlin
+import io.heapy.krogu.math.BigInteger
+import io.heapy.krogu.math.BigDecimal
+
+// Affected call sites on Kotlin/JS:
+fun unsafeFloat(n: Number): Float = n.toFloat()
+fun <T : Number> unsafeLong(n: T): Long = n.toLong()
+
+val values: List<Number> = listOf(BigInteger("9007199254740993"), BigDecimal("42.75"))
+val unsafeResults = values.map { it.toLong() }
+```
+
+Keep the concrete type when possible: `BigInteger("16777217").toFloat()` calls
+the integer's method and returns `16777216f`, while `.toDouble()` returns
+`16777217.0`. The Float result is rounded to binary32 precision even though
+Kotlin/JS stores both results as JavaScript numbers.
+
+When a value is already exposed as `Number`, explicitly import and call krogu's
+conversion extensions. They are available in common Kotlin on every target:
+
+```kotlin
+import io.heapy.krogu.math.BigInteger
+import io.heapy.krogu.math.BigDecimal
+import io.heapy.krogu.math.toKroguFloat
+import io.heapy.krogu.math.toKroguDouble
+import io.heapy.krogu.math.toKroguLong
+
+fun floatValue(n: Number): Float = n.toKroguFloat()
+fun doubleValue(n: Number): Double = n.toKroguDouble()
+fun <T : Number> longValue(n: T): Long = n.toKroguLong()
+
+val integer = BigInteger("16777217")
+check(floatValue(integer) == 16777216f)
+check(doubleValue(integer) == 16777217.0)
+check(longValue(BigInteger("9007199254740993")) == 9007199254740993L)
+
+val values: List<Number> = listOf(BigInteger("9007199254740993"), BigDecimal("42.75"), 7)
+check(values.map { it.toKroguLong() } == listOf(9007199254740993L, 42L, 7L))
+```
+
+All six conversions are provided: `toKroguByte`, `toKroguShort`, `toKroguInt`,
+`toKroguLong`, `toKroguFloat` and `toKroguDouble`. For krogu numbers, each extension
+selects the concrete type's virtual method, preserving subclass overrides and
+their exceptions. The underlying conversion semantics are unchanged: integer
+conversions truncate fractions and retain low bits where applicable; use the
+concrete type's `intValueExact()`/`longValueExact()` when exactness is required.
+Other `Number` implementations, including Kotlin's built-in numbers, use the
+normal platform conversion. These helpers do not repair unrelated custom
+`Number` subclasses on JS.
+
+**Importing the helpers alone does not fix existing `.toFloat()`/`.toLong()` calls.**
+Change the affected call sites to `.toKroguFloat()`/`.toKroguLong()` (and likewise
+for the other conversions). Calls inside third-party code that still uses
+`Number.toX()` remain affected; convert to the required primitive before that
+boundary when its API permits it. No compiler patch or coercion hook is installed.
+The original failure and failed coercion attempts are retained in the
+[standalone diagnostic](diagnostics/js-number/README.md).
+
 ## Implementation
 
 * BigInteger: immutable sign and little-endian base-2^30 limbs; addition,
@@ -85,8 +152,9 @@ The current [range/allocation ledger](docs/supported-range-allocation-548-ledger
 [constructor/API binding](docs/api-constructor-549-current-binding.md) and
 [oracle contract boundary](docs/oracle-contract-boundary-526.md) distinguish
 required behavior, conditional proof premises and retained research questions.
-The Kotlin/JS Number migration issue remains an unsatisfied caller contract;
-successful numerical campaigns do not waive it. The
+Kotlin/JS calls through `Number` require the
+[explicit conversion workaround](#kotlinjs-converting-through-number);
+the unchanged `Number.toX()` calls remain affected by the upstream bug. The
 [finite Kotlin call-form inventory](docs/kotlin-migration-525-callforms.md)
 separates the source255 findings from their later source260 repairs.
 
@@ -301,13 +369,12 @@ The library provides `inc`/`dec`, primitive/string `toBigInteger` and
 Broader migration checks remain tracked in kotgent `local:525`; the available
 helpers do not establish full migration compatibility.
 
-Kotlin/JS 2.4.21 also has a confirmed compiler bug in conversions through
-`kotlin.Number` and generic `<T : Number>` receivers: calls can bypass the
-conversion overrides and return incorrect values. The
-[standalone Number diagnostic](diagnostics/js-number/README.md) reproduces the
-problem without krogu arithmetic and records the upstream issue and failed
-coercion workarounds. A production workaround remains unresolved; full Kotlin/JS
-source and behavioral migration is still open.
+On Kotlin/JS 2.4.21, migration additionally requires replacing conversions through
+`Number` or `<T : Number>` with the explicit `toKrogu*` extensions described
+[above](#kotlinjs-converting-through-number). This is an opt-in caller-side
+workaround for KT-79282, not a transparent repair of arbitrary `Number.toX()` calls.
+Conversions inside third-party code and unrelated custom `Number` subclasses
+remain subject to the upstream limitation.
 
 During the current unpublished `0.x` phase, release-to-release source and binary
 stability is not established. Changes to public Kotlin calls or behavior must be
