@@ -3,7 +3,8 @@ package io.heapy.krogu.math
 import kotlin.test.Test
 import kotlin.time.TimeSource
 
-internal data class Calibration539Case(val id: String, val operation: () -> Any, val verify: () -> Unit)
+internal data class Calibration539Case(val id: String, val operation: () -> Any, val verify: () -> Unit,
+    val verifyLastResult: ((Any?) -> Unit)? = null)
 internal expect fun calibration539NativeCases(): List<Calibration539Case>
 internal expect fun calibration539Arguments(): String?
 internal expect fun calibration539Platform(): String
@@ -16,6 +17,10 @@ internal expect fun calibration539Verify(a: IntArray, b: IntArray, result: IntAr
 class MultiplicationCalibration539 {
     @Test fun optionalCampaign() {
         val arguments = calibration539Arguments() ?: return
+        if (arguments == "worker-public-register") {
+            PublicWorkerComparator539.register()
+            return
+        }
         MultiplicationCampaign539.run(arguments)
     }
 }
@@ -64,6 +69,9 @@ internal object MultiplicationCampaign539 {
                 val elapsed = batch(case, count)
                 val cpuAfter = calibration539CpuNs()
                 val allocationAfter = calibration539CallerAllocatedBytes()
+                // Optional public comparator check: only the last actual escaped
+                // result, AFTER wall/CPU/allocation counters. No all-output claim.
+                case.verifyLastResult?.invoke(ring[(count - 1) and 63])
                 val hash = digest()
                 val heap = calibration539HeapBytes() // Outside timing/allocation brackets.
                 fun difference(before: Long?, after: Long?): String =

@@ -25,6 +25,18 @@ internal actual fun calibration539NativeCases(): List<Calibration539Case> = buil
         for ((shape, b) in listOf("distinct" to a.copyOf(), "square" to a,
             "ratio2" to IntArray(2 * size) { 0x3fffffff })) {
             val expected = MagnitudeMultiplication.multiply(a, b, Int.MAX_VALUE, Int.MAX_VALUE)
+            // Exact ordinary public operands, constructed outside every timed closure.
+            val publicA = publicInteger539(a)
+            val publicB = if (a === b) publicA else publicInteger539(b)
+            val publicExpected = publicInteger539(expected)
+            val originalA = a.copyOf(); val originalB = b.copyOf()
+            val originalPublicA = publicA.toByteArray(); val originalPublicB = publicB.toByteArray()
+            fun verifyPublic(value: Any?) {
+                check(value is BigInteger && value == publicExpected)
+                check(a.contentEquals(originalA) && b.contentEquals(originalB))
+                check(publicA.toByteArray().contentEquals(originalPublicA))
+                check(publicB.toByteArray().contentEquals(originalPublicB))
+            }
             fun serialFrame(): IntArray {
                 val frame = checkNotNull(MagnitudeMultiplication.prepareParallel539(a, b, policy))
                 return frame.combine(frame.child(0), frame.child(1), frame.child(2))
@@ -35,6 +47,8 @@ internal actual fun calibration539NativeCases(): List<Calibration539Case> = buil
                 }))
             add(Calibration539Case("native-parallel/$size/$shape/frame", ::serialFrame,
                 { check(expected.contentEquals(serialFrame())) }))
+            add(Calibration539Case("native-parallel/$size/$shape/public",
+                { publicA.multiply(publicB) }, { verifyPublic(publicA.multiply(publicB)) }, ::verifyPublic))
             for (workers in 1..2) {
                 if (processors <= workers) {
                     println("INELIGIBLE_NATIVE539,$size/$shape/worker$workers,processor_budget")
@@ -47,3 +61,29 @@ internal actual fun calibration539NativeCases(): List<Calibration539Case> = buil
         }
     }
 }
+
+/** Linear exact unsigned-byte preparation; never called by a timed operation. */
+private fun publicInteger539(words: IntArray): BigInteger {
+    val bytes = ByteArray(((words.size.toLong() * 30 + 7) / 8).toInt())
+    var accumulator = 0L
+    var bits = 0
+    var destination = bytes.lastIndex
+    for (word in words) {
+        require(word in 0..0x3fffffff)
+        accumulator = accumulator or (word.toLong() shl bits)
+        bits += 30 // <=37 live bits; no Long overflow.
+        while (bits >= 8) {
+            bytes[destination--] = accumulator.toByte()
+            accumulator = accumulator ushr 8
+            bits -= 8
+        }
+    }
+    if (bits != 0) bytes[destination--] = accumulator.toByte()
+    check(destination == -1)
+    return BigInteger(1, bytes)
+}
+
+internal actual fun registerPublic539(handler: (Int) -> Unit): Unit = error("Node parent-only public comparator")
+internal actual fun publicInput539(index: Int): IntArray = error("Node parent-only public comparator")
+internal actual fun publicSame539(): Boolean = error("Node parent-only public comparator")
+internal actual fun publicHash539(value: Int): Unit = error("Node parent-only public comparator")

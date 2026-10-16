@@ -21,6 +21,7 @@ fun inventory(processors: Int): Set<String> = buildSet {
         "square-control" -> for(size in listOf(128,192,256,384,512,1024)) for(entry in listOf(0,384,1024,Int.MAX_VALUE)) add("square-control/$size/e$entry")
         "native-parallel" -> for (size in listOf(256,1024,4096,8192,16384)) for (shape in listOf("distinct","square","ratio2")) {
             add("native-parallel/$size/$shape/kernel"); add("native-parallel/$size/$shape/frame")
+            add("native-parallel/$size/$shape/public")
             if (processors > 1) add("native-parallel/$size/$shape/worker1")
             if (processors > 2) add("native-parallel/$size/$shape/worker2")
         }

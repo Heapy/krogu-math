@@ -11,3 +11,11 @@ internal actual fun calibration539HeapBytes(): Long? = null
 internal actual fun calibration539Verify(a: IntArray, b: IntArray, result: IntArray) { /* common school check */ }
 
 internal actual fun calibration539NativeCases(): List<Calibration539Case> = emptyList()
+
+internal actual fun registerPublic539(handler: (Int) -> Unit): Unit = js("globalThis.__krogu539PublicInvoke = handler")
+internal actual fun publicInput539(index: Int): IntArray =
+    IntArray(publicLength539(index).also { require(it in 0..131074) }) { publicWord539(index, it) }
+private fun publicLength539(side: Int): Int = js("globalThis.__krogu539PublicRequest.inputs[side].length")
+private fun publicWord539(side: Int, index: Int): Int = js("globalThis.__krogu539PublicRequest.inputs[side][index]")
+internal actual fun publicSame539(): Boolean = js("globalThis.__krogu539PublicRequest.same")
+internal actual fun publicHash539(value: Int): Unit = js("globalThis.__krogu539PublicHash = value")

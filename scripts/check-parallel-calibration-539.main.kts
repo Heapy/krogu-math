@@ -29,7 +29,7 @@ for (log in logs) {
     check(lines.count { it == "PASS_PAR539,artifact_recheck" } == 1)
     val ids = buildSet {
         for (size in listOf(256, 1024, 4096, 8192, 16384)) for (shape in listOf("distinct", "square", "ratio2")) {
-            add("$size/$shape/kernel"); add("$size/$shape/frame")
+            add("$size/$shape/kernel"); add("$size/$shape/frame"); add("$size/$shape/public")
             if (processors > 1) add("$size/$shape/worker1")
             if (processors > 2) add("$size/$shape/worker2")
         }
@@ -37,7 +37,7 @@ for (log in logs) {
     if (expectedActive == null) expectedActive = ids else check(expectedActive == ids) { "CPU eligibility changed between forks" }
     val all = buildSet {
         for (size in listOf(256, 1024, 4096, 8192, 16384)) for (shape in listOf("distinct", "square", "ratio2"))
-            for (variant in listOf("kernel", "frame", "worker1", "worker2")) add("$size/$shape/$variant")
+            for (variant in listOf("kernel", "frame", "public", "worker1", "worker2")) add("$size/$shape/$variant")
     }
     val ineligible = lines.filter { it.startsWith("INELIGIBLE539,") }.map {
         val p = it.split(','); check(p.size == 3 && p[2] == "processor_budget"); p[1]

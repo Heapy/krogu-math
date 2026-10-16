@@ -7,7 +7,7 @@ import java.security.MessageDigest
 
 /** Source-only JVM candidate experiment; no production dispatch or threshold changes. */
 object ParallelCalibration539JvmMain {
-    @Volatile private var escape: IntArray? = null
+    @Volatile private var escape: Any? = null
     private val allocations = ManagementFactory.getThreadMXBean() as com.sun.management.ThreadMXBean
     private val cpu = ManagementFactory.getOperatingSystemMXBean() as com.sun.management.OperatingSystemMXBean
     private val pools = ManagementFactory.getMemoryPoolMXBeans().filter { it.type == MemoryType.HEAP }
@@ -25,7 +25,7 @@ object ParallelCalibration539JvmMain {
         fun verifyArtifacts() {
             check(hash(main) == args[3] && hash(probe) == args[5])
             listOf(MagnitudeMultiplication::class.java, MultiplicationPolicy539::class.java,
-                ParallelCandidate539::class.java).forEach { origin(it, main) }
+                ParallelCandidate539::class.java, BigInteger::class.java).forEach { origin(it, main) }
             origin(ParallelCalibration539JvmMain::class.java, probe)
         }
         verifyArtifacts()
@@ -45,12 +45,28 @@ object ParallelCalibration539JvmMain {
             for ((shape, b) in shapes) {
                 val expected = MagnitudeMultiplication.multiply(a, b, Int.MAX_VALUE, Int.MAX_VALUE)
                 calibration539Verify(a, b, expected)
+                // Public operands/result conversion is preparation, never timed.
+                val publicA = publicInteger(a)
+                val publicB = if (a === b) publicA else publicInteger(b)
+                val publicExpected = publicInteger(expected)
+                val originalA = a.copyOf(); val originalB = b.copyOf()
+                val originalPublicA = publicA.toByteArray(); val originalPublicB = publicB.toByteArray()
+                fun verifyResult(value: Any?) = check(when (value) {
+                    is IntArray -> expected.contentEquals(value)
+                    is BigInteger -> value == publicExpected
+                    else -> false
+                }) { "Full result mismatch: $size/$shape" }
+                fun verifyInputs() {
+                    check(a.contentEquals(originalA) && b.contentEquals(originalB))
+                    check(publicA.toByteArray().contentEquals(originalPublicA))
+                    check(publicB.toByteArray().contentEquals(originalPublicB))
+                }
                 fun serialFrame(): IntArray {
                     val frame = checkNotNull(MagnitudeMultiplication.prepareParallel539(a, b, policy))
                     return frame.combine(frame.child(0), frame.child(1), frame.child(2))
                 }
                 println("PAYLOAD539,$size/$shape,${checkNotNull(MagnitudeMultiplication.prepareParallel539(a, b, policy)).wordPayloadUpperBound539()},words_excludes_headers_scheduler_inputs")
-                val variants = listOf("kernel", "frame", "worker1", "worker2").let { if (args[0] == "reverse") it.reversed() else it }
+                val variants = listOf("kernel", "frame", "public", "worker1", "worker2").let { if (args[0] == "reverse") it.reversed() else it }
                 for (variant in variants) {
                     val id = "$size/$shape/$variant"
                     val workers = when (variant) { "worker1" -> 1; "worker2" -> 2; else -> 0 }
@@ -66,17 +82,18 @@ object ParallelCalibration539JvmMain {
                             check(checkNotNull(fresh).awaitTermination539(5)) { "Fresh pool did not terminate" }
                             result
                         }
-                        check(expected.contentEquals(escape))
+                        verifyResult(escape); verifyInputs()
                         println("SETUP539,$id,${setup.wall},${setup.cpu},${setup.allocated},${setup.heapPeakUpperBound}")
                     }
                     val candidate = if (workers > 0) ParallelCandidate539(workers) else null
                     try {
-                        val operation: () -> IntArray = when (variant) {
+                        val operation: () -> Any = when (variant) {
                             "kernel" -> { { MagnitudeMultiplication.multiplyConfigured539(a, b, policy) } }
                             "frame" -> ::serialFrame
+                            "public" -> { { publicA.multiply(publicB) } }
                             else -> { { checkNotNull(candidate).multiply(a, b, policy) } }
                         }
-                        check(expected.contentEquals(operation()))
+                        verifyResult(operation()); verifyInputs()
                         println("CHECKPAR539,$id,PASS")
                         val warmStart = System.nanoTime()
                         while (System.nanoTime() - warmStart < 200_000_000L) escape = operation()
@@ -90,8 +107,8 @@ object ParallelCalibration539JvmMain {
                         repeat(samples) { sample ->
                             val observed = observe(count, operation)
                             // Full result comparison, rather than a hash-only check, outside timing.
-                            check(expected.contentEquals(escape))
-                            println("PAR539,$id,$sample,$count,${observed.wall},${observed.cpu},${observed.allocated},${observed.heapPeakUpperBound},${escape!!.contentHashCode()}")
+                            verifyResult(escape); verifyInputs()
+                            println("PAR539,$id,$sample,$count,${observed.wall},${observed.cpu},${observed.allocated},${observed.heapPeakUpperBound},${when (val value = escape) { is IntArray -> value.contentHashCode(); else -> checkNotNull(value).hashCode() }}")
                             System.out.flush()
                         }
                     } finally {
@@ -106,12 +123,33 @@ object ParallelCalibration539JvmMain {
         println("PASS_PAR539,artifact_recheck")
     }
 
-    private fun batch(count: Int, operation: () -> IntArray): Long {
+    /** Exact base2^30 -> unsigned big-endian bytes; never called inside observe/batch. */
+    private fun publicInteger(words: IntArray): BigInteger {
+        val bytes = ByteArray(((words.size.toLong() * 30 + 7) / 8).toInt())
+        var accumulator = 0L
+        var bits = 0
+        var destination = bytes.lastIndex
+        for (word in words) {
+            require(word in 0..0x3fffffff)
+            accumulator = accumulator or (word.toLong() shl bits)
+            bits += 30 // At most37 live bits, so the signed Long never overflows.
+            while (bits >= 8) {
+                bytes[destination--] = accumulator.toByte()
+                accumulator = accumulator ushr 8
+                bits -= 8
+            }
+        }
+        if (bits != 0) bytes[destination--] = accumulator.toByte()
+        check(destination == -1)
+        return BigInteger(1, bytes)
+    }
+
+    private fun batch(count: Int, operation: () -> Any): Long {
         val begin = System.nanoTime()
         repeat(count) { escape = operation() }
         return System.nanoTime() - begin
     }
-    private fun observe(count: Int, operation: () -> IntArray): Observation {
+    private fun observe(count: Int, operation: () -> Any): Observation {
         // Bean sampling is outside the arithmetic wall interval; all-thread allocation
         // includes accounting/runtime/background costs, equally for every variant.
         pools.forEach { it.resetPeakUsage() }

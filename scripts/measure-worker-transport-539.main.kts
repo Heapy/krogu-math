@@ -6,7 +6,7 @@ import java.security.MessageDigest
 import java.util.concurrent.TimeUnit
 import java.nio.file.Files
 
-require(args.size == 8) { "node artifactDirectory entryRelative artifactSHA256Manifest newOutputDirectory js|wasm forward|reverse samples" }
+require(args.size == 10) { "node artifactDirectory entryRelative artifactSHA256Manifest newOutputDirectory js|wasm forward|reverse samples rootArtifactDirectory rootManifestSHA256" }
 val node = File(args[0]).canonicalFile.also { require(it.isFile && it.canExecute()) }
 val directory = File(args[1]).canonicalFile.also { require(it.isDirectory) }
 val entryRelative = args[2].also { require(!it.startsWith('/') && it.split('/').none { p -> p in listOf("", ".", "..") }) }
@@ -16,6 +16,9 @@ val output = File(args[4]).canonicalFile.also { require(!it.exists()) }
 val kind = args[5].also { require(it in listOf("js", "wasm")) }
 val order = args[6].also { require(it in listOf("forward", "reverse")) }
 val samples = args[7].toInt().also { require(it in 5..15) }
+val rootDirectory = File(args[8]).canonicalFile.also { require(it.isDirectory) }
+val rootManifestSha = args[9].also { require(it.matches(Regex("[a-f0-9]{64}"))) }
+val rootManifest = File(rootDirectory, "manifest.sha256").also { require(it.isFile && !Files.isSymbolicLink(it.toPath())) }
 fun sha(file: File): String = MessageDigest.getInstance("SHA-256").digest(file.readBytes()).joinToString("") { "%02x".format(it) }
 val manifestLines = manifest.readLines()
 val expected = manifestLines.associate { line ->
@@ -27,10 +30,27 @@ val expected = manifestLines.associate { line ->
 require(expected.isNotEmpty() && expected.size == manifestLines.size)
 require(expected.keys.any { it.endsWith(".wasm") } == (kind == "wasm"))
 val source = File("scripts/measure-worker-transport-539.main.kts").canonicalFile.also { require(it.isFile) }
+val rootExpected = rootManifest.readLines().associate { line ->
+    val parts = line.split('\t'); require(parts.size == 2 && parts[0].matches(Regex("[a-f0-9]{64}")))
+    val relative = parts[1]; require(!relative.startsWith('/') && relative.split('/').none { it in listOf("", ".", "..") })
+    relative to parts[0]
+}.also { require(it.isNotEmpty() && it.size == rootManifest.readLines().size) }
+fun verifyRoot() {
+    check(sha(rootManifest) == rootManifestSha)
+    check(rootDirectory.walkTopDown().filter { it.isFile }.sumOf { it.length() } <= 512L * 1024 * 1024)
+    val actual = rootDirectory.walkTopDown().onEnter { check(!Files.isSymbolicLink(it.toPath())); true }
+        .filter { it.isFile && it != rootManifest }.associate { file ->
+            check(!Files.isSymbolicLink(file.toPath()) && file.canonicalFile.toPath().startsWith(rootDirectory.toPath()))
+            file.relativeTo(rootDirectory).invariantSeparatorsPath to sha(file)
+        }
+    check(actual == rootExpected) { "Parent root probe closure drift" }
+}
+verifyRoot()
 val sourceSha = sha(source)
 val nodeSha = sha(node)
 val manifestSha = sha(manifest)
 fun verify() {
+    verifyRoot()
     check(sha(node) == nodeSha && sha(manifest) == manifestSha && sha(source) == sourceSha)
     val files = directory.walkTopDown().onEnter { check(!Files.isSymbolicLink(it.toPath())); true }.filter { it.isFile }.toList()
     check(files.sumOf { it.length() } <= 512L * 1024 * 1024) { "Owned artifact package exceeds512MiB" }
@@ -49,14 +69,73 @@ import { Worker, MessageChannel, receiveMessageOnPort, isMainThread } from 'node
 import { availableParallelism } from 'node:os';
 import { pathToFileURL } from 'node:url';
 import { performance } from 'node:perf_hooks';
-const [entry, kind, order, samplesText] = process.argv.slice(2);
+import fs from 'node:fs';
+import path from 'node:path';
+import {createRequire} from 'node:module';
+const [entry, kind, order, samplesText, rootDirectoryArg] = process.argv.slice(2);
 const samples = Number(samplesText);
 const entryURL = pathToFileURL(entry).href;
 if (process.version !== 'v24.16.0') throw Error('Pinned Node v24.16.0 required');
 const started = performance.now();
 await import(entryURL);
 if (typeof globalThis.__krogu539Invoke !== 'function') throw Error('Private diagnostic callback not registered');
+const originalTinyInvoke=globalThis.__krogu539Invoke;
 console.log('MODULE539,parent_import_ms,' + (performance.now() - started));
+const rootDirectory=fs.realpathSync(rootDirectoryArg);
+const rootRequire=createRequire(path.join(rootDirectory,'mocha','package.json'));
+function rootPath(relative) {
+  if(path.isAbsolute(relative)||relative.split('/').some(p=>p===''||p==='.'||p==='..')) throw Error('Invalid parent artifact path');
+  const resolved=fs.realpathSync(path.join(rootDirectory,relative));
+  if(!resolved.startsWith(rootDirectory+path.sep)) throw Error('Parent origin outside bound tree');
+  return resolved;
+}
+function verifyRootCache(phase) {
+  let count=0;
+  for(const filename of Object.keys(rootRequire.cache)) {
+    const real=fs.realpathSync(filename);
+    if(!real.startsWith(rootDirectory+path.sep) && !real.startsWith(fs.realpathSync(path.dirname(entry))+path.sep)) throw Error('Parent CJS outside both bound closures: '+real);
+    count++;
+  }
+  console.log('ROOTCACHE539,'+phase+','+count+',owned');
+}
+const rootStarted=performance.now();
+const rootEntry=rootPath(fs.readFileSync(rootPath('entry.txt'),'utf8').trim());
+const mochaEntry=rootPath('mocha/node_modules/mocha/index.js');
+const Mocha=rootRequire(mochaEntry);
+const mocha=new Mocha({ui:'bdd',reporter:'dot',timeout:0,grep:/MultiplicationCalibration539.*optionalCampaign/});
+mocha.addFile(rootEntry);
+await mocha.loadFilesAsync();
+if(kind==='wasm') {
+  const module=await import(pathToFileURL(rootEntry).href);
+  if(typeof module.startUnitTests!=='function') throw Error('Missing parent Wasm startUnitTests');
+  if(globalThis.kotlinTest===undefined) globalThis.kotlinTest={adapterTransformer:adapter=>adapter};
+  module.startUnitTests();
+}
+const selected=[];
+mocha.suite.eachTest(test=>{
+  if(!/MultiplicationCalibration539.*optionalCampaign/.test(test.fullTitle())) return;
+  selected.push(test.fullTitle());
+  for(let suite=test.parent;suite!==undefined&&suite!==null;suite=suite.parent) {
+    for(const name of ['_beforeAll','_beforeEach','_afterEach','_afterAll']) {
+      if(!Array.isArray(suite[name])||suite[name].length!==0) throw Error('Parent registration must have no inherited hooks: '+name);
+    }
+  }
+});
+if(selected.length!==1) throw Error('Expected one parent registration test');
+verifyRootCache('before-register');
+await new Promise((resolve,reject)=>{
+  const runner=mocha.run(failures=>{
+    const stats=runner.stats;
+    if(failures!==0||stats.tests!==1||stats.passes!==1||stats.pending!==0) reject(Error('Parent registration test failed'));
+    else resolve();
+  });
+});
+verifyRootCache('after-register');
+if(globalThis.__krogu539Invoke!==originalTinyInvoke) throw Error('Root replaced tiny callback');
+if(typeof globalThis.__krogu539PublicInvoke!=='function') throw Error('Missing parent public callback');
+console.log('ROOTMODULE539,parent_load_register_ms,'+(performance.now()-rootStarted));
+console.log('ROOTORIGIN539,'+rootEntry+','+mochaEntry);
+
 const workerSource = `
 const { workerData } = require('node:worker_threads');
 const { port, shared, entryURL } = workerData;
@@ -187,9 +266,12 @@ function parallel(a,b,policy,same,workers) {
   }
 }
 function reference(words) { let n=0n; for(let i=words.length-1;i>=0;i--) n=(n<<30n)+BigInt(words[i]); return n; }
+function oracleWords(value) { const words=[]; do { words.push(Number(value&0x3fffffffn)); value >>=30n; } while(value!==0n); return Int32Array.from(words); }
+function verifyPublic() { globalThis.__krogu539PublicInvoke(2); if(!Number.isInteger(globalThis.__krogu539PublicHash)) throw Error('Missing verified public hash'); }
 function equal(words, expected) { if(reference(words)!==expected) throw Error('Public BigInt oracle mismatch'); }
 function batch(operation,count) { const begin=process.hrtime.bigint(); for(let i=0;i<count;i++) escape=operation(); return Number(process.hrtime.bigint()-begin); }
 function reverse(values) { return order==='reverse' ? values.reverse() : values; }
+let campaignFailure=null;
 try {
   const cpus = availableParallelism();
   console.log('# worker539 kind='+kind+' node='+process.version+' processors='+cpus+' order='+order+' samples='+samples+' pid='+process.pid+' start_ms='+Date.now());
@@ -209,16 +291,19 @@ try {
       const b=shape==='square'?a:shape==='ratio2'?new Int32Array(2*size).fill(0x3fffffff):a.slice();
       const expected=reference(a)*reference(b);
       const originalA=a.slice(),originalB=b.slice();
-      const variants=reverse(['kernel','frame','empty','copy','worker1','worker2']);
+      globalThis.__krogu539PublicRequest={inputs:[a,b,oracleWords(expected),Int32Array.from(policy)],same:shape==='square'};
+      globalThis.__krogu539PublicInvoke(0); globalThis.__krogu539PublicRequest=null;
+      const variants=reverse(['kernel','frame','public','empty','copy','worker1','worker2']);
       for(const variant of variants) {
         const workers=variant==='worker1'?1:variant==='worker2'?2:0;
         const id=size+'/'+shape+'/'+variant;
         if((workers>slotCount)||((variant==='empty'||variant==='copy')&&slotCount===0)) { console.log('INELIGIBLE_WORKER539,'+id); continue; }
-        const operation=variant==='kernel'?()=>invoke(0,[a,b],policy,shape==='square')[0]:
+        const operation=variant==='public'?()=>globalThis.__krogu539PublicInvoke(1):variant==='kernel'?()=>invoke(0,[a,b],policy,shape==='square')[0]:
           variant==='frame'?()=>invoke(6,[a,b],policy,shape==='square')[0]:
           variant==='empty'||variant==='copy'?()=>{ slots[0].submit({mode:variant,inputs:variant==='empty'?[]:[a,b],policy,same:false}); return slots[0].join(); }:
           ()=>parallel(a,b,policy,shape==='square',workers);
-        const check=()=>{ const result=operation(); if(variant==='empty') {if(result.length!==0) throw Error('Empty transport result');}
+        const check=()=>{ const result=operation(); if(variant==='public') verifyPublic();
+          else if(variant==='empty') {if(result.length!==0) throw Error('Empty transport result');}
           else if(variant==='copy') equal(result,reference(a)); else equal(result,expected); };
         check(); console.log('CHECKWORKER539,'+id+',PASS');
         const warm=performance.now(); while(performance.now()-warm<200) escape=operation();
@@ -226,29 +311,35 @@ try {
         for(let i=0;i<3;i++) batch(operation,count);
         for(let sample=0;sample<samples;sample++) {
           const cpu=process.cpuUsage(); const wall=batch(operation,count); const used=process.cpuUsage(cpu);
-          if(variant==='empty') {if(escape.length!==0) throw Error('Empty result');}
+          if(variant==='public') { verifyPublic(); console.log('PUBLICRESULT539,'+id+','+sample+','+globalThis.__krogu539PublicHash); }
+          else if(variant==='empty') {if(escape.length!==0) throw Error('Empty result');}
           else equal(escape,variant==='copy'?reference(a):expected);
           const memory=process.memoryUsage();
           console.log('WORKER539,'+id+','+sample+','+count+','+wall+','+((used.user+used.system)*1000)+','+memory.heapUsed+','+memory.rss+','+process.resourceUsage().maxRSS);
         }
         if(a.length!==originalA.length||b.length!==originalB.length||a.some((v,i)=>v!==originalA[i])||b.some((v,i)=>v!==originalB[i])) throw Error('Caller buffer mutated/detached');
       }
+      globalThis.__krogu539PublicInvoke(3);
     }
   }
+  verifyRootCache('after-campaign');
+  if(globalThis.__krogu539Invoke!==originalTinyInvoke) throw Error('Root replaced tiny callback');
   console.log('PASS_WORKER539');
-} finally {
+} catch(error) { campaignFailure=error; throw error; } finally {
   globalThis.__krogu539Request=null; globalThis.__krogu539Result=null; escape=null;
-  await Promise.all(slots.filter(slot=>slot!==null).map(slot=>slot.close()));
+  try { globalThis.__krogu539PublicInvoke(3); globalThis.__krogu539PublicRequest=null; }
+  catch(error) { if(campaignFailure===null) throw error; }
+  finally { await Promise.all(slots.filter(slot=>slot!==null).map(slot=>slot.close())); }
 }
 """.trimIndent())
 val hostSha = sha(host)
 val stdout = File(output, "raw.log")
 val stderr = File(output, "stderr.log")
-val command = listOf(node.path, "--max-old-space-size=512", host.path, entry.path, kind, order, samples.toString())
-File(output, "binding.txt").writeText("node_sha256=$nodeSha\nmanifest_sha256=$manifestSha\nsource_sha256=$sourceSha\nhost_sha256=$hostSha\nargv=" + command.joinToString("\n") + "\n")
+val command = listOf(node.path, "--max-old-space-size=512", host.path, entry.path, kind, order, samples.toString(), rootDirectory.path)
+File(output, "binding.txt").writeText("node_sha256=$nodeSha\nmanifest_sha256=$manifestSha\nsource_sha256=$sourceSha\nhost_sha256=$hostSha\nroot_directory=${rootDirectory.path}\nroot_manifest_sha256=$rootManifestSha\nargv=" + command.joinToString("\n") + "\n")
 val process = ProcessBuilder(command).also {
     it.environment().clear()
-    it.environment().putAll(mapOf("TZ" to "UTC", "LANG" to "C", "LC_ALL" to "C"))
+    it.environment().putAll(mapOf("TZ" to "UTC", "LANG" to "C", "LC_ALL" to "C", "KROGU539_ARGS" to "worker-public-register"))
 }.redirectOutput(stdout).redirectError(stderr).start()
 fun stopOwned(): Boolean {
     var interrupted = false
@@ -268,7 +359,9 @@ fun stopOwned(): Boolean {
     File(output, "survivors.txt").writeText((owned.filter { it.isAlive }.map { it.pid() } + if (process.isAlive) listOf(process.pid()) else emptyList()).joinToString("\n"))
     return interrupted
 }
-val terminal = try { process.waitFor(600, TimeUnit.SECONDS) }
+// JS full corpus exceeded600s in the retained first attempt; bounded launch/wait only, plus cleanup/hash overhead.
+val campaignBudgetSeconds = if (kind == "js") 1200L else 600L
+val terminal = try { process.waitFor(campaignBudgetSeconds, TimeUnit.SECONDS) }
 catch (problem: Throwable) {
     val interrupted = stopOwned() || problem is InterruptedException
     if (interrupted) Thread.currentThread().interrupt()

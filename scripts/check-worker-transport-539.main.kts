@@ -4,18 +4,18 @@
 import java.io.File
 import java.security.MessageDigest
 
-require(args.size == 9) { "samples js|wasm manifestSHA256 nodeSHA256 captureScriptSHA256 new.csv forkDirectory1 forkDirectory2 forkDirectory3" }
+require(args.size == 10) { "samples js|wasm manifestSHA256 nodeSHA256 captureScriptSHA256 new.csv forkDirectory1 forkDirectory2 forkDirectory3 rootManifestSHA256" }
 val samples = args[0].toInt().also { require(it in 5..15) }
 val kind = args[1].also { require(it in listOf("js", "wasm")) }
-args.slice(2..4).forEach { require(it.matches(Regex("[a-f0-9]{64}"))) }
+(args.slice(2..4) + args[9]).forEach { require(it.matches(Regex("[a-f0-9]{64}"))) }
 val output = File(args[5]).canonicalFile.also { require(!it.exists()) }
-val forks = args.drop(6).map { File(it).canonicalFile }
+val forks = args.slice(6..8).map { File(it).canonicalFile }
 require(forks.toSet().size == 3 && forks.all { it.isDirectory })
 fun sha(file: File) = MessageDigest.getInstance("SHA-256").digest(file.readBytes()).joinToString("") { "%02x".format(it) }
 data class Row(val id: String, val sample: Int, val count: Long, val wall: Long, val cpu: Long, val heap: Long, val rss: Long, val maxRssKiB: Long)
 val inventory = buildSet {
     for (size in listOf(256, 1024, 4096, 8192, 16384)) for (shape in listOf("distinct", "square", "ratio2"))
-        for (variant in listOf("kernel", "frame", "empty", "copy", "worker1", "worker2")) add("$size/$shape/$variant")
+        for (variant in listOf("kernel", "frame", "public", "empty", "copy", "worker1", "worker2")) add("$size/$shape/$variant")
 }
 val orders = mutableSetOf<String>()
 val identities = mutableSetOf<String>()
@@ -26,6 +26,7 @@ for (fork in forks) {
     val binding = File(fork, "binding.txt").readLines()
     fun bound(key: String) = binding.single { it.startsWith("$key=") }.substringAfter('=')
     check(bound("manifest_sha256") == args[2] && bound("node_sha256") == args[3] && bound("source_sha256") == args[4])
+    check(bound("root_manifest_sha256") == args[9])
     check(bound("host_sha256") == sha(File(fork, "owned-host.mjs")))
     check(File(fork, "raw.log.exit").readText().trim() == "0")
     val lines = File(fork, "raw.log").readLines()
@@ -41,6 +42,22 @@ for (fork in forks) {
     check(lines.count { it == "PASS_WORKER539" } == 1)
     val module = lines.single { it.startsWith("MODULE539,") }.split(',')
     check(module.size == 3 && module[1] == "parent_import_ms" && module[2].toDouble().let { it.isFinite() && it >= 0 })
+    val rootModule = lines.single { it.startsWith("ROOTMODULE539,") }.split(',')
+    check(rootModule.size == 3 && rootModule[1] == "parent_load_register_ms" && rootModule[2].toDouble().let { it.isFinite() && it >= 0 })
+    check(lines.count { it.startsWith("ROOTORIGIN539,") } == 1)
+    for (phase in listOf("before-register", "after-register", "after-campaign")) {
+        val cache = lines.single { it.startsWith("ROOTCACHE539,$phase,") }.split(',')
+        check(cache.size == 4 && cache[2].toInt() > 0 && cache[3] == "owned")
+    }
+    val publicRows = lines.filter { it.startsWith("PUBLICRESULT539,") }.map { line ->
+        line.split(',').also { check(it.size == 4 && it[1].endsWith("/public") && it[2].toInt() in 0 until samples); it[3].toInt() }
+    }
+    val publicIds = inventory.filter { it.endsWith("/public") }.toSet()
+    check(publicRows.size == publicIds.size * samples && publicRows.map { it[1] }.toSet() == publicIds)
+    publicRows.groupBy { it[1] }.forEach { (_, rows) ->
+        check(rows.size == samples && rows.map { it[2].toInt() }.toSet() == (0 until samples).toSet())
+        check(rows.map { it[3] }.toSet().size == 1)
+    }
     val startup = lines.single { it.startsWith("STARTUP539,") }.split(',')
     check(startup.size == 3 && startup[1].toInt() == minOf(2, cpus - 1) && startup[2].toLong() >= 0)
     val resource = lines.single { it.startsWith("POOL_RESOURCE539,") }.split(',')

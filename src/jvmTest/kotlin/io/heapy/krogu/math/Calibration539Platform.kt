@@ -30,3 +30,8 @@ object MultiplicationCalibration539JvmMain {
 }
 
 internal actual fun calibration539NativeCases(): List<Calibration539Case> = emptyList()
+
+internal actual fun registerPublic539(handler: (Int) -> Unit): Unit = error("Node parent-only public comparator")
+internal actual fun publicInput539(index: Int): IntArray = error("Node parent-only public comparator")
+internal actual fun publicSame539(): Boolean = error("Node parent-only public comparator")
+internal actual fun publicHash539(value: Int): Unit = error("Node parent-only public comparator")
