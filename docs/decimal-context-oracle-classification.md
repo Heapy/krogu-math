@@ -322,7 +322,9 @@ The [source preparation record](decimal-context-value1-policy-526.md#historical-
 contains exact binding/preservation and the then-pending independent
 review/execution gates. No whole-family closure or historical JDK defect is claimed.
 
-### Accepted actual v6 metadata validation
+<a id="accepted-actual-v6-metadata-validation"></a>
+
+### Historical accepted actual v6 metadata validation
 
 Generation37902 and check48932 exited0 with frozen mapper `08adda6a…`, its four
 unchanged evidence pins and512MiB heap in an isolated validation workspace.
@@ -331,7 +333,7 @@ Independent actual review accepted adoption of v6 TSV
 All75,728 compact rows and their six-column header stayed byte-identical to v5.
 The384 STATUS bindings comprise8 unchanged required ERROR,96 unchanged
 reference VALUE and280 separately classified historical ERROR prefixes.
-There remain75,344 unresolved statuses (57,997 VALUE /17,347 ERROR), with
+At that v6 milestone75,344 statuses remained unresolved (57,997 VALUE /17,347 ERROR), with
 every archival block retained. Current575 NN384 and96-key/240-mask truthful
 controls remain independent mandatory obligations, not new execution claims.
 
@@ -340,6 +342,27 @@ lists retained logs/diff/source hashes and v5 evidence. This was metadata-only
 generation/check, not production/public-JDK numerical or test execution.
 Fixtures, evaluators and assertions stayed unchanged. Parent owns hosted CI
 and publication; full-family closure and archival permission remain unclaimed.
+
+### Accepted actual v7 non-null precision-zero metadata validation
+
+The [V7 policy and actual record](decimal-context-p0-policy-526.md) binds exactly
+1,952 additional input-selected historical VALUE prefixes to the existing
+`REFERENCE_CONTRACT_BREAKING_EXACT_OVERRIDE_RESULT` status. One isolated
+generation93161 and check46495 exited0; verified output SHA is
+`d116367be22ace568e46e1721c8aeeaf99442e3f1ab3aa1883c3e2624bd9519b`.
+The2,336-record dictionary preserves the old384 records in order and appends
+the exact full-bound new class. All75,728 compact rows/header and other logical
+fields remain unchanged. The new status count is8 required ERROR+2,048 reference
+VALUE+280 historical ERROR;73,392 statuses remain unresolved(56,045 VALUE/17,347 ERROR).
+
+The reached exact replacement returns7.00, whereas all152 projected ordinary/
+truthful controls require different values or arithmetic errors. Those512
+class-mask controls,canonical text,575 NN boundaries and explicit caller/super
+obligations remain required; all old assertions remain unchanged. Numeric zero divisors are included; this
+is not a nonzero-input or blanket poisoned-subtype exemption. Every archival
+block remains. Historical source-only V7 preparation and prior failures are
+preserved; later metadata success is not a new mathematical test result,
+whole526/541/548/JCK closure or a task-state change.
 
 ## Reproduction and verification
 

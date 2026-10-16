@@ -300,6 +300,11 @@ A frozen [field/control correspondence](diagnostics/decimal-context-dispatch/REA
 maps every old row to these valid-input controls and preserves unresolved
 poisoned interactions. Its mechanical checks do not authorize archival or
 declare the remaining outcome fields unconstrained.
+The [V7 precision-zero policy](docs/decimal-context-p0-policy-526.md) classifies
+1,952 additional historical replacement-value observations after exact input
+and control correspondence checks. All 75,728 original rows and assertions
+remain intact; 73,392 outcome statuses remain unresolved and every archival
+block remains. This metadata validation supplies no new mathematical test result.
 
 For every new difference:
 
