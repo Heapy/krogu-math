@@ -21,7 +21,7 @@ class DecimalDivisionNormalization594SubtypeJvmTest {
     private fun restore(text: String): BigDecimal {
         val ordinary = BigDecimal(BigInteger(text), 0)
         val bytes = ByteArrayOutputStream().also { output ->
-            ObjectOutputStream(output).use { it.writeObject(ordinary) }
+            ObjectOutputStream(output).use { it.writeObject(currentFormatCoefficientCarrier529(ordinary)) }
         }.toByteArray()
         val replacement = TruthfulCoefficient(text)
         val restored = object : ObjectInputStream(ByteArrayInputStream(bytes)) {

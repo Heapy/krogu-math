@@ -59,9 +59,14 @@ class TextOracle537JvmTest {
     }
 
     @Test fun serializedCoefficientSubtypeRetainsFormatterCallbacks() {
-        val field = BigDecimal::class.java.getDeclaredField("coefficient").apply { isAccessible = true }
+        val field = BigDecimal::class.java.getDeclaredField("wideCoefficient").apply { isAccessible = true }
         val original = BigDecimal("123")
         field.set(original, StoredCoefficient())
+        // Current-format wide branch can retain a restored truthful subtype,
+        // including one whose payload is numerically compact.
+        for (name in listOf("compactHigh", "compactLow"))
+            BigDecimal::class.java.getDeclaredField(name).apply { isAccessible = true }.setInt(original, 0)
+        BigDecimal::class.java.getDeclaredField("representation").apply { isAccessible = true }.setInt(original, 2)
         val bytes = java.io.ByteArrayOutputStream().also { buffer ->
             java.io.ObjectOutputStream(buffer).use { it.writeObject(original) }
         }.toByteArray()

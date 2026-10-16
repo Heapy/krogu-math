@@ -96,7 +96,7 @@ internal object DecimalText588 {
         val kept = retainedDecimalText588(lexical.digits, context.precision)
         if (kept > MAX_DIGITS) overflow()
         if (context.precision == 0)
-            return BigDecimal(BigInteger.decimalPrefix537(input, lexical.first, kept.toInt(), lexical.sign), lexical.scale)
+            return BigInteger.decimalValuePrefix529(input, lexical.first, kept.toInt(), lexical.sign, lexical.scale)
         val drop = lexical.digits - kept
         // Preserve ordinary scale-before-inexactness priority. No endpoint
         // padding or optional zero stripping is part of constructor rounding.
@@ -125,7 +125,7 @@ internal object DecimalText588 {
             check(prefix.divideTen() == 0)
             scale = roundingScale(scale.toLong() - 1)
         }
-        return BigDecimal(publish(prefix, lexical.sign), scale)
+        return publishDecimal529(prefix, lexical.sign, scale)
     }
 
     private fun roundingScale(scale: Long): Int {
@@ -224,6 +224,25 @@ internal object DecimalText588 {
             check(size > 0)
             return remainder.toInt()
         }
+    }
+
+    private fun publishDecimal529(decimal: Digits, sign: Int, scale: Int): BigDecimal {
+        // Rounding, exact carry removal, scale and UNNECESSARY checks have
+        // already completed. Accumulate negative so MIN needs no sentinel.
+        if (decimal.size <= 3) {
+            var negative = 0L
+            var compact = true
+            for (index in decimal.size - 1 downTo 0) {
+                val block = decimal[index]
+                if (negative < Long.MIN_VALUE / BASE) { compact = false; break }
+                val product = negative * BASE
+                if (product < Long.MIN_VALUE + block) { compact = false; break }
+                negative = product - block
+            }
+            if (compact && (sign < 0 || negative != Long.MIN_VALUE))
+                return BigDecimal.valueOf(if (sign < 0) negative else -negative, scale)
+        }
+        return BigDecimal(publish(decimal, sign), scale)
     }
 
     private fun publish(decimal: Digits, sign: Int): BigInteger {

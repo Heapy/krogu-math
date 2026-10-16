@@ -24,7 +24,7 @@ class DecimalResidual583SubtypeJvmTest {
     private fun restored(coefficient: Long, scale: Int): BigDecimal {
         val original = BigDecimal.valueOf(coefficient, scale)
         val bytes = ByteArrayOutputStream().also { buffer ->
-            ObjectOutputStream(buffer).use { it.writeObject(original) }
+            ObjectOutputStream(buffer).use { it.writeObject(currentFormatCoefficientCarrier529(original)) }
         }.toByteArray()
         val replacement = TruthfulInteger(BigInteger.valueOf(coefficient))
         val result = object : ObjectInputStream(ByteArrayInputStream(bytes)) {

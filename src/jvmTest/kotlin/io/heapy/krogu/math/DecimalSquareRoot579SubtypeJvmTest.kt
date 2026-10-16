@@ -38,7 +38,7 @@ class DecimalSquareRoot579SubtypeJvmTest {
             val ordinaryCoefficient = BigInteger(case.coefficient)
             val ordinary = BigDecimal(ordinaryCoefficient, -1)
             val bytes = ByteArrayOutputStream().also { buffer ->
-                ObjectOutputStream(buffer).use { it.writeObject(ordinary) }
+                ObjectOutputStream(buffer).use { it.writeObject(currentFormatCoefficientCarrier529(ordinary)) }
             }.toByteArray()
             val replacement = TruthfulInteger(ordinaryCoefficient)
             val restored = object : ObjectInputStream(ByteArrayInputStream(bytes)) {

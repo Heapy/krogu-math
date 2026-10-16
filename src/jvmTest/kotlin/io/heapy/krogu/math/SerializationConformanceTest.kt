@@ -48,9 +48,9 @@ class SerializationConformanceTest {
     }
 
     @Test fun subclassCannotKeepAnAliasToRestoredLimbs() {
-        assertTrue(java.lang.reflect.Modifier.isFinal(field(BigInteger::class.java, "words").modifiers))
+        assertTrue(java.lang.reflect.Modifier.isFinal(field(BigInteger::class.java, "wideWords").modifiers))
         val value = IntegerChild("12345678901234567890123456789", "alias")
-        value.alias = field(BigInteger::class.java, "words").get(value) as IntArray
+        value.alias = field(BigInteger::class.java, "wideWords").get(value) as IntArray
         val restored = roundTrip(value) as IntegerChild
         restored.alias!!.fill(0)
         assertEquals("12345678901234567890123456789", restored.toString())
@@ -58,8 +58,8 @@ class SerializationConformanceTest {
 
     @Test fun malformedSubclassFieldsAreRejectedDuringReading() {
         for (invalid in listOf(null, intArrayOf(), intArrayOf(-1), intArrayOf(1 shl 30), intArrayOf(1, 0))) {
-            val value = IntegerChild("1", "invalid")
-            field(BigInteger::class.java, "words").set(value, invalid)
+            val value = IntegerChild("12345678901234567890123456789", "invalid")
+            field(BigInteger::class.java, "wideWords").set(value, invalid)
             assertFailsWith<InvalidObjectException> { roundTrip(value) }
         }
         for (sign in listOf(-2, 0, 2)) {
@@ -67,8 +67,8 @@ class SerializationConformanceTest {
             field(BigInteger::class.java, "sign").setInt(value, sign)
             assertFailsWith<InvalidObjectException> { roundTrip(value) }
         }
-        val decimal = DecimalChild("1.20", "missing coefficient")
-        field(BigDecimal::class.java, "coefficient").set(decimal, null)
+        val decimal = DecimalChild("123456789012345678901.20", "missing coefficient")
+        field(BigDecimal::class.java, "wideCoefficient").set(decimal, null)
         assertFailsWith<InvalidObjectException> { roundTrip(decimal) }
     }
 

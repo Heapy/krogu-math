@@ -21,7 +21,7 @@ class DecimalPower593SubtypeJvmTest {
         for (sign in listOf(-1, 1)) {
             val ordinary = BigDecimal(BigInteger.valueOf(sign * 1000L), 1)
             val bytes = ByteArrayOutputStream().also { output ->
-                ObjectOutputStream(output).use { it.writeObject(ordinary) }
+                ObjectOutputStream(output).use { it.writeObject(currentFormatCoefficientCarrier529(ordinary)) }
             }.toByteArray()
             val replacement = TruthfulCoefficient((sign * 1000L).toString())
             val restored = object : ObjectInputStream(ByteArrayInputStream(bytes)) {

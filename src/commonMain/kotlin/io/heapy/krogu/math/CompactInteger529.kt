@@ -4,6 +4,8 @@ package io.heapy.krogu.math
 internal object CompactInteger529 {
     private const val MASK = (1L shl 30) - 1
 
+    fun sign(value: Long): Int = if (value < 0L) -1 else if (value > 0L) 1 else 0
+
     fun value(high: Int, low: Int): Long = (high.toLong() shl 32) or (low.toLong() and 0xffffffffL)
 
     fun addFits(a: Long, b: Long, result: Long): Boolean = ((a xor result) and (b xor result)) >= 0

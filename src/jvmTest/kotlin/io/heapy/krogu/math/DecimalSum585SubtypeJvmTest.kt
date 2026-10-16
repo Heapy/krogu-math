@@ -27,7 +27,7 @@ class DecimalSum585SubtypeJvmTest {
     private fun restored(coefficient: Long): BigDecimal {
         val value = BigInteger.valueOf(coefficient)
         val bytes = ByteArrayOutputStream().also { buffer ->
-            ObjectOutputStream(buffer).use { it.writeObject(BigDecimal(value, 2)) }
+            ObjectOutputStream(buffer).use { it.writeObject(currentFormatCoefficientCarrier529(BigDecimal(value, 2))) }
         }.toByteArray()
         val replacement = TruthfulInteger(value)
         return object : ObjectInputStream(ByteArrayInputStream(bytes)) {

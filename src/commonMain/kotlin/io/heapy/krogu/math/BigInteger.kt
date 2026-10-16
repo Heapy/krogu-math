@@ -20,7 +20,7 @@ open class BigInteger private constructor(
 
     // Compact values retain no magnitude array or boxed Long on any target.
     private constructor(value: Long) : this(
-        value.compareTo(0L), (value shr 32).toInt(), value.toInt(), 1, null)
+        CompactInteger529.sign(value), (value shr 32).toInt(), value.toInt(), 1, null)
     private constructor(sign: Int, words: IntArray) : this(
         sign,
         if (CompactInteger529.fits(sign, words)) (CompactInteger529.fromMagnitude(sign, words) shr 32).toInt() else 0,
@@ -44,7 +44,7 @@ open class BigInteger private constructor(
         restoreSerializedFields(stream)
         if (sign !in -1..1) invalidSerializedState("Invalid BigInteger sign")
         when (representation) {
-            1 -> if (wideWords != null || compactStoredValue529().compareTo(0L) != sign)
+            1 -> if (wideWords != null || CompactInteger529.sign(compactStoredValue529()) != sign)
                 invalidSerializedState("Invalid compact BigInteger")
             2 -> {
                 val restored = wideWords ?: invalidSerializedState("Missing BigInteger magnitude")
@@ -1108,8 +1108,10 @@ open class BigInteger private constructor(
     }
 
     override fun compareTo(other: BigInteger): Int {
-        if (representation == 1 && other.representation == 1)
-            return compactStoredValue529().compareTo(other.compactStoredValue529())
+        if (representation == 1 && other.representation == 1) {
+            val order = compactStoredValue529().compareTo(other.compactStoredValue529())
+            return if (order < 0) -1 else if (order > 0) 1 else 0
+        }
         val words = materializeMagnitude()
         val operand = other
         if (sign != operand.sign) return if (sign < operand.sign) -1 else 1
@@ -1233,6 +1235,8 @@ open class BigInteger private constructor(
     @kotlin.jvm.JvmSynthetic
     internal fun radixDigits537(radix: Int, maxDigits: Long? = null): RadixDigits537 {
         require(radix in 2..36)
+        if (representation == 1) return compactRadixDigits529(compactStoredValue529(), radix, maxDigits)
+        val words = wideWords!!
         val upperBits = 32 - (radix - 1).countLeadingZeroBits()
         val lowerDigits = if (sign == 0) 1L else (magnitudeBits() - 1).toLong() / upperBits + 1
         checkTextLimit537(lowerDigits, maxDigits)
@@ -1584,11 +1588,36 @@ open class BigInteger private constructor(
             maxInputChars: Int, radix: Int = 10): BigInteger =
             parse(NumericText537.of(value, offset, length).within(maxInputChars), radix)
 
+        @kotlin.jvm.JvmSynthetic
+        internal fun compactRadixDigits529(value: Long, radix: Int, maxDigits: Long? = null): RadixDigits537 {
+            var power = radix
+            var width = 1
+            while (power.toLong() * radix <= Int.MAX_VALUE) { power *= radix; width++ }
+            var negative = if (value > 0) -value else value
+            val chunks = IntArray(3)
+            var size = 0
+            do {
+                chunks[size++] = -(negative % power).toInt()
+                negative /= power
+            } while (negative != 0L)
+            val result = RadixDigits537(chunks, size, radix, width)
+            checkTextLimit537(result.length, maxDigits)
+            return result
+        }
+
         private fun parse(value: String, radix: Int): BigInteger = parse(NumericText537.of(value), radix)
 
         /** Fully validated decimal significand; no intermediate digit String or byte encoding. */
         @kotlin.jvm.JvmSynthetic
         internal fun decimalPrefix537(value: NumericText537, first: Int, digits: Int, sign: Int): BigInteger {
+            return decimalPrefixBuilder529(value, first, digits).publish(sign)
+        }
+
+        @kotlin.jvm.JvmSynthetic
+        internal fun decimalValuePrefix529(value: NumericText537, first: Int, digits: Int, sign: Int, scale: Int): BigDecimal =
+            decimalPrefixBuilder529(value, first, digits).publishDecimal(sign, scale)
+
+        private fun decimalPrefixBuilder529(value: NumericText537, first: Int, digits: Int): ParsedMagnitude537 {
             val builder = ParsedMagnitude537()
             var index = first
             var remaining = digits
@@ -1608,7 +1637,7 @@ open class BigInteger private constructor(
                 remaining -= width
                 width = 9
             }
-            return builder.publish(sign)
+            return builder
         }
 
         private fun parse(value: NumericText537, radix: Int): BigInteger {
@@ -1668,10 +1697,28 @@ open class BigInteger private constructor(
 
         /** Mutable only during parsing; each multiply-add is below B*Int.MAX_VALUE < 2^61. */
         private class ParsedMagnitude537 {
-            private var words = IntArray(4)
+            private var compactNegative = 0L
+            private var wide: IntArray? = null
             private var size = 0
-            fun bits(): Int = if (size == 0) 0 else (size - 1) * LIMB_BITS + 32 - words[size - 1].countLeadingZeroBits()
+            fun bits(): Int = wide?.let { if (size == 0) 0 else (size - 1) * LIMB_BITS + 32 - it[size - 1].countLeadingZeroBits() }
+                ?: CompactInteger529.magnitudeBits(compactNegative)
             fun multiplyAdd(power: Int, block: Int) {
+                var words = wide
+                if (words == null) {
+                    // Check both operations before evaluating them in the negative domain.
+                    // power > 0 and 0 <= block < power; MIN is an ordinary payload.
+                    if (compactNegative >= Long.MIN_VALUE / power) {
+                        val product = compactNegative * power
+                        if (product >= Long.MIN_VALUE + block) {
+                            compactNegative = product - block
+                            return
+                        }
+                    }
+                    val magnitude = CompactInteger529.magnitude((compactNegative shr 32).toInt(), compactNegative.toInt())
+                    size = magnitude.size
+                    words = magnitude.copyOf(maxOf(4, size + 1))
+                    wide = words
+                }
                 var carry = block.toLong()
                 for (index in 0 until size) {
                     val part = words[index].toLong() * power + carry
@@ -1684,13 +1731,25 @@ open class BigInteger private constructor(
                             words.size.toLong() * 2).toInt()
                         if (next == words.size) throw ArithmeticException("BigInteger overflow")
                         words = words.copyOf(next)
+                        wide = words
                     }
                     words[size++] = (carry and MASK).toInt()
                     carry = carry ushr LIMB_BITS
                 }
                 if (size > 0) MagnitudeLimits.checkedBitLength(size, words[size - 1])
             }
-            fun publish(sign: Int): BigInteger = normalized(sign, words.copyOf(size))
+            fun publish(sign: Int): BigInteger {
+                val words = wide
+                if (words != null) return normalized(sign, words.copyOf(size))
+                return if (sign < 0) valueOf(compactNegative)
+                    else if (compactNegative == Long.MIN_VALUE) BigInteger(1, intArrayOf(0, 0, 8))
+                    else valueOf(-compactNegative)
+            }
+            fun publishDecimal(sign: Int, scale: Int): BigDecimal {
+                if (wide == null && (sign < 0 || compactNegative != Long.MIN_VALUE))
+                    return BigDecimal.valueOf(if (sign < 0) compactNegative else -compactNegative, scale)
+                return BigDecimal(publish(sign), scale)
+            }
         }
 
         private fun invalidIntegerDigit(value: NumericText537, radix: Int, start: Int, invalid: Int): Nothing {

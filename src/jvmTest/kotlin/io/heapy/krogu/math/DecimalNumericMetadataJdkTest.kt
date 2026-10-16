@@ -33,7 +33,7 @@ class DecimalNumericMetadataJdkTest {
             // Write the current own object format, then exercise the reader's
             // supported object-resolution hook. No legacy stream is constructed.
             val bytes = ByteArrayOutputStream().also { buffer ->
-                ObjectOutputStream(buffer).use { it.writeObject(control) }
+                ObjectOutputStream(buffer).use { it.writeObject(currentFormatCoefficientCarrier529(control)) }
             }.toByteArray()
             val replacement = CurrentFormatTruthfulCoefficient(text)
             val restored = object : ObjectInputStream(ByteArrayInputStream(bytes)) {
