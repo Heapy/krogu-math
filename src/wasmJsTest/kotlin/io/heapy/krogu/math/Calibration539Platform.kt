@@ -9,3 +9,5 @@ internal actual fun calibration539CallerAllocatedBytes(): Long? = null
 // Host heapUsed does not establish WasmGC owned-object coverage.
 internal actual fun calibration539HeapBytes(): Long? = null
 internal actual fun calibration539Verify(a: IntArray, b: IntArray, result: IntArray) { /* common school check */ }
+
+internal actual fun calibration539NativeCases(): List<Calibration539Case> = emptyList()

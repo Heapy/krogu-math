@@ -3,6 +3,8 @@ package io.heapy.krogu.math
 import kotlin.test.Test
 import kotlin.time.TimeSource
 
+internal data class Calibration539Case(val id: String, val operation: () -> Any, val verify: () -> Unit)
+internal expect fun calibration539NativeCases(): List<Calibration539Case>
 internal expect fun calibration539Arguments(): String?
 internal expect fun calibration539Platform(): String
 internal expect fun calibration539CpuNs(): Long?
@@ -21,16 +23,16 @@ class MultiplicationCalibration539 {
 internal object MultiplicationCampaign539 {
     // Globally retained bounded escape; only checksums, outside timing, inspect results.
     private val ring = arrayOfNulls<Any>(64)
-    private data class Case(val id: String, val operation: () -> Any, val verify: () -> Unit)
 
     fun run(arguments: String) {
         val args = arguments.split(',')
         require(args.size == 4) { "mode,forward|reverse,samples,target_ms" }
-        require(args[0] in listOf("kernel-small", "kernel-medium", "kernel-large", "cost", "public-small"))
+        require(args[0] in listOf("kernel-small", "kernel-medium", "kernel-large", "cost", "public-small", "native-parallel"))
         require(args[1] in listOf("forward", "reverse"))
         val samples = args[2].toInt().also { require(it in 5..15) }
         val target = args[3].toLong().also { require(it in 10..100) } * 1_000_000
         val cases = when (args[0]) {
+            "native-parallel" -> calibration539NativeCases().also { require(it.isNotEmpty()) { "Native-only mode or no eligible cases" } }
             "cost" -> costs()
             "public-small" -> publicSmall()
             else -> kernels(args[0])
@@ -71,7 +73,7 @@ internal object MultiplicationCampaign539 {
         println("PASS539,${cases.size},$samples")
     }
 
-    private fun batch(case: Case, count: Int): Long {
+    private fun batch(case: Calibration539Case, count: Int): Long {
         val mark = TimeSource.Monotonic.markNow()
         repeat(count) { ring[it and 63] = case.operation() }
         return mark.elapsedNow().inWholeNanoseconds
@@ -80,7 +82,7 @@ internal object MultiplicationCampaign539 {
         hash * 31 + if (value is IntArray) value.contentHashCode() else (value?.hashCode() ?: 0)
     }
 
-    private fun kernels(mode: String): List<Case> {
+    private fun kernels(mode: String): List<Calibration539Case> {
         val sizes = when (mode) {
             "kernel-small" -> listOf(8, 16, 31, 32, 63, 64)
             "kernel-medium" -> listOf(96, 128, 192, 256, 383, 384, 512)
@@ -99,7 +101,7 @@ internal object MultiplicationCampaign539 {
                     val expected = MagnitudeMultiplication.multiply(a, b, Int.MAX_VALUE, Int.MAX_VALUE)
                     calibration539Verify(a, b, expected)
                     for (policy in policies) {
-                        add(Case("kernel/$size/$shape/k${policy.karatsuba}-s${policy.squareLeaf}-e${policy.wholeSquareEntry}",
+                        add(Calibration539Case("kernel/$size/$shape/k${policy.karatsuba}-s${policy.squareLeaf}-e${policy.wholeSquareEntry}",
                             { MagnitudeMultiplication.multiplyConfigured539(a, b, policy) }, {
                                 check(expected.contentEquals(MagnitudeMultiplication.multiplyConfigured539(a, b, policy)))
                             }))
@@ -112,28 +114,28 @@ internal object MultiplicationCampaign539 {
                             val work = checkNotNull(MagnitudeMultiplication.prepareParallel539(a, b, policy))
                             return work.combine(work.child(0), work.child(1), work.child(2))
                         }
-                        add(Case("frame-serial/$size/$shape", ::frame, { check(expected.contentEquals(frame())) }))
+                        add(Calibration539Case("frame-serial/$size/$shape", ::frame, { check(expected.contentEquals(frame())) }))
                     }
                 }
             }
         }
     }
 
-    private fun publicSmall(): List<Case> = buildList {
+    private fun publicSmall(): List<Calibration539Case> = buildList {
         for (bits in listOf(1, 30, 63, 64, 127, 511, 1023)) {
             val a = BigInteger.ONE.shiftLeft(bits - 1).add(if (bits == 1) BigInteger.ZERO else BigInteger.ONE)
             val b = a.add(BigInteger.TWO)
             val power = bits - 1
             val expected = if (bits == 1) BigInteger.valueOf(3) else
                 BigInteger.ONE.shiftLeft(2 * power).add(BigInteger.ONE.shiftLeft(power + 2)).add(BigInteger.valueOf(3))
-            add(Case("public/$bits/distinct", { a.multiply(b) }, { check(a.multiply(b) == expected); println("REP539,public/$bits/distinct,$expected") }))
+            add(Calibration539Case("public/$bits/distinct", { a.multiply(b) }, { check(a.multiply(b) == expected); println("REP539,public/$bits/distinct,$expected") }))
             val square = if (bits == 1) BigInteger.ONE else
                 BigInteger.ONE.shiftLeft(2 * power).add(BigInteger.ONE.shiftLeft(power + 1)).add(BigInteger.ONE)
-            add(Case("public/$bits/square", { a.multiply(a) }, { check(a.multiply(a) == square); println("REP539,public/$bits/square,$square") }))
+            add(Calibration539Case("public/$bits/square", { a.multiply(a) }, { check(a.multiply(a) == square); println("REP539,public/$bits/square,$square") }))
         }
     }
 
-    private fun costs(): List<Case> {
+    private fun costs(): List<Calibration539Case> {
         val words = IntArray(256) { ((it.toLong() * 104729 + 1) and 0x3fffffff).toInt() }
         fun signed(): Long {
             var carry = 0L
@@ -151,11 +153,11 @@ internal object MultiplicationCampaign539 {
             return carry
         }
         return listOf(
-            Case("cost/signed-long-256", ::signed, { check(signed() == unsigned()) }),
-            Case("cost/unsigned-long-256", ::unsigned, { check(unsigned() == signed()) }),
-            Case("cost/int-carry-256", ::integerCarry, { check(integerCarry() in 0..1) }),
-            Case("cost/allocate-256-words", { IntArray(256) }, {}),
-            Case("cost/allocate-4096-words", { IntArray(4096) }, {}),
+            Calibration539Case("cost/signed-long-256", ::signed, { check(signed() == unsigned()) }),
+            Calibration539Case("cost/unsigned-long-256", ::unsigned, { check(unsigned() == signed()) }),
+            Calibration539Case("cost/int-carry-256", ::integerCarry, { check(integerCarry() in 0..1) }),
+            Calibration539Case("cost/allocate-256-words", { IntArray(256) }, {}),
+            Calibration539Case("cost/allocate-4096-words", { IntArray(4096) }, {}),
         )
     }
 }

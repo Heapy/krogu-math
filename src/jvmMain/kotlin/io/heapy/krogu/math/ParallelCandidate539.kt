@@ -127,6 +127,12 @@ internal class ParallelCandidate539(
 
     override fun close() { executor.shutdown() }
 
+    /** Diagnostic lifecycle fence, outside arithmetic timing; never interrupts readers. */
+    fun awaitTermination539(seconds: Long): Boolean {
+        require(seconds in 1..30)
+        return executor.awaitTermination(seconds, TimeUnit.SECONDS)
+    }
+
     companion object {
         private val workerGate = Semaphore(2)
         private val nested = ThreadLocal<Boolean>()

@@ -6,3 +6,5 @@ internal actual fun calibration539CpuNs(): Long? = cpu539().toLong()
 internal actual fun calibration539CallerAllocatedBytes(): Long? = null
 internal actual fun calibration539HeapBytes(): Long? = (js("process.memoryUsage().heapUsed") as Double).toLong()
 internal actual fun calibration539Verify(a: IntArray, b: IntArray, result: IntArray) { /* common school check */ }
+
+internal actual fun calibration539NativeCases(): List<Calibration539Case> = emptyList()

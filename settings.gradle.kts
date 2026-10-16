@@ -3,3 +3,6 @@ dependencyResolutionManagement { repositories { mavenCentral() } }
 rootProject.name = "krogu-math"
 
 include(":benchmarks")
+
+// Opt-in unpublisheddiagnostic: ordinary builds/527 data and library artifacts are unchanged.
+if (providers.gradleProperty("multiplication539").orNull == "true") include(":multiplication539")

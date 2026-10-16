@@ -69,8 +69,9 @@ failure. Their shared global gate assumes sequential test-method execution.
 
 JS/Wasm have no adopted worker transport; serialization/copy/startup costs and
 runtime threading support must be evaluated rather than assume JVM behavior.
-Native concurrency requires an explicit supported worker/ownership design;
-no obsolete API opt-in or intrinsic backend is introduced by this candidate.
+Native diagnostic concurrency now has a separately documented invocation-owned
+Worker design, with explicit source opt-ins in nativeTest only. No production
+Native opt-in, intrinsic backend or scheduling route is introduced.
 An unavailable or unprofitable parallel route retains the public synchronous
 fallback, but that conclusion requires target evidence and a recorded decision.
 
@@ -88,3 +89,41 @@ was staged. No remote numerical work or compiler ran. Transfer only manifest
 listed immutable artifacts/probes/runtime dependencies, with bounded disk use;
 verify hashes remotely, clear ambient options/environment and own timeout/process
 cleanup. Node/Kotlin/Native toolchain installation is not implied by this audit.
+
+## Draft parallel observation entry
+
+`ParallelCalibration539JvmMain` compares kernel, serial frame and one/two-worker
+candidates on256/1024/4096/8192/16384 words, distinct/self/1:2 shapes. Reversed
+forks reverse sizes, shapes and variants. Independent school and public JDK
+checks run before observations. Every sampled result is compared in full outside
+timing. A fresh executor + first product + shutdown observation is separate from
+steady reused-pool samples. It is pool-start cost after oracle preparation, not
+cold JVM startup. Executor termination is awaited outside the observation and
+before another pool/configuration, so previous shutdown cannot leak into the
+next observation. Actual processor-budget ineligibility is printed explicitly.
+
+The JDK21+ [all-thread allocation counter](https://docs.oracle.com/en/java/javase/25/docs/api/jdk.management/com/sun/management/ThreadMXBean.html#getTotalThreadAllocatedBytes())
+includes worker allocations and approximate runtime/background allocation;
+values are not exact invocation-exclusive allocation. Whole-process CPU includes
+GC/JIT work. Reset heap-pool peaks summed across pools are a conservative upper
+bound (peaks need not coincide), not isolated scratch residency. The common
+frame separately reports a conservative word-payload bound including sums,
+three child outputs, final output and all three child arenas. Borrowed input
+payload, object headers and scheduler/task objects are excluded from that
+logical word count and must remain visible in allocation/RSS observations.
+
+This entry binds exact kernel/policy/scheduler and probe code origins and hashes
+before/after. Strict checker source is prepared; an actual owning launcher must still bind
+accepted source/build provenance, JVM flags and source/artifact metadata, bounded
+per-process/campaign deadlines, raw partial output and owned cleanup. It is
+UNRUN and does not replace final small public guards or composed correctness.
+
+
+The worker capture driver and strict three-fork checkers are now source-prepared
+in scripts/measure-worker-transport-539.main.kts, check-worker-transport-539.main.kts
+and check-portable-multiplication-539.main.kts. They are UNCOMPILED/UNRUN. The
+portable checker requires explicit owning-launcher exit/source/artifact/runtime/
+PID sidecars; it does not prove their truth independently. All scripts preserve
+per-case ranges and use terminal statuses and exact inventories, not a lone PASS
+line. Final matched fresh-build source manifests and actual process ownership
+must be supplied by the serialized execution campaign.

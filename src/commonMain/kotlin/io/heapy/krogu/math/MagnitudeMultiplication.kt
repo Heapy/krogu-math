@@ -92,6 +92,28 @@ internal object MagnitudeMultiplication {
             else -> throw IllegalArgumentException("Child index")
         }
 
+        /** Diagnostic transport only: owned copies may be transferred without detaching caller inputs. */
+        fun copiedChildInputs539(index: Int): Pair<IntArray, IntArray> {
+            fun copies(a: IntArray, ao: Int, al: Int, b: IntArray, bo: Int, bl: Int): Pair<IntArray, IntArray> {
+                val left = a.copyOfRange(ao, ao + al)
+                val right = if (a === b && ao == bo && al == bl) left else b.copyOfRange(bo, bo + bl)
+                return left to right
+            }
+            return when (index) {
+                0 -> copies(a, 0, aLow, b, 0, bLow)
+                1 -> copies(a, aLow, aHigh, b, bLow, bHigh)
+                2 -> copies(sumA, 0, sumALength, sumB, 0, sumBLength)
+                else -> throw IllegalArgumentException("Child index")
+            }
+        }
+
+        /** Conservative total new word payload; excludes borrowed inputs, headers and scheduler objects. */
+        fun wordPayloadUpperBound539(): Long = sumA.size.toLong() +
+            (if (sumB === sumA) 0 else sumB.size) + aLow + bLow + aHigh + bHigh +
+            sumALength + sumBLength + a.size + b.size +
+            scratchWords(aLow, bLow, policy.karatsuba) + scratchWords(aHigh, bHigh, policy.karatsuba) +
+            scratchWords(sumALength, sumBLength, policy.karatsuba)
+
         /** All three children must have completed before any recombination. */
         fun combine(low: IntArray, high: IntArray, middle: IntArray): IntArray {
             require(low.size == aLow + bLow && high.size == aHigh + bHigh && middle.size == sumALength + sumBLength)

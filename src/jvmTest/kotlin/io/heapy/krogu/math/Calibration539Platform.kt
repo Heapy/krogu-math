@@ -28,3 +28,5 @@ object MultiplicationCalibration539JvmMain {
         MultiplicationCampaign539.run(args.single())
     }
 }
+
+internal actual fun calibration539NativeCases(): List<Calibration539Case> = emptyList()

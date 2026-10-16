@@ -4,6 +4,8 @@ import kotlin.test.Test
 import kotlin.test.assertContentEquals
 import kotlin.test.assertNull
 import kotlin.test.assertNotNull
+import kotlin.test.assertNotSame
+import kotlin.test.assertSame
 
 class MultiplicationPolicy539Test {
     @Test fun configuredRangesAndSerialFrameMatchIndependentSchoolProduct() {
@@ -39,4 +41,23 @@ class MultiplicationPolicy539Test {
         assertNull(MagnitudeMultiplication.prepareParallel539(IntArray(3), IntArray(8), policy))
         assertNull(MagnitudeMultiplication.prepareParallel539(IntArray(4), IntArray(9), policy))
     }
+    @Test fun transportCopiesPreserveAliasesWithoutBorrowingFrameInputs() {
+        val policy = MultiplicationPolicy539(4, 1, 0)
+        val a = IntArray(8) { 0x3fffffff }
+        for (b in listOf(a, IntArray(16) { it + 1 })) {
+            val originalA = a.copyOf(); val originalB = b.copyOf()
+            val frame = assertNotNull(MagnitudeMultiplication.prepareParallel539(a, b, policy))
+            for (index in 0..2) {
+                val expected = frame.child(index)
+                val (left, right) = frame.copiedChildInputs539(index)
+                assertNotSame(a, left); assertNotSame(b, right)
+                if (a === b) assertSame(left, right)
+                assertContentEquals(expected, MagnitudeMultiplication.multiply(left, right, policy.karatsuba, policy.squareLeaf))
+                left.fill(0); right.fill(0) // Models exclusive transfer/detach ownership.
+                assertContentEquals(expected, frame.child(index))
+                assertContentEquals(originalA, a); assertContentEquals(originalB, b)
+            }
+        }
+    }
+
 }
