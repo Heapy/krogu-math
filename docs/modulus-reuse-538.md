@@ -59,6 +59,18 @@ Before runtime, independently review the diagnostic and freeze it. Run paired fr
 
 No execution result is claimed by this source document. Required next gates are independent composed-source review; JVM/JS/Wasm/macOS ARM64 modular/inverse/primality contracts with exact inventories; fresh matched JAR origins/hashes; actual setup/total-reuse measurements and one-witness/tiny-prime controls; and the unchanged public primality/BigInteger acceptance inputs, assertions, certainty/round budgets, 512 MiB and original 120/400 s directives.
 
+The production milestone is now rebased on accepted 532+533 main
+`943635476c052bb6377f20d79d2bcb856c2c104e` and independently source-reviewed at
+`33abf131a30ac13069fca592cd93c07c94e64ab4`; accepted additive 534 must still be
+included before execution. The supplemental `scripts/check-known-primes-538.main.kts`
+is independently source-reviewed and remains uncompiled/unrun. It records actual
+public `isProbablePrime(100)` outcomes for Mersenne exponents
+521/607/1279/2203/2281/3217/4253, requiring all seven TRUE results. It uses serial
+512 MiB children with a 120-second deadline including script compilation, exact
+JAR/script/runtime/origin checks, and owned-only bounded timeout cleanup with
+survivor reporting. A false result or deadline is a failure, with no inferred
+Boolean outcome for a timeout; original public acceptance remains a separate gate.
+
 The public harness's documented adapters/resource skips remain separate from original coverage. Current `docs/public-math-consolidated-559.md` records historical 106 PASS/46 SKIP on its named artifact, including adapted PrimeTest; it does not certify this new implementation or restore the skipped original huge-range expectation. Strict known-prime Mersenne checks and actual Boolean outcomes remain explicit evidence. No constant-time, cryptographic, full-domain empirical, universal speedup or uncontended-host claim is made.
 
 ## Private boundary for a later compact representation (task 529)
