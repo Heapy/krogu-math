@@ -123,6 +123,14 @@ object Gap597Probe {
             }
         }
         binding()
+        // Optional Linux process-lifetime peak, read after all timed counters/JFR.
+        // Includes setup, compilation tiers, JFR dump/attribution and binding work.
+        val hwm = try {
+            val status = File("/proc/self/status")
+            if (status.canRead()) status.useLines { lines -> lines.firstOrNull { it.startsWith("VmHWM:") } } else null
+        } catch (_: java.io.IOException) { null }
+        File(output, "process-peak-memory.txt").writeText(
+            "metric=Linux_proc_self_status_VmHWM\nvalue=${hwm ?: "NA"}\nscope=whole_process_lifetime_including_setup_and_JFR_not_operation_retention\n")
         File(output, "COMPLETE.txt").writeText("PASS bindings/exact prepared16 public outputs; mode=$mode cases=${selected.size}; observations require independent analysis\n")
     }
 

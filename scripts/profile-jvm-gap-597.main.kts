@@ -1,13 +1,13 @@
 #!/usr/bin/env kotlinr
 // SPDX-License-Identifier: Apache-2.0
-// ORIGINAL527.jar POST533.jar NEW-output timings|profiles
-// Heavy: run ONLY after direct serialized-slot handoff. Preparation is not execution.
+// ORIGINAL527.jar POST533.jar NEW-output timings|profiles|prepare
+// Heavy: run ONLY after direct serialized-slot handoff. prepare executes builds, not numerical campaigns.
 import java.io.File
 import java.security.MessageDigest
 import java.time.Instant
 import java.util.concurrent.TimeUnit
 
-require(args.size == 4 && args[3] in listOf("timings", "profiles"))
+require(args.size == 4 && args[3] in listOf("timings", "profiles", "prepare"))
 check(System.getProperty("java.runtime.version") == "25.0.4+9-LTS" && System.getProperty("java.vendor") == "BellSoft")
 check(KotlinVersion.CURRENT.toString() == "2.4.21")
 val root = File(".").canonicalFile
@@ -73,6 +73,12 @@ check(libraries.any { it.name=="kotlin-stdlib.jar" })
 val artifacts=(listOf(original,post,current,probe)+libraries).associateWith(::sha)
 File(output,"artifacts.sha256").writeText(artifacts.entries.joinToString("\n",postfix="\n") { "${it.value}  ${it.key}" })
 fun binding() {check(sources()==sourceBefore);check(artifacts.all { (file,hash)->sha(file)==hash })}
+if(args[3]=="prepare") {
+    binding()
+    File(output,"PREPARED.txt").writeText("Fresh current/probe build and frozen artifacts prepared; no numerical campaign executed\n")
+    println("PREPARED current/probe artifacts; timings/profiles not executed")
+    kotlin.system.exitProcess(0)
+}
 val labels=listOf("small","wide","negative-scale","large-scale")
 val priority=labels.flatMap { listOf("decimal/$it/divide","decimal/$it/precision") }
 val expected=(priority+labels.flatMap { listOf("precision-first/$it/string","precision-first/$it/coefficient","precision-construction/$it/string") }).toSet()
@@ -97,7 +103,10 @@ fun execute(era:String,jar:File,fork:Int,mode:String,case:String) {
         mode,if(era=="jdk") "jdk" else "krogu",jar.path,artifacts.getValue(jar),probe.path,artifacts.getValue(probe),
         "$fork",if(fork%2==0) "forward" else "reverse",case,destination.path)
     host("$name-before")
-    val timing=if(System.getProperty("os.name")=="Mac OS X") listOf("/usr/bin/time","-l") else listOf("/usr/bin/time","-v")
+    val timing=if(!File("/usr/bin/time").canExecute()) {
+        File(output,"$name-external-process-metrics.txt").writeText("RSS/whole-process external time unavailable; exact Java counters remain in samples.csv\n")
+        emptyList()
+    } else if(System.getProperty("os.name")=="Mac OS X") listOf("/usr/bin/time","-l") else listOf("/usr/bin/time","-v")
     run(timing+command,name,if(mode=="timing") 300 else 120)
     host("$name-after")
     check(File(destination,"COMPLETE.txt").isFile)
