@@ -36,6 +36,12 @@ open class BigDecimal private constructor(
     private fun coefficientSnapshot(): BigInteger = wideCoefficient ?: BigInteger.valueOf(compactValue529())
     @kotlin.jvm.JvmSynthetic
     internal fun hasCompactStorage529(): Boolean = representation == 1
+    //535 keeps its existing MIN eligibility and observable subclass fallback.
+    @kotlin.jvm.JvmSynthetic
+    internal fun accumulatorCompactEligible529(): Boolean = this::class == BigDecimal::class &&
+        representation == 1 && compactValue529() != Long.MIN_VALUE
+    @kotlin.jvm.JvmSynthetic
+    internal fun accumulatorCompactValue529(): Long = compactValue529()
     private fun storedSign529(): Int = if (representation == 1) CompactInteger529.sign(compactValue529())
         else wideCoefficient!!.signum()
     private fun readObject(stream: MathObjectInputStream) {

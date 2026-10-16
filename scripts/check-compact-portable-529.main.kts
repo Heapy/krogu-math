@@ -7,7 +7,7 @@ val samples = args[2].toInt(); val retained = args[3].toInt(); val platform = ar
 require(samples in 5..20 && retained in 1000..200000 && platform in listOf("jvm", "js", "wasm", "native"))
 val cases = setOf("integer/create-small", "integer/create-min", "integer/add-small", "integer/multiply-small",
     "integer/wide-add", "integer/wide-multiply", "integer/wide-divide", "decimal/create-small", "decimal/create-min",
-    "decimal/add-small", "decimal/multiply-small", "decimal/divide-context", "decimal/round", "decimal/setScale",
+    "decimal/add-small", "decimal/multiply-small", "decimal/divide-context", "decimal/original527-mc34-divide", "decimal/accumulator-compact-fresh", "decimal/round", "decimal/setScale",
     "decimal/metadata", "decimal/wide-create", "decimal/wide-add", "decimal/wide-multiply", "decimal/wide-divide")
 val cohorts = setOf("integer/small", "integer/min", "integer/wide", "decimal/small", "decimal/min", "decimal/wide",
     "control/bytes0", "control/bytes256", "control/ints64")
@@ -70,7 +70,7 @@ for ((index, path) in args.take(2).withIndex()) {
         contrast / count
     }
     check(normalized.max() / normalized.min() <= 1.5) { "UNVERIFIED size scaling" }
-    println("VALIDATED,$index,$platform,19cases,81retentionRows,covered_payload_slope_NOT_exact_graph")
+    println("VALIDATED,$index,$platform,21cases,81retentionRows,covered_payload_slope_NOT_exact_graph")
 }
 check(checks[0] == checks[1]) { "Paired full representation mismatch" }
 println("PASS paired values/inventory/metrics/control coverage; independent graph ownership and source/artifact binding still required")

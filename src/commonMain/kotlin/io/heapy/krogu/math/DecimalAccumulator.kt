@@ -48,8 +48,10 @@ class DecimalAccumulator(
             val result = if (rounding == DecimalRounding.EACH_STEP) input.round(context) else input
             store(result)
         } else {
-            val incoming = input.unscaledValue().decimalCompactValue()
-            if (finalWork == null && wide == null && incoming != null && scale == input.scale() &&
+            val direct = input.accumulatorCompactEligible529()
+            val fallback = if (direct) null else input.unscaledValue().decimalCompactValue()
+            val incoming = if (direct) input.accumulatorCompactValue529() else fallback ?: 0L
+            if (finalWork == null && wide == null && (direct || fallback != null) && scale == input.scale() &&
                 (rounding == DecimalRounding.FINAL_RESULT || context.precision == 0) &&
                 !additionOverflows(compact, incoming)) {
                 val result = compact + incoming
@@ -154,6 +156,8 @@ class DecimalAccumulator(
     }
 
     private fun checkedDigits(value: BigDecimal): Int {
+        if (value.accumulatorCompactEligible529())
+            return longDigits(value.accumulatorCompactValue529()).also { checkWork(it.toLong()) }
         val coefficient = value.unscaledValue()
         val small = coefficient.decimalCompactValue()
         if (small != null) return longDigits(small).also { checkWork(it.toLong()) }
@@ -164,16 +168,17 @@ class DecimalAccumulator(
 
     private fun store(value: BigDecimal) {
         finalWork = null
-        val small = value.unscaledValue().decimalCompactValue()
-        if (small == null) wide = value
+        val direct = value.accumulatorCompactEligible529()
+        val fallback = if (direct) null else value.unscaledValue().decimalCompactValue()
+        if (!direct && fallback == null) wide = value
         else {
-            compact = small
+            compact = if (direct) value.accumulatorCompactValue529() else fallback!!
             scale = value.scale()
             wide = null
         }
     }
 
-    private fun stored(): BigDecimal = wide ?: BigDecimal(BigInteger.valueOf(compact), scale)
+    private fun stored(): BigDecimal = wide ?: BigDecimal.valueOf(compact, scale)
 
     private fun expandedCopy(): DecimalSignedWork535 = finalWork?.copy() ?: stored().let { value ->
         DecimalSignedWork535(value.scale().toLong()).also { it.add(value) }

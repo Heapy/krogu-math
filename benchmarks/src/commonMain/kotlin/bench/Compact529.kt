@@ -1,6 +1,7 @@
 package bench
 
 import io.heapy.krogu.math.BigDecimal
+import io.heapy.krogu.math.DecimalAccumulator
 import io.heapy.krogu.math.BigInteger
 import io.heapy.krogu.math.MathContext
 import io.heapy.krogu.math.RoundingMode
@@ -27,6 +28,9 @@ internal fun compact529(arguments: Array<String>) {
     val wideDecimals = Array(16) { BigDecimal(wide[it], 2) }
     val divisors = Array(16) { BigDecimal.valueOf(123L + it, 2) }
     val mc = MathContext(7, RoundingMode.HALF_EVEN)
+    val original527A = Array(16) { BigDecimal("${123 + it}.45") }
+    val original527B = Array(16) { BigDecimal("${11 + it}.37") }
+    val mc34 = MathContext(34, RoundingMode.HALF_EVEN)
     val factor = BigInteger.valueOf(123)
     val workloads = listOf(
         Workload("integer/create-small") { BigInteger.valueOf(12345000001L + (it and 15)) },
@@ -41,6 +45,8 @@ internal fun compact529(arguments: Array<String>) {
         Workload("decimal/add-small") { decimals[it and 15].add(divisors[it and 15]) },
         Workload("decimal/multiply-small") { decimals[it and 15].multiply(divisors[it and 15]) },
         Workload("decimal/divide-context") { decimals[it and 15].divide(divisors[it and 15], mc) },
+        Workload("decimal/original527-mc34-divide") { original527A[it and 15].divide(original527B[it and 15], mc34) },
+        Workload("decimal/accumulator-compact-fresh") { DecimalAccumulator().add(decimals[it and 15]).add(divisors[it and 15]).snapshot() },
         Workload("decimal/round") { decimals[it and 15].round(mc) },
         Workload("decimal/setScale") { decimals[it and 15].setScale(1, RoundingMode.HALF_EVEN) },
         Workload("decimal/metadata") { decimals[it and 15].precision() },

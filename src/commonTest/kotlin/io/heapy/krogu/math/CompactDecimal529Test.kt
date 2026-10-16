@@ -9,6 +9,39 @@ import kotlin.test.assertTrue
 class CompactDecimal529Test {
     private class Marker : RuntimeException()
 
+    @Test fun accumulatorCompositionPreservesCohortsAndFailedAddAtomicity() {
+        val cohorts = listOf(
+            listOf(BigDecimal("1.20"), BigDecimal("2.30"), BigDecimal("-3.50")),
+            listOf(BigDecimal.valueOf(Long.MAX_VALUE), BigDecimal.ONE, BigDecimal.ONE.negate()),
+            listOf(BigDecimal.valueOf(Long.MIN_VALUE), BigDecimal.ONE, BigDecimal("2.00")),
+        )
+        assertTrue(BigDecimal("1.20").accumulatorCompactEligible529())
+        assertFalse(BigDecimal.valueOf(Long.MIN_VALUE).accumulatorCompactEligible529())
+        assertFalse(object : BigDecimal(1L) {}.accumulatorCompactEligible529())
+        for (values in cohorts) for (context in listOf(MathContext.UNLIMITED, MathContext(7))) {
+            for (policy in DecimalRounding.entries) {
+                val accumulator = DecimalAccumulator(context, policy)
+                var exact = values.first()
+                var step = values.first().round(context)
+                accumulator.add(values.first())
+                val firstSnapshot = accumulator.snapshot()
+                for (next in values.drop(1)) {
+                    exact = exact.add(next)
+                    step = step.add(next, context)
+                    accumulator.add(next)
+                }
+                val expected = if (policy == DecimalRounding.FINAL_RESULT) exact.round(context) else step
+                assertEquals(expected, accumulator.snapshot(), "$values/$context/$policy")
+                assertEquals(values.first().round(context), firstSnapshot)
+            }
+        }
+        val bounded = DecimalAccumulator(maxTerms = 1L)
+        bounded.add(BigDecimal("1.20"))
+        val retained = bounded.snapshot()
+        assertFailsWith<ArithmeticException> { bounded.add(BigDecimal.ONE) }
+        assertEquals(retained, bounded.snapshot())
+    }
+
     @Test fun physicallyCompactMinRetainsComparisonCallbacks() {
         val ordinary = BigDecimal.valueOf(Long.MIN_VALUE)
         val poison = object : BigDecimal(Long.MIN_VALUE) {

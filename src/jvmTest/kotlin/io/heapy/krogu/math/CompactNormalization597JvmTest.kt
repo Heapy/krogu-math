@@ -46,7 +46,7 @@ class CompactNormalization597JvmTest {
     }
     private fun restored(replacement: Coefficient): BigDecimal {
         val bytes = ByteArrayOutputStream().also { stream ->
-            ObjectOutputStream(stream).use { it.writeObject(BigDecimal(BigInteger("1234"), 0)) }
+            ObjectOutputStream(stream).use { it.writeObject(currentFormatCoefficientCarrier529(BigDecimal(BigInteger("1234"), 0))) }
         }.toByteArray()
         return object : ObjectInputStream(ByteArrayInputStream(bytes)) {
             init { enableResolveObject(true) }

@@ -64,6 +64,12 @@ public final class Compact529Probe {
             d[i]=BigDecimal.valueOf(small[i],2); e[i]=BigDecimal.valueOf(123L+i,2); dw[i]=new BigDecimal(wide[i],2);
         }
         MathContext mc = new MathContext(7,RoundingMode.HALF_EVEN);
+        MathContext mc34 = new MathContext(34,RoundingMode.HALF_EVEN);
+        BigDecimal[] original527A=new BigDecimal[16], original527B=new BigDecimal[16];
+        for(int i=0;i<16;i++) {
+            original527A[i]=new BigDecimal((123+i)+".45");
+            original527B[i]=new BigDecimal((11+i)+".37");
+        }
         List<Case> result=new ArrayList<>();
         result.add(new Case("integer/create-small", i->BigInteger.valueOf(small[i&15])));
         result.add(new Case("integer/create-min", i->BigInteger.valueOf(Long.MIN_VALUE+(i&15))));
@@ -88,6 +94,11 @@ public final class Compact529Probe {
         result.add(new Case("decimal/subtract-small", i->d[i&15].subtract(e[i&15])));
         result.add(new Case("decimal/multiply-small", i->d[i&15].multiply(e[i&15])));
         result.add(new Case("decimal/divide-context", i->d[i&15].divide(e[i&15],mc)));
+        result.add(new Case("decimal/original527-mc34-divide", i->original527A[i&15].divide(original527B[i&15],mc34)));
+        result.add(new Case("decimal/accumulator-compact-fresh", i->{
+            DecimalAccumulator sum=new DecimalAccumulator(MathContext.UNLIMITED,DecimalRounding.FINAL_RESULT,null,null);
+            return sum.add(d[i&15]).add(e[i&15]).snapshot();
+        }));
         result.add(new Case("decimal/divide-scaled", i->d[i&15].divide(e[i&15],4,RoundingMode.HALF_EVEN)));
         result.add(new Case("decimal/round", i->d[i&15].round(mc)));
         result.add(new Case("decimal/setScale", i->d[i&15].setScale(1,RoundingMode.HALF_EVEN)));
@@ -142,7 +153,7 @@ public final class Compact529Probe {
         if(Runtime.getRuntime().maxMemory()!=536870912L)throw new AssertionError("heap configuration");
         System.out.println("FLAGS,"+Base64.getEncoder().encodeToString(flags.toString().getBytes(java.nio.charset.StandardCharsets.UTF_8))+","+Runtime.getRuntime().maxMemory()+","+ManagementFactory.getGarbageCollectorMXBeans().stream().map(java.lang.management.GarbageCollectorMXBean::getName).toList().toString().replace(',',';'));
         System.out.println("META,"+args[4]+","+args[5]+","+args[1]+","+args[3]+","+System.getProperty("os.arch"));
-        List<Case> cases=cases(); if(cases.size()!=31||cases.stream().map(Case::name).distinct().count()!=31)throw new AssertionError("inventory");
+        List<Case> cases=cases(); if(cases.size()!=33||cases.stream().map(Case::name).distinct().count()!=33)throw new AssertionError("inventory");
         for(Case row:cases)for(int i=0;i<16;i++)System.out.println("CHECK,"+row.name+","+i+","+Base64.getEncoder().encodeToString(representation(row.run.apply(i)).getBytes(java.nio.charset.StandardCharsets.UTF_8)));
         if(args[5].equals("check")) {
             graph("integer/small",BigInteger.valueOf(12345000001L));
@@ -217,14 +228,14 @@ fun child(index: Int, mode: String, fork: Int): File {
     return log
 }
 val checks = artifacts.indices.map { index -> child(index, "check", 0).readLines().filter { it.startsWith("CHECK,") } }
-check(checks[0].size == 31 * 16 && checks[0] == checks[1]) { "Full result representation differs before measurement" }
+check(checks[0].size == 33 * 16 && checks[0] == checks[1]) { "Full result representation differs before measurement" }
 val checkedCases = checks[0].map { it.split(',') }.groupBy { it[1] }
-check(checkedCases.size == 31 && checkedCases.values.all { rows -> rows.map { it[2].toInt() }.sorted() == (0..15).toList() })
+check(checkedCases.size == 33 && checkedCases.values.all { rows -> rows.map { it[2].toInt() }.sorted() == (0..15).toList() })
 for (fork in 0..2) for (index in if (fork % 2 == 0) listOf(0, 1) else listOf(1, 0)) {
     val rows = child(index, "measure", fork).readLines()
     check(rows.filter { it.startsWith("CHECK,") } == checks[0])
     val timed = rows.filter { it.startsWith("TIME,") }.map { it.split(',') }
-    check(timed.size == 31 * 7 && timed.all { row ->
+    check(timed.size == 33 * 7 && timed.all { row ->
         row.size == 7 && row[3].toIntOrNull()?.let { it in 1..8_388_608 && it and (it - 1) == 0 } == true &&
             row[4].toLongOrNull()?.let { it in 1..180_000_000_000L } == true &&
             row[5].toDoubleOrNull()?.let { it.isFinite() && it >= 0.0 } == true && row[6].toIntOrNull() != null
@@ -232,5 +243,5 @@ for (fork in 0..2) for (index in if (fork % 2 == 0) listOf(0, 1) else listOf(1, 
     check(timed.map { it[1] }.toSet() == checkedCases.keys)
     check(timed.groupBy { it[1] }.values.all { group -> group.map { it[2].toInt() }.sorted() == (0..6).toList() })
 }
-File(output, "PASS").writeText("All input identities, origin checks,31×16 full representations and6 fresh-process sample inventories passed.\n")
+File(output, "PASS").writeText("All input identities, origin checks,33×16 full representations and6 fresh-process sample inventories passed.\n")
 println("PASS ${output.path}")
