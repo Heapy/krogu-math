@@ -1,0 +1,67 @@
+{
+  "task": "local:534",
+  "root": "/Users/yoda/dev/pet/krogu-math/.codex-work/534",
+  "base": "943635476c052bb6377f20d79d2bcb856c2c104e",
+  "entries": [
+    {
+      "path": "focused-jvm.log",
+      "bytes": 19720,
+      "sha256": "7835cfc97409bbe290cceee0929c68fa62ee1b1c24499a4109c89d0430463f65"
+    },
+    {
+      "path": "focused-other.log",
+      "bytes": 55244,
+      "sha256": "e92fc3e02cd5e8d5fafdb95f9cdb7d56d7f78532e93a0ddfe60359748f2bca97"
+    },
+    {
+      "path": "focused-jvm-summary.json",
+      "bytes": 108,
+      "sha256": "16d37426c25598d0f910ebde8a50df2d72fee11c1cc1533e4872e8b125544682"
+    },
+    {
+      "path": "focused-other-summary.json",
+      "bytes": 276,
+      "sha256": "5b921e249baef2c16b682a2b267ffd1821a435bdec28121b868b4ca75debb9db"
+    },
+    {
+      "path": "runtime-source.json",
+      "bytes": 5704,
+      "sha256": "787db773eab8798450bd84312653284ea1017b05a249b777a3e8c65cda0acc9b"
+    },
+    {
+      "path": "commands.txt",
+      "bytes": 670,
+      "sha256": "11e913b409bef77af5754c4ddb5cd02ef0fbacd6cf81173beebb363cced5963b"
+    },
+    {
+      "path": "focused-jvm-xml/TEST-io.heapy.krogu.math.ExplicitDecimal534JavaTest.xml",
+      "bytes": 490,
+      "sha256": "e52042478088692338f638487ff642805498182db35a47ab4f0f8c009ae8f5f3"
+    },
+    {
+      "path": "focused-jvm-xml/TEST-io.heapy.krogu.math.ExplicitDecimal534JvmTest.xml",
+      "bytes": 502,
+      "sha256": "09e4ee59e1a695a05fd2d92bd2dc89d96e4ed66210f20c217abb72cc3130b2b0"
+    },
+    {
+      "path": "focused-jvm-xml/TEST-io.heapy.krogu.math.ExplicitDecimal534Test.xml",
+      "bytes": 919,
+      "sha256": "6d19d5a563ddd6bcc73a50da1416563b798d5062e72f5ead63d4c50291bc802d"
+    },
+    {
+      "path": "focused-other-xml/jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.ExplicitDecimal534Test.xml",
+      "bytes": 1003,
+      "sha256": "e8e1c09efb1d911846395b1d290868268a0082dc8493e000c337abe60a7feb63"
+    },
+    {
+      "path": "focused-other-xml/macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.ExplicitDecimal534Test.xml",
+      "bytes": 1031,
+      "sha256": "02a19f5c7a01757319ba89c43560875e8664861dc551372216ceafed77eb93d6"
+    },
+    {
+      "path": "focused-other-xml/wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.ExplicitDecimal534Test.xml",
+      "bytes": 1039,
+      "sha256": "2badd4c37f6afc99375eaddc57b5e2a278cb529d42e6cc7b8956f6516a98bc3f"
+    }
+  ]
+}
