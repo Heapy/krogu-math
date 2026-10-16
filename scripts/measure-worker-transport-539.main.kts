@@ -195,10 +195,13 @@ try {
   console.log('# worker539 kind='+kind+' node='+process.version+' processors='+cpus+' order='+order+' samples='+samples+' pid='+process.pid+' start_ms='+Date.now());
   console.log('# v8='+process.versions.v8+' platform='+process.platform+' arch='+process.arch);
   console.log('# CPU=whole_process heap=parent_realm_only RSS=whole_process_including_workers_and_reference_preparation allocation=NA');
+  const beforePoolRSS=process.memoryUsage().rss;
   const startup=process.hrtime.bigint();
   // At most two additional worker threads; no worker queue receives two active jobs.
   for(let i=0;i<Math.min(2,cpus-1);i++) { const slot=new Slot(); slots[i]=slot; slotCount++; slot.start(); slot.ready(); }
   console.log('STARTUP539,'+slotCount+','+Number(process.hrtime.bigint()-startup));
+  console.log('POOL_RESOURCE539,'+beforePoolRSS+','+process.memoryUsage().rss+','+slotCount);
+  console.log('# per_case_RSS_includes_idle_pool_even_for_serial_variants; POOL_RESOURCE539_is_raw_startup_control_not_exact_retained_size');
   const policy=[64,16,384];
   for(const size of reverse([256,1024,4096,8192,16384])) {
     const a=Int32Array.from({length:size},(_,i)=>(i*104729+31)&0x3fffffff);

@@ -43,6 +43,8 @@ for (fork in forks) {
     check(module.size == 3 && module[1] == "parent_import_ms" && module[2].toDouble().let { it.isFinite() && it >= 0 })
     val startup = lines.single { it.startsWith("STARTUP539,") }.split(',')
     check(startup.size == 3 && startup[1].toInt() == minOf(2, cpus - 1) && startup[2].toLong() >= 0)
+    val resource = lines.single { it.startsWith("POOL_RESOURCE539,") }.split(',')
+    check(resource.size == 4 && resource[1].toLong() > 0 && resource[2].toLong() > 0 && resource[3].toInt() == minOf(2, cpus - 1))
     val ids = inventory.filter { id -> when (id.substringAfterLast('/')) {
         "worker2" -> cpus > 2
         "worker1", "empty", "copy" -> cpus > 1

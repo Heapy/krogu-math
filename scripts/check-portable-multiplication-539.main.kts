@@ -5,7 +5,7 @@ import java.io.File
 
 require(args.size == 9) { "samples mode JVM|JS|Wasm|Native sourceManifestSHA artifactManifestSHA new.csv fork1.log fork2.log fork3.log" }
 val samples = args[0].toInt().also { require(it in 5..15) }
-val mode = args[1].also { require(it in listOf("kernel-small", "kernel-medium", "kernel-large", "cost", "public-small", "native-parallel")) }
+val mode = args[1].also { require(it in listOf("kernel-small", "kernel-medium", "kernel-large", "cost", "public-small", "native-parallel", "square-control")) }
 val platform = args[2].also { require(it in listOf("JVM", "JS", "Wasm", "Native")) }
 args.slice(3..4).forEach { require(it.matches(Regex("[a-f0-9]{64}"))) }
 require(mode != "native-parallel" || platform == "Native")
@@ -17,7 +17,8 @@ val policies = (listOf(32,64,128,256).map { Policy(it,16,384) } +
 fun inventory(processors: Int): Set<String> = buildSet {
     when (mode) {
         "cost" -> addAll(listOf("signed-long-256", "unsigned-long-256", "int-carry-256", "allocate-256-words", "allocate-4096-words").map { "cost/$it" })
-        "public-small" -> for (bits in listOf(1,30,63,64,127,511,1023)) for (shape in listOf("distinct","square")) add("public/$bits/$shape")
+        "public-small" -> for (bits in listOf(1,30,63,64,127,511,1023)) for (shape in listOf("distinct","square")) for (method in listOf("public","parallel-public")) add("$method/$bits/$shape")
+        "square-control" -> for(size in listOf(128,192,256,384,512,1024)) for(entry in listOf(0,384,1024,Int.MAX_VALUE)) add("square-control/$size/e$entry")
         "native-parallel" -> for (size in listOf(256,1024,4096,8192,16384)) for (shape in listOf("distinct","square","ratio2")) {
             add("native-parallel/$size/$shape/kernel"); add("native-parallel/$size/$shape/frame")
             if (processors > 1) add("native-parallel/$size/$shape/worker1")
@@ -26,7 +27,7 @@ fun inventory(processors: Int): Set<String> = buildSet {
         else -> {
             val sizes = when(mode) { "kernel-small" -> listOf(8,16,31,32,63,64); "kernel-medium" -> listOf(96,128,192,256,383,384,512); else -> listOf(1024,4096,8192) }
             for(size in sizes) for(shape in listOf("distinct","square","ratio2","ratio4")) {
-                for(p in policies) add("kernel/$size/$shape/k${p.k}-s${p.s}-e${p.e}")
+                for(p in policies.filter { shape=="square" || (it.s==16 && it.e==384) }) add("kernel/$size/$shape/k${p.k}-s${p.s}-e${p.e}")
                 if(size >= 64 && shape != "ratio4") add("frame-serial/$size/$shape")
             }
         }

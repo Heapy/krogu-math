@@ -27,7 +27,7 @@ internal object MultiplicationCampaign539 {
     fun run(arguments: String) {
         val args = arguments.split(',')
         require(args.size == 4) { "mode,forward|reverse,samples,target_ms" }
-        require(args[0] in listOf("kernel-small", "kernel-medium", "kernel-large", "cost", "public-small", "native-parallel"))
+        require(args[0] in listOf("kernel-small", "kernel-medium", "kernel-large", "cost", "public-small", "native-parallel", "square-control"))
         require(args[1] in listOf("forward", "reverse"))
         val samples = args[2].toInt().also { require(it in 5..15) }
         val target = args[3].toLong().also { require(it in 10..100) } * 1_000_000
@@ -35,6 +35,7 @@ internal object MultiplicationCampaign539 {
             "native-parallel" -> calibration539NativeCases().also { require(it.isNotEmpty()) { "Native-only mode or no eligible cases" } }
             "cost" -> costs()
             "public-small" -> publicSmall()
+            "square-control" -> squareControls()
             else -> kernels(args[0])
         }.let { if (args[1] == "reverse") it.reversed() else it }
         check(cases.map { it.id }.toSet().size == cases.size)
@@ -100,7 +101,10 @@ internal object MultiplicationCampaign539 {
                     "ratio2" to IntArray(size * 2) { 0x3fffffff }, "ratio4" to IntArray(size * 4) { 0x3fffffff })) {
                     val expected = MagnitudeMultiplication.multiply(a, b, Int.MAX_VALUE, Int.MAX_VALUE)
                     calibration539Verify(a, b, expected)
-                    for (policy in policies) {
+                    // Leaf/whole-square policy is unreachable for nonalias inputs;
+                    // keep K sweeps there, rather than time duplicate arithmetic trees.
+                    val activePolicies = if (shape == "square") policies else policies.filter { it.squareLeaf == 16 && it.wholeSquareEntry == 384 }
+                    for (policy in activePolicies) {
                         add(Calibration539Case("kernel/$size/$shape/k${policy.karatsuba}-s${policy.squareLeaf}-e${policy.wholeSquareEntry}",
                             { MagnitudeMultiplication.multiplyConfigured539(a, b, policy) }, {
                                 check(expected.contentEquals(MagnitudeMultiplication.multiplyConfigured539(a, b, policy)))
@@ -121,6 +125,23 @@ internal object MultiplicationCampaign539 {
         }
     }
 
+    private fun squareControls(): List<Calibration539Case> = buildList {
+        // Fixed pure-square comparator is essential: a unified recursive policy
+        // can otherwise hide avoidable medium-square cost (the532 lesson).
+        for (size in listOf(128,192,256,384,512,1024)) {
+            val a = IntArray(size) { ((it.toLong() * 104729 + 31) and 0x3fffffff).toInt() }
+            val expected = MagnitudeMultiplication.multiply(a, a, Int.MAX_VALUE, Int.MAX_VALUE)
+            calibration539Verify(a, a, expected)
+            for (entry in listOf(0,384,1024,Int.MAX_VALUE)) {
+                val policy = MultiplicationPolicy539(64,16,entry)
+                add(Calibration539Case("square-control/$size/e$entry",
+                    { MagnitudeMultiplication.multiplyConfigured539(a,a,policy) }, {
+                        check(expected.contentEquals(MagnitudeMultiplication.multiplyConfigured539(a,a,policy)))
+                    }))
+            }
+        }
+    }
+
     private fun publicSmall(): List<Calibration539Case> = buildList {
         for (bits in listOf(1, 30, 63, 64, 127, 511, 1023)) {
             val a = BigInteger.ONE.shiftLeft(bits - 1).add(if (bits == 1) BigInteger.ZERO else BigInteger.ONE)
@@ -129,9 +150,11 @@ internal object MultiplicationCampaign539 {
             val expected = if (bits == 1) BigInteger.valueOf(3) else
                 BigInteger.ONE.shiftLeft(2 * power).add(BigInteger.ONE.shiftLeft(power + 2)).add(BigInteger.valueOf(3))
             add(Calibration539Case("public/$bits/distinct", { a.multiply(b) }, { check(a.multiply(b) == expected); println("REP539,public/$bits/distinct,$expected") }))
+            add(Calibration539Case("parallel-public/$bits/distinct", { a.parallelMultiply(b) }, { check(a.parallelMultiply(b) == expected); println("REP539,parallel-public/$bits/distinct,$expected") }))
             val square = if (bits == 1) BigInteger.ONE else
                 BigInteger.ONE.shiftLeft(2 * power).add(BigInteger.ONE.shiftLeft(power + 1)).add(BigInteger.ONE)
             add(Calibration539Case("public/$bits/square", { a.multiply(a) }, { check(a.multiply(a) == square); println("REP539,public/$bits/square,$square") }))
+            add(Calibration539Case("parallel-public/$bits/square", { a.parallelMultiply(a) }, { check(a.parallelMultiply(a) == square); println("REP539,parallel-public/$bits/square,$square") }))
         }
     }
 
