@@ -8,4 +8,6 @@ internal actual fun compactMemory529(): CompactMemory529 {
     return CompactMemory529("native_last_gc_total_objects_size_bytes", GC.lastGCInfo?.memoryUsageAfter?.get("heap")?.totalObjectsSizeBytes, null, null)
 }
 
-internal actual fun compactSnapshot529(label: String): Unit = error("Node/V8 capture is not available on this target: $label")
+internal expect fun compactNativeSnapshot529(label: String)
+
+internal actual fun compactSnapshot529(label: String): Unit = compactNativeSnapshot529(label)

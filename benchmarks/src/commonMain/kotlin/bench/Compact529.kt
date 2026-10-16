@@ -12,6 +12,9 @@ internal expect fun compactMemory529(): CompactMemory529
 internal expect fun compactSnapshot529(label: String)
 private var retained529: Array<Any>? = null
 
+// Untimed opt-in Native heap-dump marker publication only.
+internal fun compactRetainedRoots529(): Array<Any> = checkNotNull(retained529)
+
 /** Separate opt-in campaign; the527 workload inventory and default entry are unchanged. */
 internal fun compact529(arguments: Array<String>) {
     require(arguments.size == 5 && arguments[0] == "compact529")
