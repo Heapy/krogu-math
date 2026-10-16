@@ -1,0 +1,5 @@
+2d5da92fedb136c91af54e9412baef0fd1dcea16c8b377fcbc898bd9c9fb15cd  src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt
+8ac54ae35e23dd9617111479e6f57fa39ae486e4d233a1757cd2cbbf111fa0d2  src/commonMain/kotlin/io/heapy/krogu/math/MagnitudeMultiplication.kt
+de7f9aa81b48de3f766c682f2e6b20978e38335e5b1cfdcfd206fc42a6afe92d  src/commonTest/kotlin/io/heapy/krogu/math/IntegerMultiplication532Test.kt
+f38df9e33abdef1a894debf39b874295466fd6d8ff2795711554e7ff6ac45af9  src/jvmTest/kotlin/io/heapy/krogu/math/IntegerMultiplication532JvmTest.kt
+a22d0cada7798953346d22729b490e287b0fea743a5c3a0f505d0c160242788d  src/jvmTest/kotlin/io/heapy/krogu/math/IntegerMultiplication532Probe.kt

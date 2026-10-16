@@ -64,20 +64,10 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     }
     open fun multiply(value: BigInteger): BigInteger {
         if (sign == 0 || value.sign == 0) return ZERO
-        if (magnitudeBits().toLong() + value.magnitudeBits() - 1 > Int.MAX_VALUE)
-            throw ArithmeticException("BigInteger overflow")
-        val result = IntArray(words.size + value.words.size)
-        for (i in words.indices) {
-            var carry = 0L
-            for (j in value.words.indices) {
-                val product = words[i].toLong() * value.words[j] + result[i + j] + carry
-                result[i + j] = (product and MASK).toInt()
-                carry = product ushr LIMB_BITS
-            }
-            result[i + value.words.size] = carry.toInt()
-        }
-        return normalized(sign * value.sign, result)
+        MagnitudeMultiplication.checkBitLengths(magnitudeBits(), value.magnitudeBits())
+        return normalized(sign * value.sign, MagnitudeMultiplication.multiplyAdaptive(words, value.words))
     }
+
     open fun parallelMultiply(value: BigInteger): BigInteger = multiply(value)
 
     // Stored, nonvirtual certification only. Null retains the entire old sum

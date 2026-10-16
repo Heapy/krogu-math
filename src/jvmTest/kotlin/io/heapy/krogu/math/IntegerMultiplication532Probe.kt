@@ -1,0 +1,204 @@
+package io.heapy.krogu.math
+
+import java.io.File
+import java.lang.management.ManagementFactory
+import java.security.MessageDigest
+import kotlin.random.Random
+
+/** Diagnostic executable; no timing assertions and no dependency on third-party benchmark code. */
+object IntegerMultiplication532Probe {
+    @Volatile private var sink: Any? = null
+    private val allocations = ManagementFactory.getThreadMXBean() as com.sun.management.ThreadMXBean
+
+    @JvmStatic
+    fun main(args: Array<String>) {
+        require(args.size == 6) { "mode main.jar main-sha256 probe.jar probe-sha256 forward|reverse" }
+        require(args[5] in listOf("forward", "reverse"))
+        val mainJar = File(args[1]).canonicalFile
+        val probeJar = File(args[3]).canonicalFile
+        fun sha(file: File): String = MessageDigest.getInstance("SHA-256")
+            .digest(file.readBytes()).joinToString("") { "%02x".format(it) }
+        fun verifyArtifacts() {
+            check(mainJar != probeJar && mainJar.isFile && probeJar.isFile)
+            check(sha(mainJar) == args[2] && sha(probeJar) == args[4])
+            check(File(BigInteger::class.java.protectionDomain.codeSource.location.toURI()).canonicalFile == mainJar)
+            check(File(IntegerMultiplication532Probe::class.java.protectionDomain.codeSource.location.toURI()).canonicalFile == probeJar)
+            if (args[0] !in listOf("public", "public-wide")) {
+                check(File(MagnitudeMultiplication::class.java.protectionDomain.codeSource.location.toURI()).canonicalFile == mainJar)
+            }
+        }
+        verifyArtifacts()
+        println("# main_sha256=${args[2]} probe_sha256=${args[4]} order=${args[5]}")
+        check(allocations.isThreadAllocatedMemorySupported) { "Per-thread allocation accounting unavailable" }
+        allocations.isThreadAllocatedMemoryEnabled = true
+        println("# BigInteger_origin=${BigInteger::class.java.protectionDomain.codeSource.location}")
+        println("# java=${System.getProperty("java.version")} vm=${System.getProperty("java.vm.name")} os=${System.getProperty("os.name")} arch=${System.getProperty("os.arch")} mode=${args.firstOrNull()}")
+        when (args.firstOrNull()) {
+            "calibrate" -> calibrate(args[5] == "reverse")
+            "public" -> publicSmall()
+            "public-wide" -> publicWide()
+            "square-entry" -> squareEntry(args[5] == "reverse")
+            "memory-school" -> memory(Int.MAX_VALUE, Int.MAX_VALUE, false)
+            "memory-adaptive" -> memory(MagnitudeMultiplication.KARATSUBA_THRESHOLD, MagnitudeMultiplication.SQUARE_THRESHOLD, false)
+            "memory-square" -> memory(MagnitudeMultiplication.KARATSUBA_THRESHOLD, MagnitudeMultiplication.SQUARE_THRESHOLD, true)
+            else -> error("mode required")
+        }
+        verifyArtifacts()
+        println("# sink=${sink != null} artifact_recheck=PASS")
+    }
+
+    private fun measure(iterations: Int, operation: () -> Any): Pair<Double, Double> {
+        val id = Thread.currentThread().threadId()
+        val allocated = allocations.getThreadAllocatedBytes(id)
+        val begin = System.nanoTime()
+        repeat(iterations) { sink = operation() }
+        return (System.nanoTime() - begin).toDouble() / iterations to
+            (allocations.getThreadAllocatedBytes(id) - allocated).toDouble() / iterations
+    }
+
+    // Exact JDK reference checks stay outside warmup and timing, including every forced config.
+    private fun reference(words: IntArray): java.math.BigInteger {
+        var value = java.math.BigInteger.ZERO
+        for (index in words.indices.reversed()) value = value.shiftLeft(30).add(java.math.BigInteger.valueOf(words[index].toLong()))
+        return value
+    }
+
+    private fun verify(a: IntArray, b: IntArray, result: IntArray) {
+        check(reference(result) == reference(a).multiply(reference(b))) { "Kernel/JDK product mismatch" }
+    }
+
+    private fun observations(maxIterations: Int = 8192, samples: Int = 5, operation: () -> Any): Pair<Int, List<Pair<Double, Double>>> {
+        var iterations = 16
+        while (true) {
+            val start = System.nanoTime()
+            repeat(iterations) { sink = operation() }
+            if (System.nanoTime() - start >= 20_000_000L || iterations >= maxIterations) break
+            iterations *= 2
+        }
+        repeat(3) { measure(iterations, operation) }
+        return iterations to List(samples) { measure(iterations, operation) }
+    }
+
+    private fun calibrate(reverse: Boolean) {
+        println("kind,words,threshold,sample,iterations,ns_per_op,allocated_bytes_per_op,scratch_words")
+        val random = Random(532)
+        for (size in listOf(16, 32, 64, 96, 128, 192, 256, 384, 512, 768, 1024, 2048)) {
+            val a = IntArray(size) { random.nextInt(1 shl 30) }
+            val other = IntArray(size) { random.nextInt(1 shl 30) }
+            for (kind in listOf("balanced", "square")) {
+                val b = if (kind == "square") a else other
+                for (threshold in listOf(16, 32, 64, 96, 128, 192, 256, Int.MAX_VALUE - 1, Int.MAX_VALUE).let { if (reverse) it.reversed() else it }) {
+                    if (kind != "square" && threshold == Int.MAX_VALUE - 1) continue
+                    val squareThreshold = if (kind == "square" && threshold != Int.MAX_VALUE) 1 else Int.MAX_VALUE
+                    val operation = { MagnitudeMultiplication.multiply(a, b, threshold, squareThreshold) }
+                    verify(a, b, operation())
+                    val (iterations, samples) = observations(operation = operation)
+                    samples.forEachIndexed { index, sample ->
+                        println("$kind,$size,$threshold,$index,$iterations,${sample.first},${sample.second},${MagnitudeMultiplication.scratchWords(size, size, threshold)}")
+                    }
+                }
+            }
+        }
+        for (small in listOf(32, 64, 128, 256)) for (ratio in listOf(2, 3, 16)) {
+            val a = IntArray(small) { random.nextInt(1 shl 30) }
+            val b = IntArray(small * ratio + 1) { random.nextInt(1 shl 30) }
+            for (threshold in listOf(32, 64, 128, 256, Int.MAX_VALUE).let { if (reverse) it.reversed() else it }) {
+                val operation = { MagnitudeMultiplication.multiply(a, b, threshold, Int.MAX_VALUE) }
+                verify(a, b, operation())
+                val (iterations, samples) = observations(operation = operation)
+                samples.forEachIndexed { index, sample ->
+                    println("ratio-$ratio,$small,$threshold,$index,$iterations,${sample.first},${sample.second},${MagnitudeMultiplication.scratchWords(a.size, b.size, threshold)}")
+                }
+            }
+        }
+    }
+
+    private fun squareEntry(reverse: Boolean) {
+        println("kind,words,entry_threshold,sample,iterations,ns_per_op,allocated_bytes_per_op")
+        val random = Random(4532532)
+        val policies = listOf("pure" to Int.MAX_VALUE, "recursive" to 0,
+            "entry256" to 256, "entry384" to 384)
+        for (size in listOf(16, 32, 64, 96, 128, 192, 255, 256, 257, 384, 512, 1024, 2048)) {
+            val a = IntArray(size) { random.nextInt(1 shl 30) }
+            for ((kind, entry) in if (reverse) policies.reversed() else policies) {
+                val operation = { MagnitudeMultiplication.multiplyWithSquareEntry(a, a, entry) }
+                verify(a, a, operation())
+                val warmupStart = System.nanoTime()
+                do { sink = operation() }
+                while (System.nanoTime() - warmupStart < 200_000_000L)
+                val (iterations, samples) = observations(maxIterations = 8_388_608, operation = operation)
+                samples.forEachIndexed { index, sample ->
+                    println("$kind,$size,$entry,$index,$iterations,${sample.first},${sample.second}")
+                }
+            }
+        }
+    }
+
+    // This mode can run unchanged against the pre-task main classes for the small-value guard.
+    private fun publicSmall() {
+        println("kind,words,iterations,median_ns,median_allocated_bytes")
+        val random = Random(3532)
+        for (size in listOf(0, 1, 2, 4, 8, 16, 32)) {
+            val a = if (size == 0) BigInteger.ZERO else exactWords(size, random)
+            val other = if (size == 0) BigInteger.ONE else exactWords(size, random)
+            for (kind in listOf("distinct", "self")) {
+                val b = if (kind == "self") a else other
+                check(a.multiply(b).toString() == java.math.BigInteger(a.toByteArray()).multiply(java.math.BigInteger(b.toByteArray())).toString())
+                val operation = { a.multiply(b) }
+                // Tiny fixed-count batches can finish before asynchronous C2 compilation.
+                val warmupStart = System.nanoTime()
+                do { repeat(1024) { sink = operation() } }
+                while (System.nanoTime() - warmupStart < 200_000_000L)
+                val (iterations, samples) = observations(maxIterations = 8_388_608, samples = 7, operation = operation)
+                println("$kind,$size,$iterations,${samples.map { it.first }.sorted()[3]},${samples.map { it.second }.sorted()[3]}")
+            }
+        }
+    }
+
+    // Same compiled harness compares public medium/large products and squares.
+    private fun publicWide() {
+        println("kind,words,iterations,median_ns,median_allocated_bytes")
+        val random = Random(5532)
+        for (size in listOf(16, 32, 64, 96, 128, 192, 255, 256, 257, 384, 512, 1024, 2048)) {
+            val a = exactWords(size, random)
+            val other = exactWords(size, random)
+            for (kind in listOf("distinct", "self")) {
+                val b = if (kind == "self") a else other
+                check(a.multiply(b).toString() == java.math.BigInteger(a.toByteArray()).multiply(java.math.BigInteger(b.toByteArray())).toString())
+                val operation = { a.multiply(b) }
+                val warmupStart = System.nanoTime()
+                do { sink = operation() }
+                while (System.nanoTime() - warmupStart < 200_000_000L)
+                val (iterations, samples) = observations(maxIterations = 8_388_608, samples = 7, operation = operation)
+                println("$kind,$size,$iterations,${samples.map { it.first }.sorted()[3]},${samples.map { it.second }.sorted()[3]}")
+            }
+        }
+    }
+
+    private fun exactWords(size: Int, random: Random): BigInteger {
+        val bits = size * 30
+        val bytes = ByteArray((bits + 7) / 8).also { random.nextBytes(it) }
+        val highBits = (bits - 1) % 8 + 1
+        bytes[0] = ((bytes[0].toInt() and ((1 shl highBits) - 1)) or (1 shl (highBits - 1))).toByte()
+        return BigInteger(1, bytes)
+    }
+
+    private fun memory(threshold: Int, squareThreshold: Int, square: Boolean) {
+        val random = Random(4532)
+        val a = IntArray(8192) { random.nextInt(1 shl 30) }
+        val b = if (square) a else IntArray(8192) { random.nextInt(1 shl 30) }
+        verify(a, b, MagnitudeMultiplication.multiply(a, b, threshold, squareThreshold))
+        repeat(2) { sink = MagnitudeMultiplication.multiply(a, b, threshold, squareThreshold) }
+        val result = measure(10) { MagnitudeMultiplication.multiply(a, b, threshold, squareThreshold) }
+        // A separate sampled batch includes MXBean polling; it does not contaminate timings/allocations.
+        System.gc()
+        val heap = ManagementFactory.getMemoryMXBean()
+        val initialHeap = heap.heapMemoryUsage.used
+        var peakSampledHeap = initialHeap
+        repeat(10) {
+            sink = MagnitudeMultiplication.multiply(a, b, threshold, squareThreshold)
+            peakSampledHeap = maxOf(peakSampledHeap, heap.heapMemoryUsage.used)
+        }
+        println("words=8192 ns_per_op=${result.first} allocated_bytes_per_op=${result.second} initial_heap_bytes=$initialHeap peak_sampled_heap_bytes=$peakSampledHeap output_payload_bytes=${4L * (a.size + b.size)} scratch_payload_bytes=${4L * MagnitudeMultiplication.scratchWords(a.size, b.size, threshold)}")
+    }
+}

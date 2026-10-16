@@ -1,0 +1,552 @@
+{
+  "task": "local:532",
+  "parent": "e95836f97e91433b49b005f9589ca6d359bfa2ac",
+  "root": "/Users/yoda/dev/pet/krogu-math/.codex-work/532",
+  "entries": [
+    {
+      "path": "artifacts/533-final-artifacts.sha256",
+      "bytes": 159,
+      "sha256": "d7a4ae5e812d05515855a0a11fe857aab70d5ba7e4afbf9335b4e233aeda3f3e"
+    },
+    {
+      "path": "artifacts/533-final-sources.sha256",
+      "bytes": 36310,
+      "sha256": "cd195672323973ecd4d7b6cc3600bf6dcb739f067a071acf336bf905161397dd"
+    },
+    {
+      "path": "artifacts/artifact-sha256.json",
+      "bytes": 483,
+      "sha256": "432e67383c2646d9e33d1881b14dbb3fbf52c4109296facfa8e7966d633cb52e"
+    },
+    {
+      "path": "artifacts/calibration-candidate.jar",
+      "bytes": 194155,
+      "sha256": "4f43e60ece9626b2e0126a655d19838aeb6f73074a62f521be69b8f091e21fa9"
+    },
+    {
+      "path": "artifacts/calibration-source/BigInteger.kt.txt",
+      "bytes": 70905,
+      "sha256": "2d5da92fedb136c91af54e9412baef0fd1dcea16c8b377fcbc898bd9c9fb15cd"
+    },
+    {
+      "path": "artifacts/calibration-source/IntegerMultiplication532Probe.kt.txt",
+      "bytes": 9213,
+      "sha256": "3654d13978341059fb53cd357bbbc99b4a1ab581a89b0db6f2e9c7429a6e8c40"
+    },
+    {
+      "path": "artifacts/calibration-source/MagnitudeMultiplication.kt.txt",
+      "bytes": 7894,
+      "sha256": "8ac54ae35e23dd9617111479e6f57fa39ae486e4d233a1757cd2cbbf111fa0d2"
+    },
+    {
+      "path": "artifacts/calibration-source/jdk-release.txt",
+      "bytes": 1213,
+      "sha256": "0dde8f83a2df03b7bb1b1063008f8eab9bca2aa9d8481d44af54297ae304c5e9"
+    },
+    {
+      "path": "artifacts/calibration-source/sha256.json",
+      "bytes": 308,
+      "sha256": "876f705df1c3ac541c373ae2bff9202efb3ebda5d12047b8a62c9075f7f0854f"
+    },
+    {
+      "path": "artifacts/entry-candidate-256.jar",
+      "bytes": 194402,
+      "sha256": "1e88f7ca84dd6b31429b2f786a88c017b244200291c4ca01824197812be39f4a"
+    },
+    {
+      "path": "artifacts/entry-focused-xml/TEST-io.heapy.krogu.math.IntegerMultiplication532JvmTest.xml",
+      "bytes": 512,
+      "sha256": "3922d8ac5a014908109225042519e06360b66d59cdd934e2eccb690d4fd58efa"
+    },
+    {
+      "path": "artifacts/entry-focused-xml/TEST-io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+      "bytes": 1102,
+      "sha256": "65e623445f0c28def4d0163256bce832f8459005aa0ad74ce6085298bf8ff81b"
+    },
+    {
+      "path": "artifacts/entry-probe.jar",
+      "bytes": 11271,
+      "sha256": "f2074ee0a095f13df572d13746c7d4a9740c3c35e75aafa473bbd2b7184fc25e"
+    },
+    {
+      "path": "artifacts/entry-source-draft/BigInteger.kt.txt",
+      "bytes": 70913,
+      "sha256": "607caea9c883d0f9ee68ec8c2eb0884f5050c279c26e928fe88b7b647675e1d4"
+    },
+    {
+      "path": "artifacts/entry-source-draft/IntegerMultiplication532Probe.kt.txt",
+      "bytes": 11860,
+      "sha256": "1124ce73f69ddf03ac54e54276ba9476cb175ba3da326f14e7ed8150cf39900d"
+    },
+    {
+      "path": "artifacts/entry-source-draft/IntegerMultiplication532Test.kt.txt",
+      "bytes": 5195,
+      "sha256": "b483db3df457e32b65f7b1d2e985497b7a04885ad4aafe839872fd41e0ee3338"
+    },
+    {
+      "path": "artifacts/entry-source-draft/MagnitudeMultiplication.kt.txt",
+      "bytes": 8650,
+      "sha256": "928920dfe4dec8f0e8bdc8d9f0da53f1e44f9d1e88eec31b43b5b7bd23a83936"
+    },
+    {
+      "path": "artifacts/entry-source-draft/sources.json",
+      "bytes": 566,
+      "sha256": "8c991c90f82f884db8137fbf0b96e888fb696b2b45954e14b57ce43c1652932b"
+    },
+    {
+      "path": "artifacts/entry-warmed-probe-source.kt.txt",
+      "bytes": 12052,
+      "sha256": "360a7cc3f54fb8c9373be0725340f52fb9cd1f4d986b6a6353eca62ed3c04adf"
+    },
+    {
+      "path": "artifacts/entry-warmed-probe.jar",
+      "bytes": 11324,
+      "sha256": "739f3ff3122bcdb6159ff0d36bdb3550abd3934190799aa03d6045b0f39049fe"
+    },
+    {
+      "path": "artifacts/final-candidate.jar",
+      "bytes": 194155,
+      "sha256": "4f43e60ece9626b2e0126a655d19838aeb6f73074a62f521be69b8f091e21fa9"
+    },
+    {
+      "path": "artifacts/final-focused-xml/TEST-io.heapy.krogu.math.IntegerMultiplication532JvmTest.xml",
+      "bytes": 510,
+      "sha256": "5d8da15a6b8b902467e7accd2a413c02753174e2371164d4657f109377ead23d"
+    },
+    {
+      "path": "artifacts/final-focused-xml/TEST-io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+      "bytes": 1103,
+      "sha256": "b9c5c11b4b1de8d78d11b8bc5fd9aa766feceeb5c0029346fe6916dbb67ef5ea"
+    },
+    {
+      "path": "artifacts/final-source/BigInteger.kt.txt",
+      "bytes": 70913,
+      "sha256": "607caea9c883d0f9ee68ec8c2eb0884f5050c279c26e928fe88b7b647675e1d4"
+    },
+    {
+      "path": "artifacts/final-source/IntegerMultiplication532Probe.kt.txt",
+      "bytes": 12052,
+      "sha256": "360a7cc3f54fb8c9373be0725340f52fb9cd1f4d986b6a6353eca62ed3c04adf"
+    },
+    {
+      "path": "artifacts/final-source/IntegerMultiplication532Test.kt.txt",
+      "bytes": 5200,
+      "sha256": "4ae9e9d713db4acf56bbc6e6b62afecaad06a8b5387f058eee405bbd278c3817"
+    },
+    {
+      "path": "artifacts/final-source/MagnitudeMultiplication.kt.txt",
+      "bytes": 8650,
+      "sha256": "441c63b71850be20154c2ea5f256ecdbc69dae44d04ad7551bc6544b2195c6a0"
+    },
+    {
+      "path": "artifacts/final-source/sources.json",
+      "bytes": 4587,
+      "sha256": "dce9c04bd388d893e900e4fa0347a11d82f658bc09ae26b3c2f49dcb1ac8db75"
+    },
+    {
+      "path": "artifacts/final-validation-source-build.json",
+      "bytes": 5008,
+      "sha256": "0d43867dd19cf4a404a57dc0c7970b60fff553cf405001bb1e023e75fa2661da"
+    },
+    {
+      "path": "artifacts/focused-other-xml/jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+      "bytes": 1201,
+      "sha256": "a3373f15423ec94085d59a05c8c18765eb30e417b1a75496fd7f0fbbaece213a"
+    },
+    {
+      "path": "artifacts/focused-other-xml/macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+      "bytes": 1233,
+      "sha256": "f04787f3f574c4b6fbacbb6c5ce2436d3bbb808556859402a5232256ef47f822"
+    },
+    {
+      "path": "artifacts/focused-other-xml/summary.json",
+      "bytes": 287,
+      "sha256": "86dc06a678e65c4eb700e7e02864af41807b846ef8269f011418f4d353263989"
+    },
+    {
+      "path": "artifacts/focused-other-xml/wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+      "bytes": 1245,
+      "sha256": "2da12ec907b9eb890425408eb2fca8ffe2942f1aa48e7f54e56f235d5d5436f2"
+    },
+    {
+      "path": "artifacts/full-regression/gradle.log",
+      "bytes": 4847,
+      "sha256": "0935e6d72fbd426d973eb0023a99a4d91d816065cd7b7f1a273e1dd67eb27137"
+    },
+    {
+      "path": "artifacts/full-regression/jsNodeTest-xml.tar.gz",
+      "bytes": 459440,
+      "sha256": "2dad6897b30b898a82fbed05c954fbb9fe557cb8372660c94bd4e1220c617423"
+    },
+    {
+      "path": "artifacts/full-regression/jvmTest-xml.tar.gz",
+      "bytes": 1107984,
+      "sha256": "34af54bf40ecba68b75906d40aa64fdc0e2e8f95bbbddd0b74e5d442712fee9a"
+    },
+    {
+      "path": "artifacts/full-regression/macosArm64Test-xml.tar.gz",
+      "bytes": 459097,
+      "sha256": "3ac7dbe8c9a01d44b2d3891df0eedfca01449435a68373826465316ab8a08398"
+    },
+    {
+      "path": "artifacts/full-regression/summary.json",
+      "bytes": 453,
+      "sha256": "3b1231fe5d8b3b67f8bdc17fd4a7ee99c7a7435e1fb7e6b343e12fb37d92811d"
+    },
+    {
+      "path": "artifacts/full-regression/wasmJsNodeTest-xml.tar.gz",
+      "bytes": 458585,
+      "sha256": "67691a4b33542c9d4604dc55e492817f8258280167d1b9bf93240d4550b851f1"
+    },
+    {
+      "path": "artifacts/historical-536-baseline.jar",
+      "bytes": 187056,
+      "sha256": "f805f1ce3e003ec50941b404d0a8acdbff4ce2bd98c94efee861b6af76683eb6"
+    },
+    {
+      "path": "artifacts/integrated-parent-baseline.jar",
+      "bytes": 185097,
+      "sha256": "c04f08c4f2cfefb034db3ff208eec25fd8e13db311b2e31ae3a901d391dd02f0"
+    },
+    {
+      "path": "artifacts/parent-source-binding.json",
+      "bytes": 5815,
+      "sha256": "ddf3331ccec7dbdfc3e792a4c8ca1ba37bce5d7b5f42f1e880c524023a661177"
+    },
+    {
+      "path": "artifacts/probe.jar",
+      "bytes": 10010,
+      "sha256": "9af8a4bd5c177ccfb510e0711e0fecb49888be7a19365b418ad64e064ca93367"
+    },
+    {
+      "path": "artifacts/selected-candidate-384.jar",
+      "bytes": 194401,
+      "sha256": "e9331e7e6285eec56718ed5e10d2967364d694466ca30c6e90699ab1c9741f9e"
+    },
+    {
+      "path": "artifacts/warmed-probe-source.kt.txt",
+      "bytes": 9590,
+      "sha256": "094b4e8c8324f3e01d8fb9500e1215433804bb73c309cdd9a61541e0c9139727"
+    },
+    {
+      "path": "artifacts/warmed-probe.jar",
+      "bytes": 10097,
+      "sha256": "ca67a8904e27b435f914a1072fc1e05e730b075b5dd928967fc9de00c349a335"
+    },
+    {
+      "path": "artifacts/wasm-yarn.lock.generated",
+      "bytes": 621,
+      "sha256": "970a85c50fa072f8543e444af2d28a16de073c3e7ead47b86527d83a557b4dcc"
+    },
+    {
+      "path": "logs/calibration-0.log",
+      "bytes": 74512,
+      "sha256": "4081775898582e415fdde084d27171cda28da8ca89cffd005f04bb9ef84588bc"
+    },
+    {
+      "path": "logs/calibration-1.log",
+      "bytes": 74443,
+      "sha256": "312698d95acc97a8539c7a1cfbf7537ac851d6b0c4e4e57fc7ccad70e65565de"
+    },
+    {
+      "path": "logs/calibration-2.log",
+      "bytes": 74370,
+      "sha256": "edbcefd21b2855d3cc2e0fad0094434c4d9a8a4892a277c1220fe641d2396d15"
+    },
+    {
+      "path": "logs/calibration-manifest.json",
+      "bytes": 2555,
+      "sha256": "20ca3492aef15e5dcce4d114ea7344c77ff3a41643ec91c670a3aa6055ec1531"
+    },
+    {
+      "path": "logs/calibration-summary.csv",
+      "bytes": 21453,
+      "sha256": "bd43dc642a5d385c38cb6c74a04e98451a5debb970b300e6afbdb9df6892932c"
+    },
+    {
+      "path": "logs/entry-focused-jvm.log",
+      "bytes": 19720,
+      "sha256": "82e93596845aedeee064a9e1faafa4f3b6c090045f8fcec489b4a90a97efddaa"
+    },
+    {
+      "path": "logs/entry-warmed-probe-compile.log",
+      "bytes": 1348,
+      "sha256": "65db4bb255c4d41aada26c165438e9dbb197ad405c2587fbd44c3e42cca6cc78"
+    },
+    {
+      "path": "logs/final-focused-jvm.log",
+      "bytes": 19554,
+      "sha256": "7a3c3d1b82b9690391c604afa583dbeb0c250bf9b6af10ba84ec1297b0468b2b"
+    },
+    {
+      "path": "logs/final-focused-other-targets.log",
+      "bytes": 55245,
+      "sha256": "2030e5855680c0ab60a127ee6020f558d1aeaac5667df20a2c76356a7c1d6d82"
+    },
+    {
+      "path": "logs/final-full-regression.log",
+      "bytes": 4847,
+      "sha256": "0935e6d72fbd426d973eb0023a99a4d91d816065cd7b7f1a273e1dd67eb27137"
+    },
+    {
+      "path": "logs/final-memory-adaptive.log",
+      "bytes": 1357,
+      "sha256": "c7198ca4dd60655e6c3dac06e1383a9dd438791306354b9e1f90f479fac633c2"
+    },
+    {
+      "path": "logs/final-memory-school.log",
+      "bytes": 1352,
+      "sha256": "c3915b2813c712a11922f7efd7de7434af1e85c319c4e21e0923db749d7246d2"
+    },
+    {
+      "path": "logs/final-memory-square.log",
+      "bytes": 1355,
+      "sha256": "1ef1ebe4d70d65ae7d60e55357c25208fb11d730acfa3b46b1fb340ee5325cdb"
+    },
+    {
+      "path": "logs/final-package.log",
+      "bytes": 3762,
+      "sha256": "143d8d71b64339c0b0ff418329861fad018643e332919060197c34d1cfd7c057"
+    },
+    {
+      "path": "logs/final-paired-memory-manifest.json",
+      "bytes": 11519,
+      "sha256": "b8af794af1efafede8730955c881ad3a152804504468f0de38d530bfb74fe9b7"
+    },
+    {
+      "path": "logs/final-public-baseline-0.log",
+      "bytes": 1197,
+      "sha256": "e60c141dc58e82a4fdf9e75d52c0c6d6f5d96c1e7b33da5d87bbfc3172aca4b9"
+    },
+    {
+      "path": "logs/final-public-baseline-1.log",
+      "bytes": 1195,
+      "sha256": "ea982aaf6df7ee586b54012fa5a2177c31ddc2104223afd78ee7bfe984668a25"
+    },
+    {
+      "path": "logs/final-public-baseline-2.log",
+      "bytes": 1194,
+      "sha256": "9e044294bb861a5e06920d4ea960a843f17c27768a09c9116a8d8e470572bf17"
+    },
+    {
+      "path": "logs/final-public-candidate-0.log",
+      "bytes": 1190,
+      "sha256": "71abd18b4abee6428cf44b680eafcd5902fd1902649f56df164986cb575c5948"
+    },
+    {
+      "path": "logs/final-public-candidate-1.log",
+      "bytes": 1192,
+      "sha256": "cfe6c65f020f84eb91ea4d772f7c9be1f074625dec4640212a0e1199514a23bc"
+    },
+    {
+      "path": "logs/final-public-candidate-2.log",
+      "bytes": 1194,
+      "sha256": "794721e0c91ebf22782e01b856cd511ba44943847e7fdb6688fdca3b256ad872"
+    },
+    {
+      "path": "logs/final-public-summary.csv",
+      "bytes": 1919,
+      "sha256": "87f0f70170033116f837034e35ec5d21962421191f4b34757174c406c5bafd32"
+    },
+    {
+      "path": "logs/final-public-wide-baseline-0.log",
+      "bytes": 1642,
+      "sha256": "1db19ad96d9f02abe8bd6d298f8472e0f45b5d85d2e55dc7ac8e0ea523837e98"
+    },
+    {
+      "path": "logs/final-public-wide-baseline-1.log",
+      "bytes": 1632,
+      "sha256": "cf308ef3b388f65ffdf9a08cf6952ebc1ed337ca8c29d319313f79ae3ed424cd"
+    },
+    {
+      "path": "logs/final-public-wide-baseline-2.log",
+      "bytes": 1636,
+      "sha256": "2945f4c159084d848524c1f3112fb0756731c0001ec66071806fd048dab1fc96"
+    },
+    {
+      "path": "logs/final-public-wide-candidate-0.log",
+      "bytes": 1683,
+      "sha256": "3bf957c2ff3dd390db848a6829041da11299c2b66a306ad58e584fc80e4bd7f7"
+    },
+    {
+      "path": "logs/final-public-wide-candidate-1.log",
+      "bytes": 1661,
+      "sha256": "7185a7693e5cfb4aa5940bed1773f5923bcd9f0fd12fdee0b80bddddf7197423"
+    },
+    {
+      "path": "logs/final-public-wide-candidate-2.log",
+      "bytes": 1679,
+      "sha256": "ae56afb7e003dd2b520ed49b5f52d9931f6f79b55b118d13aa0989ec17aed176"
+    },
+    {
+      "path": "logs/final-public-wide-summary.csv",
+      "bytes": 3120,
+      "sha256": "79ae23ee4c30ef0600485ee70a1fcbb13df046e4422abb073db200d13dfa84f0"
+    },
+    {
+      "path": "logs/memory-adaptive-rss.log",
+      "bytes": 1350,
+      "sha256": "5baf99edb75dd903be28aa2287974123f75124120426f3bbf1170e4f9c0f3234"
+    },
+    {
+      "path": "logs/memory-school-rss.log",
+      "bytes": 1345,
+      "sha256": "7d472f4b2e440cda43577d3a9adeb9a116191aeab8df4e35d572e00bf06695bf"
+    },
+    {
+      "path": "logs/memory-school.log",
+      "bytes": 674,
+      "sha256": "0780b7b678f439850aa824dc0810d684f8ffa21790a7f592de5d82712b254595"
+    },
+    {
+      "path": "logs/memory-square-rss.log",
+      "bytes": 1348,
+      "sha256": "7b36b8de8de7e082815622ae16b2a0480402e5b1ae56e4b530bfe593f6410553"
+    },
+    {
+      "path": "logs/original-jit-baseline.log",
+      "bytes": 47090,
+      "sha256": "c68eb19bf30d57ad3be592a4a511830d631510ccd2d2d3f63e45df36c478799e"
+    },
+    {
+      "path": "logs/original-jit-candidate.log",
+      "bytes": 52533,
+      "sha256": "a8b9369f3de1e5ca1ea0737af2fa736bb01125351500723023c0d203ab616068"
+    },
+    {
+      "path": "logs/paired-memory-manifest.json",
+      "bytes": 5078,
+      "sha256": "66378e28c438934adf9a03d3c725238ced1bbc3083aa3cc091d6fb687632f485"
+    },
+    {
+      "path": "logs/public-baseline-0.log",
+      "bytes": 802,
+      "sha256": "59673d9f5e55e893c037439fbbd7e99d2e13fdaa604d54979286a6fc6e2e442f"
+    },
+    {
+      "path": "logs/public-baseline-1.log",
+      "bytes": 808,
+      "sha256": "5e99738635f39a72a30485c7c6801782e13ce4867f4c753589e5c3e69b36bcff"
+    },
+    {
+      "path": "logs/public-baseline-2.log",
+      "bytes": 810,
+      "sha256": "b8ee5da6befa0ed5166ff3fa5ab46e69238922232c56fb7020fbe072427c5a41"
+    },
+    {
+      "path": "logs/public-candidate-0.log",
+      "bytes": 799,
+      "sha256": "4fb9b077f85ad2eeff1b726643e8c3cd3e540cef4103fa50a5d14d71b9e78c1f"
+    },
+    {
+      "path": "logs/public-candidate-1.log",
+      "bytes": 799,
+      "sha256": "0fe789460d937837ba11697ee2d95eb1abf567e15b49736f3b91eecffb08499d"
+    },
+    {
+      "path": "logs/public-candidate-2.log",
+      "bytes": 796,
+      "sha256": "c949fb02abe7e50e09ac30609e40c1a89b8097f31138bea2d609f44cd63cb25d"
+    },
+    {
+      "path": "logs/public-summary.csv",
+      "bytes": 1344,
+      "sha256": "8829625290ae0fd944a1146df09eeba724f9089a2a7a7e97f882d455b704b447"
+    },
+    {
+      "path": "logs/public-warmed-baseline-0.log",
+      "bytes": 1196,
+      "sha256": "141d736d4bc4d7fd0ceaea4951d236291096da5d32d4fcc2893a9ddbbc4da84e"
+    },
+    {
+      "path": "logs/public-warmed-baseline-1.log",
+      "bytes": 1194,
+      "sha256": "a2a1589a9287618a235d2ffc1e50ae2043200ef87c50d142ab0b46e34b2b3c3e"
+    },
+    {
+      "path": "logs/public-warmed-baseline-2.log",
+      "bytes": 1188,
+      "sha256": "cac99ccf044db9ed9e56b68c704fe85fcdcc4a261a095981c895b19cb74404cd"
+    },
+    {
+      "path": "logs/public-warmed-candidate-0.log",
+      "bytes": 1180,
+      "sha256": "0e335ee4ffe1329dd825431debbbef6c7ac3bf2a71963e46d1ff4f4123c23861"
+    },
+    {
+      "path": "logs/public-warmed-candidate-1.log",
+      "bytes": 1187,
+      "sha256": "a53d93fca4c1164bbe94729778b9f9cd074a2b1b260278c982b75de1ee402d3c"
+    },
+    {
+      "path": "logs/public-warmed-candidate-2.log",
+      "bytes": 1182,
+      "sha256": "5d31c7a3203f3dd1259fa0de3634cc1a8a6337b3b24779ddaa384359edb0edad"
+    },
+    {
+      "path": "logs/public-warmed-summary.csv",
+      "bytes": 1913,
+      "sha256": "8a6cb79b8cefb5d6f75c0ffcb060b93415226836101e7b17200e3c95b5d7f6eb"
+    },
+    {
+      "path": "logs/square-entry-0.log",
+      "bytes": 14086,
+      "sha256": "bda780302fe37192a31724679e72e0e657cbaff4e0dc35f2eac9aca39b5f96e4"
+    },
+    {
+      "path": "logs/square-entry-1.log",
+      "bytes": 14291,
+      "sha256": "fc9131e1ffbbf466f02c53ff90e8f6cc66360188c5414cd73c6ffbe1be481108"
+    },
+    {
+      "path": "logs/square-entry-2.log",
+      "bytes": 14337,
+      "sha256": "e7b8572508c89e318693f0880b7da8696c7cd9aa6c00303814ba770f387cbdce"
+    },
+    {
+      "path": "logs/square-entry-manifest.json",
+      "bytes": 2481,
+      "sha256": "3fe4ce124cac43f0d511ac840364aa63a584a7a7d6ad1d67b5f6fa0cd9914658"
+    },
+    {
+      "path": "logs/square-entry-summary.csv",
+      "bytes": 4073,
+      "sha256": "772446cd7defb5cccd3ad6beba1a1456e0ed5743164eb8b86c9a401387545b7a"
+    },
+    {
+      "path": "logs/square-entry-warmed-0.log",
+      "bytes": 14950,
+      "sha256": "a761d4fe60e76351bd8dddc6d60956878897823f7fa0ca19a860551402b26b71"
+    },
+    {
+      "path": "logs/square-entry-warmed-1.log",
+      "bytes": 14862,
+      "sha256": "833490e8d2382ce21938bcf5a2ef632eea96c52943bc81f71f9e1ba774a47fc4"
+    },
+    {
+      "path": "logs/square-entry-warmed-2.log",
+      "bytes": 14817,
+      "sha256": "b99d7be2511a235d2f153dc5c3d013793cc82e6882ea6f5b9f4af27c2312f5a7"
+    },
+    {
+      "path": "logs/square-entry-warmed-manifest.json",
+      "bytes": 2616,
+      "sha256": "ae55fec0273b8fec37653a6dfe658fd89d5d43e588f47bdcb4fa6536f7a074a5"
+    },
+    {
+      "path": "logs/square-entry-warmed-summary.csv",
+      "bytes": 4218,
+      "sha256": "25d293cb6139ce94024c76b51f0aaf188aa1e5551f94673e7e5e270c924c63a2"
+    },
+    {
+      "path": "logs/warmed-jit-memory-manifest.json",
+      "bytes": 8116,
+      "sha256": "9a740c448f48da3527e3374b43407fb79d279ef1bfce40d9f6ba5441635da5b4"
+    },
+    {
+      "path": "logs/warmed-probe-compile.log",
+      "bytes": 1348,
+      "sha256": "742c7778b418feeb85906f07f8f818bccd11d91c322138008916ee1ad137c33a"
+    }
+  ]
+}
