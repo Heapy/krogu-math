@@ -115,7 +115,7 @@ class DecimalSqrtMidpoint565Test {
             assertResult("200", 2, BigDecimal("4.0000").sqrt(MathContext(3, mode)), "preferred $mode")
             assertResult("2", -2, BigDecimal(BigInteger("4"), -4).sqrt(MathContext(1, mode)), "negative scale $mode")
         }
-        assertResult("200025", 5, BigDecimal("4.001").sqrt(MathContext(7, RoundingMode.HALF_EVEN)), "inexact trailing zero")
+        assertResult("2000250", 6, BigDecimal("4.001").sqrt(MathContext(7, RoundingMode.HALF_EVEN)), "inexact trailing zero retains precision")
     }
 
     @Test fun explicitOverrideSuperAndDirectExceptionIdentity() {

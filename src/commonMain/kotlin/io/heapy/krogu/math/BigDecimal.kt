@@ -30,11 +30,14 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     constructor(value: Int, mc: MathContext) : this(value.toLong(), mc)
     constructor(value: Long, mc: MathContext) : this(BigDecimal(value).roundValue(mc))
     constructor(value: String) : this(parse(value))
-    constructor(value: String, mc: MathContext) : this(parse(value).roundValue(mc))
+    constructor(value: String, mc: MathContext) : this(
+        // Sufficient old-route proof, not an input-length limit. Its exact
+        // coefficient is <10^K<2^(Int.MAX_VALUE-3).
+        if (value.length <= 646456992) parse(value).roundValue(mc) else DecimalText588.parse(value, mc))
     constructor(value: CharArray) : this(value, 0, value.size)
-    constructor(value: CharArray, offset: Int, len: Int) : this(characters(value, offset, len))
+    constructor(value: CharArray, offset: Int, len: Int) : this(DecimalText588.parse(value, offset, len, MathContext.UNLIMITED))
     constructor(value: CharArray, mc: MathContext) : this(value, 0, value.size, mc)
-    constructor(value: CharArray, offset: Int, len: Int, mc: MathContext) : this(characters(value, offset, len), mc)
+    constructor(value: CharArray, offset: Int, len: Int, mc: MathContext) : this(DecimalText588.parse(value, offset, len, mc))
     constructor(value: Double) : this(fromDouble(value))
     constructor(value: Double, mc: MathContext) : this(roundedDouble(value, mc))
 
@@ -636,11 +639,17 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         // raw scratch, never a new public precision/coefficient range limit.
         if (coefficientSign > 0 && shift > 0 && context.precision > Int.MAX_VALUE / 8) {
             val digits = storedPrecision()
-            if (exponent == digits.toLong() - decimalScale - 1 &&
-                !DecimalSquareRoot579.canMaterialize(digits, shift, workingScale)) {
-                val result = DecimalSquareRoot579.normalized(coefficient, shift,
-                    context.precision, workingScale, preferred, context.roundingMode)
-                return BigDecimal(result.first, result.second)
+            if (exponent == digits.toLong() - decimalScale - 1) {
+                // The complete finite-root prefix already returned or declined.
+                // An ordinary irrational root requires p significant digits;
+                // a shorter numerically equal cohort cannot replace them.
+                if (DecimalSquareRoot579.inexactPrecisionOverflows(context.precision))
+                    throw ArithmeticException("BigInteger overflow")
+                if (!DecimalSquareRoot579.canMaterialize(digits, shift, workingScale)) {
+                    val result = DecimalSquareRoot579.normalized(coefficient, shift,
+                        context.precision, workingScale, preferred, context.roundingMode)
+                    return BigDecimal(result.first, result.second)
+                }
             }
         }
         val scale = checkedScale(workingScale)
@@ -662,7 +671,8 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             }
             if (increment(context.roundingMode, 1, half, root.testBit(0))) root = root.add(BigInteger.ONE)
         }
-        return BigDecimal(root, scale).roundValue(context).stripTo(preferred)
+        val result = BigDecimal(root, scale).roundValue(context)
+        return if (exact) result.stripTo(preferred) else result
     }
 
     private fun finiteExactSquareRoot(): Pair<BigInteger, Int>? {
@@ -964,10 +974,6 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             if (scale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong()) throw NumberFormatException("Scale out of range")
             val number = BigInteger(digits.toString())
             return BigDecimal(if (negative) number.negate() else number, scale.toInt())
-        }
-        private fun characters(value: CharArray, offset: Int, len: Int): String {
-            if (offset < 0 || len < 0 || offset > value.size - len) throw NumberFormatException("Bad character range")
-            return value.concatToString(offset, offset + len)
         }
         private fun fromDouble(value: Double): BigDecimal {
             if (!value.isFinite()) throw NumberFormatException("Infinite or NaN")

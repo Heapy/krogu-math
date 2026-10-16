@@ -16,6 +16,7 @@ class ScaleBoundaryConformanceTest {
         val counts = mutableMapOf<String, Int>()
         val failures = mutableListOf<String>()
         var comparisons = 0
+        val roots = SqrtCohort587Comparison.Recorder("scale-live-wide", SqrtCohort587Comparison.Profile.WIDE, 16000, "LIVE_JDK")
         fun coefficient(): java.math.BigInteger {
             val value = if (random.nextBoolean()) {
                 java.math.BigInteger.TEN.pow(listOf(1, 16, 17, 18, 19, 31, 32, 63, 64, 100)[random.nextInt(10)])
@@ -23,15 +24,15 @@ class ScaleBoundaryConformanceTest {
             } else java.math.BigInteger(random.nextBytes(listOf(1, 4, 8, 16, 32, 64)[random.nextInt(6)]))
             return if (random.nextBoolean()) value.negate() else value
         }
-        fun outcome(action: () -> Any?): String = try { action().toString() }
-            catch (e: Exception) { "!${e.javaClass.simpleName}" }
         fun check(label: String, reference: () -> Any?, implementation: () -> Any?) {
             comparisons++
-            val expected = outcome(reference); val actual = outcome(implementation)
-            if (expected != actual) {
+            val expected = SqrtCohort587Comparison.captureText(reference)
+            val actual = SqrtCohort587Comparison.captureText(implementation)
+            if (expected.text != actual.text || expected.unexpected || actual.unexpected) {
                 val category = label.substringBefore(' ')
                 val previous = counts[category] ?: 0
                 counts[category] = previous + 1
+                println("587_SCALE_OTHER_FAILURE\twide\t$comparisons\t$label\t$expected\t$actual")
                 if (previous < 6) failures.add("$label expected=$expected actual=$actual")
             }
         }
@@ -53,9 +54,12 @@ class ScaleBoundaryConformanceTest {
                 check("multiply $label", {
                     scaleRoundingReference("multiply $label", DecimalScaleRounding566Expected.multiplication(a, b, mc)) { x.multiply(y, jc) }
                 }, { a.multiply(b, mc) })
-                check("sqrt $x,$mc", { sqrtReference(a, mc) { x.sqrt(jc) } }, { a.sqrt(mc) })
+                comparisons++
+                recordSqrt(roots, comparisons.toString(), a, mc) { x.sqrt(jc) }
             }
         }
+        assertEquals(68000, comparisons)
+        roots.finish()
         assertEquals(emptyMap(), counts, "$comparisons comparisons; discrepancy counts: $counts\n${failures.joinToString("\n")}")
         println("$comparisons wide-coefficient scale-boundary comparisons passed")
     }
@@ -66,12 +70,17 @@ class ScaleBoundaryConformanceTest {
         val failures = mutableListOf<String>()
         var comparisons = 0
         var directZeroRounds = 0
-        fun outcome(action: () -> Any?): String = try { action().toString() }
-            catch (e: Exception) { "!${e.javaClass.simpleName}" }
+        var otherFailures = 0
+        val roots = SqrtCohort587Comparison.Recorder("scale-live-compact", SqrtCohort587Comparison.Profile.COMPACT, 2592, "LIVE_JDK")
         fun check(label: String, reference: () -> Any?, implementation: () -> Any?) {
             comparisons++
-            val expected = outcome(reference); val actual = outcome(implementation)
-            if (expected != actual && failures.size < 80) failures.add("$label expected=$expected actual=$actual")
+            val expected = SqrtCohort587Comparison.captureText(reference)
+            val actual = SqrtCohort587Comparison.captureText(implementation)
+            if (expected.text != actual.text || expected.unexpected || actual.unexpected) {
+                otherFailures++
+                println("587_SCALE_OTHER_FAILURE\tcompact\t$comparisons\t$label\t$expected\t$actual")
+                if (failures.size < 80) failures.add("$label expected=$expected actual=$actual")
+            }
         }
         for (x in inputs) {
             val a = BigDecimal(x.unscaledValue().toString().let(::BigInteger), x.scale())
@@ -90,7 +99,8 @@ class ScaleBoundaryConformanceTest {
             }
             for (p in listOf(0, 1, 2, 7)) for (mode in RoundingMode.entries) {
                 val mc = MathContext(p, mode); val jc = JC(p, JR.valueOf(mode.name))
-                check("sqrt $x,$mc", { sqrtReference(a, mc) { x.sqrt(jc) } }, { a.sqrt(mc) })
+                comparisons++
+                recordSqrt(roots, comparisons.toString(), a, mc) { x.sqrt(jc) }
                 // x/a are ordinary values copied from literal stored coefficients.
                 if (x.unscaledValue() == java.math.BigInteger.ZERO && x.scale() != 0) {
                     directZeroRounds++
@@ -109,20 +119,22 @@ class ScaleBoundaryConformanceTest {
         }
         assertEquals(139239, comparisons)
         assertEquals(256, directZeroRounds)
-        assertEquals(emptyList(), failures, "$comparisons comparisons; first discrepancies:\n${failures.joinToString("\n")}")
+        roots.finish()
+        assertEquals(0, otherFailures, "$comparisons comparisons; first discrepancies:\n${failures.joinToString("\n")}")
         println("$comparisons signed-scale-boundary comparisons passed")
     }
 
-    private fun sqrtReference(a: BigDecimal, mc: MathContext, reference: () -> JD): Any {
+    private fun recordSqrt(recorder: SqrtCohort587Comparison.Recorder, key: String,
+        a: BigDecimal, mc: MathContext, reference: () -> JD) {
         val corrected = DecimalExactRoot563Expected.corrected(a.unscaledValue().toString(), a.scale(), mc)
-            ?: return reference()
-        val diagnostic = try { reference().toString() }
-            catch (_: ArithmeticException) { "!ArithmeticException" }
-        assertEquals("!ArithmeticException", diagnostic, "retained JDK sqrt normalization defect: $a $mc")
-        val actual = a.sqrt(mc)
-        assertEquals(corrected.coefficient, actual.unscaledValue().toString(), "sqrt coefficient: $a $mc")
-        assertEquals(corrected.scale, actual.scale(), "sqrt scale: $a $mc")
-        return corrected.text()
+        val diagnostic = SqrtCohort587Comparison.reference(reference) { r ->
+            SqrtCohort587Comparison.Fields(r.unscaledValue().toString(), r.scale(), r.precision(), r.toString())
+        }
+        // Retain the old task563 extra own call and its coefficient/scale checks.
+        val control = corrected?.let { SqrtCohort587Comparison.own { a.sqrt(mc) } }
+        val actual = SqrtCohort587Comparison.own { a.sqrt(mc) }
+        recorder.record(key, SqrtCohort587Comparison.input(a), mc.precision, mc.roundingMode,
+            diagnostic, actual, corrected?.let { SqrtCohort587Comparison.parse(it.text()) }, control)
     }
 
     private fun divisionReference(a: BigDecimal, b: BigDecimal, mc: MathContext?, reference: () -> JD): Any {

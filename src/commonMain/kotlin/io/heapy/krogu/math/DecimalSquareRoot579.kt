@@ -12,6 +12,10 @@ internal object DecimalSquareRoot579 {
         shift in 1..646456992L && scale in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong() &&
             4L * (digits.toLong() + shift) <= Int.MAX_VALUE
 
+    // Only after a complete ordinary finite-root check: a required p-digit
+    // coefficient with p>H is at least 10^H, beyond the public bit range.
+    fun inexactPrecisionOverflows(precision: Int): Boolean = precision > 646456993
+
     fun normalized(coefficient: BigInteger, shift: Long, precision: Int,
         scale: Long, preferred: Int, mode: RoundingMode): Pair<BigInteger, Int> {
         require(shift > 0 && precision > 0)
@@ -72,9 +76,10 @@ internal object DecimalSquareRoot579 {
                 finalScale--
             }
         }
-        // Never narrow the working scale or impose the public bit limit before
-        // removing the exact zero tail. Either could discard a supported cohort.
-        while (finalScale > preferred && root[0] % 10 == 0) {
+        // Exact internal roots retain their preferred-cohort/Long-scale rescue.
+        // Inexact rounding retains all p significant digits, including zeros;
+        // the sole all-nine carry normalization above already preserves p.
+        while (!inexact && finalScale > preferred && root[0] % 10 == 0) {
             check(root.divideTen() == 0)
             finalScale--
         }

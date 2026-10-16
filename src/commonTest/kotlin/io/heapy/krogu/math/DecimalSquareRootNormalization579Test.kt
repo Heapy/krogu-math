@@ -68,7 +68,9 @@ class DecimalSquareRootNormalization579Test {
             var expected = a + if (up) 1 else 0
             var scale = initialScale
             if (expected.toString().length > p) { expected /= 10; scale-- }
-            while (scale > 0 && expected % 10L == 0L) { expected /= 10; scale-- }
+            // Only exact roots choose a shorter preferred cohort. Inexact
+            // p-digit rounding keeps its zero tail after the single carry.
+            while (exact && scale > 0 && expected % 10L == 0L) { expected /= 10; scale-- }
             val actual = DecimalSquareRoot579.normalized(BigInteger.valueOf(coefficient),
                 shift.toLong(), p, initialScale.toLong(), 0, mode)
             assertEquals(expected.toString(), actual.first.toString(), "$label coefficient")
@@ -77,12 +79,13 @@ class DecimalSquareRootNormalization579Test {
     }
 
     @Test fun rawCarryPreferredStopAndLongScaleRescue() {
-        // sqrt(9990) is between 99.5 and 100: all-nine carry, then exact strip.
+        // sqrt(9990) is between 99.5 and 100: normalize the all-nine carry,
+        // retaining two significant digits rather than stripping to one.
         for (mode in listOf(RoundingMode.UP, RoundingMode.CEILING,
             RoundingMode.HALF_UP, RoundingMode.HALF_DOWN, RoundingMode.HALF_EVEN)) {
             val result = DecimalSquareRoot579.normalized(BigInteger("999"), 1, 2, 5L, 3, mode)
-            assertEquals(BigInteger.ONE, result.first)
-            assertEquals(3, result.second)
+            assertEquals(BigInteger.TEN, result.first)
+            assertEquals(4, result.second)
         }
         // Exact kernel inputs exercise cohort mechanics independently of the
         // earlier public finite-root shortcut: strip only to the preferred stop.

@@ -53,15 +53,23 @@ class DecimalConformanceTest {
     }
 
     @Test fun rootsAndPowers() {
+        val checks = SqrtCohort587Comparison.Checks("fixed-roots-powers")
+        val roots = SqrtCohort587Comparison.Recorder("fixed-roots-powers", SqrtCohort587Comparison.Profile.FIXED, 960, "LIVE_JDK")
         val inputs = listOf("0", "0.00", "0E+5", "0E-5", "1.0000", "4.00", "100.00", "0.01", "2", "3", "5", "10", "81", "0.99999999", "1.00000001", "9999", "999999", "1E-30", "1E+31", "10000000000000000000000000001")
         for (s in inputs) for (mode in RoundingMode.entries) for (p in listOf(0, 1, 2, 3, 7, 16)) {
             val x = JD(s); val a = BigDecimal(s)
             val mc = MathContext(p, mode); val jc = JC(p, JR.valueOf(mode.name))
-            check("sqrt $s,$mc", { x.sqrt(jc) }, { a.sqrt(mc) })
+            checks.accountSqrt()
+            val reference = SqrtCohort587Comparison.reference({ x.sqrt(jc) }) { r ->
+                SqrtCohort587Comparison.Fields(r.unscaledValue().toString(), r.scale(), r.precision(), r.toString())
+            }
+            val actual = SqrtCohort587Comparison.own { a.sqrt(mc) }
+            roots.record("$s/$p/$mode", SqrtCohort587Comparison.input(a, s), p, mode, reference, actual)
             for (n in listOf(-7, -3, -1, 0, 1, 2, 3, 7, 10, 31))
-                check("pow $s,$n,$mc", { x.pow(n, jc) }, { a.pow(n, mc) })
+                checks.check("pow $s,$n,$mc", { x.pow(n, jc) }, { a.pow(n, mc) })
         }
-        finish()
+        roots.finish()
+        checks.finish(10560)
     }
 
     @Test fun doubleCanonicalizationCampaign() {

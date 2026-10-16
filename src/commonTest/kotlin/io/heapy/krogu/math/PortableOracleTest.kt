@@ -36,7 +36,15 @@ class PortableOracleTest {
         val rngRows = mutableSetOf<List<String>>()
         val rngOrdinals = mutableListOf<Int>()
         val division581Policy = DecimalDivision581DiagnosticPolicy.Recorder(portable = true)
+        val sqrt587Policy = SqrtCohort587Comparison.Recorder("portable", SqrtCohort587Comparison.Profile.PORTABLE, 3, "FROZEN")
+        val sqrt587Ordinals = mutableSetOf<Int>()
         for ((index, v) in oracleVectors().withIndex()) {
+            val sqrt587Row = SqrtCohort587Comparison.raw[index]
+            if (sqrt587Row != null) {
+                assertEquals(sqrt587Row, v.toList(), "exact retained task587 row $index")
+                assertTrue(sqrt587Ordinals.add(index))
+            } else assertFalse(SqrtCohort587Comparison.raw.values.any { it.take(6) == v.take(6) },
+                "task587 selected source key moved away from its frozen ordinal $index")
             val selectedGroups = (if (ComparisonRows574.isMoved(v)) 1 else 0) +
                 (if (DecimalBinary575Rows.nd(v)) 1 else 0) + (if (UnaryNull576Rows.selected(v)) 1 else 0) +
                 (if (v[0] == "R") 1 else 0)
@@ -71,7 +79,8 @@ class PortableOracleTest {
                         MathContext(input.precision, RoundingMode.valueOf(input.mode)))
                 }
             }
-            val actual = division581Actual?.text ?: try {
+            val sqrt587Actual = sqrt587Row?.let { SqrtCohort587Comparison.own { evaluate(v) as BigDecimal } }
+            val actual = sqrt587Actual?.text ?: division581Actual?.text ?: try {
                 val result = evaluate(v)
                 if (result is Array<*>) result.joinToString("|") else result.toString()
             } catch (e: Exception) { "!${e::class.simpleName}" }
@@ -91,6 +100,13 @@ class PortableOracleTest {
                 continue
             }
             val normalization = normalizationContractExpected(v)
+            if (sqrt587Actual != null) {
+                assertNull(normalization, "existing task563 normalization retains priority")
+                val source = SqrtCohort587Comparison.parseInput(v[2])
+                sqrt587Policy.record(index.toString(), SqrtCohort587Comparison.Input(source.coefficient, source.scale, v[2]),
+                    v[4].toInt(), RoundingMode.valueOf(v[5]), SqrtCohort587Comparison.frozen(v[6]), sqrt587Actual)
+                continue // Exactly three ordinary D/sqrt rows; no callback/G policy.
+            }
             if (division581Actual != null) {
                 if (normalization != null)
                     assertTrue(v[6].startsWith("!ArithmeticException"), "retained normalization diagnostic ${v.take(6)}")
@@ -129,6 +145,7 @@ class PortableOracleTest {
             val required = corrected ?: v[6]
             if (required != normalized) {
                 ordinaryMismatchCount++
+                println("587_PORTABLE_OTHER_FAILURE\tindex=$index\t${v.take(6)}\trequired=$required\tactual=$actual\tfrozen=${v[6]}")
                 if (ordinaryMismatchExamples.size < 80)
                     ordinaryMismatchExamples += "index=$index ${v.take(6)} required=$required actual=$actual JDK diagnostic=${v[6]}"
             }
@@ -158,6 +175,8 @@ class PortableOracleTest {
         assertEquals(FiniteZeroPolicy567.keys - FiniteZeroPolicy567.nullAbsKeys, observedFiniteKeys,
             "valid finite inputs remain common; all eight nullAbs keys execute in UnaryNull576VectorsTest")
         division581Policy.finish()
+        assertEquals(SqrtCohort587Comparison.raw.keys, sqrt587Ordinals, "all three frozen task587 source sites")
+        sqrt587Policy.finish()
         assertEquals(0, ordinaryMismatchCount, "ordinary oracle mismatches (first80):\n${ordinaryMismatchExamples.joinToString("\n")}")
     }
 

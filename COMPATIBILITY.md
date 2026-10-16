@@ -153,13 +153,17 @@ Linux ARM64 execution. The public job is excluded from that snapshot;
 iOS-device coverage is compilation only. These results validate the published
 585/586 composition, not the subsequent587/588 candidates.
 
-Subsequent source/spec audits track587, the
-[inexact sqrt precision/cohort rule](docs/sqrt-cohort-587-observation.md),
-and588, contextual lexical conversion before full-coefficient materialization.
-They remain open: a numerically equal shorter sqrt cohort is not itself a proof
-of the prescribed representation, and supported BigInteger-input constructor
-proofs do not settle all String/char-array context inputs. Giant lexical/range
-witnesses are unexecuted; no JDK runtime defect is claimed for them.
+The subsequent [source247 local integration report](docs/decimal-text-sqrt-587-589-verification.md)
+records the587 inexact sqrt precision/cohort repair,588 contextual lexical
+conversion before full-coefficient materialization, and589 exact CharArray
+construction without a whole-input String. All1,687 method executions pass on
+JVM/JS/Wasm/macOS ARM64. A separately checked complete94,282-record sqrt ledger
+retains strict coefficient/scale/precision/text/error checks and independently
+certifies2,473 required inexact cohort lifts. Unchanged p-digit references and
+error decisions have the narrower acceptance scopes recorded in that report.
+Matching-head hosted/public acceptance remains open; the restored original
+public sqrt main call has not yet been executed. Giant lexical/range witnesses
+remain symbolic, and the broader548/549 obligations remain open.
 
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in

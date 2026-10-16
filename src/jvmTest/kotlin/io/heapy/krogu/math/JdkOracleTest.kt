@@ -100,7 +100,10 @@ class JdkOracleTest {
         }
     }
     @Test fun decimals() {
-        repeat(350) {
+        val checks = SqrtCohort587Comparison.Checks("live-decimals")
+        val roots = SqrtCohort587Comparison.Recorder("live-decimals", SqrtCohort587Comparison.Profile.LIVE, 350, "LIVE_JDK")
+        fun same(label: String, jdk: () -> Any?, common: () -> Any?) = checks.check(label, jdk, common)
+        repeat(350) { iteration ->
             val sa = decimal(); val sb = decimal()
             val a = BigDecimal(sa); val b = BigDecimal(sb)
             val x = JDecimal(sa); val y = JDecimal(sb)
@@ -109,13 +112,13 @@ class JdkOracleTest {
             val p = random.nextInt(0, 35)
             val mc = MathContext(p, mode); val jc = JContext(p, jmode)
             val label = "$sa ; $sb ; $mc"
-            assertEquals(x.toString(), a.toString(), "parse $sa")
-            assertEquals(x.toPlainString(), a.toPlainString(), "plain $sa")
-            assertEquals(x.toEngineeringString(), a.toEngineeringString(), "engineering $sa")
-            assertEquals(x.scale(), a.scale())
-            assertEquals(x.precision(), a.precision())
-            assertEquals(x.hashCode(), a.hashCode(), "decimal hash $sa")
-            assertEquals(x.compareTo(y).compareTo(0), a.compareTo(b).compareTo(0))
+            checks.strict("parse $sa", { x.toString() }, { a.toString() })
+            checks.strict("plain $sa", { x.toPlainString() }, { a.toPlainString() })
+            checks.strict("engineering $sa", { x.toEngineeringString() }, { a.toEngineeringString() })
+            checks.strict("scale $sa", { x.scale() }, { a.scale() })
+            checks.strict("precision $sa", { x.precision() }, { a.precision() })
+            checks.strict("decimal hash $sa", { x.hashCode() }, { a.hashCode() })
+            checks.strict("compare $label", { x.compareTo(y).compareTo(0) }, { a.compareTo(b).compareTo(0) })
             same("add $label", { x.add(y) }, { a.add(b) })
             same("add mc $label", { x.add(y, jc) }, { a.add(b, mc) })
             same("subtract mc $label", { x.subtract(y, jc) }, { a.subtract(b, mc) })
@@ -135,14 +138,21 @@ class JdkOracleTest {
             same("powerTen $sa $n", { x.scaleByPowerOfTen(n) }, { a.scaleByPowerOfTen(n) })
             same("integer $sa", { x.toBigInteger() }, { a.toBigInteger() })
             same("integer exact $sa", { x.toBigIntegerExact() }, { a.toBigIntegerExact() })
-            assertEquals(x.toDouble().toBits(), a.toDouble().toBits(), "decimal double $sa")
-            assertEquals(x.toFloat().toBits(), a.toFloat().toBits(), "decimal float $sa")
-            assertEquals(x.toLong(), a.toLong())
-            assertEquals(x.toInt(), a.toInt())
-            same("sqrt $label", { x.sqrt(jc) }, { a.sqrt(mc) })
+            checks.strict("decimal double $sa", { x.toDouble().toBits() }, { a.toDouble().toBits() })
+            checks.strict("decimal float $sa", { x.toFloat().toBits() }, { a.toFloat().toBits() })
+            checks.strict("long $sa", { x.toLong() }, { a.toLong() })
+            checks.strict("int $sa", { x.toInt() }, { a.toInt() })
+            checks.accountSqrt()
+            val reference = SqrtCohort587Comparison.reference({ x.sqrt(jc) }) { r ->
+                SqrtCohort587Comparison.Fields(r.unscaledValue().toString(), r.scale(), r.precision(), r.toString())
+            }
+            val actual = SqrtCohort587Comparison.own { a.sqrt(mc) }
+            roots.record(iteration.toString(), SqrtCohort587Comparison.input(a, sa), p, mode, reference, actual)
             val power = random.nextInt(-8, 9)
             same("pow $power $label", { x.pow(power, jc) }, { a.pow(power, mc) })
         }
+        roots.finish()
+        checks.finish(10500)
     }
     @Test fun floatingPointBoundaries() {
         val values = mutableListOf(0.0, -0.0, Double.MIN_VALUE, Double.MAX_VALUE, Double.POSITIVE_INFINITY, Double.NaN,

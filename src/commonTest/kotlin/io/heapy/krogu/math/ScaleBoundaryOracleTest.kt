@@ -10,6 +10,10 @@ class ScaleBoundaryOracleTest {
         private val expected = scaleBoundaryExpected().drop(offset).iterator()
         private var count = offset
         private var directZeroRounds = 0
+        private val checks = SqrtCohort587Comparison.Checks("scale-oracle-$offset")
+        private val roots = SqrtCohort587Comparison.Recorder("scale-oracle-$offset",
+            if (offset == 0) SqrtCohort587Comparison.Profile.COMPACT else SqrtCohort587Comparison.Profile.WIDE,
+            if (offset == 0) 2592 else 1600, "FROZEN")
         fun verify(label: String, action: () -> Any?) {
             verifyExpected(label, null, action = action)
         }
@@ -21,12 +25,13 @@ class ScaleBoundaryOracleTest {
             // Only ordinary direct zero: consume the original field at its original cursor.
             assertTrue(expected.hasNext(), "Oracle ended before $label")
             val diagnostic = expected.next()
-            assertEquals(a.toString(), diagnostic, "retained task567 JDK round: $label")
-            val result = a.round(mc)
-            assertEquals(BigInteger.ZERO, result.unscaledValue(), "$count: coefficient $label; JDK=$diagnostic")
-            assertEquals(0, result.scale(), "$count: scale $label; JDK=$diagnostic")
-            assertEquals("0", result.toString(), "$count: text $label; JDK=$diagnostic")
-            println("567_DIRECT_ZERO_OBSERVATION\tcursor=$count\t$label\tfrozen=$diagnostic\tactual=$result")
+            checks.equal(a.toString(), diagnostic, "retained task567 JDK round: $label")
+            val result = SqrtCohort587Comparison.own { a.round(mc) }
+            checks.equal("0", result.fields?.coefficient, "$count: coefficient $label; JDK=$diagnostic")
+            checks.equal(0, result.fields?.scale, "$count: scale $label; JDK=$diagnostic")
+            checks.equal("0", result.text, "$count: text $label; JDK=$diagnostic")
+            if (result.unexpected) checks.bad(label, "ordinary round", result)
+            println("567_DIRECT_ZERO_OBSERVATION\tcursor=$count\t$label\tfrozen=$diagnostic\tactual=${result.text}")
             directZeroRounds++
             count++
         }
@@ -51,37 +56,35 @@ class ScaleBoundaryOracleTest {
         }
         fun verifySqrt(label: String, a: BigDecimal, mc: MathContext) {
             val contract = DecimalExactRoot563Expected.corrected(a.unscaledValue().toString(), a.scale(), mc)
-            if (contract == null) {
-                verify(label) { a.sqrt(mc) }
-                return
-            }
             assertTrue(expected.hasNext(), "Oracle ended before $label")
             val diagnostic = expected.next()
-            assertEquals("!ArithmeticException", diagnostic, "retained JDK sqrt defect: $label")
-            val result = a.sqrt(mc)
-            assertEquals(contract.coefficient, result.unscaledValue().toString(), "$count: coefficient $label; JDK=$diagnostic")
-            assertEquals(contract.scale, result.scale(), "$count: scale $label; JDK=$diagnostic")
-            assertEquals(contract.text(), result.toString(), "$count: text $label; JDK=$diagnostic")
+            val result = SqrtCohort587Comparison.own { a.sqrt(mc) }
+            roots.record(count.toString(), SqrtCohort587Comparison.input(a), mc.precision, mc.roundingMode,
+                SqrtCohort587Comparison.frozen(diagnostic), result,
+                contract?.let { SqrtCohort587Comparison.parse(it.text()) })
             count++
         }
         private fun verifyExpected(label: String, contract: String?, task566: Boolean = false, action: () -> Any?) {
             assertTrue(expected.hasNext(), "Oracle ended before $label")
-            val actual = try { action().toString() } catch (e: Exception) { "!${e::class.simpleName}" }
+            val actual = SqrtCohort587Comparison.captureText(action)
             val diagnostic = expected.next()
             // Keep consuming and checking the frozen JDK defect, while requiring
             // the bounded exact-intermediate contract for this proved domain.
             if (contract != null) {
                 if (task566 && diagnostic != "!ArithmeticException")
-                    assertEquals(contract, diagnostic, "retained task566 JDK value: $label")
-                else assertEquals("!ArithmeticException", diagnostic, "retained JDK defect: $label")
+                    checks.equal(contract, diagnostic, "retained task566 JDK value: $label")
+                else checks.equal("!ArithmeticException", diagnostic, "retained JDK defect: $label")
             }
-            assertEquals(contract ?: diagnostic, actual, "$count: $label; JDK=$diagnostic")
+            checks.equal(contract ?: diagnostic, actual.text, "$count: $label; JDK=$diagnostic")
+            if (actual.unexpected) checks.bad(label, "ordinary operation", actual)
             count++
         }
         fun finish(end: Int, requireEnd: Boolean = false, expectedDirectZeroRounds: Int = 0) {
             assertEquals(end, count)
             assertEquals(expectedDirectZeroRounds, directZeroRounds, "task567 direct ordinary zero round fields")
             if (requireEnd) assertFalse(expected.hasNext(), "Unconsumed oracle outcomes")
+            roots.finish()
+            checks.finish()
         }
     }
 
