@@ -42,6 +42,78 @@ internal object MagnitudeMultiplication {
         return out
     }
 
+    /** Explicit experimental policy; ordinary public dispatch is unchanged. */
+    fun multiplyConfigured539(a: IntArray, b: IntArray, policy: MultiplicationPolicy539): IntArray {
+        if (a.size >= policy.squareLeaf && a.size < policy.wholeSquareEntry && a === b) {
+            val out = IntArray(checkedOutput539(a.size, b.size))
+            square(a, 0, a.size, out, 0)
+            return out
+        }
+        return multiply(a, b, policy.karatsuba, policy.squareLeaf)
+    }
+
+    /** One child product over immutable views, with its own output and arena. */
+    private fun multiplyRange539(a: IntArray, ao: Int, al: Int, b: IntArray, bo: Int, bl: Int,
+        policy: MultiplicationPolicy539): IntArray {
+        val out = IntArray(checkedOutput539(al, bl))
+        val arena = Arena(scratchWords(al, bl, policy.karatsuba))
+        product(a, ao, al, b, bo, bl, out, 0, arena, policy.karatsuba, policy.squareLeaf)
+        return out
+    }
+
+    private fun checkedOutput539(a: Int, b: Int): Int {
+        val size = a.toLong() + b
+        if (size > Int.MAX_VALUE) throw ArithmeticException("BigInteger overflow")
+        return size.toInt()
+    }
+
+    /**
+     * Candidate top-level Karatsuba decomposition. Scheduling is outside this
+     * common arithmetic. Each child owns its output/arena; inputs and prepared
+     * sums are immutable throughout execution. A frame is single-use at join.
+     */
+    class ParallelFrame539 internal constructor(
+        private val a: IntArray, private val b: IntArray, private val policy: MultiplicationPolicy539,
+    ) {
+        private val split = maxOf(a.size, b.size) / 2
+        private val aLow = minOf(a.size, split)
+        private val bLow = minOf(b.size, split)
+        private val aHigh = a.size - aLow
+        private val bHigh = b.size - bLow
+        private val sumA = IntArray(maxOf(aLow, aHigh) + 1)
+        private val sumALength = sum(a, 0, aLow, aLow, aHigh, sumA, 0, sumA.size)
+        private val sumB = if (a === b) sumA else IntArray(maxOf(bLow, bHigh) + 1)
+        private val sumBLength = if (a === b) sumALength else sum(b, 0, bLow, bLow, bHigh, sumB, 0, sumB.size)
+
+        fun child(index: Int): IntArray = when (index) {
+            0 -> multiplyRange539(a, 0, aLow, b, 0, bLow, policy)
+            1 -> multiplyRange539(a, aLow, aHigh, b, bLow, bHigh, policy)
+            2 -> multiplyRange539(sumA, 0, sumALength, sumB, 0, sumBLength, policy)
+            else -> throw IllegalArgumentException("Child index")
+        }
+
+        /** All three children must have completed before any recombination. */
+        fun combine(low: IntArray, high: IntArray, middle: IntArray): IntArray {
+            require(low.size == aLow + bLow && high.size == aHigh + bHigh && middle.size == sumALength + sumBLength)
+            require(low !== high && low !== middle && high !== middle)
+            val out = IntArray(checkedOutput539(a.size, b.size))
+            low.copyInto(out)
+            high.copyInto(out, 2 * split)
+            subtract(middle, 0, middle.size, low, 0, low.size)
+            subtract(middle, 0, middle.size, high, 0, high.size)
+            addAt(out, split, middle, 0, trimmed(middle, 0, middle.size))
+            return out
+        }
+    }
+
+    /** Candidate-only eligibility; production parallelMultiply remains virtual multiply. */
+    fun prepareParallel539(a: IntArray, b: IntArray, policy: MultiplicationPolicy539): ParallelFrame539? {
+        checkedOutput539(a.size, b.size)
+        val small = minOf(a.size, b.size)
+        if (small < maxOf(4, policy.karatsuba) || maxOf(a.size, b.size).toLong() > 2L * small) return null
+        return ParallelFrame539(a, b, policy)
+    }
+
     /** Checked arena upper bound, including a reusable short-operand-sized block product. */
     fun scratchWords(a: Int, b: Int, threshold: Int = KARATSUBA_THRESHOLD): Int {
         require(a >= 0 && b >= 0 && threshold >= 4)
