@@ -10,6 +10,11 @@
   "final_full_methods": 1988,
   "entries": [
     {
+      "path": ".gitattributes",
+      "bytes": 54,
+      "sha256": "a0db7b8707aeba55ef02ea0766460927f6dbf3369570f2083c3aa96418038cd7"
+    },
+    {
       "path": "REPORT.md",
       "bytes": 11110,
       "sha256": "a4826c94cf2b7d69c7b57d76db6c96b244703b8c4d9da2c4501d973cc7f123c2"
