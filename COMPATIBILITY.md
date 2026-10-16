@@ -170,6 +170,14 @@ and executed. Giant lexical/range witnesses remain symbolic; broader 548/549
 obligations and the 525/557 Number caller issue remain open. Private source248
 is excluded from this published snapshot.
 
+The per-entry [BigInteger](docs/integer-public-contract-549-ledger.md) and
+[BigDecimal](docs/decimal-public-contract-549-ledger.md) API/error ledgers,
+together with the existing [context/mode ledger](docs/context-mode-contract-549-ledger.md)
+and [constructor inventory](docs/constructor-overload-inventory-549.md), account
+for the public surface and identify the remaining numerical, subtype and range
+leaves. Their historical source bindings and conditional premises remain
+explicit; the later private repairs are not accepted by those ledgers alone.
+
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in
 [Decimal scale contract](docs/decimal-scale-contract.md).
