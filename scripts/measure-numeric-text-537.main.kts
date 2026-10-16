@@ -99,7 +99,12 @@ for (fork in 0..2) {
             label, jar.path, artifactBefore.getValue(jar), probe.path, args[7], "$fork", if (fork % 2 == 0) "forward" else "reverse")
         File(output, "$prefix.command.txt").writeText(command.joinToString("\n", postfix = "\n"))
         host("$prefix-before")
-        val timing = if (System.getProperty("os.name") == "Mac OS X") listOf("/usr/bin/time", "-l") else listOf("/usr/bin/time", "-v")
+        val timing = if (File("/usr/bin/time").canExecute()) {
+            if (System.getProperty("os.name") == "Mac OS X") listOf("/usr/bin/time", "-l") else listOf("/usr/bin/time", "-v")
+        } else emptyList()
+        File(output, "$prefix.external-metrics.txt").writeText(if (timing.isEmpty())
+            "external_process_time=NA external_peak_rss=NA reason=/usr/bin/time_unavailable\n"
+        else "external_process_envelope=${timing.joinToString(" ")} includes_setup_JIT_and_GC_not_per_operation_retention\n")
         val builder = ProcessBuilder(timing + command).directory(candidateRoot)
             .redirectOutput(File(output, "$prefix.csv")).redirectError(File(output, "$prefix.process.txt"))
         listOf("JAVA_TOOL_OPTIONS", "JDK_JAVA_OPTIONS", "_JAVA_OPTIONS").forEach { builder.environment().remove(it) }
