@@ -67,14 +67,23 @@ in-process compilers when compiling the multiplatform oracle suites.
 
 Build pins: **Gradle 9.8.1**, **Kotlin 2.4.21**, **BellSoft Liberica JDK 25.0.4+9**.
 The Gradle distribution checksum and CI action revisions are pinned.
-The [latest local pow verification](docs/decimal-power-593-verification.md)
-records 1,744 passing methods on JVM, JS, Wasm and macOS ARM64, with the complete
-94,282-record sqrt ledger preserved. The preceding published source250 has
-[5,743 passing supported-platform executions](docs/source250-hosted-verification.md)
+The [latest local normalization verification](docs/decimal-division-normalization-594-verification.md)
+records 1,757 passing methods on JVM, JS, Wasm and macOS ARM64, with the complete
+94,282-record sqrt ledger preserved. The preceding published source253 has
+[5,812 passing supported-platform executions](docs/source253-hosted-verification.md)
 across 13 target instances and 25 oracle checks, plus
-[106 normal and 12 large public-test PASS records](docs/source250-public-math-verification-559.md).
+[106 normal and 12 large public-test PASS records](docs/source253-public-math-verification-559.md).
 Each report retains its source/artifact binding and limits; these results do not
-establish official JCK certification or full compatibility.
+establish official JCK certification or full compatibility. The later source255
+publication needs its own matching hosted/platform/public artifact acceptance.
+
+The current [range/allocation ledger](docs/supported-range-allocation-548-ledger.md),
+[decimal overload binding](docs/decimal-overload-541-current-binding.md),
+[constructor/API binding](docs/api-constructor-549-current-binding.md) and
+[oracle contract boundary](docs/oracle-contract-boundary-526.md) distinguish
+required behavior, conditional proof premises and retained research questions.
+The Kotlin/JS Number migration issue remains an unsatisfied caller contract;
+successful numerical campaigns do not waive it.
 
 | Platform | Target | Verification |
 |---|---|---|

@@ -406,11 +406,16 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         return narrowed
     }
     private fun quotientExponent(divisor: BigDecimal): Long {
+        if (coefficient.decimalCompactValue() == null || divisor.coefficient.decimalCompactValue() == null)
+            return coefficient.decimalMagnitudeDigits().toLong() - divisor.coefficient.decimalMagnitudeDigits() +
+                divisor.decimalScale.toLong() - decimalScale - if (coefficient.compareDecimalSignificand(divisor.coefficient) < 0) 1 else 0
         val a = coefficient.abs().toString()
         val b = divisor.coefficient.abs().toString()
         return a.length.toLong() - b.length + divisor.decimalScale.toLong() - decimalScale - if (normalizedComparison(divisor) < 0) 1 else 0
     }
     private fun normalizedComparison(divisor: BigDecimal): Int {
+        if (coefficient.decimalCompactValue() == null || divisor.coefficient.decimalCompactValue() == null)
+            return coefficient.compareDecimalSignificand(divisor.coefficient)
         val a = coefficient.abs().toString()
         val b = divisor.coefficient.abs().toString()
         val length = maxOf(a.length, b.length)
