@@ -498,6 +498,64 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             return normalized(1, next.copyOf())
         }
 
+        /** One candidate's witnesses share immutable parameters and one resettable workspace. */
+        fun witnesses(power: BigInteger, twos: Int, minusOne: BigInteger): WitnessSession =
+            WitnessSession(this, power, twos, minusOne)
+
+        class WitnessSession(
+            private val context: OddModulusContext,
+            private val power: BigInteger,
+            private val twos: Int,
+            minusOne: BigInteger,
+        ) {
+            private val workspace = Workspace(context.modulus.size)
+            private val minusOneMont = IntArray(context.modulus.size)
+            private val bits = power.magnitudeBits()
+
+            init {
+                minusOne.words.copyInto(workspace.input)
+                context.multiply(workspace.input, context.r2, minusOneMont, workspace.scratch)
+            }
+
+            fun passes(base: BigInteger): Boolean {
+                // Keep the ordinary stored reduction of the old private entry. No subtype
+                // callback is skipped here: the caller admits only exact working values.
+                val reduced = BigInteger(base).mod(BigInteger(1, context.modulus))
+                workspace.input.fill(0)
+                reduced.words.copyInto(workspace.input)
+                var factor = workspace.factor
+                var result = workspace.result
+                var next = workspace.next
+                context.multiply(workspace.input, context.r2, factor, workspace.scratch)
+                context.oneMont.copyInto(result)
+                for (i in 0 until bits) {
+                    if (power.words[i / LIMB_BITS] and (1 shl (i % LIMB_BITS)) != 0) {
+                        context.multiply(result, factor, next, workspace.scratch)
+                        val previous = result
+                        result = next
+                        next = previous
+                    }
+                    if (i + 1 < bits) {
+                        context.multiply(factor, factor, next, workspace.scratch)
+                        val previous = factor
+                        factor = next
+                        next = previous
+                    }
+                }
+                if (result.contentEquals(context.oneMont) || result.contentEquals(minusOneMont)) return true
+                // Stay encoded through the same 1 until s sequence; multiplication is
+                // injectively encoded, so equality with encoded +/-1 is exact.
+                for (r in 1 until twos) {
+                    context.multiply(result, result, next, workspace.scratch)
+                    val previous = result
+                    result = next
+                    next = previous
+                    if (result.contentEquals(minusOneMont)) return true
+                }
+                return false
+            }
+        }
+
         /**
          * MM(a,b) = ab/R mod m, B=2^30 and R=B^n. Inputs are canonical padded
          * residues (b=null means ordinary one). Output/scratch are distinct from
@@ -873,7 +931,20 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         val nm1 = n.subtract(ONE)
         val s = nm1.getLowestSetBit()
         val d = nm1.shiftRight(s)
+        // Public prefix callbacks above remain observable. Subclass working values
+        // retain the original virtual modPow/multiply route, including their errors.
+        val ordinary = n::class == BigInteger::class && nm1::class == BigInteger::class &&
+            d::class == BigInteger::class
+        var attemptedContext = false
+        var witnesses: OddModulusContext.WitnessSession? = null
         fun passesWitness(a: BigInteger): Boolean {
+            if (ordinary && a::class == BigInteger::class) {
+                if (!attemptedContext) {
+                    attemptedContext = true
+                    witnesses = OddModulusContext.create(n)?.witnesses(d, s, nm1)
+                }
+                witnesses?.let { return it.passes(a) }
+            }
             var x = a.modPow(d, n)
             if (x == ONE || x == nm1) return true
             for (r in 1 until s) {
