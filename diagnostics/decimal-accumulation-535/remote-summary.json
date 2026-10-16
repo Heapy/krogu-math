@@ -1,0 +1,123 @@
+{
+  "status": "OBSERVED_PENDING_INDEPENDENT_REVIEW",
+  "rows": 270,
+  "cases": [
+    {
+      "case": "dot-compact",
+      "chain": {
+        "ns": 14717.01123046875,
+        "bytes": 83624.01171875
+      },
+      "accumulator": {
+        "ns": 39544.568359375,
+        "bytes": 385392.046875
+      },
+      "latencyRatio": 2.686997226550018,
+      "allocationRatio": 4.608629016402333
+    },
+    {
+      "case": "dot-step-compact",
+      "chain": {
+        "ns": 29898.27734375,
+        "bytes": 136568.0234375
+      },
+      "accumulator": {
+        "ns": 35913.5361328125,
+        "bytes": 174504.0234375
+      },
+      "latencyRatio": 1.2011908151062738,
+      "allocationRatio": 1.277780984487641
+    },
+    {
+      "case": "dot-wide",
+      "chain": {
+        "ns": 15649.34228515625,
+        "bytes": 30968.01171875
+      },
+      "accumulator": {
+        "ns": 268952.0078125,
+        "bytes": 35288.1875
+      },
+      "latencyRatio": 17.186154083140412,
+      "allocationRatio": 1.139504460941362
+    },
+    {
+      "case": "fma-compact",
+      "chain": {
+        "ns": 97.7528076171875,
+        "bytes": 416.0029296875
+      },
+      "accumulator": {
+        "ns": 452.8466796875,
+        "bytes": 3272.0029296875
+      },
+      "latencyRatio": 4.632569546860542,
+      "allocationRatio": 7.865336266130187
+    },
+    {
+      "case": "fma-wide",
+      "chain": {
+        "ns": 2675.97900390625,
+        "bytes": 5952.0029296875
+      },
+      "accumulator": {
+        "ns": 21930.4873046875,
+        "bytes": 6080.0234375
+      },
+      "latencyRatio": 8.1953136675118,
+      "allocationRatio": 1.0215088112900546
+    },
+    {
+      "case": "sum-compact",
+      "chain": {
+        "ns": 10787.5498046875,
+        "bytes": 58944.01171875
+      },
+      "accumulator": {
+        "ns": 1463.330322265625,
+        "bytes": 1800.0029296875
+      },
+      "latencyRatio": 0.1356499250302201,
+      "allocationRatio": 0.030537502915074267
+    },
+    {
+      "case": "sum-compact-reuse",
+      "chain": {
+        "ns": 10883.2431640625,
+        "bytes": 58944.01171875
+      },
+      "accumulator": {
+        "ns": 1467.0628662109375,
+        "bytes": 1736.0029296875
+      },
+      "latencyRatio": 0.13480015507282958,
+      "allocationRatio": 0.029451726800863134
+    },
+    {
+      "case": "sum-mixed",
+      "chain": {
+        "ns": 12946.8544921875,
+        "bytes": 62344.01171875
+      },
+      "accumulator": {
+        "ns": 28525.638671875,
+        "bytes": 366984.0234375
+      },
+      "latencyRatio": 2.2032871914246184,
+      "allocationRatio": 5.886435815087744
+    },
+    {
+      "case": "sum-wide",
+      "chain": {
+        "ns": 2727.2890625,
+        "bytes": 11912.0029296875
+      },
+      "accumulator": {
+        "ns": 69782.86328125,
+        "bytes": 27248.046875
+      },
+      "latencyRatio": 25.58689661494215,
+      "allocationRatio": 2.287444608252361
+    }
+  ]
+}

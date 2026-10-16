@@ -1,0 +1,446 @@
+{
+  "base": "38b2642c9e54fc5d79da4e0d53e75bc63da2b929",
+  "status": "ACTUAL_29_PASS_270_SAMPLES_INDEPENDENT_ACCEPTANCE_PASS",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "d081bbc19956090b40e6042d3d6f97efe63ca5b8bf4db2953797b0c4f98a2bd5",
+      "bytes": 76
+    },
+    {
+      "path": "REPORT.md",
+      "sha256": "3a56c881f5448a298679222b43858f0bb78da0eed3bc2115c853d25c4fd58314",
+      "bytes": 16679
+    },
+    {
+      "path": "artifacts/focused-jvm-summary.json",
+      "sha256": "5450bee935fecafb1a9f279b10fcf05c2f3bb5b0def3cfcc6b08e9cfce1e50d1",
+      "bytes": 1331
+    },
+    {
+      "path": "artifacts/focused-jvm-xml.tar.gz",
+      "sha256": "f0402a0d473511e4d6dd9308c958b7582e71db84ef29f07b9df71a38c8fd9ed5",
+      "bytes": 874
+    },
+    {
+      "path": "artifacts/focused-other-summary.json",
+      "sha256": "7520cfd27cd91090e8d0f7905156947a02d06efadbfc5b398892fbfd29a5d551",
+      "bytes": 191
+    },
+    {
+      "path": "artifacts/focused-other-targets-xml.tar.gz",
+      "sha256": "3fa7a666fbf44522e0de398624caf74d5e47f2d418745937385abf65df762a0f",
+      "bytes": 1017
+    },
+    {
+      "path": "independent-acceptance.md",
+      "sha256": "03ccf5194b28e849a2cfdd585fc5d14b49e064f118836b65ce5bdcff7c9003e9",
+      "bytes": 2893
+    },
+    {
+      "path": "independent-remote-audit.json",
+      "sha256": "74b054b3a31e075c8b80fcba75d8ca961ce7879674f7c384ee632fe79110e144",
+      "bytes": 13028
+    },
+    {
+      "path": "logs/focused-jvm.log",
+      "sha256": "5797496be12b34b80296c956056269d6ee2be1a98d4df745d3fe16760d2694de",
+      "bytes": 19721
+    },
+    {
+      "path": "logs/focused-other-targets.log",
+      "sha256": "7bc5bd26cb5d933f71630b99122cf51e21e4ae856b3e65e4d71b4fa2706fe0d3",
+      "bytes": 55245
+    },
+    {
+      "path": "logs/portable-runner-compile.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/remote-campaign-2.log",
+      "sha256": "01de9738bc6cee45e40c1af74fc1699653ec76662001a5675eb2b3873e9cf248",
+      "bytes": 360
+    },
+    {
+      "path": "logs/remote-campaign.log",
+      "sha256": "b9743e45f0c159105ee6f128aad48d89617f4a12765dc8b5464993c685f99221",
+      "bytes": 156
+    },
+    {
+      "path": "portable-compile-and-execution.json",
+      "sha256": "3a33659525dc3aa9420210e3f06aaa5c22d4e72b2cea600d54345267a2075a2c",
+      "bytes": 1645
+    },
+    {
+      "path": "remote-driver.sh",
+      "sha256": "48a7308db17cd781645375cd4e8cb53d069cfba535539110c8bdc442d9825dff",
+      "bytes": 2093
+    },
+    {
+      "path": "remote-results/535-1/0-before.cpu-executables.txt",
+      "sha256": "8c2c01bee3d597be176147924a06b9b68765dd7e0b445f6073104f3bafd265d4",
+      "bytes": 373
+    },
+    {
+      "path": "remote-results/535-1/0-before.loadavg.txt",
+      "sha256": "15468becfde1ebe7aaf2c62043d491fb31a8d8ca15992048bee97d6d6cb2313d",
+      "bytes": 29
+    },
+    {
+      "path": "remote-results/535-1/0-before.meminfo.txt",
+      "sha256": "383dd58595f21324a9d5bd466d799135f3cadbeb1f029f431319942159e1cf95",
+      "bytes": 1531
+    },
+    {
+      "path": "remote-results/535-1/0-before.proc-stat.txt",
+      "sha256": "49600f384a029f54710cdc15653ca245849fe08304bc69fc195e01b07a177b70",
+      "bytes": 2188
+    },
+    {
+      "path": "remote-results/535-1/0-start.txt",
+      "sha256": "7b0e9d5c6977c098778855511fcbb9416e86fe351a1c340c1ab034dc1fe8e343",
+      "bytes": 21
+    },
+    {
+      "path": "remote-results/535-1/0.stderr.txt",
+      "sha256": "d6fe62932d2dfda4579a1034f24598e14cac46ce65dc68079e28da29c261895c",
+      "bytes": 56
+    },
+    {
+      "path": "remote-results/535-1/0.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "remote-results/535-1/invocation-policy.txt",
+      "sha256": "62e91b59cf620cd79397ff6c0fe36cbd9093f13ca4178cff1f0a7969f67684c5",
+      "bytes": 293
+    },
+    {
+      "path": "remote-results/535-1/java-version.txt",
+      "sha256": "a8e9a823d0e73b40544c13efdbfefaf470d2a1a83d20edcded035225c894e1b6",
+      "bytes": 156
+    },
+    {
+      "path": "remote-results/535-1/jdk.sha256",
+      "sha256": "fdb98aeee04f591e23ac5c6ec02ce3353a0541c1bcd869a533a6c646d1f2204a",
+      "bytes": 389
+    },
+    {
+      "path": "remote-results/535-1/transfer.sha256",
+      "sha256": "6789a882701ca669780007ae9eb0b93b11522c481cf36fceaeb0147eca47a77a",
+      "bytes": 528
+    },
+    {
+      "path": "remote-results/535-2/0-adapter/Accumulator535Probe.class",
+      "sha256": "c2f18f123fee9dec0837291fedaa545e8169fa97f547a811401ed7ab8392e824",
+      "bytes": 5411
+    },
+    {
+      "path": "remote-results/535-2/0-adapter/Accumulator535Probe.java",
+      "sha256": "f78f7ef63e14f25a8340c6d7a383f16ca5013f3f72cfaba0476cb925c5267b1e",
+      "bytes": 2821
+    },
+    {
+      "path": "remote-results/535-2/0-after.loadavg.txt",
+      "sha256": "7f12170e3cafad31fcdefc61f5c23f0be6afb7433a99a5cff3c71e031c842ad6",
+      "bytes": 29
+    },
+    {
+      "path": "remote-results/535-2/0-after.meminfo.txt",
+      "sha256": "23e2d9443d2a045dd3519bd367477871dbe65c10239144868ca3fd0b061d48aa",
+      "bytes": 1531
+    },
+    {
+      "path": "remote-results/535-2/0-after.proc-stat.txt",
+      "sha256": "b6c3e37cdbb9bbfb1c877e55db6c032504df52eff6f562e7958f62726a562c36",
+      "bytes": 2188
+    },
+    {
+      "path": "remote-results/535-2/0-before.cpu-executables.txt",
+      "sha256": "fdca5391f8759dce6e6a39517c8e00ddca7e6f030cf5f8dc8db88c6250faa5bf",
+      "bytes": 376
+    },
+    {
+      "path": "remote-results/535-2/0-before.loadavg.txt",
+      "sha256": "bb9ae12a20c1c55cb0eb3c71c1e4f68baddef686cfc70215d25aff0061208040",
+      "bytes": 29
+    },
+    {
+      "path": "remote-results/535-2/0-before.meminfo.txt",
+      "sha256": "a77b8ed49bdba3ba1f1541ca520e5b76159a01cb2729369e84d3b881a6593dcb",
+      "bytes": 1531
+    },
+    {
+      "path": "remote-results/535-2/0-before.proc-stat.txt",
+      "sha256": "114935609b9c616f50253de699468e0d75f5538fdacdf36a6eb2e92f6e6dc291",
+      "bytes": 2188
+    },
+    {
+      "path": "remote-results/535-2/0-end.txt",
+      "sha256": "1515ff6ad172051babb745f565f0ff52448062281248f542f1ac081a57eaef99",
+      "bytes": 21
+    },
+    {
+      "path": "remote-results/535-2/0-start.txt",
+      "sha256": "ef5d30cf917e6d1349254ca727af07e683a7d1aac4a6dd56747a31acb8526ae1",
+      "bytes": 21
+    },
+    {
+      "path": "remote-results/535-2/0.csv",
+      "sha256": "ff59675380ee8f71c623b683f56e54c8b305b8db8183a804936f1b58c9bf439b",
+      "bytes": 8833
+    },
+    {
+      "path": "remote-results/535-2/0.process.txt",
+      "sha256": "570088da14f29d8193c8a0c395d8607f49f24612f0bd21ba2e6ff4dba09c71c8",
+      "bytes": 79
+    },
+    {
+      "path": "remote-results/535-2/0.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "remote-results/535-2/0.stdout.txt",
+      "sha256": "8d25c3facbe30458c299ac8eaba050677b4e05e9faf59bb3705f7fb07bf1a278",
+      "bytes": 107
+    },
+    {
+      "path": "remote-results/535-2/1-adapter/Accumulator535Probe.class",
+      "sha256": "c2f18f123fee9dec0837291fedaa545e8169fa97f547a811401ed7ab8392e824",
+      "bytes": 5411
+    },
+    {
+      "path": "remote-results/535-2/1-adapter/Accumulator535Probe.java",
+      "sha256": "f78f7ef63e14f25a8340c6d7a383f16ca5013f3f72cfaba0476cb925c5267b1e",
+      "bytes": 2821
+    },
+    {
+      "path": "remote-results/535-2/1-after.loadavg.txt",
+      "sha256": "cee714ffb1bfd669ec8325cccf638669d27b03d608a1a72ca56e8def04f16b4e",
+      "bytes": 29
+    },
+    {
+      "path": "remote-results/535-2/1-after.meminfo.txt",
+      "sha256": "0008533be9c197babbc3e4151cc42d8c15fa0c5e15c38a69ac0ab1c7cbbf8aa7",
+      "bytes": 1531
+    },
+    {
+      "path": "remote-results/535-2/1-after.proc-stat.txt",
+      "sha256": "5ccc824c294e15dc0fdded7a83f6ce581816228cf618684edd7256eb7aa64fcd",
+      "bytes": 2188
+    },
+    {
+      "path": "remote-results/535-2/1-before.cpu-executables.txt",
+      "sha256": "fdca5391f8759dce6e6a39517c8e00ddca7e6f030cf5f8dc8db88c6250faa5bf",
+      "bytes": 376
+    },
+    {
+      "path": "remote-results/535-2/1-before.loadavg.txt",
+      "sha256": "7216fe9550ededb948def42f9f4e8982e84c7f9f22eb4828209b87b79745124a",
+      "bytes": 29
+    },
+    {
+      "path": "remote-results/535-2/1-before.meminfo.txt",
+      "sha256": "db8baa38d5acf938276007da88aff46f6abf70222b81a1f6f3a2989b333b5f14",
+      "bytes": 1531
+    },
+    {
+      "path": "remote-results/535-2/1-before.proc-stat.txt",
+      "sha256": "9b83b8932d2af6beded7c10860bbac14b3adeae986760def9de81966b8ad6271",
+      "bytes": 2188
+    },
+    {
+      "path": "remote-results/535-2/1-end.txt",
+      "sha256": "3a1c82c0ce69ee829967c6f831603713cf3fd156c741257a2204264ee76274ad",
+      "bytes": 21
+    },
+    {
+      "path": "remote-results/535-2/1-start.txt",
+      "sha256": "1515ff6ad172051babb745f565f0ff52448062281248f542f1ac081a57eaef99",
+      "bytes": 21
+    },
+    {
+      "path": "remote-results/535-2/1.csv",
+      "sha256": "af3b515645233a14fe8d559450021366fb2e550dbcf5cbf5706f3345780b32f0",
+      "bytes": 8822
+    },
+    {
+      "path": "remote-results/535-2/1.process.txt",
+      "sha256": "a7fa4eed8f5dd8ea03c6831faf2ee7c050aa4a8a24f41f2a26e8a3d1e879ba42",
+      "bytes": 79
+    },
+    {
+      "path": "remote-results/535-2/1.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "remote-results/535-2/1.stdout.txt",
+      "sha256": "53678b798d7a065f06e337313aed4e8deb313416ff75689ad332ee7ac6ace000",
+      "bytes": 107
+    },
+    {
+      "path": "remote-results/535-2/2-adapter/Accumulator535Probe.class",
+      "sha256": "c2f18f123fee9dec0837291fedaa545e8169fa97f547a811401ed7ab8392e824",
+      "bytes": 5411
+    },
+    {
+      "path": "remote-results/535-2/2-adapter/Accumulator535Probe.java",
+      "sha256": "f78f7ef63e14f25a8340c6d7a383f16ca5013f3f72cfaba0476cb925c5267b1e",
+      "bytes": 2821
+    },
+    {
+      "path": "remote-results/535-2/2-after.loadavg.txt",
+      "sha256": "81d44ad258d000a97a999b08d9456639d91912d5b766bbc15739c7e2827bbb18",
+      "bytes": 29
+    },
+    {
+      "path": "remote-results/535-2/2-after.meminfo.txt",
+      "sha256": "198084784262673228368b7fa140bdeb366dc62cbc583a403192a5aeb2ca7348",
+      "bytes": 1531
+    },
+    {
+      "path": "remote-results/535-2/2-after.proc-stat.txt",
+      "sha256": "e320b06b1853173b2778991e9aa1c0ebb03ebe38b26f6d7aac113bfaf0b7fb8d",
+      "bytes": 2188
+    },
+    {
+      "path": "remote-results/535-2/2-before.cpu-executables.txt",
+      "sha256": "fdca5391f8759dce6e6a39517c8e00ddca7e6f030cf5f8dc8db88c6250faa5bf",
+      "bytes": 376
+    },
+    {
+      "path": "remote-results/535-2/2-before.loadavg.txt",
+      "sha256": "4f5d669023800cfebcee89c02c51ca640a2829af98f0a9092588ae081f27ddd8",
+      "bytes": 29
+    },
+    {
+      "path": "remote-results/535-2/2-before.meminfo.txt",
+      "sha256": "052de9091493b1d83a6112fc58932b3c0b7b00995e980a087bfebb39aff80892",
+      "bytes": 1531
+    },
+    {
+      "path": "remote-results/535-2/2-before.proc-stat.txt",
+      "sha256": "f2504977802ffd05b793530a4f3153f52c9de93e716ab7f6f2c57515d65f6e6a",
+      "bytes": 2188
+    },
+    {
+      "path": "remote-results/535-2/2-end.txt",
+      "sha256": "888480aff83210176a431170673e2318b217e8d17dbbe22a1e6a548f05d19330",
+      "bytes": 21
+    },
+    {
+      "path": "remote-results/535-2/2-start.txt",
+      "sha256": "3a1c82c0ce69ee829967c6f831603713cf3fd156c741257a2204264ee76274ad",
+      "bytes": 21
+    },
+    {
+      "path": "remote-results/535-2/2.csv",
+      "sha256": "e91f3ef46f138651b253bc4ca3bd31cf41b9522724e826f7b332a5934ff1130e",
+      "bytes": 8830
+    },
+    {
+      "path": "remote-results/535-2/2.process.txt",
+      "sha256": "a7fa4eed8f5dd8ea03c6831faf2ee7c050aa4a8a24f41f2a26e8a3d1e879ba42",
+      "bytes": 79
+    },
+    {
+      "path": "remote-results/535-2/2.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "remote-results/535-2/2.stdout.txt",
+      "sha256": "4fa484705ecb5d5af4c8e879b1403e08462b0c5929802e0cbad30c8f8a5be255",
+      "bytes": 107
+    },
+    {
+      "path": "remote-results/535-2/COMPLETE.txt",
+      "sha256": "3945162cc1c488b86548746a6edad0c830cb0c87fd610cebdb9cd182cda3b4dc",
+      "bytes": 30
+    },
+    {
+      "path": "remote-results/535-2/invocation-policy.txt",
+      "sha256": "62e91b59cf620cd79397ff6c0fe36cbd9093f13ca4178cff1f0a7969f67684c5",
+      "bytes": 293
+    },
+    {
+      "path": "remote-results/535-2/java-version.txt",
+      "sha256": "a8e9a823d0e73b40544c13efdbfefaf470d2a1a83d20edcded035225c894e1b6",
+      "bytes": 156
+    },
+    {
+      "path": "remote-results/535-2/jdk.sha256",
+      "sha256": "fdb98aeee04f591e23ac5c6ec02ce3353a0541c1bcd869a533a6c646d1f2204a",
+      "bytes": 389
+    },
+    {
+      "path": "remote-results/535-2/transfer.sha256",
+      "sha256": "6789a882701ca669780007ae9eb0b93b11522c481cf36fceaeb0147eca47a77a",
+      "bytes": 528
+    },
+    {
+      "path": "remote-source/Accumulator535Runner.kt",
+      "sha256": "91fbc46c6f9044f4d8ed77ee6034c7d65499e518d29008f3836b0464fdfcded3",
+      "bytes": 9400
+    },
+    {
+      "path": "remote-source/candidate.jar",
+      "sha256": "1f730223b9b5fb809c1101fd5a7f581574550fde74192369251234582e470cb6",
+      "bytes": 232031
+    },
+    {
+      "path": "remote-source/derivation.json",
+      "sha256": "b9982df4475c2098598024fc360148345d4f690444a50ea53f158fdf2e185b1f",
+      "bytes": 565
+    },
+    {
+      "path": "remote-source/kotlin-stdlib.jar",
+      "sha256": "bd8250210584cb659847dce9cda660f8e9906e5def7fbebcea93dc6dcb6a88a3",
+      "bytes": 1853315
+    },
+    {
+      "path": "remote-source/precompile-inputs.json",
+      "sha256": "4ab832c2939c580e13be2e8353b23bea4177d44a3ae5c501921b7400f461189f",
+      "bytes": 489
+    },
+    {
+      "path": "remote-source/runner.jar",
+      "sha256": "89db89a6c107b6638aa3e7026f2aa6814483b4c7e9ab89d6f737d3c63c1f1df9",
+      "bytes": 10927
+    },
+    {
+      "path": "remote-source/scripts/measure-decimal-accumulator-535.main.kts",
+      "sha256": "c404e4a702c1ddca5980ed319eb3f9cf8e64452b5834687b3872a5fc1a44db1f",
+      "bytes": 8874
+    },
+    {
+      "path": "remote-source/transfer.sha256",
+      "sha256": "6789a882701ca669780007ae9eb0b93b11522c481cf36fceaeb0147eca47a77a",
+      "bytes": 528
+    },
+    {
+      "path": "remote-summary.json",
+      "sha256": "bd3dec11ca5da038d3f6eb4c84df0030f1ec5061ae19d9714fa7e8889dccc98f",
+      "bytes": 2893
+    },
+    {
+      "path": "runtime-source-before.json",
+      "sha256": "67f7eb5763c69cdf84a5717c681b01097f7d25a3e1ba57772715043f93da3e68",
+      "bytes": 5511
+    },
+    {
+      "path": "source-readiness.json",
+      "sha256": "e00b74ce57b503eedea49e11477a3b1efb8d7cb091eae4471a248b625985f266",
+      "bytes": 1059
+    },
+    {
+      "path": "task-before-runtime.json",
+      "sha256": "39159d382a4385e6d34c5bb8b4a40f7f20f08e151a8d6b70b8dbf3604cb1413f",
+      "bytes": 8437
+    }
+  ]
+}

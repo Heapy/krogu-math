@@ -1,0 +1,495 @@
+{
+  "status": "PASS raw/provenance/arithmetic audit; full acceptance interpretation separate",
+  "rows": 270,
+  "cases": 9,
+  "fresh_processes": 3,
+  "source_files_checked": 35,
+  "new_production_files": [
+    "src/commonMain/kotlin/io/heapy/krogu/math/DecimalAccumulator.kt",
+    "src/commonMain/kotlin/io/heapy/krogu/math/DecimalSignedWork535.kt"
+  ],
+  "intentional_postrun_documentation_changes": [
+    "docs/decimal-accumulation-535.md"
+  ],
+  "checks": [
+    "six transferred hashes and remote manifest equality",
+    "runner JAR excludes numerical production classes",
+    "all frozen production/tests/scripts unchanged and old main production bytes identical",
+    "exact IDs/counts/elapsed/adapter hashes/checksums/process0/completion",
+    "pooled medians and ratios independently recomputed"
+  ],
+  "fork_host_context": [
+    {
+      "fork": 0,
+      "cpu_ticks_delta": [
+        780,
+        0,
+        26,
+        8600,
+        10,
+        0,
+        34,
+        4
+      ],
+      "steal_fraction": 0.0004231013327691982,
+      "busy_fraction": 0.08927438121430083,
+      "iowait_fraction": 0.0010577533319229956,
+      "load_before": "0.24 0.05 0.02 1/815 1477935",
+      "load_after": "0.30 0.07 0.02 1/815 1478028"
+    },
+    {
+      "fork": 1,
+      "cpu_ticks_delta": [
+        776,
+        0,
+        21,
+        8380,
+        3,
+        0,
+        40,
+        5
+      ],
+      "steal_fraction": 0.0005420054200542005,
+      "busy_fraction": 0.09127371273712737,
+      "iowait_fraction": 0.0003252032520325203,
+      "load_before": "0.30 0.07 0.02 1/815 1478031",
+      "load_after": "0.36 0.09 0.03 1/815 1478119"
+    },
+    {
+      "fork": 2,
+      "cpu_ticks_delta": [
+        806,
+        0,
+        33,
+        8548,
+        1,
+        0,
+        20,
+        5
+      ],
+      "steal_fraction": 0.0005311802825879103,
+      "busy_fraction": 0.0917879528311909,
+      "iowait_fraction": 0.00010623605651758207,
+      "load_before": "0.36 0.09 0.03 1/815 1478122",
+      "load_after": "0.41 0.10 0.03 1/815 1478214"
+    }
+  ],
+  "results": [
+    {
+      "case": "dot-compact",
+      "per_process": [
+        {
+          "fork": 0,
+          "chain": {
+            "ns": 14717.01123046875,
+            "bytes": 83624.01171875
+          },
+          "accumulator": {
+            "ns": 48886.41796875,
+            "bytes": 385392.046875
+          },
+          "latency_ratio": 3.3217626325880656,
+          "allocation_ratio": 4.608629016402333
+        },
+        {
+          "fork": 1,
+          "chain": {
+            "ns": 14935.78369140625,
+            "bytes": 83624.01171875
+          },
+          "accumulator": {
+            "ns": 38080.630859375,
+            "bytes": 385392.046875
+          },
+          "latency_ratio": 2.549623886243467,
+          "allocation_ratio": 4.608629016402333
+        },
+        {
+          "fork": 2,
+          "chain": {
+            "ns": 14587.724609375,
+            "bytes": 83624.01171875
+          },
+          "accumulator": {
+            "ns": 38480.412109375,
+            "bytes": 385392.046875
+          },
+          "latency_ratio": 2.6378625275558765,
+          "allocation_ratio": 4.608629016402333
+        }
+      ]
+    },
+    {
+      "case": "dot-step-compact",
+      "per_process": [
+        {
+          "fork": 0,
+          "chain": {
+            "ns": 38220.6240234375,
+            "bytes": 136568.0234375
+          },
+          "accumulator": {
+            "ns": 36566.330078125,
+            "bytes": 174504.046875
+          },
+          "latency_ratio": 0.9567172439597517,
+          "allocation_ratio": 1.2777811561054138
+        },
+        {
+          "fork": 1,
+          "chain": {
+            "ns": 29693.7021484375,
+            "bytes": 136568.0234375
+          },
+          "accumulator": {
+            "ns": 34260.3662109375,
+            "bytes": 174504.0234375
+          },
+          "latency_ratio": 1.1537923442375575,
+          "allocation_ratio": 1.277780984487641
+        },
+        {
+          "fork": 2,
+          "chain": {
+            "ns": 29594.01171875,
+            "bytes": 136568.0234375
+          },
+          "accumulator": {
+            "ns": 35913.5361328125,
+            "bytes": 174504.0234375
+          },
+          "latency_ratio": 1.213540647145808,
+          "allocation_ratio": 1.277780984487641
+        }
+      ]
+    },
+    {
+      "case": "dot-wide",
+      "per_process": [
+        {
+          "fork": 0,
+          "chain": {
+            "ns": 15649.34228515625,
+            "bytes": 30968.01171875
+          },
+          "accumulator": {
+            "ns": 271911.0234375,
+            "bytes": 35288.1875
+          },
+          "latency_ratio": 17.37523651044515,
+          "allocation_ratio": 1.139504460941362
+        },
+        {
+          "fork": 1,
+          "chain": {
+            "ns": 15985.474609375,
+            "bytes": 30968.01171875
+          },
+          "accumulator": {
+            "ns": 266076.34375,
+            "bytes": 35288.1875
+          },
+          "latency_ratio": 16.644882322978027,
+          "allocation_ratio": 1.139504460941362
+        },
+        {
+          "fork": 2,
+          "chain": {
+            "ns": 15345.5263671875,
+            "bytes": 30968.01171875
+          },
+          "accumulator": {
+            "ns": 274255.5390625,
+            "bytes": 35288.1875
+          },
+          "latency_ratio": 17.872019017146627,
+          "allocation_ratio": 1.139504460941362
+        }
+      ]
+    },
+    {
+      "case": "fma-compact",
+      "per_process": [
+        {
+          "fork": 0,
+          "chain": {
+            "ns": 95.9268798828125,
+            "bytes": 416.0029296875
+          },
+          "accumulator": {
+            "ns": 443.0028076171875,
+            "bytes": 3272.0029296875
+          },
+          "latency_ratio": 4.618130060712645,
+          "allocation_ratio": 7.865336266130187
+        },
+        {
+          "fork": 1,
+          "chain": {
+            "ns": 96.7977294921875,
+            "bytes": 416.0029296875
+          },
+          "accumulator": {
+            "ns": 498.6558837890625,
+            "bytes": 3272.0029296875
+          },
+          "latency_ratio": 5.151524590556732,
+          "allocation_ratio": 7.865336266130187
+        },
+        {
+          "fork": 2,
+          "chain": {
+            "ns": 101.079345703125,
+            "bytes": 416.0029296875
+          },
+          "accumulator": {
+            "ns": 451.76806640625,
+            "bytes": 3272.0029296875
+          },
+          "latency_ratio": 4.469439955944264,
+          "allocation_ratio": 7.865336266130187
+        }
+      ]
+    },
+    {
+      "case": "fma-wide",
+      "per_process": [
+        {
+          "fork": 0,
+          "chain": {
+            "ns": 2595.574462890625,
+            "bytes": 5952.0029296875
+          },
+          "accumulator": {
+            "ns": 21876.5966796875,
+            "bytes": 6080.0234375
+          },
+          "latency_ratio": 8.428421912937182,
+          "allocation_ratio": 1.0215088112900546
+        },
+        {
+          "fork": 1,
+          "chain": {
+            "ns": 2683.5076904296875,
+            "bytes": 5952.0029296875
+          },
+          "accumulator": {
+            "ns": 21718.90625,
+            "bytes": 6080.0234375
+          },
+          "latency_ratio": 8.093476432900527,
+          "allocation_ratio": 1.0215088112900546
+        },
+        {
+          "fork": 2,
+          "chain": {
+            "ns": 2675.97900390625,
+            "bytes": 5952.0029296875
+          },
+          "accumulator": {
+            "ns": 26977.169921875,
+            "bytes": 6080.0234375
+          },
+          "latency_ratio": 10.081233777430683,
+          "allocation_ratio": 1.0215088112900546
+        }
+      ]
+    },
+    {
+      "case": "sum-compact",
+      "per_process": [
+        {
+          "fork": 0,
+          "chain": {
+            "ns": 10965.5615234375,
+            "bytes": 58944.01171875
+          },
+          "accumulator": {
+            "ns": 1441.393310546875,
+            "bytes": 1800.0029296875
+          },
+          "latency_ratio": 0.13144728680479145,
+          "allocation_ratio": 0.030537502915074267
+        },
+        {
+          "fork": 1,
+          "chain": {
+            "ns": 10692.7275390625,
+            "bytes": 58944.01171875
+          },
+          "accumulator": {
+            "ns": 1451.8779296875,
+            "bytes": 1800.0029296875
+          },
+          "latency_ratio": 0.135781812861454,
+          "allocation_ratio": 0.030537502915074267
+        },
+        {
+          "fork": 2,
+          "chain": {
+            "ns": 10928.79296875,
+            "bytes": 58944.01171875
+          },
+          "accumulator": {
+            "ns": 1534.0228271484375,
+            "bytes": 1800.0029296875
+          },
+          "latency_ratio": 0.1403652563951803,
+          "allocation_ratio": 0.030537502915074267
+        }
+      ]
+    },
+    {
+      "case": "sum-compact-reuse",
+      "per_process": [
+        {
+          "fork": 0,
+          "chain": {
+            "ns": 10978.13916015625,
+            "bytes": 58944.01171875
+          },
+          "accumulator": {
+            "ns": 1446.4857177734375,
+            "bytes": 1736.0029296875
+          },
+          "latency_ratio": 0.13176055583475133,
+          "allocation_ratio": 0.029451726800863134
+        },
+        {
+          "fork": 1,
+          "chain": {
+            "ns": 10867.623046875,
+            "bytes": 58944.01171875
+          },
+          "accumulator": {
+            "ns": 1424.6416015625,
+            "bytes": 1736.0029296875
+          },
+          "latency_ratio": 0.13109045054448754,
+          "allocation_ratio": 0.029451726800863134
+        },
+        {
+          "fork": 2,
+          "chain": {
+            "ns": 10791.21923828125,
+            "bytes": 58944.01171875
+          },
+          "accumulator": {
+            "ns": 1513.994873046875,
+            "bytes": 1736.0029296875
+          },
+          "latency_ratio": 0.14029877807283003,
+          "allocation_ratio": 0.029451726800863134
+        }
+      ]
+    },
+    {
+      "case": "sum-mixed",
+      "per_process": [
+        {
+          "fork": 0,
+          "chain": {
+            "ns": 14487.85791015625,
+            "bytes": 62344.01171875
+          },
+          "accumulator": {
+            "ns": 31379.4423828125,
+            "bytes": 366984.0234375
+          },
+          "latency_ratio": 2.1659131789810657,
+          "allocation_ratio": 5.886435815087744
+        },
+        {
+          "fork": 1,
+          "chain": {
+            "ns": 12683.4716796875,
+            "bytes": 62344.01171875
+          },
+          "accumulator": {
+            "ns": 27877.3056640625,
+            "bytes": 366984.0234375
+          },
+          "latency_ratio": 2.197923909800487,
+          "allocation_ratio": 5.886435815087744
+        },
+        {
+          "fork": 2,
+          "chain": {
+            "ns": 12946.8544921875,
+            "bytes": 62344.01171875
+          },
+          "accumulator": {
+            "ns": 28430.302734375,
+            "bytes": 366984.0234375
+          },
+          "latency_ratio": 2.195923554368411,
+          "allocation_ratio": 5.886435815087744
+        }
+      ]
+    },
+    {
+      "case": "sum-wide",
+      "per_process": [
+        {
+          "fork": 0,
+          "chain": {
+            "ns": 2778.293701171875,
+            "bytes": 11912.0029296875
+          },
+          "accumulator": {
+            "ns": 68827.720703125,
+            "bytes": 27248.046875
+          },
+          "latency_ratio": 24.77337823358765,
+          "allocation_ratio": 2.287444608252361
+        },
+        {
+          "fork": 1,
+          "chain": {
+            "ns": 2855.128173828125,
+            "bytes": 11912.0029296875
+          },
+          "accumulator": {
+            "ns": 69579.078125,
+            "bytes": 27248.046875
+          },
+          "latency_ratio": 24.369861487412358,
+          "allocation_ratio": 2.287444608252361
+        },
+        {
+          "fork": 2,
+          "chain": {
+            "ns": 2641.7454833984375,
+            "bytes": 11912.0029296875
+          },
+          "accumulator": {
+            "ns": 71136.744140625,
+            "bytes": 27248.046875
+          },
+          "latency_ratio": 26.927932530847787,
+          "allocation_ratio": 2.287444608252361
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "3 fresh processes, not15 independent forks",
+    "5 calibrated warm batches may fall below200ms;8192 cap can miss20ms",
+    "same artifact chain vs opt-in API, not library-version speedup",
+    "sampled pool peak includes setup and is not retained per-operation bytes; RSS NA",
+    "shared VM snapshots, no isolation or universal benefit guarantee"
+  ],
+  "compiler_and_execution_ledger": {
+    "actual_compile_command_recorded": true,
+    "five_tool_identity_hashes_match": true,
+    "stdlib_manifest_version": "2.4.21",
+    "explicit_bash_driver": true,
+    "compile_and_campaign_exit": 0
+  },
+  "focused_xml_counts": {
+    "jvmTest": 8,
+    "jsNodeTest": 7,
+    "wasmJsNodeTest": 7,
+    "macosArm64Test": 7
+  }
+}

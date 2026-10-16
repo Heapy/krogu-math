@@ -1,0 +1,7 @@
+{
+  "kotlin-stdlib.jar": "bd8250210584cb659847dce9cda660f8e9906e5def7fbebcea93dc6dcb6a88a3",
+  "derivation.json": "b9982df4475c2098598024fc360148345d4f690444a50ea53f158fdf2e185b1f",
+  "candidate.jar": "1f730223b9b5fb809c1101fd5a7f581574550fde74192369251234582e470cb6",
+  "Accumulator535Runner.kt": "91fbc46c6f9044f4d8ed77ee6034c7d65499e518d29008f3836b0464fdfcded3",
+  "scripts/measure-decimal-accumulator-535.main.kts": "c404e4a702c1ddca5980ed319eb3f9cf8e64452b5834687b3872a5fc1a44db1f"
+}

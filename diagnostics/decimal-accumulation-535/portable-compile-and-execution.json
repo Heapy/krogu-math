@@ -1,0 +1,19 @@
+{
+  "handle": 3688,
+  "exit": 0,
+  "cwd": "/Users/yoda/dev/pet/krogu-math/.codex-work/535/remote-source",
+  "actualCommand": "JAVA_HOME=/Users/yoda/.sdkman/candidates/java/25.0.4-librca /Users/yoda/.sdkman/candidates/kotlin/current/bin/kotlinc Accumulator535Runner.kt -jvm-target 17 -d runner.jar > /Users/yoda/dev/pet/krogu-math/.codex-work/535/logs/portable-runner-compile.log 2>&1",
+  "classpath": "No explicit candidate classpath; compiler standard library only. Runtime parent classpath runner.jar:kotlin-stdlib.jar, candidate dynamically URL-loaded with guards.",
+  "identities": {
+    "/Users/yoda/.sdkman/candidates/kotlin/current/bin/kotlinc": "7082c4cdf466d4a8c0879eccd2bbd0011204ff10267a7eba921c08982201ec92",
+    "/Users/yoda/.sdkman/candidates/kotlin/current/lib/kotlin-compiler.jar": "dc96436fac5160a39a071f3b82d7683f2912bbbf19fe7e26be66533c045a824e",
+    "/Users/yoda/.sdkman/candidates/kotlin/current/lib/kotlin-stdlib.jar": "bd8250210584cb659847dce9cda660f8e9906e5def7fbebcea93dc6dcb6a88a3",
+    "/Users/yoda/.sdkman/candidates/java/25.0.4-librca/release": "0dde8f83a2df03b7bb1b1063008f8eab9bca2aa9d8481d44af54297ae304c5e9",
+    "/Users/yoda/.sdkman/candidates/java/25.0.4-librca/bin/java": "b7a71fa440912190cce262a062a30629f1668c7e14c0d4c021c6f37d3f734c29"
+  },
+  "compileLog": "logs/portable-runner-compile.log",
+  "remoteDriverCommand": "ssh -oBatchMode=yes -oConnectTimeout=10 -oControlMaster=no -oControlPath=none -oStrictHostKeyChecking=yes claws 'bash -s' < .codex-work/535/remote-driver.sh > .codex-work/535/logs/remote-campaign-2.log 2>&1",
+  "remoteHandle": 24155,
+  "remoteExit": 0,
+  "compilerBuildText": "2.4.21"
+}

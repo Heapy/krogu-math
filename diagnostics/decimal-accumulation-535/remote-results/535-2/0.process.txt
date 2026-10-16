@@ -1,0 +1,3 @@
+exit=0
+elapsed_whole_seconds=5
+peak_process_rss=NA_external_time_not_installed

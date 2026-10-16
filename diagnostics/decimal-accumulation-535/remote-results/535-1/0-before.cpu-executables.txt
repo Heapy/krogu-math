@@ -1,0 +1,12 @@
+    PID    PPID %CPU COMMAND
+1477523    1051  3.5 sshd-session
+   1240       1  0.1 dockerd
+   1068       1  0.1 containerd
+   1134    1058  0.1 hermes
+   1135    1058  0.1 kotgent
+   1044       1  0.1 tailscaled
+   4277    4253  0.0 redis-server
+ 500536  500510  0.0 rustfs
+   1133    1058  0.0 hermes
+   1268    1210  0.0 gnome-shell
+   4386       1  0.0 containerd-shim

@@ -1,0 +1,12 @@
+{
+  "original": "/private/tmp/krogu-math-535/scripts/measure-decimal-accumulator-535.main.kts",
+  "originalSha256": "c404e4a702c1ddca5980ed319eb3f9cf8e64452b5834687b3872a5fc1a44db1f",
+  "runnerSha256": "91fbc46c6f9044f4d8ed77ee6034c7d65499e518d29008f3836b0464fdfcded3",
+  "changes": [
+    "top-level script body wrapped in @JvmStatic main",
+    "classloader origin references named runner",
+    "portable source file existence/hash captured",
+    "portable source SHA recorded in CSV and checked after measurement"
+  ],
+  "status": "SOURCE_ONLY_UNCOMPILED_UNRUN"
+}

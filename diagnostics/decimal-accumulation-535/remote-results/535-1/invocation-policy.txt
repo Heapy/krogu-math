@@ -1,0 +1,3 @@
+env -i JAVA_HOME=pinned PATH=/usr/bin:/bin TZ=UTC LANG=C LC_ALL=C
+-Xms256m -Xmx1g -XX:+UseG1GC -cp runner.jar:kotlin-stdlib.jar Accumulator535Runner candidate.jar output.csv order candidateSHA
+deadline=300s;kill-after=5s;3 serial fresh processes; orders forward/reverse/forward; same artifact

@@ -1,0 +1,43 @@
+{
+  "handle": 22979,
+  "exit": 0,
+  "tests": [
+    {
+      "class": "io.heapy.krogu.math.DecimalAccumulator535JvmTest",
+      "name": "streamingSumsAndProductsMatchExactIndependentPublicJdkCompositions[jvm]"
+    },
+    {
+      "class": "io.heapy.krogu.math.DecimalAccumulator535Test",
+      "name": "cancellationScaleAndEmptyInputAreExplicit[jvm]"
+    },
+    {
+      "class": "io.heapy.krogu.math.DecimalAccumulator535Test",
+      "name": "snapshotsAreDetachedAndFailedOperationsAreAtomic[jvm]"
+    },
+    {
+      "class": "io.heapy.krogu.math.DecimalAccumulator535Test",
+      "name": "fmaRoundingPolicyHasIndependentLiteralWitnesses[jvm]"
+    },
+    {
+      "class": "io.heapy.krogu.math.DecimalAccumulator535Test",
+      "name": "subclassMetadataIsSnapshottedAtTheCallBoundary[jvm]"
+    },
+    {
+      "class": "io.heapy.krogu.math.DecimalAccumulator535Test",
+      "name": "roundingCreatedZerosRescueHighWorkingScale[jvm]"
+    },
+    {
+      "class": "io.heapy.krogu.math.DecimalAccumulator535Test",
+      "name": "expandedFinalArithmeticCancelsBeyondPublicIntermediateDomains[jvm]"
+    },
+    {
+      "class": "io.heapy.krogu.math.DecimalAccumulator535Test",
+      "name": "operandCallbacksCannotReenterMutationOrBypassBudgets[jvm]"
+    }
+  ],
+  "count": 8,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "frozenFiles": 39
+}

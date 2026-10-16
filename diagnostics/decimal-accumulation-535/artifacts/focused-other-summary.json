@@ -1,0 +1,13 @@
+{
+  "handle": 21719,
+  "exit": 0,
+  "counts": {
+    "jsNodeTest": 7,
+    "wasmJsNodeTest": 7,
+    "macosArm64Test": 7
+  },
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "frozenFiles": 39
+}

@@ -1,0 +1,14 @@
+{
+  "task": 535,
+  "worktree": "/private/tmp/krogu-math-535",
+  "gitBase": "e95836f97e91433b49b005f9589ca6d359bfa2ac",
+  "source_review": "arithmetic, diagnostic and reentrancy ownership delta independently approved; all runtime UNRUN",
+  "files": {
+    "docs/decimal-accumulation-535.md": "384aeb3075b30e06dc6d0e380da273084636c3a766a94f140755e6db81ed3f29",
+    "scripts/measure-decimal-accumulator-535.main.kts": "c404e4a702c1ddca5980ed319eb3f9cf8e64452b5834687b3872a5fc1a44db1f",
+    "src/commonMain/kotlin/io/heapy/krogu/math/DecimalAccumulator.kt": "f3d9a5716d1fcdfc8ab367ea4ad486e09d96ba8d972834972cc846ce56a48b00",
+    "src/commonMain/kotlin/io/heapy/krogu/math/DecimalSignedWork535.kt": "b03392b1e74e4ce5cdbf1a57d8cbdf1b21358779c393295a91559fd2eea92e72",
+    "src/commonTest/kotlin/io/heapy/krogu/math/DecimalAccumulator535Test.kt": "5518a02f38fa1033d1d100ee7c487434551fba91ce1a69e890b64f5e255408c2",
+    "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalAccumulator535JvmTest.kt": "a7102f7ad2500a2d005d2e630dad5a0e9bb59206581e00ef59946496d2f01696"
+  }
+}

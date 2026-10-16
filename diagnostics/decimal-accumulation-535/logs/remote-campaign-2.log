@@ -1,0 +1,16 @@
+Accumulator535Runner.kt: OK
+runner.jar: OK
+kotlin-stdlib.jar: OK
+candidate.jar: OK
+scripts/measure-decimal-accumulator-535.main.kts: OK
+derivation.json: OK
+fork 0 PASS
+fork 1 PASS
+fork 2 PASS
+Accumulator535Runner.kt: OK
+runner.jar: OK
+kotlin-stdlib.jar: OK
+candidate.jar: OK
+scripts/measure-decimal-accumulator-535.main.kts: OK
+derivation.json: OK
+COMPLETE535
