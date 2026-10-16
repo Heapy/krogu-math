@@ -5,6 +5,7 @@ import io.heapy.krogu.math.BigDecimal
 import io.heapy.krogu.math.BigInteger
 import io.heapy.krogu.math.MathContext
 import io.heapy.krogu.math.RoundingMode
+import io.heapy.krogu.math.plus
 import io.heapy.krogu.math.toBigDecimal
 import io.heapy.krogu.math.toBigDecimalOrNull
 import io.heapy.krogu.math.toBigInteger

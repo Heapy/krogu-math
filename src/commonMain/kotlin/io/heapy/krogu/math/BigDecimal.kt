@@ -929,15 +929,6 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         return resultSign * top.toLong().toDouble() * 2.0.pow(-shift)
     }
 
-    @kotlin.jvm.JvmSynthetic
-    operator fun plus(other: BigDecimal): BigDecimal = add(other)
-    operator fun minus(other: BigDecimal): BigDecimal = subtract(other)
-    operator fun times(other: BigDecimal): BigDecimal = multiply(other)
-    operator fun div(other: BigDecimal): BigDecimal = divide(other, RoundingMode.HALF_EVEN)
-    operator fun rem(other: BigDecimal): BigDecimal = remainder(other)
-    operator fun unaryMinus(): BigDecimal = negate()
-    operator fun unaryPlus(): BigDecimal = this
-
     // Preserve the non-final static factories exposed by JDK.
     @Suppress("NON_FINAL_MEMBER_IN_OBJECT")
     companion object {

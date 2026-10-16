@@ -1195,14 +1195,6 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return toByte()
     }
 
-    operator fun plus(other: BigInteger): BigInteger = add(other)
-    operator fun minus(other: BigInteger): BigInteger = subtract(other)
-    operator fun times(other: BigInteger): BigInteger = multiply(other)
-    operator fun div(other: BigInteger): BigInteger = divide(other)
-    operator fun rem(other: BigInteger): BigInteger = remainder(other)
-    operator fun unaryMinus(): BigInteger = negate()
-    operator fun unaryPlus(): BigInteger = this
-
     // 'open' on @JvmStatic functions prevents final static bridges, preserving Java hiding.
     @Suppress("NON_FINAL_MEMBER_IN_OBJECT")
     companion object {

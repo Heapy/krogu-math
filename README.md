@@ -22,8 +22,10 @@ val third = BigDecimal.ONE.divide(BigDecimal(3), MathContext.DECIMAL128)
 For integral and String conversions, explicitly import krogu's `toBigInteger`,
 `toBigDecimal` and their nullable counterparts alongside its types; see
 [Kotlin conversion imports](docs/kotlin-conversion-extensions.md).
-For increment/decrement, shifts, complements and named or aliased bitwise calls,
+For arithmetic, increment/decrement, shifts, complements and named or aliased bitwise calls,
 see [Kotlin operator migration](docs/kotlin-operator-migration.md).
+The Java getter spelling `.lowestSetBit` also needs an explicit
+[property import](docs/kotlin-lowest-set-bit-property.md).
 Float/Double conversions use the same explicit `toBigDecimal` import; see
 [floating conversion semantics](docs/kotlin-floating-conversion-migration.md).
 
@@ -44,7 +46,7 @@ to your repositories, and depend on `io.heapy.krogu:krogu-math:0.1.0-SNAPSHOT`.
   ties to even, with subnormal values and overflow. The Double constructor
   preserves the exact binary value; `valueOf(Double)` uses a shortest decimal
   representation compatible with Java's notation conventions.
-* Java-style methods and constants coexist with Kotlin arithmetic operators.
+* Java-style methods and constants coexist with Kotlin arithmetic operator extensions.
   BigDecimal equality includes scale; comparison is numerical.
 
 The code was written independently against the
@@ -67,14 +69,15 @@ in-process compilers when compiling the multiplatform oracle suites.
 
 Build pins: **Gradle 9.8.1**, **Kotlin 2.4.21**, **BellSoft Liberica JDK 25.0.4+9**.
 The Gradle distribution checksum and CI action revisions are pinned.
-The [latest local normalization verification](docs/decimal-division-normalization-594-verification.md)
-records 1,757 passing methods on JVM, JS, Wasm and macOS ARM64, with the complete
-94,282-record sqrt ledger preserved. The preceding published source253 has
-[5,812 passing supported-platform executions](docs/source253-hosted-verification.md)
+The [latest local Kotlin call-form verification](docs/kotlin-callform-595-596-verification.md)
+records 1,785 passing method executions on JVM, JS, Wasm and macOS ARM64, with the complete
+94,282-record sqrt ledger preserved. It repairs caller-owned arithmetic operator
+declarations and the `.lowestSetBit` property form. The preceding published source255 has
+[5,855 passing supported-platform executions](docs/source255-hosted-verification.md)
 across 13 target instances and 25 oracle checks, plus
-[106 normal and 12 large public-test PASS records](docs/source253-public-math-verification-559.md).
+[106 normal and 12 large public-test PASS records](docs/source255-public-math-verification-559.md).
 Each report retains its source/artifact binding and limits; these results do not
-establish official JCK certification or full compatibility. The later source255
+establish official JCK certification or full compatibility. The later source260
 publication needs its own matching hosted/platform/public artifact acceptance.
 
 The current [range/allocation ledger](docs/supported-range-allocation-548-ledger.md),
@@ -83,7 +86,9 @@ The current [range/allocation ledger](docs/supported-range-allocation-548-ledger
 [oracle contract boundary](docs/oracle-contract-boundary-526.md) distinguish
 required behavior, conditional proof premises and retained research questions.
 The Kotlin/JS Number migration issue remains an unsatisfied caller contract;
-successful numerical campaigns do not waive it.
+successful numerical campaigns do not waive it. The
+[finite Kotlin call-form inventory](docs/kotlin-migration-525-callforms.md)
+separates the source255 findings from their later source260 repairs.
 
 | Platform | Target | Verification |
 |---|---|---|

@@ -11,6 +11,13 @@ import io.heapy.krogu.math.dec
 import io.heapy.krogu.math.inc
 import io.heapy.krogu.math.inv
 import io.heapy.krogu.math.or
+import io.heapy.krogu.math.plus
+import io.heapy.krogu.math.minus
+import io.heapy.krogu.math.times
+import io.heapy.krogu.math.div
+import io.heapy.krogu.math.rem
+import io.heapy.krogu.math.unaryMinus
+import io.heapy.krogu.math.unaryPlus
 import io.heapy.krogu.math.shl
 import io.heapy.krogu.math.shr
 import io.heapy.krogu.math.xor
@@ -22,6 +29,8 @@ val nextAmount: BigDecimal = ++amount
 val shifted: BigInteger = BigInteger("-9") shr 2
 val masked: BigInteger = shifted and BigInteger("5")
 val complement: BigInteger = shifted.inv()
+val sum: BigInteger = count + BigInteger.ONE
+val rounded: BigDecimal = BigDecimal("1.25") / BigDecimal("2") // 0.62, scale 2
 ```
 
 The increment/decrement extensions call the receiver's public exact
@@ -29,6 +38,28 @@ The increment/decrement extensions call the receiver's public exact
 here: `1.25` increments to `2.25`, `0.00` decrements to `-1.00`, and `1E+3`
 increments to `1001` at scale zero. Prefix and postfix forms follow Kotlin's
 variable assignment rules; an alias to the old number keeps its value.
+
+The seven arithmetic names are also extensions, for both types: `plus(other)`,
+`minus(other)`, `times(other)`, `div(other)`, `rem(other)`, `unaryMinus()` and
+`unaryPlus()`. Import the names used by the caller. Binary operations delegate
+to `add`, `subtract`, `multiply`, `divide` and `remainder`; unary minus delegates
+to `negate`. BigDecimal `/` uses `divide(other, RoundingMode.HALF_EVEN)` and
+retains the dividend scale; it does not use exact `divide(other)`. Unary plus
+returns the receiver itself. It preserves krogu's existing convenience API;
+this document does not assert a standard-library `java.math` unary-plus extension.
+The genuine BigDecimal `plus()` and `plus(mc)` members remain available.
+
+These arithmetic extensions replace final operator members so that Kotlin
+subclasses can retain their caller-owned same-signature operators without an
+`override` modifier. An applicable caller member wins on a subtype receiver;
+a base-typed receiver selects the imported extension and then calls the existing
+virtual arithmetic method. Merely making the old operators open would change
+this distinction. Alias imports, such as `import io.heapy.krogu.math.plus as
+arithmeticPlus`, select the extension under a different name even on that subtype.
+`value.arithmeticPlus(other = rhs)` and a base-typed `value.plus(other = rhs)`
+preserve the named `other` form. Explicit `super.add(...)` in a caller operator
+continues to select the original member. These are explicit caller resolution
+rules, not requirements about callbacks inside an arithmetic kernel.
 
 BigInteger `shl(n: Int)`, `shr(n: Int)` and `inv()` call the public
 `shiftLeft(n)`, `shiftRight(n)` and `not()` methods. Negative shift distances
@@ -100,3 +131,9 @@ This is a selected task525 source migration addition. The later
 its own accepted scope. The existing Kotlin/JS erased Number dispatch gap in task557 and
 the archived task525 campaign's enabled Number failures remain open. These
 finite checks provide no full migration, performance or TCK acceptance claim.
+
+The new task595 arithmetic-member replacement and its three common/two JVM test
+methods are **SOURCE ONLY, UNCOMPILED/UNRUN** in this preparation. The preceding
+execution paragraph describes the earlier increment/bitwise tranche, not these
+new tests. See [the task595 source proof](arithmetic-operator-595-proof.md) for
+the exact scope and remaining review/execution gates. Number525/557 is unchanged.
