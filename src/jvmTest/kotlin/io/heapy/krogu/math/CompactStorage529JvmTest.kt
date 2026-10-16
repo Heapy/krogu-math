@@ -104,6 +104,45 @@ class CompactStorage529JvmTest {
         assertSame(coefficient, restored.unscaledValue())
     }
 
+    @Test fun transitionNeighborsAndCompactDivisorWordsMatchPublicJdk() {
+        val hostOne = java.math.BigInteger.ONE
+        val hosts = buildList {
+            add(java.math.BigInteger.ZERO)
+            for (bits in listOf(30, 60, 63, 64, 90)) {
+                val power = hostOne.shiftLeft(bits)
+                for (offset in listOf(-1L, 0L, 1L, 127L)) {
+                    val positive = power.add(java.math.BigInteger.valueOf(offset))
+                    add(positive); add(positive.negate())
+                }
+            }
+        }.distinct()
+        for (a in hosts) for (b in hosts) {
+            val left = BigInteger(a.toString()); val right = BigInteger(b.toString())
+            assertEquals(a.add(b).toString(), left.add(right).toString(), "$a + $b")
+            assertEquals(a.subtract(b).toString(), left.subtract(right).toString(), "$a - $b")
+            if (b.signum() != 0) {
+                val expected = a.divideAndRemainder(b)
+                assertEquals(expected[0].toString(), left.divide(right).toString(), "$a / $b")
+                assertEquals(expected[1].toString(), left.remainder(right).toString(), "$a % $b")
+                val both = left.divideAndRemainder(right)
+                assertEquals(expected[0].toString(), both[0].toString(), "$a divrem $b quotient")
+                assertEquals(expected[1].toString(), both[1].toString(), "$a divrem $b remainder")
+            }
+            assertEquals(a.toString(), left.toString())
+            assertEquals(b.toString(), right.toString())
+        }
+        //Exact original measured two-limb divisor, plus signed MIN/three-limb controls.
+        val wide = hostOne.shiftLeft(511).add(java.math.BigInteger.valueOf(123456789))
+        for (divisor in listOf(1L, -1L, 12345000001L, -12345000001L, Long.MIN_VALUE, Long.MAX_VALUE)) {
+            for (source in listOf(wide, wide.negate())) {
+                val expected = source.divideAndRemainder(java.math.BigInteger.valueOf(divisor))
+                val ours = BigInteger(source.toString()).divideAndRemainder(BigInteger.valueOf(divisor))
+                assertEquals(expected[0].toString(), ours[0].toString(), "$source/$divisor")
+                assertEquals(expected[1].toString(), ours[1].toString(), "$source%$divisor")
+            }
+        }
+    }
+
     @Test fun publicIntegerOracleCoversFullLongOverflowAndFloatMidpoints() {
         val values = listOf(Long.MIN_VALUE, Long.MIN_VALUE + 1, -3037000500L, -1L, 0L, 1L,
             3037000499L, 3037000500L, 36028799166447617L, Long.MAX_VALUE)

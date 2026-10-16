@@ -341,12 +341,11 @@ open class BigDecimal private constructor(
             scaleForValue(scale.toLong() + divisor.decimalScale, false)
             if (shift <= 0) scaleForValue(decimalScale.toLong() - scale, false)
         }
-        return divideScaledCoefficients(divisor, scale, roundingMode, shift >= 0, kotlin.math.abs(shift))
+        return divideScaledCoefficients(divisor, coefficient, divisorCoefficient529, scale, roundingMode, shift >= 0, kotlin.math.abs(shift))
     }
-    private fun divideScaledCoefficients(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode,
+    private fun divideScaledCoefficients(divisor: BigDecimal, coefficient: BigInteger,
+        divisorCoefficient529: BigInteger, scale: Int, roundingMode: RoundingMode,
         scaleNumerator: Boolean, raise: Long, checkSourceSign: Boolean = true): BigDecimal {
-        val coefficient = coefficientSnapshot()
-        val divisorCoefficient529 = divisor.coefficientSnapshot()
         if (checkSourceSign && signum() == 0) return BigDecimal(BigInteger.ZERO, scale)
         // Avoid constructing an unbounded power of ten for a quotient strictly below 0.1.
         val exponent = quotientExponent(divisor) + decimalScale - divisor.decimalScale +
@@ -454,7 +453,7 @@ open class BigDecimal private constructor(
             val sign = if ((coefficient.signum() < 0) != (operandCoefficient529.signum() < 0)) -1L else 1L
             return BigDecimal(BigInteger.valueOf(sign), divisionScale(preferredScale + divisorDigits - sourceDigits))
         }
-        val result = divideScaledCoefficients(operand, target, context.roundingMode, shift >= 0,
+        val result = divideScaledCoefficients(operand, coefficient, operandCoefficient529, target, context.roundingMode, shift >= 0,
             kotlin.math.abs(shift), checkSourceSign = false).roundValue(context)
         // Exact quotients use the nearest representable scale to the preferred scale.
         val exact = compareValues(result.coefficientSnapshot().multiply(operandCoefficient529),

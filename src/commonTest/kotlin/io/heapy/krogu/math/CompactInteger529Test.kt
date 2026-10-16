@@ -6,6 +6,25 @@ import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class CompactInteger529Test {
+    @Test fun overflowWordsAndMixedCancellationRetainFullEndpoints() {
+        val min = BigInteger.valueOf(Long.MIN_VALUE)
+        val max = BigInteger.valueOf(Long.MAX_VALUE)
+        val two64 = BigInteger("18446744073709551616")
+        assertEquals("18446744073709551614", max.add(max).toString())
+        assertEquals("-18446744073709551616", min.add(min).toString())
+        assertEquals("18446744073709551615", max.subtract(min).toString())
+        assertEquals("-18446744073709551615", min.subtract(max).toString())
+        assertEquals(min, two64.negate().subtract(min)) //65bit fallback must remain valid.
+        val above = BigInteger("9223372036854775808")
+        assertEquals(BigInteger.ZERO, above.add(min))
+        assertEquals(BigInteger.ZERO, min.add(above))
+        assertEquals(BigInteger.valueOf(Long.MAX_VALUE - 122), above.subtract(BigInteger.valueOf(123)))
+        assertEquals(BigInteger.valueOf(-Long.MAX_VALUE + 122), BigInteger.valueOf(123).subtract(above))
+        assertEquals(min, BigInteger("-9223372036854775809").add(BigInteger.ONE))
+        assertEquals("9223372036854775808", above.toString())
+        assertEquals("18446744073709551616", two64.toString())
+    }
+
     @Test fun compactFloatRoundsItsNumericValue() {
         assertEquals(16777216.0, BigInteger("16777217").toFloat().toDouble())
         assertEquals(36028801313931264.0, BigInteger("36028799166447617").toFloat().toDouble())

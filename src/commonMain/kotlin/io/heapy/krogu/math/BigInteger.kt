@@ -83,7 +83,9 @@ open class BigInteger private constructor(
             val a = compactStoredValue529(); val b = value.compactStoredValue529()
             val result = a + b
             if (CompactInteger529.addFits(a, b, result)) return valueOf(result)
+            return overflowingCompactResult529(result, sign)
         }
+        compactCancellation529(value, subtract = false)?.let { return it }
         val words = materializeMagnitude()
         val valueWords = if (value === this) words else value.materializeMagnitude()
         if (sign == value.sign) return normalized(sign, addMagnitude(words, valueWords))
@@ -101,7 +103,9 @@ open class BigInteger private constructor(
             val a = compactStoredValue529(); val b = value.compactStoredValue529()
             val result = a - b
             if (CompactInteger529.subtractFits(a, b, result)) return valueOf(result)
+            return overflowingCompactResult529(result, sign)
         }
+        compactCancellation529(value, subtract = true)?.let { return it }
         val words = materializeMagnitude()
         val valueWords = if (value === this) words else value.materializeMagnitude()
         if (sign != value.sign) return normalized(sign, addMagnitude(words, valueWords))
@@ -112,6 +116,43 @@ open class BigInteger private constructor(
             else -> normalized(-sign, subtractMagnitude(valueWords, words))
         }
     }
+    // Overflowed signed Long addition/subtraction has magnitude at most2^64.
+    // Its low64 bits are sufficient except MIN+MIN, whose zero wrap means2^64.
+    private fun overflowingCompactResult529(wrapped: Long, resultSign: Int): BigInteger {
+        val magnitude = if (resultSign < 0) -wrapped else wrapped
+        val high = (magnitude ushr 60).toInt() or (if (wrapped == 0L) 16 else 0)
+        return BigInteger(resultSign, intArrayOf((magnitude and MASK).toInt(),
+            ((magnitude ushr 30) and MASK).toInt(), high))
+    }
+
+    // Only certify a compact result; every declined shape retains the full kernel.
+    private fun compactCancellation529(other: BigInteger, subtract: Boolean): BigInteger? {
+        val wide: BigInteger
+        val small: BigInteger
+        val wideSign: Int
+        val smallSign: Int
+        if (representation == 2 && other.representation == 1) {
+            wide = this; small = other
+            wideSign = sign; smallSign = if (subtract) -other.sign else other.sign
+        } else if (representation == 1 && other.representation == 2) {
+            wide = other; small = this
+            wideSign = if (subtract) -other.sign else other.sign; smallSign = sign
+        } else return null
+        if (wideSign == smallSign) return null
+        val magnitude = wide.wideWords!!
+        if (magnitude.size != 3 || magnitude[2] !in 8..15) return null
+        // |wide|=2^63+offset; offset is0..MAX, negativeSmall isMIN..0.
+        // Their sum cannot overflow. No compact input array is materialized.
+        val offset = ((magnitude[2] and 7).toLong() shl 60) or
+            (magnitude[1].toLong() shl 30) or magnitude[0].toLong()
+        val value = small.compactStoredValue529()
+        val delta = offset + if (value > 0L) -value else value
+        if (delta == 0L && wideSign < 0) return valueOf(Long.MIN_VALUE)
+        if (delta >= 0L) return null
+        val result = Long.MAX_VALUE + delta + 1L //0..MAX, both additions safe.
+        return valueOf(if (wideSign < 0) -result else result)
+    }
+
     open fun multiply(value: BigInteger): BigInteger {
         if (sign == 0 || value.sign == 0) return ZERO
         if (representation == 1 && value.representation == 1) {
@@ -310,17 +351,22 @@ open class BigInteger private constructor(
             return select(quotient, if (needRemainder) valueOf(a % b) else ZERO)
         }
         val words = materializeMagnitude()
-        val valueWords = if (value === this) words else value.materializeMagnitude()
-        // Read stored magnitudes and bits without invoking operand subclass callbacks.
-        if (compareMagnitude(words, valueWords) < 0)
+        val valueWords = if (value.representation == 1) null
+            else if (value === this) words else value.materializeMagnitude()
+        // Both compact already returned above. A wide dividend's stored magnitude
+        // is >= any compact divisor's (equality includes +2^63 versus MIN).
+        if (valueWords != null && compareMagnitude(words, valueWords) < 0)
             return select(ZERO, if (needRemainder) normalized(sign, words) else ZERO)
-        if (valueWords.size == 1) {
+        val n = valueWords?.size ?: (value.magnitudeBits() + LIMB_BITS - 1) / LIMB_BITS
+        val compactDivisor = if (valueWords == null) value.compactStoredValue529() else 0L
+        if (n == 1) {
+            val divisorWord = valueWords?.get(0) ?: CompactInteger529.magnitudeWord(value.compactHigh, value.compactLow, 0)
             val result = if (needQuotient) IntArray(words.size) else null
             var remainder = 0L
             for (i in words.indices.reversed()) {
                 val part = (remainder shl LIMB_BITS) + words[i]
-                if (result != null) result[i] = (part / valueWords[0]).toInt()
-                remainder = part % valueWords[0]
+                if (result != null) result[i] = (part / divisorWord).toInt()
+                remainder = part % divisorWord
             }
             return select(
                 if (result != null) normalized(sign * value.sign, result) else ZERO,
@@ -329,12 +375,16 @@ open class BigInteger private constructor(
         }
         // Independent radix-2^30 long division. All scratch is local to this call;
         // neither operand's stored array is ever written or exported as scratch.
-        val n = valueWords.size
-        val shift = valueWords.last().countLeadingZeroBits() - (32 - LIMB_BITS)
+        val highWord = valueWords?.last() ?: CompactInteger529.magnitudeWord(value.compactHigh, value.compactLow, n - 1)
+        val shift = highWord.countLeadingZeroBits() - (32 - LIMB_BITS)
         val divisor = IntArray(n)
-        normalizeStoredDivision(valueWords, divisor, shift) // No top carry for the divisor.
+        // Normalize directly into existing scratch: no compact source array.
+        if (valueWords != null) normalizeStoredDivision(n, divisor, shift) { valueWords[it] }
+        else normalizeStoredDivision(n, divisor, shift) {
+            CompactInteger529.magnitudeWord((compactDivisor shr 32).toInt(), compactDivisor.toInt(), it)
+        }
         val dividend = IntArray(words.size + 1)
-        dividend[words.size] = normalizeStoredDivision(words, dividend, shift)
+        dividend[words.size] = normalizeStoredDivision(words.size, dividend, shift) { words[it] }
         val quotient = if (needQuotient) IntArray(words.size - n + 1) else null
         val radix = MASK + 1
         val high = divisor[n - 1].toLong()
@@ -389,10 +439,11 @@ open class BigInteger private constructor(
     }
 
     /** Copy source * 2^shift into a distinct target, returning the extra high digit. */
-    private fun normalizeStoredDivision(source: IntArray, target: IntArray, shift: Int): Int {
+    private inline fun normalizeStoredDivision(sourceSize: Int, target: IntArray, shift: Int,
+        word: (Int) -> Int): Int {
         var carry = 0L
-        for (i in source.indices) {
-            val digit = (source[i].toLong() shl shift) or carry
+        for (i in 0 until sourceSize) {
+            val digit = (word(i).toLong() shl shift) or carry
             target[i] = (digit and MASK).toInt()
             carry = digit ushr LIMB_BITS
         }
