@@ -2,10 +2,51 @@ package io.heapy.krogu.math
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotSame
+import kotlin.test.assertSame
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class CompactInteger529Test {
+    @Test fun compactResultsPreserveFreshPublicationAndExplicitIdentityExits() {
+        for (value in -16L..16L) {
+            val cached = BigInteger.valueOf(value)
+            val arithmetic = listOf(
+                BigInteger.valueOf(value - 20).add(BigInteger.valueOf(20)),
+                BigInteger.valueOf(value + 20).subtract(BigInteger.valueOf(20)),
+                BigInteger.valueOf(value * 7).divide(BigInteger.valueOf(7)),
+                BigInteger.valueOf(value).remainder(BigInteger.valueOf(100)),
+                BigInteger.valueOf(value * 2).shiftRight(1),
+            )
+            for (result in arithmetic) {
+                assertEquals(cached, result, "value $value")
+                if (value == 0L) assertSame(BigInteger.ZERO, result)
+                else assertNotSame(cached, result, "fresh arithmetic value $value")
+            }
+            if (value != 0L) {
+                assertNotSame(cached, BigInteger.valueOf(-value).negate())
+                assertNotSame(cached, BigInteger.valueOf(value).multiply(BigInteger.ONE))
+            }
+            // Bitwise publication historically copies even zero, unlike arithmetic.
+            for (result in listOf(BigInteger.valueOf(value.inv()).not(),
+                BigInteger.valueOf(value).or(BigInteger.ZERO),
+                BigInteger.valueOf(value).xor(BigInteger.ZERO),
+                BigInteger.valueOf(value).and(BigInteger.valueOf(-1)),
+                BigInteger.valueOf(value).andNot(BigInteger.ZERO))) {
+                assertEquals(cached, result)
+                assertNotSame(cached, result, "fresh bitwise value $value")
+            }
+            assertSame(cached, cached.add(BigInteger.ZERO))
+            assertSame(cached, cached.subtract(BigInteger.ZERO))
+            assertSame(cached, BigInteger.ZERO.add(cached))
+            assertSame(cached, cached.shiftLeft(0))
+            assertSame(cached, cached.shiftRight(0))
+            assertSame(cached, BigInteger.valueOf(value))
+        }
+        assertNotSame(BigInteger.TWO, BigInteger.ONE.shiftLeft(1))
+        assertSame(BigInteger.ZERO, BigInteger.ZERO.negate())
+    }
+
     @Test fun negativeThresholdDigitsCoverPowersNeighborsAndFullLong() {
         val values = mutableSetOf(0L, Long.MIN_VALUE, Long.MAX_VALUE)
         var power = 1L

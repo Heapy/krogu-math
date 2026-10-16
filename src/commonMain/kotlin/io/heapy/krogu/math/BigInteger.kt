@@ -73,7 +73,7 @@ open class BigInteger private constructor(
     open fun abs(): BigInteger = if (sign < 0) negate() else this
     open fun negate(): BigInteger {
         if (sign == 0) return this
-        if (representation == 1 && compactStoredValue529() != Long.MIN_VALUE) return valueOf(-compactStoredValue529())
+        if (representation == 1 && compactStoredValue529() != Long.MIN_VALUE) return BigInteger(-compactStoredValue529())
         return BigInteger(-sign, materializeMagnitude())
     }
     open fun add(value: BigInteger): BigInteger {
@@ -82,7 +82,7 @@ open class BigInteger private constructor(
         if (representation == 1 && value.representation == 1) {
             val a = compactStoredValue529(); val b = value.compactStoredValue529()
             val result = a + b
-            if (CompactInteger529.addFits(a, b, result)) return valueOf(result)
+            if (CompactInteger529.addFits(a, b, result)) return compactResult529(result)
             return overflowingCompactResult529(result, sign)
         }
         compactCancellation529(value, subtract = false)?.let { return it }
@@ -102,7 +102,7 @@ open class BigInteger private constructor(
         if (representation == 1 && value.representation == 1) {
             val a = compactStoredValue529(); val b = value.compactStoredValue529()
             val result = a - b
-            if (CompactInteger529.subtractFits(a, b, result)) return valueOf(result)
+            if (CompactInteger529.subtractFits(a, b, result)) return compactResult529(result)
             return overflowingCompactResult529(result, sign)
         }
         compactCancellation529(value, subtract = true)?.let { return it }
@@ -147,10 +147,10 @@ open class BigInteger private constructor(
             (magnitude[1].toLong() shl 30) or magnitude[0].toLong()
         val value = small.compactStoredValue529()
         val delta = offset + if (value > 0L) -value else value
-        if (delta == 0L && wideSign < 0) return valueOf(Long.MIN_VALUE)
+        if (delta == 0L && wideSign < 0) return compactResult529(Long.MIN_VALUE)
         if (delta >= 0L) return null
         val result = Long.MAX_VALUE + delta + 1L //0..MAX, both additions safe.
-        return valueOf(if (wideSign < 0) -result else result)
+        return compactResult529(if (wideSign < 0) -result else result)
     }
 
     open fun multiply(value: BigInteger): BigInteger {
@@ -158,7 +158,7 @@ open class BigInteger private constructor(
         if (representation == 1 && value.representation == 1) {
             val a = compactStoredValue529(); val b = value.compactStoredValue529()
             val result = a * b
-            if (CompactInteger529.multiplyFits(a, b, result)) return valueOf(result)
+            if (CompactInteger529.multiplyFits(a, b, result)) return compactResult529(result)
         }
         if (representation == 1 && value.representation == 2 && magnitudeBits() <= LIMB_BITS) {
             MagnitudeMultiplication.checkBitLengths(magnitudeBits(), value.magnitudeBits())
@@ -359,8 +359,8 @@ open class BigInteger private constructor(
         if (representation == 1 && value.representation == 1) {
             val a = compactStoredValue529(); val b = value.compactStoredValue529()
             val quotient = if (!needQuotient) ZERO else if (a == Long.MIN_VALUE && b == -1L)
-                BigInteger(1, intArrayOf(0, 0, 8)) else valueOf(a / b)
-            return select(quotient, if (needRemainder) valueOf(a % b) else ZERO)
+                BigInteger(1, intArrayOf(0, 0, 8)) else compactResult529(a / b)
+            return select(quotient, if (needRemainder) compactResult529(a % b) else ZERO)
         }
         val words = materializeMagnitude()
         val valueWords = if (value.representation == 1) null
@@ -920,7 +920,7 @@ open class BigInteger private constructor(
         if (representation == 1 && n < 64) {
             val value = compactStoredValue529()
             val shifted = value shl n
-            if (shifted shr n == value) return valueOf(shifted)
+            if (shifted shr n == value) return compactResult529(shifted)
         }
         val words = materializeMagnitude()
         val whole = n / LIMB_BITS
@@ -944,7 +944,7 @@ open class BigInteger private constructor(
             return shiftLeftValue(-n)
         }
         if (n >= magnitudeBits()) return if (sign < 0) ONE.negate() else ZERO
-        if (representation == 1) return valueOf(compactStoredValue529() shr n)
+        if (representation == 1) return compactResult529(compactStoredValue529() shr n)
         val words = materializeMagnitude()
         val whole = n / LIMB_BITS
         val bits = n % LIMB_BITS
@@ -1043,7 +1043,7 @@ open class BigInteger private constructor(
     }
     open fun not(): BigInteger {
         val width = bitwiseLength32().toLong() * 32
-        if (this::class == BigInteger::class && representation == 1) return valueOf(compactStoredValue529().inv())
+        if (this::class == BigInteger::class && representation == 1) return BigInteger(compactStoredValue529().inv())
         val result = twosComplement(((width + LIMB_BITS - 1) / LIMB_BITS).toInt())
         for (i in result.indices) result[i] = result[i].inv() and MASK.toInt()
         return bitwiseResult(result, width)
@@ -1058,7 +1058,7 @@ open class BigInteger private constructor(
         val width = maxOf(bitwiseLength32(), value.bitwiseLength32()).toLong() * 32
         if (this::class == BigInteger::class && value::class == BigInteger::class &&
             representation == 1 && value.representation == 1)
-            return valueOf(CompactInteger529.value(op(compactHigh, value.compactHigh), op(compactLow, value.compactLow)))
+            return BigInteger(CompactInteger529.value(op(compactHigh, value.compactHigh), op(compactLow, value.compactLow)))
         val length = ((width + LIMB_BITS - 1) / LIMB_BITS).toInt()
         val a = twosComplement(length)
         val b = value.twosComplement(length)
@@ -1878,6 +1878,10 @@ open class BigInteger private constructor(
             if (off < 0 || len < 0 || off > bytes.size - len)
                 throw IndexOutOfBoundsException("Range [$off, $off + $len) out of bounds for length ${bytes.size}")
         }
+        // Match normalized publication: only zero is shared; nonzero arithmetic
+        // results remain fresh even when public valueOf would return a cached unit.
+        private fun compactResult529(value: Long): BigInteger = if (value == 0L) ZERO else BigInteger(value)
+
         private fun normalized(sign: Int, words: IntArray): BigInteger {
             var length = words.size
             while (length > 0 && words[length - 1] == 0) length--
