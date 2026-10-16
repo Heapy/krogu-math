@@ -1,0 +1,6 @@
+# Preserve exact original Gradle output; its daemon notice ends in one space.
+logs/baseline-build.log -whitespace
+logs/focused-jvm.log -whitespace
+logs/focused-other-targets.log -whitespace
+logs/full-regression.log -whitespace
+logs/paired-js-baseline-build.log -whitespace
