@@ -1,0 +1,24 @@
+{
+  "task": "local:529",
+  "status": "DOCUMENTATION_ONLY_AFTER_ALL_NUMERICAL_GATES",
+  "changed_tested_manifest_paths": [
+    {
+      "path": "docs/compact-storage-529.md",
+      "before_sha256": "3f625b7df904b79886f695f0907d6703c7e09f57e84ac5075e4a75425065b74a",
+      "after_sha256": "53bd8c4c80497fe012291eb4aeed1e9b6948c3dee5892d72106bd55312c64caa"
+    }
+  ],
+  "production_src_unchanged": true,
+  "tested_production": "09e6dc36b3dfaae3878dbe6304b9c9dcaa96735d",
+  "diagnostic_hook": "d6d594f9bb5f8da5ea962e87ee92796135e9f3d9",
+  "full": {
+    "handle": 46319,
+    "passed": 2055
+  },
+  "final_campaigns": {
+    "jvm": 87962,
+    "js": 71641,
+    "wasm": 40973,
+    "native_release": 77132
+  }
+}

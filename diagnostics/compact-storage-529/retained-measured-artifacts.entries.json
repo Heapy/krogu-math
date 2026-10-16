@@ -1,0 +1,983 @@
+{
+  "task": "local:529",
+  "archive": "measured-artifacts.zip",
+  "source_root": ".codex-work/529",
+  "entries": [
+    {
+      "path": "artifacts/baseline-f8565ca.jar",
+      "bytes": 259593,
+      "sha256": "f54132036bcd7b0fa4cda473a1576cb715a7356e4fbdb188f0d650d32735397c"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/benchmarks.kexe",
+      "bytes": 980064,
+      "sha256": "afb3d68d9b3af4203893bc2cce89c97cf0a6e856c46cc4ac8aca4e8e0fb0a867"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/js/kotlin-kotlin-stdlib.js",
+      "bytes": 218591,
+      "sha256": "08f5df503d35fd5353afd0a4c1538df020e4fdf37d9334d147c0786beaf2c8ca"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/js/kotlin-kotlin-stdlib.js.map",
+      "bytes": 140616,
+      "sha256": "4a1da8a7cefb7542a45370fcd861a224bc97efcd546cc69ccc7d8941eb2b5afd"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js",
+      "bytes": 566,
+      "sha256": "e53a8fae4defa7920dba65ee415362cae60b0b934cd0ffb88b5bd39a316188f1"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js.map",
+      "bytes": 158,
+      "sha256": "8fa6d4ad44899d6d071fd701423a7bf51100868eaafab8125fc201675e75affb"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/js/krogu-math-benchmarks.js",
+      "bytes": 44972,
+      "sha256": "8f268ef2db1bb86e5430088645dbc618a3986bfc71c8c8bcb0651a96f5221ca8"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/js/krogu-math-benchmarks.js.map",
+      "bytes": 24578,
+      "sha256": "afe89692a84284bc1601d2ffb7a09172a4bcd2c728244626f8ba9a6a776f0718"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/js/krogu-math.js",
+      "bytes": 300498,
+      "sha256": "6c096078374d55b0ad28db3c9678f7768396fcca9203fe904bf001f1320a21ed"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/js/krogu-math.js.map",
+      "bytes": 178184,
+      "sha256": "83230ed8f1ce20142f4325a06c0a08f26973a262c335e5840fc62c74479a24f1"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/wasm/krogu-math-benchmarks.import-object.mjs",
+      "bytes": 5732,
+      "sha256": "a1c06e6df7fbe2381259d4b551cdba038713e0795c50507af62722b5872dca30"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/wasm/krogu-math-benchmarks.js-builtins.mjs",
+      "bytes": 2095,
+      "sha256": "a370c66f8031ae3a8d5718123a7fb1aeed4f43caca681181ef69b512321d5b94"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/wasm/krogu-math-benchmarks.mjs",
+      "bytes": 3217,
+      "sha256": "83352228c89a9b4c36bfcc69386c617fa379313af8c3540a05aec19bb5064e6f"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/wasm/krogu-math-benchmarks.wasm",
+      "bytes": 426045,
+      "sha256": "30b35e572017c87abea60db450180af2048b6bbe4d445bfffaef504a231708ba"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca/wasm/krogu-math-benchmarks.wasm.map",
+      "bytes": 90310,
+      "sha256": "6e2c21317c29014279a767d0c6d439ef50ddf41403797190fdd68cc274640abc"
+    },
+    {
+      "path": "artifacts/baseline-portable-f8565ca.sha256",
+      "bytes": 1399,
+      "sha256": "7dde3aba9cf24cce8f853123c976aed3953bba1dc9fe70bbe60fac4622bbf4aa"
+    },
+    {
+      "path": "artifacts/candidate-09e6dc3.jar",
+      "bytes": 277997,
+      "sha256": "64625bcdbba069763d9da0318dfc143ea9c0a5bcd5e99334744495379d371e37"
+    },
+    {
+      "path": "artifacts/candidate-9641a95.jar",
+      "bytes": 277879,
+      "sha256": "c655942a6bea80d8e5fe403d662ed969075d4e6a2dac4f993e7a29871f4a3434"
+    },
+    {
+      "path": "artifacts/candidate-b06947f.jar",
+      "bytes": 273494,
+      "sha256": "757afa1281f6a869f4875a5c46938375a73b9e0fd3bc4f61218e3cc3b0dbddbc"
+    },
+    {
+      "path": "artifacts/candidate-ef3db6c.jar",
+      "bytes": 277583,
+      "sha256": "0d8b1d78a36dd0bf177f0a3f512e97b75dda6ea25ee518e3578e0622934cc740"
+    },
+    {
+      "path": "artifacts/candidate-f84c007.jar",
+      "bytes": 273494,
+      "sha256": "757afa1281f6a869f4875a5c46938375a73b9e0fd3bc4f61218e3cc3b0dbddbc"
+    },
+    {
+      "path": "artifacts/candidate-fade6ce.jar",
+      "bytes": 276739,
+      "sha256": "379262e4642beac40aef7a132b8f9346c47a1b08562a274f1269c694ca0ad4d7"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/benchmarks.kexe",
+      "bytes": 980064,
+      "sha256": "afb3d68d9b3af4203893bc2cce89c97cf0a6e856c46cc4ac8aca4e8e0fb0a867"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/js/kotlin-kotlin-stdlib.js",
+      "bytes": 218591,
+      "sha256": "08f5df503d35fd5353afd0a4c1538df020e4fdf37d9334d147c0786beaf2c8ca"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/js/kotlin-kotlin-stdlib.js.map",
+      "bytes": 140616,
+      "sha256": "4a1da8a7cefb7542a45370fcd861a224bc97efcd546cc69ccc7d8941eb2b5afd"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js",
+      "bytes": 566,
+      "sha256": "e53a8fae4defa7920dba65ee415362cae60b0b934cd0ffb88b5bd39a316188f1"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js.map",
+      "bytes": 158,
+      "sha256": "8fa6d4ad44899d6d071fd701423a7bf51100868eaafab8125fc201675e75affb"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/js/krogu-math-benchmarks.js",
+      "bytes": 44972,
+      "sha256": "8f268ef2db1bb86e5430088645dbc618a3986bfc71c8c8bcb0651a96f5221ca8"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/js/krogu-math-benchmarks.js.map",
+      "bytes": 24578,
+      "sha256": "afe89692a84284bc1601d2ffb7a09172a4bcd2c728244626f8ba9a6a776f0718"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/js/krogu-math.js",
+      "bytes": 300498,
+      "sha256": "6c096078374d55b0ad28db3c9678f7768396fcca9203fe904bf001f1320a21ed"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/js/krogu-math.js.map",
+      "bytes": 178184,
+      "sha256": "83230ed8f1ce20142f4325a06c0a08f26973a262c335e5840fc62c74479a24f1"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/jvm/0/META-INF/krogu-math_benchmarks.kotlin_module",
+      "bytes": 121,
+      "sha256": "7b87a809860f03cf8bc6659ae86310be428650d32807a7f1d0f2f955276e2b52"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/jvm/0/bench/Compact529JvmPlatformKt.class",
+      "bytes": 2056,
+      "sha256": "a79ad7b28e77850ebfc3bf6421d35175d630c52ac06dfd703a353d985c441bab"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/jvm/0/bench/Compact529Kt.class",
+      "bytes": 23410,
+      "sha256": "202ffcea83f685ed5b7386a3b0a873d12f35a71d00c5f29668d804033d0f912b"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/jvm/0/bench/CompactMemory529.class",
+      "bytes": 3845,
+      "sha256": "e6576a2a58779c5ee6b91a65a1b7f89bdbc878826db68d17789da9b94dcf2191"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/jvm/0/bench/JdkWorkloadsKt.class",
+      "bytes": 11267,
+      "sha256": "c7e3b58df52de1fff99f5c69a289c5de3f2eb5a327b093e6775623767123e309"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/jvm/0/bench/MainKt.class",
+      "bytes": 8703,
+      "sha256": "ef146cf40eeb8d0e35f69edd06afe527adb8f907562a79b44757139525066e75"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/jvm/0/bench/PlatformKt.class",
+      "bytes": 4317,
+      "sha256": "8beac17c6753bd2895f94b742ef422f3c2c77fb6bb4ccfa5ad85816fef458e1d"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/jvm/0/bench/Workload.class",
+      "bytes": 3387,
+      "sha256": "4f94d29131ceabf100cb9f7b43337c3baece650e4f370a66b248350dbe60984b"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/jvm/0/bench/WorkloadsKt.class",
+      "bytes": 11195,
+      "sha256": "f7eef600557702cab9d1ebb7b8e4b8a62dce8f296156cd560376b25f85306b90"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/jvm/3-krogu-math-jvm-0.1.0-SNAPSHOT.jar",
+      "bytes": 259593,
+      "sha256": "f54132036bcd7b0fa4cda473a1576cb715a7356e4fbdb188f0d650d32735397c"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/jvm/4-kotlin-stdlib-2.4.21.jar",
+      "bytes": 1853315,
+      "sha256": "bd8250210584cb659847dce9cda660f8e9906e5def7fbebcea93dc6dcb6a88a3"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/jvm/5-annotations-13.0.jar",
+      "bytes": 17536,
+      "sha256": "ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/jvm-classpath.txt",
+      "bytes": 104,
+      "sha256": "89c454f0a6dfd783b79cca0164dbdd575bde0bae47c6aea361dc092535f33f86"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/wasm/krogu-math-benchmarks.import-object.mjs",
+      "bytes": 5732,
+      "sha256": "a1c06e6df7fbe2381259d4b551cdba038713e0795c50507af62722b5872dca30"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/wasm/krogu-math-benchmarks.js-builtins.mjs",
+      "bytes": 2095,
+      "sha256": "a370c66f8031ae3a8d5718123a7fb1aeed4f43caca681181ef69b512321d5b94"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/wasm/krogu-math-benchmarks.mjs",
+      "bytes": 3217,
+      "sha256": "83352228c89a9b4c36bfcc69386c617fa379313af8c3540a05aec19bb5064e6f"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/wasm/krogu-math-benchmarks.wasm",
+      "bytes": 426045,
+      "sha256": "30b35e572017c87abea60db450180af2048b6bbe4d445bfffaef504a231708ba"
+    },
+    {
+      "path": "artifacts/final-portable-baseline/wasm/krogu-math-benchmarks.wasm.map",
+      "bytes": 90310,
+      "sha256": "6e2c21317c29014279a767d0c6d439ef50ddf41403797190fdd68cc274640abc"
+    },
+    {
+      "path": "artifacts/final-portable-baseline.sha256",
+      "bytes": 2676,
+      "sha256": "3efd6b408c4e1215217ec064e3f67989c47a0c4f6d3e3a73e00495a735c06d10"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/benchmarks.kexe",
+      "bytes": 998592,
+      "sha256": "7785ca398e3c4ca49675dcc5baca681051ba9b5557af7a59dadf289379c668e6"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/js/kotlin-kotlin-stdlib.js",
+      "bytes": 220434,
+      "sha256": "d7ee918a1b07df932cdc3fe4348355d129cb6c267ba298d3cfaa41d3d180a2e0"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/js/kotlin-kotlin-stdlib.js.map",
+      "bytes": 141871,
+      "sha256": "cf5aeaaa0dc0a2816000de371f037aa8f56ce0579d6df722117e36d0cf7fc15e"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js",
+      "bytes": 566,
+      "sha256": "e53a8fae4defa7920dba65ee415362cae60b0b934cd0ffb88b5bd39a316188f1"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js.map",
+      "bytes": 158,
+      "sha256": "8fa6d4ad44899d6d071fd701423a7bf51100868eaafab8125fc201675e75affb"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/js/krogu-math-benchmarks.js",
+      "bytes": 45087,
+      "sha256": "a0a14c40b079bb8c44dc59400ecf6dc1e1328a44035ba1705e308a9e23d1f994"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/js/krogu-math-benchmarks.js.map",
+      "bytes": 24582,
+      "sha256": "941bdad42e8922dbcb6c4feb166dd3ef7af262254a749cfe580a66c35fcdfd46"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/js/krogu-math.js",
+      "bytes": 350683,
+      "sha256": "db912b5300a0752da0969819894aaf53a8b7311139194cdf37fc1b946f3c37e3"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/js/krogu-math.js.map",
+      "bytes": 205416,
+      "sha256": "05833b752a8ff3755f0afcc8f52ed961e1469293f4e2153171de1f6bb79219b0"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/jvm/0/META-INF/krogu-math_benchmarks.kotlin_module",
+      "bytes": 121,
+      "sha256": "7b87a809860f03cf8bc6659ae86310be428650d32807a7f1d0f2f955276e2b52"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/jvm/0/bench/Compact529JvmPlatformKt.class",
+      "bytes": 2056,
+      "sha256": "a79ad7b28e77850ebfc3bf6421d35175d630c52ac06dfd703a353d985c441bab"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/jvm/0/bench/Compact529Kt.class",
+      "bytes": 23410,
+      "sha256": "202ffcea83f685ed5b7386a3b0a873d12f35a71d00c5f29668d804033d0f912b"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/jvm/0/bench/CompactMemory529.class",
+      "bytes": 3845,
+      "sha256": "e6576a2a58779c5ee6b91a65a1b7f89bdbc878826db68d17789da9b94dcf2191"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/jvm/0/bench/JdkWorkloadsKt.class",
+      "bytes": 11267,
+      "sha256": "c7e3b58df52de1fff99f5c69a289c5de3f2eb5a327b093e6775623767123e309"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/jvm/0/bench/MainKt.class",
+      "bytes": 8703,
+      "sha256": "ef146cf40eeb8d0e35f69edd06afe527adb8f907562a79b44757139525066e75"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/jvm/0/bench/PlatformKt.class",
+      "bytes": 4317,
+      "sha256": "8beac17c6753bd2895f94b742ef422f3c2c77fb6bb4ccfa5ad85816fef458e1d"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/jvm/0/bench/Workload.class",
+      "bytes": 3387,
+      "sha256": "4f94d29131ceabf100cb9f7b43337c3baece650e4f370a66b248350dbe60984b"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/jvm/0/bench/WorkloadsKt.class",
+      "bytes": 11195,
+      "sha256": "f7eef600557702cab9d1ebb7b8e4b8a62dce8f296156cd560376b25f85306b90"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/jvm/3-krogu-math-jvm-0.1.0-SNAPSHOT.jar",
+      "bytes": 277583,
+      "sha256": "0d8b1d78a36dd0bf177f0a3f512e97b75dda6ea25ee518e3578e0622934cc740"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/jvm/4-kotlin-stdlib-2.4.21.jar",
+      "bytes": 1853315,
+      "sha256": "bd8250210584cb659847dce9cda660f8e9906e5def7fbebcea93dc6dcb6a88a3"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/jvm/5-annotations-13.0.jar",
+      "bytes": 17536,
+      "sha256": "ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/jvm-classpath.txt",
+      "bytes": 104,
+      "sha256": "89c454f0a6dfd783b79cca0164dbdd575bde0bae47c6aea361dc092535f33f86"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/wasm/krogu-math-benchmarks.import-object.mjs",
+      "bytes": 5732,
+      "sha256": "a1c06e6df7fbe2381259d4b551cdba038713e0795c50507af62722b5872dca30"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/wasm/krogu-math-benchmarks.js-builtins.mjs",
+      "bytes": 2095,
+      "sha256": "a370c66f8031ae3a8d5718123a7fb1aeed4f43caca681181ef69b512321d5b94"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/wasm/krogu-math-benchmarks.mjs",
+      "bytes": 3217,
+      "sha256": "83352228c89a9b4c36bfcc69386c617fa379313af8c3540a05aec19bb5064e6f"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/wasm/krogu-math-benchmarks.wasm",
+      "bytes": 453484,
+      "sha256": "c70de5ca8be398a5a4e8f47a41d3c7abd33ae1d43b021ca365f7ba97a8db570c"
+    },
+    {
+      "path": "artifacts/final-portable-candidate/wasm/krogu-math-benchmarks.wasm.map",
+      "bytes": 105502,
+      "sha256": "63cb420785c8d43b62f68d56b035ec9f1e3fe3442483bdcc5661bb1c6045c36a"
+    },
+    {
+      "path": "artifacts/final-portable-candidate.sha256",
+      "bytes": 2676,
+      "sha256": "699b1f1cb6ffc09048e1e7625962e69e302f1cdc57b835580d6e89584a249283"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/benchmarks.kexe",
+      "bytes": 998336,
+      "sha256": "08d0073631c47d8e9b350f1fa5534c28f496c5b63889c4f4eaef9bbd8bc0b52d"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/js/kotlin-kotlin-stdlib.js",
+      "bytes": 220434,
+      "sha256": "31c4943029c13bb03134371811daeb9b433782e58762f244a442192844e7d764"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/js/kotlin-kotlin-stdlib.js.map",
+      "bytes": 141871,
+      "sha256": "cf5aeaaa0dc0a2816000de371f037aa8f56ce0579d6df722117e36d0cf7fc15e"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js",
+      "bytes": 566,
+      "sha256": "e53a8fae4defa7920dba65ee415362cae60b0b934cd0ffb88b5bd39a316188f1"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js.map",
+      "bytes": 158,
+      "sha256": "8fa6d4ad44899d6d071fd701423a7bf51100868eaafab8125fc201675e75affb"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/js/krogu-math-benchmarks.js",
+      "bytes": 45087,
+      "sha256": "226a3f3d5d4006caa89b72a8ededa914de48f0135a1f16bf29cdc67ef1a2ddcf"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/js/krogu-math-benchmarks.js.map",
+      "bytes": 24582,
+      "sha256": "941bdad42e8922dbcb6c4feb166dd3ef7af262254a749cfe580a66c35fcdfd46"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/js/krogu-math.js",
+      "bytes": 348587,
+      "sha256": "8570223c0a93612d9c2065d1630f7c71824bd3f5c6cc4d012f18d75bd01357d0"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/js/krogu-math.js.map",
+      "bytes": 204125,
+      "sha256": "1b1f26d8f6a5bf69f3f119466c948c684e1f0d3575bc32c0970ce38084703e0c"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/wasm/krogu-math-benchmarks.import-object.mjs",
+      "bytes": 5732,
+      "sha256": "a1c06e6df7fbe2381259d4b551cdba038713e0795c50507af62722b5872dca30"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/wasm/krogu-math-benchmarks.js-builtins.mjs",
+      "bytes": 2095,
+      "sha256": "a370c66f8031ae3a8d5718123a7fb1aeed4f43caca681181ef69b512321d5b94"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/wasm/krogu-math-benchmarks.mjs",
+      "bytes": 3217,
+      "sha256": "83352228c89a9b4c36bfcc69386c617fa379313af8c3540a05aec19bb5064e6f"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/wasm/krogu-math-benchmarks.wasm",
+      "bytes": 452199,
+      "sha256": "c32deba94758b411e29edfba9695a86c8efc6c571974de5bbfcfeb2e3e52e4be"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce/wasm/krogu-math-benchmarks.wasm.map",
+      "bytes": 104732,
+      "sha256": "1b37c0e54b07e94d874257388cd739db8b6a1c9a30c43d81552286a7762747c6"
+    },
+    {
+      "path": "artifacts/fixed-portable-fade6ce.sha256",
+      "bytes": 1399,
+      "sha256": "e9e5505e0b5f6b7b18d004747d68727de6b906157a662c64db786ce6a594d7c0"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/benchmarks.kexe",
+      "bytes": 998176,
+      "sha256": "bf581e0ebfb50cf278e0bab9115700a765c36042b4bec303afb093e4c132300f"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/js/kotlin-kotlin-stdlib.js",
+      "bytes": 220434,
+      "sha256": "d7ee918a1b07df932cdc3fe4348355d129cb6c267ba298d3cfaa41d3d180a2e0"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/js/kotlin-kotlin-stdlib.js.map",
+      "bytes": 141871,
+      "sha256": "cf5aeaaa0dc0a2816000de371f037aa8f56ce0579d6df722117e36d0cf7fc15e"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js",
+      "bytes": 566,
+      "sha256": "e53a8fae4defa7920dba65ee415362cae60b0b934cd0ffb88b5bd39a316188f1"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js.map",
+      "bytes": 158,
+      "sha256": "8fa6d4ad44899d6d071fd701423a7bf51100868eaafab8125fc201675e75affb"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/js/krogu-math-benchmarks.js",
+      "bytes": 45087,
+      "sha256": "226a3f3d5d4006caa89b72a8ededa914de48f0135a1f16bf29cdc67ef1a2ddcf"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/js/krogu-math-benchmarks.js.map",
+      "bytes": 24582,
+      "sha256": "941bdad42e8922dbcb6c4feb166dd3ef7af262254a749cfe580a66c35fcdfd46"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/js/krogu-math.js",
+      "bytes": 338627,
+      "sha256": "ea574d86f743adfa211d05065a4a55cd8b3b05c374927b2a872590078803505d"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/js/krogu-math.js.map",
+      "bytes": 198786,
+      "sha256": "15570e86280927658909aced89685eb75e832269a1012df6d37d0e72225d3a8c"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/wasm/krogu-math-benchmarks.import-object.mjs",
+      "bytes": 5732,
+      "sha256": "a1c06e6df7fbe2381259d4b551cdba038713e0795c50507af62722b5872dca30"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/wasm/krogu-math-benchmarks.js-builtins.mjs",
+      "bytes": 2095,
+      "sha256": "a370c66f8031ae3a8d5718123a7fb1aeed4f43caca681181ef69b512321d5b94"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/wasm/krogu-math-benchmarks.mjs",
+      "bytes": 3217,
+      "sha256": "83352228c89a9b4c36bfcc69386c617fa379313af8c3540a05aec19bb5064e6f"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/wasm/krogu-math-benchmarks.wasm",
+      "bytes": 444878,
+      "sha256": "d2406412b8b8b315108360d4e2b3afc88305fabcf2f1925eb34189a332c0a6a7"
+    },
+    {
+      "path": "artifacts/initial-portable-b06947f/wasm/krogu-math-benchmarks.wasm.map",
+      "bytes": 101221,
+      "sha256": "e0214ff981cf6cdea4bd79ffd284f8eec703b2e546fe548993c29c3140f2897f"
+    },
+    {
+      "path": "artifacts/native-debug-baseline-d6d594f/benchmarks.kexe",
+      "bytes": 2597888,
+      "sha256": "8d556ef936fb98f1075c22867ed8f79e7fa8c55d4f610d8c6b7ca38ae349b4ed"
+    },
+    {
+      "path": "artifacts/native-debug-baseline-d6d594f.sha256",
+      "bytes": 82,
+      "sha256": "ef1e9ac64ed5b8492f5a4d7364f442c802689f083f5cfe77cc945feb829999df"
+    },
+    {
+      "path": "artifacts/native-debug-candidate-d6d594f/benchmarks.kexe",
+      "bytes": 2658192,
+      "sha256": "6584f84319c9529e944313d5973899a38d1463a589e06df65785d27499d5b2ac"
+    },
+    {
+      "path": "artifacts/native-debug-candidate-d6d594f.sha256",
+      "bytes": 82,
+      "sha256": "37df81dbd4ce1a30ac2d84a302ed6fbd5f117c101cd86f1f510e2d030081a5be"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/benchmarks.kexe",
+      "bytes": 1044240,
+      "sha256": "1a878925d408d634e398dfe0dc0588cff3b3b08d87a477aef85006280ddef796"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/js/kotlin-kotlin-stdlib.js",
+      "bytes": 218591,
+      "sha256": "435c19dd6a6704881f691e49e90c3176aff2e3de7502da8cb81d391b7ab01b80"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/js/kotlin-kotlin-stdlib.js.map",
+      "bytes": 140616,
+      "sha256": "4a1da8a7cefb7542a45370fcd861a224bc97efcd546cc69ccc7d8941eb2b5afd"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js",
+      "bytes": 566,
+      "sha256": "e53a8fae4defa7920dba65ee415362cae60b0b934cd0ffb88b5bd39a316188f1"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js.map",
+      "bytes": 158,
+      "sha256": "8fa6d4ad44899d6d071fd701423a7bf51100868eaafab8125fc201675e75affb"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/js/krogu-math-benchmarks.js",
+      "bytes": 44972,
+      "sha256": "8f268ef2db1bb86e5430088645dbc618a3986bfc71c8c8bcb0651a96f5221ca8"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/js/krogu-math-benchmarks.js.map",
+      "bytes": 24577,
+      "sha256": "6f318fda6fbf47f9fd78a60b61bafd64d75466764a83ca7ad696b855d1795adc"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/js/krogu-math.js",
+      "bytes": 300498,
+      "sha256": "6c096078374d55b0ad28db3c9678f7768396fcca9203fe904bf001f1320a21ed"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/js/krogu-math.js.map",
+      "bytes": 178184,
+      "sha256": "83230ed8f1ce20142f4325a06c0a08f26973a262c335e5840fc62c74479a24f1"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/jvm/0/META-INF/krogu-math_benchmarks.kotlin_module",
+      "bytes": 121,
+      "sha256": "7b87a809860f03cf8bc6659ae86310be428650d32807a7f1d0f2f955276e2b52"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/jvm/0/bench/Compact529JvmPlatformKt.class",
+      "bytes": 2056,
+      "sha256": "a79ad7b28e77850ebfc3bf6421d35175d630c52ac06dfd703a353d985c441bab"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/jvm/0/bench/Compact529Kt.class",
+      "bytes": 23586,
+      "sha256": "6c1e3ac53c78196148a07b7012090e8f65e7cdd7171bd7cfb06d645e18c0fc59"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/jvm/0/bench/CompactMemory529.class",
+      "bytes": 3845,
+      "sha256": "e6576a2a58779c5ee6b91a65a1b7f89bdbc878826db68d17789da9b94dcf2191"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/jvm/0/bench/JdkWorkloadsKt.class",
+      "bytes": 11267,
+      "sha256": "c7e3b58df52de1fff99f5c69a289c5de3f2eb5a327b093e6775623767123e309"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/jvm/0/bench/MainKt.class",
+      "bytes": 8703,
+      "sha256": "ef146cf40eeb8d0e35f69edd06afe527adb8f907562a79b44757139525066e75"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/jvm/0/bench/PlatformKt.class",
+      "bytes": 4317,
+      "sha256": "8beac17c6753bd2895f94b742ef422f3c2c77fb6bb4ccfa5ad85816fef458e1d"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/jvm/0/bench/Workload.class",
+      "bytes": 3387,
+      "sha256": "4f94d29131ceabf100cb9f7b43337c3baece650e4f370a66b248350dbe60984b"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/jvm/0/bench/WorkloadsKt.class",
+      "bytes": 11195,
+      "sha256": "f7eef600557702cab9d1ebb7b8e4b8a62dce8f296156cd560376b25f85306b90"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/jvm/3-krogu-math-jvm-0.1.0-SNAPSHOT.jar",
+      "bytes": 259593,
+      "sha256": "f54132036bcd7b0fa4cda473a1576cb715a7356e4fbdb188f0d650d32735397c"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/jvm/4-kotlin-stdlib-2.4.21.jar",
+      "bytes": 1853315,
+      "sha256": "bd8250210584cb659847dce9cda660f8e9906e5def7fbebcea93dc6dcb6a88a3"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/jvm/5-annotations-13.0.jar",
+      "bytes": 17536,
+      "sha256": "ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/jvm-classpath.txt",
+      "bytes": 104,
+      "sha256": "89c454f0a6dfd783b79cca0164dbdd575bde0bae47c6aea361dc092535f33f86"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/wasm/krogu-math-benchmarks.import-object.mjs",
+      "bytes": 5732,
+      "sha256": "a1c06e6df7fbe2381259d4b551cdba038713e0795c50507af62722b5872dca30"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/wasm/krogu-math-benchmarks.js-builtins.mjs",
+      "bytes": 2095,
+      "sha256": "a370c66f8031ae3a8d5718123a7fb1aeed4f43caca681181ef69b512321d5b94"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/wasm/krogu-math-benchmarks.mjs",
+      "bytes": 3217,
+      "sha256": "83352228c89a9b4c36bfcc69386c617fa379313af8c3540a05aec19bb5064e6f"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/wasm/krogu-math-benchmarks.wasm",
+      "bytes": 426045,
+      "sha256": "30b35e572017c87abea60db450180af2048b6bbe4d445bfffaef504a231708ba"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f/wasm/krogu-math-benchmarks.wasm.map",
+      "bytes": 90310,
+      "sha256": "eaeb30d4cb28bfaa8654019180499a8888d1974601d7c30caa1a4f173bdd263b"
+    },
+    {
+      "path": "artifacts/portable-baseline-d6d594f.sha256",
+      "bytes": 2676,
+      "sha256": "4931d042fcdb7a3569996c0ddda6c8d87900ba42fed275f4969ed8e4fee7d5a0"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/benchmarks.kexe",
+      "bytes": 1015936,
+      "sha256": "e7b99a56f50f02ea83fa2f68e4ee176f6da82e9060a5abafd29c304e55fdeb03"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/js/kotlin-kotlin-stdlib.js",
+      "bytes": 221049,
+      "sha256": "bdbe36140090eb1d9c0bc67e689fa654189661809daf5b3caffe4725ace26ff4"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/js/kotlin-kotlin-stdlib.js.map",
+      "bytes": 142331,
+      "sha256": "cdd42d73322963d7163c030715713efaa31e4e51b8c2fbe33d99b82fb49d97ee"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js",
+      "bytes": 566,
+      "sha256": "e53a8fae4defa7920dba65ee415362cae60b0b934cd0ffb88b5bd39a316188f1"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js.map",
+      "bytes": 158,
+      "sha256": "8fa6d4ad44899d6d071fd701423a7bf51100868eaafab8125fc201675e75affb"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/js/krogu-math-benchmarks.js",
+      "bytes": 45087,
+      "sha256": "895ca2122f07b65dc13a96e84aa931ed841c7ab5196cc2175830a6c862e88790"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/js/krogu-math-benchmarks.js.map",
+      "bytes": 24582,
+      "sha256": "941bdad42e8922dbcb6c4feb166dd3ef7af262254a749cfe580a66c35fcdfd46"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/js/krogu-math.js",
+      "bytes": 350839,
+      "sha256": "54ef02c11a64aab6033b58b0138f20ed211673bc6c884e03676e2e3a69bbe5fd"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/js/krogu-math.js.map",
+      "bytes": 205707,
+      "sha256": "a5ce25a02fea9959b0e558d2a0507bc5b9833d0625382699511eb7418c81c5b5"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/jvm/0/META-INF/krogu-math_benchmarks.kotlin_module",
+      "bytes": 121,
+      "sha256": "7b87a809860f03cf8bc6659ae86310be428650d32807a7f1d0f2f955276e2b52"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/jvm/0/bench/Compact529JvmPlatformKt.class",
+      "bytes": 2056,
+      "sha256": "a79ad7b28e77850ebfc3bf6421d35175d630c52ac06dfd703a353d985c441bab"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/jvm/0/bench/Compact529Kt.class",
+      "bytes": 23410,
+      "sha256": "202ffcea83f685ed5b7386a3b0a873d12f35a71d00c5f29668d804033d0f912b"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/jvm/0/bench/CompactMemory529.class",
+      "bytes": 3845,
+      "sha256": "e6576a2a58779c5ee6b91a65a1b7f89bdbc878826db68d17789da9b94dcf2191"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/jvm/0/bench/JdkWorkloadsKt.class",
+      "bytes": 11267,
+      "sha256": "c7e3b58df52de1fff99f5c69a289c5de3f2eb5a327b093e6775623767123e309"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/jvm/0/bench/MainKt.class",
+      "bytes": 8703,
+      "sha256": "ef146cf40eeb8d0e35f69edd06afe527adb8f907562a79b44757139525066e75"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/jvm/0/bench/PlatformKt.class",
+      "bytes": 4317,
+      "sha256": "8beac17c6753bd2895f94b742ef422f3c2c77fb6bb4ccfa5ad85816fef458e1d"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/jvm/0/bench/Workload.class",
+      "bytes": 3387,
+      "sha256": "4f94d29131ceabf100cb9f7b43337c3baece650e4f370a66b248350dbe60984b"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/jvm/0/bench/WorkloadsKt.class",
+      "bytes": 11195,
+      "sha256": "f7eef600557702cab9d1ebb7b8e4b8a62dce8f296156cd560376b25f85306b90"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/jvm/3-krogu-math-jvm-0.1.0-SNAPSHOT.jar",
+      "bytes": 277879,
+      "sha256": "c655942a6bea80d8e5fe403d662ed969075d4e6a2dac4f993e7a29871f4a3434"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/jvm/4-kotlin-stdlib-2.4.21.jar",
+      "bytes": 1853315,
+      "sha256": "bd8250210584cb659847dce9cda660f8e9906e5def7fbebcea93dc6dcb6a88a3"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/jvm/5-annotations-13.0.jar",
+      "bytes": 17536,
+      "sha256": "ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/jvm-classpath.txt",
+      "bytes": 104,
+      "sha256": "89c454f0a6dfd783b79cca0164dbdd575bde0bae47c6aea361dc092535f33f86"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/wasm/krogu-math-benchmarks.import-object.mjs",
+      "bytes": 5732,
+      "sha256": "a1c06e6df7fbe2381259d4b551cdba038713e0795c50507af62722b5872dca30"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/wasm/krogu-math-benchmarks.js-builtins.mjs",
+      "bytes": 2095,
+      "sha256": "a370c66f8031ae3a8d5718123a7fb1aeed4f43caca681181ef69b512321d5b94"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/wasm/krogu-math-benchmarks.mjs",
+      "bytes": 3217,
+      "sha256": "83352228c89a9b4c36bfcc69386c617fa379313af8c3540a05aec19bb5064e6f"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/wasm/krogu-math-benchmarks.wasm",
+      "bytes": 454000,
+      "sha256": "15ee39091f224630f19c45ed510fff3f234e05c06ec7b7d3a793f54ed124f4c1"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95/wasm/krogu-math-benchmarks.wasm.map",
+      "bytes": 105638,
+      "sha256": "7e2f68c1d68e1a328a642751636163b1eb5d5167412ed619c0aa363d26837515"
+    },
+    {
+      "path": "artifacts/portable-candidate-9641a95.sha256",
+      "bytes": 2676,
+      "sha256": "8b843f0c3e5bcbe0f4a1c5512afa0b09d07cec251c8fb906d83101927c3dafba"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/benchmarks.kexe",
+      "bytes": 1080304,
+      "sha256": "ae73de7e3d986a33f840db41dc383ed800ecfa9b98885df9efa499997676a27a"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/js/kotlin-kotlin-stdlib.js",
+      "bytes": 221049,
+      "sha256": "1facc9ebdf229dee5415214af90c379dd6441283c3e8c52f3ab4aae993bd506f"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/js/kotlin-kotlin-stdlib.js.map",
+      "bytes": 142331,
+      "sha256": "cdd42d73322963d7163c030715713efaa31e4e51b8c2fbe33d99b82fb49d97ee"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js",
+      "bytes": 566,
+      "sha256": "e53a8fae4defa7920dba65ee415362cae60b0b934cd0ffb88b5bd39a316188f1"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/js/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js.map",
+      "bytes": 158,
+      "sha256": "8fa6d4ad44899d6d071fd701423a7bf51100868eaafab8125fc201675e75affb"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/js/krogu-math-benchmarks.js",
+      "bytes": 45087,
+      "sha256": "895ca2122f07b65dc13a96e84aa931ed841c7ab5196cc2175830a6c862e88790"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/js/krogu-math-benchmarks.js.map",
+      "bytes": 24581,
+      "sha256": "46706c1ea7e4e4566bbd3ac6684d9d846952522fb229ba8680d32f2ade723d44"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/js/krogu-math.js",
+      "bytes": 351171,
+      "sha256": "944fb57b24e0a2c8d6ed820ca5d0e249f6d47e095dc7f0b170ac938abc883948"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/js/krogu-math.js.map",
+      "bytes": 205865,
+      "sha256": "f9b1cf8e46ad89dae20a08234e397ddf09d765374478d9739e7945b1feab28b7"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/jvm/0/META-INF/krogu-math_benchmarks.kotlin_module",
+      "bytes": 121,
+      "sha256": "7b87a809860f03cf8bc6659ae86310be428650d32807a7f1d0f2f955276e2b52"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/jvm/0/bench/Compact529JvmPlatformKt.class",
+      "bytes": 2056,
+      "sha256": "a79ad7b28e77850ebfc3bf6421d35175d630c52ac06dfd703a353d985c441bab"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/jvm/0/bench/Compact529Kt.class",
+      "bytes": 23586,
+      "sha256": "6c1e3ac53c78196148a07b7012090e8f65e7cdd7171bd7cfb06d645e18c0fc59"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/jvm/0/bench/CompactMemory529.class",
+      "bytes": 3845,
+      "sha256": "e6576a2a58779c5ee6b91a65a1b7f89bdbc878826db68d17789da9b94dcf2191"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/jvm/0/bench/JdkWorkloadsKt.class",
+      "bytes": 11267,
+      "sha256": "c7e3b58df52de1fff99f5c69a289c5de3f2eb5a327b093e6775623767123e309"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/jvm/0/bench/MainKt.class",
+      "bytes": 8703,
+      "sha256": "ef146cf40eeb8d0e35f69edd06afe527adb8f907562a79b44757139525066e75"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/jvm/0/bench/PlatformKt.class",
+      "bytes": 4317,
+      "sha256": "8beac17c6753bd2895f94b742ef422f3c2c77fb6bb4ccfa5ad85816fef458e1d"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/jvm/0/bench/Workload.class",
+      "bytes": 3387,
+      "sha256": "4f94d29131ceabf100cb9f7b43337c3baece650e4f370a66b248350dbe60984b"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/jvm/0/bench/WorkloadsKt.class",
+      "bytes": 11195,
+      "sha256": "f7eef600557702cab9d1ebb7b8e4b8a62dce8f296156cd560376b25f85306b90"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/jvm/3-krogu-math-jvm-0.1.0-SNAPSHOT.jar",
+      "bytes": 277997,
+      "sha256": "64625bcdbba069763d9da0318dfc143ea9c0a5bcd5e99334744495379d371e37"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/jvm/4-kotlin-stdlib-2.4.21.jar",
+      "bytes": 1853315,
+      "sha256": "bd8250210584cb659847dce9cda660f8e9906e5def7fbebcea93dc6dcb6a88a3"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/jvm/5-annotations-13.0.jar",
+      "bytes": 17536,
+      "sha256": "ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/jvm-classpath.txt",
+      "bytes": 104,
+      "sha256": "89c454f0a6dfd783b79cca0164dbdd575bde0bae47c6aea361dc092535f33f86"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/wasm/krogu-math-benchmarks.import-object.mjs",
+      "bytes": 5732,
+      "sha256": "a1c06e6df7fbe2381259d4b551cdba038713e0795c50507af62722b5872dca30"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/wasm/krogu-math-benchmarks.js-builtins.mjs",
+      "bytes": 2095,
+      "sha256": "a370c66f8031ae3a8d5718123a7fb1aeed4f43caca681181ef69b512321d5b94"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/wasm/krogu-math-benchmarks.mjs",
+      "bytes": 3217,
+      "sha256": "83352228c89a9b4c36bfcc69386c617fa379313af8c3540a05aec19bb5064e6f"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/wasm/krogu-math-benchmarks.wasm",
+      "bytes": 454101,
+      "sha256": "d76a3ce402149643dd39242087d14f39ccb95310562b03ba0c6b9612a01c9c7f"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f/wasm/krogu-math-benchmarks.wasm.map",
+      "bytes": 105697,
+      "sha256": "8cb56f04878d423899b1f7a767750c87b0bce3388c25c25765d3ffd6aaa5b1ee"
+    },
+    {
+      "path": "artifacts/portable-candidate-d6d594f.sha256",
+      "bytes": 2676,
+      "sha256": "c1c7bc2f69ca25e9b8c48e7f7a3f9fd43d1d9d8c4bfffb4f2c01872f87ad6126"
+    }
+  ],
+  "scope": "Exact source-labelled raw evidence and inputs; no numerical acceptance inferred from archive creation."
+}

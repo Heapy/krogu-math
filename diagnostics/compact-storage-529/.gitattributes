@@ -1,0 +1,3 @@
+*.zip -text -diff
+*.log -whitespace
+*.patch -whitespace

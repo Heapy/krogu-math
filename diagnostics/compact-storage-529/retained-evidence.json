@@ -1,0 +1,29 @@
+{
+  "task": "local:529",
+  "scope": "Large historical whole-heap captures and exact measured input binaries are retained intact locally to avoid duplicatingabout87MiB in Git. No deliverable/member is removed. Canonical member manifests and this index bind all bytes; verify the retained package separately before integration. Preserve this directory after worktree cleanup.",
+  "project_relative_root": ".codex-work/529/retained-evidence",
+  "index_sha256": "87aa4ca9b8aff53c8463b098b34aa639ec763505bac42f633816cff6b67de259",
+  "sha_ledger_sha256": "257480fb9af1aed7ddf5e80653469cd1da980b2bfc32e6422143b89506d8658c",
+  "entries": [
+    {
+      "path": "measured-artifacts.entries.json",
+      "bytes": 39442,
+      "sha256": "3223a026043e6c82f0a4babf29ce7a561a240fb2e6ebbc701358b409e2ea2607"
+    },
+    {
+      "path": "measured-artifacts.zip",
+      "bytes": 19177273,
+      "sha256": "efcd9421b0d0bc79431468df551b189a72ca9e4c07c635eb2ed062f871a7dd6a"
+    },
+    {
+      "path": "v8-owned-graphs.entries.json",
+      "bytes": 24406,
+      "sha256": "e6b9edbc87de88f67ac6d9b36a95d199da79195280e178220cc611c7d982651c"
+    },
+    {
+      "path": "v8-owned-graphs.zip",
+      "bytes": 71916127,
+      "sha256": "1263c863ff5ca59a4cd7f6d5411c7256eceaaaa3ea5fa1610ac2ac3429e57af0"
+    }
+  ]
+}

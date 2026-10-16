@@ -1,0 +1,603 @@
+{
+  "task": "local:529",
+  "archive": "jvm-campaigns.zip",
+  "source_root": ".codex-work/529",
+  "entries": [
+    {
+      "path": "jvm-paired-1/PASS",
+      "bytes": 110,
+      "sha256": "d1dd353f48e75ce68aa2c22c8c4b87ae45afd58c7d648cd6f7468dfab7cbc31f"
+    },
+    {
+      "path": "jvm-paired-1/adapter/Compact529Probe$Case.class",
+      "bytes": 1645,
+      "sha256": "beaed8d5d7715c720cb73bef3985fac31586351233e2159412b729af96890f63"
+    },
+    {
+      "path": "jvm-paired-1/adapter/Compact529Probe.class",
+      "bytes": 19986,
+      "sha256": "ad88032d595636c9d3d3dd1772c68210a69d14297bd37bde5da07150586a3a65"
+    },
+    {
+      "path": "jvm-paired-1/adapter/Compact529Probe.java",
+      "bytes": 11499,
+      "sha256": "2898a796d4c2ff8b260e56e54202bc49008633321b3c5468e0dca7aacb44fa4d"
+    },
+    {
+      "path": "jvm-paired-1/check-0-baseline-argv.txt",
+      "bytes": 731,
+      "sha256": "eafd9e8fb186c8e7d4844263eb650120b35cbef24e06f864a52632e20b6c9528"
+    },
+    {
+      "path": "jvm-paired-1/check-0-baseline.log",
+      "bytes": 44295,
+      "sha256": "62476eee1dd3bedaca84adf7e94cb51afe24332bfdf71ec6c00391a8be636396"
+    },
+    {
+      "path": "jvm-paired-1/check-0-candidate-argv.txt",
+      "bytes": 734,
+      "sha256": "909eed1d7b0e55f0de76ac696464502ec50b2b81a53c5aff525f2d52c0cbb45e"
+    },
+    {
+      "path": "jvm-paired-1/check-0-candidate.log",
+      "bytes": 44193,
+      "sha256": "4ce7f8340fb143162e45117b8ce9e23505fc0a0d7469f7a4024eb1e13836acc4"
+    },
+    {
+      "path": "jvm-paired-1/input-manifest.txt",
+      "bytes": 1171,
+      "sha256": "06fc439d21e736cd4e5c3cdc1d205439b62633ae5f30dad5188e4d76d1b98cd8"
+    },
+    {
+      "path": "jvm-paired-1/measure-0-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "16324f6feb705554c2321f0d5da7d903ce2de0809ec75ddc2b1de4595e143362"
+    },
+    {
+      "path": "jvm-paired-1/measure-0-baseline.log",
+      "bytes": 57706,
+      "sha256": "c10d94ab9732cbf439e3639c7660b0129dfb667bb6b61236870f62bcd51189b5"
+    },
+    {
+      "path": "jvm-paired-1/measure-0-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "5ea02fb51c121e37fe7c0542da3735b8a0be1dd4af46acf731fd608b04054b42"
+    },
+    {
+      "path": "jvm-paired-1/measure-0-candidate.log",
+      "bytes": 57638,
+      "sha256": "d27d9916f0e93b64bc78c8d04c9fd6bfc7122e6e9949e17df7664dbca36813b4"
+    },
+    {
+      "path": "jvm-paired-1/measure-1-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "16324f6feb705554c2321f0d5da7d903ce2de0809ec75ddc2b1de4595e143362"
+    },
+    {
+      "path": "jvm-paired-1/measure-1-baseline.log",
+      "bytes": 57726,
+      "sha256": "e8293a491694be673ff4c20f88725a0fc005077d32eb6480de2b2f229d1dfb53"
+    },
+    {
+      "path": "jvm-paired-1/measure-1-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "5ea02fb51c121e37fe7c0542da3735b8a0be1dd4af46acf731fd608b04054b42"
+    },
+    {
+      "path": "jvm-paired-1/measure-1-candidate.log",
+      "bytes": 57672,
+      "sha256": "5eb9b4d192dabc3d3921d2386dd0a694f241d49dd6e17f2a61874585e36ad353"
+    },
+    {
+      "path": "jvm-paired-1/measure-2-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "16324f6feb705554c2321f0d5da7d903ce2de0809ec75ddc2b1de4595e143362"
+    },
+    {
+      "path": "jvm-paired-1/measure-2-baseline.log",
+      "bytes": 57728,
+      "sha256": "049581d2fa88c6452392cf2f36930951e5a4d628aadf33247a198366d3c171c4"
+    },
+    {
+      "path": "jvm-paired-1/measure-2-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "5ea02fb51c121e37fe7c0542da3735b8a0be1dd4af46acf731fd608b04054b42"
+    },
+    {
+      "path": "jvm-paired-1/measure-2-candidate.log",
+      "bytes": 57685,
+      "sha256": "c957560554d7c3a58989028b91674417b35adf782c4b13171746b33001bdf4ce"
+    },
+    {
+      "path": "jvm-paired-1/probe.jar",
+      "bytes": 9529,
+      "sha256": "3af88acf30c6787b7e4e1304209fe6577127a069727af35b07197d12fcd5ff81"
+    },
+    {
+      "path": "jvm-paired-2/PASS",
+      "bytes": 110,
+      "sha256": "d1dd353f48e75ce68aa2c22c8c4b87ae45afd58c7d648cd6f7468dfab7cbc31f"
+    },
+    {
+      "path": "jvm-paired-2/adapter/Compact529Probe$Case.class",
+      "bytes": 1645,
+      "sha256": "beaed8d5d7715c720cb73bef3985fac31586351233e2159412b729af96890f63"
+    },
+    {
+      "path": "jvm-paired-2/adapter/Compact529Probe.class",
+      "bytes": 19986,
+      "sha256": "ad88032d595636c9d3d3dd1772c68210a69d14297bd37bde5da07150586a3a65"
+    },
+    {
+      "path": "jvm-paired-2/adapter/Compact529Probe.java",
+      "bytes": 11499,
+      "sha256": "2898a796d4c2ff8b260e56e54202bc49008633321b3c5468e0dca7aacb44fa4d"
+    },
+    {
+      "path": "jvm-paired-2/check-0-baseline-argv.txt",
+      "bytes": 731,
+      "sha256": "300b1d7ac7ad9c866a68ce653350ae4e3cc4b67eb69a405de36dfff2b4cca630"
+    },
+    {
+      "path": "jvm-paired-2/check-0-baseline.log",
+      "bytes": 44295,
+      "sha256": "e47ebd7134b4cf201d34cd94c40bd5c82b118ec63e3ef0008625bed2885f1cb1"
+    },
+    {
+      "path": "jvm-paired-2/check-0-candidate-argv.txt",
+      "bytes": 734,
+      "sha256": "67946ad9394d88d4878a012da2f270b3f4fd7a873b09e43c3b7c6f002def9ffb"
+    },
+    {
+      "path": "jvm-paired-2/check-0-candidate.log",
+      "bytes": 44193,
+      "sha256": "bac344be41fad56f144ef09b4f38a6acd99242fa444824f664a20a270be090c0"
+    },
+    {
+      "path": "jvm-paired-2/input-manifest.txt",
+      "bytes": 1171,
+      "sha256": "d0faa67eaa0a9acaf95c85fb474ddcaaed087461c21a6483caf05d54a84f7861"
+    },
+    {
+      "path": "jvm-paired-2/measure-0-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "c21de01ada6ee6f74b4801dab94822a969040a2a3fea57d5e76ffadd4ba27eb2"
+    },
+    {
+      "path": "jvm-paired-2/measure-0-baseline.log",
+      "bytes": 57705,
+      "sha256": "38f312c418303ac2d51fcd9c575068aec0fe34a251d29e37d218c993fb780a1b"
+    },
+    {
+      "path": "jvm-paired-2/measure-0-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "97519b509f4d8f8ac2edec88d75a298a4e41cbe1564bcae0a7403aa13a8e4efa"
+    },
+    {
+      "path": "jvm-paired-2/measure-0-candidate.log",
+      "bytes": 57624,
+      "sha256": "f53d8fa977f58cf57862cce6153ab5fc931d478d978105bf6628282fa5f80498"
+    },
+    {
+      "path": "jvm-paired-2/measure-1-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "c21de01ada6ee6f74b4801dab94822a969040a2a3fea57d5e76ffadd4ba27eb2"
+    },
+    {
+      "path": "jvm-paired-2/measure-1-baseline.log",
+      "bytes": 57716,
+      "sha256": "0974276935f9b6707e913a0c0ce7310e6a8336e8a7b9fc4a29104849ce8288d9"
+    },
+    {
+      "path": "jvm-paired-2/measure-1-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "97519b509f4d8f8ac2edec88d75a298a4e41cbe1564bcae0a7403aa13a8e4efa"
+    },
+    {
+      "path": "jvm-paired-2/measure-1-candidate.log",
+      "bytes": 57523,
+      "sha256": "d67e7143c8ed1a0c112d7194c54da91e0df5f903a556940d684d292d259166e8"
+    },
+    {
+      "path": "jvm-paired-2/measure-2-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "c21de01ada6ee6f74b4801dab94822a969040a2a3fea57d5e76ffadd4ba27eb2"
+    },
+    {
+      "path": "jvm-paired-2/measure-2-baseline.log",
+      "bytes": 57712,
+      "sha256": "75f8ac4cdc1d3ebb1401273e7d694ceb80a3b896b76904408f468f1ae0c36ab2"
+    },
+    {
+      "path": "jvm-paired-2/measure-2-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "97519b509f4d8f8ac2edec88d75a298a4e41cbe1564bcae0a7403aa13a8e4efa"
+    },
+    {
+      "path": "jvm-paired-2/measure-2-candidate.log",
+      "bytes": 57659,
+      "sha256": "8d5813d176a6b2e3083189454d3eda301786ae5409d15deaeb929f3de8f19193"
+    },
+    {
+      "path": "jvm-paired-2/probe.jar",
+      "bytes": 9529,
+      "sha256": "90e2538a01e172de2c86b29a214123e1ba4f707277ee469b1fea86d62b787a11"
+    },
+    {
+      "path": "jvm-paired-3/PASS",
+      "bytes": 110,
+      "sha256": "d1dd353f48e75ce68aa2c22c8c4b87ae45afd58c7d648cd6f7468dfab7cbc31f"
+    },
+    {
+      "path": "jvm-paired-3/adapter/Compact529Probe$Case.class",
+      "bytes": 1645,
+      "sha256": "beaed8d5d7715c720cb73bef3985fac31586351233e2159412b729af96890f63"
+    },
+    {
+      "path": "jvm-paired-3/adapter/Compact529Probe.class",
+      "bytes": 19986,
+      "sha256": "ad88032d595636c9d3d3dd1772c68210a69d14297bd37bde5da07150586a3a65"
+    },
+    {
+      "path": "jvm-paired-3/adapter/Compact529Probe.java",
+      "bytes": 11499,
+      "sha256": "2898a796d4c2ff8b260e56e54202bc49008633321b3c5468e0dca7aacb44fa4d"
+    },
+    {
+      "path": "jvm-paired-3/check-0-baseline-argv.txt",
+      "bytes": 731,
+      "sha256": "3e796dfca1335b668e700dc3f6637bea7daed8f83ef552174879e67dcfac5743"
+    },
+    {
+      "path": "jvm-paired-3/check-0-baseline.log",
+      "bytes": 44295,
+      "sha256": "17464d11fc5af6942b2483d776f76655bc831eb7d5d8332ee96882565703b79e"
+    },
+    {
+      "path": "jvm-paired-3/check-0-candidate-argv.txt",
+      "bytes": 734,
+      "sha256": "8af155876c1248d5216c962a8e108e1cead5418a8709a3981b442c3e8101d49e"
+    },
+    {
+      "path": "jvm-paired-3/check-0-candidate.log",
+      "bytes": 44193,
+      "sha256": "e64fb801c8a752e608a5173304e7af392458eb57f726e458a5f89259b0af48ac"
+    },
+    {
+      "path": "jvm-paired-3/input-manifest.txt",
+      "bytes": 1171,
+      "sha256": "092bd957ff87ea6a47c73ee90bb826377127f1607e76b4f8f96990bb9588382e"
+    },
+    {
+      "path": "jvm-paired-3/measure-0-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "4a164a9d7be1a6aca1673719ce01da85ac9a3d8a1a2b4c319ebc400596955665"
+    },
+    {
+      "path": "jvm-paired-3/measure-0-baseline.log",
+      "bytes": 57698,
+      "sha256": "d721643d70762c7b79e2bd82e4594cc9c5fdca67852d498093ab6fe00767eb3d"
+    },
+    {
+      "path": "jvm-paired-3/measure-0-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "50b56a033c3cc7dca4a306af2c2aae7c9ba05ff146d244a07a3ca93197936c9b"
+    },
+    {
+      "path": "jvm-paired-3/measure-0-candidate.log",
+      "bytes": 57637,
+      "sha256": "62311333cf98e6971aa8cd7c96e91390cd15f3f747a2bea37a316d5c2baa4cb8"
+    },
+    {
+      "path": "jvm-paired-3/measure-1-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "4a164a9d7be1a6aca1673719ce01da85ac9a3d8a1a2b4c319ebc400596955665"
+    },
+    {
+      "path": "jvm-paired-3/measure-1-baseline.log",
+      "bytes": 57680,
+      "sha256": "83f1a6f5b310bac9e1d797b2262522f78364431a9f836e9a7ea56ebc7db13d66"
+    },
+    {
+      "path": "jvm-paired-3/measure-1-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "50b56a033c3cc7dca4a306af2c2aae7c9ba05ff146d244a07a3ca93197936c9b"
+    },
+    {
+      "path": "jvm-paired-3/measure-1-candidate.log",
+      "bytes": 57620,
+      "sha256": "a926230e9e1bcccb1835d5e9a866dad67627fd076736c4b62a7ea173a97e188e"
+    },
+    {
+      "path": "jvm-paired-3/measure-2-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "4a164a9d7be1a6aca1673719ce01da85ac9a3d8a1a2b4c319ebc400596955665"
+    },
+    {
+      "path": "jvm-paired-3/measure-2-baseline.log",
+      "bytes": 57672,
+      "sha256": "fa6d1530b0c5173453edd0ed92bac42884f437b29631402d5887d0ae7a67cdb9"
+    },
+    {
+      "path": "jvm-paired-3/measure-2-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "50b56a033c3cc7dca4a306af2c2aae7c9ba05ff146d244a07a3ca93197936c9b"
+    },
+    {
+      "path": "jvm-paired-3/measure-2-candidate.log",
+      "bytes": 57617,
+      "sha256": "9a4e9f237c7e7e19997490126cc911f96d237a24a98a585d7d8a37cd617518f4"
+    },
+    {
+      "path": "jvm-paired-3/probe.jar",
+      "bytes": 9529,
+      "sha256": "0ea871ef49adab8fff7d77fb43c8a3840e5f72cfab198ee040b5a4eb6f89452d"
+    },
+    {
+      "path": "jvm-paired-4/PASS",
+      "bytes": 110,
+      "sha256": "d1dd353f48e75ce68aa2c22c8c4b87ae45afd58c7d648cd6f7468dfab7cbc31f"
+    },
+    {
+      "path": "jvm-paired-4/adapter/Compact529Probe$Case.class",
+      "bytes": 1645,
+      "sha256": "beaed8d5d7715c720cb73bef3985fac31586351233e2159412b729af96890f63"
+    },
+    {
+      "path": "jvm-paired-4/adapter/Compact529Probe.class",
+      "bytes": 19986,
+      "sha256": "ad88032d595636c9d3d3dd1772c68210a69d14297bd37bde5da07150586a3a65"
+    },
+    {
+      "path": "jvm-paired-4/adapter/Compact529Probe.java",
+      "bytes": 11499,
+      "sha256": "2898a796d4c2ff8b260e56e54202bc49008633321b3c5468e0dca7aacb44fa4d"
+    },
+    {
+      "path": "jvm-paired-4/check-0-baseline-argv.txt",
+      "bytes": 731,
+      "sha256": "21b84dcdc24487db7a961efc4b9b3c66e736b0d0a9609e109b1015f9618ab4f4"
+    },
+    {
+      "path": "jvm-paired-4/check-0-baseline.log",
+      "bytes": 44295,
+      "sha256": "9455f9e811039f104a16499702e112b6c9009e2417bd9ffa3c007a4f9d0ce3cb"
+    },
+    {
+      "path": "jvm-paired-4/check-0-candidate-argv.txt",
+      "bytes": 734,
+      "sha256": "197a98ae2ea6afc7019ad913c13a91c45189668bb7cf6d4d2362883caeb75658"
+    },
+    {
+      "path": "jvm-paired-4/check-0-candidate.log",
+      "bytes": 44193,
+      "sha256": "b9e2de84953f4020184e1cb5b328434fe9ed7421ea67b6e9e84c72274945eddb"
+    },
+    {
+      "path": "jvm-paired-4/input-manifest.txt",
+      "bytes": 1171,
+      "sha256": "5087e304fe2bbc20d10480a46f724a395013cec394722f5fbd241ad58869915f"
+    },
+    {
+      "path": "jvm-paired-4/measure-0-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "6cbc61c2903bc95f985f4db26bf6a72f7234dd195d6c791f2c2e3857906e4215"
+    },
+    {
+      "path": "jvm-paired-4/measure-0-baseline.log",
+      "bytes": 57720,
+      "sha256": "bc7c32b73b635284d0d62049fac4ee20628c0a78d3ebf16af991201987a3a410"
+    },
+    {
+      "path": "jvm-paired-4/measure-0-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "3c9230f63bd3793b3c0560142e672723edd7b62db50cc314cf6d84a3ca216cc1"
+    },
+    {
+      "path": "jvm-paired-4/measure-0-candidate.log",
+      "bytes": 57674,
+      "sha256": "12b80d74b83aaa5036f0b555e8622c1c61c8a2eb020ec1a26378a0ddb8c15e03"
+    },
+    {
+      "path": "jvm-paired-4/measure-1-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "6cbc61c2903bc95f985f4db26bf6a72f7234dd195d6c791f2c2e3857906e4215"
+    },
+    {
+      "path": "jvm-paired-4/measure-1-baseline.log",
+      "bytes": 57729,
+      "sha256": "a987ea542048f75f9320b8e9837b2fe9269d328392184e0b9b7decd3716b62c2"
+    },
+    {
+      "path": "jvm-paired-4/measure-1-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "3c9230f63bd3793b3c0560142e672723edd7b62db50cc314cf6d84a3ca216cc1"
+    },
+    {
+      "path": "jvm-paired-4/measure-1-candidate.log",
+      "bytes": 57669,
+      "sha256": "fd0ae3ebf1174c25457aaf8c80da3b2765ecefeb4e01ab415f8d964095ac03de"
+    },
+    {
+      "path": "jvm-paired-4/measure-2-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "6cbc61c2903bc95f985f4db26bf6a72f7234dd195d6c791f2c2e3857906e4215"
+    },
+    {
+      "path": "jvm-paired-4/measure-2-baseline.log",
+      "bytes": 57706,
+      "sha256": "3320d32e3f1d3fdba133c27d156bbbbe398f618b89348baad4adc9a1f7ddc69f"
+    },
+    {
+      "path": "jvm-paired-4/measure-2-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "3c9230f63bd3793b3c0560142e672723edd7b62db50cc314cf6d84a3ca216cc1"
+    },
+    {
+      "path": "jvm-paired-4/measure-2-candidate.log",
+      "bytes": 57652,
+      "sha256": "b1c18c6aa0d75b1d7e63062f8480727113fc8e2bcae58ed9a919bdb4012628e4"
+    },
+    {
+      "path": "jvm-paired-4/probe.jar",
+      "bytes": 9529,
+      "sha256": "7df5192892f94082239ba8740415a120544d5e88e782abee172e7ed0edddd9de"
+    },
+    {
+      "path": "jvm-paired-5/PASS",
+      "bytes": 110,
+      "sha256": "d1dd353f48e75ce68aa2c22c8c4b87ae45afd58c7d648cd6f7468dfab7cbc31f"
+    },
+    {
+      "path": "jvm-paired-5/adapter/Compact529Probe$Case.class",
+      "bytes": 1645,
+      "sha256": "beaed8d5d7715c720cb73bef3985fac31586351233e2159412b729af96890f63"
+    },
+    {
+      "path": "jvm-paired-5/adapter/Compact529Probe.class",
+      "bytes": 19986,
+      "sha256": "ad88032d595636c9d3d3dd1772c68210a69d14297bd37bde5da07150586a3a65"
+    },
+    {
+      "path": "jvm-paired-5/adapter/Compact529Probe.java",
+      "bytes": 11499,
+      "sha256": "2898a796d4c2ff8b260e56e54202bc49008633321b3c5468e0dca7aacb44fa4d"
+    },
+    {
+      "path": "jvm-paired-5/check-0-baseline-argv.txt",
+      "bytes": 731,
+      "sha256": "1b4cfd4c853d8ba034977801137f45d3b32567ba70e782222e9fcbe4546012f3"
+    },
+    {
+      "path": "jvm-paired-5/check-0-baseline.log",
+      "bytes": 44295,
+      "sha256": "39117c6b1b2e0ae3a422c8692c73ee96ae146e5d77f232001b1ef36f659b8e4b"
+    },
+    {
+      "path": "jvm-paired-5/check-0-candidate-argv.txt",
+      "bytes": 734,
+      "sha256": "19b3265f62ac697aa3aff65ea41a11f7ca9115c214beced1715f8e3e813d6b5f"
+    },
+    {
+      "path": "jvm-paired-5/check-0-candidate.log",
+      "bytes": 44193,
+      "sha256": "f0e17635bafa52787e72a6f7d039c7ce228dbdc9d4412e79606c45f1782c1b80"
+    },
+    {
+      "path": "jvm-paired-5/input-manifest.txt",
+      "bytes": 1171,
+      "sha256": "e5afd93e27383eecb606ec1600d77d7bca91b490dc12fba058bd90ce559c261b"
+    },
+    {
+      "path": "jvm-paired-5/measure-0-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "d657580b04ebb878f138c8cf6aa966a50f8f6a4c7f8ff9cfbf94d1302cd59103"
+    },
+    {
+      "path": "jvm-paired-5/measure-0-baseline.log",
+      "bytes": 57698,
+      "sha256": "a0e139f75f0d676d2f2114e4f3b0e09e9908000d5c9167d42b097be61d371a1e"
+    },
+    {
+      "path": "jvm-paired-5/measure-0-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "8c0f18bdee55ec1fd8d9ee0f42e1cf1b5bef7ab4cec8a9cfbbbd6bc8a5b7cd1b"
+    },
+    {
+      "path": "jvm-paired-5/measure-0-candidate.log",
+      "bytes": 57667,
+      "sha256": "350f57120ad462bd7bd773186b42f9dab4eb6ce2d5c86b3dc3d32ca56bbbaf82"
+    },
+    {
+      "path": "jvm-paired-5/measure-1-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "d657580b04ebb878f138c8cf6aa966a50f8f6a4c7f8ff9cfbf94d1302cd59103"
+    },
+    {
+      "path": "jvm-paired-5/measure-1-baseline.log",
+      "bytes": 57723,
+      "sha256": "d7a74c6df30f13add43fa12092664c3606c6d505b294eeb3fb285ca66268dd08"
+    },
+    {
+      "path": "jvm-paired-5/measure-1-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "8c0f18bdee55ec1fd8d9ee0f42e1cf1b5bef7ab4cec8a9cfbbbd6bc8a5b7cd1b"
+    },
+    {
+      "path": "jvm-paired-5/measure-1-candidate.log",
+      "bytes": 57643,
+      "sha256": "d90282090cc7f5908d21dc3a568183413945c88984edb05e0207fd0fe6455725"
+    },
+    {
+      "path": "jvm-paired-5/measure-2-baseline-argv.txt",
+      "bytes": 733,
+      "sha256": "d657580b04ebb878f138c8cf6aa966a50f8f6a4c7f8ff9cfbf94d1302cd59103"
+    },
+    {
+      "path": "jvm-paired-5/measure-2-baseline.log",
+      "bytes": 57675,
+      "sha256": "52dc182c113447db3c9f98b0b5be604d70639a2af86a746c1ed594968a85e400"
+    },
+    {
+      "path": "jvm-paired-5/measure-2-candidate-argv.txt",
+      "bytes": 736,
+      "sha256": "8c0f18bdee55ec1fd8d9ee0f42e1cf1b5bef7ab4cec8a9cfbbbd6bc8a5b7cd1b"
+    },
+    {
+      "path": "jvm-paired-5/measure-2-candidate.log",
+      "bytes": 57634,
+      "sha256": "c4b1b80ef0de77f37f0801a6795b77cfe8901d085f7ca3e60bfe616882707f7c"
+    },
+    {
+      "path": "jvm-paired-5/probe.jar",
+      "bytes": 9529,
+      "sha256": "78f488d6c8f048ce738de7a9f8712f51f694d24a4ac24ce8ac455849c0a2f34e"
+    },
+    {
+      "path": "shared-cache-jvm-1/0-argv.txt",
+      "bytes": 685,
+      "sha256": "40e3e1f8809126065d3ee08b839c941b5e0024cd9093f5b227f1b85df120ff0c"
+    },
+    {
+      "path": "shared-cache-jvm-1/0-identity.txt",
+      "bytes": 41,
+      "sha256": "b518cdbdec19cd2bd8e317d68579d83e1cbde9a15605fa4fd605b3caf60f6a8c"
+    },
+    {
+      "path": "shared-cache-jvm-1/0.log",
+      "bytes": 19,
+      "sha256": "8ff87457d4739d71c9780b9e8932d6a068428f93667a37d4751c924293d560a5"
+    },
+    {
+      "path": "shared-cache-jvm-1/1-argv.txt",
+      "bytes": 687,
+      "sha256": "4519b1ee0d7bbc52c1247630886d596e327a80d41b411b3be9ae760b497c060f"
+    },
+    {
+      "path": "shared-cache-jvm-1/1-identity.txt",
+      "bytes": 41,
+      "sha256": "d5e8b4d7190aa612e756b77d70e8938283292788e7a9d362a7cda2ed8e6eda2f"
+    },
+    {
+      "path": "shared-cache-jvm-1/1.log",
+      "bytes": 25,
+      "sha256": "a6c013ef4de84ff324f266396d350efa52eea6817671c3b3646a4eddacdaa648"
+    },
+    {
+      "path": "shared-cache-jvm-1/SharedCache529.class",
+      "bytes": 3416,
+      "sha256": "faba61db9a32e3b9fdff0c6cbdbc9002b3b6aded2676e9ca8ad5c5c2e6929255"
+    },
+    {
+      "path": "shared-cache-jvm-1/SharedCache529.java",
+      "bytes": 2082,
+      "sha256": "8efabf9745b3c3e2f5500a27fc600dbaf47196e1c777a7c6f8ff8c469b51260d"
+    },
+    {
+      "path": "shared-cache-jvm-1/binding.txt",
+      "bytes": 943,
+      "sha256": "d59235fba75e7b89d5aac09f64a00e704803aec7f9cc3eb3f1a63df41eb06ebd"
+    }
+  ],
+  "scope": "Exact source-labelled raw evidence and inputs; no numerical acceptance inferred from archive creation."
+}

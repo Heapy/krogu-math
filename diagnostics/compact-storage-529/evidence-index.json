@@ -1,0 +1,109 @@
+{
+  "task": "local:529",
+  "status": "SUBSTANTIVE_ACCEPTANCE_PASS_PACKAGE_GIT_VERIFICATION_PENDING",
+  "parent": "f8565cae98081ff0121ce7a40919d8a4cfd92013",
+  "production": "09e6dc36b3dfaae3878dbe6304b9c9dcaa96735d",
+  "diagnostic_hook": "d6d594f9bb5f8da5ea962e87ee92796135e9f3d9",
+  "entries": [
+    {
+      "path": ".gitattributes",
+      "bytes": 56,
+      "sha256": "8d56fd667f614567a995f3dd5f829cd2d4ff9f599827301bf3e29f7eb2800e1e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 962,
+      "sha256": "8803da7b91430877f6f2c7715296ff14b7dc9b948891d8a9c57b80875ba1dc17"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 20424,
+      "sha256": "f9139bd42f71283288bef246baf9ec55ea789631c6ae30718cb77de933b7d02c"
+    },
+    {
+      "path": "REPRODUCE.md",
+      "bytes": 5861,
+      "sha256": "6d6acbbf616182db40326649c3dd6c0e6abc14e449cb2fd019955154b458ebe7"
+    },
+    {
+      "path": "REQUIREMENTS.md",
+      "bytes": 5998,
+      "sha256": "03dc195b0cda0db54f2b320bd390a1b299c6b372360edb02d468c89e3411b69e"
+    },
+    {
+      "path": "correctness-builds.entries.json",
+      "bytes": 213525,
+      "sha256": "346a35d924b0b6bf5d9e12a51ce980205df672fababd1791a2c2d083dae1be8f"
+    },
+    {
+      "path": "correctness-builds.zip",
+      "bytes": 6929876,
+      "sha256": "9d04b2ed83a724a2efdba8047a2e535791854e1e25302e5ab3c9f656db677cbe"
+    },
+    {
+      "path": "jvm-campaigns.entries.json",
+      "bytes": 20570,
+      "sha256": "1686bd239977d8cfc0064097dbdbd4bfb43c7097d36c51c6b17fb96153e0afec"
+    },
+    {
+      "path": "jvm-campaigns.zip",
+      "bytes": 534005,
+      "sha256": "74750c012e682a4718b22c5d528a9c1b584835c41e3e383e13ccddf812f5d228"
+    },
+    {
+      "path": "measurements.csv",
+      "bytes": 21381,
+      "sha256": "b5ebc3ea66ad31d4f48ef4a5130fd26e4168261e9aa88088141b6d736f24ce54"
+    },
+    {
+      "path": "native-owned-graphs.entries.json",
+      "bytes": 11495,
+      "sha256": "67f41f7e46b71b2dc52004200139cb301c4eb98d047003c5094c0fec87467094"
+    },
+    {
+      "path": "native-owned-graphs.zip",
+      "bytes": 378541,
+      "sha256": "2978eff3b3900bdca0bbf5cb17ce5c7656a32134a0d644492bb6bf1e060ee809"
+    },
+    {
+      "path": "portable-campaigns.entries.json",
+      "bytes": 34906,
+      "sha256": "d06fdc72ffe0455e75cf0102c82afe2ff986ebbf0bb65317bb6cd238b4cf3cb3"
+    },
+    {
+      "path": "portable-campaigns.zip",
+      "bytes": 478673,
+      "sha256": "8f521a6b24d127b6c0dad36ba24a19dce0275f6ce0ccb4a7547edd8e4de2a43c"
+    },
+    {
+      "path": "provenance-reviews.entries.json",
+      "bytes": 33553,
+      "sha256": "618f1d2bd99059b0f1e353ffbd7c73b923e8a6c7c5f066f1b2c1abd9c57d45af"
+    },
+    {
+      "path": "provenance-reviews.zip",
+      "bytes": 1366822,
+      "sha256": "d1b79cd3a7a8cd7acae2340707e8a74a01361ce2d125cd0bb9a8a5baabfa3498"
+    },
+    {
+      "path": "retained-evidence.json",
+      "bytes": 1287,
+      "sha256": "7c2bcac10bf83d29bc30ae3861995f30d97147b5af15d7ae7f355094d440a063"
+    },
+    {
+      "path": "retained-measured-artifacts.entries.json",
+      "bytes": 39442,
+      "sha256": "3223a026043e6c82f0a4babf29ce7a561a240fb2e6ebbc701358b409e2ea2607"
+    },
+    {
+      "path": "retained-v8-owned-graphs.entries.json",
+      "bytes": 24406,
+      "sha256": "e6b9edbc87de88f67ac6d9b36a95d199da79195280e178220cc611c7d982651c"
+    },
+    {
+      "path": "source-era-ledger.json",
+      "bytes": 700,
+      "sha256": "b57b7a602bc36bed4215978c25568f1abbd12f2668bf9c5035bd1b62b7a693cb"
+    }
+  ]
+}
