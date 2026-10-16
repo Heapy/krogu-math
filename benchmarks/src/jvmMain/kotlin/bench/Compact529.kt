@@ -1,3 +1,5 @@
+@file:kotlin.jvm.JvmName("Compact529JvmPlatformKt")
+
 package bench
 
 import java.lang.management.ManagementFactory
