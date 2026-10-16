@@ -1,0 +1,4 @@
+# Preserve captured evidence bytes, including original trailing whitespace.
+initial-jvm.log -whitespace
+rebased-jvm.log -whitespace
+initial-jvm/BigInteger.diff -whitespace
