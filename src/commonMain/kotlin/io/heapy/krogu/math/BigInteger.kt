@@ -9,23 +9,55 @@ import kotlin.random.Random
 // JVM names keep Number's virtual methods overridable from Java. Without them Kotlin
 // generates final bridges; JavaApiContractTest checks Java and Kotlin dispatch.
 @Suppress("INAPPLICABLE_JVM_NAME")
-open class BigInteger private constructor(private val sign: Int, private val words: IntArray) :
+open class BigInteger private constructor(
+    private val sign: Int,
+    private val compactHigh: Int,
+    private val compactLow: Int,
+    private val representation: Int,
+    private val wideWords: IntArray?,
+) :
     Number(), Comparable<BigInteger>, MathSerializable {
 
-    private constructor(value: BigInteger) : this(value.sign, value.words)
+    // Compact values retain no magnitude array or boxed Long on any target.
+    private constructor(value: Long) : this(
+        value.compareTo(0L), (value shr 32).toInt(), value.toInt(), 1, null)
+    private constructor(sign: Int, words: IntArray) : this(
+        sign,
+        if (CompactInteger529.fits(sign, words)) (CompactInteger529.fromMagnitude(sign, words) shr 32).toInt() else 0,
+        if (CompactInteger529.fits(sign, words)) CompactInteger529.fromMagnitude(sign, words).toInt() else 0,
+        if (CompactInteger529.fits(sign, words)) 1 else 2,
+        if (CompactInteger529.fits(sign, words)) null else words,
+    )
+    private constructor(value: BigInteger) : this(value.sign, value.compactHigh, value.compactLow,
+        value.representation, value.wideWords)
+
+    @kotlin.jvm.JvmSynthetic
+    internal fun hasCompactStorage529(): Boolean = representation == 1
+    @kotlin.jvm.JvmSynthetic
+    internal fun compactStoredValue529(): Long = CompactInteger529.value(compactHigh, compactLow)
+
+    // Explicit operation boundary: borrow immutable wide storage; compact callers
+    // allocate one scratch view only after their primitive path has declined.
+    private fun materializeMagnitude(): IntArray = wideWords ?: CompactInteger529.magnitude(compactHigh, compactLow)
+
     private fun readObject(stream: MathObjectInputStream) {
         restoreSerializedFields(stream)
-        // Stream fields are untrusted even when their Kotlin declarations are non-null.
-        val restored: IntArray? = words
-        if (restored == null || sign !in -1..1 || (sign == 0) != restored.isEmpty() ||
-            restored.any { it < 0 || it.toLong() > MASK } || restored.lastOrNull() == 0)
-            invalidSerializedState("Invalid BigInteger representation")
-        if (restored.isNotEmpty()) {
-            try { MagnitudeLimits.checkedBitLength(restored.size, restored.last()) }
-            catch (_: ArithmeticException) { invalidSerializedState("BigInteger overflow") }
+        if (sign !in -1..1) invalidSerializedState("Invalid BigInteger sign")
+        when (representation) {
+            1 -> if (wideWords != null || compactStoredValue529().compareTo(0L) != sign)
+                invalidSerializedState("Invalid compact BigInteger")
+            2 -> {
+                val restored = wideWords ?: invalidSerializedState("Missing BigInteger magnitude")
+                if (compactHigh != 0 || compactLow != 0 || sign == 0 || restored.isEmpty() ||
+                    restored.any { it < 0 || it.toLong() > MASK } || restored.last() == 0 ||
+                    CompactInteger529.fits(sign, restored))
+                    invalidSerializedState("Invalid wide BigInteger")
+                try { MagnitudeLimits.checkedBitLength(restored.size, restored.last()) }
+                catch (_: ArithmeticException) { invalidSerializedState("BigInteger overflow") }
+                restoreSerializedMagnitude(this, restored.copyOf())
+            }
+            else -> invalidSerializedState("Missing BigInteger representation")
         }
-        // Do not retain an array that another object in the stream can mutate.
-        restoreSerializedMagnitude(this, restored.copyOf())
     }
     private fun readObjectNoData(): Unit = invalidSerializedState("Missing BigInteger data")
     constructor(value: String) : this(value, 10)
@@ -39,33 +71,58 @@ open class BigInteger private constructor(private val sign: Int, private val wor
 
     open fun signum(): Int = sign
     open fun abs(): BigInteger = if (sign < 0) negate() else this
-    open fun negate(): BigInteger = if (sign == 0) this else BigInteger(-sign, words)
+    open fun negate(): BigInteger {
+        if (sign == 0) return this
+        if (representation == 1 && compactStoredValue529() != Long.MIN_VALUE) return valueOf(-compactStoredValue529())
+        return BigInteger(-sign, materializeMagnitude())
+    }
     open fun add(value: BigInteger): BigInteger {
         if (sign == 0) return value
         if (value.sign == 0) return this
-        if (sign == value.sign) return normalized(sign, addMagnitude(words, value.words))
-        val cmp = compareMagnitude(words, value.words)
+        if (representation == 1 && value.representation == 1) {
+            val a = compactStoredValue529(); val b = value.compactStoredValue529()
+            val result = a + b
+            if (CompactInteger529.addFits(a, b, result)) return valueOf(result)
+        }
+        val words = materializeMagnitude()
+        val valueWords = if (value === this) words else value.materializeMagnitude()
+        if (sign == value.sign) return normalized(sign, addMagnitude(words, valueWords))
+        val cmp = compareMagnitude(words, valueWords)
         return when {
             cmp == 0 -> ZERO
-            cmp > 0 -> normalized(sign, subtractMagnitude(words, value.words))
-            else -> normalized(value.sign, subtractMagnitude(value.words, words))
+            cmp > 0 -> normalized(sign, subtractMagnitude(words, valueWords))
+            else -> normalized(value.sign, subtractMagnitude(valueWords, words))
         }
     }
     open fun subtract(value: BigInteger): BigInteger {
         if (value.sign == 0) return this
         if (sign == 0) return value.negate()
-        if (sign != value.sign) return normalized(sign, addMagnitude(words, value.words))
-        val cmp = compareMagnitude(words, value.words)
+        if (representation == 1 && value.representation == 1) {
+            val a = compactStoredValue529(); val b = value.compactStoredValue529()
+            val result = a - b
+            if (CompactInteger529.subtractFits(a, b, result)) return valueOf(result)
+        }
+        val words = materializeMagnitude()
+        val valueWords = if (value === this) words else value.materializeMagnitude()
+        if (sign != value.sign) return normalized(sign, addMagnitude(words, valueWords))
+        val cmp = compareMagnitude(words, valueWords)
         return when {
             cmp == 0 -> ZERO
-            cmp > 0 -> normalized(sign, subtractMagnitude(words, value.words))
-            else -> normalized(-sign, subtractMagnitude(value.words, words))
+            cmp > 0 -> normalized(sign, subtractMagnitude(words, valueWords))
+            else -> normalized(-sign, subtractMagnitude(valueWords, words))
         }
     }
     open fun multiply(value: BigInteger): BigInteger {
         if (sign == 0 || value.sign == 0) return ZERO
+        if (representation == 1 && value.representation == 1) {
+            val a = compactStoredValue529(); val b = value.compactStoredValue529()
+            val result = a * b
+            if (CompactInteger529.multiplyFits(a, b, result)) return valueOf(result)
+        }
+        val words = materializeMagnitude()
+        val valueWords = if (value === this) words else value.materializeMagnitude()
         MagnitudeMultiplication.checkBitLengths(magnitudeBits(), value.magnitudeBits())
-        return normalized(sign * value.sign, MagnitudeMultiplication.multiplyAdaptive(words, value.words))
+        return normalized(sign * value.sign, MagnitudeMultiplication.multiplyAdaptive(words, valueWords))
     }
 
     open fun parallelMultiply(value: BigInteger): BigInteger = multiply(value)
@@ -85,7 +142,8 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         val leftDigits = if (sign == 0) 0 else decimalMagnitudeDigits()
         val rightDigits = if (value.sign == 0) 0 else value.decimalMagnitudeDigits()
         if (!certifiedDecimalSumSpan585(leftDigits, rightDigits, leftScale, rightScale, precision)) return null
-        return DecimalSum585.sum(sign, words, leftScale, rightSign, value.words, rightScale, mc)
+        val words = materializeMagnitude()
+        return DecimalSum585.sum(sign, words, leftScale, rightSign, value.materializeMagnitude(), rightScale, mc)
     }
 
     // No public metadata/byte/arithmetic callbacks select this private scratch
@@ -94,7 +152,8 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     internal fun roundedDecimalProduct580(value: BigInteger, scale: Long, mc: MathContext): Pair<BigInteger, Int>? {
         if (sign == 0 || value.sign == 0 ||
             !needsRawDecimalProduct580(magnitudeBits(), value.magnitudeBits())) return null
-        return DecimalProduct580.rounded(sign * value.sign, words, value.words, scale, mc)
+        val words = materializeMagnitude()
+        return DecimalProduct580.rounded(sign * value.sign, words, value.materializeMagnitude(), scale, mc)
     }
 
     @kotlin.jvm.JvmSynthetic
@@ -107,10 +166,11 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         // Eligibility reads stored metadata; public prefix callbacks already ran.
         if (sourceDigits != decimalMagnitudeDigits() || divisorDigits != value.decimalMagnitudeDigits() ||
             normalized != compareDecimalSignificand(value)) return null
+        val words = materializeMagnitude()
         if (mc.precision > 646456993)
             return DecimalDivision581.largePrecision(sign * value.sign, BigInteger(1, words),
-                BigInteger(1, value.words), preferred, mc.precision)
-        return DecimalDivision581.rounded(sign * value.sign, words, value.words, preferred, mc)
+                BigInteger(1, value.materializeMagnitude()), preferred, mc.precision)
+        return DecimalDivision581.rounded(sign * value.sign, words, value.materializeMagnitude(), preferred, mc)
     }
 
     // Captured public metadata selects this route without any additional callback.
@@ -125,24 +185,25 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         val exponents = (sourceDigits.toLong() - sourceScale).compareTo(divisorDigits.toLong() - divisorScale)
         val storedMagnitude = if (exponents != 0) exponents else compareDecimalSignificand(value)
         if (magnitude.compareTo(0) != storedMagnitude.compareTo(0) || storedMagnitude < 0) return null
+        val words = materializeMagnitude()
         if (preferred < 0) {
             val zeros = -preferred
             // A nonzero final residual then forces a minimal coefficient >H.
             // Preserve exact supported cohorts through the existing reduced 2/5 escape.
             if (zeros >= divisorDigits && sourceDigits.toLong() + zeros > 646456993L + 2L * divisorDigits - 1)
                 return DecimalDivision581.largePrecision(sign * value.sign, BigInteger(1, words),
-                    BigInteger(1, value.words), preferred, Int.MAX_VALUE)
-            return DecimalDivision581.integral(sign * value.sign, words, value.words, preferred.toInt())
+                    BigInteger(1, value.materializeMagnitude()), preferred, Int.MAX_VALUE)
+            return DecimalDivision581.integral(sign * value.sign, words, value.materializeMagnitude(), preferred.toInt())
         }
         // B*10^S <= A follows from the checked magnitude prefix. All factors,
         // the scaled denominator and K*10^S are therefore supported.
         val power = TEN.pow(preferred.toInt())
-        val absoluteDivisor = BigInteger(1, value.words)
+        val absoluteDivisor = BigInteger(1, value.materializeMagnitude())
         val denominator = if (preferred == 0L) absoluteDivisor else absoluteDivisor.multiply(power)
         val quotient = BigInteger(1, words).quotientStored(denominator)
         val coefficient = if (preferred == 0L) quotient else quotient.multiply(power)
         return (if (sign == value.sign || coefficient.sign == 0) coefficient
-            else BigInteger(-1, coefficient.words)) to preferred.toInt()
+            else BigInteger(-1, coefficient.materializeMagnitude())) to preferred.toInt()
     }
 
     // Decline preserves the whole old multiply/subtract chain. No public metadata callbacks.
@@ -162,20 +223,21 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         val divisorDigits = value.decimalMagnitudeDigits()
         val exponents = (sourceDigits.toLong() - sourceScale).compareTo(divisorDigits.toLong() - divisorScale)
         val magnitude = if (exponents != 0) exponents else compareDecimalSignificand(value)
+        val words = materializeMagnitude()
         if (quotient.sign == 0) return if (quotientScale.toLong() == preferred && magnitude < 0)
             BigInteger(sign, words) to sourceScale else null
         if (quotient.sign != sign * value.sign || magnitude < 0) return null
         if (preferred < 0)
-            return DecimalDivision581.certifiedResidual583(sign, words, value.words, quotient.words,
+            return DecimalDivision581.certifiedResidual583(sign, words, value.materializeMagnitude(), quotient.materializeMagnitude(),
                 preferred.toInt(), divisorScale, quotientScale)
         // B*10^S <= A, so power, denominator, quotient and residual are supported.
-        val absoluteDivisor = BigInteger(1, value.words)
+        val absoluteDivisor = BigInteger(1, value.materializeMagnitude())
         val denominator = if (preferred == 0L) absoluteDivisor
             else absoluteDivisor.multiply(TEN.pow(preferred.toInt()))
         val qr = BigInteger(1, words).divideStored(denominator)
-        if (!DecimalDivision581.matchesInteger583(quotient.words, quotientScale, qr[0].words)) return null
+        if (!DecimalDivision581.matchesInteger583(quotient.materializeMagnitude(), quotientScale, qr[0].materializeMagnitude())) return null
         val residual = qr[1]
-        return (if (sign < 0 && residual.sign != 0) BigInteger(-1, residual.words) else residual) to sourceScale
+        return (if (sign < 0 && residual.sign != 0) BigInteger(-1, residual.materializeMagnitude()) else residual) to sourceScale
     }
 
     // Sufficient old-product bounds; only explicit fixed-scale division calls this.
@@ -185,7 +247,8 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         if (shift in -646456992L..646456992L &&
             magnitudeBits().toLong() + 4L * maxOf(shift, 0L) <= Int.MAX_VALUE &&
             value.magnitudeBits().toLong() + 4L * maxOf(-shift, 0L) <= Int.MAX_VALUE) return null
-        return DecimalDivision581.fixedScale592(sign * value.sign, words, value.words, shift, mode)
+        val words = materializeMagnitude()
+        return DecimalDivision581.fixedScale592(sign * value.sign, words, value.materializeMagnitude(), shift, mode)
     }
 
     // Exact-only outside-LOW certificate; no expanded integer or public product.
@@ -199,9 +262,10 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         if (residualScale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong()) return null
         // Only our fresh base wrappers enter this catch. An unsupported exact
         // coefficient/natural scale or nonterminating ratio retains the old path.
+        val words = materializeMagnitude()
         val exact = try {
             DecimalDivision581.largePrecision(sign * value.sign, BigInteger(1, words),
-                BigInteger(1, value.words), preferred, Int.MAX_VALUE)
+                BigInteger(1, value.materializeMagnitude()), preferred, Int.MAX_VALUE)
         } catch (_: ArithmeticException) {
             return null
         }
@@ -214,7 +278,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     // Only selected pow work enters this final stored view; zero keeps its old route.
     @kotlin.jvm.JvmSynthetic
     internal fun decimalPowerState593(scale: Int): DecimalPower593.State? =
-        if (sign == 0) null else DecimalPower593.fromMagnitude(sign, words, scale)
+        if (sign == 0) null else DecimalPower593.fromMagnitude(sign, materializeMagnitude(), scale)
 
     open fun divide(value: BigInteger): BigInteger = quotientStored(value)
     open fun remainder(value: BigInteger): BigInteger = remainderStored(value)
@@ -239,16 +303,24 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         select: (BigInteger, BigInteger) -> T,
     ): T {
         if (value.sign == 0) throw ArithmeticException("BigInteger divide by zero")
+        if (representation == 1 && value.representation == 1) {
+            val a = compactStoredValue529(); val b = value.compactStoredValue529()
+            val quotient = if (!needQuotient) ZERO else if (a == Long.MIN_VALUE && b == -1L)
+                BigInteger(1, intArrayOf(0, 0, 8)) else valueOf(a / b)
+            return select(quotient, if (needRemainder) valueOf(a % b) else ZERO)
+        }
+        val words = materializeMagnitude()
+        val valueWords = if (value === this) words else value.materializeMagnitude()
         // Read stored magnitudes and bits without invoking operand subclass callbacks.
-        if (compareMagnitude(words, value.words) < 0)
+        if (compareMagnitude(words, valueWords) < 0)
             return select(ZERO, if (needRemainder) normalized(sign, words) else ZERO)
-        if (value.words.size == 1) {
+        if (valueWords.size == 1) {
             val result = if (needQuotient) IntArray(words.size) else null
             var remainder = 0L
             for (i in words.indices.reversed()) {
                 val part = (remainder shl LIMB_BITS) + words[i]
-                if (result != null) result[i] = (part / value.words[0]).toInt()
-                remainder = part % value.words[0]
+                if (result != null) result[i] = (part / valueWords[0]).toInt()
+                remainder = part % valueWords[0]
             }
             return select(
                 if (result != null) normalized(sign * value.sign, result) else ZERO,
@@ -257,10 +329,10 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         }
         // Independent radix-2^30 long division. All scratch is local to this call;
         // neither operand's stored array is ever written or exported as scratch.
-        val n = value.words.size
-        val shift = value.words.last().countLeadingZeroBits() - (32 - LIMB_BITS)
+        val n = valueWords.size
+        val shift = valueWords.last().countLeadingZeroBits() - (32 - LIMB_BITS)
         val divisor = IntArray(n)
-        normalizeStoredDivision(value.words, divisor, shift) // No top carry for the divisor.
+        normalizeStoredDivision(valueWords, divisor, shift) // No top carry for the divisor.
         val dividend = IntArray(words.size + 1)
         dividend[words.size] = normalizeStoredDivision(words, dividend, shift)
         val quotient = if (needQuotient) IntArray(words.size - n + 1) else null
@@ -345,7 +417,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             throw ArithmeticException("BigInteger would overflow supported range")
         val estimate = bits.toLong() * exponent
         if (estimate <= 64) {
-            if (part.words.isEmpty()) emptyPowMagnitude()
+            if (part.sign == 0) emptyPowMagnitude()
             // A compact calculation observes the leading unsigned 32-bit magnitude word.
             // False subclass metadata can select it even for a wider stored magnitude.
             val count = (part.magnitudeBits().toLong() + 31).div(32).toInt()
@@ -372,7 +444,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             return if (compactShift) value else shiftPower(value, shift.toInt())
         }
         var e = exponent
-        var base = normalized(part.sign, part.words)
+        var base = normalized(part.sign, part.materializeMagnitude())
         var result = ONE
         while (e != 0) {
             if (e and 1 != 0) result = result.multiply(base)
@@ -387,12 +459,13 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return value.shiftLeftValue(distance)
     }
     open fun gcd(value: BigInteger): BigInteger {
+        val words = materializeMagnitude()
         if (value.sign == 0) return abs()
         if (sign == 0) return value.abs()
         var a = BigInteger(1, words)
-        var b = BigInteger(1, value.words)
+        var b = BigInteger(1, value.materializeMagnitude())
         while (b.sign != 0) { val r = a.remainderStored(b); a = b; b = r }
-        return normalized(1, a.words)
+        return normalized(1, a.materializeMagnitude())
     }
     open fun mod(m: BigInteger): BigInteger {
         if (m.sign <= 0) throw ArithmeticException("BigInteger: modulus not positive")
@@ -422,7 +495,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
                 oddResidue.multiply(binaryModulus).multiply(binaryInverse)
                     .add(binaryResidue.multiply(oddModulus).multiply(oddInverse)).mod(m)
             } else {
-                val modulus = BigInteger(1, m.words)
+                val modulus = BigInteger(1, m.materializeMagnitude())
                 val left = oddResidue.multiply(binaryModulus).multiplyMod(binaryInverse, modulus)
                 val right = binaryResidue.multiply(oddModulus).multiplyMod(oddInverse, modulus)
                 val gap = modulus.subtract(right)
@@ -432,21 +505,24 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return if (inverse) result.modInverse(m) else result
     }
     private fun oddModPowStored(exponent: BigInteger?, modulus: BigInteger): BigInteger {
+        val words = materializeMagnitude()
         val power = exponent ?: throw NullPointerException()
         if (power == ONE) return this
         if (words.isEmpty()) return ZERO
-        val m = BigInteger(1, modulus.words)
+        val m = BigInteger(1, modulus.materializeMagnitude())
         var base = BigInteger(1, words).mod(m)
         var result = ONE.mod(m)
         val bits = power.magnitudeBits()
-        val trivialBase = base.sign == 0 || (base.words.size == 1 && base.words[0] == 1)
+        val baseWords = base.materializeMagnitude()
+        val powerWords = power.materializeMagnitude()
+        val trivialBase = base.sign == 0 || (baseWords.size == 1 && baseWords[0] == 1)
         // If a^e < m, every original loop product is also below m; avoid context setup.
-        val belowModulus = power.words.size == 1 &&
-            power.words[0].toLong() * base.magnitudeBits().toLong() <= m.magnitudeBits().toLong() - 1
+        val belowModulus = powerWords.size == 1 &&
+            powerWords[0].toLong() * base.magnitudeBits().toLong() <= m.magnitudeBits().toLong() - 1
         val context = if (bits == 0 || trivialBase || belowModulus) null else OddModulusContext.create(m)
         if (context != null) return context.pow(base, power, bits)
         for (i in 0 until bits) {
-            if (power.words[i / LIMB_BITS] and (1 shl (i % LIMB_BITS)) != 0)
+            if (powerWords[i / LIMB_BITS] and (1 shl (i % LIMB_BITS)) != 0)
                 result = result.multiplyMod(base, m)
             if (i + 1 < bits) base = base.multiplyMod(base, m)
         }
@@ -469,8 +545,9 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         }
 
         fun pow(base: BigInteger, power: BigInteger, bits: Int): BigInteger {
+            val powerWords = power.materializeMagnitude()
             val workspace = Workspace(modulus.size)
-            base.words.copyInto(workspace.input)
+            base.materializeMagnitude().copyInto(workspace.input)
             var factor = workspace.factor
             var result = workspace.result
             var next = workspace.next
@@ -478,7 +555,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             multiply(workspace.input, r2, factor, workspace.scratch)
             oneMont.copyInto(result)
             for (i in 0 until bits) {
-                if (power.words[i / LIMB_BITS] and (1 shl (i % LIMB_BITS)) != 0) {
+                if (powerWords[i / LIMB_BITS] and (1 shl (i % LIMB_BITS)) != 0) {
                     multiply(result, factor, next, workspace.scratch)
                     val previous = result
                     result = next
@@ -508,12 +585,13 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             private val twos: Int,
             minusOne: BigInteger,
         ) {
+            private val powerWords = power.materializeMagnitude()
             private val workspace = Workspace(context.modulus.size)
             private val minusOneMont = IntArray(context.modulus.size)
             private val bits = power.magnitudeBits()
 
             init {
-                minusOne.words.copyInto(workspace.input)
+                minusOne.materializeMagnitude().copyInto(workspace.input)
                 context.multiply(workspace.input, context.r2, minusOneMont, workspace.scratch)
             }
 
@@ -522,14 +600,14 @@ open class BigInteger private constructor(private val sign: Int, private val wor
                 // callback is skipped here: the caller admits only exact working values.
                 val reduced = BigInteger(base).mod(BigInteger(1, context.modulus))
                 workspace.input.fill(0)
-                reduced.words.copyInto(workspace.input)
+                reduced.materializeMagnitude().copyInto(workspace.input)
                 var factor = workspace.factor
                 var result = workspace.result
                 var next = workspace.next
                 context.multiply(workspace.input, context.r2, factor, workspace.scratch)
                 context.oneMont.copyInto(result)
                 for (i in 0 until bits) {
-                    if (power.words[i / LIMB_BITS] and (1 shl (i % LIMB_BITS)) != 0) {
+                    if (powerWords[i / LIMB_BITS] and (1 shl (i % LIMB_BITS)) != 0) {
                         context.multiply(result, factor, next, workspace.scratch)
                         val previous = result
                         result = next
@@ -605,9 +683,10 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             private const val MAX_WORDS = 4096
 
             fun create(m: BigInteger): OddModulusContext? {
-                val n = m.words.size
+                val mWords = m.materializeMagnitude()
+                val n = mWords.size
                 if (m.sign <= 0 || n == 0 || n > MAX_WORDS ||
-                    m.words[0] and 1 == 0 || (n == 1 && m.words[0] == 1)) return null
+                    mWords[0] and 1 == 0 || (n == 1 && mWords[0] == 1)) return null
                 // Resource checks precede allocations/narrowing; the cap is an optimization,
                 // never a new numerical rejection or an exception/OOM retry policy.
                 val size = n.toLong()
@@ -618,7 +697,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
                 if (scratchCells > Int.MAX_VALUE || setupSteps > Int.MAX_VALUE ||
                     payloadCells > Int.MAX_VALUE || payloadBytes > Int.MAX_VALUE) return null
 
-                val modulus = m.words.copyOf()
+                val modulus = mWords.copyOf()
                 // Lift the inverse one bit at a time. All positive products are <B^2.
                 var inverse = 1L
                 for (bit in 1 until LIMB_BITS) {
@@ -675,6 +754,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     }
 
     private fun moduloPowerOfTwo(bits: Int): BigInteger {
+        val words = materializeMagnitude()
         if (bitLength() <= bits) return this
         if (bits == 0) return ZERO
         val out = words.copyOf(((bits.toLong() + LIMB_BITS - 1) / LIMB_BITS).toInt())
@@ -689,28 +769,31 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         if (testBit(0)) limit = minOf(bits - 1, limit)
         for (i in 0 until limit) {
             if (power.testBit(i)) result = result.multiplyPowerOfTwo(base, bits)
-            if (i + 1 < limit) base = BigInteger(base.sign, base.words).multiplyPowerOfTwo(base, bits)
+            if (i + 1 < limit) base = BigInteger(base.sign, base.materializeMagnitude()).multiplyPowerOfTwo(base, bits)
         }
         return result
     }
     private fun multiplyPowerOfTwo(value: BigInteger, bits: Int): BigInteger {
+        val words = materializeMagnitude()
         if (magnitudeBits().toLong() + value.magnitudeBits() <= Int.MAX_VALUE)
             return multiply(value).moduloPowerOfTwo(bits)
         val modulus = ONE.shiftLeftValue(bits)
         val a = BigInteger(1, words).mod(modulus)
-        val b = BigInteger(1, value.words).mod(modulus)
+        val b = BigInteger(1, value.materializeMagnitude()).mod(modulus)
         return a.multiplyModuloBounded(b, modulus)
     }
     open fun modInverse(m: BigInteger): BigInteger {
+        val words = materializeMagnitude()
         if (m.sign <= 0) throw ArithmeticException("BigInteger: modulus not positive")
         if (m == ONE) return ZERO
-        val reduced = if (sign < 0 || compareMagnitude(words, m.words) >= 0) mod(m) else this
+        val mWords = m.materializeMagnitude()
+        val reduced = if (sign < 0 || compareMagnitude(words, mWords) >= 0) mod(m) else this
         if (reduced == ONE) return ONE
         if (reduced.sign == 0) throw ArithmeticException("BigInteger not invertible.")
         // Working values deliberately bypass arithmetic/metadata overrides.
-        val modulus = BigInteger(1, m.words)
+        val modulus = BigInteger(1, mWords)
         var r = modulus
-        var nextR = BigInteger(1, reduced.words)
+        var nextR = BigInteger(1, reduced.materializeMagnitude())
         var t = ZERO
         var nextT = ONE
         while (nextR.sign != 0) {
@@ -745,6 +828,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     open fun sqrt(): BigInteger = sqrtStored()
 
     private fun sqrtStored(): BigInteger {
+        val words = materializeMagnitude()
         if (sign < 0) throw ArithmeticException("Negative BigInteger")
         if (sign == 0) return ZERO
         val bits = magnitudeBits()
@@ -753,14 +837,15 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         var x = ONE.shiftLeftValue(MagnitudeLimits.initialSqrtShift(bits))
         while (true) {
             val next = x.add(value.quotientStored(x)).shiftRightValue(1)
-            if (compareMagnitude(next.words, x.words) >= 0) return normalized(1, x.words)
+            if (compareMagnitude(next.materializeMagnitude(), x.materializeMagnitude()) >= 0) return normalized(1, x.materializeMagnitude())
             x = next
         }
     }
     open fun sqrtAndRemainder(): Array<BigInteger> {
+        val words = materializeMagnitude()
         val root = sqrtStored()
         val square = root.multiply(root)
-        return arrayOf(root, normalized(1, subtractMagnitude(words, square.words)))
+        return arrayOf(root, normalized(1, subtractMagnitude(words, square.materializeMagnitude())))
     }
 
     open fun shiftLeft(n: Int): BigInteger = shiftLeftValue(n)
@@ -769,6 +854,12 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         if (n == 0) return this
         if (n < 0) return if (n == Int.MIN_VALUE) (if (sign < 0) ONE.negate() else ZERO) else shiftRightValue(-n)
         if (magnitudeBits().toLong() + n > Int.MAX_VALUE) throw ArithmeticException("BigInteger overflow")
+        if (representation == 1 && n < 64) {
+            val value = compactStoredValue529()
+            val shifted = value shl n
+            if (shifted shr n == value) return valueOf(shifted)
+        }
+        val words = materializeMagnitude()
         val whole = n / LIMB_BITS
         val bits = n % LIMB_BITS
         val result = IntArray(words.size + whole + 1)
@@ -790,6 +881,8 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             return shiftLeftValue(-n)
         }
         if (n >= magnitudeBits()) return if (sign < 0) ONE.negate() else ZERO
+        if (representation == 1) return valueOf(compactStoredValue529() shr n)
+        val words = materializeMagnitude()
         val whole = n / LIMB_BITS
         val bits = n % LIMB_BITS
         val result = IntArray(words.size - whole)
@@ -803,28 +896,52 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return if (sign < 0 && lowestSetBitValue() < n) truncated.subtract(ONE) else truncated
     }
 
-    private fun magnitudeBits(): Int = if (words.isEmpty()) 0 else (words.size - 1) * LIMB_BITS + 32 - words.last().countLeadingZeroBits()
+    private fun magnitudeBits(): Int = if (representation == 1) CompactInteger529.magnitudeBits(compactStoredValue529())
+        else (wideWords!!.size - 1) * LIMB_BITS + 32 - wideWords.last().countLeadingZeroBits()
     open fun bitLength(): Int {
+        if (representation == 1) {
+            val value = compactStoredValue529()
+            return 64 - (if (value < 0) value.inv() else value).countLeadingZeroBits()
+        }
+        val words = materializeMagnitude()
         val bits = magnitudeBits()
         if (sign >= 0 || words.last().countOneBits() != 1) return bits
         for (i in 0 until words.lastIndex) if (words[i] != 0) return bits
         return bits - 1
     }
     open fun bitCount(): Int {
+        if (representation == 1) {
+            val value = compactStoredValue529()
+            if (value >= 0) return value.countOneBits()
+            // Keep the existing negative receiver's virtual lowest-set-bit callback.
+            return (-value).countOneBits() + getLowestSetBit() - 1
+        }
+        val words = materializeMagnitude()
         if (sign >= 0) return words.sumOf { it.countOneBits() }
         return words.sumOf { it.countOneBits() } + getLowestSetBit() - 1
     }
     open fun getLowestSetBit(): Int = lowestSetBitValue()
     private fun lowestSetBitValue(): Int {
+        if (representation == 1) {
+            val value = compactStoredValue529()
+            return if (value == 0L) -1 else value.countTrailingZeroBits()
+        }
+        val words = materializeMagnitude()
         for (i in words.indices) if (words[i] != 0) return i * LIMB_BITS + words[i].countTrailingZeroBits()
         return -1
     }
     private fun firstNonzeroWord(): Int {
+        if (representation == 1) return compactStoredValue529().countTrailingZeroBits() / LIMB_BITS
+        val words = materializeMagnitude()
         var first = 0
         while (words[first] == 0) first++
         return first
     }
     private fun testBitValue(n: Int): Boolean {
+        if (n < 0) throw ArithmeticException("Negative bit address")
+        if (representation == 1) return if (n >= 64) sign < 0
+            else compactStoredValue529() and (1L shl n) != 0L
+        val words = materializeMagnitude()
         if (n < 0) throw ArithmeticException("Negative bit address")
         val index = n / LIMB_BITS
         val raw = words.getOrElse(index) { 0 }
@@ -863,6 +980,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     }
     open fun not(): BigInteger {
         val width = bitwiseLength32().toLong() * 32
+        if (this::class == BigInteger::class && representation == 1) return valueOf(compactStoredValue529().inv())
         val result = twosComplement(((width + LIMB_BITS - 1) / LIMB_BITS).toInt())
         for (i in result.indices) result[i] = result[i].inv() and MASK.toInt()
         return bitwiseResult(result, width)
@@ -875,6 +993,9 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     private fun bitwiseLength32(): Int = (bitLength() ushr 5) + 1
     private fun bitwise(value: BigInteger, op: (Int, Int) -> Int): BigInteger {
         val width = maxOf(bitwiseLength32(), value.bitwiseLength32()).toLong() * 32
+        if (this::class == BigInteger::class && value::class == BigInteger::class &&
+            representation == 1 && value.representation == 1)
+            return valueOf(CompactInteger529.value(op(compactHigh, value.compactHigh), op(compactLow, value.compactLow)))
         val length = ((width + LIMB_BITS - 1) / LIMB_BITS).toInt()
         val a = twosComplement(length)
         val b = value.twosComplement(length)
@@ -900,6 +1021,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return normalized(-1, out)
     }
     private fun twosComplement(length: Int): IntArray {
+        val words = materializeMagnitude()
         if (sign >= 0) return words.copyOf(length)
         val out = IntArray(length)
         var carry = 1L
@@ -971,6 +1093,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return true
     }
     open fun nextProbablePrime(): BigInteger {
+        val words = materializeMagnitude()
         if (sign < 0) throw ArithmeticException("start < 0: $this")
         if (sign == 0 || (words.size == 1 && words[0] == 1)) return TWO
         PrimeSearchLimits.checkBitLength(magnitudeBits())
@@ -985,11 +1108,14 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     }
 
     override fun compareTo(other: BigInteger): Int {
+        if (representation == 1 && other.representation == 1)
+            return compactStoredValue529().compareTo(other.compactStoredValue529())
+        val words = materializeMagnitude()
         val operand = other
         if (sign != operand.sign) return if (sign < operand.sign) -1 else 1
         // The public result is exactly -1/0/1. Primitive comparisons promise
         // only a sign, so normalize before reversing a negative receiver.
-        val magnitude = compareMagnitude(words, operand.words)
+        val magnitude = compareMagnitude(words, operand.materializeMagnitude())
         return when {
             magnitude < 0 -> -sign
             magnitude > 0 -> sign
@@ -998,7 +1124,9 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     }
     open fun min(value: BigInteger): BigInteger = if (compareTo(value) < 0) this else value
     open fun max(value: BigInteger): BigInteger = if (compareTo(value) > 0) this else value
-    override fun equals(other: Any?): Boolean = other is BigInteger && sign == other.sign && words.contentEquals(other.words)
+    override fun equals(other: Any?): Boolean = other is BigInteger && sign == other.sign &&
+        if (representation == 1) other.representation == 1 && compactHigh == other.compactHigh && compactLow == other.compactLow
+        else other.representation == 2 && wideWords!!.contentEquals(other.wideWords!!)
     override fun hashCode(): Int {
         var hash = 0
         // Java's public hash behavior uses unsigned 32-bit chunks, independent of our limb layout.
@@ -1010,6 +1138,12 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return hash * sign
     }
     private fun magnitudeWord32(index: Int): Long {
+        if (representation == 1) {
+            val value = compactStoredValue529()
+            val magnitude = if (value < 0) -value else value
+            return if (index in 0..1) (magnitude ushr (index * 32)) and 0xffffffffL else 0L
+        }
+        val words = materializeMagnitude()
         val start = index.toLong() * 32
         val word = (start / LIMB_BITS).toInt()
         val offset = (start % LIMB_BITS).toInt()
@@ -1141,6 +1275,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return RadixDigits537(chunks, count, radix, width)
     }
     private fun toPowerOfTwoString(radix: Int, negative: Boolean): String {
+        val words = materializeMagnitude()
         val bitsPerDigit = when (radix) {
             2 -> 1
             4 -> 2
@@ -1179,11 +1314,15 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     }
     @kotlin.jvm.JvmName("intValue")
     override fun toInt(): Int {
+        if (representation == 1) return compactLow
+        val words = materializeMagnitude()
         val low = words.getOrElse(0) { 0 } or (words.getOrElse(1) { 0 } shl LIMB_BITS)
         return if (sign < 0) -low else low
     }
     @kotlin.jvm.JvmName("longValue")
     override fun toLong(): Long {
+        if (representation == 1) return compactStoredValue529()
+        val words = materializeMagnitude()
         var value = 0L
         for (i in minOf(words.size, 3) - 1 downTo 0) value = (value shl LIMB_BITS) or words[i].toLong()
         return if (sign < 0) -value else value
@@ -1198,9 +1337,12 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     internal fun decimalProductLowBits591(raise: Int, bits: Int): Long {
         require(bits == 32 || bits == 64)
         require(raise in 0 until bits)
-        var value = 0L
-        for (i in minOf(words.size, 3) - 1 downTo 0) value = (value shl LIMB_BITS) or words[i].toLong()
-        if (sign < 0) value = -value
+        var value = if (representation == 1) compactStoredValue529() else {
+            val words = materializeMagnitude()
+            var low = 0L
+            for (i in minOf(words.size, 3) - 1 downTo 0) low = (low shl LIMB_BITS) or words[i].toLong()
+            if (sign < 0) -low else low
+        }
         repeat(raise) { value *= 10L }
         return if (bits == 32) value.toInt().toLong() else value
     }
@@ -1209,10 +1351,9 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     // subclass's Number methods. Long.MIN_VALUE is the noncompact boundary.
     @kotlin.jvm.JvmSynthetic
     internal fun decimalCompactValue(): Long? {
-        if (words.size > 3 || (words.size == 3 && words[2] >= 8)) return null
-        var value = 0L
-        for (i in words.indices.reversed()) value = (value shl LIMB_BITS) or words[i].toLong()
-        return if (sign < 0) -value else value
+        if (representation != 1) return null
+        val value = compactStoredValue529()
+        return if (value == Long.MIN_VALUE) null else value
     }
 
     // Stored magnitude metadata for decimal binary conversion. The certified
@@ -1229,11 +1370,13 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     // See DECIMAL_METADATA_COMPARISON.md for the bounds and comparison proof.
     @kotlin.jvm.JvmSynthetic
     internal fun decimalMagnitudeDigits(): Int {
+        if (representation == 1) return CompactInteger529.decimalDigits(compactStoredValue529())
+        val words = materializeMagnitude()
         if (sign == 0) return 1
         val lower = decimalDigitLowerBound()
         if (lower == 646456993) return lower
         val threshold = DecimalPowers597.lookup(lower) ?: TEN.pow(lower)
-        return lower + if (compareMagnitude(words, threshold.words) >= 0) 1 else 0
+        return lower + if (compareMagnitude(words, threshold.materializeMagnitude()) >= 0) 1 else 0
     }
 
     // Compare positive decimal significands, ignoring the signs and scales.
@@ -1241,14 +1384,17 @@ open class BigInteger private constructor(private val sign: Int, private val wor
     // multi-word division remainder objects are constructed.
     @kotlin.jvm.JvmSynthetic
     internal fun compareDecimalSignificand(other: BigInteger): Int {
+        if (representation == 1 && other.representation == 1)
+            return CompactInteger529.compareDecimalSignificands(compactStoredValue529(), other.compactStoredValue529())
+        val words = materializeMagnitude()
         if (sign == 0 || other.sign == 0)
             return (if (sign == 0) 0 else 1).compareTo(if (other.sign == 0) 0 else 1)
         val difference = decimalMagnitudeDigits() - other.decimalMagnitudeDigits()
-        if (difference == 0) return compareMagnitude(words, other.words)
+        if (difference == 0) return compareMagnitude(words, other.materializeMagnitude())
         val longer = if (difference > 0) this else other
         val shorter = if (difference > 0) other else this
         // Every partial quotient is nonzero and no larger than the input.
-        val quotient = longer.words.copyOf()
+        val quotient = longer.materializeMagnitude().copyOf()
         var length = quotient.size
         var drop = if (difference > 0) difference else -difference
         var sticky = false
@@ -1266,7 +1412,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             sticky = sticky || remainder != 0
             while (length > 0 && quotient[length - 1] == 0) length--
         }
-        val quotientOrder = compareDecimalScratch(quotient, length, shorter.words)
+        val quotientOrder = compareDecimalScratch(quotient, length, shorter.materializeMagnitude())
         val order = if (quotientOrder != 0) quotientOrder else if (sticky) 1 else 0
         return if (difference > 0) order else -order
     }
@@ -1301,6 +1447,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
 
     @kotlin.jvm.JvmSynthetic
     internal fun decimalBinaryPrefix(maxDigits: Int): DecimalBinaryPrefix {
+        val words = materializeMagnitude()
         require(maxDigits > 0)
         if (sign == 0) return DecimalBinaryPrefix(ZERO, 1, 0, false)
         val trim = maxOf(0, decimalDigitLowerBound() - maxDigits)
@@ -1332,8 +1479,13 @@ open class BigInteger private constructor(private val sign: Int, private val wor
             else valueOf(small).floatingValue(precision, maxExponent, false)
         }
         if (bits > maxExponent) return if (sign < 0) Double.NEGATIVE_INFINITY else Double.POSITIVE_INFINITY
+        val words = wideWords
+        val stored = compactStoredValue529()
+        val compactMagnitude = if (stored < 0) -stored else stored
         val shift = maxOf(0, bits - precision)
-        fun magnitudeBit(n: Int): Boolean = words[n / LIMB_BITS] and (1 shl (n % LIMB_BITS)) != 0
+        fun magnitudeBit(n: Int): Boolean = if (representation == 1)
+            compactMagnitude and (1L shl n) != 0L
+            else words!![n / LIMB_BITS] and (1 shl (n % LIMB_BITS)) != 0
         var top = 0L
         for (bit in bits - 1 downTo shift) top = (top shl 1) or if (magnitudeBit(bit)) 1L else 0L
         if (shift > 0 && magnitudeBit(shift - 1) && (lowestSetBitValue() < shift - 1 || top and 1L != 0L)) top++
@@ -1377,11 +1529,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         private val DETERMINISTIC_PRIME_BASES = intArrayOf(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41)
         @JvmStatic open fun valueOf(value: Long): BigInteger {
             if (value in -16L..16L) return SMALL_VALUES[(value + 16).toInt()]
-            var magnitude = if (value < 0) 0uL - value.toULong() else value.toULong()
-            val result = IntArray(3)
-            var i = 0
-            while (magnitude != 0uL) { result[i++] = (magnitude and MASK.toULong()).toInt(); magnitude = magnitude shr LIMB_BITS }
-            return normalized(if (value < 0) -1 else 1, result)
+            return BigInteger(value)
         }
         @kotlin.jvm.JvmSynthetic
         @JvmStatic open fun probablePrime(bitLength: Int, rnd: Random): BigInteger = generatePrime(bitLength, 100, rnd)
