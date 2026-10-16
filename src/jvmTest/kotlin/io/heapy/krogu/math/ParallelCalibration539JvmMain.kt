@@ -35,7 +35,7 @@ object ParallelCalibration539JvmMain {
         check(allocations.totalThreadAllocatedBytes >= 0) { "All-thread allocation observation unavailable" }
         println("# parallel539 java=${System.getProperty("java.vendor")} ${System.getProperty("java.runtime.version")} arch=${System.getProperty("os.arch")} processors=${Runtime.getRuntime().availableProcessors()} pid=${ProcessHandle.current().pid()} start_ms=${ManagementFactory.getRuntimeMXBean().startTime} order=${args[0]}")
         println("# main=${args[3]} probe=${args[5]} CPU=whole_process allocation=approx_all_threads heap_peak=sum_pool_peaks_upper_bound RSS=external_including_reference_preparation")
-        println("# setup_rows=one_fresh_executor_plus_first_product_and_shutdown_not_await_termination; steady_rows=reused_warm_executor")
+        println("# setup_rows=one_fresh_executor_plus_first_product_shutdown_and_await_termination; steady_rows=reused_warm_executor")
         val policy = MultiplicationPolicy539(64, 16, 384)
         val sizes = listOf(256, 1024, 4096, 8192, 16384).let { if (args[0] == "reverse") it.reversed() else it }
         for (size in sizes) {
@@ -62,9 +62,10 @@ object ParallelCalibration539JvmMain {
                     if (workers > 0) {
                         var fresh: ParallelCandidate539? = null
                         val setup = observe(1) {
-                            ParallelCandidate539(workers).also { fresh = it }.use { it.multiply(a, b, policy) }
+                            val result = ParallelCandidate539(workers).also { fresh = it }.use { it.multiply(a, b, policy) }
+                            check(checkNotNull(fresh).awaitTermination539(5)) { "Fresh pool did not terminate" }
+                            result
                         }
-                        check(checkNotNull(fresh).awaitTermination539(5)) { "Fresh pool did not terminate" }
                         check(expected.contentEquals(escape))
                         println("SETUP539,$id,${setup.wall},${setup.cpu},${setup.allocated},${setup.heapPeakUpperBound}")
                     }
