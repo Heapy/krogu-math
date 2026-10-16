@@ -161,9 +161,14 @@ JVM/JS/Wasm/macOS ARM64. A separately checked complete94,282-record sqrt ledger
 retains strict coefficient/scale/precision/text/error checks and independently
 certifies2,473 required inexact cohort lifts. Unchanged p-digit references and
 error decisions have the narrower acceptance scopes recorded in that report.
-Matching-head hosted/public acceptance remains open; the restored original
-public sqrt main call has not yet been executed. Giant lexical/range witnesses
-remain symbolic, and the broader548/549 obligations remain open.
+The subsequent [source247 hosted report](docs/source247-hosted-verification.md)
+records 5,626 supported-platform method executions across 13 target instances
+and 25 successful oracle commands at published 47447f2. Normal 106 and separate
+large 12 PASS IDs form the exact disjoint 118 retained-ID set, with 12 adaptation
+losses still declared. The original public sqrt scale-overflow call is restored
+and executed. Giant lexical/range witnesses remain symbolic; broader 548/549
+obligations and the 525/557 Number caller issue remain open. Private source248
+is excluded from this published snapshot.
 
 Two confirmed extreme-scale decimal defects, their bounded mathematical witnesses,
 retained JDK diagnostics and deliberate numerical divergences are documented in
