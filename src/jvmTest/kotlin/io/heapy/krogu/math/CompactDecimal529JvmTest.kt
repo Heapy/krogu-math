@@ -5,6 +5,33 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class CompactDecimal529JvmTest {
+    @Test fun cachedPowersAndThresholdRoundingMatchPublicOracle() {
+        val values = mutableSetOf(Long.MIN_VALUE, Long.MAX_VALUE, 99995L, -99995L)
+        var power = 1L
+        repeat(19) { exponent ->
+            for (value in listOf(power - 1, power, power + 1)) if (value != 0L) {
+                values += value
+                values += -value
+            }
+            if (exponent < 18) power *= 10L
+        }
+        for (value in values) for (precision in listOf(1, 4, 7, 18, 19))
+            for (mode in RoundingMode.entries) {
+                val context = MathContext(precision, mode)
+                val hostContext = java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))
+                val input = BigDecimal.valueOf(value, 2)
+                val host = java.math.BigDecimal.valueOf(value, 2)
+                val expected = try { host.round(hostContext) } catch (_: ArithmeticException) { null }
+                if (expected == null) {
+                    kotlin.test.assertFailsWith<ArithmeticException>("$value/$precision/$mode") { input.round(context) }
+                } else {
+                    val actual = input.round(context)
+                    assertEquals(expected.unscaledValue().toString(), actual.unscaledValue().toString(), "$value/$precision/$mode coefficient")
+                    assertEquals(expected.scale(), actual.scale(), "$value/$precision/$mode scale")
+                }
+            }
+    }
+
     private fun compare(label: String, expected: () -> java.math.BigDecimal, actual: () -> BigDecimal) {
         val jdk = try { expected() } catch (failure: ArithmeticException) {
             val own = try { actual(); error("Expected ArithmeticException: $label") } catch (own: ArithmeticException) { own }

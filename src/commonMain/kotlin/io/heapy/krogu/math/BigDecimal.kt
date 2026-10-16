@@ -522,12 +522,16 @@ open class BigDecimal private constructor(
     }
     private fun quotientExponent(divisor: BigDecimal): Long {
         //597 exact ordinary coefficient/MIN eligibility, read directly from storage.
-        if (representation == 1 && divisor.representation == 1 &&
-            compactValue529() != Long.MIN_VALUE && divisor.compactValue529() != Long.MIN_VALUE)
-            return CompactInteger529.decimalDigits(compactValue529()).toLong() -
-                CompactInteger529.decimalDigits(divisor.compactValue529()) +
-                divisor.decimalScale.toLong() - decimalScale -
-                if (CompactInteger529.compareDecimalSignificands(compactValue529(), divisor.compactValue529()) < 0) 1 else 0
+        if (representation == 1 && divisor.representation == 1) {
+            val a = compactValue529()
+            val b = divisor.compactValue529()
+            if (a != Long.MIN_VALUE && b != Long.MIN_VALUE) {
+                val ad = CompactInteger529.decimalDigits(a)
+                val bd = CompactInteger529.decimalDigits(b)
+                return ad.toLong() - bd + divisor.decimalScale.toLong() - decimalScale -
+                    if (CompactInteger529.compareDecimalSignificands(a, b, ad, bd) < 0) 1 else 0
+            }
+        }
         val coefficient = coefficientSnapshot()
         val divisorCoefficient529 = divisor.coefficientSnapshot()
         if (coefficient.decimalCompactValue() == null || divisorCoefficient529.decimalCompactValue() == null)
@@ -539,9 +543,12 @@ open class BigDecimal private constructor(
     }
     private fun normalizedComparison(divisor: BigDecimal): Int {
         //597 exact ordinary coefficient/MIN eligibility, read directly from storage.
-        if (representation == 1 && divisor.representation == 1 &&
-            compactValue529() != Long.MIN_VALUE && divisor.compactValue529() != Long.MIN_VALUE)
-            return CompactInteger529.compareDecimalSignificands(compactValue529(), divisor.compactValue529())
+        if (representation == 1 && divisor.representation == 1) {
+            val a = compactValue529()
+            val b = divisor.compactValue529()
+            if (a != Long.MIN_VALUE && b != Long.MIN_VALUE)
+                return CompactInteger529.compareDecimalSignificands(a, b)
+        }
         val coefficient = coefficientSnapshot()
         val divisorCoefficient529 = divisor.coefficientSnapshot()
         if (coefficient.decimalCompactValue() == null || divisorCoefficient529.decimalCompactValue() == null)
@@ -1073,8 +1080,7 @@ open class BigDecimal private constructor(
             val half = if (drop > 19) -1 else (-5000000000000000000L).compareTo(negative)
             return if (increment(mode, sign, half, false)) sign.toLong() else 0L
         }
-        var divisor = 1L
-        repeat(drop.toInt()) { divisor *= 10 }
+        val divisor = CompactInteger529.decimalPower(drop.toInt())
         val quotient = value / divisor
         val remainder = value % divisor
         if (remainder == 0L) return quotient
@@ -1450,13 +1456,8 @@ open class BigDecimal private constructor(
         }
         // Fully initialized immutable bounded table: 19 references, no dynamic
         // growth, retained inputs, synchronization or public mutable arrays.
-        private val SMALL_TEN_POWERS: Array<BigInteger> = run {
-            var power = 1L
-            Array(19) { index ->
-                if (index != 0) power *= 10L
-                BigInteger.valueOf(power)
-            }
-        }
+        private val SMALL_TEN_POWERS: Array<BigInteger> =
+            Array(19) { index -> BigInteger.valueOf(CompactInteger529.decimalPower(index)) }
         private fun checkedScale(scale: Long): Int {
             if (scale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong()) throw ArithmeticException(if (scale < 0) "Overflow" else "Underflow")
             return scale.toInt()

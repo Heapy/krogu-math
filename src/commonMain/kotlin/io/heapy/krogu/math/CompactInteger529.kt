@@ -14,18 +14,39 @@ internal object CompactInteger529 {
         a == 0L || b == 0L ||
             (a != Long.MIN_VALUE || b != -1L) && (b != Long.MIN_VALUE || a != -1L) && result / a == b
 
-    // A signed negative accumulator represents every magnitude through 2^63.
-    fun decimalDigits(value: Long): Int {
-        var negative = if (value > 0) -value else value
-        var digits = 1
-        while (negative <= -10) { negative /= 10; digits++ }
-        return digits
+    // One immutable shared cache, not a retained field of any numeric value.
+    //19 signed64-bit cells=152 payload bytes, plus target-specific array/object
+    // headers (and Kotlin/JS Long objects). No magnitude beyond1e18 is negated.
+    private val negativePowers = run {
+        var power = -1L
+        LongArray(19) { index ->
+            if (index != 0) power *= 10L
+            power
+        }
     }
 
-    fun compareDecimalSignificands(a: Long, b: Long): Int {
+    fun decimalPower(exponent: Int): Long = -negativePowers[exponent]
+
+    // Negative magnitudes include MIN. At most5 comparisons replace repeated
+    // Long division; cached negative thresholds require no per-comparison negate.
+    fun decimalDigits(value: Long): Int {
+        val negative = if (value > 0L) -value else value
+        var lower = 1
+        var upper = 19
+        while (lower < upper) {
+            val middle = (lower + upper) ushr 1
+            if (negative > negativePowers[middle]) upper = middle else lower = middle + 1
+        }
+        return lower
+    }
+
+    fun compareDecimalSignificands(a: Long, b: Long): Int =
+        compareDecimalSignificands(a, b, decimalDigits(a), decimalDigits(b))
+
+    fun compareDecimalSignificands(a: Long, b: Long, leftDigits: Int, rightDigits: Int): Int {
         var left = if (a > 0) -a else a
         var right = if (b > 0) -b else b
-        val difference = decimalDigits(left) - decimalDigits(right)
+        val difference = leftDigits - rightDigits
         var sticky = false
         if (difference > 0) repeat(difference) { sticky = sticky || left % 10 != 0L; left /= 10 }
         if (difference < 0) repeat(-difference) { sticky = sticky || right % 10 != 0L; right /= 10 }

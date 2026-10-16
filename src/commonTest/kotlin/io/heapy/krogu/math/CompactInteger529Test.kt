@@ -6,6 +6,25 @@ import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class CompactInteger529Test {
+    @Test fun negativeThresholdDigitsCoverPowersNeighborsAndFullLong() {
+        val values = mutableSetOf(0L, Long.MIN_VALUE, Long.MAX_VALUE)
+        var power = 1L
+        repeat(19) { exponent ->
+            assertEquals(power, CompactInteger529.decimalPower(exponent))
+            for (value in listOf(power - 1, power, power + 1)) {
+                values += value
+                values += -value
+            }
+            if (exponent < 18) power *= 10L
+        }
+        for (value in values) {
+            val expected = value.toString().removePrefix("-").length
+            assertEquals(expected, CompactInteger529.decimalDigits(value), "digits $value")
+            assertEquals(expected, BigInteger.valueOf(value).decimalMagnitudeDigits(), "integer $value")
+            assertEquals(expected, BigDecimal.valueOf(value, 2).precision(), "decimal $value")
+        }
+    }
+
     @Test fun scalarWideMultiplyRetainsCarrySignsAndInputs() {
         val values = listOf("9223372036854775808", "18446744073709551615", "1234567890123456789012345678901234567890")
         for (text in values) for (word in listOf(1L, 12345L, 1073741823L, 1073741824L))
