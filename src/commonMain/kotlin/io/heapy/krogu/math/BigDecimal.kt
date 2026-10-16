@@ -513,15 +513,18 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     // Precision reduction only; internal callers retain operation-specific scales.
     private fun roundValue(mc: MathContext): BigDecimal {
         if (mc.precision == 0) return this
-        var result = this
-        var drop = result.precision() - mc.precision
+        // Keep the first public precision observation; subsequent values are
+        // ordinary stored coefficients. Only publish the final decimal wrapper.
+        var drop = precision() - mc.precision
+        if (drop <= 0) return this
+        var value = coefficient
+        var scale = decimalScale
         while (drop > 0) {
-            val scale = checkedRoundingScale(result.decimalScale.toLong() - drop)
-            result = BigDecimal(roundedDivide(result.coefficient, tenPow(drop.toLong()), mc.roundingMode),
-                scale)
-            drop = result.precision() - mc.precision
+            scale = checkedRoundingScale(scale.toLong() - drop)
+            value = roundedDivide(value, tenPow(drop.toLong()), mc.roundingMode)
+            drop = value.decimalMagnitudeDigits() - mc.precision
         }
-        return result
+        return BigDecimal(value, scale)
     }
     // Convenience overloads retain the public legacy-Int dispatch used by JDK.
     open fun setScale(newScale: Int): BigDecimal = setScale(newScale, ROUND_UNNECESSARY)
@@ -559,10 +562,52 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     private fun stripTo(minScale: Int, failOnOverflow: Boolean = false): BigDecimal {
         var value = coefficient
         var scale = decimalScale
-        while (value.signum() != 0 && scale > minScale) {
+        // Most application coefficients fit a signed Long. No negation is
+        // needed, and decimalCompactValue excludes the Long.MIN_VALUE boundary.
+        val compact = value.decimalCompactValue()
+        if (compact != null) {
+            var unscaled = compact
+            while (unscaled != 0L && scale > minScale && unscaled % 10L == 0L) {
+                unscaled /= 10L
+                scale--
+            }
+            if (failOnOverflow && scale == Int.MIN_VALUE && unscaled != 0L && unscaled % 10L == 0L)
+                throw ArithmeticException("Overflow")
+            return if (scale == decimalScale) this else BigDecimal(BigInteger.valueOf(unscaled), scale)
+        }
+        // A one-digit probe keeps ordinary nonmultiples of ten on one division.
+        // After a successful probe, prove at most nine exact digits using a
+        // remainder-only pass (10^9 fits one radix-2^30 word), then divide only
+        // by the proven factor. No discarded full quotient or scale overshoot.
+        if (value.signum() != 0 && scale > minScale) {
             val qr = value.divideAndRemainder(BigInteger.TEN)
-            if (qr[1].signum() != 0) break
-            value = qr[0]; scale--
+            if (qr[1].signum() == 0) {
+                value = qr[0]; scale--
+                // Select a proven exact chunk from the small remainder first.
+                // Single-output remainder avoids allocating a speculative wide
+                // quotient; quotient-only division then publishes only exact work.
+                var twos = value.getLowestSetBit()
+                while (scale > minScale && twos > 0) {
+                    val chunk = minOf(9L, scale.toLong() - minScale, twos.toLong()).toInt()
+                    val remainder = value.remainder(tenPow(chunk.toLong())).decimalCompactValue()!!
+                    var exact = chunk
+                    if (remainder != 0L) {
+                        var low = remainder
+                        exact = 0
+                        while (low % 10L == 0L) {
+                            low /= 10L
+                            exact++
+                        }
+                    }
+                    if (exact == 0) break
+                    value = value.divide(tenPow(exact.toLong()))
+                    scale -= exact
+                    twos -= exact
+                    // A nonzero remainder proves the first nonzero decimal digit
+                    // before the end of this chunk, so the tail is complete.
+                    if (exact < chunk) break
+                }
+            }
         }
         if (failOnOverflow && scale == Int.MIN_VALUE && value.signum() != 0 && value.remainder(BigInteger.TEN).signum() == 0)
             throw ArithmeticException("Overflow")
@@ -1024,7 +1069,17 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         private fun tenPow(exponent: Long): BigInteger {
             if (exponent < 0) throw ArithmeticException("BigInteger overflow")
             if (exponent > 646456992L) throw ArithmeticException("BigInteger would overflow supported range")
+            if (exponent < SMALL_TEN_POWERS.size) return SMALL_TEN_POWERS[exponent.toInt()]
             return BigInteger.TEN.pow(exponent.toInt())
+        }
+        // Fully initialized immutable bounded table: 19 references, no dynamic
+        // growth, retained inputs, synchronization or public mutable arrays.
+        private val SMALL_TEN_POWERS: Array<BigInteger> = run {
+            var power = 1L
+            Array(19) { index ->
+                if (index != 0) power *= 10L
+                BigInteger.valueOf(power)
+            }
         }
         private fun checkedScale(scale: Long): Int {
             if (scale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong()) throw ArithmeticException(if (scale < 0) "Overflow" else "Underflow")
@@ -1044,6 +1099,21 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         }
         private fun exponentText(exponent: Long): String = "E" + (if (exponent >= 0) "+" else "") + exponent
         private fun roundedDivide(numerator: BigInteger, denominator: BigInteger, mode: RoundingMode): BigInteger {
+            if (numerator::class == BigInteger::class && denominator::class == BigInteger::class) {
+                val a = numerator.decimalCompactValue()
+                val b = denominator.decimalCompactValue()
+                if (a != null && b != null && b != 0L) {
+                    val quotient = a / b
+                    val remainder = a % b
+                    if (remainder == 0L) return BigInteger.valueOf(quotient)
+                    val sign = if ((a < 0L) == (b < 0L)) 1 else -1
+                    val r = if (remainder < 0L) -remainder else remainder
+                    val d = if (b < 0L) -b else b
+                    val half = r.compareTo(d - r)
+                    return BigInteger.valueOf(if (increment(mode, sign, half, quotient and 1L != 0L))
+                        quotient + sign else quotient)
+                }
+            }
             val qr = numerator.divideAndRemainder(denominator)
             if (qr[1].signum() == 0) return qr[0]
             val sign = numerator.signum() * denominator.signum()

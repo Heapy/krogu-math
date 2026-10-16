@@ -1,0 +1,4 @@
+bd03fc2707b1219ca2e1ad747e9810285c3255fdc692d3941993fb37dd2b1afd  src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
+42d900a30dd885f648b535d2c282d80ba3b2cc8740ce4c13f056a28289412a2f  src/commonTest/kotlin/io/heapy/krogu/math/DecimalScaling533Test.kt
+f2b0a097bd3ba4bf37c7017e867532180fca02955b45b5a966100409d11b4bf4  src/jvmTest/kotlin/io/heapy/krogu/math/DecimalScaling533JvmTest.kt
+91bb785f332669c68086db565fdc295e7d8f0e22fca93133de117bc9b1ce298d  scripts/measure-decimal-scaling-533.main.kts

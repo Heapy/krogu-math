@@ -1,0 +1,30 @@
+{
+  "jvmTest": {
+    "suites": 182,
+    "tests": 605,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "jsNodeTest": {
+    "suites": 91,
+    "tests": 406,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "wasmJsNodeTest": {
+    "suites": 91,
+    "tests": 406,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "macosArm64Test": {
+    "suites": 91,
+    "tests": 406,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

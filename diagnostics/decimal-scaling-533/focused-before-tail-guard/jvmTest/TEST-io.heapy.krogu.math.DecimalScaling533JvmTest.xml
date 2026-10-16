@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="DecimalScaling533JvmTest[jvm]" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-16T12:18:59.796Z" hostname="ruslans-macbook-pro.tail872780.ts.net" time="0.222">
+  <properties/>
+  <testcase name="signedCompactDivisionRetainsEveryRoundingMode[jvm]" classname="io.heapy.krogu.math.DecimalScaling533JvmTest" time="0.049"/>
+  <testcase name="scalingRoundingAndStrippingMatchPublicJdk[jvm]" classname="io.heapy.krogu.math.DecimalScaling533JvmTest" time="0.17"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="DecimalScaling533Test[jvm]" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-16T12:31:48.182Z" hostname="ruslans-macbook-pro.tail872780.ts.net" time="0.005">
+  <properties/>
+  <testcase name="initialVirtualPrecisionAndLegacySetScaleDispatchRemain[jvm]" classname="io.heapy.krogu.math.DecimalScaling533Test" time="0.001"/>
+  <testcase name="cacheBoundaryAndExtremeRescaleKeepExactAndFinitePolicies[jvm]" classname="io.heapy.krogu.math.DecimalScaling533Test" time="0.001"/>
+  <testcase name="wideBinaryFactorsDoNotImplyDecimalTail[jvm]" classname="io.heapy.krogu.math.DecimalScaling533Test" time="0.001"/>
+  <testcase name="signedHalfwayStickyAndCarryHaveLiteralResults[jvm]" classname="io.heapy.krogu.math.DecimalScaling533Test" time="0.0"/>
+  <testcase name="compactAndChunkedStripPreserveCohortsAtScaleBoundaries[jvm]" classname="io.heapy.krogu.math.DecimalScaling533Test" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
