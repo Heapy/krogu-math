@@ -1,2 +1,3 @@
-final-local-summary.csv -text
-local-summary.csv -text
+final-local-summary.csv -text whitespace=cr-at-eol
+local-summary.csv -text whitespace=cr-at-eol
+final-own-source.patch -whitespace
