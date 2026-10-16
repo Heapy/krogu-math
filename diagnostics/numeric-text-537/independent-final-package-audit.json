@@ -1,0 +1,17 @@
+{
+  "status": "FINAL_CANONICAL_PACKAGE_PASS_PENDING_COMMIT_INTEGRATION",
+  "entries": 22,
+  "shaLines": 23,
+  "archivesIndependentlyReadAndChecked": {
+    "reviews-and-provenance.tar.gz": 45,
+    "frozen-bundles.tar.gz": 181,
+    "initial-campaign.tar.gz": 70,
+    "final-full-regression.tar.gz": 506,
+    "builds-and-runtime.tar.gz": 31,
+    "fixed-campaign.tar.gz": 70
+  },
+  "allIndexedSizesAndHashes": "PASS",
+  "noUnindexedFiles": "PASS",
+  "independentAuditsByteIdentical": "PASS",
+  "report": "literal scope, all adverse pooled/perfork data, quantitative shortbatch/sharedhost limits and separate initial/final scope reviewed PASS"
+}

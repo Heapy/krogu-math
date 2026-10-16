@@ -85,6 +85,11 @@
       "sha256": "b7e1968723608e476f30d21faca70fe9946581abe380a0836dfe50b9b92c0793"
     },
     {
+      "path": "independent-final-package-audit.json",
+      "bytes": 641,
+      "sha256": "0638322cdc9404b3d5385b9dc62318805d85c68e107dffc41b9e2c908479cd77"
+    },
+    {
       "path": "independent-fixed-full-regression-audit.json",
       "bytes": 4075,
       "sha256": "21154831921fd45c2fd49d95b16c94d88c8cf0f438f84b7c37762178cdcb6f55"
