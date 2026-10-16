@@ -93,7 +93,7 @@ fun execute(era:String,jar:File,fork:Int,mode:String,case:String) {
     val name="$era-$fork-$mode-${case.replace('/','_')}"
     val destination=File(output,name)
     val classpath=(listOf(jar,probe)+libraries).joinToString(File.pathSeparator)
-    val command=listOf(java,"-Xms128m","-Xmx1g","-XX:+UseSerialGC","-cp",classpath,"bench.Gap597Probe",
+    val command=listOf(java,"-Xms256m","-Xmx1g","-XX:+UseG1GC","-cp",classpath,"bench.Gap597Probe",
         mode,if(era=="jdk") "jdk" else "krogu",jar.path,artifacts.getValue(jar),probe.path,artifacts.getValue(probe),
         "$fork",if(fork%2==0) "forward" else "reverse",case,destination.path)
     host("$name-before")

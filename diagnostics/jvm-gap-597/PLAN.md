@@ -78,3 +78,9 @@ before checksum/CSV formatting or writes. There is a small boundary around the
 start/stop counter reads themselves; post-measurement own hashCode calls are not
 included in JFR attribution. Recorded input offsets/masks are checked exactly
 against operations, including contiguous logical indices across profile blocks.
+
+Original JVM flags are preserved from527 environment.txt: -Xms256m -Xmx1g
+-XX:+UseG1GC. Timing samples also preserve its forced post-sample GC outside
+both brackets. The focused probe selects20 cases instead of the full64 and adds
+CPU counters, warmup/first-observation controls, so old527 numbers remain historical;
+only same-compiled-probe paired era/current/JDK results are fresh comparisons.

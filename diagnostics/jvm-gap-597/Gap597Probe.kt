@@ -89,7 +89,9 @@ object Gap597Probe {
                     val cpuNs = memory.currentThreadCpuTime - cpu
                     val bytes = memory.getThreadAllocatedBytes(tid) - alloc
                     val mask = if (count >= 16) 65535 else (0 until count).fold(0) { m, i -> m or (1 shl ((i + offset) and 15)) }
-                    csv.appendLine("${args[1]},${case.name},$sample,$count,$elapsed,$cpuNs,$bytes,${checksum()},${offset and 15},$mask")
+                    val digest = checksum()
+                    System.gc() //527 JVM post-sample snapshot also forces GC outside both brackets.
+                    csv.appendLine("${args[1]},${case.name},$sample,$count,$elapsed,$cpuNs,$bytes,$digest,${offset and 15},$mask")
                 } else {
                     val job = case.prepare(count, seed)
                     val recording = if (mode == "profile") Recording().apply {
