@@ -10,11 +10,37 @@ unconditional theorem about actual platform PRNGs,
 hostile callbacks,548 allocation capacity, whole547 or full-project acceptance.
 Preparing this document performs no numerical run or fixture/assertion change.
 
-## Current binding
+## Later source253 composition
+
+The [source253 manifest](source253.sha256), SHA
+`aa90e836005efc363e9575026cd12049b0bb6ac42eb3a716f20d04c596bac1ad`,
+binds BigInteger
+`8b6359be57ebbc8047102e5dea420e307d4fb128cbf686a054b04dff2600b1ff`.
+It differs from the652262fa source250 file below only by the five-line final
+decimal-power stored bridge after line223. Removing that insertion exactly
+recovers250; primality, generation, sampling, constants and modular bodies are
+unchanged and do not reach the bridge. Cited source250 locations after223 move
+five lines later in253; earlier references and the named other files stay
+unchanged. Below, “current source250” denotes that preserved snapshot.
+
+The [source250 supported/oracle report](source250-hosted-verification.md) now
+accepts5,743 methods/13 instances and25 oracle checks; its
+[separate public campaigns](source250-public-math-verification-559.md) accept
+106 normal plus12 large PASS IDs with all12 adaptation losses retained.
+[Source253 local validation](decimal-power-593-verification.md) passes1,744
+methods on four targets; matching253 hosted/public gates remain separate.
+Neither count proves actual platform/caller RNG history-conditioned uniformity.
+The complete conditional error-budget/sampling argument and every explicit
+randomness, truthful-leaf and allocation premise below are unchanged. Historical
+then-pending statements retain their preparation-time meaning; no unconditional
+actual-PRNG or whole-project acceptance is introduced.
+
+## Source250 and historical binding
 
 | File | SHA-256 |
 | --- | --- |
-| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` (locally validated composition) | `12fd0a14164bfd81b004c66673ae37ea40719bf3552f171ba20b434a296d8602` |
+| `src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt` (current source250 composition) | `652262fa7f92f9766dea92fd2143224449d509968228d8b21f6d85ee86cf2441` |
+| `BigInteger.kt` historical585/586/source240 binding | `12fd0a14164bfd81b004c66673ae37ea40719bf3552f171ba20b434a296d8602` |
 | `BigInteger.kt` baseline for line references and historical583 execution | `d6d531742a7b12bd6cc09cf6b98daca11f70b5207687ecd4c04c5a11d655a9b2` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/PrimalityCertainty.kt` | `93f0c4743f9a7d8d9acdedd283760904bbfd2caf55e5e4973dd6331d2aa57479` |
 | `src/commonMain/kotlin/io/heapy/krogu/math/PrimeSearchLimits.kt` | `66e7d92b5d6091067ee02679534060fc9d8559328c7fafc45805b3d7493c3a85` |
@@ -25,31 +51,57 @@ Preparing this document performs no numerical run or fixture/assertion change.
 | `docs/prime-search-range-559-proof.md` | `002d68d8fb6162ec27c356273a5f0b0d34f2d238d83b3653e0064a5367f16d5f` |
 | `docs/platform-random-validation-549-proof.md` | `20921ad4f1e4729849871b6b129ebf2c628ca7329cee065f2cd36986bd0a3f59` |
 
-This table binds the locally validated585/586 composition at
+The current [source250 manifest](source250.sha256) is
+`5f99c5c5ee792180ae64b6448c82e034e4d13e21e7fedc1b6875e6c0e8bd92ef`.
+Numerical commit `157e241dcfab31be0ce4709dd8ace9915424f46a` and published
+`7443de65bb2a03aff75346a1c1234e9d9da4c3d0` have these same numerical sources.
+All BigInteger line references below intentionally retain the `d6d53174…`
+baseline: predicate/successor regions occur 53 lines later in source250;
+constants/factory/sampling regions occur 78 lines later. Other named files keep
+their original line references and unchanged hashes.
+
+Direct source247(`12fd0a14…`)→250(`652262fa…`) comparisons show the complete
+predicate/successor slices825–884/current860–919 byte-identical, SHA
+`dd258b2198c4e8a2b86eaf086fcac7ce977c01a02c82de6b082f773bad01898a`.
+The constants/factory/sampling slices1158–1199/current1218–1259 are also
+byte-identical, SHA
+`65b93372c092412183bf223ca96ebfb28d095bbcba8fb2f35ac483ac957271d8`.
+The decimal590/591/592 bridges are outside their call graphs. The changed
+compareTo leaf normalizes exact −1/0/1 as publicly required; every primality, sampler and
+successor comparison predicate observes only the unchanged ordering sign.
+No candidate/witness bits, cutoff, round budget, RNG adapter or probability
+premise is changed by this binding refresh.
+
+The [accepted local250 verification](decimal-range-590-592-verification.md), SHA
+`71933e0186c63657970a0f7cd368f231c5f554a5dd8f2c1472214d916118668a`,
+records 426 suites/1,723 methods across JVM/JS/Wasm/macOS ARM64 and fresh own JAR
+`24a9e68403b77b7e6e1980472291b38e2cbb1bc30ee2f0d73e4d87e53239067f`.
+It supplies finite integration evidence, not a probability experiment or proof
+of ideal PRNG streams. At this source-only refresh milestone, matching7443
+hosted/public acceptance is pending; ongoing jobs are not PASS evidence.
+The existing549 source lemma still supplies invalid-size/NN bridge category
+accounting, without requiring new injectable RNG seams or mirror Java tests.
+
+The historical table previously bound the585/586 composition at
 `/private/tmp/krogu-585-586-validation-g0etGe15/root`, whose240-source manifest is
 `e3539c0bda309350d72ebb89656a9f54e3c7f720fe943616153050e2be493aa9`.
-All BigInteger line numbers and ranges below use the preserved `d6d53174…`
-baseline. The new `12fd0a14…` file adds only18 lines after baseline line82 for
+At that stage the `12fd0a14…` file added only18 lines after baseline line82 for
 the nonvirtual decimal-only `alignedDecimalSum585` bridge; every preexisting byte
-before/after that insertion is unchanged. All cited BigInteger regions therefore
-occur18 lines later in the current source. PrimalityCertainty and other named
-files keep their existing line references and hashes.
+before/after that insertion was unchanged. All cited BigInteger regions therefore
+occurred18 lines later in that historical source.
 
-Primality predicates, candidate generation, successor search, RNG adapters,
-round budgets/constants and their modular/integer leaves remain unchanged and
-do not enter the bridge. BigDecimal's sum seams and private sticky equality586
-branch are outside these call graphs. The conditional probability argument,
-actual-PRNG assumptions and resource/callback limits below are unchanged. No new
-math waiver, cap, API/layout/cache or serialization condition is introduced.
+Those decimal-only changes did not alter the primality/probability arguments.
+The conditional probability argument,actual-PRNG assumptions and resource/
+callback limits below remain unchanged; no new math waiver,cap,API/layout/cache
+or serialization condition is introduced.
 The separate [local verification](decimal-sum-sticky-585-586-verification.md)
 records1,610 passing method executions across JVM/JS/Wasm/macOS ARM with unchanged
 source240 and own JAR
 `1cacc5b41ede2e154e9c7baf948bd1748f4d424932f3fb7e4a592085b1ed00e1`.
-This is finite integration evidence, not a new probability experiment or proof
-of actual-PRNG premises. Matching hosted/public gates for this240-source revision
-remain pending; independent actual-adoption review and publication remain
-separate. This draft executes nothing and adopts
-no historical run as a new pass.
+Those1,610 counts and JAR remain historical source240 evidence. At that earlier
+binding milestone matching240 hosted/public gates and adoption were pending;
+that historical state is not a current250 claim. This refresh executes nothing,
+acquires no hosted artifacts and adopts no historical run as a new pass.
 
 Current modular leaves/context/fallback and their precise proof pins are bound
 in [modular substitution546](modular-substitution-546-proof-binding.md). The
@@ -175,7 +227,7 @@ or practical billion-round completion above the deterministic cutoff.
 The [historical583 local report](decimal-residual-583-verification.md), SHA-256
 `43809d15ca7ee37613a613c934be9fec47b8db88288027af1a26d327463824fc`, records
 the baseline `d6d53174…`236-source integration's1,584 exact method executions across
-four local targets, not execution of current `12fd0a14…`, whose new local result
+four local targets, not execution of current `652262fa…`, whose local result
 is recorded separately above. This is existing finite
 evidence, not a new547 campaign or an all-input
 probability experiment. All old assertions/fixtures remain active. Conditional

@@ -221,6 +221,11 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         return ZERO to residualScale.toInt()
     }
 
+    // Only selected pow work enters this final stored view; zero keeps its old route.
+    @kotlin.jvm.JvmSynthetic
+    internal fun decimalPowerState593(scale: Int): DecimalPower593.State? =
+        if (sign == 0) null else DecimalPower593.fromMagnitude(sign, words, scale)
+
     open fun divide(value: BigInteger): BigInteger = quotientStored(value)
     open fun remainder(value: BigInteger): BigInteger = remainderStored(value)
 

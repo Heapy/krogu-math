@@ -67,9 +67,14 @@ in-process compilers when compiling the multiplatform oracle suites.
 
 Build pins: **Gradle 9.8.1**, **Kotlin 2.4.21**, **BellSoft Liberica JDK 25.0.4+9**.
 The Gradle distribution checksum and CI action revisions are pinned.
-The latest combined local checks for powers, square-root midpoint rounding and
-floating conversion imports are recorded in
-[the integration verification report](docs/math-port-integration-verification.md).
+The [latest local pow verification](docs/decimal-power-593-verification.md)
+records 1,744 passing methods on JVM, JS, Wasm and macOS ARM64, with the complete
+94,282-record sqrt ledger preserved. The preceding published source250 has
+[5,743 passing supported-platform executions](docs/source250-hosted-verification.md)
+across 13 target instances and 25 oracle checks, plus
+[106 normal and 12 large public-test PASS records](docs/source250-public-math-verification-559.md).
+Each report retains its source/artifact binding and limits; these results do not
+establish official JCK certification or full compatibility.
 
 | Platform | Target | Verification |
 |---|---|---|

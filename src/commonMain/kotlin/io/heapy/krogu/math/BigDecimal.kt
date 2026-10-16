@@ -586,6 +586,18 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         val magnitude = if (n < 0) -n else n
         val exponentDigits = magnitude.toString().length
         if (exponentDigits > mc.precision) throw ArithmeticException("Invalid operation")
+        val mathematicalPrecision = mc.precision.toLong() + exponentDigits + 1
+        if (mathematicalPrecision > 646456992L) {
+            val base = coefficient.decimalPowerState593(decimalScale)
+            if (base != null) {
+                val mode = mc.roundingMode
+                var accumulator = DecimalPower593.accumulate(base, magnitude, mathematicalPrecision, mode)
+                if (n < 0) accumulator = DecimalPower593.reciprocal(accumulator,
+                    mathematicalPrecision, mc.precision, mode)
+                val result = DecimalPower593.publish(DecimalPower593.round(accumulator, mc.precision.toLong(), mode))
+                return BigDecimal(result.first, result.second)
+            }
+        }
         // Every supported coefficient has fewer digits than Int.MAX_VALUE.
         // Both this cap and a larger mathematical working precision therefore
         // retain all its digits; an internal context must not wrap negative.
