@@ -113,7 +113,7 @@ val commands = selected.associateWith { target ->
 manifest("artifacts.sha256", artifacts)
 for ((target, command) in commands) {
     for (fork in 0 until forks) {
-        val invocation = command + listOf("$warmup", "$samples", "$batchMs", if (fork % 2 == 1) "reverse" else "forward")
+        val invocation = command + listOf("$warmup", "$samples", "$batchMs", if (fork % 2 == 1) "reverse" else "forward", "${fork * samples}")
         File(output, "$target-$fork.command.txt").writeText(invocation.joinToString("\n", postfix = "\n"))
         val time = if (os == "Mac OS X") listOf("/usr/bin/time", "-l") else listOf("/usr/bin/time", "-v")
         hostSnapshot("$target-$fork-before")
