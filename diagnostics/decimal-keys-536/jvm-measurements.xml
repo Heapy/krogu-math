@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="DecimalKey536JvmTest[jvm]" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-16T11:39:44.607Z" hostname="ruslans-macbook-pro.tail872780.ts.net" time="2.362">
+  <properties/>
+  <testcase name="measureCreationAndRepeatedHashCost[jvm]" classname="io.heapy.krogu.math.DecimalKey536JvmTest" time="2.333"/>
+  <testcase name="sortedAndHashCollectionsAgree[jvm]" classname="io.heapy.krogu.math.DecimalKey536JvmTest" time="0.027"/>
+  <system-out><![CDATA[DecimalKey536 compact creation+first-hash+publish=655.975 ns/op repeated-hash+checksum=73.729292 ns/op creation-iterations=20000
+DecimalKey536 compact volatile-publish=78.3125 ns/op compareTo-self+checksum=133.22915 ns/op strip+hash+checksum=315.9604 ns/op
+DecimalKey536 zero-extreme creation+first-hash+publish=61.7 ns/op repeated-hash+checksum=43.664958 ns/op creation-iterations=20000
+DecimalKey536 zero-extreme volatile-publish=44.6771 ns/op compareTo-self+checksum=235.275 ns/op strip+hash+checksum=99.73125 ns/op
+DecimalKey536 scale-underflow creation+first-hash+publish=223.95415 ns/op repeated-hash+checksum=77.33425 ns/op creation-iterations=20000
+DecimalKey536 scale-underflow volatile-publish=6.53335 ns/op compareTo-self+checksum=362.97295 ns/op strip+hash+checksum=null ns/op
+DecimalKey536 coefficient-4096-digits creation+first-hash+publish=5628360.415 ns/op repeated-hash+checksum=10.90775 ns/op creation-iterations=200
+DecimalKey536 coefficient-4096-digits volatile-publish=42.915 ns/op compareTo-self+checksum=2759.375 ns/op strip+hash+checksum=15513.955 ns/op
+DecimalKey536 checksum=1078311725 published=true java=25.0.4 vm=OpenJDK 64-Bit Server VM os=Mac OS X arch=aarch64
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

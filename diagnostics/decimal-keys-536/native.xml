@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="macosArm64Test.io.heapy.krogu.math.DecimalKey536Test" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-16T11:43:43.695Z" hostname="ruslans-macbook-pro.tail872780.ts.net" time="0.457">
+  <properties/>
+  <testcase name="cohortsShareEqualityHashAndOrdering[macosArm64]" classname="macosArm64Test.io.heapy.krogu.math.DecimalKey536Test" time="0.0"/>
+  <testcase name="originalRepresentationAndCrossTypeEqualityRemainExplicit[macosArm64]" classname="macosArm64Test.io.heapy.krogu.math.DecimalKey536Test" time="0.0"/>
+  <testcase name="orderingMatchesDecimalComparison[macosArm64]" classname="macosArm64Test.io.heapy.krogu.math.DecimalKey536Test" time="0.456"/>
+  <testcase name="hugeSignificandsAndNegativeOrdering[macosArm64]" classname="macosArm64Test.io.heapy.krogu.math.DecimalKey536Test" time="0.0"/>
+  <testcase name="keysSnapshotMutableSubclassMetadata[macosArm64]" classname="macosArm64Test.io.heapy.krogu.math.DecimalKey536Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="jsNodeTest.io.heapy.krogu.math.DecimalKey536Test" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-16T11:42:04.751Z" hostname="ruslans-macbook-pro.tail872780.ts.net" time="1.245">
+  <properties/>
+  <testcase name="cohortsShareEqualityHashAndOrdering[js, node]" classname="jsNodeTest.io.heapy.krogu.math.DecimalKey536Test" time="0.0"/>
+  <testcase name="originalRepresentationAndCrossTypeEqualityRemainExplicit[js, node]" classname="jsNodeTest.io.heapy.krogu.math.DecimalKey536Test" time="0.0"/>
+  <testcase name="orderingMatchesDecimalComparison[js, node]" classname="jsNodeTest.io.heapy.krogu.math.DecimalKey536Test" time="1.059"/>
+  <testcase name="hugeSignificandsAndNegativeOrdering[js, node]" classname="jsNodeTest.io.heapy.krogu.math.DecimalKey536Test" time="0.183"/>
+  <testcase name="keysSnapshotMutableSubclassMetadata[js, node]" classname="jsNodeTest.io.heapy.krogu.math.DecimalKey536Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

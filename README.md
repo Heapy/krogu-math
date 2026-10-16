@@ -29,6 +29,8 @@ The Java getter spelling `.lowestSetBit` also needs an explicit
 Float/Double conversions use the same explicit `toBigDecimal` import; see
 [floating conversion semantics](docs/kotlin-floating-conversion-migration.md).
 
+For scale-independent equality and collection keys, see [decimal keys](docs/decimal-keys.md).
+
 This is an initial implementation (`0.1.0-SNAPSHOT`), not a published Maven Central
 release. To consume locally, run `./gradlew publishToMavenLocal`, add `mavenLocal()`
 to your repositories, and depend on `io.heapy.krogu:krogu-math:0.1.0-SNAPSHOT`.
