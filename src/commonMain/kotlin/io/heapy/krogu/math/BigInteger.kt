@@ -1703,8 +1703,7 @@ open class BigInteger private constructor(
             fun bits(): Int = wide?.let { if (size == 0) 0 else (size - 1) * LIMB_BITS + 32 - it[size - 1].countLeadingZeroBits() }
                 ?: CompactInteger529.magnitudeBits(compactNegative)
             fun multiplyAdd(power: Int, block: Int) {
-                var words = wide
-                if (words == null) {
+                var words: IntArray = wide ?: run {
                     // Check both operations before evaluating them in the negative domain.
                     // power > 0 and 0 <= block < power; MIN is an ordinary payload.
                     if (compactNegative >= Long.MIN_VALUE / power) {
@@ -1716,8 +1715,7 @@ open class BigInteger private constructor(
                     }
                     val magnitude = CompactInteger529.magnitude((compactNegative shr 32).toInt(), compactNegative.toInt())
                     size = magnitude.size
-                    words = magnitude.copyOf(maxOf(4, size + 1))
-                    wide = words
+                    magnitude.copyOf(maxOf(4, size + 1)).also { wide = it }
                 }
                 var carry = block.toLong()
                 for (index in 0 until size) {
