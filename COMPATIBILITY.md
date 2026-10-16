@@ -170,6 +170,17 @@ and executed. Giant lexical/range witnesses remain symbolic; broader 548/549
 obligations and the 525/557 Number caller issue remain open. Private source248
 is excluded from this published snapshot.
 
+The later [590–592 local range verification](docs/decimal-range-590-592-verification.md)
+records the exact250-source composition: the590 exact LOW residual certificate,
+591 primitive low-bit conversion and comparison normalization, and592 fixed-scale
+division without oversized disposable intermediates. All1,723 method executions
+across426 suites pass on JVM/JS/Wasm/macOS ARM64. The complete94,282-record,
+52-recorder sqrt ledger retains strict fields and is byte-identical to247/248.
+The giant590/591/592 witnesses remain symbolic; source593 pow is unimplemented,
+matching source250 hosted gates remain pending, and broader548/549/526 and JCK
+conformance are not established. The preceding247 hosted results remain evidence
+for their prior source/JAR, not this local250 artifact.
+
 The per-entry [BigInteger](docs/integer-public-contract-549-ledger.md) and
 [BigDecimal](docs/decimal-public-contract-549-ledger.md) API/error ledgers,
 together with the existing [context/mode ledger](docs/context-mode-contract-549-ledger.md)

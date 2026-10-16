@@ -6,8 +6,9 @@ remain at `/private/tmp/krogu-549-bigdecimal-ledger-DrKM1uVR/LEDGER.md`, SHA256
 `7591d58fc5706aada0517277d0a7736353fe4d0e9cabfc2e546fb020a8de482a`.
 Root verified its complete10-entry evidence index. Adoption changes no code,
 fixture or assertion and supplies no new runtime evidence. The later focused
-591 low-bit correction and592 fixed-scale normalization work are private
-successors; their acceptance must be read separately. This ledger's statement
+591 low-bit correction and592 fixed-scale normalization work are successors;
+their [local source250 verification](decimal-range-590-592-verification.md)
+must be read separately. This ledger's statement
 that no successor execution is claimed remains a historical read-time limit,
 not a replacement for later root test records. The named mathematical/subtype/
 resource leaves remain explicit; this is not whole549 closure.

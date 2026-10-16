@@ -118,6 +118,73 @@ internal object DecimalDivision581 {
         }
     }
 
+    /** Required fixed-scale coefficient: no significant-digit cohort normalization. */
+    fun fixedScale592(sign: Int, left: IntArray, right: IntArray, shift: Long,
+        mode: RoundingMode): BigInteger {
+        require(sign == -1 || sign == 1)
+        require(left.isNotEmpty() && right.isNotEmpty())
+        require(shift in -6442450943L..6442450942L)
+        val scratch = Cells(maxOf(left.size, right.size))
+        val a = decimalChunks(left, scratch)
+        val b = decimalChunks(right, scratch)
+        val inputDigits = a.digits()
+        val limit = inputDigits + shift
+        if (limit < 0)
+            return if (increment(mode, sign, -1, false)) BigInteger.valueOf(sign.toLong()) else BigInteger.ZERO
+        // The required integer quotient has at least limit-digits(B) digits.
+        if (limit - b.digits() > MAX_DIGITS) throw ArithmeticException("BigInteger overflow")
+        val lastNonzero = inputDigits - a.trailingZeros()
+        val remainder = DecimalWords(b.size + 1)
+        val trial = DecimalWords(b.size + 1)
+        val maximumDigits = minOf(MAX_DIGITS, maxOf(1L, limit - b.digits() + 1))
+        val quotient = DecimalWords(((maximumDigits + 8) / 9 + 1).toInt())
+        var position = 0L
+        fun nextDigit(): Int {
+            val input = if (position < inputDigits) a.digitFromLeft(position, inputDigits) else 0
+            position++
+            remainder.multiplyAdd(10, input)
+            var digit = 9
+            while (digit > 0) {
+                trial.product(b, digit)
+                if (remainder.compare(trial) >= 0) break
+                digit--
+            }
+            if (digit != 0) remainder.subtract(trial)
+            return digit
+        }
+        var zeros = 0L
+        while (position < limit) {
+            val digit = nextDigit()
+            if (digit == 0) {
+                if (quotient.size != 0) zeros++
+            } else {
+                val digits = if (quotient.size == 0) 1L else quotient.digits() + zeros + 1
+                if (digits > MAX_DIGITS) throw ArithmeticException("BigInteger overflow")
+                if (quotient.size != 0) quotient.appendZeroDigits(zeros)
+                quotient.multiplyAdd(10, digit)
+                zeros = 0
+            }
+            if (remainder.size == 0 && position >= lastNonzero) {
+                if (quotient.size != 0) zeros += limit - position
+                position = limit
+                break
+            }
+        }
+        if (quotient.size != 0) {
+            if (quotient.digits() + zeros > MAX_DIGITS) throw ArithmeticException("BigInteger overflow")
+            quotient.appendZeroDigits(zeros)
+        }
+        if (remainder.size != 0 || position < lastNonzero) {
+            val guard = nextDigit()
+            val sticky = remainder.size != 0 || position < lastNonzero
+            val half = if (guard == 5 && sticky) 1 else guard.compareTo(5)
+            if (increment(mode, sign, half, quotient.size != 0 && quotient.odd())) quotient.increment()
+        }
+        if (quotient.size == 0) return BigInteger.ZERO
+        if (quotient.digits() > MAX_DIGITS) throw ArithmeticException("BigInteger overflow")
+        return publish(quotient, sign, 0).first
+    }
+
     /** Exact integer quotient for negative in-range S; trailing zeros stay symbolic. */
     fun integral(sign: Int, left: IntArray, right: IntArray, preferred: Int): Pair<BigInteger, Int> {
         require(sign == -1 || sign == 1)

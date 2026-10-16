@@ -239,6 +239,9 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
     open fun divide(divisor: BigDecimal, scale: Int, roundingMode: RoundingMode): BigDecimal {
         if (divisor.signum() == 0) failScaledZeroDivision(divisor.decimalScale, scale)
         val shift = scale.toLong() + divisor.decimalScale - decimalScale
+        // Certify before disposable scale checks or whole coefficient Strings.
+        val raw = coefficient.fixedScaleDecimalQuotient592(divisor.coefficient, shift, roundingMode)
+        if (raw != null) return BigDecimal(raw, scale)
         // Retain useful range diagnostics only when an enormous coefficient
         // really is required. Zero/tiny results and bounded net shifts must not
         // fail merely because a temporary scale sum is outside Int.
@@ -707,14 +710,23 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         if (decimalScale == operand.decimalScale) {
             val left = coefficient.decimalCompactValue()
             val right = operand.coefficient.decimalCompactValue()
-            if (left != null && right != null) return left.compareTo(right)
+            if (left != null && right != null) {
+                val order = left.compareTo(right)
+                return if (order < 0) -1 else if (order > 0) 1 else 0
+            }
         }
         val leftSign = signum()
         val rightSign = operand.signum()
-        if (leftSign != rightSign) return leftSign.compareTo(rightSign)
+        if (leftSign != rightSign) return if (leftSign < rightSign) -1 else 1
         if (leftSign == 0) return 0
         val magnitude = compareMagnitude(operand)
-        return if (leftSign > 0) magnitude else -magnitude
+        // Normalize before reversing a negative receiver: primitive comparison
+        // contracts promise a sign, not an exact unit or a safely negatable Int.
+        return when {
+            magnitude < 0 -> if (leftSign > 0) -1 else 1
+            magnitude > 0 -> if (leftSign > 0) 1 else -1
+            else -> 0
+        }
     }
     private fun compareMagnitude(other: BigDecimal): Int {
         val left = coefficient.abs()
@@ -825,6 +837,9 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
         if (decimalScale >= 0) return toBigInteger().toLong()
         // A multiple of 10^bits vanishes modulo 2^bits; don't materialize a huge integer.
         if (-decimalScale.toLong() >= bits) return 0
+        val raise = -decimalScale.toLong()
+        if (!coefficient.decimalLowBitsProductFits591(raise.toInt()))
+            return coefficient.decimalProductLowBits591(raise.toInt(), bits)
         return coefficient.multiply(tenPow(-decimalScale.toLong())).toLong()
     }
     @kotlin.jvm.JvmName("byteValue")

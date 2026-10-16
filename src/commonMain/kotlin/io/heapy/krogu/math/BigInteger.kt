@@ -162,6 +162,8 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         if (value.sign == 0 || materializedDecimalResidual583(magnitudeBits(), value.magnitudeBits(),
                 quotient.magnitudeBits(), sourceScale, divisorScale, quotientScale)) return null
         val preferred = sourceScale.toLong() - divisorScale
+        if (preferred < Int.MIN_VALUE)
+            return certifiedExactLowResidual590(value, sourceScale, divisorScale, quotient, quotientScale)
         if (preferred !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong() ||
             quotientScale.toLong() > maxOf(preferred, 0L)) return null
         if (sign == 0) return if (quotient.sign == 0 && quotientScale.toLong() == preferred)
@@ -184,6 +186,39 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         if (!DecimalDivision581.matchesInteger583(quotient.words, quotientScale, qr[0].words)) return null
         val residual = qr[1]
         return (if (sign < 0 && residual.sign != 0) BigInteger(-1, residual.words) else residual) to sourceScale
+    }
+
+    // Sufficient old-product bounds; only explicit fixed-scale division calls this.
+    @kotlin.jvm.JvmSynthetic
+    internal fun fixedScaleDecimalQuotient592(value: BigInteger, shift: Long, mode: RoundingMode): BigInteger? {
+        if (sign == 0 || value.sign == 0) return null
+        if (shift in -646456992L..646456992L &&
+            magnitudeBits().toLong() + 4L * maxOf(shift, 0L) <= Int.MAX_VALUE &&
+            value.magnitudeBits().toLong() + 4L * maxOf(-shift, 0L) <= Int.MAX_VALUE) return null
+        return DecimalDivision581.fixedScale592(sign * value.sign, words, value.words, shift, mode)
+    }
+
+    // Exact-only outside-LOW certificate; no expanded integer or public product.
+    @kotlin.jvm.JvmSynthetic
+    internal fun certifiedExactLowResidual590(value: BigInteger, sourceScale: Int, divisorScale: Int,
+        quotient: BigInteger, quotientScale: Int): Pair<BigInteger, Int>? {
+        val preferred = sourceScale.toLong() - divisorScale
+        if (preferred >= Int.MIN_VALUE || sign == 0 || value.sign == 0 ||
+            quotient.sign == 0 || quotient.sign != sign * value.sign) return null
+        val residualScale = maxOf(sourceScale.toLong(), quotientScale.toLong() + divisorScale)
+        if (residualScale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong()) return null
+        // Only our fresh base wrappers enter this catch. An unsupported exact
+        // coefficient/natural scale or nonterminating ratio retains the old path.
+        val exact = try {
+            DecimalDivision581.largePrecision(sign * value.sign, BigInteger(1, words),
+                BigInteger(1, value.words), preferred, Int.MAX_VALUE)
+        } catch (_: ArithmeticException) {
+            return null
+        }
+        if (exact.first.decimalMagnitudeDigits().toLong() - exact.second !=
+            quotient.decimalMagnitudeDigits().toLong() - quotientScale ||
+            exact.first.compareDecimalSignificand(quotient) != 0) return null
+        return ZERO to residualScale.toInt()
     }
 
     open fun divide(value: BigInteger): BigInteger = quotientStored(value)
@@ -885,7 +920,15 @@ open class BigInteger private constructor(private val sign: Int, private val wor
 
     override fun compareTo(other: BigInteger): Int {
         val operand = other
-        return if (sign != operand.sign) sign.compareTo(operand.sign) else sign * compareMagnitude(words, operand.words)
+        if (sign != operand.sign) return if (sign < operand.sign) -1 else 1
+        // The public result is exactly -1/0/1. Primitive comparisons promise
+        // only a sign, so normalize before reversing a negative receiver.
+        val magnitude = compareMagnitude(words, operand.words)
+        return when {
+            magnitude < 0 -> -sign
+            magnitude > 0 -> sign
+            else -> 0
+        }
     }
     open fun min(value: BigInteger): BigInteger = if (compareTo(value) < 0) this else value
     open fun max(value: BigInteger): BigInteger = if (compareTo(value) > 0) this else value
@@ -979,6 +1022,23 @@ open class BigInteger private constructor(private val sign: Int, private val wor
         for (i in minOf(words.size, 3) - 1 downTo 0) value = (value shl LIMB_BITS) or words[i].toLong()
         return if (sign < 0) -value else value
     }
+    // Sufficient old-route proof for 0 <= raise < 64; no caller metadata.
+    @kotlin.jvm.JvmSynthetic
+    internal fun decimalLowBitsProductFits591(raise: Int): Boolean =
+        magnitudeBits().toLong() + 4L * raise <= Int.MAX_VALUE
+
+    // Only low bits are required: wrapping arithmetic never publishes c*10^raise.
+    @kotlin.jvm.JvmSynthetic
+    internal fun decimalProductLowBits591(raise: Int, bits: Int): Long {
+        require(bits == 32 || bits == 64)
+        require(raise in 0 until bits)
+        var value = 0L
+        for (i in minOf(words.size, 3) - 1 downTo 0) value = (value shl LIMB_BITS) or words[i].toLong()
+        if (sign < 0) value = -value
+        repeat(raise) { value *= 10L }
+        return if (bits == 32) value.toInt().toLong() else value
+    }
+
     // Decimal conversion needs the stored value without dispatching to a
     // subclass's Number methods. Long.MIN_VALUE is the noncompact boundary.
     @kotlin.jvm.JvmSynthetic

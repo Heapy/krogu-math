@@ -5,8 +5,9 @@ for published numerical source247 at commit47447f2. Its original private bytes
 remain at `/private/tmp/krogu-549-biginteger-ledger-v4XUt3NH/LEDGER.md`, SHA256
 `9ee42fe7d4cd40ce22bad09e7c07339a26effcc205cb1bfb035210602960c7e3`.
 Root verified its complete14-entry evidence index. Adoption changes no code,
-fixture or assertion and supplies no new runtime evidence. Subsequent private
-comparison normalization is separate from this published-source snapshot.
+fixture or assertion and supplies no new runtime evidence. Subsequent comparison
+normalization and its [local source250 verification](decimal-range-590-592-verification.md)
+are separate from this historical published-source snapshot.
 The named conditional leaves remain explicit; this is not whole549 closure.
 
 ---

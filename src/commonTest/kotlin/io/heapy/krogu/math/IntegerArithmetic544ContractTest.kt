@@ -40,7 +40,12 @@ class IntegerArithmetic544ContractTest {
             "-1152921504606846975", "-1", "0", "1", "1152921504606846975",
             "1152921504606846976", "1152921504606846977").map(::BigInteger)
         for (i in ordered.indices) for (j in ordered.indices) {
-            assertEquals(i.compareTo(j), ordered[i].compareTo(ordered[j]).coerceIn(-1, 1))
+            val expected = when {
+                i < j -> -1
+                i > j -> 1
+                else -> 0
+            }
+            assertEquals(expected, ordered[i].compareTo(ordered[j]))
         }
     }
 
