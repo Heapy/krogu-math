@@ -140,7 +140,21 @@ subsequently confirms12PASS/0FAIL/128SKIP with all selected fresh-memory gates,
 original profiles/limits and producer/consumer/local JAR1cacc provenance verified.
 The separate normal/platform run remains outside that large-only result.
 
-Subsequent source/spec audits track587, the inexact sqrt precision/cohort rule,
+The subsequent [source240 normal public report](docs/public-math-source240-normal-559.md)
+confirms106PASS/0FAIL/47SKIP in38821252611 at2e767, with all seven jobs successful.
+Its normal106 and same-source large12 records are disjoint and cover all118
+retained baseline/port IDs. All13 adaptation losses remain; the later proposed
+587 sqrt-call restoration was not executed by either published-source campaign.
+
+The [source240 supported-platform report](docs/source240-supported-platform-verification.md)
+records5,375 passing method executions from all six supported/oracle jobs of
+38821252611 at2e767, with exact source inventories, original XML and actual
+Linux ARM64 execution. The public job is excluded from that snapshot;
+iOS-device coverage is compilation only. These results validate the published
+585/586 composition, not the subsequent587/588 candidates.
+
+Subsequent source/spec audits track587, the
+[inexact sqrt precision/cohort rule](docs/sqrt-cohort-587-observation.md),
 and588, contextual lexical conversion before full-coefficient materialization.
 They remain open: a numerically equal shorter sqrt cohort is not itself a proof
 of the prescribed representation, and supported BigInteger-input constructor
