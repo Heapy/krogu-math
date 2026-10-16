@@ -126,15 +126,24 @@ internal object MagnitudeMultiplication {
 
     private fun school(a: IntArray, ao: Int, al: Int, b: IntArray, bo: Int, bl: Int,
         out: IntArray, oo: Int) {
-        for (i in 0 until al) {
-            var carry = 0L
-            for (j in 0 until bl) {
-                val value = a[ao + i].toLong() * b[bo + j] + out[oo + i + j] + carry
-                out[oo + i + j] = (value and MASK).toInt()
-                carry = value ushr BITS
-            }
-            out[oo + i + bl] = carry.toInt()
+        for (i in 0 until al) schoolRow(a[ao + i], b, bo, bl, out, oo + i)
+    }
+
+    // The same schoolbook row, with no temporary one-word input array.
+    internal fun multiplyWord529(word: Int, borrowedWide: IntArray): IntArray {
+        val out = IntArray(borrowedWide.size + 1)
+        schoolRow(word, borrowedWide, 0, borrowedWide.size, out, 0)
+        return out
+    }
+
+    private inline fun schoolRow(word: Int, b: IntArray, bo: Int, bl: Int, out: IntArray, oo: Int) {
+        var carry = 0L
+        for (j in 0 until bl) {
+            val value = word.toLong() * b[bo + j] + out[oo + j] + carry
+            out[oo + j] = (value and MASK).toInt()
+            carry = value ushr BITS
         }
+        out[oo + bl] = carry.toInt()
     }
 
     private fun square(a: IntArray, offset: Int, length: Int, out: IntArray, oo: Int) {

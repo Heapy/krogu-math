@@ -160,6 +160,18 @@ open class BigInteger private constructor(
             val result = a * b
             if (CompactInteger529.multiplyFits(a, b, result)) return valueOf(result)
         }
+        if (representation == 1 && value.representation == 2 && magnitudeBits() <= LIMB_BITS) {
+            MagnitudeMultiplication.checkBitLengths(magnitudeBits(), value.magnitudeBits())
+            val scalar = compactStoredValue529()
+            val word = (if (scalar < 0) -scalar else scalar).toInt()
+            return normalized(sign * value.sign, MagnitudeMultiplication.multiplyWord529(word, value.wideWords!!))
+        }
+        if (representation == 2 && value.representation == 1 && value.magnitudeBits() <= LIMB_BITS) {
+            MagnitudeMultiplication.checkBitLengths(magnitudeBits(), value.magnitudeBits())
+            val scalar = value.compactStoredValue529()
+            val word = (if (scalar < 0) -scalar else scalar).toInt()
+            return normalized(sign * value.sign, MagnitudeMultiplication.multiplyWord529(word, wideWords!!))
+        }
         val words = materializeMagnitude()
         val valueWords = if (value === this) words else value.materializeMagnitude()
         MagnitudeMultiplication.checkBitLengths(magnitudeBits(), value.magnitudeBits())

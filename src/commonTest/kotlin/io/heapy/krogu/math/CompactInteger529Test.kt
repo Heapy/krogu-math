@@ -6,6 +6,23 @@ import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class CompactInteger529Test {
+    @Test fun scalarWideMultiplyRetainsCarrySignsAndInputs() {
+        val values = listOf("9223372036854775808", "18446744073709551615", "1234567890123456789012345678901234567890")
+        for (text in values) for (word in listOf(1L, 12345L, 1073741823L, 1073741824L))
+            for (negative in listOf(false, true)) {
+                val wide = BigInteger(if (negative) "-$text" else text)
+                for (scalar in listOf(word, -word)) {
+                    val small = BigInteger.valueOf(scalar)
+                    val result = wide.multiply(small)
+                    assertEquals(result, small.multiply(wide))
+                    assertEquals(wide, result.divide(small))
+                    assertEquals(BigInteger.ZERO, result.remainder(small))
+                    assertEquals(if (negative) "-$text" else text, wide.toString())
+                    assertEquals(scalar, small.toLong())
+                }
+            }
+    }
+
     @Test fun overflowWordsAndMixedCancellationRetainFullEndpoints() {
         val min = BigInteger.valueOf(Long.MIN_VALUE)
         val max = BigInteger.valueOf(Long.MAX_VALUE)

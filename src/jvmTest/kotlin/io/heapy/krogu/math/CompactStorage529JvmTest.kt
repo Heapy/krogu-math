@@ -14,6 +14,24 @@ import kotlin.test.assertSame
 import kotlin.test.assertTrue
 
 class CompactStorage529JvmTest {
+    @Test fun scalarWideMultiplyMatchesPublicOracleWithoutMetadataCallbacks() {
+        class StoredChild(text: String) : BigInteger(text) {
+            override fun signum(): Int = error("stored multiply must not call signum")
+            override fun toByteArray(): ByteArray = error("stored multiply must not call bytes")
+        }
+        for (text in listOf("9223372036854775808", "18446744073709551615", "1234567890123456789012345678901234567890"))
+            for (word in listOf(1L, 12345L, 1073741823L, 1073741824L))
+                for (sign in listOf(1L, -1L)) for (wideSign in listOf("", "-")) {
+                    val wideText = wideSign + text
+                    val scalar = word * sign
+                    val expected = java.math.BigInteger(wideText).multiply(java.math.BigInteger.valueOf(scalar)).toString()
+                    val wide = StoredChild(wideText)
+                    val small = StoredChild(scalar.toString())
+                    assertEquals(expected, wide.multiply(small).toString(), "$wideText * $scalar")
+                    assertEquals(expected, small.multiply(wide).toString(), "$scalar * $wideText")
+                }
+    }
+
     private class Marker : RuntimeException()
     private class CoefficientChild : BigInteger("123") {
         val marker = Marker()
