@@ -7,8 +7,8 @@
   "entries": [
     {
       "path": ".gitattributes",
-      "bytes": 56,
-      "sha256": "8d56fd667f614567a995f3dd5f829cd2d4ff9f599827301bf3e29f7eb2800e1e"
+      "bytes": 79,
+      "sha256": "d4dda62f31e42e28d7e1c16fbc4c803945535800e85934f7f2b551fa2fe36aa2"
     },
     {
       "path": "README.md",
