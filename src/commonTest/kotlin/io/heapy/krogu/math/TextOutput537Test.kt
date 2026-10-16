@@ -8,6 +8,27 @@ import kotlin.test.assertSame
 import kotlin.test.assertTrue
 
 class TextOutput537Test {
+    @Test fun numericChunkSlicesPreservePaddingAndZeroWithoutStrings() {
+        val alphabet = "0123456789abcdefghijklmnopqrstuvwxyz"
+        for (radix in 2..36) {
+            val expected = alphabet[radix - 1] + "001000"
+            val digits = RadixDigits537(intArrayOf(0, 1, radix - 1), 3, radix, 3)
+            assertEquals(expected.length.toLong(), digits.length)
+            for (start in 0..expected.length) for (end in start..expected.length) {
+                val buffer = CharArray(end - start + 2) { '#' }
+                digits.write(ArraySink537(buffer, 1), start.toLong(), end.toLong())
+                assertEquals("#${expected.substring(start, end)}#", buffer.concatToString(), "$radix/$start/$end")
+                val output = StringBuilder()
+                digits.write(AppendableSink537(output), start.toLong(), end.toLong())
+                assertEquals(expected.substring(start, end), output.toString())
+            }
+        }
+        val binary = RadixDigits537(intArrayOf(0x3fffffff, 1), 2, 2, 30)
+        assertEquals("1".repeat(31), StringBuilder().also { binary.write(AppendableSink537(it)) }.toString())
+        val zero = RadixDigits537(intArrayOf(0), 1, 36, 1)
+        assertEquals("0", StringBuilder().also { zero.write(AppendableSink537(it)) }.toString())
+    }
+
     @Test fun integerRadicesAndBufferAtomicity() {
         for (text in listOf("0", "1", "-1", "1073741824", "-9223372036854775808",
             "12345678901234567890123456789012345678901234567890")) {

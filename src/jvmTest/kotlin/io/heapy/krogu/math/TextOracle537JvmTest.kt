@@ -4,8 +4,54 @@ package io.heapy.krogu.math
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlin.test.assertFailsWith
+import kotlin.test.assertNull
+import kotlin.test.assertSame
 
 class TextOracle537JvmTest {
+    @Test fun coldAndCachedCanonicalWritersKeepCacheStateAndPreflight() {
+        val cache = BigDecimal::class.java.getDeclaredField("stringCache").apply { isAccessible = true }
+        for (text in listOf("0.000", "-9223372036854775808.00", "123.4500", "-1E+77",
+            "1E-77", "1" + "0".repeat(400) + "1.00100")) {
+            val value = BigDecimal(text)
+            val expected = java.math.BigDecimal(text).toString()
+            assertNull(cache.get(value))
+            val cold = StringBuilder()
+            value.appendTo(cold)
+            assertEquals(expected, cold.toString())
+            val buffer = CharArray(expected.length + 4) { '#' }
+            value.writeTo(buffer, 2, expected.length)
+            assertEquals("##${expected}##", buffer.concatToString())
+            assertNull(cache.get(value), "Cold writers must not force a complete String cache")
+            val cached = value.toString()
+            assertSame(cached, cache.get(value))
+            var largest = 0
+            val warm = StringBuilder()
+            val destination = object : Appendable {
+                override fun append(value: Char): Appendable { warm.append(value); return this }
+                override fun append(value: CharSequence?): Appendable = append(value, 0, value?.length ?: 4)
+                override fun append(value: CharSequence?, startIndex: Int, endIndex: Int): Appendable {
+                    largest = maxOf(largest, endIndex - startIndex)
+                    warm.append(value, startIndex, endIndex)
+                    return this
+                }
+            }
+            value.appendTo(destination, maxChars = expected.length.toLong())
+            assertEquals(expected, warm.toString())
+            assertTrue(largest <= 256)
+            buffer.fill('#')
+            value.writeTo(buffer, 2, expected.length)
+            assertEquals("##${expected}##", buffer.concatToString())
+            assertSame(cached, cache.get(value))
+            buffer.fill('#')
+            assertFailsWith<ArithmeticException> { value.writeTo(buffer, 2, expected.length - 1) }
+            assertTrue(buffer.all { it == '#' })
+            val prefix = StringBuilder("prefix")
+            assertFailsWith<ArithmeticException> { value.appendTo(prefix, maxChars = expected.length.toLong() - 1) }
+            assertEquals("prefix", prefix.toString())
+        }
+    }
+
     private class StoredCoefficient : BigInteger("123") {
         val trace = StringBuilder()
         override fun abs(): BigInteger { trace.append("abs;"); return this }

@@ -17,6 +17,9 @@ internal fun checkTextBuffer537(destination: CharArray, offset: Int, length: Int
 internal interface NumericSink537 {
     fun character(value: Char)
     fun text(value: CharSequence, start: Int = 0, end: Int = value.length)
+    fun characters(value: CharArray, start: Int, end: Int) {
+        for (index in start until end) character(value[index])
+    }
     fun zeros(count: Long) {
         var remaining = count
         while (remaining > 0) {
@@ -32,16 +35,27 @@ private val ZERO_BLOCK537 = "0".repeat(256)
 internal class AppendableSink537(private val destination: Appendable) : NumericSink537 {
     override fun character(value: Char) { destination.append(value) }
     override fun text(value: CharSequence, start: Int, end: Int) { destination.append(value, start, end) }
+    override fun characters(value: CharArray, start: Int, end: Int) {
+        if (destination is StringBuilder) destination.appendRange(value, start, end)
+        else super.characters(value, start, end)
+    }
 }
 
 internal class ArraySink537(private val destination: CharArray, private var offset: Int) : NumericSink537 {
     override fun character(value: Char) { destination[offset++] = value }
     override fun text(value: CharSequence, start: Int, end: Int) {
-        for (index in start until end) destination[offset++] = value[index]
+        if (value is String) {
+            value.toCharArray(destination, offset, start, end)
+            offset += end - start
+        } else for (index in start until end) destination[offset++] = value[index]
+    }
+    override fun characters(value: CharArray, start: Int, end: Int) {
+        value.copyInto(destination, offset, start, end)
+        offset += end - start
     }
 }
 
-/** Little-endian radix^width cells; only bounded per-cell Strings are materialized. */
+/** Little-endian radix^width cells; writing uses one bounded digit buffer, no per-cell Strings. */
 internal class RadixDigits537(
     private val chunks: IntArray,
     private val size: Int,
@@ -49,24 +63,45 @@ internal class RadixDigits537(
     private val width: Int,
 ) {
     val zero: Boolean = size == 1 && chunks[0] == 0
-    private val first = chunks[size - 1].toString(radix)
-    val length: Long = (size - 1).toLong() * width + first.length
+    private val firstLength: Int = run {
+        var rest = chunks[size - 1]
+        var count = 1
+        while (rest >= radix) { rest /= radix; count++ }
+        count
+    }
+    val length: Long = (size - 1).toLong() * width + firstLength
 
     fun write(sink: NumericSink537, start: Long = 0, end: Long = length) {
         require(start in 0..end && end <= length)
+        val buffer = CharArray(width)
+        val powerOfTwo = radix and (radix - 1) == 0
+        val shift = radix.countTrailingZeroBits()
         var cursor = 0L
         for (index in size - 1 downTo 0) {
-            val count = if (index == size - 1) first.length else width
+            val count = if (index == size - 1) firstLength else width
             val after = cursor + count
             if (after > start && cursor < end) {
-                val text = if (index == size - 1) first else chunks[index].toString(radix).padStart(width, '0')
-                sink.text(text, maxOf(0L, start - cursor).toInt(), minOf(count.toLong(), end - cursor).toInt())
+                var rest = chunks[index]
+                if (powerOfTwo) {
+                    for (digit in count - 1 downTo 0) {
+                        buffer[digit] = DIGITS537[rest and (radix - 1)]
+                        rest = rest ushr shift
+                    }
+                } else {
+                    for (digit in count - 1 downTo 0) {
+                        buffer[digit] = DIGITS537[rest % radix]
+                        rest /= radix
+                    }
+                }
+                sink.characters(buffer, maxOf(0L, start - cursor).toInt(), minOf(count.toLong(), end - cursor).toInt())
             }
             cursor = after
             if (cursor >= end) break
         }
     }
 }
+
+private const val DIGITS537 = "0123456789abcdefghijklmnopqrstuvwxyz"
 
 /** Plans all lengths in Long before the first external write or scale-sized padding. */
 internal class DecimalLayout537(

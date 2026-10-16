@@ -887,6 +887,16 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             destination.append(text)
             return text.length.toLong()
         }
+        if (format == DecimalTextFormat.CANONICAL) stringCache?.let { cached ->
+            checkTextLimit537(cached.length.toLong(), maxChars)
+            var start = 0
+            while (start < cached.length) {
+                val end = minOf(start.toLong() + 256, cached.length.toLong()).toInt()
+                destination.append(cached, start, end)
+                start = end
+            }
+            return cached.length.toLong()
+        }
         val layout = textLayout537(format, maxChars)
         layout.write(AppendableSink537(destination))
         return layout.length
@@ -901,6 +911,11 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
             checkTextLimit537(text.length.toLong(), length.toLong())
             ArraySink537(destination, offset).text(text, 0, text.length)
             return text.length
+        }
+        if (format == DecimalTextFormat.CANONICAL) stringCache?.let { cached ->
+            checkTextLimit537(cached.length.toLong(), length.toLong())
+            cached.toCharArray(destination, offset, 0, cached.length)
+            return cached.length
         }
         val layout = textLayout537(format, length.toLong())
         layout.write(ArraySink537(destination, offset))
