@@ -1,0 +1,123 @@
+{
+  "task": "local:537",
+  "status": "INDEPENDENT_RUNTIME_ACCEPTANCE_PASS_PENDING_INTEGRATION",
+  "parent": "e4bb2abddd77266c0a6690074bf85104f8b3c4df",
+  "initial_candidate": "2b461b6ed729f70d3d185ff00b5c7103a55f9689",
+  "fixed_candidate": "519a757a2f7c2d595506f0f193c20e93ee9a7f38",
+  "initial_rows": 2160,
+  "final_rows": 2160,
+  "initial_full_methods": 1983,
+  "final_full_methods": 1988,
+  "entries": [
+    {
+      "path": "REPORT.md",
+      "bytes": 11110,
+      "sha256": "a4826c94cf2b7d69c7b57d76db6c96b244703b8c4d9da2c4501d973cc7f123c2"
+    },
+    {
+      "path": "acceptance-matrix-current.md",
+      "bytes": 4170,
+      "sha256": "839f989b07222b4d91429fcaf44273ae7a4149167ea340d1792f99bd6f8b1824"
+    },
+    {
+      "path": "builds-and-runtime.entries.json",
+      "bytes": 5422,
+      "sha256": "c0a6317fc1ca8c390cb756fa3d0b469cf8881b1a0ecfe6bc7bff488ee1c2a017"
+    },
+    {
+      "path": "builds-and-runtime.tar.gz",
+      "bytes": 3503177,
+      "sha256": "80db1f74c1ecd4a99285997cb86290aeefacbb65b616b5e6831465794269b941"
+    },
+    {
+      "path": "final-full-regression.entries.json",
+      "bytes": 120220,
+      "sha256": "702de9f6d2533e563b85f6cd10b5ad47cb2396fc2ec958323e0f8217d2d6f04f"
+    },
+    {
+      "path": "final-full-regression.tar.gz",
+      "bytes": 5358474,
+      "sha256": "92c11bb3a7f5cfdf3b32238983edb124b3d16e450aebcbbcc606773e664f6e7c"
+    },
+    {
+      "path": "final-local-summary.csv",
+      "bytes": 11743,
+      "sha256": "a78308fcc3727c2b278fa0a054b99cea3fd86dd6d2730f38f93d8fc7b818c888"
+    },
+    {
+      "path": "final-local-summary.json",
+      "bytes": 92437,
+      "sha256": "1d34c28da4d33286c67f5bcea9aa730c4e031c9cb0c2ba0a8629688cd6c70fe5"
+    },
+    {
+      "path": "final-own-source.patch",
+      "bytes": 93561,
+      "sha256": "e5e998ebcc7be0a00b797e15a5561d210328c5251e3fd1d60141b7ce4accb072"
+    },
+    {
+      "path": "fixed-campaign.entries.json",
+      "bytes": 12698,
+      "sha256": "c1d73616a5cafcfaec0ac70f90b28e78ea983e28835111d58c5bb6f8bc9952f9"
+    },
+    {
+      "path": "fixed-campaign.tar.gz",
+      "bytes": 38363,
+      "sha256": "b3c53a0ce36a31239a72cec7f803be34bc6ef84997780d730ea2e54c8056a8b9"
+    },
+    {
+      "path": "frozen-bundles.entries.json",
+      "bytes": 39023,
+      "sha256": "80ddda5a7ef9ace44da7c7d2955d68ecdef2c5d36fa76f1203c928c651efc0ad"
+    },
+    {
+      "path": "frozen-bundles.tar.gz",
+      "bytes": 3182550,
+      "sha256": "f1ecd374a3b4d292cf59329a27cb2ea5bfddfd739159014aa72657bceb886b33"
+    },
+    {
+      "path": "independent-final-acceptance.md",
+      "bytes": 3559,
+      "sha256": "b7e1968723608e476f30d21faca70fe9946581abe380a0836dfe50b9b92c0793"
+    },
+    {
+      "path": "independent-fixed-full-regression-audit.json",
+      "bytes": 4075,
+      "sha256": "21154831921fd45c2fd49d95b16c94d88c8cf0f438f84b7c37762178cdcb6f55"
+    },
+    {
+      "path": "independent-local-fixed-raw-audit.json",
+      "bytes": 93187,
+      "sha256": "67ec3d27539599e4ced28f5ef67324cff275bc9715995a8452163fbecb2b8ee4"
+    },
+    {
+      "path": "initial-campaign.entries.json",
+      "bytes": 12699,
+      "sha256": "39c46c178e5b3cad348b5e45f979d43d71c7073f0136dd0b9301ed82d1ef3a3b"
+    },
+    {
+      "path": "initial-campaign.tar.gz",
+      "bytes": 40317,
+      "sha256": "506143c35752b1e72dcc3554e4e2dc459fc5bfbaf09b1ecc04472423b66356ca"
+    },
+    {
+      "path": "local-summary.csv",
+      "bytes": 11846,
+      "sha256": "a94c75394b6404a2a847fe45c89f6fc705dd2b794b6eba9bab10ba7f4fe2d239"
+    },
+    {
+      "path": "local-summary.json",
+      "bytes": 93031,
+      "sha256": "7a0c3007f48d1a8504777dd840d2ca96c3dd48e27217d66544e93c96daabbc0a"
+    },
+    {
+      "path": "reviews-and-provenance.entries.json",
+      "bytes": 7559,
+      "sha256": "4b60ee1b998c5b83650b47a91bf012019dfe8507406cf3353f9a99afc14707a0"
+    },
+    {
+      "path": "reviews-and-provenance.tar.gz",
+      "bytes": 234359,
+      "sha256": "a8f1affc6dee2977ca4701fd876b171aeeae2e3a069627f513db1e702cec5650"
+    }
+  ]
+}

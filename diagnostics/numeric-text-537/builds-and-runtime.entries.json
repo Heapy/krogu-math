@@ -1,0 +1,160 @@
+{
+  "status": "ROUNDTRIP_SHA256_PASS",
+  "entries": [
+    {
+      "path": "artifacts/baseline-final.jar",
+      "bytes": 234409,
+      "sha256": "de9435a2f08df94c09e78f1300b017844a083bd527a8d3e6f884f372044b61df"
+    },
+    {
+      "path": "artifacts/candidate-final.jar",
+      "bytes": 258147,
+      "sha256": "ec3e5715626bc699c02b9e63dba2794b792940030c233e7451d93b88d0100594"
+    },
+    {
+      "path": "artifacts/candidate-focused.jar",
+      "bytes": 255798,
+      "sha256": "12763e4a9a264745f70e2ed86047d376915eb39e0a586e612c9fc94cd8de332c"
+    },
+    {
+      "path": "artifacts/candidate-output-fix.jar",
+      "bytes": 259593,
+      "sha256": "f54132036bcd7b0fa4cda473a1576cb715a7356e4fbdb188f0d650d32735397c"
+    },
+    {
+      "path": "artifacts/controller-final.jar",
+      "bytes": 17345,
+      "sha256": "5a782afd548c5ba9a722d42b0c1b5156c3bf729e8924c2c10f88a989b93b3c6f"
+    },
+    {
+      "path": "artifacts/final-full-regression-summary.json",
+      "bytes": 619,
+      "sha256": "18a655dcd4d8e60902808af8a125ce5de39addc378215f5fde3944753422e87b"
+    },
+    {
+      "path": "artifacts/focused-jvm-1-summary.json",
+      "bytes": 1170,
+      "sha256": "f01cdd37e83380cc218b2c33c5728c0debbf2374bee54c805387272fea4ec261"
+    },
+    {
+      "path": "artifacts/focused-jvm-1-xml.tar.gz",
+      "bytes": 3036,
+      "sha256": "a0f833af9da9b133e72514ce9aa05c4f9d8ffadfee7ab75ba3c36a56be9bf73c"
+    },
+    {
+      "path": "artifacts/focused-other-1-summary.json",
+      "bytes": 542,
+      "sha256": "27c5e9e8400ca89a892ac8d43d8b0edc9fff16af3fbe69ed9703ed4879f4b80f"
+    },
+    {
+      "path": "artifacts/focused-other-1-xml.tar.gz",
+      "bytes": 4106,
+      "sha256": "ecb7df717bb86d09aab3ec569f7afe7d2aa393c98a2061c363827b25502ac6e6"
+    },
+    {
+      "path": "artifacts/initial-full-regression.tar.gz",
+      "bytes": 2486618,
+      "sha256": "5d8403b018e714c48ed3407b6a9b1473067e16099b8d83f3fb3922b546e72597"
+    },
+    {
+      "path": "artifacts/initial-full-regression.tar.gz.entries.json",
+      "bytes": 99605,
+      "sha256": "9b2c59657ba03026411cdccea290b6b456fb2443f5b1abafb52d9feef66a1460"
+    },
+    {
+      "path": "artifacts/initial-own-source.patch",
+      "bytes": 87595,
+      "sha256": "21048957442d75d0b4c9d7dafcef8a01decd8e7f71c976a89a6c94019138b94a"
+    },
+    {
+      "path": "artifacts/output-fix-focused-summary.json",
+      "bytes": 302,
+      "sha256": "31a52295df8849bc885d841e47fd47ff6c9a3ffe8190a938106b9934d367c66d"
+    },
+    {
+      "path": "artifacts/output-fix-focused-xml/TEST-io.heapy.krogu.math.TextOracle537JvmTest.xml",
+      "bytes": 887,
+      "sha256": "e25a8b8bf8df06bb0e3a5d3beff94f9a914e1336097213c5a7cf37f0b0a583b5"
+    },
+    {
+      "path": "artifacts/output-fix-focused-xml/TEST-io.heapy.krogu.math.TextOutput537Test.xml",
+      "bytes": 1157,
+      "sha256": "4db374e0599a49273bda4efa756e49279140199c3126cb03df6f63dffd3cacab"
+    },
+    {
+      "path": "artifacts/output-fix-focused-xml/sha256.json",
+      "bytes": 246,
+      "sha256": "aa025bac66700c54558926c4e9cbc60522cfe256c045e38e235d8c09c85f286f"
+    },
+    {
+      "path": "artifacts/output-fix-full-summary.json",
+      "bytes": 582,
+      "sha256": "2019dcae22ea80842bb772f8c4d7e1505a36248a3309b2d5219de71f1d77560b"
+    },
+    {
+      "path": "artifacts/probe-final.jar",
+      "bytes": 12101,
+      "sha256": "070f8e8816a7a4cd69e800ed4a8bd1120a96ed323f2ec054df5b2985ab136de3"
+    },
+    {
+      "path": "artifacts/probe-prepared-focused.jar",
+      "bytes": 12101,
+      "sha256": "9542179499edcd0bf4100ce26df8c78bad5b77f8e7efd7cc02ce3eabd0288400"
+    },
+    {
+      "path": "artifacts/probe-prepared-focused.json",
+      "bytes": 874,
+      "sha256": "05ff89aa4ff2733d0fb74b82177204e6f0a1a6f43ddfc3ed21e915aca7b8d439"
+    },
+    {
+      "path": "logs/final-baseline-build-1.log",
+      "bytes": 4071,
+      "sha256": "70888c18052800383e9e128194c421b2b38b2e29ae3dca11f818a86a79cbb2e4"
+    },
+    {
+      "path": "logs/final-candidate-build-1.log",
+      "bytes": 21611,
+      "sha256": "c592d46d58c4202d042b9dee4662c41109edc76cb33fa48b1f7dce155bd933a6"
+    },
+    {
+      "path": "logs/final-controller-compile-1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/final-full-regression-1.log",
+      "bytes": 62101,
+      "sha256": "33bc7e7bdcceeea9f829a27154f35ec923d2fcea3af8e95e1448a2289743c12a"
+    },
+    {
+      "path": "logs/focused-jvm-1.log",
+      "bytes": 21976,
+      "sha256": "46388daf012040b5353c654601738a57a7b831316cea65aca644ef856682db93"
+    },
+    {
+      "path": "logs/focused-other-1.log",
+      "bytes": 61071,
+      "sha256": "d1251fe0b905c86047ab0cbf34e8f4c57b12277ba03cd71f1a6c7f8f7323a756"
+    },
+    {
+      "path": "logs/output-fix-focused-jvm-1.log",
+      "bytes": 21973,
+      "sha256": "66e9ca9e8b37aaa5fdee9f6c43388ec9b44d2083f6495b3c68416755a8d871c9"
+    },
+    {
+      "path": "logs/output-fix-full-regression-1.log",
+      "bytes": 61918,
+      "sha256": "00534ffa1cab2c4764a1857238a3ede7b9275ce42c73d0c8abf400358051cbec"
+    },
+    {
+      "path": "remote-source/NumericText537Controller.kt",
+      "bytes": 10805,
+      "sha256": "952cb1928f20c3f3ac8631142c258a7f4871de496afc910549f3cfa70e598d5f"
+    },
+    {
+      "path": "remote-source/derivation.json",
+      "bytes": 1642,
+      "sha256": "bc29efd2cc1bb98190e74aace22873f6598d5e1db482f7c8fc4c14703f938954"
+    }
+  ]
+}

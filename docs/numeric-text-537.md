@@ -108,9 +108,7 @@ escaping results, raw samples, allocated bytes where available and host diagnost
 Existing 527 IDs remain unchanged: decimal `format` observes cached Strings and
 cannot establish cold-format performance. New cold-format IDs must prepare fresh
 equivalent number pools outside the timed and allocation intervals and observe each
-object once. Construction-plus-format is a separate control. Actual throughput,
-allocation, crossover and platform limitations will be recorded after execution;
-no improvement is claimed from this source draft.
+object once. Construction-plus-format is a separate control. Actual same-host throughput, allocation, adverse cases and platform limitations are recorded in [the 537 report](../diagnostics/numeric-text-537/REPORT.md).
 
 The draft JVM diagnostic is `NumericText537Probe` and
 `scripts/measure-numeric-text-537.main.kts`. Package only the compiled probe and its
@@ -151,8 +149,7 @@ operation; fast cases can stay below the target at the cap. Per-thread allocated
 bytes include timed formatting/parsing and result publication, exclude prepared
 input pools and destination arrays, and are not retained heap size. Whole-process
 RSS includes setup, JVM/runtime and all cases, so it cannot be attributed to an
-individual operation. This diagnostic is still uncompiled and unexecuted; its
-source and baseline-load behavior require independent review and smoke validation.
+individual operation. The source, baseline loading, final 2,160-row local campaign and 1,988-method full regression have passed independent review. Both the initial adverse campaign and corrected final campaign are retained in the report evidence.
 Warmup has a 100000-batch guard and the enclosing child deadline; inability to
 reach its timed-work target fails the diagnostic rather than silently reducing it.
 Decimal format selection is prepared outside timing and captured as an opaque

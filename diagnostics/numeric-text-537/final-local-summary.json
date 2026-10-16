@@ -1,0 +1,3841 @@
+{
+  "status": "PASS strict2160 own audit; independent review pending",
+  "handle": 68570,
+  "exit": 0,
+  "host": "LOCAL macOS26.6.2/M4Max/arm64, not claws",
+  "rows": 2160,
+  "cases": 72,
+  "fresh_processes": 6,
+  "full_regression_tests": 1988,
+  "same_parent_probe_controller": true,
+  "processes": [
+    {
+      "variant": "baseline",
+      "fork": 0,
+      "pid": 65397,
+      "real_seconds": 68.11,
+      "user_seconds": 67.04,
+      "sys_seconds": 0.38,
+      "maximum_resident_set_size_raw": 189874176,
+      "peak_memory_footprint_raw": 164774656,
+      "involuntary_context_switches": 43627,
+      "scope": "Darwin time-l whole-process setup/warmup/JIT/GC; raw memory fields, not per-op retention"
+    },
+    {
+      "variant": "baseline",
+      "fork": 1,
+      "pid": 65971,
+      "real_seconds": 68.82,
+      "user_seconds": 68.77,
+      "sys_seconds": 0.39,
+      "maximum_resident_set_size_raw": 174751744,
+      "peak_memory_footprint_raw": 149652224,
+      "involuntary_context_switches": 44439,
+      "scope": "Darwin time-l whole-process setup/warmup/JIT/GC; raw memory fields, not per-op retention"
+    },
+    {
+      "variant": "baseline",
+      "fork": 2,
+      "pid": 66244,
+      "real_seconds": 66.97,
+      "user_seconds": 67.37,
+      "sys_seconds": 0.35,
+      "maximum_resident_set_size_raw": 155238400,
+      "peak_memory_footprint_raw": 129106736,
+      "involuntary_context_switches": 42555,
+      "scope": "Darwin time-l whole-process setup/warmup/JIT/GC; raw memory fields, not per-op retention"
+    },
+    {
+      "variant": "candidate",
+      "fork": 0,
+      "pid": 65785,
+      "real_seconds": 20.98,
+      "user_seconds": 21.53,
+      "sys_seconds": 0.12,
+      "maximum_resident_set_size_raw": 89423872,
+      "peak_memory_footprint_raw": 64422680,
+      "involuntary_context_switches": 10044,
+      "scope": "Darwin time-l whole-process setup/warmup/JIT/GC; raw memory fields, not per-op retention"
+    },
+    {
+      "variant": "candidate",
+      "fork": 1,
+      "pid": 65881,
+      "real_seconds": 20.74,
+      "user_seconds": 21.81,
+      "sys_seconds": 0.1,
+      "maximum_resident_set_size_raw": 94158848,
+      "peak_memory_footprint_raw": 69010152,
+      "involuntary_context_switches": 6438,
+      "scope": "Darwin time-l whole-process setup/warmup/JIT/GC; raw memory fields, not per-op retention"
+    },
+    {
+      "variant": "candidate",
+      "fork": 2,
+      "pid": 66503,
+      "real_seconds": 20.46,
+      "user_seconds": 21.18,
+      "sys_seconds": 0.09,
+      "maximum_resident_set_size_raw": 92717056,
+      "peak_memory_footprint_raw": 67699456,
+      "involuntary_context_switches": 5857,
+      "scope": "Darwin time-l whole-process setup/warmup/JIT/GC; raw memory fields, not per-op retention"
+    }
+  ],
+  "cases_summary": [
+    {
+      "case": "decimal/large-scale/buffer-canonical",
+      "baseline": {
+        "ns": 3.80419921875,
+        "bytes": 0.0,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 3.80419921875,
+            "bytes": 0.0
+          },
+          {
+            "fork": 1,
+            "ns": 2.0751953125,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 5.859375,
+            "bytes": 0.0
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 5.0048828125,
+        "bytes": 0.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 6.53076171875,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 5.0048828125,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 4.9033203125,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.3156205878577847,
+      "candidate_baseline_bytes_ratio": null,
+      "per_fork_ns_ratios": [
+        1.7167244256193044,
+        2.411764705882353,
+        0.8368333333333333
+      ]
+    },
+    {
+      "case": "decimal/large-scale/buffer-engineering",
+      "baseline": {
+        "ns": 138.73291015625,
+        "bytes": 1352.0,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 129.45556640625,
+            "bytes": 1352.0
+          },
+          {
+            "fork": 1,
+            "ns": 109.66015625,
+            "bytes": 1304.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 214.57958984375,
+            "bytes": 1352.0
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 72.93701171875,
+        "bytes": 320.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 77.7587890625,
+            "bytes": 320.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 72.93701171875,
+            "bytes": 320.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 64.3310546875,
+            "bytes": 320.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.5257369115706115,
+      "candidate_baseline_bytes_ratio": 0.23669505824704143,
+      "per_fork_ns_ratios": [
+        0.6006600660066007,
+        0.6651186193139316,
+        0.29980043644572074
+      ]
+    },
+    {
+      "case": "decimal/large-scale/buffer-plain",
+      "baseline": {
+        "ns": 263.36669921875,
+        "bytes": 6144.0,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 263.36669921875,
+            "bytes": 6144.0
+          },
+          {
+            "fork": 1,
+            "ns": 245.748046875,
+            "bytes": 6096.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 436.5234375,
+            "bytes": 6168.0
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 102.33544921875,
+        "bytes": 280.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 101.76611328125,
+            "bytes": 280.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 110.83984375,
+            "bytes": 256.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 82.1943359375,
+            "bytes": 280.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.3885663962920046,
+      "candidate_baseline_bytes_ratio": 0.04557482401529948,
+      "per_fork_ns_ratios": [
+        0.38640463499420624,
+        0.4510304157427497,
+        0.1882930648769575
+      ]
+    },
+    {
+      "case": "decimal/large-scale/cached-format-control",
+      "baseline": {
+        "ns": 2.58349609375,
+        "bytes": 0.0,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2.58349609375,
+            "bytes": 0.0
+          },
+          {
+            "fork": 1,
+            "ns": 1.32275390625,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 3.4384765625,
+            "bytes": 0.0
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 3.60107421875,
+        "bytes": 0.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 3.703125,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 3.58056640625,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 3.0927734375,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.3938763938763938,
+      "candidate_baseline_bytes_ratio": null,
+      "per_fork_ns_ratios": [
+        1.4333774333774334,
+        2.706902916205242,
+        0.8994603805737007
+      ]
+    },
+    {
+      "case": "decimal/large-scale/cold-format",
+      "baseline": {
+        "ns": 130.31005859375,
+        "bytes": 1280.0,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 130.31005859375,
+            "bytes": 1280.0
+          },
+          {
+            "fork": 1,
+            "ns": 115.865234375,
+            "bytes": 1232.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 189.83935546875,
+            "bytes": 1280.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 63.578125,
+        "bytes": 432.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 57.8818359375,
+            "bytes": 432.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 76.02978515625,
+            "bytes": 408.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 63.578125,
+            "bytes": 432.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.48789882903981263,
+      "candidate_baseline_bytes_ratio": 0.3375091552734375,
+      "per_fork_ns_ratios": [
+        0.4441854800936768,
+        0.6561915277379768,
+        0.334904871769151
+      ]
+    },
+    {
+      "case": "decimal/large-scale/construction-format",
+      "baseline": {
+        "ns": 305.6640625,
+        "bytes": 2608.0,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 305.6640625,
+            "bytes": 2608.0
+          },
+          {
+            "fork": 1,
+            "ns": 256.9169921875,
+            "bytes": 2560.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 423.9501953125,
+            "bytes": 2608.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 168.07080078125,
+        "bytes": 648.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 168.07080078125,
+            "bytes": 648.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 173.76708984375,
+            "bytes": 624.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 160.33935546875,
+            "bytes": 648.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.5498546325878594,
+      "candidate_baseline_bytes_ratio": 0.24847075105444785,
+      "per_fork_ns_ratios": [
+        0.5498546325878594,
+        0.6763549906303334,
+        0.3782032824647279
+      ]
+    },
+    {
+      "case": "decimal/large-scale/parse-chars",
+      "baseline": {
+        "ns": 92.75341796875,
+        "bytes": 448.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 92.75341796875,
+            "bytes": 448.0
+          },
+          {
+            "fork": 1,
+            "ns": 70.51611328125,
+            "bytes": 448.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 117.9609375,
+            "bytes": 448.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 118.265625,
+        "bytes": 216.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 118.265625,
+            "bytes": 216.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 121.76513671875,
+            "bytes": 216.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 105.95703125,
+            "bytes": 216.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.2750540906195547,
+      "candidate_baseline_bytes_ratio": 0.48215640285637057,
+      "per_fork_ns_ratios": [
+        1.2750540906195547,
+        1.7267703940671804,
+        0.8982382939267501
+      ]
+    },
+    {
+      "case": "decimal/large-scale/parse-sequence",
+      "baseline": {
+        "ns": 182.3935546875,
+        "bytes": 1384.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 182.3935546875,
+            "bytes": 1384.0
+          },
+          {
+            "fork": 1,
+            "ns": 161.45849609375,
+            "bytes": 1384.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 229.14599609375,
+            "bytes": 1384.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 138.28515625,
+        "bytes": 184.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 145.99609375,
+            "bytes": 184.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 133.30078125,
+            "bytes": 184.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 138.28515625,
+            "bytes": 184.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.7581690947738139,
+      "candidate_baseline_bytes_ratio": 0.1329553184103052,
+      "per_fork_ns_ratios": [
+        0.8004454653024292,
+        0.8256040064475741,
+        0.6034805696252432
+      ]
+    },
+    {
+      "case": "decimal/large-scale/parse-string",
+      "baseline": {
+        "ns": 176.65625,
+        "bytes": 1328.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 176.65625,
+            "bytes": 1328.0
+          },
+          {
+            "fork": 1,
+            "ns": 157.125,
+            "bytes": 1328.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 222.06640625,
+            "bytes": 1328.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 142.65966796875,
+        "bytes": 216.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 142.65966796875,
+            "bytes": 216.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 151.998046875,
+            "bytes": 216.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 123.1689453125,
+            "bytes": 216.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.8075551698213338,
+      "candidate_baseline_bytes_ratio": 0.16265799141691498,
+      "per_fork_ns_ratios": [
+        0.8075551698213338,
+        0.9673702267303103,
+        0.5546491582965399
+      ]
+    },
+    {
+      "case": "decimal/negative-scale/buffer-canonical",
+      "baseline": {
+        "ns": 4.740234375,
+        "bytes": 0.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 3.80419921875,
+            "bytes": 0.0
+          },
+          {
+            "fork": 1,
+            "ns": 3.90625,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 5.53369140625,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 5.33056640625,
+        "bytes": 0.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 6.30712890625,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 5.33056640625,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 4.80126953125,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.1245364647713225,
+      "candidate_baseline_bytes_ratio": 1.0,
+      "per_fork_ns_ratios": [
+        1.657938647156976,
+        1.364625,
+        0.8676431659754699
+      ]
+    },
+    {
+      "case": "decimal/negative-scale/buffer-engineering",
+      "baseline": {
+        "ns": 129.67919921875,
+        "bytes": 1352.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 129.23193359375,
+            "bytes": 1376.0
+          },
+          {
+            "fork": 1,
+            "ns": 106.5673828125,
+            "bytes": 1304.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 170.73583984375,
+            "bytes": 1352.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 61.13720703125,
+        "bytes": 320.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 61.13671875,
+            "bytes": 320.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 102.25439453125,
+            "bytes": 320.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 60.16064453125,
+            "bytes": 320.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.47144960332551406,
+      "candidate_baseline_bytes_ratio": 0.23669300665963625,
+      "per_fork_ns_ratios": [
+        0.473077489826839,
+        0.9595280641466208,
+        0.3523609605710576
+      ]
+    },
+    {
+      "case": "decimal/negative-scale/buffer-plain",
+      "baseline": {
+        "ns": 120.7275390625,
+        "bytes": 1520.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 120.259765625,
+            "bytes": 1520.0
+          },
+          {
+            "fork": 1,
+            "ns": 106.05859375,
+            "bytes": 1520.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 169.8203125,
+            "bytes": 1520.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 57.92236328125,
+        "bytes": 232.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 53.2431640625,
+            "bytes": 232.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 58.7158203125,
+            "bytes": 232.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 58.85791015625,
+            "bytes": 232.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.47977755308392317,
+      "candidate_baseline_bytes_ratio": 0.1526381118566623,
+      "per_fork_ns_ratios": [
+        0.4427346401831972,
+        0.5536168096939339,
+        0.34658934075539405
+      ]
+    },
+    {
+      "case": "decimal/negative-scale/cached-format-control",
+      "baseline": {
+        "ns": 2.583984375,
+        "bytes": 0.0,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2.2783203125,
+            "bytes": 0.0
+          },
+          {
+            "fork": 1,
+            "ns": 2.0751953125,
+            "bytes": 0.0
+          },
+          {
+            "fork": 2,
+            "ns": 3.376953125,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 3.21435546875,
+        "bytes": 0.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 4.5166015625,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 3.21435546875,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 3.11279296875,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.2439531368102796,
+      "candidate_baseline_bytes_ratio": null,
+      "per_fork_ns_ratios": [
+        1.982426060865838,
+        1.5489411764705883,
+        0.9217755928282244
+      ]
+    },
+    {
+      "case": "decimal/negative-scale/cold-format",
+      "baseline": {
+        "ns": 127.72607421875,
+        "bytes": 1256.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 124.61328125,
+            "bytes": 1280.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 125.833984375,
+            "bytes": 1232.0
+          },
+          {
+            "fork": 2,
+            "ns": 210.8154296875,
+            "bytes": 1256.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 68.92919921875,
+        "bytes": 432.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 68.92919921875,
+            "bytes": 432.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 72.3876953125,
+            "bytes": 408.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 59.10205078125,
+            "bytes": 456.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.5396642748190823,
+      "candidate_baseline_bytes_ratio": 0.34395516562532075,
+      "per_fork_ns_ratios": [
+        0.5531448857402589,
+        0.5752634764927748,
+        0.280349739432542
+      ]
+    },
+    {
+      "case": "decimal/negative-scale/construction-format",
+      "baseline": {
+        "ns": 311.5234375,
+        "bytes": 2608.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 310.26220703125,
+            "bytes": 2608.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 269.7548828125,
+            "bytes": 2560.0
+          },
+          {
+            "fork": 2,
+            "ns": 508.5654296875,
+            "bytes": 2608.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 176.26953125,
+        "bytes": 672.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 183.81787109375,
+            "bytes": 672.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 176.26953125,
+            "bytes": 624.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 142.435546875,
+            "bytes": 672.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.5658307210031348,
+      "candidate_baseline_bytes_ratio": 0.2576720472222763,
+      "per_fork_ns_ratios": [
+        0.5924597547752106,
+        0.6534433386791394,
+        0.2800731991604755
+      ]
+    },
+    {
+      "case": "decimal/negative-scale/parse-chars",
+      "baseline": {
+        "ns": 85.77490234375,
+        "bytes": 448.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 85.77490234375,
+            "bytes": 448.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 72.5302734375,
+            "bytes": 448.0
+          },
+          {
+            "fork": 2,
+            "ns": 146.81005859375,
+            "bytes": 448.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 133.7685546875,
+        "bytes": 216.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 133.7685546875,
+            "bytes": 216.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 147.27783203125,
+            "bytes": 216.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 73.91357421875,
+            "bytes": 216.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.5595302475706878,
+      "candidate_baseline_bytes_ratio": 0.48215640285637057,
+      "per_fork_ns_ratios": [
+        1.5595302475706878,
+        2.0305704783832184,
+        0.5034639651175553
+      ]
+    },
+    {
+      "case": "decimal/negative-scale/parse-sequence",
+      "baseline": {
+        "ns": 183.36962890625,
+        "bytes": 1384.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 183.36962890625,
+            "bytes": 1384.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 162.00732421875,
+            "bytes": 1384.0
+          },
+          {
+            "fork": 2,
+            "ns": 297.01708984375,
+            "bytes": 1384.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 154.78515625,
+        "bytes": 184.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 155.4970703125,
+            "bytes": 184.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 195.7197265625,
+            "bytes": 184.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 132.32421875,
+            "bytes": 184.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.844115555957938,
+      "candidate_baseline_bytes_ratio": 0.1329553184103052,
+      "per_fork_ns_ratios": [
+        0.847997954950325,
+        1.2080918409480668,
+        0.4455104547001353
+      ]
+    },
+    {
+      "case": "decimal/negative-scale/parse-string",
+      "baseline": {
+        "ns": 171.1630859375,
+        "bytes": 1328.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 171.1630859375,
+            "bytes": 1328.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 155.904296875,
+            "bytes": 1328.0
+          },
+          {
+            "fork": 2,
+            "ns": 272.603515625,
+            "bytes": 1328.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 156.25,
+        "bytes": 216.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 157.20654296875,
+            "bytes": 216.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 169.6572265625,
+            "bytes": 216.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 118.85595703125,
+            "bytes": 216.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.9128720666853045,
+      "candidate_baseline_bytes_ratio": 0.16265799141691498,
+      "per_fork_ns_ratios": [
+        0.9184605553685435,
+        1.088213923305313,
+        0.4360030235074119
+      ]
+    },
+    {
+      "case": "decimal/small/buffer-canonical",
+      "baseline": {
+        "ns": 3.8251953125,
+        "bytes": 0.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 3.8046875,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 3.662109375,
+            "bytes": 0.0
+          },
+          {
+            "fork": 2,
+            "ns": 5.615234375,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 4.84228515625,
+        "bytes": 0.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 6.34765625,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 3.45849609375,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 4.84228515625,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.2658922644881287,
+      "candidate_baseline_bytes_ratio": 1.0,
+      "per_fork_ns_ratios": [
+        1.6683778234086242,
+        0.9444,
+        0.8623478260869565
+      ]
+    },
+    {
+      "case": "decimal/small/buffer-engineering",
+      "baseline": {
+        "ns": 118.3671875,
+        "bytes": 1224.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 117.818359375,
+            "bytes": 1224.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 110.12744140625,
+            "bytes": 1248.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 174.23486328125,
+            "bytes": 1224.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 63.15087890625,
+        "bytes": 272.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 70.353515625,
+            "bytes": 272.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 63.333984375,
+            "bytes": 272.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 54.13818359375,
+            "bytes": 272.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.5335167645699954,
+      "candidate_baseline_bytes_ratio": 0.2222296687059394,
+      "per_fork_ns_ratios": [
+        0.5971354209837044,
+        0.5750972107067007,
+        0.3107195803078751
+      ]
+    },
+    {
+      "case": "decimal/small/buffer-plain",
+      "baseline": {
+        "ns": 116.4755859375,
+        "bytes": 1224.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 116.4755859375,
+            "bytes": 1224.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 103.1494140625,
+            "bytes": 1224.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 171.34619140625,
+            "bytes": 1224.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 54.50439453125,
+        "bytes": 272.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 68.29833984375,
+            "bytes": 272.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 43.009765625,
+            "bytes": 272.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 54.50439453125,
+            "bytes": 272.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.4679469443536149,
+      "candidate_baseline_bytes_ratio": 0.2222296687059394,
+      "per_fork_ns_ratios": [
+        0.5863747264632644,
+        0.4169656804733728,
+        0.3180951621038593
+      ]
+    },
+    {
+      "case": "decimal/small/cached-format-control",
+      "baseline": {
+        "ns": 2.58349609375,
+        "bytes": 0.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2.54345703125,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2.3193359375,
+            "bytes": 0.0
+          },
+          {
+            "fork": 2,
+            "ns": 3.763671875,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 4.06884765625,
+        "bytes": 0.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 4.06884765625,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 6.44921875,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 3.072265625,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.574938574938575,
+      "candidate_baseline_bytes_ratio": 1.0,
+      "per_fork_ns_ratios": [
+        1.5997312344019965,
+        2.7806315789473683,
+        0.8162947586922678
+      ]
+    },
+    {
+      "case": "decimal/small/cold-format",
+      "baseline": {
+        "ns": 127.01416015625,
+        "bytes": 1224.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 126.3427734375,
+            "bytes": 1224.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 123.06689453125,
+            "bytes": 1248.0
+          },
+          {
+            "fork": 2,
+            "ns": 206.33935546875,
+            "bytes": 1224.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 64.77880859375,
+        "bytes": 424.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 64.77880859375,
+            "bytes": 424.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 82.8046875,
+            "bytes": 448.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 56.29443359375,
+            "bytes": 424.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.5100124939932724,
+      "candidate_baseline_bytes_ratio": 0.3464114863075121,
+      "per_fork_ns_ratios": [
+        0.5127227053140097,
+        0.6728429104788507,
+        0.2728245102145614
+      ]
+    },
+    {
+      "case": "decimal/small/construction-format",
+      "baseline": {
+        "ns": 293.4775390625,
+        "bytes": 2408.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 293.4775390625,
+            "bytes": 2408.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 258.6669921875,
+            "bytes": 2432.0
+          },
+          {
+            "fork": 2,
+            "ns": 438.06982421875,
+            "bytes": 2408.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 167.41943359375,
+        "bytes": 640.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 167.41943359375,
+            "bytes": 640.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 248.35205078125,
+            "bytes": 664.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 131.36767578125,
+            "bytes": 640.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.5704676212311286,
+      "candidate_baseline_bytes_ratio": 0.26578430402416414,
+      "per_fork_ns_ratios": [
+        0.5704676212311286,
+        0.9601226993865031,
+        0.2998783949922367
+      ]
+    },
+    {
+      "case": "decimal/small/parse-chars",
+      "baseline": {
+        "ns": 77.2705078125,
+        "bytes": 440.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 75.9072265625,
+            "bytes": 440.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 70.39404296875,
+            "bytes": 464.0
+          },
+          {
+            "fork": 2,
+            "ns": 151.46875,
+            "bytes": 440.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 109.619140625,
+        "bytes": 216.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 109.619140625,
+            "bytes": 216.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 116.3740234375,
+            "bytes": 216.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 98.6123046875,
+            "bytes": 216.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.4186413902053712,
+      "candidate_baseline_bytes_ratio": 0.4909226494322772,
+      "per_fork_ns_ratios": [
+        1.444119955229065,
+        1.6531799926474158,
+        0.6510405921188364
+      ]
+    },
+    {
+      "case": "decimal/small/parse-sequence",
+      "baseline": {
+        "ns": 172.79052734375,
+        "bytes": 1240.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 172.79052734375,
+            "bytes": 1240.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 152.81201171875,
+            "bytes": 1240.0
+          },
+          {
+            "fork": 2,
+            "ns": 260.2744140625,
+            "bytes": 1240.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 136.0068359375,
+        "bytes": 184.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 136.0068359375,
+            "bytes": 184.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 141.78466796875,
+            "bytes": 184.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 119.2626953125,
+            "bytes": 184.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.7871197456729071,
+      "candidate_baseline_bytes_ratio": 0.1483951449551573,
+      "per_fork_ns_ratios": [
+        0.7871197456729071,
+        0.9278371927313163,
+        0.4582190521572409
+      ]
+    },
+    {
+      "case": "decimal/small/parse-string",
+      "baseline": {
+        "ns": 154.4599609375,
+        "bytes": 1184.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 154.35791015625,
+            "bytes": 1184.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 137.75634765625,
+            "bytes": 1184.0
+          },
+          {
+            "fork": 2,
+            "ns": 234.2119140625,
+            "bytes": 1184.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 125.65087890625,
+        "bytes": 216.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 125.65087890625,
+            "bytes": 216.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 152.1201171875,
+            "bytes": 216.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 116.63818359375,
+            "bytes": 216.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.8134851138353766,
+      "candidate_baseline_bytes_ratio": 0.18244052430329882,
+      "per_fork_ns_ratios": [
+        0.8140229339659945,
+        1.1042693841382365,
+        0.49800277693228207
+      ]
+    },
+    {
+      "case": "decimal/wide/buffer-canonical",
+      "baseline": {
+        "ns": 9.56201171875,
+        "bytes": 0.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 9.56201171875,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 8.2197265625,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 13.32568359375,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 13.28564453125,
+        "bytes": 0.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 13.28564453125,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 13.7734375,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 10.009765625,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.3894193943726703,
+      "candidate_baseline_bytes_ratio": 1.0,
+      "per_fork_ns_ratios": [
+        1.3894193943726703,
+        1.6756564096471427,
+        0.7511633871972445
+      ]
+    },
+    {
+      "case": "decimal/wide/buffer-engineering",
+      "baseline": {
+        "ns": 18107.48291015625,
+        "bytes": 63528.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 18107.48291015625,
+            "bytes": 63528.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 16837.68701171875,
+            "bytes": 63528.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 27049.1943359375,
+            "bytes": 63528.0234375
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 2361.775390625,
+        "bytes": 1000.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2361.775390625,
+            "bytes": 1000.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2549.51953125,
+            "bytes": 976.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 1793.15185546875,
+            "bytes": 1000.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.13043090540763735,
+      "candidate_baseline_bytes_ratio": 0.015741272104929597,
+      "per_fork_ns_ratios": [
+        0.13043090540763735,
+        0.1514174440631648,
+        0.06629224638629523
+      ]
+    },
+    {
+      "case": "decimal/wide/buffer-plain",
+      "baseline": {
+        "ns": 18138.36669921875,
+        "bytes": 63528.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 18138.36669921875,
+            "bytes": 63528.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 16727.09130859375,
+            "bytes": 63528.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 28744.873046875,
+            "bytes": 63528.0234375
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 2302.81591796875,
+        "bytes": 1000.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2302.81591796875,
+            "bytes": 1000.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2528.89013671875,
+            "bytes": 976.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 1795.00341796875,
+            "bytes": 1000.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.12695828440098392,
+      "candidate_baseline_bytes_ratio": 0.015741272104929597,
+      "per_fork_ns_ratios": [
+        0.12695828440098392,
+        0.15118528918530513,
+        0.0624460374217549
+      ]
+    },
+    {
+      "case": "decimal/wide/cached-format-control",
+      "baseline": {
+        "ns": 2.44140625,
+        "bytes": 0.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2.44140625,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2.2177734375,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 3.37744140625,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 4.19140625,
+        "bytes": 0.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 4.57763671875,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 4.19140625,
+            "bytes": 0.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 3.072265625,
+            "bytes": 0.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.7168,
+      "candidate_baseline_bytes_ratio": 1.0,
+      "per_fork_ns_ratios": [
+        1.875,
+        1.889916336415676,
+        0.9096429087754807
+      ]
+    },
+    {
+      "case": "decimal/wide/cold-format",
+      "baseline": {
+        "ns": 19204.50830078125,
+        "bytes": 63528.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 19204.50830078125,
+            "bytes": 63528.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 17162.150390625,
+            "bytes": 63528.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 25919.880859375,
+            "bytes": 63528.0234375
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 2361.0634765625,
+        "bytes": 2320.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2444.03076171875,
+            "bytes": 2320.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2378.4990234375,
+            "bytes": 2320.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 1833.43505859375,
+            "bytes": 2320.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.12294318810893225,
+      "candidate_baseline_bytes_ratio": 0.036519507788487254,
+      "per_fork_ns_ratios": [
+        0.1272633864632361,
+        0.13858980193628762,
+        0.07073470239083342
+      ]
+    },
+    {
+      "case": "decimal/wide/construction-format",
+      "baseline": {
+        "ns": 38924.640625,
+        "bytes": 190680.046875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 38924.640625,
+            "bytes": 190680.046875
+          },
+          {
+            "fork": 1,
+            "ns": 37841.796875,
+            "bytes": 190680.0234375
+          },
+          {
+            "fork": 2,
+            "ns": 58458.90234375,
+            "bytes": 190680.046875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 4477.21337890625,
+        "bytes": 3216.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 4477.21337890625,
+            "bytes": 3216.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 5208.1298828125,
+            "bytes": 3216.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 3682.23046875,
+            "bytes": 3216.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.11502260026084056,
+      "candidate_baseline_bytes_ratio": 0.01686601074132445,
+      "per_fork_ns_ratios": [
+        0.11502260026084056,
+        0.13762903225806453,
+        0.06298836141496039
+      ]
+    },
+    {
+      "case": "decimal/wide/parse-chars",
+      "baseline": {
+        "ns": 1635.41650390625,
+        "bytes": 1584.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 1635.41650390625,
+            "bytes": 1584.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 1583.90283203125,
+            "bytes": 1608.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 2888.97705078125,
+            "bytes": 1584.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 1878.763671875,
+        "bytes": 896.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 1920.73583984375,
+            "bytes": 896.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 1878.763671875,
+            "bytes": 896.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 1289.8154296875,
+            "bytes": 896.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.1487982831208483,
+      "candidate_baseline_bytes_ratio": 0.5656597789927178,
+      "per_fork_ns_ratios": [
+        1.174462796025358,
+        1.186160939851096,
+        0.4464609469080768
+      ]
+    },
+    {
+      "case": "decimal/wide/parse-sequence",
+      "baseline": {
+        "ns": 18860.43310546875,
+        "bytes": 127512.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 18860.43310546875,
+            "bytes": 127512.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 17138.326171875,
+            "bytes": 127512.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 28301.6767578125,
+            "bytes": 127512.0234375
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 2616.51611328125,
+        "bytes": 864.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2616.51611328125,
+            "bytes": 864.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2906.51416015625,
+            "bytes": 864.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 2245.89013671875,
+            "bytes": 864.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.13873043628688292,
+      "candidate_baseline_bytes_ratio": 0.00677592414317585,
+      "per_fork_ns_ratios": [
+        0.13873043628688292,
+        0.16959148349772982,
+        0.07935537374473002
+      ]
+    },
+    {
+      "case": "decimal/wide/parse-string",
+      "baseline": {
+        "ns": 19931.193359375,
+        "bytes": 127152.0234375,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 19931.193359375,
+            "bytes": 127152.0234375
+          },
+          {
+            "fork": 1,
+            "ns": 17317.7490234375,
+            "bytes": 127152.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 29874.6337890625,
+            "bytes": 127152.0234375
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 2488.66796875,
+        "bytes": 896.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2488.66796875,
+            "bytes": 896.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 3129.72021484375,
+            "bytes": 896.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 1859.06982421875,
+            "bytes": 896.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.12486296850757357,
+      "candidate_baseline_bytes_ratio": 0.007046775147785386,
+      "per_fork_ns_ratios": [
+        0.12486296850757357,
+        0.18072326897728153,
+        0.06222904144516677
+      ]
+    },
+    {
+      "case": "integer/1234/buffer-10",
+      "baseline": {
+        "ns": 553797.53125,
+        "bytes": 523272.375,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 564528.0,
+            "bytes": 523272.375
+          },
+          {
+            "fork": 1,
+            "ns": 567075.515625,
+            "bytes": 523224.0
+          },
+          {
+            "fork": 2,
+            "ns": 386863.9375,
+            "bytes": 523272.375
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 43843.34375,
+        "bytes": 2848.046875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 48716.1455078125,
+            "bytes": 2848.0234375
+          },
+          {
+            "fork": 1,
+            "ns": 43843.34375,
+            "bytes": 2848.046875
+          },
+          {
+            "fork": 2,
+            "ns": 37012.2890625,
+            "bytes": 2848.046875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.0791685431515726,
+      "candidate_baseline_bytes_ratio": 0.005442761764367935,
+      "per_fork_ns_ratios": [
+        0.08629535737432421,
+        0.07731482411417152,
+        0.09567262666476893
+      ]
+    },
+    {
+      "case": "integer/1234/buffer-16",
+      "baseline": {
+        "ns": 1626.220703125,
+        "bytes": 2120.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 1626.220703125,
+            "bytes": 2120.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 1507.2021484375,
+            "bytes": 2120.0
+          },
+          {
+            "fork": 2,
+            "ns": 2238.97265625,
+            "bytes": 2120.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 1536.17333984375,
+        "bytes": 736.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 1536.17333984375,
+            "bytes": 736.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 1579.833984375,
+            "bytes": 736.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 1334.859375,
+            "bytes": 736.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.9446278336586098,
+      "candidate_baseline_bytes_ratio": 0.3471734199582476,
+      "per_fork_ns_ratios": [
+        0.9446278336586098,
+        1.0481898436867256,
+        0.5961927990830058
+      ]
+    },
+    {
+      "case": "integer/1234/buffer-3",
+      "baseline": {
+        "ns": 805539.0625,
+        "bytes": 1038016.75,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 728526.0,
+            "bytes": 1038017.5
+          },
+          {
+            "fork": 1,
+            "ns": 966260.40625,
+            "bytes": 1037968.0
+          },
+          {
+            "fork": 2,
+            "ns": 798684.90625,
+            "bytes": 1038016.75
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 42267.740234375,
+        "bytes": 2864.046875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 66621.17578125,
+            "bytes": 2864.046875
+          },
+          {
+            "fork": 1,
+            "ns": 39586.42578125,
+            "bytes": 2864.046875
+          },
+          {
+            "fork": 2,
+            "ns": 42958.333984375,
+            "bytes": 2864.046875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.05247137252810133,
+      "candidate_baseline_bytes_ratio": 0.0027591528508571755,
+      "per_fork_ns_ratios": [
+        0.09144653146387363,
+        0.04096869283393552,
+        0.053786335071829214
+      ]
+    },
+    {
+      "case": "integer/1234/cold-format-10",
+      "baseline": {
+        "ns": 513338.546875,
+        "bytes": 523272.375,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 636626.296875,
+            "bytes": 523272.375
+          },
+          {
+            "fork": 1,
+            "ns": 513338.546875,
+            "bytes": 523248.0
+          },
+          {
+            "fork": 2,
+            "ns": 369187.5,
+            "bytes": 523272.375
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 40187.580078125,
+        "bytes": 5376.046875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 37671.142578125,
+            "bytes": 5376.046875
+          },
+          {
+            "fork": 1,
+            "ns": 40150.06640625,
+            "bytes": 5376.046875
+          },
+          {
+            "fork": 2,
+            "ns": 41229.65625,
+            "bytes": 5376.046875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.07828669855940282,
+      "candidate_baseline_bytes_ratio": 0.010273897747802949,
+      "per_fork_ns_ratios": [
+        0.05917308594231953,
+        0.07821362072002495,
+        0.11167673946165567
+      ]
+    },
+    {
+      "case": "integer/1234/cold-format-16",
+      "baseline": {
+        "ns": 1879.13037109375,
+        "bytes": 2120.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 1688.5986328125,
+            "bytes": 2120.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2239.216796875,
+            "bytes": 2120.0
+          },
+          {
+            "fork": 2,
+            "ns": 1879.13037109375,
+            "bytes": 2120.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 2194.8447265625,
+        "bytes": 2120.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2194.8447265625,
+            "bytes": 2120.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2318.603515625,
+            "bytes": 2120.046875
+          },
+          {
+            "fork": 2,
+            "ns": 1805.3994140625,
+            "bytes": 2120.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.1680108843565697,
+      "candidate_baseline_bytes_ratio": 1.0,
+      "per_fork_ns_ratios": [
+        1.2998025012650907,
+        1.035452895343046,
+        0.960763256150059
+      ]
+    },
+    {
+      "case": "integer/1234/cold-format-3",
+      "baseline": {
+        "ns": 807817.71875,
+        "bytes": 1038016.75,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 744283.8125,
+            "bytes": 1038017.5
+          },
+          {
+            "fork": 1,
+            "ns": 1064220.0625,
+            "bytes": 1037992.0
+          },
+          {
+            "fork": 2,
+            "ns": 772951.84375,
+            "bytes": 1038016.75
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 39890.462890625,
+        "bytes": 8096.046875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 38505.2890625,
+            "bytes": 8096.046875
+          },
+          {
+            "fork": 1,
+            "ns": 39847.00390625,
+            "bytes": 8096.046875
+          },
+          {
+            "fork": 2,
+            "ns": 43132.0,
+            "bytes": 8096.046875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.049380524795062254,
+      "candidate_baseline_bytes_ratio": 0.007799533942973463,
+      "per_fork_ns_ratios": [
+        0.05173468563445346,
+        0.037442447582358,
+        0.05580166519914585
+      ]
+    },
+    {
+      "case": "integer/1234/parse-chars",
+      "baseline": {
+        "ns": 253784.1796875,
+        "bytes": 1401592.1875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 246996.09375,
+            "bytes": 1401592.375
+          },
+          {
+            "fork": 1,
+            "ns": 323687.5,
+            "bytes": 1401592.0
+          },
+          {
+            "fork": 2,
+            "ns": 245499.671875,
+            "bytes": 1401592.1875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 8302.79541015625,
+        "bytes": 2768.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 8309.63134765625,
+            "bytes": 2768.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 9260.41650390625,
+            "bytes": 2768.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 7387.349609375,
+            "bytes": 2768.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.03271596921596922,
+      "candidate_baseline_bytes_ratio": 0.001974905213824902,
+      "per_fork_ns_ratios": [
+        0.03364276422957094,
+        0.028609126098184976,
+        0.030091077323868624
+      ]
+    },
+    {
+      "case": "integer/1234/parse-sequence",
+      "baseline": {
+        "ns": 245080.40625,
+        "bytes": 1401592.1875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 333975.5859375,
+            "bytes": 1401592.1875
+          },
+          {
+            "fork": 1,
+            "ns": 247137.3671875,
+            "bytes": 1401592.0
+          },
+          {
+            "fork": 2,
+            "ns": 240155.9296875,
+            "bytes": 1401592.1875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 9120.361328125,
+        "bytes": 2768.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 9120.361328125,
+            "bytes": 2768.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 10076.802734375,
+            "bytes": 2768.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 8775.2275390625,
+            "bytes": 2768.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.03721375146906506,
+      "candidate_baseline_bytes_ratio": 0.001974905213824902,
+      "per_fork_ns_ratios": [
+        0.027308467181884902,
+        0.04077409599791462,
+        0.0365397079742364
+      ]
+    },
+    {
+      "case": "integer/1234/parse-string",
+      "baseline": {
+        "ns": 291049.15625,
+        "bytes": 1400312.1875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 387241.53125,
+            "bytes": 1400312.375
+          },
+          {
+            "fork": 1,
+            "ns": 291049.15625,
+            "bytes": 1400312.0
+          },
+          {
+            "fork": 2,
+            "ns": 229263.671875,
+            "bytes": 1400312.1875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 8669.12841796875,
+        "bytes": 2792.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 8669.12841796875,
+            "bytes": 2792.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 9619.62890625,
+            "bytes": 2792.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 7161.376953125,
+            "bytes": 2792.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.029785787836204215,
+      "candidate_baseline_bytes_ratio": 0.0019938494741909116,
+      "per_fork_ns_ratios": [
+        0.02238687671228123,
+        0.03305156087787147,
+        0.03123642265063936
+      ]
+    },
+    {
+      "case": "integer/309/buffer-10",
+      "baseline": {
+        "ns": 26065.103515625,
+        "bytes": 60824.0234375,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 25656.3720703125,
+            "bytes": 60824.0234375
+          },
+          {
+            "fork": 1,
+            "ns": 28139.2421875,
+            "bytes": 60776.0
+          },
+          {
+            "fork": 2,
+            "ns": 25922.56640625,
+            "bytes": 60824.0234375
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 2060.1806640625,
+        "bytes": 872.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 4144.73486328125,
+            "bytes": 872.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2060.1806640625,
+            "bytes": 872.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 1822.55029296875,
+            "bytes": 872.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.07903980365270766,
+      "candidate_baseline_bytes_ratio": 0.01433663328184857,
+      "per_fork_ns_ratios": [
+        0.16154797147166436,
+        0.07321379340406234,
+        0.07030747898978583
+      ]
+    },
+    {
+      "case": "integer/309/buffer-16",
+      "baseline": {
+        "ns": 540.56787109375,
+        "bytes": 584.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 850.0771484375,
+            "bytes": 584.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 540.56787109375,
+            "bytes": 584.0
+          },
+          {
+            "fork": 2,
+            "ns": 419.08740234375,
+            "bytes": 584.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 376.6884765625,
+        "bytes": 296.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 402.48583984375,
+            "bytes": 296.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 376.6884765625,
+            "bytes": 296.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 329.4677734375,
+            "bytes": 296.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.6968384484270828,
+      "candidate_baseline_bytes_ratio": 0.5068592106055235,
+      "per_fork_ns_ratios": [
+        0.47346977928244105,
+        0.6968384484270828,
+        0.7861552783379996
+      ]
+    },
+    {
+      "case": "integer/309/buffer-3",
+      "baseline": {
+        "ns": 55437.98828125,
+        "bytes": 120568.046875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 64840.25,
+            "bytes": 120568.046875
+          },
+          {
+            "fork": 1,
+            "ns": 55437.98828125,
+            "bytes": 120520.0
+          },
+          {
+            "fork": 2,
+            "ns": 52711.5078125,
+            "bytes": 120568.046875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 2330.9326171875,
+        "bytes": 888.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2218.60791015625,
+            "bytes": 888.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2330.9326171875,
+            "bytes": 888.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 2371.541015625,
+            "bytes": 888.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.042045764816755773,
+      "candidate_baseline_bytes_ratio": 0.007365232677864095,
+      "per_fork_ns_ratios": [
+        0.03421652307257066,
+        0.042045764816755773,
+        0.044990953855101316
+      ]
+    },
+    {
+      "case": "integer/309/cold-format-10",
+      "baseline": {
+        "ns": 26456.54296875,
+        "bytes": 60824.0234375,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 28957.763671875,
+            "bytes": 60824.0234375
+          },
+          {
+            "fork": 1,
+            "ns": 25746.7041015625,
+            "bytes": 60800.0
+          },
+          {
+            "fork": 2,
+            "ns": 24151.6923828125,
+            "bytes": 60824.0234375
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 1840.35205078125,
+        "bytes": 1544.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 1695.068359375,
+            "bytes": 1544.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 1906.65673828125,
+            "bytes": 1544.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 1840.35205078125,
+            "bytes": 1544.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.06956131997120868,
+      "candidate_baseline_bytes_ratio": 0.025384899444157227,
+      "per_fork_ns_ratios": [
+        0.05853588621628685,
+        0.07405440054618641,
+        0.07619971394182433
+      ]
+    },
+    {
+      "case": "integer/309/cold-format-16",
+      "baseline": {
+        "ns": 582.21435546875,
+        "bytes": 584.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 729.30908203125,
+            "bytes": 584.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 647.318359375,
+            "bytes": 584.0
+          },
+          {
+            "fork": 2,
+            "ns": 419.51513671875,
+            "bytes": 584.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 541.361328125,
+        "bytes": 584.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 541.361328125,
+            "bytes": 584.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 548.23828125,
+            "bytes": 584.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 471.59814453125,
+            "bytes": 584.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.9298316385365343,
+      "candidate_baseline_bytes_ratio": 1.0,
+      "per_fork_ns_ratios": [
+        0.7422934136747845,
+        0.8469376363422413,
+        1.124150485295641
+      ]
+    },
+    {
+      "case": "integer/309/cold-format-3",
+      "baseline": {
+        "ns": 54731.52734375,
+        "bytes": 120568.046875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 64422.4453125,
+            "bytes": 120568.046875
+          },
+          {
+            "fork": 1,
+            "ns": 54731.52734375,
+            "bytes": 120544.0
+          },
+          {
+            "fork": 2,
+            "ns": 46012.2890625,
+            "bytes": 120568.046875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 2269.1650390625,
+        "bytes": 2232.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2269.1650390625,
+            "bytes": 2232.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2183.30908203125,
+            "bytes": 2232.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 2409.2001953125,
+            "bytes": 2232.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.04145992537008242,
+      "candidate_baseline_bytes_ratio": 0.018512464758295853,
+      "per_fork_ns_ratios": [
+        0.03522320563982395,
+        0.03989125076518754,
+        0.05235992914936278
+      ]
+    },
+    {
+      "case": "integer/309/parse-chars",
+      "baseline": {
+        "ns": 26849.40625,
+        "bytes": 117464.0234375,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 26849.40625,
+            "bytes": 117464.0234375
+          },
+          {
+            "fork": 1,
+            "ns": 27445.353515625,
+            "bytes": 117464.0
+          },
+          {
+            "fork": 2,
+            "ns": 20627.7666015625,
+            "bytes": 117464.0234375
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 793.49755859375,
+        "bytes": 792.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 793.49755859375,
+            "bytes": 792.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 723.59228515625,
+            "bytes": 792.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 839.41650390625,
+            "bytes": 792.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.029553635235183274,
+      "candidate_baseline_bytes_ratio": 0.006742589735753534,
+      "per_fork_ns_ratios": [
+        0.029553635235183274,
+        0.026364837484942557,
+        0.04069352344924566
+      ]
+    },
+    {
+      "case": "integer/309/parse-sequence",
+      "baseline": {
+        "ns": 27374.673828125,
+        "bytes": 117464.0234375,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 28366.1298828125,
+            "bytes": 117464.0234375
+          },
+          {
+            "fork": 1,
+            "ns": 30202.3115234375,
+            "bytes": 117464.0
+          },
+          {
+            "fork": 2,
+            "ns": 19187.01171875,
+            "bytes": 117464.0234375
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 943.990234375,
+        "bytes": 792.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 943.990234375,
+            "bytes": 792.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 920.1865234375,
+            "bytes": 792.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 996.86669921875,
+            "bytes": 792.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.034484072405828466,
+      "candidate_baseline_bytes_ratio": 0.006742589735753534,
+      "per_fork_ns_ratios": [
+        0.03327878135913701,
+        0.03046742043977064,
+        0.05195528693217967
+      ]
+    },
+    {
+      "case": "integer/309/parse-string",
+      "baseline": {
+        "ns": 26421.875,
+        "bytes": 117112.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 27778.4013671875,
+            "bytes": 117112.0234375
+          },
+          {
+            "fork": 1,
+            "ns": 26904.37890625,
+            "bytes": 117112.0
+          },
+          {
+            "fork": 2,
+            "ns": 19839.2744140625,
+            "bytes": 117112.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 871.337890625,
+        "bytes": 816.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 871.337890625,
+            "bytes": 816.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 790.9140625,
+            "bytes": 816.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 925.49658203125,
+            "bytes": 816.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.03297789769367238,
+      "candidate_baseline_bytes_ratio": 0.006967788417038642,
+      "per_fork_ns_ratios": [
+        0.031367459887531354,
+        0.02939722434240128,
+        0.04664971927477541
+      ]
+    },
+    {
+      "case": "integer/77/buffer-10",
+      "baseline": {
+        "ns": 1886.12841796875,
+        "bytes": 10744.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2247.701171875,
+            "bytes": 10744.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 1886.12841796875,
+            "bytes": 10720.0
+          },
+          {
+            "fork": 2,
+            "ns": 1544.962890625,
+            "bytes": 10744.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 199.80859375,
+        "bytes": 328.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 198.974609375,
+            "bytes": 328.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 176.0458984375,
+            "bytes": 328.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 232.279296875,
+            "bytes": 328.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.10593583758479297,
+      "candidate_baseline_bytes_ratio": 0.030529724588588047,
+      "per_fork_ns_ratios": [
+        0.08852360441179921,
+        0.09333717511509165,
+        0.15034619814138941
+      ]
+    },
+    {
+      "case": "integer/77/buffer-16",
+      "baseline": {
+        "ns": 165.7509765625,
+        "bytes": 184.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 165.7509765625,
+            "bytes": 184.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 191.91455078125,
+            "bytes": 184.0
+          },
+          {
+            "fork": 2,
+            "ns": 119.7099609375,
+            "bytes": 184.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 94.0751953125,
+        "bytes": 160.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 94.0751953125,
+            "bytes": 160.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 79.38671875,
+            "bytes": 160.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 95.96728515625,
+            "bytes": 160.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.5675694784038084,
+      "candidate_baseline_bytes_ratio": 0.8695735241046978,
+      "per_fork_ns_ratios": [
+        0.5675694784038084,
+        0.413656590533812,
+        0.8016649943303721
+      ]
+    },
+    {
+      "case": "integer/77/buffer-3",
+      "baseline": {
+        "ns": 3132.1611328125,
+        "bytes": 21256.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2908.12158203125,
+            "bytes": 21256.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 3492.5537109375,
+            "bytes": 21232.0
+          },
+          {
+            "fork": 2,
+            "ns": 3132.1611328125,
+            "bytes": 21256.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 381.001953125,
+        "bytes": 368.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 381.001953125,
+            "bytes": 368.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 326.23291015625,
+            "bytes": 368.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 414.44873046875,
+            "bytes": 368.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.12164187504072699,
+      "candidate_baseline_bytes_ratio": 0.01731330052031236,
+      "per_fork_ns_ratios": [
+        0.1310130757527956,
+        0.09340812974030967,
+        0.13232037334445784
+      ]
+    },
+    {
+      "case": "integer/77/cold-format-10",
+      "baseline": {
+        "ns": 1876.38330078125,
+        "bytes": 10744.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2608.642578125,
+            "bytes": 10744.0234375
+          },
+          {
+            "fork": 1,
+            "ns": 1876.38330078125,
+            "bytes": 10744.0
+          },
+          {
+            "fork": 2,
+            "ns": 1553.14111328125,
+            "bytes": 10744.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 222.57470703125,
+        "bytes": 560.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 222.1884765625,
+            "bytes": 560.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 187.0927734375,
+            "bytes": 560.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 252.6044921875,
+            "bytes": 560.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.11861899801526635,
+      "candidate_baseline_bytes_ratio": 0.05212314854168401,
+      "per_fork_ns_ratios": [
+        0.0851739822180627,
+        0.09970925096146514,
+        0.16264104402840387
+      ]
+    },
+    {
+      "case": "integer/77/cold-format-16",
+      "baseline": {
+        "ns": 135.60009765625,
+        "bytes": 184.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 183.2275390625,
+            "bytes": 184.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 130.20849609375,
+            "bytes": 184.0
+          },
+          {
+            "fork": 2,
+            "ns": 128.0927734375,
+            "bytes": 184.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 113.72900390625,
+        "bytes": 184.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 113.72900390625,
+            "bytes": 184.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 99.080078125,
+            "bytes": 184.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 126.13916015625,
+            "bytes": 184.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.8387088643148043,
+      "candidate_baseline_bytes_ratio": 1.0,
+      "per_fork_ns_ratios": [
+        0.6206982011992005,
+        0.760934048832439,
+        0.9847484504486647
+      ]
+    },
+    {
+      "case": "integer/77/cold-format-3",
+      "baseline": {
+        "ns": 3760.82373046875,
+        "bytes": 21256.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 4762.796875,
+            "bytes": 21256.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 3760.82373046875,
+            "bytes": 21256.0
+          },
+          {
+            "fork": 2,
+            "ns": 3337.60595703125,
+            "bytes": 21256.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 386.51513671875,
+        "bytes": 752.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 386.51513671875,
+            "bytes": 752.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 337.8701171875,
+            "bytes": 752.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 454.2236328125,
+            "bytes": 752.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.10277406345512893,
+      "candidate_baseline_bytes_ratio": 0.035378777952340325,
+      "per_fork_ns_ratios": [
+        0.08115297520823833,
+        0.08983939195294,
+        0.1360926480418093
+      ]
+    },
+    {
+      "case": "integer/77/parse-chars",
+      "baseline": {
+        "ns": 2740.90576171875,
+        "bytes": 14600.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2905.0498046875,
+            "bytes": 14600.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2740.90576171875,
+            "bytes": 14600.0
+          },
+          {
+            "fork": 2,
+            "ns": 2233.5205078125,
+            "bytes": 14600.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 183.59375,
+        "bytes": 272.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 183.59375,
+            "bytes": 272.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 152.03857421875,
+            "bytes": 272.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 220.2353515625,
+            "bytes": 272.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.06698287572093438,
+      "candidate_baseline_bytes_ratio": 0.018630924686222693,
+      "per_fork_ns_ratios": [
+        0.06319814197462595,
+        0.05547019395639878,
+        0.09860457998579002
+      ]
+    },
+    {
+      "case": "integer/77/parse-sequence",
+      "baseline": {
+        "ns": 2449.8701171875,
+        "bytes": 14600.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2907.6337890625,
+            "bytes": 14600.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2449.8701171875,
+            "bytes": 14600.0
+          },
+          {
+            "fork": 2,
+            "ns": 2089.70166015625,
+            "bytes": 14600.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 242.85888671875,
+        "bytes": 272.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 242.85888671875,
+            "bytes": 272.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 205.56640625,
+            "bytes": 272.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 284.3017578125,
+            "bytes": 272.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.09913133149995595,
+      "candidate_baseline_bytes_ratio": 0.018630924686222693,
+      "per_fork_ns_ratios": [
+        0.08352457851889741,
+        0.08390910391853522,
+        0.13604896968462107
+      ]
+    },
+    {
+      "case": "integer/77/parse-string",
+      "baseline": {
+        "ns": 2652.32373046875,
+        "bytes": 14480.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 2921.4072265625,
+            "bytes": 14480.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 2652.32373046875,
+            "bytes": 14480.0
+          },
+          {
+            "fork": 2,
+            "ns": 2234.65966796875,
+            "bytes": 14480.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 248.67724609375,
+        "bytes": 296.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 248.67724609375,
+            "bytes": 296.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 180.98974609375,
+            "bytes": 296.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 282.7958984375,
+            "bytes": 296.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.09375825553911582,
+      "candidate_baseline_bytes_ratio": 0.020442781711750815,
+      "per_fork_ns_ratios": [
+        0.08512241765977908,
+        0.06823818073737302,
+        0.1265498735628743
+      ]
+    },
+    {
+      "case": "integer/9/buffer-10",
+      "baseline": {
+        "ns": 123.12841796875,
+        "bytes": 1072.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 122.8232421875,
+            "bytes": 1072.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 121.31787109375,
+            "bytes": 1048.0
+          },
+          {
+            "fork": 2,
+            "ns": 132.10009765625,
+            "bytes": 1072.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 26.67236328125,
+        "bytes": 168.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 26.67236328125,
+            "bytes": 168.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 25.2685546875,
+            "bytes": 168.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 39.02197265625,
+            "bytes": 168.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.21662231774974522,
+      "candidate_baseline_bytes_ratio": 0.1567256363073223,
+      "per_fork_ns_ratios": [
+        0.2171605537047491,
+        0.20828386172366467,
+        0.29539700082427434
+      ]
+    },
+    {
+      "case": "integer/9/buffer-16",
+      "baseline": {
+        "ns": 41.30078125,
+        "bytes": 72.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 43.39599609375,
+            "bytes": 72.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 41.30078125,
+            "bytes": 72.0
+          },
+          {
+            "fork": 2,
+            "ns": 28.279296875,
+            "bytes": 72.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 57.33251953125,
+        "bytes": 128.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 62.19482421875,
+            "bytes": 128.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 26.3466796875,
+            "bytes": 128.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 58.00390625,
+            "bytes": 128.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 1.3881703395441218,
+      "candidate_baseline_bytes_ratio": 1.7776512069433144,
+      "per_fork_ns_ratios": [
+        1.4331926863572433,
+        0.6379220656388915,
+        2.051108501968368
+      ]
+    },
+    {
+      "case": "integer/9/buffer-3",
+      "baseline": {
+        "ns": 255.43212890625,
+        "bytes": 2216.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 253.763671875,
+            "bytes": 2216.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 252.888671875,
+            "bytes": 2192.0
+          },
+          {
+            "fork": 2,
+            "ns": 276.3466796875,
+            "bytes": 2216.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 62.6220703125,
+        "bytes": 184.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 62.6220703125,
+            "bytes": 184.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 54.7080078125,
+            "bytes": 184.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 90.86083984375,
+            "bytes": 184.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.24516129032258063,
+      "candidate_baseline_bytes_ratio": 0.08303734009754997,
+      "per_fork_ns_ratios": [
+        0.24677318802096562,
+        0.2163323782234957,
+        0.32879294930012476
+      ]
+    },
+    {
+      "case": "integer/9/cold-format-10",
+      "baseline": {
+        "ns": 127.13623046875,
+        "bytes": 1072.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 124.69482421875,
+            "bytes": 1072.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 122.55859375,
+            "bytes": 1072.0
+          },
+          {
+            "fork": 2,
+            "ns": 128.19384765625,
+            "bytes": 1072.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 34.24072265625,
+        "bytes": 232.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 33.3046875,
+            "bytes": 232.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 34.24072265625,
+            "bytes": 272.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 46.06103515625,
+            "bytes": 232.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.26932309169467117,
+      "candidate_baseline_bytes_ratio": 0.21642647621476852,
+      "per_fork_ns_ratios": [
+        0.26708957415565343,
+        0.2793824701195219,
+        0.35930768908475247
+      ]
+    },
+    {
+      "case": "integer/9/cold-format-16",
+      "baseline": {
+        "ns": 38.2080078125,
+        "bytes": 72.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 38.2080078125,
+            "bytes": 72.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 45.45068359375,
+            "bytes": 72.0
+          },
+          {
+            "fork": 2,
+            "ns": 35.97021484375,
+            "bytes": 72.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 33.1015625,
+        "bytes": 72.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 32.267578125,
+            "bytes": 72.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 27.93359375,
+            "bytes": 72.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 40.4052734375,
+            "bytes": 72.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.8663514376996805,
+      "candidate_baseline_bytes_ratio": 1.0,
+      "per_fork_ns_ratios": [
+        0.8445239616613418,
+        0.614591278751222,
+        1.1232980846240515
+      ]
+    },
+    {
+      "case": "integer/9/cold-format-3",
+      "baseline": {
+        "ns": 272.25732421875,
+        "bytes": 2216.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 250.67138671875,
+            "bytes": 2216.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 249.125,
+            "bytes": 2216.0
+          },
+          {
+            "fork": 2,
+            "ns": 273.580078125,
+            "bytes": 2216.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 64.73828125,
+        "bytes": 264.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 64.37158203125,
+            "bytes": 264.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 64.7177734375,
+            "bytes": 304.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 87.78857421875,
+            "bytes": 264.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.23778343313910216,
+      "candidate_baseline_bytes_ratio": 0.11913823221969368,
+      "per_fork_ns_ratios": [
+        0.2567966885804724,
+        0.25978032488710484,
+        0.32088803695216067
+      ]
+    },
+    {
+      "case": "integer/9/parse-chars",
+      "baseline": {
+        "ns": 164.55078125,
+        "bytes": 1160.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 162.6181640625,
+            "bytes": 1160.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 162.19091796875,
+            "bytes": 1160.0
+          },
+          {
+            "fork": 2,
+            "ns": 187.744140625,
+            "bytes": 1160.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 34.3427734375,
+        "bytes": 112.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 31.982421875,
+            "bytes": 112.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 33.345703125,
+            "bytes": 112.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 56.84375,
+            "bytes": 112.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.20870623145400594,
+      "candidate_baseline_bytes_ratio": 0.09656085101510962,
+      "per_fork_ns_ratios": [
+        0.1966718912329376,
+        0.20559537822842125,
+        0.30277243172951884
+      ]
+    },
+    {
+      "case": "integer/9/parse-sequence",
+      "baseline": {
+        "ns": 163.9609375,
+        "bytes": 1160.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 163.9609375,
+            "bytes": 1160.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 159.56591796875,
+            "bytes": 1160.0
+          },
+          {
+            "fork": 2,
+            "ns": 191.56884765625,
+            "bytes": 1160.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 38.57421875,
+        "bytes": 112.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 38.57421875,
+            "bytes": 112.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 35.603515625,
+            "bytes": 112.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 48.970703125,
+            "bytes": 112.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.23526468766379188,
+      "candidate_baseline_bytes_ratio": 0.09656085101510962,
+      "per_fork_ns_ratios": [
+        0.23526468766379188,
+        0.223127319907831,
+        0.25562978388256913
+      ]
+    },
+    {
+      "case": "integer/9/parse-string",
+      "baseline": {
+        "ns": 174.947265625,
+        "bytes": 1104.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 171.69189453125,
+            "bytes": 1104.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 158.0810546875,
+            "bytes": 1104.0
+          },
+          {
+            "fork": 2,
+            "ns": 184.12255859375,
+            "bytes": 1104.01171875
+          }
+        ]
+      },
+      "candidate": {
+        "ns": 55.6640625,
+        "bytes": 136.01171875,
+        "per_process": [
+          {
+            "fork": 0,
+            "ns": 54.97216796875,
+            "bytes": 136.01171875
+          },
+          {
+            "fork": 1,
+            "ns": 37.2109375,
+            "bytes": 136.01171875
+          },
+          {
+            "fork": 2,
+            "ns": 69.64111328125,
+            "bytes": 136.01171875
+          }
+        ]
+      },
+      "candidate_baseline_ns_ratio": 0.3181762361425876,
+      "candidate_baseline_bytes_ratio": 0.12319771288659612,
+      "per_fork_ns_ratios": [
+        0.32017916814788483,
+        0.23539150579150578,
+        0.37823237854795894
+      ]
+    }
+  ],
+  "limitations": [
+    "3freshprocesses perartifact,15batchmeans not15independentforks",
+    "highload and~12.4GiB swap beforecampaign; no hostisolation claim",
+    "coldformat pools constructed outside time/allocation; construction-format deliberately includes parsing",
+    "buffer baseline uses availablelegacyString+copy, cachedcanonical baseline may be cheaper than newdirectwrite; no regression claim about unchangedtoString",
+    "Appendable correctness tested, not separatelytimed; no extrapolation toalloverloads",
+    "time-l process memory includes inputpreparation/warmup/JIT/GC, not per-operation retainedsize",
+    "remote export rejected beforeSCPexecution; no remotebenchmark or crosshost597ratio",
+    "unchanged baseline/candidate source/artifact/runtime hashes and explicitresultescape verify sanity, full1988tests supplycorrectness"
+  ]
+}

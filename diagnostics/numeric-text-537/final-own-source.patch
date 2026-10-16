@@ -1,0 +1,1663 @@
+diff --git a/docs/numeric-text-537.md b/docs/numeric-text-537.md
+new file mode 100644
+index 0000000..1e9384e
+--- /dev/null
++++ b/docs/numeric-text-537.md
+@@ -0,0 +1,164 @@
++# Numeric text parsing and writing
++
++Status: source draft; compilation, platform tests and performance measurements are pending.
++
++`BigInteger.parseText` and `BigDecimal.parseText` accept a coherent `CharSequence`,
++either whole or by offset and length. `BigInteger.parseChars` and the existing
++decimal character-array constructors read array slices directly. They retain no
++reference to caller storage after returning. Callers must keep mutable input
++unchanged during the synchronous call; these APIs do not provide an atomic
++snapshot of concurrent modifications. A reader exception propagates unchanged.
++No `toString`, `subSequence`, whole-slice array copy or normalized digit String
++is required by the ordinary parsing path.
++
++`parseTextBounded` and `parseCharsBounded` add an explicit character-count limit.
++After overflow-safe slice validation, a negative limit fails with
++`IllegalArgumentException`, and an exceeded limit fails with
++`ArithmeticException("Input character limit exceeded")` before reading characters.
++Existing constructors acquire no new configurable limit. Supported magnitude,
++scale, malformed-text diagnostics and Unicode digit grammar remain their existing
++contracts. ASCII digits take a direct path; other characters use the existing
++Kotlin digit conversion. Decimal exponent and scale validation finish before
++coefficient construction. The existing precision-prefix constructor machinery is
++retained for bounded precision; this change also removes the intermediate digit
++String for unlimited parsing.
++
++For example:
++
++```kotlin
++val integer = BigInteger.parseText(StringBuilder("[ff]"), 1, 2, 16)
++val decimal = BigDecimal.parseTextBounded("[12.3400]", 1, 7, 32)
++val destination = StringBuilder()
++decimal.appendTo(destination, DecimalTextFormat.PLAIN, maxChars = 32)
++val buffer = CharArray(32)
++val written = integer.writeTo(buffer, offset = 2, length = 30, radix = 16)
++```
++
++`appendTo` returns the number of characters written as `Long`. `writeTo` returns
++the number written into the supplied array slice as `Int`. Integer radix fallback
++and decimal `CANONICAL`, `PLAIN`, `ENGINEERING` layouts match the corresponding
++existing String formatters. These are additive APIs; existing signatures and
++canonical String caching remain available. Default parameters are Kotlin defaults;
++Java callers use the explicit full signatures, without new ambiguous constructors.
++Byte encodings are deliberately left to an explicitly chosen caller charset.
++
++Output is planned in `Long` before the first destination write. A nonnegative
++optional `maxChars` bounds output length; an insufficient buffer or exceeded limit
++throws `ArithmeticException("Output character limit exceeded")`. Invalid buffer
++slices throw `IndexOutOfBoundsException`. Those failures leave the buffer unchanged.
++Plain output with extreme scale can therefore be rejected without allocating or
++traversing scale-sized padding. Successful unlimited streaming may intentionally
++emit more characters than fit one String. Padding uses blocks of at most 256
++characters; digit chunks have bounded radix width. No destination is closed or
++flushed. An external Appendable can fail after partial output, and its exception
++propagates unchanged.
++
++Exact base instances use private stored magnitudes. Subtypes retain their existing
++virtual String formatter dispatch. Their formatter can allocate or invoke arbitrary
++callbacks before its resulting length is checked; the new limit does not bound a
++subtype's own implementation. The destination remains untouched on that length
++failure. Parsed inputs and written arrays never become mutable backing storage of
++a published number.
++Decimal output also falls back when a retained coefficient is a BigInteger subtype
++(for example after supported deserialization), preserving its virtual formatting.
++
++## Arithmetic and ownership proof
++
++Integer input is grouped by the largest `radix^width <= Int.MAX_VALUE`. For a
++base-2^30 scratch cell `a`, multiplier `p` and incoming carry `c`, the invariant
++`0 <= a < B`, `0 <= c < p`, `0 < p <= Int.MAX_VALUE` gives
++`a*p+c < B*p < 2^61`. Group values are below their group power. The final carry
++may span two cells and is consumed in a loop. Scratch is geometrically grown,
++range checked and copied on immutable publication. Decimal groups use width nine.
++Before parsing each integer group, a conservative upper bit bound proves all
++prefixes fit. Near the supported bit boundary, the parser resumes the existing
++public scalar multiply/add path so overflow versus later malformed-digit priority
++does not change. Length-based definite overflow still validates malformed digits
++before rejection, as before.
++
++Formatting divides a private scratch copy by `radix^width <= Int.MAX_VALUE`.
++For each long division step, `part = remainder*B + cell < divisor*B < 2^61`;
++the quotient cell stays below B. Little-endian remainder chunks belong only to
++the output plan. The plan computes digit count and decimal point/exponent/padding
++lengths in Long; no scale negation in Int or scale-sized temporary is needed.
++Complexity remains quadratic for grouped conversion of sufficiently large general
++radix inputs; no asymptotic speedup is claimed.
++
++529 coordination: numeric readers, grammar/group validation and format layout are
++owned by 537; compact/wide representation and primitive construction are owned by
++529. The current private `ParsedMagnitude537.publish(sign)` boundary publishes
++owned scratch as an immutable value. Both workers agreed that this boundary may
++gain a compact accumulator before allocating scratch and a primitive formatter
++route. There must be no allocating computed `words` getter and no competing
++parser rewrite. Final composition requires independent review and platform tests.
++
++## Validation and measurement gates
++
++Source tests cover frozen integer values/diagnostics across String, sequence and
++array readers; all radices and group boundaries; Unicode and decimal contexts;
++slice/limit ordering; canonical and alternate layouts; buffer sentinels; large
++scale rejection; Appendable failures and subtype callbacks. JVM tests additionally
++compare public JDK arithmetic/text results. Existing parser/588/subclass tests must
++also pass on the composed implementation, plus applicable JVM, JS, Wasm and Native
++suites. These checks have not yet run for this draft.
++
++Measurements must use pinned JDK/toolchain, distinct source-bound baseline and
++candidate artifacts, fixed shared inputs, fresh alternating processes, warmup,
++escaping results, raw samples, allocated bytes where available and host diagnostics.
++Existing 527 IDs remain unchanged: decimal `format` observes cached Strings and
++cannot establish cold-format performance. New cold-format IDs must prepare fresh
++equivalent number pools outside the timed and allocation intervals and observe each
++object once. Construction-plus-format is a separate control. Actual throughput,
++allocation, crossover and platform limitations will be recorded after execution;
++no improvement is claimed from this source draft.
++
++The draft JVM diagnostic is `NumericText537Probe` and
++`scripts/measure-numeric-text-537.main.kts`. Package only the compiled probe and its
++nested classes in a separate probe JAR, built against the candidate; the runner
++loads that same probe JAR against each production JAR. New API references execute
++only in the candidate branch. The baseline branch uses equivalent existing
++constructors or copies the existing formatter result into the same-sized supplied
++buffer. A fresh composed-parent worktree and artifact are required; preserve its
++build command/log and exact commit alongside the candidate build, then supply both
++source roots and explicit JAR hashes to the runner:
++
++```text
++kotlinr scripts/measure-numeric-text-537.main.kts \
++  BASELINE_ROOT BASELINE_JAR BASELINE_SHA \
++  CANDIDATE_ROOT CANDIDATE_JAR CANDIDATE_SHA \
++  PROBE_JAR PROBE_SHA PROJECT/.codex-work/537/measurements/NEW_CAMPAIGN
++```
++
++Use the pinned BellSoft JDK 25.0.4+9-LTS and Kotlin 2.4.21. On macOS, whole-process
++RSS collection with `/usr/bin/time -l` must run in an environment that permits its
++sysctl calls. The runner does not build artifacts: matching source/build provenance
++must be reviewed before launch. It hashes both production source trees, the script,
++probe source/JAR, production JARs and runtime library JARs before the campaign and
++rechecks them around every child. Three alternating fresh processes per artifact,
++72 cases, at least five warm batches accumulating at least 200 ms of timed work,
++and five samples yield 2160 expected measurement rows;
++missing, duplicate or malformed rows fail completion. A 240-second child deadline
++preserves partial evidence and reports any owned process cleanup survivors. The
++20-minute campaign budget is explicitly a launch-admission limit, not a strict
++wall deadline; bounded host snapshots and final child completion can extend it.
++
++Cold-format inputs are distinct objects reconstructed before every batch; each is
++formatted once. Reused buffer cases intentionally model repeated output of the same
++value, and decimal canonical baseline output can use its existing cache. They must
++be interpreted separately from cold format. Calibration starts at one operation,
++doubles to a 20 ms target and caps at 2048. Slow cases can therefore contain one
++operation; fast cases can stay below the target at the cap. Per-thread allocated
++bytes include timed formatting/parsing and result publication, exclude prepared
++input pools and destination arrays, and are not retained heap size. Whole-process
++RSS includes setup, JVM/runtime and all cases, so it cannot be attributed to an
++individual operation. This diagnostic is still uncompiled and unexecuted; its
++source and baseline-load behavior require independent review and smoke validation.
++Warmup has a 100000-batch guard and the enclosing child deadline; inability to
++reach its timed-work target fails the diagnostic rather than silently reducing it.
++Decimal format selection is prepared outside timing and captured as an opaque
++value so the shared probe's baseline lambda signatures do not require the new enum.
++
++Power-of-two radix writers preserve linear extraction: each output chunk selects
++at most 30 bits from at most two adjacent base-2^30 cells, masks to its group power,
++and writes through the same bounded-chunk sink. They do not use repeated division.
++Existing power-of-two String formatting remains on its previous direct route.
+diff --git a/scripts/measure-numeric-text-537.main.kts b/scripts/measure-numeric-text-537.main.kts
+new file mode 100644
+index 0000000..16a8be7
+--- /dev/null
++++ b/scripts/measure-numeric-text-537.main.kts
+@@ -0,0 +1,136 @@
++#!/usr/bin/env kotlinr
++// SPDX-License-Identifier: Apache-2.0
++// baseline-root baseline.jar sha candidate-root candidate.jar sha probe.jar sha NEW-output
++import java.io.File
++import java.security.MessageDigest
++import java.time.Instant
++import java.util.concurrent.TimeUnit
++
++require(args.size == 9)
++check(System.getProperty("java.runtime.version") == "25.0.4+9-LTS" && System.getProperty("java.vendor") == "BellSoft")
++check(KotlinVersion.CURRENT.toString() == "2.4.21")
++fun sha(file: File): String = MessageDigest.getInstance("SHA-256").digest(file.readBytes())
++    .joinToString("") { "%02x".format(it) }
++val baselineRoot = File(args[0]).canonicalFile
++val candidateRoot = File(args[3]).canonicalFile
++val baseline = File(args[1]).canonicalFile
++val candidate = File(args[4]).canonicalFile
++val probe = File(args[6]).canonicalFile
++val output = File(args[8]).canonicalFile
++require(baselineRoot != candidateRoot && baseline != candidate && args[2] != args[5])
++require(listOf(baselineRoot, candidateRoot).all { File(it, "src/commonMain").isDirectory })
++require(listOf(baseline, candidate, probe).toSet().size == 3)
++check(sha(baseline) == args[2] && sha(candidate) == args[5] && sha(probe) == args[7])
++require(!output.exists()) { "Refusing overwrite $output" }
++output.mkdirs()
++val script = File(candidateRoot, "scripts/measure-numeric-text-537.main.kts")
++fun sources(root: File): String = listOf("src/commonMain", "src/jvmMain").flatMap { directory ->
++    File(root, directory).walkTopDown().filter { it.isFile }.toList()
++}.sortedBy { it.relativeTo(root).path }.joinToString("\n", postfix = "\n") { "${sha(it)}  ${it.relativeTo(root).path}" }
++val sourceBefore = listOf(baselineRoot, candidateRoot).map(::sources)
++sourceBefore.forEachIndexed { index, text -> File(output, "${if (index == 0) "baseline" else "candidate"}.sources.sha256").writeText(text) }
++val probeSource = File(candidateRoot, "src/jvmTest/kotlin/io/heapy/krogu/math/NumericText537Probe.kt")
++val artifactBefore = listOf(baseline, candidate, probe, script, probeSource).associateWith(::sha)
++File(output, "artifacts.sha256").writeText(artifactBefore.entries.joinToString("\n", postfix = "\n") { "${it.value}  ${it.key}" })
++val expectedCases = buildSet {
++    for (size in listOf(9, 77, 309, 1234)) {
++        for (reader in listOf("string", "chars", "sequence")) add("integer/$size/parse-$reader")
++        for (radix in listOf(3, 10, 16)) {
++            add("integer/$size/cold-format-$radix")
++            add("integer/$size/buffer-$radix")
++        }
++    }
++    for (name in listOf("small", "wide", "negative-scale", "large-scale")) {
++        for (reader in listOf("string", "chars", "sequence")) add("decimal/$name/parse-$reader")
++        for (mode in listOf("cold-format", "construction-format", "cached-format-control",
++            "buffer-canonical", "buffer-plain", "buffer-engineering")) add("decimal/$name/$mode")
++    }
++}
++check(expectedCases.size == 72)
++val java = File(System.getProperty("java.home"), "bin/java").path
++val kotlinLib = File(System.getProperty("kotlin.home"), "lib")
++val libraries = listOf("kotlin-stdlib.jar", "kotlin-stdlib-jdk7.jar", "kotlin-stdlib-jdk8.jar")
++    .map { File(kotlinLib, it) }.filter { it.isFile }
++check(libraries.any { it.name == "kotlin-stdlib.jar" })
++val libraryBefore = libraries.associateWith(::sha)
++File(output, "runtime-libraries.sha256").writeText(libraryBefore.entries.joinToString("\n", postfix = "\n") { "${it.value}  ${it.key}" })
++val options = listOf("-Xms64m", "-Xmx512m", "-XX:+UseSerialGC", "-XX:ActiveProcessorCount=1")
++File(output, "campaign.txt").writeText("start=${Instant.now()}\nforks=3 warmup=5 samples=5\noptions=$options\n" +
++    "Cold pools are constructed outside counters. CPU contention and whole-process RSS are not per-operation retained size.\n")
++fun stopOwned(process: Process): String {
++    val handles = process.descendants().toList() + process.toHandle()
++    handles.reversed().filter { it.isAlive }.forEach { it.destroy() }
++    process.waitFor(3, TimeUnit.SECONDS)
++    handles.filter { it.isAlive }.forEach { it.destroyForcibly() }
++    val deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(5)
++    for (handle in handles) {
++        val left = deadline - System.nanoTime()
++        if (handle.isAlive && left > 0) try { handle.onExit().get(left, TimeUnit.NANOSECONDS) }
++        catch (_: java.util.concurrent.TimeoutException) { }
++    }
++    return "surviving_owned_pids=${handles.filter { it.isAlive }.map { it.pid() }} root_alive=${process.isAlive}"
++}
++fun capture(command: List<String>, destination: File) {
++    val process = ProcessBuilder(command).redirectErrorStream(true).redirectOutput(destination).start()
++    if (!process.waitFor(10, TimeUnit.SECONDS)) error("Host command timeout: ${stopOwned(process)}")
++    check(process.exitValue() == 0)
++}
++fun host(prefix: String) {
++    capture(listOf("uptime"), File(output, "$prefix.uptime.txt"))
++    val raw = File(output, "$prefix.ps.tmp")
++    capture(listOf("ps", "-axo", "pid,ppid,pcpu,pmem,comm"), raw)
++    File(output, "$prefix.processes.txt").writeText(raw.readLines().filterIndexed { index, line ->
++        index == 0 || (line.trim().split(Regex("\\s+"), limit = 5).getOrNull(2)?.toDoubleOrNull() ?: 0.0) >= 10
++    }.joinToString("\n", postfix = "\n"))
++    raw.delete()
++    if (System.getProperty("os.name") == "Mac OS X")
++        capture(listOf("sysctl", "vm.swapusage"), File(output, "$prefix.swap.txt"))
++}
++val started = System.nanoTime()
++for (fork in 0..2) {
++    val variants = listOf("baseline" to baseline, "candidate" to candidate).let { if (fork % 2 == 0) it else it.reversed() }
++    for ((label, jar) in variants) {
++        check(System.nanoTime() - started < TimeUnit.MINUTES.toNanos(20)) { "Campaign launch-admission budget exhausted; partials retained" }
++        check(listOf(baselineRoot, candidateRoot).map(::sources) == sourceBefore)
++        check((artifactBefore + libraryBefore).all { (file, hash) -> sha(file) == hash })
++        val prefix = "$label-$fork"
++        val classpath = (listOf(jar, probe) + libraries).joinToString(File.pathSeparator)
++        val command = listOf(java) + options + listOf("-cp", classpath, "io.heapy.krogu.math.NumericText537Probe",
++            label, jar.path, artifactBefore.getValue(jar), probe.path, args[7], "$fork", if (fork % 2 == 0) "forward" else "reverse")
++        File(output, "$prefix.command.txt").writeText(command.joinToString("\n", postfix = "\n"))
++        host("$prefix-before")
++        val timing = if (File("/usr/bin/time").canExecute()) {
++            if (System.getProperty("os.name") == "Mac OS X") listOf("/usr/bin/time", "-l") else listOf("/usr/bin/time", "-v")
++        } else emptyList()
++        File(output, "$prefix.external-metrics.txt").writeText(if (timing.isEmpty())
++            "external_process_time=NA external_peak_rss=NA reason=/usr/bin/time_unavailable\n"
++        else "external_process_envelope=${timing.joinToString(" ")} includes_setup_JIT_and_GC_not_per_operation_retention\n")
++        val builder = ProcessBuilder(timing + command).directory(candidateRoot)
++            .redirectOutput(File(output, "$prefix.csv")).redirectError(File(output, "$prefix.process.txt"))
++        listOf("JAVA_TOOL_OPTIONS", "JDK_JAVA_OPTIONS", "_JAVA_OPTIONS").forEach { builder.environment().remove(it) }
++        println("${Instant.now()} launch $prefix")
++        val process = builder.start()
++        println("$prefix pid=${process.pid()}")
++        if (!process.waitFor(240, TimeUnit.SECONDS)) {
++            val detail = stopOwned(process)
++            File(output, "$prefix.timeout.txt").writeText(detail)
++            error("Child deadline exceeded: $detail; partials retained without retry")
++        }
++        check(process.exitValue() == 0) { "$prefix exit=${process.exitValue()}; partials retained without retry" }
++        host("$prefix-after")
++        val rows = File(output, "$prefix.csv").readLines().filter { it.isNotBlank() && !it.startsWith('#') }
++        check(rows.first() == "variant,fork,case,sample,operations,ns_per_op,allocated_bytes_per_op")
++        val parsed = rows.drop(1).map { it.split(',') }
++        check(parsed.size == expectedCases.size * 5)
++        check(parsed.map { it[2] }.toSet() == expectedCases)
++        check(parsed.map { it[2] to it[3] }.toSet().size == parsed.size)
++        for (case in expectedCases) check(parsed.filter { it[2] == case }.map { it[3].toInt() }.toSet() == (0..4).toSet())
++        check(parsed.all { it.size == 7 && it[0] == label && it[1] == "$fork" && it[4].toInt() in 1..2048 &&
++            it[5].toDouble().let { n -> n.isFinite() && n > 0 } && it[6].toDouble().let { n -> n.isFinite() && n >= 0 } })
++        check(File(output, "$prefix.csv").readText().contains("artifact_recheck=PASS cases=72 result_escape=PASS"))
++        check((artifactBefore + libraryBefore).all { (file, hash) -> sha(file) == hash })
++        check(listOf(baselineRoot, candidateRoot).map(::sources) == sourceBefore)
++    }
++}
++File(output, "COMPLETE.txt").writeText("${Instant.now()} PASS: 2160 measurements, 6 fresh processes, 72 exact cases, source/artifact checks\n")
++println("PASS: 2160 measurements; raw outputs retained in $output")
+diff --git a/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt b/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
+index 81bbca5..fc24f7c 100644
+--- a/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
++++ b/src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt
+@@ -873,6 +873,78 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+     @kotlin.jvm.Transient
+     private var stringCache: String? = null
+ 
++    /**
++     * Stream the selected existing layout, without scale-sized padding or a whole result String.
++     * maxChars is opt-in; ordinary values are fully planned before the first destination write.
++     * A subtype retains its existing virtual formatter (whose own allocations cannot be bounded here).
++     */
++    fun appendTo(destination: Appendable, format: DecimalTextFormat = DecimalTextFormat.CANONICAL,
++        maxChars: Long? = null): Long {
++        checkTextLimit537(0, maxChars)
++        if (this::class != BigDecimal::class || coefficient::class != BigInteger::class) {
++            val text = legacyText537(format)
++            checkTextLimit537(text.length.toLong(), maxChars)
++            destination.append(text)
++            return text.length.toLong()
++        }
++        if (format == DecimalTextFormat.CANONICAL) stringCache?.let { cached ->
++            checkTextLimit537(cached.length.toLong(), maxChars)
++            var start = 0
++            while (start < cached.length) {
++                val end = minOf(start.toLong() + 256, cached.length.toLong()).toInt()
++                destination.append(cached, start, end)
++                start = end
++            }
++            return cached.length.toLong()
++        }
++        val layout = textLayout537(format, maxChars)
++        layout.write(AppendableSink537(destination))
++        return layout.length
++    }
++
++    /** Returns the characters written; a short or invalid slice is unchanged by this writer. */
++    fun writeTo(destination: CharArray, offset: Int = 0, length: Int = destination.size - offset,
++        format: DecimalTextFormat = DecimalTextFormat.CANONICAL): Int {
++        checkTextBuffer537(destination, offset, length)
++        if (this::class != BigDecimal::class || coefficient::class != BigInteger::class) {
++            val text = legacyText537(format)
++            checkTextLimit537(text.length.toLong(), length.toLong())
++            ArraySink537(destination, offset).text(text, 0, text.length)
++            return text.length
++        }
++        if (format == DecimalTextFormat.CANONICAL) stringCache?.let { cached ->
++            checkTextLimit537(cached.length.toLong(), length.toLong())
++            cached.toCharArray(destination, offset, 0, cached.length)
++            return cached.length
++        }
++        val layout = textLayout537(format, length.toLong())
++        layout.write(ArraySink537(destination, offset))
++        return layout.length.toInt()
++    }
++
++    private fun legacyText537(format: DecimalTextFormat): String = when (format) {
++        DecimalTextFormat.CANONICAL -> toString()
++        DecimalTextFormat.PLAIN -> toPlainString()
++        DecimalTextFormat.ENGINEERING -> toEngineeringString()
++    }
++
++    private fun textLayout537(format: DecimalTextFormat, maxChars: Long?): DecimalLayout537 {
++        val sign = coefficient.signum()
++        val prefix = if (sign < 0) 1L else 0L
++        val lowerDigits = coefficient.decimalDigitLowerBound().toLong()
++        val lowerLength = when {
++            format == DecimalTextFormat.PLAIN && decimalScale < 0 && sign == 0 -> 1L
++            format == DecimalTextFormat.PLAIN && decimalScale <= 0 -> lowerDigits - decimalScale.toLong() + prefix
++            format == DecimalTextFormat.PLAIN -> maxOf(lowerDigits + 1, decimalScale.toLong() + 2) + prefix
++            else -> lowerDigits + prefix
++        }
++        checkTextLimit537(lowerLength, maxChars)
++        val digits = coefficient.radixDigits537(10, maxChars?.minus(prefix))
++        val layout = DecimalLayout537(digits, decimalScale, sign < 0, format)
++        checkTextLimit537(layout.length, maxChars)
++        return layout
++    }
++
+     override fun toString(): String {
+         stringCache?.let { return it }
+         return canonicalStringValue().also { stringCache = it }
+@@ -1065,40 +1137,24 @@ open class BigDecimal(coefficient: BigInteger, private val decimalScale: Int) :
+         @JvmStatic open fun valueOf(unscaledVal: Long, scale: Int): BigDecimal = BigDecimal(BigInteger.valueOf(unscaledVal), scale)
+         @JvmStatic open fun valueOf(value: Double): BigDecimal = BigDecimal(decimalDoubleString(value))
+ 
+-        private fun parse(value: String): BigDecimal {
+-            if (value.isEmpty()) throw NumberFormatException("Empty BigDecimal")
+-            var i = 0
+-            var negative = false
+-            if (value[i] == '-' || value[i] == '+') { negative = value[i] == '-'; i++ }
+-            val digits = StringBuilder()
+-            var point = false
+-            var fraction = 0L
+-            while (i < value.length && value[i] != 'e' && value[i] != 'E') {
+-                val c = value[i++]
+-                if (c == '.' && !point) { point = true; continue }
+-                val d = c.digitToIntOrNull(10) ?: throw NumberFormatException("Invalid decimal digit")
+-                digits.append(('0'.code + d).toChar())
+-                if (point) fraction++
+-            }
+-            if (digits.isEmpty()) throw NumberFormatException("No digits")
+-            var exponent = 0L
+-            if (i < value.length) {
+-                i++
+-                var expSign = 1
+-                if (i < value.length && (value[i] == '+' || value[i] == '-')) { if (value[i] == '-') expSign = -1; i++ }
+-                if (i == value.length) throw NumberFormatException("No exponent digits")
+-                while (i < value.length) {
+-                    val d = value[i++].digitToIntOrNull(10) ?: throw NumberFormatException("Invalid exponent")
+-                    exponent = exponent * 10 + d
+-                    if (exponent > Int.MAX_VALUE.toLong() + 1 + fraction) throw NumberFormatException("Exponent overflow")
+-                }
+-                exponent *= expSign
+-            }
+-            val scale = fraction - exponent
+-            if (scale !in Int.MIN_VALUE.toLong()..Int.MAX_VALUE.toLong()) throw NumberFormatException("Scale out of range")
+-            val number = BigInteger(digits.toString())
+-            return BigDecimal(if (negative) number.negate() else number, scale.toInt())
+-        }
++        /** Coherent sequence parsing; no call to an arbitrary CharSequence.toString(). */
++        @JvmStatic fun parseText(value: CharSequence, mc: MathContext = MathContext.UNLIMITED): BigDecimal =
++            DecimalText588.parse(value, 0, value.length, mc)
++
++        @JvmStatic fun parseText(value: CharSequence, offset: Int, length: Int,
++            mc: MathContext = MathContext.UNLIMITED): BigDecimal = DecimalText588.parse(value, offset, length, mc)
++
++        /** Opt-in length limit; range/configuration checks precede character traversal. */
++        @JvmStatic fun parseTextBounded(value: CharSequence, offset: Int, length: Int, maxInputChars: Int,
++            mc: MathContext = MathContext.UNLIMITED): BigDecimal =
++            DecimalText588.parseBounded(value, offset, length, maxInputChars, mc)
++
++        @JvmStatic fun parseCharsBounded(value: CharArray, offset: Int, length: Int, maxInputChars: Int,
++            mc: MathContext = MathContext.UNLIMITED): BigDecimal =
++            DecimalText588.parseBounded(value, offset, length, maxInputChars, mc)
++
++        private fun parse(value: String): BigDecimal = DecimalText588.parse(value, MathContext.UNLIMITED)
++
+         private fun fromDouble(value: Double): BigDecimal {
+             if (!value.isFinite()) throw NumberFormatException("Infinite or NaN")
+             if (value == 0.0) return ZERO
+diff --git a/src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt b/src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt
+index f1e2a98..52b5a5a 100644
+--- a/src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt
++++ b/src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt
+@@ -1029,6 +1029,16 @@ open class BigInteger private constructor(private val sign: Int, private val wor
+                 2, 4, 8, 16, 32 -> return magnitude.toPowerOfTwoString(r, sign < 0)
+             }
+         }
++        if (this::class == BigInteger::class && magnitude::class == BigInteger::class && magnitude.sign > 0) {
++            val digits = radixDigits537(r)
++            val length = digits.length + if (sign < 0) 1 else 0
++            if (length > Int.MAX_VALUE) plainStringTooLarge()
++            return buildString(length.toInt()) {
++                val sink = AppendableSink537(this)
++                if (sign < 0) sink.character('-')
++                digits.write(sink)
++            }
++        }
+         val divisor = valueOf(r.toLong())
+         val text = StringBuilder()
+         var value = magnitude
+@@ -1040,6 +1050,96 @@ open class BigInteger private constructor(private val sign: Int, private val wor
+         if (sign < 0) text.append('-')
+         return text.reverse().toString()
+     }
++
++    /**
++     * Write without a whole result String. Invalid radix falls back to decimal, as in toString.
++     * An opt-in limit is checked before output. Subtypes retain their virtual formatter;
++     * allocation performed by arbitrary user callbacks is outside this writer's control.
++     */
++    fun appendTo(destination: Appendable, radix: Int = 10, maxChars: Long? = null): Long {
++        checkTextLimit537(0, maxChars)
++        if (this::class != BigInteger::class) {
++            val text = toString(radix)
++            checkTextLimit537(text.length.toLong(), maxChars)
++            destination.append(text)
++            return text.length.toLong()
++        }
++        val prefix = if (sign < 0) 1L else 0L
++        checkTextLimit537(prefix + 1, maxChars)
++        val digits = radixDigits537(if (radix in 2..36) radix else 10, maxChars?.minus(prefix))
++        val length = prefix + digits.length
++        checkTextLimit537(length, maxChars)
++        val sink = AppendableSink537(destination)
++        if (sign < 0) sink.character('-')
++        digits.write(sink)
++        return length
++    }
++
++    /** Capacity/range failures occur before modifying the destination slice. */
++    fun writeTo(destination: CharArray, offset: Int = 0, length: Int = destination.size - offset,
++        radix: Int = 10): Int {
++        checkTextBuffer537(destination, offset, length)
++        if (this::class != BigInteger::class) {
++            val text = toString(radix)
++            checkTextLimit537(text.length.toLong(), length.toLong())
++            ArraySink537(destination, offset).text(text, 0, text.length)
++            return text.length
++        }
++        val prefix = if (sign < 0) 1L else 0L
++        checkTextLimit537(prefix + 1, length.toLong())
++        val digits = radixDigits537(if (radix in 2..36) radix else 10, length - prefix)
++        val required = prefix + digits.length
++        checkTextLimit537(required, length.toLong())
++        val sink = ArraySink537(destination, offset)
++        if (sign < 0) sink.character('-')
++        digits.write(sink)
++        return required.toInt()
++    }
++
++    @kotlin.jvm.JvmSynthetic
++    internal fun radixDigits537(radix: Int, maxDigits: Long? = null): RadixDigits537 {
++        require(radix in 2..36)
++        val upperBits = 32 - (radix - 1).countLeadingZeroBits()
++        val lowerDigits = if (sign == 0) 1L else (magnitudeBits() - 1).toLong() / upperBits + 1
++        checkTextLimit537(lowerDigits, maxDigits)
++        if (sign == 0) return RadixDigits537(intArrayOf(0), 1, radix, 1)
++        var power = radix
++        var width = 1
++        while (power.toLong() * radix <= Int.MAX_VALUE) { power *= radix; width++ }
++        if ((radix and (radix - 1)) == 0) {
++            val bitsPerDigit = radix.countTrailingZeroBits()
++            val bitsPerChunk = bitsPerDigit * width
++            val bitLength = magnitudeBits().toLong()
++            val digits = (bitLength + bitsPerDigit - 1) / bitsPerDigit
++            checkTextLimit537(digits, maxDigits)
++            val count = ((bitLength + bitsPerChunk - 1) / bitsPerChunk).toInt()
++            val chunks = IntArray(count)
++            for (index in chunks.indices) {
++                val bit = index.toLong() * bitsPerChunk
++                val word = (bit / LIMB_BITS).toInt()
++                val offset = (bit % LIMB_BITS).toInt()
++                var chunk = words[word].toLong() ushr offset
++                if (offset + bitsPerChunk > LIMB_BITS && word + 1 < words.size)
++                    chunk = chunk or (words[word + 1].toLong() shl (LIMB_BITS - offset))
++                chunks[index] = (chunk and (power - 1).toLong()).toInt()
++            }
++            return RadixDigits537(chunks, count, radix, width)
++        }
++        val scratch = words.copyOf()
++        var remaining = scratch.size
++        var chunks = IntArray(4)
++        var count = 0
++        while (remaining > 0) {
++            if (count == chunks.size) {
++                val next = minOf(Int.MAX_VALUE.toLong(), chunks.size.toLong() * 2).toInt()
++                if (next == chunks.size) plainStringTooLarge()
++                chunks = chunks.copyOf(next)
++            }
++            chunks[count++] = divideDecimalChunk(scratch, remaining, power)
++            while (remaining > 0 && scratch[remaining - 1] == 0) remaining--
++        }
++        return RadixDigits537(chunks, count, radix, width)
++    }
+     private fun toPowerOfTwoString(radix: Int, negative: Boolean): String {
+         val bitsPerDigit = when (radix) {
+             2 -> 1
+@@ -1171,7 +1271,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
+         return if (difference > 0) order else -order
+     }
+ 
+-    // For 0 < divisor <= 10^9 < 2^30, part < divisor*2^30 < 2^60.
++    // For 0 < divisor <= Int.MAX_VALUE, part < divisor*2^30 < 2^61.
+     // Quotient limbs therefore fit 30 bits; the final remainder fits Int.
+     private fun divideDecimalChunk(magnitude: IntArray, length: Int, divisor: Int): Int {
+         var remainder = 0L
+@@ -1315,33 +1415,137 @@ open class BigInteger private constructor(private val sign: Int, private val wor
+             if (bytes.isNotEmpty()) bytes[0] = (bytes[0].toInt() and (255 ushr ((8 - numBits % 8) % 8))).toByte()
+             return fromBytes(bytes, 0, bytes.size, false)
+         }
+-        private fun parse(value: String, radix: Int): BigInteger {
++        /** Parse a coherent character sequence without materializing its String representation. */
++        @JvmStatic fun parseText(value: CharSequence, radix: Int = 10): BigInteger =
++            parse(NumericText537.of(value), radix)
++
++        /** Slice bounds and malformed text use NumberFormatException, like decimal character parsing. */
++        @JvmStatic fun parseText(value: CharSequence, offset: Int, length: Int, radix: Int = 10): BigInteger =
++            parse(NumericText537.of(value, offset, length), radix)
++
++        /** The caller must keep this array slice unchanged throughout the synchronous call. */
++        @JvmStatic fun parseChars(value: CharArray, offset: Int = 0, length: Int = value.size - offset,
++            radix: Int = 10): BigInteger = parse(NumericText537.of(value, offset, length), radix)
++
++        /** Opt-in input limit, checked before character traversal or magnitude allocation. */
++        @JvmStatic fun parseTextBounded(value: CharSequence, offset: Int, length: Int,
++            maxInputChars: Int, radix: Int = 10): BigInteger =
++            parse(NumericText537.of(value, offset, length).within(maxInputChars), radix)
++
++        @JvmStatic fun parseCharsBounded(value: CharArray, offset: Int, length: Int,
++            maxInputChars: Int, radix: Int = 10): BigInteger =
++            parse(NumericText537.of(value, offset, length).within(maxInputChars), radix)
++
++        private fun parse(value: String, radix: Int): BigInteger = parse(NumericText537.of(value), radix)
++
++        /** Fully validated decimal significand; no intermediate digit String or byte encoding. */
++        @kotlin.jvm.JvmSynthetic
++        internal fun decimalPrefix537(value: NumericText537, first: Int, digits: Int, sign: Int): BigInteger {
++            val builder = ParsedMagnitude537()
++            var index = first
++            var remaining = digits
++            var width = (digits - 1) % 9 + 1
++            while (remaining > 0) {
++                var power = 1
++                var block = 0
++                var count = 0
++                while (count < width) {
++                    val c = value[index++]
++                    if (c == '.') continue
++                    block = block * 10 + checkNotNull(numericDigit537(c, 10))
++                    power *= 10
++                    count++
++                }
++                builder.multiplyAdd(power, block)
++                remaining -= width
++                width = 9
++            }
++            return builder.publish(sign)
++        }
++
++        private fun parse(value: NumericText537, radix: Int): BigInteger {
+             if (radix !in 2..36) throw NumberFormatException("Radix out of range")
+-            if (value.isEmpty()) throw NumberFormatException("Zero length BigInteger")
+-            if (value.indexOf('-', 1) >= 0 || value.indexOf('+', 1) >= 0)
+-                throw NumberFormatException("Illegal embedded sign character")
++            if (value.length == 0) throw NumberFormatException("Zero length BigInteger")
++            for (index in 1 until value.length)
++                if (value[index] == '-' || value[index] == '+')
++                    throw NumberFormatException("Illegal embedded sign character")
+             var start = 0
+             var sign = 1
+             if (value[0] == '-' || value[0] == '+') { sign = if (value[0] == '-') -1 else 1; start++ }
+             if (start == value.length) throw NumberFormatException("Zero length BigInteger")
+-            while (start < value.length && value[start].digitToIntOrNull(radix) == 0) start++
++            while (start < value.length && numericDigit537(value[start], radix) == 0) start++
+             if (start == value.length) return ZERO
+             if (MagnitudeLimits.parserDefinitelyOverflows(value.length - start, radix)) {
+                 // Invalid text must retain its digit error, even when its length proves
+                 // every valid number of this shape is outside the supported range.
+                 for (i in start until value.length)
+-                    if (value[i].digitToIntOrNull(radix) == null) invalidIntegerDigit(value, radix, start, i)
++                    if (numericDigit537(value[i], radix) == null) invalidIntegerDigit(value, radix, start, i)
+                 throw ArithmeticException("BigInteger overflow")
+             }
+-            var n = ZERO
+-            val base = valueOf(radix.toLong())
+-            for (i in start until value.length) {
+-                val digit = value[i].digitToIntOrNull(radix) ?: invalidIntegerDigit(value, radix, start, i)
+-                n = n.multiply(base).add(valueOf(digit.toLong()))
++            var groupPower = radix
++            var groupWidth = 1
++            while (groupPower.toLong() * radix <= Int.MAX_VALUE) {
++                groupPower *= radix
++                groupWidth++
+             }
+-            return if (sign < 0) n.negate() else n
++            val builder = ParsedMagnitude537()
++            var index = start
++            var width = (value.length - start - 1) % groupWidth + 1
++            val radixUpperBits = 32 - (radix - 1).countLeadingZeroBits()
++            while (index < value.length) {
++                // Every prefix of this group fits if this conservative upper bound fits.
++                // Otherwise retain old per-digit overflow/bad-digit exception precedence.
++                if (builder.bits().toLong() + width.toLong() * radixUpperBits > Int.MAX_VALUE) {
++                    var n = builder.publish(1)
++                    val base = valueOf(radix.toLong())
++                    for (at in index until value.length) {
++                        val digit = numericDigit537(value[at], radix) ?: invalidIntegerDigit(value, radix, start, at)
++                        n = n.multiply(base).add(valueOf(digit.toLong()))
++                    }
++                    return if (sign < 0) n.negate() else n
++                }
++                var block = 0
++                var power = 1
++                repeat(width) {
++                    val digit = numericDigit537(value[index], radix) ?: invalidIntegerDigit(value, radix, start, index)
++                    block = block * radix + digit
++                    power *= radix
++                    index++
++                }
++                builder.multiplyAdd(power, block)
++                width = groupWidth
++            }
++            return builder.publish(sign)
+         }
+-        private fun invalidIntegerDigit(value: String, radix: Int, start: Int, invalid: Int): Nothing {
++
++        /** Mutable only during parsing; each multiply-add is below B*Int.MAX_VALUE < 2^61. */
++        private class ParsedMagnitude537 {
++            private var words = IntArray(4)
++            private var size = 0
++            fun bits(): Int = if (size == 0) 0 else (size - 1) * LIMB_BITS + 32 - words[size - 1].countLeadingZeroBits()
++            fun multiplyAdd(power: Int, block: Int) {
++                var carry = block.toLong()
++                for (index in 0 until size) {
++                    val part = words[index].toLong() * power + carry
++                    words[index] = (part and MASK).toInt()
++                    carry = part ushr LIMB_BITS
++                }
++                while (carry != 0L) {
++                    if (size == words.size) {
++                        val next = minOf((Int.MAX_VALUE.toLong() + LIMB_BITS - 1) / LIMB_BITS,
++                            words.size.toLong() * 2).toInt()
++                        if (next == words.size) throw ArithmeticException("BigInteger overflow")
++                        words = words.copyOf(next)
++                    }
++                    words[size++] = (carry and MASK).toInt()
++                    carry = carry ushr LIMB_BITS
++                }
++                if (size > 0) MagnitudeLimits.checkedBitLength(size, words[size - 1])
++            }
++            fun publish(sign: Int): BigInteger = normalized(sign, words.copyOf(size))
++        }
++
++        private fun invalidIntegerDigit(value: NumericText537, radix: Int, start: Int, invalid: Int): Nothing {
+             // The observable diagnostic identifies a group whose radix power fits a signed Int.
+             // Arithmetic itself remains independent of this grouping.
+             var power = radix.toLong()
+@@ -1352,7 +1556,7 @@ open class BigInteger private constructor(private val sign: Int, private val wor
+                 else start + firstWidth + ((invalid - start - firstWidth) / width) * width
+             val groupEnd = if (groupStart == start) start + firstWidth else groupStart + width
+             val suffix = if (radix == 10) "" else " under radix $radix"
+-            throw NumberFormatException("For input string: \"${value.substring(groupStart, groupEnd)}\"$suffix")
++            throw NumberFormatException("For input string: \"${value.diagnostic(groupStart, groupEnd)}\"$suffix")
+         }
+         private fun fromBytes(bytes: ByteArray, off: Int, len: Int, twos: Boolean): BigInteger {
+             if (twos && bytes.isEmpty()) throw NumberFormatException("Zero length BigInteger")
+diff --git a/src/commonMain/kotlin/io/heapy/krogu/math/DecimalText588.kt b/src/commonMain/kotlin/io/heapy/krogu/math/DecimalText588.kt
+index ef7190d..0fa9025 100644
+--- a/src/commonMain/kotlin/io/heapy/krogu/math/DecimalText588.kt
++++ b/src/commonMain/kotlin/io/heapy/krogu/math/DecimalText588.kt
+@@ -15,25 +15,27 @@ internal object DecimalText588 {
+     private const val PAGE = 8192
+     private val powers = intArrayOf(1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000)
+ 
+-    fun parse(value: String, context: MathContext): BigDecimal = parse(Input(value, null), context)
++    fun parse(value: String, context: MathContext): BigDecimal = parse(NumericText537.of(value), context)
+ 
+-    fun parse(value: CharArray, offset: Int, length: Int, context: MathContext): BigDecimal {
+-        if (offset < 0 || length < 0 || offset > value.size - length)
+-            throw NumberFormatException("Bad character range")
+-        // No whole String: a supported CharArray need not fit the platform's
+-        // String type. This is an owned copy, not an atomic concurrent snapshot.
+-        return parse(Input(null, value.copyOfRange(offset, offset + length)), context)
+-    }
++    fun parse(value: CharSequence, offset: Int, length: Int, context: MathContext): BigDecimal =
++        parse(NumericText537.of(value, offset, length), context)
++
++    fun parseBounded(value: CharSequence, offset: Int, length: Int, maxInputChars: Int,
++        context: MathContext): BigDecimal = parse(NumericText537.of(value, offset, length).within(maxInputChars), context)
+ 
+-    private class Input(val text: String?, val characters: CharArray?) {
+-        val length: Int = text?.length ?: checkNotNull(characters).size
+-        operator fun get(index: Int): Char = if (text != null) text[index] else checkNotNull(characters)[index]
++    fun parseBounded(value: CharArray, offset: Int, length: Int, maxInputChars: Int,
++        context: MathContext): BigDecimal = parse(NumericText537.of(value, offset, length).within(maxInputChars), context)
++
++    fun parse(value: CharArray, offset: Int, length: Int, context: MathContext): BigDecimal {
++        // No whole String or slice copy. Concurrently changing input is unsupported;
++        // this synchronous reader does not promise an atomic snapshot.
++        return parse(NumericText537.of(value, offset, length), context)
+     }
+ 
+     private class Lexical(val sign: Int, val scale: Int, val first: Int,
+         val digits: Long, val guard: Int, val sticky: Boolean)
+ 
+-    private fun scan(input: Input, precision: Int): Lexical {
++    private fun scan(input: NumericText537, precision: Int): Lexical {
+         if (input.length == 0) throw NumberFormatException("Empty BigDecimal")
+         var i = 0
+         var sign = 1
+@@ -50,7 +52,7 @@ internal object DecimalText588 {
+             val at = i
+             val c = input[i++]
+             if (c == '.' && !point) { point = true; continue }
+-            val digit = c.digitToIntOrNull(10) ?: throw NumberFormatException("Invalid decimal digit")
++            val digit = numericDigit537(c, 10) ?: throw NumberFormatException("Invalid decimal digit")
+             seenDigit = true
+             if (point) fraction++
+             if (first < 0 && digit != 0) first = at
+@@ -73,7 +75,7 @@ internal object DecimalText588 {
+             }
+             if (i == input.length) throw NumberFormatException("No exponent digits")
+             while (i < input.length) {
+-                val digit = input[i++].digitToIntOrNull(10) ?: throw NumberFormatException("Invalid exponent")
++                val digit = numericDigit537(input[i++], 10) ?: throw NumberFormatException("Invalid exponent")
+                 // Before a step exponent<=L+1+fraction<=2^32-1;
+                 // the provisional next value is <2^36, safely Long.
+                 exponent = exponent * 10 + digit
+@@ -88,11 +90,13 @@ internal object DecimalText588 {
+         return Lexical(sign, scale.toInt(), first, digits, guard, sticky)
+     }
+ 
+-    private fun parse(input: Input, context: MathContext): BigDecimal {
++    private fun parse(input: NumericText537, context: MathContext): BigDecimal {
+         val lexical = scan(input, context.precision)
+         if (lexical.digits == 0L) return BigDecimal(BigInteger.ZERO, lexical.scale)
+         val kept = retainedDecimalText588(lexical.digits, context.precision)
+         if (kept > MAX_DIGITS) overflow()
++        if (context.precision == 0)
++            return BigDecimal(BigInteger.decimalPrefix537(input, lexical.first, kept.toInt(), lexical.sign), lexical.scale)
+         val drop = lexical.digits - kept
+         // Preserve ordinary scale-before-inexactness priority. No endpoint
+         // padding or optional zero stripping is part of constructor rounding.
+@@ -133,7 +137,7 @@ internal object DecimalText588 {
+ 
+     private fun overflow(): Nothing = throw ArithmeticException("BigInteger overflow")
+ 
+-    private fun prefix(input: Input, first: Int, kept: Int): Digits {
++    private fun prefix(input: NumericText537, first: Int, kept: Int): Digits {
+         val result = Digits(((kept.toLong() + 8) / 9 + 1).toInt())
+         var i = first
+         var consumed = 0
+@@ -143,7 +147,7 @@ internal object DecimalText588 {
+             val c = input[i++]
+             if (c == '.') continue
+             // Same immutable reader, already completely validated by scan.
+-            block = block * 10 + c.digitToInt(10)
++            block = block * 10 + checkNotNull(numericDigit537(c, 10))
+             consumed++
+             inBlock++
+             if (inBlock == 9) {
+diff --git a/src/commonMain/kotlin/io/heapy/krogu/math/NumericOutput537.kt b/src/commonMain/kotlin/io/heapy/krogu/math/NumericOutput537.kt
+new file mode 100644
+index 0000000..9997c36
+--- /dev/null
++++ b/src/commonMain/kotlin/io/heapy/krogu/math/NumericOutput537.kt
+@@ -0,0 +1,161 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math
++
++/** The existing canonical, plain and engineering decimal layouts. */
++enum class DecimalTextFormat { CANONICAL, PLAIN, ENGINEERING }
++
++internal fun checkTextLimit537(length: Long, maxChars: Long?) {
++    require(maxChars == null || maxChars >= 0) { "maxChars must be nonnegative" }
++    if (maxChars != null && length > maxChars) throw ArithmeticException("Output character limit exceeded")
++}
++
++internal fun checkTextBuffer537(destination: CharArray, offset: Int, length: Int) {
++    if (offset < 0 || length < 0 || offset > destination.size - length)
++        throw IndexOutOfBoundsException("Bad output character range")
++}
++
++internal interface NumericSink537 {
++    fun character(value: Char)
++    fun text(value: CharSequence, start: Int = 0, end: Int = value.length)
++    fun characters(value: CharArray, start: Int, end: Int) {
++        for (index in start until end) character(value[index])
++    }
++    fun zeros(count: Long) {
++        var remaining = count
++        while (remaining > 0) {
++            val block = minOf(remaining, ZERO_BLOCK537.length.toLong()).toInt()
++            text(ZERO_BLOCK537, 0, block)
++            remaining -= block
++        }
++    }
++}
++
++private val ZERO_BLOCK537 = "0".repeat(256)
++
++internal class AppendableSink537(private val destination: Appendable) : NumericSink537 {
++    override fun character(value: Char) { destination.append(value) }
++    override fun text(value: CharSequence, start: Int, end: Int) { destination.append(value, start, end) }
++    override fun characters(value: CharArray, start: Int, end: Int) {
++        if (destination is StringBuilder) destination.appendRange(value, start, end)
++        else super.characters(value, start, end)
++    }
++}
++
++internal class ArraySink537(private val destination: CharArray, private var offset: Int) : NumericSink537 {
++    override fun character(value: Char) { destination[offset++] = value }
++    override fun text(value: CharSequence, start: Int, end: Int) {
++        if (value is String) {
++            value.toCharArray(destination, offset, start, end)
++            offset += end - start
++        } else for (index in start until end) destination[offset++] = value[index]
++    }
++    override fun characters(value: CharArray, start: Int, end: Int) {
++        value.copyInto(destination, offset, start, end)
++        offset += end - start
++    }
++}
++
++/** Little-endian radix^width cells; writing uses one bounded digit buffer, no per-cell Strings. */
++internal class RadixDigits537(
++    private val chunks: IntArray,
++    private val size: Int,
++    private val radix: Int,
++    private val width: Int,
++) {
++    val zero: Boolean = size == 1 && chunks[0] == 0
++    private val firstLength: Int = run {
++        var rest = chunks[size - 1]
++        var count = 1
++        while (rest >= radix) { rest /= radix; count++ }
++        count
++    }
++    val length: Long = (size - 1).toLong() * width + firstLength
++
++    fun write(sink: NumericSink537, start: Long = 0, end: Long = length) {
++        require(start in 0..end && end <= length)
++        val buffer = CharArray(width)
++        val powerOfTwo = radix and (radix - 1) == 0
++        val shift = radix.countTrailingZeroBits()
++        var cursor = 0L
++        for (index in size - 1 downTo 0) {
++            val count = if (index == size - 1) firstLength else width
++            val after = cursor + count
++            if (after > start && cursor < end) {
++                var rest = chunks[index]
++                if (powerOfTwo) {
++                    for (digit in count - 1 downTo 0) {
++                        buffer[digit] = DIGITS537[rest and (radix - 1)]
++                        rest = rest ushr shift
++                    }
++                } else {
++                    for (digit in count - 1 downTo 0) {
++                        buffer[digit] = DIGITS537[rest % radix]
++                        rest /= radix
++                    }
++                }
++                sink.characters(buffer, maxOf(0L, start - cursor).toInt(), minOf(count.toLong(), end - cursor).toInt())
++            }
++            cursor = after
++            if (cursor >= end) break
++        }
++    }
++}
++
++private const val DIGITS537 = "0123456789abcdefghijklmnopqrstuvwxyz"
++
++/** Plans all lengths in Long before the first external write or scale-sized padding. */
++internal class DecimalLayout537(
++    private val digits: RadixDigits537,
++    private val scale: Int,
++    private val negative: Boolean,
++    format: DecimalTextFormat,
++) {
++    private val exponent = digits.length - scale.toLong() - 1
++    private val plain = format == DecimalTextFormat.PLAIN || scale >= 0 && exponent >= -6
++    private val engineering = !plain && format == DecimalTextFormat.ENGINEERING
++    private val mod = ((exponent % 3 + 3) % 3).toInt()
++    private val before = if (engineering) mod + 1 else 1
++    private val zeroDecimals = if (engineering && digits.zero) (3 - mod) % 3 else 0
++    private val outputExponent = if (engineering) exponent - mod +
++        (if (digits.zero && mod != 0) 3 else 0) else exponent
++    private val suffix = if (plain || engineering && outputExponent == 0L) "" else
++        "E" + (if (outputExponent >= 0) "+" else "") + outputExponent
++    val length: Long = (if (negative) 1L else 0L) + when {
++        plain && scale < 0 && digits.zero -> 1L
++        plain && scale <= 0 -> digits.length - scale.toLong()
++        plain && scale < digits.length -> digits.length + 1
++        plain -> scale.toLong() + 2
++        engineering && digits.zero -> 1L + if (zeroDecimals == 0) 0 else zeroDecimals + 1
++        else -> maxOf(digits.length, before.toLong()) + if (digits.length > before) 1 else 0
++    } + suffix.length
++
++    fun write(sink: NumericSink537) {
++        if (negative) sink.character('-')
++        when {
++            plain && scale < 0 && digits.zero -> sink.character('0')
++            plain && scale <= 0 -> { digits.write(sink); sink.zeros(-scale.toLong()) }
++            plain && scale < digits.length -> {
++                val split = digits.length - scale
++                digits.write(sink, 0, split)
++                sink.character('.')
++                digits.write(sink, split)
++            }
++            plain -> {
++                sink.text("0.")
++                sink.zeros(scale.toLong() - digits.length)
++                digits.write(sink)
++            }
++            engineering && digits.zero -> {
++                sink.character('0')
++                if (zeroDecimals != 0) { sink.character('.'); sink.zeros(zeroDecimals.toLong()) }
++            }
++            digits.length <= before -> { digits.write(sink); sink.zeros(before - digits.length) }
++            else -> {
++                digits.write(sink, 0, before.toLong())
++                sink.character('.')
++                digits.write(sink, before.toLong())
++            }
++        }
++        sink.text(suffix)
++    }
++}
+diff --git a/src/commonMain/kotlin/io/heapy/krogu/math/NumericText537.kt b/src/commonMain/kotlin/io/heapy/krogu/math/NumericText537.kt
+new file mode 100644
+index 0000000..e1d71e0
+--- /dev/null
++++ b/src/commonMain/kotlin/io/heapy/krogu/math/NumericText537.kt
+@@ -0,0 +1,50 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math
++
++/** A synchronous view; callers must keep mutable input coherent throughout parsing. */
++internal class NumericText537 private constructor(
++    private val text: CharSequence?,
++    private val characters: CharArray?,
++    private val offset: Int,
++    val length: Int,
++) {
++    operator fun get(index: Int): Char = text?.get(offset + index) ?: characters!![offset + index]
++
++    fun diagnostic(start: Int, end: Int): String = buildString(end - start) {
++        for (index in start until end) append(this@NumericText537[index])
++    }
++
++    fun within(maxInputChars: Int): NumericText537 {
++        require(maxInputChars >= 0) { "maxInputChars must be nonnegative" }
++        if (length > maxInputChars) throw ArithmeticException("Input character limit exceeded")
++        return this
++    }
++
++    companion object {
++        fun of(value: CharSequence, offset: Int = 0, length: Int = value.length): NumericText537 {
++            checkRange(value.length, offset, length)
++            return NumericText537(value, null, offset, length)
++        }
++
++        fun of(value: CharArray, offset: Int, length: Int): NumericText537 {
++            checkRange(value.size, offset, length)
++            return NumericText537(null, value, offset, length)
++        }
++
++        private fun checkRange(size: Int, offset: Int, length: Int) {
++            if (offset < 0 || length < 0 || offset > size - length)
++                throw NumberFormatException("Bad character range")
++        }
++    }
++}
++
++/** ASCII avoids Unicode lookup; non-ASCII retains the existing Kotlin digit grammar. */
++internal fun numericDigit537(character: Char, radix: Int): Int? {
++    val ascii = when (character) {
++        in '0'..'9' -> character.code - '0'.code
++        in 'a'..'z' -> character.code - 'a'.code + 10
++        in 'A'..'Z' -> character.code - 'A'.code + 10
++        else -> return character.digitToIntOrNull(radix)
++    }
++    return ascii.takeIf { it < radix }
++}
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/TextOutput537Test.kt b/src/commonTest/kotlin/io/heapy/krogu/math/TextOutput537Test.kt
+new file mode 100644
+index 0000000..da7e242
+--- /dev/null
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/TextOutput537Test.kt
+@@ -0,0 +1,130 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math
++
++import kotlin.test.Test
++import kotlin.test.assertEquals
++import kotlin.test.assertFailsWith
++import kotlin.test.assertSame
++import kotlin.test.assertTrue
++
++class TextOutput537Test {
++    @Test fun numericChunkSlicesPreservePaddingAndZeroWithoutStrings() {
++        val alphabet = "0123456789abcdefghijklmnopqrstuvwxyz"
++        for (radix in 2..36) {
++            val expected = alphabet[radix - 1] + "001000"
++            val digits = RadixDigits537(intArrayOf(0, 1, radix - 1), 3, radix, 3)
++            assertEquals(expected.length.toLong(), digits.length)
++            for (start in 0..expected.length) for (end in start..expected.length) {
++                val buffer = CharArray(end - start + 2) { '#' }
++                digits.write(ArraySink537(buffer, 1), start.toLong(), end.toLong())
++                assertEquals("#${expected.substring(start, end)}#", buffer.concatToString(), "$radix/$start/$end")
++                val output = StringBuilder()
++                digits.write(AppendableSink537(output), start.toLong(), end.toLong())
++                assertEquals(expected.substring(start, end), output.toString())
++            }
++        }
++        val binary = RadixDigits537(intArrayOf(0x3fffffff, 1), 2, 2, 30)
++        assertEquals("1".repeat(31), StringBuilder().also { binary.write(AppendableSink537(it)) }.toString())
++        val zero = RadixDigits537(intArrayOf(0), 1, 36, 1)
++        assertEquals("0", StringBuilder().also { zero.write(AppendableSink537(it)) }.toString())
++    }
++
++    @Test fun integerRadicesAndBufferAtomicity() {
++        for (text in listOf("0", "1", "-1", "1073741824", "-9223372036854775808",
++            "12345678901234567890123456789012345678901234567890")) {
++            val value = BigInteger(text)
++            for (radix in listOf(0, 1, 37) + (2..36)) {
++                val expected = value.toString(radix)
++                val output = StringBuilder()
++                assertEquals(expected.length.toLong(), value.appendTo(output, radix, expected.length.toLong()))
++                assertEquals(expected, output.toString())
++                val buffer = CharArray(expected.length + 4) { '#' }
++                assertEquals(expected.length, value.writeTo(buffer, 2, expected.length, radix))
++                assertEquals("##${expected}##", buffer.concatToString())
++                val short = CharArray(expected.length + 4) { '#' }
++                assertFailsWith<ArithmeticException> { value.writeTo(short, 2, expected.length - 1, radix) }
++                assertTrue(short.all { it == '#' })
++            }
++        }
++    }
++
++    @Test fun decimalLayoutsAgreeWithExistingCanonicalAndAlternateFormats() {
++        val coefficients = listOf("0", "1", "-1", "12", "-123", "1234500",
++            "1234567890123456789012345678901234567890")
++        for (coefficient in coefficients) for (scale in -12..15) {
++            val value = BigDecimal(BigInteger(coefficient), scale)
++            for (format in DecimalTextFormat.entries) {
++                val expected = when (format) {
++                    DecimalTextFormat.CANONICAL -> value.toString()
++                    DecimalTextFormat.PLAIN -> value.toPlainString()
++                    DecimalTextFormat.ENGINEERING -> value.toEngineeringString()
++                }
++                val output = StringBuilder()
++                assertEquals(expected.length.toLong(), value.appendTo(output, format), "$coefficient@$scale/$format")
++                assertEquals(expected, output.toString(), "$coefficient@$scale/$format")
++                val buffer = CharArray(expected.length + 2) { '#' }
++                assertEquals(expected.length, value.writeTo(buffer, 1, expected.length, format))
++                assertEquals("#${expected}#", buffer.concatToString())
++                val short = CharArray(expected.length + 2) { '#' }
++                assertFailsWith<ArithmeticException> { value.writeTo(short, 1, expected.length - 1, format) }
++                assertTrue(short.all { it == '#' })
++            }
++        }
++    }
++
++    @Test fun explicitLimitsRejectHugePaddingBeforeAnyDestinationWrite() {
++        val output = StringBuilder("prefix")
++        for (scale in listOf(Int.MIN_VALUE, Int.MAX_VALUE)) {
++            val value = BigDecimal(BigInteger.ONE, scale)
++            assertFailsWith<ArithmeticException> { value.appendTo(output, DecimalTextFormat.PLAIN, 100) }
++            assertEquals("prefix", output.toString())
++            val buffer = CharArray(10) { '#' }
++            assertFailsWith<ArithmeticException> { value.writeTo(buffer, format = DecimalTextFormat.PLAIN) }
++            assertTrue(buffer.all { it == '#' })
++        }
++        assertFailsWith<IllegalArgumentException> { BigInteger.ONE.appendTo(output, maxChars = -1) }
++        assertFailsWith<IllegalArgumentException> { BigDecimal.ONE.appendTo(output, maxChars = -1) }
++        for ((offset, length) in listOf(-1 to 1, 0 to -1, Int.MAX_VALUE to 1, 1 to Int.MAX_VALUE)) {
++            assertFailsWith<IndexOutOfBoundsException> { BigInteger.ONE.writeTo(CharArray(3), offset, length) }
++            assertFailsWith<IndexOutOfBoundsException> { BigDecimal.ONE.writeTo(CharArray(3), offset, length) }
++        }
++    }
++
++    @Test fun paddingIsChunkedAndDestinationFailureKeepsIdentity() {
++        var count = 0L
++        var largest = 0
++        val sink = object : Appendable {
++            override fun append(value: Char): Appendable { count++; return this }
++            override fun append(value: CharSequence?): Appendable = append(value, 0, value?.length ?: 4)
++            override fun append(value: CharSequence?, startIndex: Int, endIndex: Int): Appendable {
++                count += endIndex - startIndex
++                largest = maxOf(largest, endIndex - startIndex)
++                return this
++            }
++        }
++        assertEquals(10001L, BigDecimal(BigInteger.ONE, -10000).appendTo(sink, DecimalTextFormat.PLAIN, 10001))
++        assertEquals(10001L, count)
++        assertTrue(largest <= 256)
++        val failure = IllegalStateException("destination")
++        val throwing = object : Appendable {
++            override fun append(value: Char): Appendable = throw failure
++            override fun append(value: CharSequence?): Appendable = throw failure
++            override fun append(value: CharSequence?, startIndex: Int, endIndex: Int): Appendable = throw failure
++        }
++        assertSame(failure, assertFailsWith<IllegalStateException> { BigInteger.TEN.appendTo(throwing) })
++        assertSame(failure, assertFailsWith<IllegalStateException> { BigDecimal.TEN.appendTo(throwing) })
++    }
++
++    @Test fun subtypeVirtualFormattingIsPreserved() {
++        val integer = object : BigInteger("123") { override fun toString(radix: Int): String = "integer:$radix" }
++        val decimal = object : BigDecimal("123") {
++            override fun toString(): String = "canonical"
++            override fun toPlainString(): String = "plain"
++            override fun toEngineeringString(): String = "engineering"
++        }
++        assertEquals("integer:7", StringBuilder().also { integer.appendTo(it, 7) }.toString())
++        for ((format, expected) in listOf(DecimalTextFormat.CANONICAL to "canonical",
++            DecimalTextFormat.PLAIN to "plain", DecimalTextFormat.ENGINEERING to "engineering"))
++            assertEquals(expected, StringBuilder().also { decimal.appendTo(it, format) }.toString())
++    }
++}
+diff --git a/src/commonTest/kotlin/io/heapy/krogu/math/TextParsing537Test.kt b/src/commonTest/kotlin/io/heapy/krogu/math/TextParsing537Test.kt
+new file mode 100644
+index 0000000..da7655b
+--- /dev/null
++++ b/src/commonTest/kotlin/io/heapy/krogu/math/TextParsing537Test.kt
+@@ -0,0 +1,90 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math
++
++import kotlin.test.Test
++import kotlin.test.assertEquals
++import kotlin.test.assertFailsWith
++import kotlin.test.assertSame
++
++class TextParsing537Test {
++    private class View(private val source: String) : CharSequence {
++        override val length: Int get() = source.length
++        override fun get(index: Int): Char = source[index]
++        override fun subSequence(startIndex: Int, endIndex: Int): CharSequence = error("no substring")
++        override fun toString(): String = error("no materialization")
++    }
++
++    @Test fun frozenIntegerOracleAcrossAllReaders() {
++        for ((index, row) in jdk25IntegerParserCases().withIndex()) {
++            val radix = row[0].toInt()
++            val wrapped = "[$" + row[1] + "]"
++            fun outcome(parse: () -> BigInteger): String = try { parse().toString() }
++                catch (e: NumberFormatException) { "!NumberFormatException:${e.message}" }
++            assertEquals(row[2], outcome { BigInteger.parseText(View(row[1]), radix) }, "whole $index")
++            assertEquals(row[2], outcome { BigInteger.parseText(View(wrapped), 2, row[1].length, radix) }, "slice $index")
++            assertEquals(row[2], outcome { BigInteger.parseChars(wrapped.toCharArray(), 2, row[1].length, radix) }, "chars $index")
++        }
++    }
++
++    @Test fun radixGroupsAgainstBoundedLongValuesAndRoundTrips() {
++        val values = listOf(0L, 1L, -1L, 1073741823L, 1073741824L, 2147483647L,
++            2147483648L, Long.MAX_VALUE, Long.MIN_VALUE)
++        for (radix in 2..36) for (value in values) {
++            val text = value.toString(radix)
++            assertEquals(value.toString(), BigInteger.parseText(View(text), radix).toString(), "$radix/$value")
++        }
++        // 3^19 exceeds a base-2^30 cell; carry must not be truncated to one cell.
++        for (radix in 2..36) for (size in listOf(1, 8, 9, 18, 19, 31, 63, 127)) {
++            val text = (radix - 1).toString(radix).repeat(size)
++            assertEquals(text, BigInteger.parseText(View(text), radix).toString(radix), "$radix/$size")
++        }
++    }
++
++    @Test fun decimalSlicesPreserveScaleGrammarAndRounding() {
++        val texts = listOf("0", "-0.000", "+123.4500", ".5", "5.", "000123e-9",
++            "١٢٣.٤٥e+2", "９９９９９９９９９６", "123456789012345678901234567890.00100",
++            "1E+2147483647", "1E-2147483647")
++        for (text in texts) for (precision in listOf(0, 1, 7, 18)) for (mode in RoundingMode.entries) {
++            val mc = MathContext(precision, mode)
++            fun outcome(parse: () -> BigDecimal): String = try {
++                val value = parse()
++                "${value.unscaledValue()}@${value.scale()}"
++            } catch (e: ArithmeticException) { "!ArithmeticException:${e.message}" }
++            val expected = outcome { BigDecimal(text, mc) }
++            assertEquals(expected, outcome { BigDecimal.parseText(View(text), mc) }, "$text/$mc")
++            val chars = "[$text]".toCharArray()
++            assertEquals(expected, outcome { BigDecimal.parseText(View("[$text]"), 1, text.length, mc) })
++            assertEquals(expected, outcome { BigDecimal(chars, 1, text.length, mc) })
++        }
++        for (text in listOf("", "+", "1..0", "1e", "1e+", "1e2147483648", "1 0", "NaN")) {
++            fun outcome(parse: () -> BigDecimal): String = try { parse().toString() }
++                catch (e: NumberFormatException) { "${e::class}:${e.message}" }
++            assertEquals(outcome { BigDecimal(text) }, outcome { BigDecimal.parseText(View(text)) }, text)
++        }
++    }
++
++    @Test fun rangesLimitsAndOwnershipBeforeTraversal() {
++        val failure = IllegalStateException("reader")
++        val unreadable = object : CharSequence {
++            override val length = 3
++            override fun get(index: Int): Char = throw failure
++            override fun subSequence(startIndex: Int, endIndex: Int): CharSequence = error("substring")
++        }
++        assertFailsWith<ArithmeticException> { BigInteger.parseTextBounded(unreadable, 0, 3, 2) }
++        assertFailsWith<ArithmeticException> { BigDecimal.parseTextBounded(unreadable, 0, 3, 2) }
++        assertSame(failure, assertFailsWith<IllegalStateException> { BigInteger.parseText(unreadable) })
++        assertSame(failure, assertFailsWith<IllegalStateException> { BigDecimal.parseText(unreadable) })
++        for ((offset, length) in listOf(-1 to 1, 0 to -1, Int.MAX_VALUE to 1, 1 to Int.MAX_VALUE)) {
++            assertFailsWith<NumberFormatException> { BigInteger.parseText("123", offset, length) }
++            assertFailsWith<NumberFormatException> { BigDecimal.parseText("123", offset, length) }
++        }
++        val chars = "1234500".toCharArray()
++        val integer = BigInteger.parseChars(chars)
++        val decimal = BigDecimal(chars)
++        chars.fill('9')
++        assertEquals("1234500", integer.toString())
++        assertEquals("1234500", decimal.toString())
++        assertEquals(integer, BigInteger.parseTextBounded("1234500", 0, 7, 7))
++        assertFailsWith<IllegalArgumentException> { BigDecimal.parseCharsBounded(chars, 0, 7, -1) }
++    }
++}
+diff --git a/src/jvmTest/java/io/heapy/krogu/math/TextApi537JavaTest.java b/src/jvmTest/java/io/heapy/krogu/math/TextApi537JavaTest.java
+new file mode 100644
+index 0000000..d991719
+--- /dev/null
++++ b/src/jvmTest/java/io/heapy/krogu/math/TextApi537JavaTest.java
+@@ -0,0 +1,33 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math;
++
++import org.junit.Test;
++import static org.junit.Assert.*;
++
++public class TextApi537JavaTest {
++    @Test public void fullSignaturesAreCallableWithoutConstructorAmbiguity() {
++        BigInteger integer = BigInteger.parseText(new StringBuilder("[ff]"), 1, 2, 16);
++        assertEquals("255", integer.toString());
++        assertEquals(integer, BigInteger.parseChars(new char[] {'f', 'f'}, 0, 2, 16));
++        assertEquals(integer, BigInteger.parseCharsBounded(new char[] {'f', 'f'}, 0, 2, 2, 16));
++        BigDecimal decimal = BigDecimal.parseText(new StringBuilder("[12.3400]"), 1, 7, MathContext.UNLIMITED);
++        assertEquals("12.3400", decimal.toString());
++        assertEquals(decimal, BigDecimal.parseCharsBounded("12.3400".toCharArray(), 0, 7, 7, MathContext.UNLIMITED));
++        StringBuilder text = new StringBuilder();
++        assertEquals(7L, decimal.appendTo(text, DecimalTextFormat.PLAIN, 7L));
++        assertEquals("12.3400", text.toString());
++        char[] buffer = "#########".toCharArray();
++        assertEquals(7, decimal.writeTo(buffer, 1, 7, DecimalTextFormat.CANONICAL));
++        assertEquals("#12.3400#", new String(buffer));
++        assertThrows(ArithmeticException.class, () -> integer.appendTo(new StringBuilder(), 10, 2L));
++        assertThrows(ArithmeticException.class, () -> BigInteger.parseTextBounded("255", 0, 3, 2, 10));
++    }
++
++    @Test public void nullInputsAndDestinationsFailAtPublicBoundary() {
++        assertThrows(NullPointerException.class, () -> BigInteger.parseText((CharSequence) null, 10));
++        assertThrows(NullPointerException.class, () -> BigDecimal.parseText((CharSequence) null, MathContext.UNLIMITED));
++        assertThrows(NullPointerException.class, () -> BigDecimal.parseText("1", (MathContext) null));
++        assertThrows(NullPointerException.class, () -> BigInteger.ONE.appendTo(null, 10, null));
++        assertThrows(NullPointerException.class, () -> BigDecimal.ONE.writeTo(null, 0, 0, DecimalTextFormat.PLAIN));
++    }
++}
+diff --git a/src/jvmTest/kotlin/io/heapy/krogu/math/NumericText537Probe.kt b/src/jvmTest/kotlin/io/heapy/krogu/math/NumericText537Probe.kt
+new file mode 100644
+index 0000000..b5680a3
+--- /dev/null
++++ b/src/jvmTest/kotlin/io/heapy/krogu/math/NumericText537Probe.kt
+@@ -0,0 +1,172 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math
++
++import java.io.File
++import java.lang.management.ManagementFactory
++import java.security.MessageDigest
++
++/** Same compiled executable against distinct baseline/candidate artifacts. No timing assertions. */
++object NumericText537Probe {
++    @Volatile private var sink: Any? = null
++    private val memory = ManagementFactory.getThreadMXBean() as com.sun.management.ThreadMXBean
++    private val ring = arrayOfNulls<Any>(32)
++    private var cursor = 0
++    private class Case(val id: String, val prepare: (Int) -> (() -> Any), val verify: () -> Unit)
++
++    @JvmStatic fun main(args: Array<String>) {
++        require(args.size == 7) { "baseline|candidate main.jar main-sha probe.jar probe-sha fork forward|reverse" }
++        require(args[0] in listOf("baseline", "candidate"))
++        require(args[6] in listOf("forward", "reverse"))
++        check(System.getProperty("java.runtime.version") == "25.0.4+9-LTS" && System.getProperty("java.vendor") == "BellSoft")
++        val main = File(args[1]).canonicalFile
++        val probe = File(args[3]).canonicalFile
++        fun sha(file: File): String = MessageDigest.getInstance("SHA-256").digest(file.readBytes())
++            .joinToString("") { "%02x".format(it) }
++        fun verifyBindings() {
++            check(main != probe && sha(main) == args[2] && sha(probe) == args[4])
++            check(File(BigInteger::class.java.protectionDomain.codeSource.location.toURI()).canonicalFile == main)
++            check(File(BigDecimal::class.java.protectionDomain.codeSource.location.toURI()).canonicalFile == main)
++            check(File(NumericText537Probe::class.java.protectionDomain.codeSource.location.toURI()).canonicalFile == probe)
++        }
++        verifyBindings()
++        check(memory.isThreadAllocatedMemorySupported)
++        memory.isThreadAllocatedMemoryEnabled = true
++        println("# main_sha256=${args[2]} probe_sha256=${args[4]} fork=${args[5]} order=${args[6]}")
++        val cases = cases(args[0] == "candidate").let { if (args[6] == "reverse") it.reversed() else it }
++        check(cases.map { it.id }.toSet().size == cases.size)
++        println("variant,fork,case,sample,operations,ns_per_op,allocated_bytes_per_op")
++        for (case in cases) {
++            case.verify() // Public JDK/text sanity outside all timing and allocation counters.
++            var count = 1
++            while (true) {
++                val elapsed = measure(count, case.prepare(count)).first
++                if (elapsed >= 20_000_000L || count >= 2048) break
++                count *= 2
++            }
++            // Wall setup can dominate cold pools: accumulate TIMED warmup, not setup duration.
++            var warmedNs = 0L
++            var warmBatches = 0
++            while (warmBatches < 5 || warmedNs < 200_000_000L) {
++                check(warmBatches < 100_000) { "Warmup batch cap reached before 200ms; retain failed diagnostic" }
++                warmedNs += measure(count, case.prepare(count)).first
++                warmBatches++
++            }
++            repeat(5) { sample ->
++                // For cold format, every pool is constructed here, outside BOTH counters.
++                val operation = case.prepare(count)
++                val (elapsed, allocated) = measure(count, operation)
++                println("${args[0]},${args[5]},${case.id},$sample,$count,${elapsed.toDouble() / count},${allocated.toDouble() / count}")
++            }
++        }
++        check(ring.any { it != null })
++        verifyBindings()
++        println("# artifact_recheck=PASS cases=${cases.size} result_escape=PASS")
++    }
++
++    private fun measure(count: Int, operation: () -> Any): Pair<Long, Long> {
++        val thread = Thread.currentThread().threadId()
++        val allocated = memory.getThreadAllocatedBytes(thread)
++        val start = System.nanoTime()
++        repeat(count) {
++            val result = operation()
++            ring[cursor++ and 31] = result
++            sink = result
++        }
++        val elapsed = System.nanoTime() - start
++        return elapsed to (memory.getThreadAllocatedBytes(thread) - allocated)
++    }
++
++    private fun cases(candidate: Boolean): List<Case> = buildList {
++        for (digits in listOf(9, 77, 309, 1234)) {
++            val text = "7" + buildString { repeat(digits - 1) { append(('0'.code + (it * 7 + 3) % 10).toChar()) } }
++            val chars = "[$text]".toCharArray()
++            val sequence = StringBuilder("[$text]")
++            val expected = java.math.BigInteger(text).toString()
++            fun parsed(mode: String): BigInteger = when (mode) {
++                "string" -> BigInteger(text)
++                "chars" -> if (candidate) BigInteger.parseChars(chars, 1, text.length, 10)
++                    else BigInteger(chars.concatToString(1, chars.size - 1))
++                else -> if (candidate) BigInteger.parseText(sequence, 1, text.length, 10)
++                    else BigInteger(sequence.substring(1, sequence.length - 1))
++            }
++            for (mode in listOf("string", "chars", "sequence")) add(Case("integer/$digits/parse-$mode",
++                { _ -> { parsed(mode) } }, { check(parsed(mode).toString() == expected) }))
++            for (radix in listOf(3, 10, 16)) {
++                val expectedRadix = java.math.BigInteger(text).toString(radix)
++                add(Case("integer/$digits/cold-format-$radix", { count ->
++                    val values = Array(count) { BigInteger(text) }
++                    var index = 0
++                    val operation: () -> Any = { values[index++].toString(radix) }
++                    operation
++                }, { check(BigInteger(text).toString(radix) == expectedRadix) }))
++                val value = BigInteger(text)
++                add(Case("integer/$digits/buffer-$radix", { _ ->
++                    val buffer = CharArray(expectedRadix.length)
++                    val operation: () -> Any = { if (candidate) value.writeTo(buffer, 0, buffer.size, radix)
++                      else value.toString(radix).toCharArray(buffer, 0, 0, buffer.size)
++                      buffer }
++                    operation
++                }, {
++                    val buffer = CharArray(expectedRadix.length)
++                    if (candidate) value.writeTo(buffer, 0, buffer.size, radix)
++                    else value.toString(radix).toCharArray(buffer, 0, 0, buffer.size)
++                    check(buffer.concatToString() == expectedRadix)
++                }))
++            }
++        }
++        val decimals = listOf("small" to "12345.6700", "wide" to ("7".repeat(309) + ".00100"),
++            "negative-scale" to "123456789E+77", "large-scale" to "123456789E-1234")
++        for ((name, text) in decimals) {
++            val expected = java.math.BigDecimal(text)
++            val chars = "[$text]".toCharArray()
++            val sequence = StringBuilder("[$text]")
++            fun parsed(mode: String): BigDecimal = when (mode) {
++                "string" -> BigDecimal(text)
++                "chars" -> BigDecimal(chars, 1, text.length)
++                else -> if (candidate) BigDecimal.parseText(sequence, 1, text.length, MathContext.UNLIMITED)
++                    else BigDecimal(sequence.substring(1, sequence.length - 1))
++            }
++            for (mode in listOf("string", "chars", "sequence")) add(Case("decimal/$name/parse-$mode",
++                { _ -> { parsed(mode) } }, { check(parsed(mode).toString() == expected.toString()) }))
++            add(Case("decimal/$name/cold-format", { count ->
++                val values = Array(count) { BigDecimal(text) }
++                var index = 0
++                val operation: () -> Any = { values[index++].toString() }
++                operation
++            }, { check(BigDecimal(text).toString() == expected.toString()) }))
++            add(Case("decimal/$name/construction-format", { _ -> { BigDecimal(text).toString() } },
++                { check(BigDecimal(text).toString() == expected.toString()) }))
++            val value = BigDecimal(text)
++            value.toString() // Explicit cached control, matching the old 527 observation state.
++            add(Case("decimal/$name/cached-format-control", { _ -> { value.toString() } },
++                { check(value.toString() == expected.toString()) }))
++            // Keep new API types behind candidate-only call sites: the baseline has no enum.
++            for (format in listOf("CANONICAL", "PLAIN", "ENGINEERING")) {
++                // Any keeps generated lambda descriptors loadable without the new enum on baseline.
++                val candidateFormat: Any? = if (candidate) DecimalTextFormat.valueOf(format) else null
++                val expectedText = when (format) {
++                    "CANONICAL" -> expected.toString()
++                    "PLAIN" -> expected.toPlainString()
++                    else -> expected.toEngineeringString()
++                }
++                fun legacy(): String = when (format) {
++                    "CANONICAL" -> value.toString()
++                    "PLAIN" -> value.toPlainString()
++                    else -> value.toEngineeringString()
++                }
++                add(Case("decimal/$name/buffer-${format.lowercase()}", { _ ->
++                    val buffer = CharArray(expectedText.length)
++                    val operation: () -> Any = { if (candidate) value.writeTo(buffer, 0, buffer.size, candidateFormat as DecimalTextFormat)
++                      else legacy().toCharArray(buffer, 0, 0, buffer.size)
++                      buffer }
++                    operation
++                }, {
++                    val buffer = CharArray(expectedText.length)
++                    if (candidate) value.writeTo(buffer, 0, buffer.size, candidateFormat as DecimalTextFormat)
++                    else legacy().toCharArray(buffer, 0, 0, buffer.size)
++                    check(buffer.concatToString() == expectedText)
++                }))
++            }
++        }
++    }
++}
+diff --git a/src/jvmTest/kotlin/io/heapy/krogu/math/TextOracle537JvmTest.kt b/src/jvmTest/kotlin/io/heapy/krogu/math/TextOracle537JvmTest.kt
+new file mode 100644
+index 0000000..dbb4e1b
+--- /dev/null
++++ b/src/jvmTest/kotlin/io/heapy/krogu/math/TextOracle537JvmTest.kt
+@@ -0,0 +1,149 @@
++// SPDX-License-Identifier: Apache-2.0
++package io.heapy.krogu.math
++
++import kotlin.test.Test
++import kotlin.test.assertEquals
++import kotlin.test.assertTrue
++import kotlin.test.assertFailsWith
++import kotlin.test.assertNull
++import kotlin.test.assertSame
++
++class TextOracle537JvmTest {
++    @Test fun coldAndCachedCanonicalWritersKeepCacheStateAndPreflight() {
++        val cache = BigDecimal::class.java.getDeclaredField("stringCache").apply { isAccessible = true }
++        for (text in listOf("0.000", "-9223372036854775808.00", "123.4500", "-1E+77",
++            "1E-77", "1" + "0".repeat(400) + "1.00100")) {
++            val value = BigDecimal(text)
++            val expected = java.math.BigDecimal(text).toString()
++            assertNull(cache.get(value))
++            val cold = StringBuilder()
++            value.appendTo(cold)
++            assertEquals(expected, cold.toString())
++            val buffer = CharArray(expected.length + 4) { '#' }
++            value.writeTo(buffer, 2, expected.length)
++            assertEquals("##${expected}##", buffer.concatToString())
++            assertNull(cache.get(value), "Cold writers must not force a complete String cache")
++            val cached = value.toString()
++            assertSame(cached, cache.get(value))
++            var largest = 0
++            val warm = StringBuilder()
++            val destination = object : Appendable {
++                override fun append(value: Char): Appendable { warm.append(value); return this }
++                override fun append(value: CharSequence?): Appendable = append(value, 0, value?.length ?: 4)
++                override fun append(value: CharSequence?, startIndex: Int, endIndex: Int): Appendable {
++                    largest = maxOf(largest, endIndex - startIndex)
++                    warm.append(value, startIndex, endIndex)
++                    return this
++                }
++            }
++            value.appendTo(destination, maxChars = expected.length.toLong())
++            assertEquals(expected, warm.toString())
++            assertTrue(largest <= 256)
++            buffer.fill('#')
++            value.writeTo(buffer, 2, expected.length)
++            assertEquals("##${expected}##", buffer.concatToString())
++            assertSame(cached, cache.get(value))
++            buffer.fill('#')
++            assertFailsWith<ArithmeticException> { value.writeTo(buffer, 2, expected.length - 1) }
++            assertTrue(buffer.all { it == '#' })
++            val prefix = StringBuilder("prefix")
++            assertFailsWith<ArithmeticException> { value.appendTo(prefix, maxChars = expected.length.toLong() - 1) }
++            assertEquals("prefix", prefix.toString())
++        }
++    }
++
++    private class StoredCoefficient : BigInteger("123") {
++        val trace = StringBuilder()
++        override fun abs(): BigInteger { trace.append("abs;"); return this }
++        override fun toString(): String { trace.append("text;"); return "123" }
++    }
++
++    @Test fun serializedCoefficientSubtypeRetainsFormatterCallbacks() {
++        val field = BigDecimal::class.java.getDeclaredField("coefficient").apply { isAccessible = true }
++        val original = BigDecimal("123")
++        field.set(original, StoredCoefficient())
++        val bytes = java.io.ByteArrayOutputStream().also { buffer ->
++            java.io.ObjectOutputStream(buffer).use { it.writeObject(original) }
++        }.toByteArray()
++        val restored = java.io.ObjectInputStream(java.io.ByteArrayInputStream(bytes)).use { it.readObject() as BigDecimal }
++        val coefficient = field.get(restored)
++        assertTrue(coefficient is StoredCoefficient)
++        val stored = coefficient as StoredCoefficient
++        for (format in DecimalTextFormat.entries) {
++            stored.trace.setLength(0)
++            val expected = when (format) {
++                DecimalTextFormat.CANONICAL -> restored.toString()
++                DecimalTextFormat.PLAIN -> restored.toPlainString()
++                DecimalTextFormat.ENGINEERING -> restored.toEngineeringString()
++            }
++            // Canonical can already be cached; compare its current observable state.
++            stored.trace.setLength(0)
++            when (format) {
++                DecimalTextFormat.CANONICAL -> restored.toString()
++                DecimalTextFormat.PLAIN -> restored.toPlainString()
++                DecimalTextFormat.ENGINEERING -> restored.toEngineeringString()
++            }
++            val expectedTrace = stored.trace.toString()
++            stored.trace.setLength(0)
++            val output = StringBuilder()
++            restored.appendTo(output, format)
++            assertEquals(expected, output.toString())
++            assertEquals(expectedTrace, stored.trace.toString(), "$format append callbacks")
++            stored.trace.setLength(0)
++            val buffer = CharArray(expected.length)
++            restored.writeTo(buffer, 0, buffer.size, format)
++            assertEquals(expected, buffer.concatToString())
++            assertEquals(expectedTrace, stored.trace.toString(), "$format buffer callbacks")
++        }
++    }
++
++    @Test fun publicJdkIntegerParsingAndWriting() {
++        for (radix in 2..36) for (length in listOf(1, 9, 19, 31, 64, 257)) {
++            val magnitude = buildString {
++                append((radix - 1).toString(radix))
++                repeat(length - 1) { append(((it * 17 + 5) % radix).toString(radix)) }
++            }
++            for (sign in listOf("", "-", "+")) {
++                val text = sign + magnitude
++                val oracle = java.math.BigInteger(text, radix)
++                val actual = BigInteger.parseText(StringBuilder(text), radix)
++                assertEquals(oracle.toString(), actual.toString(), "$radix/$length/$sign")
++                for (outputRadix in listOf(2, 3, 8, 10, 16, 36)) {
++                    val output = StringBuilder()
++                    actual.appendTo(output, outputRadix)
++                    assertEquals(oracle.toString(outputRadix), output.toString())
++                }
++            }
++        }
++    }
++
++    @Test fun publicJdkDecimalCohortsAndAllLayouts() {
++        for (coefficient in listOf("0", "1", "-1", "123", "-99999999999999999999999999999999999999"))
++            for (scale in listOf(Int.MIN_VALUE, -19, -7, -3, -1, 0, 1, 6, 7, 19, Int.MAX_VALUE)) {
++                val oracle = java.math.BigDecimal(java.math.BigInteger(coefficient), scale)
++                val actual = BigDecimal(BigInteger(coefficient), scale)
++                assertEquals(oracle.toString(), actual.toString())
++                for (format in DecimalTextFormat.entries) {
++                    // Huge plain output is tested through explicit rejection, never materialized.
++                    if (format == DecimalTextFormat.PLAIN && (scale < -100 || scale > 100)) continue
++                    val expected = when (format) {
++                        DecimalTextFormat.CANONICAL -> oracle.toString()
++                        DecimalTextFormat.PLAIN -> oracle.toPlainString()
++                        DecimalTextFormat.ENGINEERING -> oracle.toEngineeringString()
++                    }
++                    val output = StringBuilder()
++                    actual.appendTo(output, format)
++                    assertEquals(expected, output.toString(), "$coefficient@$scale/$format")
++                }
++            }
++        for (text in listOf("١٢٣.٤٥", "９９９９９９９９９６e-4", "-123456789012345678901234567890.00010"))
++            for (precision in listOf(0, 1, 9, 18)) for (mode in RoundingMode.entries) {
++                val jdkContext = java.math.MathContext(precision, java.math.RoundingMode.valueOf(mode.name))
++                fun outcome(parse: () -> String): String = try { parse() }
++                    catch (e: ArithmeticException) { "!ArithmeticException:${e.message}" }
++                assertEquals(outcome { java.math.BigDecimal(text, jdkContext).toString() },
++                    outcome { BigDecimal.parseText(StringBuilder(text), MathContext(precision, mode)).toString() },
++                    "$text/$precision/$mode")
++            }
++    }
++}

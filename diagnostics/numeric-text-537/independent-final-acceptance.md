@@ -1,0 +1,17 @@
+#537 independent final acceptance
+
+PASS for the literal task, subject only to final durable package/index and serial integration checks. This is not a universal performance claim.
+
+Fixed-source full run 5474 passed 1,988 actual XML methods: JVM659 / JS443 / Wasm443 / macOS443, zero failures/errors/skips. Independently checked all621 baseline and630 candidate source hashes and measured candidate JAR f5413203…; all match. Focused fixed-source JVM run passed10 methods. Earlier1983 methods and initial2160 rows remain intermediate evidence.
+
+Final LOCAL campaign68570 exited0 with2,160 rows,72 exact workload IDs, six fresh alternating processes and5 samples/group. Independent raw audit checked every ID/sample/count/counter and source/artifact/runtime binding, recomputed all72 pooled and per-process statistics and matched the owner summary exactly. Parent/probe/controller are unchanged. No remote measurement ran; no cross-host597 ratios or JDK parity result are claimed.
+
+The actual writer cost defect was repaired: existing canonical cache is reused only after exact-class guards, without forcing cache creation; digits are emitted without per-chunk strings. Cold/warm state, bounded chunks, preflight array atomicity and subtype/Appendable behavior have source and runtime coverage. Wide cached buffer now allocates approximately0 B/op (both0.0117 measured), rather than the initial2904 B/op extra cost. Its final9.562→13.286 ns pooled difference flips direction in fork2, so it is not a stable all-fork algorithmic regression.
+
+Substantial observed gains remain across all three pairs:1234-digit integer String parse291049→8669 ns /1400312→2792 B; integer cold decimal format513339→40188 ns /523272→5376 B; wide decimal String parse19931→2489 ns /127152→896 B. These compare this same-host parent and candidate, not JDK.52/72 cases are faster in every process pair; no case is slower in every pair.
+
+Adverse controls must remain visible: nine-digit hexadecimal buffer41.30→57.33 ns pooled,72→128 B/op, per-fork ratios1.433/0.638/2.051. The56-byte allocation increase is the current bounded digit buffer cost, not hidden or necessary to preserve every old allocation count. Decimal CharArray parse pooled ratios1.15–1.56 have lower allocation but flip to faster in fork2. Unchanged cached-format controls and unchanged old hex formatting are not proof of an introduced arithmetic regression. The task requires measured throughput/allocation and full output fidelity, not a win on every tiny new writer or a timing threshold; no remaining literal requirement failure is established.
+
+Interpretation limits: shared macOS M4Max host had load/swap and many involuntary context switches. Three process pairs are not15 independent replicates.825/1080 baseline and1015/1080 candidate rows reached2048 operation cap;801/1080 and1028/1080 batches were below20 ms;608/1080 and725/1080 below1 ms, minimum2666/6250 ns. Tiny nanosecond ratios are correspondingly weak evidence. Preparation/cold pools are excluded from timing/allocation; construction-format and cached controls are separate. Whole-process Darwin memory envelopes include setup/JIT/GC, not per-operation retained size. Appendable correctness is covered, but its performance is not independently timed.
+
+No additional numerical rerun or source edit is justified by current evidence. Preserve initial adverse campaign, fixed final campaign, all source/JAR/host bindings, tests and these limitations in the canonical report. Final package and tracker completion remain pending.

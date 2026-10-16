@@ -1,0 +1,160 @@
+{
+  "status": "FIXED_FULL_CORRECTNESS_SOURCE_ARTIFACT_PASS_FINAL_TIMINGS_PENDING",
+  "handle": 5474,
+  "exit": 0,
+  "counts": {
+    "jvmTest": {
+      "tests": 659,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "jsNodeTest": {
+      "tests": 443,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "wasmJsNodeTest": {
+      "tests": 443,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "macosArm64Test": {
+      "tests": 443,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "totalTests": 1988,
+  "sourceFilesVerified": {
+    "baseline": 621,
+    "candidate": 630
+  },
+  "candidateJarSha256": "f54132036bcd7b0fa4cda473a1576cb715a7356e4fbdb188f0d650d32735397c",
+  "cacheChunkDiscoveredMethods": [
+    [
+      "jvmTest",
+      "coldAndCachedCanonicalWritersKeepCacheStateAndPreflight[jvm]"
+    ],
+    [
+      "jvmTest",
+      "cacheBoundaryAndExtremeRescaleKeepExactAndFinitePolicies[jvm]"
+    ],
+    [
+      "jvmTest",
+      "compactAndChunkedStripPreserveCohortsAtScaleBoundaries[jvm]"
+    ],
+    [
+      "jvmTest",
+      "decimalPowerNeighborsCrossCachedAndFallbackThresholds[jvm]"
+    ],
+    [
+      "jvmTest",
+      "repeatedCanonicalCallsMatchJdkCachedValueAndCallbacks[jvm]"
+    ],
+    [
+      "jvmTest",
+      "chunkBoundariesKeepQuotientOrderAndEveryDiscardedRemainder[jvm]"
+    ],
+    [
+      "jvmTest",
+      "paddingIsChunkedAndDestinationFailureKeepsIdentity[jvm]"
+    ],
+    [
+      "jvmTest",
+      "numericChunkSlicesPreservePaddingAndZeroWithoutStrings[jvm]"
+    ],
+    [
+      "jvmTest",
+      "literalChunkCarryPartialTailUnicodeAndExactCohorts[jvm]"
+    ],
+    [
+      "jsNodeTest",
+      "decimalPowerNeighborsCrossCachedAndFallbackThresholds[js, node]"
+    ],
+    [
+      "jsNodeTest",
+      "numericChunkSlicesPreservePaddingAndZeroWithoutStrings[js, node]"
+    ],
+    [
+      "jsNodeTest",
+      "paddingIsChunkedAndDestinationFailureKeepsIdentity[js, node]"
+    ],
+    [
+      "jsNodeTest",
+      "literalChunkCarryPartialTailUnicodeAndExactCohorts[js, node]"
+    ],
+    [
+      "jsNodeTest",
+      "chunkBoundariesKeepQuotientOrderAndEveryDiscardedRemainder[js, node]"
+    ],
+    [
+      "jsNodeTest",
+      "compactAndChunkedStripPreserveCohortsAtScaleBoundaries[js, node]"
+    ],
+    [
+      "jsNodeTest",
+      "cacheBoundaryAndExtremeRescaleKeepExactAndFinitePolicies[js, node]"
+    ],
+    [
+      "wasmJsNodeTest",
+      "compactAndChunkedStripPreserveCohortsAtScaleBoundaries[wasmJs, node]"
+    ],
+    [
+      "wasmJsNodeTest",
+      "cacheBoundaryAndExtremeRescaleKeepExactAndFinitePolicies[wasmJs, node]"
+    ],
+    [
+      "wasmJsNodeTest",
+      "decimalPowerNeighborsCrossCachedAndFallbackThresholds[wasmJs, node]"
+    ],
+    [
+      "wasmJsNodeTest",
+      "numericChunkSlicesPreservePaddingAndZeroWithoutStrings[wasmJs, node]"
+    ],
+    [
+      "wasmJsNodeTest",
+      "paddingIsChunkedAndDestinationFailureKeepsIdentity[wasmJs, node]"
+    ],
+    [
+      "wasmJsNodeTest",
+      "chunkBoundariesKeepQuotientOrderAndEveryDiscardedRemainder[wasmJs, node]"
+    ],
+    [
+      "wasmJsNodeTest",
+      "literalChunkCarryPartialTailUnicodeAndExactCohorts[wasmJs, node]"
+    ],
+    [
+      "macosArm64Test",
+      "compactAndChunkedStripPreserveCohortsAtScaleBoundaries[macosArm64]"
+    ],
+    [
+      "macosArm64Test",
+      "cacheBoundaryAndExtremeRescaleKeepExactAndFinitePolicies[macosArm64]"
+    ],
+    [
+      "macosArm64Test",
+      "decimalPowerNeighborsCrossCachedAndFallbackThresholds[macosArm64]"
+    ],
+    [
+      "macosArm64Test",
+      "chunkBoundariesKeepQuotientOrderAndEveryDiscardedRemainder[macosArm64]"
+    ],
+    [
+      "macosArm64Test",
+      "numericChunkSlicesPreservePaddingAndZeroWithoutStrings[macosArm64]"
+    ],
+    [
+      "macosArm64Test",
+      "paddingIsChunkedAndDestinationFailureKeepsIdentity[macosArm64]"
+    ],
+    [
+      "macosArm64Test",
+      "literalChunkCarryPartialTailUnicodeAndExactCohorts[macosArm64]"
+    ]
+  ],
+  "scope": "direct XML/source/JAR reads only; no numerical process or archive compression"
+}
