@@ -144,6 +144,8 @@ gradle.beforeProject { p ->
         controller = replaceOne(controller,
             "const roots=['baseline','current'].map(label=>path.join(payload,label));const manifestSHAs=['65f31030ec367c26e68cf62dc92a4083888fc6a464cff8ec5df92a82f8f9623a','a0feefcc0c9738beae46b453238b41ba5e8280faa5cc104059ddba055df49e51'];",
             "const roots=['baseline','current'].map(label=>path.join(payload,label));const manifestSHAs=[" + hashes.joinToString(",") { js(it) } + "];")
+        // Compare canonical path inventories; retain exact membership, duplicate and content guards.
+        controller = replaceOne(controller, "JSON.stringify(walk(root))", "JSON.stringify(walk(root).sort())")
         check("Kotlin2.4.21/Node24.16.0/Linux-x64/claws" in controller)
         controller = controller.replace("Kotlin2.4.21/Node24.16.0/Linux-x64/claws", "Kotlin2.4.21/Node24.16.0/Linux-x64/public-source-CI")
             .replace("Generated probe maps omitted; same exact numerical JS; Node flags clean/no enable-source-maps", "Fresh Linux compiler closure including maps; no macOS/claws byte identity; Node flags clean/no enable-source-maps")
