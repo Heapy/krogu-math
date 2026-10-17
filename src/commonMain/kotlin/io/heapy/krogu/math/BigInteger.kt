@@ -181,6 +181,20 @@ open class BigInteger private constructor(
     open fun parallelMultiply(value: BigInteger): BigInteger {
         // Physical metadata only before exact-class and backend initialization.
         // Compact/zero/unbalanced/subclass routes retain virtual multiply(value).
+        if (!hasParallelMagnitude539(value)) return multiply(value)
+        return parallelMultiplyLarge539(value)
+    }
+
+    // Pure, nonvirtual metadata probes. Splitting the tiny receiver getter keeps
+    // each candidate helper small without fields, cached views or allocations.
+    private fun parallelMagnitudeSize539(): Int = wideWords?.size ?: 0
+
+    private fun hasParallelMagnitude539(value: BigInteger): Boolean =
+        parallelMagnitudeSize539() >= 4096 && value.parallelMagnitudeSize539() >= 4096
+
+    private fun parallelMultiplyLarge539(value: BigInteger): BigInteger {
+        // Physical metadata only before exact-class and backend initialization.
+        // Compact/zero/unbalanced/subclass routes retain virtual multiply(value).
         val leftWords = wideWords ?: return multiply(value)
         val rightWords = value.wideWords ?: return multiply(value)
         if (!canParallelMultiply539(leftWords.size, rightWords.size)) return multiply(value)
