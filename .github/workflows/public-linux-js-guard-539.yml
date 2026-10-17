@@ -1,0 +1,82 @@
+name: One public-source Linux JS diagnostic 539
+on:
+  push:
+    branches: [audit/539-public-linux-guard]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: public-linux-js-guard-539-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          path: tooling
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: 07910edf6d5687f1d89dbe3369c4546f648feed2
+          path: baseline
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: 975182f9bca911be86ef1bc4efedc7039cc8fe36
+          path: current
+      - uses: Heapy/setup-main-kts@b0858237748f325b825e752bbac2ec2eb1fb9419 # v1.0.1
+        with:
+          kotlin-version: '2.4.21'
+          java-version: '25.0.4+9'
+          distribution: liberica
+          cache-compiled-scripts: 'false'
+      - uses: gradle/actions/setup-gradle@4c125117fe7c5aed11272ec4213f602f012f89f2 # v5
+      - name: Pin an owned official Linux Node runtime and external build configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir evidence
+          node_home="$RUNNER_TEMP/krogu539-node"
+          mkdir "$node_home"
+          curl --fail --location --silent --show-error https://nodejs.org/dist/v24.16.0/node-v24.16.0-linux-x64.tar.xz -o "$node_home/node.tar.xz"
+          echo 'd804845d34eddc21dc1092b519d643ef40b1f58ec5dec5c22b1f4bd8fabde6c9  node.tar.xz' > "$node_home/SHA256SUMS"
+          (cd "$node_home" && sha256sum --check SHA256SUMS)
+          tar -xJf "$node_home/node.tar.xz" -C "$node_home"
+          echo "$node_home/node-v24.16.0-linux-x64/bin" >> "$GITHUB_PATH"
+          printf '%s\n' 'https://nodejs.org/dist/v24.16.0/node-v24.16.0-linux-x64.tar.xz' > evidence/node-download.txt
+          cp "$node_home/SHA256SUMS" evidence/node-download.sha256
+          kotlinr -J-Xmx256m tooling/scripts/run-public-linux-js-guard.main.kts init "$PWD/evidence/node-pin.init.gradle"
+      - name: Build two clean public source epochs sequentially
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(node --version)" = v24.16.0
+          node --version > evidence/node-version.txt
+          java -version > evidence/java-version.txt 2>&1
+          for label in baseline current; do
+            (
+              cd "$label"
+              git rev-parse HEAD
+              git diff --exit-code HEAD
+              ./gradlew :jsTestTestProductionExecutableCompileSync kotlinNpmInstall --init-script "$GITHUB_WORKSPACE/evidence/node-pin.init.gradle" --no-daemon --max-workers=1 '-Dorg.gradle.jvmargs=-Xmx4g -Dfile.encoding=UTF-8' --stacktrace
+              git diff --exit-code HEAD
+            ) 2>&1 | tee "evidence/$label-build.log"
+          done
+      - name: Bind fresh compiler and Mocha closures from both public checkouts
+        shell: bash
+        run: |
+          set -euo pipefail
+          env -u NODE_OPTIONS -u NODE_PATH kotlinr -J-Xmx512m tooling/scripts/run-public-linux-js-guard.main.kts stage "$PWD/baseline" "$PWD/current" "$PWD/tooling" "$PWD/evidence/guard" "$(command -v node)" 2>&1 | tee evidence/stage.log
+      - name: One full28 alternating diagnostic with continuous descriptive CPU timeline
+        timeout-minutes: 38
+        shell: bash
+        run: |
+          set -euo pipefail
+          env -u NODE_OPTIONS -u NODE_PATH kotlinr -J-Xmx256m tooling/scripts/run-public-linux-js-guard.main.kts execute "$PWD/evidence/guard" "$(command -v node)" 2>&1 | tee evidence/execute.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: public-source-linux-js-539-${{ github.sha }}-${{ github.run_attempt }}
+          path: evidence/
+          if-no-files-found: error
+          compression-level: 1
