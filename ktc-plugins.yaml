@@ -1,0 +1,7 @@
+schemaVersion: 1
+plugins:
+  'benchmark':
+    repository: 'Heapy/ktc-benchmark'
+    ref:
+      commit: '4731c58cddc20d04aeb1e1a64075c8130f4aeb75'
+    mode: downloaded

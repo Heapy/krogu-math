@@ -1,0 +1,138 @@
+{
+  "status": "ACTUAL_PUBLICATION_GRAPH_PASS_NOT_CONSUMER_RUNTIME",
+  "repository": "/Users/yoda/dev/pet/krogu-math/.codex-work/ktc-migration/compatible-maven-repository",
+  "ledgerSha256": "d89e80251bebc1e8311f9536a05f5b35166111166796f2fbe921382261c262f5",
+  "assemblerSha256": "7ac4f4408109ea6338f2bb026ebdad447db163628e4ad7ea55052c8800a2e6ea",
+  "rawInventorySha256": "c9df868a6e545340c82290b3377e9a637664bd8d01fa2037da4182061d1ef654",
+  "assemblyLogSha256": "9300abde5bf82d6ba61bf06a331401c679d6d8dc76bee5f0b4abae09b5166bb9",
+  "modules": [
+    "krogu-math",
+    "krogu-math-iosarm64",
+    "krogu-math-iossimulatorarm64",
+    "krogu-math-iosx64",
+    "krogu-math-js",
+    "krogu-math-jvm",
+    "krogu-math-linuxarm64",
+    "krogu-math-linuxx64",
+    "krogu-math-macosarm64",
+    "krogu-math-macosx64",
+    "krogu-math-mingwx64",
+    "krogu-math-wasm-js"
+  ],
+  "targets": 11,
+  "indexedFiles": 420,
+  "baseArtifactsAndMetadata": 84,
+  "checksumSidecars": 336,
+  "moduleDescriptors": 12,
+  "variantCount": 52,
+  "availableAtRedirectCount": 25,
+  "variantFileRefs": 27,
+  "xmlDocuments": 36,
+  "sourceJars": [
+    {
+      "path": "io/heapy/krogu/krogu-math-iosarm64/0.1.0-SNAPSHOT/krogu-math-iosarm64-0.1.0-SNAPSHOT-sources.jar",
+      "originalMembers": 62,
+      "addedMembers": []
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-iossimulatorarm64/0.1.0-SNAPSHOT/krogu-math-iossimulatorarm64-0.1.0-SNAPSHOT-sources.jar",
+      "originalMembers": 62,
+      "addedMembers": []
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-iosx64/0.1.0-SNAPSHOT/krogu-math-iosx64-0.1.0-SNAPSHOT-sources.jar",
+      "originalMembers": 62,
+      "addedMembers": []
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-SNAPSHOT/krogu-math-js-0.1.0-SNAPSHOT-sources.jar",
+      "originalMembers": 60,
+      "addedMembers": [
+        "jsMain/io/heapy/krogu/math/EmbeddedNodeWorker539.kt"
+      ]
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-SNAPSHOT/krogu-math-jvm-0.1.0-SNAPSHOT-sources.jar",
+      "originalMembers": 56,
+      "addedMembers": []
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-linuxarm64/0.1.0-SNAPSHOT/krogu-math-linuxarm64-0.1.0-SNAPSHOT-sources.jar",
+      "originalMembers": 62,
+      "addedMembers": []
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-linuxx64/0.1.0-SNAPSHOT/krogu-math-linuxx64-0.1.0-SNAPSHOT-sources.jar",
+      "originalMembers": 62,
+      "addedMembers": []
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-SNAPSHOT/krogu-math-macosarm64-0.1.0-SNAPSHOT-sources.jar",
+      "originalMembers": 62,
+      "addedMembers": []
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosx64/0.1.0-SNAPSHOT/krogu-math-macosx64-0.1.0-SNAPSHOT-sources.jar",
+      "originalMembers": 62,
+      "addedMembers": []
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-mingwx64/0.1.0-SNAPSHOT/krogu-math-mingwx64-0.1.0-SNAPSHOT-sources.jar",
+      "originalMembers": 62,
+      "addedMembers": []
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-SNAPSHOT/krogu-math-wasm-js-0.1.0-SNAPSHOT-sources.jar",
+      "originalMembers": 60,
+      "addedMembers": [
+        "wasmJsMain/io/heapy/krogu/math/EmbeddedNodeWorker539.kt"
+      ]
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-SNAPSHOT/krogu-math-0.1.0-SNAPSHOT-sources.jar",
+      "originalMembers": 62,
+      "addedMembers": []
+    }
+  ],
+  "runtimeDependencies": [
+    [
+      "org.jetbrains.kotlin",
+      "kotlin-stdlib"
+    ]
+  ],
+  "privateWorkerModules": false,
+  "consumerExecution": "PENDING_OWNER_RUN_29087; OWNER_REPORTED_37231_FAILED_BEFORE_CHECKS_ON_NATIVE_DISTRIBUTION_TASK_DEPENDENCY",
+  "limits": [
+    "Only frozen raw84608 and current matching generated getter inputs reviewed",
+    "No new compilation or consumer execution",
+    "No external repository release performed",
+    "23 exact non-source JAR/KLIB comparisons include javadoc JARs; 12 are compiler runtime/root metadata artifacts"
+  ],
+  "nonSourceJarAndKlibByteEqual": 23,
+  "compilerRuntimeArtifactsByteEqual": 12,
+  "nonSourceJarAndKlibPaths": [
+    "io/heapy/krogu/krogu-math-iosarm64/0.1.0-SNAPSHOT/krogu-math-iosarm64-0.1.0-SNAPSHOT-javadoc.jar",
+    "io/heapy/krogu/krogu-math-iosarm64/0.1.0-SNAPSHOT/krogu-math-iosarm64-0.1.0-SNAPSHOT.klib",
+    "io/heapy/krogu/krogu-math-iossimulatorarm64/0.1.0-SNAPSHOT/krogu-math-iossimulatorarm64-0.1.0-SNAPSHOT-javadoc.jar",
+    "io/heapy/krogu/krogu-math-iossimulatorarm64/0.1.0-SNAPSHOT/krogu-math-iossimulatorarm64-0.1.0-SNAPSHOT.klib",
+    "io/heapy/krogu/krogu-math-iosx64/0.1.0-SNAPSHOT/krogu-math-iosx64-0.1.0-SNAPSHOT-javadoc.jar",
+    "io/heapy/krogu/krogu-math-iosx64/0.1.0-SNAPSHOT/krogu-math-iosx64-0.1.0-SNAPSHOT.klib",
+    "io/heapy/krogu/krogu-math-js/0.1.0-SNAPSHOT/krogu-math-js-0.1.0-SNAPSHOT-javadoc.jar",
+    "io/heapy/krogu/krogu-math-js/0.1.0-SNAPSHOT/krogu-math-js-0.1.0-SNAPSHOT.klib",
+    "io/heapy/krogu/krogu-math-jvm/0.1.0-SNAPSHOT/krogu-math-jvm-0.1.0-SNAPSHOT-javadoc.jar",
+    "io/heapy/krogu/krogu-math-jvm/0.1.0-SNAPSHOT/krogu-math-jvm-0.1.0-SNAPSHOT.jar",
+    "io/heapy/krogu/krogu-math-linuxarm64/0.1.0-SNAPSHOT/krogu-math-linuxarm64-0.1.0-SNAPSHOT-javadoc.jar",
+    "io/heapy/krogu/krogu-math-linuxarm64/0.1.0-SNAPSHOT/krogu-math-linuxarm64-0.1.0-SNAPSHOT.klib",
+    "io/heapy/krogu/krogu-math-linuxx64/0.1.0-SNAPSHOT/krogu-math-linuxx64-0.1.0-SNAPSHOT-javadoc.jar",
+    "io/heapy/krogu/krogu-math-linuxx64/0.1.0-SNAPSHOT/krogu-math-linuxx64-0.1.0-SNAPSHOT.klib",
+    "io/heapy/krogu/krogu-math-macosarm64/0.1.0-SNAPSHOT/krogu-math-macosarm64-0.1.0-SNAPSHOT-javadoc.jar",
+    "io/heapy/krogu/krogu-math-macosarm64/0.1.0-SNAPSHOT/krogu-math-macosarm64-0.1.0-SNAPSHOT.klib",
+    "io/heapy/krogu/krogu-math-macosx64/0.1.0-SNAPSHOT/krogu-math-macosx64-0.1.0-SNAPSHOT-javadoc.jar",
+    "io/heapy/krogu/krogu-math-macosx64/0.1.0-SNAPSHOT/krogu-math-macosx64-0.1.0-SNAPSHOT.klib",
+    "io/heapy/krogu/krogu-math-mingwx64/0.1.0-SNAPSHOT/krogu-math-mingwx64-0.1.0-SNAPSHOT-javadoc.jar",
+    "io/heapy/krogu/krogu-math-mingwx64/0.1.0-SNAPSHOT/krogu-math-mingwx64-0.1.0-SNAPSHOT.klib",
+    "io/heapy/krogu/krogu-math-wasm-js/0.1.0-SNAPSHOT/krogu-math-wasm-js-0.1.0-SNAPSHOT-javadoc.jar",
+    "io/heapy/krogu/krogu-math-wasm-js/0.1.0-SNAPSHOT/krogu-math-wasm-js-0.1.0-SNAPSHOT.klib",
+    "io/heapy/krogu/krogu-math/0.1.0-SNAPSHOT/krogu-math-0.1.0-SNAPSHOT.jar"
+  ]
+}

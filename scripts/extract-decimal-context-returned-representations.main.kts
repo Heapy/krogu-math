@@ -5,8 +5,8 @@ import java.io.File
 import java.security.MessageDigest
 
 require(args.all { it == "--check" }) { "Usage: [--check]" }
-val frozenPath = "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25DecimalContextDispatchResults.kt"
-val controlPath = "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25DecimalContextContractResults.kt"
+val frozenPath = "test/io/heapy/krogu/math/Jdk25DecimalContextDispatchResults.kt"
+val controlPath = "test/io/heapy/krogu/math/Jdk25DecimalContextContractResults.kt"
 val frozenHash = "88fc3c5bc8277a048a83a9ad9b6546bd8a23ae1ad9a10126409d857367391026"
 val controlHash = "1245d75ed6837139c939496e602a085cba37b35dd4d3c98f197bdaece2ce7cc9"
 fun sha256(bytes: ByteArray): String = MessageDigest.getInstance("SHA-256").digest(bytes)
@@ -154,7 +154,7 @@ val generated = buildString {
     appendLine("    }")
     appendLine("}")
 }
-val target = File("src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextReturnedRepresentationData.kt")
+val target = File("test/io/heapy/krogu/math/DecimalContextReturnedRepresentationData.kt")
 if ("--check" in args) check(target.isFile && target.readText() == generated) { "Returned-representation data differs" }
 else target.writeText(generated)
 println("${if ("--check" in args) "Verified" else "Generated"} 675 representations from all 58093 successes; 341 additional pairs")

@@ -28,6 +28,6 @@ val source=buildString{
     for(row in rows)appendLine("    arrayOf(${row.joinToString(", "){"\"$it\""}}),")
     appendLine(")")
 }
-val target=File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25PrimePrefixResults.kt")
+val target=File("test/io/heapy/krogu/math/Jdk25PrimePrefixResults.kt")
 if("--check" in args)check(target.exists()&&target.readText()==source){"Prime prefix oracle differs"}else target.writeText(source)
 println("${if("--check" in args)"Verified" else "Generated"} ${rows.size} primality prefix cases")

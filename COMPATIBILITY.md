@@ -438,7 +438,13 @@ their absence alone does not establish a source or numerical-contract failure.
 ## Verification commands
 
 ```shell
-./gradlew jvmTest jsNodeTest wasmJsNodeTest macosArm64Test
+./ktc-plugins sync
+./ktc-plugins verify
+kotlinr tools/configure-native-tests.main.kts
+./kotlin test -m krogu-math --platform jvm --include-classes '*'
+kotlinr tools/run-node-tests.main.kts js
+kotlinr tools/run-node-tests.main.kts wasm
+./kotlin test -m krogu-math --platform macosArm64 --include-classes '*'
 export JAVA_TOOL_OPTIONS=-XX:-OmitStackTraceInFastThrow
 kotlinr scripts/generate-oracle.main.kts --check
 kotlinr scripts/generate-scale-oracle.main.kts --check
@@ -460,13 +466,25 @@ kotlinr scripts/generate-context-oracle.main.kts --check
 kotlinr scripts/generate-hash-oracle.main.kts --check
 ```
 
-Use the appropriate Native host test tasks for other OS/architectures. CI
+The current build uses the pinned Kotlin Toolchain 0.13.0 wrapper and Kotlin
+2.4.21. Keep `--include-classes '*'` for full discovery, including existing
+diagnostic classes whose names do not end in `Test`. Use the appropriate
+`--platform` for other Native OS/architectures. Run these commands from the
+repository root. The Native bootstrap generates an ignored template with this
+checkout's absolute friend paths; regenerate it after moving the checkout or
+pass a custom build directory as its sole argument when that layout changes.
+The web-test friend paths require the default `build` directory. CI
 cross-compiles Linux ARM64 tests on Linux x64 and executes them on ARM64. Device
 iOS builds are compiled; simulator targets execute the shared behavioral suite.
+The explicit JS/Wasm runner requires Node 24.16.0 and uses the Toolchain-linked
+tests with locked Mocha tooling, preserving CI's Node coverage. The optional
+Toolchain `test --platform wasmJs` runner uses Chromium/Playwright; it is not a
+claim of Node execution. Historical Gradle reports retain their original
+environments and are not measurements of this build migration.
 
 `DecimalConformanceTest` defaults to 213,505 comparisons. Its canonical Double
 campaign can be extended with
-`JAVA_TOOL_OPTIONS=-Dkrogu.campaign.doubles=100000 ./gradlew jvmTest --tests '*doubleCanonicalizationCampaign*'`.
+`./kotlin test -m krogu-math --platform jvm --include-test io.heapy.krogu.math.DecimalConformanceTest.doubleCanonicalizationCampaign --jvm-args=-Dkrogu.campaign.doubles=100000`.
 Failure output includes reproducible public inputs. Passing a finite corpus must
 not be promoted into a claim that all numerical or API contracts are satisfied.
 

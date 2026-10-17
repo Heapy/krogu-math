@@ -82,6 +82,6 @@ val source=buildString {
     appendLine(").flatMap { batch -> batch.split('\\n').map { it.split('\\t').toTypedArray() } }")
     for((i,chunk)in chunks.withIndex())appendLine("private const val integerModPowBatch$i = ${quote(chunk.joinToString("\n") { it.joinToString("\t") })}")
 }
-val target=File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerModPowResults.kt")
+val target=File("test/io/heapy/krogu/math/Jdk25IntegerModPowResults.kt")
 if("--check" in args)check(target.exists()&&target.readText()==source){"Integer modPow oracle differs"}else target.writeText(source)
 println("${if("--check" in args)"Verified" else "Generated"} ${rows.size} modular exponentiation cases")

@@ -1089,7 +1089,7 @@ val source = buildString {
         appendLine(")")
     }
 }
-val target = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25Vectors.kt")
+val target = File("test/io/heapy/krogu/math/Jdk25Vectors.kt")
 if ("--check" in args) {
     check(target.exists() && target.readText() == source) { "Oracle vectors differ; regenerate with the pinned JDK" }
     println("Verified ${rows.size} oracle vectors with JDK ${Runtime.version()}")

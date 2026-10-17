@@ -43,7 +43,7 @@ val source = buildString {
     results("jdk25StructuredHashResults", structured)
     results("jdk25DenseHashResults", dense)
 }
-val target = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25HashResults.kt")
+val target = File("test/io/heapy/krogu/math/Jdk25HashResults.kt")
 if ("--check" in args) check(target.readText() == source) { "Hash oracle is stale" }
 else target.writeText(source)
 println("Verified ${structured.size} structured and ${dense.size} dense hash outcomes.")

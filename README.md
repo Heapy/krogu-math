@@ -32,8 +32,20 @@ Float/Double conversions use the same explicit `toBigDecimal` import; see
 For scale-independent equality and collection keys, see [decimal keys](docs/decimal-keys.md).
 
 This is an initial implementation (`0.1.0-SNAPSHOT`), not a published Maven Central
-release. To consume locally, run `./gradlew publishToMavenLocal`, add `mavenLocal()`
-to your repositories, and depend on `io.heapy.krogu:krogu-math:0.1.0-SNAPSHOT`.
+release. Restore the locked build plugins with `./ktc-plugins sync` and verify
+them with `./ktc-plugins verify`, then run
+`kotlinr tools/configure-native-tests.main.kts` once from the checkout root.
+To consume locally, run
+`kotlinr tools/publish-local.main.kts build/local-maven`, add that directory as
+a Maven repository in your consumer, and depend on
+`io.heapy.krogu:krogu-math:0.1.0-SNAPSHOT`. For example, a Gradle Kotlin DSL
+consumer can use `repositories { maven { url = uri("/absolute/path/to/krogu-math/build/local-maven") } }`.
+Choose a new destination for each assembly; the command never overwrites an
+existing repository. It builds and copies all target artifacts, preserves the
+existing `krogu-math-wasm-js` coordinate and includes the generated web worker
+sources. Direct raw Toolchain publication does not apply these KTC 0.13
+compatibility corrections. This command publishes no external release.
+Publishing Apple variants requires a macOS host and the matching Xcode SDKs.
 
 ## Kotlin/JS: converting through Number
 
@@ -133,11 +145,25 @@ or guarantee memory or running time at the limit. See the
 
 ## Platforms and verification
 
-Gradle uses a 4 GiB heap and one worker to limit memory pressure from the
-in-process compilers when compiling the multiplatform oracle suites.
-
-Build pins: **Gradle 9.8.1**, **Kotlin 2.4.21**, **BellSoft Liberica JDK 25.0.4+9**.
-The Gradle distribution checksum and CI action revisions are pinned.
+The project uses the **Kotlin Toolchain 0.13.0** wrappers (`kotlin` and
+`kotlin.bat`) and **Kotlin 2.4.21**. Local builds require **BellSoft Liberica
+JDK 25**; CI pins **25.0.4+9**.
+The wrapper distribution and CI action revisions are pinned. Run
+`./ktc-plugins sync` followed by `./ktc-plugins verify` after checkout to restore
+downloaded build plugins at their locked commits; this does not update them.
+Before the first project-model command, run
+`kotlinr tools/configure-native-tests.main.kts` from the checkout root. This
+generates an ignored template with absolute Native test friend paths for this
+checkout; no machine-specific paths are committed. Repeat after moving the
+checkout, or pass the intended build directory as its sole argument before
+using a custom build directory. Kotlin `kotlinr` **2.4.21** is required for the
+bootstrap and the standalone verification tools.
+CI runs the large platform selections sequentially within each runner.
+Historical Gradle commands in diagnostic reports describe their original
+source epochs and are not current build instructions.
+The plugin installer currently provides Linux, macOS ARM64 and Windows binaries.
+The macOS Intel CI job consumes the same-run, checksum-verified plugin-source
+artifact restored on Linux; it does not pretend an ARM64 installer runs on Intel.
 The [latest local Kotlin call-form verification](docs/kotlin-callform-595-596-verification.md)
 records 1,785 passing method executions on JVM, JS, Wasm and macOS ARM64, with the complete
 94,282-record sqrt ledger preserved. It repairs caller-owned arithmetic operator
@@ -164,7 +190,7 @@ separates the source255 findings from their later source260 repairs.
 |---|---|---|
 | JVM | `jvm` | Portable fixtures, live differential tests, API inventory, serialization |
 | JavaScript | `js` | Portable fixtures on Node.js |
-| WebAssembly | `wasmJs` | Portable fixtures on Node.js |
+| WebAssembly | `wasmJs` | Portable fixtures on Node.js via the explicit linked-test runner |
 | macOS | `macosArm64`, `macosX64` | Portable fixtures on matching CI hosts |
 | Linux | `linuxX64`, `linuxArm64` | Portable fixtures on matching CI hosts |
 | Windows | `mingwX64` | Portable fixtures on Windows CI |
@@ -172,11 +198,26 @@ separates the source255 findings from their later source260 repairs.
 | iOS device | `iosArm64` | Compilation in CI; the common implementation is exercised in simulators |
 
 ```shell
-./gradlew jvmTest jsNodeTest wasmJsNodeTest macosArm64Test
+kotlinr tools/configure-native-tests.main.kts
+./kotlin test -m krogu-math --platform jvm --include-classes '*'
+kotlinr tools/run-node-tests.main.kts js
+kotlinr tools/run-node-tests.main.kts wasm
+./kotlin test -m krogu-math --platform macosArm64 --include-classes '*'
 ```
 
-Use the native test task appropriate to your host (`linuxX64Test`, `mingwX64Test`,
-etc.). Native tests cannot execute on a different host OS or CPU architecture.
+Select the Native platform appropriate to your host (`--platform linuxX64`,
+`--platform mingwX64`, etc.). Native tests cannot execute on a different host OS
+or CPU architecture. Keep `--include-classes '*'` for a full suite: it includes
+existing diagnostic classes whose names do not end in `Test`. Run these commands
+from the repository root. The default `build` directory matches the web-test
+friend paths; Native test paths are supplied by the bootstrap described above.
+The explicit web-test runner requires Node **24.16.0**, npm
+and Kotlin **2.4.21** (`kotlinr`); it links tests with Kotlin Toolchain, installs the
+checked-in Mocha lock with `npm ci`, and records each actual test outcome under
+`build/node-tests`. Kotlin Toolchain 0.13 has no built-in JS test runner.
+Its optional `./kotlin test -m krogu-math --platform wasmJs` command instead uses
+Chromium through Playwright; CI uses the explicit Node runner to retain the
+existing Node coverage.
 Kotlin/Native 2.4.21 does not provide a Linux ARM64 compiler host: CI cross-compiles
 the ARM64 test executable on Linux x64 and then runs it on a Linux ARM64 runner.
 

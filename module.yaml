@@ -1,0 +1,66 @@
+product:
+  type: kmp/lib
+  platforms: [jvm, js, wasmJs, macosArm64, macosX64, linuxX64, linuxArm64, mingwX64, iosArm64, iosSimulatorArm64, iosX64]
+
+description: Independent common Kotlin implementation of the java.math API
+
+apply:
+  - //common.module-template.yaml
+  - //.native-test-friends.module-template.yaml
+
+aliases:
+  - nonJvm: [js, wasmJs, macosArm64, macosX64, linuxX64, linuxArm64, mingwX64, iosArm64, iosSimulatorArm64, iosX64]
+
+repositories:
+  - url: mavenLocal
+    publish: true
+
+settings:
+  junit: junit-4
+  publishing:
+    enabled: true
+    group: io.heapy.krogu
+    artifactId: krogu-math
+    version: 0.1.0-SNAPSHOT
+    publishSources: true
+    checksums: [md5, sha1, sha256, sha512]
+    pom:
+      name: krogu-math
+      url: https://github.com/Heapy/krogu-math
+      scm:
+        url: https://github.com/Heapy/krogu-math
+        connection: scm:git:https://github.com/Heapy/krogu-math.git
+      licenses:
+        - name: Apache License 2.0
+          url: https://www.apache.org/licenses/LICENSE-2.0
+
+test-settings@jvm:
+  jvm:
+    test:
+      freeJvmArgs: [-XX:-OmitStackTraceInFastThrow]
+
+settings@js:
+  kotlin:
+    freeCompilerArgs: [-Xir-per-file=false, -module-kind=commonjs]
+
+# KTC 0.13 omits the main KLIB friend path when linking JS tests. The owned
+# Node test launcher runs from the project root with the default build directory.
+test-settings@js:
+  kotlin:
+    freeCompilerArgs: [-Xfriend-modules=build/tasks/_krogu-math_compileJs/krogu-math.klib]
+
+# Wasm uses the same WebLinkTask and needs the same explicit test friend edge.
+test-settings@wasmJs:
+  kotlin:
+    # Debug IC can retain pre-friend IR after a linker-settings change in KTC 0.13.
+    compileIncrementally: false
+    freeCompilerArgs: [-Xfriend-modules=build/tasks/_krogu-math_compileWasmJs/krogu-math.klib]
+
+# KTC 0.13 also omits the Native test link's friend edge. The explicit bootstrap
+# generates ignored, project-derived absolute paths for both build variants.
+test-settings@native:
+  kotlin:
+    compileIncrementally: false
+
+plugins:
+  worker-payload: enabled

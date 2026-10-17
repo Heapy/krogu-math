@@ -80,7 +80,7 @@ val source = buildString {
         appendLine("\nprivate fun scaleExpectedChunk$i(): String = \"$literal\"")
     }
 }
-val target = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25ScaleBoundaryResults.kt")
+val target = File("test/io/heapy/krogu/math/Jdk25ScaleBoundaryResults.kt")
 if ("--check" in args) {
     check(target.exists() && target.readText() == source) { "Scale boundary oracle differs; regenerate with the pinned JDK" }
     println("Verified ${results.size} signed-scale-boundary outcomes")

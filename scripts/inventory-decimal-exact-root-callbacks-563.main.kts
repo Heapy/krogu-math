@@ -5,7 +5,7 @@ import java.io.File
 import java.security.MessageDigest
 
 check(args.isEmpty())
-val source = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25Vectors.kt")
+val source = File("test/io/heapy/krogu/math/Jdk25Vectors.kt")
 val directory = File("diagnostics/decimal-exact-root-563").also { it.mkdirs() }
 val literals = Regex("\"((?:\\\\.|[^\"\\\\])*)\"")
 val counts = linkedMapOf<String, Int>()
@@ -63,7 +63,7 @@ val kotlinSnapshot = buildString {
         append(")\n\n")
     }
 }.trimEnd() + "\n"
-val kotlinTarget = File("src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563CallbackObservations.kt")
+val kotlinTarget = File("test/io/heapy/krogu/math/DecimalExactRoot563CallbackObservations.kt")
 if (kotlinTarget.exists()) check(kotlinTarget.readText() == kotlinSnapshot) else kotlinTarget.writeText(kotlinSnapshot)
 
 // Parent task562 supplies the supported input-digit bound and measured Node cap.
@@ -79,7 +79,7 @@ for (s in listOf(Int.MIN_VALUE, Int.MIN_VALUE + 1, -3, -2, -1, 0, 1, 2, 3, Int.M
     check(s / 2L - raw in 0L..1L)
     check(raw - maxEvenRootDigits - 1 > Int.MIN_VALUE.toLong())
 }
-val production = File("src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt").readText()
+val production = File("src/io/heapy/krogu/math/BigDecimal.kt").readText()
 val detection = production.substringAfter("    private fun finiteExactSquareRoot(): Pair<BigInteger, Int>? {")
     .substringBefore("    private fun finiteSquareRootResult(")
 for (forbidden in listOf("toString(", "precision(", "storedPrecision(", "adjustedExponent(", "stripTrailingZeros(", "tenPow("))

@@ -56,7 +56,7 @@ val source = buildString {
     emit("jdk25IntegerByteCases", rows)
     emit("jdk25IntegerByteOutcomes", outcomes.keys.toList())
 }
-val target = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerByteResults.kt")
+val target = File("test/io/heapy/krogu/math/Jdk25IntegerByteResults.kt")
 if ("--check" in args) check(target.exists() && target.readText() == source) { "Integer byte oracle differs" }
 else target.writeText(source)
 println("${if ("--check" in args) "Verified" else "Generated"} ${rows.size} byte constructor cases (${outcomes.size} outcomes)")

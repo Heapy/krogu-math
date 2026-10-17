@@ -69,7 +69,7 @@ val source = buildString {
         appendLine(")")
     }
 }
-val target = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerSqrtResults.kt")
+val target = File("test/io/heapy/krogu/math/Jdk25IntegerSqrtResults.kt")
 if ("--check" in args) check(target.exists() && target.readText() == source) { "Integer square-root oracle differs" }
 else target.writeText(source)
 println("${if ("--check" in args) "Verified" else "Generated"} ${rows.size} integer square-root cases")

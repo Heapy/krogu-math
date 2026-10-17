@@ -9,6 +9,29 @@ concurrency:
   # Let the active platform matrix finish; queue the newest revision behind it.
   cancel-in-progress: false
 jobs:
+  build-plugin-sources:
+    name: Restore locked downloaded build plugins
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Restore and verify the locked source plugin
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./ktc-plugins sync
+          ./ktc-plugins verify
+          mkdir -p build/ktc-plugin-input
+          printf '%s\n' "$GITHUB_SHA" > build/ktc-plugin-input/SOURCE_COMMIT
+          find plugins/benchmark -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum > build/ktc-plugin-input/SHA256SUMS
+          sha256sum ktc-plugins.yaml ktc-plugins.lock.yaml >> build/ktc-plugin-input/SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: locked-build-plugins-${{ github.sha }}
+          path: |
+            plugins/benchmark/
+            build/ktc-plugin-input/
+          include-hidden-files: true
+          if-no-files-found: error
   oracle:
     runs-on: ubuntu-24.04
     env:
@@ -49,39 +72,115 @@ jobs:
       - run: kotlinr scripts/generate-context-oracle.main.kts --check
       - run: kotlinr scripts/generate-hash-oracle.main.kts --check
   platforms:
+    needs: build-plugin-sources
     strategy:
       fail-fast: false
       matrix:
         include:
           - os: ubuntu-24.04
-            tasks: jvmJar jvmTest jsNodeTest wasmJsNodeTest linuxX64Test linkDebugTestLinuxArm64
+            platforms: jvm linuxX64
           - os: windows-2025
-            tasks: jvmTest mingwX64Test
+            platforms: jvm mingwX64
           - os: macos-15
-            tasks: jvmTest macosArm64Test iosSimulatorArm64Test compileKotlinIosArm64
+            platforms: jvm macosArm64 iosSimulatorArm64
           - os: macos-15-intel
-            tasks: jvmTest macosX64Test iosX64Test
+            platforms: jvm macosX64 iosX64
     runs-on: ${{ matrix.os }}
+    env:
+      KOTLIN_CLI_JAVA_OPTIONS: -Xmx4g -Dfile.encoding=UTF-8
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
         with:
           distribution: liberica
           java-version: '25.0.4+9'
-      - uses: gradle/actions/setup-gradle@4c125117fe7c5aed11272ec4213f602f012f89f2 # v5
-      # Kotlin compilers run in-process; keep their shared heap from being contested.
-      - run: ./gradlew ${{ matrix.tasks }} --max-workers=1 "-Dorg.gradle.jvmargs=-Xmx4g -Dfile.encoding=UTF-8" --stacktrace
+      - uses: Heapy/setup-main-kts@b0858237748f325b825e752bbac2ec2eb1fb9419 # v1.0.1
+        with:
+          kotlin-version: '2.4.21'
+          java-version: '25.0.4+9'
+          distribution: liberica
+      - name: Configure project-derived Native test friend paths
+        shell: bash
+        run: kotlinr tools/configure-native-tests.main.kts
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: locked-build-plugins-${{ github.sha }}
+          path: .
+      # The installer has no macOS x64 binary. All hosts verify the same source
+      # artifact restored from the checked-in lock, including hidden license files.
+      - name: Verify same-run locked plugin sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat build/ktc-plugin-input/SOURCE_COMMIT)" = "$GITHUB_SHA"
+          if command -v sha256sum >/dev/null 2>&1; then
+            sha256sum --check build/ktc-plugin-input/SHA256SUMS
+          else
+            shasum -a 256 --check build/ktc-plugin-input/SHA256SUMS
+          fi
+      - uses: Heapy/setup-ktc@cc63216665ce07ce0709fe52ef4a4b0b63aeaddc # v1.1.0
+        with:
+          version: '0.13.0'
+      - name: Execute each host platform selection sequentially
+        shell: bash
+        run: |
+          set -euo pipefail
+          # The generated test-only friend paths bind this checkout's default build directory.
+          for platform in ${{ matrix.platforms }}; do
+            ./kotlin test -m krogu-math --platform "$platform" --variant debug --include-classes '*' --format teamcity 2>&1 | tee "build/compatibility-$platform.log"
+          done
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        if: matrix.os == 'ubuntu-24.04'
+        with:
+          node-version: '24.16.0'
+      # KTC 0.13 links JS tests but has no built-in JS test runner. Keep the
+      # original Node coverage for both web targets using their actual linked tests.
+      - name: Execute JS tests on Node
+        if: matrix.os == 'ubuntu-24.04'
+        shell: bash
+        run: |
+          set -euo pipefail
+          kotlinr tools/run-node-tests.main.kts js 2>&1 | tee build/compatibility-js.log
+      - name: Execute Wasm tests on Node
+        if: matrix.os == 'ubuntu-24.04'
+        shell: bash
+        run: |
+          set -euo pipefail
+          kotlinr tools/run-node-tests.main.kts wasm 2>&1 | tee build/compatibility-wasmJs.log
+      - name: Cross-link Linux ARM64 tests
+        if: matrix.os == 'ubuntu-24.04'
+        shell: bash
+        run: ./kotlin task :krogu-math:linkLinuxArm64TestDebug
+      - name: Compile iOS device library (not device runtime)
+        if: matrix.os == 'macos-15'
+        shell: bash
+        run: ./kotlin task :krogu-math:compileIosArm64Debug
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always() && !cancelled()
         with:
           name: test-results-${{ matrix.os }}
-          path: build/test-results/**
+          path: |
+            build/reports/**
+            build/node-tests/**
+            build/compatibility-*.log
           if-no-files-found: warn
+      - name: Bind cross-built ARM64 executable to this checkout
+        if: matrix.os == 'ubuntu-24.04'
+        shell: bash
+        run: |
+          set -euo pipefail
+          binaries=(build/tasks/_krogu-math_linkLinuxArm64TestDebug/*.kexe)
+          test "${#binaries[@]}" = 1
+          test -f "${binaries[0]}"
+          mkdir -p build/linux-arm64-input
+          cp "${binaries[0]}" build/linux-arm64-input/test.kexe
+          printf '%s\n' "$GITHUB_SHA" > build/linux-arm64-input/SOURCE_COMMIT
+          (cd build/linux-arm64-input && sha256sum test.kexe SOURCE_COMMIT > SHA256SUMS)
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: matrix.os == 'ubuntu-24.04'
         with:
           name: linux-arm64-tests
-          path: build/bin/linuxArm64/debugTest/test.kexe
+          path: build/linux-arm64-input/
           if-no-files-found: error
       - name: Bind public-test JVM artifact to this checkout
         if: matrix.os == 'ubuntu-24.04'
@@ -89,8 +188,9 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          ./kotlin task :krogu-math:jarJvm
           mkdir -p build/public-math-input
-          cp build/libs/krogu-math-jvm-0.1.0-SNAPSHOT.jar build/public-math-input/krogu-math.jar
+          cp build/tasks/_krogu-math_jarJvm/krogu-math-jvm.jar build/public-math-input/krogu-math.jar
           printf '%s\n' "$GITHUB_SHA" > build/public-math-input/SOURCE_COMMIT
           cd build/public-math-input
           sha256sum krogu-math.jar SOURCE_COMMIT > SHA256SUMS
@@ -163,5 +263,20 @@ jobs:
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: linux-arm64-tests
-      - run: chmod +x test.kexe
-      - run: ./test.kexe
+      - name: Verify same-run binary and execute on ARM64
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat SOURCE_COMMIT)" = "$GITHUB_SHA"
+          sha256sum --check SHA256SUMS
+          chmod +x test.kexe
+          ./test.kexe 2>&1 | tee arm64-tests.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: linux-arm64-test-evidence-${{ github.sha }}
+          path: |
+            SOURCE_COMMIT
+            SHA256SUMS
+            arm64-tests.log
+          if-no-files-found: warn

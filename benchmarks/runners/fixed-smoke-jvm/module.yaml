@@ -1,0 +1,20 @@
+product: jvm/app
+apply:
+  - //common.module-template.yaml
+dependencies:
+  - //benchmarks/peers
+plugins:
+  benchmark:
+    enabled: true
+    platform: jvm
+    warmups: 5
+    iterations: 7
+    iterationTime: 1
+    iterationTimeUnit: s
+    outputTimeUnit: ns
+    mode: avgt
+    jvmForks: 1
+    timeoutSeconds: 21600
+    includes: ['.*FixedScaleBenchmark[.]operation$']
+    params:
+      workload: ['fixed-scale/positive-tie']

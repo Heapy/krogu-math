@@ -1,0 +1,19 @@
+product: macos/app
+apply:
+  - //common.module-template.yaml
+dependencies:
+  - //benchmarks/standard
+plugins:
+  benchmark:
+    enabled: true
+    platform: macosArm64
+    warmups: 5
+    iterations: 7
+    iterationTime: 1
+    iterationTimeUnit: s
+    outputTimeUnit: ns
+    mode: avgt
+    jvmForks: 1
+    timeoutSeconds: 21600
+    params:
+      workload: ['integer/9/parse', 'integer/77/format', 'decimal/wide/multiply']

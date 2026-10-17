@@ -89,7 +89,7 @@ val source = buildString {
         appendLine(")")
     }
 }
-val target = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerDivisionResults.kt")
+val target = File("test/io/heapy/krogu/math/Jdk25IntegerDivisionResults.kt")
 if ("--check" in args) check(target.exists() && target.readText() == source) { "Integer division oracle differs" }
 else target.writeText(source)
 println("${if ("--check" in args) "Verified" else "Generated"} ${rows.size} division dispatch cases")

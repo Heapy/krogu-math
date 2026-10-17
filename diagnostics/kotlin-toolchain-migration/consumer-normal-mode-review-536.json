@@ -1,0 +1,27 @@
+{
+  "status": "NARROW_CONSUMER_AND_NORMAL_MODE_PROVENANCE_PASS",
+  "consumerOwnerHandle": 17330,
+  "consumerLogSha256": "28d7284203c8b1bf2990a64d672ff7311c3a960f64639d85fe35a3bedf685e03",
+  "consumerSourceSha256": "72cd84f9927464444a609ab0b822f7cbdb3834476d463bec610f5b1100094a13",
+  "consumerBuildSha256": "7a8e4d18d13a69f62ad882a1d5821fe66a14f2d0b2996d27ba737a406c0bd89c",
+  "resolvedGraphSha256": "57257eb5b1045636899bb3964073ad0e6ee0c5cc81ae092d121d9a605ab4c6d9",
+  "rootTargetResolutions": 11,
+  "explicitOldWasmGav": true,
+  "publicIntegerParallelDecimalRuntimeMarkers": 4,
+  "runtimePlatforms": [
+    "jvm",
+    "jsNode",
+    "wasmNode",
+    "macosArm64"
+  ],
+  "normalModeOwnerHandle": 29393,
+  "normalModeLogSha256": "90fec09ac1432ec652f098eb09b4f9771a67ddc5c836aba5378a81a83def6ad7",
+  "normalModeLedgerSha256": "fe4099dfee2f5ab14c437137fd6d7ac06548e17998e382034f55b2761b8a6f34",
+  "normalModeSameModuleSetVersionScriptAndGeneratedGetters": true,
+  "limits": [
+    "No consumer build or publication executed by reviewer",
+    "Does not repeat independent complete publication graph audit",
+    "Four actual runtime smoke invocations do not imply runtime execution on all eleven targets",
+    "Earlier consumer setup failures preserved"
+  ]
+}

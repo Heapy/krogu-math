@@ -52,7 +52,7 @@ val source = buildString {
     }
     appendLine("}")
 }
-val target = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25ContextResults.kt")
+val target = File("test/io/heapy/krogu/math/Jdk25ContextResults.kt")
 if ("--check" in args) check(target.readText() == source) { "MathContext oracle is stale" }
 else target.writeText(source)
 println("Verified 196608 BMP grammar cases, ${rows.size} compound cases and four long inputs.")

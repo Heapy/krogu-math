@@ -1,0 +1,8 @@
+product:
+  type: kmp/lib
+  platforms: [jvm, js, wasmJs, macosArm64, linuxX64, linuxArm64, mingwX64]
+apply:
+  - //common.module-template.yaml
+  - //plugins/benchmark/benchmark.module-template.yaml
+dependencies:
+  - //

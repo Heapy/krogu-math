@@ -1,0 +1,70 @@
+schemaVersion: 1
+plugins:
+  'benchmark':
+    repository: 'Heapy/ktc-benchmark'
+    declarationSha256: '0d6df07b015bec6ccec5d064b407df532034c8b35062e776cb7a6c0b2f1556dc'
+    commit: '4731c58cddc20d04aeb1e1a64075c8130f4aeb75'
+    sourcePath: 'plugins/benchmark'
+    destination: 'plugins/benchmark'
+    mode: 'downloaded'
+    pluginId: 'benchmark'
+    treeSha256: 'b465af07f570d3fecb13eae455bf50095fd01f3b3d71217db2e94ed62cd62b46'
+    producer:
+      path: ktc-plugin.yaml
+      sha256: '1482ab2ee3b8dc334ac9ca62a26f416c20c0356dbfce14ab0d7855b6c3e6de2e'
+      plugin: 'benchmark'
+    files:
+      '.ktc-licenses/LICENSE':
+        sha256: 'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
+        executable: false
+      '.ktc-licenses/NOTICE':
+        sha256: '427f9544aebfb7c8c1daa910dc5778e0c1b2891ecd01f781a1d9a98686e0f948'
+        executable: false
+      'benchmark.module-template.yaml':
+        sha256: 'e7a889a8d32ee3867ed44493cc3bd9897081cadedacc47bc02ed01cb880e78d9'
+        executable: false
+      'module.yaml':
+        sha256: '4c24a820ec5f9ddc269286d57865836311304fc457e4fc427bef3664fafab18c'
+        executable: false
+      'plugin.yaml':
+        sha256: '2829de70ffaaf9ba125154453f0db9432dd08596794b68b5639c9db5593df45a'
+        executable: false
+      'resources/META-INF/services/com.google.devtools.ksp.processing.SymbolProcessorProvider':
+        sha256: 'c6a7b6695de353013dac1ada1bda18c9380fd483023ec101ef8dac4edb34cc4f'
+        executable: false
+      'resources/benchmark/JmhRunner.kt.txt':
+        sha256: 'ef9e04267ed0f2a8bee4b1bbe9192e01beeadc5e06d33b9745757f95b13123e1'
+        executable: false
+      'src/BenchmarkSettings.kt':
+        sha256: '4f9bb92abe57d7b991c793fd8814e02f44a38c878cc63b3a082e36f688f84223'
+        executable: false
+      'src/BenchmarkTask.kt':
+        sha256: '590d8f1d4e3581e8eb7ac8129715e63c8e5f1a702f501711cc26813a5a051c7f'
+        executable: false
+      'src/Configuration.kt':
+        sha256: 'aac8e8bf80ea8b79b9ba4204c5fd3aac6371642a01b9c133a38ca87ecde61a17'
+        executable: false
+      'src/Processes.kt':
+        sha256: 'e984d038c81ae06ccfa74881ba34abf3f1a89bc4689a43fa0284772330eeeca5'
+        executable: false
+      'src/Selection.kt':
+        sha256: '8766b9449700108b968cba75de1116101caa9f99fc138642997609def05832ee'
+        executable: false
+      'src/generator/AnnotationsValidator.kt':
+        sha256: '706b896458aa95ccb16a45d9f6dfdc2410496ee7f1548f48ad9ac934e44793c8'
+        executable: false
+      'src/generator/BenchmarkProcessorProvider.kt':
+        sha256: 'ac4a5b7f2b10e65534f2cbc7f7406ba4ae4c64a00274d1003e6089af97727933'
+        executable: false
+      'src/generator/Manifest.kt':
+        sha256: '6b325f86e6f1b928747529b6b3d7a0cab5680a0c1bb471cc2a9a0e33175499eb'
+        executable: false
+      'src/generator/SuiteSourceGenerator.kt':
+        sha256: '2515987aac967ae7a82fb1f49228f4a29abe5dc37c917ab7de097c5972653753'
+        executable: false
+      'test/ConfigurationTest.kt':
+        sha256: '08870f173cf26682328beaf1627600e067baf0d9e810186531546130af59013d'
+        executable: false
+      'test/SelectionTest.kt':
+        sha256: 'c0800a5a062384abd91df5353fcc42ed572d8254ba7cbee1535e1b448b87c9e1'
+        executable: false

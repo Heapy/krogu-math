@@ -130,7 +130,7 @@ val source = buildString {
         appendLine(")")
     }
 }
-val target = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerArithmeticResults.kt")
+val target = File("test/io/heapy/krogu/math/Jdk25IntegerArithmeticResults.kt")
 if ("--check" in args) {
     check(target.exists() && target.readText() == source) { "Integer arithmetic oracle differs" }
     println("Verified ${rows.size} signed integer arithmetic cases and ${subtractionRows.size} subtraction dispatch cases")

@@ -1,0 +1,22 @@
+{
+  "verdict": "ACTUAL_DOWNLOADED_ROOT_RESTORE_AND_VERIFY_PASS",
+  "installer_version": "0.3.0",
+  "plugin_repository": "Heapy/ktc-benchmark",
+  "plugin_commit": "4731c58cddc20d04aeb1e1a64075c8130f4aeb75",
+  "plugin_tree_sha256": "b465af07f570d3fecb13eae455bf50095fd01f3b3d71217db2e94ed62cd62b46",
+  "lock_sha256": "14d98308d97154c8ca4dba7e9b4151234736a1bb02e585b8442e02b778dd7904",
+  "declaration_sha256": "cd2d8392e8f93456e3a7a2ba59f38e1fec56c93946ea9a0fc0a163c4ddede943",
+  "installer_unix_wrapper_sha256": "c69aa086f8f554f0097a4cbe14f6f85e00fa034c338252a1d13604fca432ac5e",
+  "installer_windows_wrapper_sha256": "0e71e8b8ead62a048291b10d55c1d3ec387db7907dfb5f00c75d97320fc492da",
+  "actual_native_installer_binary_sha256": "e3e936ee1c8c4635932d5bf9ca559e3543a8cdd95c7fef0db33f588376d87c5b",
+  "native_binary_matches_release_wrapper_pin": true,
+  "source_restore": "Existing ignored source renamed into owned backup; actual ./ktc-plugins sync restored missing root directory from locked source cache; verify exited0 clean. This is the real root bootstrap command, not a manual copy. Cache restoration does not claim a second network download.",
+  "restored_members": 18,
+  "all_prior_member_hashes_and_executable_bits_exact": true,
+  "tracked_external_plugin_members": [],
+  "ignored_source_witness": "plugins/benchmark/src/BenchmarkTask.kt",
+  "sync_log_sha256": "2120635af4ee4000b60b148f43fbdfe0e66e7399991083dd0ad16b7a46d8489e",
+  "verify_log_sha256": "4d4542a5b9fd066f225299bc6104d4cc929d93e3c3c6500ffca2b510f7cc594b",
+  "first_party_worker_payload_plugin_untouched": true,
+  "original_plugin_backup": ".codex-work/ktc-downloaded-restore-proof/original-ignored-benchmark"
+}

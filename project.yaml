@@ -1,0 +1,10 @@
+modules:
+  - benchmarks/peers
+  - benchmarks/runners/*
+  - benchmarks/standard
+  - plugins/benchmark
+  - plugins/worker-payload
+
+plugins:
+  - //plugins/benchmark
+  - //plugins/worker-payload

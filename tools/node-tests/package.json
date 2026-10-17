@@ -1,0 +1,13 @@
+{
+  "name": "krogu-node-test-tools",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Pinned Mocha runner for Kotlin Toolchain-linked Node tests",
+  "devDependencies": {
+    "mocha": "11.8.0"
+  },
+  "overrides": {
+    "serialize-javascript": "7.1.2",
+    "diff": "8.0.3"
+  }
+}

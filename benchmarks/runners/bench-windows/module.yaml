@@ -1,0 +1,17 @@
+product: windows/app
+apply:
+  - //common.module-template.yaml
+dependencies:
+  - //benchmarks/standard
+plugins:
+  benchmark:
+    enabled: true
+    platform: mingwX64
+    warmups: 5
+    iterations: 7
+    iterationTime: 1
+    iterationTimeUnit: s
+    outputTimeUnit: ns
+    mode: avgt
+    jvmForks: 3
+    timeoutSeconds: 21600

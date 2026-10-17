@@ -50,7 +50,7 @@ val source = buildString {
     for ((cp, integer, decimal) in supplementary) appendLine("    0x${cp.toString(16)}, $integer, $decimal,")
     appendLine(")")
 }
-val target = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25CharacterResults.kt")
+val target = File("test/io/heapy/krogu/math/Jdk25CharacterResults.kt")
 if ("--check" in args) {
     check(target.exists() && target.readText() == source) { "Character oracle differs" }
     println("Verified 2293760 digit/radix pairs, 131072 BMP constructor results and ${supplementary.size} supplementary characters")

@@ -1,0 +1,20 @@
+product: wasm-js/app
+apply:
+  - //common.module-template.yaml
+dependencies:
+  - //benchmarks/peers
+plugins:
+  benchmark:
+    enabled: true
+    platform: wasmJs
+    warmups: 5
+    iterations: 7
+    iterationTime: 1
+    iterationTimeUnit: s
+    outputTimeUnit: ns
+    mode: avgt
+    jvmForks: 1
+    timeoutSeconds: 21600
+    includes: ['.*PeerBenchmark[.]operation$']
+    params:
+      workload: ['int/carry30/MULTIPLY', 'int/wide10/PARSE', 'decimal/wide10/FORMAT', 'decimal/scale/ADD']

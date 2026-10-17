@@ -48,7 +48,7 @@ val source = buildString {
         appendLine("private fun nullExpectedChunk$i(): String = \"$literal\"")
     }
 }
-val target = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25NullPrecedenceResults.kt")
+val target = File("test/io/heapy/krogu/math/Jdk25NullPrecedenceResults.kt")
 if ("--check" in args) {
     check(target.exists() && target.readText() == source) { "Null precedence oracle differs" }
     println("Verified ${results.size} null/invalid-argument outcomes")

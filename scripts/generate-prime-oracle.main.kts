@@ -60,7 +60,7 @@ val source = buildString {
     for (row in rows) appendLine("    arrayOf(${row.joinToString(", ") { "\"$it\"" }}),")
     appendLine(")")
 }
-val target = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25PrimeResults.kt")
+val target = File("test/io/heapy/krogu/math/Jdk25PrimeResults.kt")
 if ("--check" in args) {
     check(target.exists() && target.readText() == source) { "Prime oracle differs" }
     println("Verified ${rows.size} prime/next-prime outcomes")

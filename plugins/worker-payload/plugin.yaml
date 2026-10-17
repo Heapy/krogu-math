@@ -1,0 +1,30 @@
+tasks:
+  javascript:
+    action: !workerpayload.generateWorkerPayload
+      kernelSources: ${project.rootDir}/src/io/heapy/krogu/math
+      workerSources: ${project.rootDir}/nodeWorker539/src
+      wrapper: ${project.rootDir}/kotlin
+      wrapperWindows: ${project.rootDir}/kotlin.bat
+      platform: js
+      workspace: ${taskOutputDir}/worker
+      generatedSources: ${taskOutputDir}/generated
+  wasm:
+    action: !workerpayload.generateWorkerPayload
+      kernelSources: ${project.rootDir}/src/io/heapy/krogu/math
+      workerSources: ${project.rootDir}/nodeWorker539/src
+      wrapper: ${project.rootDir}/kotlin
+      wrapperWindows: ${project.rootDir}/kotlin.bat
+      platform: wasmJs
+      workspace: ${taskOutputDir}/worker
+      generatedSources: ${taskOutputDir}/generated
+
+generated:
+  sources:
+    - directory: ${tasks.javascript.action.generatedSources}
+      fragment:
+        modifier: "@js"
+        isTest: false
+    - directory: ${tasks.wasm.action.generatedSources}
+      fragment:
+        modifier: "@wasmJs"
+        isTest: false

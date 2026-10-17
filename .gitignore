@@ -4,3 +4,6 @@ build/
 .idea/
 *.iml
 .DS_Store
+/.ktc-plugins/
+/.native-test-friends.module-template.yaml
+node_modules/

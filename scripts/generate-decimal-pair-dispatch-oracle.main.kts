@@ -96,7 +96,7 @@ val generated = buildString {
     }
     appendLine(").flatMap { it.lines().map { line -> line.split('\\t').toTypedArray() } }")
 }
-val target = File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25DecimalPairDispatchResults.kt")
+val target = File("test/io/heapy/krogu/math/Jdk25DecimalPairDispatchResults.kt")
 if ("--check" in args) check(target.exists() && target.readText() == generated) { "Decimal pair dispatch oracle differs" }
 else target.writeText(generated)
 println("${if ("--check" in args) "Verified" else "Generated"} ${rows.size} decimal pair dispatch cases")

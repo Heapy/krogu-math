@@ -8,10 +8,10 @@ require(args.all { it == "--check" }) { "Usage: [--check]" }
 // The predecessor manifest bound the pre-non-null-migration evaluator; never claim it is the current file.
 val historicalEvaluatorSha256 = "2ed00a5dd3c7ec038e61f5be078697b84609606549c26b1bda1249fce860c781"
 val evidence = linkedMapOf(
-    "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25DecimalContextDispatchResults.kt" to "88fc3c5bc8277a048a83a9ad9b6546bd8a23ae1ad9a10126409d857367391026",
-    "src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt" to "bb61d3f8a5f61850fb208f0e8f5ba814c4b3c7c68b0cb658a0db62081ea41300",
-    "scripts/generate-decimal-context-dispatch-oracle.main.kts" to "0d9e9b11af4c27892758e78d6b80639b763fcec66ffbe27721d373864a501188",
-    "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25DecimalContextContractResults.kt" to "1245d75ed6837139c939496e602a085cba37b35dd4d3c98f197bdaece2ce7cc9",
+    "test/io/heapy/krogu/math/Jdk25DecimalContextDispatchResults.kt" to "88fc3c5bc8277a048a83a9ad9b6546bd8a23ae1ad9a10126409d857367391026",
+    "test/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt" to "bb61d3f8a5f61850fb208f0e8f5ba814c4b3c7c68b0cb658a0db62081ea41300",
+    "scripts/generate-decimal-context-dispatch-oracle.main.kts" to "dc52982111214a7af58ffedff7b52b5dfedca7d56700642824d5c1b12de1708c",
+    "test/io/heapy/krogu/math/Jdk25DecimalContextContractResults.kt" to "1245d75ed6837139c939496e602a085cba37b35dd4d3c98f197bdaece2ce7cc9",
 )
 val files = evidence.mapValues { (path, expected) ->
     val bytes = File(path).readBytes()
@@ -424,7 +424,14 @@ val generated = buildString {
     appendLine("# Schema: context-contract-coverage-v7; six compact columns plus bounded STATUS dictionary, lossless recovery of 19 logical fields")
     appendLine("# Predecessor mapper SHA-256 08adda6ad57223c073861141d680bb2e3f11d10ba15ca893f03851a3a60da030 (accepted v6 source, not the current mapper digest)")
     appendLine("# Historical pre-non-null-migration evaluator SHA-256 $historicalEvaluatorSha256 src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt (provenance only; current source verified separately below)")
-    for ((path, hash) in evidence) appendLine("# SHA-256 $hash $path")
+    // Preserve the accepted artifact's historical provenance header byte-for-byte.
+    // Current relocated sources and the path-only updated generator are guarded above.
+    for ((path, hash) in evidence) {
+        val originalPath = if (path.startsWith("test/")) "src/commonTest/kotlin/" + path.removePrefix("test/") else path
+        val originalHash = if (path == "scripts/generate-decimal-context-dispatch-oracle.main.kts")
+            "0d9e9b11af4c27892758e78d6b80639b763fcec66ffbe27721d373864a501188" else hash
+        appendLine("# SHA-256 $originalHash $originalPath")
+    }
     appendLine("# Stable IDs: D = 1-based frozen row; C = 1-based first-occurrence five-field projection")
     appendLine("# Control lookup: C row of the bound contract fixture supplies source/divisor/topology/context_precision/rounding/required_valid_outcome")
     appendLine("# Kind: V = VALUE; E = ERROR; flag mask is three-digit lowercase hexadecimal")

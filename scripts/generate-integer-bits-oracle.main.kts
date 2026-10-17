@@ -105,6 +105,6 @@ val source=buildString {
         appendLine(")")
     }
 }
-val target=File("src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerBitResults.kt")
+val target=File("test/io/heapy/krogu/math/Jdk25IntegerBitResults.kt")
 if(args.isNotEmpty()) check(target.exists() && target.readText()==source) { "Integer bit oracle differs" } else target.writeText(source)
 println("${if(args.isNotEmpty()) "Verified" else "Generated"} ${rows.size} integer bit cases")

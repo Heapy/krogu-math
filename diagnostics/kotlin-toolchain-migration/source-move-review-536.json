@@ -1,0 +1,1988 @@
+[
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/BigDecimal.kt",
+    "after": "src/io/heapy/krogu/math/BigDecimal.kt",
+    "sha256": "b98329fd0fffbc0ec765967a48a2d97141ac474f276f6478cde43898e34a48b6",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt",
+    "after": "src/io/heapy/krogu/math/BigInteger.kt",
+    "sha256": "8fabdb91a473ce6d12b514a10942e6850aee01a180bf62637efcbfbe231f85d0",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/BigIntegerProperties.kt",
+    "after": "src/io/heapy/krogu/math/BigIntegerProperties.kt",
+    "sha256": "1915e919d8061c32efdf2c8e053f4fb46410b9f4e1c594265111153b6040b900",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/CompactInteger529.kt",
+    "after": "src/io/heapy/krogu/math/CompactInteger529.kt",
+    "sha256": "9ee88b7ae9fe3b4a235bca4ca33fba0ed534c2e87acbe8d17bdd0450941d24ec",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/DecimalAccumulator.kt",
+    "after": "src/io/heapy/krogu/math/DecimalAccumulator.kt",
+    "sha256": "9d94f50dea9b9251ec19429912de761ad4ff43296b4676a2375d8f8ce7078f3b",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/DecimalDivision581.kt",
+    "after": "src/io/heapy/krogu/math/DecimalDivision581.kt",
+    "sha256": "553de7bece22f88526e029d0a931cf0fccc99a73d90534e588911b19d46bc193",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/DecimalKey.kt",
+    "after": "src/io/heapy/krogu/math/DecimalKey.kt",
+    "sha256": "dbc3dcead3ef066e4f95deeb232ea42d455197d19a3f8d1529ea2fbd46df3058",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/DecimalPower593.kt",
+    "after": "src/io/heapy/krogu/math/DecimalPower593.kt",
+    "sha256": "851cf8b6bd0839d418c0ff71a5fc365daebf2ffb5bb5599de7e8f44fa5050f9c",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/DecimalPowers597.kt",
+    "after": "src/io/heapy/krogu/math/DecimalPowers597.kt",
+    "sha256": "848b3e7accc28e6d5d883db9003b097c8871b4a550eb581b575bdb4859037ad1",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/DecimalProduct580.kt",
+    "after": "src/io/heapy/krogu/math/DecimalProduct580.kt",
+    "sha256": "2ef14e2a2d52b75286f2e5830301a75fe586ed41cb3fbbacb9fd96c346d5234d",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/DecimalSignedWork535.kt",
+    "after": "src/io/heapy/krogu/math/DecimalSignedWork535.kt",
+    "sha256": "b03392b1e74e4ce5cdbf1a57d8cbdf1b21358779c393295a91559fd2eea92e72",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/DecimalSquareRoot579.kt",
+    "after": "src/io/heapy/krogu/math/DecimalSquareRoot579.kt",
+    "sha256": "2feb17a4d791fd586dce4c19053dcb189302ddddd73ebd41cbd0202aef6f7283",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/DecimalSum585.kt",
+    "after": "src/io/heapy/krogu/math/DecimalSum585.kt",
+    "sha256": "f89ca4fb38988f58b0ce764c54ef50f95338b69400a8ef202d5078e89c8179c5",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/DecimalText588.kt",
+    "after": "src/io/heapy/krogu/math/DecimalText588.kt",
+    "sha256": "fafbb4534c9397d0c3b615673a3317aea8c469cc7966618ddcf28b300a38f6f6",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/DoubleFormatting.kt",
+    "after": "src/io/heapy/krogu/math/DoubleFormatting.kt",
+    "sha256": "9b2a1b8cb1d40a2fdc7db5110b6a8c4e398da0562d5c3d6b02cf928f3c74433f",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/ExplicitDecimal.kt",
+    "after": "src/io/heapy/krogu/math/ExplicitDecimal.kt",
+    "sha256": "f9b9d29da234ee056d3a2b4344407402b290666044b5c73c402af45cda9dc574",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/FloatFormatting.kt",
+    "after": "src/io/heapy/krogu/math/FloatFormatting.kt",
+    "sha256": "ba55514c181e52f20ed63fcb2634621f66cea3cc4db084e77cf2df71d1dcf77e",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/MagnitudeLimits.kt",
+    "after": "src/io/heapy/krogu/math/MagnitudeLimits.kt",
+    "sha256": "5bf687bb968d22908a36b8898f19649bdbdf7e5a2596575f1808053fca0e4769",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/MagnitudeMultiplication.kt",
+    "after": "src/io/heapy/krogu/math/MagnitudeMultiplication.kt",
+    "sha256": "b7821d199cfc6c2b653cc5c88abf5759908464efa21a4b02b09f016fa48d5622",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/MathContext.kt",
+    "after": "src/io/heapy/krogu/math/MathContext.kt",
+    "sha256": "d3690387b1345f90cc927044a1a450983dd0d2ce6e3e47054384c31979fd5261",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/MathSerializable.kt",
+    "after": "src/io/heapy/krogu/math/MathSerializable.kt",
+    "sha256": "90543924afe5b8ca928b44e759708caa11b25f429f6382ee6d4c4e019aa196c8",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+    "after": "src/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+    "sha256": "f9cbc594132c7475cc6da2ab180423965e0dd7abd5d86037a145730758bceb61",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/MultiplicationPolicy539.kt",
+    "after": "src/io/heapy/krogu/math/MultiplicationPolicy539.kt",
+    "sha256": "d2bbaad7db39d339941cc788f2208ffd60754c5d4f846d759613e1867869d448",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/NumberConversions.kt",
+    "after": "src/io/heapy/krogu/math/NumberConversions.kt",
+    "sha256": "f65b8db60dc39e6bbf00ba62c3dc297223f188660382b82653a3da8339c2c7d3",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/NumericExtensions.kt",
+    "after": "src/io/heapy/krogu/math/NumericExtensions.kt",
+    "sha256": "20fdf7c5c76ed4207c03859b4cb60247a16e2ec4337ee674c3a85ce6101e5123",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/NumericOutput537.kt",
+    "after": "src/io/heapy/krogu/math/NumericOutput537.kt",
+    "sha256": "730d546c0f5d25574cc1efaa6d2f0f92c6b3dd7b833ada487f05050dab322d9d",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/NumericText537.kt",
+    "after": "src/io/heapy/krogu/math/NumericText537.kt",
+    "sha256": "91134400b39d0b327a132a4b247a2606d8e733efd76fbc217677421ba4f20514",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/OperatorExtensions.kt",
+    "after": "src/io/heapy/krogu/math/OperatorExtensions.kt",
+    "sha256": "64480aa0f56a42de39e34f3cda92b4a1b444ab19eea0cd6a93fafae864e63368",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/ParallelMultiply539.kt",
+    "after": "src/io/heapy/krogu/math/ParallelMultiply539.kt",
+    "sha256": "d772244244a3e1771c6796b59e06322258e0d23797ae27d53a8829656195c6c2",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/PlainStringAllocation.kt",
+    "after": "src/io/heapy/krogu/math/PlainStringAllocation.kt",
+    "sha256": "74ed828dfe1fc0e72a1bb81f0dfb572b8729b6394b91d68ceea4bb029b4a8fc1",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/PlatformRandom.kt",
+    "after": "src/io/heapy/krogu/math/PlatformRandom.kt",
+    "sha256": "e408e6fad2a92acec592520ea3eaf1c414493a6db708db9ef9ae686b1303f3d0",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/PowArrayBounds.kt",
+    "after": "src/io/heapy/krogu/math/PowArrayBounds.kt",
+    "sha256": "8831e7d736ca6cc895558b38ccdbc73c305ef2534649d3547a232379a9d16361",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/PrimalityCertainty.kt",
+    "after": "src/io/heapy/krogu/math/PrimalityCertainty.kt",
+    "sha256": "93f0c4743f9a7d8d9acdedd283760904bbfd2caf55e5e4973dd6331d2aa57479",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/PrimeSearchLimits.kt",
+    "after": "src/io/heapy/krogu/math/PrimeSearchLimits.kt",
+    "sha256": "66e7d92b5d6091067ee02679534060fc9d8559328c7fafc45805b3d7493c3a85",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/RandomFactories.kt",
+    "after": "src/io/heapy/krogu/math/RandomFactories.kt",
+    "sha256": "d66f6002d3e2f32b1a2f03143984eee2da55a2fc7edda2bf6e8bdada41257c20",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/RoundingMode.kt",
+    "after": "src/io/heapy/krogu/math/RoundingMode.kt",
+    "sha256": "e47d7aa314ddaa9c79ba13b79a00beadb8be96cbb473cd4ad2dfae3e0501a5ee",
+    "equal": true
+  },
+  {
+    "before": "src/commonMain/kotlin/io/heapy/krogu/math/TextExtensions.kt",
+    "after": "src/io/heapy/krogu/math/TextExtensions.kt",
+    "sha256": "e182d830cff8c096cc61fcbbbe79c1b09ace88dfacdc65df705e8404660ff977",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/AdditionOracleEvaluator.kt",
+    "after": "test/io/heapy/krogu/math/AdditionOracleEvaluator.kt",
+    "sha256": "0f7c7a284173e248f001e8c8bccda2b498e86358a0a84b7a20a5a805a609caf7",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/BitwiseSubclassTest.kt",
+    "after": "test/io/heapy/krogu/math/BitwiseSubclassTest.kt",
+    "sha256": "b91dd3407841da61ac101e170520e01b4f3a51875af2b2807be5ce4842789551",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/CanonicalDoubleOracleData.kt",
+    "after": "test/io/heapy/krogu/math/CanonicalDoubleOracleData.kt",
+    "sha256": "ca1c0082be3c8f71f83d0321dc188866b7be2a20a1d738d4b7518da215303db3",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/CanonicalDoubleTest.kt",
+    "after": "test/io/heapy/krogu/math/CanonicalDoubleTest.kt",
+    "sha256": "329330a3280f4a329c0f6b22ade163b36a36503b4adaad9ce01db3585aa88d10",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/CharacterOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/CharacterOracleTest.kt",
+    "sha256": "a1bd6b1f31cf5e7a83a44e3310c3aa5ab4bea2c7eb512768dce23c551b59e9fb",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/CompactDecimal529Test.kt",
+    "after": "test/io/heapy/krogu/math/CompactDecimal529Test.kt",
+    "sha256": "00ccf9329e2bf658214cf6e4d17b055cd1160ae557842befbf545dd9e405531f",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/CompactInteger529Test.kt",
+    "after": "test/io/heapy/krogu/math/CompactInteger529Test.kt",
+    "sha256": "3f135274f078a19a792713dae0e091dedade2e586a1b3b076091032ce3a703e1",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/ComparisonOracleEvaluator.kt",
+    "after": "test/io/heapy/krogu/math/ComparisonOracleEvaluator.kt",
+    "sha256": "24d27b39abb56eb822e0e8301109fdc117630319639934cd01391789e9e84a82",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/ComparisonRows574.kt",
+    "after": "test/io/heapy/krogu/math/ComparisonRows574.kt",
+    "sha256": "474b7a6cf992b873b55cfb87d7479ebb2704e0112def2496cc7343a5d6e2ddf9",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/ConstructorRandom549Test.kt",
+    "after": "test/io/heapy/krogu/math/ConstructorRandom549Test.kt",
+    "sha256": "ed8c6ec4ccb8c1d6deca84123d1827a9ff6888a59402366807ad5212491a9c95",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalAccumulator535Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalAccumulator535Test.kt",
+    "sha256": "5518a02f38fa1033d1d100ee7c487434551fba91ce1a69e890b64f5e255408c2",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalBinary575Rows.kt",
+    "after": "test/io/heapy/krogu/math/DecimalBinary575Rows.kt",
+    "sha256": "1a5cb248c01c3aca3872ddaa0a813428fcc4d7baafb253b6981a233e0ad10d10",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalBinaryCancellationTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalBinaryCancellationTest.kt",
+    "sha256": "3c38768d2cd9ede997f38ebd879db5f0ba762065a32509c6e25683ee69482892",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalBinaryPrefixTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalBinaryPrefixTest.kt",
+    "sha256": "3a88b1e593a8410fc7c03bcba51fd6a873139b25e4d8a1a393b7fc8e9488b34d",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalChunkComparisonTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalChunkComparisonTest.kt",
+    "sha256": "b50745713f47e60efd7a45f6e8ac98d018dcc56082cc6e102bb2aea39b208b83",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalCoefficientSubclassTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalCoefficientSubclassTest.kt",
+    "sha256": "e3aabfa42bf2622f414aa766666801bc4ec3b98a906655802d13a7711af232ea",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalComparableContractTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalComparableContractTest.kt",
+    "sha256": "5cae2d5bc1b936cda3d30b7e24f4cf3e537db5b29dda6b0ed088a27fa272206b",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextContractTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalContextContractTest.kt",
+    "sha256": "19e64c14a3d9a335cfe6d4a270997db9382ef4861c2de35dabc145d4fe27cf35",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalContextDispatchOracleTest.kt",
+    "sha256": "bb61d3f8a5f61850fb208f0e8f5ba814c4b3c7c68b0cb658a0db62081ea41300",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextDivision581Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalContextDivision581Test.kt",
+    "sha256": "c198132e64c3ac1f9815c6227b2322d041d972f079207edb6d0eec94fa74a6e1",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextProduct580Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalContextProduct580Test.kt",
+    "sha256": "e8cff7f799607b7902a5e9f37f4fb272357793f33d5ff1b336047301ed743e2b",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextReturnedRepresentationContractTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalContextReturnedRepresentationContractTest.kt",
+    "sha256": "eff54047dd9cb64252918945b3acf4d1ebbbd450538dae9d73ca12266dac3725",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalContextReturnedRepresentationData.kt",
+    "after": "test/io/heapy/krogu/math/DecimalContextReturnedRepresentationData.kt",
+    "sha256": "d1aa47c77d9987b1dea1057da98e8c9fa2af12aed13b228e969fd9464c8aa56d",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalDivision581DiagnosticPolicy.kt",
+    "after": "test/io/heapy/krogu/math/DecimalDivision581DiagnosticPolicy.kt",
+    "sha256": "79926238dec13d85a053e70c5d1174025c17a2a76d99efeaf0e849bc69915f5c",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalDivisionNormalization594Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalDivisionNormalization594Test.kt",
+    "sha256": "7872c6c50aebe56e00e0e0241c0b5736952c388d68ef17f8a91efded54e98c1e",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalDivisionNormalizationContractTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalDivisionNormalizationContractTest.kt",
+    "sha256": "f91f48bdc717adcfb7ffb444326cb7bb7c0917f9457ca14dd275aa28ab9372f5",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalDivisionPreferredScaleContractTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalDivisionPreferredScaleContractTest.kt",
+    "sha256": "4c768b0a974b1ddf5f8066dbb3f2c4b91b30d0bc17bbe064091b6d51b16acada",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactChars589Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalExactChars589Test.kt",
+    "sha256": "e3d8a2fc085cd056c990f0ff4e3481df32b7e4ba295fa2b8ed14159493217b0e",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactLowResidual590Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalExactLowResidual590Test.kt",
+    "sha256": "c76002dd62ea2feb88697370ec814eda277922c7c3ed4994779db0ef9bda8388",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563CallbackContractTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalExactRoot563CallbackContractTest.kt",
+    "sha256": "a7dec3b97048f56a101937eaea3b1fcef5d1a5b9611726fdda77a0e956ed8e42",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563CallbackObservations.kt",
+    "after": "test/io/heapy/krogu/math/DecimalExactRoot563CallbackObservations.kt",
+    "sha256": "40efe6c61b3c544cd6300fa05d173da664fa7951b9c6b634332057edaf740210",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563Callbacks.kt",
+    "after": "test/io/heapy/krogu/math/DecimalExactRoot563Callbacks.kt",
+    "sha256": "7ce447a023483c2959d7e0e888344068736aa417a36239e27c849cc191717b21",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563Expected.kt",
+    "after": "test/io/heapy/krogu/math/DecimalExactRoot563Expected.kt",
+    "sha256": "ec71bcc417280b0924d2f610b85ba1dde33edd61cdde8184459ee360d3524aa1",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalExactRoot563Test.kt",
+    "sha256": "be6745c30c3d9bdf81bfb1fdca2e6e61963ef164b178ac7aec7c55a278d8ae86",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalFixedScale592Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalFixedScale592Test.kt",
+    "sha256": "bb0ff8f4d57be0cca92bfa88512ef286a30ba305a31b485a203b0d4dcd0852fc",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalIntegral582CallerContractTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalIntegral582CallerContractTest.kt",
+    "sha256": "ab7a04d738e8084b9e20ca7ddc90be83ccbdd32961d480bdf5dff5ea24ededf8",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalIntegral582DiagnosticPolicy.kt",
+    "after": "test/io/heapy/krogu/math/DecimalIntegral582DiagnosticPolicy.kt",
+    "sha256": "ce9751b8576299fe0bc4324023c79363c01a50308212acd8f5d9baa450a669ab",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalIntegralDispatchOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalIntegralDispatchOracleTest.kt",
+    "sha256": "ae3c8ec204fc3b077c9d3b9c59c400747e28fe9c16f2ac429dbe2b7ced643d43",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalIntegralQuotient582Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalIntegralQuotient582Test.kt",
+    "sha256": "f3736aae2cca21147dbb878a64bef77277746b899a9b88653ec08242d0b24219",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalKey536Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalKey536Test.kt",
+    "sha256": "83fdf481fcd346db677eb53f5956e98a2497ad0f93a525117082221c2bf8e157",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalMetadata597Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalMetadata597Test.kt",
+    "sha256": "2bdc9470678f708f50097e436d656e49f91a985ecc115a8782bce3818bb06609",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalNumericMetadataTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalNumericMetadataTest.kt",
+    "sha256": "487ac30b5a61368bf1287a6b3173848614770853b2d46ed582497edec662b986",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalOperatorContractTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalOperatorContractTest.kt",
+    "sha256": "ff3f30b6895e7931ad24e4e147daf45eb23e1de5b801b103db514959c11988fb",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalOverloadContract541Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalOverloadContract541Test.kt",
+    "sha256": "6bbf8a1db68978dbaa414a9236b16f0535db3294c486d51f135dfd0548e63240",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalOverloadDispatch541Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalOverloadDispatch541Test.kt",
+    "sha256": "2dfbbf27cad7cca7c59c3d0b210b04e75290c7c6be68c392d68be6d2f926d060",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalPairDispatchOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalPairDispatchOracleTest.kt",
+    "sha256": "9fbc433550189de30c1b193b44a6641722af5c5c5e966b5cec10ed1de62c0acf",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalPowWorkingPrecisionContractTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalPowWorkingPrecisionContractTest.kt",
+    "sha256": "9d6a474993b07cd4a417733c0875ee123db1bfc2b8c1f499a80ad545bac54445",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalPower593Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalPower593Test.kt",
+    "sha256": "378afbd8b53f8fb746ac65c3f8399775c72469ce91f69b940ebd9197d6726bb6",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalPrimitiveLowBits591Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalPrimitiveLowBits591Test.kt",
+    "sha256": "5389c0c20d7c557afab48bb6b577cdbc0a0077f825a56e3ef281a508d4caa9fb",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalRemainderArrayOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalRemainderArrayOracleTest.kt",
+    "sha256": "7df6bbceec6e836ca049beb4bdb2fc0a13f4e9bee9b67bf82b2c3cd12fe48745",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalResidual583Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalResidual583Test.kt",
+    "sha256": "80b264447716b13bd1d0cf74067a80a63a54d2f17b31330e1f638e674432d025",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalScaleContractTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalScaleContractTest.kt",
+    "sha256": "f540f5aeb7db001efde6f569284e6cb1b3b203fabb727de075ed129b28b6aeb3",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalScaleRounding566Expected.kt",
+    "after": "test/io/heapy/krogu/math/DecimalScaleRounding566Expected.kt",
+    "sha256": "5d7e4671987823fb251c8b7c36db98bcba092b55b7181cd512657b0941b62b3c",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalScaleRoundingRepairTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalScaleRoundingRepairTest.kt",
+    "sha256": "c63f02f60e4c4b3fc00f69abf35d1f6183feb18005d8b37533972ab7a36d84d1",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalScaling533Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalScaling533Test.kt",
+    "sha256": "42d900a30dd885f648b535d2c282d80ba3b2cc8740ce4c13f056a28289412a2f",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalSqrtMidpoint565Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalSqrtMidpoint565Test.kt",
+    "sha256": "f659ad9b4f4149296e92c449e08a24caae8024995190f70cc7fd50d0f963429f",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalSquareRootCohort587Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalSquareRootCohort587Test.kt",
+    "sha256": "ca56d82641848caaa17ea2408e765e7125200e81e71701964d35252417473d85",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalSquareRootNormalization579Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalSquareRootNormalization579Test.kt",
+    "sha256": "4731367075a5593cce89d422c645cc1df60f0422e14926ed17435e33c2ca2eda",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalStickyEquality586Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalStickyEquality586Test.kt",
+    "sha256": "edb718581affff76260e3930e9a798b7e170918a03f24298c7f09fc11c8a667f",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalSum585Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalSum585Test.kt",
+    "sha256": "e773fe7c8226fcf0f2a254e405030b2ff6bd4b2c8d1d6f26740e8569b7454f52",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalTextRounding588Test.kt",
+    "after": "test/io/heapy/krogu/math/DecimalTextRounding588Test.kt",
+    "sha256": "a08b163af94d09ec64b56793c04d06144740919821e85a674b15fb10a05fb3b4",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DecimalUlp541ContractTest.kt",
+    "after": "test/io/heapy/krogu/math/DecimalUlp541ContractTest.kt",
+    "sha256": "196333f2dca246fc213c1fb4e92983d85a9470260121edaa7d694d0823f0013e",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Division530SelectionTest.kt",
+    "after": "test/io/heapy/krogu/math/Division530SelectionTest.kt",
+    "sha256": "a763624437197218611aaf32eaf440f98635b339b4a5414dd3ea809092f64e38",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Division530Test.kt",
+    "after": "test/io/heapy/krogu/math/Division530Test.kt",
+    "sha256": "5fa7da6d077e9e258ed04bdea3ca46f2147ba5fcf3d3f07047bac818bb4beb0f",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/DoubleZeroContext569Test.kt",
+    "after": "test/io/heapy/krogu/math/DoubleZeroContext569Test.kt",
+    "sha256": "be825487b423ac0818a88e6719b4966577b5c20d82817781dc8159b2fb7fcc90",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/ExplicitDecimal534Test.kt",
+    "after": "test/io/heapy/krogu/math/ExplicitDecimal534Test.kt",
+    "sha256": "d22b6feda8ad20c498ee0999dba8d5e0c007a8e1c7a7d7aa9200ed498d78b74c",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/FiniteZeroPolicy567.kt",
+    "after": "test/io/heapy/krogu/math/FiniteZeroPolicy567.kt",
+    "sha256": "e524aebf5b2909eaa27d1f6a29468bd16686d531c045c821147b9497d46f361f",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/FloatingPowerTest.kt",
+    "after": "test/io/heapy/krogu/math/FloatingPowerTest.kt",
+    "sha256": "7c3610e14c6b96b33c5d815fbd4d2ab66eed4c52ac971f60566922f0e8cbcf09",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/HashOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/HashOracleTest.kt",
+    "sha256": "778a1b5bd98157654e8db660f8696246e13d219766303b436cee95ff93c254ae",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerArithmetic544ContractTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerArithmetic544ContractTest.kt",
+    "sha256": "a96eea020873a131f75970c00a4f732e120f14605e00bdc769cc94f6135afaee",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerArithmeticOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerArithmeticOracleTest.kt",
+    "sha256": "db5161aab59779cb576fec7e6fd3de361fafd612cabcafa1cf4d83af686aa402",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerBits545ContractTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerBits545ContractTest.kt",
+    "sha256": "3bb936ea46e22dcd11d01b9af8357cebd3aca6def4abdc01674f0057266a95f5",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerBitsOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerBitsOracleTest.kt",
+    "sha256": "3badeb64cb2e2e91668afaf29658ea982b931056dcb8b44a258bd9312804dd84",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerByteOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerByteOracleTest.kt",
+    "sha256": "6120e6bd9eb4645b89847fc1bdd2d9325215fb396e39ab2fe352c2621309890d",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerComparableContractTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerComparableContractTest.kt",
+    "sha256": "759d4bcf99063cc4854c27fa60b9efaf6200e92c29ce6714ca94083df6d91467",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerDivisionDispatchOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerDivisionDispatchOracleTest.kt",
+    "sha256": "006ea0fcc91537b0623bf8e34838ca90ccd689f10cb589b8793dca56dbf2224a",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerDivisionOracleEvaluator.kt",
+    "after": "test/io/heapy/krogu/math/IntegerDivisionOracleEvaluator.kt",
+    "sha256": "1c9dcaee2469666b071d3737510e46c5e5c6569359c1d332de25c550bb54701c",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerGcdOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerGcdOracleTest.kt",
+    "sha256": "5b64941837305cf74173cbcc04644055771d8930965682eeb5f3954ff728243c",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerInverseOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerInverseOracleTest.kt",
+    "sha256": "ece7cac3559244472d4f72aed4b02adc9b5e6f956640927514198a5ece9d08c1",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerMinMaxOracleEvaluator.kt",
+    "after": "test/io/heapy/krogu/math/IntegerMinMaxOracleEvaluator.kt",
+    "sha256": "9088a993d368ddd23cf079b58a8c3803b38749e21a494869cee59754c8a2423b",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerModPowOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerModPowOracleTest.kt",
+    "sha256": "1a3f808fa766e711de28e288c663b48becdb2799129a92a29572ffda46ad23ce",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerMultiplication532Test.kt",
+    "after": "test/io/heapy/krogu/math/IntegerMultiplication532Test.kt",
+    "sha256": "4ae9e9d713db4acf56bbc6e6b62afecaad06a8b5387f058eee405bbd278c3817",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerParserOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerParserOracleTest.kt",
+    "sha256": "7160f7706bcee0c9da20b52212caccf7c31df9a2082e9beab024e562454c9743",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerParserRange559Test.kt",
+    "after": "test/io/heapy/krogu/math/IntegerParserRange559Test.kt",
+    "sha256": "7384ebaf82a89afdbe9b659e8b7118b9a710c2dc999448a1bbc3c8edc42ba713",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerPowOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerPowOracleTest.kt",
+    "sha256": "8d7ed08b2f295125850f2fb1e32de532b3b545b45e4468faaf687bbfe4f1fbeb",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerSqrtOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerSqrtOracleTest.kt",
+    "sha256": "1c80b015bf279ce4c861d7cdd55af65a99e7df4c80f68398fe52d6bed377029b",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/IntegerSubtractDispatchOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/IntegerSubtractDispatchOracleTest.kt",
+    "sha256": "bfedef2b2d4026b71c53d7c9eda270b2df9407dee8287b2973f8c906b3e77e41",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25CharacterResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25CharacterResults.kt",
+    "sha256": "0c7fd0a92332d0c0898803626b99f03f9160095304265c5b23f77031e8e9a41c",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25ContextResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25ContextResults.kt",
+    "sha256": "c63daab7094c449959a094a6dbbac95cf6640872bc66d0134d2f8dc4b5913dce",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25DecimalContextContractResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25DecimalContextContractResults.kt",
+    "sha256": "1245d75ed6837139c939496e602a085cba37b35dd4d3c98f197bdaece2ce7cc9",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25DecimalContextDispatchResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25DecimalContextDispatchResults.kt",
+    "sha256": "88fc3c5bc8277a048a83a9ad9b6546bd8a23ae1ad9a10126409d857367391026",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25DecimalIntegralDispatchResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25DecimalIntegralDispatchResults.kt",
+    "sha256": "31e6d042d91c4c3b5a0cdea8845e284c5e9a9fef94f1ff2c412514ae11720f6f",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25DecimalPairDispatchResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25DecimalPairDispatchResults.kt",
+    "sha256": "a316a3a9b31523644fdd9ec195383d401177d0c5b2b99445f95ed11df4b58fae",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25DecimalRemainderArrayResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25DecimalRemainderArrayResults.kt",
+    "sha256": "2a30fdd45ba669652f1e8035f1b5b380515f64ae8617e812559fffb7ef1856b3",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25HashResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25HashResults.kt",
+    "sha256": "ac0f02e3cd767840a1662ba72031306673163999eeecd14bc8bdbcaeab2de6ea",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerArithmeticResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25IntegerArithmeticResults.kt",
+    "sha256": "1295ef6753cd0529324e1e2baddc6767d57288453a5d0b99ea607695110f2ca2",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerBitResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25IntegerBitResults.kt",
+    "sha256": "619b08ce5261c43ee2338d0df65029ac8c5a83558c7555fe2369d5bcc54079a4",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerByteResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25IntegerByteResults.kt",
+    "sha256": "7c495db81638707251a3c0fb708c66b837f231697105d96058ff7ce5e42a5461",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerDivisionResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25IntegerDivisionResults.kt",
+    "sha256": "7044e986da106de47fe4cb55bbe7e6b73d77a8475428cb68e527eec94a523b7d",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerGcdResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25IntegerGcdResults.kt",
+    "sha256": "b61368c10557475aafadc565937cb135802f41e2256c1c43d7d9bd0c41c73f9e",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerInverseResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25IntegerInverseResults.kt",
+    "sha256": "803d7a2ca901d7733a2c2e5a8f28164775a0b6919a5503eb7fd468de5a715281",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerModPowResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25IntegerModPowResults.kt",
+    "sha256": "bec421fe0a3b18109cfa2e28d8858d63d4a00f930a94c3de594da5a58f13d3c8",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerParserResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25IntegerParserResults.kt",
+    "sha256": "d8d23097bf5703cbf2a231c674fade1cace4f66a677a1662fa28236a15c24556",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerPowResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25IntegerPowResults.kt",
+    "sha256": "5e449cd6f92cd82be094a45693c15f8fb0eafbb3837fbc4eaec8b913eaf99ef0",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25IntegerSqrtResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25IntegerSqrtResults.kt",
+    "sha256": "e809e38ea001b33678d95b420638cb46ef7370d1c54fd812e05a23a7123b0c8c",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25NullPrecedenceResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25NullPrecedenceResults.kt",
+    "sha256": "a6a4d9edc0b4b02d56f9665a1a4c3646ee8a57ef6f708da2c288926d55a67da9",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25PrimePrefixResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25PrimePrefixResults.kt",
+    "sha256": "8feb2f47dab2b38f802604736e922161d1d797797b3e490f740e6db289544100",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25PrimeResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25PrimeResults.kt",
+    "sha256": "8fd4eaaa6b21334ccf67ece4c5f1d38a6c115e9fa0403c10f79c221fec07b525",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25ScaleBoundaryResults.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25ScaleBoundaryResults.kt",
+    "sha256": "ebca3fbfaf3baddfccad62da50ef00180ceafa4e0e6289d785fea778fece23a9",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Jdk25Vectors.kt",
+    "after": "test/io/heapy/krogu/math/Jdk25Vectors.kt",
+    "sha256": "cb4d2327da9850e347dd1db6b96519bb228a0072ccd778b8372a647cd7f1ac4f",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/MagnitudeLimitsTest.kt",
+    "after": "test/io/heapy/krogu/math/MagnitudeLimitsTest.kt",
+    "sha256": "237ad39ce56a9108fd3b15df4043da035aaba48be15d3e9b60e6e49dc7001a10",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/MathContextGrammarTest.kt",
+    "after": "test/io/heapy/krogu/math/MathContextGrammarTest.kt",
+    "sha256": "4bb8bf1704a1bf2d48595d7358b7f7f16f1793bfc86de08bf92cd4d672d0e038",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/MinMaxOracleEvaluator.kt",
+    "after": "test/io/heapy/krogu/math/MinMaxOracleEvaluator.kt",
+    "sha256": "3a7fa974be1c1aea2254b51eb76b5b1c658e4e9ab32764e17eb8b77844dd70fe",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/ModulusReuse538Test.kt",
+    "after": "test/io/heapy/krogu/math/ModulusReuse538Test.kt",
+    "sha256": "eeb1d27724562856c8962156bc8d263d634bdc7af6964ec1b39828a5dcff3ebf",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/MultiplicationCalibration539.kt",
+    "after": "test/io/heapy/krogu/math/MultiplicationCalibration539.kt",
+    "sha256": "d62a9f8c624562c4f62ccc686f90b7732ca2dbfe1c43974839f02c30e9f670b9",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/MultiplicationPolicy539Test.kt",
+    "after": "test/io/heapy/krogu/math/MultiplicationPolicy539Test.kt",
+    "sha256": "091ca5d1ad3b3eb62b2c5818afbdab593d2ab7c2a633082a8e52373dc477272f",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/NodePublicFrontendCalibration539.kt",
+    "after": "test/io/heapy/krogu/math/NodePublicFrontendCalibration539.kt",
+    "sha256": "d88fb5218f53d92737da1114a0ca69bc786e9f620b51556bbb4a864166c99ce0",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/NullableBinaryOracleEvaluator.kt",
+    "after": "test/io/heapy/krogu/math/NullableBinaryOracleEvaluator.kt",
+    "sha256": "6b357e54c93e03551056f10cca75e39ec118ddd030a04be01656ba906083d997",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/OddModulusContext538Test.kt",
+    "after": "test/io/heapy/krogu/math/OddModulusContext538Test.kt",
+    "sha256": "f77ccbeee0e62a5e1da5d671b84d7972709bcc5d4108addd79c7d545ff859b5f",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/OddModulusContext538TinyFallbackTest.kt",
+    "after": "test/io/heapy/krogu/math/OddModulusContext538TinyFallbackTest.kt",
+    "sha256": "c798182157da14006701c76fff66514f6f4f69c244002b683abd284678e1a48e",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/PlainStringPreflightTest.kt",
+    "after": "test/io/heapy/krogu/math/PlainStringPreflightTest.kt",
+    "sha256": "ad054d84547611bf020ada9e9c34d2daa61c3ed1c582f5daa5e65b9dc5f80533",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/PortableOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/PortableOracleTest.kt",
+    "sha256": "0011f061f557b239db83b05db42f1185f391d1f2db82e60ac5accf0ce15a33ff",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/PowerOfTwoRadix559Test.kt",
+    "after": "test/io/heapy/krogu/math/PowerOfTwoRadix559Test.kt",
+    "sha256": "5bdf9eb29c231dfdaa195c32fdbbe59f80f70773b1f1c55dca7055b24bd3dd1e",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/PrimalityCertaintyTest.kt",
+    "after": "test/io/heapy/krogu/math/PrimalityCertaintyTest.kt",
+    "sha256": "27a504609b3d79c3787f4a583c8bdaebedbbd0e37caa97a4d24b8933363348d5",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/PrimeOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/PrimeOracleTest.kt",
+    "sha256": "aa3884ac8e489efbd0d984fc3b1dacbec2db6e417e05f3ea1425ea4a2c2ea18b",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/PrimePrefixOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/PrimePrefixOracleTest.kt",
+    "sha256": "e6e9896c9bf34b636d781f5727854a000c9b560ef9802cbcb2333af8c80a7253",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/PrimeSearchRange559Test.kt",
+    "after": "test/io/heapy/krogu/math/PrimeSearchRange559Test.kt",
+    "sha256": "e38aab7ebcf00eace3323b33f75d4fe36a5740e2d35a8728feef8331d019f777",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/PublicWorkerComparator539.kt",
+    "after": "test/io/heapy/krogu/math/PublicWorkerComparator539.kt",
+    "sha256": "aeb5f76f219ed5c1e421f21812381899e6b9b1e810b17c033988d2b68683fc38",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/RandomIntegerDistributionTest.kt",
+    "after": "test/io/heapy/krogu/math/RandomIntegerDistributionTest.kt",
+    "sha256": "45b95995c0c0f3c88204528ad6378cce6e58a08c1d36888e6c73c4c8440a2b87",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/ScaleBoundaryOracleTest.kt",
+    "after": "test/io/heapy/krogu/math/ScaleBoundaryOracleTest.kt",
+    "sha256": "f00c07f6adbb89f6972f1c92c55fa2dddf26516fca2557d09eefcd140f0cf946",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/ScaledDivisionMidpoint584Test.kt",
+    "after": "test/io/heapy/krogu/math/ScaledDivisionMidpoint584Test.kt",
+    "sha256": "f3b76ad72fa1215646749f0716d9ec1a55efca6ff17c7061f4c7109c42f410bb",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/SelectedMultiplicationPolicy539Test.kt",
+    "after": "test/io/heapy/krogu/math/SelectedMultiplicationPolicy539Test.kt",
+    "sha256": "4bc0809634ea02a119c3bd09558f771dabc1ce6967440487efb012e7bf76157d",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/ShiftSubclassTest.kt",
+    "after": "test/io/heapy/krogu/math/ShiftSubclassTest.kt",
+    "sha256": "27ab05d34677becea3b53b283f45c16c35512c0f22571aa851f6ae9b5565b1b0",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/SqrtCohort587Comparison.kt",
+    "after": "test/io/heapy/krogu/math/SqrtCohort587Comparison.kt",
+    "sha256": "97d0aeca46ad8137d9f82408484690552228b7bfb48e7dc62b7accf9d5db994d",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/SqrtCohort587ComparisonTest.kt",
+    "after": "test/io/heapy/krogu/math/SqrtCohort587ComparisonTest.kt",
+    "sha256": "30819810489a8264400d32e821f98a9a3101840e10ef136f4f775c2ed5ebc324",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/TextOutput537Test.kt",
+    "after": "test/io/heapy/krogu/math/TextOutput537Test.kt",
+    "sha256": "fb7e577df0282792f0dbf15898bab8bb82862769b76f857f9b6f1bbfa279aecb",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/TextParsing537Test.kt",
+    "after": "test/io/heapy/krogu/math/TextParsing537Test.kt",
+    "sha256": "24eacd9edf5b236d0d1543b12b694b8e2e014fa6475b2d2239ca5314a32beeac",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/UnaryNull576Rows.kt",
+    "after": "test/io/heapy/krogu/math/UnaryNull576Rows.kt",
+    "sha256": "0b5fb42fa8bdc8a9e35f129aeb26762e315ece9db965d989bd0c7e17d3b703c4",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/UnaryOracleEvaluator.kt",
+    "after": "test/io/heapy/krogu/math/UnaryOracleEvaluator.kt",
+    "sha256": "9e5779dc42889dfc04558ee504ceb379caa26addded31c5aee35a79868bd330d",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/Validation578RngRows.kt",
+    "after": "test/io/heapy/krogu/math/Validation578RngRows.kt",
+    "sha256": "298dcc56ab22d5ed1b0849a647c5e3140ec7b9ca9c2aacbc258805c0e22bf8a0",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/ValueIdentityContractTest.kt",
+    "after": "test/io/heapy/krogu/math/ValueIdentityContractTest.kt",
+    "sha256": "d2770af18c2fdbe462aa27ebfb68888e1789757c1de208d634e632d1a4db9452",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/ZeroContextScale567Test.kt",
+    "after": "test/io/heapy/krogu/math/ZeroContextScale567Test.kt",
+    "sha256": "cb2f2270a5ff547c4364fc8886bc4b87a80f658756760ee23b52930316d9fbf7",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/ZeroSqrtNull568Test.kt",
+    "after": "test/io/heapy/krogu/math/ZeroSqrtNull568Test.kt",
+    "sha256": "cb7694329378c4ccf110200c9e88ef7626b533df05f0fecc72c314ddb572599b",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/ZeroUnaryPrecision567Test.kt",
+    "after": "test/io/heapy/krogu/math/ZeroUnaryPrecision567Test.kt",
+    "sha256": "fe10c2f7493106dd6c14d567d469591c3a956c8bd6402cf7bac4d208a28c6c1c",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinArithmeticOperator595Test.kt",
+    "after": "test/io/heapy/krogu/math/migration/KotlinArithmeticOperator595Test.kt",
+    "sha256": "150c4aaba34ccf45cdc7e9c36dc380132f36339bc61ab177e51039ab11c064be",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinConversionExtensionsContractTest.kt",
+    "after": "test/io/heapy/krogu/math/migration/KotlinConversionExtensionsContractTest.kt",
+    "sha256": "c3dcdca1b71a2cbe96f811a189cb2b5248d9d58d25ca54af84a4cff743e7dd35",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinFloatingConversionContractTest.kt",
+    "after": "test/io/heapy/krogu/math/migration/KotlinFloatingConversionContractTest.kt",
+    "sha256": "e95b4029da6c781746aeb206649b7777f97bef2030edd9e1859af0df796f5556",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinLowestSetBitPropertyContractTest.kt",
+    "after": "test/io/heapy/krogu/math/migration/KotlinLowestSetBitPropertyContractTest.kt",
+    "sha256": "5cc13de72495e042d1f268306ac0789bef94ff95a9b856f1b01f84893334cc74",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinNumberConversionWorkaroundTest.kt",
+    "after": "test/io/heapy/krogu/math/migration/KotlinNumberConversionWorkaroundTest.kt",
+    "sha256": "a0b74610bbe679d1e791bbaed7b076c9bd5121527915a142e8a06ce578a5b153",
+    "equal": true
+  },
+  {
+    "before": "src/commonTest/kotlin/io/heapy/krogu/math/migration/KotlinOperatorMigrationContractTest.kt",
+    "after": "test/io/heapy/krogu/math/migration/KotlinOperatorMigrationContractTest.kt",
+    "sha256": "6fb714aedd87c971de7c5f12f78233429ce08e998c6e7c57f22a7ee93ae435cc",
+    "equal": true
+  },
+  {
+    "before": "src/jsMain/kotlin/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+    "after": "src@js/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+    "sha256": "7cbe1e26e471417281765f326873f001f9318e57c050769bc94b6953c64687bf",
+    "equal": true
+  },
+  {
+    "before": "src/jsMain/kotlin/io/heapy/krogu/math/NodeParallel539.kt",
+    "after": "src@js/io/heapy/krogu/math/NodeParallel539.kt",
+    "sha256": "54abb18b70ed3ffd5b7d705df02b293168d6c155920acac13f735863a9f3bf87",
+    "equal": true
+  },
+  {
+    "before": "src/jsTest/kotlin/io/heapy/krogu/math/Calibration539Platform.kt",
+    "after": "test@js/io/heapy/krogu/math/Calibration539Platform.kt",
+    "sha256": "e79182543ae2d04fdf56725d4dc1dd355418948afa622c92855ea584a13db979",
+    "equal": true
+  },
+  {
+    "before": "src/jsTest/kotlin/io/heapy/krogu/math/NodeParallelFrontend539Test.kt",
+    "after": "test@js/io/heapy/krogu/math/NodeParallelFrontend539Test.kt",
+    "sha256": "614eb8aab9a391dbd9efdb9c4cef26d3f26355f850f7c69c1bf91206769f6268",
+    "equal": true
+  },
+  {
+    "before": "src/jvmMain/kotlin/io/heapy/krogu/math/JavaMath.kt",
+    "after": "src@jvm/io/heapy/krogu/math/JavaMath.kt",
+    "sha256": "ca29d078e3c849a76b31b9b0d6ed72b01385631f7d7c5c05902eb1ed77015101",
+    "equal": true
+  },
+  {
+    "before": "src/jvmMain/kotlin/io/heapy/krogu/math/MathSerializable.kt",
+    "after": "src@jvm/io/heapy/krogu/math/MathSerializable.kt",
+    "sha256": "78339b9f784b14e8fc95b8f5a108673fb500546ea2afe27d7b85f9be8330da5f",
+    "equal": true
+  },
+  {
+    "before": "src/jvmMain/kotlin/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+    "after": "src@jvm/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+    "sha256": "59293c5344ab2d3f7ac8ffe82072a6f11cb7cf8c9799453da32c0a1489f0395a",
+    "equal": true
+  },
+  {
+    "before": "src/jvmMain/kotlin/io/heapy/krogu/math/ParallelCandidate539.kt",
+    "after": "src@jvm/io/heapy/krogu/math/ParallelCandidate539.kt",
+    "sha256": "87b182a59826654a455ed8d03ca1c879726deedbc7e5eb643cbe4de5922a5d11",
+    "equal": true
+  },
+  {
+    "before": "src/jvmMain/kotlin/io/heapy/krogu/math/ParallelMultiply539.kt",
+    "after": "src@jvm/io/heapy/krogu/math/ParallelMultiply539.kt",
+    "sha256": "8be09f521c27435881b1f40663f42832a662cd19dcf57c3e19261a91d0a10b52",
+    "equal": true
+  },
+  {
+    "before": "src/jvmMain/kotlin/io/heapy/krogu/math/PlainStringAllocationJvm.kt",
+    "after": "src@jvm/io/heapy/krogu/math/PlainStringAllocationJvm.kt",
+    "sha256": "d38901a90aad1fe497e630cc37d6a3d30f711bda3d0dc88c3cfba578cf628bfa",
+    "equal": true
+  },
+  {
+    "before": "src/jvmMain/kotlin/io/heapy/krogu/math/PlatformRandomJvm.kt",
+    "after": "src@jvm/io/heapy/krogu/math/PlatformRandomJvm.kt",
+    "sha256": "5acb4c2184f981699c5fec755bf223ab61a441af84275c5151da6cc4fde345fb",
+    "equal": true
+  },
+  {
+    "before": "src/jvmMain/kotlin/io/heapy/krogu/math/PowArrayBounds.kt",
+    "after": "src@jvm/io/heapy/krogu/math/PowArrayBounds.kt",
+    "sha256": "85aec8fb091af53f7ae084b1e4b5f1d98fe01ef5bc4103e32297ec4051d56c78",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/BitwiseSubclassContractTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/BitwiseSubclassContractTest.java",
+    "sha256": "3424e86912b75e68ef8d7c094592576e60ab255f4bbc966f712dd7547cef8676",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/ComparisonDispatch574Test.java",
+    "after": "test@jvm/io/heapy/krogu/math/ComparisonDispatch574Test.java",
+    "sha256": "75824838880538d122e4733aa1573055b9e37dae18eb2d1a49c5e4859b698e3a",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/ComparisonNull574.java",
+    "after": "test@jvm/io/heapy/krogu/math/ComparisonNull574.java",
+    "sha256": "1e9d3921ac1e36bdbcaa1e80e7ce71dc8fec7548ad9752362acba72c95b7fab7",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/DecimalBinary575Adapter.java",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalBinary575Adapter.java",
+    "sha256": "6fc864e8962ef75ecff5c5ec83f0b430dbcdcfc7118eb7c543c939cb2404c09a",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/DecimalBinary575BoundaryTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalBinary575BoundaryTest.java",
+    "sha256": "3b52db7ddd221be0c5133ed5ecc4c85a95fb87b3211a29d79cf58665678599c9",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/DecimalBinary575StandaloneTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalBinary575StandaloneTest.java",
+    "sha256": "f3ac2a23ff2f2f7080fa1a38e5e7b0289d104017a3b20b4cc2f45863d0ce687c",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/DecimalContextNullDelegationTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalContextNullDelegationTest.java",
+    "sha256": "12b4566f332b60043dfeaa11e4b5e828fafc85187c538f3f22f4f45f5ac63a9f",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/DecimalIntegralNullDelegationTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalIntegralNullDelegationTest.java",
+    "sha256": "473623e6766e959299f8ba7ac9ed65431bea122fc3be3450248eb6ff1c3433cb",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/DecimalMinMaxSubclassTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalMinMaxSubclassTest.java",
+    "sha256": "c98e27503439ec4c4f31ea819db53e7316ecc23180ccdfea1ca0c98d2fdfe513",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/DecimalNullOperandDelegationTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalNullOperandDelegationTest.java",
+    "sha256": "9c0fd8563e0707b9b370252774b61e862cbeba2c6a576827e0aee75a2bb43ad7",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/DecimalNullRoundSubclassTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalNullRoundSubclassTest.java",
+    "sha256": "3667738c4fe954e852536dd3e645760a81b0d8e201a443f3cdb8b01488262fad",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/DecimalNullUnarySubclassTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalNullUnarySubclassTest.java",
+    "sha256": "b13b7450d81151330264ff249f7805c25c3b47bbfe38271a538fb163b3c14f30",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/ExactConversionSubclassTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/ExactConversionSubclassTest.java",
+    "sha256": "641baafd1ad69eee6c70163df40e716d9e66eeeaef6f0b59f34d071c01570a49",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/ExplicitDecimal534JavaTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/ExplicitDecimal534JavaTest.java",
+    "sha256": "4ab3118002e0bc3e1acf7339a0564ee3f812cf534a22e00ec83f18d528f4d27b",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/HashSubclassContractTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/HashSubclassContractTest.java",
+    "sha256": "1d68d801d1e9e2ac57e34f3ee457dd3d7a257b2c1da97112f629695a8c70d5ca",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/IntegerBitsNullTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/IntegerBitsNullTest.java",
+    "sha256": "d68b164422ae540578d1b44c69e1e8337b192aa2cdd35ac01ce818ee669afe54",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/IntegerDivisionSubclassTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/IntegerDivisionSubclassTest.java",
+    "sha256": "07c085792b672e506ff66803161293f87eef8511c6c07acee78c06f3c964efc4",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/IntegerGcdSubclassTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/IntegerGcdSubclassTest.java",
+    "sha256": "1f6e09c74df774aba52d9ffffd82fce44d9057ae60cd68e178d9a69970e38793",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/IntegerInverseNullTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/IntegerInverseNullTest.java",
+    "sha256": "cb1346e75ea470e129e0c2ecdb5259983a5db3ad6745f453b3cd68fc5e9dc7ce",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/IntegerMinMaxSubclassTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/IntegerMinMaxSubclassTest.java",
+    "sha256": "75abaec203c11eb5d6f96d81be05808b8c9ee495bb88bad441c617baa09867ca",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/IntegerModPowNullTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/IntegerModPowNullTest.java",
+    "sha256": "7456fd2b38996ed32ff43593bd70ef3fe33770e55c71804db409893f5beec934",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/IntegerPowSubclassTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/IntegerPowSubclassTest.java",
+    "sha256": "c4f131c45f886a27752014c867ea737403af8b1a4f1f1a3a581322e70ce9b44d",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/IntegerSqrtSubclassTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/IntegerSqrtSubclassTest.java",
+    "sha256": "afbc93421bee8dc57f8624ed56f1337bf763c0c0b843d35bac469b04cafd2d3b",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/IntegerSubtractSubclassTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/IntegerSubtractSubclassTest.java",
+    "sha256": "52235cbe7961629203d27c0e4d1fc7ff32e7b4b11cc2e407ace65bddc182b66d",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/JavaApiContractTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/JavaApiContractTest.java",
+    "sha256": "169894cb303ee9de556ed94595a92e237ef71f27dc7016d4ef0bbf50350a8d50",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/OddModulusContext538NullTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/OddModulusContext538NullTest.java",
+    "sha256": "41cd6eddbe93f45c0c98a19f927a07081da39e897e46cc9a0250eaba18592707",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/PrimitiveConversionSubclassTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/PrimitiveConversionSubclassTest.java",
+    "sha256": "129adbaa01ad37b38912699cb536854e06d8eca23a8aeeebde89318928911492",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/ShiftSubclassContractTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/ShiftSubclassContractTest.java",
+    "sha256": "89670722a30f64588cdf0426d8d3b1f883ec8b3057bb7c60ec1c2e46660364b1",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/TextApi537JavaTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/TextApi537JavaTest.java",
+    "sha256": "4e90fac92ca10ad7ec5da75c7e70347c9cfd56862cad6f158bae01258547ef54",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/UnaryNull576Boundary.java",
+    "after": "test@jvm/io/heapy/krogu/math/UnaryNull576Boundary.java",
+    "sha256": "b7009b10ca495f75fce60f5ed78536a5b6804579b0962caedc6daa1a2d4abd8a",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/UnaryNull576StandaloneTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/UnaryNull576StandaloneTest.java",
+    "sha256": "7e22442697105537b6f039350c27d67c543724cf70d48a74cbf737fd7120d38a",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/Validation578Boundary.java",
+    "after": "test@jvm/io/heapy/krogu/math/Validation578Boundary.java",
+    "sha256": "b6d3e673282625d9cfac8f6ec2b216d943411e4e5d4bd38d714c9bbc40b6912c",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/Validation578StandaloneTest.java",
+    "after": "test@jvm/io/heapy/krogu/math/Validation578StandaloneTest.java",
+    "sha256": "a1807219e57f02e78eaca892e2d8d50a06efe976bdbc31c9639338bcc9d41e39",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/java/io/heapy/krogu/math/ZeroNullForwarding567Test.java",
+    "after": "test@jvm/io/heapy/krogu/math/ZeroNullForwarding567Test.java",
+    "sha256": "bcff25140cd124e18694149f91fccbb9940a93421c8eba4b8cbb9b70bc188da2",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/ApiSurfaceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/ApiSurfaceTest.kt",
+    "sha256": "4e190dc8879fdd0658e29fa9a99b662dc4dbb3629edd0f5d362c62d5c3be13a0",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/BinaryRepresentationConformanceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/BinaryRepresentationConformanceTest.kt",
+    "sha256": "2b0e75e30354fe7e271d0efc98dd93dea66b56fde8eae61aec0189fe1557b67f",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/Calibration539Platform.kt",
+    "after": "test@jvm/io/heapy/krogu/math/Calibration539Platform.kt",
+    "sha256": "1b75f62dd7abe420d2acac7d4f0230010163c4e8daf14ff8f35503c964242f26",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/CanonicalDoubleConformanceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/CanonicalDoubleConformanceTest.kt",
+    "sha256": "d7b0cd4944b56216190b1c3ad7ca3e9b28d54fca5f258ffe33edbb8348abcbb6",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/CompactDecimal529JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/CompactDecimal529JvmTest.kt",
+    "sha256": "d2b78afcc59746877e001753b5749fec3a3426243f28a2dc4cd2b109c8eecd40",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/CompactNormalization597JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/CompactNormalization597JvmTest.kt",
+    "sha256": "3df15131436c64a14d9cc59d0e7c46cffa1c22aa473332e0c7eb8a4ea4f82091",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/CompactStorage529JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/CompactStorage529JvmTest.kt",
+    "sha256": "d7d1550618cb9b2af40bdfb87b43503d3dcb37cfde2d7bac4d01339e1f65ea78",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/ComparisonNull574JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/ComparisonNull574JvmTest.kt",
+    "sha256": "cff33f55c5fcc138a10c905ea8be6f1721439ed9160950f31ab42c76441cb5cc",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/CurrentFormatCoefficientCarrier529.kt",
+    "after": "test@jvm/io/heapy/krogu/math/CurrentFormatCoefficientCarrier529.kt",
+    "sha256": "a652921564deab561a4ed6aab796d6e62bfd8086ebfa0866d703bb2c529b497d",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalAccumulator535JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalAccumulator535JvmTest.kt",
+    "sha256": "a7102f7ad2500a2d005d2e630dad5a0e9bb59206581e00ef59946496d2f01696",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalAlignmentErrorTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalAlignmentErrorTest.kt",
+    "sha256": "2a5cb5eeaa68eda163c44157ce626d7c213d8e2c3a47bf273b74219a6c69a510",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalBinary575JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalBinary575JvmTest.kt",
+    "sha256": "20ade1c43ad2b9df871d5b3fc94f6e0ebd70a11085d81a9e74bdcbc283bb1a49",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalBinaryCancellationJdkTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalBinaryCancellationJdkTest.kt",
+    "sha256": "dad8a1cf9e862902bb3c67b5ba75cb8094a8abb1d8ae976a4dde5af4f2ca55eb",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalCompactFloatingTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalCompactFloatingTest.kt",
+    "sha256": "b99fe2f2cb18cff4b8529b67dc5c9f7205524dd0148b19de9d47e3d2d21b6ac5",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalComparisonSubclassTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalComparisonSubclassTest.kt",
+    "sha256": "643fe8cb8afb377a2a6cab985c1fde796076cd4271d1fdf9c3c26c64f3201ec6",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalConformanceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalConformanceTest.kt",
+    "sha256": "a6dccd59f84d11509bc3a45178fe28eead7bf4a540d0eb6fa0a3431cc56e4e1f",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalContextDivision581SubtypeJvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalContextDivision581SubtypeJvmTest.kt",
+    "sha256": "ddf7525e3be611ddb1dd8698206b3c26da50c60f9690cf01bfd590eef3de6138",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalDivisionNormalization594SubtypeJvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalDivisionNormalization594SubtypeJvmTest.kt",
+    "sha256": "5d7183002d341b6a23c80b01bb6af9c5b9859ef2a1bebc53a65cde903ff23dcf",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalDivisionPrecisionTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalDivisionPrecisionTest.kt",
+    "sha256": "1ad11c367327a0f62813a3ed426a302d0a7b9e273f2d2868cfc1e74bfd5f0259",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalExactConversionTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalExactConversionTest.kt",
+    "sha256": "59ae51916bb65bed39a7d2e32a6a61c116236b73ab5a9d6efd43198ae77d061c",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalExactRoot563DiagnosticTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalExactRoot563DiagnosticTest.kt",
+    "sha256": "7e0b427bee253718b7c55277659484e26254efb306ed056f008f2f0e6b2a4d65",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalFormattingSubclassTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalFormattingSubclassTest.kt",
+    "sha256": "9144832e138ed5e7812c5c64caa574574ff282d77ebe4cca99b1ef1b36d3f4d2",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalIntegralQuotient582SubtypeJvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalIntegralQuotient582SubtypeJvmTest.kt",
+    "sha256": "988b0eac90e9ebc0f8fe3860a6213bf05ff9aee6689467c3e8085a8d3783c9c0",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalKey536JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalKey536JvmTest.kt",
+    "sha256": "b16a3a2d7f92450e9fe1fa700ea222677f5b92229c9eac415585db084acfc54c",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalMetadata597JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalMetadata597JvmTest.kt",
+    "sha256": "a6703b89b91fe9d7a8f1d7c305f5b4b046d9ce3dcc9ba9ba04e6948dd5490284",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalMultiplicationSubclassTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalMultiplicationSubclassTest.kt",
+    "sha256": "5b74882bb399450da9dff9debeb29a3355495e4cff507bbe59fc6379cfcb012d",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalNormalizedRootTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalNormalizedRootTest.kt",
+    "sha256": "069181bea07ea9bf54512d99d440554344dfe1148a50e6ddd9076126d760772b",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalNumericMetadataJdkTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalNumericMetadataJdkTest.kt",
+    "sha256": "9b002284f9428601ef548305ab4ddd68e6a52d380d91211d3fef5e0d3c210b70",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalOperatorConformanceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalOperatorConformanceTest.kt",
+    "sha256": "d2eb29a8059ebd655e4179cd32590731dd344b2bd6306ac2aee84b7715c44a85",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalPointMovementTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalPointMovementTest.kt",
+    "sha256": "460f768c9329586ee036b0ebb510f67b3cf073f68c06013376c18f2da950adc3",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalPower593SubtypeJvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalPower593SubtypeJvmTest.kt",
+    "sha256": "9ab4b9638f0b4c020e67986c3d19bba45b49a6463ea6232496dc46ed543e3558",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalPowerBoundaryTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalPowerBoundaryTest.kt",
+    "sha256": "f4ed1092214943950ad2ed7de82b89254130ab598a987b0cc988c4b50c4150e2",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalPowerSubclassTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalPowerSubclassTest.kt",
+    "sha256": "63cb2caddc0df78d808ea5db59453bef3d317226a790d4154759dbca7c38cc90",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalPowerValidationTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalPowerValidationTest.kt",
+    "sha256": "b778e7a356a9f41c6d14f5783431ad8b581130551a1d85ffc2ce1d7de1e52071",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalResidual583SubtypeJvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalResidual583SubtypeJvmTest.kt",
+    "sha256": "686b0157d04e5c375f8c7b6afe008b6503def147e6de7dfa05987bde8b1e7906",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalRoundSubclassTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalRoundSubclassTest.kt",
+    "sha256": "5f01e2530685ff72a5bae6b0b6528ba774954e241860163c6e801205ff3a40ef",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalScaleRoundingRepairJvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalScaleRoundingRepairJvmTest.kt",
+    "sha256": "3b30f1d1570cb36543f8eb18df069241fbf97b551c6a86123924fc5d13285bda",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalScaling533JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalScaling533JvmTest.kt",
+    "sha256": "f2b0a097bd3ba4bf37c7017e867532180fca02955b45b5a966100409d11b4bf4",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalSqrtMidpoint565JdkTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalSqrtMidpoint565JdkTest.kt",
+    "sha256": "3163ee36357a6a76a435e269864ec4b24f3c135e07b782570db46c79ed95cb1b",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalSquareRoot579SubtypeJvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalSquareRoot579SubtypeJvmTest.kt",
+    "sha256": "acbd8aa05a40a3c555d5d5c0eb62e3e0f28a307001209ef1432914fc66a6a04c",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalStringCacheTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalStringCacheTest.kt",
+    "sha256": "e87221fb092903ba99ca79fbc23715b1e92c3a996bd0b313c3d56af4fa86ea75",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalSubtractionSubclassTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalSubtractionSubclassTest.kt",
+    "sha256": "58e4272c3029985bda202c6743154643d7fd28ce1dd45b944f479ccc54d2692e",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalSum585SubtypeJvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalSum585SubtypeJvmTest.kt",
+    "sha256": "e234fe10489f8bc93969129b5b9a2129f0378e6c74d2f238194ce3d855ab5be2",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalText588CallerJvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalText588CallerJvmTest.kt",
+    "sha256": "dc12d8dac80587d2fd26f87f72814968259497b4eecd0b13f073fe5574fe620c",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DecimalUnarySubclassTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DecimalUnarySubclassTest.kt",
+    "sha256": "02c8c0baff56978edd43d22bfb8e9bc3107d112fa641b6f06f3e261b85525be4",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/Division530JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/Division530JvmTest.kt",
+    "sha256": "4642ffbd0ebf050eadfe518050b4ebcb7ed32dd1401da52418a40a129a84ca57",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/Division530SelectionJvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/Division530SelectionJvmTest.kt",
+    "sha256": "8313d3111babc31a2022fb501ad060d73e12cd46c8a27363cabf2eb47ef8f209",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/DoubleZeroContext569DiagnosticTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/DoubleZeroContext569DiagnosticTest.kt",
+    "sha256": "56ed605cab3f7eb8e703bd171baec2674a6dcc4a7e70a13b5fa944e03a5cdf32",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/ExplicitDecimal534JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/ExplicitDecimal534JvmTest.kt",
+    "sha256": "7ed44a3a8de751d539bf5e158a4b8b0964919efd6139665ebb536ebb7c01e30f",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/IntegerArithmetic544JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/IntegerArithmetic544JvmTest.kt",
+    "sha256": "e4b71fe6309877026ff4694cdc5ced02ad1c804df1949f7ea1506f5761fdfee4",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/IntegerBits545JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/IntegerBits545JvmTest.kt",
+    "sha256": "54d7b0581240df20ca0dd99fe06fb50777070004447ed997ac4f8cd0c20b1a10",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/IntegerMultiplication532JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/IntegerMultiplication532JvmTest.kt",
+    "sha256": "f38df9e33abdef1a894debf39b874295466fd6d8ff2795711554e7ff6ac45af9",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/IntegerMultiplication532Probe.kt",
+    "after": "test@jvm/io/heapy/krogu/math/IntegerMultiplication532Probe.kt",
+    "sha256": "360a7cc3f54fb8c9373be0725340f52fb9cd1f4d986b6a6353eca62ed3c04adf",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/JdkOracleTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/JdkOracleTest.kt",
+    "sha256": "db13e0228e8027d156ca0e861baff82ce90a142d17e478363d8f1207e4735158",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/KotlinSubclassContractTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/KotlinSubclassContractTest.kt",
+    "sha256": "c88601cc3f476a1fb92300c064f829abe9fb90f87732dab4f3b2ac99e7230bd4",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/ModulusReuse538JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/ModulusReuse538JvmTest.kt",
+    "sha256": "edec35bf146b88d8fd8bd9ccb9aa83cb9a1f2e29b935e7ce7d81ff5f0e240e5e",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/NullArgumentConformanceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/NullArgumentConformanceTest.kt",
+    "sha256": "272e5dc384dae7761041e1afe58c7c530bf7ce5d05c37579b9d9febe6a3348ea",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/NullPrecedenceOracleTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/NullPrecedenceOracleTest.kt",
+    "sha256": "cd996aabc597ec1ddee157c079aa2bb1796e06e5c295fdc6595bb09987211757",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/NumericText537Probe.kt",
+    "after": "test@jvm/io/heapy/krogu/math/NumericText537Probe.kt",
+    "sha256": "87f7e0c50d830aacf8eeef4bb716e6db9c0f96f122119072302c3b2eccbcf3c3",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/OddModulusContext538JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/OddModulusContext538JvmTest.kt",
+    "sha256": "99cc2da61d12ca470d7da343c035540e22babfe6499eae4004e44c0de04a8b60",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/ParallelCalibration539JvmMain.kt",
+    "after": "test@jvm/io/heapy/krogu/math/ParallelCalibration539JvmMain.kt",
+    "sha256": "b55eb23aafbd3e838a834d4f28873f31cd970fa3d0aeec6f76ae4441e8fa2267",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/ParallelCandidate539JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/ParallelCandidate539JvmTest.kt",
+    "sha256": "4982cf997879f212015a53bd6d3b8543729553d6d6abe97f2ada1fe97981cbc7",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/PlainStringPreflightJvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/PlainStringPreflightJvmTest.kt",
+    "sha256": "a2357c2bc6728924775cfd18f97a2944796ca130043be17a5ffc0c6ad87062ef",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/PrimalityConformanceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/PrimalityConformanceTest.kt",
+    "sha256": "d5d4840fe23302ee376bd78b2430ff375f78d2a607a143144fb49a45d135de7a",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/PublicParallelFrontend539JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/PublicParallelFrontend539JvmTest.kt",
+    "sha256": "45e628e4d969ba5d5295f6859f3297dcdf9f2d81e0128858e92420edecbb26da",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/ScaleBoundaryConformanceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/ScaleBoundaryConformanceTest.kt",
+    "sha256": "87c792d777c4d2e7729cb65128b0780587e6457e1efc223b9f4bcbb12e57652c",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/ScaledDivisionBoundaryTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/ScaledDivisionBoundaryTest.kt",
+    "sha256": "cddf909120528f1856806a7244bea4ab7565686000339dadf7a899eed889f2cb",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/ScaledDivisionZeroTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/ScaledDivisionZeroTest.kt",
+    "sha256": "2dcb6f932dc63c415069327d4dff09fb649acca24f03c6e865eca55584dfa69b",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/SerializationConformanceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/SerializationConformanceTest.kt",
+    "sha256": "ae62f8d71de41b555264c04d2361caf334c81630c91804415c8c9e5870125f71",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/SetScaleBoundaryTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/SetScaleBoundaryTest.kt",
+    "sha256": "7d461103e22302ecb121ad281bb8f3e4fe8beaa490ec35cacbb1c39981f613ee",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/TextOracle537JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/TextOracle537JvmTest.kt",
+    "sha256": "78c91bfbff4562cc16bd6297a96d2f4732d091e0911a61f25f3bc0eead8a543a",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/UnaryNull576VectorsTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/UnaryNull576VectorsTest.kt",
+    "sha256": "c843fe74d532e0f5193f66c01158185ccd7cf6d8908978f0a1c17880aa56bffc",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/Validation578RngTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/Validation578RngTest.kt",
+    "sha256": "165a5aaa2ee7a158240dc5008eb22c3b47121b91814f549879222ca4de2b6721",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/ValueIdentityConformanceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/ValueIdentityConformanceTest.kt",
+    "sha256": "fde54f7a9bf1dc8f936927fe1722ceee27b4ce24947c920712e20abac97109e3",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/ZeroSqrtNull568DiagnosticTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/ZeroSqrtNull568DiagnosticTest.kt",
+    "sha256": "95698b8fde2779400cfb4dadb2c0bea02b383da9d7aa372b45c0f2343a068ca9",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/migration/KotlinArithmeticOperator595JvmTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/migration/KotlinArithmeticOperator595JvmTest.kt",
+    "sha256": "c5f3909a5109cc458e729aba61e46b420b4c9c1b16758f9d0be34afc0f2fffcf",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/migration/KotlinConversionExtensionsConformanceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/migration/KotlinConversionExtensionsConformanceTest.kt",
+    "sha256": "0171cac9a6096665b19848d0c91d6dc3798a232406e937314fe0b7f398b29053",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/migration/KotlinFloatingConversionConformanceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/migration/KotlinFloatingConversionConformanceTest.kt",
+    "sha256": "178aca984dea5292bb487ce851144f81b179316d7e1447af65fb995b28923d28",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/migration/KotlinLowestSetBitPropertyConformanceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/migration/KotlinLowestSetBitPropertyConformanceTest.kt",
+    "sha256": "bb433664b04936771b9270ea62864600c5e610ad68c944229edaa0d67590e397",
+    "equal": true
+  },
+  {
+    "before": "src/jvmTest/kotlin/io/heapy/krogu/math/migration/KotlinOperatorMigrationConformanceTest.kt",
+    "after": "test@jvm/io/heapy/krogu/math/migration/KotlinOperatorMigrationConformanceTest.kt",
+    "sha256": "37ef68acee3d10c5f66693bc4549a45ec09562906e22d764702cc70f73e26211",
+    "equal": true
+  },
+  {
+    "before": "src/nativeMain/kotlin/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+    "after": "src@native/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+    "sha256": "7367912e33ec1042234c8298a602bf454addfc4c7a912bb50814786f09d61508",
+    "equal": true
+  },
+  {
+    "before": "src/nativeMain/kotlin/io/heapy/krogu/math/NativeParallelEngine539.kt",
+    "after": "src@native/io/heapy/krogu/math/NativeParallelEngine539.kt",
+    "sha256": "3e04d57e0e1960c5518710f766518608bef27152dae94b85b5b30da31ca53865",
+    "equal": true
+  },
+  {
+    "before": "src/nativeMain/kotlin/io/heapy/krogu/math/NativeParallelMultiply539.kt",
+    "after": "src@native/io/heapy/krogu/math/NativeParallelMultiply539.kt",
+    "sha256": "31b5d8e7d77c3160d83631cd94a7db18c12387cc48caaa3e31fee92bb578b1b0",
+    "equal": true
+  },
+  {
+    "before": "src/nativeMain/kotlin/io/heapy/krogu/math/NodeParallel539.kt",
+    "after": "src@native/io/heapy/krogu/math/NodeParallel539.kt",
+    "sha256": "b1f33c394389904f9029783bf801e7b46c352d8865da7f0998591bdacfc3245c",
+    "equal": true
+  },
+  {
+    "before": "src/nativeTest/kotlin/io/heapy/krogu/math/Calibration539Platform.kt",
+    "after": "test@native/io/heapy/krogu/math/Calibration539Platform.kt",
+    "sha256": "afaeb2c5429e20d1da5daea5d0725640dae5a07dc89147d497120bca7c3a6c49",
+    "equal": true
+  },
+  {
+    "before": "src/nativeTest/kotlin/io/heapy/krogu/math/NativePublicFrontend539Test.kt",
+    "after": "test@native/io/heapy/krogu/math/NativePublicFrontend539Test.kt",
+    "sha256": "457897b9f5656c9df41cae1d77049a269e5f0e7c0debde52ad818300f70f10ec",
+    "equal": true
+  },
+  {
+    "before": "src/nativeTest/kotlin/io/heapy/krogu/math/NativePublicFrontendCalibration539.kt",
+    "after": "test@native/io/heapy/krogu/math/NativePublicFrontendCalibration539.kt",
+    "sha256": "8e2b8e5308883aed96722c51d0ae8b648a02267b8c50ff62026569f100e677ab",
+    "equal": true
+  },
+  {
+    "before": "src/nativeTest/kotlin/io/heapy/krogu/math/ParallelNativeCandidate539.kt",
+    "after": "test@native/io/heapy/krogu/math/ParallelNativeCandidate539.kt",
+    "sha256": "51aa4df3f0c7c9d57805f76cc5b625db1c7743cfe1a88bb4638c7db9e3696790",
+    "equal": true
+  },
+  {
+    "before": "src/nativeTest/kotlin/io/heapy/krogu/math/ParallelNativeCandidate539Test.kt",
+    "after": "test@native/io/heapy/krogu/math/ParallelNativeCandidate539Test.kt",
+    "sha256": "94c503a91247c059da924ad9ba90a5ca6a188b74cf9dec55587f2ad7f356b528",
+    "equal": true
+  },
+  {
+    "before": "src/nonJvmMain/kotlin/io/heapy/krogu/math/MathSerializable.kt",
+    "after": "src@nonJvm/io/heapy/krogu/math/MathSerializable.kt",
+    "sha256": "6d0d7add0cd5846a7ed15326902aabd82c5e5865e8703f4c430202e4fa13b16b",
+    "equal": true
+  },
+  {
+    "before": "src/nonJvmMain/kotlin/io/heapy/krogu/math/ParallelMultiply539.kt",
+    "after": "src@nonJvm/io/heapy/krogu/math/ParallelMultiply539.kt",
+    "sha256": "e0897fd41ec46189a69465fec302e045f64dfef5536dd9de3acc9fa05ea1074f",
+    "equal": true
+  },
+  {
+    "before": "src/nonJvmMain/kotlin/io/heapy/krogu/math/PlainStringAllocation.kt",
+    "after": "src@nonJvm/io/heapy/krogu/math/PlainStringAllocation.kt",
+    "sha256": "1aa0e3554532cf41f9690dd49bf23b94dfc89becc37fd9a630d4de8de4fbd60f",
+    "equal": true
+  },
+  {
+    "before": "src/nonJvmMain/kotlin/io/heapy/krogu/math/PlatformRandom.kt",
+    "after": "src@nonJvm/io/heapy/krogu/math/PlatformRandom.kt",
+    "sha256": "8673184b6bfcd9117a12c91a3152f265afec42f2f17d1309963ac5498c472319",
+    "equal": true
+  },
+  {
+    "before": "src/nonJvmMain/kotlin/io/heapy/krogu/math/PowArrayBounds.kt",
+    "after": "src@nonJvm/io/heapy/krogu/math/PowArrayBounds.kt",
+    "sha256": "e4f40a66f6ed7b1af126ca8ece456996163684c1b84cb3e7e3526381bcd7a289",
+    "equal": true
+  },
+  {
+    "before": "src/wasmJsMain/kotlin/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+    "after": "src@wasmJs/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+    "sha256": "7cbe1e26e471417281765f326873f001f9318e57c050769bc94b6953c64687bf",
+    "equal": true
+  },
+  {
+    "before": "src/wasmJsMain/kotlin/io/heapy/krogu/math/NodeParallel539.kt",
+    "after": "src@wasmJs/io/heapy/krogu/math/NodeParallel539.kt",
+    "sha256": "e2e628fefe5f18e601663539c04841911d88680423d965e0100103df6707f835",
+    "equal": true
+  },
+  {
+    "before": "src/wasmJsTest/kotlin/io/heapy/krogu/math/Calibration539Platform.kt",
+    "after": "test@wasmJs/io/heapy/krogu/math/Calibration539Platform.kt",
+    "sha256": "8c11437c76a2d900b247e43dc7fba530193944ff2993735ad8fd674c7874909c",
+    "equal": true
+  },
+  {
+    "before": "src/wasmJsTest/kotlin/io/heapy/krogu/math/NodeParallelFrontend539Test.kt",
+    "after": "test@wasmJs/io/heapy/krogu/math/NodeParallelFrontend539Test.kt",
+    "sha256": "614eb8aab9a391dbd9efdb9c4cef26d3f26355f850f7c69c1bf91206769f6268",
+    "equal": true
+  }
+]

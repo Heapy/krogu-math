@@ -1,0 +1,383 @@
+{
+  "verdict": "ALL_FOUR_HOST_FAMILIES_STANDARD_BENCHMARK_INTEGRATION_PASS",
+  "technology": "Downloaded and ignored Heapy/ktc-benchmark source at commit 4731c58cddc20d04aeb1e1a64075c8130f4aeb75. Genuine kotlinx-benchmark 0.5.0 and JMH 1.37 generated harnesses; no Gradle benchmark build and no vendored adapter source.",
+  "actual_counts": {
+    "JVM": {
+      "baseline_generated": 128,
+      "baseline_executed": 128,
+      "baseline_forks": 3,
+      "peer_generated": 216,
+      "peer_representative_executed": 16,
+      "fixed_scale_representative_executed": 3
+    },
+    "JS": {
+      "baseline_generated": 64,
+      "peer_generated": 96,
+      "baseline_executed": 3,
+      "peer_executed": 8
+    },
+    "WasmJS": {
+      "baseline_generated": 64,
+      "peer_generated": 96,
+      "baseline_executed": 3,
+      "peer_executed": 8
+    },
+    "macOSArm64Native": {
+      "baseline_generated": 64,
+      "peer_generated": 96,
+      "baseline_executed": 3,
+      "peer_executed": 8
+    }
+  },
+  "method": "All runs use the short smoke profile: one warmup and one measurement iteration of 50 ms. The normal profile was not executed. Full compiler-generated inventory is distinguished from the selected executed subset. Setup checks literal expected outputs, input observations, repeated calls and retained outputs before timing; the baseline JVM setup also compares against JDK expressions. Native results are consumed by the standard harness. No scientific speed ranking or steady-state claim is made.",
+  "receipts": [
+    {
+      "path": ".codex-work/ktc-benchmark-jvm-integration.json",
+      "sha256": "0e270245675ad01e538fb28ce0b2772f4d9ae89333145f9806525b141b692523"
+    },
+    {
+      "path": ".codex-work/ktc-fixed-jvm-smoke-1-receipt.json",
+      "sha256": "a3f5a4b81b72602ffdd7ad16c43fd6cae01479a13bbfb96a5bb84a58a14458d9"
+    },
+    {
+      "path": ".codex-work/ktc-benchmark-js-integration.json",
+      "sha256": "27548241cf48ebf5cd05c28c3720cea2dc7b331b44144c02b83cf3851d63995b"
+    },
+    {
+      "path": ".codex-work/ktc-benchmark-wasm-native-integration.json",
+      "sha256": "9e7447a0aca2c7ea3d2a6f50696e18c94c884b562590c3d117556db8138a519d"
+    },
+    {
+      "path": ".codex-work/ktc-downloaded-restore-proof/receipt.json",
+      "sha256": "b9b1ea25591101df3353994130afb3ac493cd3381e6faba10936febe67515d31"
+    },
+    {
+      "path": ".codex-work/ktc-benchmark-version-and-target-scope.json",
+      "sha256": "089cf04e3010e38de64946238a3df063ad83c37ffc92250540227c7e0701662d"
+    }
+  ],
+  "active_owned_source_bindings": [
+    {
+      "path": "benchmarks/README.md",
+      "sha256": "eb6a6e9c2768ce4f588523105f0f2e3fd216467c83fe26a50dea6f1a4cf39030"
+    },
+    {
+      "path": "benchmarks/check-results.main.kts",
+      "sha256": "6c6883151acb44e22a8ed0472ce744a6339e0ef734f301c9f4f52762da7d013e"
+    },
+    {
+      "path": "benchmarks/generate-jdk.main.kts",
+      "sha256": "2c4a0c67ddde21d9bf41d631e28d17fffafa2c6cc81fa552c597302e31f85960"
+    },
+    {
+      "path": "benchmarks/peers/module.yaml",
+      "sha256": "d74ce2118d7e9df46eb41d5d513dbecc8b2541c5a9db40cdaa95fb353f12c296"
+    },
+    {
+      "path": "benchmarks/peers/src/Contract.kt",
+      "sha256": "5fc973b0a17bc3985757bd19b0cba42fedd6d01e217f2887da6d84e4ac0dc7c5"
+    },
+    {
+      "path": "benchmarks/peers/src/Fixtures.kt",
+      "sha256": "28f6cb57fea7ae1b416473d0f7350242c4e753a1e782ee89526c335402e60830"
+    },
+    {
+      "path": "benchmarks/peers/src/IonsPinAdapter.kt",
+      "sha256": "459bc3eee5cdf5a3728e0a59b474c2506c82926771cc2d4a9500581f99a2d621"
+    },
+    {
+      "path": "benchmarks/peers/src/KroguAdapter.kt",
+      "sha256": "0d2f24c842c036a14e4cb8c738fdcaf80fe8045ba44cdfd7a2d75e8c7c3f02e6"
+    },
+    {
+      "path": "benchmarks/peers/src/PeerBenchmark.kt",
+      "sha256": "750f38312c47835dc9d53181534fa86138851cf2ad4a10492d327bf134605b38"
+    },
+    {
+      "path": "benchmarks/peers/src/PreparedCases.kt",
+      "sha256": "79d693c100170eabddd7ef1c399ce93459f844b6f9591d70ce64ba3d60880c97"
+    },
+    {
+      "path": "benchmarks/peers/src/TextWork598.kt",
+      "sha256": "93ac820532d9212b2a808ce4f98e7625bee0c5164c62efc3e5aa67bbccd0eaa2"
+    },
+    {
+      "path": "benchmarks/peers/src@jvm/FixedScaleBenchmark.kt",
+      "sha256": "2b1038412cb1fff32ff36d66546943cd025a32885a0ee8563c2b64e9f3b2aeb8"
+    },
+    {
+      "path": "benchmarks/peers/src@jvm/JdkAdapter.kt",
+      "sha256": "b29d4d487c9978192e487072e105d1a08551218c4c6ff4cd236d3575597cba4c"
+    },
+    {
+      "path": "benchmarks/peers/src@jvm/JvmPeerBenchmark.kt",
+      "sha256": "6313f840254c76994e5ef87963d2e59ca2367f2768feb91dad7078f462f849c8"
+    },
+    {
+      "path": "benchmarks/peers/src@jvm/KBigNumAdapter.kt",
+      "sha256": "dcd8759a05ee83675f21a14b2e0368dd100ebcf7081250105eef14aed8655120"
+    },
+    {
+      "path": "benchmarks/peers/src@jvm/UntimedFixtures.kt",
+      "sha256": "fa588e999e7bd69af64dbaf86b807a1b6277e46832920616e7a9085a622fd3c7"
+    },
+    {
+      "path": "benchmarks/run.main.kts",
+      "sha256": "d700ec865ebc90341d909c40d7825342bae3a837fb7f57c460502533175f19b7"
+    },
+    {
+      "path": "benchmarks/runners/bench-js/module.yaml",
+      "sha256": "bc37bfcad159f36e8aebe85c15a8bc9b6a5344addcc3180e347271ff51ad476e"
+    },
+    {
+      "path": "benchmarks/runners/bench-js/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/bench-jvm/module.yaml",
+      "sha256": "23b7f3ae4ca0eec97e056b6bd15194a12f7ab8fc2bd8e89899247a8a621141c8"
+    },
+    {
+      "path": "benchmarks/runners/bench-jvm/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/bench-linux/module.yaml",
+      "sha256": "5c780aca3a38a19ef6d556a6328eedd3caff35cc14d8e745ab9f36545e2900e7"
+    },
+    {
+      "path": "benchmarks/runners/bench-linux/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/bench-linux-arm64/module.yaml",
+      "sha256": "2b155580a846f87a38fea598822352d849ffa2a33a59d73aa25ae2668ffa55ac"
+    },
+    {
+      "path": "benchmarks/runners/bench-linux-arm64/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/bench-macos/module.yaml",
+      "sha256": "40f246ea54503d546665138791ae5090724082a5b23a359ab5bdbcc3edfdb93d"
+    },
+    {
+      "path": "benchmarks/runners/bench-macos/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/bench-smoke-js/module.yaml",
+      "sha256": "420bfa4b988df8370dcd0276bd111370667201f32ed58d45e5ab717f6be07f47"
+    },
+    {
+      "path": "benchmarks/runners/bench-smoke-js/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/bench-smoke-jvm/module.yaml",
+      "sha256": "815306baf5b1a480da439fb38579f3aa81ef68ef9b7f56d1098847bae8cfe3c1"
+    },
+    {
+      "path": "benchmarks/runners/bench-smoke-jvm/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/bench-smoke-macos/module.yaml",
+      "sha256": "e02940ada9257b36971ffada9dd9faea6bf701a8d34904f33adf4fdbcf91ce74"
+    },
+    {
+      "path": "benchmarks/runners/bench-smoke-macos/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/bench-smoke-wasm/module.yaml",
+      "sha256": "b429058f652abaa055fca876d48b59573e52d92ff6ada465d957781fc3985d19"
+    },
+    {
+      "path": "benchmarks/runners/bench-smoke-wasm/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/bench-wasm/module.yaml",
+      "sha256": "143f175e9b13d7c7c38247f16b393089636f21f694a0ae136e292efa4ff09e47"
+    },
+    {
+      "path": "benchmarks/runners/bench-wasm/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/bench-windows/module.yaml",
+      "sha256": "deecca92d25ef1cdffc85471f57194d3c4a69ba643fee3e863e72406ad17977e"
+    },
+    {
+      "path": "benchmarks/runners/bench-windows/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/fixed-smoke-jvm/module.yaml",
+      "sha256": "4a10ba5bb5c7e0cfd3178e1f9a6498c1062e43b6fa872c84cf077138a63891b3"
+    },
+    {
+      "path": "benchmarks/runners/fixed-smoke-jvm/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/peer-js/module.yaml",
+      "sha256": "680b454dd2cc13228d24f8b54744acb077bca7fdeaa64bd60a51f7ee2b50db80"
+    },
+    {
+      "path": "benchmarks/runners/peer-js/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/peer-jvm/module.yaml",
+      "sha256": "08a1884c7d06e4c2dd431839ec67f4b7821d4d4d3894cd65b1ba33b93d7ce92f"
+    },
+    {
+      "path": "benchmarks/runners/peer-jvm/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/peer-linux/module.yaml",
+      "sha256": "060edad2e1ccb577d7f54fad87ad4db6e70fa7467880b3d82b0e684cac06c3b2"
+    },
+    {
+      "path": "benchmarks/runners/peer-linux/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/peer-linux-arm64/module.yaml",
+      "sha256": "764476d5364da91adae5b6edbae31023e8ff036aad0b273800113d9ff59a111e"
+    },
+    {
+      "path": "benchmarks/runners/peer-linux-arm64/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/peer-macos/module.yaml",
+      "sha256": "59b64a27a3ed425b777cfe860d46ae11e9d992493ae2c0d0dff275d4bfd22070"
+    },
+    {
+      "path": "benchmarks/runners/peer-macos/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/peer-smoke-js/module.yaml",
+      "sha256": "da99a6942cfd45b43dff1e646c2add59c44e93818f92a449013754265abecab0"
+    },
+    {
+      "path": "benchmarks/runners/peer-smoke-js/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/peer-smoke-jvm/module.yaml",
+      "sha256": "c7cc8d825ccaca6858919a5aa04ad1d0f548a8b26a3083e4dcb15405aee14dae"
+    },
+    {
+      "path": "benchmarks/runners/peer-smoke-jvm/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/peer-smoke-macos/module.yaml",
+      "sha256": "82890713655e2c2622816cad5c4fcc8526ca658c55adf88295810b82c3be2d04"
+    },
+    {
+      "path": "benchmarks/runners/peer-smoke-macos/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/peer-smoke-wasm/module.yaml",
+      "sha256": "8d276beb215e2d3ec97883a5b6166dbf1e07615c7c1e079b173fa5fd936dfc44"
+    },
+    {
+      "path": "benchmarks/runners/peer-smoke-wasm/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/peer-wasm/module.yaml",
+      "sha256": "9bbfaadc763d9b19025e7b4390b0bcf063ddfa7c3e67252fe04c589c7bebc689"
+    },
+    {
+      "path": "benchmarks/runners/peer-wasm/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/runners/peer-windows/module.yaml",
+      "sha256": "3fa34b0d378f7b068d2bcd80e9906335e259f56dda3cf9dbf5ef797311b6219e"
+    },
+    {
+      "path": "benchmarks/runners/peer-windows/src/main.kt",
+      "sha256": "a6a65b65fecea3597eff44183635f23de41718b197f41e84193dcd8ef1b12c0a"
+    },
+    {
+      "path": "benchmarks/standard/module.yaml",
+      "sha256": "576e7af9bcfd79257ccedb6e4b353bc611f2cd53b00b86a0c3a42819a71cda3f"
+    },
+    {
+      "path": "benchmarks/standard/src/ArithmeticBenchmark.kt",
+      "sha256": "fe9ef1e303ad694ef3b835a1d5d65974f3699eee4859bbf6a0f621e3d151f9ed"
+    },
+    {
+      "path": "benchmarks/standard/src/Datasets.kt",
+      "sha256": "c09670aff53176d52c1bffd190a146badd6e75acc9c7dc95fc824b3ac2296eaa"
+    },
+    {
+      "path": "benchmarks/standard/src/Workloads.kt",
+      "sha256": "74dbf5a3894c0329acc7c6dc7003c25bb0e85d161e83972fc0e80748b14092a0"
+    },
+    {
+      "path": "benchmarks/standard/src@js/Datasets.kt",
+      "sha256": "2cab2ba91de59ee9275ed449c149c2ca222a9569f570899b8e05429aa7cdeb1c"
+    },
+    {
+      "path": "benchmarks/standard/src@jvm/Datasets.kt",
+      "sha256": "42f8300e43ff6721246d888865f22770057400d890c3fffa2a422ef9870370c0"
+    },
+    {
+      "path": "benchmarks/standard/src@jvm/JdkArithmeticBenchmark.kt",
+      "sha256": "a23d1950bf60c27e0b5e02f00d60475166b980588822116b182b5699d9c6a366"
+    },
+    {
+      "path": "benchmarks/standard/src@jvm/JdkWorkloads.kt",
+      "sha256": "6e8b28db6d981314626b0157471c71e00da847f95c7eb12e54bbda9b741d3362"
+    },
+    {
+      "path": "benchmarks/standard/src@native/Datasets.kt",
+      "sha256": "2cab2ba91de59ee9275ed449c149c2ca222a9569f570899b8e05429aa7cdeb1c"
+    },
+    {
+      "path": "benchmarks/standard/src@wasmJs/Datasets.kt",
+      "sha256": "2cab2ba91de59ee9275ed449c149c2ca222a9569f570899b8e05429aa7cdeb1c"
+    },
+    {
+      "path": "ktc-plugins",
+      "sha256": "c69aa086f8f554f0097a4cbe14f6f85e00fa034c338252a1d13604fca432ac5e"
+    },
+    {
+      "path": "ktc-plugins.bat",
+      "sha256": "0e71e8b8ead62a048291b10d55c1d3ec387db7907dfb5f00c75d97320fc492da"
+    },
+    {
+      "path": "ktc-plugins.lock.yaml",
+      "sha256": "14d98308d97154c8ca4dba7e9b4151234736a1bb02e585b8442e02b778dd7904"
+    },
+    {
+      "path": "ktc-plugins.yaml",
+      "sha256": "cd2d8392e8f93456e3a7a2ba59f38e1fec56c93946ea9a0fc0a163c4ddede943"
+    },
+    {
+      "path": "plugins/.gitignore",
+      "sha256": "843852e6cf2714e3eb4f64699ee9147e26f6dea04e32c87cc0400b8867d4367f"
+    }
+  ],
+  "historical_results_and_diagnostics_git_diff_empty": true,
+  "remaining_limits": [
+    "Linux and Windows matching-host execution was not performed on this macOS host; their configurations use supported adapter targets.",
+    "The adapter does not accept macosX64. The production library target remains preserved.",
+    "The adapter exposes no configurable JMH profiler. Allocation, CPU and retained-graph metrics are not reported as zero.",
+    "The active warm standard harness does not reproduce the historical FIRST-call/resource protocol. All historical evidence is retained."
+  ],
+  "heavy_slot_returned_to_coordinator": true,
+  "no_more_benchmark_runs_planned": true,
+  "post_smoke_source_only_correction": "The runner now terminates its known parent in a finally block even if descendant enumeration throws. This is supported by the observed macOS sandbox ProcessHandle permission failure during the initial model lookup. Normal bootstrap, benchmark configuration, measurement, report and checker paths are unchanged. No new benchmark execution or cleanup-fault runtime proof is claimed."
+}
