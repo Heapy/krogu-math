@@ -67,3 +67,19 @@ if (providers.gradleProperty("multiplication539").orNull == "true") {
         binaries.test("calibration539", listOf(org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.RELEASE))
     }
 }
+
+
+// Embed a complete independently linked worker closure in each platform KLIB.
+// No consumer-side resource copy or application-root import is needed.
+kotlin.sourceSets.named("jsMain") {
+    kotlin.srcDir(project(":nodeWorker539").layout.buildDirectory.dir("generated/payload/js"))
+}
+kotlin.sourceSets.named("wasmJsMain") {
+    kotlin.srcDir(project(":nodeWorker539").layout.buildDirectory.dir("generated/payload/wasmJs"))
+}
+tasks.matching { it.name == "compileKotlinJs" }.configureEach {
+    dependsOn(":nodeWorker539:generateJsPayload539")
+}
+tasks.matching { it.name == "compileKotlinWasmJs" }.configureEach {
+    dependsOn(":nodeWorker539:generateWasmJsPayload539")
+}

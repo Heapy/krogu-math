@@ -32,12 +32,13 @@ internal object MultiplicationCampaign539 {
     fun run(arguments: String) {
         val args = arguments.split(',')
         require(args.size == 4) { "mode,forward|reverse,samples,target_ms" }
-        require(args[0] in listOf("kernel-small", "kernel-medium", "kernel-large", "cost", "public-small", "native-parallel", "square-control", "js-balanced-adjacent-k16"))
+        require(args[0] in listOf("kernel-small", "kernel-medium", "kernel-large", "cost", "public-small", "native-parallel", "square-control", "js-balanced-adjacent-k16", "native-balanced-adjacent-k16"))
         require(args[1] in listOf("forward", "reverse"))
         val samples = args[2].toInt().also { require(it in 5..15) }
         val target = args[3].toLong().also { require(it in 10..100) } * 1_000_000
         val cases = when (args[0]) {
-            "js-balanced-adjacent-k16" -> jsBalancedAdjacentK16()
+            "js-balanced-adjacent-k16" -> balancedAdjacentK16("JS ")
+            "native-balanced-adjacent-k16" -> balancedAdjacentK16("Native ")
             "native-parallel" -> calibration539NativeCases().also { require(it.isNotEmpty()) { "Native-only mode or no eligible cases" } }
             "cost" -> costs()
             "public-small" -> publicSmall()
@@ -93,8 +94,8 @@ internal object MultiplicationCampaign539 {
     }
 
     /** One predeclared bounded extension; no production policy is changed. */
-    private fun jsBalancedAdjacentK16(): List<Calibration539Case> {
-        check(calibration539Platform().startsWith("JS ")) { "JS-only adjacent calibration mode" }
+    private fun balancedAdjacentK16(platformPrefix: String): List<Calibration539Case> {
+        check(calibration539Platform().startsWith(platformPrefix)) { "Wrong platform for adjacent calibration mode" }
         return buildList {
             for (size in listOf(16, 31, 32, 63, 64, 128, 256, 512, 1024, 4096, 8192)) {
                 val a = IntArray(size) { ((it.toLong() * 104729 + size * 31L + 1) and 0x3fffffff).toInt() }
@@ -102,7 +103,7 @@ internal object MultiplicationCampaign539 {
                 check(a !== b && a.size == b.size)
                 val originalA = a.copyOf(); val originalB = b.copyOf()
                 val expected = MagnitudeMultiplication.multiply(a, b, Int.MAX_VALUE, Int.MAX_VALUE)
-                calibration539Verify(a, b, expected) // Untimed independent platform oracle.
+                calibration539Verify(a, b, expected) // Untimed platform verifier; Native retains its school-only hook.
                 fun verifyResult(value: Any?) {
                     check(value is IntArray && expected.contentEquals(value))
                     check(a.contentEquals(originalA) && b.contentEquals(originalB))

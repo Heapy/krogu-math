@@ -5,11 +5,12 @@ import java.io.File
 
 require(args.size == 9) { "samples mode JVM|JS|Wasm|Native sourceManifestSHA artifactManifestSHA new.csv fork1.log fork2.log fork3.log" }
 val samples = args[0].toInt().also { require(it in 5..15) }
-val mode = args[1].also { require(it in listOf("kernel-small", "kernel-medium", "kernel-large", "cost", "public-small", "native-parallel", "square-control", "js-balanced-adjacent-k16")) }
+val mode = args[1].also { require(it in listOf("kernel-small", "kernel-medium", "kernel-large", "cost", "public-small", "native-parallel", "square-control", "js-balanced-adjacent-k16", "native-balanced-adjacent-k16")) }
 val platform = args[2].also { require(it in listOf("JVM", "JS", "Wasm", "Native")) }
 args.slice(3..4).forEach { require(it.matches(Regex("[a-f0-9]{64}"))) }
 require(mode != "native-parallel" || platform == "Native")
 require(mode != "js-balanced-adjacent-k16" || platform == "JS")
+require(mode != "native-balanced-adjacent-k16" || platform == "Native")
 val output = File(args[5]).canonicalFile.also { require(!it.exists()) }
 val logs = args.drop(6).map { File(it).canonicalFile }.also { require(it.toSet().size == 3) }
 data class Policy(val k: Int, val s: Int, val e: Int)
@@ -17,7 +18,7 @@ val policies = (listOf(32,64,128,256).map { Policy(it,16,384) } +
     listOf(4,8,16,32).map { Policy(64,it,384) } + listOf(0,128,256,384,512,1024).map { Policy(64,16,it) }).distinct()
 fun inventory(processors: Int): Set<String> = buildSet {
     when (mode) {
-        "js-balanced-adjacent-k16" -> for (size in listOf(16,31,32,63,64,128,256,512,1024,4096,8192))
+        "js-balanced-adjacent-k16", "native-balanced-adjacent-k16" -> for (size in listOf(16,31,32,63,64,128,256,512,1024,4096,8192))
             for (k in listOf(16,32,64)) add("kernel/$size/distinct/k$k-s16-e384")
         "cost" -> addAll(listOf("signed-long-256", "unsigned-long-256", "int-carry-256", "allocate-256-words", "allocate-4096-words").map { "cost/$it" })
         "public-small" -> for (bits in listOf(1,30,63,64,127,511,1023)) for (shape in listOf("distinct","square")) for (method in listOf("public","parallel-public")) add("$method/$bits/$shape")
