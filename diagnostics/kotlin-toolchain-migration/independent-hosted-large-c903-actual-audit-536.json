@@ -1,0 +1,175 @@
+{
+  "status": "ACTUAL_LARGE_12_PASS_SAME_RUN_BINDING_VERIFIED",
+  "runId": "39025580380",
+  "headSha": "c9036e47742ae1ac301505f2672aebf2fe42f9cd",
+  "terminalSha256": "26d87c467518f567b89c0ce0696c61349245587e21ae106be52dcdeeaa3d507f",
+  "completeLogSha256": "bad43b615dbfa1ce4c7e16b5d27bb1147275142372e83daed10a0deaaef4e962",
+  "resultsSha256": "34757b704219a0a00ef9dabca0647b160d55844bb78df43fffaa8c7dc306f6b3",
+  "portJarSha256": "832f5ea9c068774e9e55260f12c772350577b2b1ddc45d19927703b0ddb13fd5",
+  "toolRunnerMatchesCommit": true,
+  "sourceCommitAndWorkflowShaAndArtifactCommitEqual": true,
+  "counts": {
+    "PASS": 12,
+    "FAIL": 0,
+    "SKIP": 128
+  },
+  "retainedPlansPerPhase": 6,
+  "phases": [
+    "baseline",
+    "port"
+  ],
+  "actualTestNgAssertionsPerPhase": 5,
+  "skipReasons": {
+    "Profile standard not authorized by this invocation; coverage retained for an eligible run": 90,
+    "Profile serialization not authorized by this invocation; coverage retained for an eligible run": 4,
+    "Profile heavy not authorized by this invocation; coverage retained for an eligible run": 10,
+    "Profile memory-512m not authorized by this invocation; coverage retained for an eligible run": 2,
+    "Pinned upstream @Test(enabled=false) retained unchanged": 16,
+    "Calls package-private MutableBigInteger through patched java.base wrapper": 2,
+    "Test-only wrapper for package-private MutableBigInteger": 2,
+    "Pinned upstream commented-out call retained unchanged": 2
+  },
+  "rows": [
+    {
+      "id": "baseline/BigInteger/BitLengthOverflow/run-1",
+      "resource": "large-memory-8g",
+      "heap": "-Xmx8192m",
+      "freshFreeMiB": 11008.03515625,
+      "requiredFreeMiB": 8704,
+      "elapsedMillis": 128,
+      "stdoutSha256": "c065459b0107a857f85360f795f7b61ba981d113b1a47295c63ad00b0d41d42d",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "a5ef4cc3d22ceca89306bf127895d5b4008b6fe05992fc372ef3d70e3c08e3cb"
+    },
+    {
+      "id": "baseline/BigInteger/DoubleValueOverflow/run-1",
+      "resource": "large-memory-8g",
+      "heap": "-Xmx8192m",
+      "freshFreeMiB": 10951.2578125,
+      "requiredFreeMiB": 8704,
+      "elapsedMillis": 89,
+      "stdoutSha256": "f2af227d83080a9e5ccbda0f8855d5043b1d1314e17dd3adbba4d566023f0507",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "20071c7b45e5a02c79db70c16f027e5841b18d3fdc2e20d51504f51f633955f2"
+    },
+    {
+      "id": "baseline/BigInteger/LargeValueExceptions/run-1",
+      "resource": "large-memory-4g",
+      "heap": "-Xmx4g",
+      "freshFreeMiB": 10953.2578125,
+      "requiredFreeMiB": 4608,
+      "elapsedMillis": 28481,
+      "stdoutSha256": "fb761cce51dd778a4d01bf529db3e888628def7e00b944b5bb2abbcd8a8dc729",
+      "stderrSha256": "2c58b87a0350a39bb1c3b5f4891defeeb9a785e84aa11a466dc9ddb21253bf58",
+      "classLoadSha256": "32ea152116ef7d145cc1942757960bbb0a826ee07277c6346c2dbbe1ddaee123"
+    },
+    {
+      "id": "baseline/BigInteger/largeMemory/DivisionOverflow/run-1",
+      "resource": "large-memory-8g",
+      "heap": "-Xmx8g",
+      "freshFreeMiB": 11045.85546875,
+      "requiredFreeMiB": 8704,
+      "elapsedMillis": 512,
+      "stdoutSha256": "d4964ac50b451d43d5ed5208dd86d23317448b25f8afe30d9c68458d70a42f3f",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "dfc4081d102b1c1ae4e8397e7c641b3ccca6a14594e1d32df89ad3188459b927"
+    },
+    {
+      "id": "baseline/BigInteger/largeMemory/StringConstructorOverflow/run-1",
+      "resource": "large-memory-8g",
+      "heap": "-Xmx8g",
+      "freshFreeMiB": 11046.47265625,
+      "requiredFreeMiB": 8704,
+      "elapsedMillis": 3700,
+      "stdoutSha256": "ad59ae35f00ce58738b572e656bf2c68f76b02135508a13e12e59c8d233288d3",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "0e887f70dea6d2078183aef3fb7e5665ccba9a90f0d6d66ccece5dc5c03c65d6"
+    },
+    {
+      "id": "baseline/BigInteger/largeMemory/SymmetricRangeTests/run-1",
+      "resource": "large-memory-10g",
+      "heap": "-Xmx8g",
+      "freshFreeMiB": 11027.15625,
+      "requiredFreeMiB": 8704,
+      "elapsedMillis": 26017,
+      "stdoutSha256": "f81bcac82f7834ef0c3a532c11f62c6881ff6b4adff39ab8eb81d73a25876bf8",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "00a5a73495ca7d4c7a776238ab6e9cac6caf96048cee86f1ab2b442c9a5af0f2"
+    },
+    {
+      "id": "port/BigInteger/BitLengthOverflow/run-1",
+      "resource": "large-memory-8g",
+      "heap": "-Xmx8192m",
+      "freshFreeMiB": 11041.1484375,
+      "requiredFreeMiB": 8704,
+      "elapsedMillis": 201,
+      "stdoutSha256": "74d3458e7cbbf544c950aabcd541ca3e3441dd25914f38c7fb5fa45f24aedec2",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "b481609e3006dd4017a467ce3d0976ee694237e3149e0f9a5c7ae040ecd1a309"
+    },
+    {
+      "id": "port/BigInteger/DoubleValueOverflow/run-1",
+      "resource": "large-memory-8g",
+      "heap": "-Xmx8192m",
+      "freshFreeMiB": 10970.8984375,
+      "requiredFreeMiB": 8704,
+      "elapsedMillis": 87,
+      "stdoutSha256": "e62a4a91831ecccf0d130d1522d69c4defd5af703d6a9f1df724beb6a3936abb",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "aac3bb2fe68ed24cec018d0f86f964ed21fcdb502483fd0d52680655cd1d5133"
+    },
+    {
+      "id": "port/BigInteger/LargeValueExceptions/run-1",
+      "resource": "large-memory-4g",
+      "heap": "-Xmx4g",
+      "freshFreeMiB": 10967.00390625,
+      "requiredFreeMiB": 4608,
+      "elapsedMillis": 827,
+      "stdoutSha256": "981e02ff24131ee7b61745d6e892b153fd26664643922786b6d6cbc7e7b99de5",
+      "stderrSha256": "2c58b87a0350a39bb1c3b5f4891defeeb9a785e84aa11a466dc9ddb21253bf58",
+      "classLoadSha256": "cdc2b889a2b52fef23238b68ec1bbdc1a5547f54870559eab96bbcab9664b3e0"
+    },
+    {
+      "id": "port/BigInteger/largeMemory/DivisionOverflow/run-1",
+      "resource": "large-memory-8g",
+      "heap": "-Xmx8g",
+      "freshFreeMiB": 11007.88671875,
+      "requiredFreeMiB": 8704,
+      "elapsedMillis": 5665,
+      "stdoutSha256": "5bc0e704364d2a2e0d86b933ae1cf9913f2502e024c19bf352089cc1e8bb3aba",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "2ddba090200dcd5044137db7f118ee3c1c4d9322e95dd325d9c39892e1686fad"
+    },
+    {
+      "id": "port/BigInteger/largeMemory/StringConstructorOverflow/run-1",
+      "resource": "large-memory-8g",
+      "heap": "-Xmx8g",
+      "freshFreeMiB": 11006.515625,
+      "requiredFreeMiB": 8704,
+      "elapsedMillis": 3728,
+      "stdoutSha256": "1355f1bebb1420f9413ab2cf0ff959eefc1362bbc0679c7efa1ee44f7711b2b2",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "decf11361c42ac4477581059e456dab5c4580fc2205cfea44ece3e4b7c711572"
+    },
+    {
+      "id": "port/BigInteger/largeMemory/SymmetricRangeTests/run-1",
+      "resource": "large-memory-10g",
+      "heap": "-Xmx8g",
+      "freshFreeMiB": 10973.65234375,
+      "requiredFreeMiB": 8704,
+      "elapsedMillis": 39682,
+      "stdoutSha256": "e8f709bf63f9732dc73ee111811593f361b524788062183a3c610279add9a3af",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "7a2654e95051d7ab1576fa492e3fd1215243367465eb351eefee74d3d62df880"
+    }
+  ],
+  "resourceDisposition": "All twelve fresh-memory checks exceeded the declared heap plus 512 MiB margin; actual heap 4 GiB or 8 GiB; no timeout, resource failure, incomplete caught OOM or owned cleanup needed",
+  "limits": [
+    "Twelve retained large invocations, not 128 skipped assertion passes",
+    "Public OpenJDK tests are not official JCK",
+    "Test/runtime patch-vendor mismatch remains explicit",
+    "Normal public and Compatibility/ARM/iOS acceptance remain separate",
+    "No execution or local publication traversal by reviewer",
+    "No runtime fault injection or universal cleanup proof"
+  ]
+}

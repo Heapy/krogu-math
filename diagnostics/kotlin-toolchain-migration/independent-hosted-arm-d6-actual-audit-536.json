@@ -1,0 +1,62 @@
+{
+  "status": "ACTUAL_D6_ARM474_PASS_SUPPORTED_RUNTIME_SUBTOTAL13",
+  "headSha": "d6c39f08420deec06cef9d631160a00d4575cfb8",
+  "runId": 39029084281,
+  "jobId": 117396152652,
+  "terminalSha256": "2984072b6de0712862b0a502076a3dc5a7e5504e820deb21280a20ba2c569bca",
+  "files": [
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-arm-producer/SHA256SUMS",
+      "bytes": 156,
+      "sha256": "2af4c0cc4be2ee79e4af32d2d15e46bde743db9259459d90c07a00b5a29c522b"
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-arm-producer/SOURCE_COMMIT",
+      "bytes": 41,
+      "sha256": "fccea86c1549130145e3d8cda0e5ec4022f174a9029fc4e4c13e6e309bde4fb4"
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-arm-producer/test.kexe",
+      "bytes": 81519896,
+      "sha256": "2bbb2d0762ffca3a2d4453b6e2b992ed1c38c78ba8dac56fbbaaa73683bb0f2c"
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-arm-consumer/SHA256SUMS",
+      "bytes": 156,
+      "sha256": "2af4c0cc4be2ee79e4af32d2d15e46bde743db9259459d90c07a00b5a29c522b"
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-arm-consumer/SOURCE_COMMIT",
+      "bytes": 41,
+      "sha256": "fccea86c1549130145e3d8cda0e5ec4022f174a9029fc4e4c13e6e309bde4fb4"
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-arm-consumer/arm64-tests.log",
+      "bytes": 9690360,
+      "sha256": "b195a68a830e4f29b91a218ff646d7847a53fd905b27561c69e02544fad5c004"
+    }
+  ],
+  "binarySha256": "2bbb2d0762ffca3a2d4453b6e2b992ed1c38c78ba8dac56fbbaaa73683bb0f2c",
+  "binaryFormat": "ELF64 little-endian AArch64 executable",
+  "sourceAndLedgerCopiesByteEqual": true,
+  "counts": {
+    "uniqueRUN": 474,
+    "orderedOK": 474,
+    "failures": 0,
+    "skips": 0,
+    "suites": 108
+  },
+  "orderedCaseIdsSha256": "72a324b06d87665d43c389c7d028a75e4a99c5b6c9e0950e0a1e17967b502662",
+  "exactOrderedCaseIdsMatchAcceptedLinuxX64": true,
+  "acceptedNativeLogSha256": "c64915d7281d0283d0ccbed6c89a381ba422396b0de36c6301138786357a2af9",
+  "acceptedPriorReceipt": ".codex-work/ktc-migration/independent-hosted-macintel-d6-actual-audit-536.json",
+  "acceptedPriorSha256": "297d7806b9633a6445d12400626239e7d8c19ef1f9ab080b3729de343b142b82",
+  "supportedRuntimeInstances": 13,
+  "supportedRuntimeTestTotal": 7064,
+  "limits": [
+    "Supported runtime subtotal only: normal public terminal outcome and final whole-workflow join remain pending",
+    "ARM consumer uses same-run source/ledger from completed Linux producer; exact runtime binary SHA verified",
+    "Artifact provenance follows frozen owner download handoff and terminal API metadata; no independent artifact API digest supplied",
+    "Prior accepted twelve instances reused without repeat audit; no new numerical execution or source/build traversal"
+  ]
+}

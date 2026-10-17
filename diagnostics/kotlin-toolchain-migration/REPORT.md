@@ -71,6 +71,79 @@ campaigns and their immutable archives are unchanged.
 After successful local runs, an exceptional cleanup fence was added so failure
 to enumerate process descendants cannot prevent termination of the known parent.
 It changes no measurement, test or compiler arguments; earlier execution receipts
-retain their original source hashes. Hosted validation must bind the final
-migration commit. Hosted Compatibility and public-large results are pending at
-this pre-push checkpoint.
+retain their original source hashes. The hosted results below bind the final
+migration build commit.
+
+## Hosted validation
+
+The tested build commit is `d6c39f08420deec06cef9d631160a00d4575cfb8`.
+The initial commit `f6f86176752b3f569fd9086f9a54d99857723543` exposed a Windows
+checkout line-ending mismatch before KTC execution: all downloaded plugin sources
+matched, but the checked-out declaration and lock did not match their Linux
+checksums. Four explicit LF attributes now preserve those two files and the POSIX
+launchers. A `core.autocrlf=true` checkout reproduced the mismatch and verified
+the correction without weakening the hash guards. Its Unix platform tests and
+normal public tests passed, while the failed Windows matrix prevented the ARM
+consumer from running.
+
+Commit `c9036e47742ae1ac301505f2672aebf2fe42f9cd` passed Windows checksum
+verification but exposed a separate argument-transport problem: a standalone
+universal class wildcard expanded into checkout filenames before test execution.
+The final candidate attaches the same literal selector to its option as
+`'--include-classes=*'`; parser and source checks confirm unchanged universal
+selection. The obsolete c903 Compatibility run was deliberately cancelled after
+preserving its Windows failure, because its remaining Unix work duplicated the
+initial commit and the final candidate would perform the complete validation.
+Its cancelled work is not counted as passing runtime evidence.
+
+[Public large-memory run 39029099256](https://github.com/Heapy/krogu-math/actions/runs/39029099256)
+passed on that exact corrected commit. Independent review verified the same-run
+JVM artifact, six retained plans per baseline/port phase, 12 actual passes and no
+failures. The 128 inventory skips are separate from those passes. Available-memory
+checks, class origins and completion markers were verified; no timeout, OOM or
+cleanup waiver was used. These are retained public OpenJDK tests, not official JCK
+certification. The adjacent independent audit records artifact and result hashes.
+
+[Compatibility run 39029084281](https://github.com/Heapy/krogu-math/actions/runs/39029084281)
+completed successfully, with all eight jobs passing on the tested commit.
+
+| Host | Runtime selections and passing method executions | Total |
+| --- | --- | ---: |
+| Windows | JVM 702; MinGW x64 474 | 1,176 |
+| Linux x64 | JVM 702; Native x64 474; JS 469; Wasm JS 469 | 2,114 |
+| macOS ARM64 | JVM 702; Native ARM64 474; iOS Simulator ARM64 474 | 1,650 |
+| macOS Intel | JVM 702; Native x64 474; iOS Simulator x64 474 | 1,650 |
+| Linux ARM64 consumer | Same-run cross-built Native executable, 474 | 474 |
+| **Total** | **13 runtime instances** | **7,064** |
+
+These are executions across platforms, not 7,064 distinct mathematical input
+domains. Independent reviews verify unique cases within each instance, matched
+starts and finishes, and no failures or ignored cases. All JVM runs include Java
+API callers and both diagnostic methods excluded by the default class-name
+filter. Both original inherited-internal member regression callers pass on
+Native. This confirms the Windows invocation fixes in actual execution; the
+Windows subset audit does not reconstruct every compiler argument.
+
+Both web runs use Node 24.16.0, execute all 469 cases without filtering and verify
+the real two-slot embedded-worker fixture. The Linux ARM64 consumer verifies its
+producer's executable and source hashes before running all 474 tests. iOS device
+ARM64 compilation also passes; device runtime execution is not claimed. All 25
+oracle-script steps pass in the same Compatibility run.
+
+The normal public harness records **106 actual passes, zero failures and 46
+classified inventory skips**, using its same-run JVM JAR
+`832f5ea9c068774e9e55260f12c772350577b2b1ddc45d19927703b0ddb13fd5`.
+Together with the separate 12-pass large campaign, this executes the 59 retained
+plans once per baseline/port phase. Skipped, private and adaptation-loss inventory
+is not counted as passing coverage or official JCK certification.
+
+The [final hosted audit](independent-final-d6-normal-and-hosted-join-audit-536.json)
+joins the independently checked platform, normal and large results. The adjacent
+audits retain raw-result, runtime, artifact and source hashes.
+This report and its receipts are delivered in an evidence-only successor to the
+tested commit: production, build, tests, workflows and plugin declarations remain
+exactly those tested above. The report-only commit uses `[skip ci]` to avoid
+repeating unchanged numerical campaigns. Its identity is available in Git
+history and the delivery receipt, separately from the tested build SHA. Earlier
+large-memory runs remain separately bound to their original commits; the retained
+c903 audit is historical evidence, not a substitute for this final-head run.

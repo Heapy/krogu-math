@@ -1,0 +1,227 @@
+{
+  "status": "ACTUAL_D6_MACARM_AND_LINUX_PARTIAL_PASS",
+  "headSha": "d6c39f08420deec06cef9d631160a00d4575cfb8",
+  "runId": 39029084281,
+  "hosts": {
+    "macarm": {
+      "jobId": 117386829316,
+      "terminalSha256": "e275d2ca293492eba53ecf8eb6d041173961aed1d558884bd6ac87e91cc03d58",
+      "files": [
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macarm/compatibility-iosSimulatorArm64.log",
+          "bytes": 14813822,
+          "sha256": "df3a6cbc5fcbddfd8cb8539f919fb49791ee39663d5668509b0476e0131efad4"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macarm/compatibility-jvm.log",
+          "bytes": 54428192,
+          "sha256": "852c96e896d03801ea561fb1a77c60ea2d9aba19607a67c5e787a034718e2d40"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macarm/compatibility-macosArm64.log",
+          "bytes": 14813698,
+          "sha256": "ead71e7c1d8b0b084dc4ad1d08f8ffafbf20df4732e9225f7a67a9fc01dd5323"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macarm/reports/krogu-math/jvm/TEST-junit-jupiter.xml",
+          "bytes": 5921,
+          "sha256": "f16fa020779f50cbbe2b56a22b928d4acaa418243474f9bb82343f20c466e925"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macarm/reports/krogu-math/jvm/TEST-junit-platform-suite.xml",
+          "bytes": 5942,
+          "sha256": "61627ca45aa563418d954fef96db6af811e16bd9b603a06703abb5c0fea75fd2"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macarm/reports/krogu-math/jvm/TEST-junit-vintage.xml",
+          "bytes": 343880,
+          "sha256": "1369c550f0e1011e0a7b6a2289410eb9440d3ef99ca2275d4c62bbf3c71ca660"
+        }
+      ],
+      "xml": [
+        {
+          "name": "TEST-junit-jupiter.xml",
+          "cases": 0,
+          "sha256": "f16fa020779f50cbbe2b56a22b928d4acaa418243474f9bb82343f20c466e925"
+        },
+        {
+          "name": "TEST-junit-platform-suite.xml",
+          "cases": 0,
+          "sha256": "61627ca45aa563418d954fef96db6af811e16bd9b603a06703abb5c0fea75fd2"
+        },
+        {
+          "name": "TEST-junit-vintage.xml",
+          "cases": 702,
+          "sha256": "1369c550f0e1011e0a7b6a2289410eb9440d3ef99ca2275d4c62bbf3c71ca660"
+        }
+      ],
+      "counts": {
+        "jvm": {
+          "cases": 702,
+          "uniqueStartedFinished": true,
+          "failures": 0,
+          "ignored": 0,
+          "orderedCaseIdsSha256": "05af2beab380572393ee89da5680f5c6d9bfa06a6201c699ec72f8e1318e7ff0"
+        },
+        "macosArm64": {
+          "cases": 474,
+          "uniqueStartedFinished": true,
+          "failures": 0,
+          "ignored": 0,
+          "orderedCaseIdsSha256": "829124fc4538b1af344c087f368c20709cadafa6ab96ba8454fa346b1a0ffaa6"
+        },
+        "iosSimulatorArm64": {
+          "cases": 474,
+          "uniqueStartedFinished": true,
+          "failures": 0,
+          "ignored": 0,
+          "orderedCaseIdsSha256": "cbda309ad7ad214dde022b0f061b02a563fb2a900a218e82b62bf1f8f12283ff"
+        }
+      },
+      "totalTests": 1650,
+      "iOSDeviceCompile": true,
+      "linuxArmCrosslink": false
+    },
+    "linux": {
+      "jobId": 117386829447,
+      "terminalSha256": "bb73cc5a239fc213bcd643be00a91e3aa7ef156df0aaf66395c30fdfacdc6016",
+      "files": [
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-linux/compatibility-js.log",
+          "bytes": 9631165,
+          "sha256": "32b05c0841497f02c4068fcac3f943a9a6e7164ca4f586f54ab4cc9a62de16ac"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-linux/compatibility-jvm.log",
+          "bytes": 54428493,
+          "sha256": "799891e4c5e1491cd8e9a6ee0d9f516efeecc1129fc17c7fc105911d49fac166"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-linux/compatibility-linuxX64.log",
+          "bytes": 14814609,
+          "sha256": "c64915d7281d0283d0ccbed6c89a381ba422396b0de36c6301138786357a2af9"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-linux/compatibility-wasmJs.log",
+          "bytes": 9675380,
+          "sha256": "5339adc8ada092a2d608454380da0ff324738783621230778bf8323168c14647"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-linux/node-tests/js/results.json",
+          "bytes": 80243,
+          "sha256": "9c289e669924a68fcd6ab250e23c3197372f74681150d60330a4572012dd9ae2"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-linux/node-tests/js/run.cjs",
+          "bytes": 1539,
+          "sha256": "706fcb88580b6c85279d22c827ab0b64a3637c6bace5b9d006e44e65565a9514"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-linux/node-tests/wasm/results.json",
+          "bytes": 80100,
+          "sha256": "4014613eeb55223305f24665e904f1397249f0a402932876de0138352025abef"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-linux/node-tests/wasm/run.cjs",
+          "bytes": 1539,
+          "sha256": "706fcb88580b6c85279d22c827ab0b64a3637c6bace5b9d006e44e65565a9514"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-linux/reports/krogu-math/jvm/TEST-junit-jupiter.xml",
+          "bytes": 5337,
+          "sha256": "5804f789698bab3c89abe31d24cd5882a3d21ccf3373c50243bd1a4df8c9bf05"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-linux/reports/krogu-math/jvm/TEST-junit-platform-suite.xml",
+          "bytes": 5358,
+          "sha256": "f2d9ba7a41bbef78dacb2761acecb3e618440709c980b9c6c71b23d06ab4173c"
+        },
+        {
+          "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-linux/reports/krogu-math/jvm/TEST-junit-vintage.xml",
+          "bytes": 343315,
+          "sha256": "28bc069779dccbcbc46402986f67c0fb83b046f04e2ad90eef54c2d07d619efc"
+        }
+      ],
+      "xml": [
+        {
+          "name": "TEST-junit-jupiter.xml",
+          "cases": 0,
+          "sha256": "5804f789698bab3c89abe31d24cd5882a3d21ccf3373c50243bd1a4df8c9bf05"
+        },
+        {
+          "name": "TEST-junit-platform-suite.xml",
+          "cases": 0,
+          "sha256": "f2d9ba7a41bbef78dacb2761acecb3e618440709c980b9c6c71b23d06ab4173c"
+        },
+        {
+          "name": "TEST-junit-vintage.xml",
+          "cases": 702,
+          "sha256": "28bc069779dccbcbc46402986f67c0fb83b046f04e2ad90eef54c2d07d619efc"
+        }
+      ],
+      "counts": {
+        "jvm": {
+          "cases": 702,
+          "uniqueStartedFinished": true,
+          "failures": 0,
+          "ignored": 0,
+          "orderedCaseIdsSha256": "087275a0bf09e5838d31ae5f69bd5070609cdb7d5dd726089369a22a8fa0c78e"
+        },
+        "linuxX64": {
+          "cases": 474,
+          "uniqueStartedFinished": true,
+          "failures": 0,
+          "ignored": 0,
+          "orderedCaseIdsSha256": "a5d115a8e1d47b4b1c86e99d78c8d4a33714720d106b0b68adf09c60a1e41ecf"
+        },
+        "js": {
+          "cases": 469,
+          "passes": 469,
+          "failures": 0,
+          "pending": 0,
+          "node": "v24.16.0",
+          "filter": null,
+          "realWorkerSlots": 2,
+          "productsVerified": true,
+          "caseNamesSha256": "ec0c4a4a7c35974796d84d8a827901e37311f6c67bbeacc2cfe9704b2b2cfa45",
+          "resultsSha256": "9c289e669924a68fcd6ab250e23c3197372f74681150d60330a4572012dd9ae2",
+          "entry": "/home/runner/work/krogu-math/krogu-math/build/artifacts/CompiledWebArtifact/krogu-mathjsTestrelease/kotlin-output/krogu-math_test.js"
+        },
+        "wasm": {
+          "cases": 469,
+          "passes": 469,
+          "failures": 0,
+          "pending": 0,
+          "node": "v24.16.0",
+          "filter": null,
+          "realWorkerSlots": 2,
+          "productsVerified": true,
+          "caseNamesSha256": "ec0c4a4a7c35974796d84d8a827901e37311f6c67bbeacc2cfe9704b2b2cfa45",
+          "resultsSha256": "4014613eeb55223305f24665e904f1397249f0a402932876de0138352025abef",
+          "entry": "/home/runner/work/krogu-math/krogu-math/build/artifacts/CompiledWebArtifact/krogu-mathwasmJsTestdebug/kotlin-output/krogu-math_test.mjs"
+        }
+      },
+      "totalTests": 2114,
+      "iOSDeviceCompile": false,
+      "linuxArmCrosslink": true
+    }
+  },
+  "newRuntimeInstances": 7,
+  "newTestTotal": 3764,
+  "reusedWindowsReceipt": {
+    "path": ".codex-work/ktc-migration/independent-hosted-windows-d6-actual-audit-536.json",
+    "sha256": "9358709ad0be4a1449a1d846ac1c96dcb2ca062ce0cbc8ecc025e786a146868a",
+    "instances": 2,
+    "tests": 1176
+  },
+  "partialCombinedInstances": 9,
+  "partialCombinedTests": 4940,
+  "workflowSha256": "cdccc0c394f701525a8ce2bfce0fa4e5cf989cf72038c7c1bae2ac29d24e3385",
+  "limits": [
+    "Partial completed jobs only; macIntel, separate ARM runtime consumer, normal public and final workflow verdict remain pending",
+    "Source/tool attribution uses frozen owner downloads plus exact terminal job head and successful bootstrap/locked-plugin steps; no separate artifact API digest supplied in this subset",
+    "iOS device result is compilation, not device runtime; Linux ARM cross-link is not ARM execution",
+    "Real worker fixture executes two private payload slots; no claim that retained public parallel route activates workers",
+    "No new build/test or repeated publication/source traversal"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "status": "ACTUAL_WINDOWS_JVM702_MINGW474_PASS",
+  "headSha": "d6c39f08420deec06cef9d631160a00d4575cfb8",
+  "runId": 39029084281,
+  "jobId": 117386829326,
+  "artifactLedgerSha256": "5d3fc32c7c2fd72707901df8b8fb7e4c9d415925d699a6d7e68d1b696cb2d7fe",
+  "files": [
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-windows/reports/krogu-math/jvm/TEST-junit-jupiter.xml",
+      "sha256": "802b6e4d6c1a85a720141f084a272d3250c486f414d58b69b8bb9d9fce2e4624",
+      "bytes": 8381
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-windows/reports/krogu-math/jvm/TEST-junit-platform-suite.xml",
+      "sha256": "505ae90161dda63247a9979bc22051239c6e12e7bf9e726b56279ddf38c1d7e1",
+      "bytes": 8402
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-windows/reports/krogu-math/jvm/TEST-junit-vintage.xml",
+      "sha256": "e6be56aa2b063711ed89aea14364d0890a84113e230ac6fb840476f7ef81f9e8",
+      "bytes": 346407
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-windows/compatibility-jvm.log",
+      "sha256": "02bf30e20b15acc8e1376896447557812067066e3927f6435acd8e65b0043bc6",
+      "bytes": 54627377
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-windows/compatibility-mingwX64.log",
+      "sha256": "6a3e672cc35b0ee7ed191066275342b403ea9c34f6bcb196a53b1ece13cce361",
+      "bytes": 14882170
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/windows-d6-job.json",
+      "sha256": "de996d01ab0f33feef352ec61331950011139a2f56c2b5c9dc62c6d7ce031a2f",
+      "bytes": 5565
+    }
+  ],
+  "jvmXml": [
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-windows/reports/krogu-math/jvm/TEST-junit-jupiter.xml",
+      "tests": 0,
+      "sha256": "802b6e4d6c1a85a720141f084a272d3250c486f414d58b69b8bb9d9fce2e4624"
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-windows/reports/krogu-math/jvm/TEST-junit-platform-suite.xml",
+      "tests": 0,
+      "sha256": "505ae90161dda63247a9979bc22051239c6e12e7bf9e726b56279ddf38c1d7e1"
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-windows/reports/krogu-math/jvm/TEST-junit-vintage.xml",
+      "tests": 702,
+      "sha256": "e6be56aa2b063711ed89aea14364d0890a84113e230ac6fb840476f7ef81f9e8"
+    }
+  ],
+  "counts": {
+    "jvm": {
+      "started": 702,
+      "finished": 702,
+      "failed": 0,
+      "ignored": 0,
+      "uniqueFlowIds": 702
+    },
+    "mingwX64": {
+      "started": 474,
+      "finished": 474,
+      "failed": 0,
+      "ignored": 0,
+      "uniqueFlowIds": 474
+    }
+  },
+  "totalTests": 1176,
+  "javaApiContractTestMethods": 4,
+  "formerlyDefaultExcludedDiagnosticMethodsPresent": true,
+  "previousNativeLinkageFailureMethodsNowFinished": [
+    "accumulatorCompositionPreservesCohortsAndFailedAddAtomicity",
+    "storedHelpersDoNotDispatchToReplacementIntegerMethods"
+  ],
+  "workflowSha256": "cdccc0c394f701525a8ce2bfce0fa4e5cf989cf72038c7c1bae2ac29d24e3385",
+  "bootstrapSha256": "b0fcdf7a1febc7ba10704de7120733d08b4a976ee85eb18f00d7ccc754a0d315",
+  "scope": [
+    "Current Windows plugin-checksum/bootstrap/setup/test/upload steps succeeded",
+    "Attached universal selector executed with full JVM discovery including optional diagnostic classes and Java caller methods",
+    "MinGW functional results cover current Native friend setup and both formerly failing inherited-internal callers",
+    "Frozen artifact ledger verified; mutable API full job log was not read"
+  ],
+  "limits": [
+    "Compiler argument-level friend reconstruction is not supplied in this artifact subset; functional outcomes and bootstrap success are verified",
+    "Artifact provenance uses owner download handoff plus terminal metadata; no separate artifact API digest supplied",
+    "No full Compatibility, other platform, ARM/iOS, normal public or overall migration acceptance inferred",
+    "Original Windows checksum and standalone-wildcard failures remain historical; no test/assertion reduction"
+  ]
+}

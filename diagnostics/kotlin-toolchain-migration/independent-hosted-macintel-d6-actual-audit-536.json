@@ -1,0 +1,94 @@
+{
+  "status": "ACTUAL_D6_MACINTEL_1650_PASS_PARTIAL_JOIN_12_INSTANCES",
+  "runId": 39029084281,
+  "headSha": "d6c39f08420deec06cef9d631160a00d4575cfb8",
+  "jobId": 117386829470,
+  "terminalSha256": "a892bf55b7efff0c8ef5bda6e3e47115c69cdfdc627e6ec21f4e5f142ca53145",
+  "files": [
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macintel/compatibility-iosX64.log",
+      "bytes": 14813882,
+      "sha256": "ab88c6d3b547daac513893f329d0fbe2d4a91c6eaa5b102974b525b819cba587"
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macintel/compatibility-jvm.log",
+      "bytes": 54428325,
+      "sha256": "02b836e70098bc6a051e46d6e3a02e3f0c9154d7973f190b85fe1862cf4cf87e"
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macintel/compatibility-macosX64.log",
+      "bytes": 14813843,
+      "sha256": "acbd8031d7d7f6d217b78b168f7e840c8e725eb53f3a842f73826b3020ba8fb0"
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macintel/reports/krogu-math/jvm/TEST-junit-jupiter.xml",
+      "bytes": 5912,
+      "sha256": "e3e26a3988f4b4ddc70c263780c57a89eb8aad38a19460d8022a69670b14105d"
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macintel/reports/krogu-math/jvm/TEST-junit-platform-suite.xml",
+      "bytes": 5933,
+      "sha256": "9b5088d736aaf8153eb506b9bbf97bda306d06bb6117ef94d3f940ad122a1cff"
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macintel/reports/krogu-math/jvm/TEST-junit-vintage.xml",
+      "bytes": 344094,
+      "sha256": "15df08695ffbf57a464b575623136782bd57938041a9ac126388e0ef218cd356"
+    }
+  ],
+  "xml": [
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macintel/reports/krogu-math/jvm/TEST-junit-jupiter.xml",
+      "sha256": "e3e26a3988f4b4ddc70c263780c57a89eb8aad38a19460d8022a69670b14105d",
+      "tests": 0
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macintel/reports/krogu-math/jvm/TEST-junit-platform-suite.xml",
+      "sha256": "9b5088d736aaf8153eb506b9bbf97bda306d06bb6117ef94d3f940ad122a1cff",
+      "tests": 0
+    },
+    {
+      "path": ".codex-work/ktc-migration/hosted-ci/compat-d6-macintel/reports/krogu-math/jvm/TEST-junit-vintage.xml",
+      "sha256": "15df08695ffbf57a464b575623136782bd57938041a9ac126388e0ef218cd356",
+      "tests": 702
+    }
+  ],
+  "counts": {
+    "jvm": {
+      "started": 702,
+      "finished": 702,
+      "uniqueCases": 702,
+      "failures": 0,
+      "ignored": 0,
+      "orderedIdsSha256": "5b61ffc75ccd62433be7a2e9bd8a3df94190b643de3176ff88a1c4fe9628d66a"
+    },
+    "macosX64": {
+      "started": 474,
+      "finished": 474,
+      "uniqueCases": 474,
+      "failures": 0,
+      "ignored": 0,
+      "orderedIdsSha256": "002200725268e7a636e3e5e4a2f46aa3d27366894d53fe4cc0e853150108adc4"
+    },
+    "iosX64": {
+      "started": 474,
+      "finished": 474,
+      "uniqueCases": 474,
+      "failures": 0,
+      "ignored": 0,
+      "orderedIdsSha256": "02c35d1c037fc8fefe1f2e3fe66e2c0d5513550b6f37a9bb6e31e7a7e16a41f4"
+    }
+  },
+  "newInstances": 3,
+  "newTests": 1650,
+  "acceptedPriorReceipt": ".codex-work/ktc-migration/independent-hosted-macarm-linux-d6-actual-audit-536.json",
+  "acceptedPriorSha256": "6d7480e4b1d74a9c2c43805f47ac9e1fa8c09b0c04971dbf0a7049a009ac0d80",
+  "subtotalInstances": 12,
+  "subtotalTests": 6590,
+  "limits": [
+    "iOS X64 result is simulator execution, not iOS device runtime",
+    "Separate ARM consumer runtime, normal public suite and final whole-workflow join remain pending",
+    "Artifact provenance uses frozen owner download handoff and exact terminal API job metadata; artifact API digest not supplied in this subset",
+    "Prior nine instances reused without reauditing; no numerical rerun or source traversal"
+  ]
+}

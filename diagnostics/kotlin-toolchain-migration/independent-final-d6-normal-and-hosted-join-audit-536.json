@@ -1,0 +1,1411 @@
+{
+  "status": "FINAL_D6_HOSTED_REQUIRED_GATES_ACTUAL_PASS_QUALIFIED",
+  "headSha": "d6c39f08420deec06cef9d631160a00d4575cfb8",
+  "compatibilityRun": 39029084281,
+  "largeRun": 39029099256,
+  "terminalSha256": "84c972a16f3076d1fe83677f7e0e870c162c3eed378a5c21324cc80ee9dc0f49",
+  "artifactApiInventorySha256": "aeddf1852256fcf1441ad66bf925801bcb0e78bace004281866cdfcd2f352601",
+  "completeLogsZipSha256": "3cd1cd729fb51e7c5c82734810dcd1d78316b093eb9add0ca33f75ad94fdd002",
+  "artifactApiInventory": [
+    {
+      "digest": "sha256:a5efc052ebfd6cf88969bf82bf146c6b7dd9ebadc309565605b7b72fd25f71bd",
+      "name": "test-results-macos-15-intel",
+      "size_in_bytes": 2419195
+    },
+    {
+      "digest": "sha256:afc583621afb0cc02001997e6b21c6afa8eac6821db442f26409d06566eaa866",
+      "name": "linux-arm64-test-evidence-d6c39f08420deec06cef9d631160a00d4575cfb8",
+      "size_in_bytes": 452486
+    },
+    {
+      "digest": "sha256:168dcc1902a340779c1ba5f22897e9958bbf3696961f851ed28d8774cbeb6a09",
+      "name": "public-math-evidence-d6c39f08420deec06cef9d631160a00d4575cfb8-1",
+      "size_in_bytes": 3848119
+    },
+    {
+      "digest": "sha256:f31be554773215fff927876f0b172fb05b74c830c13c0907426251a0a0b6e8fb",
+      "name": "public-math-jvm-d6c39f08420deec06cef9d631160a00d4575cfb8",
+      "size_in_bytes": 284030
+    },
+    {
+      "digest": "sha256:0d1547c4d6fc7bb0674e8cc223b515387b12c8a3969f48560ceb9fe22d1d764f",
+      "name": "test-results-windows-2025",
+      "size_in_bytes": 1908757
+    },
+    {
+      "digest": "sha256:7d676e260735a77606dcc1c78e6f0456bb2e749148ab8faa318a605e3acfbf0a",
+      "name": "linux-arm64-tests",
+      "size_in_bytes": 10176140
+    },
+    {
+      "digest": "sha256:684047299ce84463f1837afb271eb41d4484a05f4a5bdeeefaefbcb9380765b6",
+      "name": "test-results-ubuntu-24.04",
+      "size_in_bytes": 2828096
+    },
+    {
+      "digest": "sha256:20edbbb05e768165d794dd0266d0070a6f05f52d3b2b95cad661373521e05940",
+      "name": "test-results-macos-15",
+      "size_in_bytes": 2418551
+    },
+    {
+      "digest": "sha256:ba4ed65769caf93fe45aaec1c837abe30c217a0cef1783b5340107da2a8e888b",
+      "name": "locked-build-plugins-d6c39f08420deec06cef9d631160a00d4575cfb8",
+      "size_in_bytes": 24880
+    }
+  ],
+  "allCompatibilityJobsSuccess": 8,
+  "supportedRuntimeInstances": 13,
+  "supportedRuntimeTests": 7064,
+  "oracles": [
+    {
+      "step": 4,
+      "name": "Run kotlinr scripts/generate-oracle.main.kts --check",
+      "logMember": "oracle/4_Run kotlinr scripts_generate-oracle.main.kts --check.txt",
+      "sha256": "25f7708859f152a275bb98d4f7ff899eb1007ab0c93fde88272b672a3060c091"
+    },
+    {
+      "step": 5,
+      "name": "Run kotlinr scripts/generate-scale-oracle.main.kts --check",
+      "logMember": "oracle/5_Run kotlinr scripts_generate-scale-oracle.main.kts --check.txt",
+      "sha256": "b82a91b198ffb4968cc9e3eeb25eae7a273bfc4de9a672b02ab6b529d1e23313"
+    },
+    {
+      "step": 6,
+      "name": "Run kotlinr scripts/generate-null-oracle.main.kts --check",
+      "logMember": "oracle/6_Run kotlinr scripts_generate-null-oracle.main.kts --check.txt",
+      "sha256": "b1f9378b6f28bf863050d709c153b90e1e82e72bc52b5a74808c6c5f459d3c2f"
+    },
+    {
+      "step": 7,
+      "name": "Run kotlinr scripts/generate-character-oracle.main.kts --check",
+      "logMember": "oracle/7_Run kotlinr scripts_generate-character-oracle.main.kts --check.txt",
+      "sha256": "c1c6bb9b40488ba028a73024489134be38f42d724544a030045788eb3fc8e255"
+    },
+    {
+      "step": 8,
+      "name": "Run kotlinr scripts/generate-prime-oracle.main.kts --check",
+      "logMember": "oracle/8_Run kotlinr scripts_generate-prime-oracle.main.kts --check.txt",
+      "sha256": "b62409d4ab8859d0b336d9af17be3bb789f76455f442aa22955201577f34b073"
+    },
+    {
+      "step": 9,
+      "name": "Run kotlinr scripts/generate-prime-prefix-oracle.main.kts --check",
+      "logMember": "oracle/9_Run kotlinr scripts_generate-prime-prefix-oracle.main.kts --check.txt",
+      "sha256": "a0a261565cfc5b709058e9f9254aaa0410c4cbfc91389d81a2685f361ad93be2"
+    },
+    {
+      "step": 10,
+      "name": "Run kotlinr scripts/generate-decimal-pair-dispatch-oracle.main.kts --check",
+      "logMember": "oracle/10_Run kotlinr scripts_generate-decimal-pair-dispatch-oracle.main.kts --check.txt",
+      "sha256": "522ee39b5d398c94dbbba9a5a9775e5af43e7d77ba895711bdc0019461fda6ad"
+    },
+    {
+      "step": 11,
+      "name": "Run kotlinr scripts/generate-decimal-integral-dispatch-oracle.main.kts --check",
+      "logMember": "oracle/11_Run kotlinr scripts_generate-decimal-integral-dispatch-oracle.main.kts --check.txt",
+      "sha256": "14a04045c2ee0bf21f015c49f06b893eaa6568f7de7da914440f038c7f665782"
+    },
+    {
+      "step": 12,
+      "name": "Run kotlinr scripts/generate-decimal-context-dispatch-oracle.main.kts --check",
+      "logMember": "oracle/12_Run kotlinr scripts_generate-decimal-context-dispatch-oracle.main.kts --check.txt",
+      "sha256": "20629091a8ca73998c810777ea3a1061defbc209cd4381756d60ef9c1c991c4c"
+    },
+    {
+      "step": 13,
+      "name": "Verify context-dispatch field classification",
+      "logMember": "oracle/13_Verify context-dispatch field classification.txt",
+      "sha256": "c70fecad5355463918508e65789d8fd71eb6c607f75cf20be809558cd8d0167e"
+    },
+    {
+      "step": 14,
+      "name": "Run kotlinr scripts/extract-decimal-context-returned-representations.main.kts --check",
+      "logMember": "oracle/14_Run kotlinr scripts_extract-decimal-context-returned-representations.main.kts --check.txt",
+      "sha256": "e59113657774b9e9e7d25eb0963ac8b00ec1ebb6fc60d082b7bed192c8448be6"
+    },
+    {
+      "step": 15,
+      "name": "Run kotlinr scripts/inventory-decimal-exact-root-callbacks-563.main.kts",
+      "logMember": "oracle/15_Run kotlinr scripts_inventory-decimal-exact-root-callbacks-563.main.kts.txt",
+      "sha256": "0be4e5292318643c4c3f8a1ed88a073e72dfc2ddd862a1f077d5f244c3266aee"
+    },
+    {
+      "step": 16,
+      "name": "Run kotlinr scripts/generate-decimal-remainder-array-oracle.main.kts --check",
+      "logMember": "oracle/16_Run kotlinr scripts_generate-decimal-remainder-array-oracle.main.kts --check.txt",
+      "sha256": "b9e07139d8742524a5219f32eb92c1d8bd8b4330fad48d3e44ba3a1e9f646b60"
+    },
+    {
+      "step": 17,
+      "name": "Run kotlinr scripts/generate-integer-arithmetic-oracle.main.kts --check",
+      "logMember": "oracle/17_Run kotlinr scripts_generate-integer-arithmetic-oracle.main.kts --check.txt",
+      "sha256": "71292c325e3519e1a99d8493c0bcc8e94cc6ab000df53666366fadadb573212a"
+    },
+    {
+      "step": 18,
+      "name": "Run kotlinr scripts/generate-integer-parser-oracle.main.kts --check",
+      "logMember": "oracle/18_Run kotlinr scripts_generate-integer-parser-oracle.main.kts --check.txt",
+      "sha256": "7d96045f9e7fd8c7b387cf175fc4b1f2b26e6e1c9a612b58eb1ba8aae0ced9a9"
+    },
+    {
+      "step": 19,
+      "name": "Run kotlinr scripts/generate-integer-bytes-oracle.main.kts --check",
+      "logMember": "oracle/19_Run kotlinr scripts_generate-integer-bytes-oracle.main.kts --check.txt",
+      "sha256": "5fa792e13864e6367a11a63fa614d0d6056bce8376f9e28b1ebbfc5f500037d6"
+    },
+    {
+      "step": 20,
+      "name": "Run kotlinr scripts/generate-integer-division-oracle.main.kts --check",
+      "logMember": "oracle/20_Run kotlinr scripts_generate-integer-division-oracle.main.kts --check.txt",
+      "sha256": "81412cf366fdb6905367647e0f608a45061b84bf6207e20cb591c736d9fe81b3"
+    },
+    {
+      "step": 21,
+      "name": "Run kotlinr scripts/generate-integer-pow-oracle.main.kts --check",
+      "logMember": "oracle/21_Run kotlinr scripts_generate-integer-pow-oracle.main.kts --check.txt",
+      "sha256": "c726cc14da8747b32f048bfdffa1d69196cf6e409b035af4373da2ededb5cc51"
+    },
+    {
+      "step": 22,
+      "name": "Run kotlinr scripts/generate-integer-gcd-oracle.main.kts --check",
+      "logMember": "oracle/22_Run kotlinr scripts_generate-integer-gcd-oracle.main.kts --check.txt",
+      "sha256": "b9c139122914b72a3792168b4f5bcb38ba08431833943b1f2bc0e324ac2ba275"
+    },
+    {
+      "step": 23,
+      "name": "Run kotlinr scripts/generate-integer-sqrt-oracle.main.kts --check",
+      "logMember": "oracle/23_Run kotlinr scripts_generate-integer-sqrt-oracle.main.kts --check.txt",
+      "sha256": "162345440c86d7b3110e548ee0b872e0ef3782edf40b50a958097510b2c0718c"
+    },
+    {
+      "step": 24,
+      "name": "Run kotlinr scripts/generate-integer-bits-oracle.main.kts --check",
+      "logMember": "oracle/24_Run kotlinr scripts_generate-integer-bits-oracle.main.kts --check.txt",
+      "sha256": "1986b56ca7cd92bbe1074b81febe5db47dcbb91a083e1d7959d1eca951e33673"
+    },
+    {
+      "step": 25,
+      "name": "Run kotlinr scripts/generate-integer-inverse-oracle.main.kts --check",
+      "logMember": "oracle/25_Run kotlinr scripts_generate-integer-inverse-oracle.main.kts --check.txt",
+      "sha256": "7db3755a4eede1abfdf773c898ad74a90515ebc4c36181533dc9123042527450"
+    },
+    {
+      "step": 26,
+      "name": "Run kotlinr scripts/generate-integer-modpow-oracle.main.kts --check",
+      "logMember": "oracle/26_Run kotlinr scripts_generate-integer-modpow-oracle.main.kts --check.txt",
+      "sha256": "bfd6962dad795f94eb06c6aa74c5beda993f2b0547338e2a21139a2625f758f8"
+    },
+    {
+      "step": 27,
+      "name": "Run kotlinr scripts/generate-context-oracle.main.kts --check",
+      "logMember": "oracle/27_Run kotlinr scripts_generate-context-oracle.main.kts --check.txt",
+      "sha256": "03855e12ae4427c7c548eddd91110b64e847fb95e550ba432b19aabbde989c05"
+    },
+    {
+      "step": 28,
+      "name": "Run kotlinr scripts/generate-hash-oracle.main.kts --check",
+      "logMember": "oracle/28_Run kotlinr scripts_generate-hash-oracle.main.kts --check.txt",
+      "sha256": "ef6fecd537ed703328e02b7419feec85b971e2d160334813ca4fb4f63b1ee156"
+    }
+  ],
+  "iOSDeviceCompile": "SUCCESS_NOT_DEVICE_RUNTIME",
+  "sameRunJarSha256": "832f5ea9c068774e9e55260f12c772350577b2b1ddc45d19927703b0ddb13fd5",
+  "normalResultsSha256": "c1bc96297e02c985f5018ef1357afe3599db2899582b61abdc019a9d448548c7",
+  "normalCounts": {
+    "PASS": 106,
+    "FAIL": 0,
+    "SKIP": 46
+  },
+  "normalRetainedPlansPerPhase": 53,
+  "normalRows": [
+    {
+      "id": "baseline/BigDecimal/AddTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 157,
+      "stdoutSha256": "fd302a088190707710e15c07b662e1e672e13776273a7a52acecef2070117851",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "f547e519dc635be7c9a23985f98cb32ffc11f387c8428a00a4afcd98106bdc30",
+      "freeMiB": 10987.765625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/CompareToTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 86,
+      "stdoutSha256": "55b5ef9b4623cd9c52b492e3a818369e8a8c0c9fdd5d70637f612016bf003c83",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "94f595b62063bcca6dbe6b8afcf0522a43f6aef11179e2235282a288452de4e0",
+      "freeMiB": 10972.3984375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/Constructor/run-1",
+      "resource": "standard",
+      "elapsedMillis": 386,
+      "stdoutSha256": "2dad51233b69ef12bc15caa3021396d7e20c66eba67a26b25f52eaa92ea6c2b3",
+      "stderrSha256": "2c58b87a0350a39bb1c3b5f4891defeeb9a785e84aa11a466dc9ddb21253bf58",
+      "classLoadSha256": "13b0e41d3f4e28dfbe0be43e265d4beb6aa2e866841dfffdd507ff86a41a7549",
+      "freeMiB": 10980.7578125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/ConstructorUnscaledValue/run-1",
+      "resource": "standard",
+      "elapsedMillis": 87,
+      "stdoutSha256": "98879825381ef48a03e5d7a45c3810e07714407f0df1330f8deb4f5669f8f82b",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "f9f9f21406c322be700f0a63468340229d0586741f19469985fc80f955333bbd",
+      "freeMiB": 10964.3671875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/DivideMcTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 566,
+      "stdoutSha256": "f754a37360da297b0c3d08fe6146a92a5ca85b259e8ffd2d03fbd6415bcd09da",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "11f2a7365d544fc45691bbebd636eaf885d1f1cc137e9198848ddd17c9ad9bd1",
+      "freeMiB": 10960.63671875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/DivideMcTests/run-2",
+      "resource": "standard",
+      "elapsedMillis": 593,
+      "stdoutSha256": "f754a37360da297b0c3d08fe6146a92a5ca85b259e8ffd2d03fbd6415bcd09da",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "a64f7749a5c775237f13d1f51ebd1ea98b5268cb7a15d2e7d982067d5b927215",
+      "freeMiB": 10885.02734375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/DivideTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 85,
+      "stdoutSha256": "3652631cd3fee9cb879a2dd015024b323efa9e56cb1d94bbb3f6cef8f2edab10",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "185fb10eb9cc797989c27aedcadebd5a954cf83f0c8e7cbdfd3e76fa838fe203",
+      "freeMiB": 10930.78515625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/DoubleFloatValueTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 796,
+      "stdoutSha256": "044b8192e58f4d3146e8ac4230b8e3f3ea7eed70c98e9f898dfadeb563e23429",
+      "stderrSha256": "edc8d35623ef3b5bdbbf28491b2a7624c1b8e3502b34ec0aa1ae61ac754cb9c0",
+      "classLoadSha256": "1da0ebcd68e539c7a7d762c7bc2e1258cf5417813669c365552b4231a6f00e35",
+      "freeMiB": 10923.40234375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/EqualsTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 82,
+      "stdoutSha256": "395caa87ca883639f3284c62544a9cba02c0f952a3ac3848d4f8d49dad0f1345",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "a60f7fceeefac299d95ae7b66d7e2804b1f2c4f57bc61776b5aad1f38ff895aa",
+      "freeMiB": 10924.90234375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/FloatDoubleValueTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 86,
+      "stdoutSha256": "35d62761ccc31305f20564b8f568bdf7fb0bba6a5b87bab4a7412fc877937c1a",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "b58265785d8fef7425a30f26f7288487c4e3d9964df86983222b44b5f01135f7",
+      "freeMiB": 10957.546875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/FloatDoubleValueTests/run-2",
+      "resource": "standard",
+      "elapsedMillis": 85,
+      "stdoutSha256": "35d62761ccc31305f20564b8f568bdf7fb0bba6a5b87bab4a7412fc877937c1a",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "6aa2330c454f9918c5207960f946cf2d92f19aa2cdd5d38c0dc20a03e089a9d0",
+      "freeMiB": 10883.1875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/IntValueExactTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 83,
+      "stdoutSha256": "87793618f7de3adae176bfac60b66fb655754f7fd00cfac538c75320c27f4a86",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "465775f8bfbf77a84b93cb93d05fe7e4e1ff58d54a89d6f63b3f043e00d96097",
+      "freeMiB": 10837.68359375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/IntegralDivisionTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 85,
+      "stdoutSha256": "bbdf78ac84fbbad5f19a88ac0a811b802cb4b6babfd0d67f3eb91a5390061be5",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "670e68668fceb83e4704187c5fcae995d897373cbd7e5720d4898f312e9c91e4",
+      "freeMiB": 10886.91015625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/IntegralValueTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 92,
+      "stdoutSha256": "c2538a97fa79fbb6a02eeb7e0fbfc73a52034834f59322f8b8e64a5bba068175",
+      "stderrSha256": "9755fda2c64153356bbf40a9c1748deb055c61052e356c346e55ce776f9c4571",
+      "classLoadSha256": "34ed5b5d38561e428914ca4e40333ca67c13a221f2b7b86f8e2d0fb5e5feeb96",
+      "freeMiB": 10874.1875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/LongValueExactTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 92,
+      "stdoutSha256": "a1f04f147f3d4eacf233ccd576fd998d6e0c23ff4d78ccc28bdf7a58ef029a7d",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "fcdbdfdd25cebf351ce9d736add7b46e08719b3c783ae21909a9c6965f17f165",
+      "freeMiB": 10922.36328125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/MovePointTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 81,
+      "stdoutSha256": "2c7116dea9a98d95ffbc25dab022d20c7c6a89a224d17514c93151688190db11",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "74e046be91e57e92e9009c32c3bf00c93d7ce37fe668f380564fb49e69d1ffc0",
+      "freeMiB": 10892.8828125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/MultiplyTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 77,
+      "stdoutSha256": "094c0ea647b5866b274e73a666c9556dc19d6b2f9f6abaeedee34354ee1910f1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "3830c4c023f901fd2e99cf9047cc6d437d7d5ceee964e200657386e20dde5292",
+      "freeMiB": 10903.04296875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/NegateTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 80,
+      "stdoutSha256": "fd1e8557b1728a295da5a4f5e2f5a398bcb5a3c7eb433cf34b50cd71e6ddf471",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "862528b9604cbb9279da564f1e2f4395a9b186e83f4c6633240e8ada8582da65",
+      "freeMiB": 10956.875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/PowTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 78,
+      "stdoutSha256": "5433293b87b7fb277ed4a7cb28c2993a628394a960fc8b23e938187ed96188f1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "f0f078c613516c850a9f92c2980a7199a99585a44f4eb61d8763ab3399a8b9cb",
+      "freeMiB": 10953.984375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/PrecisionTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 89,
+      "stdoutSha256": "bab0285bafcbadb49ec21b508bc83057f191813213c3e92eadb5ab8fd4ae31b7",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "0b02a673b3d79739ebab49fc81e017155c0996bb3802e9e74cad43b2f65c9961",
+      "freeMiB": 10934.6640625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/RangeTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 83,
+      "stdoutSha256": "6a9be902116ef7dd68cc51d8b75b6fa3f68c60336e6bb4fe2970d4778e8b05e8",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "59d10d388d6883ee1d9e38795b72a5232a63cc675bde1d02b0ca9d79efb29c26",
+      "freeMiB": 10859.19921875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/RangeTests/run-2",
+      "resource": "standard",
+      "elapsedMillis": 88,
+      "stdoutSha256": "6a9be902116ef7dd68cc51d8b75b6fa3f68c60336e6bb4fe2970d4778e8b05e8",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "3b4411db01eadda766e33c8e4f319d69e8287a6256dd94b0c46ce91e64926981",
+      "freeMiB": 10885.2578125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/RoundingTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 83,
+      "stdoutSha256": "9458f1aa982df8a9edd12f73652c0f4a64468e96f397edcffacaa42e7ea87631",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "09144f69f12b4c52f92d2701db0be9e4a21a8c9628392192e6ebe9b9b3970b6c",
+      "freeMiB": 10835.13671875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/ScaleByPowerOfTenTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 83,
+      "stdoutSha256": "3cc4640607a9c2d72aedd033b9a9c731a308d18be55807a24e7a56d1f6600339",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "ad4ed809c56b41d281b77423d0fed38327c19842d4c02a72edea0501639689cd",
+      "freeMiB": 10868.3359375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/SerializationTests/run-1",
+      "resource": "serialization",
+      "elapsedMillis": 173,
+      "stdoutSha256": "521cc755dd4dbef7855a7dfa9999956a93de3c3a9d997da574bf4903f90445f1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "9bc6dfd3c616421cdc0a53c1dd4e10757d6f0ba76bdcd9a031c3166cb4cd02c6",
+      "freeMiB": 10847.7265625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/SquareRootTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 237,
+      "stdoutSha256": "8e9a45d1c054e853ec2d09709fe20b9dca787f8d8483d914b6b06272378f1bdb",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "50363b72b9f76019ef0084347bf7999a9ac9a72ff0a0e938d08f3e93181422fd",
+      "freeMiB": 10874.3515625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/StringConstructor/run-1",
+      "resource": "standard",
+      "elapsedMillis": 94,
+      "stdoutSha256": "c3d3af1ec5d8a059dca7620eaf5fe883bfa0dc51d54f25459fdd5405651d7f84",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "cb6432fb90b54dd423bdb2f5afa23acc852e5bc4c77dfc55326afd3a8a184c97",
+      "freeMiB": 10870.8046875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/StrippingZerosTest/run-1",
+      "resource": "standard",
+      "elapsedMillis": 87,
+      "stdoutSha256": "88b9fe81dd87af09d1826fd96bfe9adb0bd6ffa5a43e86b1ae568225787cafc1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "e7aa34f97865bde89e9d5a1087ae403b66577d005cbaef65b37ad287303c03c8",
+      "freeMiB": 10937.2421875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/StrippingZerosTest/run-2",
+      "resource": "standard",
+      "elapsedMillis": 85,
+      "stdoutSha256": "88b9fe81dd87af09d1826fd96bfe9adb0bd6ffa5a43e86b1ae568225787cafc1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "6561825d1662affe93358cc5fd11047790107fb7f4366ec518a53b662ae3948a",
+      "freeMiB": 10932.8359375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/ToPlainStringTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 86,
+      "stdoutSha256": "a38799d98bb6e8528a90d5ea19ee5a8fb2688baa3242f2624f2599cd487af7c4",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "726d41bfa2ba950cc4272b639f2795ce78b60eba02a7722a361a62416ebd98a4",
+      "freeMiB": 10913.48828125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/ToPlainStringTests/run-2",
+      "resource": "standard",
+      "elapsedMillis": 89,
+      "stdoutSha256": "a38799d98bb6e8528a90d5ea19ee5a8fb2688baa3242f2624f2599cd487af7c4",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "8eb05beacabeaef140578829c6fcd5a07e5dbd3c343e157fa74c70cdcb6d9ed5",
+      "freeMiB": 10920.328125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/ValueOfDouble/run-1",
+      "resource": "standard",
+      "elapsedMillis": 850,
+      "stdoutSha256": "f4cf29d1247a1058ad87e142fd8c0e0abf856cb9906a46ea2b238cde3ac24664",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "711a02980cc642258cc0e9c06253812b26f27d2b3a709668b98bdb25c0cbca74",
+      "freeMiB": 10947.15234375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigDecimal/ZeroScalingTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 111,
+      "stdoutSha256": "49c3aa47c4199d9249b50e24d8c3180e301ccc566c5749958bb45d7321eb162c",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "0aff3a0d70fe2a111b627b29f75be4f1810f1425fada8d760c5e5e99ccfbf3a3",
+      "freeMiB": 10908.578125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/BigIntegerParallelMultiplyTest/run-1",
+      "resource": "heavy",
+      "elapsedMillis": 414,
+      "stdoutSha256": "1cb3f1ed87895e98c610e0f1893724567e96cb63fabc64d441bd96b1d8d4a611",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "6d54cb8efdf8108e03d15417e4b94494446cb7443320a420d23c34f705e9a027",
+      "freeMiB": 10872.5,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/BigIntegerTest/run-1",
+      "resource": "heavy",
+      "elapsedMillis": 19791,
+      "stdoutSha256": "0a2cf76c8d122061d90e264b394e1db6a5a0bcd3dc5e2b85d2c0a029ada571f5",
+      "stderrSha256": "825b45690cd248a92e3af47c37520f94cc7bdaeef2071e1e6a04605f330f1220",
+      "classLoadSha256": "13ac3d98fca75bd7dbeda85dd85bdad4d192c48f67650072cf9876868c8de811",
+      "freeMiB": 10918.55859375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/BigIntegerTest/run-2",
+      "resource": "heavy",
+      "elapsedMillis": 19655,
+      "stdoutSha256": "0a2cf76c8d122061d90e264b394e1db6a5a0bcd3dc5e2b85d2c0a029ada571f5",
+      "stderrSha256": "825b45690cd248a92e3af47c37520f94cc7bdaeef2071e1e6a04605f330f1220",
+      "classLoadSha256": "403307a17373aab17dbc02dc03c381c73c4c8fbd4b3a568b911d264d4e330504",
+      "freeMiB": 10999.03125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/ByteArrayConstructorTest/run-1",
+      "resource": "standard",
+      "elapsedMillis": 6929,
+      "stdoutSha256": "dc57ddf3770599eb98be6b3bb6a133f5294e028524c2aac9000fbd95774d4647",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "001ba1ab6e870e7895b3b43d40888eae69121e9ed3f82d1642ae33930077e905",
+      "freeMiB": 10984.12109375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/CompareToTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 70,
+      "stdoutSha256": "55b5ef9b4623cd9c52b492e3a818369e8a8c0c9fdd5d70637f612016bf003c83",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "22a5b826e45f26f0a8030ed107f27884b60963c7b7516dbc9242e124e3f4784c",
+      "freeMiB": 10981.97265625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/ExtremeShiftingTests/run-1",
+      "resource": "memory-512m",
+      "elapsedMillis": 109,
+      "stdoutSha256": "3d453f6138392e1efe88c1ed68b44f614cea8f8c312abb3f8baadea893c1269e",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "4b3d25cacad0f82e18b1dd3ef585e7bb315056869b5c02c7b2124f69b20590f5",
+      "freeMiB": 10977.97265625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/HashCode/run-1",
+      "resource": "standard",
+      "elapsedMillis": 65,
+      "stdoutSha256": "c7649a30c078316dcd814fe497f765d66a59f369a144e424e947328a9c45b6df",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "f5f62ec423969a9adb0651e781d6f15269ddc671a62d96ac91bc573c8364d16c",
+      "freeMiB": 10927.89453125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/ModInvTime/run-1",
+      "resource": "standard",
+      "elapsedMillis": 90,
+      "stdoutSha256": "5cbe4f7b6e05b25d7efa09d136fc35ff1807f6e01667467490d4a9741b1ed423",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "c85a36df4353d11b5a549e20aa4d8e8119bcb3368540630755ec2d8c9d60519d",
+      "freeMiB": 10901.9296875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/ModPow/run-1",
+      "resource": "standard",
+      "elapsedMillis": 210,
+      "stdoutSha256": "7a2ed24bc84ddba308812611e64add9ce31be953f11c6b62504389b18a99030f",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "4ce03dd2b28eb841be7e8690b518ec2359c4cc859e9d3d33073e627c91af8e53",
+      "freeMiB": 10921.26171875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/ModPow65537/run-1",
+      "resource": "standard",
+      "elapsedMillis": 257,
+      "stdoutSha256": "4eac5cb8f72311d9eb73a0006b18f26d50869143b5aeb291caa456ea9e2743ff",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "c8c43d0fcc63e8f2183e783ec2d37b355294a62cb2d70237e78cbda063dfdcac",
+      "freeMiB": 10909.5390625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/ModPowPowersof2/run-1",
+      "resource": "standard",
+      "elapsedMillis": 207,
+      "stdoutSha256": "743529d5976d465eb2a1d4979f1fd15b55468285546fec506098037059a4bed6",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "abdb26740cfe48cad6df19d8b9a2600ccd43889fc63bf37c687565b7a852571a",
+      "freeMiB": 10908.6875,
+      "requiredMiB": 1536
+    },
+    {
+      "id": "baseline/BigInteger/OperatorNpeTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 65,
+      "stdoutSha256": "a750d6f8cb124deb221a21c44b10b79c043951d21f2c1ca6306db03e77bdb6de",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "6e24bc7da3a8a272fced7978b03325971390147e52b7fddee3b81156789b575e",
+      "freeMiB": 10912.06640625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/PrimeTest/run-1",
+      "resource": "heavy",
+      "elapsedMillis": 3745,
+      "stdoutSha256": "f0cbec17d76f1736c2197223c5d53bb102037ba9fc18e2fb203071d2f581701d",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "6821a38e87f1507f2324dd5f696b037dc52810a8491eab4070ce4f32642122de",
+      "freeMiB": 10921.609375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/PrimitiveConversionTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 224,
+      "stdoutSha256": "a80e889000c960460f534a66d9334dd1830b8ef88ebdb9fb287dd8b27809f35c",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "7a3791eda682e2a0df6549823857c216c30c93088cead22d53e7d6fe56e9879f",
+      "freeMiB": 10884.6796875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/ProbablePrime/run-1",
+      "resource": "heavy",
+      "elapsedMillis": 58,
+      "stdoutSha256": "125924ac22d0f0f9a6945f9363a7805313de4c5f47e7f5a60c36698175193571",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "4873ff321657e8c5abbe858030a140e9e02bc4af392494d0a8b2c4ddd9eeb41a",
+      "freeMiB": 10928.421875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/SerializationTests/run-1",
+      "resource": "serialization",
+      "elapsedMillis": 136,
+      "stdoutSha256": "521cc755dd4dbef7855a7dfa9999956a93de3c3a9d997da574bf4903f90445f1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "eee6237ed92cf12face2fd3a8378e9db6f68fe36aa87d516cc0d741fc3d0c8be",
+      "freeMiB": 10880.2265625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/StringConstructor/run-1",
+      "resource": "standard",
+      "elapsedMillis": 62,
+      "stdoutSha256": "7c66a4535f9524714f14fc9062a8309ed13546b1bf5b1fe0b3c1988a3868ba18",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "7bf6b07395e4c598889bd9880995e0a2bba902ece51bddc71abcb66d01141c4f",
+      "freeMiB": 10906.796875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/TestValueExact/run-1",
+      "resource": "standard",
+      "elapsedMillis": 67,
+      "stdoutSha256": "da0df826b94dab9da9112e052836835e3614d31620beaeecd7e04002c2a874d3",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "2bc458d781f722c3012bd8c3a1eec52c66e59ec0904fdefaaddd8d36b51404c5",
+      "freeMiB": 10912.75,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/BigInteger/UnicodeConstructor/run-1",
+      "resource": "standard",
+      "elapsedMillis": 60,
+      "stdoutSha256": "da9cd1e12632af8b5c373d9ef5fc2f78e0ca7c8dcb8afe0f80915e659d53307d",
+      "stderrSha256": "7fd1f7f5e64c4b4f8e1f886997d2557fc09a05d62806a19bdbf4175a49d21799",
+      "classLoadSha256": "05b7d3a8b178201b9f7a6f83e0a3f96a78ec8498f085ee9426012cee27ac1aeb",
+      "freeMiB": 10922.66796875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "baseline/RoundingMode/RoundingModeTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 62,
+      "stdoutSha256": "cac1503f2a0d160a76b040e66500835f476b2eccd77d08be2ca55e3fe65b47aa",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "b9754ef76edbf895d6df26802bcf4f85d30de15b6d2a7e0a437c74bb940145f7",
+      "freeMiB": 10852.36328125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/AddTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 238,
+      "stdoutSha256": "47af7fa994e26b92abfa54e017f9f08b55842acefd157583c5df38edd6b064d0",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "4a02b568d4cdbc3cdeddcf7eb86d3d6c78e00f681ff7e30e70bc4da74a3b996a",
+      "freeMiB": 10854.5703125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/CompareToTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 90,
+      "stdoutSha256": "85a388745d942453ae3d038bc590c878111804792ba371b76c6d90bf6eea8dac",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "8f90650a9f2f5f8f25f3670a71d021938cb16db6f4974bfe5ab52e220c0d66f5",
+      "freeMiB": 10907.9921875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/Constructor/run-1",
+      "resource": "standard",
+      "elapsedMillis": 376,
+      "stdoutSha256": "aab1222705da23b0315e460e69b0f9b7108a5781cdb31a0a6d8758777bb58e8f",
+      "stderrSha256": "2c58b87a0350a39bb1c3b5f4891defeeb9a785e84aa11a466dc9ddb21253bf58",
+      "classLoadSha256": "aa6d56989998e8c4dfc2081e0e20b4314ea787c0ce1cbbfc66e755c1599e2b9c",
+      "freeMiB": 10855.6640625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/ConstructorUnscaledValue/run-1",
+      "resource": "standard",
+      "elapsedMillis": 93,
+      "stdoutSha256": "1155c7ec474b98aaca5d20fddda709248119005ec05c04698ef2c3192d453496",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "9d0404577416b0e77a7160511a6e696889c470f57738b574bc42866ad3062047",
+      "freeMiB": 10888.32421875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/DivideMcTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 1269,
+      "stdoutSha256": "64fb94ba1bfa32657a44e39928e445538beab23885cd7a0e76d993d0496fc0f2",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "318ad20fb4727ce7e9a84c637e1c419dc177d53fad6955b833f5efa6c93d121a",
+      "freeMiB": 10944.53515625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/DivideMcTests/run-2",
+      "resource": "standard",
+      "elapsedMillis": 1390,
+      "stdoutSha256": "64fb94ba1bfa32657a44e39928e445538beab23885cd7a0e76d993d0496fc0f2",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "4778db1a7f21c0491da6c529f2faf6fc097d5389eded8af60f69d89404c0acf7",
+      "freeMiB": 10875.91796875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/DivideTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 125,
+      "stdoutSha256": "6e8a290e224cbdb6d5109b9142a51fc5efcca1537ad040e11bfb20cd7b5dd4f2",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "b19cebbfbf4ff40bf8f57ab10459ede5b076bec9909eb33c5154b643277a465b",
+      "freeMiB": 10823.609375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/DoubleFloatValueTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 1780,
+      "stdoutSha256": "c604786660c06d1975a42780c865fcd02308ba0f9d1bee2029167d44357d2657",
+      "stderrSha256": "edc8d35623ef3b5bdbbf28491b2a7624c1b8e3502b34ec0aa1ae61ac754cb9c0",
+      "classLoadSha256": "0a76c9a0d859400731fd8d0b6d89652b084ef37b4cac9eb4401f33ea1135696d",
+      "freeMiB": 10843.0546875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/EqualsTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 130,
+      "stdoutSha256": "f59e3609696b0c509ccc91ae4be231f0d7ba41bd0fdedaf82f334e505e93126b",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "1db07cac8bee9fdc2efa8479a0c1192a98b866ff84c6124b1bcfcd72fa197706",
+      "freeMiB": 10849.49609375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/FloatDoubleValueTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 173,
+      "stdoutSha256": "8d20c2b2ea5c326bb2bf487c1e9811899ca04ec85f73cc30c42a0037b24dd1ef",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "ebb697fc5fa6651c477c8e6cb06a8177896ce18f475338e614b4866d5be35880",
+      "freeMiB": 10849.92578125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/FloatDoubleValueTests/run-2",
+      "resource": "standard",
+      "elapsedMillis": 179,
+      "stdoutSha256": "8d20c2b2ea5c326bb2bf487c1e9811899ca04ec85f73cc30c42a0037b24dd1ef",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "b6e188905a2d6786367beb1a2ca1a87ee442b37d7ba8055e4ef8e3cdb1a4e84f",
+      "freeMiB": 10858.0234375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/IntValueExactTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 115,
+      "stdoutSha256": "533b627cec81c9505eb8dd387f44ab94fdf8a0912eae8c709a94992cf4e2e4fb",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "2e039de002ade2d567dd494687651e0a950b66af83a03cf363efe1b170735d9d",
+      "freeMiB": 10893.51953125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/IntegralDivisionTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 137,
+      "stdoutSha256": "f7f6611126ed204fdbb391ce30e5cd34dd7049a8a20803a2d5b9b25bdbd81cc4",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "982707061794a9a295ff378c00767a6a043e350f97a0ea28b5a9757f0303df48",
+      "freeMiB": 10864.14453125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/IntegralValueTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 112,
+      "stdoutSha256": "dc5124024e394b1a88757ff16cc3c40cd2452f51b84aaf777165a44335afba04",
+      "stderrSha256": "9755fda2c64153356bbf40a9c1748deb055c61052e356c346e55ce776f9c4571",
+      "classLoadSha256": "35fd5ffcb26c03d63a69c33200fe34db9a8962a28e09abf02602d59f09ff57f9",
+      "freeMiB": 10816.34375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/LongValueExactTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 124,
+      "stdoutSha256": "a4c3885717102f1f3eed7f1d594b1eb022fe8536870139772348ecde516153de",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "e4e3eac72c594a94502f2402a62bceb7a14e857b3c8ff5a019594828b9fa06c4",
+      "freeMiB": 10858.70703125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/MovePointTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 115,
+      "stdoutSha256": "a1b93e467bf2ee560dd15db427a7165a6f08b5afd6a13337fa0821fdf7358fdc",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "d17778a8da839cce6d7c9238e6df4d5335778b169703e67711d1e56e2c1a998d",
+      "freeMiB": 10842.3828125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/MultiplyTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 114,
+      "stdoutSha256": "62fb0373dbc2c0b7a515da0bd4dc92d96f9618813b7374776bab4f5e90c814e9",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "11e6c3366359d3010cd1129fdff8874e46f81cab7d5c5eebe718eb459814012d",
+      "freeMiB": 10921.1953125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/NegateTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 96,
+      "stdoutSha256": "31fdb4381637b23d904f2421766546eaac3ca84e1ce4032ae69a80e098ff9bc8",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "2fb15ec76223b756d4b1433ca2b075fc24a44191322107c0749d0e0bd3a5f306",
+      "freeMiB": 10877.6953125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/PowTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 90,
+      "stdoutSha256": "5b0ec96b762896cb66de695a6020d4c1b0acc2ba900233c7068ffd33833ee38f",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "cfa5c536f6a1e882786a52c8c8e4dec6cdbc62393c380c2623da5c16e39ef75c",
+      "freeMiB": 10870.0546875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/PrecisionTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 108,
+      "stdoutSha256": "80da407cc5bcf86061ce9bbbf342f0c03e6c3c4117915bf64f0c4bdaccf299b1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "59983e2745035ff731c20ca16cf19831bd901ae1c31ffee49eee34664b9a2746",
+      "freeMiB": 10810.171875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/RangeTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 113,
+      "stdoutSha256": "b6db1bc9609e95ecc8291bc610aed9f207723115930b6ad81b83c80115ecbea1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "c8bc062d144d3c30bddea5b959d12e6c73d483f93b8a8dd31091873a495bd9bf",
+      "freeMiB": 10881.17578125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/RangeTests/run-2",
+      "resource": "standard",
+      "elapsedMillis": 139,
+      "stdoutSha256": "b6db1bc9609e95ecc8291bc610aed9f207723115930b6ad81b83c80115ecbea1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "fad924e118c47dfffcd30264483829679348c6624d3ca9a9c572f477d942cc29",
+      "freeMiB": 10872.6015625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/RoundingTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 94,
+      "stdoutSha256": "389a66e9e5c188c1cac2ba5290b02ecb6195bb5239bae259bc1108fb8d6c2eb5",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "a7165e5bca86519a7d8aa297fdd77e22ec13dfb87500a4793bf8f867c749282d",
+      "freeMiB": 10910.97265625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/ScaleByPowerOfTenTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 89,
+      "stdoutSha256": "bc11d539a11e40c956fed4780edf0f39eb10400857b856e583b00feae7e41c65",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "d2794baf27a7a7d7c0caa591d5d10bcdb49fe9e3b5f393f405d274e3b9207c64",
+      "freeMiB": 10883.88671875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/SerializationTests/run-1",
+      "resource": "serialization",
+      "elapsedMillis": 162,
+      "stdoutSha256": "f7da3b0f61cb5e97676cd9b60ee2d2422e30bf2d8594d12ebcfa374f1a9e10de",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "53903c213a595abeb1a3bfacb07d51d75816e74b3319ce8709f3369f1ffaa4c9",
+      "freeMiB": 10851.73046875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/SquareRootTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 453,
+      "stdoutSha256": "5e6a9d370faf8b53d3051c931e84b15ec2535214caefb379383a2489ccd7870f",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "d4614d1d7abac54d696e191dbc817ded1e9fe61ce6f49e114f51b0fbcafeea01",
+      "freeMiB": 10912.05859375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/StringConstructor/run-1",
+      "resource": "standard",
+      "elapsedMillis": 177,
+      "stdoutSha256": "b9caddec3027cdfcce0d44091dbc686a3cdd76be0899b14af796922fcfb415ed",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "c55c4950d437f3e371d32db9f95b24d61e36912999b37f73f1f8afba16819503",
+      "freeMiB": 10869.40625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/StrippingZerosTest/run-1",
+      "resource": "standard",
+      "elapsedMillis": 93,
+      "stdoutSha256": "7a9fd3a6ea544cda16b30fe87267c86072a3265dbd3bf7659a5c8720094e1fbf",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "a9cbdf8396024079ecd6c4218afc13bad1e8250d9e25cb26253b6654fc87a9ac",
+      "freeMiB": 10834.71875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/StrippingZerosTest/run-2",
+      "resource": "standard",
+      "elapsedMillis": 102,
+      "stdoutSha256": "7a9fd3a6ea544cda16b30fe87267c86072a3265dbd3bf7659a5c8720094e1fbf",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "8c8b651ec23581b02b4f6e434d04d62b965288305cce8092605d76994278fefc",
+      "freeMiB": 10864.44921875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/ToPlainStringTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 154,
+      "stdoutSha256": "6f618f168927e6928794166dbdab87e328ad798e7ab3b444219113c04d25a270",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "f6fa8ac7e1013a302125929bbe06720d2962db940df3b489b8999a2c07789539",
+      "freeMiB": 10812.94140625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/ToPlainStringTests/run-2",
+      "resource": "standard",
+      "elapsedMillis": 123,
+      "stdoutSha256": "6f618f168927e6928794166dbdab87e328ad798e7ab3b444219113c04d25a270",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "9be5e6b2d8fec09b13c5528d410a852751f63532caf04538c19883903853d33d",
+      "freeMiB": 10840.07421875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/ValueOfDouble/run-1",
+      "resource": "standard",
+      "elapsedMillis": 1023,
+      "stdoutSha256": "14c1a4c2231da7103dba0342e10141c9886783d1d5ff93f7706f166657507044",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "1656feae43ae60ef62475adeac2f2d7e1b146a9a79dd0bb1c1ad21b3735e5581",
+      "freeMiB": 10880.2265625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigDecimal/ZeroScalingTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 165,
+      "stdoutSha256": "7818ac55ac51c0507ec5bd6a329a5d83616a41619ce942ea0d0a2bb440a806e0",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "69d4289749210c60e20e30bb6de63608d0004767525259e823b86a3bf1b99930",
+      "freeMiB": 10833.66015625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/BigIntegerParallelMultiplyTest/run-1",
+      "resource": "heavy",
+      "elapsedMillis": 477,
+      "stdoutSha256": "c77d3b0fc2a947abcb9f927d30dcb82d860a34079c93b7a97e9dbbce4194f17b",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "9ae58763d6d48267e482605c6d81e94cf08e28932213db7b65ca33339fd4acc7",
+      "freeMiB": 10835.4296875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/BigIntegerTest/run-1",
+      "resource": "heavy",
+      "elapsedMillis": 55220,
+      "stdoutSha256": "f46b89741ca566c7ca6b7830430b234a77797d4f9a1dac341d65046fb6f9d7f8",
+      "stderrSha256": "825b45690cd248a92e3af47c37520f94cc7bdaeef2071e1e6a04605f330f1220",
+      "classLoadSha256": "e346fb96be327fb3c1b739f81aedeb8c288d2188294557c51b163425968ebf90",
+      "freeMiB": 10841.30859375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/BigIntegerTest/run-2",
+      "resource": "heavy",
+      "elapsedMillis": 59860,
+      "stdoutSha256": "f46b89741ca566c7ca6b7830430b234a77797d4f9a1dac341d65046fb6f9d7f8",
+      "stderrSha256": "825b45690cd248a92e3af47c37520f94cc7bdaeef2071e1e6a04605f330f1220",
+      "classLoadSha256": "737a5d9bc3a07ddb09aaf312826e6e0a35cee74bb4242574e13ab42c8e785d5e",
+      "freeMiB": 10928.1015625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/ByteArrayConstructorTest/run-1",
+      "resource": "standard",
+      "elapsedMillis": 6826,
+      "stdoutSha256": "df77d31b68485cf4ceefc0ce760a25b99fd79e401126cc5f1f1e6f563d005d90",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "e5d8c0035a7d20086638327dee64383ce303d90a891f9114effbff4a41d95b31",
+      "freeMiB": 10919.80859375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/CompareToTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 109,
+      "stdoutSha256": "85a388745d942453ae3d038bc590c878111804792ba371b76c6d90bf6eea8dac",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "a2c9ccb143a7de18a67e7e92345f767c00c1c6bd2a2a27b57a8ce0e1f96a59b6",
+      "freeMiB": 10885.23046875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/ExtremeShiftingTests/run-1",
+      "resource": "memory-512m",
+      "elapsedMillis": 99,
+      "stdoutSha256": "7bed6f050feacdf79f714923beecb9a1da7125d84397ccc766437029983d62c3",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "79661b911f3e9f7094d02cd8e88868f19a0c01320f096bed5573516c14ddabe4",
+      "freeMiB": 10827.2734375,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/HashCode/run-1",
+      "resource": "standard",
+      "elapsedMillis": 109,
+      "stdoutSha256": "96110b0f6ff02f535e8b0e34c3c0b445dedf6d8bffb498dcef89754673149f4a",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "fd29051390f36c2d32a34e124f786805d1f15808903d1530dfbffb1dfaf2ea14",
+      "freeMiB": 10811.08203125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/ModInvTime/run-1",
+      "resource": "standard",
+      "elapsedMillis": 144,
+      "stdoutSha256": "c90d564a1c8b11ab6326bf7897bcc0e5ff3015d20af541bad6d3f453f65cce3c",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "42b23945a6db81310a8aa4a66026e088afa42e524b5a5b325a706f9e511b4d30",
+      "freeMiB": 10831.09765625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/ModPow/run-1",
+      "resource": "standard",
+      "elapsedMillis": 471,
+      "stdoutSha256": "3e00fdb72b0873194bf12aba932ba02730144c33f46b8b53c60d53daecae9147",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "ada4a937d42a5e9140ab51ded5c0719de8cf625fbe95f580719ad52faf529651",
+      "freeMiB": 10850.29296875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/ModPow65537/run-1",
+      "resource": "standard",
+      "elapsedMillis": 119,
+      "stdoutSha256": "8a6b9905e4bdabfbaacf768617dac1ee1b4fbf845fdbf20bb404a80c9473c410",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "1f7c033cb68edb2fd9b7460ad3fc300b5fb2df2825d1261bf325c173400d5777",
+      "freeMiB": 10834.42578125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/ModPowPowersof2/run-1",
+      "resource": "standard",
+      "elapsedMillis": 296,
+      "stdoutSha256": "d176fa22a5f6a9ab6dff4a3566ec634849f0466c245efb6d2b86ec5674dee6de",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "3ed05a9596917082d59f918b39e8c80e7040bfcabcf74d9522d2c2270ce34eb7",
+      "freeMiB": 10810.52734375,
+      "requiredMiB": 1536
+    },
+    {
+      "id": "port/BigInteger/OperatorNpeTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 105,
+      "stdoutSha256": "6f9c6b2ffa0272dc94fb2feee85da11eee9ebbe8e106def2453c47ca66e1ac10",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "ebe4d5e4fa8033d444c3dc0a324370df207dff2fe3319fe5f4584affb0e8d8b6",
+      "freeMiB": 10820.6171875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/PrimeTest/run-1",
+      "resource": "heavy",
+      "elapsedMillis": 44312,
+      "stdoutSha256": "8a80aa13de0d870e352a72d0bc67dd1739ec0e13c624e1f3c1489cec377c97a4",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "48f61b6aabe029a794bf10659852af83338c368edf609ba32d174611fa1de8ca",
+      "freeMiB": 10870.16015625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/PrimitiveConversionTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 218,
+      "stdoutSha256": "5f922496eca22be40fc5668d20b7759b6107dea7e653c6ee45cc1da2ce70f4dd",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "137ae38ef553c0a28b64fb637ec7586c0c9a212081f8fb31b66a6997fb7425bf",
+      "freeMiB": 10901.07421875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/ProbablePrime/run-1",
+      "resource": "heavy",
+      "elapsedMillis": 95,
+      "stdoutSha256": "e6243604809c8b78c5aa0f7a88306f4bf988dece600f84b153e1b21201facf7a",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "33655e379c3c7fc2ece0f6e5c1c72418dc651cd43f7f3a5a7c9ed71bee85988b",
+      "freeMiB": 10888.66796875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/SerializationTests/run-1",
+      "resource": "serialization",
+      "elapsedMillis": 160,
+      "stdoutSha256": "f7da3b0f61cb5e97676cd9b60ee2d2422e30bf2d8594d12ebcfa374f1a9e10de",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "b1d5e89f74d95b407f79686d479b27de15a5d0043835be89d5c0262e09b718bb",
+      "freeMiB": 10812.1171875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/StringConstructor/run-1",
+      "resource": "standard",
+      "elapsedMillis": 92,
+      "stdoutSha256": "de9c1091cc5cb9c76a0a8d64e0ad249e6184bc9a23b1944c808edfc7bc2244a1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "4a357dfa4f65cb6067932059531e4dbc7300c6e2aa27fa195ccfd2c5bc06acd1",
+      "freeMiB": 10852.7265625,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/TestValueExact/run-1",
+      "resource": "standard",
+      "elapsedMillis": 108,
+      "stdoutSha256": "fce8269ec168894de531b77140adc59888baadd8885c931384e6f899cb716408",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "d414f4429b8659399715fba77e026458224443a1c815cacca94e386147fa56cf",
+      "freeMiB": 10807.63671875,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/BigInteger/UnicodeConstructor/run-1",
+      "resource": "standard",
+      "elapsedMillis": 106,
+      "stdoutSha256": "1eef34d9ca1d4f04cdfa07609b2484a33a9a0ca4dc203dfd70ec5e6deea0bf9a",
+      "stderrSha256": "7fd1f7f5e64c4b4f8e1f886997d2557fc09a05d62806a19bdbf4175a49d21799",
+      "classLoadSha256": "ad7afd68590614d66baaa9ac7df66ff77fedde38189358d74c4e3724bc3ef4c0",
+      "freeMiB": 10825.86328125,
+      "requiredMiB": 1024
+    },
+    {
+      "id": "port/RoundingMode/RoundingModeTests/run-1",
+      "resource": "standard",
+      "elapsedMillis": 98,
+      "stdoutSha256": "4e109116eb86a35fd2255f2aa63d940d27bd6b6269eb3d1291fe40c4eaed592b",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classLoadSha256": "e11350b23a06b499a7778f1c82d82b081a835ae7bd07bc5753555f9d415ce766",
+      "freeMiB": 10839.75390625,
+      "requiredMiB": 1024
+    }
+  ],
+  "verifiedChildJvm": [
+    {
+      "id": "baseline/BigInteger/ModPowPowersof2/run-1",
+      "properties": {
+        "phase": "baseline",
+        "timedOut": "false",
+        "stdout": "/home/runner/work/krogu-math/krogu-math/build/math-tck/results/1792240168395/baseline/BigInteger/ModPowPowersof2/run-1/child/stdout.log",
+        "command.2": "-XX:-OmitStackTraceInFastThrow",
+        "command.1": "-ea",
+        "command.0": "/opt/hostedtoolcache/Java_Liberica_jdk/25.0.4-9/x64/bin/java",
+        "coreLoadingVerified": "not-required-for-baseline",
+        "classLog": "/home/runner/work/krogu-math/krogu-math/build/math-tck/results/1792240168395/baseline/BigInteger/ModPowPowersof2/run-1/child/class-load.log",
+        "stderr": "/home/runner/work/krogu-math/krogu-math/build/math-tck/results/1792240168395/baseline/BigInteger/ModPowPowersof2/run-1/child/stderr.log",
+        "elapsedMillis": "65",
+        "command.count": "11",
+        "completionVerified": "true",
+        "command.6": "-cp",
+        "exitCode": "0",
+        "command.5": "-Xlog:class+load:file=/home/runner/work/krogu-math/krogu-math/build/math-tck/results/1792240168395/baseline/BigInteger/ModPowPowersof2/run-1/child/class-load.log",
+        "command.4": "-Dseed=559",
+        "command.3": "-Xmx512m",
+        "class": "ModPowPowersof2$ModTester",
+        "command.9": "baseline",
+        "command.10": "ModPowPowersof2$ModTester",
+        "command.8": "mathharness.ChildEntry",
+        "command.7": "/home/runner/work/krogu-math/krogu-math/build/math-tck/results/1792240168395/baseline/BigInteger/ModPowPowersof2/run-1/classes:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/testng-7.11.0.jar:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/slf4j-api-2.0.16.jar:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/jcommander-1.83.jar:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/jquery-3.7.1.jar:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/junit-platform-console-standalone-1.13.4.jar:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/kotlin-stdlib-2.4.21.jar:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/annotations-13.0.jar",
+        "exactSuccessLine": "true",
+        "status": "PASS"
+      },
+      "stdoutSha256": "81b2bd4ea98c8db66554fbc8d7637a1a69a130f331feb732b75caab4c4868fd5",
+      "classLogSha256": "7432245baac6ad66447cdcfa51c54b3a8cc154f000dc2cd7b58e72b81a1643f8"
+    },
+    {
+      "id": "port/BigInteger/ModPowPowersof2/run-1",
+      "properties": {
+        "stdout": "/home/runner/work/krogu-math/krogu-math/build/math-tck/results/1792240168395/port/BigInteger/ModPowPowersof2/run-1/child/stdout.log",
+        "coreLoadingVerified": "true",
+        "exitCode": "0",
+        "class": "ModPowPowersof2$ModTester",
+        "command.10": "port",
+        "command.11": "ModPowPowersof2$ModTester",
+        "phase": "port",
+        "timedOut": "false",
+        "command.2": "-XX:-OmitStackTraceInFastThrow",
+        "command.1": "-ea",
+        "command.0": "/opt/hostedtoolcache/Java_Liberica_jdk/25.0.4-9/x64/bin/java",
+        "classLog": "/home/runner/work/krogu-math/krogu-math/build/math-tck/results/1792240168395/port/BigInteger/ModPowPowersof2/run-1/child/class-load.log",
+        "stderr": "/home/runner/work/krogu-math/krogu-math/build/math-tck/results/1792240168395/port/BigInteger/ModPowPowersof2/run-1/child/stderr.log",
+        "elapsedMillis": "127",
+        "command.count": "12",
+        "completionVerified": "true",
+        "command.6": "-Xlog:class+load:file=/home/runner/work/krogu-math/krogu-math/build/math-tck/results/1792240168395/port/BigInteger/ModPowPowersof2/run-1/child/class-load.log",
+        "command.5": "-Dmath.harness.portJar=/home/runner/work/krogu-math/krogu-math/build/public-math-input/krogu-math.jar",
+        "command.4": "-Dseed=559",
+        "command.3": "-Xmx512m",
+        "command.9": "mathharness.ChildEntry",
+        "command.8": "/home/runner/work/krogu-math/krogu-math/build/math-tck/results/1792240168395/port/BigInteger/ModPowPowersof2/run-1/classes:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/testng-7.11.0.jar:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/slf4j-api-2.0.16.jar:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/jcommander-1.83.jar:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/jquery-3.7.1.jar:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/junit-platform-console-standalone-1.13.4.jar:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/kotlin-stdlib-2.4.21.jar:/home/runner/work/krogu-math/krogu-math/build/math-tck/lib/annotations-13.0.jar:/home/runner/work/krogu-math/krogu-math/build/public-math-input/krogu-math.jar",
+        "command.7": "-cp",
+        "exactSuccessLine": "true",
+        "status": "PASS"
+      },
+      "stdoutSha256": "81b2bd4ea98c8db66554fbc8d7637a1a69a130f331feb732b75caab4c4868fd5",
+      "classLogSha256": "9410504b43f46a99a2a18cae0ecd6580c0fe8eb2c22467fccc98b33a9a6df7ab"
+    }
+  ],
+  "normalSkipReasons": {
+    "Profile large-memory-8g not authorized by this invocation; coverage retained for an eligible run": 8,
+    "Pinned upstream @Test(enabled=false) retained unchanged": 16,
+    "Profile large-memory-4g not authorized by this invocation; coverage retained for an eligible run": 2,
+    "Calls package-private MutableBigInteger through patched java.base wrapper": 2,
+    "Test-only wrapper for package-private MutableBigInteger": 2,
+    "Pinned upstream commented-out call retained unchanged": 2,
+    "Profile large-memory-10g not authorized by this invocation; coverage retained for an eligible run": 2,
+    "charArrayConstructorNegativeOffset: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call": 1,
+    "charArrayConstructorNegativeLength: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call": 1,
+    "charArrayConstructorIntegerOverflow: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call": 1,
+    "charArrayConstructorIndexOutOfBounds: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call": 1,
+    "testFloat16ValueNearMinValue: incubator Float16 host-decimal conversion integration": 1,
+    "testFloat16ValueNearMinNormal: incubator Float16 host-decimal conversion integration": 1,
+    "testFloat16ValueNearMaxValue: incubator Float16 host-decimal conversion integration": 1,
+    "testFloat16ValueRandom: incubator Float16 host-decimal conversion integration": 1,
+    "testFloat16ValueExtremes: incubator Float16 host-decimal conversion integration": 1,
+    "JDK-specific mag storage invariant replaced by krogu normalized-word invariant; racy public constructor execution retained": 1,
+    "SunRsaSign key generation/signing phase: host-provider integration; all three modPow known-answer assertions retained": 1,
+    "checkHugeFails: original mandatory-cutoff expectation above the public minimum prime-domain guarantee is not executed on the port; original frozen campaign1792044478663 PrimeTest FAIL remains FAIL, not an adapted pass. A normal false result is newly checked, not historically observed; original host-baseline behavior is retained separately": 1
+  },
+  "largeRetainedPlansPerPhase": 6,
+  "combinedRetainedPlansPerPhase": 59,
+  "combinedRealPublicInvocations": 118,
+  "priorAcceptedAudits": [
+    {
+      "path": ".codex-work/ktc-migration/independent-hosted-windows-d6-actual-audit-536.json",
+      "sha256": "9358709ad0be4a1449a1d846ac1c96dcb2ca062ce0cbc8ecc025e786a146868a"
+    },
+    {
+      "path": ".codex-work/ktc-migration/independent-hosted-macarm-linux-d6-actual-audit-536.json",
+      "sha256": "6d7480e4b1d74a9c2c43805f47ac9e1fa8c09b0c04971dbf0a7049a009ac0d80"
+    },
+    {
+      "path": ".codex-work/ktc-migration/independent-hosted-macintel-d6-actual-audit-536.json",
+      "sha256": "297d7806b9633a6445d12400626239e7d8c19ef1f9ab080b3729de343b142b82"
+    },
+    {
+      "path": ".codex-work/ktc-migration/independent-hosted-arm-d6-actual-audit-536.json",
+      "sha256": "c21d6f90dcecb06f09e899ab3539a8e6f43509308dd0ac91ee2dbef3c9184771"
+    },
+    {
+      "path": ".codex-work/ktc-migration/independent-hosted-large-d6-actual-audit-536.json",
+      "sha256": "ebff81bb79fdb1a95130b8bac05581d125f2db5c4e18791941498bb9c94e7319"
+    }
+  ],
+  "bindingChecks": [
+    "Exact final terminal/source/workflow d6; all eight jobs successful",
+    "Both same-run producer/input JAR+SOURCE_COMMIT/SHA256SUMS verified, JAR832f5ea9",
+    "Owned harness, runner and source-lock hashes equal d6 Git blobs",
+    "Original upstream and actual baseline/generated source hashes checked for all106",
+    "All106 compile/execution exit0 with raw completion/origins; no timeout/incompleteOOM/resource waiver",
+    "TestNG5 each and both JUnit plans2 each per phase; nested child exit/completion/port origin verified",
+    "All25 oracle steps successful with raw logs; explicit iOSArm64 compilation marker",
+    "Logs ZIP CRC checked; artifact API inventory retained"
+  ],
+  "limits": [
+    "Public OpenJDK tests are not official JCK; upstream/runtime patch-vendor mismatch and adaptation losses remain explicit",
+    "Normal46SKIPs=12large-profile omissions+22upstream/excluded inventory+12explicit adaptation losses; no SKIP promoted to PASS",
+    "Benchmark smokes are not performance parity; publication/consumer reviews retained separately",
+    "Actual measurements bind d6 only; later evidence-only successor needs exact source/tree binding and is not newly measured",
+    "Old-head failures/cancelled/partial outcomes remain historical",
+    "Read-only reader assumptions corrected for legitimate nested child PID/baseline origin and producer source-file binding rather than log echo; no numerical rerun"
+  ]
+}
