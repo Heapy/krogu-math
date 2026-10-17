@@ -3,14 +3,14 @@ package io.heapy.krogu.math
 import kotlin.test.Test
 import kotlin.time.TimeSource
 
-/** New public-route fixture; a controller must use a fresh process for each cold claim. */
+/** Final public serial-retention comparison; no worker activation or startup claim. */
 class NodePublicFrontendCalibration539 {
     @Test fun optionalPublicRoute() {
         val arguments = calibration539Arguments() ?: return
-        if (!arguments.startsWith("node-public-frontend,")) return
+        if (!arguments.startsWith("node-public-serial-retention,")) return
         check(calibration539Platform().startsWith("JS ") || calibration539Platform().startsWith("Wasm "))
         val args = arguments.split(',')
-        require(args.size == 4) { "node-public-frontend,size,distinct|square|ratio2,forward|reverse" }
+        require(args.size == 4) { "node-public-serial-retention,size,distinct|square|ratio2,forward|reverse" }
         val size = args[1].toInt().also { require(it in listOf(256, 1024, 4096, 8192, 16384)) }
         val shape = args[2].also { require(it in listOf("distinct", "square", "ratio2")) }
         require(args[3] in listOf("forward", "reverse"))
@@ -20,6 +20,7 @@ class NodePublicFrontendCalibration539 {
             "ratio2" -> IntArray(2 * size) { 0x3fffffff }
             else -> aWords.copyOf()
         }
+        println("INPUTNODE539,$size/$shape,${aWords.size},${bWords.size},${aWords === bWords}")
         val expectedWords = MagnitudeMultiplication.multiply(aWords, bWords, Int.MAX_VALUE, Int.MAX_VALUE)
         calibration539Verify(aWords, bWords, expectedWords)
         fun number(words: IntArray): BigInteger {
@@ -37,10 +38,8 @@ class NodePublicFrontendCalibration539 {
         val expected = number(expectedWords)
         val selected = MultiplicationPolicy539(MagnitudeMultiplication.selectedKaratsuba539(aWords, bWords),
             MagnitudeMultiplication.SQUARE_THRESHOLD, MagnitudeMultiplication.selectedSquareEntry539())
-        val default = MultiplicationPolicy539(64, 16, 384)
-        val js = calibration539Platform().startsWith("JS ")
-        check(selected.karatsuba == if (js && shape == "distinct") 32 else 64)
-        check(selected.squareLeaf == 16 && selected.wholeSquareEntry == if (js) 128 else 384)
+        check(retainSerialParallelMultiply539)
+        check(selected.karatsuba == 64 && selected.squareLeaf == 16 && selected.wholeSquareEntry == 384)
         val originalWordsA = aWords.copyOf(); val originalWordsB = bWords.copyOf()
         val originalA = a.toByteArray(); val originalB = b.toByteArray()
         fun verify(value: Any?) {
@@ -59,7 +58,7 @@ class NodePublicFrontendCalibration539 {
         val cpuAfter = calibration539CpuNs()
         verify(escaped)
         println("FIRSTNODE539,$size/$shape,$firstNs,${if (cpuBefore != null && cpuAfter != null) cpuAfter - cpuBefore else "NA"}")
-        println("# first means first public call in THIS fixture; cold claim requires external fresh-process/entry binding and no earlier eligible call")
+        println("# first means first public call in THIS fixture; serial-retention comparison requires external fresh-process/entry binding; no worker startup claim")
         // Each native output type escapes unchanged: no conversion/formatting in operations.
         val routes = mutableListOf<Pair<String, () -> Any>>(
             "kernel-k${selected.karatsuba}-s${selected.squareLeaf}-e${selected.wholeSquareEntry}" to {
@@ -72,15 +71,8 @@ class NodePublicFrontendCalibration539 {
             "serial" to { a.multiply(b) },
             "parallel" to { a.parallelMultiply(b) },
         )
-        // Existing measured64 policy remains an explicit comparator where JS32
-        // physically differs. No alias/unbalanced inactive duplicate controls.
-        if (js && shape == "distinct" && selected.karatsuba != default.karatsuba) {
-            routes += "kernel-default-k64-s16-e384" to { MagnitudeMultiplication.multiplyConfigured539(aWords, bWords, default) }
-            routes += "frame-default-k64-s16-e384" to {
-                val frame = checkNotNull(MagnitudeMultiplication.prepareParallel539(aWords, bWords, default))
-                frame.combine(frame.child(0), frame.child(1), frame.child(2))
-            }
-        }
+        // Historical active JS1470 rows retain their original source identity.
+        // Both retained scalar policies are64/16/384, so duplicate64 controls are absent.
         val operations = if (args[3] == "reverse") routes.reversed() else routes
         println("INVENTORYNODE539,$size/$shape,${operations.joinToString(";") { it.first }}")
         for ((variant, calculation) in operations) {

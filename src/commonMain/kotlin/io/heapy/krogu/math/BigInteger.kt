@@ -179,6 +179,7 @@ open class BigInteger private constructor(
     }
 
     open fun parallelMultiply(value: BigInteger): BigInteger {
+        if (retainSerialParallelMultiply539) return multiply(value)
         // Physical metadata only before exact-class and backend initialization.
         // Compact/zero/unbalanced/subclass routes retain virtual multiply(value).
         if (wideWords == null || !hasParallelMagnitude539(value)) return multiply(value)
