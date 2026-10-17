@@ -199,15 +199,15 @@ separates the source255 findings from their later source260 repairs.
 
 ```shell
 kotlinr tools/configure-native-tests.main.kts
-./kotlin test -m krogu-math --platform jvm --include-classes '*'
+./kotlin test -m krogu-math --platform jvm '--include-classes=*'
 kotlinr tools/run-node-tests.main.kts js
 kotlinr tools/run-node-tests.main.kts wasm
-./kotlin test -m krogu-math --platform macosArm64 --include-classes '*'
+./kotlin test -m krogu-math --platform macosArm64 '--include-classes=*'
 ```
 
 Select the Native platform appropriate to your host (`--platform linuxX64`,
 `--platform mingwX64`, etc.). Native tests cannot execute on a different host OS
-or CPU architecture. Keep `--include-classes '*'` for a full suite: it includes
+or CPU architecture. Keep `'--include-classes=*'` for a full suite: it includes
 existing diagnostic classes whose names do not end in `Test`. Run these commands
 from the repository root. The default `build` directory matches the web-test
 friend paths; Native test paths are supplied by the bootstrap described above.

@@ -127,7 +127,7 @@ jobs:
           set -euo pipefail
           # The generated test-only friend paths bind this checkout's default build directory.
           for platform in ${{ matrix.platforms }}; do
-            ./kotlin test -m krogu-math --platform "$platform" --variant debug --include-classes '*' --format teamcity 2>&1 | tee "build/compatibility-$platform.log"
+            ./kotlin test -m krogu-math --platform "$platform" --variant debug '--include-classes=*' --format teamcity 2>&1 | tee "build/compatibility-$platform.log"
           done
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         if: matrix.os == 'ubuntu-24.04'

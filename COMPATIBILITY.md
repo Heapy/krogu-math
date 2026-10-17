@@ -441,10 +441,10 @@ their absence alone does not establish a source or numerical-contract failure.
 ./ktc-plugins sync
 ./ktc-plugins verify
 kotlinr tools/configure-native-tests.main.kts
-./kotlin test -m krogu-math --platform jvm --include-classes '*'
+./kotlin test -m krogu-math --platform jvm '--include-classes=*'
 kotlinr tools/run-node-tests.main.kts js
 kotlinr tools/run-node-tests.main.kts wasm
-./kotlin test -m krogu-math --platform macosArm64 --include-classes '*'
+./kotlin test -m krogu-math --platform macosArm64 '--include-classes=*'
 export JAVA_TOOL_OPTIONS=-XX:-OmitStackTraceInFastThrow
 kotlinr scripts/generate-oracle.main.kts --check
 kotlinr scripts/generate-scale-oracle.main.kts --check
@@ -467,7 +467,7 @@ kotlinr scripts/generate-hash-oracle.main.kts --check
 ```
 
 The current build uses the pinned Kotlin Toolchain 0.13.0 wrapper and Kotlin
-2.4.21. Keep `--include-classes '*'` for full discovery, including existing
+2.4.21. Keep `'--include-classes=*'` for full discovery, including existing
 diagnostic classes whose names do not end in `Test`. Use the appropriate
 `--platform` for other Native OS/architectures. Run these commands from the
 repository root. The Native bootstrap generates an ignored template with this
