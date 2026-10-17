@@ -21,10 +21,7 @@ internal object MagnitudeMultiplication {
         if (useJsMultiplicationPolicy539) 128 else SQUARE_ENTRY_THRESHOLD
 
     fun multiplyAdaptive(a: IntArray, b: IntArray): IntArray {
-        // Below the first selected K32 boundary, the historical route chooses
-        // the same school/square kernel without selected-policy dispatch work.
-        if (useJsMultiplicationPolicy539 && (a.size < 32 || b.size < 32))
-            return multiplyWithSquareEntry(a, b, SQUARE_ENTRY_THRESHOLD)
+        if (useJsMultiplicationPolicy539) return multiplyAdaptiveJs539(a, b)
         // Preserve the exact historical dispatch on platforms without a selected policy.
         if (!useJsMultiplicationPolicy539 && !useNativeBalancedMultiplicationPolicy539) return multiplyWithSquareEntry(a, b, SQUARE_ENTRY_THRESHOLD)
         if (a === b && a.size >= SQUARE_THRESHOLD && a.size < selectedSquareEntry539()) {
@@ -33,6 +30,30 @@ internal object MagnitudeMultiplication {
             return out
         }
         return multiply(a, b, selectedKaratsuba539(a, b), SQUARE_THRESHOLD)
+    }
+
+    /** Selected JS work starts only after the unchanged school/whole-square basecases. */
+    private fun multiplyAdaptiveJs539(a: IntArray, b: IntArray): IntArray {
+        if (a.size >= SQUARE_THRESHOLD && a.size < 128 && a === b) {
+            val out = IntArray(a.size + b.size)
+            square(a, 0, a.size, out, 0)
+            return out
+        }
+        val out = IntArray(a.size + b.size)
+        val small = minOf(a.size, b.size)
+        // K32 is the existing lowest selected recursion boundary, not a new policy.
+        if (small < 32) {
+            school(a, 0, a.size, b, 0, b.size, out, 0)
+            return out
+        }
+        val threshold = if (a !== b && a.size == b.size) 32 else KARATSUBA_THRESHOLD
+        if (small < threshold) {
+            school(a, 0, a.size, b, 0, b.size, out, 0)
+        } else {
+            val arena = Arena(scratchWords(a.size, b.size, threshold))
+            product(a, 0, a.size, b, 0, b.size, out, 0, arena, threshold, SQUARE_THRESHOLD)
+        }
+        return out
     }
 
     /** Entry override is explicit so forced-kernel calibration retains its original semantics. */
