@@ -34,13 +34,14 @@ The lossless archive member ledgers and evidence index will bind all raw/histori
 
 
 
+
+
 ## Exact package commands
 
-Canonical tree: diagnostics/platform-multiplication-539. Required local retained root: .codex-work/539/retained-evidence. The source history bundle requires accepted parent c9415d55; source-tree.zip provides an independent build/source snapshot. Hashes and member counts come from actual archives, never hardcoded anticipated totals.
+Canonical tree: diagnostics/platform-multiplication-539. Required local retained root: .codex-work/539/retained-evidence. The source history bundle requires accepted parent c9415d55; source-tree.zip provides an independent build/source byte snapshot. Git bundle recovery preserves tracked modes; when using the ZIP snapshot directly, restore the Gradle wrapper owner executable bit with chmod u+x recovered/gradlew before invoking it. Host JDK/Node/compiler installations are external prerequisites pinned by their original runtime ledgers, not an archived operating system. Hashes and member counts come from actual archives, never hardcoded anticipated totals.
 
 Run the packaged verify-package.main.kts with the canonical directory, --project-root PROJECT, --tested-source CANONICAL/tested-source-map.json --source-root WORKTREE --recovery-map file-map.json=retained:measured-artifacts.zip. After committing the package, add --repo WORKTREE --git-ref FULL_COMMIT for exact canonical and405 tested-source Git blobs. Output is PACKAGE_BINDINGS_PASS_NOT_TASK_ACCEPTANCE; JS small clearance remains unresolved.
 
 The packaged recover-artifacts.main.kts takes canonicalDirectory projectRoot newOwnedOutput exactArtifactPath. It restores only a selected original artifact path from hash-addressed bytes into a fresh owned output, verifies size/SHA and restores its recorded executable bit. It never runs restored binaries. Full map/member validation verifies every recoverable file, not just a representative extraction.
 
 Generation75914 completed all four ZIP archives but failed creating a Git bundle from an unnamed SHA range. Correction34723 used the named HEAD ref and retained the original ZIPs without re-compression. Both logs are preserved. This is a packaging failure/correction, not a numerical rerun or erased evidence.
-
