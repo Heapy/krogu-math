@@ -21,6 +21,10 @@ internal object MagnitudeMultiplication {
         if (useJsMultiplicationPolicy539) 128 else SQUARE_ENTRY_THRESHOLD
 
     fun multiplyAdaptive(a: IntArray, b: IntArray): IntArray {
+        // Below the first selected K32 boundary, the historical route chooses
+        // the same school/square kernel without selected-policy dispatch work.
+        if (useJsMultiplicationPolicy539 && (a.size < 32 || b.size < 32))
+            return multiplyWithSquareEntry(a, b, SQUARE_ENTRY_THRESHOLD)
         // Preserve the exact historical dispatch on platforms without a selected policy.
         if (!useJsMultiplicationPolicy539 && !useNativeBalancedMultiplicationPolicy539) return multiplyWithSquareEntry(a, b, SQUARE_ENTRY_THRESHOLD)
         if (a === b && a.size >= SQUARE_THRESHOLD && a.size < selectedSquareEntry539()) {

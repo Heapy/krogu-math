@@ -21,6 +21,22 @@ class SelectedMultiplicationPolicy539Test {
             MagnitudeMultiplication.selectedSquareEntry539())
     }
 
+    @Test fun smallPolicyDispatchKeepsHistoricalProductsInBothOperandRoles() {
+        for (size in listOf(1, 15, 16, 31, 32, 33)) {
+            val a = IntArray(size) { if (it % 2 == 0) 0x3fffffff else it + 31 }
+            for (b in listOf(a, a.copyOf(), IntArray(size * 4 + 1) { 0x3fffffff })) {
+                for ((left, right) in listOf(a to b, b to a)) {
+                    val beforeLeft = left.copyOf(); val beforeRight = right.copyOf()
+                    val expected = MagnitudeMultiplication.multiply(left, right, Int.MAX_VALUE, Int.MAX_VALUE)
+                    val actual = MagnitudeMultiplication.multiplyAdaptive(left, right)
+                    assertContentEquals(expected, actual)
+                    calibration539Verify(left, right, actual)
+                    assertContentEquals(beforeLeft, left); assertContentEquals(beforeRight, right)
+                }
+            }
+        }
+    }
+
     @Test fun selectedProductsMatchFullSchoolAndKeepBorrowedInputs() {
         for (size in listOf(31, 32, 33, 63, 64, 127, 128, 129, 383, 384)) {
             val a = IntArray(size) { if (it % 3 == 0) 0x3fffffff else (it * 104729 + 31) and 0x3fffffff }
