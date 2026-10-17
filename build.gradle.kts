@@ -77,9 +77,9 @@ kotlin.sourceSets.named("jsMain") {
 kotlin.sourceSets.named("wasmJsMain") {
     kotlin.srcDir(project(":nodeWorker539").layout.buildDirectory.dir("generated/payload/wasmJs"))
 }
-tasks.matching { it.name == "compileKotlinJs" }.configureEach {
+tasks.matching { it.name == "compileKotlinJs" || it.name == "jsSourcesJar" }.configureEach {
     dependsOn(":nodeWorker539:generateJsPayload539")
 }
-tasks.matching { it.name == "compileKotlinWasmJs" }.configureEach {
+tasks.matching { it.name == "compileKotlinWasmJs" || it.name == "wasmJsSourcesJar" }.configureEach {
     dependsOn(":nodeWorker539:generateWasmJsPayload539")
 }
