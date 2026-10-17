@@ -213,3 +213,6 @@ function acquire539(payloadString) {
 
 return acquire539(payloadString);
 })""")
+
+internal actual fun platformParallelAvailable539(): Boolean = nodeParallelAvailable539()
+internal actual fun platformParallelProduct539(a: IntArray, b: IntArray): IntArray? = nodeParallelMagnitude539(a, b)

@@ -1,9 +1,16 @@
 package io.heapy.krogu.math
 
 internal actual fun canParallelMultiply539(leftWords: Int, rightWords: Int): Boolean =
-    minOf(leftWords, rightWords) >= 4096 && maxOf(leftWords, rightWords).toLong() <= 2L * minOf(leftWords, rightWords) && nodeParallelAvailable539()
+    minOf(leftWords, rightWords) >= 4096 && maxOf(leftWords, rightWords).toLong() <= 2L * minOf(leftWords, rightWords) && platformParallelAvailable539()
 
-internal actual fun parallelMagnitude539(a: IntArray, b: IntArray): IntArray? {
+internal actual fun parallelMagnitude539(a: IntArray, b: IntArray): IntArray? = platformParallelProduct539(a, b)
+
+internal expect fun platformParallelAvailable539(): Boolean
+internal expect fun platformParallelProduct539(a: IntArray, b: IntArray): IntArray?
+
+// Node transport/originating-frame body is unchanged; Native has its own
+// existing per-invocation Worker ownership and never constructs a Node lease.
+internal fun nodeParallelMagnitude539(a: IntArray, b: IntArray): IntArray? {
     // One explicit recursive policy per pool generation. Compare the real public
     // route against independently selected platform serial policy before adoption.
     val policy = MultiplicationPolicy539(64, 16, 384)
