@@ -9,6 +9,14 @@ kotlin {
         // Compile the SAME original source files, not copied/reimplemented kernels.
         kotlin.srcDir(rootProject.file("src/commonMain/kotlin"))
         kotlin.include("calibration539/**", "io/heapy/krogu/math/MagnitudeMultiplication.kt",
-            "io/heapy/krogu/math/MultiplicationPolicy539.kt")
+            "io/heapy/krogu/math/MultiplicationPolicy539.kt", "io/heapy/krogu/math/MultiplicationPlatform539.kt")
+    }
+    sourceSets.jsMain {
+        kotlin.srcDir(rootProject.file("src/jsMain/kotlin"))
+        kotlin.include("calibration539/**", "io/heapy/krogu/math/MultiplicationPlatform539.kt")
+    }
+    sourceSets.wasmJsMain {
+        kotlin.srcDir(rootProject.file("src/wasmJsMain/kotlin"))
+        kotlin.include("calibration539/**", "io/heapy/krogu/math/MultiplicationPlatform539.kt")
     }
 }

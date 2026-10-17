@@ -14,8 +14,22 @@ internal object MagnitudeMultiplication {
     }
 
     /** Public dispatch keeps medium squares whole, without changing large recursive leaves. */
-    fun multiplyAdaptive(a: IntArray, b: IntArray): IntArray =
-        multiplyWithSquareEntry(a, b, SQUARE_ENTRY_THRESHOLD)
+    internal fun selectedKaratsuba539(a: IntArray, b: IntArray): Int =
+        if (useJsMultiplicationPolicy539 && a !== b && a.size == b.size) 32 else KARATSUBA_THRESHOLD
+
+    internal fun selectedSquareEntry539(): Int =
+        if (useJsMultiplicationPolicy539) 128 else SQUARE_ENTRY_THRESHOLD
+
+    fun multiplyAdaptive(a: IntArray, b: IntArray): IntArray {
+        // Preserve the exact historical dispatch on all other platforms.
+        if (!useJsMultiplicationPolicy539) return multiplyWithSquareEntry(a, b, SQUARE_ENTRY_THRESHOLD)
+        if (a === b && a.size >= SQUARE_THRESHOLD && a.size < selectedSquareEntry539()) {
+            val out = IntArray(a.size + b.size)
+            square(a, 0, a.size, out, 0)
+            return out
+        }
+        return multiply(a, b, selectedKaratsuba539(a, b), SQUARE_THRESHOLD)
+    }
 
     /** Entry override is explicit so forced-kernel calibration retains its original semantics. */
     fun multiplyWithSquareEntry(a: IntArray, b: IntArray, squareEntryThreshold: Int): IntArray {
