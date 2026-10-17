@@ -1,0 +1,49 @@
+{
+  "status": "PASS_COMBINED_ACTUAL494_PEER_ONLY_AND_THREE_DESCRIPTOR_DEPENDENCY_ONLY_SOURCE_REBIND",
+  "actual_peer_only_audit_sha256": "214d823d32d706bd6ed2c215eb1c604921db1162c515b42e50d745d65a304723",
+  "alignment_ledger_sha256": "12f35b4d0babade98b54adcaedafc25220ba4c6b2a5486f5aa1039c324713805",
+  "patch_sha256": "868e63a317052b3c3d72b034b007dfa52ccb7b3f052a275e78d3c2b375204832",
+  "descriptor_mapping": [
+    {
+      "current_path": ".codex-work/598/prepared-harness/build.gradle.kts",
+      "current_sha256": "c4a85b175713feba9e84d156f0325d8c3d17a9094b8fe60f7055a5a698319e35",
+      "historical_path": ".codex-work/598/history/stdlib-pin-before-peer-preflight/prepared-harness/build.gradle.kts",
+      "historical_sha256": "c18545fc4b171cb0a6ac8b343e14bfe87cf3526c35559c84de79c3f72ceafc48"
+    },
+    {
+      "current_path": ".codex-work/598/prepared-portable/build.gradle.kts",
+      "current_sha256": "a01be816bfca168bf0b7e4c6384e012c0651e5455dca2d7caa454521dc8a3735",
+      "historical_path": ".codex-work/598/history/stdlib-pin-before-peer-preflight/prepared-portable/build.gradle.kts",
+      "historical_sha256": "8464f32d1e964b411b7c62bfa7507eea54bfc6cd7deb3c07cfba6bbb83a28bb4"
+    },
+    {
+      "current_path": ".codex-work/598/prepared-timing/build.gradle.kts",
+      "current_sha256": "e828ccbaecac83d0ddd173fd90058a9a5c5a31f33d1cd09cf0adf4ca8c7d0645",
+      "historical_path": ".codex-work/598/history/stdlib-pin-before-peer-preflight/prepared-timing/build.gradle.kts",
+      "historical_sha256": "2494895f902e4cbe930f2261d5615091a1749753a3381bc06c83f204722dd8c6"
+    }
+  ],
+  "manifest_mapping": [
+    {
+      "current_path": ".codex-work/598/prepared-harness/manifest.json",
+      "current_sha256": "64fd9cac4969977fe2d30552027a57db65b8dbbb21701de5ce36a74b4ef1944c",
+      "historical_path": ".codex-work/598/history/stdlib-pin-before-peer-preflight/prepared-harness/manifest.json",
+      "historical_sha256": "a81082277e2a9b788f1ba244a2fb5497ea40484b60b1d49e25801ff3834500e3"
+    },
+    {
+      "current_path": ".codex-work/598/prepared-portable/manifest.json",
+      "current_sha256": "f1c3709838a9c654e59d124051c728f8d2e76a00acb27ff1772f3bc88b2c362b",
+      "historical_path": ".codex-work/598/history/stdlib-pin-before-peer-preflight/prepared-portable/manifest.json",
+      "historical_sha256": "94c4f596f28464cd6c92884b9a1df2ce05acbba86b86afdc97c7489cd11186b4"
+    },
+    {
+      "current_path": ".codex-work/598/prepared-timing/manifest.json",
+      "current_sha256": "44d5fbd79d1deb78361faf710ecd45f75e09ee5b773b750b2d0c5f82f98ba40b",
+      "historical_path": ".codex-work/598/history/stdlib-pin-before-peer-preflight/prepared-timing/manifest.json",
+      "historical_sha256": "a1e12301fa550c94c8e3cbd6e53b18eb76145f04d06858d9fbddf774188b8b43"
+    }
+  ],
+  "resolution": "Exactexpanded4stdlibmodule2.4.21 alignment mirrors actualsuccessfulpeer-only descriptor. No peer versions/API/adapters/fixtures/gates/counters/timing/inputs/Kroguauthorization changed. Original13sourceprep+portable/timingmanifests/patches preservedbyteexact atlistedhistorypaths; previousreviews cite theiroriginalSHA andremaintraceable, notoverwrittenacceptance.",
+  "actual_scope": "59981compileexecutedPASS/runtimeconflict retained;85499resolvedJavaExecPASS494JDK/Ions/KBigchecks/6NA,noKrogu,timingorportableexecution. TextParity41Ions/13KBigfalse retained; numericparityalltrue.",
+  "future_scope": "Currentfullaccepted539Krogubuilds/portable/timing remainUNRESOLVED_UNCOMPILED_UNRUN. Thisclosesonlyidentifiedstdlibalignment sourceissue, nototheractualvariant/toolchain/signature guarantees. No build/run/download byreviewer."
+}

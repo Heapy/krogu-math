@@ -1,0 +1,47 @@
+{
+  "verdict": "FINAL_READABLE_REPORT_ACTUAL_INPUT_INVENTORY_AND_REPRO_SOURCE_PASS_PACKAGE_ACTUAL_PENDING",
+  "files": {
+    "REPORT.md": "13e018cd6107136e3751cfad6a9b47812b3da834d9ecb47781859e74c22d4771",
+    "REPRODUCE.md": "25b6ec4c604032af03f57cd30733801d9cbe286d342ce24f34e5593f54f31565",
+    "actual-workload-inputs.tsv": "2f0130f680ef2a57e79554afd55fdce601c8bfaffa69ce3b646b25f0b1ea8e7f",
+    "actual-workload-inputs.json": "cf08e95e12bcfc739d8cc3c97b95a2bf2ee749b3afd894d91c3c00b231f35bf2",
+    "actual-workload-inputs.md": "a0bb1135b6ccd9d0bdcd268ffa575115e33c7cbfcadfaa6485938a2128172f28",
+    "actual-resource-summary.json": "986e1bee5b8edb57654b3d19a434bc591e9fae3bc3d24ee1e2eae71441686b99",
+    "package-evidence.main.kts": "bbd0abffb22274efd2805cc2f307a62370b2e3bec62b75457236390c8f0efc7d"
+  },
+  "actual_scope": {
+    "final_v2_FIRST": 1512,
+    "final_v2_TIME": 10584,
+    "per_child_input_rows_independently_matched": 1512,
+    "unique_workload_tuples_checked": 56,
+    "illustrative_latency_ratio_throughput_allocation_rows_checked": 16,
+    "FIRST_range_rows_checked": 4,
+    "completed_RSS_summary_rows_checked": 10,
+    "reproduction_commands_checked": 17
+  },
+  "report_findings": [
+    "JDK/Krogu and Kotlin-peer gains AND losses are displayed with absolute medians/ranges, samecohort ratios, throughput and allocations where supported.",
+    "No steady-state/universal ranking: unstable/mixed cells, within/between-child variability and CPU-coherent transitions are explicit; finite all3 direction counts not called reliable victories.",
+    "PARSE source String, native-return escape and FORMAT parsedunobserved FIRST/observedcached warm states distinguished. Exact plain-spelling intersection not general scientific/cohort equivalence.",
+    "Alias relation differences and decimal value-only limits/MC34/interning/unavailable peers remain explicit. Portable corpus is not relabelled JVMfull.",
+    "JVM currentthreadCPU/alloc vs portable processCPU and rawNA, coarseheap/RSS/fullchildpeak/ownedmemory exclusions are accurate. AvailableRAMNA and non-isolation not hidden.",
+    "Actual receipt/source/runtime epoch identities match accepted dispositions. V1 transient/raw, JS pre-numeric failure and setup/dependency histories retained."
+  ],
+  "resolved_finding": {
+    "description": "Native cached FORMAT ratios2312/1266/1264 had wrong integer family label; corrected to decimal/wide10/FORMAT.",
+    "old_report_sha256": "fd56223299907aac696b9d8995e9d8a4dd7b5d110b7059b5e4312c7b3cee6b78",
+    "change": "Exactly one workload label, no numeric changes."
+  },
+  "repro_and_package_tool_source": [
+    "17 commands use accepted829/GAV and actual pinned runtime/artifact digests with newoutput names; sixargument replay controller scope correct. Path-only rebinding required elsewhere; no claim tools are host-portable.",
+    "Packaging only traverses evidence; skips declared transient prepared-build caches; source symlinks/traversal/duplicates fail, all member hashes/inventory verified; restore writes regular files into newdestination with boundedpath and exact executable ledger.",
+    "Executable column now strictx/-; tool does not invoke Gradle or numerical peers.",
+    "Actual archive member/recovery/Git binding still required, not implied by source PASS."
+  ],
+  "limitations": [
+    "Peer/target/API selection scoped, not exhaustive library rankings.",
+    "Sample corpus small; no statistical significance or new speed thresholds.",
+    "No new numerical execution/source/harness changes by reviewer."
+  ],
+  "blocking_findings": []
+}

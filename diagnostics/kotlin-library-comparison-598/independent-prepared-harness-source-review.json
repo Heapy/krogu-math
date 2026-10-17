@@ -1,0 +1,25 @@
+{
+  "status": "INDEPENDENT_SCOPED_ADAPTER_AND_UNTIMED_FIXTURE_SOURCE_PASS_UNCOMPILED_UNRUN",
+  "manifest_sha256": "76c8deeaa5cde06d75bfd14f8462d30838fe1972e014eb1c91b479015683955c",
+  "fixture_sha256": "fa588e999e7bd69af64dbaf86b807a1b6277e46832920616e7a9085a622fd3c7",
+  "manifest_entries_verified": 9,
+  "reviewed_scope": [
+    "Nativeadd/subtract/multiply adapterexpressions only; no parse/text/oracle/Doublefallback in futuretimed numeric methods",
+    "FixedscaleHalfUp explicit; value-only versus text/cohort scope retained; ambiguous/significantHalfEven unsupported remainsNA, no fixedscale20 substitute forMC34",
+    "Selfalias and identity-qualified distinct-equal fixtureIDs; interned equal values explicitlyunavailable",
+    "Unexpectedexception/numericmismatch failsclosed; no runtimeUNVERIFIED relabelledPASS",
+    "Per-operation input observations before/after and repeatedcall equality; retained earlier results checked after later calls",
+    "Narrowfinaldiff keepsONE fixedScalePreservation outside existing8fixtureloop, covering earlier division results under varying operands",
+    "Oracle/textchecks untimed; observedfixtureobjects cannot be timinginputs/cachecoldwitness; reusable-inputtiming onlyafter actualgatePASS or separatelyreviewed equal one-usepool workload forALL peers"
+  ],
+  "closed_source_findings": [
+    "Initialend-only inputpreservation didnotestablish per-operation reuse witness; newcallTwice gateadded",
+    "Fixedscalepreservation initiallyresetperfixture; finalsharedinstance closes varying-input retainedresult gap"
+  ],
+  "limits": [
+    "No dependencydownload/resolution, compile, execution, peerimmutability claim orperformance measured",
+    "Exactthirdparty public signatures remain compilationhypotheses; confirm via publicAPI beforeuse, no foreignnumericalbodyread",
+    "Observation-level preservation witnesses do notprove hidden internalcohort/mutation properties",
+    "Full598 scope,target/runtimecapabilities/cache-state/profiling and actualtimedexpressions remainfutureacceptance; no closureclaim"
+  ]
+}

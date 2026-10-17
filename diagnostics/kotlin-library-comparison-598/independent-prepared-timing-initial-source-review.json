@@ -1,0 +1,13 @@
+{
+  "status": "SOURCE_REVIEW_THREE_CONCRETE_FINDINGS_PENDING_CORRECTION",
+  "manifest_sha256": "4db1e85c3a3705e601f24cb2b7052c8c4861146a032c60dc7093be4d4fcb34dc",
+  "entries_verified": 22,
+  "gate_body": "Exact reviewed portable body, visibility and entrypoint name changes only",
+  "method_scope": "Selected peer preparation before FIRST; immediate full result/input checks; full gate before warm; actual64reference ring and retainedFIRST checks outside counters coherent. Metrics/NA/process memory boundaries disclosed. No builds/downloads/runtime.",
+  "findings": [
+    "Strict checker must validate INPUT tuple/allowed actual identity relation and FIRST/ring checksums against independent metadata-only fixture expected canonical value, not merely parse hash/digest as Int.",
+    "Strict checker must parse exact WARM identity/budget/bounds and bind all7 measured counts to emitted selected count.",
+    "Controller ProcessHandle identity belongs to /usr/bin/time supervisor; name/scope it honestly rather than actual runtime identity, or implement actual descendant witness."
+  ],
+  "other_concrete_findings": []
+}

@@ -1,0 +1,332 @@
+{
+  "status": "OWNER_RECORDED_ACTUAL_FULL_CORRECTNESS_PASS_PENDING_INDEPENDENT_AUDIT",
+  "accepted_main": "829ce21154c7e75f5206eeb173351c391ed21597",
+  "GAV": "io.heapy.krogu:krogu-math:0.1.0-598-829ce211",
+  "publication_files": 135,
+  "publication_modules": 5,
+  "handles": {
+    "publication": {
+      "handle": 25173,
+      "exit": 0
+    },
+    "JVM": {
+      "handle": 46672,
+      "exit": 0
+    },
+    "JS": {
+      "handle": 37431,
+      "exit": 0
+    },
+    "Wasm_setup_failure": {
+      "handle": 66459,
+      "exit": 1,
+      "numeric_rows": 0,
+      "classification": "workspace sandbox blocked ~/.kotlin tooling-cache lock; preserved tooling failure, not peerNA"
+    },
+    "Wasm": {
+      "handle": 28072,
+      "exit": 0
+    },
+    "Native": {
+      "handle": 61048,
+      "exit": 0
+    }
+  },
+  "counts": {
+    "JVM": {
+      "arithmetic_fixedscale": 662,
+      "text": 128,
+      "NA": 7,
+      "per_peer_arithmetic": {
+        "jdk-bellsoft-25.0.4+9": 168,
+        "krogu-final539-PENDING": 168,
+        "ionspin-bignum-0.3.10": 159,
+        "kbignum-0.0.20-desktop": 167
+      },
+      "per_peer_text": {
+        "jdk-bellsoft-25.0.4+9": 32,
+        "krogu-final539-PENDING": 32,
+        "ionspin-bignum-0.3.10": 32,
+        "kbignum-0.0.20-desktop": 32
+      }
+    },
+    "JS": {
+      "core": 128,
+      "identity_qualified_distinct": 30,
+      "text": 64,
+      "NA": 7,
+      "per_peer_text": {
+        "krogu-final539-PENDING": 32,
+        "ionspin-bignum-0.3.10": 32
+      }
+    },
+    "Wasm": {
+      "core": 128,
+      "identity_qualified_distinct": 30,
+      "text": 64,
+      "NA": 7,
+      "per_peer_text": {
+        "krogu-final539-PENDING": 32,
+        "ionspin-bignum-0.3.10": 32
+      }
+    },
+    "Native": {
+      "core": 128,
+      "identity_qualified_distinct": 30,
+      "text": 64,
+      "NA": 7,
+      "per_peer_text": {
+        "krogu-final539-PENDING": 32,
+        "ionspin-bignum-0.3.10": 32
+      }
+    }
+  },
+  "scope": [
+    "JVM larger legacycorpus662 plus128text; portable smaller legacy128core+30identity-qualified+64text, notJVMfullcorpus.",
+    "Value-only decimal arithmetic does not establish cohort/scale equivalence; exact plain text checks separately qualified only selected literals.",
+    "No timing result or universal numeric-domain proof; timingbuild is separate.",
+    "Original peer-only/historical failures retained; sandbox setup failure not peerNA."
+  ],
+  "files": [
+    {
+      "path": ".codex-work/598/final-publication-829ce211/publication-ledger.json",
+      "bytes": 30263,
+      "sha256": "4a424029142eb791357a8bb222fca52f836f67956dee6c36289d448a580e8d23"
+    },
+    {
+      "path": ".codex-work/598/final-publication-829ce211/publication-1.log",
+      "bytes": 40072,
+      "sha256": "4c1049d54f90288f49e1e99d5277d684a6c9022bc1d9d05a58801f7c584f3ca4"
+    },
+    {
+      "path": ".codex-work/598/final-publication-829ce211/publish598.init.gradle.kts",
+      "bytes": 1698,
+      "sha256": "9a537184d741379043a609ae5f3d369e6185cd257f7c0c81c70038997fcf3b4f"
+    },
+    {
+      "path": ".codex-work/598/final-publication-829ce211/accepted-main-source.tsv",
+      "bytes": 53035,
+      "sha256": "ea47f06aa255391915cd47eda280849115f94f5bf90fdde0b8409b18b8f689cb"
+    },
+    {
+      "path": ".codex-work/598/full-text-gate-wiring.json",
+      "bytes": 2093,
+      "sha256": "5fa86c13b0bfeb84e2f26e575135698329eba977bca1dff31b0ecd2389071d9e"
+    },
+    {
+      "path": ".codex-work/598/full-text-gate-wiring.patch",
+      "bytes": 6925,
+      "sha256": "6297117feb8e1b782c03d1bca27b90ecb632e1db85475a4138cbb04ce35568d8"
+    },
+    {
+      "path": ".codex-work/598/prepared-harness/manifest.json",
+      "bytes": 3402,
+      "sha256": "f652ccf3774cbd3d93b101cd0047d616f1d8977336a2c07c7eba00d91d2f982c"
+    },
+    {
+      "path": ".codex-work/598/prepared-portable/manifest.json",
+      "bytes": 5138,
+      "sha256": "a9bab4986efddb624e4be492c01cae2fa4b7445dccb2f185648a19824d7351b1"
+    },
+    {
+      "path": ".codex-work/598/prepared-timing/manifest.json",
+      "bytes": 9088,
+      "sha256": "fcc9dca70cde249a1622ea7de641388b48a24eb4ef23f3b6dfe474b526a47289"
+    },
+    {
+      "path": ".codex-work/598/full-jvm-correctness-1.log",
+      "bytes": 13570,
+      "sha256": "e61fedee4b136c2cae79d73f9c9fa187114190ec5f5228e4c9d44f87889e450f"
+    },
+    {
+      "path": ".codex-work/598/prepared-harness/runs/full-jvm-1/observations.tsv",
+      "bytes": 84155,
+      "sha256": "11d204ef9e05351e6e9161ab4db126e951f5a2f107422583569f9d79a78a0026"
+    },
+    {
+      "path": ".codex-work/598/prepared-harness/runs/full-jvm-1/resolved-inputs.txt",
+      "bytes": 8737,
+      "sha256": "d55bd4a3f58dffef6f90009b0c48197bf03832eaeb3c5f8ff45e3c0eb04252c7"
+    },
+    {
+      "path": ".codex-work/598/prepared-harness/gradle.lockfile",
+      "bytes": 2319,
+      "sha256": "f7cc20fad3f37612d6db3615c563e6419e3f0de0d218361c3d708c4b98da58c0"
+    },
+    {
+      "path": ".codex-work/598/full-portable-js-correctness-1.log",
+      "bytes": 22299,
+      "sha256": "276b7d6e84f644c3d2120256fc6fbe2c7a45f85af6e2e7242d58dce083d55492"
+    },
+    {
+      "path": ".codex-work/598/full-portable-wasm-correctness-1.log",
+      "bytes": 2018,
+      "sha256": "cd87349631977de338861628ff6b0a7d92f4c5cec6fda72bb1e0dc0632cd65f6"
+    },
+    {
+      "path": ".codex-work/598/full-portable-wasm-correctness-2.log",
+      "bytes": 22767,
+      "sha256": "083a3b2adcd6f68db9fadf59d815b4b104799be5310859d1c9e398f520ed765e"
+    },
+    {
+      "path": ".codex-work/598/full-portable-native-correctness-1.log",
+      "bytes": 22585,
+      "sha256": "7ee80720623c9fad7d54d7f8d8ce5e58d62fbb597557cb3f2d838bbe3819dacc"
+    },
+    {
+      "path": ".codex-work/598/prepared-portable/gradle.lockfile",
+      "bytes": 4154,
+      "sha256": "6bc7c93e72dcecdd321f7aec035b0b3b98985d70d65640bfe35430940a074340"
+    },
+    {
+      "path": ".codex-work/598/prepared-portable/runs/full-js-1/inputs.txt",
+      "bytes": 3081,
+      "sha256": "a6334c97aed5c74794eeb82334f8be75b89a4d5a99cb449ac391dea6900f46e2"
+    },
+    {
+      "path": ".codex-work/598/prepared-portable/runs/full-js-1/PROCESS_TASK_RETURNED",
+      "bytes": 138,
+      "sha256": "272db2d3736c49f053d51351d32a9d7c99cb5230410a14d3010003ba35baf7f5"
+    },
+    {
+      "path": ".codex-work/598/prepared-portable/runs/full-wasm-2/inputs.txt",
+      "bytes": 3271,
+      "sha256": "4f0d39ac3454d14706e16d66f347b876718c6a900e7e11b3f9244479517add59"
+    },
+    {
+      "path": ".codex-work/598/prepared-portable/runs/full-wasm-2/PROCESS_TASK_RETURNED",
+      "bytes": 138,
+      "sha256": "272db2d3736c49f053d51351d32a9d7c99cb5230410a14d3010003ba35baf7f5"
+    },
+    {
+      "path": ".codex-work/598/prepared-portable/runs/full-native-1/inputs.txt",
+      "bytes": 3278,
+      "sha256": "39770214e31b073819d711e768f40a295832361d26316ee30d7b5f930e262fb9"
+    },
+    {
+      "path": ".codex-work/598/prepared-portable/runs/full-native-1/PROCESS_TASK_RETURNED",
+      "bytes": 138,
+      "sha256": "272db2d3736c49f053d51351d32a9d7c99cb5230410a14d3010003ba35baf7f5"
+    },
+    {
+      "path": ".codex-work/598/final-publication-829ce211/repository/io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.jar",
+      "bytes": 297033,
+      "sha256": "e8ba87ac09532760f64bd226c7b00aea40b76d8c0b7ae21ddade521570b4517a"
+    }
+  ],
+  "portable_artifacts": [
+    {
+      "target": "JS",
+      "root": ".codex-work/598/prepared-portable/build/compileSync/js/main/productionExecutable/kotlin",
+      "members": [
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/js/main/productionExecutable/kotlin/KotlinBigInteger-bignum.js",
+          "bytes": 276160,
+          "sha256": "b1ac7917c5498922ec07765f7dcd146b64e0945770cca9601796ff9bf089c2da"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/js/main/productionExecutable/kotlin/KotlinBigInteger-bignum.js.map",
+          "bytes": 122869,
+          "sha256": "42ed54e2e4ede9588491e6c5534311ae572a4b5c6240ea39563e13f2c4ec1213"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/js/main/productionExecutable/kotlin/kotlin-kotlin-stdlib.js",
+          "bytes": 205940,
+          "sha256": "9db4210bef17e7cae534fb4bced4c2f5127eb4978da39584dc150f595f42a16f"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/js/main/productionExecutable/kotlin/kotlin-kotlin-stdlib.js.map",
+          "bytes": 132586,
+          "sha256": "116c1ae85ac938fc92a3c2a8765d78dadd1129efc914376632c52c617aaba7fa"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/js/main/productionExecutable/kotlin/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js",
+          "bytes": 191,
+          "sha256": "2d7c0466fc314b3dda390af72385781f49ba7c2bf9252dc90cac1147e8a9b29f"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/js/main/productionExecutable/kotlin/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js.map",
+          "bytes": 151,
+          "sha256": "6cfe2e6f55314903f07b5249bf9cfac99c55076399e72a1a5fdd0e5051c7b60a"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/js/main/productionExecutable/kotlin/krogu-math.js",
+          "bytes": 227892,
+          "sha256": "f7fd1ffc2566d195713487e57032659927e109222ec2b8d67c5e6c0ed7b1b0dd"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/js/main/productionExecutable/kotlin/krogu-math.js.map",
+          "bytes": 135647,
+          "sha256": "1d45401254ac80dca321715881b805a856f4e9d3cc7240b43683aa8a3b3d7500"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/js/main/productionExecutable/kotlin/peer598-portable.js",
+          "bytes": 33258,
+          "sha256": "f5ad138e2c8ab7249323379a854f6175404928662ab77510ecafecaa8ca68e9b"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/js/main/productionExecutable/kotlin/peer598-portable.js.map",
+          "bytes": 18776,
+          "sha256": "20d7c73fc149fb902d8fe3d181ee88e1c4dd28766a068acb5f8774c67b94dca5"
+        }
+      ]
+    },
+    {
+      "target": "Wasm",
+      "root": ".codex-work/598/prepared-portable/build/compileSync/wasmJs/main/productionExecutable/kotlin",
+      "members": [
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/wasmJs/main/productionExecutable/kotlin/peer598-portable.import-object.mjs",
+          "bytes": 5044,
+          "sha256": "1a69656cbb4e5108a4534a9aacb895d013d23a3cbf579496a9f4f23d967c1470"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/wasmJs/main/productionExecutable/kotlin/peer598-portable.js-builtins.mjs",
+          "bytes": 2095,
+          "sha256": "a370c66f8031ae3a8d5718123a7fb1aeed4f43caca681181ef69b512321d5b94"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/wasmJs/main/productionExecutable/kotlin/peer598-portable.mjs",
+          "bytes": 3197,
+          "sha256": "a76d5cfa1164196677ff8304ad214c28716f5b85e17424373610023ee2615dba"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/wasmJs/main/productionExecutable/kotlin/peer598-portable.wasm",
+          "bytes": 903927,
+          "sha256": "8810e985a19741f809ac51583c139aacf57630bc6d7f498a57e9d9e0b5e9c7fa"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/compileSync/wasmJs/main/productionExecutable/kotlin/peer598-portable.wasm.map",
+          "bytes": 66892,
+          "sha256": "6fc6f094323e855654c96aeb0f0685d8055cee6f6e199ea51db3f51c928398b1"
+        }
+      ]
+    },
+    {
+      "target": "Native",
+      "root": ".codex-work/598/prepared-portable/build/bin/macosArm64/releaseExecutable",
+      "members": [
+        {
+          "path": ".codex-work/598/prepared-portable/build/bin/macosArm64/releaseExecutable/peer598-portable.kexe",
+          "bytes": 1658632,
+          "sha256": "f634b9824f4099c5a2229d8b338b4bc5e23fe8da227cfca0b8e2e15f63508848"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/bin/macosArm64/releaseExecutable/peer598-portable.kexe.dSYM/Contents/Info.plist",
+          "bytes": 650,
+          "sha256": "ac3521888caeb799668040a09c60849d5cf4221b2e4902ec4f2f2a09adaaa398"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/bin/macosArm64/releaseExecutable/peer598-portable.kexe.dSYM/Contents/Resources/DWARF/peer598-portable.kexe",
+          "bytes": 1417734,
+          "sha256": "7c3d28237b0494ff3ecdc4633dfe091d11349e1ee589f30a4c3df890d462bde4"
+        },
+        {
+          "path": ".codex-work/598/prepared-portable/build/bin/macosArm64/releaseExecutable/peer598-portable.kexe.dSYM/Contents/Resources/Relocations/aarch64/peer598-portable.kexe.yml",
+          "bytes": 508487,
+          "sha256": "e66dfed360e64ece4e9b2f200a1b714189a2f37d1da2678435e6485e6d314eff"
+        }
+      ]
+    }
+  ]
+}

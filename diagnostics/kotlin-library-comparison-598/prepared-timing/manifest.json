@@ -1,0 +1,232 @@
+{
+  "task": "local:598",
+  "status": "SOURCE_ONLY_UNRESOLVED_UNCOMPILED_UNRUN",
+  "scope": "Existing exact arithmetic/fixed-scale corpus unchanged; additive native parse/exact-plain-text format intersection, no accepted539 or fullruntime claim",
+  "inventory": {
+    "JVM": {
+      "cases": 216,
+      "fresh_children_FIRST": 648,
+      "warm_rows": 4536
+    },
+    "each_JS_Wasm_Native": {
+      "cases": 96,
+      "fresh_children_FIRST": 288,
+      "warm_rows": 2016
+    }
+  },
+  "first_scope": "First selected public op after declared preparation: parse after source String only; format after native parse/no prior format; arithmetic after parse. Immediate checks then fullgate then warm; observed cached warm format explicit.",
+  "entries": [
+    {
+      "path": "prepared-timing/Catalog598.main.kts",
+      "bytes": 4557,
+      "sha256": "0610eef018cb017054720d97be5858f63af7aa9d690aed9b92409c9d2ff2769a",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-timing/README.md",
+      "bytes": 21892,
+      "sha256": "760c0faeefcd717be3e277abf551b1fe8f723dacc894089b3f64510e4a026c23",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-timing/build.gradle.kts",
+      "bytes": 8950,
+      "sha256": "7ea7ea3715a934eccc97023e97d1bf5e06edad70b5575dc8306a0ba91b741593",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-timing/check-timing.main.kts",
+      "bytes": 9615,
+      "sha256": "d236cc872857fdf884de74b1e20c0b95addff659ae6f852d354d6cc192543285",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-timing/gradle.properties",
+      "bytes": 121,
+      "sha256": "9e8396eba8e3760165d5c6fd4f9834fd39ada2b1442e8a1b58966073e6245695",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-timing/run-timing.main.kts",
+      "bytes": 8900,
+      "sha256": "6adfb84907f8c5a89e56722e137f35f5c06d24b6ce8b3ddcf2c50dccf2f21c8b",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-timing/settings.gradle.kts",
+      "bytes": 111,
+      "sha256": "c6b05c0d3779997793b94ac9573354082982f2a2e35199f2e0b4acfbc8677b72",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-timing/src/commonMain/kotlin/preparation598/Timing598.kt",
+      "bytes": 7898,
+      "sha256": "703d20b30b55d55ebacdf276e7c51b944a98c44f444b6a2250083b0f4f92143e",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-timing/src/commonMain/kotlin/preparation598/TimingUntimed598.kt",
+      "bytes": 6435,
+      "sha256": "d2b72882369d41bfbfd7a98eb7c61393b83d151110f00abec730a6292f9b5664",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-timing/src/jsMain/kotlin/preparation598/PlatformTiming598.kt",
+      "bytes": 1599,
+      "sha256": "c6323b0a1f0cf28eed08a2b37a34a1e497fe7738860d1005302e13fa5a356e7f",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-timing/src/jvmMain/kotlin/preparation598/PlatformTiming598.kt",
+      "bytes": 3448,
+      "sha256": "accf6883ee559d0fe2a477c8738b294ab63c3b96572d04d48e06621fa27e9c9a",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-timing/src/macosArm64Main/kotlin/preparation598/PlatformTiming598.kt",
+      "bytes": 1590,
+      "sha256": "c5d8a806813224eb4d96921e6694a6df774b7f582f5d8d22ffc91e1d123f4ca4",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-timing/src/wasmJsMain/kotlin/preparation598/PlatformTiming598.kt",
+      "bytes": 1619,
+      "sha256": "1322070fbfe2ad43489e5e297d8af308773a97fb4663e7af38f3307f522835c9",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-timing/prepared-timing.patch",
+      "bytes": 70908,
+      "sha256": "02ccb6b9a7c60613d4676059b7c715e0682ca58458d2295457e9cffd743f6966",
+      "role": "new_prepared_timing"
+    },
+    {
+      "path": "prepared-harness/Contract.kt",
+      "bytes": 893,
+      "sha256": "44cd970685f6b0bea03532ce6e2efbb0766ca7588884ede15185f6d05934933c",
+      "role": "unchanged_reference"
+    },
+    {
+      "path": "prepared-harness/KroguAdapter.kt",
+      "bytes": 1456,
+      "sha256": "a0efce00a0051ff6acb915db88b58305418581dc853b59efdd1b2898e4d51053",
+      "role": "unchanged_reference"
+    },
+    {
+      "path": "prepared-harness/IonsPinAdapter.kt",
+      "bytes": 1579,
+      "sha256": "459bc3eee5cdf5a3728e0a59b474c2506c82926771cc2d4a9500581f99a2d621",
+      "role": "unchanged_reference"
+    },
+    {
+      "path": "prepared-harness/JdkAdapter.kt",
+      "bytes": 1330,
+      "sha256": "62b4d80ab21c0c4102c175fad6a2b1688fd3a85ab505d3ec13c614ff14ba7450",
+      "role": "unchanged_reference"
+    },
+    {
+      "path": "prepared-harness/KBigNumAdapter.kt",
+      "bytes": 1435,
+      "sha256": "6d195975382ff2fb22ab91f31152baea6a4285cdf2abf0e8d4921d83a3a34641",
+      "role": "unchanged_reference"
+    },
+    {
+      "path": "prepared-harness/UntimedFixtures.kt",
+      "bytes": 9998,
+      "sha256": "fa588e999e7bd69af64dbaf86b807a1b6277e46832920616e7a9085a622fd3c7",
+      "role": "unchanged_reference"
+    },
+    {
+      "path": "prepared-portable/src/commonMain/kotlin/preparation598/PortableUntimedMain.kt",
+      "bytes": 6411,
+      "sha256": "c3059448272e8a95ff8bce4044a39a5f0d8721004b79011bfeba26c7e5d9db83",
+      "role": "unchanged_reference"
+    },
+    {
+      "path": "prepared-portable/build.gradle.kts",
+      "bytes": 7229,
+      "sha256": "e9f47dc779edc06447023e75f424a2956dd96c7fe578580420d49284c94ab849",
+      "role": "unchanged_reference"
+    },
+    {
+      "path": "prepared-timing/src/commonMain/kotlin/preparation598/TextWork598.kt",
+      "bytes": 3123,
+      "sha256": "5d15b45a901dae05c28e9624accb259e3e33bbdf2a5401b9f80f166c8137adbb",
+      "role": "additive_text_workload_source"
+    },
+    {
+      "path": "prepared-harness/text-only/build.gradle.kts",
+      "bytes": 3631,
+      "sha256": "423e2ec4550fc9d83f42fcd47a93417aaed8f405aa71786c88db8a7219749900",
+      "role": "additive_text_workload_source"
+    },
+    {
+      "path": "prepared-harness/text-only/settings.gradle.kts",
+      "bytes": 202,
+      "sha256": "99381a9bc2ba29718f2e17c5af0afd8e1abd8b11bebd1975a19e4840c5f8f396",
+      "role": "additive_text_workload_source"
+    },
+    {
+      "path": "prepared-harness/text-only/TextOnlyMain.kt",
+      "bytes": 1950,
+      "sha256": "c0bce28393affee905f8a36670666aed744945c408780c873d047c2ccc56d181",
+      "role": "additive_text_workload_source"
+    },
+    {
+      "path": "prepared-timing/text-workloads.patch",
+      "bytes": 22858,
+      "sha256": "070c9672ad30a09c24ee0fefd9675babfff8e750f7227eb918444a009d349436",
+      "role": "additive_text_workload_source"
+    }
+  ],
+  "dependency_pin_update": {
+    "scope": "Only stdlib/common/jdk7/jdk8 alignment to existing Kotlin2.4.21; no peer version/adapter/fixture/timing/provenance-gate changes. Full Krogu consumer still UNRUN and needs accepted539.",
+    "actual_peer_only_evidence": "../peer-only-api-preflight.json",
+    "evidence_sha256": "6f88c53ec5fcad02804d1730d5ee5f4dc3be41571c8d217f6bd784a9c36c69dd",
+    "previous_snapshot": "../history/stdlib-pin-before-peer-preflight/prepared-timing",
+    "reason": "Actual59981 runtime resolution conflict; isolated85499 with this exact pin actually passed494 untimed JVM checks."
+  },
+  "portable_runtime_pin_update": {
+    "scope": "Only Node environment/dependency wiring; full consumer still UNRUN and requires accepted539.",
+    "history": "../history/before-portable-runtime-pins/prepared-timing",
+    "actual_proof": "Peer-only JS71934 and Wasm37964 executed same adapter/static corpus. Wasm86084 intentionally failed wrong-runtime guard before arithmetic; fixed explicit WasmNodeJsPlugin/EnvSpec selects Node24.16.0.",
+    "dependency_alignment": "Add stdlib-js/stdlib-wasm-js/dom-api-compat2.4.21 after actual JS dependency conflicts. No peer version/adapter/fixture/timing change.",
+    "native_entrypoint": "Explicit preparation598.main matches declared package; peer-only83537 linked/executed successfully after prior /main linker failure. Full consumer remains UNRUN."
+  },
+  "text_delta": {
+    "history": "history/timing-before-text-workloads",
+    "peer_only_status": "UNCOMPILED_UNRUN",
+    "expected_checks": 96,
+    "scope": "No adapter changes; original32 arithmetic IDs and8 eligiblefixedscale IDs retained;16textIDs perpeer added. Exact native string output required; no normalization inside/outside to qualify non-equivalent format."
+  },
+  "full_text_gate": {
+    "scope": "Additive32exacttextchecks/peer, legacyarithmetic/cohortcapability gates unchanged. Same TextWork598 as reviewed96peertext; noKroguruntime yet.",
+    "source": {
+      "path": "prepared-timing/src/commonMain/kotlin/preparation598/TextWork598.kt",
+      "bytes": 3123,
+      "sha256": "5d15b45a901dae05c28e9624accb259e3e33bbdf2a5401b9f80f166c8137adbb"
+    },
+    "history": "history/before-full-text-gate-wiring",
+    "patch": {
+      "path": "full-text-gate-wiring.patch",
+      "bytes": 6925,
+      "sha256": "6297117feb8e1b782c03d1bca27b90ecb632e1db85475a4138cbb04ce35568d8"
+    }
+  },
+  "node_argv_fix": {
+    "scope": "Only platform command argument acquisition beforeguards/peer preparation/counters. JVM/Native identity; JS/Wasm Nodeactualargv; inventory/brackets/gates unchanged.",
+    "history": "history/before-node-timing-argv-fix",
+    "previous_JVM_source_snapshot": "artifacts/timing-jvm-829ce211-1-sources/source-map.json",
+    "failed_run": "timing-js-1",
+    "failed_handle": 76434,
+    "failure_classification": "PRE_NUMERIC_ZERO_FIRST_TIME; own compiler mainWrapper calls main([])"
+  },
+  "training_v2": {
+    "protocol": "MINIMUM200ms_BATCHCAP1048576_TARGET20msbatch",
+    "scope": "Only training condition/accounting/checker tag; cumulative operation cap removed as stop, perbatchcap and child600/campaign6h deadlines unchanged. All workloads/FIRST/numericbrackets/7samples/order unchanged.",
+    "history": "history/before-minimum-warmup-v2",
+    "old_actual": "timing-jvm-1-actual.json",
+    "old_training_disposition_sha256": "1186d8c67f8ed53f36bd9c4fd94d3d086ff81889fc3321396a0729beda90d799",
+    "root_authorized": "One full JVMv2/portable campaign after finite review, no automatic repeats untilgreen"
+  }
+}

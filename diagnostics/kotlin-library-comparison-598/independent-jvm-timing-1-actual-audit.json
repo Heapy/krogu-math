@@ -1,0 +1,89 @@
+{
+  "verdict": "ACTUAL_JVM598_TIMING_DATA_AND_RECOMPUTED_COMPARISONS_PASS_QUALIFIED_NOT_FULL598",
+  "receipt_sha256": "eae5e98b9b5a76cf945c6d27c04dbbbb7564602dce0fe8cd05ead2dd58f861cf",
+  "counts": {
+    "cases": 216,
+    "fresh_supervisor_identities": 648,
+    "FIRST": 648,
+    "TIME": 4536,
+    "paired_rows_each_FIRST_warm": 480
+  },
+  "bindings": "All receipt files, full artifact manifest/exact tree, runtime executable and20 own-source snapshots hashed; accepted829/GAV ledger4a424029 and exact six-loop command variants checked. No foreign implementation read.",
+  "source_runtime_scope": "JVM512MiB SerialGC/ActiveProcessorCount1; runtime asserts BellSoft25.0.4+9-LTS. Observed identities are usr/bin/time supervisors, not independently sampled arithmetic runtime PID.",
+  "correctness": "Every child INPUT matched independent fixed tuples; FIRST and seven ring digests independently recomputed; four arithmetic gate counts and128 exact text rows rechecked. All7 count/order bindings strict. Earlier-result/input preservation executes reviewed gates; last64 timed result checking remains partial ring scope.",
+  "training": {
+    "capped_children": 565,
+    "duration_ns_min": 17511750,
+    "duration_ns_max": 251154875,
+    "limitation": "565 children stop at operation cap; 200ms target/stationarity not established. Warm measured after observed correctness gate; observed/cached FORMAT explicit."
+  },
+  "comparisons": {
+    "file": "independent-jvm-timing-1-comparisons.json",
+    "sha256": "5c8d39c078bdd61baba3687ce9267c2fd98192749cce7a88d5c02abdf7c86eec",
+    "cases": 160,
+    "by_peer": {
+      "jdk-bellsoft-25.0.4+9": {
+        "cases": 56,
+        "directions": {
+          "mixed": 20,
+          "peer_faster_all3": 22,
+          "peer_slower_all3": 14
+        },
+        "wall_ratio_medians_range": [
+          0.06676586491820828,
+          25.00354141746974
+        ],
+        "max_three_cohort_ratio_spread": 453.39698026261345,
+        "mixed_relation_cases": 0
+      },
+      "ionspin-bignum-0.3.10": {
+        "cases": 48,
+        "directions": {
+          "peer_slower_all3": 44,
+          "peer_faster_all3": 3,
+          "mixed": 1
+        },
+        "wall_ratio_medians_range": [
+          0.04871847079721096,
+          134.89709299076165
+        ],
+        "max_three_cohort_ratio_spread": 144.5440744073752,
+        "mixed_relation_cases": 3
+      },
+      "kbignum-0.0.20-desktop": {
+        "cases": 56,
+        "directions": {
+          "peer_slower_all3": 32,
+          "mixed": 16,
+          "peer_faster_all3": 8
+        },
+        "wall_ratio_medians_range": [
+          0.3576188343089036,
+          46.524675197664884
+        ],
+        "max_three_cohort_ratio_spread": 3421.3328956488,
+        "mixed_relation_cases": 3
+      }
+    },
+    "method": "Seven-sample wall/CPU/alloc medians per fresh child; matched same workload/cohort peer over Krogu. FIRST independently recalculated. All3 ratios/deltas/ranges retained; descriptive, no significance/independence/global ranking or539 threshold."
+  },
+  "metrology": {
+    "wall": "Monotonic ns / operation count; includes adapter/native operation/ring escape.",
+    "cpu": "Current-thread ns when supported; excludes other-thread CPU.",
+    "allocation": "Current-thread bytes/operation when available; not retained memory.",
+    "memory": "Heap coarse snapshots and whole-child time-l maxRSS including gate/startup/exit; not owned/per-operation peak.",
+    "RSS_bytes_range": [
+      168755200,
+      238010368
+    ],
+    "within_child_max_sample_ratio": 152.46023980168033
+  },
+  "NA": "Ions fixed-scale and significant HALF_EVEN remain outside equivalent measured subset; raw unavailable counters remain NA.",
+  "limitations": [
+    "FIRST first explicit selected public operation after preparation; PARSE String-only, FORMAT parsed unobserved, arithmetic parsed operands. Module initialization/internal parse work may predate FIRST.",
+    "Warm repeated FORMAT may use native caches after observations; not fresh-format-value pool.",
+    "Small fixed corpus; portable targets, integrated report and remaining task requirements separate.",
+    "No new numerical run or automatic favorable repetition; all adverse and mixed aliases retained."
+  ],
+  "blocking_findings": []
+}

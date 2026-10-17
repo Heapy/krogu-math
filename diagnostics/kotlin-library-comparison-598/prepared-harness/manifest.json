@@ -1,0 +1,84 @@
+{
+  "status": "SOURCE_PREPARATION_UNCOMPILED_UNRUN",
+  "runtime_dependency": "accepted final539 snapshot; original598 gates unchanged",
+  "files": {
+    "Contract.kt": {
+      "bytes": 893,
+      "sha256": "44cd970685f6b0bea03532ce6e2efbb0766ca7588884ede15185f6d05934933c"
+    },
+    "IonsPinAdapter.kt": {
+      "bytes": 1579,
+      "sha256": "459bc3eee5cdf5a3728e0a59b474c2506c82926771cc2d4a9500581f99a2d621"
+    },
+    "JdkAdapter.kt": {
+      "bytes": 1330,
+      "sha256": "62b4d80ab21c0c4102c175fad6a2b1688fd3a85ab505d3ec13c614ff14ba7450"
+    },
+    "KBigNumAdapter.kt": {
+      "bytes": 1435,
+      "sha256": "6d195975382ff2fb22ab91f31152baea6a4285cdf2abf0e8d4921d83a3a34641"
+    },
+    "KroguAdapter.kt": {
+      "bytes": 1456,
+      "sha256": "a0efce00a0051ff6acb915db88b58305418581dc853b59efdd1b2898e4d51053"
+    },
+    "README.md": {
+      "bytes": 9199,
+      "sha256": "e3abf244fcea400e2947e404ad4ac8a8639dec5c88ad8661a2a975f3d99e20a0"
+    },
+    "UntimedFixtures.kt": {
+      "bytes": 9998,
+      "sha256": "fa588e999e7bd69af64dbaf86b807a1b6277e46832920616e7a9085a622fd3c7"
+    },
+    "UntimedMain.kt": {
+      "bytes": 1410,
+      "sha256": "b0c96bc6383d9ee1b04521c275c9d2cd1ab18e480fa91f44f231737cdd6bbe8b"
+    },
+    "build.gradle.kts": {
+      "bytes": 4095,
+      "sha256": "1d1021c2108b87d1d26b976268b9ca27e5fee8d943dc69d831e768558866941d"
+    },
+    "fixed-scale-retention-review.patch": {
+      "bytes": 1210,
+      "sha256": "62a62796c4b258decaa033e1e737c5f999dabca91d04b08592d85579b70abed5"
+    },
+    "gradle.properties": {
+      "bytes": 121,
+      "sha256": "9e8396eba8e3760165d5c6fd4f9834fd39ada2b1442e8a1b58966073e6245695"
+    },
+    "internal-read-through.json": {
+      "bytes": 1305,
+      "sha256": "d08b811a6aa0b18d2785b0667e83073e66e81e07f3d521963958bcde4e57ce70"
+    },
+    "settings.gradle.kts": {
+      "bytes": 189,
+      "sha256": "9b753ce91a763abba12fa1655af0e08d6489682f13a420977809b24fee4b3cde"
+    }
+  },
+  "dependency_downloads": false,
+  "numerical_execution": false,
+  "foreign_implementation_read": false,
+  "isolated_jvm_build": "PREPARED_NOT_RESOLVED_COMPILED_OR_RUN",
+  "checked_existing_adapters_unchanged": true,
+  "dependency_pin_update": {
+    "scope": "Only stdlib/common/jdk7/jdk8 alignment to existing Kotlin2.4.21; no peer version/adapter/fixture/timing/provenance-gate changes. Full Krogu consumer still UNRUN and needs accepted539.",
+    "actual_peer_only_evidence": "../peer-only-api-preflight.json",
+    "evidence_sha256": "6f88c53ec5fcad02804d1730d5ee5f4dc3be41571c8d217f6bd784a9c36c69dd",
+    "previous_snapshot": "../history/stdlib-pin-before-peer-preflight/prepared-harness",
+    "reason": "Actual59981 runtime resolution conflict; isolated85499 with this exact pin actually passed494 untimed JVM checks."
+  },
+  "full_text_gate": {
+    "scope": "Additive32exacttextchecks/peer, legacyarithmetic/cohortcapability gates unchanged. Same TextWork598 as reviewed96peertext; noKroguruntime yet.",
+    "source": {
+      "path": "prepared-timing/src/commonMain/kotlin/preparation598/TextWork598.kt",
+      "bytes": 3123,
+      "sha256": "5d15b45a901dae05c28e9624accb259e3e33bbdf2a5401b9f80f166c8137adbb"
+    },
+    "history": "history/before-full-text-gate-wiring",
+    "patch": {
+      "path": "full-text-gate-wiring.patch",
+      "bytes": 6925,
+      "sha256": "6297117feb8e1b782c03d1bca27b90ecb632e1db85475a4138cbb04ce35568d8"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "accepted_main": "829ce21154c7e75f5206eeb173351c391ed21597",
+  "protocol": "MINIMUM200ms_BATCHCAP1048576_TARGET20msbatch",
+  "build_handle": 38980,
+  "build_exit": 0,
+  "root": "/Users/yoda/dev/pet/krogu-math/.codex-work/598/artifacts/timing-jvm-829ce211-v2",
+  "manifest_sha256": "647f13bfaa0181cf99c6d9f28f87c9e25384ea5f56db312423729bb64adccdcd",
+  "source_snapshot": "/Users/yoda/dev/pet/krogu-math/.codex-work/598/artifacts/timing-jvm-829ce211-v2-sources/source-map.json",
+  "runtime": "/Users/yoda/.sdkman/candidates/java/25.0.4-librca/bin/java",
+  "runtime_sha256": "b7a71fa440912190cce262a062a30629f1668c7e14c0d4c021c6f37d3f734c29"
+}

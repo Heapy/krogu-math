@@ -1,0 +1,67 @@
+{
+  "verdict": "QUALIFIED_LITERAL_CONTENT_PASS_FROZEN_CANDIDATE_DELIVERY_PENDING",
+  "task": "local:598",
+  "authoritative_task_revision": 3191,
+  "basis": "completion-requirements-audit-536.json SHA256 9e6cfe8b3cd12a1c9d9c8738ca3a46b8ac3487f9a1664608f1bff17d142dd4ca and fresh authoritative task body",
+  "candidate": {
+    "root": ".codex-work/598-delivery-worktree/diagnostics/kotlin-library-comparison-598",
+    "report_sha256": "13e018cd6107136e3751cfad6a9b47812b3da834d9ecb47781859e74c22d4771",
+    "index_sha256": "4899414e9ebd50b2e66e5d77909b70713df2c5d3f3b0259a50652750b6c6bb42",
+    "recovery_receipt_sha256": "27fe450019f69b97a66b579ea12ee1c6f44d4a832d1625096ccc716d450403df",
+    "measured_producer": "829ce21154c7e75f5206eeb173351c391ed21597",
+    "delivery_state_at_handoff": "Uncommitted isolated audit/598-library-comparison branch; main829 unchanged, not pushed. No completion inferred."
+  },
+  "scope": "Independent literal/content coverage audit. No numerical execution, raw-statistics recomputation, ZIP streaming, recovery rerun or Git promotion. Reviewer527 owns actual numeric/package/recovery binding. Report/index/raw files were not edited.",
+  "requirements": [
+    {
+      "clause": 1,
+      "verdict": "QUALIFIED_PASS",
+      "evidence": "REPORT peer/source table and peer-selection-preparation.md with primary public metadata/API links, exact versions/licenses and resolved target inputs; accepted public-API correctness/publication audit db549b5d.",
+      "qualification": "JVM has two Kotlin alternatives IonsPin0.3.10 and KBigNum0.0.20 plus public JDK reference. Each measured portable target has one qualified IonsPin alternative. Kt-math published JS is acknowledged as unselected/API-unqualified, not nonexistent. Published Native variants are not claimed as measured runtimes. Selection is bounded, not exhaustive."
+    },
+    {
+      "clause": 2,
+      "verdict": "QUALIFIED_PASS",
+      "evidence": "Current actual-workload-inputs.md/tsv/json contains 56 exact workload tuples and1512 per-child observations; prepared adapters, historical operation-semantic-matrix.md, correctness audit and explicit seven NA records per target.",
+      "qualification": "Exact signed integer/decimal arithmetic, self-square, parse/format and fixed-scale HalfUp are separated. Value parity is not cohort/scale/general text parity; fixed-scale20 is not MC34. Plain-spelling text intersection and interned physical relation mismatches are explicit. Unselected quotient/bitwise/root operations are not falsely declared unavailable. Smaller portable corpus is not JVM full-domain coverage."
+    },
+    {
+      "clause": 3,
+      "verdict": "PASS_FROZEN_PRODUCER_SCOPE",
+      "evidence": "Acceptedmain829 after529/537/539; unique GAV0.1.0-598-829ce211, publication ledger4a424029,135files/five publications and source405 ledger; exact per-target runtime/source manifests and actual receipt SHA table.",
+      "qualification": "No substitution of pre-acceptance aa9 or old workload eras. Later delivery commit must preserve source applicability rather than rename these measurements. Publication is isolated local consumer delivery, not Maven Central release."
+    },
+    {
+      "clause": 4,
+      "verdict": "QUALIFIED_PASS_FINITE_COMPARISON_NOT_STEADY_RANKING",
+      "evidence": "Reviewed v2 source94884adc, four actual/disposition pairs and sample traces;648 JVM and288 each JS/Wasm/macOSArm64 FIRST children with seven warm observations, three alternating F/R/F cohorts, fixed same-target runtime flags and declared training/caps/deadlines; exact REPRODUCE commands and per-child argv/binding/host records.",
+      "qualification": "Training meets the reviewed>=200ms elapsed condition including observations, not200ms pure numeric work or proof of stable JIT/cache. Unstable magnitudes/mixed directions remain visible and cannot support robust steady-state or universal rankings. FIRST is the first explicit selected operation after preparation, not pristine process/class/parser state. Warm FORMAT reuses observed values; PARSE uses a prepared immutable String. Escaping/checks are documented. This accepts the bounded study with explicit unstable cells; it does not assert that every cell achieved steady state."
+    },
+    {
+      "clause": 5,
+      "verdict": "QUALIFIED_PASS_AVAILABLE_METRICS_AND_EXPLICIT_NA",
+      "evidence": "Per-target absolute per-fork medians/min/max and derived ops/s, peer_ns/Krogu_ns ratios, FIRST tables, CPU/allocation outputs, complete raw samples/trends/dispositions and actual-resource-summary.json/whole-child resource tables.",
+      "qualification": "Throughput is derived from the same wall bracket, not concurrent saturation. JVM allocation/CPU is current-thread; portable CPU is process-wide and allocations NA. Coarse heap, snapshot RSS and completed whole-child peak are separate; none is per-value retained/object graph. Graph/retained lacks a qualified common method and remains NA. Available hostRAM was not recorded and remains NA, independent of physical capacity or observed RSS. Load snapshots do not prove isolation; wrapper PID/start is not independently observed runtime descendant identity. Adverse cases and peer/target/API limitations remain, without causal cross-host recovery or universal speedup claims."
+    },
+    {
+      "clause": 6,
+      "verdict": "CONTENT_PASS_ACTUAL_PACKAGE_BINDING_OWNED_BY_527",
+      "evidence": "Independent publication/correctness db549b5d (JVM790, portable222 each, explicit NA), method/source/text reviews, four v2 actual reviews and finite dispositions, final readable report/input review1c612 and retained historical attempts.",
+      "qualification": "Correctness precedes warm samples with post-FIRST checks and full gates; no numerical implementation bodies were inspected/copied. Project-local source/raw/archive retention and permitted public metadata use are explicit. No private transfer is authorized by this audit. Actual archive/member/recovery/index/Git bindings are not re-audited here and require527's separate finite verdict."
+    },
+    {
+      "clause": "result",
+      "verdict": "CONTENT_COMPLETE_DELIVERY_PENDING",
+      "evidence": "REPORT, current peer/semantic/input matrices, exact accepted commit/GAV, REPRODUCE with build/correctness/timing/check/recovery commands, complete raw/source/runtime/publication archive pointers and actual SHA tables.",
+      "qualification": "Measured wins/losses are distinguished from NA, unsupported/unselected operations, unstable observations and hypotheses. Historic v1 transient timing and zero-numeric/setup failures are retained, not relabelled final results. Frozen preparation SOURCEONLY/PENDING identifiers are historical labels superseded by exact accepted producer and runtime bindings, not current unfinished execution."
+    }
+  ],
+  "blocking_content_findings": [],
+  "remaining_delivery_conditions": [
+    "Receive reviewer527 final actual package/recovery/numeric-binding verdict for this frozen candidate; repair only concrete findings, if any.",
+    "Commit/integrate the reviewed evidence delivery through the authorized ordinary non-force flow, verify exact resulting main source/tree applicability to measured829 and preserve all other work; no new numerical campaign solely for evidence ancestry.",
+    "Verify actual origin/main equals accepted delivered local main and tracked delivery files/index are the reviewed bytes. Do not infer push from a local commit.",
+    "Only after actual delivery and accepted scope, read authoritative task state/session and perform authorized review/done; then re-read all74 tasks/dependencies and final local/remote main before declaring the overall goal complete."
+  ],
+  "conclusion": "No new substantive literal content gap identified in the frozen final report. Qualified finite-study acceptance is supportable with all stated measurement and coverage limitations. This is not taskDONE, package validation or proof of steady-state performance; actual delivery remains pending."
+}

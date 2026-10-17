@@ -1,0 +1,18 @@
+{
+  "status": "INTERNAL_SOURCE_READ_THROUGH_ONLY_UNCOMPILED_UNRUN",
+  "findings_fixed": [
+    "Distinct equal-value multiplication absent from explicit alias accounting: added identity-qualified separate fixture IDs; parser interning yields NA.",
+    "Unsupported capabilities previously skipped without returned NA inventory: VerificationReport now carries explicit unavailable reasons."
+  ],
+  "confirmed": [
+    "Only native numeric calls in adapter arithmetic methods; no parser/text/JDK normalization there.",
+    "No default decimal slash; explicit scale/HALF_UP only for documented route.",
+    "No HALF_EVEN inference, unsupported native method throws; no silent arithmetic fallback.",
+    "All fixture parsing, normalization, JDK oracle, content and input-identity checks are untimed by contract; no measurement code exists."
+  ],
+  "remaining": [
+    "Independent source review before real compilation.",
+    "Resolve exact public signatures/versions and run untimed parity after final539; no current runtime proof."
+  ],
+  "independent_review_correction": "Untimed per-call input and retained-result snapshots + two repeated calls for every exact/self/distinct/fixedscale operation; actual gate required before reusable-input timing; formatting-observed fixture objects never timing inputs."
+}

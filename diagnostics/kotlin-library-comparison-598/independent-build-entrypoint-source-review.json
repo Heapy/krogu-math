@@ -1,0 +1,25 @@
+{
+  "status": "SOURCE_PASS_UNCOMPILED_UNRUN",
+  "manifest_entries_checked": 13,
+  "manifest_sha256": "a81082277e2a9b788f1ba244a2fb5497ea40484b60b1d49e25801ff3834500e3",
+  "new_entrypoint_sha256": "f2d042ea54778e3e37b743aa8a18cb125007f13dc0d82780b5efd67d0dd6e0db",
+  "build_sha256": "c18545fc4b171cb0a6ac8b343e14bfe87cf3526c35559c84de79c3f72ceafc48",
+  "finding": "CLOSED: redundantbooleanrequirementandREADMEargumentremoved; actualaccepted539workflow/JAR+commit+SHAdependencyretained.",
+  "confirmed": [
+    "Standalone separate settings; root build unaffected; only root *.kt sources included",
+    "Pinned Kotlin2.4.21, peer coordinates and stdlib; BellSoft25 toolchain, no automaticJDKdownloads; runtime rejects wrong25.0.4+9-LTS",
+    "verifyKroguInput precedes KotlinCompile; runUntimed depends classes andverification; classpathmain runtime includesfileJAR+peer dependencies",
+    "Allfourpeer adapters enter full existingverifyUntimed; numeric/unexpectederrors propagate; unsupportedcapabilities recordedNA; COMPLETEonlyafterallpeerchecks",
+    "Uniqueoutput directory andnewobservationfile preservefailedattempts; pre-runclasspath/sourcehashes andpostsuccessKroguSHA recorded",
+    "Dependencies/signatures/Gradlecompilation/selectedvariants/licenses/actualhostandartifactacceptance remain unverified until authorizedexecution"
+  ],
+  "not_executed": [
+    "download",
+    "resolve",
+    "compile",
+    "run",
+    "benchmark"
+  ],
+  "scope": "New build/settings/properties/entrypoint only; prior reviewedadapters/fixtures remainbyteidentical; nopeerimplementationread",
+  "readme_sha256": "e3abf244fcea400e2947e404ad4ac8a8639dec5c88ad8661a2a975f3d99e20a0"
+}

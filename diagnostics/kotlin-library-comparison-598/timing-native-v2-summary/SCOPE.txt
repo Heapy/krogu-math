@@ -1,0 +1,13 @@
+All per-fork/adverse rows retained. FIRST after declared preparation precedes gate, not VM/process cold; PARSE has only source String prepared, FORMAT has a parsed unobserved native operand. Warm FORMAT is observed/cached. Throughput is derived from the same wall bracket; latency includes adapter/ring escape. Mixed-alias relations flagged, not silently comparable. RSS/heap snapshots are process metrics, never owned-retained or allocation. No speedup threshold or final task verdict.
+Source artifact binding:platform=Native
+artifact_manifest_sha256=702286f6302253c45ff905f99c8b9d5233d148a498f2356c35c93239a3a04390
+runtime_exe=/Users/yoda/dev/pet/krogu-math/.codex-work/598/artifacts/timing-native-829ce211-v2/peer598-timing.kexe
+runtime_sha256=50c5a3299664c5ff86566cc0ef4c9c7538b93d7bf4297bd049880e3abbe15848
+krogu_commit=829ce21154c7e75f5206eeb173351c391ed21597
+controller_sha256=6adfb84907f8c5a89e56722e137f35f5c06d24b6ce8b3ddcf2c50dccf2f21c8b
+identity_scope=usr-bin-time_supervisor_only_runtime_PID_unobserved
+catalog_sha256=0610eef018cb017054720d97be5858f63af7aa9d690aed9b92409c9d2ff2769a
+artifact_tree=/Users/yoda/dev/pet/krogu-math/.codex-work/598/artifacts/timing-native-829ce211-v2
+cwd=/Users/yoda/dev/pet/krogu-math/.codex-work/598/artifacts/timing-native-829ce211-v2
+publication_ledger_sha256=4a424029142eb791357a8bb222fca52f836f67956dee6c36289d448a580e8d23
+

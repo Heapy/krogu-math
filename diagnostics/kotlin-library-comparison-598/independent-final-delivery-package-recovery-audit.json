@@ -1,0 +1,47 @@
+{
+  "verdict": "FINAL_598_DELIVERY_PACKAGE_RECOVERY_PROVENANCE_PASS_READY_FOR_AUTHORIZED_EVIDENCE_ONLY_INTEGRATION",
+  "index_sha256": "4899414e9ebd50b2e66e5d77909b70713df2c5d3f3b0259a50652750b6c6bb42",
+  "recovery_receipt_sha256": "27fe450019f69b97a66b579ea12ee1c6f44d4a832d1625096ccc716d450403df",
+  "archive_sha256": "ddba3ba92406fbf5f5a6a2b1be327a6c762b2337059e4c51ee36963496993d1a",
+  "candidate_worktree": ".codex-work/598-delivery-worktree",
+  "producer": "829ce21154c7e75f5206eeb173351c391ed21597",
+  "mechanical": {
+    "indexed_files": 191,
+    "package_files": 193,
+    "regular_ZIP_members_independently_hashed": 12405,
+    "fresh_restored_files_independently_hashed": 12405,
+    "complete_old_final_runtime_closures": 6,
+    "publication_files": 135,
+    "accepted_Git_source_blobs": 405,
+    "executable_flags": "All restored user-exec flags match strictx/- ledger; closurecounts exclude manifest itself."
+  },
+  "historical_reused_path_mappings": [
+    {
+      "receipt": "timing-jvm-1-actual.json",
+      "original_path": "prepared-timing/manifest.json",
+      "historical_exact_path": "history/before-node-timing-argv-fix/prepared-timing/manifest.json",
+      "sha256": "fcc9dca70cde249a1622ea7de641388b48a24eb4ef23f3b6dfe474b526a47289"
+    },
+    {
+      "receipt": "timing-jvm-1-actual.json",
+      "original_path": "prepared-timing/check-timing.main.kts",
+      "historical_exact_path": "history/before-minimum-warmup-v2/prepared-timing/check-timing.main.kts",
+      "sha256": "167c27125ef0708e6e7ea695abc9863a6e047b16c27492d6a8930f27cc62f13d"
+    },
+    {
+      "receipt": "full-correctness-1-actual.json",
+      "original_path": "prepared-timing/manifest.json",
+      "historical_exact_path": "history/before-node-timing-argv-fix/prepared-timing/manifest.json",
+      "sha256": "fcc9dca70cde249a1622ea7de641388b48a24eb4ef23f3b6dfe474b526a47289"
+    }
+  ],
+  "readable_report": "Exact acceptedREPORT13e018, actual1512inputs56tuples and all4 qualified dispositions carried unchanged; no numerical replay/new speed/steady claim.",
+  "packaging_delta": "Initial72302 rejected generated build node_modules symlink before archive. Narrow traversal exclusion removes prepared-*/build/**/node_modules beside transient Gradle/Kotlin caches. Old tool/repro/failure retained; all immutable measured closures/manifests/publications/source snapshots independently complete.",
+  "source_evidence": "Recovered old/final receipts/source snapshots/fullcorrectness match all recorded hashes using explicit3historical reusedpath mappings above. Browsable copies exact recovered evidence;405producerGit blobs checked. Source/build/workflows unchanged; only untracked evidence directory on isolated829 branch.",
+  "scope": "Accepted metrology limits retained: unstable JVMcells, portable alias differences, cachedFORMAT, FIRSTafterprep, NA/cohort/memory restrictions. No universal ranking/architecture claim.",
+  "remaining_actions": [
+    "Owner536 separate literalcoverage verdict, then actual evidence-only commit/integrated main source-tree/ref binding.",
+    "Verify tracked Git blobs/index aftercommit with no executable source change; historical measurements remain829/runtime-specific, not newdeliverySHA execution."
+  ],
+  "blocking_findings": []
+}

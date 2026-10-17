@@ -1,0 +1,8 @@
+java.lang.IllegalArgumentException: Symlink file: /Users/yoda/dev/pet/krogu-math/.codex-work/598/prepared-portable/peer-only/build/js/node_modules/.bin/flat
+	at Package_evidence_main._init_$lambda$3(package-evidence.main.kts:41)
+	at kotlin.sequences.TransformingSequence$iterator$1.next(Sequences.kt:243)
+	at kotlin.sequences.SequencesKt___SequencesKt.toCollection(_Sequences.kt:975)
+	at kotlin.sequences.SequencesKt___SequencesKt.toMutableList(_Sequences.kt:1014)
+	at kotlin.sequences.SequencesKt___SequencesKt$sortedWith$1.iterator(_Sequences.kt:821)
+	at kotlin.sequences.SequencesKt___SequencesKt.toList(_Sequences.kt:996)
+	at Package_evidence_main.<init>(package-evidence.main.kts:44)

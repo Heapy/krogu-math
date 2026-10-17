@@ -1,0 +1,60 @@
+{
+  "status": "PASS_PORTABLE_PEER_ONLY_ACTUAL_234_CHECKS_15_NA_AND_SOURCE_ONLY_WIRING_REBIND",
+  "actual_manifest_sha256": "74c7b33e68a28a4c8acfe5ff34f2b7a3836f52d970a61e1b9b1cfa2de6097e64",
+  "source_only_pin_ledger_sha256": "5fc67be8b8657332b2fb7dcd08fcfade88842f917114c0e50af54eef7ce9c340",
+  "runs": [
+    {
+      "target": "JS",
+      "handle": 71934,
+      "CHECK": 78,
+      "core": 64,
+      "distinct": 14,
+      "NA": 5,
+      "domains": {
+        "int": 38,
+        "decimal": 40
+      },
+      "log_sha256": "0d042b9525e400467a006c8a134fd4b94f0c15def716b5051e7aac16338b0d34",
+      "descriptor_sha256": "e67f53a603df091958717d7fe1b2292a005b6589d9ae2c27ead44a6ba5ee968b"
+    },
+    {
+      "target": "Wasm",
+      "handle": 37964,
+      "CHECK": 78,
+      "core": 64,
+      "distinct": 14,
+      "NA": 5,
+      "domains": {
+        "int": 38,
+        "decimal": 40
+      },
+      "log_sha256": "de2813262385e65dbab70aa989167847e625c175518e27a82d9be8b3e5d14359",
+      "descriptor_sha256": "c005971c80fe434c7c888792582eefa4655e9e083e15fc3f3949d3449cb27052"
+    },
+    {
+      "target": "macOSArm64",
+      "handle": 83537,
+      "CHECK": 78,
+      "core": 64,
+      "distinct": 14,
+      "NA": 5,
+      "domains": {
+        "int": 38,
+        "decimal": 40
+      },
+      "log_sha256": "f28886a6340a0adc845341d0caed1a27349f7189389b71d66e585e91d2b96f29",
+      "descriptor_sha256": "3edc730bc128d15a021196ea6aefa9e0907bc7f37f7696a1e5554f879df26de6"
+    }
+  ],
+  "exact_gate_three_replacements": true,
+  "preserved_failed_handles": [
+    59061,
+    71242,
+    79688,
+    86084,
+    94557
+  ],
+  "failure_scope": "Two dependency conflicts, cache-lock setup, wrong Node guard before peer arithmetic, Native default/main link failure remain distinct from peer NA. No rerun claimed successful before actual successful handle.",
+  "source_rebind": "Two future descriptors only: platform stdlib/DOM2.4.21 pins, independent Wasm preinstalled Node24.16 environment and Native packaged entryPoint. Historical descriptor/manifests retained; original adapters/static corpus/runtime implementations unchanged.",
+  "limits": "IonsPin0.3.10 portable subset only: four integer/four decimal fixtures, four operations, repeated current/retained/input observation and identity-qualified distinct. Value-only decimal, not scale/cohort/MC34. No actual runtime PID/start sampled, no full JVM corpus or Krogu parity/performance/accepted539 claim. Full future Krogu/portable/timing consumers remain UNRESOLVED_UNCOMPILED_UNRUN. No foreign numerical bodies inspected or reviewer builds/runtime."
+}

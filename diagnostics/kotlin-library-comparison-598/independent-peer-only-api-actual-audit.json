@@ -1,0 +1,66 @@
+{
+  "status": "PASS_ACTUAL_JVM_PEER_ONLY_API_COMPILE_UNTIMED_VALUE_CORRECTNESS",
+  "owner_evidence_sha256": "6f88c53ec5fcad02804d1730d5ee5f4dc3be41571c8d217f6bd784a9c36c69dd",
+  "attempts": [
+    {
+      "handle": 59981,
+      "exit": 1,
+      "scope": "compileKotlin actually executed successfully; runtime resolution failed from stdlib-common/jdk7/jdk8 version conflicts before JavaExec",
+      "log": "peer-only-api-1.log"
+    },
+    {
+      "handle": 85499,
+      "exit": 0,
+      "scope": "compile UP-TO-DATE from first attempt, runtime resolved with exact stdlib alignment and actual JavaExec completed",
+      "log": "peer-only-api-2.log"
+    }
+  ],
+  "original13_manifest_sha256": "a81082277e2a9b788f1ba244a2fb5497ea40484b60b1d49e25801ff3834500e3",
+  "checks": {
+    "jdk-bellsoft-25.0.4+9": 168,
+    "ionspin-bignum-0.3.10": 159,
+    "kbignum-0.0.20-desktop": 167
+  },
+  "total_CHECK": 494,
+  "numeric_parity_false": 0,
+  "text_parity_false_counts": {
+    "ionspin-bignum-0.3.10": 41,
+    "kbignum-0.0.20-desktop": 13
+  },
+  "NA": [
+    {
+      "peer": "jdk-bellsoft-25.0.4+9",
+      "case": "significant-half-even/MC34",
+      "reason": "Native capability known, but this source slice has no MC34 check/operation; not verified here"
+    },
+    {
+      "peer": "ionspin-bignum-0.3.10",
+      "case": "integer/zero/square-distinct-equal",
+      "reason": "Parser interned equal inputs; cannot label this distinct-object work"
+    },
+    {
+      "peer": "ionspin-bignum-0.3.10",
+      "case": "fixed-scale-half-up/*",
+      "reason": "DecimalMode precision/scale propagation is not JDK fixed-scale divide"
+    },
+    {
+      "peer": "ionspin-bignum-0.3.10",
+      "case": "significant-half-even/MC34",
+      "reason": "HALF_EVEN public mapping unverified; README tie descriptions conflict; untimed oracle gate pending"
+    },
+    {
+      "peer": "kbignum-0.0.20-desktop",
+      "case": "integer/zero/square-distinct-equal",
+      "reason": "Parser interned equal inputs; cannot label this distinct-object work"
+    },
+    {
+      "peer": "kbignum-0.0.20-desktop",
+      "case": "significant-half-even/MC34",
+      "reason": "no documented significant-digit MathContext34/HALF_EVEN equivalent"
+    }
+  ],
+  "exact_source_runtime_classpath_class_hashes_verified": 36,
+  "stdlib_correction": "One exact peer-only descriptor force expanded to4stdlibmodules2.4.21, no adapter/fixture delta. Failure59981 retained; actualcompile in59981 thenUPTODATE+JavaExec85499.",
+  "scope": "No Krogu/final539 artifact, performance,first/warm/portable runtime/MC34/scale-cohort/generalimmutability/final598 acceptance. EveryCHECKid/relation/value/textflag andNAinventory independentlyvalidated; hashesonly ofpeerJARs, no foreignimplementationread. Actualfixture reports repeatedcall/input/retainedresult checks viaunchanged reviewed ownsource.",
+  "remaining_concrete_issue": "Prepared futureJVM/portable/timing descriptors force onlystdlib andstillrequire resolutionvalidation; actualsamepeer conflict shows need narrow4modulealignment there beforefutureexecution. ExistinghistoricalsourcePASS/UNRUN evidence not overwritten orretroactively calledruntimePASS. No build/download/runtime launched byreviewer."
+}

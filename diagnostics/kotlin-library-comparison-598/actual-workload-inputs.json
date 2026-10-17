@@ -1,0 +1,1942 @@
+{
+  "scope": "ACTUAL final v2 INPUT598 values; 1512 fresh children, 56 unique declared workload tuples. Sizes are metadata derived only from exact retained literal strings, not peer arithmetic. Physical relations remain per child.",
+  "counts": {
+    "JVM": 648,
+    "JS": 288,
+    "Wasm": 288,
+    "Native-macOSArm64": 288
+  },
+  "entries": [
+    {
+      "id": "decimal/scale/ADD",
+      "input_a": "1.20",
+      "input_b": "3.400",
+      "declared_expected": "4.600",
+      "a_size": {
+        "characters": 4,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 5,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 4,
+        "decimal_scale": 3
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "decimal/scale/FORMAT",
+      "input_a": "1.2",
+      "input_b": "1.2",
+      "declared_expected": "1.2",
+      "a_size": {
+        "characters": 3,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 2,
+        "decimal_scale": 1
+      },
+      "b_size": {
+        "characters": 3,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 2,
+        "decimal_scale": 1
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "decimal/scale/MULTIPLY",
+      "input_a": "1.20",
+      "input_b": "3.400",
+      "declared_expected": "4.08000",
+      "a_size": {
+        "characters": 4,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 5,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 4,
+        "decimal_scale": 3
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "decimal/scale/PARSE",
+      "input_a": "1.2",
+      "input_b": "1.2",
+      "declared_expected": "1.2",
+      "a_size": {
+        "characters": 3,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 2,
+        "decimal_scale": 1
+      },
+      "b_size": {
+        "characters": 3,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 2,
+        "decimal_scale": 1
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "decimal/scale/SUBTRACT",
+      "input_a": "1.20",
+      "input_b": "3.400",
+      "declared_expected": "-2.200",
+      "a_size": {
+        "characters": 4,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 5,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 4,
+        "decimal_scale": 3
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "decimal/scale/self",
+      "input_a": "1.20",
+      "input_b": "1.20",
+      "declared_expected": "1.4400",
+      "a_size": {
+        "characters": 4,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 4,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "self-alias"
+      ]
+    },
+    {
+      "id": "decimal/signed/ADD",
+      "input_a": "-1.25",
+      "input_b": "0.05",
+      "declared_expected": "-1.20",
+      "a_size": {
+        "characters": 5,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 4,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 2
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "decimal/signed/FORMAT",
+      "input_a": "-1.25",
+      "input_b": "-1.25",
+      "declared_expected": "-1.25",
+      "a_size": {
+        "characters": 5,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 5,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "decimal/signed/MULTIPLY",
+      "input_a": "-1.25",
+      "input_b": "0.05",
+      "declared_expected": "-0.0625",
+      "a_size": {
+        "characters": 5,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 4,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 2
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "decimal/signed/PARSE",
+      "input_a": "-1.25",
+      "input_b": "-1.25",
+      "declared_expected": "-1.25",
+      "a_size": {
+        "characters": 5,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 5,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "decimal/signed/SUBTRACT",
+      "input_a": "-1.25",
+      "input_b": "0.05",
+      "declared_expected": "-1.30",
+      "a_size": {
+        "characters": 5,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 4,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 2
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "decimal/signed/self",
+      "input_a": "-1.25",
+      "input_b": "-1.25",
+      "declared_expected": "1.5625",
+      "a_size": {
+        "characters": 5,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 5,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 3,
+        "decimal_scale": 2
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "self-alias"
+      ]
+    },
+    {
+      "id": "decimal/wide10/ADD",
+      "input_a": "100000000000000000000.0",
+      "input_b": "-10.00",
+      "declared_expected": "99999999999999999990.00",
+      "a_size": {
+        "characters": 23,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 22,
+        "decimal_scale": 1
+      },
+      "b_size": {
+        "characters": 6,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 4,
+        "decimal_scale": 2
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "decimal/wide10/FORMAT",
+      "input_a": "100000000000000000001.25",
+      "input_b": "100000000000000000001.25",
+      "declared_expected": "100000000000000000001.25",
+      "a_size": {
+        "characters": 24,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 23,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 24,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 23,
+        "decimal_scale": 2
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "decimal/wide10/MULTIPLY",
+      "input_a": "100000000000000000000.0",
+      "input_b": "-10.00",
+      "declared_expected": "-1000000000000000000000.000",
+      "a_size": {
+        "characters": 23,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 22,
+        "decimal_scale": 1
+      },
+      "b_size": {
+        "characters": 6,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 4,
+        "decimal_scale": 2
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "decimal/wide10/PARSE",
+      "input_a": "100000000000000000001.25",
+      "input_b": "100000000000000000001.25",
+      "declared_expected": "100000000000000000001.25",
+      "a_size": {
+        "characters": 24,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 23,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 24,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 23,
+        "decimal_scale": 2
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "decimal/wide10/SUBTRACT",
+      "input_a": "100000000000000000000.0",
+      "input_b": "-10.00",
+      "declared_expected": "100000000000000000010.00",
+      "a_size": {
+        "characters": 23,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 22,
+        "decimal_scale": 1
+      },
+      "b_size": {
+        "characters": 6,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 4,
+        "decimal_scale": 2
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "decimal/wide10/self",
+      "input_a": "100000000000000000000.0",
+      "input_b": "100000000000000000000.0",
+      "declared_expected": "10000000000000000000000000000000000000000.00",
+      "a_size": {
+        "characters": 23,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 22,
+        "decimal_scale": 1
+      },
+      "b_size": {
+        "characters": 23,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 22,
+        "decimal_scale": 1
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "self-alias"
+      ]
+    },
+    {
+      "id": "decimal/zero/ADD",
+      "input_a": "0.00",
+      "input_b": "-0.000",
+      "declared_expected": "0.000",
+      "a_size": {
+        "characters": 4,
+        "sign": 0,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 6,
+        "sign": 0,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 3
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "decimal/zero/FORMAT",
+      "input_a": "0",
+      "input_b": "0",
+      "declared_expected": "0",
+      "a_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "decimal/zero/MULTIPLY",
+      "input_a": "0.00",
+      "input_b": "-0.000",
+      "declared_expected": "0.00000",
+      "a_size": {
+        "characters": 4,
+        "sign": 0,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 6,
+        "sign": 0,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 3
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "decimal/zero/PARSE",
+      "input_a": "0",
+      "input_b": "0",
+      "declared_expected": "0",
+      "a_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "decimal/zero/SUBTRACT",
+      "input_a": "0.00",
+      "input_b": "-0.000",
+      "declared_expected": "0.000",
+      "a_size": {
+        "characters": 4,
+        "sign": 0,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 6,
+        "sign": 0,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 3
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "decimal/zero/self",
+      "input_a": "0.00",
+      "input_b": "0.00",
+      "declared_expected": "0.0000",
+      "a_size": {
+        "characters": 4,
+        "sign": 0,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 4,
+        "sign": 0,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 2
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "self-alias"
+      ]
+    },
+    {
+      "id": "fixed-scale/both-negative",
+      "input_a": "-1",
+      "input_b": "-8",
+      "declared_expected": "0.13",
+      "a_size": {
+        "characters": 2,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "b_size": {
+        "characters": 2,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "targets": [
+        "JVM"
+      ],
+      "peers": [
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "fixed-scale/carry",
+      "input_a": "9.995",
+      "input_b": "1",
+      "declared_expected": "10.00",
+      "a_size": {
+        "characters": 5,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 4,
+        "decimal_scale": 3
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "targets": [
+        "JVM"
+      ],
+      "peers": [
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "fixed-scale/exact",
+      "input_a": "12.00",
+      "input_b": "3",
+      "declared_expected": "4.00",
+      "a_size": {
+        "characters": 5,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 4,
+        "decimal_scale": 2
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "targets": [
+        "JVM"
+      ],
+      "peers": [
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "fixed-scale/negative-divisor",
+      "input_a": "1",
+      "input_b": "-8",
+      "declared_expected": "-0.13",
+      "a_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "b_size": {
+        "characters": 2,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "targets": [
+        "JVM"
+      ],
+      "peers": [
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "fixed-scale/negative-tie",
+      "input_a": "-1",
+      "input_b": "8",
+      "declared_expected": "-0.13",
+      "a_size": {
+        "characters": 2,
+        "sign": -1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "targets": [
+        "JVM"
+      ],
+      "peers": [
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "fixed-scale/nonterminating",
+      "input_a": "1",
+      "input_b": "3",
+      "declared_expected": "0.33333333333333333333",
+      "a_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "targets": [
+        "JVM"
+      ],
+      "peers": [
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "fixed-scale/positive-tie",
+      "input_a": "1",
+      "input_b": "8",
+      "declared_expected": "0.13",
+      "a_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "targets": [
+        "JVM"
+      ],
+      "peers": [
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "fixed-scale/zero",
+      "input_a": "0.000",
+      "input_b": "7",
+      "declared_expected": "0.0000",
+      "a_size": {
+        "characters": 5,
+        "sign": 0,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 3
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": "NA",
+        "coefficient_digits": 1,
+        "decimal_scale": 0
+      },
+      "targets": [
+        "JVM"
+      ],
+      "peers": [
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "int/carry30/ADD",
+      "input_a": "1073741823",
+      "input_b": "1",
+      "declared_expected": "1073741824",
+      "a_size": {
+        "characters": 10,
+        "sign": 1,
+        "integer_bits": 30,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": 1,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "int/carry30/FORMAT",
+      "input_a": "1073741823",
+      "input_b": "1073741823",
+      "declared_expected": "1073741823",
+      "a_size": {
+        "characters": 10,
+        "sign": 1,
+        "integer_bits": 30,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 10,
+        "sign": 1,
+        "integer_bits": 30,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "int/carry30/MULTIPLY",
+      "input_a": "1073741823",
+      "input_b": "1",
+      "declared_expected": "1073741823",
+      "a_size": {
+        "characters": 10,
+        "sign": 1,
+        "integer_bits": 30,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": 1,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "int/carry30/PARSE",
+      "input_a": "1073741823",
+      "input_b": "1073741823",
+      "declared_expected": "1073741823",
+      "a_size": {
+        "characters": 10,
+        "sign": 1,
+        "integer_bits": 30,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 10,
+        "sign": 1,
+        "integer_bits": 30,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "int/carry30/SUBTRACT",
+      "input_a": "1073741823",
+      "input_b": "1",
+      "declared_expected": "1073741822",
+      "a_size": {
+        "characters": 10,
+        "sign": 1,
+        "integer_bits": 30,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": 1,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "int/carry30/self",
+      "input_a": "1073741823",
+      "input_b": "1073741823",
+      "declared_expected": "1152921502459363329",
+      "a_size": {
+        "characters": 10,
+        "sign": 1,
+        "integer_bits": 30,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 10,
+        "sign": 1,
+        "integer_bits": 30,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "self-alias"
+      ]
+    },
+    {
+      "id": "int/signed/ADD",
+      "input_a": "-7",
+      "input_b": "3",
+      "declared_expected": "-4",
+      "a_size": {
+        "characters": 2,
+        "sign": -1,
+        "integer_bits": 3,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": 2,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "int/signed/FORMAT",
+      "input_a": "-7",
+      "input_b": "-7",
+      "declared_expected": "-7",
+      "a_size": {
+        "characters": 2,
+        "sign": -1,
+        "integer_bits": 3,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 2,
+        "sign": -1,
+        "integer_bits": 3,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "int/signed/MULTIPLY",
+      "input_a": "-7",
+      "input_b": "3",
+      "declared_expected": "-21",
+      "a_size": {
+        "characters": 2,
+        "sign": -1,
+        "integer_bits": 3,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": 2,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "int/signed/PARSE",
+      "input_a": "-7",
+      "input_b": "-7",
+      "declared_expected": "-7",
+      "a_size": {
+        "characters": 2,
+        "sign": -1,
+        "integer_bits": 3,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 2,
+        "sign": -1,
+        "integer_bits": 3,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "int/signed/SUBTRACT",
+      "input_a": "-7",
+      "input_b": "3",
+      "declared_expected": "-10",
+      "a_size": {
+        "characters": 2,
+        "sign": -1,
+        "integer_bits": 3,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 1,
+        "integer_bits": 2,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "int/signed/self",
+      "input_a": "-7",
+      "input_b": "-7",
+      "declared_expected": "49",
+      "a_size": {
+        "characters": 2,
+        "sign": -1,
+        "integer_bits": 3,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 2,
+        "sign": -1,
+        "integer_bits": 3,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "self-alias"
+      ]
+    },
+    {
+      "id": "int/wide10/ADD",
+      "input_a": "100000000000000000000",
+      "input_b": "-10",
+      "declared_expected": "99999999999999999990",
+      "a_size": {
+        "characters": 21,
+        "sign": 1,
+        "integer_bits": 67,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 3,
+        "sign": -1,
+        "integer_bits": 4,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "int/wide10/FORMAT",
+      "input_a": "100000000000000000000",
+      "input_b": "100000000000000000000",
+      "declared_expected": "100000000000000000000",
+      "a_size": {
+        "characters": 21,
+        "sign": 1,
+        "integer_bits": 67,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 21,
+        "sign": 1,
+        "integer_bits": 67,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "int/wide10/MULTIPLY",
+      "input_a": "100000000000000000000",
+      "input_b": "-10",
+      "declared_expected": "-1000000000000000000000",
+      "a_size": {
+        "characters": 21,
+        "sign": 1,
+        "integer_bits": 67,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 3,
+        "sign": -1,
+        "integer_bits": 4,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "int/wide10/PARSE",
+      "input_a": "100000000000000000000",
+      "input_b": "100000000000000000000",
+      "declared_expected": "100000000000000000000",
+      "a_size": {
+        "characters": 21,
+        "sign": 1,
+        "integer_bits": 67,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 21,
+        "sign": 1,
+        "integer_bits": 67,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "int/wide10/SUBTRACT",
+      "input_a": "100000000000000000000",
+      "input_b": "-10",
+      "declared_expected": "100000000000000000010",
+      "a_size": {
+        "characters": 21,
+        "sign": 1,
+        "integer_bits": 67,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 3,
+        "sign": -1,
+        "integer_bits": 4,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct"
+      ]
+    },
+    {
+      "id": "int/wide10/self",
+      "input_a": "100000000000000000000",
+      "input_b": "100000000000000000000",
+      "declared_expected": "10000000000000000000000000000000000000000",
+      "a_size": {
+        "characters": 21,
+        "sign": 1,
+        "integer_bits": 67,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 21,
+        "sign": 1,
+        "integer_bits": 67,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "self-alias"
+      ]
+    },
+    {
+      "id": "int/zero/ADD",
+      "input_a": "0",
+      "input_b": "0",
+      "declared_expected": "0",
+      "a_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": 0,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": 0,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct",
+        "binary-native-alias"
+      ]
+    },
+    {
+      "id": "int/zero/FORMAT",
+      "input_a": "0",
+      "input_b": "0",
+      "declared_expected": "0",
+      "a_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": 0,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": 0,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "int/zero/MULTIPLY",
+      "input_a": "0",
+      "input_b": "0",
+      "declared_expected": "0",
+      "a_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": 0,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": 0,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct",
+        "binary-native-alias"
+      ]
+    },
+    {
+      "id": "int/zero/PARSE",
+      "input_a": "0",
+      "input_b": "0",
+      "declared_expected": "0",
+      "a_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": 0,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": 0,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "unary-text"
+      ]
+    },
+    {
+      "id": "int/zero/SUBTRACT",
+      "input_a": "0",
+      "input_b": "0",
+      "declared_expected": "0",
+      "a_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": 0,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": 0,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "binary-distinct",
+        "binary-native-alias"
+      ]
+    },
+    {
+      "id": "int/zero/self",
+      "input_a": "0",
+      "input_b": "0",
+      "declared_expected": "0",
+      "a_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": 0,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "b_size": {
+        "characters": 1,
+        "sign": 0,
+        "integer_bits": 0,
+        "coefficient_digits": "NA",
+        "decimal_scale": "NA"
+      },
+      "targets": [
+        "JS",
+        "JVM",
+        "Native-macOSArm64",
+        "Wasm"
+      ],
+      "peers": [
+        "ionspin-bignum-0.3.10",
+        "jdk-bellsoft-25.0.4+9",
+        "kbignum-0.0.20-desktop",
+        "krogu-final539-PENDING"
+      ],
+      "relations": [
+        "self-alias"
+      ]
+    }
+  ]
+}

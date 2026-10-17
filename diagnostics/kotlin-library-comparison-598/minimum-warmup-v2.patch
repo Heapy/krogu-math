@@ -1,0 +1,56 @@
+--- a/prepared-timing/src/commonMain/kotlin/preparation598/Timing598.kt
++++ b/prepared-timing/src/commonMain/kotlin/preparation598/Timing598.kt
+@@ -104,14 +104,15 @@
+         if(record) println("TIME598\t$peer\t$id\t$fork\t$sample\t$count\t$elapsed\t${delta(before.cpuNs,after.cpuNs)}\t${delta(before.allocatedBytes,after.allocatedBytes)}\t${available(before.heapUsedBytes)}\t${available(after.heapUsedBytes)}\t${available(after.rssPeakBytes)}\t$digest")
+         return elapsed
+     }
+-    // Fixed warmup/calibration budgets, with honest operation caps in raw metadata.
++    // Minimum elapsed training is independent of cumulative work; batches remain bounded.
+     var count=1; var warmOps=0L; val warmStart=now598()
+-    while(now598()-warmStart < 200_000_000L && warmOps < 1_048_576L) {
+-        val n=minOf(count,(1_048_576L-warmOps).toInt())
++    while(now598()-warmStart < 200_000_000L) {
++        val n=count
++        check(n in 1..1_048_576 && warmOps <= Long.MAX_VALUE-n.toLong()) { "Training operation overflow" }
+         val elapsed=batch(n,-1,false); warmOps+=n
+         if(elapsed < 20_000_000L && count < 1_048_576) count=minOf(count*2,1_048_576)
+     }
+-    println("WARM598\t$peer\t$id\t$fork\t$warmOps\t${now598()-warmStart}\t$count\tTARGET200ms_CAP1048576ops_TARGET20msbatch")
++    println("WARM598\t$peer\t$id\t$fork\t$warmOps\t${now598()-warmStart}\t$count\tMINIMUM200ms_BATCHCAP1048576_TARGET20msbatch")
+     repeat(7) { sample -> batch(count,sample,true) }
+     println("COMPLETE598_TIMING_CHILD\t$peer\t$id\t$fork")
+ }
+--- a/prepared-timing/check-timing.main.kts
++++ b/prepared-timing/check-timing.main.kts
+@@ -54,8 +54,8 @@
+     (6..10).forEach{numeric598(f[it])};check(f[11].toInt()==checksum598(expected.canonical));first+=f
+     val training=lines.single{it.startsWith("WARM598\t")}.split('\t')
+     check(training.size==8 && training.take(4)==listOf("WARM598",work.peer,work.id,fork.toString()))
+-    check(training[4].toLong() in 1..1_048_576 && training[5].toLong()>0 && training[6].toInt() in 1..1_048_576)
+-    check(training[7]=="TARGET200ms_CAP1048576ops_TARGET20msbatch")
++    check(training[4].toLong()>0 && training[5].toLong()>=200_000_000L && training[6].toInt() in 1..1_048_576)
++    check(training[7]=="MINIMUM200ms_BATCHCAP1048576_TARGET20msbatch")
+     val selectedCount=training[6].toInt()
+     check(lines.indexOf(training.joinToString("\t"))>lines.indexOf(gateLine))
+     val rows=lines.filter{it.startsWith("TIME598\t")}.map{it.split('\t')};check(rows.size==7)
+--- a/prepared-timing/README.md
++++ b/prepared-timing/README.md
+@@ -31,7 +31,7 @@
+ 
+ After FIRST has passed its own result/input check, the full untimed gate runs, then inputs/retained FIRST are checked again. JVM verifies the portable literals independently through public JDK and executes all four already reviewed full JVM correctness suites. Portable targets execute the reviewed128 mandatory value/preservation checks plus identity-qualified distinct cases and explicit NA. Any mismatch/exception fails the child; no warm samples run and its FIRST cannot become accepted comparison evidence. The gate makes separate parse calls/cohort preparations, but native interning can overlap actual identities with the retained FIRST operands. FIRST occurs before the gate, and warm state explicitly follows the gate and all observations; no physical-freshness or cache-pristine guarantee is inferred.
+ 
+-Warm work reuses the selected child's FIRST operands AFTER this explicitly observed/gated state. Training targets200ms with at most1,048,576 operations; batch size doubles toward20ms and is capped at1,048,576. These are bounded operational settings reused in spirit from the accepted duration/cap method, not evidence of stable JIT by themselves. WARM598 reports actual operation count, duration and selected batch size; actual cap/duration effects must be reported. Seven warm samples use the same count. No automatic repetition changes the corpus until results look favorable.
++Warm work reuses the selected child's FIRST operands AFTER this explicitly observed/gated state. Training v2 must reach at least200ms elapsed; cumulative operations do not terminate it. Each batch remains bounded at1,048,576 operations, with checked cumulative Long accounting; batch size doubles toward20ms up to that per-batch cap. Existing600s owned-child deadline bounds the full process. These are bounded operational settings reused in spirit from the accepted duration/cap method, not evidence of stable JIT by themselves. WARM598 reports actual operation count, duration and selected batch size; actual cap/duration effects must be reported. Seven warm samples use the same count. No automatic repetition changes the corpus until results look favorable.
+ 
+ The 64-slot ring receives actual returned references during each batch and is escaped through the platform hook. After all counters, every touched retained slot (the latest64 for longer batches), the original inputs and retained FIRST result are checked and folded into a value-canonical checksum. This is last-ring consumption, not retention of all transient outputs or a heap ownership proof. Text checks, decimal canonicalization, oracle work, formatting and explicitly defined Int31 character hash folding are outside wall/CPU/allocation brackets. The metadata-only checker has independent exact input/expected tuples and the same specified polynomial checksum; it does not assume platform String.hashCode equality. Reports must preserve the loop/escape overhead rather than subtract an invented fixed cost.
+ 
+@@ -113,3 +113,9 @@
+ ```
+ 
+ Expected96 CHECK_TEXT598 rows (3peers×16IDs×2repetitions), exact input/output, retained-result rechecks and COMPLETE_TEXT598_PEER_ONLY. Failure output is preserved and cannot certify full598 or unsupported peers. The full future runner still checks Krogu on the same selected literals after accepted539.
++
++## Training v2 and actual argv correction
++
++The first completed JVM648-child campaign remains immutable in timing-jvm-1 with its old source snapshot and independent raw/statistics audit. It is not robust steady-warm ranking:565 children reached the old cumulative operation cap before200ms; CPU/allocation-coherent late-series transitions were observed. The minimum200ms schedule is a concrete metrology correction, not a result-based threshold or winning-only rerun. Exactly one full216-workload×3 JVMv2 campaign and the full96×3 portable campaigns are authorized after narrow review; all7 observations, inputs/operations/FIRST brackets/order and adverse results remain unchanged. Actual trends still determine the report's limits;200ms alone does not prove every cache/JIT is steady. Per-batch duration may remain below20ms at its fixed operation cap and is reported honestly.
++
++The preserved initial JS attempt timing-js-1 failed before INPUT/FIRST/TIME: own emitted Kotlin/JS mainWrapper calls main([]), regardless of Node command arguments. A platform-only argument hook now reads actual Node process.argv[2..] for JS/Wasm before the unchanged four-argument/order guards and peer preparation. JVM/Native return their supplied args unchanged. This is setup wiring, not another measured JS campaign or arithmetic change. Original source/manifests and failure outputs are retained under history/before-node-timing-argv-fix. Raw and actual source/artifact manifests always identify their separate harness eras; accepted Krogu library source remains829ce211.

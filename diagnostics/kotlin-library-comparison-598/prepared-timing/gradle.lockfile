@@ -1,0 +1,40 @@
+# This is a Gradle generated file for dependency locking.
+# Manual edits can break the build and are not advised.
+# This file is expected to be part of source control.
+# To regenerate this file, run: ./gradlew :dependencies --write-locks
+com.ionspin.kotlin:bignum-js:0.3.10=jsCompileClasspath,jsRuntimeClasspath
+com.ionspin.kotlin:bignum-jvm:0.3.10=jvmCompileClasspath,jvmRuntimeClasspath
+com.ionspin.kotlin:bignum-macosarm64:0.3.10=macosArm64CompileKlibraries
+com.ionspin.kotlin:bignum-wasm-js:0.3.10=wasmJsCompileClasspath,wasmJsRuntimeClasspath
+com.ionspin.kotlin:bignum:0.3.10=jsCompileClasspath,jsRuntimeClasspath,jvmCompileClasspath,jvmRuntimeClasspath,macosArm64CompileKlibraries,swiftPMDependenciesMetadataClasspath,wasmJsCompileClasspath,wasmJsRuntimeClasspath
+io.github.gatrongdev:kbignum-desktop:0.0.20=jvmCompileClasspath,jvmRuntimeClasspath
+io.heapy.krogu:krogu-math-js:0.1.0-598-829ce211=jsCompileClasspath,jsRuntimeClasspath
+io.heapy.krogu:krogu-math-jvm:0.1.0-598-829ce211=jvmCompileClasspath,jvmRuntimeClasspath
+io.heapy.krogu:krogu-math-macosarm64:0.1.0-598-829ce211=macosArm64CompileKlibraries
+io.heapy.krogu:krogu-math-wasm-js:0.1.0-598-829ce211=wasmJsCompileClasspath,wasmJsRuntimeClasspath
+io.heapy.krogu:krogu-math:0.1.0-598-829ce211=jsCompileClasspath,jsRuntimeClasspath,jvmCompileClasspath,jvmRuntimeClasspath,macosArm64CompileKlibraries,swiftPMDependenciesMetadataClasspath,wasmJsCompileClasspath,wasmJsRuntimeClasspath
+org.jetbrains.kotlin:kotlin-build-tools-api:2.4.21=kotlinBuildToolsApiClasspath,kotlinCompilerClasspath
+org.jetbrains.kotlin:kotlin-build-tools-compat:2.4.21=kotlinBuildToolsApiClasspath,kotlinCompilerClasspath
+org.jetbrains.kotlin:kotlin-build-tools-cri-impl:2.4.21=kotlinBuildToolsApiClasspath,kotlinCompilerClasspath
+org.jetbrains.kotlin:kotlin-build-tools-impl:2.4.21=kotlinBuildToolsApiClasspath,kotlinCompilerClasspath
+org.jetbrains.kotlin:kotlin-compiler-embeddable:2.4.21=kotlinBuildToolsApiClasspath,kotlinCompilerClasspath
+org.jetbrains.kotlin:kotlin-compiler-runner:2.4.21=kotlinBuildToolsApiClasspath,kotlinCompilerClasspath
+org.jetbrains.kotlin:kotlin-daemon-client:2.4.21=kotlinBuildToolsApiClasspath,kotlinCompilerClasspath
+org.jetbrains.kotlin:kotlin-daemon-embeddable:2.4.21=kotlinBuildToolsApiClasspath,kotlinCompilerClasspath
+org.jetbrains.kotlin:kotlin-dom-api-compat:2.4.21=jsCompileClasspath,jsRuntimeClasspath
+org.jetbrains.kotlin:kotlin-native-prebuilt:2.4.21=kotlinNativeBundleConfiguration
+org.jetbrains.kotlin:kotlin-reflect:1.6.10=kotlinBuildToolsApiClasspath,kotlinCompilerClasspath
+org.jetbrains.kotlin:kotlin-script-runtime:2.4.21=kotlinBuildToolsApiClasspath,kotlinCompilerClasspath,kotlinCompilerPluginClasspathJsMain,kotlinCompilerPluginClasspathJvmMain,kotlinCompilerPluginClasspathWasmJsMain
+org.jetbrains.kotlin:kotlin-scripting-common:2.4.21=kotlinCompilerPluginClasspathJsMain,kotlinCompilerPluginClasspathJvmMain,kotlinCompilerPluginClasspathWasmJsMain
+org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:2.4.21=kotlinCompilerPluginClasspathJsMain,kotlinCompilerPluginClasspathJvmMain,kotlinCompilerPluginClasspathWasmJsMain
+org.jetbrains.kotlin:kotlin-scripting-compiler-impl-embeddable:2.4.21=kotlinCompilerPluginClasspathJsMain,kotlinCompilerPluginClasspathJvmMain,kotlinCompilerPluginClasspathWasmJsMain
+org.jetbrains.kotlin:kotlin-scripting-jvm:2.4.21=kotlinCompilerPluginClasspathJsMain,kotlinCompilerPluginClasspathJvmMain,kotlinCompilerPluginClasspathWasmJsMain
+org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.4.21=jvmRuntimeClasspath
+org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.4.21=jvmRuntimeClasspath
+org.jetbrains.kotlin:kotlin-stdlib-js:2.4.21=jsCompileClasspath,jsRuntimeClasspath
+org.jetbrains.kotlin:kotlin-stdlib-wasm-js:2.4.21=wasmJsCompileClasspath,wasmJsRuntimeClasspath
+org.jetbrains.kotlin:kotlin-stdlib:2.4.21=jsCompileClasspath,jsRuntimeClasspath,jvmCompileClasspath,jvmRuntimeClasspath,kotlinBuildToolsApiClasspath,kotlinCompilerClasspath,kotlinCompilerPluginClasspathJsMain,kotlinCompilerPluginClasspathJvmMain,kotlinCompilerPluginClasspathWasmJsMain,macosArm64CompileKlibraries,swiftPMDependenciesMetadataClasspath,wasmJsCompileClasspath,wasmJsRuntimeClasspath
+org.jetbrains.kotlin:kotlin-tooling-core:2.4.21=kotlinBuildToolsApiClasspath,kotlinCompilerClasspath
+org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.0=kotlinBuildToolsApiClasspath,kotlinCompilerClasspath
+org.jetbrains:annotations:13.0=jvmCompileClasspath,jvmRuntimeClasspath,kotlinBuildToolsApiClasspath,kotlinCompilerClasspath,kotlinCompilerPluginClasspathJsMain,kotlinCompilerPluginClasspathJvmMain,kotlinCompilerPluginClasspathWasmJsMain
+empty=kotlinCompilerPluginClasspathMacosArm64Main,kotlinScriptDefExtensions,swiftPMDependenciesForLockFilesMetadataClasspath

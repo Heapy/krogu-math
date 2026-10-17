@@ -1,0 +1,350 @@
+{
+  "status": "ACTUAL_THREE_PORTABLE_PEER_ONLY_COMPILE_AND_UNTIMED_CORRECTNESS_PASS_NO_KROGU_NO_TIMING",
+  "peer": "com.ionspin.kotlin:bignum:0.3.10",
+  "compiler": "Kotlin2.4.21",
+  "runs": [
+    {
+      "target": "JS",
+      "handle": 71934,
+      "exit": 0,
+      "runtime_label": "BEGIN598_UNTIMED\tJS/Node24.16.0\tKotlin2.4.21\tNO_PERFORMANCE_CLAIM",
+      "core_CHECK_rows": 64,
+      "core_unique_operation_IDs": 32,
+      "core_per_domain_rows": {
+        "int": 32,
+        "decimal": 32
+      },
+      "core_per_domain_unique_IDs": {
+        "int": 16,
+        "decimal": 16
+      },
+      "conditional_distinct_rows": 14,
+      "all_rows_per_domain": {
+        "int": 38,
+        "decimal": 40
+      },
+      "observed_CHECK_rows": 78,
+      "NA": [
+        {
+          "peer": "ionspin-bignum-0.3.10",
+          "case": "int/zero/distinct-equal",
+          "reason": "Parser reused identity"
+        },
+        {
+          "peer": "ionspin-bignum-0.3.10",
+          "case": "decimal-cohort",
+          "reason": "Value-only oracle does not establish internal scale"
+        },
+        {
+          "peer": "ionspin-bignum-0.3.10",
+          "case": "significant-HALF_EVEN",
+          "reason": "Not exercised; no ambiguous mapping inferred"
+        },
+        {
+          "peer": "JDK",
+          "case": "JS/Node24.16.0",
+          "reason": "Public java.math unavailable on this target; JVM entrypoint is separate"
+        },
+        {
+          "peer": "KBigNum0.0.20",
+          "case": "JS/Node24.16.0",
+          "reason": "No published JS/Wasm/macOS variant in pinned metadata"
+        }
+      ],
+      "descriptor_snapshot": "prepared-portable/peer-only/attempts/wasm-peer-api-2/build.gradle.kts",
+      "descriptor_sha256": "e67f53a603df091958717d7fe1b2292a005b6589d9ae2c27ead44a6ba5ee968b",
+      "runtime_PID_identity": "Not sampled by this Gradle preparation launcher; no actual-runtime PID/start claim.",
+      "log": "portable-peer-js-api-3.log",
+      "inputs": "prepared-portable/peer-only/runs/js-peer-api-3/inputs.txt",
+      "resolved_files": "prepared-portable/peer-only/runs/js-peer-api-3/resolved-files.txt"
+    },
+    {
+      "target": "Wasm",
+      "handle": 37964,
+      "exit": 0,
+      "runtime_label": "BEGIN598_UNTIMED\tWasm/Node24.16.0\tKotlin2.4.21\tNO_PERFORMANCE_CLAIM",
+      "core_CHECK_rows": 64,
+      "core_unique_operation_IDs": 32,
+      "core_per_domain_rows": {
+        "int": 32,
+        "decimal": 32
+      },
+      "core_per_domain_unique_IDs": {
+        "int": 16,
+        "decimal": 16
+      },
+      "conditional_distinct_rows": 14,
+      "all_rows_per_domain": {
+        "int": 38,
+        "decimal": 40
+      },
+      "observed_CHECK_rows": 78,
+      "NA": [
+        {
+          "peer": "ionspin-bignum-0.3.10",
+          "case": "int/zero/distinct-equal",
+          "reason": "Parser reused identity"
+        },
+        {
+          "peer": "ionspin-bignum-0.3.10",
+          "case": "decimal-cohort",
+          "reason": "Value-only oracle does not establish internal scale"
+        },
+        {
+          "peer": "ionspin-bignum-0.3.10",
+          "case": "significant-HALF_EVEN",
+          "reason": "Not exercised; no ambiguous mapping inferred"
+        },
+        {
+          "peer": "JDK",
+          "case": "Wasm/Node24.16.0",
+          "reason": "Public java.math unavailable on this target; JVM entrypoint is separate"
+        },
+        {
+          "peer": "KBigNum0.0.20",
+          "case": "Wasm/Node24.16.0",
+          "reason": "No published JS/Wasm/macOS variant in pinned metadata"
+        }
+      ],
+      "descriptor_snapshot": "prepared-portable/peer-only/attempts/native-peer-api-1/build.gradle.kts",
+      "descriptor_sha256": "c005971c80fe434c7c888792582eefa4655e9e083e15fc3f3949d3449cb27052",
+      "runtime_PID_identity": "Not sampled by this Gradle preparation launcher; no actual-runtime PID/start claim.",
+      "log": "portable-peer-wasm-api-3.log",
+      "inputs": "prepared-portable/peer-only/runs/wasm-peer-api-3/inputs.txt",
+      "resolved_files": "prepared-portable/peer-only/runs/wasm-peer-api-3/resolved-files.txt"
+    },
+    {
+      "target": "macOSArm64",
+      "handle": 83537,
+      "exit": 0,
+      "runtime_label": "BEGIN598_UNTIMED\tmacOSArm64/KotlinNative2.4.21\tKotlin2.4.21\tNO_PERFORMANCE_CLAIM",
+      "core_CHECK_rows": 64,
+      "core_unique_operation_IDs": 32,
+      "core_per_domain_rows": {
+        "int": 32,
+        "decimal": 32
+      },
+      "core_per_domain_unique_IDs": {
+        "int": 16,
+        "decimal": 16
+      },
+      "conditional_distinct_rows": 14,
+      "all_rows_per_domain": {
+        "int": 38,
+        "decimal": 40
+      },
+      "observed_CHECK_rows": 78,
+      "NA": [
+        {
+          "peer": "ionspin-bignum-0.3.10",
+          "case": "int/zero/distinct-equal",
+          "reason": "Parser reused identity"
+        },
+        {
+          "peer": "ionspin-bignum-0.3.10",
+          "case": "decimal-cohort",
+          "reason": "Value-only oracle does not establish internal scale"
+        },
+        {
+          "peer": "ionspin-bignum-0.3.10",
+          "case": "significant-HALF_EVEN",
+          "reason": "Not exercised; no ambiguous mapping inferred"
+        },
+        {
+          "peer": "JDK",
+          "case": "macOSArm64/KotlinNative2.4.21",
+          "reason": "Public java.math unavailable on this target; JVM entrypoint is separate"
+        },
+        {
+          "peer": "KBigNum0.0.20",
+          "case": "macOSArm64/KotlinNative2.4.21",
+          "reason": "No published JS/Wasm/macOS variant in pinned metadata"
+        }
+      ],
+      "descriptor_snapshot": "prepared-portable/peer-only/build.gradle.kts",
+      "descriptor_sha256": "3edc730bc128d15a021196ea6aefa9e0907bc7f37f7696a1e5554f879df26de6",
+      "runtime_PID_identity": "Not sampled by this Gradle preparation launcher; no actual-runtime PID/start claim.",
+      "log": "portable-peer-native-api-2.log",
+      "inputs": "prepared-portable/peer-only/runs/native-peer-api-2/inputs.txt",
+      "resolved_files": "prepared-portable/peer-only/runs/native-peer-api-2/resolved-files.txt"
+    }
+  ],
+  "preserved_failures": [
+    {
+      "handle": 59061,
+      "log": "portable-peer-js-api-1.log",
+      "scope": "Dependency resolution: dom-api-compat2.0/2.4 conflict, no peer execution."
+    },
+    {
+      "handle": 71242,
+      "log": "portable-peer-js-api-2.log",
+      "scope": "Dependency resolution: stdlib-js2.0/2.4 conflict, no peer execution."
+    },
+    {
+      "handle": 79688,
+      "log": "portable-peer-wasm-api-1.log",
+      "scope": "Sandbox cache lock setup failure, no compile/runtime."
+    },
+    {
+      "handle": 86084,
+      "log": "portable-peer-wasm-api-2.log",
+      "scope": "Wasm compile PASS, runtime guard wrongNode26.2.0 before any peer arithmetic, not peer NA."
+    },
+    {
+      "handle": 94557,
+      "log": "portable-peer-native-api-1.log",
+      "scope": "Native compile PASS, link failure default/main instead of packaged main; no peer execution."
+    }
+  ],
+  "exact_gate_transformation": {
+    "original_sha256": "40ad739770b44b1425e057752d4f7e51fe9abce604b127ce63eafd5393a7072a",
+    "generated_sha256": "054f6494fc5555354a943fcd04cfbc73234772a434b3732514b45b66e8947c59",
+    "only_changes": [
+      "Rename main to callable peerOnlyPortableGate598",
+      "Remove Krogu peer call, keeping entire IonsPin operation/static fixture corpus",
+      "Change two-peer total128/distinctmax32 to one-peer64/distinctmax16"
+    ],
+    "existing_full_fixture_adapter_runtime_sources_modified": false
+  },
+  "scope_difference_from_JVM": "Portable uses4 integer+4 decimal fixtures,4core ops,2repetitions ->64core rows/32unique core IDs per peer. JVM larger corpus has16+16fixtures,4core ops ->128core report rows per peer, operations repeated twice internally, plus conditional distinct/fixedscale. This does not certify the entire JVM corpus on portable targets.",
+  "capabilities": "IonsPin real JS/Wasm/macOS variants linked and executed. JDK and pinned KBigNum targets NA, interned zero distinct NA, decimal scale/cohort and MC34/HALF_EVEN unverified; exact numeric value-only checks.",
+  "provenance_limits": "Inputs/source/generated gate/pinned Node24.16 SHA, actual runtime assertions, compile closure/resolved artifact hashes retained. Resolved-files digest ledger reused; no foreign numerical bodies or bytecode inspected. Actual runtime PID/start not independently sampled.",
+  "full_consumers": "Krogu/fullportable/timing remain UNRESOLVED/UNCOMPILED/UNRUN and require accepted539; only descriptor dependency/runtime/entry wiring patched source-only with old bytes/history preserved.",
+  "evidence": [
+    {
+      "path": "portable-peer-js-api-3.log",
+      "bytes": 9859,
+      "sha256": "0d042b9525e400467a006c8a134fd4b94f0c15def716b5051e7aac16338b0d34"
+    },
+    {
+      "path": "prepared-portable/peer-only/runs/js-peer-api-3/inputs.txt",
+      "bytes": 2226,
+      "sha256": "924efde18f9624fb245f1685687134a26c407ffd7095d69f88a3f22e1605cafc"
+    },
+    {
+      "path": "prepared-portable/peer-only/runs/js-peer-api-3/resolved-files.txt",
+      "bytes": 11170,
+      "sha256": "5ae6081664d3860e9926f37e081f2246ff5c9c2c62d1ffc3476689b138094620"
+    },
+    {
+      "path": "prepared-portable/peer-only/runs/js-peer-api-3/PROCESS_TASK_RETURNED",
+      "bytes": 127,
+      "sha256": "7c2fdd3da60bc44a84d893fc6a7a2f9a4ccbd43b643f3630261b424bb5e464db"
+    },
+    {
+      "path": "portable-peer-wasm-api-3.log",
+      "bytes": 10113,
+      "sha256": "de2813262385e65dbab70aa989167847e625c175518e27a82d9be8b3e5d14359"
+    },
+    {
+      "path": "prepared-portable/peer-only/runs/wasm-peer-api-3/inputs.txt",
+      "bytes": 2230,
+      "sha256": "a3b789b921f8953d5f388eef1ab4c9a6079ac044f1845e43a6d1a4c3355b54b4"
+    },
+    {
+      "path": "prepared-portable/peer-only/runs/wasm-peer-api-3/resolved-files.txt",
+      "bytes": 9893,
+      "sha256": "8cba87b5effe549ca428e64b42dc602b016c7b55a20b3eb1e2f7612b28e22e47"
+    },
+    {
+      "path": "prepared-portable/peer-only/runs/wasm-peer-api-3/PROCESS_TASK_RETURNED",
+      "bytes": 127,
+      "sha256": "7c2fdd3da60bc44a84d893fc6a7a2f9a4ccbd43b643f3630261b424bb5e464db"
+    },
+    {
+      "path": "portable-peer-native-api-2.log",
+      "bytes": 10235,
+      "sha256": "f28886a6340a0adc845341d0caed1a27349f7189389b71d66e585e91d2b96f29"
+    },
+    {
+      "path": "prepared-portable/peer-only/runs/native-peer-api-2/inputs.txt",
+      "bytes": 2237,
+      "sha256": "e789ea06e3f30f925b70633143f8b14f47bc7ac810a2c3017e09286db0202bdf"
+    },
+    {
+      "path": "prepared-portable/peer-only/runs/native-peer-api-2/resolved-files.txt",
+      "bytes": 7314,
+      "sha256": "3539553e77058f24c946a926445e8f55b739d825904284a012d83682514baa9d"
+    },
+    {
+      "path": "prepared-portable/peer-only/runs/native-peer-api-2/PROCESS_TASK_RETURNED",
+      "bytes": 127,
+      "sha256": "7c2fdd3da60bc44a84d893fc6a7a2f9a4ccbd43b643f3630261b424bb5e464db"
+    },
+    {
+      "path": "portable-peer-js-api-1.log",
+      "bytes": 1818,
+      "sha256": "2e2af5b7996a49306ecf6430ee5a0b428e55303cb9cfdff8788ab7740e004bda"
+    },
+    {
+      "path": "portable-peer-js-api-2.log",
+      "bytes": 1969,
+      "sha256": "f4cb7c236ccae0153269ce8a4d45f120185d284dda58862b0adec7f826fdb854"
+    },
+    {
+      "path": "portable-peer-wasm-api-1.log",
+      "bytes": 2032,
+      "sha256": "dd7ab5b21b30cb5d922732614c6b200065f4c38b8ddc0144f89cb5d8b55b37ae"
+    },
+    {
+      "path": "portable-peer-wasm-api-2.log",
+      "bytes": 3545,
+      "sha256": "93218eb8cb2ed6550163a6e242cea026a96079cc46fc7e03308a0d4ce4d424b9"
+    },
+    {
+      "path": "portable-peer-native-api-1.log",
+      "bytes": 2435,
+      "sha256": "0aeb9333d1dba2a4358046289ff49063a4c5d8d128cc90d4a0fe9fcb63983f0a"
+    },
+    {
+      "path": "prepared-portable/peer-only/build.gradle.kts",
+      "bytes": 7626,
+      "sha256": "3edc730bc128d15a021196ea6aefa9e0907bc7f37f7696a1e5554f879df26de6"
+    },
+    {
+      "path": "prepared-portable/peer-only/settings.gradle.kts",
+      "bytes": 211,
+      "sha256": "026aaa45125088fceaebf2f81844a88af613ad20c5e47bdf486a6cf666ba5188"
+    },
+    {
+      "path": "prepared-portable/peer-only/src/commonMain/kotlin/preparation598/PeerOnlyPortableMain.kt",
+      "bytes": 263,
+      "sha256": "ce8000fc340adec2abf5109a6091a5ffc1641f05255c62f4bfa4f8a234b6524c"
+    },
+    {
+      "path": "prepared-portable/peer-only/build/generated/peerOnly598/preparation598/PortableUntimedPeerGate598.kt",
+      "bytes": 6369,
+      "sha256": "054f6494fc5555354a943fcd04cfbc73234772a434b3732514b45b66e8947c59"
+    },
+    {
+      "path": "prepared-portable/peer-only/gradle.lockfile",
+      "bytes": 3531,
+      "sha256": "6f5a5f740eec52dd623c77a0eb160d90c5652d826ecab36caf1eaed09a806737"
+    },
+    {
+      "path": "portable-runtime-pins.json",
+      "bytes": 1347,
+      "sha256": "5fc67be8b8657332b2fb7dcd08fcfade88842f917114c0e50af54eef7ce9c340"
+    },
+    {
+      "path": "portable-runtime-pins.patch",
+      "bytes": 4396,
+      "sha256": "d93ddadd58d2e498bbc6a89815132c586a5cbf53bff954e777557c9904a70a0f"
+    },
+    {
+      "path": "prepared-harness/Contract.kt",
+      "bytes": 893,
+      "sha256": "44cd970685f6b0bea03532ce6e2efbb0766ca7588884ede15185f6d05934933c"
+    },
+    {
+      "path": "prepared-harness/IonsPinAdapter.kt",
+      "bytes": 1579,
+      "sha256": "459bc3eee5cdf5a3728e0a59b474c2506c82926771cc2d4a9500581f99a2d621"
+    },
+    {
+      "path": "prepared-portable/src/commonMain/kotlin/preparation598/PortableUntimedMain.kt",
+      "bytes": 6371,
+      "sha256": "40ad739770b44b1425e057752d4f7e51fe9abce604b127ce63eafd5393a7072a"
+    }
+  ]
+}

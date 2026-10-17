@@ -1,0 +1,35 @@
+{
+  "verdict": "ACTUAL_FOUR_TARGET_SELECTED_CORRECTNESS_AND_PUBLICATION_PASS_NOT_FULL598_TIMING_ACCEPTANCE",
+  "aggregate_sha256": "c962681e6d56298c36ef76130c950e396f51a833c66cfc68e2a1f37042ea9fa2",
+  "accepted_main": "829ce21154c7e75f5206eeb173351c391ed21597",
+  "GAV": "io.heapy.krogu:krogu-math:0.1.0-598-829ce211",
+  "independent_checks": {
+    "publication_files": 135,
+    "publication_modules": 5,
+    "accepted_source_Git_blobs": 405,
+    "complete_output_trees": "All members hash/bytes/inventory matched for JS/Wasm/Native.",
+    "JVM_resolved_sources_dependencies_classes": "All hashes matched; shared TextWork resolved by original absolute source despite basename-only line.",
+    "JVM": "662 arithmetic/fixedscale +128 exact text /7NA. Unique peer/ID rows, all valueParity true, numeric equality independently recomputed; full Krogu/JDK row sets match.",
+    "each_portable": "128core+30 identity-qualified distinct+64 exact text /7NA. Every ID/repetition and frozen value independently matched.",
+    "JVM_peer_arithmetic": {
+      "jdk-bellsoft-25.0.4+9": 168,
+      "krogu-final539-PENDING": 168,
+      "ionspin-bignum-0.3.10": 159,
+      "kbignum-0.0.20-desktop": 167
+    },
+    "text": "16IDs x2/peer; full exact native strings; shared gate markers32/peer.",
+    "failure": "Wasm66459 preserved cache-lock sandbox failure has zero numeric rows; successful retry28072 not hidden or converted to peer NA."
+  },
+  "semantic_limits": [
+    "Portable corpus is smaller than JVM662; not equivalent full-domain coverage.",
+    "Source-bound reviewed gates execute input preservation/repeated calls/earlier retained-result observations, not universal immutability.",
+    "Distinct-equal rows require actual nonidentity; Ions zero parser reuse is explicit NA.",
+    "Arithmetic decimal value parity does not establish scale/cohort/text parity; selected plain text literal intersection checked separately without normalization.",
+    "JVM MC34, Ions fixed-scale equivalence and unavailable portable peers remain explicit NA/unverified, not PASS."
+  ],
+  "runtime": "BellSoft25.0.4+9-LTS/Gradle9.8.1/Kotlin2.4.21 pins and actual JVM input hashes checked; JS/Wasm assert Node24.16 and bound executable SHA; Native label is compiled macOSArm64/KotlinNative target, no independently sampled runtime PID/start.",
+  "remaining": [
+    "Timing artifacts/runtime/execution/statistics/report remain separate; no speed claim or complete598 acceptance."
+  ],
+  "blocking_findings": []
+}

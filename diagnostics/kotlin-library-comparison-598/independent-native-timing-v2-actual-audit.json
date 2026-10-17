@@ -1,0 +1,59 @@
+{
+  "verdict": "ACTUAL_NATIVE598_V2_DATA_AND_RECOMPUTED_COMPARISONS_PASS_TRENDS_DISPOSITION_SEPARATE",
+  "receipt_sha256": "7c9fbf55ca9bf7ebe9e9819d372face50a8916e3b905bdd23a7d2faa02eb9677",
+  "counts": {
+    "cases": 96,
+    "fresh_supervisor_identities": 288,
+    "FIRST": 288,
+    "TIME": 2016,
+    "paired_rows_each_FIRST_warm": 144
+  },
+  "bindings": "All receipt files, full artifact manifest/exact tree, runtime executable and22 source/descriptor snapshots hashed; accepted829/GAV ledger4a424029 and exact six-loop command variants checked. No foreign implementation read.",
+  "source_runtime_scope": "macOSArm64/KotlinNative2.4.21 Release compiled target; frozen executable SHA bound. Observed identities are usr/bin/time supervisors, not independently sampled arithmetic runtime PID.",
+  "correctness": "Every child INPUT matched independent fixed tuples; FIRST and seven ring digests independently recomputed; portable128core+30identity-qualified and64 exact text rows rechecked. All7 count/order bindings strict. Earlier-result/input preservation executes reviewed gates; last64 timed result checking remains partial ring scope.",
+  "training": {
+    "duration_ns_min": 200010500,
+    "duration_ns_max": 261191625,
+    "limitation": "All288 elapsed training phases reach200ms; stationarity not inferred. Warm measured after observed correctness gate; observed/cached FORMAT explicit."
+  },
+  "comparisons": {
+    "file": "independent-native-timing-v2-comparisons.json",
+    "sha256": "413f02052dcff9095656af4a83235672e89cbcfdd39e26f06d44eea16a4d391e",
+    "cases": 48,
+    "by_peer": {
+      "ionspin-bignum-0.3.10": {
+        "cases": 48,
+        "directions": {
+          "peer_slower_all3": 47,
+          "peer_faster_all3": 1
+        },
+        "wall_ratio_medians_range": [
+          0.5267500939060309,
+          1265.6549855620121
+        ],
+        "max_three_cohort_ratio_spread": 1.8294005837326053,
+        "mixed_relation_cases": 3
+      }
+    },
+    "method": "Seven-sample wall/CPU/alloc medians per fresh child; matched same workload/cohort peer over Krogu. FIRST independently recalculated. All3 ratios/deltas/ranges retained; descriptive, no significance/independence/global ranking or539 threshold."
+  },
+  "metrology": {
+    "wall": "Monotonic ns / operation count; includes adapter/native operation/ring escape.",
+    "cpu": "macOS getrusage user+system seconds/usec converted to ns; process threads included.",
+    "allocation": "Allocation/heap NA on Native; not replaced by zero or heap deltas.",
+    "memory": "Native heap NA; getrusage maxRSS bytes through snapshot and whole-child time-l maxRSS including gate/startup/exit; not owned/per-operation peak.",
+    "RSS_bytes_range": [
+      18907136,
+      20135936
+    ],
+    "within_child_max_sample_ratio": 2.389939951257506
+  },
+  "NA": "Significant HALF_EVEN/cohort and unavailable JDK/KBig target variants remain outside equivalent measured subset; raw unavailable counters remain NA.",
+  "limitations": [
+    "FIRST first explicit selected public operation after preparation; PARSE String-only, FORMAT parsed unobserved, arithmetic parsed operands. Module initialization/internal parse work may predate FIRST.",
+    "Warm repeated FORMAT may use native caches after observations; not fresh-format-value pool.",
+    "Small fixed corpus; other portable targets, integrated report and remaining task requirements separate.",
+    "No new numerical run or automatic favorable repetition; all adverse and mixed aliases retained."
+  ],
+  "blocking_findings": []
+}

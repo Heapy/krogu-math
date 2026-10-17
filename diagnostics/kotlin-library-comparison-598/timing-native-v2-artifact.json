@@ -1,0 +1,11 @@
+{
+  "accepted_main": "829ce21154c7e75f5206eeb173351c391ed21597",
+  "protocol": "MINIMUM200ms_BATCHCAP1048576_TARGET20msbatch",
+  "build_handle": 94670,
+  "build_exit": 0,
+  "root": "/Users/yoda/dev/pet/krogu-math/.codex-work/598/artifacts/timing-native-829ce211-v2",
+  "manifest_sha256": "702286f6302253c45ff905f99c8b9d5233d148a498f2356c35c93239a3a04390",
+  "source_snapshot": "/Users/yoda/dev/pet/krogu-math/.codex-work/598/artifacts/timing-native-829ce211-v2-sources/source-map.json",
+  "runtime": "/Users/yoda/dev/pet/krogu-math/.codex-work/598/artifacts/timing-native-829ce211-v2/peer598-timing.kexe",
+  "runtime_sha256": "50c5a3299664c5ff86566cc0ef4c9c7538b93d7bf4297bd049880e3abbe15848"
+}

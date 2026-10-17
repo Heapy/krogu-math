@@ -1,0 +1,121 @@
+{
+  "status": "ACTUAL_JVM_PEER_ONLY_COMPILE_AND_UNTIMED_CORRECTNESS_PASS_NO_KROGU_NO_TIMING",
+  "attempts": [
+    {
+      "handle": 59981,
+      "exit": 1,
+      "scope": "compileKotlin actually executed successfully; runtime resolution failed from stdlib-common/jdk7/jdk8 version conflicts before JavaExec",
+      "log": "peer-only-api-1.log"
+    },
+    {
+      "handle": 85499,
+      "exit": 0,
+      "scope": "compile UP-TO-DATE from first attempt, runtime resolved with exact stdlib alignment and actual JavaExec completed",
+      "log": "peer-only-api-2.log"
+    }
+  ],
+  "compiler": "Kotlin2.4.21",
+  "gradle": "9.8.1",
+  "runtime": "BellSoft25.0.4+9-LTS",
+  "peers": [
+    "JDK25.0.4+9",
+    "com.ionspin.kotlin:bignum-jvm:0.3.10",
+    "io.github.gatrongdev:kbignum-desktop:0.0.20"
+  ],
+  "check_counts": {
+    "jdk-bellsoft-25.0.4+9": 168,
+    "ionspin-bignum-0.3.10": 159,
+    "kbignum-0.0.20-desktop": 167
+  },
+  "total_checks": 494,
+  "value_parity_false": 0,
+  "NA": [
+    {
+      "peer": "jdk-bellsoft-25.0.4+9",
+      "case": "significant-half-even/MC34",
+      "reason": "Native capability known, but this source slice has no MC34 check/operation; not verified here"
+    },
+    {
+      "peer": "ionspin-bignum-0.3.10",
+      "case": "integer/zero/square-distinct-equal",
+      "reason": "Parser interned equal inputs; cannot label this distinct-object work"
+    },
+    {
+      "peer": "ionspin-bignum-0.3.10",
+      "case": "fixed-scale-half-up/*",
+      "reason": "DecimalMode precision/scale propagation is not JDK fixed-scale divide"
+    },
+    {
+      "peer": "ionspin-bignum-0.3.10",
+      "case": "significant-half-even/MC34",
+      "reason": "HALF_EVEN public mapping unverified; README tie descriptions conflict; untimed oracle gate pending"
+    },
+    {
+      "peer": "kbignum-0.0.20-desktop",
+      "case": "integer/zero/square-distinct-equal",
+      "reason": "Parser interned equal inputs; cannot label this distinct-object work"
+    },
+    {
+      "peer": "kbignum-0.0.20-desktop",
+      "case": "significant-half-even/MC34",
+      "reason": "no documented significant-digit MathContext34/HALF_EVEN equivalent"
+    }
+  ],
+  "original_manifest_sha256": "a81082277e2a9b788f1ba244a2fb5497ea40484b60b1d49e25801ff3834500e3",
+  "all_original_manifest_entries_unchanged": 13,
+  "dependency_fix": "Only peer-only build descriptor pins stdlib,stdlib-common,stdlib-jdk7,stdlib-jdk8 to2.4.21; prior descriptor saved. No adapter/fixture API or arithmetic change. Existing future main build descriptors not changed.",
+  "limits": [
+    "JVM API/correctness preparation only, no Krogu or final539 input.",
+    "No performance/fork/portable execution or full598 acceptance.",
+    "IonsPin fixed-scale is explicit NA; HALF_EVEN/MC34 not exercised; interned zero does not qualify as distinct identity.",
+    "Gradle FSEvents/deprecation warnings retained in logs; run terminal0.",
+    "Original source preparations retain historical UNRUN status; this separate evidence certifies only this exact peer-only source allowlist/runtime."
+  ],
+  "evidence": [
+    {
+      "path": "prepared-harness/peer-only/build.gradle.kts",
+      "bytes": 3417,
+      "sha256": "cc81b7b03b044e56264b472a8eb085748789098137d25f7cad379d1d2956ea56"
+    },
+    {
+      "path": "prepared-harness/peer-only/settings.gradle.kts",
+      "bytes": 202,
+      "sha256": "99381a9bc2ba29718f2e17c5af0afd8e1abd8b11bebd1975a19e4840c5f8f396"
+    },
+    {
+      "path": "prepared-harness/peer-only/PeerOnlyMain.kt",
+      "bytes": 1287,
+      "sha256": "8abc3890c2e53978353423d69458f59ccec703883c8b0eed0dac2dcd0ab8bd42"
+    },
+    {
+      "path": "prepared-harness/peer-only/gradle.lockfile",
+      "bytes": 2319,
+      "sha256": "f7cc20fad3f37612d6db3615c563e6419e3f0de0d218361c3d708c4b98da58c0"
+    },
+    {
+      "path": "prepared-harness/peer-only/attempts/peer-api-1/build.gradle.kts",
+      "bytes": 3311,
+      "sha256": "9c504795fbdfb6fba5f1b653a3dda6dce5cf7dbeb86993215494e3d2c40b2f32"
+    },
+    {
+      "path": "prepared-harness/peer-only/runs/peer-api-2/observations.tsv",
+      "bytes": 63314,
+      "sha256": "846f05fef46550d9d0180f4f871f03312b90e26d0a650238f1ca6e08f7fac2f1"
+    },
+    {
+      "path": "prepared-harness/peer-only/runs/peer-api-2/resolved-inputs.txt",
+      "bytes": 7623,
+      "sha256": "d569f71bfaaa8b65d1dd3efd08c6f742a7ab5568124b832081c96b10a49b61c9"
+    },
+    {
+      "path": "peer-only-api-1.log",
+      "bytes": 4395,
+      "sha256": "a111f9ff42bc492843f4dc2c5be5213aa80763d570dd05d33fd358d709c3f3e2"
+    },
+    {
+      "path": "peer-only-api-2.log",
+      "bytes": 2700,
+      "sha256": "a966c4fc2c32646129746121e8183aef6abb6af7087da3f20baf53b83bfa0abd"
+    }
+  ]
+}

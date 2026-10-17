@@ -1,0 +1,18 @@
+--- a/UntimedFixtures.kt
++++ b/UntimedFixtures.kt
+@@ -121,13 +121,13 @@
+             check(OracleDecimal(adapter.decimalText(a)).compareTo(x) == 0) { "Input mutated" }
+             check(OracleDecimal(adapter.decimalText(b)).compareTo(y) == 0) { "Input mutated" }
+         }
++        val fixedScalePreservation = UntimedPreservation<D>(adapter::decimalText)
+         if (adapter.fixedScaleHalfUp.eligibleAfterFixtureGate) for (f in FixtureCorpus.fixedScale) {
+             val expected = OracleDecimal(f.left).divide(OracleDecimal(f.right), f.scale, OracleRounding.HALF_UP)
+             check(expected == OracleDecimal(f.expected)) { "Fixture/JDK cohort disagreement:${f.id}" }
+             val a = adapter.decimal(f.left); val b = adapter.decimal(f.right)
+-            val preservation = UntimedPreservation<D>(adapter::decimalText)
+             decimalCheck("fixed-scale-half-up/${f.id}",
+-                preservation.callTwice(listOf(a, b)) { adapter.divideFixedScaleHalfUp(a, b, f.scale) }, expected)
++                fixedScalePreservation.callTwice(listOf(a, b)) { adapter.divideFixedScaleHalfUp(a, b, f.scale) }, expected)
+         }
+     }
+     if (!adapter.fixedScaleHalfUp.eligibleAfterFixtureGate)

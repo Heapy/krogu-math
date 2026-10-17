@@ -1,0 +1,68 @@
+{
+  "scope": {
+    "protocol": "MINIMUM200ms_BATCHCAP1048576_TARGET20msbatch",
+    "scope": "Only training condition/accounting/checker tag; cumulative operation cap removed as stop, perbatchcap and child600/campaign6h deadlines unchanged. All workloads/FIRST/numericbrackets/7samples/order unchanged.",
+    "history": "history/before-minimum-warmup-v2",
+    "old_actual": "timing-jvm-1-actual.json",
+    "old_training_disposition_sha256": "1186d8c67f8ed53f36bd9c4fd94d3d086ff81889fc3321396a0729beda90d799",
+    "root_authorized": "One full JVMv2/portable campaign after finite review, no automatic repeats untilgreen"
+  },
+  "argv_previous_review_sha256": "72e31e71183d204ebefbd3a14b56adfb06b8fde33ef2a429eca9a69688f1f25e",
+  "entries": [
+    {
+      "path": "prepared-timing/src/commonMain/kotlin/preparation598/Timing598.kt",
+      "bytes": 7898,
+      "sha256": "703d20b30b55d55ebacdf276e7c51b944a98c44f444b6a2250083b0f4f92143e"
+    },
+    {
+      "path": "prepared-timing/src/jvmMain/kotlin/preparation598/PlatformTiming598.kt",
+      "bytes": 3448,
+      "sha256": "accf6883ee559d0fe2a477c8738b294ab63c3b96572d04d48e06621fa27e9c9a"
+    },
+    {
+      "path": "prepared-timing/src/jsMain/kotlin/preparation598/PlatformTiming598.kt",
+      "bytes": 1599,
+      "sha256": "c6323b0a1f0cf28eed08a2b37a34a1e497fe7738860d1005302e13fa5a356e7f"
+    },
+    {
+      "path": "prepared-timing/src/wasmJsMain/kotlin/preparation598/PlatformTiming598.kt",
+      "bytes": 1619,
+      "sha256": "1322070fbfe2ad43489e5e297d8af308773a97fb4663e7af38f3307f522835c9"
+    },
+    {
+      "path": "prepared-timing/src/macosArm64Main/kotlin/preparation598/PlatformTiming598.kt",
+      "bytes": 1590,
+      "sha256": "c5d8a806813224eb4d96921e6694a6df774b7f582f5d8d22ffc91e1d123f4ca4"
+    },
+    {
+      "path": "prepared-timing/check-timing.main.kts",
+      "bytes": 9615,
+      "sha256": "d236cc872857fdf884de74b1e20c0b95addff659ae6f852d354d6cc192543285"
+    },
+    {
+      "path": "prepared-timing/README.md",
+      "bytes": 21892,
+      "sha256": "760c0faeefcd717be3e277abf551b1fe8f723dacc894089b3f64510e4a026c23"
+    },
+    {
+      "path": "prepared-timing/manifest.json",
+      "bytes": 10233,
+      "sha256": "39922adf4f5a5b584699eca13565b5b8fd8783bd4e0e7542c91abb236ee7453e"
+    },
+    {
+      "path": "minimum-warmup-v2.patch",
+      "bytes": 7471,
+      "sha256": "31d0acd6285bf7591099f294d9c8c6a14da15fd1906f260b833913399ef9763d"
+    },
+    {
+      "path": "node-timing-argv-fix.patch",
+      "bytes": 2990,
+      "sha256": "45a028217bc3119f3786385137bc2ef3a6ed08cf60373b83bcfcd5994fad6873"
+    },
+    {
+      "path": "node-timing-argv-fix.json",
+      "bytes": 3030,
+      "sha256": "d258f615971ade66a3c3167c6b57c801f18fe3448703246986b937543b2a006e"
+    }
+  ]
+}

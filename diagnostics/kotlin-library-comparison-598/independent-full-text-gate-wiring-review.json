@@ -1,0 +1,19 @@
+{
+  "verdict": "SOURCE_STITCHING_PASS_ACTUAL_FULL_CORRECTNESS_PENDING",
+  "binding_sha256": "5fa86c13b0bfeb84e2f26e575135698329eba977bca1dff31b0ecd2389071d9e",
+  "patch_sha256": "6297117feb8e1b782c03d1bca27b90ecb632e1db85475a4138cbb04ce35568d8",
+  "checked_entries": 11,
+  "scope": [
+    "Existing text preparation/operation/checkResult bytes retained; shared32-check gate is appended.",
+    "Full JVM UntimedMain, portable main, portable timing gate and JVM timing gate call shared verifier for each peer.",
+    "Explicit build allowlists include shared TextWork; external source hash capture added.",
+    "Shared verifier performs16IDs twice, exact full outputs and input checks, checks all previously retained results after subsequent calls, then fail-closed32-count marker.",
+    "Calls occur in untimed gates: timing FIRST remains before full gate; warm remains after it. Existing arithmetic counts/NA/corpus/timing brackets unchanged."
+  ],
+  "limitations": [
+    "This source verdict does not claim full JVM46672 success or portable/full timing execution.",
+    "Prior96 text actual applies to preserved old TextWork epoch, not newly appended shared-gate execution.",
+    "Actual raw check must include32 text rows per peer in stdout log, separately from arithmetic observations file and arithmetic counters."
+  ],
+  "blocking_findings": []
+}

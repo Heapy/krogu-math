@@ -1,0 +1,31 @@
+{
+  "status": "SOURCE_METHOD_PREPARATION_PASS_UNRESOLVED_UNCOMPILED_UNRUN",
+  "manifest_sha256": "8e710da528bb34aa3d33243a767aff8fc5442cf1228d76795f92a0e4adab0d1b",
+  "patch_sha256": "6d54c8fdc808231f6a0f45559e3c7a0019c142061c8b18fbd635df43da3bd86c",
+  "entries_verified": 22,
+  "previous_review_sha256": "11fa4f5caeb501d98378b9d7ba9f17c23288ca1a9c3ea1be2d0211f18265b30d",
+  "findings_closed": [
+    "Metadata-only exact core/fixedscale tuples checked against existing literal fixtures; INPUT/self/allowed nativealias relation bound; FIRST explicit31 canonical checksum and ring checksum validated independently for min(count,64).",
+    "WARM exact8columns identity/budget tag/positive bounded operations/count; every measured sample uses same emitted selected count and ordered7rows after training/gate.",
+    "ProcessBuilder identity correctly named /usr/bin/time supervisor PID/start. Runtime executable SHA/argv/version assertions preserved; actual runtimePID/effectiveflag observation not fabricated."
+  ],
+  "method_scope": "One selected peer/workload per fresh child; FIRST after parse/linked module initialization and before full correctness gate, immediate result/input checks, warm sameprepared gatedobjects. Genericadapter/ring escape cost included. Independent gate objects outside counters. FIRST not pristine VM/internalcache; correctness observations not full peer immutability proof.",
+  "inventory": {
+    "JVM": {
+      "cases": 152,
+      "fresh_children_FIRST": 456,
+      "warm_rows": 3192
+    },
+    "each_JS_Wasm_Native": {
+      "cases": 64,
+      "fresh_children_FIRST": 192,
+      "warm_rows": 1344
+    }
+  },
+  "remaining_actual_obligations": [
+    "Actual accepted539 publication/commit and selected peer variant/runtime/lock/compiler/artifact provenance at first authorized compile; no placeholder accepted as resolved evidence.",
+    "Strict analyzer remains source-only; actual execution must validate platform APIs/build DSL/filenames/counter capability, preserve failures and rawNA.",
+    "ProcessCPU/currentthreadCPU/allocation scopes differ by platform; heap/RSS processmetrics not owned/pervalue retained. No speed/adoption threshold introduced; broader literal598 operation/corpus/memory/report scope remains outside this prepared slice.",
+    "No build, download, runtime, compiler or benchmark launched in review."
+  ]
+}

@@ -1,0 +1,683 @@
+{
+  "sourceCommit": "829ce21154c7e75f5206eeb173351c391ed21597",
+  "group": "io.heapy.krogu",
+  "module": "krogu-math",
+  "version": "0.1.0-598-829ce211",
+  "files": [
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211-kotlin-tooling-metadata.json",
+      "bytes": 4516,
+      "sha256": "08459656870eb3a36212ceae114c1d769825371f40623b1c1f39f5473cf82b05"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211-kotlin-tooling-metadata.json.md5",
+      "bytes": 32,
+      "sha256": "4d7f462731f6d6f56f9a5483ed87e2639e39b493d2ab16e32bf3f8b99e1cf60c"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211-kotlin-tooling-metadata.json.sha1",
+      "bytes": 40,
+      "sha256": "ef7a5a8ef460d341705016ee72303824e74e962907ddacdc3f4ce9138714516c"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211-kotlin-tooling-metadata.json.sha256",
+      "bytes": 64,
+      "sha256": "3e38bb3bbd15cf4ae6ee03046aa0e80743bb30488e7bed8904fa168e04d7c632"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211-kotlin-tooling-metadata.json.sha512",
+      "bytes": 128,
+      "sha256": "2aa175f9eb388af4aede5b3c7286368c04fcf3c5a2e8a732700bd1c256c507f6"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211-sources.jar",
+      "bytes": 108106,
+      "sha256": "a47b44edb0d0a6bfa6ace9f1af6e01fa02be2e72072b1cfe09db211936cb6a03"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211-sources.jar.md5",
+      "bytes": 32,
+      "sha256": "ff23b309600623215cad04a35a034ba06df6ea14d08f014101656dca542619ec"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211-sources.jar.sha1",
+      "bytes": 40,
+      "sha256": "5146451af7a437016ae56129cb526222ee1986c42970a98e89703ab68773e453"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211-sources.jar.sha256",
+      "bytes": 64,
+      "sha256": "2d3afad17428ab20010bf8c51914e92cbf7c0f74023000314e901499c29a5416"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211-sources.jar.sha512",
+      "bytes": 128,
+      "sha256": "878c010cabaac3cd3db4445cc95dc76ad06f13b4ac8b927e48154d188fc55eee"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.jar",
+      "bytes": 43875,
+      "sha256": "ebef7a63af97cb4e79b54b8910671c8cad0d827fb2fc0293863f29215bc7bfe0"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.jar.md5",
+      "bytes": 32,
+      "sha256": "b1475081eb9436e5d3926aecd31070b9425d9df3103a08576436800404108588"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.jar.sha1",
+      "bytes": 40,
+      "sha256": "b73de02efc9659fdac3cc3d8a91ab898ec71f50f0688b79b178ff22523139835"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.jar.sha256",
+      "bytes": 64,
+      "sha256": "de3039cbfcadf527c3e44dfa28f7d6919c75b2bfc90f0950ba9cf2547d7909c8"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.jar.sha512",
+      "bytes": 128,
+      "sha256": "ac7914580bc6765f677689d3827b66f117fe73774ba391aeeb8a22c7dc91cbf8"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.module",
+      "bytes": 21283,
+      "sha256": "a5f7446c69ae7daab77d7c7e6598023287e2764dac53a30620f2600eba557541"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.module.md5",
+      "bytes": 32,
+      "sha256": "d931b9e076e4f96d86c3854c3ac5eaebdaaf379fdb9181be9edde711cc76ecb3"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.module.sha1",
+      "bytes": 40,
+      "sha256": "56a5a93ae907582229bd521dccb32c1b4f6a41e9deea3e6bb16eab1392983b12"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.module.sha256",
+      "bytes": 64,
+      "sha256": "830eb577d78470faf440297c291334008c3672810efc8ffd85b0ff28272c5486"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.module.sha512",
+      "bytes": 128,
+      "sha256": "493cf710efe4213cda2124249d7695faaca2ad8d2e04208ffbfeb5e83ed9955b"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.pom",
+      "bytes": 1456,
+      "sha256": "db5878983d0c25cb6a0f20cd39df8fde1e61cb48e3dea86e1594dad65106339a"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.pom.md5",
+      "bytes": 32,
+      "sha256": "94affd88a32659e69a403caae28d7514ecb24bd5cce5b831a5899b3c61f7170d"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.pom.sha1",
+      "bytes": 40,
+      "sha256": "ef7e8c218fa6896e4a53603bdbf3dff6b7e5264dd90a0c3db0b195826fe77b4a"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.pom.sha256",
+      "bytes": 64,
+      "sha256": "934e305d7d2c054208892b93419fad020d8b8d94598d141dc2c7412735a44ae3"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/0.1.0-598-829ce211/krogu-math-0.1.0-598-829ce211.pom.sha512",
+      "bytes": 128,
+      "sha256": "3241584e39a7c99d2d5eebed53bdf0d29670dd2e44ba99e5f362f3c9648c876d"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/maven-metadata.xml",
+      "bytes": 370,
+      "sha256": "c85915952bb3f780411b5ff034b0c475232125b990e6af658b820ae6a6fad9d0"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/maven-metadata.xml.md5",
+      "bytes": 32,
+      "sha256": "0945a6f6afd02d0f54538338752a83d53d9b10a6ec32baf99f4e3fe04322a8d3"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/maven-metadata.xml.sha1",
+      "bytes": 40,
+      "sha256": "5bbbf4bbf57f2f8991288d04a14ae10d4b6901b5f5dfcfad915c4d7d3d0ec7a5"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/maven-metadata.xml.sha256",
+      "bytes": 64,
+      "sha256": "4071d613cc09f24fdc204a444638c987dabae1ae5dd1cb3ab98bda23dc712006"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math/maven-metadata.xml.sha512",
+      "bytes": 128,
+      "sha256": "bbd7e2c63cd3c3408555e1f69ea17a2faada68e6271f53adeb8968d61f8502cf"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211-sources.jar",
+      "bytes": 126823,
+      "sha256": "ed24d9bb0b7b57efebaf4486968b5cc5213bbb1ffe7da6d7c62e2c1f8f3ba3d7"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211-sources.jar.md5",
+      "bytes": 32,
+      "sha256": "ca157ba2059fa08096876e181de294cf292bce07013d626516d210c0fa601171"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211-sources.jar.sha1",
+      "bytes": 40,
+      "sha256": "41eb6840d399cb208173788a925bdf8eb0dbfdd55ffb01ad9e59a974316d8fef"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211-sources.jar.sha256",
+      "bytes": 64,
+      "sha256": "e90f7acea128f86770a63de55f83018c273cd121a1137e33eb5d8bb33c796a94"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211-sources.jar.sha512",
+      "bytes": 128,
+      "sha256": "39e6787efe24d7a6c9d5fb3942f0cb95b132e9a512b94e3ba4c1de111b7ea784"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.klib",
+      "bytes": 456228,
+      "sha256": "88c97fb6dad5d1daa8c5501b7dfa85d844595bea14048237986a9cb226b9c2ec"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.klib.md5",
+      "bytes": 32,
+      "sha256": "12f88332cfc33be611497973d8cdfa1a8c0ec58ead1af9732407a0f48b485b99"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.klib.sha1",
+      "bytes": 40,
+      "sha256": "50d7bd1665cab24b63b4ddbbc0b8722da6911fc8a6f24d12caa13f269495a2eb"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.klib.sha256",
+      "bytes": 64,
+      "sha256": "0ce98aa7f61b126b18b33746ad1d0327a638d3b2c24411c3dffd050cd996b1a7"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.klib.sha512",
+      "bytes": 128,
+      "sha256": "3adb5240cee1245ab5744749e9b61823cd691bb56ac2fcc5aa46d1dc1226d5f6"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.module",
+      "bytes": 3857,
+      "sha256": "696564dfa3c1dc7644f266ca7c44ba938966b00d39452c9a6c9d4e1b6d2d19ea"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.module.md5",
+      "bytes": 32,
+      "sha256": "424f3cc06d9bb48bd338eb68a40dd32e68c10f4c16e1a89cc05fde38b5db7320"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.module.sha1",
+      "bytes": 40,
+      "sha256": "3ad50f02d9bb1a5b46916ac866a7d795b1ad0d0e308c1a5968bb3f6fb00207e2"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.module.sha256",
+      "bytes": 64,
+      "sha256": "b86f1b85b15bf882a4943f0c0c1d54cd9eea5dc99ec0c97b6debb8d6c750b43a"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.module.sha512",
+      "bytes": 128,
+      "sha256": "81472cf9163d3a13c0d1c8226017f515321c874b076c8d6a9a89e8ace2db3d85"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.pom",
+      "bytes": 1683,
+      "sha256": "3a77444ab5ef36d055808a132ba90ae9b61081bfd18892c532130f696b171be2"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.pom.md5",
+      "bytes": 32,
+      "sha256": "b4ed649ddd05bd80b100f314c3385e27b6b63eb5887c04e798c21ca249268d98"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.pom.sha1",
+      "bytes": 40,
+      "sha256": "b1f601778cd9c375420631b7be3ab9318993f5d74550a18d85f73357e834503a"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.pom.sha256",
+      "bytes": 64,
+      "sha256": "2605162e3f6b37c5a5fcd343abf6cf791205253b27398e5395b2c8a5a25e1199"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/0.1.0-598-829ce211/krogu-math-js-0.1.0-598-829ce211.pom.sha512",
+      "bytes": 128,
+      "sha256": "fc735317ab73f552bdfc9bff07866c7e543147aa0ac55540e8831f173d02298b"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/maven-metadata.xml",
+      "bytes": 373,
+      "sha256": "949288d5b8cb31f643b4b60b5f00158872512251c56849d1257223a6f4e133f2"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/maven-metadata.xml.md5",
+      "bytes": 32,
+      "sha256": "99f92c93acbfb4dc9dd93b993b53748d2418db42c6ea2700e37e882f6623a3cb"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/maven-metadata.xml.sha1",
+      "bytes": 40,
+      "sha256": "02b5a582e38dce4ba6f69dbcd389501c33403799d7149540684b9eff826704fd"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/maven-metadata.xml.sha256",
+      "bytes": 64,
+      "sha256": "127a70dc6326c6589f18eaa16b2f62a8851046e6c537d7f6c5e3d8297f745ff4"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-js/maven-metadata.xml.sha512",
+      "bytes": 128,
+      "sha256": "30682fd2c8c0a58526339959c3ffc8e7dcc8bbdcfb97ba79a9156b6ba3b3cb68"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211-sources.jar",
+      "bytes": 107624,
+      "sha256": "2a9a94d6d2165653c15ee3c1d201201d27d3e6b37ba7cbd05fc1c4078d6bfb61"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211-sources.jar.md5",
+      "bytes": 32,
+      "sha256": "778e0cfa6a952114f5e62840a39734e97c4c471ae06f2647c30c8b37ddb1bc62"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211-sources.jar.sha1",
+      "bytes": 40,
+      "sha256": "68d026ec68965285eb02085f672412c3858448dbc0e86f95ff3d668ff29672de"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211-sources.jar.sha256",
+      "bytes": 64,
+      "sha256": "57505cd5757b1b2d922856d86cc03b8e21e55b7f3d4ae6f489b330868cd43399"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211-sources.jar.sha512",
+      "bytes": 128,
+      "sha256": "eac15633a4484fe7f169d350739f8239df69122bd66dfe82f922b9f20fa1dd7e"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.jar",
+      "bytes": 297033,
+      "sha256": "e8ba87ac09532760f64bd226c7b00aea40b76d8c0b7ae21ddade521570b4517a"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.jar.md5",
+      "bytes": 32,
+      "sha256": "02c13b0aa3a8991b77e7ee117c8408e4a34f796f46a546b6cc38f88e25cfcede"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.jar.sha1",
+      "bytes": 40,
+      "sha256": "bacdc38ff026a94c02b8a5b14089c648f845904412254fa46ade859f775a21cf"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.jar.sha256",
+      "bytes": 64,
+      "sha256": "1cccdd5ab65d156be4ad02024c49262265d1ab84819dffc16096caa020a20e9c"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.jar.sha512",
+      "bytes": 128,
+      "sha256": "23c2e0eae18f7847b361eac119437a76221d1beb62901ac08e1b51c6fa3b02cd"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.module",
+      "bytes": 3505,
+      "sha256": "20026c21f430e7cd4d398f20e2e0561c4c86e598c8e4461d11eb314b2dec674d"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.module.md5",
+      "bytes": 32,
+      "sha256": "336caa2fdf8157c1e931f411dfcdca826bc012e688a2fa4cdf3a0a0bbd1e8996"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.module.sha1",
+      "bytes": 40,
+      "sha256": "0738ee1ce138b682338a766010abbc69054e5ab2b4879e2c260e6be05cdc72bf"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.module.sha256",
+      "bytes": 64,
+      "sha256": "51add269d45cc505f929581d3ef7fe59fbf4412d1b8272648645274de1e52350"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.module.sha512",
+      "bytes": 128,
+      "sha256": "dcd1fa861bd81ac98723f5b2ae1473711d02686636d33c1295aad25af046998d"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.pom",
+      "bytes": 1456,
+      "sha256": "c8d223476d6257d0accdd4b24146e567dbf0d17233b5a6b50009a567305f3ab0"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.pom.md5",
+      "bytes": 32,
+      "sha256": "c7076b463ed71f45c87c698c3e5801d7b4fdc769321e907d77dce8c144f5d203"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.pom.sha1",
+      "bytes": 40,
+      "sha256": "8fa2ee4361fd394d88d0a20feab44e75485cab9adf24efcefd9c5ad6c26113ae"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.pom.sha256",
+      "bytes": 64,
+      "sha256": "8e27b34728f8aa063cfaeb7129b760f668f8717aaaba6e4a9bfa87a6758d9af9"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/0.1.0-598-829ce211/krogu-math-jvm-0.1.0-598-829ce211.pom.sha512",
+      "bytes": 128,
+      "sha256": "657e1c928b78f3ba3cdd62ddb92144abcb20f442530cf60899062437d1c616aa"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/maven-metadata.xml",
+      "bytes": 374,
+      "sha256": "e49835d7f44278f8513f59e59fb191ce6739a6ead11437c450f4415d33f63675"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/maven-metadata.xml.md5",
+      "bytes": 32,
+      "sha256": "64b3a8eafbefa968f8fd51303a6a75b4c63ee4c2e65f7082c8c8fac5a50c9aeb"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/maven-metadata.xml.sha1",
+      "bytes": 40,
+      "sha256": "09ee581cecb27a3343ea898c05a3e2669b2d4b52a091d05ce04b062d0d90d5d6"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/maven-metadata.xml.sha256",
+      "bytes": 64,
+      "sha256": "64423295e8087d31f6d22b5239d701dfd4e644b1c2a744fd57b29d6bad86d6a9"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-jvm/maven-metadata.xml.sha512",
+      "bytes": 128,
+      "sha256": "fbb6986388350ae3d1e2509dfd37e84e44445930cd1d92aeb14ebcfecd950a69"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211-metadata.jar",
+      "bytes": 261,
+      "sha256": "c6deada2fac53b8ea6523dbda77597b128006674616f140f04df23264c6d1aa3"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211-metadata.jar.md5",
+      "bytes": 32,
+      "sha256": "aef896b3476cf66865fd1a6294915cce131676af3f9f3009768713d38b1d4848"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211-metadata.jar.sha1",
+      "bytes": 40,
+      "sha256": "9a959c6250226137c3491830a5bb813dc68b49e301daa1bb7328a3cebeb40a74"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211-metadata.jar.sha256",
+      "bytes": 64,
+      "sha256": "bf761eec0d61a176ed94f10872ef7a91487daf0400d1364646f7a8375d17702b"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211-metadata.jar.sha512",
+      "bytes": 128,
+      "sha256": "49d0c173f7c7f11986339da9c80d220f943d0a242de5192a7f06d42a0d1c486c"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211-sources.jar",
+      "bytes": 108106,
+      "sha256": "8b1f057b44e7ea81fe11efa4418ed2cb9cdd9e4def347b4f81df792fb0fa701c"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211-sources.jar.md5",
+      "bytes": 32,
+      "sha256": "06d556232f82f0f697d5d0eddca0586e798832abaf07850d2441ce5d369bceba"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211-sources.jar.sha1",
+      "bytes": 40,
+      "sha256": "d9c4c48bce4089118c9bb9d515cf8e0a65731bbfd7df1d3e39c96e2058a931bc"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211-sources.jar.sha256",
+      "bytes": 64,
+      "sha256": "b28afea67df42cfb9d76a69303fe9c92acb6a15edb097fcfce58d209ed0fcf05"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211-sources.jar.sha512",
+      "bytes": 128,
+      "sha256": "88e35335ba36355976d4081b7595bc134f2a7e442f2dc61c02f59f8fd30f5be5"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.klib",
+      "bytes": 450617,
+      "sha256": "dd26e48f167f9e952a0cec1147ba30334fc21a8c35a6eec96b5f81931da5aed8"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.klib.md5",
+      "bytes": 32,
+      "sha256": "b427f069cbb404ab2e13ada4db0f1df9ff38014f91835504cbc6e3799d5136a0"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.klib.sha1",
+      "bytes": 40,
+      "sha256": "a584abe73640a1cb3dadfd5b9cc89a658944c787648a409270f12bab7b113394"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.klib.sha256",
+      "bytes": 64,
+      "sha256": "dd3fff459bd25b69558ced47e009839c564c364f31e901da907dd6307adbb5a3"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.klib.sha512",
+      "bytes": 128,
+      "sha256": "ea9f52f06f5eb3612cc5cc3408ed9503844f03e84187f9eca7b48c32ae9db282"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.module",
+      "bytes": 3639,
+      "sha256": "e6ddb05e85494fbf8e9a6e36d79f2edaf43c62343ea972e55f3c893e8b1c5db1"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.module.md5",
+      "bytes": 32,
+      "sha256": "c704397a51d74d401294b9d5e15eddb51619203d28a425ee89ef783b8a65d34d"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.module.sha1",
+      "bytes": 40,
+      "sha256": "df8fae11ed10ae2d7d1ee24841318b8f361b4360e7128fa843d7a4b28f0fc3bd"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.module.sha256",
+      "bytes": 64,
+      "sha256": "26e68cb43b23ed3249208a52484410ef90aff73f063663fda628c045dfefa44b"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.module.sha512",
+      "bytes": 128,
+      "sha256": "c1cd3ed989c180c43b4117740ad96d6b055f9d0387fd2fb54197f8f2bc8c7ef2"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.pom",
+      "bytes": 1493,
+      "sha256": "073cc6ca91c6c5c7ea3c3f3b00dee5491d26fe39431ec08e4851962e911ff738"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.pom.md5",
+      "bytes": 32,
+      "sha256": "e18bf9ad02a0c54a4a9509c80fddf732460d75a40f2825d89dd3ff4aaaa38257"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.pom.sha1",
+      "bytes": 40,
+      "sha256": "b89362b1949b34968106fb35bf5417bc231f47ad1e75cc93279b5e2e97333da0"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.pom.sha256",
+      "bytes": 64,
+      "sha256": "61bbf9e25915391072f214eab60f9cccb30c43ef2a675ee043683262db470310"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/0.1.0-598-829ce211/krogu-math-macosarm64-0.1.0-598-829ce211.pom.sha512",
+      "bytes": 128,
+      "sha256": "4f4ac62448279c23745b411e28504b87e9ec8b8d60ec12481d3229e23ca556bc"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/maven-metadata.xml",
+      "bytes": 381,
+      "sha256": "4d582692e66887deb9c953a5d2c14ba0e06d01dbb8777cf29e935f1c9c2580bf"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/maven-metadata.xml.md5",
+      "bytes": 32,
+      "sha256": "ed9545c49a098fa18016c06d445e5bb00fd0adc64f6c0dbe8019f9552a5d412f"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/maven-metadata.xml.sha1",
+      "bytes": 40,
+      "sha256": "cbdd1396e6bf6b67f2156731ac81d46d2f6bd58183148ae05bacce9d1af4e1a0"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/maven-metadata.xml.sha256",
+      "bytes": 64,
+      "sha256": "5e3cfa0cf36c5d645ae6bab172cedaea4df74cf6b60fc254fe621b80331ad55e"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-macosarm64/maven-metadata.xml.sha512",
+      "bytes": 128,
+      "sha256": "aa4cec4c662c7ce3ccc7431842f8ef6d440d7bf45164f1215cc756a741543fcd"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211-sources.jar",
+      "bytes": 135340,
+      "sha256": "e8037ccfd7937e3face182f259f63915d86b13d056d5671df4dbdd36cdf08667"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211-sources.jar.md5",
+      "bytes": 32,
+      "sha256": "7e156dcb45640f3276fff394f8f1132e4e0d47496134808568982728448db000"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211-sources.jar.sha1",
+      "bytes": 40,
+      "sha256": "9da66445782db61d28f0b80738abf050d736bf96967946a8b52632fd938411f5"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211-sources.jar.sha256",
+      "bytes": 64,
+      "sha256": "0fecebd20b4409cac19d9b4630de743b5619dbb7accccecadb9171a4fb2b8912"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211-sources.jar.sha512",
+      "bytes": 128,
+      "sha256": "b7f8103c3aebb316e26395e03b81c643ac14f4222996b3e3ceb5a3b04c8dda89"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.klib",
+      "bytes": 465867,
+      "sha256": "aa287b3b4d069de7aceb5b4d44f6ccc0abb6b1472c86f4d111231fe0cb2e82bf"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.klib.md5",
+      "bytes": 32,
+      "sha256": "0464208a0574ea4d1b1f80de924723c0382c2e7f07fbb9ccd1f48772e485bfa5"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.klib.sha1",
+      "bytes": 40,
+      "sha256": "b190c28adf5def4e498a05bdaa9729d616ddfc0065609ad56abc43ca0837fee1"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.klib.sha256",
+      "bytes": 64,
+      "sha256": "50869c2f46ff18de2768d67fdc2d6ce9322e6dfcda7665a13f6002d07a68f6a5"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.klib.sha512",
+      "bytes": 128,
+      "sha256": "9641378f510c551872bd89424fc60c95fe8c064b9c604aa7bd7a53da03f6b7d1"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.module",
+      "bytes": 3551,
+      "sha256": "1cc7881bb8f0ec69586e3b13bef956d1f82b228c1cf1e48b17f0bac6f87387b0"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.module.md5",
+      "bytes": 32,
+      "sha256": "e2fc5ed627e274eae0e1ff8f10f47f9f8319cae0b44571b0fbb01ec30024a55d"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.module.sha1",
+      "bytes": 40,
+      "sha256": "b2e97608b5889f8c1235f42352d377afd6fcece6056797e5312cceef12471da5"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.module.sha256",
+      "bytes": 64,
+      "sha256": "be7a12dc68ec05938eda0aee114a81e2972f467f3d768000531e1c9f94944ec2"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.module.sha512",
+      "bytes": 128,
+      "sha256": "f534e6735c085197feb7e120e39d1d0917668871cb6cfdaba66ad1d9c1d78cd1"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.pom",
+      "bytes": 1498,
+      "sha256": "5dfa579fd44acd07920bdcb69b78c76789b9c91eee3d20973c52996be1043670"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.pom.md5",
+      "bytes": 32,
+      "sha256": "45cbaa9b945276fbbce03c545796314532db2ebbab67c6a640eaa7e45d798775"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.pom.sha1",
+      "bytes": 40,
+      "sha256": "596990c3dd79b334319e46302ff454139844853908e57a5867bdec7153484607"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.pom.sha256",
+      "bytes": 64,
+      "sha256": "7edefe1039413c8d5127ddfcb000802bf6abe4595a1312a410ce9d99727afae3"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/0.1.0-598-829ce211/krogu-math-wasm-js-0.1.0-598-829ce211.pom.sha512",
+      "bytes": 128,
+      "sha256": "93853a0f40100e23447992fb7fa53f0a8cb46ef37e4560fa46adb42ed81ffc83"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/maven-metadata.xml",
+      "bytes": 378,
+      "sha256": "e1aa977f5191f4ce0fcb5d46a793044fe9117389e5590caa218f1014cf69e9d0"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/maven-metadata.xml.md5",
+      "bytes": 32,
+      "sha256": "16abb4ab5445cfd0040a6d79bda7e2ef1a9a6be5ecd3f1908eafd1b5955e2021"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/maven-metadata.xml.sha1",
+      "bytes": 40,
+      "sha256": "96ff531cef879f6e5ca8a0d5134ced6ff63def902c7a4bc3b3717fa3a4e82ef4"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/maven-metadata.xml.sha256",
+      "bytes": 64,
+      "sha256": "43448bde83e25c5886a2bc6db5dc3aa651190262fc5b9f0a15c5a4dc1d20ec39"
+    },
+    {
+      "path": "io/heapy/krogu/krogu-math-wasm-js/maven-metadata.xml.sha512",
+      "bytes": 128,
+      "sha256": "d67cbdc6a469cc7cd271eb06e1821ae673293bcc515c54a3f466d51e8c85368f"
+    }
+  ]
+}

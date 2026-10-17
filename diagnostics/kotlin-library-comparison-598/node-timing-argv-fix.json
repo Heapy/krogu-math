@@ -1,0 +1,84 @@
+{
+  "scope": {
+    "scope": "Only platform command argument acquisition beforeguards/peer preparation/counters. JVM/Native identity; JS/Wasm Nodeactualargv; inventory/brackets/gates unchanged.",
+    "history": "history/before-node-timing-argv-fix",
+    "previous_JVM_source_snapshot": "artifacts/timing-jvm-829ce211-1-sources/source-map.json",
+    "failed_run": "timing-js-1",
+    "failed_handle": 76434,
+    "failure_classification": "PRE_NUMERIC_ZERO_FIRST_TIME; own compiler mainWrapper calls main([])"
+  },
+  "entries": [
+    {
+      "path": "prepared-timing/src/commonMain/kotlin/preparation598/Timing598.kt",
+      "bytes": 7842,
+      "sha256": "9eae4b01e86e2a504018d929300dc353df6ff7b09c3b580c5d12272867a7e122"
+    },
+    {
+      "path": "prepared-timing/src/jvmMain/kotlin/preparation598/PlatformTiming598.kt",
+      "bytes": 3448,
+      "sha256": "accf6883ee559d0fe2a477c8738b294ab63c3b96572d04d48e06621fa27e9c9a"
+    },
+    {
+      "path": "prepared-timing/src/jsMain/kotlin/preparation598/PlatformTiming598.kt",
+      "bytes": 1599,
+      "sha256": "c6323b0a1f0cf28eed08a2b37a34a1e497fe7738860d1005302e13fa5a356e7f"
+    },
+    {
+      "path": "prepared-timing/src/wasmJsMain/kotlin/preparation598/PlatformTiming598.kt",
+      "bytes": 1619,
+      "sha256": "1322070fbfe2ad43489e5e297d8af308773a97fb4663e7af38f3307f522835c9"
+    },
+    {
+      "path": "prepared-timing/src/macosArm64Main/kotlin/preparation598/PlatformTiming598.kt",
+      "bytes": 1590,
+      "sha256": "c5d8a806813224eb4d96921e6694a6df774b7f582f5d8d22ffc91e1d123f4ca4"
+    },
+    {
+      "path": "prepared-timing/manifest.json",
+      "bytes": 9605,
+      "sha256": "63290ebcbd1926c63b1c1874560468f23c62028fc753622fbd6e251e4d57836a"
+    },
+    {
+      "path": "node-timing-argv-fix.patch",
+      "bytes": 2990,
+      "sha256": "45a028217bc3119f3786385137bc2ef3a6ed08cf60373b83bcfcd5994fad6873"
+    }
+  ],
+  "failed_files": [
+    {
+      "path": "timing-js-run-1.log",
+      "bytes": 237,
+      "sha256": "0fdeaf5c98d9fae956a75fb989fd1101d6d3f0796e280a6f403add48fc98c440"
+    },
+    {
+      "path": "timing-js-1/NA.tsv",
+      "bytes": 191,
+      "sha256": "425a3c14e22b43e71cb2124bae9a812410c7a86d4b04a75230208a1f3013321d"
+    },
+    {
+      "path": "timing-js-1/binding.txt",
+      "bytes": 806,
+      "sha256": "177d0db1b007104e0cfcc5b16b996552c9ca71084f9c8d369e4e540049da1263"
+    },
+    {
+      "path": "timing-js-1/catalog.tsv",
+      "bytes": 4000,
+      "sha256": "fcc6b66fd8c974b06f62c7adeb9441eddf2e49c3259cf2ccc53623bc456957dd"
+    },
+    {
+      "path": "timing-js-1/fork0-case0.log",
+      "bytes": 1936,
+      "sha256": "7381dc8f0ce520d59954e6edc7e507ae83719d758c55f0e94d3d64fe7bc7b53b"
+    },
+    {
+      "path": "timing-js-1/fork0-case0.log.argv.txt",
+      "bytes": 264,
+      "sha256": "538e8f0e5ebe431eb7bb84b27ac2c0e5ce1b0ee5f80b2138dadb8a157f9b9e46"
+    },
+    {
+      "path": "timing-js-1/fork0-case0.log.identity",
+      "bytes": 96,
+      "sha256": "0e43b7d019714ade650ab3f734f7c16fd8441a2235aee8bdbdbd948940fd8107"
+    }
+  ]
+}

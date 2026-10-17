@@ -1,0 +1,97 @@
+{
+  "status": "READ_ONLY_REQUIREMENT_TO_DELIVERABLE_AUDIT_NOT_TASK_ACCEPTANCE",
+  "as_of_utc": "2026-10-17T07:11:06Z",
+  "task": "local:598",
+  "task_revision": 3191,
+  "authoritative_source": "Fresh kotgent task show local:598 body, six acceptance clauses and result paragraph. No separate kotgent structured plan exists (plan show returned404); approved timing source/method reviews and exact prepared consumer inventories are the execution protocol.",
+  "ownership": "Coordinator owns all598 source, reports, raw, publication and execution. This independent mapping artifact changes none of those files, task state or current runs.",
+  "accepted_source": "829ce21154c7e75f5206eeb173351c391ed21597",
+  "evidence": {
+    "publication": {"path":"final-publication-829ce211/publication-ledger.json","sha256":"4a424029142eb791357a8bb222fca52f836f67956dee6c36289d448a580e8d23","GAV":"io.heapy.krogu:krogu-math:0.1.0-598-829ce211","files":135,"modules":5,"scope":"Root metadata/JVM/JS/WasmJS/macOSArm64, actual unique isolated final-main publication; not oldaa9."},
+    "correctness_owner": {"path":"full-correctness-1-actual.json","sha256":"c962681e6d56298c36ef76130c950e396f51a833c66cfc68e2a1f37042ea9fa2"},
+    "correctness_independent": {"path":"independent-full-four-target-correctness-and-publication-audit.json","sha256":"db549b5d6f3798ecc1e5d4802e1271355a1847eeae854534bd9b0704fbeb6c81"},
+    "text_gate_review": {"path":"independent-text-workloads-source-and-peer-actual-review.json","sha256":"45f0621377bb77993098219df33b4f6eee0bd303bf66a5e15641ab5cce952898"},
+    "v2_source": {"path":"timing-v2-composed-source.json","sha256":"a7c8e4bead31f09938d7c759663825c049c362126e5489360d28e53b7a0b6fde"},
+    "v2_method_review": {"path":"independent-timing-v2-composed-source-review.json","sha256":"94884adc0b9f8ef73efd5e97532924e005e4754654430ee491e348a18ec9d33e"},
+    "jvm_v2_artifact": {"record":"timing-jvm-v2-artifact.json","manifest_sha256":"647f13bfaa0181cf99c6d9f28f87c9e25384ea5f56db312423729bb64adccdcd","scope":"Artifact/source/runtime binding is not timing completion; owner reports actual19858LIVE."},
+    "peer_selection":"peer-selection-preparation.md; operation-semantic-matrix.md; exact resolved input hashes/licenses/versions retained with actual builds",
+    "metrics_and_states":"prepared-timing/README.md; run-timing.main.kts; check-timing.main.kts"
+  },
+  "matrix": [
+    {
+      "clause":"1 peer selection, versions/licenses and target coverage",
+      "ready":"Two qualified Kotlin alternatives on JVM: IonsPin0.3.10 and KBigNum desktop0.0.20, plus public BellSoftJDK25.0.4+9 reference and Krogu. Actual public API compilation/correctness accepted. Selected local JS/Wasm/macOSArm64 has IonsPin as the qualified alternative.",
+      "final_deliverable":"Cite the primary public metadata/API links, exact resolved variants/hashes, licenses and toolchain. Separate published target metadata from actually measured targets. KBigNum lacks published JS/Wasm/macOS variants; iOS publication is not macOS runtime. Kt-math has a published JS variant but was not selected because its equivalent public adapter API was unqualified; do not claim no second peer exists. This is a bounded selection, not exhaustive market research.",
+      "state":"SELECTION_AND_SELECTED_ACTUAL_COMPATIBILITY_ACCEPTED_FINAL_REPORT_COVERAGE_REQUIRED"
+    },
+    {
+      "clause":"2 operations, sizes, semantics and parsing/formatting",
+      "ready":"32 exact-core +16 text workloads per peer; JVM additionally8 explicit fixed-scale HalfUp cases for JDK/Krogu/KBigNum. Signed integer and decimal exact numerical values, self-multiply, input/result preservation and chosen plain-spelling text intersection are verified.",
+      "final_deliverable":"Publish the actual expression/ID/input/size table and capability matrix. Keep decimal value parity distinct from coefficient/scale/cohort and general text-contract parity. Peer-equivalent significant HALF_EVEN/MC34 for alternatives and Ions fixed-scale equivalents remain unverified/NA as documented; Krogu/JDK API availability is not denied, and unselected current timing rows must be labelled unselected. Selected fixed-scale20 is not MC34. Distinguish unselected operations from unavailable APIs. State PARSE as native parsing of prepared immutable String, FORMAT as native format on the exact plain-spelling intersection; no hidden conversion/wrapper substitutes inside counters.",
+      "state":"SOURCE_AND_CORRECTNESS_ACCEPTED_FINAL_SEMANTIC_TABLE_REQUIRED"
+    },
+    {
+      "clause":"3 final accepted Krogu and workload/source binding",
+      "ready":"Publication ledger4a424029 binds exact acceptedmain829 and all5modules/135files;405 source blobs checked. Published JVM runtime JAR SHAe8ba87ac09532760f64bd226c7b00aea40b76d8c0b7ae21ddade521570b4517a matches accepted artifact. New598 workload IDs and harness eras are separate from527/537/539/597 campaigns.",
+      "final_deliverable":"Every final target result must bind its immutable produced closure, own source snapshot, exact peer/JAR/KLIB inputs, runtime executable/flags and complete command. Preserve the final-main source reference if later only evidence integration changes main; record equality/applicability rather than rename old runs. No oldaa9 publication substitution or mutation of running artifacts.",
+      "state":"FINAL_PUBLICATION_ACCEPTED_PER_TIMING_ARTIFACT_BINDINGS_STILL_REQUIRED"
+    },
+    {
+      "clause":"6 correctness before timing",
+      "ready":"Independentdb549b5d accepts full JVM662 arithmetic/fixed-scale+128text=790 rows, and each portable128core+30 identity-qualified distinct+64text=222 rows;7 explicitNA on each target. All exact value/text tuples and runtime/source bindings checked. Wasm cache-lock failure66459 has zero numeric rows and is preserved separately from successful28072.",
+      "final_deliverable":"Reference accepted counts and scoped public-API parity without rerunning them. Timing children still require their source-bound post-FIRST result/input check, full untimed gate and retained-result checks before warm rows; a partial/failed child cannot become successful comparison evidence. Smaller portable corpus is not full JVM/domain coverage.",
+      "state":"ACCEPTED_ACTUAL_NO_DUPLICATE_CORRECTNESS_CAMPAIGN"
+    },
+    {
+      "clause":"4 matched same-host preparation/training/forks/raw limits",
+      "ready":"Reviewed v2 elapsed training>=200ms, per-batch cap1048576 and target20ms batch; seven samples with one selected count per child;600s child/6h target bounds. Three F/R/F cohorts, adjacent peer/workload order with full reverse cohort; result-ring escape and independent checks outside counters.",
+      "final_deliverable":"Finish exactly the reviewed four-target v2 schedule, preserve partial failures and all observations. Show actual training durations/ops/batch caps/sample counts/trends. The200ms condition includes training observations and does not prove200ms pure arithmetic,20ms batches or stable JIT/cache. Judge actual warm stability/variance and qualify transitional rows rather than assume steady state or automatically repeat until favorable. Retain v1cap-limited JVM transient results and zero-numeric JS argv failure as distinct eras.",
+      "state":"METHOD_ACCEPTED_ACTUAL_V2_CAMPAIGNS_INCOMPLETE"
+    },
+    {
+      "clause":"4 cold first observation versus warm/cached",
+      "ready":"FIRST is first explicit selected operation in a fresh selected child after declared preparation, before full gate. PARSE prepares onlyString; FORMAT parses a native operand without prior formatting. Warm FORMAT follows observation/gates and reuses one value.",
+      "final_deliverable":"Separate FIRST and warm tables. Do not call FIRST pristine VM/process startup/OS-cache cold, first internal arithmetic, or cold parser/class initializer. Warm FORMAT is observed/cached native repeated format, not fresh-value-pool formatting. Parsing may intern values; preserve native observed relation and do not claim equal physical alias across peers when paired.tsv flags differences.",
+      "state":"BOUNDARIES_REVIEWED_FINAL_LABELS_REQUIRED"
+    },
+    {
+      "clause":"5 latency and throughput",
+      "ready":"Checker emits absolute ns/op median/min/max and derived_ops_per_second for every peer/ID/fork, plus per-pair ratio/delta and FIRST summary. Throughput is1e9/median_ns_per_op from the same measured wall bracket.",
+      "final_deliverable":"Report both absolute latency and derived throughput, units and per-fork ranges, not only relative speed ratios. No independent saturated/concurrent throughput claim. Preserve included public-adapter dispatch/loop/ring overhead, no invented cost subtraction. Direction peer_ns/Krogu_ns must be named so larger-than1 is not mislabelled a Krogu slowdown.",
+      "state":"OUTPUT_METHOD_READY_ACTUAL_FINAL_VALUES_PENDING"
+    },
+    {
+      "clause":"5 CPU, allocations, graph/retained/peak and available memory",
+      "ready":"JVM supports current-thread CPU/allocated-byte deltas when supported/enabled and coarse process used-heap samples. Node uses process CPU, JS V8heap snapshots, maxRSS through snapshot; Wasm heap/allocationNA. Native process getrusage CPU/maxRSS, allocation/heapNA. All targets retain /usr/bin/time-l completed whole-child maxRSS including gates/startup/exit.",
+      "final_deliverable":"Separate counter columns, capability/control rationale and NA per target. Current-thread allocation is not all-thread allocation; heap/RSS/whole-child peak are not object graph, per-operation retained size or owned memory. Exact graph/retained remainsNA without validated method/control, not an impossibility theorem. Controller .host records load/processors, not free/available hostRAM: if that field is shown use an existing actual source or NA/not recorded, never infer spare memory/isolation from total RAM or absence ofOOM. No new memory framework or numerical rerun is introduced by this audit.",
+      "state":"METHOD_SCOPES_REVIEWED_ACTUAL_RESOURCES_AND_EXPLICIT_NA_TABLE_REQUIRED"
+    },
+    {
+      "clause":"5 raw, variance, load and adverse cases",
+      "ready":"Raw-first/raw-warm/per-fork/paired/first-summary/first-paired/whole-child-resources outputs are defined, with all seven observations and alias-relation flags. Host before/after load snapshots are contextual, not continuous isolation proof.",
+      "final_deliverable":"Publish all raw samples and full per-target/fork tables, min/max/median, actual training/cap issues, adverse and unmeasured cases. Keep v1and v2 separate, no winning-only selection or cross-host old/new causal link. Wrapper PID/start is /usr/bin/time identity, not directly observed numeric runtime descendant identity; label provenance exactly. Runtime SHA/version/commands remain the declared binding.",
+      "state":"RAW_SCHEMA_READY_ACTUAL_COMPLETE_RAW_AND_DISPOSITION_PENDING"
+    },
+    {
+      "clause":"6 independent method/report and source/artifact review",
+      "ready":"Method/source94884adc, text45f06213 and actual publication/correctnessdb549b5d accepted. Old JVMv1 raw audited but its warm ranking classified nonrobust; this does not clear v2 outcomes.",
+      "final_deliverable":"Independent actual/statistics/metrology interpretation and comparative report review for completed v2targets, preserving missing capabilities/qualifications. Source/method PASS, artifact readiness or compilation is not final timing/report acceptance. No extra numerical campaigns are implied solely by the final audit.",
+      "state":"PREPARATION_REVIEW_ACCEPTED_FINAL_ACTUAL_REPORT_REVIEW_PENDING"
+    },
+    {
+      "clause":"result deliverable, reproducibility, integration and honest task closure",
+      "ready":"All work is project-local; finalREPORT.md is not yet written. Acceptedmain829/GAV/runtime pins and source snapshots give concrete inputs; raw/summary directories belong to coordinator.",
+      "final_deliverable":"Deliver final report+semantic/peer matrix+commands+versions/licenses+raw/index/SHA+source/runtime/closure recovery pointers under the existing evidence scheme; retain failed/intermediate histories. Separate measured wins/losses from NA, unselected targets and hypotheses. Required report/evidence integration/push and exact resulting source binding must be actual before closure; no source delta or taskDONE inferred from one completed timing target. No foreign numerical implementation body inspection/copy and no private export. Re-read actual backlog/source/state only after598acceptance before global goal completion.",
+      "state":"PENDING_FINAL_REPORT_EVIDENCE_DELIVERY_INDEPENDENT_ACCEPTANCE_AND_INTEGRATION"
+    }
+  ],
+  "reviewed_v2_inventory_planned_not_actual": {
+    "JVM":{"peers":4,"workloads_per_cohort":216,"fresh_children_FIRST":648,"warm_rows":4536},
+    "JS":{"peers":2,"workloads_per_cohort":96,"fresh_children_FIRST":288,"warm_rows":2016},
+    "Wasm":{"peers":2,"workloads_per_cohort":96,"fresh_children_FIRST":288,"warm_rows":2016},
+    "macOSArm64":{"peers":2,"workloads_per_cohort":96,"fresh_children_FIRST":288,"warm_rows":2016},
+    "total_if_all_four_complete":{"FIRST":1512,"warm_rows":10584},
+    "limitation":"No full four-target timing completion claimed at audit time; owner reports JVMv2running. Published Linux/iOS/otherNative metadata is not measured macOS/JS/Wasm runtime evidence."
+  },
+  "conclusion":"No new scope or numerical rerun is proposed. Already accepted publication/correctness need not be repeated. Remaining completion work is the existing four-target v2timing schedule, actual statistical/resource/stability disposition, final comparative report/raw/reproduction delivery and honest source/evidence integration with independent acceptance."
+}

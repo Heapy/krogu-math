@@ -1,0 +1,72 @@
+{
+  "status": "ACTUAL_PEER_ONLY_TEXT_API_CORRECTNESS_PASS_NOT_FULL598",
+  "handle": 87942,
+  "exit": 0,
+  "command": [
+    "env",
+    "-i",
+    "HOME=current-user-home",
+    "PATH=/Users/yoda/.sdkman/candidates/java/25.0.4-librca/bin:/usr/bin:/bin",
+    "JAVA_HOME=/Users/yoda/.sdkman/candidates/java/25.0.4-librca",
+    "./gradlew",
+    "-p",
+    ".codex-work/598/prepared-harness/text-only",
+    "--no-daemon",
+    "--console=plain",
+    "-PrunName=text-1",
+    "--write-locks",
+    "runTextOnly"
+  ],
+  "cwd": "/Users/yoda/dev/pet/krogu-math",
+  "counts": {
+    "jdk-bellsoft-25.0.4+9": 32,
+    "ionspin-bignum-0.3.10": 32,
+    "kbignum-0.0.20-desktop": 32
+  },
+  "operations_per_peer": {
+    "integer_PARSE": 8,
+    "integer_FORMAT": 8,
+    "decimal_PARSE": 8,
+    "decimal_FORMAT": 8
+  },
+  "failures": 0,
+  "semantics": "Exact same canonical plain spelling on all3peers;16IDsx2repetitions, retainedresult/input checks. No numeric normalization of format. Parsing/formatting selectedpublicAPIs only, not arbitraryscale/scientific equivalence.",
+  "scope": [
+    "No Krogu runtime, timing or accepted539 binding.",
+    "New common TextWork598 is compiled on JVM; full Timing598/controller/checker and portable text interop remain future full pipeline proof.",
+    "Original adapters/arithmetic/fixedscale/corpus bytes unchanged.",
+    "No foreign numerical implementation/source/bytecode read."
+  ],
+  "files": [
+    {
+      "path": ".codex-work/598/prepared-timing/manifest.json",
+      "bytes": 8465,
+      "sha256": "a5179529ff5046d65f45f2e8edc318bc748a3b3180d9b89943ba20019444ab6f"
+    },
+    {
+      "path": ".codex-work/598/prepared-timing/text-workloads.patch",
+      "bytes": 22858,
+      "sha256": "070c9672ad30a09c24ee0fefd9675babfff8e750f7227eb918444a009d349436"
+    },
+    {
+      "path": ".codex-work/598/peer-text-api-1.log",
+      "bytes": 3469,
+      "sha256": "c0299d10ceb9a81d53cf0a45f0e2fb3890613e002837d89336e0a565842ba8ed"
+    },
+    {
+      "path": ".codex-work/598/prepared-harness/text-only/runs/text-1/observations.tsv",
+      "bytes": 7399,
+      "sha256": "adeab2c31e615ff7b3f3ff22309b58d68f68fd75578fc8f651714c4a18eecb23"
+    },
+    {
+      "path": ".codex-work/598/prepared-harness/text-only/runs/text-1/resolved-inputs.txt",
+      "bytes": 9137,
+      "sha256": "04379438c2f081fe1e70d9d4d6f102b377f29c3a5acc7c1fe87e111d617cd2ac"
+    },
+    {
+      "path": ".codex-work/598/prepared-harness/text-only/gradle.lockfile",
+      "bytes": 2319,
+      "sha256": "f7cc20fad3f37612d6db3615c563e6419e3f0de0d218361c3d708c4b98da58c0"
+    }
+  ]
+}

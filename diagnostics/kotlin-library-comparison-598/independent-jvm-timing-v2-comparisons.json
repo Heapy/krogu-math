@@ -1,0 +1,6722 @@
+[
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/scale/ADD",
+    "wall_ratios_F_R_F": [
+      1.0371231196332882,
+      0.9918086654461813,
+      0.6547018716830038
+    ],
+    "wall_deltas_ns": [
+      0.2741813659667969,
+      -0.08320808410644531,
+      -4.358887672424316
+    ],
+    "wall_ratio_median": 0.9918086654461813,
+    "ratio_range_max_over_min": 1.584115098017387,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.1253197615647292,
+      1.1590551181102362,
+      1.076073923427646
+    ],
+    "cpu_ratios_F_R_F": [
+      1.077490280198418,
+      0.8390147967784229,
+      0.8393752410335519
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.09375,
+      40.09375
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/scale/ADD",
+    "wall_ratios_F_R_F": [
+      23.057697204467686,
+      10.914049664366521,
+      14.181879993200749
+    ],
+    "wall_deltas_ns": [
+      162.91221237182617,
+      100.7075309753418,
+      166.40210151672363
+    ],
+    "wall_ratio_median": 14.181879993200749,
+    "ratio_range_max_over_min": 2.112661927840514,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.1473220343990052,
+      1.2023783464566928,
+      1.1534391534391535
+    ],
+    "cpu_ratios_F_R_F": [
+      23.888456897707467,
+      10.37347817943435,
+      18.110296953335904
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      336.0,
+      336.0,
+      336.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.09375,
+      40.09375
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/scale/ADD",
+    "wall_ratios_F_R_F": [
+      2.294370198205178,
+      10.627141717129042,
+      8.114202353296692
+    ],
+    "wall_deltas_ns": [
+      9.559869766235352,
+      97.7931022644043,
+      89.80647850036621
+    ],
+    "wall_ratio_median": 8.114202353296692,
+    "ratio_range_max_over_min": 4.631833923506486,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.265333553662245,
+      2.9402724409448817,
+      2.277400981508331
+    ],
+    "cpu_ratios_F_R_F": [
+      2.3078160611342002,
+      10.019104701254916,
+      9.652526031623601
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      208.0,
+      344.0,
+      270.6392517089844
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.09375,
+      40.09375
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/scale/FORMAT",
+    "wall_ratios_F_R_F": [
+      0.5870853293816516,
+      0.7329708589645928,
+      0.9749454105329389
+    ],
+    "wall_deltas_ns": [
+      -1.8269214630126953,
+      -1.1396408081054688,
+      -0.061672210693359375
+    ],
+    "wall_ratio_median": 0.7329708589645928,
+    "ratio_range_max_over_min": 1.6606536762889332,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.805391658229623,
+      0.7062294013233396,
+      1.7593068028232468
+    ],
+    "cpu_ratios_F_R_F": [
+      0.5877928218353751,
+      0.7462486002239642,
+      0.9745860608394301
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/scale/FORMAT",
+    "wall_ratios_F_R_F": [
+      18.32761266334366,
+      20.95567919588252,
+      38.400275233196595
+    ],
+    "wall_deltas_ns": [
+      76.66520404815674,
+      85.1678819656372,
+      92.06128311157227
+    ],
+    "wall_ratio_median": 20.95567919588252,
+    "ratio_range_max_over_min": 2.095214250680858,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.5703196649914386,
+      1.0708707829197412,
+      1.5970866496470941
+    ],
+    "cpu_ratios_F_R_F": [
+      17.12701482914249,
+      19.670324748040315,
+      33.99306892568348
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      568.0,
+      568.0,
+      568.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/scale/FORMAT",
+    "wall_ratios_F_R_F": [
+      12.135021635457361,
+      17.92391211322393,
+      23.8920608550516
+    ],
+    "wall_deltas_ns": [
+      49.266377449035645,
+      72.22874927520752,
+      56.349117279052734
+    ],
+    "wall_ratio_median": 17.92391211322393,
+    "ratio_range_max_over_min": 1.9688519372096795,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.7411786387953607,
+      2.620564640401254,
+      3.4578933773839915
+    ],
+    "cpu_ratios_F_R_F": [
+      11.577906726842897,
+      16.47077267637178,
+      22.18944936465152
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      456.0,
+      456.0,
+      456.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/scale/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      1.084074670424518,
+      0.8134912763881226,
+      1.0653398791647606
+    ],
+    "wall_deltas_ns": [
+      0.47520923614501953,
+      -1.9208173751831055,
+      0.3965311050415039
+    ],
+    "wall_ratio_median": 1.0653398791647606,
+    "ratio_range_max_over_min": 1.3326199086458281,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.159719000596461,
+      1.1535945456593941,
+      1.1392335766423358
+    ],
+    "cpu_ratios_F_R_F": [
+      0.9223891273247496,
+      0.6561115214180206,
+      1.024991724594505
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/scale/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      38.90835226010163,
+      17.848060048067047,
+      13.076288814670951
+    ],
+    "wall_deltas_ns": [
+      214.26666355133057,
+      173.5149211883545,
+      73.28792476654053
+    ],
+    "wall_ratio_median": 17.848060048067047,
+    "ratio_range_max_over_min": 2.9754889029713367,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0065610709788588,
+      0.8498437740507826,
+      1.1245941605839416
+    ],
+    "cpu_ratios_F_R_F": [
+      41.264663805436335,
+      17.81610044313146,
+      13.484276729559749
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      120.0,
+      120.0,
+      120.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/scale/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      3.4402470071915814,
+      2.5961851201796597,
+      2.307343505761965
+    ],
+    "wall_deltas_ns": [
+      13.79283332824707,
+      16.43880271911621,
+      7.933935165405273
+    ],
+    "wall_ratio_median": 2.5961851201796597,
+    "ratio_range_max_over_min": 1.4909990639020574,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.5151657498840214,
+      1.0967982011403146,
+      1.227716788321168
+    ],
+    "cpu_ratios_F_R_F": [
+      3.311874105865522,
+      2.281019202363368,
+      2.2735849056603774
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      160.0,
+      160.0,
+      160.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/scale/PARSE",
+    "wall_ratios_F_R_F": [
+      0.439065752362966,
+      0.8762045621909624,
+      0.4793002092199086
+    ],
+    "wall_deltas_ns": [
+      -14.153759002685547,
+      -6.523769378662109,
+      -13.083775520324707
+    ],
+    "wall_ratio_median": 0.4793002092199086,
+    "ratio_range_max_over_min": 1.9956112665936727,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.5576676702325283,
+      1.1051165915011563,
+      0.9040892479932404
+    ],
+    "cpu_ratios_F_R_F": [
+      0.46967501552473606,
+      0.8765722133873066,
+      0.5042632450331126
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      184.0,
+      184.0,
+      184.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/scale/PARSE",
+    "wall_ratios_F_R_F": [
+      5.320172028546044,
+      3.801584412389946,
+      3.9046348899104766
+    ],
+    "wall_deltas_ns": [
+      109.00862979888916,
+      147.63783645629883,
+      72.98560810089111
+    ],
+    "wall_ratio_median": 3.9046348899104766,
+    "ratio_range_max_over_min": 1.3994617642072575,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.898901415668439,
+      1.641210947219628,
+      1.3660003168567807
+    ],
+    "cpu_ratios_F_R_F": [
+      5.280894224798178,
+      3.3578140812490966,
+      4.040728476821192
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      576.0,
+      576.0172119140625,
+      576.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      184.0,
+      184.0,
+      184.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/scale/PARSE",
+    "wall_ratios_F_R_F": [
+      3.7375227089616603,
+      4.299939360636562,
+      1.2876907910030695
+    ],
+    "wall_deltas_ns": [
+      69.07447147369385,
+      173.9001350402832,
+      7.228890419006348
+    ],
+    "wall_ratio_median": 3.7375227089616603,
+    "ratio_range_max_over_min": 3.339263890585913,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.7725054128499135,
+      0.663002390745966,
+      0.48368187579214195
+    ],
+    "cpu_ratios_F_R_F": [
+      4.111446905402608,
+      4.305912968049732,
+      1.305546357615894
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      280.0,
+      280.0,
+      280.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      184.0,
+      184.0,
+      184.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/scale/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      0.9430227571558613,
+      1.3688247299108216,
+      0.9123102139406487
+    ],
+    "wall_deltas_ns": [
+      -0.5372371673583984,
+      4.52140998840332,
+      -0.7270574569702148
+    ],
+    "wall_ratio_median": 0.9430227571558613,
+    "ratio_range_max_over_min": 1.5003939548131289,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.210120415288505,
+      1.5355816067284522,
+      0.9090110184305845
+    ],
+    "cpu_ratios_F_R_F": [
+      0.9747532467532467,
+      1.2560118386977432,
+      0.8835553514010106
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/scale/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      20.34041306766461,
+      9.718392794157483,
+      23.473582700713134
+    ],
+    "wall_deltas_ns": [
+      182.3603286743164,
+      106.87848472595215,
+      186.33396911621094
+    ],
+    "wall_ratio_median": 20.34041306766461,
+    "ratio_range_max_over_min": 2.4153770276526605,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.53239708903981,
+      2.503975619948635,
+      1.248774475830501
+    ],
+    "cpu_ratios_F_R_F": [
+      20.90722077922078,
+      10.095449500554938,
+      23.47634359209922
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      272.0,
+      272.0,
+      272.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/scale/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      1.9642333367047637,
+      3.6256551618123454,
+      10.864063031976075
+    ],
+    "wall_deltas_ns": [
+      9.091734886169434,
+      32.18781852722168,
+      81.78535842895508
+    ],
+    "wall_ratio_median": 3.6256551618123454,
+    "ratio_range_max_over_min": 5.530943207695395,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.014947099355314,
+      3.317683874660429,
+      2.862311993226251
+    ],
+    "cpu_ratios_F_R_F": [
+      1.8924675324675324,
+      4.244173140954495,
+      10.864951768488746
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      184.0,
+      184.0,
+      291.87591552734375
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/scale/self",
+    "wall_ratios_F_R_F": [
+      0.8082610621023397,
+      0.9192209375952721,
+      0.787449894158447
+    ],
+    "wall_deltas_ns": [
+      -1.3742046356201172,
+      -0.821232795715332,
+      -2.2503137588500977
+    ],
+    "wall_ratio_median": 0.8082610621023397,
+    "ratio_range_max_over_min": 1.1673389563124517,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9680678673975464,
+      1.048334970957816,
+      0.7690387972272109
+    ],
+    "cpu_ratios_F_R_F": [
+      0.7001728493551389,
+      0.878290087735673,
+      0.6838090109495603
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/scale/self",
+    "wall_ratios_F_R_F": [
+      6.982253052743184,
+      20.533163481156635,
+      8.148178174120615
+    ],
+    "wall_deltas_ns": [
+      42.87517166137695,
+      198.5820827484131,
+      75.67930221557617
+    ],
+    "wall_ratio_median": 8.148178174120615,
+    "ratio_range_max_over_min": 2.9407647253760842,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.025275907073871,
+      1.4075432296752002,
+      1.0671961457336758
+    ],
+    "cpu_ratios_F_R_F": [
+      6.737401941231219,
+      20.45622549934665,
+      7.736133548734518
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      120.0,
+      120.0,
+      120.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/scale/self",
+    "wall_ratios_F_R_F": [
+      1.7349374761150989,
+      2.133572570999742,
+      1.8396801333153177
+    ],
+    "wall_deltas_ns": [
+      5.267341613769531,
+      11.524359703063965,
+      8.889874458312988
+    ],
+    "wall_ratio_median": 1.8396801333153177,
+    "ratio_range_max_over_min": 1.2297691417544763,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0053510832680763,
+      0.7357273030233518,
+      1.1293506660624268
+    ],
+    "cpu_ratios_F_R_F": [
+      1.5454061959845766,
+      1.9565988426358036,
+      1.6566146113803626
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      160.0,
+      160.0,
+      160.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/signed/ADD",
+    "wall_ratios_F_R_F": [
+      0.8012832976861753,
+      0.8879879997317625,
+      0.8976188970415924
+    ],
+    "wall_deltas_ns": [
+      -1.3401508331298828,
+      -0.7948875427246094,
+      -0.9016199111938477
+    ],
+    "wall_ratio_median": 0.8879879997317625,
+    "ratio_range_max_over_min": 1.120226640981536,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9343883739911231,
+      0.9765798702958618,
+      1.0774303252625
+    ],
+    "cpu_ratios_F_R_F": [
+      0.7689930047177485,
+      1.039517536898905,
+      0.8197642988431182
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/signed/ADD",
+    "wall_ratios_F_R_F": [
+      22.86358114294805,
+      15.229174671123495,
+      18.23265627727605
+    ],
+    "wall_deltas_ns": [
+      147.4485845565796,
+      100.97662448883057,
+      151.7595100402832
+    ],
+    "wall_ratio_median": 18.23265627727605,
+    "ratio_range_max_over_min": 1.5013013926684016,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      3.4591625814683638,
+      4.082603169472722,
+      3.864341842430226
+    ],
+    "cpu_ratios_F_R_F": [
+      24.575239954449327,
+      17.204253293128076,
+      18.075900097307816
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      408.0,
+      360.0,
+      360.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/signed/ADD",
+    "wall_ratios_F_R_F": [
+      1.7087775440581197,
+      1.9574214635956968,
+      2.0367425028361676
+    ],
+    "wall_deltas_ns": [
+      4.780014991760254,
+      6.794293403625488,
+      9.130080223083496
+    ],
+    "wall_ratio_median": 1.9574214635956968,
+    "ratio_range_max_over_min": 1.1919295814241417,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.168206219553778,
+      2.7906397744788483,
+      2.496620418947177
+    ],
+    "cpu_ratios_F_R_F": [
+      1.7628111273792093,
+      2.138073321694969,
+      1.8659314520488701
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      136.0,
+      136.0,
+      136.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/signed/FORMAT",
+    "wall_ratios_F_R_F": [
+      0.9317676799991469,
+      0.7711144689643257,
+      0.6277917523541509
+    ],
+    "wall_deltas_ns": [
+      -0.1952657699584961,
+      -0.46241283416748047,
+      -1.6397628784179688
+    ],
+    "wall_ratio_median": 0.7711144689643257,
+    "ratio_range_max_over_min": 1.4841986638166547,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.3868269042911752,
+      1.6790568165017385,
+      1.426240605261801
+    ],
+    "cpu_ratios_F_R_F": [
+      0.9287607687210073,
+      0.7772020725388601,
+      0.6292304375943091
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/signed/FORMAT",
+    "wall_ratios_F_R_F": [
+      22.553601849111836,
+      40.387863201626494,
+      42.920662409351664
+    ],
+    "wall_deltas_ns": [
+      61.6816291809082,
+      79.57450771331787,
+      184.68141555786133
+    ],
+    "wall_ratio_median": 40.387863201626494,
+    "ratio_range_max_over_min": 1.9030513483610993,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.2950801945853756,
+      1.4209320195399444,
+      1.6904495503001475
+    ],
+    "cpu_ratios_F_R_F": [
+      22.13717693836978,
+      38.06877060763071,
+      41.40547531795646
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      720.0,
+      720.0,
+      720.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/signed/FORMAT",
+    "wall_ratios_F_R_F": [
+      14.976407561737036,
+      34.85739587626043,
+      18.65360580149367
+    ],
+    "wall_deltas_ns": [
+      39.997379302978516,
+      68.40141582489014,
+      77.77293395996094
+    ],
+    "wall_ratio_median": 18.65360580149367,
+    "ratio_range_max_over_min": 2.327487131514569,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      3.423895320047233,
+      3.8045668635613428,
+      3.554901242346759
+    ],
+    "cpu_ratios_F_R_F": [
+      14.689198144466534,
+      32.27319830428639,
+      17.286484156068116
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      480.0,
+      480.0,
+      480.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/signed/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      0.7003153024928148,
+      0.8918804956508356,
+      0.942265774174453
+    ],
+    "wall_deltas_ns": [
+      -2.258023262023926,
+      -0.9754495620727539,
+      -0.4847841262817383
+    ],
+    "wall_ratio_median": 0.8918804956508356,
+    "ratio_range_max_over_min": 1.3454879121167291,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9578747174214249,
+      0.8690995949388233,
+      1.2592218306313563
+    ],
+    "cpu_ratios_F_R_F": [
+      0.57374330186272,
+      0.8771374287523749,
+      0.8301210773412404
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/signed/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      24.50257326375102,
+      27.5868843475746,
+      33.230213653876994
+    ],
+    "wall_deltas_ns": [
+      177.08397388458252,
+      239.86573791503906,
+      270.6314277648926
+    ],
+    "wall_ratio_median": 27.5868843475746,
+    "ratio_range_max_over_min": 1.3561928086564523,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.587568584554802,
+      1.1637225539733578,
+      1.202245493907965
+    ],
+    "cpu_ratios_F_R_F": [
+      24.73896402143404,
+      33.004179860671314,
+      36.00197677291821
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      120.0,
+      120.0,
+      120.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/signed/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      2.2281979483504366,
+      2.88224370965205,
+      3.0327997248744647
+    ],
+    "wall_deltas_ns": [
+      9.254057884216309,
+      16.98152256011963,
+      17.069061279296875
+    ],
+    "wall_ratio_median": 2.88224370965205,
+    "ratio_range_max_over_min": 1.3610997744251965,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.522618245460512,
+      0.9694324967636865,
+      1.3827074816232001
+    ],
+    "cpu_ratios_F_R_F": [
+      2.066471038530237,
+      3.071690943635212,
+      2.9510748702742773
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      160.0,
+      160.0,
+      160.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/signed/PARSE",
+    "wall_ratios_F_R_F": [
+      0.3103848848373239,
+      0.4478902112378003,
+      0.37190320405547045
+    ],
+    "wall_deltas_ns": [
+      -25.088151931762695,
+      -20.457427978515625,
+      -28.199913024902344
+    ],
+    "wall_ratio_median": 0.37190320405547045,
+    "ratio_range_max_over_min": 1.443015536895569,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0748341263990349,
+      1.1219560810628812,
+      1.5777210094032839
+    ],
+    "cpu_ratios_F_R_F": [
+      0.3050194128655624,
+      0.39650319367760095,
+      0.31217155450076284
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      72.0,
+      72.0,
+      72.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      184.0,
+      184.0,
+      184.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/signed/PARSE",
+    "wall_ratios_F_R_F": [
+      15.28408759506778,
+      4.642068156031063,
+      3.5274045369827856
+    ],
+    "wall_deltas_ns": [
+      519.6541547775269,
+      134.95023727416992,
+      113.47389221191406
+    ],
+    "wall_ratio_median": 4.642068156031063,
+    "ratio_range_max_over_min": 4.332955700097057,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.0605723476978755,
+      1.4173880466663702,
+      2.3846371903802397
+    ],
+    "cpu_ratios_F_R_F": [
+      16.30077372140443,
+      4.771895637111617,
+      3.260891676555348
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      816.0,
+      792.0,
+      792.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      184.0,
+      184.0,
+      184.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/signed/PARSE",
+    "wall_ratios_F_R_F": [
+      5.452730710374635,
+      1.3177589712054776,
+      1.1353205007075866
+    ],
+    "wall_deltas_ns": [
+      161.99004650115967,
+      11.773983001708984,
+      6.075538635253906
+    ],
+    "wall_ratio_median": 1.3177589712054776,
+    "ratio_range_max_over_min": 4.802811811269355,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.759864245023792,
+      0.6546420890864086,
+      0.7600335731554249
+    ],
+    "cpu_ratios_F_R_F": [
+      5.815703471970057,
+      1.3154162606907005,
+      0.9388031869808442
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      304.0,
+      304.0,
+      304.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      184.0,
+      184.0,
+      184.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/signed/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      1.0666982152514872,
+      0.8852806238455193,
+      0.7327679694135754
+    ],
+    "wall_deltas_ns": [
+      0.5880594253540039,
+      -1.160344123840332,
+      -4.1370391845703125
+    ],
+    "wall_ratio_median": 0.8852806238455193,
+    "ratio_range_max_over_min": 1.4557107567149146,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.0265771662623773,
+      0.7902743037190679,
+      0.642645430846695
+    ],
+    "cpu_ratios_F_R_F": [
+      0.9080299785867237,
+      0.7951535367409006,
+      0.9685224146301991
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/signed/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      36.39437533802055,
+      37.82213376461289,
+      15.736422727806989
+    ],
+    "wall_deltas_ns": [
+      312.06226348876953,
+      372.4422845840454,
+      228.13566970825195
+    ],
+    "wall_ratio_median": 36.39437533802055,
+    "ratio_range_max_over_min": 2.4034772336014734,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      3.046274784268501,
+      3.8994040671927275,
+      2.885774238474449
+    ],
+    "cpu_ratios_F_R_F": [
+      36.059957173447536,
+      39.399587952516434,
+      18.876840912769058
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      472.0,
+      472.0,
+      471.218505859375
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/signed/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      2.556039156300703,
+      5.2380773864956485,
+      1.298146180972143
+    ],
+    "wall_deltas_ns": [
+      13.719160079956055,
+      42.86658763885498,
+      4.615623474121094
+    ],
+    "wall_ratio_median": 2.556039156300703,
+    "ratio_range_max_over_min": 4.035044329578513,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.2604684455402235,
+      2.23097908361904,
+      2.0164982323322502
+    ],
+    "cpu_ratios_F_R_F": [
+      2.144967880085653,
+      3.6864514863141373,
+      1.5716135296973621
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      160.0,
+      160.0,
+      160.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/signed/self",
+    "wall_ratios_F_R_F": [
+      0.8976509354361811,
+      0.7560581739625504,
+      0.9676126573024907
+    ],
+    "wall_deltas_ns": [
+      -0.7191896438598633,
+      -2.25846004486084,
+      -0.2957582473754883
+    ],
+    "wall_ratio_median": 0.8976509354361811,
+    "ratio_range_max_over_min": 1.2798124411924143,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.2287161139135931,
+      1.1421199072518156,
+      0.9997293793154061
+    ],
+    "cpu_ratios_F_R_F": [
+      0.8996333016433519,
+      0.5983768598480907,
+      0.827765726681128
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/signed/self",
+    "wall_ratios_F_R_F": [
+      8.106358067074213,
+      27.98856397309536,
+      22.3179990601013
+    ],
+    "wall_deltas_ns": [
+      49.935181617736816,
+      249.86528301239014,
+      194.67401504516602
+    ],
+    "wall_ratio_median": 22.3179990601013,
+    "ratio_range_max_over_min": 3.4526681083552395,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.1361747721759792,
+      1.3343297231126214,
+      0.9734829952358528
+    ],
+    "cpu_ratios_F_R_F": [
+      8.048893114219748,
+      28.314223285818333,
+      23.19652928416486
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      120.0,
+      120.0,
+      120.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/signed/self",
+    "wall_ratios_F_R_F": [
+      1.793102002166889,
+      3.947830209096349,
+      2.7347048195916663
+    ],
+    "wall_deltas_ns": [
+      5.572994232177734,
+      27.29157543182373,
+      15.841165542602539
+    ],
+    "wall_ratio_median": 2.7347048195916663,
+    "ratio_range_max_over_min": 2.2016763153047405,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9238998661068971,
+      0.9168968956569387,
+      1.1047477876376801
+    ],
+    "cpu_ratios_F_R_F": [
+      1.6576123862556023,
+      3.479450629487046,
+      2.7581344902386116
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      160.0,
+      160.0,
+      160.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/wide10/ADD",
+    "wall_ratios_F_R_F": [
+      0.4321362149432503,
+      0.367152457902288,
+      0.7478259439247547
+    ],
+    "wall_deltas_ns": [
+      -17.362117767333984,
+      -79.925537109375,
+      -15.614978790283203
+    ],
+    "wall_ratio_median": 0.4321362149432503,
+    "ratio_range_max_over_min": 2.0368267400344546,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.41786211198574186,
+      0.4895106206896552,
+      0.40049715983621387
+    ],
+    "cpu_ratios_F_R_F": [
+      0.4203053339197085,
+      0.3673352608119504,
+      0.7489542322834646
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      176.0,
+      176.0,
+      176.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      320.0,
+      320.0,
+      320.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/wide10/ADD",
+    "wall_ratios_F_R_F": [
+      10.476521294307092,
+      5.912275828739712,
+      9.90155499530197
+    ],
+    "wall_deltas_ns": [
+      289.7393407821655,
+      620.3963165283203,
+      551.1970367431641
+    ],
+    "wall_ratio_median": 9.90155499530197,
+    "ratio_range_max_over_min": 1.7719946764629073,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.3896925590375762,
+      0.9726371625615764,
+      1.438100373911435
+    ],
+    "cpu_ratios_F_R_F": [
+      10.418043601181127,
+      5.760269847006385,
+      9.299704724409448
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      480.0,
+      480.0,
+      480.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      320.0,
+      320.0,
+      320.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/wide10/ADD",
+    "wall_ratios_F_R_F": [
+      0.5656244575536987,
+      0.3976415011704297,
+      0.56771018791385
+    ],
+    "wall_deltas_ns": [
+      -13.280789375305176,
+      -76.07492065429688,
+      -26.768004417419434
+    ],
+    "wall_ratio_median": 0.5656244575536987,
+    "ratio_range_max_over_min": 1.4276935034266673,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.428852992722412,
+      0.45141548768472906,
+      0.49113759574305127
+    ],
+    "cpu_ratios_F_R_F": [
+      0.5445121568134699,
+      0.39657872545476447,
+      0.5077663631889764
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      208.0,
+      208.0,
+      208.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      320.0,
+      320.0,
+      320.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/wide10/FORMAT",
+    "wall_ratios_F_R_F": [
+      1.023362021553326,
+      0.5300307452474776,
+      1.1095322772539766
+    ],
+    "wall_deltas_ns": [
+      0.037471771240234375,
+      -1.293778419494629,
+      0.2694540023803711
+    ],
+    "wall_ratio_median": 1.023362021553326,
+    "ratio_range_max_over_min": 2.093335692698209,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.5953653952008553,
+      0.6648150979293006,
+      0.5965498805832562
+    ],
+    "cpu_ratios_F_R_F": [
+      1.0225385527876631,
+      0.531540847983454,
+      1.1014936805821525
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/wide10/FORMAT",
+    "wall_ratios_F_R_F": [
+      1110.0118903010034,
+      1673.4283116095787,
+      1649.1078249967727
+    ],
+    "wall_deltas_ns": [
+      1778.8118104934692,
+      4604.028105735779,
+      4054.414469718933
+    ],
+    "wall_ratio_median": 1649.1078249967727,
+    "ratio_range_max_over_min": 1.5075769243839297,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9901888435182967,
+      0.9496961728583805,
+      0.9049774568612875
+    ],
+    "cpu_ratios_F_R_F": [
+      1047.079478054567,
+      1528.05791106515,
+      1516.6847950976637
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      11864.0,
+      12152.3515625,
+      12152.40625
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/wide10/FORMAT",
+    "wall_ratios_F_R_F": [
+      61.16734715719063,
+      96.22287065344477,
+      65.68300329399688
+    ],
+    "wall_deltas_ns": [
+      96.50607776641846,
+      262.13905239105225,
+      159.12290477752686
+    ],
+    "wall_ratio_median": 65.68300329399688,
+    "ratio_range_max_over_min": 1.5731084496139232,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.6897071630651995,
+      0.5023582530703766,
+      0.5295998829017073
+    ],
+    "cpu_ratios_F_R_F": [
+      57.44721233689205,
+      95.86763185108583,
+      62.46189199540406
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      928.0,
+      928.0,
+      928.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/wide10/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      0.7561284987455674,
+      0.20389263522130074,
+      0.8293557690222695
+    ],
+    "wall_deltas_ns": [
+      -4.148364067077637,
+      -93.47073173522949,
+      -4.690647125244141
+    ],
+    "wall_ratio_median": 0.7561284987455674,
+    "ratio_range_max_over_min": 4.067610230855589,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.39997680494487986,
+      0.32809133676539637,
+      0.4209452158949938
+    ],
+    "cpu_ratios_F_R_F": [
+      0.768695652173913,
+      0.17334477844001037,
+      0.8197394715417068
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      144.0,
+      144.0,
+      144.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      168.0,
+      168.0,
+      168.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/wide10/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      8.561032699342649,
+      3.3568130741676345,
+      10.104479372032005
+    ],
+    "wall_deltas_ns": [
+      128.6165714263916,
+      276.71273040771484,
+      250.2627820968628
+    ],
+    "wall_ratio_median": 8.561032699342649,
+    "ratio_range_max_over_min": 3.0101406151540155,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.4644850570317976,
+      0.41587301513635644,
+      0.49965312737604545
+    ],
+    "cpu_ratios_F_R_F": [
+      9.161979010494752,
+      3.342446229593159,
+      10.788838724002664
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      128.0,
+      128.0,
+      128.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      168.0,
+      168.0,
+      168.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/wide10/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      0.7625664989417915,
+      0.28827717625271093,
+      1.0219022746492616
+    ],
+    "wall_deltas_ns": [
+      -4.038850784301758,
+      -83.56316757202148,
+      0.6020469665527344
+    ],
+    "wall_ratio_median": 0.7625664989417915,
+    "ratio_range_max_over_min": 3.5448601513754134,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.4298624864589307,
+      0.3210090084403876,
+      0.452925847372844
+    ],
+    "cpu_ratios_F_R_F": [
+      0.7716341829085457,
+      0.26240606374708475,
+      1.0422618607060914
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      176.0,
+      176.0,
+      176.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      168.0,
+      168.0,
+      168.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/wide10/PARSE",
+    "wall_ratios_F_R_F": [
+      0.5054893267412898,
+      0.34776633348153835,
+      0.39811717001972813
+    ],
+    "wall_deltas_ns": [
+      -52.62144470214844,
+      -160.98626899719238,
+      -135.05459594726562
+    ],
+    "wall_ratio_median": 0.39811717001972813,
+    "ratio_range_max_over_min": 1.4535315183639659,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.2024212680015316,
+      1.7516516142604457,
+      1.2787891184291267
+    ],
+    "cpu_ratios_F_R_F": [
+      0.504303871653053,
+      0.33671990626541687,
+      0.375764370158989
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      240.0,
+      240.0,
+      240.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      304.0,
+      304.0,
+      304.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/wide10/PARSE",
+    "wall_ratios_F_R_F": [
+      6.426171934066276,
+      5.320780089160395,
+      5.719683569666879
+    ],
+    "wall_deltas_ns": [
+      577.405143737793,
+      1066.4678955078125,
+      1059.0349578857422
+    ],
+    "wall_ratio_median": 5.719683569666879,
+    "ratio_range_max_over_min": 1.207749958912568,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.8491196525194746,
+      2.656329636841646,
+      1.7076830820689903
+    ],
+    "cpu_ratios_F_R_F": [
+      6.268781363320025,
+      5.3177109028120375,
+      5.645604022285637
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      1848.0,
+      1872.0,
+      1872.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      304.0,
+      304.0,
+      304.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/wide10/PARSE",
+    "wall_ratios_F_R_F": [
+      0.6253941471032738,
+      1.088251691169125,
+      1.3207775066834215
+    ],
+    "wall_deltas_ns": [
+      -39.86223602294922,
+      21.782546997070312,
+      71.97825622558594
+    ],
+    "wall_ratio_median": 1.088251691169125,
+    "ratio_range_max_over_min": 2.111912164194457,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.9427019321903274,
+      1.7905063045592242,
+      0.9495145163813122
+    ],
+    "cpu_ratios_F_R_F": [
+      0.6365884033551884,
+      0.9883448445979279,
+      1.1710150835711375
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      744.0,
+      744.0172119140625,
+      744.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      304.0,
+      304.0,
+      304.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/wide10/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      0.39845068079330515,
+      0.48387328908415655,
+      0.4312606471647629
+    ],
+    "wall_deltas_ns": [
+      -19.631068229675293,
+      -31.847000122070312,
+      -36.544166564941406
+    ],
+    "wall_ratio_median": 0.4312606471647629,
+    "ratio_range_max_over_min": 1.2143869051014724,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.3880175096882595,
+      0.41152889700435824,
+      0.44570746456731825
+    ],
+    "cpu_ratios_F_R_F": [
+      0.36835777126099706,
+      0.435361653272101,
+      0.3955812564819762
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      176.0,
+      176.0,
+      176.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      352.0,
+      352.0,
+      352.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/wide10/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      11.201593528025331,
+      16.97374937570677,
+      9.701270415343357
+    ],
+    "wall_deltas_ns": [
+      332.9206304550171,
+      985.641679763794,
+      559.0973682403564
+    ],
+    "wall_ratio_median": 11.201593528025331,
+    "ratio_range_max_over_min": 1.7496419179143166,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.388850376501265,
+      1.4177189023444903,
+      1.251797500177588
+    ],
+    "cpu_ratios_F_R_F": [
+      11.247859237536657,
+      18.036936198130228,
+      10.279141393507023
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      544.0,
+      546.1484375,
+      544.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      352.0,
+      352.0,
+      352.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/wide10/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      0.5703036670671507,
+      1.203844827155047,
+      0.4405035935836896
+    ],
+    "wall_deltas_ns": [
+      -14.022787094116211,
+      12.578008651733398,
+      -35.95026397705078
+    ],
+    "wall_ratio_median": 0.5703036670671507,
+    "ratio_range_max_over_min": 2.732883101727371,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.9857920515927766,
+      0.9793227334585106,
+      0.6494511756330629
+    ],
+    "cpu_ratios_F_R_F": [
+      0.5668035190615835,
+      1.2799081515499426,
+      0.44894559854175176
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      240.0,
+      277.1849060058594,
+      240.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      352.0,
+      352.0,
+      352.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/wide10/self",
+    "wall_ratios_F_R_F": [
+      0.9091553496778785,
+      0.33743585812496196,
+      0.9180375001200719
+    ],
+    "wall_deltas_ns": [
+      -1.7365217208862305,
+      -103.86053848266602,
+      -1.8797311782836914
+    ],
+    "wall_ratio_median": 0.9091553496778785,
+    "ratio_range_max_over_min": 2.7206281668502963,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.3928677693448964,
+      0.39286343471483953,
+      0.5115480215848656
+    ],
+    "cpu_ratios_F_R_F": [
+      0.9003530166880617,
+      0.33850267379679144,
+      0.8692694991608515
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      160.0,
+      160.0,
+      160.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      152.0,
+      152.0,
+      152.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/wide10/self",
+    "wall_ratios_F_R_F": [
+      14.84227093690114,
+      3.179339295491878,
+      15.0834476078613
+    ],
+    "wall_deltas_ns": [
+      264.5990056991577,
+      341.62330627441406,
+      322.9903383255005
+    ],
+    "wall_ratio_median": 14.84227093690114,
+    "ratio_range_max_over_min": 4.744208216231835,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.49304097204375635,
+      0.5645723192518285,
+      0.46056694135953496
+    ],
+    "cpu_ratios_F_R_F": [
+      15.904150620453573,
+      3.177540106951872,
+      15.552689691723346
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      312.0,
+      312.0,
+      312.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      152.0,
+      152.0,
+      152.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/wide10/self",
+    "wall_ratios_F_R_F": [
+      0.866943712811816,
+      0.294035298412119,
+      0.8672191874919926
+    ],
+    "wall_deltas_ns": [
+      -2.5434093475341797,
+      -110.6638126373291,
+      -3.0452003479003906
+    ],
+    "wall_ratio_median": 0.866943712811816,
+    "ratio_range_max_over_min": 2.9493710182935273,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.4252346752107249,
+      0.47578705887054873,
+      0.4447196828982101
+    ],
+    "cpu_ratios_F_R_F": [
+      0.8716302952503209,
+      0.2744409333981527,
+      0.86282130553838
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      192.0,
+      192.0,
+      192.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      152.0,
+      152.0,
+      152.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/zero/ADD",
+    "wall_ratios_F_R_F": [
+      1.1894063589897748,
+      0.0772870637100556,
+      0.06837348642317463
+    ],
+    "wall_deltas_ns": [
+      0.9710397720336914,
+      -6.567638397216797,
+      -6.732146263122559
+    ],
+    "wall_ratio_median": 0.0772870637100556,
+    "ratio_range_max_over_min": 17.39572488125507,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.9489828216090167,
+      0.9247816941694169,
+      1.0069856179063637
+    ],
+    "cpu_ratios_F_R_F": [
+      1.3651301749893299,
+      0.08095110873630777,
+      0.08690633245382585
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/zero/ADD",
+    "wall_ratios_F_R_F": [
+      1.392694210024162,
+      1.6160704763180813,
+      1.2280675706885744
+    ],
+    "wall_deltas_ns": [
+      2.013246536254883,
+      4.385034561157227,
+      1.6480684280395508
+    ],
+    "wall_ratio_median": 1.392694210024162,
+    "ratio_range_max_over_min": 1.315945893280086,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.136805285658764,
+      1.1220534213421343,
+      1.1180652218683993
+    ],
+    "cpu_ratios_F_R_F": [
+      1.4950917626973965,
+      1.5762757146673791,
+      1.4221635883905013
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/zero/ADD",
+    "wall_ratios_F_R_F": [
+      1.873313527255803,
+      2.205969049373618,
+      1.4269139859447688
+    ],
+    "wall_deltas_ns": [
+      4.477263450622559,
+      8.583784103393555,
+      3.0849781036376953
+    ],
+    "wall_ratio_median": 1.873313527255803,
+    "ratio_range_max_over_min": 1.5459719864705315,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.1865781577924601,
+      1.3501430143014301,
+      1.1374914490862293
+    ],
+    "cpu_ratios_F_R_F": [
+      1.969910371318822,
+      2.0607801228960727,
+      1.6027374670184698
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      88.0,
+      88.0,
+      88.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/zero/FORMAT",
+    "wall_ratios_F_R_F": [
+      0.8986962466770986,
+      0.9871398146690048,
+      0.9763274887523079
+    ],
+    "wall_deltas_ns": [
+      -0.22510719299316406,
+      -0.06417465209960938,
+      -0.03977680206298828
+    ],
+    "wall_ratio_median": 0.9763274887523079,
+    "ratio_range_max_over_min": 1.098413193911651,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.087524280254777,
+      1.4702348196796866,
+      1.5095278352659254
+    ],
+    "cpu_ratios_F_R_F": [
+      0.8958600085360648,
+      0.9878025538402897,
+      0.9768099547511312
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/zero/FORMAT",
+    "wall_ratios_F_R_F": [
+      1.3301974814187898,
+      0.7926213893556224,
+      1.7475993477558818
+    ],
+    "wall_deltas_ns": [
+      0.7337322235107422,
+      -1.0348567962646484,
+      1.2561874389648438
+    ],
+    "wall_ratio_median": 1.3301974814187898,
+    "ratio_range_max_over_min": 2.2048349580581315,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.7823184713375796,
+      0.8644235511003572,
+      0.965212725400299
+    ],
+    "cpu_ratios_F_R_F": [
+      1.3294921041399914,
+      0.7918810748999429,
+      1.745475113122172
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/zero/FORMAT",
+    "wall_ratios_F_R_F": [
+      2.2578635921584245,
+      0.8108406859784764,
+      3.7214199079752337
+    ],
+    "wall_deltas_ns": [
+      2.795100212097168,
+      -0.943939208984375,
+      4.572788238525391
+    ],
+    "wall_ratio_median": 2.2578635921584245,
+    "ratio_range_max_over_min": 4.589582111909488,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.0141656050955414,
+      1.7046894803548795,
+      1.523426901482369
+    ],
+    "cpu_ratios_F_R_F": [
+      2.255228339735382,
+      0.8130360205831904,
+      3.7228506787330318
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/zero/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      0.047203722542481445,
+      0.0778429645180034,
+      0.07232342859459442
+    ],
+    "wall_deltas_ns": [
+      -12.058337211608887,
+      -5.864858627319336,
+      -4.975597381591797
+    ],
+    "wall_ratio_median": 0.07232342859459442,
+    "ratio_range_max_over_min": 1.6490852908464555,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.893059770727806,
+      0.8489475431991161,
+      1.036270712427655
+    ],
+    "cpu_ratios_F_R_F": [
+      0.0640299413311754,
+      0.09153832843052431,
+      0.07617625093353249
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/zero/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      0.9075079311254286,
+      5.212910723322899,
+      1.7071054945891229
+    ],
+    "wall_deltas_ns": [
+      -1.1705551147460938,
+      26.793837547302246,
+      3.7925634384155273
+    ],
+    "wall_ratio_median": 1.7071054945891229,
+    "ratio_range_max_over_min": 5.744204038920308,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.262667448680352,
+      1.303682063052147,
+      1.2600762204877816
+    ],
+    "cpu_ratios_F_R_F": [
+      1.0796075257940523,
+      6.031147257310954,
+      1.6252800597460793
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/zero/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      0.7069565577785313,
+      1.6292727034169932,
+      1.5894557686446864
+    ],
+    "wall_deltas_ns": [
+      -3.7086801528930664,
+      4.002133369445801,
+      3.161548614501953
+    ],
+    "wall_ratio_median": 1.5894557686446864,
+    "ratio_range_max_over_min": 2.3046291677902455,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.9467342042122101,
+      1.1236395249766522,
+      1.1037375677293624
+    ],
+    "cpu_ratios_F_R_F": [
+      0.8787173781104592,
+      1.6383457345561516,
+      1.5918595967139657
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      88.0,
+      88.0,
+      88.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/zero/PARSE",
+    "wall_ratios_F_R_F": [
+      0.4962775761230681,
+      0.7344182180761353,
+      0.730549864491699
+    ],
+    "wall_deltas_ns": [
+      -9.3884859085083,
+      -4.317523002624512,
+      -3.689488410949707
+    ],
+    "wall_ratio_median": 0.730549864491699,
+    "ratio_range_max_over_min": 1.479853721809128,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.1602981281765217,
+      1.1454626245163324,
+      1.2086356826399318
+    ],
+    "cpu_ratios_F_R_F": [
+      0.5369899369678204,
+      0.7912747016857125,
+      0.7323806673649559
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      152.0,
+      152.0,
+      152.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/zero/PARSE",
+    "wall_ratios_F_R_F": [
+      0.42042782022109254,
+      1.798458596470768,
+      0.7287274394280123
+    ],
+    "wall_deltas_ns": [
+      -10.802189826965332,
+      12.98042106628418,
+      -3.714442253112793
+    ],
+    "wall_ratio_median": 0.7287274394280123,
+    "ratio_range_max_over_min": 4.277686941661004,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      2.1169373992810216,
+      1.510160965372832,
+      1.5622275700490955
+    ],
+    "cpu_ratios_F_R_F": [
+      0.4062258100187991,
+      1.9382536776311636,
+      0.7156217267694149
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      88.0,
+      88.0,
+      88.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      152.0,
+      152.0,
+      152.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/zero/PARSE",
+    "wall_ratios_F_R_F": [
+      1.4516273704775629,
+      0.8267611108458244,
+      0.6773064409903695
+    ],
+    "wall_deltas_ns": [
+      8.417527198791504,
+      -2.8163185119628906,
+      -4.418532371520996
+    ],
+    "wall_ratio_median": 0.8267611108458244,
+    "ratio_range_max_over_min": 2.143235738840705,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.42596380314863025,
+      0.5469416667457649,
+      0.4867799072367388
+    ],
+    "cpu_ratios_F_R_F": [
+      1.57447749640606,
+      0.7578761285434686,
+      0.684273529851863
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      88.0,
+      88.0,
+      88.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      152.0,
+      152.0,
+      152.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/zero/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      0.058494016945869864,
+      0.061019651888410895,
+      0.062000525513162666
+    ],
+    "wall_deltas_ns": [
+      -7.987817764282227,
+      -7.293622016906738,
+      -5.709290504455566
+    ],
+    "wall_ratio_median": 0.061019651888410895,
+    "ratio_range_max_over_min": 1.0599464483784335,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.1142619020229036,
+      0.718397307225439,
+      0.9318259945967625
+    ],
+    "cpu_ratios_F_R_F": [
+      0.05979916506826131,
+      0.08921036769138035,
+      0.07719162141194724
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/zero/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      1.9385972159601916,
+      1.449099112980525,
+      1.615775453897501
+    ],
+    "wall_deltas_ns": [
+      7.963139533996582,
+      3.4884214401245117,
+      3.7480201721191406
+    ],
+    "wall_ratio_median": 1.615775453897501,
+    "ratio_range_max_over_min": 1.33779477096833,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.1235699600803644,
+      0.5446991150912048,
+      1.4646619010052842
+    ],
+    "cpu_ratios_F_R_F": [
+      1.9458422655985559,
+      1.5061784207353828,
+      1.7629945694336695
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      96.0,
+      96.0,
+      96.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/zero/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      1.2202810208258372,
+      0.9616326354215764,
+      1.917284792253867
+    ],
+    "wall_deltas_ns": [
+      1.8688831329345703,
+      -0.2980222702026367,
+      5.583207130432129
+    ],
+    "wall_ratio_median": 1.2202810208258372,
+    "ratio_range_max_over_min": 1.9937809113698974,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.1019704920239488,
+      1.2831636355577833,
+      1.2587857700054208
+    ],
+    "cpu_ratios_F_R_F": [
+      1.1410357666704276,
+      1.1841470765521398,
+      1.9891388673390225
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      88.0,
+      88.0,
+      88.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "decimal/zero/self",
+    "wall_ratios_F_R_F": [
+      0.6879498452255006,
+      0.03300266364409181,
+      0.08171910419272892
+    ],
+    "wall_deltas_ns": [
+      -1.8987255096435547,
+      -8.136114120483398,
+      -4.700064659118652
+    ],
+    "wall_ratio_median": 0.08171910419272892,
+    "ratio_range_max_over_min": 20.845282448850412,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9326344803768477,
+      1.050367406656329,
+      0.9807049458410652
+    ],
+    "cpu_ratios_F_R_F": [
+      0.7883787661406025,
+      0.03919801757152512,
+      0.0891809908998989
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/zero/self",
+    "wall_ratios_F_R_F": [
+      1.4886890012146858,
+      2.7071408330971947,
+      1.6911738455937237
+    ],
+    "wall_deltas_ns": [
+      2.9735164642333984,
+      14.363527297973633,
+      3.537655830383301
+    ],
+    "wall_ratio_median": 1.6911738455937237,
+    "ratio_range_max_over_min": 1.818473053060996,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.1183298271543505,
+      1.2709175917488984,
+      1.0902283759843936
+    ],
+    "cpu_ratios_F_R_F": [
+      1.691893830703013,
+      2.7026357287677403,
+      1.798179979777553
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "decimal/zero/self",
+    "wall_ratios_F_R_F": [
+      1.9001214685944907,
+      2.0834088977047323,
+      1.7042009644942255
+    ],
+    "wall_deltas_ns": [
+      5.476951599121094,
+      9.11557674407959,
+      3.60433292388916
+    ],
+    "wall_ratio_median": 1.9001214685944907,
+    "ratio_range_max_over_min": 1.2225136243383412,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9846817423079137,
+      1.3697029003545038,
+      1.0503701884082508
+    ],
+    "cpu_ratios_F_R_F": [
+      1.928622668579627,
+      2.019035818878126,
+      1.7330637007077856
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      88.0,
+      88.0,
+      88.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "fixed-scale/both-negative",
+    "wall_ratios_F_R_F": [
+      0.8376044601472181,
+      1.1572955916791845,
+      0.9961980472516876
+    ],
+    "wall_deltas_ns": [
+      -1.8306570053100586,
+      1.800736427307129,
+      -0.03007984161376953
+    ],
+    "wall_ratio_median": 0.9961980472516876,
+    "ratio_range_max_over_min": 1.3816731485357387,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.328351825464892,
+      1.4918952093682685,
+      1.4715194375231706
+    ],
+    "cpu_ratios_F_R_F": [
+      0.9122065727699531,
+      1.105803800719055,
+      0.9194656983530022
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "fixed-scale/both-negative",
+    "wall_ratios_F_R_F": [
+      10.774859127220301,
+      15.727846101966911,
+      3.399826181292189
+    ],
+    "wall_deltas_ns": [
+      110.19030666351318,
+      168.60592651367188,
+      18.986661911010742
+    ],
+    "wall_ratio_median": 10.774859127220301,
+    "ratio_range_max_over_min": 4.626073588264783,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      3.4041523070331627,
+      3.10671124679684,
+      3.211768883581781
+    ],
+    "cpu_ratios_F_R_F": [
+      11.261596244131455,
+      15.272042458483137,
+      3.6368823758267412
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      567.4122314453125,
+      568.0,
+      328.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "fixed-scale/carry",
+    "wall_ratios_F_R_F": [
+      0.9609776487971102,
+      0.6928902043844603,
+      0.9276747145290681
+    ],
+    "wall_deltas_ns": [
+      -0.45200252532958984,
+      -4.479726791381836,
+      -0.5610780715942383
+    ],
+    "wall_ratio_median": 0.9276747145290681,
+    "ratio_range_max_over_min": 1.3869118696097162,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.5111516435558248,
+      1.629445740236121,
+      1.398531743206792
+    ],
+    "cpu_ratios_F_R_F": [
+      0.8514638962823045,
+      0.6795921405180113,
+      0.9079118028534371
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "fixed-scale/carry",
+    "wall_ratios_F_R_F": [
+      3.419426940957698,
+      8.361134916548178,
+      3.9881168464207137
+    ],
+    "wall_deltas_ns": [
+      28.024633407592773,
+      107.3748664855957,
+      23.180922508239746
+    ],
+    "wall_ratio_median": 3.9881168464207137,
+    "ratio_range_max_over_min": 2.4451860095032263,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      3.321897227820573,
+      3.8842642316985834,
+      3.298589369791718
+    ],
+    "cpu_ratios_F_R_F": [
+      3.533613806130334,
+      8.596010717475439,
+      4.570687418936446
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      328.0,
+      520.0,
+      328.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "fixed-scale/exact",
+    "wall_ratios_F_R_F": [
+      0.8717214528420905,
+      1.0511013088854293,
+      0.8551754482976538
+    ],
+    "wall_deltas_ns": [
+      -1.0271072387695312,
+      0.42259693145751953,
+      -0.874201774597168
+    ],
+    "wall_ratio_median": 0.8717214528420905,
+    "ratio_range_max_over_min": 1.2291060401439182,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.6201349409342551,
+      0.9823719312602291,
+      1.4611778823196306
+    ],
+    "cpu_ratios_F_R_F": [
+      0.8704410011918952,
+      1.2072132020228905,
+      0.9117647058823529
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "fixed-scale/exact",
+    "wall_ratios_F_R_F": [
+      3.517903016177628,
+      3.475359741682523,
+      1.766727229638992
+    ],
+    "wall_deltas_ns": [
+      20.16047477722168,
+      20.4706974029541,
+      4.628181457519531
+    ],
+    "wall_ratio_median": 3.475359741682523,
+    "ratio_range_max_over_min": 1.991197598112792,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      4.419208094594544,
+      2.8527516366612113,
+      3.337210582671645
+    ],
+    "cpu_ratios_F_R_F": [
+      3.2138259833134684,
+      3.6257652382219856,
+      1.7112605042016806
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      224.0,
+      224.0,
+      176.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "fixed-scale/negative-divisor",
+    "wall_ratios_F_R_F": [
+      0.6862114807586895,
+      0.8225509752099557,
+      0.7700085573487714
+    ],
+    "wall_deltas_ns": [
+      -4.911225318908691,
+      -2.0676841735839844,
+      -1.7580585479736328
+    ],
+    "wall_ratio_median": 0.7700085573487714,
+    "ratio_range_max_over_min": 1.198684368120053,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.2703381485113256,
+      1.4201562732329875,
+      1.269161034846885
+    ],
+    "cpu_ratios_F_R_F": [
+      0.6413926968336771,
+      0.8400966586117824,
+      0.6648058868307536
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "fixed-scale/negative-divisor",
+    "wall_ratios_F_R_F": [
+      5.988127714989116,
+      10.352128431698965,
+      3.7495271874543454
+    ],
+    "wall_deltas_ns": [
+      78.07111358642578,
+      108.97353744506836,
+      21.017433166503906
+    ],
+    "wall_ratio_median": 5.988127714989116,
+    "ratio_range_max_over_min": 2.7609156872729073,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      3.470681299126877,
+      4.465320917435566,
+      3.3313753959873282
+    ],
+    "cpu_ratios_F_R_F": [
+      5.54118646123984,
+      9.572535622031497,
+      3.7848261862471455
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      544.0,
+      544.0,
+      328.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "fixed-scale/negative-tie",
+    "wall_ratios_F_R_F": [
+      1.0097688532750846,
+      0.620535277645357,
+      0.8664063926093528
+    ],
+    "wall_deltas_ns": [
+      0.1018838882446289,
+      -5.168874740600586,
+      -1.1125411987304688
+    ],
+    "wall_ratio_median": 0.8664063926093528,
+    "ratio_range_max_over_min": 1.6272545488577026,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.6309947564428646,
+      0.7845564842604739,
+      1.6594756137912778
+    ],
+    "cpu_ratios_F_R_F": [
+      1.0538351595998094,
+      0.559672904081332,
+      0.8652986357904391
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "fixed-scale/negative-tie",
+    "wall_ratios_F_R_F": [
+      7.836854581585145,
+      3.9177003251449767,
+      5.301503584265101
+    ],
+    "wall_deltas_ns": [
+      71.30471801757812,
+      39.74342441558838,
+      35.822072982788086
+    ],
+    "wall_ratio_median": 5.301503584265101,
+    "ratio_range_max_over_min": 2.000371118557961,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      3.995020757395663,
+      1.5646537350039338,
+      3.73222579577791
+    ],
+    "cpu_ratios_F_R_F": [
+      7.539590281086231,
+      3.5803742448799176,
+      4.776338415682678
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      489.2460632324219,
+      376.0,
+      376.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "fixed-scale/nonterminating",
+    "wall_ratios_F_R_F": [
+      0.4799627058562383,
+      0.33147917663954046,
+      0.4567016166168538
+    ],
+    "wall_deltas_ns": [
+      -36.59248161315918,
+      -49.944162368774414,
+      -26.169219970703125
+    ],
+    "wall_ratio_median": 0.4567016166168538,
+    "ratio_range_max_over_min": 1.4479422530307624,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.530073699818771,
+      0.6823849007642873,
+      0.6355049016012713
+    ],
+    "cpu_ratios_F_R_F": [
+      0.4560093481916379,
+      0.3218010541661994,
+      0.4450385476249689
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      176.0,
+      176.0,
+      176.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      256.0,
+      256.0,
+      256.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "fixed-scale/nonterminating",
+    "wall_ratios_F_R_F": [
+      1.038165860218034,
+      0.5399829711185575,
+      0.5170174352974896
+    ],
+    "wall_deltas_ns": [
+      2.685544967651367,
+      -34.367164611816406,
+      -23.26396942138672
+    ],
+    "wall_ratio_median": 0.5399829711185575,
+    "ratio_range_max_over_min": 2.0079900392927326,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.3675716403976055,
+      1.5641400450057779,
+      1.1255672411685613
+    ],
+    "cpu_ratios_F_R_F": [
+      1.0939094251432155,
+      0.5461197712235056,
+      0.5373248777252756
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      418.61370849609375,
+      312.0,
+      312.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      256.0,
+      256.0,
+      256.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "fixed-scale/positive-tie",
+    "wall_ratios_F_R_F": [
+      0.883194150236814,
+      0.8176699350502796,
+      0.9417917574492896
+    ],
+    "wall_deltas_ns": [
+      -1.6737384796142578,
+      -2.6002321243286133,
+      -0.452239990234375
+    ],
+    "wall_ratio_median": 0.883194150236814,
+    "ratio_range_max_over_min": 1.151799420619981,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.202799734181934,
+      1.9277277750162125,
+      1.3292597507547912
+    ],
+    "cpu_ratios_F_R_F": [
+      0.9189936411390656,
+      0.8036175710594315,
+      0.8035187007874016
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "fixed-scale/positive-tie",
+    "wall_ratios_F_R_F": [
+      9.361859456708062,
+      13.497772316540027,
+      3.852712308589315
+    ],
+    "wall_deltas_ns": [
+      119.81904983520508,
+      178.2323122024536,
+      22.16370964050293
+    ],
+    "wall_ratio_median": 9.361859456708062,
+    "ratio_range_max_over_min": 3.503446724129341,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.411186461157016,
+      2.772879866998735,
+      3.1858350493896035
+    ],
+    "cpu_ratios_F_R_F": [
+      8.969311584185789,
+      14.066904113415742,
+      3.844488188976378
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      520.0,
+      520.0,
+      328.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "fixed-scale/zero",
+    "wall_ratios_F_R_F": [
+      0.12118864813598891,
+      0.08774137266514379,
+      0.1033185143697273
+    ],
+    "wall_deltas_ns": [
+      -7.179896354675293,
+      -11.568467140197754,
+      -6.107211112976074
+    ],
+    "wall_ratio_median": 0.1033185143697273,
+    "ratio_range_max_over_min": 1.381203011246397,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.578449312490197,
+      1.3443103088908053,
+      1.69113512753216
+    ],
+    "cpu_ratios_F_R_F": [
+      0.12401644157369349,
+      0.09042433345850545,
+      0.12097433382376982
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "fixed-scale/zero",
+    "wall_ratios_F_R_F": [
+      2.1166703144378785,
+      2.090389163070965,
+      1.2876045787097
+    ],
+    "wall_deltas_ns": [
+      9.12320613861084,
+      13.827363014221191,
+      1.9588470458984375
+    ],
+    "wall_ratio_median": 2.090389163070965,
+    "ratio_range_max_over_min": 1.6438822519247174,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.722451822031683,
+      1.646492454990562,
+      1.8673238842302653
+    ],
+    "cpu_ratios_F_R_F": [
+      2.070698766881973,
+      1.83942921517086,
+      1.439594572502861
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      88.0,
+      112.0,
+      88.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/carry30/ADD",
+    "wall_ratios_F_R_F": [
+      1.8643408813897602,
+      1.6222461602613107,
+      1.2998210697515549
+    ],
+    "wall_deltas_ns": [
+      7.678627014160156,
+      4.26936149597168,
+      2.050082206726074
+    ],
+    "wall_ratio_median": 1.6222461602613107,
+    "ratio_range_max_over_min": 1.4343057862157185,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9366763460502071,
+      0.9540867350761587,
+      0.891626759994418
+    ],
+    "cpu_ratios_F_R_F": [
+      2.0579033682351455,
+      1.7286786097075486,
+      1.4850684705494144
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/carry30/ADD",
+    "wall_ratios_F_R_F": [
+      3.7590798139927135,
+      5.1457246507748975,
+      4.037576607432837
+    ],
+    "wall_deltas_ns": [
+      24.511098861694336,
+      28.444686889648438,
+      20.769993782043457
+    ],
+    "wall_ratio_median": 4.037576607432837,
+    "ratio_range_max_over_min": 1.3688787962470412,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0962898994070398,
+      0.9502542361854837,
+      0.9427147982754441
+    ],
+    "cpu_ratios_F_R_F": [
+      4.238677936167528,
+      5.269330883478793,
+      4.579277346972447
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      120.0,
+      120.0,
+      120.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/carry30/ADD",
+    "wall_ratios_F_R_F": [
+      1.6655736659576565,
+      1.675863506845507,
+      1.8056208561622007
+    ],
+    "wall_deltas_ns": [
+      5.912819862365723,
+      4.637241363525391,
+      5.50858211517334
+    ],
+    "wall_ratio_median": 1.675863506845507,
+    "ratio_range_max_over_min": 1.0840834560889994,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.7226811373631564,
+      0.8232635643854879,
+      1.0385601280930732
+    ],
+    "cpu_ratios_F_R_F": [
+      1.9587485807997982,
+      1.6613076098606645,
+      2.078204916680416
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      72.0,
+      72.0,
+      72.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/carry30/FORMAT",
+    "wall_ratios_F_R_F": [
+      1.3542192670776865,
+      1.0138006484718458,
+      0.9903169425504901
+    ],
+    "wall_deltas_ns": [
+      13.809045791625977,
+      0.5811042785644531,
+      -0.5283355712890625
+    ],
+    "wall_ratio_median": 1.0138006484718458,
+    "ratio_range_max_over_min": 1.367460465323346,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.9825778078484438,
+      0.808487803369068,
+      1.336580875113229
+    ],
+    "cpu_ratios_F_R_F": [
+      1.2713108162444713,
+      1.0077018752391886,
+      0.9546688873601507
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      312.0,
+      312.0,
+      312.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      248.0,
+      248.0,
+      248.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/carry30/FORMAT",
+    "wall_ratios_F_R_F": [
+      4.199548286975497,
+      3.9368098028062697,
+      4.576800226324863
+    ],
+    "wall_deltas_ns": [
+      124.73265266418457,
+      123.66032981872559,
+      195.16054725646973
+    ],
+    "wall_ratio_median": 4.199548286975497,
+    "ratio_range_max_over_min": 1.1625657462705945,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.864388903924222,
+      1.2720694802955468,
+      1.61688442755307
+    ],
+    "cpu_ratios_F_R_F": [
+      4.23572577402493,
+      3.877726750861079,
+      4.502697418443825
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      1472.0,
+      1472.0,
+      1472.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      248.0,
+      248.0,
+      248.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/carry30/FORMAT",
+    "wall_ratios_F_R_F": [
+      1.5842728365064127,
+      1.914093040159205,
+      1.511646428435721
+    ],
+    "wall_deltas_ns": [
+      22.777559280395508,
+      38.4897403717041,
+      27.916906356811523
+    ],
+    "wall_ratio_median": 1.5842728365064127,
+    "ratio_range_max_over_min": 1.2662306503379517,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.2704330175913396,
+      1.6156505958252705,
+      1.1499318515559507
+    ],
+    "cpu_ratios_F_R_F": [
+      1.547195416164053,
+      1.9006888633754306,
+      1.5309750534052644
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      440.0,
+      440.0,
+      440.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      248.0,
+      248.0,
+      248.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/carry30/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      0.7478783347370378,
+      1.7523621478934905,
+      0.6372414637635998
+    ],
+    "wall_deltas_ns": [
+      -2.731520652770996,
+      5.408010482788086,
+      -3.8590822219848633
+    ],
+    "wall_ratio_median": 0.7478783347370378,
+    "ratio_range_max_over_min": 2.7499185905824417,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.8417141736914331,
+      1.021439974280706,
+      1.356837059835997
+    ],
+    "cpu_ratios_F_R_F": [
+      1.0110732538330494,
+      1.5624148887880163,
+      0.6652249134948097
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/carry30/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      6.922663395424956,
+      7.532099419307521,
+      1.1266034634415893
+    ],
+    "wall_deltas_ns": [
+      64.16694641113281,
+      46.9530029296875,
+      1.346827507019043
+    ],
+    "wall_ratio_median": 6.922663395424956,
+    "ratio_range_max_over_min": 6.6856703922231775,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.064039600078416,
+      1.0279425160171496,
+      1.6844026014932751
+    ],
+    "cpu_ratios_F_R_F": [
+      9.595522024823557,
+      8.591920108942352,
+      1.2085736255286428
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/carry30/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      1.7983496379005839,
+      2.1965637673791143,
+      1.2887479385770364
+    ],
+    "wall_deltas_ns": [
+      8.649429321289062,
+      8.600950241088867,
+      3.0717458724975586
+    ],
+    "wall_ratio_median": 1.7983496379005839,
+    "ratio_range_max_over_min": 1.7044169007978687,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.1496765340129387,
+      0.897761979160908,
+      1.348111935465224
+    ],
+    "cpu_ratios_F_R_F": [
+      2.4881966415186176,
+      2.3339385686185503,
+      1.3403498654363706
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      72.0,
+      72.0,
+      72.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/carry30/PARSE",
+    "wall_ratios_F_R_F": [
+      1.1665422696418517,
+      0.8102234679215207,
+      0.9871199788946987
+    ],
+    "wall_deltas_ns": [
+      7.751304626464844,
+      -13.123434066772461,
+      -0.53656005859375
+    ],
+    "wall_ratio_median": 0.9871199788946987,
+    "ratio_range_max_over_min": 1.439778426357362,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.6532304561550842,
+      0.5262218978218929,
+      0.47793001674914765
+    ],
+    "cpu_ratios_F_R_F": [
+      1.1682566132055823,
+      0.7808834058489839,
+      0.976929902395741
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      192.0,
+      192.0,
+      192.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      128.0,
+      128.0,
+      128.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/carry30/PARSE",
+    "wall_ratios_F_R_F": [
+      6.430260110060324,
+      6.485575518518747,
+      5.7266489867340065
+    ],
+    "wall_deltas_ns": [
+      252.7382411956787,
+      379.33872985839844,
+      196.9042625427246
+    ],
+    "wall_ratio_median": 6.430260110060324,
+    "ratio_range_max_over_min": 1.1325254146958932,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.31294390690295,
+      1.2930323984105425,
+      1.0957184652577145
+    ],
+    "cpu_ratios_F_R_F": [
+      6.1533847115184335,
+      6.123919149639257,
+      5.650772894970345
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      1216.0,
+      1216.0,
+      1216.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      128.0,
+      128.0,
+      128.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/carry30/PARSE",
+    "wall_ratios_F_R_F": [
+      0.842053398800879,
+      0.8416519231906456,
+      0.8041981491837492
+    ],
+    "wall_deltas_ns": [
+      -7.351240158081055,
+      -10.950092315673828,
+      -8.156776428222656
+    ],
+    "wall_ratio_median": 0.8416519231906456,
+    "ratio_range_max_over_min": 1.0470720426993676,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.3482103281277487,
+      1.2806869559954233,
+      1.0321272637096381
+    ],
+    "cpu_ratios_F_R_F": [
+      0.8124140803999167,
+      0.7523820014319547,
+      0.7702797366086023
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      272.0,
+      272.0,
+      272.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      128.0,
+      128.0,
+      128.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/carry30/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      1.2575372814181427,
+      2.666020280357524,
+      1.658947391411426
+    ],
+    "wall_deltas_ns": [
+      2.3810853958129883,
+      10.243454933166504,
+      3.8555469512939453
+    ],
+    "wall_ratio_median": 1.658947391411426,
+    "ratio_range_max_over_min": 2.1200327972392317,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.8908569374871756,
+      1.5659978880675818,
+      0.9731994686514717
+    ],
+    "cpu_ratios_F_R_F": [
+      1.2525687769307259,
+      2.314267143321417,
+      1.6289021396001404
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/carry30/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      2.677865318082265,
+      2.8323347228415767,
+      2.893641719683712
+    ],
+    "wall_deltas_ns": [
+      15.512863159179688,
+      11.266032218933105,
+      11.079829216003418
+    ],
+    "wall_ratio_median": 2.8323347228415767,
+    "ratio_range_max_over_min": 1.08057776473836,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.478230753382149,
+      1.7698500527983105,
+      1.172854386212388
+    ],
+    "cpu_ratios_F_R_F": [
+      2.863992928958126,
+      2.9676633084172894,
+      2.9088039284461593
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      56.0,
+      56.0,
+      56.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/carry30/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      1.8722756918232408,
+      1.499725381468484,
+      1.5435357507899787
+    ],
+    "wall_deltas_ns": [
+      8.06470775604248,
+      3.072540283203125,
+      3.180265426635742
+    ],
+    "wall_ratio_median": 1.5435357507899787,
+    "ratio_range_max_over_min": 1.2484123526601698,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0895683312287727,
+      1.2490324332478504,
+      0.9295603739046655
+    ],
+    "cpu_ratios_F_R_F": [
+      2.013700143630538,
+      1.5770230744231395,
+      1.6317081725710276
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      48.0,
+      48.0,
+      48.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/carry30/self",
+    "wall_ratios_F_R_F": [
+      1.4785189926154645,
+      1.1861745169125755,
+      1.552453633611363
+    ],
+    "wall_deltas_ns": [
+      3.9443960189819336,
+      1.4744997024536133,
+      3.2352991104125977
+    ],
+    "wall_ratio_median": 1.4785189926154645,
+    "ratio_range_max_over_min": 1.3087902424781086,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.2587486935866983,
+      0.8704130632340679,
+      0.9361015721932123
+    ],
+    "cpu_ratios_F_R_F": [
+      1.3818870989576282,
+      1.3145793886935353,
+      1.5239102147039687
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/carry30/self",
+    "wall_ratios_F_R_F": [
+      4.185345167194183,
+      4.379448621191738,
+      13.167101062760016
+    ],
+    "wall_deltas_ns": [
+      26.25656032562256,
+      26.765188217163086,
+      71.25342082977295
+    ],
+    "wall_ratio_median": 4.379448621191738,
+    "ratio_range_max_over_min": 3.1460012344900865,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.344418052256532,
+      0.8197261132586512,
+      1.0109139058124987
+    ],
+    "cpu_ratios_F_R_F": [
+      4.693651008528496,
+      4.773600216391669,
+      13.069616135328562
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      56.0,
+      56.0,
+      56.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/carry30/self",
+    "wall_ratios_F_R_F": [
+      1.6516439896507515,
+      1.6598416223664938,
+      3.189099825443609
+    ],
+    "wall_deltas_ns": [
+      5.371452331542969,
+      5.2259368896484375,
+      12.819886207580566
+    ],
+    "wall_ratio_median": 1.6598416223664938,
+    "ratio_range_max_over_min": 1.9308639424879694,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.213479809976247,
+      0.7669733361442915,
+      1.049359590244796
+    ],
+    "cpu_ratios_F_R_F": [
+      1.9286584540408827,
+      1.8479848525831755,
+      3.1060507482108
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      72.0,
+      72.0,
+      72.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/signed/ADD",
+    "wall_ratios_F_R_F": [
+      1.986388598766888,
+      1.3045797224708997,
+      1.9403961312781497
+    ],
+    "wall_deltas_ns": [
+      6.980180740356445,
+      2.8497390747070312,
+      6.247441291809082
+    ],
+    "wall_ratio_median": 1.9403961312781497,
+    "ratio_range_max_over_min": 1.5226272220486676,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.8698777788751523,
+      1.3926831615177782,
+      1.1214931777198303
+    ],
+    "cpu_ratios_F_R_F": [
+      1.8236640193834972,
+      1.3909619578386236,
+      1.9599143206854346
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/signed/ADD",
+    "wall_ratios_F_R_F": [
+      2.326988174252889,
+      1.6592571383897587,
+      3.5097825548637154
+    ],
+    "wall_deltas_ns": [
+      9.390434265136719,
+      6.168207168579102,
+      16.6735258102417
+    ],
+    "wall_ratio_median": 2.326988174252889,
+    "ratio_range_max_over_min": 2.115273439938198,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0670576375805476,
+      1.6966404077434438,
+      1.5255056854581939
+    ],
+    "cpu_ratios_F_R_F": [
+      2.2447166509624443,
+      1.9737097165010904,
+      3.7481640146878825
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      56.0,
+      56.0,
+      56.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/signed/ADD",
+    "wall_ratios_F_R_F": [
+      1.3523354334422695,
+      1.406189776135278,
+      1.3655906260654238
+    ],
+    "wall_deltas_ns": [
+      2.493302345275879,
+      3.8004331588745117,
+      2.428770065307617
+    ],
+    "wall_ratio_median": 1.3655906260654238,
+    "ratio_range_max_over_min": 1.0398232135025305,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.9851541901438825,
+      2.452547768987616,
+      1.8955861182133058
+    ],
+    "cpu_ratios_F_R_F": [
+      1.312558890833221,
+      1.5495517324933366,
+      1.4585373317013464
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      48.0,
+      48.0,
+      48.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/signed/FORMAT",
+    "wall_ratios_F_R_F": [
+      1.8777540310526202,
+      1.165435528810937,
+      1.7007219388154662
+    ],
+    "wall_deltas_ns": [
+      27.13020420074463,
+      11.523086547851562,
+      18.6021728515625
+    ],
+    "wall_ratio_median": 1.7007219388154662,
+    "ratio_range_max_over_min": 1.6112036956419569,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.6727637588905426,
+      0.9580942501661603,
+      1.0532676562403864
+    ],
+    "cpu_ratios_F_R_F": [
+      1.8152367156120366,
+      1.3331154399267877,
+      1.545672204890082
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      328.0,
+      328.0,
+      328.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      264.0,
+      264.0,
+      264.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/signed/FORMAT",
+    "wall_ratios_F_R_F": [
+      1.1323392167801607,
+      0.7789758271549156,
+      1.2413075569136982
+    ],
+    "wall_deltas_ns": [
+      4.090428352355957,
+      -15.395004272460938,
+      6.406028747558594
+    ],
+    "wall_ratio_median": 1.1323392167801607,
+    "ratio_range_max_over_min": 1.5935122935038628,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.6938204453809507,
+      1.057088481538573,
+      0.9590168703786863
+    ],
+    "cpu_ratios_F_R_F": [
+      1.1652729307960756,
+      0.8284743103673683,
+      1.24780526735834
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      320.0,
+      320.0,
+      320.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      264.0,
+      264.0,
+      264.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/signed/FORMAT",
+    "wall_ratios_F_R_F": [
+      0.8772565624099142,
+      0.6845104844837855,
+      0.9430638134365601
+    ],
+    "wall_deltas_ns": [
+      -3.7938356399536133,
+      -21.974802017211914,
+      -1.5114936828613281
+    ],
+    "wall_ratio_median": 0.8772565624099142,
+    "ratio_range_max_over_min": 1.3777200420060172,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.3574211324695575,
+      1.8777661349429375,
+      1.778901628294863
+    ],
+    "cpu_ratios_F_R_F": [
+      0.8699545664054784,
+      0.5891946659694077,
+      0.8827541173909889
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      232.0,
+      232.0,
+      232.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      264.0,
+      264.0,
+      264.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/signed/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      1.9050246312717676,
+      1.1768055091686944,
+      1.8170080266731823
+    ],
+    "wall_deltas_ns": [
+      7.2231292724609375,
+      2.6504993438720703,
+      5.472103118896484
+    ],
+    "wall_ratio_median": 1.8170080266731823,
+    "ratio_range_max_over_min": 1.6188100892028399,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9423829858479836,
+      1.6318210341188886,
+      1.0316300845218564
+    ],
+    "cpu_ratios_F_R_F": [
+      1.9918687982359427,
+      1.2415438596491228,
+      1.7389789425844568
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      88.0,
+      88.0,
+      88.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/signed/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      4.899498173759711,
+      4.032868234807641,
+      9.720705604546378
+    ],
+    "wall_deltas_ns": [
+      31.122445106506348,
+      45.465864181518555,
+      58.408973693847656
+    ],
+    "wall_ratio_median": 4.899498173759711,
+    "ratio_range_max_over_min": 2.41037024732102,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.144435683470643,
+      1.0932581076327823,
+      1.0319660764056626
+    ],
+    "cpu_ratios_F_R_F": [
+      5.182194046306505,
+      4.434526315789474,
+      10.352370852901075
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      56.0,
+      56.0,
+      56.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/signed/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      1.721227559445863,
+      1.4340246513033383,
+      2.013170567232287
+    ],
+    "wall_deltas_ns": [
+      5.756218910217285,
+      6.50648307800293,
+      6.785947799682617
+    ],
+    "wall_ratio_median": 1.721227559445863,
+    "ratio_range_max_over_min": 1.4038605022602517,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9046718878953779,
+      1.3591980302497362,
+      1.2136888231569434
+    ],
+    "cpu_ratios_F_R_F": [
+      1.9055953693495038,
+      1.4542456140350877,
+      2.144220572640509
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      72.0,
+      72.0,
+      72.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/signed/PARSE",
+    "wall_ratios_F_R_F": [
+      0.8959751844152922,
+      0.9594232721295141,
+      0.8355157762763809
+    ],
+    "wall_deltas_ns": [
+      -2.0003318786621094,
+      -0.7677078247070312,
+      -3.378152847290039
+    ],
+    "wall_ratio_median": 0.8959751844152922,
+    "ratio_range_max_over_min": 1.1483006058908285,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.533112945518499,
+      0.4865155273505991,
+      0.5614781482767744
+    ],
+    "cpu_ratios_F_R_F": [
+      0.8853603485381345,
+      0.9698315057502006,
+      0.8301691404901622
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      88.0,
+      112.0,
+      112.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      96.0,
+      96.0,
+      96.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/signed/PARSE",
+    "wall_ratios_F_R_F": [
+      1.104880373197891,
+      2.9817005510067616,
+      2.015710617352743
+    ],
+    "wall_deltas_ns": [
+      2.0167837142944336,
+      37.49358558654785,
+      20.860515594482422
+    ],
+    "wall_ratio_median": 2.015710617352743,
+    "ratio_range_max_over_min": 2.6986636954883445,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0432099871963276,
+      1.173195038468881,
+      1.4915030051462195
+    ],
+    "cpu_ratios_F_R_F": [
+      1.11012545273214,
+      3.1672639743246855,
+      1.885694560875783
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      128.0,
+      128.0,
+      128.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      96.0,
+      96.0,
+      96.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/signed/PARSE",
+    "wall_ratios_F_R_F": [
+      0.6987371908132027,
+      1.577451799635848,
+      0.5635481414408767
+    ],
+    "wall_deltas_ns": [
+      -5.793094635009766,
+      10.925333023071289,
+      -8.963784217834473
+    ],
+    "wall_ratio_median": 0.6987371908132027,
+    "ratio_range_max_over_min": 2.799142936755373,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.6916165657012293,
+      0.9785677870337085,
+      0.8392017368605975
+    ],
+    "cpu_ratios_F_R_F": [
+      0.7355519395307333,
+      1.583738967638406,
+      0.5676808521130233
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      72.0,
+      96.0,
+      72.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      96.0,
+      96.0,
+      96.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/signed/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      1.2130800495249416,
+      1.5820943882468663,
+      0.8305458851868214
+    ],
+    "wall_deltas_ns": [
+      1.6465177536010742,
+      4.547080039978027,
+      -1.4767646789550781
+    ],
+    "wall_ratio_median": 1.2130800495249416,
+    "ratio_range_max_over_min": 1.9048849876500118,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.018120592659223,
+      0.9877774622834333,
+      1.1037078065945523
+    ],
+    "cpu_ratios_F_R_F": [
+      1.2601533655211588,
+      1.564830611747502,
+      0.7510159253157606
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/signed/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      3.8995944997299627,
+      4.373894600210156,
+      3.0607296846293135
+    ],
+    "wall_deltas_ns": [
+      22.40582275390625,
+      26.35546588897705,
+      17.958919525146484
+    ],
+    "wall_ratio_median": 3.8995944997299627,
+    "ratio_range_max_over_min": 1.4290365536608571,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.2966599746929275,
+      1.117755787039753,
+      1.7330632239863233
+    ],
+    "cpu_ratios_F_R_F": [
+      4.2732178358420905,
+      4.2117962466487935,
+      2.9352004393190554
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      120.0,
+      120.0,
+      120.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/signed/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      1.607640352756602,
+      1.7366992791270366,
+      1.461480185249405
+    ],
+    "wall_deltas_ns": [
+      4.695374488830566,
+      5.754789352416992,
+      4.021723747253418
+    ],
+    "wall_ratio_median": 1.607640352756602,
+    "ratio_range_max_over_min": 1.1883153098176729,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.932912763481482,
+      2.1556608680892073,
+      2.978278174295914
+    ],
+    "cpu_ratios_F_R_F": [
+      1.7548991763703494,
+      1.7042407994150621,
+      1.4642504118616144
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      72.0,
+      72.0,
+      72.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/signed/self",
+    "wall_ratios_F_R_F": [
+      1.5467004529039363,
+      1.701303048699104,
+      1.4784892151181508
+    ],
+    "wall_deltas_ns": [
+      4.963199615478516,
+      4.970909118652344,
+      3.5435752868652344
+    ],
+    "wall_ratio_median": 1.5467004529039363,
+    "ratio_range_max_over_min": 1.150703726008003,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.8258539742086752,
+      0.7343204322804551,
+      1.0658369631020101
+    ],
+    "cpu_ratios_F_R_F": [
+      1.6966836417836293,
+      1.590994623655914,
+      1.5080808080808081
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      88.0,
+      88.0,
+      88.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/signed/self",
+    "wall_ratios_F_R_F": [
+      4.269863998559582,
+      4.8885012625773365,
+      4.706533256068508
+    ],
+    "wall_deltas_ns": [
+      29.685338020324707,
+      27.56210231781006,
+      27.449687957763672
+    ],
+    "wall_ratio_median": 4.706533256068508,
+    "ratio_range_max_over_min": 1.1448845359539435,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0465808206330598,
+      0.9045380661599964,
+      1.0980492442032304
+    ],
+    "cpu_ratios_F_R_F": [
+      4.844242951186188,
+      4.672849462365591,
+      5.285714285714286
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      56.0,
+      56.0,
+      56.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/signed/self",
+    "wall_ratios_F_R_F": [
+      1.890041113685254,
+      2.280202830412076,
+      2.5252774451097806
+    ],
+    "wall_deltas_ns": [
+      8.080204963684082,
+      9.074211120605469,
+      11.295835494995117
+    ],
+    "wall_ratio_median": 2.280202830412076,
+    "ratio_range_max_over_min": 1.3360965678603285,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.96120347010551,
+      0.8643556648947854,
+      1.1485799518741113
+    ],
+    "cpu_ratios_F_R_F": [
+      2.0630977518320703,
+      1.9193548387096775,
+      2.8323232323232324
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      72.0,
+      72.0,
+      72.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/wide10/ADD",
+    "wall_ratios_F_R_F": [
+      0.4897597441802598,
+      0.682236269138924,
+      0.5983304232392759
+    ],
+    "wall_deltas_ns": [
+      -14.455597877502441,
+      -6.741762161254883,
+      -10.46212387084961
+    ],
+    "wall_ratio_median": 0.5983304232392759,
+    "ratio_range_max_over_min": 1.393001930529884,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0979613372667096,
+      1.731462382558215,
+      1.0579111978164413
+    ],
+    "cpu_ratios_F_R_F": [
+      0.453095621810368,
+      0.715375411307209,
+      0.5778898768809849
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      72.0,
+      72.0,
+      72.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      88.0,
+      88.0,
+      88.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/wide10/ADD",
+    "wall_ratios_F_R_F": [
+      2.191221997330745,
+      1.7360415788734374,
+      2.7898775885850498
+    ],
+    "wall_deltas_ns": [
+      33.74846649169922,
+      15.616059303283691,
+      46.62021255493164
+    ],
+    "wall_ratio_median": 2.191221997330745,
+    "ratio_range_max_over_min": 1.6070338536450688,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.1100681265164478,
+      1.1870926268591837,
+      1.325396739220046
+    ],
+    "cpu_ratios_F_R_F": [
+      2.188423314531292,
+      1.927410509522385,
+      3.2607729138166897
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      88.0,
+      88.0,
+      88.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/wide10/ADD",
+    "wall_ratios_F_R_F": [
+      0.41761527049633274,
+      0.5394896137097906,
+      0.5157624724698072
+    ],
+    "wall_deltas_ns": [
+      -16.499520301818848,
+      -9.77031421661377,
+      -12.612737655639648
+    ],
+    "wall_ratio_median": 0.5157624724698072,
+    "ratio_range_max_over_min": 1.2918340200266412,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9869506097980041,
+      0.7594724234948359,
+      1.0717184988395723
+    ],
+    "cpu_ratios_F_R_F": [
+      0.3988383024442654,
+      0.5418286967793399,
+      0.5901162790697675
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      56.0,
+      56.0,
+      56.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      88.0,
+      88.0,
+      88.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/wide10/FORMAT",
+    "wall_ratios_F_R_F": [
+      1.9963005484940497,
+      1.3539140254821767,
+      1.3044030932231538
+    ],
+    "wall_deltas_ns": [
+      85.61213684082031,
+      32.868865966796875,
+      28.911746978759766
+    ],
+    "wall_ratio_median": 1.3539140254821767,
+    "ratio_range_max_over_min": 1.5304322405133455,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.5892061935694733,
+      0.4783666820073312,
+      0.5245783190449902
+    ],
+    "cpu_ratios_F_R_F": [
+      2.1156449793155323,
+      1.2837288135593221,
+      1.3103052948919367
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      616.0,
+      616.0,
+      616.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      296.0,
+      296.0,
+      296.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/wide10/FORMAT",
+    "wall_ratios_F_R_F": [
+      12.359591267742465,
+      13.745717954495772,
+      12.792679520743036
+    ],
+    "wall_deltas_ns": [
+      976.1300277709961,
+      1183.726173400879,
+      1120.050926208496
+    ],
+    "wall_ratio_median": 12.792679520743036,
+    "ratio_range_max_over_min": 1.112149880746541,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.064952077460473,
+      1.1196922460180754,
+      0.8717226142847551
+    ],
+    "cpu_ratios_F_R_F": [
+      12.136141406543814,
+      13.139661016949152,
+      12.835463462273363
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      5784.0,
+      5880.0,
+      5784.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      296.0,
+      296.0,
+      296.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/wide10/FORMAT",
+    "wall_ratios_F_R_F": [
+      1.5356115379701414,
+      1.9295639136484175,
+      1.2828636083110472
+    ],
+    "wall_deltas_ns": [
+      46.025115966796875,
+      86.33088684082031,
+      26.86595916748047
+    ],
+    "wall_ratio_median": 1.5356115379701414,
+    "ratio_range_max_over_min": 1.5041068287756505,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.912339420680639,
+      1.130155506640823,
+      0.9928315739942662
+    ],
+    "cpu_ratios_F_R_F": [
+      1.4959571267393756,
+      1.9921186440677967,
+      1.2987983525115707
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      616.0,
+      616.0,
+      616.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      296.0,
+      296.0,
+      296.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/wide10/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      0.6158744025329514,
+      0.831071705277874,
+      0.7344035079930399
+    ],
+    "wall_deltas_ns": [
+      -10.152978897094727,
+      -3.3874502182006836,
+      -6.920416831970215
+    ],
+    "wall_ratio_median": 0.7344035079930399,
+    "ratio_range_max_over_min": 1.3494175141227902,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.3588567364677993,
+      0.541446547355227,
+      0.31452246775010717
+    ],
+    "cpu_ratios_F_R_F": [
+      0.5601957702200628,
+      0.752675022928768,
+      0.6743040350328433
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      104.0,
+      104.0,
+      104.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      96.0,
+      96.0,
+      96.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/wide10/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      6.261731771896974,
+      9.272194019147209,
+      5.173786400055955
+    ],
+    "wall_deltas_ns": [
+      139.07495880126953,
+      165.87893390655518,
+      108.75272274017334
+    ],
+    "wall_ratio_median": 6.261731771896974,
+    "ratio_range_max_over_min": 1.7921485933487569,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.4149348083761359,
+      0.6984649895155479,
+      0.5056379438013953
+    ],
+    "cpu_ratios_F_R_F": [
+      6.209774221206059,
+      9.941098542749414,
+      5.541757898029402
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      96.0,
+      96.0,
+      96.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/wide10/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      0.7494857720649679,
+      0.9995818643059311,
+      0.8700672462202664
+    ],
+    "wall_deltas_ns": [
+      -6.621442794799805,
+      -0.00838470458984375,
+      -3.385544776916504
+    ],
+    "wall_ratio_median": 0.8700672462202664,
+    "ratio_range_max_over_min": 1.3336902467833425,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.24726716712761754,
+      0.5130850206889577,
+      0.44752328617639037
+    ],
+    "cpu_ratios_F_R_F": [
+      0.6594741354672764,
+      1.0459084887394272,
+      0.8653425086018142
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      88.0,
+      88.0,
+      88.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      96.0,
+      96.0,
+      96.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/wide10/PARSE",
+    "wall_ratios_F_R_F": [
+      0.985645343724413,
+      1.179911427207323,
+      1.0730260132890366
+    ],
+    "wall_deltas_ns": [
+      -1.7344169616699219,
+      15.63262939453125,
+      8.385021209716797
+    ],
+    "wall_ratio_median": 1.0730260132890366,
+    "ratio_range_max_over_min": 1.1970953190412745,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.3775163415542995,
+      0.5148393493186425,
+      0.520724068343872
+    ],
+    "cpu_ratios_F_R_F": [
+      1.031504970860473,
+      1.1464242640818332,
+      1.0267614051397835
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      232.0,
+      232.0,
+      232.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      216.0,
+      216.0,
+      216.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/wide10/PARSE",
+    "wall_ratios_F_R_F": [
+      6.161994787242997,
+      7.189125412269582,
+      5.629479601328904
+    ],
+    "wall_deltas_ns": [
+      623.7036361694336,
+      537.7774238586426,
+      531.5679016113281
+    ],
+    "wall_ratio_median": 6.161994787242997,
+    "ratio_range_max_over_min": 1.2770497313059817,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0432910647868658,
+      1.2269073601528775,
+      1.2594735638369434
+    ],
+    "cpu_ratios_F_R_F": [
+      6.413986972917381,
+      7.21918970831286,
+      5.423733315625207
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      1056.0,
+      1056.0,
+      1056.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      216.0,
+      216.0,
+      216.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/wide10/PARSE",
+    "wall_ratios_F_R_F": [
+      0.6036094335785178,
+      0.8131026270009823,
+      0.5686350830564784
+    ],
+    "wall_deltas_ns": [
+      -47.89432144165039,
+      -16.239643096923828,
+      -49.53034973144531
+    ],
+    "wall_ratio_median": 0.6036094335785178,
+    "ratio_range_max_over_min": 1.4299199103763753,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.7722000579112744,
+      0.7745232985260011,
+      0.8042905959908516
+    ],
+    "cpu_ratios_F_R_F": [
+      0.6062392869386356,
+      0.774578996739179,
+      0.5330367222259114
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      368.0,
+      368.0,
+      368.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      216.0,
+      216.0,
+      216.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/wide10/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      0.2890243985854703,
+      0.32558783419150067,
+      0.1740699318136675
+    ],
+    "wall_deltas_ns": [
+      -49.56364631652832,
+      -29.595020294189453,
+      -73.10795879364014
+    ],
+    "wall_ratio_median": 0.2890243985854703,
+    "ratio_range_max_over_min": 1.8704427054066117,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.40575786212238574,
+      0.853159693822687,
+      0.9810760179491441
+    ],
+    "cpu_ratios_F_R_F": [
+      0.2626945126945127,
+      0.33502813703228357,
+      0.15641003571889658
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      72.0,
+      72.0,
+      72.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      120.0,
+      120.0,
+      120.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/wide10/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      0.9386193697545093,
+      1.8296326605690887,
+      0.6526358459220484
+    ],
+    "wall_deltas_ns": [
+      -4.2789764404296875,
+      36.40651321411133,
+      -30.747257232666016
+    ],
+    "wall_ratio_median": 0.9386193697545093,
+    "ratio_range_max_over_min": 2.8034510699978044,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.5195648334624322,
+      0.6834510538519585,
+      0.8704558417816187
+    ],
+    "cpu_ratios_F_R_F": [
+      0.8767130767130767,
+      2.08174548326587,
+      0.6521065542023498
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      128.0,
+      128.0,
+      128.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      120.0,
+      120.0,
+      120.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/wide10/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      0.26179286852671396,
+      0.36903081683065037,
+      0.13383112213338808
+    ],
+    "wall_deltas_ns": [
+      -51.46201515197754,
+      -27.68862533569336,
+      -76.66973400115967
+    ],
+    "wall_ratio_median": 0.26179286852671396,
+    "ratio_range_max_over_min": 2.7574364687971546,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0091144848954299,
+      1.5799611948233074,
+      1.3060217384078445
+    ],
+    "cpu_ratios_F_R_F": [
+      0.25513240513240515,
+      0.3961151150162899,
+      0.12761974437319792
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      88.0,
+      88.0,
+      88.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      120.0,
+      120.0,
+      120.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/wide10/self",
+    "wall_ratios_F_R_F": [
+      0.5395860154914417,
+      0.5392007843119863,
+      0.7945663992781172
+    ],
+    "wall_deltas_ns": [
+      -20.804286003112793,
+      -22.988560676574707,
+      -3.690998077392578
+    ],
+    "wall_ratio_median": 0.5395860154914417,
+    "ratio_range_max_over_min": 1.4736002290723194,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.41392681950493354,
+      0.5016851226177745,
+      0.4221596570030514
+    ],
+    "cpu_ratios_F_R_F": [
+      0.5037021455616323,
+      0.5032012195121951,
+      0.7683663200268366
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      120.0,
+      120.0,
+      120.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      112.0,
+      112.0,
+      112.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/wide10/self",
+    "wall_ratios_F_R_F": [
+      5.730433549313016,
+      5.0712677719818515,
+      8.780270307928104
+    ],
+    "wall_deltas_ns": [
+      213.74957275390625,
+      203.10925674438477,
+      139.78707790374756
+    ],
+    "wall_ratio_median": 5.730433549313016,
+    "ratio_range_max_over_min": 1.731375802405475,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.5586434586735284,
+      0.4878078036772417,
+      0.45910219120651835
+    ],
+    "cpu_ratios_F_R_F": [
+      5.702482120319731,
+      4.815548780487805,
+      9.251928882925194
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      248.0,
+      248.0,
+      248.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      112.0,
+      112.0,
+      112.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/wide10/self",
+    "wall_ratios_F_R_F": [
+      0.6485388024735653,
+      0.5312421074267016,
+      0.8542256547038489
+    ],
+    "wall_deltas_ns": [
+      -15.88114070892334,
+      -23.38560676574707,
+      -2.619108200073242
+    ],
+    "wall_ratio_median": 0.6485388024735653,
+    "ratio_range_max_over_min": 1.6079780626608389,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.4640366009980251,
+      0.48278972872722387,
+      0.3825868143642976
+    ],
+    "cpu_ratios_F_R_F": [
+      0.6086032814472023,
+      0.4737423780487805,
+      0.8546908196354691
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      104.0,
+      104.0,
+      104.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      112.0,
+      112.0,
+      112.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/zero/ADD",
+    "wall_ratios_F_R_F": [
+      14.597363458613948,
+      6.634968091762253,
+      13.474775397373877
+    ],
+    "wall_deltas_ns": [
+      7.461150169372559,
+      3.2209959030151367,
+      4.303693771362305
+    ],
+    "wall_ratio_median": 13.474775397373877,
+    "ratio_range_max_over_min": 2.2000653592799537,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.162849284764248,
+      1.1329623480022444,
+      0.9708336420328695
+    ],
+    "cpu_ratios_F_R_F": [
+      14.202020202020202,
+      6.6694352159468435,
+      13.43526170798898
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/zero/ADD",
+    "wall_ratios_F_R_F": [
+      68.53733304366718,
+      27.937504900938478,
+      36.11022805805114
+    ],
+    "wall_deltas_ns": [
+      37.059109687805176,
+      15.39770793914795,
+      12.112736701965332
+    ],
+    "wall_ratio_median": 36.11022805805114,
+    "ratio_range_max_over_min": 2.4532374414497147,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.9452043145881868,
+      1.3405115905261804,
+      1.1332470677801991
+    ],
+    "cpu_ratios_F_R_F": [
+      66.45117845117845,
+      27.08471760797342,
+      35.03305785123967
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/zero/ADD",
+    "wall_ratios_F_R_F": [
+      1.36773234846839,
+      1.0411528675703858,
+      1.0457249481686248
+    ],
+    "wall_deltas_ns": [
+      0.2017822265625,
+      0.023523330688476562,
+      0.01577472686767578
+    ],
+    "wall_ratio_median": 1.0457249481686248,
+    "ratio_range_max_over_min": 1.3136710189927285,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.880373193572907,
+      1.1449299243572888,
+      1.023844165067816
+    ],
+    "cpu_ratios_F_R_F": [
+      1.3316498316498318,
+      1.06312292358804,
+      1.046831955922865
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/zero/FORMAT",
+    "wall_ratios_F_R_F": [
+      0.7680607350973655,
+      1.172010707553205,
+      1.0242189324890318
+    ],
+    "wall_deltas_ns": [
+      -1.4431467056274414,
+      0.693638801574707,
+      0.0599212646484375
+    ],
+    "wall_ratio_median": 1.0242189324890318,
+    "ratio_range_max_over_min": 1.5259349345655997,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.0255750511501023,
+      1.1457141212269835,
+      1.0246850195803379
+    ],
+    "cpu_ratios_F_R_F": [
+      0.7709573980760421,
+      1.1713881019830028,
+      1.0257395313100268
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/zero/FORMAT",
+    "wall_ratios_F_R_F": [
+      12.23828887949159,
+      9.560068933598554,
+      9.34774281183533
+    ],
+    "wall_deltas_ns": [
+      69.92563152313232,
+      34.518757820129395,
+      20.653565406799316
+    ],
+    "wall_ratio_median": 9.560068933598554,
+    "ratio_range_max_over_min": 1.3092239619597248,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.371504743009486,
+      1.1760906160547673,
+      1.0952714945350401
+    ],
+    "cpu_ratios_F_R_F": [
+      9.519621316231486,
+      9.46978281397545,
+      9.175182481751825
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      296.0,
+      296.0,
+      296.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/zero/FORMAT",
+    "wall_ratios_F_R_F": [
+      1.238236307067711,
+      1.4379102155723997,
+      1.3178881362230153
+    ],
+    "wall_deltas_ns": [
+      1.4823274612426758,
+      1.7658872604370117,
+      0.7865028381347656
+    ],
+    "wall_ratio_median": 1.3178881362230153,
+    "ratio_range_max_over_min": 1.161256706304744,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.236241056482113,
+      0.9065054174446534,
+      1.0312700917645683
+    ],
+    "cpu_ratios_F_R_F": [
+      1.2351504046419302,
+      1.4381491973559963,
+      1.3157894736842106
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/zero/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      17.210015337269564,
+      14.669250260843643,
+      15.00038781890647
+    ],
+    "wall_deltas_ns": [
+      9.25290584564209,
+      5.422433853149414,
+      4.47563362121582
+    ],
+    "wall_ratio_median": 15.00038781890647,
+    "ratio_range_max_over_min": 1.1732034719734747,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9505104292954581,
+      0.8800702469975074,
+      1.1884390787167092
+    ],
+    "cpu_ratios_F_R_F": [
+      17.041322314049587,
+      14.610047846889952,
+      14.976190476190476
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/zero/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      1.1370680754232785,
+      1.3180417253665033,
+      1.0892490632681797
+    ],
+    "wall_deltas_ns": [
+      0.07824039459228516,
+      0.12616348266601562,
+      0.02853107452392578
+    ],
+    "wall_ratio_median": 1.1370680754232785,
+    "ratio_range_max_over_min": 1.2100462325961105,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.8940510244671501,
+      1.2140643553138455,
+      1.067448723473084
+    ],
+    "cpu_ratios_F_R_F": [
+      1.1322314049586777,
+      1.3181818181818181,
+      1.0892857142857142
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/zero/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      10.505042252673999,
+      8.091961207621923,
+      7.859048710054653
+    ],
+    "wall_deltas_ns": [
+      5.425612449645996,
+      2.8132991790771484,
+      2.1926956176757812
+    ],
+    "wall_ratio_median": 8.091961207621923,
+    "ratio_range_max_over_min": 1.3366811480929153,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.4441814640903606,
+      1.0199596646272377,
+      0.9923556706896838
+    ],
+    "cpu_ratios_F_R_F": [
+      10.439669421487602,
+      8.069377990430622,
+      7.904761904761905
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/zero/PARSE",
+    "wall_ratios_F_R_F": [
+      1.229805615550756,
+      0.7054244556888769,
+      1.0737235156409772
+    ],
+    "wall_deltas_ns": [
+      2.219676971435547,
+      -4.702847480773926,
+      0.5627880096435547
+    ],
+    "wall_ratio_median": 1.0737235156409772,
+    "ratio_range_max_over_min": 1.743355515438997,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      0.547449889015314,
+      0.5319117805271651,
+      0.5224462658841
+    ],
+    "cpu_ratios_F_R_F": [
+      1.1608740894901144,
+      0.6262818984020987,
+      1.003903200624512
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      40.0,
+      40.0,
+      40.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/zero/PARSE",
+    "wall_ratios_F_R_F": [
+      0.1278082567108917,
+      0.11246543826425447,
+      0.11263859716364988
+    ],
+    "wall_deltas_ns": [
+      -8.42444133758545,
+      -14.16933536529541,
+      -6.773908615112305
+    ],
+    "wall_ratio_median": 0.11263859716364988,
+    "ratio_range_max_over_min": 1.1364225195173914,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      1.2409953181250117,
+      1.4321668758591835,
+      1.3893769455300955
+    ],
+    "cpu_ratios_F_R_F": [
+      0.13590010405827263,
+      0.11286668256618174,
+      0.11761644548529794
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/zero/PARSE",
+    "wall_ratios_F_R_F": [
+      0.5429271459426103,
+      0.5144262354622077,
+      0.8386549305566574
+    ],
+    "wall_deltas_ns": [
+      -4.4148359298706055,
+      -7.752100944519043,
+      -1.2316703796386719
+    ],
+    "wall_ratio_median": 0.5429271459426103,
+    "ratio_range_max_over_min": 1.6302724720156097,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.720828337468057,
+      0.7192985476062399,
+      0.7415873640092981
+    ],
+    "cpu_ratios_F_R_F": [
+      0.5726326742976067,
+      0.5158001430956356,
+      0.8743169398907104
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      64.0,
+      64.0,
+      64.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/zero/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      12.77795300962184,
+      14.483582942063448,
+      13.392953483604346
+    ],
+    "wall_deltas_ns": [
+      6.274661064147949,
+      8.689960479736328,
+      4.381339073181152
+    ],
+    "wall_ratio_median": 13.392953483604346,
+    "ratio_range_max_over_min": 1.1334822511209162,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0163901314272539,
+      0.7942972005357044,
+      0.9715454339793379
+    ],
+    "cpu_ratios_F_R_F": [
+      12.666666666666666,
+      14.485250737463128,
+      13.384408602150538
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/zero/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      59.00738420228239,
+      147.9555069540731,
+      56.48336156759498
+    ],
+    "wall_deltas_ns": [
+      30.903220176696777,
+      94.71054935455322,
+      19.615293502807617
+    ],
+    "wall_ratio_median": 59.00738420228239,
+    "ratio_range_max_over_min": 2.6194529299926885,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.5622356467604335,
+      1.1959474730765254,
+      1.0172940200588192
+    ],
+    "cpu_ratios_F_R_F": [
+      55.354609929078016,
+      147.59882005899706,
+      55.56720430107527
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      32.0,
+      32.0,
+      32.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/zero/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      1.073618259118371,
+      1.0876765153723562,
+      0.9976396516935162
+    ],
+    "wall_deltas_ns": [
+      0.03921985626220703,
+      0.05650615692138672,
+      -0.0008344650268554688
+    ],
+    "wall_ratio_median": 1.073618259118371,
+    "ratio_range_max_over_min": 1.0902498848416864,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.055626008761817,
+      0.9051132360826254,
+      0.9110926777769399
+    ],
+    "cpu_ratios_F_R_F": [
+      1.0691489361702127,
+      1.1002949852507375,
+      0.9946236559139785
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "peer": "jdk-bellsoft-25.0.4+9",
+    "id": "int/zero/self",
+    "wall_ratios_F_R_F": [
+      14.728358002858977,
+      4.067855140186916,
+      14.619475703092334
+    ],
+    "wall_deltas_ns": [
+      8.343657493591309,
+      2.5044288635253906,
+      4.286765098571777
+    ],
+    "wall_ratio_median": 14.619475703092334,
+    "ratio_range_max_over_min": 3.620669245901961,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9417355984269615,
+      1.172080899028678,
+      0.4442496404139625
+    ],
+    "cpu_ratios_F_R_F": [
+      14.734789391575664,
+      4.09895227008149,
+      14.608433734939759
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/zero/self",
+    "wall_ratios_F_R_F": [
+      1.0686515265396812,
+      0.7961939252336449,
+      1.1821737839426498
+    ],
+    "wall_deltas_ns": [
+      0.041724205017089844,
+      -0.16637611389160156,
+      0.05733966827392578
+    ],
+    "wall_ratio_median": 1.0686515265396812,
+    "ratio_range_max_over_min": 1.4847812153248197,
+    "direction": "mixed",
+    "FIRST_ratios_F_R_F": [
+      1.1323153990303927,
+      0.9630751541049841,
+      0.4961001929486055
+    ],
+    "cpu_ratios_F_R_F": [
+      1.0670826833073324,
+      0.79976717112922,
+      1.1867469879518073
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "kbignum-0.0.20-desktop",
+    "id": "int/zero/self",
+    "wall_ratios_F_R_F": [
+      7.79301135587981,
+      5.916570093457944,
+      8.093160870434671
+    ],
+    "wall_deltas_ns": [
+      4.128575325012207,
+      4.013618469238281,
+      2.232590675354004
+    ],
+    "wall_ratio_median": 7.79301135587981,
+    "ratio_range_max_over_min": 1.367880502148267,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.1303538460527671,
+      1.0394394411351784,
+      0.4625622171548851
+    ],
+    "cpu_ratios_F_R_F": [
+      7.795631825273011,
+      5.938300349243306,
+      8.102409638554217
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "status": "SOURCE_ONLY_FULL_CONSUMERS_UNRUN",
+  "deltas": [
+    {
+      "path": "prepared-portable/build.gradle.kts",
+      "before_sha256": "a01be816bfca168bf0b7e4c6384e012c0651e5455dca2d7caa454521dc8a3735",
+      "after_sha256": "01832369929b9e146f5392f1dc198ce3e0875abc7454151452a348ecd4c6e7fb"
+    },
+    {
+      "path": "prepared-timing/build.gradle.kts",
+      "before_sha256": "e828ccbaecac83d0ddd173fd90058a9a5c5a31f33d1cd09cf0adf4ca8c7d0645",
+      "after_sha256": "66316656eb5ef009d4f427a65ba1f7aeed8da03010e0d2f289912f98e5863f06"
+    }
+  ],
+  "patch_sha256": "d93ddadd58d2e498bbc6a89815132c586a5cbf53bff954e777557c9904a70a0f",
+  "historical_root": ".codex-work/598/history/before-portable-runtime-pins",
+  "manifests": {
+    "prepared-portable": "0c7444af0057078194b552871da09a88ce0f339f0fa1a310e2fddae4ad351283",
+    "prepared-timing": "e1245b76030294ac436363252d43667de56dfa5b1ea4243a1d197998b982c6df"
+  },
+  "proven_fixes": [
+    "Kotlin JS/Wasm stdlib and DOM modules aligned to2.4.21 after actual conflicts.",
+    "WasmNodeJsPlugin/EnvSpec explicitly pin preinstalled Node24.16.0, independent of JS plugin.",
+    "Native executable entryPoint preparation598.main matches package."
+  ],
+  "full_scope": "No Krogu/portable-full/timing execution; accepted539 requirement and complete original portable corpus remain unchanged."
+}

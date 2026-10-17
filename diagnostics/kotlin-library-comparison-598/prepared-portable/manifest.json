@@ -1,0 +1,120 @@
+{
+  "task": "local:598",
+  "status": "SOURCE_ONLY_UNRESOLVED_UNCOMPILED_UNRUN",
+  "dependencies": [
+    "local:529",
+    "local:537",
+    "local:539"
+  ],
+  "entrypoints": [
+    "jsNodeProductionRun",
+    "wasmJsNodeProductionRun",
+    "runReleaseExecutableMacosArm64"
+  ],
+  "mandatory_CHECK_rows": 128,
+  "conditional_distinct_CHECK_rows_max": 32,
+  "platforms_are_proposed_not_verified": true,
+  "entries": [
+    {
+      "path": "prepared-portable/README.md",
+      "bytes": 8846,
+      "sha256": "c9ab3dcd4adf371b2e219d6a25275f748ccadcc5f4e9a0e583445df348f9ed9c",
+      "role": "new_prepared_consumer"
+    },
+    {
+      "path": "prepared-portable/build.gradle.kts",
+      "bytes": 7229,
+      "sha256": "e9f47dc779edc06447023e75f424a2956dd96c7fe578580420d49284c94ab849",
+      "role": "new_prepared_consumer"
+    },
+    {
+      "path": "prepared-portable/gradle.properties",
+      "bytes": 121,
+      "sha256": "9e8396eba8e3760165d5c6fd4f9834fd39ada2b1442e8a1b58966073e6245695",
+      "role": "new_prepared_consumer"
+    },
+    {
+      "path": "prepared-portable/settings.gradle.kts",
+      "bytes": 113,
+      "sha256": "7084d44895592e0c011e4631384668d9d35b744a41d0192ff6295c9930bf35a7",
+      "role": "new_prepared_consumer"
+    },
+    {
+      "path": "prepared-portable/src/commonMain/kotlin/preparation598/PortableUntimedMain.kt",
+      "bytes": 6411,
+      "sha256": "c3059448272e8a95ff8bce4044a39a5f0d8721004b79011bfeba26c7e5d9db83",
+      "role": "new_prepared_consumer"
+    },
+    {
+      "path": "prepared-portable/src/jsMain/kotlin/preparation598/Runtime598.kt",
+      "bytes": 275,
+      "sha256": "f8423bb409bf567e658fffbcb9063499eee97d727531256de677fed7956b1d57",
+      "role": "new_prepared_consumer"
+    },
+    {
+      "path": "prepared-portable/src/macosArm64Main/kotlin/preparation598/Runtime598.kt",
+      "bytes": 190,
+      "sha256": "8eabb0bbcb25345e01827be5c158fc9b4e4145a393e9c99bc05267bc31456096",
+      "role": "new_prepared_consumer"
+    },
+    {
+      "path": "prepared-portable/src/wasmJsMain/kotlin/preparation598/Runtime598.kt",
+      "bytes": 267,
+      "sha256": "1db5bca15011c09ac559fd5fe4a9d94509775f6774027ffe178d51fc547cee27",
+      "role": "new_prepared_consumer"
+    },
+    {
+      "path": "prepared-portable/prepared-portable.patch",
+      "bytes": 24278,
+      "sha256": "32b443f2a0a3bf4518dc71142527ac9756b6c2e2c0be0faf12c84dfe7a2cafb7",
+      "role": "new_prepared_consumer"
+    },
+    {
+      "path": "prepared-harness/Contract.kt",
+      "bytes": 893,
+      "sha256": "44cd970685f6b0bea03532ce6e2efbb0766ca7588884ede15185f6d05934933c",
+      "role": "unchanged_reviewed_adapter"
+    },
+    {
+      "path": "prepared-harness/KroguAdapter.kt",
+      "bytes": 1456,
+      "sha256": "a0efce00a0051ff6acb915db88b58305418581dc853b59efdd1b2898e4d51053",
+      "role": "unchanged_reviewed_adapter"
+    },
+    {
+      "path": "prepared-harness/IonsPinAdapter.kt",
+      "bytes": 1579,
+      "sha256": "459bc3eee5cdf5a3728e0a59b474c2506c82926771cc2d4a9500581f99a2d621",
+      "role": "unchanged_reviewed_adapter"
+    }
+  ],
+  "dependency_pin_update": {
+    "scope": "Only stdlib/common/jdk7/jdk8 alignment to existing Kotlin2.4.21; no peer version/adapter/fixture/timing/provenance-gate changes. Full Krogu consumer still UNRUN and needs accepted539.",
+    "actual_peer_only_evidence": "../peer-only-api-preflight.json",
+    "evidence_sha256": "6f88c53ec5fcad02804d1730d5ee5f4dc3be41571c8d217f6bd784a9c36c69dd",
+    "previous_snapshot": "../history/stdlib-pin-before-peer-preflight/prepared-portable",
+    "reason": "Actual59981 runtime resolution conflict; isolated85499 with this exact pin actually passed494 untimed JVM checks."
+  },
+  "portable_runtime_pin_update": {
+    "scope": "Only Node environment/dependency wiring; full consumer still UNRUN and requires accepted539.",
+    "history": "../history/before-portable-runtime-pins/prepared-portable",
+    "actual_proof": "Peer-only JS71934 and Wasm37964 executed same adapter/static corpus. Wasm86084 intentionally failed wrong-runtime guard before arithmetic; fixed explicit WasmNodeJsPlugin/EnvSpec selects Node24.16.0.",
+    "dependency_alignment": "Add stdlib-js/stdlib-wasm-js/dom-api-compat2.4.21 after actual JS dependency conflicts. No peer version/adapter/fixture/timing change.",
+    "native_entrypoint": "Explicit preparation598.main matches declared package; peer-only83537 linked/executed successfully after prior /main linker failure. Full consumer remains UNRUN."
+  },
+  "full_text_gate": {
+    "scope": "Additive32exacttextchecks/peer, legacyarithmetic/cohortcapability gates unchanged. Same TextWork598 as reviewed96peertext; noKroguruntime yet.",
+    "source": {
+      "path": "prepared-timing/src/commonMain/kotlin/preparation598/TextWork598.kt",
+      "bytes": 3123,
+      "sha256": "5d15b45a901dae05c28e9624accb259e3e33bbdf2a5401b9f80f166c8137adbb"
+    },
+    "history": "history/before-full-text-gate-wiring",
+    "patch": {
+      "path": "full-text-gate-wiring.patch",
+      "bytes": 6925,
+      "sha256": "6297117feb8e1b782c03d1bca27b90ecb632e1db85475a4138cbb04ce35568d8"
+    }
+  },
+  "mandatory_TEXT_CHECK_rows": 64
+}

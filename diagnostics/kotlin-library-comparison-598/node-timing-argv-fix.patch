@@ -1,0 +1,60 @@
+--- a/prepared-timing/src/commonMain/kotlin/preparation598/Timing598.kt
++++ b/prepared-timing/src/commonMain/kotlin/preparation598/Timing598.kt
+@@ -11,6 +11,7 @@
+ internal class Counters598 {
+     var cpuNs = -1L; var allocatedBytes = -1L; var heapUsedBytes = -1L; var rssPeakBytes = -1L
+ }
++internal expect fun timingArguments598(supplied: Array<String>): Array<String>
+ internal expect fun selectedCase598(peer: String, id: String): TimedCase598
+ internal expect fun verifyAll598()
+ internal expect fun counters598(destination: Counters598, before: Boolean)
+@@ -58,8 +59,9 @@
+ }
+ 
+ fun main(args: Array<String>) {
+-    require(args.size == 4) { "peer workload fork order" }
+-    val (peer, id, forkText, order) = args
++    val actualArgs = timingArguments598(args)
++    require(actualArgs.size == 4) { "peer workload fork order" }
++    val (peer, id, forkText, order) = actualArgs
+     val fork = forkText.toInt().also { require(it in 0..2) }
+     require(order == if (fork == 1) "reverse" else "forward")
+     val runtime = portableRuntime598()
+--- a/prepared-timing/src/jvmMain/kotlin/preparation598/PlatformTiming598.kt
++++ b/prepared-timing/src/jvmMain/kotlin/preparation598/PlatformTiming598.kt
+@@ -51,3 +51,5 @@
+     }
+     gate(JdkAdapter);gate(KroguAdapter);gate(IonsPinAdapter);gate(KBigNumAdapter)
+ }
++
++internal actual fun timingArguments598(supplied: Array<String>): Array<String> = supplied
+--- a/prepared-timing/src/jsMain/kotlin/preparation598/PlatformTiming598.kt
++++ b/prepared-timing/src/jsMain/kotlin/preparation598/PlatformTiming598.kt
+@@ -17,3 +17,6 @@
+     else -> error("Peer not published for JS:$peer")
+ }
+ internal actual fun verifyAll598() { verifyPortableUntimed598() }
++
++// Kotlin/JS executable mainWrapper passes []; Node owns the actual command arguments.
++internal actual fun timingArguments598(supplied: Array<String>): Array<String> = js("process.argv.slice(2)") as Array<String>
+--- a/prepared-timing/src/wasmJsMain/kotlin/preparation598/PlatformTiming598.kt
++++ b/prepared-timing/src/wasmJsMain/kotlin/preparation598/PlatformTiming598.kt
+@@ -16,3 +16,10 @@
+     else -> error("Peer not published for Wasm:$peer")
+ }
+ internal actual fun verifyAll598() { verifyPortableUntimed598() }
++
++private fun nodeArgCount598(): Int = js("process.argv.length - 2")
++private fun nodeArg598(index: Int): String = js("process.argv[index + 2]")
++internal actual fun timingArguments598(supplied: Array<String>): Array<String> {
++    val count=nodeArgCount598();require(count==4) { "peer workload fork order" }
++    return Array(count) { nodeArg598(it) }
++}
+--- a/prepared-timing/src/macosArm64Main/kotlin/preparation598/PlatformTiming598.kt
++++ b/prepared-timing/src/macosArm64Main/kotlin/preparation598/PlatformTiming598.kt
+@@ -24,3 +24,5 @@
+     else -> error("Peer not published for macOSArm64:$peer")
+ }
+ internal actual fun verifyAll598() { verifyPortableUntimed598() }
++
++internal actual fun timingArguments598(supplied: Array<String>): Array<String> = supplied

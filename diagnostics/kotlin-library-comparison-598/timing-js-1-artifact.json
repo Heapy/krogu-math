@@ -1,0 +1,10 @@
+{
+  "accepted_main": "829ce21154c7e75f5206eeb173351c391ed21597",
+  "build_handle": 25513,
+  "build_exit": 0,
+  "root": "/Users/yoda/dev/pet/krogu-math/.codex-work/598/artifacts/timing-js-829ce211-1",
+  "manifest_sha256": "f996475c2566633807fdd68ca7c67e9ca1a0e46c45564cd4f8b02d18c2c36645",
+  "build_log": "timing-js-build-1.log",
+  "runtime": "/Users/yoda/.gradle/nodejs/node-v24.16.0-darwin-arm64/bin/node",
+  "runtime_sha256": "1ee75375e33b94fc34b3b19aede049e11dae90efb63b374dc96d6bdace70c4b8"
+}

@@ -1,0 +1,85 @@
+{
+  "scope": "Completed whole-child macOS time -l peak, not per-value/library retained size; no free host RAM observation.",
+  "entries": [
+    {
+      "target": "JVM",
+      "peer": "ionspin-bignum-0.3.10",
+      "children": 144,
+      "whole_child_peak_RSS_bytes_min": 171229184,
+      "whole_child_peak_RSS_bytes_median": 224649216.0,
+      "whole_child_peak_RSS_bytes_max": 242319360
+    },
+    {
+      "target": "JVM",
+      "peer": "jdk-bellsoft-25.0.4+9",
+      "children": 168,
+      "whole_child_peak_RSS_bytes_min": 169213952,
+      "whole_child_peak_RSS_bytes_median": 222781440.0,
+      "whole_child_peak_RSS_bytes_max": 238469120
+    },
+    {
+      "target": "JVM",
+      "peer": "kbignum-0.0.20-desktop",
+      "children": 168,
+      "whole_child_peak_RSS_bytes_min": 171524096,
+      "whole_child_peak_RSS_bytes_median": 226164736.0,
+      "whole_child_peak_RSS_bytes_max": 236470272
+    },
+    {
+      "target": "JVM",
+      "peer": "krogu-final539-PENDING",
+      "children": 168,
+      "whole_child_peak_RSS_bytes_min": 169558016,
+      "whole_child_peak_RSS_bytes_median": 222699520.0,
+      "whole_child_peak_RSS_bytes_max": 235388928
+    },
+    {
+      "target": "JS",
+      "peer": "ionspin-bignum-0.3.10",
+      "children": 144,
+      "whole_child_peak_RSS_bytes_min": 69959680,
+      "whole_child_peak_RSS_bytes_median": 85295104.0,
+      "whole_child_peak_RSS_bytes_max": 103088128
+    },
+    {
+      "target": "JS",
+      "peer": "krogu-final539-PENDING",
+      "children": 144,
+      "whole_child_peak_RSS_bytes_min": 69812224,
+      "whole_child_peak_RSS_bytes_median": 81690624.0,
+      "whole_child_peak_RSS_bytes_max": 110624768
+    },
+    {
+      "target": "Wasm",
+      "peer": "ionspin-bignum-0.3.10",
+      "children": 144,
+      "whole_child_peak_RSS_bytes_min": 72564736,
+      "whole_child_peak_RSS_bytes_median": 78192640.0,
+      "whole_child_peak_RSS_bytes_max": 87851008
+    },
+    {
+      "target": "Wasm",
+      "peer": "krogu-final539-PENDING",
+      "children": 144,
+      "whole_child_peak_RSS_bytes_min": 71630848,
+      "whole_child_peak_RSS_bytes_median": 78176256.0,
+      "whole_child_peak_RSS_bytes_max": 88293376
+    },
+    {
+      "target": "Native-macOSArm64",
+      "peer": "ionspin-bignum-0.3.10",
+      "children": 144,
+      "whole_child_peak_RSS_bytes_min": 18939904,
+      "whole_child_peak_RSS_bytes_median": 19103744.0,
+      "whole_child_peak_RSS_bytes_max": 20135936
+    },
+    {
+      "target": "Native-macOSArm64",
+      "peer": "krogu-final539-PENDING",
+      "children": 144,
+      "whole_child_peak_RSS_bytes_min": 18907136,
+      "whole_child_peak_RSS_bytes_median": 19120128.0,
+      "whole_child_peak_RSS_bytes_max": 19464192
+    }
+  ]
+}

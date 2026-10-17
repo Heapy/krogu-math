@@ -1,0 +1,31 @@
+{
+  "status": "DEPENDENCY_ONLY_SOURCE_UPDATE_NO_FULL_CONSUMER_BUILD_OR_TIMING",
+  "actual_evidence": "peer-only-api-preflight.json",
+  "actual_evidence_sha256": "6f88c53ec5fcad02804d1730d5ee5f4dc3be41571c8d217f6bd784a9c36c69dd",
+  "historical_original_manifest_preserved_at": ".codex-work/598/history/stdlib-pin-before-peer-preflight",
+  "descriptor_deltas": [
+    {
+      "path": "prepared-harness/build.gradle.kts",
+      "before_sha256": "c18545fc4b171cb0a6ac8b343e14bfe87cf3526c35559c84de79c3f72ceafc48",
+      "after_sha256": "c4a85b175713feba9e84d156f0325d8c3d17a9094b8fe60f7055a5a698319e35"
+    },
+    {
+      "path": "prepared-portable/build.gradle.kts",
+      "before_sha256": "8464f32d1e964b411b7c62bfa7507eea54bfc6cd7deb3c07cfba6bbb83a28bb4",
+      "after_sha256": "a01be816bfca168bf0b7e4c6384e012c0651e5455dca2d7caa454521dc8a3735"
+    },
+    {
+      "path": "prepared-timing/build.gradle.kts",
+      "before_sha256": "2494895f902e4cbe930f2261d5615091a1749753a3381bc06c83f204722dd8c6",
+      "after_sha256": "e828ccbaecac83d0ddd173fd90058a9a5c5a31f33d1cd09cf0adf4ca8c7d0645"
+    }
+  ],
+  "patch_sha256": "868e63a317052b3c3d72b034b007dfa52ccb7b3f052a275e78d3c2b375204832",
+  "current_manifest_sha256": {
+    "prepared-harness": "64fd9cac4969977fe2d30552027a57db65b8dbbb21701de5ce36a74b4ef1944c",
+    "prepared-portable": "f1c3709838a9c654e59d124051c728f8d2e76a00acb27ff1772f3bc88b2c362b",
+    "prepared-timing": "44d5fbd79d1deb78361faf710ecd45f75e09ee5b773b750b2d0c5f82f98ba40b"
+  },
+  "original_adapters_and_fixtures": "All bytes identical to historical manifest; accepted539/Krogu requirements unchanged.",
+  "scope": "Peer-only actual JVM API/correctness valid only its allowlist/runtime. Broader portable/timing/full598 still UNRUN."
+}

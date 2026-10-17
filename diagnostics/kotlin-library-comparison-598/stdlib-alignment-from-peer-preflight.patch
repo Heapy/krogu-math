@@ -1,0 +1,33 @@
+--- a/prepared-harness/build.gradle.kts
++++ b/prepared-harness/build.gradle.kts
+@@ -33,7 +33,7 @@
+ dependencyLocking { lockAllConfigurations() }
+ configurations.configureEach { resolutionStrategy.failOnVersionConflict() }
+ // Pin the shared stdlib instead of allowing older peer declarations to pick the runtime.
+-configurations.configureEach { resolutionStrategy.force("org.jetbrains.kotlin:kotlin-stdlib:2.4.21") }
++configurations.configureEach { resolutionStrategy.force(*listOf("kotlin-stdlib", "kotlin-stdlib-common", "kotlin-stdlib-jdk7", "kotlin-stdlib-jdk8").map { "org.jetbrains.kotlin:$it:2.4.21" }.toTypedArray()) }
+ tasks.withType<KotlinCompile>().configureEach { dependsOn(verifyKroguInput) }
+ 
+ val runUntimed by tasks.registering(JavaExec::class) {
+--- a/prepared-portable/build.gradle.kts
++++ b/prepared-portable/build.gradle.kts
+@@ -73,7 +73,7 @@
+ }
+ dependencyLocking { lockAllConfigurations() }
+ configurations.configureEach { resolutionStrategy.failOnVersionConflict() }
+-configurations.configureEach { resolutionStrategy.force("org.jetbrains.kotlin:kotlin-stdlib:2.4.21") }
++configurations.configureEach { resolutionStrategy.force(*listOf("kotlin-stdlib", "kotlin-stdlib-common", "kotlin-stdlib-jdk7", "kotlin-stdlib-jdk8").map { "org.jetbrains.kotlin:$it:2.4.21" }.toTypedArray()) }
+ val verify598Inputs = tasks.register("verify598Inputs") { doLast { verifyInputs598() } }
+ tasks.matching { it.name.startsWith("compile") && it.name.contains("Kotlin") }.configureEach { dependsOn(verify598Inputs) }
+ val runtasks = setOf("jsNodeProductionRun", "wasmJsNodeProductionRun", "runReleaseExecutableMacosArm64")
+--- a/prepared-timing/build.gradle.kts
++++ b/prepared-timing/build.gradle.kts
+@@ -80,7 +80,7 @@
+ }
+ dependencyLocking { lockAllConfigurations() }
+ configurations.configureEach { resolutionStrategy.failOnVersionConflict() }
+-configurations.configureEach { resolutionStrategy.force("org.jetbrains.kotlin:kotlin-stdlib:2.4.21") }
++configurations.configureEach { resolutionStrategy.force(*listOf("kotlin-stdlib", "kotlin-stdlib-common", "kotlin-stdlib-jdk7", "kotlin-stdlib-jdk8").map { "org.jetbrains.kotlin:$it:2.4.21" }.toTypedArray()) }
+ val verify598Inputs = tasks.register("verify598Inputs") { doLast { verifyInputs598() } }
+ tasks.matching { it.name.startsWith("compile") && it.name.contains("Kotlin") }.configureEach { dependsOn(verify598Inputs) }
+ 

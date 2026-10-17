@@ -1,0 +1,223 @@
+{
+  "verdict": "DATA_INTEGRITY_PASS_BUT_ROBUST_WARM_RANKINGS_NOT_YET_SUPPORTED",
+  "raw_audit_sha256": "f4c0f13be068b27f12da72d2a193d67f6ed667dab19cce974f0b964e26ab1d2b",
+  "all648_trends_file": "independent-jvm-timing-1-sample-trends.json",
+  "all648_trends_sha256": "4c33cafab5885a818360cd365dfa9889ace2b466dc72a2b71caf9053de709a3f",
+  "fact": {
+    "cap": 565,
+    "warm_training_ns_range": [
+      17511750,
+      251154875
+    ],
+    "early3_over_late3_range": [
+      0.05496639009469385,
+      87.11529475943692
+    ],
+    "examples": [
+      {
+        "peer": "krogu-final539-PENDING",
+        "id": "int/zero/ADD",
+        "fork": 0,
+        "log": "timing-jvm-1/fork0-case193.log",
+        "training_ops": 1048576,
+        "training_duration_ns": 39298250,
+        "training_cap_reached": true,
+        "wall_ns_per_op_sample0to6": [
+          30.627171516418457,
+          30.657093048095703,
+          65.19540119171143,
+          65.30455780029297,
+          8.518338203430176,
+          0.5654497146606445,
+          0.5356473922729492
+        ],
+        "cpu_ns_per_op_sample0to6": [
+          30.6396484375,
+          30.672073364257812,
+          65.20748138427734,
+          65.31429290771484,
+          8.549690246582031,
+          0.5741119384765625,
+          0.54168701171875
+        ],
+        "allocation_B_per_op_sample0to6": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "early3_median_over_late3_median": 54.21718722856656,
+        "seven_sample_max_over_min": 121.91706473764704
+      },
+      {
+        "peer": "krogu-final539-PENDING",
+        "id": "decimal/wide10/FORMAT",
+        "fork": 0,
+        "log": "timing-jvm-1/fork0-case53.log",
+        "training_ops": 1048576,
+        "training_duration_ns": 36222625,
+        "training_cap_reached": true,
+        "wall_ns_per_op_sample0to6": [
+          35.498459815979004,
+          32.397826194763184,
+          75.1434965133667,
+          66.7107105255127,
+          16.389171600341797,
+          2.7530593872070312,
+          2.745349884033203
+        ],
+        "cpu_ns_per_op_sample0to6": [
+          35.4766845703125,
+          32.42015838623047,
+          75.16193389892578,
+          66.72286987304688,
+          16.424179077148438,
+          2.7618408203125,
+          2.7513504028320312
+        ],
+        "allocation_B_per_op_sample0to6": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "early3_median_over_late3_median": 12.894186003009569,
+        "seven_sample_max_over_min": 27.37119117326245
+      },
+      {
+        "peer": "jdk-bellsoft-25.0.4+9",
+        "id": "decimal/wide10/FORMAT",
+        "fork": 0,
+        "log": "timing-jvm-1/fork0-case52.log",
+        "training_ops": 1048576,
+        "training_duration_ns": 32950250,
+        "training_cap_reached": true,
+        "wall_ns_per_op_sample0to6": [
+          4.846453666687012,
+          27.505080223083496,
+          63.408294677734375,
+          2.142706871032715,
+          1.5937891006469727,
+          2.129633903503418,
+          2.13031005859375
+        ],
+        "cpu_ns_per_op_sample0to6": [
+          4.858970642089844,
+          27.518272399902344,
+          63.388824462890625,
+          2.1905899047851562,
+          1.6002655029296875,
+          2.1352767944335938,
+          2.1352767944335938
+        ],
+        "allocation_B_per_op_sample0to6": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "early3_median_over_late3_median": 12.915403054879734,
+        "seven_sample_max_over_min": 39.784620595030304
+      },
+      {
+        "peer": "krogu-final539-PENDING",
+        "id": "decimal/scale/ADD",
+        "fork": 0,
+        "log": "timing-jvm-1/fork0-case1.log",
+        "training_ops": 1048576,
+        "training_duration_ns": 75649417,
+        "training_cap_reached": true,
+        "wall_ns_per_op_sample0to6": [
+          37.85896301269531,
+          33.03845691680908,
+          45.35396862030029,
+          9.831110954284668,
+          9.223779678344727,
+          7.815797805786133,
+          6.2548322677612305
+        ],
+        "cpu_ns_per_op_sample0to6": [
+          36.28730773925781,
+          33.05530548095703,
+          43.895721435546875,
+          9.842872619628906,
+          9.240150451660156,
+          6.449699401855469,
+          6.2694549560546875
+        ],
+        "allocation_B_per_op_sample0to6": [
+          88.0,
+          88.0,
+          71.74522399902344,
+          40.046875,
+          40.046875,
+          40.0,
+          40.0
+        ],
+        "early3_median_over_late3_median": 4.84390256163841,
+        "seven_sample_max_over_min": 7.251028753251232
+      },
+      {
+        "peer": "krogu-final539-PENDING",
+        "id": "int/zero/SUBTRACT",
+        "fork": 1,
+        "log": "timing-jvm-1/fork1-case6.log",
+        "training_ops": 1048576,
+        "training_duration_ns": 34647417,
+        "training_cap_reached": true,
+        "wall_ns_per_op_sample0to6": [
+          28.8316011428833,
+          28.93026638031006,
+          27.53917407989502,
+          0.5512628555297852,
+          0.5428791046142578,
+          0.5429191589355469,
+          0.5340175628662109
+        ],
+        "cpu_ns_per_op_sample0to6": [
+          28.845787048339844,
+          28.944969177246094,
+          27.571678161621094,
+          0.5588531494140625,
+          0.5483627319335938,
+          0.5464553833007812,
+          0.5397796630859375
+        ],
+        "allocation_B_per_op_sample0to6": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "early3_median_over_late3_median": 53.108695652173914,
+        "seven_sample_max_over_min": 54.17474703459902
+      }
+    ]
+  },
+  "source_boundary": "Timing598.kt training while uses elapsed<200ms AND warmOps<1048576. Thus cumulative operation cap ends565 training phases early; per-batch target20ms and minimum warmup time are not met by many tiny/cached cases. Explicit metadata was honest; this is suitability for comparative inference, not raw fabrication.",
+  "interpretation": [
+    "CPU-coherent sequential sample transitions and in decimal/scale ADD allocation change88 to40B/op show differing execution regimes inside the seven recorded samples. Pure elapsed host waiting cannot explain all observed changes.",
+    "JIT compilation/optimization is a plausible mechanism, not a directly observed cause; no compiler/GC trace exists and no universal attribution is made.",
+    "Arithmetic/int-zero and cached FORMAT ratios flip direction and orders of magnitude between cohorts. Those medians cannot establish robust warm peer ranking. Even all3 direction is descriptive until each workload data scope is assessed.",
+    "FIRST remains first explicit public operation after preparation, not pristine VM/cache; its data integrity remains accepted.",
+    "Recorded post-capped-training comparisons remain publishable as transient finite observations with all samples, scope and variability, but a disclaimer alone cannot turn them into stable warm throughput findings."
+  ],
+  "minimum_recommendation": {
+    "source": "Do not let cumulative operation count substitute for intended warmup duration. Keep finite batch/total deadlines and observable bounded operations; distinguish operation safety ceiling from achieved warmup budget explicitly.",
+    "validation": "Before claiming robust warm comparison, preregister one bounded JVM schedule and validate that intended warmup actually occurred and sample traces support the intended inference. Preserve all old/new rows and peers; no per-peer favorable selection, automatic repeat-until-stable,539threshold or significance claim.",
+    "execution": "No code change or new numerical run performed/authorized by this audit; owner/root decides exact finite correction before running."
+  },
+  "portable_scope": "No automatic invalidation or transfer of JVM JIT facts to Node/Native; inspect their own actual training/sample data."
+}

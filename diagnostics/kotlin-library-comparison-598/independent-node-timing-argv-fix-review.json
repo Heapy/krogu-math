@@ -1,0 +1,10 @@
+{
+  "verdict": "SOURCE_ARGV_FIX_PASS_ACTUAL_ZERO_NUMERIC_FAILURE_CONFIRMED",
+  "binding_sha256": "d258f615971ade66a3c3167c6b57c801f18fe3448703246986b937543b2a006e",
+  "patch_sha256": "45a028217bc3119f3786385137bc2ef3a6ed08cf60373b83bcfcd5994fad6873",
+  "actual_failure": "76434 argument guard failure before INPUT/FIRST/TIME/gate, not numerical mismatch/peerNA. Exact compiler mainWrapper calls main([]).",
+  "own_compiler_anchor": "function mainWrapper() {\n    main([]);\n  }\n  function get_integerFixtures598() {\n    _init_properties_TimingUntimed598_kt__2426lc();\n    ret",
+  "source_delta": "Argument acquisition occurs before existing count/order/runtime/peer preparation/counters. JVM/Native supplied args preserved; JS Node argv.slice(2); Wasm4 indexed Node argument strings using js interop. Existing inventory/gate/brackets untouched.",
+  "remaining": "New JS/Wasm compiler/runtime argument forwarding still needs actual execution/closure binding. Warmup schedule review separate; no new run authorized by this source verdict.",
+  "blocking_findings": []
+}

@@ -1,0 +1,106 @@
+--- a/prepared-harness/UntimedMain.kt
++++ b/prepared-harness/UntimedMain.kt
+@@ -16,6 +16,7 @@
+             for (o in report.observations) writer.appendLine(listOf("CHECK", o.peer, o.id,
+                 o.operandRelation, o.outputText, o.jdkText, o.valueParity, o.textParity).joinToString("\t"))
+             for ((id, reason) in report.unavailable) writer.appendLine("NA\t${adapter.id}\t$id\t$reason")
++            verifyTextWorkloads598(adapter)
+             writer.flush()
+         }
+         peer(JdkAdapter); peer(KroguAdapter); peer(IonsPinAdapter); peer(KBigNumAdapter)
+--- a/prepared-harness/build.gradle.kts
++++ b/prepared-harness/build.gradle.kts
+@@ -22,7 +22,7 @@
+         languageVersion.set(JavaLanguageVersion.of(25))
+         vendor.set(JvmVendorSpec.BELLSOFT)
+     }
+-    sourceSets.named("main") { kotlin.setSrcDirs(listOf(projectDir)); kotlin.include("*.kt") }
++    sourceSets.named("main") { kotlin.setSrcDirs(listOf(projectDir, file("../prepared-timing/src/commonMain/kotlin/preparation598"))); kotlin.include("Contract.kt", "KroguAdapter.kt", "IonsPinAdapter.kt", "JdkAdapter.kt", "KBigNumAdapter.kt", "UntimedFixtures.kt", "UntimedMain.kt", "TextWork598.kt") }
+ }
+ dependencies {
+     implementation(files(kroguJar))
+@@ -62,7 +62,7 @@
+                     appendLine("${sha(it)}\t${it.absolutePath}")
+                 }
+             }
+-            projectDir.listFiles()!!.filter { it.isFile && it.extension in setOf("kt", "kts", "properties") }.sortedBy { it.name }.forEach {
++            (projectDir.listFiles()!!.filter { it.isFile && it.extension in setOf("kt", "kts", "properties") } + file("../prepared-timing/src/commonMain/kotlin/preparation598/TextWork598.kt")).sortedBy { it.name }.forEach {
+                 appendLine("source:${sha(it)}\t${it.name}")
+             }
+         })
+--- a/prepared-portable/build.gradle.kts
++++ b/prepared-portable/build.gradle.kts
+@@ -69,7 +69,8 @@
+     sourceSets.commonMain {
+         // Reuse reviewed adapter sources; exclude JVM/JDK/KBigNum and JVM fixtures.
+         kotlin.srcDir(file("../prepared-harness"))
+-        kotlin.include("**/PortableUntimedMain.kt", "Contract.kt", "KroguAdapter.kt", "IonsPinAdapter.kt")
++        kotlin.srcDir(file("../prepared-timing/src/commonMain/kotlin/preparation598"))
++        kotlin.include("**/PortableUntimedMain.kt", "TextWork598.kt", "Contract.kt", "KroguAdapter.kt", "IonsPinAdapter.kt")
+         dependencies {
+             implementation("io.heapy.krogu:krogu-math:$kroguVersion")
+             implementation("com.ionspin.kotlin:bignum:0.3.10")
+@@ -96,6 +97,7 @@
+             for (input in projectDir.walkTopDown().filter { it.isFile && it.extension in setOf("kt", "kts", "properties") &&
+                 !it.toPath().startsWith(file("build").toPath()) && !it.toPath().startsWith(file("runs").toPath()) }.sortedBy { it.path })
+                 appendLine("${sha(input)}\t${input.relativeTo(projectDir).invariantSeparatorsPath}")
++            val textSource=file("../prepared-timing/src/commonMain/kotlin/preparation598/TextWork598.kt"); appendLine("${sha(textSource)}\t${textSource.canonicalPath}")
+             for (name in listOf("Contract.kt", "KroguAdapter.kt", "IonsPinAdapter.kt")) {
+                 val input = file("../prepared-harness/$name"); appendLine("${sha(input)}\t${input.canonicalPath}")
+             }
+--- a/prepared-portable/src/commonMain/kotlin/preparation598/PortableUntimedMain.kt
++++ b/prepared-portable/src/commonMain/kotlin/preparation598/PortableUntimedMain.kt
+@@ -94,6 +94,7 @@
+             adapter::integerOperation) { actual, expected -> actual == expected }
+         val decimal = checkFamily598(adapter.id, "decimal", decimalFixtures598, adapter::decimal, adapter::decimalText,
+             adapter::decimalOperation) { actual, expected -> canonicalDecimal598(actual) == canonicalDecimal598(expected) }
++        verifyTextWorkloads598(adapter)
+         core += integer.first + decimal.first; distinct += integer.second + decimal.second
+         println("NA598\t${adapter.id}\tdecimal-cohort\tValue-only oracle does not establish internal scale")
+         println("NA598\t${adapter.id}\tsignificant-HALF_EVEN\tNot exercised; no ambiguous mapping inferred")
+--- a/prepared-timing/src/commonMain/kotlin/preparation598/TextWork598.kt
++++ b/prepared-timing/src/commonMain/kotlin/preparation598/TextWork598.kt
+@@ -37,3 +37,23 @@
+         else -> error("Unknown text family")
+     }
+ }
++
++/** Additive full correctness gate. Existing arithmetic/capability gates remain unchanged. */
++internal fun <I:Any,D:Any> verifyTextWorkloads598(adapter:PeerAdapter<I,D>):Int {
++    var count=0
++    val retained=mutableListOf<Pair<TextPrepared598,Any>>()
++    for((family,names) in listOf("int" to listOf("zero","signed","carry30","wide10"),"decimal" to listOf("zero","scale","signed","wide10")))
++        for(name in names) for(op in listOf("PARSE","FORMAT")) {
++            val id="$family/$name/$op";val case=textCase598(adapter,id)
++            repeat(2) { repetition ->
++                val result=case.operation();val observed=case.checkResult(result);case.checkInput()
++                retained.forEach { (old,value) -> check(old.checkResult(value)==old.input);old.checkInput() }
++                retained+=case to result
++                println("CHECK_TEXT598\t${adapter.id}\t$id\t$repetition\t${case.input}\t$observed")
++                count++
++            }
++        }
++    check(count==32)
++    println("TEXT_GATE598_COUNT\t${adapter.id}\t$count")
++    return count
++}
+--- a/prepared-timing/src/commonMain/kotlin/preparation598/TimingUntimed598.kt
++++ b/prepared-timing/src/commonMain/kotlin/preparation598/TimingUntimed598.kt
+@@ -94,6 +94,7 @@
+             adapter::integerOperation) { actual, expected -> actual == expected }
+         val decimal = checkFamily598(adapter.id, "decimal", decimalFixtures598, adapter::decimal, adapter::decimalText,
+             adapter::decimalOperation) { actual, expected -> canonicalDecimal598(actual) == canonicalDecimal598(expected) }
++        verifyTextWorkloads598(adapter)
+         core += integer.first + decimal.first; distinct += integer.second + decimal.second
+         println("NA598\t${adapter.id}\tdecimal-cohort\tValue-only oracle does not establish internal scale")
+         println("NA598\t${adapter.id}\tsignificant-HALF_EVEN\tNot exercised; no ambiguous mapping inferred")
+--- a/prepared-timing/src/jvmMain/kotlin/preparation598/PlatformTiming598.kt
++++ b/prepared-timing/src/jvmMain/kotlin/preparation598/PlatformTiming598.kt
+@@ -46,6 +46,7 @@
+     }
+     fun <I:Any,D:Any> gate(adapter:PeerAdapter<I,D>) {
+         val report=verifyUntimed(adapter);check(report.observations.size >= 128)
++        verifyTextWorkloads598(adapter)
+         println("GATE_COUNT598\t${adapter.id}\t${report.observations.size}\t${report.unavailable.size}")
+     }
+     gate(JdkAdapter);gate(KroguAdapter);gate(IonsPinAdapter);gate(KBigNumAdapter)

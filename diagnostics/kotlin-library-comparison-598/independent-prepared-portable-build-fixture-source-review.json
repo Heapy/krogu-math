@@ -1,0 +1,22 @@
+{
+  "status": "SOURCE_PREPARATION_PASS_UNRESOLVED_UNCOMPILED_UNRUN",
+  "manifest_sha256": "94c4f596f28464cd6c92884b9a1df2ce05acbba86b86afdc97c7489cd11186b4",
+  "patch_sha256": "2c04b470918e8f1488f1267aea6a78f82d24a19e8f3951245741f0b83993685a",
+  "entries_verified": 12,
+  "scope": "Only new portable build/fixture/entrypoint delta. Three reused adapters hash-bound unchanged; no downloads, compilation, execution or peer numerical implementation reading.",
+  "findings": [],
+  "verified_source_contract": [
+    "Public GAV isolated exclusive Krogu Maven repository, exact commit/version/ledger SHA/all files/complete repository inventory verified before compile and after successful run; no producer project/source/test/worker assets included.",
+    "Kotlin2.4.21/IonsPin0.3.10 and preinstalled Node24.16.0 bound; Node SHA and PATH first directory checked; both Node actuals reject wrong actual version. Gradle DSL/target variant compatibility remains uncompiled.",
+    "Common source allowlist includes only portable main and three reviewed adapter/contract files. JS CJS, Wasm Node and macosArm64 entrypoints declared separately; one target task/fresh attempt directory per invocation.",
+    "Four independent literal integer and four literal decimal fixtures checked for two peers; add/subtract/multiply/self-alias twice =>128 mandatory rows. Separately parsed equal operands earn distinct label only when actual references differ, up to32 rows; interning explicit NA.",
+    "Per-call before/after input text and previous output text checked across varying fixtures and repeated calls. Decimal canonicalization compares numeric value only and explicitly declines cohort/scale/ambiguous rounding claims; no timed operation introduced.",
+    "Unexpected arithmetic/parse/mismatch exceptions propagate; unavailable target/operation cells explicit NA, never runtime UNVERIFIED relabelled PASS. COMPLETE follows counters/checks only, PROCESS_TASK_RETURNED alone is not parity evidence."
+  ],
+  "remaining_actual_obligations": [
+    "Actual accepted539 publication/commit ledger, selected variants/transitive lock/compiler/runtime/emitted artifact evidence are future inputs, not fabricated by placeholders.",
+    "Bounded external controller must retain command/output/exit and fail before resolution without destroying attempt evidence; descriptor deliberately does not execute a controller.",
+    "Verify full128 plus actual distinct/NA accounting from future stdout; current static source is not peer compatibility, immutability, full598 coverage or performance evidence.",
+    "The documented independent public-JDK crosscheck of these portable literal constants remains future untimed validation before any timed cohort; no current external-oracle PASS is claimed."
+  ]
+}

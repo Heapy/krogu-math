@@ -1,0 +1,873 @@
+--- /dev/null
++++ b/.codex-work/598/prepared-timing/Catalog598.main.kts
+@@ -0,0 +1,58 @@
++// Shared controller/checker metadata only. No peer code is loaded here.
++data class Work598(val peer:String,val id:String)
++fun catalog598(platform:String):List<Work598> {
++    require(platform in listOf("JVM","JS","Wasm","Native"))
++    val peers=if(platform=="JVM") listOf("jdk-bellsoft-25.0.4+9","krogu-final539-PENDING","ionspin-bignum-0.3.10","kbignum-0.0.20-desktop")
++        else listOf("krogu-final539-PENDING","ionspin-bignum-0.3.10")
++    val ids=listOf("int" to listOf("zero","signed","carry30","wide10"),"decimal" to listOf("zero","scale","signed","wide10"))
++        .flatMap { (kind,names)->names.flatMap { n->listOf("ADD","SUBTRACT","MULTIPLY","self").map { "$kind/$n/$it" } } }.sorted()
++    val core=ids.flatMap { id->peers.map { Work598(it,id) } }
++    val fixed=if(platform=="JVM") listOf("positive-tie","negative-tie","negative-divisor","both-negative","nonterminating","carry","zero","exact")
++        .flatMap { id->peers.filter { it!="ionspin-bignum-0.3.10" }.map { Work598(it,"fixed-scale/$id") } } else emptyList()
++    return (core+fixed).sortedWith(compareBy<Work598>{it.id}.thenBy{peers.indexOf(it.peer)}).also { check(it.size==if(platform=="JVM")152 else 64) }
++}
++
++// Independent fixture tuples and checksums, not calls into a numerical peer.
++data class Expected598(val left:String,val right:String,val expected:String,val canonical:String,val family:String,val self:Boolean)
++fun canonical598(text:String):String {
++    require(text.length in 1..10000)
++    val m=Regex("([+-]?)([0-9]+)(?:\\.([0-9]+))?(?:[eE]([+-]?[0-9]+))?").matchEntire(text)?:error("Invalid decimal observation")
++    val fraction=m.groupValues[3];val exponent=m.groupValues[4].ifEmpty{"0"}.toLong().also{require(it in -1000000L..1000000L)}
++    val coefficient=(m.groupValues[2]+fraction).trimStart('0');if(coefficient.isEmpty())return "0@0"
++    val digits=coefficient.trimEnd('0');val scale=fraction.length.toLong()-exponent-(coefficient.length-digits.length)
++    return (if(m.groupValues[1]=="-")"-" else "")+digits+"@"+scale
++}
++fun checksum598(text:String)=text.fold(0){h,c->31*h+c.code}
++fun expected598(id:String):Expected598 {
++    val p=id.split('/')
++    if(p[0]=="fixed-scale") {
++        require(p.size==2)
++        val f=when(p[1]) {
++            "positive-tie"->listOf("1","8","0.13")
++            "negative-tie"->listOf("-1","8","-0.13")
++            "negative-divisor"->listOf("1","-8","-0.13")
++            "both-negative"->listOf("-1","-8","0.13")
++            "nonterminating"->listOf("1","3","0.33333333333333333333")
++            "carry"->listOf("9.995","1","10.00")
++            "zero"->listOf("0.000","7","0.0000")
++            "exact"->listOf("12.00","3","4.00")
++            else->error("Unknown fixed fixture")
++        }
++        return Expected598(f[0],f[1],f[2],canonical598(f[2]),"decimal",false)
++    }
++    require(p.size==3)
++    val f=when("${p[0]}/${p[1]}") {
++        "int/zero"->listOf("0","0","0","0","0","0")
++        "int/signed"->listOf("-7","3","-4","-10","-21","49")
++        "int/carry30"->listOf("1073741823","1","1073741824","1073741822","1073741823","1152921502459363329")
++        "int/wide10"->listOf("100000000000000000000","-10","99999999999999999990","100000000000000000010","-1000000000000000000000","1"+"0".repeat(40))
++        "decimal/zero"->listOf("0.00","-0.000","0.000","0.000","0.00000","0.0000")
++        "decimal/scale"->listOf("1.20","3.400","4.600","-2.200","4.08000","1.4400")
++        "decimal/signed"->listOf("-1.25","0.05","-1.20","-1.30","-0.0625","1.5625")
++        "decimal/wide10"->listOf("100000000000000000000.0","-10.00","99999999999999999990.00","100000000000000000010.00","-1000000000000000000000.000","1"+"0".repeat(40)+".00")
++        else->error("Unknown exact fixture")
++    }
++    val expected=f[when(p[2]){"ADD"->2;"SUBTRACT"->3;"MULTIPLY"->4;"self"->5;else->error("Unknown operation")}]
++    return Expected598(f[0],if(p[2]=="self")f[0] else f[1],expected,if(p[0]=="int")expected else canonical598(expected),p[0],p[2]=="self")
++}
++fun ringChecksum598(value:String,count:Int):Int {var h=0;repeat(minOf(count,64)){h=31*h+checksum598(value)};return h}
+--- /dev/null
++++ b/.codex-work/598/prepared-timing/README.md
+@@ -0,0 +1,95 @@
++# 598 exact-core first/warm timing consumer — SOURCE ONLY
++
++UNRESOLVED / UNCOMPILED / UNRUN. No compiler, dependency download, benchmark or numerical peer code was run. Execution requires the actual final accepted539 Krogu publication, actual peer/toolchain resolution, fixture parity and independent source/artifact/method review. This external consumer does not modify root539, its source freeze, tracker, previous598 adapters or correctness builds. No new speedup/adoption threshold is introduced.
++
++The previously prepared JVM and portable builds are correctness-only. This adds the missing runnable timing path for their already specified exact-core intersection and JVM fixed-scale subset, using the accepted539/527 pattern: prepared operands, bounded warmup and sample counts, 64-result escape, untimed full-result/input checks, fresh alternating processes, exact closure SHA, strict inventories, raw per-fork statistics and explicit metric scopes. It does not add a benchmark service, executor framework, approximate decimal adapter or undocumented peer API.
++
++## Work and finite inventories
++
++The common four integer and four decimal fixtures, independent expected literals and portable gate are reused from prepared-portable. TimingUntimed598.kt has precisely the same gate body, with internal fixture visibility and main renamed to verifyPortableUntimed598. The original prepared-portable bytes remain unchanged. Shared existing adapter sources are included directly; foreign numerical source/bytecode is not inspected/copied.
++
++Each fixture has exact add/subtract/multiply and self-multiply. The native parser and toString/expanded observation stay outside arithmetic counters. Native results are kept as actual references; no cross-library String conversion or JDK arithmetic appears inside a peer's numeric expression. The generic adapter call/enum dispatch, loop and ring-write/escape overhead ARE included symmetrically; these are public-adapter workloads, not intrinsic-kernel timings. Ordinary multiply is used, not a renamed parallel route.
++
++| Target | Peers | Workloads per fresh cohort | Children / FIRST, three cohorts | Warm rows, seven each child |
++| --- | --- | --- | --- | --- |
++| JVM | public BellSoftJDK25.0.4+9, final Krogu, IonsPin0.3.10, KBigNum desktop0.0.20 | 32 exact core×4 +8 explicit fixed-scale HalfUp×3 (IonsPin NA)=152 | 456 | 3192 |
++| JS Node24.16.0 | final Krogu, IonsPin0.3.10 | 32×2=64 | 192 | 1344 |
++| Wasm-JS Node24.16.0 | final Krogu, IonsPin0.3.10 | 32×2=64 | 192 | 1344 |
++| Native macOS Arm64 | final Krogu, IonsPin0.3.10 | 32×2=64 | 192 | 1344 |
++
++Every selected peer/workload gets its OWN fresh child in each of three F/R/F cohorts. Children are adjacent by matched workload and peer order; the reverse cohort reverses both work and peer order. These are matched fresh processes on one host/runtime, not the same process or two different-host observations. The runtime flags are identical within a target: JVM512MiB SerialGC/ActiveProcessorCount1; Node512MiB/expose-gc; Native fixed compiled binary with clean LANG/TZ. Hardware/host runtime and actual effective flags still require execution evidence. No claim of identical cross-runtime GC behavior is made.
++
++Fixed-scale IDs use the existing explicit native HalfUp divide(scale) API and the same eight independently specified fixtures. They are numeric-value IDs, not significant-digit contexts or internal-cohort parity. IonsPin fixed-scale is explicit NA; ambiguous significant HALF_EVEN/MC34 remains unverified/NA. Other parsing/formatting/bitwise/division/root/cache workloads and larger input distributions remain in the operation matrix, not silently represented by this core. This preparation is not task598 completion.
++
++Binary input cases record actual native alias identity (binary-native-alias or binary-distinct); self always uses the exact same object. Native parser interning can make binary aliasing differ across peers. Paired output flags such mismatches and they must NOT be described as equivalent physical-alias work. There is no claim that repeated parsing creates a fresh identity. All input strings, both lengths (derivable from retained strings), operation and expected value are retained per child.
++
++## FIRST and warm states
++
++Harness dispatch explicitly accesses only the selected peer through selectedCase598; compiler/module loading may have run dependency initializers earlier, especially in linked JS/Wasm closures. No claim that other dependency modules remained uninitialized is made. The child first initializes the harness/runtime and independent literal metadata, then parses ONLY that peer's operands outside counters. FIRST measures one explicit public arithmetic operation plus the same result-ring escape. The resulting native value and inputs are checked IMMEDIATELY after counters, using independent expected values. No full correctness corpus has executed before this FIRST.
++
++Public parsing/class initialization may itself execute internal arithmetic and initialize immutable caches; black-box preparation cannot prove otherwise. FIRST therefore means **fresh child, first explicit selected public arithmetic call after described input parsing**, NOT pristine VM, first-ever internal multiplication, cold parser, cold operating-system page cache, cold process startup or first formatting. COLD598_SCOPE makes that limitation explicit. Genuine uninitialized internal-cache arithmetic is NA with that reason. Process elapsed from spawn through exit and external time-l include startup, parsing, gates, checks and warm work and cannot be substituted for FIRST latency.
++
++After FIRST has passed its own result/input check, the full untimed gate runs, then inputs/retained FIRST are checked again. JVM verifies the portable literals independently through public JDK and executes all four already reviewed full JVM correctness suites. Portable targets execute the reviewed128 mandatory value/preservation checks plus identity-qualified distinct cases and explicit NA. Any mismatch/exception fails the child; no warm samples run and its FIRST cannot become accepted comparison evidence. The gate makes separate parse calls/cohort preparations, but native interning can overlap actual identities with the retained FIRST operands. FIRST occurs before the gate, and warm state explicitly follows the gate and all observations; no physical-freshness or cache-pristine guarantee is inferred.
++
++Warm work reuses the selected child's FIRST operands AFTER this explicitly observed/gated state. Training targets200ms with at most1,048,576 operations; batch size doubles toward20ms and is capped at1,048,576. These are bounded operational settings reused in spirit from the accepted duration/cap method, not evidence of stable JIT by themselves. WARM598 reports actual operation count, duration and selected batch size; actual cap/duration effects must be reported. Seven warm samples use the same count. No automatic repetition changes the corpus until results look favorable.
++
++The 64-slot ring receives actual returned references during each batch and is escaped through the platform hook. After all counters, every touched retained slot (the latest64 for longer batches), the original inputs and retained FIRST result are checked and folded into a value-canonical checksum. This is last-ring consumption, not retention of all transient outputs or a heap ownership proof. Text checks, decimal canonicalization, oracle work, formatting and explicitly defined Int31 character hash folding are outside wall/CPU/allocation brackets. The metadata-only checker has independent exact input/expected tuples and the same specified polynomial checksum; it does not assume platform String.hashCode equality. Reports must preserve the loop/escape overhead rather than subtract an invented fixed cost.
++
++## Metrics and limitations
++
++Wall latency is raw batch elapsed/count. Throughput is derived from the SAME wall bracket, count×1e9/elapsed, not independently measured saturated concurrent throughput. First and warm remain separate. CPU/counter getters occur outside the wall bracket; their observation order means tiny FIRST CPU/allocation values include adjacent metrology overhead. Unsupported counters emit NA. Counter decreases or invalid elapsed readings fail metrology, not mathematical correctness; no timing values are correctness assertions.
++
++- JVM: current-thread CPU and allocated bytes only if the actual ThreadMXBean reports support AND enabled state. Other-thread allocation/CPU is not measured by those deltas. Runtime used-heap snapshots are process-wide/coarse and include prepared inputs and harness, not per-value retained size. The external time-l footer records whole-child peak RSS; JVM internal RSS is NA.
++- JS Node: process.cpuUsage user+system microseconds are converted to ns; process.memoryUsage heapUsed is a whole-process V8 heap sample. Allocation is NA. process.resourceUsage maxRSS is KiB converted to bytes and is the high-water mark through that counter snapshot, not through later exit. [Pinned Node24.16.0 process documentation](https://nodejs.org/download/release/v24.16.0/docs/api/process.html#processcpuusagepreviousvalue).
++- Wasm Node: process CPU and process maxRSS have the same scope. Wasm heap/allocation is NA; a V8 heap sample is not passed off as owned Wasm graph bytes.
++- macOS Native: getrusage SELF user+system is process CPU; ru_maxrss is macOS bytes through the snapshot. Allocation/heap are NA in this runner. No Linux unit assumption is used. The existing task539 macOS process/rusage approach is reused, not numerical implementation code.
++- Every platform: `/usr/bin/time -l` is retained verbatim for completed whole-child peak RSS including all correctness/checking/startup/exit. It is labelled for that complete process sequence and cannot rank one object's retained footprint or replace transient-allocation counters. Exact owned graph/retained memory requires separate already-required metric-specific capability/control evidence; currently NA here, not declared impossible forever. There is no object-size inference from RSS or heap deltas.
++
++Host start/end load average, available processors and precise supervisor wall/monotonic windows are retained as contextual snapshots. The .identity PID/start belongs to /usr/bin/time, NOT the JVM/Node/Native runtime descendant. Actual runtime PID/start is unobserved by this controller; executable SHA, exact command/flags and child version/target assertions provide the stated runtime binding. No descendant PID or independently observed effective-flag witness is inferred from IDENTITY598 labels. They do not prove quiet-host isolation or explain a timing difference. Raw per-fork ranges/adverse values must accompany the report; no universal ranking follows from this corpus.
++
++## Future exact preparation and commands
++
++The independent build reuses the reviewed portable isolated Maven repository ledger/GAV validation and three-target source boundaries, adds JVM with benchmark-only KBigNum, and pins Kotlin2.4.21/Node24.16.0/BellSoft25.0.4+9. Compile and source/peer signatures are STILL UNVERIFIED. Existing approved598 dependency/accepted539 workflow applies; no homemade approval boolean.
++
++Supply the SAME final publication/node properties as prepared-portable (kroguRepository, kroguVersion, kroguCommit, publicationLedger, publicationLedgerSha256, nodeExecutable, nodeSha256). Use the root wrapper and fresh owner attempt logs, no auto JDK/Node downloads, and one build target at a time. Example future build from repository root, after539:
++
++```sh
++env -i HOME="$HOME" \
++  PATH="/Users/yoda/.gradle/nodejs/node-v24.16.0-darwin-arm64/bin:/Users/yoda/.sdkman/candidates/java/25.0.4-librca/bin:/usr/bin:/bin" \
++  JAVA_HOME=/Users/yoda/.sdkman/candidates/java/25.0.4-librca \
++  ./gradlew -p .codex-work/598/prepared-timing --no-daemon --console=plain \
++  -PkroguRepository=/ABSOLUTE/FINAL_ISOLATED_REPOSITORY -PkroguVersion=FINAL_VERSION \
++  -PkroguCommit=FINAL_40_HEX_COMMIT -PpublicationLedger=/ABSOLUTE/FINAL_LEDGER.json \
++  -PpublicationLedgerSha256=FINAL_LEDGER_SHA \
++  -PnodeExecutable=/Users/yoda/.gradle/nodejs/node-v24.16.0-darwin-arm64/bin/node \
++  -PnodeSha256=1ee75375e33b94fc34b3b19aede049e11dae90efb63b374dc96d6bdace70c4b8 \
++  --write-locks stageJvmTiming598
++```
++
++Other explicit stages: stageJSTiming598, stageWasmTiming598, stageNativeTiming598. Each stages its compiler-produced closure under build/timing-runtime/{JVM,JS,Wasm,Native} with artifact.properties, complete member SHA manifest, own source SHA and resolved compile-input binary SHA. JVM additionally records exact runtime classpath JARs; Node stages the whole compiler closure, never just its main file; Native preserves executable permission. Main filenames and Gradle API/task names are asserted hypotheses until the first actual compile; preserve any failure and resolve only through public build/API documentation.
++
++Copy/freeze each produced closure into a new task598 owned artifact directory before execution. The external controller must never overlap a build/mutation of those exact files. Binding verification hashes binaries only; it does not inspect foreign implementation or bytecode. Actual dependency locks/resolution/license and source-to-output build logs must also be retained. The fixed source label krogu-final539-PENDING is the unchanged adapter token; the actual accepted40-hex commit and publication ledger SHA in artifact.properties/binding.txt are authoritative and required, not inferred from that token.
++
++The controller has six exact future arguments:
++
++```sh
++/Users/yoda/.sdkman/candidates/kotlin/2.4.21/bin/kotlinr \
++  .codex-work/598/prepared-timing/run-timing.main.kts \
++  /ABSOLUTE/FROZEN_TIMING_RUNTIME_TREE ACTUAL_MANIFEST_SHA \
++  /ABSOLUTE/PINNED_RUNTIME_EXECUTABLE ACTUAL_RUNTIME_EXE_SHA \
++  FINAL_40_HEX_KROGU_COMMIT /ABSOLUTE/NEW_TASK598_RUN_OUTPUT
++```
++
++For JVM use the pinned BellSoft bin/java; for JS/Wasm use the pinned Node executable; for Native the runtime executable must be the exact frozen manifest member .kexe. The macOS-only controller runs three cohorts and never runs Gradle/downloads. Per child600s, entire target campaign6h; output-size8MiB is a polling stop threshold (not a strict persisted-byte cap). Owned cleanup has a ten-second termination fence and preserves partial logs/primary failures; no foreign process is signalled. All old outputs must remain; a previously existing run directory is rejected.
++
++Once EXECUTED_NOT_YET_ANALYZED exists, a separate future invocation produces strict summaries without overwriting raw:
++
++```sh
++/Users/yoda/.sdkman/candidates/kotlin/2.4.21/bin/kotlinr \
++  .codex-work/598/prepared-timing/check-timing.main.kts \
++  /ABSOLUTE/COMPLETED_RUN /ABSOLUTE/NEW_SUMMARY_DIRECTORY
++```
++
++It checks supervisor PID/start identities, exit/log SHA, exact input/expected tuples and allowed relations, FIRST/result-ring polynomial checksums, exactly one FIRST before a successful gate, strict WARM peer/id/fork/budget/count and seven ordered samples using that one selected count per child; publishes raw first/warm, per-fork median/min/max, derived throughput, available CPU/allocation, whole-child memory and every paired ratio/delta versus Krogu. Mixed observed relations remain explicit, and all adverse rows are retained. No arbitrary threshold, winning-only filter, hidden rerun or statistical claim of independence is added. The checker is metrology/inventory preparation, not a final independent method/report acceptance.
++
++All build outputs, actual counters/variants/interop/Node/JVM/Native runtime behavior, stability/cap effects, artifact/source bindings, memory controls and reports remain pending. This adds the missing execution path for the prepared core; it does not close the broader literal598 operation/target/reproducibility/report requirements.
+--- /dev/null
++++ b/.codex-work/598/prepared-timing/build.gradle.kts
+@@ -0,0 +1,139 @@
++import groovy.json.JsonSlurper
++import java.nio.file.Files
++import java.security.MessageDigest
++import org.jetbrains.kotlin.gradle.dsl.JsModuleKind
++import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsEnvSpec
++import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsPlugin
++import org.jetbrains.kotlin.gradle.targets.wasm.nodejs.WasmNodeJsEnvSpec
++import org.jetbrains.kotlin.gradle.targets.wasm.nodejs.WasmNodeJsPlugin
++
++plugins { kotlin("multiplatform") version "2.4.21" }
++
++// Independent correctness consumer. No root source/project dependency or publication.
++val repositoryPath = providers.gradleProperty("kroguRepository").get()
++val kroguVersion = providers.gradleProperty("kroguVersion").get()
++val kroguCommit = providers.gradleProperty("kroguCommit").get().also { require(it.matches(Regex("[a-f0-9]{40}"))) }
++val ledgerFile = file(providers.gradleProperty("publicationLedger").get())
++val ledgerSha = providers.gradleProperty("publicationLedgerSha256").get()
++val nodeFile = file(providers.gradleProperty("nodeExecutable").get()).canonicalFile
++val nodeSha = providers.gradleProperty("nodeSha256").get()
++fun sha(file: File): String = file.inputStream().use { input ->
++    val digest = MessageDigest.getInstance("SHA-256"); val buffer = ByteArray(65536)
++    while (true) { val n = input.read(buffer); if (n < 0) break; digest.update(buffer, 0, n) }
++    digest.digest().joinToString("") { "%02x".format(it) }
++}
++fun verifyInputs598() {
++    require(ledgerSha.matches(Regex("[a-f0-9]{64}")) && sha(ledgerFile) == ledgerSha)
++    require(nodeSha.matches(Regex("[a-f0-9]{64}")) && sha(nodeFile) == nodeSha)
++    require(System.getenv("PATH").split(File.pathSeparator).first() == nodeFile.parentFile.path) { "Put the exact pinned Node first in PATH" }
++    val root = file(repositoryPath).canonicalFile
++    val ledger = JsonSlurper().parse(ledgerFile) as Map<*, *>
++    require(ledger["sourceCommit"] == kroguCommit && ledger["group"] == "io.heapy.krogu" &&
++        ledger["module"] == "krogu-math" && ledger["version"] == kroguVersion)
++    val expected = mutableSetOf<String>()
++    for (entry in ledger["files"] as List<*>) {
++        val record = entry as Map<*, *>; val path = record["path"] as String
++        require(path.isNotEmpty() && !path.startsWith('/') && path.split('/').none { it in listOf("", ".", "..") })
++        require(expected.add(path))
++        val artifact = root.resolve(path).canonicalFile
++        require(artifact.toPath().startsWith(root.toPath()) && artifact.isFile)
++        require(artifact.length() == (record["bytes"] as Number).toLong() && sha(artifact) == record["sha256"])
++    }
++    val actual = root.walkTopDown().onEnter { require(!Files.isSymbolicLink(it.toPath())); true }
++        .filter { it.isFile }.map { require(!Files.isSymbolicLink(it.toPath())); it.relativeTo(root).invariantSeparatorsPath }.toSet()
++    require(actual == expected) { "Unindexed or missing isolated publication files" }
++    require(expected.any { it.endsWith(".module") } && expected.count { it.endsWith(".klib") } >= 3)
++}
++verifyInputs598()
++repositories {
++    exclusiveContent {
++        forRepository { maven { url = uri(repositoryPath) } }
++        filter { includeGroup("io.heapy.krogu") }
++    }
++    mavenCentral()
++}
++plugins.withType<NodeJsPlugin> {
++    extensions.getByType<NodeJsEnvSpec>().apply { version = "24.16.0"; download = false }
++}
++plugins.withType<WasmNodeJsPlugin> {
++    extensions.getByType<WasmNodeJsEnvSpec>().apply { version = "24.16.0"; download = false }
++}
++kotlin {
++    jvmToolchain { languageVersion.set(JavaLanguageVersion.of(25)); vendor.set(JvmVendorSpec.BELLSOFT) }
++    jvm()
++    js {
++        nodejs(); binaries.executable()
++        compilerOptions { moduleKind.set(JsModuleKind.MODULE_COMMONJS) }
++    }
++    @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
++    wasmJs { nodejs(); binaries.executable() }
++    macosArm64 { binaries.executable { entryPoint = "preparation598.main" } }
++    sourceSets.commonMain {
++        // Reuse reviewed adapter sources; exclude JVM/JDK/KBigNum and JVM fixtures.
++        kotlin.srcDir(file("../prepared-harness"))
++        kotlin.include("**/Timing598.kt", "**/TimingUntimed598.kt", "Contract.kt", "KroguAdapter.kt", "IonsPinAdapter.kt")
++        dependencies {
++            implementation("io.heapy.krogu:krogu-math:$kroguVersion")
++            implementation("com.ionspin.kotlin:bignum:0.3.10")
++        }
++    }
++    sourceSets.jvmMain {
++        kotlin.srcDir(file("../prepared-harness"))
++        kotlin.include("**/PlatformTiming598.kt", "JdkAdapter.kt", "KBigNumAdapter.kt", "UntimedFixtures.kt")
++        dependencies { implementation("io.github.gatrongdev:kbignum-desktop:0.0.20") }
++    }
++}
++dependencyLocking { lockAllConfigurations() }
++configurations.configureEach { resolutionStrategy.failOnVersionConflict() }
++configurations.configureEach { resolutionStrategy.force(*listOf("kotlin-stdlib", "kotlin-stdlib-common", "kotlin-stdlib-jdk7", "kotlin-stdlib-jdk8", "kotlin-stdlib-js", "kotlin-stdlib-wasm-js", "kotlin-dom-api-compat").map { "org.jetbrains.kotlin:$it:2.4.21" }.toTypedArray()) }
++val verify598Inputs = tasks.register("verify598Inputs") { doLast { verifyInputs598() } }
++tasks.matching { it.name.startsWith("compile") && it.name.contains("Kotlin") }.configureEach { dependsOn(verify598Inputs) }
++
++// Prepare immutable runtime closures; the external controller never invokes Gradle.
++fun freeze598(directory: File, kind: String, entry: String) {
++    val sourceFiles=(projectDir.walkTopDown().filter { it.isFile && it.extension in setOf("kt","kts","properties") &&
++        !it.toPath().startsWith(file("build").toPath()) }.toList() +
++        listOf("Contract.kt","KroguAdapter.kt","IonsPinAdapter.kt","JdkAdapter.kt","KBigNumAdapter.kt","UntimedFixtures.kt").map { file("../prepared-harness/$it") }).distinct()
++    directory.resolve("sources.sha256").writeText(sourceFiles.sortedBy { it.canonicalPath }.joinToString("\n",postfix="\n") { "${sha(it)}\t${it.canonicalPath}" })
++    directory.resolve("artifact.properties").writeText("platform=$kind\nkotlin=2.4.21\nkrogu_commit=$kroguCommit\npublication_ledger_sha256=$ledgerSha\nionspin=0.3.10\nkbignum=0.0.20\nentry=$entry\n")
++    val target=when(kind) { "JVM"->"jvm"; "JS"->"js"; "Wasm"->"wasmJs"; else->"macosArm64" }
++    val dependencyFiles=kotlin.targets.getByName(target).compilations.getByName("main").compileDependencyFiles.files
++        .flatMap { if(it.isFile) listOf(it) else it.walkTopDown().filter{f->f.isFile}.toList() }.distinct()
++    directory.resolve("compile-inputs.sha256").writeText(dependencyFiles.sortedBy{it.canonicalPath}.joinToString("\n",postfix="\n") { "${sha(it)}\t${it.canonicalPath}" })
++    val members=directory.walkTopDown().filter { it.isFile && it.name != "manifest.sha256" }.sortedBy { it.relativeTo(directory).invariantSeparatorsPath }.toList()
++    directory.resolve("manifest.sha256").writeText(members.joinToString("\n",postfix="\n") { "${sha(it)}\t${it.relativeTo(directory).invariantSeparatorsPath}" })
++}
++val jvmJar598=tasks.named<Jar>("jvmJar")
++tasks.register<Sync>("stageJvmTiming598") {
++    dependsOn(jvmJar598,verify598Inputs)
++    into(layout.buildDirectory.dir("timing-runtime/JVM"))
++    from(configurations.named("jvmRuntimeClasspath")) { into("lib") }
++    from(jvmJar598) { into("lib") }
++    duplicatesStrategy=DuplicatesStrategy.FAIL
++    doLast {
++        val directory=layout.buildDirectory.dir("timing-runtime/JVM").get().asFile
++        directory.resolve("classpath.txt").writeText(directory.resolve("lib").listFiles()!!.filter { it.extension=="jar" }.sortedBy { it.name }.joinToString("\n",postfix="\n") { "lib/${it.name}" })
++        freeze598(directory,"JVM","preparation598.Timing598Kt")
++    }
++}
++for((target,kind) in listOf("js" to "JS","wasmJs" to "Wasm")) tasks.register<Sync>("stage${kind}Timing598") {
++    dependsOn("${target}ProductionExecutableCompileSync",verify598Inputs)
++    into(layout.buildDirectory.dir("timing-runtime/$kind"))
++    from(layout.buildDirectory.dir("compileSync/$target/main/productionExecutable/kotlin"))
++    doLast {
++        val directory=layout.buildDirectory.dir("timing-runtime/$kind").get().asFile
++        val entry="peer598-timing."+if(kind=="JS") "js" else "mjs"
++        check(directory.resolve(entry).isFile) { "Unexpected compiler entry; retain failure and bind actual own emitted closure before use" }
++        freeze598(directory,kind,entry)
++    }
++}
++tasks.register<Sync>("stageNativeTiming598") {
++    dependsOn("linkReleaseExecutableMacosArm64",verify598Inputs)
++    into(layout.buildDirectory.dir("timing-runtime/Native"))
++    from(layout.buildDirectory.file("bin/macosArm64/releaseExecutable/peer598-timing.kexe"))
++    doLast {
++        val directory=layout.buildDirectory.dir("timing-runtime/Native").get().asFile
++        check(directory.resolve("peer598-timing.kexe").isFile && directory.resolve("peer598-timing.kexe").setExecutable(true,true))
++        freeze598(directory,"Native","peer598-timing.kexe")
++    }
++}
+--- /dev/null
++++ b/.codex-work/598/prepared-timing/check-timing.main.kts
+@@ -0,0 +1,104 @@
++#!/usr/bin/env kotlinr
++@file:Import("Catalog598.main.kts")
++import java.io.File
++import java.security.MessageDigest
++import java.util.Properties
++require(args.size==2) { "completedRunRoot NEWsummaryDirectory" }
++val root=File(args[0]).canonicalFile;val output=File(args[1]).canonicalFile
++val allowed=File("/Users/yoda/dev/pet/krogu-math/.codex-work/598").canonicalFile.toPath()
++require(root.toPath().startsWith(allowed) && output.toPath().startsWith(allowed) && !output.exists())
++check(File(root,"EXECUTED_NOT_YET_ANALYZED").isFile)
++fun properties598(file:File)=Properties().apply { file.inputStream().use{load(it)} }
++fun sha598(file:File)=file.inputStream().use{input-> val md=MessageDigest.getInstance("SHA-256");val bytes=ByteArray(65536);while(true){val n=input.read(bytes);if(n<0)break;md.update(bytes,0,n)};md.digest().joinToString(""){"%02x".format(it)}}
++val binding=properties598(File(root,"binding.txt"));val platform=binding.getProperty("platform")
++val catalog=catalog598(platform)
++val warm=mutableListOf<List<String>>();val first=mutableListOf<List<String>>();val identities=mutableSetOf<Pair<String,String>>()
++val relations=mutableMapOf<Triple<String,String,Int>,String>()
++val resources=mutableListOf<String>()
++fun numeric598(value:String):Double? = if(value=="NA")null else value.toDouble().also{require(it.isFinite() && it>=0)}
++for(fork in 0..2) for((position,work) in (if(fork==1)catalog.asReversed() else catalog).withIndex()) {
++    val log=File(root,"fork$fork-case$position.log");val meta=properties598(File(log.path+".binding"))
++    check(meta.getProperty("peer")==work.peer && meta.getProperty("id")==work.id && meta.getProperty("fork")==fork.toString() && meta.getProperty("order")==if(fork==1)"reverse" else "forward")
++    check(meta.getProperty("exit")=="0" && meta.getProperty("log_sha256")==sha598(log))
++    val identity=properties598(File(log.path+".identity"));check(identity.getProperty("supervisor_pid").toLong()>0)
++    check(identities.add(identity.getProperty("supervisor_pid") to identity.getProperty("supervisor_start")))
++    val lines=log.readLines();val firstLine=lines.single{it.startsWith("FIRST598\t")};val gateLine=lines.single{it.startsWith("GATE598_PASS\t")}
++    check(lines.indexOf(firstLine)<lines.indexOf(gateLine))
++    check(gateLine=="GATE598_PASS\t${work.peer}\t${work.id}\t$fork")
++    check(lines.single{it.startsWith("COMPLETE598_TIMING_CHILD\t")}=="COMPLETE598_TIMING_CHILD\t${work.peer}\t${work.id}\t$fork")
++    val input=lines.single{it.startsWith("INPUT598\t")}.split('\t');check(input.size==5)
++    val expected=expected598(work.id)
++    check(input[1]==expected.left && input[2]==expected.right && input[4]==expected.expected)
++    if(expected.self)check(input[3]=="self-alias")
++    else {
++        check(input[3] in listOf("binary-native-alias","binary-distinct"))
++        if(input[3]=="binary-native-alias")check(canonical598(expected.left)==canonical598(expected.right))
++    }
++    val key=Triple(work.peer,work.id,fork);relations[key]=input[3]
++    val identityRow=lines.single{it.startsWith("IDENTITY598\t")}.split('\t')
++    val runtime=when(platform){"JVM"->"JVM/BellSoft25.0.4+9-LTS";"JS"->"JS/Node24.16.0";"Wasm"->"Wasm/Node24.16.0";else->"macOSArm64/KotlinNative2.4.21"}
++    check(identityRow==listOf("IDENTITY598",runtime,work.peer,work.id,fork.toString(),if(fork==1)"reverse" else "forward"))
++    check(lines.count{it.startsWith("SCOPE598\t")}==1 && lines.count{it.startsWith("WARM598\t")}==1 && lines.count{it.startsWith("COLD598_SCOPE\t")}==1)
++    if(platform=="JVM") {
++        val counts=lines.filter{it.startsWith("GATE_COUNT598\t")}.map{it.split('\t')}
++        check(counts.size==4 && counts.map{it[1]}.toSet()==catalog.map{it.peer}.toSet())
++        counts.forEach{check(it.size==4 && it[2].toInt() in 128..168 && it[3].toInt()>=1)}
++    } else {
++        val complete=lines.single{it.startsWith("COMPLETE598_UNTIMED_ONLY\t")}
++        check(Regex("COMPLETE598_UNTIMED_ONLY\tcore=128\tdistinct=([0-9]+)").matches(complete))
++        val distinct=complete.substringAfter("distinct=").toInt();check(distinct in 0..32)
++        check(lines.count{it.startsWith("CHECK598\t")}==128+distinct)
++    }
++    val f=firstLine.split('\t');check(f.size==12 && f[1]==work.peer && f[2]==work.id && f[3]==fork.toString() && f[4]=="1" && f[5].toLong()>0)
++    (6..10).forEach{numeric598(f[it])};check(f[11].toInt()==checksum598(expected.canonical));first+=f
++    val training=lines.single{it.startsWith("WARM598\t")}.split('\t')
++    check(training.size==8 && training.take(4)==listOf("WARM598",work.peer,work.id,fork.toString()))
++    check(training[4].toLong() in 1..1_048_576 && training[5].toLong()>0 && training[6].toInt() in 1..1_048_576)
++    check(training[7]=="TARGET200ms_CAP1048576ops_TARGET20msbatch")
++    val selectedCount=training[6].toInt()
++    check(lines.indexOf(training.joinToString("\t"))>lines.indexOf(gateLine))
++    val rows=lines.filter{it.startsWith("TIME598\t")}.map{it.split('\t')};check(rows.size==7)
++    for((sample,row) in rows.withIndex()) {
++        check(row.size==13 && row[1]==work.peer && row[2]==work.id && row[3]==fork.toString() && row[4]==sample.toString())
++        check(row[5].toInt()==selectedCount && row[6].toLong()>0)
++        (7..11).forEach{numeric598(row[it])};check(row[12].toInt()==ringChecksum598(expected.canonical,selectedCount))
++        check(lines.indexOf(row.joinToString("\t"))>lines.indexOf(training.joinToString("\t")));warm+=row
++    }
++    val maximum=lines.mapNotNull{Regex("\\s*([0-9]+)\\s+maximum resident set size").matchEntire(it)?.groupValues?.get(1)}.single().toLong()
++    check(maximum>0)
++    resources+="$fork\t${work.peer}\t${work.id}\t$maximum\tWHOLE_CHILD_MACOS_MAXRSS_BYTES_INCLUDING_GATE_AND_EXIT"
++}
++check(first.size==catalog.size*3 && warm.size==catalog.size*21)
++fun median598(values:List<Double>):Double {require(values.isNotEmpty());val a=values.sorted();return if(a.size%2==1)a[a.size/2] else (a[a.size/2-1]+a[a.size/2])/2}
++check(output.mkdirs())
++fun write598(name:String,lines:List<String>) {File(output,name).bufferedWriter().use{writer->lines.forEach{writer.appendLine(it)}}}
++write598("raw-first.tsv",first.map{it.joinToString("\t")});write598("raw-warm.tsv",warm.map{it.joinToString("\t")});write598("whole-child-resources.tsv",resources)
++val summary=mutableListOf("peer\tid\tfork\tns_per_op_median\tns_per_op_min\tns_per_op_max\tderived_ops_per_second\tcpu_ns_per_op_median\tallocation_B_per_op_median\trelation")
++val medians=mutableMapOf<Triple<String,String,Int>,Double>()
++for(work in catalog) for(fork in 0..2) {
++    val rows=warm.filter{it[1]==work.peer && it[2]==work.id && it[3]==fork.toString()}
++    val ns=rows.map{it[6].toDouble()/it[5].toLong()};val m=median598(ns);medians[Triple(work.peer,work.id,fork)]=m
++    fun counter(column:Int):String {val v=rows.map{numeric598(it[column])};check(v.all{it==null} || v.all{it!=null});return if(v.all{it==null})"NA" else median598(rows.map{it[column].toDouble()/it[5].toLong()}).toString()}
++    summary+="${work.peer}\t${work.id}\t$fork\t$m\t${ns.min()}\t${ns.max()}\t${1e9/m}\t${counter(7)}\t${counter(8)}\t${relations[Triple(work.peer,work.id,fork)]}"
++}
++write598("per-fork.tsv",summary)
++val paired=mutableListOf("id\tpeer\tfork\tpeer_ns_over_krogu_ns\tpeer_minus_krogu_ns\tsame_observed_relation")
++for(work in catalog.filter{it.peer!="krogu-final539-PENDING"}) for(fork in 0..2) {
++    val k=medians[Triple("krogu-final539-PENDING",work.id,fork)]?:error("Missing matched Krogu operation")
++    val p=medians.getValue(Triple(work.peer,work.id,fork));paired+="${work.id}\t${work.peer}\t$fork\t${p/k}\t${p-k}\t${relations[Triple(work.peer,work.id,fork)]==relations[Triple("krogu-final539-PENDING",work.id,fork)]}"
++}
++write598("paired.tsv",paired)
++val firstSummary=mutableListOf("peer\tid\tfirst_ns_median_of3\tfirst_ns_min\tfirst_ns_max\tSCOPE")
++val firstPairs=mutableListOf("id\tpeer\tfork\tfirst_peer_over_krogu\tfirst_peer_minus_krogu_ns\tsame_observed_relation")
++for(work in catalog) {
++    val values=first.filter{it[1]==work.peer && it[2]==work.id}.map{it[5].toDouble()}
++    check(values.size==3);firstSummary+="${work.peer}\t${work.id}\t${median598(values)}\t${values.min()}\t${values.max()}\tFIRST_PUBLIC_AFTER_PARSE_NOT_PRISTINE_VM"
++    if(work.peer!="krogu-final539-PENDING") for(fork in 0..2) {
++        val p=first.single{it[1]==work.peer && it[2]==work.id && it[3]==fork.toString()}[5].toDouble()
++        val k=first.single{it[1]=="krogu-final539-PENDING" && it[2]==work.id && it[3]==fork.toString()}[5].toDouble()
++        firstPairs+="${work.id}\t${work.peer}\t$fork\t${p/k}\t${p-k}\t${relations[Triple(work.peer,work.id,fork)]==relations[Triple("krogu-final539-PENDING",work.id,fork)]}"
++    }
++}
++write598("first-summary.tsv",firstSummary);write598("first-paired.tsv",firstPairs)
++write598("SCOPE.txt",listOf("All per-fork/adverse rows retained. FIRST after parsing precedes gate, not VM/process cold. Throughput is derived from the same wall bracket; latency includes adapter/ring escape. Mixed-alias relations flagged, not silently comparable. RSS/heap snapshots are process metrics, never owned-retained or allocation. No speedup threshold or final task verdict.","Source artifact binding:"+File(root,"binding.txt").readText()))
++File(output,"CHECKED_NOT_YET_INDEPENDENTLY_ACCEPTED").writeText("Exact inventory and arithmetic/counter parsing checked; source/runtime/metrology and comparative report need independent review.\n")
+--- /dev/null
++++ b/.codex-work/598/prepared-timing/gradle.properties
+@@ -0,0 +1,3 @@
++org.gradle.java.installations.auto-download=false
++org.gradle.workers.max=1
++kotlin.compiler.execution.strategy=in-process
+--- /dev/null
++++ b/.codex-work/598/prepared-timing/run-timing.main.kts
+@@ -0,0 +1,101 @@
++#!/usr/bin/env kotlinr
++@file:Import("Catalog598.main.kts")
++import java.io.File
++import java.security.MessageDigest
++import java.time.Instant
++import java.util.Properties
++import java.util.concurrent.TimeUnit
++require(args.size==6) { "artifactRoot artifactManifestSHA runtimeExe runtimeSHA acceptedKroguCommit NEWoutput" }
++fun sha598(file:File)=file.inputStream().use { input -> val md=MessageDigest.getInstance("SHA-256");val bytes=ByteArray(65536);while(true){val n=input.read(bytes);if(n<0)break;md.update(bytes,0,n)};md.digest().joinToString(""){"%02x".format(it)} }
++val base=File("/Users/yoda/dev/pet/krogu-math/.codex-work/598").canonicalFile
++val script=File(base,"prepared-timing/run-timing.main.kts")
++val catalogFile=File(base,"prepared-timing/Catalog598.main.kts")
++val scriptSHA=sha598(script);val catalogSHA=sha598(catalogFile)
++require(System.getProperty("os.name").contains("Mac",true)) { "This exact process/RSS launcher is macOS only" }
++val host598=java.lang.management.ManagementFactory.getOperatingSystemMXBean()
++val tree=File(args[0]).canonicalFile;val runtime=File(args[2]).canonicalFile;val output=File(args[5]).canonicalFile
++require(tree.toPath().startsWith(base.toPath()) && output.toPath().startsWith(base.toPath()) && !output.exists())
++require(args[1].matches(Regex("[a-f0-9]{64}")) && args[3].matches(Regex("[a-f0-9]{64}")) && args[4].matches(Regex("[a-f0-9]{40}")))
++val manifest=File(tree,"manifest.sha256")
++fun rows598(file:File)=file.readLines().map { line-> val f=line.split('\t');require(f.size==2 && f[0].matches(Regex("[a-f0-9]{64}")));f[0] to f[1] }
++val members=rows598(manifest).map { (h,n)-> require(!File(n).isAbsolute && n.split('/').none { it in listOf("",".","..") });h to File(tree,n).canonicalFile.also{require(it.toPath().startsWith(tree.toPath()))} }
++check(members.map{it.second}.distinct().size==members.size)
++val metadata=Properties().apply { File(tree,"artifact.properties").inputStream().use{load(it)} }
++val platform=metadata.getProperty("platform").also { require(it in listOf("JVM","JS","Wasm","Native")) }
++check(metadata.getProperty("krogu_commit")==args[4] && metadata.getProperty("kotlin")=="2.4.21" && metadata.getProperty("ionspin")=="0.3.10" && metadata.getProperty("kbignum")=="0.0.20")
++val sourceRows=rows598(File(tree,"sources.sha256")).map { (h,n)->h to File(n).canonicalFile.also{require(it.toPath().startsWith(base.toPath()))} }
++val dependencyRoots=listOf(File("/Users/yoda/.gradle"),File("/Users/yoda/.konan"),File("/Users/yoda/.m2"),File("/Users/yoda/dev/pet/krogu-math/.codex-work")).map{it.canonicalFile.toPath()}
++val dependencyRows=rows598(File(tree,"compile-inputs.sha256")).map{(h,n)->h to File(n).canonicalFile.also{f->require(dependencyRoots.any{f.toPath().startsWith(it)})}}
++fun verify598() {
++    check(sha598(script)==scriptSHA && sha598(catalogFile)==catalogSHA && sha598(manifest)==args[1] && sha598(runtime)==args[3])
++    for((h,f) in members+sourceRows+dependencyRows) check(f.isFile && sha598(f)==h) { "Changed input:$f" }
++    check(tree.walkTopDown().filter{it.isFile}.map{it.canonicalFile}.toSet()==members.map{it.second}.toSet()+manifest)
++}
++verify598();check(output.mkdirs())
++File(output,"binding.txt").writeText("platform=$platform\nartifact_manifest_sha256=${args[1]}\nruntime_exe=$runtime\nruntime_sha256=${args[3]}\nkrogu_commit=${args[4]}\ncontroller_sha256=$scriptSHA\nidentity_scope=usr-bin-time_supervisor_only_runtime_PID_unobserved\ncatalog_sha256=$catalogSHA\nartifact_tree=$tree\ncwd=$tree\npublication_ledger_sha256=${metadata.getProperty("publication_ledger_sha256")}\n")
++val catalog=catalog598(platform)
++File(output,"catalog.tsv").writeText(catalog.joinToString("\n",postfix="\n"){"${it.peer}\t${it.id}"})
++File(output,"NA.tsv").writeText(if(platform=="JVM") "ionspin-bignum-0.3.10\tfixed-scale/*\tNo verified native fixed-scale equivalent\nALL\tsignificant-HALF_EVEN/MC34\tNot implemented in this exact-core timing slice\n" else "JDK\t*\tNo java.math runtime on this target\nKBigNum0.0.20\t*\tNo published matching JS/Wasm/macOS variant\nALL\tfixed-scale/significant-HALF_EVEN/MC34\tNo common verified peer mapping in this slice\n")
++val entry=metadata.getProperty("entry")
++fun member598(name:String)=File(tree,name).canonicalFile.also { require(it in members.map{it.second}) }
++val prefix=when(platform) {
++    "JVM" -> {
++        check(entry=="preparation598.Timing598Kt")
++        val jars=File(tree,"classpath.txt").readLines().filter{it.isNotEmpty()}.map{member598(it).path}
++        require(jars.isNotEmpty())
++        listOf(runtime.path,"-Xms512m","-Xmx512m","-XX:+UseSerialGC","-XX:ActiveProcessorCount=1","-XX:-OmitStackTraceInFastThrow","-cp",jars.joinToString(File.pathSeparator),entry)
++    }
++    "JS","Wasm" -> listOf(runtime.path,"--expose-gc","--max-old-space-size=512",member598(entry).path)
++    else -> {check(runtime==member598(entry));listOf(runtime.path)}
++}
++val campaignDeadline=System.nanoTime()+TimeUnit.HOURS.toNanos(6)
++fun execute598(command:List<String>,log:File) {
++    File(log.path+".argv.txt").writeText(command.joinToString("\n",postfix="\n"))
++    val builder=ProcessBuilder(command).directory(tree).redirectErrorStream(true).redirectOutput(log)
++    builder.environment().clear();builder.environment().putAll(mapOf("LANG" to "C","TZ" to "UTC"))
++    val startWall=Instant.now();val startMono=System.nanoTime();val startLoad=host598.systemLoadAverage;val startCpuCount=host598.availableProcessors
++    val child=builder.start();var terminal=false;var primary:Throwable?=null
++    try {
++        File(log.path+".identity").writeText("supervisor_pid=${child.pid()}\nsupervisor_start=${child.toHandle().info().startInstant().orElseThrow()}\nwall=${Instant.now()}\n")
++        val until=minOf(campaignDeadline,System.nanoTime()+TimeUnit.SECONDS.toNanos(600))
++        while(!terminal && System.nanoTime()<until) {
++            terminal=child.waitFor(200,TimeUnit.MILLISECONDS)
++            check(log.length()<=8L*1024*1024) { "Child output stop threshold exceeded" }
++        }
++        check(terminal && child.exitValue()==0) { "Child failure/deadline:$log" }
++        File(log.path+".host").writeText("start_wall=$startWall\nend_wall=${Instant.now()}\nstart_mono_ns=$startMono\nend_mono_ns=${System.nanoTime()}\nloadavg_start=$startLoad\nloadavg_end=${host598.systemLoadAverage}\nprocessors_start=$startCpuCount\nprocessors_end=${host598.availableProcessors}\n")
++    } catch(error:Throwable) {primary=error;throw error}
++    finally {
++        if(primary!=null || !terminal || child.isAlive) {
++            var cleanup:Throwable?=null
++            fun record(e:Throwable){if(cleanup==null)cleanup=e else cleanup!!.addSuppressed(e)}
++            val descendants=try{child.toHandle().descendants().toList()}catch(e:Throwable){record(e);emptyList()}
++            for(handle in descendants.asReversed()+child.toHandle()) try{handle.destroyForcibly()}catch(e:Throwable){record(e)}
++            val until=System.nanoTime()+TimeUnit.SECONDS.toNanos(10);var interrupted=Thread.interrupted() || primary is InterruptedException
++            for(handle in descendants+child.toHandle()) while(handle.isAlive && System.nanoTime()<until) {
++                try{handle.onExit().get(maxOf(1L,until-System.nanoTime()),TimeUnit.NANOSECONDS);break}
++                catch(_:InterruptedException){interrupted=true}
++                catch(_:java.util.concurrent.TimeoutException){break}
++                catch(e:Throwable){record(e);break}
++            }
++            if((descendants+child.toHandle()).any{it.isAlive})record(IllegalStateException("Owned child cleanup incomplete"))
++            if(interrupted)Thread.currentThread().interrupt()
++            cleanup?.let{if(primary!=null)primary!!.addSuppressed(it) else throw it}
++        }
++    }
++}
++for(fork in 0..2) {
++    val order=if(fork==1)"reverse" else "forward"
++    for((position,work) in (if(fork==1)catalog.asReversed() else catalog).withIndex()) {
++        verify598();check(System.nanoTime()<campaignDeadline)
++        val log=File(output,"fork$fork-case$position.log")
++        execute598(listOf("/usr/bin/time","-l")+prefix+listOf(work.peer,work.id,fork.toString(),order),log)
++        val lines=log.readLines()
++        check(lines.count{it.startsWith("FIRST598\t")}==1 && lines.count{it.startsWith("TIME598\t")}==7 && lines.count{it.startsWith("GATE598_PASS\t")}==1)
++        check(lines.single{it.startsWith("COMPLETE598_TIMING_CHILD\t")}=="COMPLETE598_TIMING_CHILD\t${work.peer}\t${work.id}\t$fork")
++        File(log.path+".binding").writeText("peer=${work.peer}\nid=${work.id}\nfork=$fork\norder=$order\nlog_sha256=${sha598(log)}\nexit=0\n")
++        verify598();println("COMPLETE598_CHILD fork=$fork position=$position peer=${work.peer} id=${work.id}")
++    }
++}
++verify598()
++File(output,"EXECUTED_NOT_YET_ANALYZED").writeText("Three fresh F/R/F cohorts complete; FIRST after parsing precedes correctness gate; strict inventory/counter/statistics and independent report pending.\n")
+--- /dev/null
++++ b/.codex-work/598/prepared-timing/settings.gradle.kts
+@@ -0,0 +1,2 @@
++pluginManagement { repositories { gradlePluginPortal(); mavenCentral() } }
++rootProject.name = "peer598-timing"
+--- /dev/null
++++ b/.codex-work/598/prepared-timing/src/commonMain/kotlin/preparation598/Timing598.kt
+@@ -0,0 +1,111 @@
++package preparation598
++
++import kotlin.time.TimeSource
++
++/** One selected peer/workload per fresh child. No peer preparation before selection. */
++internal data class TimedCase598(
++    val peer: String, val id: String, val inputLeft: String, val inputRight: String,
++    val relation: String, val expected: String, val operation: () -> Any,
++    val checkResult: (Any) -> String, val checkInputs: () -> Unit,
++)
++internal class Counters598 {
++    var cpuNs = -1L; var allocatedBytes = -1L; var heapUsedBytes = -1L; var rssPeakBytes = -1L
++}
++internal expect fun selectedCase598(peer: String, id: String): TimedCase598
++internal expect fun verifyAll598()
++internal expect fun counters598(destination: Counters598, before: Boolean)
++internal expect fun publishRing598(ring: Array<Any?>)
++internal expect fun metricScope598(): String
++private val clock598 = TimeSource.Monotonic.markNow()
++private fun checksumString598(text:String)=text.fold(0){h,c->31*h+c.code}
++private fun now598() = clock598.elapsedNow().inWholeNanoseconds
++
++internal fun <I : Any, D : Any> coreCase598(adapter: PeerAdapter<I, D>, id: String): TimedCase598 {
++    val parts = id.split('/'); require(parts.size == 3)
++    val family = parts[0]; val fixtureId = parts[1]; val opName = parts[2]
++    val f = (if (family == "int") integerFixtures598 else { require(family == "decimal"); decimalFixtures598 }).single { it.id == fixtureId }
++    val op = if (opName == "self") ExactOperation.MULTIPLY else ExactOperation.valueOf(opName)
++    val expected = when (opName) { "ADD" -> f.sum; "SUBTRACT" -> f.difference; "MULTIPLY" -> f.product; "self" -> f.square; else -> error("Unknown operation") }
++    fun <V : Any> typed(parse: (String) -> V, text: (V) -> String, operation: (ExactOperation, V, V) -> V): TimedCase598 {
++        val a = parse(f.a); val b = if (opName == "self") a else parse(f.b)
++        val rightText = if (opName == "self") f.a else f.b
++        // No observations/formatting on these operands before FIRST.
++        fun canonical(value: String) = if (family == "int") value else canonicalDecimal598(value).let { "${it.first}@${it.second}" }
++        return TimedCase598(adapter.id, id, f.a, rightText,
++            if (opName == "self") "self-alias" else if (a === b) "binary-native-alias" else "binary-distinct", expected,
++            operation = { operation(op, a, b) },
++            checkResult = { value -> @Suppress("UNCHECKED_CAST") val actual = text(value as V)
++                check(canonical(actual) == canonical(expected)) { "${adapter.id}:$id result mismatch:$actual vs$expected" }; canonical(actual) },
++            checkInputs = { check(canonical(text(a)) == canonical(f.a) && canonical(text(b)) == canonical(rightText)) { "Input changed" } })
++    }
++    return if (family == "int") typed(adapter::integer, adapter::integerText, adapter::integerOperation)
++        else typed(adapter::decimal, adapter::decimalText, adapter::decimalOperation)
++}
++
++internal fun <I : Any, D : Any> fixedCase598(adapter: PeerAdapter<I, D>, id: String, left: String, right: String, scale: Int, expected: String): TimedCase598 {
++    check(adapter.fixedScaleHalfUp.eligibleAfterFixtureGate) { "Explicit fixed-scale capability unavailable" }
++    val a = adapter.decimal(left); val b = adapter.decimal(right)
++    fun canonical(text: String) = canonicalDecimal598(text).let { "${it.first}@${it.second}" }
++    return TimedCase598(adapter.id,id,left,right,if(a === b) "binary-native-alias" else "binary-distinct",expected,
++        operation = { adapter.divideFixedScaleHalfUp(a,b,scale) },
++        checkResult = { value -> @Suppress("UNCHECKED_CAST") val text = adapter.decimalText(value as D)
++            check(canonical(text) == canonical(expected)) { "Fixed-scale numeric mismatch" }; canonical(text) },
++        checkInputs = { check(canonical(adapter.decimalText(a)) == canonical(left) && canonical(adapter.decimalText(b)) == canonical(right)) { "Input changed" } })
++}
++
++fun main(args: Array<String>) {
++    require(args.size == 4) { "peer workload fork order" }
++    val (peer, id, forkText, order) = args
++    val fork = forkText.toInt().also { require(it in 0..2) }
++    require(order == if (fork == 1) "reverse" else "forward")
++    val runtime = portableRuntime598()
++    println("IDENTITY598\t$runtime\t$peer\t$id\t$fork\t$order")
++    val case = selectedCase598(peer,id) // Only this peer is accessed; parse/prepare is outside FIRST.
++    check(case.peer == peer && case.id == id)
++    val before = Counters598(); val after = Counters598(); val ring = arrayOfNulls<Any>(64)
++    println("INPUT598\t${case.inputLeft}\t${case.inputRight}\t${case.relation}\t${case.expected}")
++    println("SCOPE598\t${metricScope598()}")
++    println("COLD598_SCOPE\tFRESH_CHILD_FIRST_EXPLICIT_PUBLIC_OP_AFTER_PARSE\tPRISTINE_VM_OR_INTERNAL_CACHE_NA")
++    fun available(value: Long) = if(value < 0) "NA" else value.toString()
++    fun delta(a: Long, b: Long): String { if (a < 0 || b < 0) return "NA"; check(b >= a) { "Counter decreased" }; return (b-a).toString() }
++    // Fresh child, first explicit selected public arithmetic call AFTER input parsing.
++    // Parsing/class init may do internal work; no uninitialized-VM or parser-cold claim.
++    counters598(before,true)
++    val firstStart = now598()
++    val first = case.operation()
++    ring[0] = first; publishRing598(ring)
++    val firstNs = now598()-firstStart
++    counters598(after,false)
++    check(firstNs > 0)
++    val firstText = case.checkResult(first); case.checkInputs()
++    println("FIRST598\t$peer\t$id\t$fork\t1\t$firstNs\t${delta(before.cpuNs,after.cpuNs)}\t${delta(before.allocatedBytes,after.allocatedBytes)}\t${available(before.heapUsedBytes)}\t${available(after.heapUsedBytes)}\t${available(after.rssPeakBytes)}\t${checksumString598(firstText)}")
++    verifyAll598() // Full untimed gates AFTER FIRST, BEFORE any warm measurement.
++    case.checkInputs()
++    println("GATE598_PASS\t$peer\t$id\t$fork")
++    val retainedFirstText=case.checkResult(first)
++    fun batch(count: Int, sample: Int, record: Boolean): Long {
++        counters598(before,true)
++        val start=now598()
++        repeat(count) { ring[it and 63]=case.operation() }
++        publishRing598(ring)
++        val elapsed=now598()-start
++        counters598(after,false)
++        check(elapsed > 0)
++        var digest=0
++        repeat(minOf(count,64)) { digest=31*digest+checksumString598(case.checkResult(checkNotNull(ring[it]))) }
++        case.checkInputs()
++        check(case.checkResult(first) == retainedFirstText) { "Retained FIRST result changed" }
++        if(record) println("TIME598\t$peer\t$id\t$fork\t$sample\t$count\t$elapsed\t${delta(before.cpuNs,after.cpuNs)}\t${delta(before.allocatedBytes,after.allocatedBytes)}\t${available(before.heapUsedBytes)}\t${available(after.heapUsedBytes)}\t${available(after.rssPeakBytes)}\t$digest")
++        return elapsed
++    }
++    // Fixed warmup/calibration budgets, with honest operation caps in raw metadata.
++    var count=1; var warmOps=0L; val warmStart=now598()
++    while(now598()-warmStart < 200_000_000L && warmOps < 1_048_576L) {
++        val n=minOf(count,(1_048_576L-warmOps).toInt())
++        val elapsed=batch(n,-1,false); warmOps+=n
++        if(elapsed < 20_000_000L && count < 1_048_576) count=minOf(count*2,1_048_576)
++    }
++    println("WARM598\t$peer\t$id\t$fork\t$warmOps\t${now598()-warmStart}\t$count\tTARGET200ms_CAP1048576ops_TARGET20msbatch")
++    repeat(7) { sample -> batch(count,sample,true) }
++    println("COMPLETE598_TIMING_CHILD\t$peer\t$id\t$fork")
++}
+--- /dev/null
++++ b/.codex-work/598/prepared-timing/src/commonMain/kotlin/preparation598/TimingUntimed598.kt
+@@ -0,0 +1,106 @@
++package preparation598
++
++/** Source preparation only. All parsing/text/oracle observations are untimed. */
++internal data class ExactFixture598(
++    val id: String, val a: String, val b: String,
++    val sum: String, val difference: String, val product: String, val square: String,
++)
++
++// Independent literal values, not outputs generated by either peer. Powers of ten
++// below are literal decimal representations, not a substitute peer arithmetic route.
++internal val integerFixtures598 = listOf(
++    ExactFixture598("zero", "0", "0", "0", "0", "0", "0"),
++    ExactFixture598("signed", "-7", "3", "-4", "-10", "-21", "49"),
++    ExactFixture598("carry30", "1073741823", "1", "1073741824", "1073741822", "1073741823", "1152921502459363329"),
++    ExactFixture598("wide10", "100000000000000000000", "-10", "99999999999999999990", "100000000000000000010", "-1000000000000000000000", "1" + "0".repeat(40)),
++)
++internal val decimalFixtures598 = listOf(
++    ExactFixture598("zero", "0.00", "-0.000", "0.000", "0.000", "0.00000", "0.0000"),
++    ExactFixture598("scale", "1.20", "3.400", "4.600", "-2.200", "4.08000", "1.4400"),
++    ExactFixture598("signed", "-1.25", "0.05", "-1.20", "-1.30", "-0.0625", "1.5625"),
++    ExactFixture598("wide10", "100000000000000000000.0", "-10.00", "99999999999999999990.00", "100000000000000000010.00", "-1000000000000000000000.000", "1" + "0".repeat(40) + ".00"),
++)
++
++/** String-only decimal-value observation, never a timed operation or scale oracle. */
++internal fun canonicalDecimal598(text: String): Pair<String, Long> {
++    require(text.length in 1..10000)
++    val match = Regex("([+-]?)([0-9]+)(?:\\.([0-9]+))?(?:[eE]([+-]?[0-9]+))?").matchEntire(text)
++        ?: error("Unsupported public decimal observation: $text")
++    val fraction = match.groupValues[3]
++    val exponent = match.groupValues[4].ifEmpty { "0" }.toLong().also { require(it in -1000000L..1000000L) }
++    val coefficient = (match.groupValues[2] + fraction).trimStart('0')
++    if (coefficient.isEmpty()) return "0" to 0L
++    val digits = coefficient.trimEnd('0')
++    val scale = fraction.length.toLong() - exponent - (coefficient.length - digits.length)
++    return (if (match.groupValues[1] == "-") "-" else "") + digits to scale
++}
++
++private class Preservation598<V : Any>(private val observe: (V) -> String) {
++    private val retained = mutableListOf<Pair<V, String>>()
++    private fun verifyRetained() { for ((value, text) in retained) check(observe(value) == text) { "Earlier result observation changed" } }
++    fun call(a: V, b: V, operation: () -> V): V {
++        verifyRetained()
++        val aBefore = observe(a); val bBefore = observe(b)
++        val result = operation()
++        check(observe(a) == aBefore && observe(b) == bBefore) { "Input observation changed" }
++        verifyRetained()
++        retained += result to observe(result)
++        return result
++    }
++}
++
++private fun <V : Any> checkFamily598(
++    peer: String, family: String, fixtures: List<ExactFixture598>, parse: (String) -> V,
++    observe: (V) -> String, operation: (ExactOperation, V, V) -> V,
++    equivalent: (String, String) -> Boolean,
++): Pair<Int, Int> {
++    val preservation = Preservation598(observe) // Shared across varying input fixtures.
++    var core = 0; var distinct = 0
++    for (fixture in fixtures) {
++        val a = parse(fixture.a); val b = parse(fixture.b)
++        check(equivalent(observe(a), fixture.a) && equivalent(observe(b), fixture.b)) { "Parsed input value mismatch" }
++        fun repeated(id: String, left: V, right: V, op: ExactOperation, expected: String, isDistinct: Boolean = false) {
++            var previousText: String? = null
++            repeat(2) { repetition ->
++                val result = preservation.call(left, right) { operation(op, left, right) }
++                val actual = observe(result)
++                check(equivalent(actual, expected)) { "$peer/$family/${fixture.id}/$id: $actual versus $expected" }
++                check(previousText == null || previousText == actual) { "Repeated result observation changed" }
++                previousText = actual
++                println("CHECK598\t$peer\t$family/${fixture.id}/$id\t$repetition\t$actual\t$expected\tVALUE_ONLY")
++                if (isDistinct) distinct++ else core++
++            }
++        }
++        repeated("add", a, b, ExactOperation.ADD, fixture.sum)
++        repeated("subtract", a, b, ExactOperation.SUBTRACT, fixture.difference)
++        repeated("multiply", a, b, ExactOperation.MULTIPLY, fixture.product)
++        repeated("self-alias", a, a, ExactOperation.MULTIPLY, fixture.square)
++        val equal = parse(fixture.a)
++        if (equal === a) println("NA598\t$peer\t$family/${fixture.id}/distinct-equal\tParser reused identity")
++        else repeated("distinct-equal", a, equal, ExactOperation.MULTIPLY, fixture.square, isDistinct = true)
++    }
++    check(core == 32 && distinct in 0..8 && distinct % 2 == 0)
++    return core to distinct
++}
++
++expect fun portableRuntime598(): String
++
++fun verifyPortableUntimed598() {
++    val runtime = portableRuntime598() // Node targets reject the wrong runtime, before peer checks.
++    println("BEGIN598_UNTIMED\t$runtime\tKotlin2.4.21\tNO_PERFORMANCE_CLAIM")
++    var core = 0; var distinct = 0
++    fun <I : Any, D : Any> peer(adapter: PeerAdapter<I, D>) {
++        val integer = checkFamily598(adapter.id, "int", integerFixtures598, adapter::integer, adapter::integerText,
++            adapter::integerOperation) { actual, expected -> actual == expected }
++        val decimal = checkFamily598(adapter.id, "decimal", decimalFixtures598, adapter::decimal, adapter::decimalText,
++            adapter::decimalOperation) { actual, expected -> canonicalDecimal598(actual) == canonicalDecimal598(expected) }
++        core += integer.first + decimal.first; distinct += integer.second + decimal.second
++        println("NA598\t${adapter.id}\tdecimal-cohort\tValue-only oracle does not establish internal scale")
++        println("NA598\t${adapter.id}\tsignificant-HALF_EVEN\tNot exercised; no ambiguous mapping inferred")
++    }
++    peer(KroguAdapter); peer(IonsPinAdapter)
++    check(core == 128 && distinct in 0..32)
++    println("NA598\tJDK\t$runtime\tPublic java.math unavailable on this target; JVM entrypoint is separate")
++    println("NA598\tKBigNum0.0.20\t$runtime\tNo published JS/Wasm/macOS variant in pinned metadata")
++    println("COMPLETE598_UNTIMED_ONLY\tcore=$core\tdistinct=$distinct")
++}
+--- /dev/null
++++ b/.codex-work/598/prepared-timing/src/jsMain/kotlin/preparation598/PlatformTiming598.kt
+@@ -0,0 +1,19 @@
++package preparation598
++private var escaped598: Array<Any?>? = null
++private fun nodeVersion598(): String = js("process.versions.node") as String
++private fun cpu598(): Double = js("(function(){const u=process.cpuUsage();return (u.user+u.system)*1000})()") as Double
++private fun heap598(): Double = js("process.memoryUsage().heapUsed") as Double
++private fun rss598(): Double = js("process.resourceUsage().maxRSS * 1024") as Double
++actual fun portableRuntime598(): String { check(nodeVersion598()=="24.16.0"); return "JS/Node24.16.0" }
++internal actual fun publishRing598(ring:Array<Any?>) { escaped598=ring }
++internal actual fun counters598(destination:Counters598,before:Boolean) {
++    destination.cpuNs=cpu598().toLong(); destination.allocatedBytes=-1
++    destination.heapUsedBytes=heap598().toLong(); destination.rssPeakBytes=rss598().toLong()
++}
++internal actual fun metricScope598()="Node process CPU(user+system); JS whole-process used-heap snapshots; process maxRSS through snapshot; allocation/owned-retained NA; adapter/ring escape overhead included"
++internal actual fun selectedCase598(peer:String,id:String):TimedCase598 = when(peer) {
++    "krogu-final539-PENDING" -> coreCase598(KroguAdapter,id)
++    "ionspin-bignum-0.3.10" -> coreCase598(IonsPinAdapter,id)
++    else -> error("Peer not published for JS:$peer")
++}
++internal actual fun verifyAll598() { verifyPortableUntimed598() }
+--- /dev/null
++++ b/.codex-work/598/prepared-timing/src/jvmMain/kotlin/preparation598/PlatformTiming598.kt
+@@ -0,0 +1,52 @@
++package preparation598
++
++import java.lang.management.ManagementFactory
++
++private val thread598 = ManagementFactory.getThreadMXBean()
++private val allocation598 = thread598 as? com.sun.management.ThreadMXBean
++@Volatile private var escaped598: Array<Any?>? = null
++actual fun portableRuntime598(): String {
++    check(System.getProperty("java.vendor").contains("BellSoft",true))
++    check(System.getProperty("java.runtime.version") == "25.0.4+9-LTS")
++    return "JVM/BellSoft25.0.4+9-LTS"
++}
++internal actual fun publishRing598(ring: Array<Any?>) { escaped598=ring }
++internal actual fun counters598(destination: Counters598, before: Boolean) {
++    fun alloc() = if(allocation598?.isThreadAllocatedMemorySupported == true && allocation598.isThreadAllocatedMemoryEnabled)
++        allocation598.getThreadAllocatedBytes(Thread.currentThread().threadId()) else -1L
++    if(!before) destination.allocatedBytes=alloc()
++    destination.cpuNs=if(thread598.isCurrentThreadCpuTimeSupported && thread598.isThreadCpuTimeEnabled) thread598.currentThreadCpuTime else -1L
++    val runtime=Runtime.getRuntime(); destination.heapUsedBytes=runtime.totalMemory()-runtime.freeMemory()
++    destination.rssPeakBytes=-1L
++    if(before) destination.allocatedBytes=alloc()
++}
++internal actual fun metricScope598() = "JVM current-thread CPU/allocation if supported+enabled; whole-process used-heap snapshots; no per-value retained claim; RSS peak only external time-l; adapter/ring escape overhead included"
++private fun <I:Any,D:Any> selected598(adapter:PeerAdapter<I,D>,id:String):TimedCase598 {
++    if(!id.startsWith("fixed-scale/")) return coreCase598(adapter,id)
++    val fixture=FixtureCorpus.fixedScale.single { id == "fixed-scale/${it.id}" }
++    return fixedCase598(adapter,id,fixture.left,fixture.right,fixture.scale,fixture.expected)
++}
++internal actual fun selectedCase598(peer:String,id:String):TimedCase598 = when(peer) {
++    "jdk-bellsoft-25.0.4+9" -> selected598(JdkAdapter,id)
++    "krogu-final539-PENDING" -> selected598(KroguAdapter,id)
++    "ionspin-bignum-0.3.10" -> { require(!id.startsWith("fixed-scale/")); selected598(IonsPinAdapter,id) }
++    "kbignum-0.0.20-desktop" -> selected598(KBigNumAdapter,id)
++    else -> error("Unknown peer:$peer")
++}
++internal actual fun verifyAll598() {
++    // Independently qualify the portable literal constants via public JDK, untimed.
++    for(f in integerFixtures598) {
++        val a=JdkAdapter.integer(f.a); val b=JdkAdapter.integer(f.b)
++        check(a.add(b).toString()==f.sum && a.subtract(b).toString()==f.difference && a.multiply(b).toString()==f.product && a.multiply(a).toString()==f.square)
++    }
++    for(f in decimalFixtures598) {
++        val a=JdkAdapter.decimal(f.a); val b=JdkAdapter.decimal(f.b)
++        check(a.add(b).compareTo(JdkAdapter.decimal(f.sum))==0 && a.subtract(b).compareTo(JdkAdapter.decimal(f.difference))==0 &&
++            a.multiply(b).compareTo(JdkAdapter.decimal(f.product))==0 && a.multiply(a).compareTo(JdkAdapter.decimal(f.square))==0)
++    }
++    fun <I:Any,D:Any> gate(adapter:PeerAdapter<I,D>) {
++        val report=verifyUntimed(adapter);check(report.observations.size >= 128)
++        println("GATE_COUNT598\t${adapter.id}\t${report.observations.size}\t${report.unavailable.size}")
++    }
++    gate(JdkAdapter);gate(KroguAdapter);gate(IonsPinAdapter);gate(KBigNumAdapter)
++}
+--- /dev/null
++++ b/.codex-work/598/prepared-timing/src/macosArm64Main/kotlin/preparation598/PlatformTiming598.kt
+@@ -0,0 +1,26 @@
++@file:OptIn(kotlinx.cinterop.ExperimentalForeignApi::class)
++package preparation598
++import kotlinx.cinterop.alloc
++import kotlinx.cinterop.memScoped
++import kotlinx.cinterop.ptr
++import platform.posix.RUSAGE_SELF
++import platform.posix.getrusage
++import platform.posix.rusage
++private var escaped598: Array<Any?>? = null
++actual fun portableRuntime598(): String="macOSArm64/KotlinNative2.4.21"
++internal actual fun publishRing598(ring:Array<Any?>) { escaped598=ring }
++internal actual fun counters598(destination:Counters598,before:Boolean) {
++    memScoped {
++        val usage=alloc<rusage>(); check(getrusage(RUSAGE_SELF,usage.ptr)==0)
++        destination.cpuNs=(usage.ru_utime.tv_sec+usage.ru_stime.tv_sec)*1_000_000_000L + (usage.ru_utime.tv_usec+usage.ru_stime.tv_usec)*1000L
++        destination.rssPeakBytes=usage.ru_maxrss // macOS bytes, not Linux KiB.
++    }
++    destination.allocatedBytes=-1; destination.heapUsedBytes=-1
++}
++internal actual fun metricScope598()="macOS process CPU(user+system); rusage peakRSS bytes through snapshot; allocation/heap/owned-retained NA; per-child external time-l adds completed-lifetime RSS; adapter/ring escape overhead included"
++internal actual fun selectedCase598(peer:String,id:String):TimedCase598 = when(peer) {
++    "krogu-final539-PENDING" -> coreCase598(KroguAdapter,id)
++    "ionspin-bignum-0.3.10" -> coreCase598(IonsPinAdapter,id)
++    else -> error("Peer not published for macOSArm64:$peer")
++}
++internal actual fun verifyAll598() { verifyPortableUntimed598() }
+--- /dev/null
++++ b/.codex-work/598/prepared-timing/src/wasmJsMain/kotlin/preparation598/PlatformTiming598.kt
+@@ -0,0 +1,18 @@
++package preparation598
++private var escaped598: Array<Any?>? = null
++private fun nodeVersion598(): String = js("process.versions.node")
++private fun cpu598(): Double = js("(function(){const u=process.cpuUsage();return (u.user+u.system)*1000})()")
++private fun rss598(): Double = js("process.resourceUsage().maxRSS * 1024")
++actual fun portableRuntime598(): String { check(nodeVersion598()=="24.16.0"); return "Wasm/Node24.16.0" }
++internal actual fun publishRing598(ring:Array<Any?>) { escaped598=ring }
++internal actual fun counters598(destination:Counters598,before:Boolean) {
++    destination.cpuNs=cpu598().toLong(); destination.allocatedBytes=-1
++    destination.heapUsedBytes=-1; destination.rssPeakBytes=rss598().toLong()
++}
++internal actual fun metricScope598()="Node process CPU(user+system); process maxRSS through snapshot; Wasm heap/allocation/owned-retained NA; JS heap is not Wasm owned graph; adapter/ring escape overhead included"
++internal actual fun selectedCase598(peer:String,id:String):TimedCase598 = when(peer) {
++    "krogu-final539-PENDING" -> coreCase598(KroguAdapter,id)
++    "ionspin-bignum-0.3.10" -> coreCase598(IonsPinAdapter,id)
++    else -> error("Peer not published for Wasm:$peer")
++}
++internal actual fun verifyAll598() { verifyPortableUntimed598() }

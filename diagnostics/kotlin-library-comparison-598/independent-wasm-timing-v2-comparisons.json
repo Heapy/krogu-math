@@ -1,0 +1,2018 @@
+[
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/scale/ADD",
+    "wall_ratios_F_R_F": [
+      26.308377761954418,
+      19.555703478561554,
+      25.89495531037018
+    ],
+    "wall_deltas_ns": [
+      477.3286190032959,
+      603.5755672454834,
+      613.5354490280151
+    ],
+    "wall_ratio_median": 25.89495531037018,
+    "ratio_range_max_over_min": 1.3453045957050667,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.0143345101283554,
+      1.9399096357768557,
+      1.936110970996217
+    ],
+    "cpu_ratios_F_R_F": [
+      26.794849785407724,
+      18.601683235095745,
+      25.492403794246936
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/scale/FORMAT",
+    "wall_ratios_F_R_F": [
+      30.417345008041252,
+      31.26188133665813,
+      41.76133563852867
+    ],
+    "wall_deltas_ns": [
+      274.74538230895996,
+      474.3799018859863,
+      537.6222524642944
+    ],
+    "wall_ratio_median": 31.26188133665813,
+    "ratio_range_max_over_min": 1.3729447993402604,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.846029618746951,
+      2.735012832681705,
+      0.9419485366944809
+    ],
+    "cpu_ratios_F_R_F": [
+      30.421235324144973,
+      31.329521955966428,
+      41.75381279363932
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/scale/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      23.08223643091042,
+      30.811415093923614,
+      18.086035567005098
+    ],
+    "wall_deltas_ns": [
+      372.99199867248535,
+      586.6976137161255,
+      518.8899440765381
+    ],
+    "wall_ratio_median": 23.08223643091042,
+    "ratio_range_max_over_min": 1.7036024826874614,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.5415545339839234,
+      3.496554001665566,
+      3.835520559930009
+    ],
+    "cpu_ratios_F_R_F": [
+      23.22915491368611,
+      30.99234570293576,
+      18.128306628966385
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/scale/PARSE",
+    "wall_ratios_F_R_F": [
+      4.793141363169542,
+      5.459675931216461,
+      3.700728663600988
+    ],
+    "wall_deltas_ns": [
+      418.9836196899414,
+      749.7142181396484,
+      421.891845703125
+    ],
+    "wall_ratio_median": 4.793141363169542,
+    "ratio_range_max_over_min": 1.4752975501597385,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      4.017940755082285,
+      6.938688131529371,
+      3.355366546061787
+    ],
+    "cpu_ratios_F_R_F": [
+      4.791686805219913,
+      5.4574013231918626,
+      3.7541217579605295
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/scale/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      23.117086606776795,
+      23.524274236993747,
+      18.458861106943427
+    ],
+    "wall_deltas_ns": [
+      430.45127964019775,
+      594.7949991226196,
+      648.7504634857178
+    ],
+    "wall_ratio_median": 23.117086606776795,
+    "ratio_range_max_over_min": 1.2744163413280645,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.736434731588127,
+      3.404204651162791,
+      3.423351053601226
+    ],
+    "cpu_ratios_F_R_F": [
+      23.270803741979723,
+      23.892425826453728,
+      18.7144157814871
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/scale/self",
+    "wall_ratios_F_R_F": [
+      22.46816391069693,
+      23.790913562816577,
+      25.073061582862813
+    ],
+    "wall_deltas_ns": [
+      371.28683948516846,
+      580.1951932907104,
+      578.0425863265991
+    ],
+    "wall_ratio_median": 23.790913562816577,
+    "ratio_range_max_over_min": 1.11593727384754,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.1446339785484225,
+      3.076393001900426,
+      1.9399018888408608
+    ],
+    "cpu_ratios_F_R_F": [
+      22.4934435261708,
+      24.037468620030726,
+      25.59010152284264
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/signed/ADD",
+    "wall_ratios_F_R_F": [
+      33.170088869648154,
+      31.325423657830974,
+      29.943983040039814
+    ],
+    "wall_deltas_ns": [
+      622.3599224090576,
+      882.5391626358032,
+      781.795482635498
+    ],
+    "wall_ratio_median": 31.325423657830974,
+    "ratio_range_max_over_min": 1.10773803288943,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      3.2221069306930694,
+      3.2605965138799227,
+      2.381566016648682
+    ],
+    "cpu_ratios_F_R_F": [
+      33.35047028118383,
+      31.047870667421527,
+      30.897564419343453
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/signed/FORMAT",
+    "wall_ratios_F_R_F": [
+      39.696994028413066,
+      41.894176575243044,
+      38.59148647438441
+    ],
+    "wall_deltas_ns": [
+      370.1750383377075,
+      593.1289691925049,
+      604.0701169967651
+    ],
+    "wall_ratio_median": 39.696994028413066,
+    "ratio_range_max_over_min": 1.0855807952111622,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.3201609195402297,
+      1.5827285896889647,
+      1.8848090477074089
+    ],
+    "cpu_ratios_F_R_F": [
+      39.86205521778132,
+      35.38890349723902,
+      37.12193674716668
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/signed/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      22.94447671843405,
+      23.023037502199458,
+      22.94953607945532
+    ],
+    "wall_deltas_ns": [
+      380.3485927581787,
+      458.8334159851074,
+      645.850827217102
+    ],
+    "wall_ratio_median": 22.94953607945532,
+    "ratio_range_max_over_min": 1.0034239518612464,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.632140739276537,
+      2.476974105559788,
+      2.028263116249778
+    ],
+    "cpu_ratios_F_R_F": [
+      22.898889921802372,
+      23.191019406444575,
+      23.261127500243134
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/signed/PARSE",
+    "wall_ratios_F_R_F": [
+      5.904300359633414,
+      5.359751688039002,
+      5.881134463899692
+    ],
+    "wall_deltas_ns": [
+      669.8355445861816,
+      787.2610168457031,
+      1146.0625686645508
+    ],
+    "wall_ratio_median": 5.881134463899692,
+    "ratio_range_max_over_min": 1.1015996082075303,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      3.696566611201034,
+      3.2280894876112582,
+      4.146911721924368
+    ],
+    "cpu_ratios_F_R_F": [
+      5.919906231685876,
+      5.3616841749989455,
+      5.904032205700928
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/signed/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      37.71052844873836,
+      39.228353469548985,
+      38.77978677091629
+    ],
+    "wall_deltas_ns": [
+      721.3452053070068,
+      847.0937509536743,
+      1119.773328781128
+    ],
+    "wall_ratio_median": 38.77978677091629,
+    "ratio_range_max_over_min": 1.0402493702222677,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.7134288420198134,
+      2.859605329934261,
+      2.470852163867341
+    ],
+    "cpu_ratios_F_R_F": [
+      37.80265838750364,
+      40.15942277959113,
+      39.299180327868854
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/signed/self",
+    "wall_ratios_F_R_F": [
+      24.47660917794973,
+      22.475706742251678,
+      24.54405550580892
+    ],
+    "wall_deltas_ns": [
+      422.5296869277954,
+      480.42308807373047,
+      628.2852783203125
+    ],
+    "wall_ratio_median": 24.47660917794973,
+    "ratio_range_max_over_min": 1.092025972187517,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.6598490317175982,
+      2.7734082397003745,
+      2.2140232227780867
+    ],
+    "cpu_ratios_F_R_F": [
+      24.553943885653783,
+      23.40848071595994,
+      24.62470529399157
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/wide10/ADD",
+    "wall_ratios_F_R_F": [
+      10.587831041583081,
+      10.95137653103257,
+      10.864835415059721
+    ],
+    "wall_deltas_ns": [
+      1378.8148765563965,
+      1671.0014190673828,
+      2398.974105834961
+    ],
+    "wall_ratio_median": 10.864835415059721,
+    "ratio_range_max_over_min": 1.0343361627156389,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.7619661858844258,
+      2.0018899767346525,
+      2.4646806307209195
+    ],
+    "cpu_ratios_F_R_F": [
+      10.700063411540901,
+      11.128465301685088,
+      11.278527915593795
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/wide10/FORMAT",
+    "wall_ratios_F_R_F": [
+      961.8306280015082,
+      948.008358179391,
+      1196.1169791020366
+    ],
+    "wall_deltas_ns": [
+      9188.546734809875,
+      11635.72343158722,
+      16027.625206947327
+    ],
+    "wall_ratio_median": 961.8306280015082,
+    "ratio_range_max_over_min": 1.2617156471058202,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.8034803144570772,
+      2.405555,
+      2.7376846534318258
+    ],
+    "cpu_ratios_F_R_F": [
+      982.4437132316283,
+      969.2918444944518,
+      1219.307599345987
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/wide10/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      11.823797322726453,
+      11.083655048709998,
+      11.494240277439204
+    ],
+    "wall_deltas_ns": [
+      702.2864017486572,
+      838.6729583740234,
+      1059.382755279541
+    ],
+    "wall_ratio_median": 11.494240277439204,
+    "ratio_range_max_over_min": 1.0667778156901948,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.6988930891640446,
+      1.3494069461150784,
+      1.8334081167350662
+    ],
+    "cpu_ratios_F_R_F": [
+      11.761230625529057,
+      11.107168983174835,
+      11.638456937799043
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/wide10/PARSE",
+    "wall_ratios_F_R_F": [
+      5.084725815907759,
+      4.784318661032941,
+      5.586496215678692
+    ],
+    "wall_deltas_ns": [
+      2551.457763671875,
+      2815.2568359375,
+      5067.14892578125
+    ],
+    "wall_ratio_median": 5.084725815907759,
+    "ratio_range_max_over_min": 1.1676680864047129,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      3.985600006053597,
+      4.485082552162081,
+      8.898322557427504
+    ],
+    "cpu_ratios_F_R_F": [
+      5.0850092295734965,
+      4.786206334325195,
+      6.136023214038967
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/wide10/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      11.398118362701371,
+      9.8035827970891,
+      10.892749044917071
+    ],
+    "wall_deltas_ns": [
+      1555.2067756652832,
+      1714.395523071289,
+      2576.441093444824
+    ],
+    "wall_ratio_median": 10.892749044917071,
+    "ratio_range_max_over_min": 1.162648247953363,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.6822302239792515,
+      1.5078967919993327,
+      1.7082328966521105
+    ],
+    "cpu_ratios_F_R_F": [
+      11.442185836670554,
+      9.856497044163673,
+      10.295546777771765
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/wide10/self",
+    "wall_ratios_F_R_F": [
+      19.209955107059212,
+      17.535805393035975,
+      21.63279376526221
+    ],
+    "wall_deltas_ns": [
+      1225.3143787384033,
+      1400.1008682250977,
+      2409.2410430908203
+    ],
+    "wall_ratio_median": 19.209955107059212,
+    "ratio_range_max_over_min": 1.233635597590133,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.4979530726256984,
+      1.501970067080595,
+      0.8378170560712437
+    ],
+    "cpu_ratios_F_R_F": [
+      19.16574165375405,
+      17.4344038951177,
+      19.58514339445228
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/zero/ADD",
+    "wall_ratios_F_R_F": [
+      1.366890743641198,
+      1.3676779213728445,
+      1.4923588903233307
+    ],
+    "wall_deltas_ns": [
+      6.915689468383789,
+      7.941524505615234,
+      15.654484748840332
+    ],
+    "wall_ratio_median": 1.3676779213728445,
+    "ratio_range_max_over_min": 1.0917909110627992,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.2594978720081216,
+      1.4840242322860944,
+      1.3536201469045122
+    ],
+    "cpu_ratios_F_R_F": [
+      1.3669413965717754,
+      1.3660722129491347,
+      1.4610954466374708
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/zero/FORMAT",
+    "wall_ratios_F_R_F": [
+      0.9741432083526781,
+      0.9252873042627571,
+      0.9976886373437676
+    ],
+    "wall_deltas_ns": [
+      -0.2467632293701172,
+      -0.81805419921875,
+      -0.03751182556152344
+    ],
+    "wall_ratio_median": 0.9741432083526781,
+    "ratio_range_max_over_min": 1.0782474078564148,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      0.557968704943162,
+      0.6644911320020812,
+      0.5204265365500618
+    ],
+    "cpu_ratios_F_R_F": [
+      0.9742231991207913,
+      0.9279601816276632,
+      0.9977091165413534
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/zero/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      2.1097810008298157,
+      1.969390982461615,
+      1.6846898483460933
+    ],
+    "wall_deltas_ns": [
+      18.334269523620605,
+      18.55214500427246,
+      21.08609676361084
+    ],
+    "wall_ratio_median": 1.969390982461615,
+    "ratio_range_max_over_min": 1.2523260604324566,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.4311124472336,
+      1.631029076745952,
+      1.555836683320276
+    ],
+    "cpu_ratios_F_R_F": [
+      2.1120913336792944,
+      1.9712918660287082,
+      1.684816235614404
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/zero/PARSE",
+    "wall_ratios_F_R_F": [
+      0.9050947282799031,
+      0.881676743807617,
+      0.8700325836399523
+    ],
+    "wall_deltas_ns": [
+      -6.008625030517578,
+      -7.974702835083008,
+      -12.716609954833984
+    ],
+    "wall_ratio_median": 0.881676743807617,
+    "ratio_range_max_over_min": 1.0402998063512305,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      3.9989111531190926,
+      4.506521581346498,
+      4.015398959272995
+    ],
+    "cpu_ratios_F_R_F": [
+      0.9085791691751957,
+      0.8852704843820733,
+      0.8699497409124557
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/zero/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      2.4669907860504057,
+      2.7785485684629356,
+      3.7777420612119434
+    ],
+    "wall_deltas_ns": [
+      31.204463005065918,
+      36.76736354827881,
+      82.40997791290283
+    ],
+    "wall_ratio_median": 2.7785485684629356,
+    "ratio_range_max_over_min": 1.5313158373242326,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.4369507780765156,
+      1.5236160487557135,
+      1.821232754696067
+    ],
+    "cpu_ratios_F_R_F": [
+      2.4530951428698398,
+      2.780078395204058,
+      3.529445653565485
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "decimal/zero/self",
+    "wall_ratios_F_R_F": [
+      2.185889826720007,
+      2.115824742750891,
+      1.7900557056846431
+    ],
+    "wall_deltas_ns": [
+      19.02465057373047,
+      19.993781089782715,
+      19.50832176208496
+    ],
+    "wall_ratio_median": 2.115824742750891,
+    "ratio_range_max_over_min": 1.2211294988073955,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.268793280497117,
+      1.4054168530947055,
+      1.3776431022920037
+    ],
+    "cpu_ratios_F_R_F": [
+      2.188836104513064,
+      2.1109340980298446,
+      1.7920295999383336
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/carry30/ADD",
+    "wall_ratios_F_R_F": [
+      6.680787874070499,
+      6.139097761289951,
+      7.176073874060304
+    ],
+    "wall_deltas_ns": [
+      130.5044069290161,
+      138.22178554534912,
+      195.59438705444336
+    ],
+    "wall_ratio_median": 6.680787874070499,
+    "ratio_range_max_over_min": 1.1689134386015159,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.8826870174815866,
+      1.2733755820766646,
+      1.195233412390814
+    ],
+    "cpu_ratios_F_R_F": [
+      6.644313547802446,
+      6.18381597136072,
+      7.226264632421534
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/carry30/FORMAT",
+    "wall_ratios_F_R_F": [
+      7.032056755586207,
+      6.770680956211455,
+      7.394185305597065
+    ],
+    "wall_deltas_ns": [
+      613.6959419250488,
+      667.0473213195801,
+      844.8910789489746
+    ],
+    "wall_ratio_median": 7.032056755586207,
+    "ratio_range_max_over_min": 1.0920888686703816,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.9318809574609179,
+      0.9354069961132704,
+      0.7035922281642666
+    ],
+    "cpu_ratios_F_R_F": [
+      7.03827266934063,
+      6.77335092348285,
+      7.354808806488992
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/carry30/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      6.045125548195092,
+      6.359001485754536,
+      5.392964475864885
+    ],
+    "wall_deltas_ns": [
+      77.16794776916504,
+      90.02721405029297,
+      130.8168544769287
+    ],
+    "wall_ratio_median": 6.045125548195092,
+    "ratio_range_max_over_min": 1.1791291254027265,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.3157982113598141,
+      1.3025220769147632,
+      1.7949283428899483
+    ],
+    "cpu_ratios_F_R_F": [
+      5.979399247517424,
+      6.348368087035358,
+      5.406276993953354
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/carry30/PARSE",
+    "wall_ratios_F_R_F": [
+      8.241232930723667,
+      10.480249789649458,
+      7.542721968467346
+    ],
+    "wall_deltas_ns": [
+      1424.0220565795898,
+      2261.4008560180664,
+      1498.8912200927734
+    ],
+    "wall_ratio_median": 8.241232930723667,
+    "ratio_range_max_over_min": 1.3894519556020446,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      3.0635451505016724,
+      2.238555458025504,
+      2.7672469146503036
+    ],
+    "cpu_ratios_F_R_F": [
+      8.2726073119615,
+      10.551962162853126,
+      7.561436170212766
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/carry30/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      4.385014336973724,
+      4.862144642582694,
+      4.160595611889122
+    ],
+    "wall_deltas_ns": [
+      77.26013660430908,
+      110.43131256103516,
+      78.23753356933594
+    ],
+    "wall_ratio_median": 4.385014336973724,
+    "ratio_range_max_over_min": 1.1686174519554025,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.8300982857142858,
+      0.78635053928341,
+      1.6684055743567765
+    ],
+    "cpu_ratios_F_R_F": [
+      4.406145624582498,
+      5.0632213608957795,
+      4.171078488036065
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/carry30/self",
+    "wall_ratios_F_R_F": [
+      14.917168915283607,
+      16.296834381880146,
+      14.888907691708365
+    ],
+    "wall_deltas_ns": [
+      209.53654670715332,
+      302.3130521774292,
+      223.3863649368286
+    ],
+    "wall_ratio_median": 14.917168915283607,
+    "ratio_range_max_over_min": 1.094562120964445,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.108557704238084,
+      2.0295023688291822,
+      1.9755436751133713
+    ],
+    "cpu_ratios_F_R_F": [
+      14.84125786163522,
+      16.30784067894686,
+      14.90822859852976
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/signed/ADD",
+    "wall_ratios_F_R_F": [
+      3.160559573712007,
+      3.1032248183281643,
+      3.2917763808556515
+    ],
+    "wall_deltas_ns": [
+      49.38423442840576,
+      55.134695053100586,
+      52.97140312194824
+    ],
+    "wall_ratio_median": 3.160559573712007,
+    "ratio_range_max_over_min": 1.0607598783735777,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.6261583054626534,
+      1.4233751045327934,
+      1.4938737040527803
+    ],
+    "cpu_ratios_F_R_F": [
+      3.1762547940636985,
+      3.124481629683521,
+      3.2996956986594292
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/signed/FORMAT",
+    "wall_ratios_F_R_F": [
+      1.2862082991409665,
+      1.2063204101099585,
+      1.307824066740687
+    ],
+    "wall_deltas_ns": [
+      23.784637451171875,
+      18.625896453857422,
+      25.078773498535156
+    ],
+    "wall_ratio_median": 1.2862082991409665,
+    "ratio_range_max_over_min": 1.084143197594971,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      0.8084888672530401,
+      0.7436725925697671,
+      0.8771418223018843
+    ],
+    "cpu_ratios_F_R_F": [
+      1.285851957230049,
+      1.208998732572877,
+      1.3068955864514322
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/signed/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      14.893458063781605,
+      15.340329424581084,
+      15.355843439412526
+    ],
+    "wall_deltas_ns": [
+      242.99808883666992,
+      225.36571884155273,
+      219.1908311843872
+    ],
+    "wall_ratio_median": 15.340329424581084,
+    "ratio_range_max_over_min": 1.0310462065727612,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.7707949728393362,
+      1.9229197584124245,
+      1.1630953912111468
+    ],
+    "cpu_ratios_F_R_F": [
+      14.9515049257062,
+      15.363978168587023,
+      15.183381618689515
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/signed/PARSE",
+    "wall_ratios_F_R_F": [
+      1.8919470593436158,
+      1.6160691105087435,
+      1.6445583580146503
+    ],
+    "wall_deltas_ns": [
+      60.207448959350586,
+      41.04646110534668,
+      41.9971923828125
+    ],
+    "wall_ratio_median": 1.6445583580146503,
+    "ratio_range_max_over_min": 1.1707092518760074,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.8424309178743963,
+      2.8930794611171597,
+      2.9951499650642215
+    ],
+    "cpu_ratios_F_R_F": [
+      1.899709507290521,
+      1.6192,
+      1.649476699994153
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/signed/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      7.082198729198838,
+      7.299767644850809,
+      7.373351541564048
+    ],
+    "wall_deltas_ns": [
+      149.35882663726807,
+      151.50964736938477,
+      155.99195098876953
+    ],
+    "wall_ratio_median": 7.299767644850809,
+    "ratio_range_max_over_min": 1.0411105115089232,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.3443379265371793,
+      1.6790697674418604,
+      1.9567307692307692
+    ],
+    "cpu_ratios_F_R_F": [
+      7.17613328167377,
+      7.199004201026917,
+      7.370367492813301
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/signed/self",
+    "wall_ratios_F_R_F": [
+      14.820653419465954,
+      14.742997860523522,
+      13.957119574500195
+    ],
+    "wall_deltas_ns": [
+      224.80932903289795,
+      214.6780891418457,
+      212.5510768890381
+    ],
+    "wall_ratio_median": 14.742997860523522,
+    "ratio_range_max_over_min": 1.061870491282703,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      3.970213011603071,
+      1.7231012658227849,
+      1.6537788089713843
+    ],
+    "cpu_ratios_F_R_F": [
+      14.658873907759968,
+      14.770432765671734,
+      13.884892916931248
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/wide10/ADD",
+    "wall_ratios_F_R_F": [
+      1.8330087064918876,
+      1.7730833155034447,
+      1.8623600263382312
+    ],
+    "wall_deltas_ns": [
+      40.7862663269043,
+      38.765825271606445,
+      41.27192306518555
+    ],
+    "wall_ratio_median": 1.8330087064918876,
+    "ratio_range_max_over_min": 1.050351108746087,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0581281417738775,
+      1.315395388556789,
+      1.1948356807511737
+    ],
+    "cpu_ratios_F_R_F": [
+      1.8283527274133065,
+      1.7703132092601,
+      1.8580594059405942
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/wide10/FORMAT",
+    "wall_ratios_F_R_F": [
+      25.432726359255945,
+      21.951274327306898,
+      22.357822384391547
+    ],
+    "wall_deltas_ns": [
+      4192.594291687012,
+      3623.911575317383,
+      3621.333076477051
+    ],
+    "wall_ratio_median": 22.357822384391547,
+    "ratio_range_max_over_min": 1.1585990854124673,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.7109089802130897,
+      2.7812096975214313,
+      2.53642403815391
+    ],
+    "cpu_ratios_F_R_F": [
+      25.345797705019717,
+      21.931356566947173,
+      22.32927541440187
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/wide10/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      5.607303070902101,
+      5.650964695602847,
+      5.5187527082484635
+    ],
+    "wall_deltas_ns": [
+      246.1513671875,
+      202.48563766479492,
+      201.9655647277832
+    ],
+    "wall_ratio_median": 5.607303070902101,
+    "ratio_range_max_over_min": 1.0239568602443043,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.7388039945702682,
+      1.58882131661442,
+      1.2748006675319858
+    ],
+    "cpu_ratios_F_R_F": [
+      5.607318288602548,
+      5.64462304533939,
+      5.514963177387084
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/wide10/PARSE",
+    "wall_ratios_F_R_F": [
+      4.5090280240215685,
+      4.476949487393426,
+      4.601418603057097
+    ],
+    "wall_deltas_ns": [
+      1673.2393951416016,
+      1382.9994201660156,
+      1402.9986267089844
+    ],
+    "wall_ratio_median": 4.5090280240215685,
+    "ratio_range_max_over_min": 1.027802215775309,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.736213634389926,
+      2.8513833870854657,
+      3.0428587395105575
+    ],
+    "cpu_ratios_F_R_F": [
+      4.4724699311351594,
+      4.475831333561879,
+      4.597522013558794
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/wide10/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      3.1930199395370584,
+      3.2887738160077884,
+      3.3827315229205843
+    ],
+    "wall_deltas_ns": [
+      149.69404411315918,
+      124.58761596679688,
+      125.97529029846191
+    ],
+    "wall_ratio_median": 3.2887738160077884,
+    "ratio_range_max_over_min": 1.0594144687399074,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.678156202143951,
+      1.5999402760286157,
+      1.4048785357737106
+    ],
+    "cpu_ratios_F_R_F": [
+      3.307142652165179,
+      3.309157098851862,
+      3.3833980722198245
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/wide10/self",
+    "wall_ratios_F_R_F": [
+      10.267728974027538,
+      9.959072210515389,
+      9.861811499391647
+    ],
+    "wall_deltas_ns": [
+      587.8755264282227,
+      462.9251899719238,
+      459.0088520050049
+    ],
+    "wall_ratio_median": 9.959072210515389,
+    "ratio_range_max_over_min": 1.0411605387773768,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.8680438024699633,
+      1.5987536625041634,
+      2.098247530420078
+    ],
+    "cpu_ratios_F_R_F": [
+      10.247977310046275,
+      9.915228090795564,
+      9.84081423445852
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/zero/ADD",
+    "wall_ratios_F_R_F": [
+      9.361283657429809,
+      7.7547380981354115,
+      7.8292515830313
+    ],
+    "wall_deltas_ns": [
+      76.21991634368896,
+      52.03755855560303,
+      52.64715385437012
+    ],
+    "wall_ratio_median": 7.8292515830313,
+    "ratio_range_max_over_min": 1.2071695444725183,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.6083839991295004,
+      1.8748190434568845,
+      2.0861410083630254
+    ],
+    "cpu_ratios_F_R_F": [
+      9.353273373771177,
+      7.75745576042569,
+      7.837643855958421
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/zero/FORMAT",
+    "wall_ratios_F_R_F": [
+      7.4320195039135735,
+      7.324521851727345,
+      7.327208464807939
+    ],
+    "wall_deltas_ns": [
+      94.62030696868896,
+      77.99426746368408,
+      75.7754259109497
+    ],
+    "wall_ratio_median": 7.327208464807939,
+    "ratio_range_max_over_min": 1.0146764054176283,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      2.3011563154955126,
+      2.2523506861631057,
+      2.1992423096401628
+    ],
+    "cpu_ratios_F_R_F": [
+      7.438755670771225,
+      7.327302250057992,
+      7.329882952464368
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/zero/MULTIPLY",
+    "wall_ratios_F_R_F": [
+      1.490530965015411,
+      1.639380695189734,
+      1.5820883737073517
+    ],
+    "wall_deltas_ns": [
+      5.859494209289551,
+      6.005128860473633,
+      5.385199546813965
+    ],
+    "wall_ratio_median": 1.5820883737073517,
+    "ratio_range_max_over_min": 1.0998635611523737,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.1567973311092576,
+      1.198917456021651,
+      1.195295652173913
+    ],
+    "cpu_ratios_F_R_F": [
+      1.4907784431137725,
+      1.639224444218861,
+      1.5819849531072865
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/zero/PARSE",
+    "wall_ratios_F_R_F": [
+      0.36166088493030835,
+      0.33965124811553493,
+      0.32836778530405514
+    ],
+    "wall_deltas_ns": [
+      -31.709233283996582,
+      -27.310333251953125,
+      -28.04696559906006
+    ],
+    "wall_ratio_median": 0.33965124811553493,
+    "ratio_range_max_over_min": 1.1013896646268913,
+    "direction": "peer_faster_all3",
+    "FIRST_ratios_F_R_F": [
+      2.295594552897522,
+      2.275385010714099,
+      2.540080007686737
+    ],
+    "cpu_ratios_F_R_F": [
+      0.3613242289396962,
+      0.339479142659599,
+      0.3278441748015692
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/zero/SUBTRACT",
+    "wall_ratios_F_R_F": [
+      5.668404846535039,
+      5.389103047597458,
+      5.331022537351228
+    ],
+    "wall_deltas_ns": [
+      42.89968681335449,
+      33.34736919403076,
+      32.62178039550781
+    ],
+    "wall_ratio_median": 5.389103047597458,
+    "ratio_range_max_over_min": 1.0632866034273873,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.2662663026113226,
+      1.4537646930383201,
+      1.1458496883861768
+    ],
+    "cpu_ratios_F_R_F": [
+      5.670851924872886,
+      5.396662065503827,
+      5.333586529940499
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "peer": "ionspin-bignum-0.3.10",
+    "id": "int/zero/self",
+    "wall_ratios_F_R_F": [
+      1.4019900548994322,
+      1.6101172193017794,
+      1.624742118750359
+    ],
+    "wall_deltas_ns": [
+      4.742145538330078,
+      5.5910749435424805,
+      5.69419002532959
+    ],
+    "wall_ratio_median": 1.6101172193017794,
+    "ratio_range_max_over_min": 1.1588827702967588,
+    "direction": "peer_slower_all3",
+    "FIRST_ratios_F_R_F": [
+      1.0623229461756374,
+      1.1417689243027889,
+      1.1457354566809452
+    ],
+    "cpu_ratios_F_R_F": [
+      1.4019885215423167,
+      1.610197710718002,
+      1.6245423161418557
+    ],
+    "alloc_bytes_per_op_peer_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "alloc_bytes_per_op_Krogu_F_R_F": [
+      null,
+      null,
+      null
+    ],
+    "same_relation_F_R_F": [
+      true,
+      true,
+      true
+    ]
+  }
+]

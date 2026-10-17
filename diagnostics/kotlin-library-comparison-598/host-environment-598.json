@@ -1,0 +1,56 @@
+{
+  "observed_at_utc": "2026-10-17T07:20:01.496290+00:00",
+  "scope": "Hardware/OS observed after JSv2 terminal and before Wasmv2 start; no retrospective free-RAM or quiet-host claim",
+  "system": "Darwin",
+  "release": "25.6.0",
+  "machine": "arm64",
+  "python_cpu_count_scope": "Not used for benchmark runtime flags",
+  "macos_version": {
+    "command": [
+      "/usr/bin/sw_vers"
+    ],
+    "exit": 0,
+    "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83",
+    "stderr": ""
+  },
+  "cpu_model": {
+    "command": [
+      "/usr/sbin/sysctl",
+      "-n",
+      "machdep.cpu.brand_string"
+    ],
+    "exit": 0,
+    "stdout": "Apple M4 Max",
+    "stderr": ""
+  },
+  "physical_memory_bytes": {
+    "command": [
+      "/usr/sbin/sysctl",
+      "-n",
+      "hw.memsize"
+    ],
+    "exit": 0,
+    "stdout": "38654705664",
+    "stderr": ""
+  },
+  "physical_cpu_count": {
+    "command": [
+      "/usr/sbin/sysctl",
+      "-n",
+      "hw.physicalcpu"
+    ],
+    "exit": 0,
+    "stdout": "14",
+    "stderr": ""
+  },
+  "logical_cpu_count": {
+    "command": [
+      "/usr/sbin/sysctl",
+      "-n",
+      "hw.logicalcpu"
+    ],
+    "exit": 0,
+    "stdout": "14",
+    "stderr": ""
+  }
+}

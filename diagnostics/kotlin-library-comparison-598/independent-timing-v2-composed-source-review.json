@@ -1,0 +1,22 @@
+{
+  "verdict": "COMPOSED_V2_SOURCE_METHOD_PASS_READY_FOR_AUTHORIZED_ONE_FULL_JVM_AND_PORTABLE_CAMPAIGNS",
+  "binding_sha256": "a7c8e4bead31f09938d7c759663825c049c362126e5489360d28e53b7a0b6fde",
+  "warmup_patch_sha256": "31d0acd6285bf7591099f294d9c8c6a14da15fd1906f260b833913399ef9763d",
+  "argv_review_sha256": "72e31e71183d204ebefbd3a14b56adfb06b8fde33ef2a429eca9a69688f1f25e",
+  "findings": [],
+  "review": [
+    "Removed cumulative-operation early stop; elapsed training loop now cannot finish successfully below200ms. Minimum refers to complete training elapsed including untimed observations, not200ms summed arithmetic counters.",
+    "Per-batch count remains1..1048576; count doubling bounded; cumulative Long addition checked. Existing600s child/6h campaign deadline and exact owned cleanup retained.",
+    "Checker requires new strict WARM tag, elapsed>=200ms, positive cumulative operations and unchanged batchcap; old cap-limited rows cannot be relabelled as v2.",
+    "All216JVM/96portable workloads, FIRST/7sample brackets, peer/corpus/F-R-F order, gate/input/result checks and NA scope unchanged.",
+    "Four platform argument implementations exact previously reviewed bytes; new argument acquisition before existing guards/preparation/counters.",
+    "README retains old JVM648-child transient evidence and pre-numeric JS argument failure with exact separate source eras."
+  ],
+  "actual_obligations": [
+    "Bind fresh produced artifact/source/runtime before interpreting actual campaign.",
+    "Actual Node forwarding/compiler interop must execute successfully; source PASS is not runtime proof.",
+    "Inspect v2 complete sample trends/caps/variance; minimum200ms does not establish steady JIT/cache,20ms batchminimum or universal comparable warm ranking.",
+    "Preserve every old/new workload/cohort/sample/adverse; exactly one full authorized schedule, no automatic favorable repeats."
+  ],
+  "execution": "Review only; no compilation/build/numerical run or source edit by reviewer."
+}

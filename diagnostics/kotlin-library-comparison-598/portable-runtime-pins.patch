@@ -1,0 +1,78 @@
+--- a/prepared-portable/build.gradle.kts
++++ b/prepared-portable/build.gradle.kts
+@@ -4,6 +4,8 @@
+ import org.jetbrains.kotlin.gradle.dsl.JsModuleKind
+ import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsEnvSpec
+ import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsPlugin
++import org.jetbrains.kotlin.gradle.targets.wasm.nodejs.WasmNodeJsEnvSpec
++import org.jetbrains.kotlin.gradle.targets.wasm.nodejs.WasmNodeJsPlugin
+ 
+ plugins { kotlin("multiplatform") version "2.4.21" }
+ 
+@@ -53,6 +55,9 @@
+ plugins.withType<NodeJsPlugin> {
+     extensions.getByType<NodeJsEnvSpec>().apply { version = "24.16.0"; download = false }
+ }
++plugins.withType<WasmNodeJsPlugin> {
++    extensions.getByType<WasmNodeJsEnvSpec>().apply { version = "24.16.0"; download = false }
++}
+ kotlin {
+     js {
+         nodejs(); binaries.executable()
+@@ -60,7 +65,7 @@
+     }
+     @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
+     wasmJs { nodejs(); binaries.executable() }
+-    macosArm64 { binaries.executable() }
++    macosArm64 { binaries.executable { entryPoint = "preparation598.main" } }
+     sourceSets.commonMain {
+         // Reuse reviewed adapter sources; exclude JVM/JDK/KBigNum and JVM fixtures.
+         kotlin.srcDir(file("../prepared-harness"))
+@@ -73,7 +78,7 @@
+ }
+ dependencyLocking { lockAllConfigurations() }
+ configurations.configureEach { resolutionStrategy.failOnVersionConflict() }
+-configurations.configureEach { resolutionStrategy.force(*listOf("kotlin-stdlib", "kotlin-stdlib-common", "kotlin-stdlib-jdk7", "kotlin-stdlib-jdk8").map { "org.jetbrains.kotlin:$it:2.4.21" }.toTypedArray()) }
++configurations.configureEach { resolutionStrategy.force(*listOf("kotlin-stdlib", "kotlin-stdlib-common", "kotlin-stdlib-jdk7", "kotlin-stdlib-jdk8", "kotlin-stdlib-js", "kotlin-stdlib-wasm-js", "kotlin-dom-api-compat").map { "org.jetbrains.kotlin:$it:2.4.21" }.toTypedArray()) }
+ val verify598Inputs = tasks.register("verify598Inputs") { doLast { verifyInputs598() } }
+ tasks.matching { it.name.startsWith("compile") && it.name.contains("Kotlin") }.configureEach { dependsOn(verify598Inputs) }
+ val runtasks = setOf("jsNodeProductionRun", "wasmJsNodeProductionRun", "runReleaseExecutableMacosArm64")
+--- a/prepared-timing/build.gradle.kts
++++ b/prepared-timing/build.gradle.kts
+@@ -4,6 +4,8 @@
+ import org.jetbrains.kotlin.gradle.dsl.JsModuleKind
+ import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsEnvSpec
+ import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsPlugin
++import org.jetbrains.kotlin.gradle.targets.wasm.nodejs.WasmNodeJsEnvSpec
++import org.jetbrains.kotlin.gradle.targets.wasm.nodejs.WasmNodeJsPlugin
+ 
+ plugins { kotlin("multiplatform") version "2.4.21" }
+ 
+@@ -53,6 +55,9 @@
+ plugins.withType<NodeJsPlugin> {
+     extensions.getByType<NodeJsEnvSpec>().apply { version = "24.16.0"; download = false }
+ }
++plugins.withType<WasmNodeJsPlugin> {
++    extensions.getByType<WasmNodeJsEnvSpec>().apply { version = "24.16.0"; download = false }
++}
+ kotlin {
+     jvmToolchain { languageVersion.set(JavaLanguageVersion.of(25)); vendor.set(JvmVendorSpec.BELLSOFT) }
+     jvm()
+@@ -62,7 +67,7 @@
+     }
+     @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
+     wasmJs { nodejs(); binaries.executable() }
+-    macosArm64 { binaries.executable() }
++    macosArm64 { binaries.executable { entryPoint = "preparation598.main" } }
+     sourceSets.commonMain {
+         // Reuse reviewed adapter sources; exclude JVM/JDK/KBigNum and JVM fixtures.
+         kotlin.srcDir(file("../prepared-harness"))
+@@ -80,7 +85,7 @@
+ }
+ dependencyLocking { lockAllConfigurations() }
+ configurations.configureEach { resolutionStrategy.failOnVersionConflict() }
+-configurations.configureEach { resolutionStrategy.force(*listOf("kotlin-stdlib", "kotlin-stdlib-common", "kotlin-stdlib-jdk7", "kotlin-stdlib-jdk8").map { "org.jetbrains.kotlin:$it:2.4.21" }.toTypedArray()) }
++configurations.configureEach { resolutionStrategy.force(*listOf("kotlin-stdlib", "kotlin-stdlib-common", "kotlin-stdlib-jdk7", "kotlin-stdlib-jdk8", "kotlin-stdlib-js", "kotlin-stdlib-wasm-js", "kotlin-dom-api-compat").map { "org.jetbrains.kotlin:$it:2.4.21" }.toTypedArray()) }
+ val verify598Inputs = tasks.register("verify598Inputs") { doLast { verifyInputs598() } }
+ tasks.matching { it.name.startsWith("compile") && it.name.contains("Kotlin") }.configureEach { dependsOn(verify598Inputs) }
+ 

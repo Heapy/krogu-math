@@ -1,0 +1,60 @@
+{
+  "scope": "Exact sharedtextgate wiring only, no arithmetic/adapter corpus changes",
+  "entries": [
+    {
+      "path": "prepared-harness/UntimedMain.kt",
+      "bytes": 1410,
+      "sha256": "b0c96bc6383d9ee1b04521c275c9d2cd1ab18e480fa91f44f231737cdd6bbe8b"
+    },
+    {
+      "path": "prepared-harness/build.gradle.kts",
+      "bytes": 4095,
+      "sha256": "1d1021c2108b87d1d26b976268b9ca27e5fee8d943dc69d831e768558866941d"
+    },
+    {
+      "path": "prepared-portable/build.gradle.kts",
+      "bytes": 7229,
+      "sha256": "e9f47dc779edc06447023e75f424a2956dd96c7fe578580420d49284c94ab849"
+    },
+    {
+      "path": "prepared-portable/src/commonMain/kotlin/preparation598/PortableUntimedMain.kt",
+      "bytes": 6411,
+      "sha256": "c3059448272e8a95ff8bce4044a39a5f0d8721004b79011bfeba26c7e5d9db83"
+    },
+    {
+      "path": "prepared-timing/src/commonMain/kotlin/preparation598/TextWork598.kt",
+      "bytes": 3123,
+      "sha256": "5d15b45a901dae05c28e9624accb259e3e33bbdf2a5401b9f80f166c8137adbb"
+    },
+    {
+      "path": "prepared-timing/src/commonMain/kotlin/preparation598/TimingUntimed598.kt",
+      "bytes": 6435,
+      "sha256": "d2b72882369d41bfbfd7a98eb7c61393b83d151110f00abec730a6292f9b5664"
+    },
+    {
+      "path": "prepared-timing/src/jvmMain/kotlin/preparation598/PlatformTiming598.kt",
+      "bytes": 3357,
+      "sha256": "ab53523b3e6a6e95acfb12f5cf6ef5f78073487daa0b17b244ab71f88173ed83"
+    },
+    {
+      "path": "full-text-gate-wiring.patch",
+      "bytes": 6925,
+      "sha256": "6297117feb8e1b782c03d1bca27b90ecb632e1db85475a4138cbb04ce35568d8"
+    },
+    {
+      "path": "prepared-harness/manifest.json",
+      "bytes": 3402,
+      "sha256": "f652ccf3774cbd3d93b101cd0047d616f1d8977336a2c07c7eba00d91d2f982c"
+    },
+    {
+      "path": "prepared-portable/manifest.json",
+      "bytes": 5138,
+      "sha256": "a9bab4986efddb624e4be492c01cae2fa4b7445dccb2f185648a19824d7351b1"
+    },
+    {
+      "path": "prepared-timing/manifest.json",
+      "bytes": 9088,
+      "sha256": "fcc9dca70cde249a1622ea7de641388b48a24eb4ef23f3b6dfe474b526a47289"
+    }
+  ]
+}

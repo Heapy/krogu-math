@@ -1,0 +1,10 @@
+{
+  "accepted_main": "829ce21154c7e75f5206eeb173351c391ed21597",
+  "build_handle": 23218,
+  "build_exit": 0,
+  "root": "/Users/yoda/dev/pet/krogu-math/.codex-work/598/artifacts/timing-jvm-829ce211-1",
+  "manifest_sha256": "aa5c5b554a37f9a226fba97a5aa1da4b85203087fe804cb959c2e320898f6c41",
+  "build_log": "timing-jvm-build-1.log",
+  "runtime": "/Users/yoda/.sdkman/candidates/java/25.0.4-librca/bin/java",
+  "runtime_sha256": "b7a71fa440912190cce262a062a30629f1668c7e14c0d4c021c6f37d3f734c29"
+}

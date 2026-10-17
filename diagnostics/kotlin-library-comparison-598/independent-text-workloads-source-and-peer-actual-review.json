@@ -1,0 +1,37 @@
+{
+  "verdict": "SOURCE_METHOD_PASS_AND_ACTUAL_JVM_PEER_TEXT_96_PASS_NOT_FULL598",
+  "manifest_sha256": "a5179529ff5046d65f45f2e8edc318bc748a3b3180d9b89943ba20019444ab6f",
+  "patch_sha256": "070c9672ad30a09c24ee0fefd9675babfff8e750f7227eb918444a009d349436",
+  "actual_receipt_sha256": "e8957d7c1b842c27bbd4509a2990f22d56e917024f229d8390d7262320219ddc",
+  "checks": 96,
+  "counts_by_peer": {
+    "jdk-bellsoft-25.0.4+9": 32,
+    "ionspin-bignum-0.3.10": 32,
+    "kbignum-0.0.20-desktop": 32
+  },
+  "resolved_hash_records": {
+    "source": 9,
+    "classpath": 6,
+    "class": 28
+  },
+  "source_review": {
+    "timed_parse": "Only native parse; source String prepared, native result escapes through existing ring; full exact text observation outside counters.",
+    "timed_format": "Native parse outside FIRST, no prior format of selected operand; native String result escapes; exact full output/input checks outside counters. Warm is explicitly observed/cached.",
+    "scope": "Selected plain-spelling intersection only, not general expanded/scientific/scale equivalence. No normalization masks mismatch.",
+    "inventory": "JVM216/648FIRST/4536TIME; each portable96/288FIRST/2016TIME. Original arithmetic/fixed-scale IDs and adapter/fixture hashes retained; existing arithmetic body byte-exact apart from additive dispatch and scope label.",
+    "boundaries": "Existing counters/ring/warmup/7sample controller preserved. Last64 result checking remains partial-ring scope, not every timed parse result.",
+    "fail_closed": "Unexpected native output fails; no failure filtering or unsupported substitution."
+  },
+  "actual_scope": {
+    "runtime": "BellSoft25.0.4+9-LTS checked by executed main; Gradle9.8.1; resolved pinned Ions0.3.10/KBig0.0.20/stdlib2.4.21 hashes verified.",
+    "result": "Each of three peers has16 exact IDs twice,32 checks; all canonical full strings exact; retained-result/input checks executed.",
+    "preserved_warning": "Kotlin daemon sandbox/FSEvents failure logged; compiler fallback actually completed then JavaExec succeeded. Not a peer failure/NA or hidden retry.",
+    "limitations": [
+      "No Krogu input or execution.",
+      "Only TextWork and text-only JVM harness compiled/executed; full Timing598/controller/checker and portable text remain UNRUN.",
+      "No performance or complete598 acceptance.",
+      "Actual runtime PID/start not independently sampled."
+    ]
+  },
+  "blocking_findings": []
+}

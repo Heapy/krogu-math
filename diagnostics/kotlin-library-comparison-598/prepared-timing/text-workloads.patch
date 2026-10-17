@@ -1,0 +1,284 @@
+--- a/prepared-timing/Catalog598.main.kts
++++ b/prepared-timing/Catalog598.main.kts
+@@ -5,11 +5,11 @@
+     val peers=if(platform=="JVM") listOf("jdk-bellsoft-25.0.4+9","krogu-final539-PENDING","ionspin-bignum-0.3.10","kbignum-0.0.20-desktop")
+         else listOf("krogu-final539-PENDING","ionspin-bignum-0.3.10")
+     val ids=listOf("int" to listOf("zero","signed","carry30","wide10"),"decimal" to listOf("zero","scale","signed","wide10"))
+-        .flatMap { (kind,names)->names.flatMap { n->listOf("ADD","SUBTRACT","MULTIPLY","self").map { "$kind/$n/$it" } } }.sorted()
++        .flatMap { (kind,names)->names.flatMap { n->listOf("ADD","SUBTRACT","MULTIPLY","self","PARSE","FORMAT").map { "$kind/$n/$it" } } }.sorted()
+     val core=ids.flatMap { id->peers.map { Work598(it,id) } }
+     val fixed=if(platform=="JVM") listOf("positive-tie","negative-tie","negative-divisor","both-negative","nonterminating","carry","zero","exact")
+         .flatMap { id->peers.filter { it!="ionspin-bignum-0.3.10" }.map { Work598(it,"fixed-scale/$id") } } else emptyList()
+-    return (core+fixed).sortedWith(compareBy<Work598>{it.id}.thenBy{peers.indexOf(it.peer)}).also { check(it.size==if(platform=="JVM")152 else 64) }
++    return (core+fixed).sortedWith(compareBy<Work598>{it.id}.thenBy{peers.indexOf(it.peer)}).also { check(it.size==if(platform=="JVM")216 else 96) }
+ }
+ 
+ // Independent fixture tuples and checksums, not calls into a numerical peer.
+@@ -41,6 +41,15 @@
+         return Expected598(f[0],f[1],f[2],canonical598(f[2]),"decimal",false)
+     }
+     require(p.size==3)
++    if(p[2] in listOf("PARSE","FORMAT")) {
++        val text=when("${p[0]}/${p[1]}") {
++            "int/zero"->"0"; "int/signed"->"-7"; "int/carry30"->"1073741823"; "int/wide10"->"100000000000000000000"
++            "decimal/zero"->"0"; "decimal/scale"->"1.2"; "decimal/signed"->"-1.25"; "decimal/wide10"->"100000000000000000001.25"
++            else->error("Unknown text fixture")
++        }
++        return Expected598(text,text,text,text,"text",false)
++    }
++
+     val f=when("${p[0]}/${p[1]}") {
+         "int/zero"->listOf("0","0","0","0","0","0")
+         "int/signed"->listOf("-7","3","-4","-10","-21","49")
+--- a/prepared-timing/check-timing.main.kts
++++ b/prepared-timing/check-timing.main.kts
+@@ -29,7 +29,8 @@
+     val input=lines.single{it.startsWith("INPUT598\t")}.split('\t');check(input.size==5)
+     val expected=expected598(work.id)
+     check(input[1]==expected.left && input[2]==expected.right && input[4]==expected.expected)
+-    if(expected.self)check(input[3]=="self-alias")
++    if(expected.family=="text")check(input[3]=="unary-text")
++    else if(expected.self)check(input[3]=="self-alias")
+     else {
+         check(input[3] in listOf("binary-native-alias","binary-distinct"))
+         if(input[3]=="binary-native-alias")check(canonical598(expected.left)==canonical598(expected.right))
+@@ -92,7 +93,7 @@
+ val firstPairs=mutableListOf("id\tpeer\tfork\tfirst_peer_over_krogu\tfirst_peer_minus_krogu_ns\tsame_observed_relation")
+ for(work in catalog) {
+     val values=first.filter{it[1]==work.peer && it[2]==work.id}.map{it[5].toDouble()}
+-    check(values.size==3);firstSummary+="${work.peer}\t${work.id}\t${median598(values)}\t${values.min()}\t${values.max()}\tFIRST_PUBLIC_AFTER_PARSE_NOT_PRISTINE_VM"
++    check(values.size==3);firstSummary+="${work.peer}\t${work.id}\t${median598(values)}\t${values.min()}\t${values.max()}\tFIRST_SELECTED_OP_AFTER_DECLARED_PREPARATION_NOT_PRISTINE_VM"
+     if(work.peer!="krogu-final539-PENDING") for(fork in 0..2) {
+         val p=first.single{it[1]==work.peer && it[2]==work.id && it[3]==fork.toString()}[5].toDouble()
+         val k=first.single{it[1]=="krogu-final539-PENDING" && it[2]==work.id && it[3]==fork.toString()}[5].toDouble()
+@@ -100,5 +101,5 @@
+     }
+ }
+ write598("first-summary.tsv",firstSummary);write598("first-paired.tsv",firstPairs)
+-write598("SCOPE.txt",listOf("All per-fork/adverse rows retained. FIRST after parsing precedes gate, not VM/process cold. Throughput is derived from the same wall bracket; latency includes adapter/ring escape. Mixed-alias relations flagged, not silently comparable. RSS/heap snapshots are process metrics, never owned-retained or allocation. No speedup threshold or final task verdict.","Source artifact binding:"+File(root,"binding.txt").readText()))
++write598("SCOPE.txt",listOf("All per-fork/adverse rows retained. FIRST after declared preparation precedes gate, not VM/process cold; PARSE has only source String prepared, FORMAT has a parsed unobserved native operand. Warm FORMAT is observed/cached. Throughput is derived from the same wall bracket; latency includes adapter/ring escape. Mixed-alias relations flagged, not silently comparable. RSS/heap snapshots are process metrics, never owned-retained or allocation. No speedup threshold or final task verdict.","Source artifact binding:"+File(root,"binding.txt").readText()))
+ File(output,"CHECKED_NOT_YET_INDEPENDENTLY_ACCEPTED").writeText("Exact inventory and arithmetic/counter parsing checked; source/runtime/metrology and comparative report need independent review.\n")
+--- a/prepared-timing/README.md
++++ b/prepared-timing/README.md
+@@ -12,10 +12,10 @@
+ 
+ | Target | Peers | Workloads per fresh cohort | Children / FIRST, three cohorts | Warm rows, seven each child |
+ | --- | --- | --- | --- | --- |
+-| JVM | public BellSoftJDK25.0.4+9, final Krogu, IonsPin0.3.10, KBigNum desktop0.0.20 | 32 exact core×4 +8 explicit fixed-scale HalfUp×3 (IonsPin NA)=152 | 456 | 3192 |
+-| JS Node24.16.0 | final Krogu, IonsPin0.3.10 | 32×2=64 | 192 | 1344 |
+-| Wasm-JS Node24.16.0 | final Krogu, IonsPin0.3.10 | 32×2=64 | 192 | 1344 |
+-| Native macOS Arm64 | final Krogu, IonsPin0.3.10 | 32×2=64 | 192 | 1344 |
++| JVM | public BellSoftJDK25.0.4+9, final Krogu, IonsPin0.3.10, KBigNum desktop0.0.20 | (32 exact core+16 text)×4 +8 explicit fixed-scale HalfUp×3 (IonsPin NA)=216 | 648 | 4536 |
++| JS Node24.16.0 | final Krogu, IonsPin0.3.10 | (32+16)×2=96 | 288 | 2016 |
++| Wasm-JS Node24.16.0 | final Krogu, IonsPin0.3.10 | (32+16)×2=96 | 288 | 2016 |
++| Native macOS Arm64 | final Krogu, IonsPin0.3.10 | (32+16)×2=96 | 288 | 2016 |
+ 
+ Every selected peer/workload gets its OWN fresh child in each of three F/R/F cohorts. Children are adjacent by matched workload and peer order; the reverse cohort reverses both work and peer order. These are matched fresh processes on one host/runtime, not the same process or two different-host observations. The runtime flags are identical within a target: JVM512MiB SerialGC/ActiveProcessorCount1; Node512MiB/expose-gc; Native fixed compiled binary with clean LANG/TZ. Hardware/host runtime and actual effective flags still require execution evidence. No claim of identical cross-runtime GC behavior is made.
+ 
+@@ -93,3 +93,23 @@
+ It checks supervisor PID/start identities, exit/log SHA, exact input/expected tuples and allowed relations, FIRST/result-ring polynomial checksums, exactly one FIRST before a successful gate, strict WARM peer/id/fork/budget/count and seven ordered samples using that one selected count per child; publishes raw first/warm, per-fork median/min/max, derived throughput, available CPU/allocation, whole-child memory and every paired ratio/delta versus Krogu. Mixed observed relations remain explicit, and all adverse rows are retained. No arbitrary threshold, winning-only filter, hidden rerun or statistical claim of independence is added. The checker is metrology/inventory preparation, not a final independent method/report acceptance.
+ 
+ All build outputs, actual counters/variants/interop/Node/JVM/Native runtime behavior, stability/cap effects, artifact/source bindings, memory controls and reports remain pending. This adds the missing execution path for the prepared core; it does not close the broader literal598 operation/target/reproducibility/report requirements.
++
++## Added literal task598 text workloads
++
++The task explicitly includes parsing/formatting. The original arithmetic/fixed-scale inventory is retained unchanged;16 additional text workloads per peer cover both families, four literals and PARSE/FORMAT separately. Integer inputs are0,−7,1073741823 and100000000000000000000. Decimal text inputs are0,1.2,−1.25 and100000000000000000001.25: unique expanded spellings without insignificant trailing fractional zeros. These text inputs are an additive corpus; the original arithmetic decimal scale fixtures remain unchanged.
++
++PARSE measures the existing public native decimal-text constructor/parser and returns its native value; only the immutable source String is prepared. Result formatting and exact expected-string checks occur outside counters. FORMAT parses its native input outside counters and returns the actual native String from integerText/decimalText. These are native APIs on a selected plain-spelling intersection: Krogu/JDK/KBigNum use their existing toString, IonsPin uses its existing toStringExpanded; no claim of equal general scientific/expanded formatting contracts is made outside these literals. It does not format that input before FIRST. Every output must equal the frozen exact expanded spelling; numeric normalization cannot hide a shorter or scientific output. Unexpected mismatches fail the case, never silently qualify a cheaper non-equivalent formatter. All peers' exact API spellings are the already compiled adapter methods, not a new wrapper implementation. These cases do not promise arbitrary JDK decimal cohort/scale equivalence or default scientific-text equivalence.
++
++FIRST is the first explicit selected public operation after declared preparation: PARSE after String-only preparation, FORMAT after native parsing without prior formatting, arithmetic after native parsing. Input parsing may initialize internals, so FORMAT FIRST is not pristine-cache/process cold. Warm FORMAT follows result observations and is explicitly cached/observed repeated format on one immutable value. A fresh-value-pool format workload is not claimed by these IDs. Warm PARSE repeats parsing the same immutable String and consumes native result references. Allocation, loop/adapter/ring and any native format caching stay in scope. No conversion or result checking is moved into the brackets.
++
++Inventory now216 workloads/648 fresh children/4536 warm rows on JVM, and96/288/2016 on each JS/Wasm/Native target. Sixteen newly added cases per peer are checked twice by the small peer-only text preflight in ../prepared-harness/text-only, independently of accepted539/Krogu/performance. Full timing still requires accepted539 and current artifact provenance. Existing arithmetic/fixed-scale adapter/fixture bytes and previous source reviews remain in ../history/timing-before-text-workloads. Text preflight is not full598 correctness or performance acceptance.
++
++Operation selection remains exact add/subtract/multiply/self, explicit fixed-scale HalfUp where equivalent, and now parse/native format on exact plain-spelling intersection. Signed quotient/remainder/bitwise/root/primality are not individually mandated by literal598; their potential extensions remain outside this selected comparison, not falsely labelled unavailable APIs. The semantic matrix preserves actual NA (missing published targets, non-equivalent context/cohort/rounding or undocumented equivalent primitive) separately from operations deliberately not selected. Significant HALF_EVEN ambiguity is unverified, not a measured equivalent.
++
++Peer-only text preflight exact command (after explicit quiet handoff; no Krogu, timing or accepted539 inference):
++
++```sh
++env -i HOME="$HOME" PATH="/Users/yoda/.sdkman/candidates/java/25.0.4-librca/bin:/usr/bin:/bin" JAVA_HOME=/Users/yoda/.sdkman/candidates/java/25.0.4-librca ./gradlew -p .codex-work/598/prepared-harness/text-only --no-daemon --console=plain -PrunName=text-1 --write-locks runTextOnly
++```
++
++Expected96 CHECK_TEXT598 rows (3peers×16IDs×2repetitions), exact input/output, retained-result rechecks and COMPLETE_TEXT598_PEER_ONLY. Failure output is preserved and cannot certify full598 or unsupported peers. The full future runner still checks Krogu on the same selected literals after accepted539.
+--- a/prepared-timing/build.gradle.kts
++++ b/prepared-timing/build.gradle.kts
+@@ -71,7 +71,7 @@
+     sourceSets.commonMain {
+         // Reuse reviewed adapter sources; exclude JVM/JDK/KBigNum and JVM fixtures.
+         kotlin.srcDir(file("../prepared-harness"))
+-        kotlin.include("**/Timing598.kt", "**/TimingUntimed598.kt", "Contract.kt", "KroguAdapter.kt", "IonsPinAdapter.kt")
++        kotlin.include("**/Timing598.kt", "**/TextWork598.kt", "**/TimingUntimed598.kt", "Contract.kt", "KroguAdapter.kt", "IonsPinAdapter.kt")
+         dependencies {
+             implementation("io.heapy.krogu:krogu-math:$kroguVersion")
+             implementation("com.ionspin.kotlin:bignum:0.3.10")
+--- a/prepared-timing/src/commonMain/kotlin/preparation598/Timing598.kt
++++ b/prepared-timing/src/commonMain/kotlin/preparation598/Timing598.kt
+@@ -21,6 +21,10 @@
+ private fun now598() = clock598.elapsedNow().inWholeNanoseconds
+ 
+ internal fun <I : Any, D : Any> coreCase598(adapter: PeerAdapter<I, D>, id: String): TimedCase598 {
++    if(id.endsWith("/PARSE") || id.endsWith("/FORMAT")) {
++        val t=textCase598(adapter,id)
++        return TimedCase598(adapter.id,id,t.input,t.input,"unary-text",t.input,t.operation,t.checkResult,t.checkInput)
++    }
+     val parts = id.split('/'); require(parts.size == 3)
+     val family = parts[0]; val fixtureId = parts[1]; val opName = parts[2]
+     val f = (if (family == "int") integerFixtures598 else { require(family == "decimal"); decimalFixtures598 }).single { it.id == fixtureId }
+@@ -65,7 +69,7 @@
+     val before = Counters598(); val after = Counters598(); val ring = arrayOfNulls<Any>(64)
+     println("INPUT598\t${case.inputLeft}\t${case.inputRight}\t${case.relation}\t${case.expected}")
+     println("SCOPE598\t${metricScope598()}")
+-    println("COLD598_SCOPE\tFRESH_CHILD_FIRST_EXPLICIT_PUBLIC_OP_AFTER_PARSE\tPRISTINE_VM_OR_INTERNAL_CACHE_NA")
++    println("COLD598_SCOPE\tFRESH_CHILD_FIRST_EXPLICIT_SELECTED_OP_AFTER_DECLARED_PREPARATION\tPRISTINE_VM_OR_INTERNAL_CACHE_NA")
+     fun available(value: Long) = if(value < 0) "NA" else value.toString()
+     fun delta(a: Long, b: Long): String { if (a < 0 || b < 0) return "NA"; check(b >= a) { "Counter decreased" }; return (b-a).toString() }
+     // Fresh child, first explicit selected public arithmetic call AFTER input parsing.
+--- /dev/null
++++ b/prepared-timing/src/commonMain/kotlin/preparation598/TextWork598.kt
+@@ -0,0 +1,39 @@
++package preparation598
++
++/** Public text APIs only. No normalization/peer arithmetic inside measured closures. */
++internal data class TextPrepared598(
++    val input: String, val operation: () -> Any,
++    val checkResult: (Any) -> String, val checkInput: () -> Unit,
++)
++internal fun textInput598(family: String, name: String): String = when ("$family/$name") {
++    "int/zero" -> "0"
++    "int/signed" -> "-7"
++    "int/carry30" -> "1073741823"
++    "int/wide10" -> "100000000000000000000"
++    "decimal/zero" -> "0"
++    "decimal/scale" -> "1.2"
++    "decimal/signed" -> "-1.25"
++    "decimal/wide10" -> "100000000000000000001.25"
++    else -> error("Unknown text fixture")
++}
++internal fun <I: Any,D: Any> textCase598(adapter: PeerAdapter<I,D>, id: String): TextPrepared598 {
++    val p=id.split('/');require(p.size==3 && p[2] in listOf("PARSE","FORMAT"))
++    val input=textInput598(p[0],p[1])
++    fun <V:Any> typed(parse:(String)->V, text:(V)->String):TextPrepared598 {
++        // FORMAT input is parsed once, never formatted before FIRST. PARSE has no prepared native input.
++        val value=if(p[2]=="FORMAT") parse(input) else null
++        return if(p[2]=="PARSE") TextPrepared598(input,{parse(input)},
++            {result -> @Suppress("UNCHECKED_CAST") val observed=text(result as V)
++                // Text fixtures deliberately use unique canonical expanded spellings.
++                check(observed==input) { "${adapter.id}:$id non-equivalent parse observation: $observed vs $input" }; observed },
++            {check(input==textInput598(p[0],p[1]))})
++        else TextPrepared598(input,{text(checkNotNull(value))},
++            {result -> check(result is String && result==input) { "${adapter.id}:$id non-equivalent format:$result vs $input" }; result },
++            {check(text(checkNotNull(value))==input) { "Format input changed/non-equivalent" }})
++    }
++    return when(p[0]) {
++        "int" -> typed(adapter::integer,adapter::integerText)
++        "decimal" -> typed(adapter::decimal,adapter::decimalText)
++        else -> error("Unknown text family")
++    }
++}
+--- /dev/null
++++ b/prepared-harness/text-only/build.gradle.kts
+@@ -0,0 +1,60 @@
++import java.security.MessageDigest
++
++plugins { kotlin("jvm") version "2.4.21" }
++
++// Independent API/correctness preparation: no Krogu dependency/input, timing or publication.
++val peerSources = listOf("Contract.kt", "IonsPinAdapter.kt", "KBigNumAdapter.kt", "JdkAdapter.kt", "UntimedFixtures.kt")
++fun hash598(input: File): String = input.inputStream().use { stream ->
++    val digest = MessageDigest.getInstance("SHA-256")
++    val buffer = ByteArray(65536)
++    while (true) { val n=stream.read(buffer); if(n<0)break; digest.update(buffer,0,n) }
++    digest.digest().joinToString("") { "%02x".format(it) }
++}
++kotlin {
++    jvmToolchain { languageVersion.set(JavaLanguageVersion.of(25)); vendor.set(JvmVendorSpec.BELLSOFT) }
++    sourceSets.named("main") {
++        kotlin.setSrcDirs(listOf(projectDir.parentFile, projectDir, projectDir.resolve("../../prepared-timing/src/commonMain/kotlin/preparation598")))
++        kotlin.include(*(peerSources + listOf("TextOnlyMain.kt", "TextWork598.kt")).toTypedArray())
++    }
++}
++dependencies {
++    implementation("com.ionspin.kotlin:bignum:0.3.10")
++    implementation("io.github.gatrongdev:kbignum-desktop:0.0.20")
++    implementation(kotlin("stdlib", "2.4.21"))
++}
++dependencyLocking { lockAllConfigurations() }
++configurations.configureEach {
++    resolutionStrategy.failOnVersionConflict()
++    resolutionStrategy.force(*listOf("kotlin-stdlib", "kotlin-stdlib-common", "kotlin-stdlib-jdk7", "kotlin-stdlib-jdk8").map { "org.jetbrains.kotlin:$it:2.4.21" }.toTypedArray())
++}
++val runTextOnly by tasks.registering(JavaExec::class) {
++    dependsOn(tasks.named("classes"))
++    javaLauncher.set(javaToolchains.launcherFor {
++        languageVersion.set(JavaLanguageVersion.of(25)); vendor.set(JvmVendorSpec.BELLSOFT)
++    })
++    classpath=sourceSets["main"].runtimeClasspath
++    mainClass.set("preparation598.TextOnlyMainKt")
++    maxHeapSize="512m"
++    jvmArgs("-XX:+UseSerialGC", "-XX:ActiveProcessorCount=1", "-XX:-OmitStackTraceInFastThrow")
++    val before = mutableMapOf<File,String>()
++    doFirst {
++        val name=providers.gradleProperty("runName").get().also { require(it.matches(Regex("[A-Za-z0-9_-]+"))) }
++        val out=layout.projectDirectory.dir("runs/$name").asFile
++        check(!out.exists() && out.mkdirs()) { "Never overwrite previous preflight" }
++        args(out.resolve("observations.tsv").absolutePath)
++        val inputs=(listOf(projectDir.resolve("../../prepared-timing/src/commonMain/kotlin/preparation598/TextWork598.kt")) + peerSources.map { projectDir.parentFile.resolve(it) } + listOf("TextOnlyMain.kt", "build.gradle.kts", "settings.gradle.kts").map { projectDir.resolve(it) }).sortedBy { it.absolutePath }
++        before.clear(); inputs.forEach { before[it]=hash598(it) }
++        out.resolve("resolved-inputs.txt").writeText(buildString {
++            appendLine("PREPARATION_ONLY_NO_KROGU_NO_TIMING_NO_FINAL598_ACCEPTANCE")
++            appendLine("gradle=${gradle.gradleVersion}")
++            appendLine("launcher=${javaLauncher.get().executablePath}")
++            appendLine("launcher_sha256=${hash598(javaLauncher.get().executablePath.asFile)}")
++            before.forEach { (f,h) -> appendLine("source:$h\t${f.absolutePath}") }
++            classpath.files.sortedBy { it.absolutePath }.forEach { f ->
++                if(f.isFile) appendLine("classpath:${hash598(f)}\t${f.absolutePath}")
++                else f.walkTopDown().filter { it.isFile }.sortedBy { it.absolutePath }.forEach { appendLine("class:${hash598(it)}\t${it.absolutePath}") }
++            }
++        })
++    }
++    doLast { before.forEach { (f,h) -> check(hash598(f)==h) { "Changed source during preflight: $f" } } }
++}
+--- /dev/null
++++ b/prepared-harness/text-only/settings.gradle.kts
+@@ -0,0 +1,3 @@
++pluginManagement { repositories { gradlePluginPortal(); mavenCentral() } }
++dependencyResolutionManagement { repositories { mavenCentral() } }
++rootProject.name = "peer598-api-correctness-preflight-only"
+--- /dev/null
++++ b/prepared-harness/text-only/TextOnlyMain.kt
+@@ -0,0 +1,36 @@
++package preparation598
++
++import java.io.File
++
++/** Only new text API semantics; no Krogu, timers, benchmark or full598 acceptance. */
++fun main(args:Array<String>) {
++    check(System.getProperty("java.vendor").contains("BellSoft",true))
++    check(System.getProperty("java.runtime.version")=="25.0.4+9-LTS")
++    val out=File(args.single());check(out.parentFile.isDirectory && out.createNewFile())
++    var checks=0;var failures=0
++    out.bufferedWriter().use { w ->
++        w.appendLine("# PREPARATION_ONLY_TEXT_APIS_NO_KROGU_NO_TIMING")
++        fun <I:Any,D:Any> peer(a:PeerAdapter<I,D>) {
++            for((family,names) in listOf("int" to listOf("zero","signed","carry30","wide10"),"decimal" to listOf("zero","scale","signed","wide10")))
++                for(name in names) for(op in listOf("PARSE","FORMAT")) {
++                    val id="$family/$name/$op";val case=textCase598(a,id)
++                    val retained=mutableListOf<Any>()
++                    repeat(2) { repetition ->
++                        val result=case.operation();retained+=result
++                        try {
++                            val observed=case.checkResult(result);case.checkInput()
++                            retained.forEach { check(case.checkResult(it)==case.input) }
++                            w.appendLine("CHECK_TEXT598\t${a.id}\t$id\t$repetition\t${case.input}\t$observed")
++                            checks++
++                        } catch(e:IllegalStateException) {
++                            failures++;w.appendLine("FAIL_TEXT598\t${a.id}\t$id\t$repetition\t${e.message}")
++                        }
++                    }
++                }
++        }
++        peer(JdkAdapter);peer(IonsPinAdapter);peer(KBigNumAdapter)
++        w.appendLine("TEXT598_COUNTS\t$checks\t$failures")
++        if(failures==0)w.appendLine("COMPLETE_TEXT598_PEER_ONLY")
++    }
++    check(checks==96 && failures==0) { "Text semantics mismatch: $checks checks / $failures failures" }
++}
