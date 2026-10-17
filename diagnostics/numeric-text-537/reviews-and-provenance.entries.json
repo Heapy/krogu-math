@@ -93,13 +93,13 @@
     },
     {
       "path": "preparation/task-before-focused-runtime.json",
-      "bytes": 5682,
-      "sha256": "005ca5d341971a2cd82922d6d92becf4b602835aa1a37ba28f37c0dfb7d4a301"
+      "bytes": 4804,
+      "sha256": "9742767a478e642f915186f9e70bf048dd3ef4357244a7a265bfdbd2da1a94c9"
     },
     {
       "path": "preparation/task-full.json",
-      "bytes": 2677,
-      "sha256": "4bd5dd0d232702448daec78bbc22b0455711206b6deb77ca09949a95b25a4483"
+      "bytes": 1799,
+      "sha256": "318720bf4d0c8c46ae274c83f8ef0e7d0ea6f34ef88ef48b7b983e731e5b65bc"
     },
     {
       "path": "remote-driver-final.txt",
@@ -223,8 +223,8 @@
     },
     {
       "path": "task-before-runtime.json",
-      "bytes": 5682,
-      "sha256": "005ca5d341971a2cd82922d6d92becf4b602835aa1a37ba28f37c0dfb7d4a301"
+      "bytes": 4804,
+      "sha256": "9742767a478e642f915186f9e70bf048dd3ef4357244a7a265bfdbd2da1a94c9"
     }
   ]
 }

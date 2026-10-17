@@ -1,0 +1,10 @@
+{
+  "scope": "Final metadata-only rebind after independent PASS. No prose, archive, runtime or numerical payload changed after review.",
+  "reviewed_translation_map_sha256": "bd8d2297b18acc3343b48c422a0ea0c9490dd86d0283d568a6c72bb02fb73a3a",
+  "reviewed_map_retained": "history/reviewed-translation-map.json",
+  "current_translation_map_sha256": "8728dff10b8d80459d9756e92bc20abaee300baf9573c1fe19ae87261fe5c4e9",
+  "readme_sha256": "f738e792ae380c775835461beebc29034baffdcbc6e8997d8b0b42284ef738f1",
+  "only_added_classification": "Explicit unchanged HTML entity-codec Unicode table/range allowlist; source/measurement data remain untouched.",
+  "recursive_pass": "382781ba184d236b6d82f1737e10d06e1fcb7355eba1bf96d37a256230561bb6",
+  "editorial_provenance_pass": "38a2e4a24faa814724b917210e6eeac7290979accab607d3080fe259cebe6941"
+}

@@ -1,0 +1,8 @@
+{
+  "scope":"Independent editorial meaning review of all50values in prose-chunk-reviewer527.json against the corresponding English strings in merged map5735a0cb4113aa53a968853e38efa671ab2a91140357bacc773776b7f98bd416",
+  "checked":{"body_values":24,"title_values":26,"source_vs_actual_and_UNRUN_qualifications":true,"mathematical_domain_and_public_contract_restrictions":true,"permission_history_and_scope_preservation":true,"numerical_witnesses_and_error_requirements":true,"source_paths_hashes_and_footer_applicability":true},
+  "verdict":"PASS_AFTER_ONE_NARROW_WORDING_CORRECTION",
+  "findings":[{"key":"954d237d533dee9176421f5e9cd0d6423d08d8c01701a97ed6748d9ac4754bf4","original_meaning":"The sqrt special case provides no exemption for null from the general NPE rule","ambiguous_english":"introduces no null exception","required_replacement":"does not exempt null from the general null-input rule","status":"Acknowledged by original translator527; coordinator owns final merged-map/archive reapplication"}],
+  "other_blocking_findings":[],
+  "not_claimed":"No new numerical/source-body review, historical permission grant, numerical acceptance or task status change; no archive/index edits by this cross-review."
+}

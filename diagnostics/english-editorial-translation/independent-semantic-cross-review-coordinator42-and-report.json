@@ -1,0 +1,35 @@
+{
+  "verdict": "SEMANTIC_CROSS_REVIEW_PASS_COORDINATOR42_AND_ENGLISH598_REPORT",
+  "files": {
+    "coordinator_chunk_sha256": "bfa2427d1855f43c4a4a8afb0c4076bd8c46dd8beeac305b0cb6f9dacc3226e8",
+    "coordinator_translations_sha256": "b582ef1104c0daa9e2f56420ea66d066f555540fa629c90b44db668bc078b23f",
+    "original_report_sha256": "13e018cd6107136e3751cfad6a9b47812b3da834d9ecb47781859e74c22d4771",
+    "english_report_sha256": "e9a792865be36d0778b72ee113fc0400691dce7dde9c76976d99ce8acc92062a"
+  },
+  "reviewed": {
+    "task_prose_values": 42,
+    "scope": "All18 complete bodies and24 titles read against exact originals, not tokenchecks alone.",
+    "numerical_checks": "Every digit-token multiset/longhex identifier preserved in42values;16 workload and10RSS numeric table rows exact inREPORT.",
+    "qualifiers": "Historical UNRUN vs observed, symbolic witnesses/conditional allocation, normative vs JDK diagnostics, source/API/subclass/null contracts, exclusions/licensing and acceptance/ownership/execution restrictions faithfully preserved.",
+    "report": "Readable scoped advantages ANDdisadvantages againstJDK/Ions/KBig, unstablecases/variability, FIRSTafterdeclaredprep, nativeparser/cachedformatter, alias/cohort/NA/CPU/allocation/RSS/non-isolation limits preserved. No new speed/steady/universalrank or completion claim."
+  },
+  "resolved_findings": [
+    {
+      "kind": "Report ambiguity",
+      "resolution": "No run was repeated merely to obtain a favourable outcome."
+    },
+    {
+      "kind": "Coefficient-bound grammar",
+      "key": "a18c0c1819cd231460a4dbd58d69fc968045c9d0b621332f58e40aa8dc5e6888",
+      "resolution": "Bound explicitly applies to final coefficient with400000000digits/supportedscale399999999, unchangednumericformula."
+    }
+  ],
+  "related_peer_review": "536 null-waiver ambiguity in my50 corrected in final143map;536-owned fixed-scale/twos-complement correction also included.",
+  "archive_handoff": {
+    "ledger": "benchmarks-527/owned-four-zip-final-translation-ledger.json",
+    "sha256": "9e04a40e799a3c1cee3ea2b8998b1113af5b4a0a900f844009fc134508ffd2df",
+    "final_map_sha256": "559f324fb0a92fef35aaa62dc3f1d54210a3d849f66ded619f0d538c396fa598"
+  },
+  "blocking_findings": [],
+  "not_performed": "No build, numerical benchmark, task mutation, commit or push. Global manifest/provenance rebind remains coordinatorownership."
+}

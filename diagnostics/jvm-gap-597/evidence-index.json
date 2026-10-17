@@ -233,13 +233,13 @@
     },
     {
       "path": "evidence/source/task-before-profiles.json",
-      "bytes": 9902,
-      "sha256": "23d61dddbed384043a5058dc71919ffe77e5430adb92496a0b2d88821e121a47"
+      "bytes": 8478,
+      "sha256": "60875555541ff99f741ea83977245525c42b2eb83f96945f2b2b09e47a69e054"
     },
     {
       "path": "evidence/source/task-full.json",
-      "bytes": 8045,
-      "sha256": "6ad26520b22aab206015ebcae59f9567ade6c40d2c08ee40112109b882a0d3df"
+      "bytes": 6621,
+      "sha256": "167ac250f443f653299f95004972ecd6d71d1b9936187c04e3794e6af5bae79e"
     },
     {
       "path": "evidence/summaries/final-paired-summary-observed.json",

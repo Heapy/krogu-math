@@ -77,13 +77,13 @@
     },
     {
       "path": "provenance-reviews.entries.json",
-      "bytes": 33553,
-      "sha256": "618f1d2bd99059b0f1e353ffbd7c73b923e8a6c7c5f066f1b2c1abd9c57d45af"
+      "bytes": 33552,
+      "sha256": "adc062c84d1f5ce159e40d9af8e043bbb50f235c00ff95c2f40bf5b2b07115b4"
     },
     {
       "path": "provenance-reviews.zip",
-      "bytes": 1366822,
-      "sha256": "d1b79cd3a7a8cd7acae2340707e8a74a01361ce2d125cd0bb9a8a5baabfa3498"
+      "bytes": 1354190,
+      "sha256": "0e7d4563ef5b8177cc2e2243d5008597ded2c6bedff977e1190ee5114117dca3"
     },
     {
       "path": "retained-evidence.json",

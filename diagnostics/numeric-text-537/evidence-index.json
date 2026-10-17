@@ -122,12 +122,12 @@
     {
       "path": "reviews-and-provenance.entries.json",
       "bytes": 7559,
-      "sha256": "4b60ee1b998c5b83650b47a91bf012019dfe8507406cf3353f9a99afc14707a0"
+      "sha256": "f1a1c02c8e636c99f1070e6d382351201206fa3b38db3f184f75eaaded9344c4"
     },
     {
       "path": "reviews-and-provenance.tar.gz",
-      "bytes": 234359,
-      "sha256": "a8f1affc6dee2977ca4701fd876b171aeeae2e3a069627f513db1e702cec5650"
+      "bytes": 232994,
+      "sha256": "994df6d09edc42ea712bc394f20fb62b1d48556697c3558cfcc19b26e6e5b0d5"
     }
   ]
 }

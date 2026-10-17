@@ -954,23 +954,23 @@
     },
     {
       "path": "task-current.txt",
-      "bytes": 4228,
-      "sha256": "a30481f0cd4fb85b53d2d2a22de910147c395c3ba8e24884bab013eefb52e24f"
+      "bytes": 3309,
+      "sha256": "d02eaaf200cb501489eb41c9066b6f3e797eba14188853fb6dc59d81650f0922"
     },
     {
       "path": "task-full-current.json",
-      "bytes": 4228,
-      "sha256": "a30481f0cd4fb85b53d2d2a22de910147c395c3ba8e24884bab013eefb52e24f"
+      "bytes": 3309,
+      "sha256": "d02eaaf200cb501489eb41c9066b6f3e797eba14188853fb6dc59d81650f0922"
     },
     {
       "path": "tracker-backlog-current.json",
-      "bytes": 256619,
-      "sha256": "7c2043bd55f57c93e847650e76e4f0e3749d97383c0e8bb2445d9be038061148"
+      "bytes": 194760,
+      "sha256": "5d4c2587981c57fd66018e3c70b38dda5d8b0111c06a969a593a9aec570ca73d"
     },
     {
       "path": "tracker-open-current.json",
-      "bytes": 1051,
-      "sha256": "937585618de0791ba80d5ac8592bb73c3d3bd941d17ea17e1c4b9c51975eac01"
+      "bytes": 843,
+      "sha256": "036da53d81697b955475f1ebe7b5ba3b2b5f62ce94caa969f6df8f86bf269772"
     },
     {
       "path": "wasm-owned-graph-summary.json",

@@ -1,0 +1,238 @@
+{
+  "verdict": "PASS_ENGLISH_PROSE_AND_EXPLICIT_UNCHANGED_UNICODE_MACHINE_DATA",
+  "base_commit": "3e5ba2638ea6f170ea0f4f165c7b5b793ff2a3ec",
+  "tracked_and_new_editorial_files": 1608,
+  "utf8_text_leaves": 30900,
+  "valid_json_leaves": 1695,
+  "archive_visits_including_baseline_comparisons": 62,
+  "regular_archive_member_visits": 67305,
+  "opaque_binary_leaves": 1529,
+  "fixture_allowances": [
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip!/guard/payload/baseline/mocha/node_modules/camelcase/index.d.ts",
+      "classification": "EXPLICIT_UNICODE_CAMELCASE_INPUT_OUTPUT_EXAMPLE_NOT_PROSE",
+      "decoded_cyrillic_lines": 2
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip!/guard/payload/baseline/mocha/node_modules/camelcase/readme.md",
+      "classification": "EXPLICIT_UNICODE_CAMELCASE_INPUT_OUTPUT_EXAMPLE_NOT_PROSE",
+      "decoded_cyrillic_lines": 2
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip!/guard/payload/current/mocha/node_modules/camelcase/index.d.ts",
+      "classification": "EXPLICIT_UNICODE_CAMELCASE_INPUT_OUTPUT_EXAMPLE_NOT_PROSE",
+      "decoded_cyrillic_lines": 2
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip!/guard/payload/current/mocha/node_modules/camelcase/readme.md",
+      "classification": "EXPLICIT_UNICODE_CAMELCASE_INPUT_OUTPUT_EXAMPLE_NOT_PROSE",
+      "decoded_cyrillic_lines": 2
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip!/guard/payload/baseline/mocha/node_modules/camelcase/index.d.ts",
+      "classification": "EXPLICIT_UNICODE_CAMELCASE_INPUT_OUTPUT_EXAMPLE_NOT_PROSE",
+      "decoded_cyrillic_lines": 2
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip!/guard/payload/baseline/mocha/node_modules/camelcase/readme.md",
+      "classification": "EXPLICIT_UNICODE_CAMELCASE_INPUT_OUTPUT_EXAMPLE_NOT_PROSE",
+      "decoded_cyrillic_lines": 2
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip!/guard/payload/current/mocha/node_modules/camelcase/index.d.ts",
+      "classification": "EXPLICIT_UNICODE_CAMELCASE_INPUT_OUTPUT_EXAMPLE_NOT_PROSE",
+      "decoded_cyrillic_lines": 2
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip!/guard/payload/current/mocha/node_modules/camelcase/readme.md",
+      "classification": "EXPLICIT_UNICODE_CAMELCASE_INPUT_OUTPUT_EXAMPLE_NOT_PROSE",
+      "decoded_cyrillic_lines": 2
+    }
+  ],
+  "findings": [
+    {
+      "kind": "ESCAPED_CYRILLIC_OUTSIDE_FIXTURE_ALLOWLIST",
+      "path": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip!/guard/payload/baseline/mocha/node_modules/he/he.js",
+      "detail": "Decoded Unicode escapes contain Cyrillic",
+      "disposition": "UNCHANGED_HTML_ENTITY_CODEC_UNICODE_DATA_NOT_RUSSIAN_PROSE",
+      "reason": "HTML entity encoding regex/table entries such as U+0430 to acy and U+0410 to Acy in he.js, identical generated Mocha copy and its source map; independent changed-archive comparison confirms these payloads byte-identical to Git3e5. No runtime translation/edit justified."
+    },
+    {
+      "kind": "ESCAPED_CYRILLIC_OUTSIDE_FIXTURE_ALLOWLIST",
+      "path": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip!/guard/payload/baseline/mocha/node_modules/mocha/mocha.js",
+      "detail": "Decoded Unicode escapes contain Cyrillic",
+      "disposition": "UNCHANGED_HTML_ENTITY_CODEC_UNICODE_DATA_NOT_RUSSIAN_PROSE",
+      "reason": "HTML entity encoding regex/table entries such as U+0430 to acy and U+0410 to Acy in he.js, identical generated Mocha copy and its source map; independent changed-archive comparison confirms these payloads byte-identical to Git3e5. No runtime translation/edit justified."
+    },
+    {
+      "kind": "ESCAPED_CYRILLIC_OUTSIDE_FIXTURE_ALLOWLIST",
+      "path": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip!/guard/payload/baseline/mocha/node_modules/mocha/mocha.js.map",
+      "detail": "Decoded Unicode escapes contain Cyrillic",
+      "disposition": "UNCHANGED_HTML_ENTITY_CODEC_UNICODE_DATA_NOT_RUSSIAN_PROSE",
+      "reason": "HTML entity encoding regex/table entries such as U+0430 to acy and U+0410 to Acy in he.js, identical generated Mocha copy and its source map; independent changed-archive comparison confirms these payloads byte-identical to Git3e5. No runtime translation/edit justified."
+    },
+    {
+      "kind": "ESCAPED_CYRILLIC_OUTSIDE_FIXTURE_ALLOWLIST",
+      "path": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip!/guard/payload/current/mocha/node_modules/he/he.js",
+      "detail": "Decoded Unicode escapes contain Cyrillic",
+      "disposition": "UNCHANGED_HTML_ENTITY_CODEC_UNICODE_DATA_NOT_RUSSIAN_PROSE",
+      "reason": "HTML entity encoding regex/table entries such as U+0430 to acy and U+0410 to Acy in he.js, identical generated Mocha copy and its source map; independent changed-archive comparison confirms these payloads byte-identical to Git3e5. No runtime translation/edit justified."
+    },
+    {
+      "kind": "ESCAPED_CYRILLIC_OUTSIDE_FIXTURE_ALLOWLIST",
+      "path": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip!/guard/payload/current/mocha/node_modules/mocha/mocha.js",
+      "detail": "Decoded Unicode escapes contain Cyrillic",
+      "disposition": "UNCHANGED_HTML_ENTITY_CODEC_UNICODE_DATA_NOT_RUSSIAN_PROSE",
+      "reason": "HTML entity encoding regex/table entries such as U+0430 to acy and U+0410 to Acy in he.js, identical generated Mocha copy and its source map; independent changed-archive comparison confirms these payloads byte-identical to Git3e5. No runtime translation/edit justified."
+    },
+    {
+      "kind": "ESCAPED_CYRILLIC_OUTSIDE_FIXTURE_ALLOWLIST",
+      "path": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip!/guard/payload/current/mocha/node_modules/mocha/mocha.js.map",
+      "detail": "Decoded Unicode escapes contain Cyrillic",
+      "disposition": "UNCHANGED_HTML_ENTITY_CODEC_UNICODE_DATA_NOT_RUSSIAN_PROSE",
+      "reason": "HTML entity encoding regex/table entries such as U+0430 to acy and U+0410 to Acy in he.js, identical generated Mocha copy and its source map; independent changed-archive comparison confirms these payloads byte-identical to Git3e5. No runtime translation/edit justified."
+    },
+    {
+      "kind": "ESCAPED_CYRILLIC_OUTSIDE_FIXTURE_ALLOWLIST",
+      "path": "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip!/guard/payload/baseline/mocha/node_modules/he/he.js",
+      "detail": "Decoded Unicode escapes contain Cyrillic",
+      "disposition": "UNCHANGED_HTML_ENTITY_CODEC_UNICODE_DATA_NOT_RUSSIAN_PROSE",
+      "reason": "HTML entity encoding regex/table entries such as U+0430 to acy and U+0410 to Acy in he.js, identical generated Mocha copy and its source map; independent changed-archive comparison confirms these payloads byte-identical to Git3e5. No runtime translation/edit justified."
+    },
+    {
+      "kind": "ESCAPED_CYRILLIC_OUTSIDE_FIXTURE_ALLOWLIST",
+      "path": "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip!/guard/payload/baseline/mocha/node_modules/mocha/mocha.js",
+      "detail": "Decoded Unicode escapes contain Cyrillic",
+      "disposition": "UNCHANGED_HTML_ENTITY_CODEC_UNICODE_DATA_NOT_RUSSIAN_PROSE",
+      "reason": "HTML entity encoding regex/table entries such as U+0430 to acy and U+0410 to Acy in he.js, identical generated Mocha copy and its source map; independent changed-archive comparison confirms these payloads byte-identical to Git3e5. No runtime translation/edit justified."
+    },
+    {
+      "kind": "ESCAPED_CYRILLIC_OUTSIDE_FIXTURE_ALLOWLIST",
+      "path": "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip!/guard/payload/baseline/mocha/node_modules/mocha/mocha.js.map",
+      "detail": "Decoded Unicode escapes contain Cyrillic",
+      "disposition": "UNCHANGED_HTML_ENTITY_CODEC_UNICODE_DATA_NOT_RUSSIAN_PROSE",
+      "reason": "HTML entity encoding regex/table entries such as U+0430 to acy and U+0410 to Acy in he.js, identical generated Mocha copy and its source map; independent changed-archive comparison confirms these payloads byte-identical to Git3e5. No runtime translation/edit justified."
+    },
+    {
+      "kind": "ESCAPED_CYRILLIC_OUTSIDE_FIXTURE_ALLOWLIST",
+      "path": "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip!/guard/payload/current/mocha/node_modules/he/he.js",
+      "detail": "Decoded Unicode escapes contain Cyrillic",
+      "disposition": "UNCHANGED_HTML_ENTITY_CODEC_UNICODE_DATA_NOT_RUSSIAN_PROSE",
+      "reason": "HTML entity encoding regex/table entries such as U+0430 to acy and U+0410 to Acy in he.js, identical generated Mocha copy and its source map; independent changed-archive comparison confirms these payloads byte-identical to Git3e5. No runtime translation/edit justified."
+    },
+    {
+      "kind": "ESCAPED_CYRILLIC_OUTSIDE_FIXTURE_ALLOWLIST",
+      "path": "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip!/guard/payload/current/mocha/node_modules/mocha/mocha.js",
+      "detail": "Decoded Unicode escapes contain Cyrillic",
+      "disposition": "UNCHANGED_HTML_ENTITY_CODEC_UNICODE_DATA_NOT_RUSSIAN_PROSE",
+      "reason": "HTML entity encoding regex/table entries such as U+0430 to acy and U+0410 to Acy in he.js, identical generated Mocha copy and its source map; independent changed-archive comparison confirms these payloads byte-identical to Git3e5. No runtime translation/edit justified."
+    },
+    {
+      "kind": "ESCAPED_CYRILLIC_OUTSIDE_FIXTURE_ALLOWLIST",
+      "path": "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip!/guard/payload/current/mocha/node_modules/mocha/mocha.js.map",
+      "detail": "Decoded Unicode escapes contain Cyrillic",
+      "disposition": "UNCHANGED_HTML_ENTITY_CODEC_UNICODE_DATA_NOT_RUSSIAN_PROSE",
+      "reason": "HTML entity encoding regex/table entries such as U+0430 to acy and U+0410 to Acy in he.js, identical generated Mocha copy and its source map; independent changed-archive comparison confirms these payloads byte-identical to Git3e5. No runtime translation/edit justified."
+    }
+  ],
+  "invalid_json_leaves_for_baseline_classification": [],
+  "changed_archive_checks": [
+    {
+      "path": "diagnostics/compact-storage-529/provenance-reviews.zip",
+      "members": 196,
+      "changed_editorial_members": [
+        "task-current.txt",
+        "task-full-current.json",
+        "tracker-backlog-current.json",
+        "tracker-open-current.json"
+      ],
+      "all_other_member_payloads_byte_equal_to_git": true,
+      "current_entries_companion_exact": true
+    },
+    {
+      "path": "diagnostics/kotlin-library-comparison-598/598-evidence.zip",
+      "members": 12405,
+      "changed_editorial_members": [
+        "REPORT.md",
+        "history/final-report-before-readable-correction/REPORT.md"
+      ],
+      "all_other_member_payloads_byte_equal_to_git": true,
+      "current_entries_companion_exact": true
+    },
+    {
+      "path": "diagnostics/numeric-text-537/reviews-and-provenance.tar.gz",
+      "members": 45,
+      "changed_editorial_members": [
+        "preparation/task-before-focused-runtime.json",
+        "preparation/task-full.json",
+        "task-before-runtime.json"
+      ],
+      "all_other_member_payloads_byte_equal_to_git": true,
+      "current_entries_companion_exact": true
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip",
+      "members": 2185,
+      "changed_editorial_members": [
+        "guard/payload/baseline/manifest.sha256",
+        "guard/payload/baseline/mocha/node_modules/camelcase/index.d.ts",
+        "guard/payload/baseline/mocha/node_modules/camelcase/readme.md",
+        "guard/payload/baseline/mocha/node_modules/yargs/locales/be.json",
+        "guard/payload/baseline/mocha/node_modules/yargs/locales/ru.json",
+        "guard/payload/baseline/mocha/node_modules/yargs/locales/uk_UA.json",
+        "guard/payload/current/manifest.sha256",
+        "guard/payload/current/mocha/node_modules/camelcase/index.d.ts",
+        "guard/payload/current/mocha/node_modules/camelcase/readme.md",
+        "guard/payload/current/mocha/node_modules/yargs/locales/be.json",
+        "guard/payload/current/mocha/node_modules/yargs/locales/ru.json",
+        "guard/payload/current/mocha/node_modules/yargs/locales/uk_UA.json"
+      ],
+      "all_other_member_payloads_byte_equal_to_git": true,
+      "current_entries_companion_exact": true
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip",
+      "members": 2237,
+      "changed_editorial_members": [
+        "guard/payload/baseline/manifest.sha256",
+        "guard/payload/baseline/mocha/node_modules/camelcase/index.d.ts",
+        "guard/payload/baseline/mocha/node_modules/camelcase/readme.md",
+        "guard/payload/baseline/mocha/node_modules/yargs/locales/be.json",
+        "guard/payload/baseline/mocha/node_modules/yargs/locales/ru.json",
+        "guard/payload/baseline/mocha/node_modules/yargs/locales/uk_UA.json",
+        "guard/payload/current/manifest.sha256",
+        "guard/payload/current/mocha/node_modules/camelcase/index.d.ts",
+        "guard/payload/current/mocha/node_modules/camelcase/readme.md",
+        "guard/payload/current/mocha/node_modules/yargs/locales/be.json",
+        "guard/payload/current/mocha/node_modules/yargs/locales/ru.json",
+        "guard/payload/current/mocha/node_modules/yargs/locales/uk_UA.json"
+      ],
+      "all_other_member_payloads_byte_equal_to_git": true,
+      "current_entries_companion_exact": true
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539/provenance-tools.zip",
+      "members": 1149,
+      "changed_editorial_members": [
+        "packaging/JS-WASM-PUBLIC-WORKER-FEASIBILITY.md",
+        "packaging/js-serial-retention/SCOPE-AND-EVIDENCE.md",
+        "packaging/js-small-policy-fix/CRITERIA-AND-NEXT-LAYOUT.md",
+        "packaging/js-small-policy-fix/criteria-tracker539-snapshot.json",
+        "task-current.txt"
+      ],
+      "all_other_member_payloads_byte_equal_to_git": true,
+      "current_entries_companion_exact": true
+    }
+  ],
+  "unchanged_member_payloads_against_git": 18179,
+  "unchanged_generated_js_mjs": 1690,
+  "unchanged_opaque_runtime_binary_members": 187,
+  "current_translation_map_sha256": "bd8d2297b18acc3343b48c422a0ea0c9490dd86d0283d568a6c72bb02fb73a3a",
+  "current_report598_sha256": "e9a792865be36d0778b72ee113fc0400691dce7dde9c76976d99ce8acc92062a",
+  "scope": "Read-only recursive UTF8+JSON+Unicode-escape scan of every tracked file plus explicitly included new editorial directory. TAR/ZIP archives recursively opened; opaque JAR/KLIB/class/Wasm/native/Git bundles not interpreted or executed. Changed archive payload bytes independently compared to Git base; historical execution hash references remain historical, not rewritten as execution claims. Current top-level canonical ledger verification is coordinator/527 scope; this audit checks changed archive companions independently.",
+  "raw_scan_verdict": "FINDINGS_REQUIRE_DISPOSITION",
+  "unresolved_findings": [],
+  "raw_scan_receipt_sha256": "084e6a3d9494e71fd23888ceaec9bc32022f997a5f432fb8d4b63e645fb13030",
+  "production_build_workflow_script_diff_against_base": "EMPTY (fresh git diff --name-only for src/build/settings/gradle/.github/scripts)",
+  "scope_note": "The8camelcase allowances are actual Unicode example fixtures. The12entity-codec occurrences are a separate machine-data classification, not a broader prose escape allowance. No numerical executions, runtime rewrites, foreign numerical body inspection or package mutations by this verifier."
+}

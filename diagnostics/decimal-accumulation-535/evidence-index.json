@@ -439,8 +439,8 @@
     },
     {
       "path": "task-before-runtime.json",
-      "sha256": "39159d382a4385e6d34c5bb8b4a40f7f20f08e151a8d6b70b8dbf3604cb1413f",
-      "bytes": 8437
+      "sha256": "4791bbfd32e47a84d77ea8fbb9da95b7925d994b169d45c018bf84b4f6b33749",
+      "bytes": 7585
     }
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "reviewer": "coordinator",
+  "scope": "All45 worker536 prose values compared semantically against exact originals; all24 full task bodies and21 titles read.",
+  "translation_sha256": "3205b480e7a370378ba57fb494ba09a1158a7460873af2d475fbe1f62594d7f7",
+  "verdict": "PASS_AFTER_TWO_NARROW_WORDING_CORRECTIONS",
+  "corrections": [
+    "Fixed-scale division must not substitute a significant-digit cohort for the required fixed-scale result.",
+    "Russian technical term for twos-complement representation is not supplementary code."
+  ],
+  "preserved": [
+    "Numerical values, source hashes, URLs and IDs",
+    "All acceptance clauses, constraints and ownership/runtime distinctions",
+    "Symbolic/UNRUN versus observed execution and normative versus diagnostic scope"
+  ],
+  "numeric_token_multisets_all45_exact": true,
+  "no_new_math_or_runtime_claims": true
+}

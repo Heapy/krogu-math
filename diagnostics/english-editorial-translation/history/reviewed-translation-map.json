@@ -1,0 +1,2035 @@
+{
+  "source_commit": "3e5ba2638ea6f170ea0f4f165c7b5b793ff2a3ec",
+  "scope": "Current tracked prose and text archive members only. Git history and opaque historical binary artifacts are not rewritten.",
+  "editorial_not_new_execution": true,
+  "historical_hash_policy": "Original execution source/runtime/transport/audit hashes remain original-era claims. Current archive-member inventories and canonical file SHA ledgers are rebound to editorial copies; this map connects both byte versions. Original bytes remain available from source_commit.",
+  "changes": [
+    {
+      "path": "diagnostics/compact-storage-529/evidence-index.json",
+      "original_bytes": 3473,
+      "original_sha256": "3ce4168302fb94d66fefe3d294633bcaf16518092c42c5636ba302f3bf53914d",
+      "editorial_bytes": 3473,
+      "editorial_sha256": "2ec3b70cb1395a756ffc3ecff51c02e9e82e4eda85c46856a2beccfc67a208f4",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/compact-storage-529/evidence.sha256",
+      "original_bytes": 1879,
+      "original_sha256": "0a6eeac5bea4449e4a1ec7205af8db2405a4c995871cf7cb565befae7eb6cb8b",
+      "editorial_bytes": 1879,
+      "editorial_sha256": "4280841f4fe2068b2692b19ae8d4224643385dbaefc1107db93fe112e3c2ebbd",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/compact-storage-529/provenance-reviews.entries.json",
+      "original_bytes": 33553,
+      "original_sha256": "618f1d2bd99059b0f1e353ffbd7c73b923e8a6c7c5f066f1b2c1abd9c57d45af",
+      "editorial_bytes": 33552,
+      "editorial_sha256": "adc062c84d1f5ce159e40d9af8e043bbb50f235c00ff95c2f40bf5b2b07115b4",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/compact-storage-529/provenance-reviews.zip",
+      "original_bytes": 1366822,
+      "original_sha256": "d1b79cd3a7a8cd7acae2340707e8a74a01361ce2d125cd0bb9a8a5baabfa3498",
+      "editorial_bytes": 1354190,
+      "editorial_sha256": "0e7d4563ef5b8177cc2e2243d5008597ded2c6bedff977e1190ee5114117dca3",
+      "kind": "archive: translated prose/UI messages or invariant Unicode example encoding; executable and measured data preserved"
+    },
+    {
+      "path": "diagnostics/decimal-accumulation-535/evidence-index.json",
+      "original_bytes": 15108,
+      "original_sha256": "58790635da3effed50d934ebe88729d5bcae0b06af2ef3cdb93ed97a0f2a1599",
+      "editorial_bytes": 15108,
+      "editorial_sha256": "e4aa1fcd1c3be1209fc9169ffbca818aa8e9bd71222f9f32fc182fdf243c053f",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/decimal-accumulation-535/evidence.sha256",
+      "original_bytes": 9133,
+      "original_sha256": "070806fdca965082fef7c8e9bb5b4082ada98c76ea141a86157f73c34d41ab6a",
+      "editorial_bytes": 9133,
+      "editorial_sha256": "c92cade190e5d61ee567af50cebd75cc8d7802089b3e031ddb5a6cfd78923930",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/decimal-accumulation-535/task-before-runtime.json",
+      "original_bytes": 8437,
+      "original_sha256": "39159d382a4385e6d34c5bb8b4a40f7f20f08e151a8d6b70b8dbf3604cb1413f",
+      "editorial_bytes": 7585,
+      "editorial_sha256": "4791bbfd32e47a84d77ea8fbb9da95b7925d994b169d45c018bf84b4f6b33749",
+      "kind": "task snapshot title/body prose translated; other JSON values preserved"
+    },
+    {
+      "path": "diagnostics/jvm-gap-597/evidence-index.json",
+      "original_bytes": 9352,
+      "original_sha256": "a9944a51a31e6921f659981601a8bc9983aad70773e48031293d5765afe403fd",
+      "editorial_bytes": 9352,
+      "editorial_sha256": "5bac7a0488142bf66afe51a5e8feb30221d02f766b207577cd8efa1d85b3b0af",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/jvm-gap-597/evidence.sha256",
+      "original_bytes": 5803,
+      "original_sha256": "15b709137e921608e5fb9bb6c66fb5d67b1e81d1ca6313688f7dbaac65d39bdc",
+      "editorial_bytes": 5803,
+      "editorial_sha256": "e261d8e2d2924b90173ee016192ec0f349c8842b01d4998bd5169059be617fb0",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/jvm-gap-597/evidence/source/task-before-profiles.json",
+      "original_bytes": 9902,
+      "original_sha256": "23d61dddbed384043a5058dc71919ffe77e5430adb92496a0b2d88821e121a47",
+      "editorial_bytes": 8478,
+      "editorial_sha256": "60875555541ff99f741ea83977245525c42b2eb83f96945f2b2b09e47a69e054",
+      "kind": "task snapshot title/body prose translated; other JSON values preserved"
+    },
+    {
+      "path": "diagnostics/jvm-gap-597/evidence/source/task-full.json",
+      "original_bytes": 8045,
+      "original_sha256": "6ad26520b22aab206015ebcae59f9567ade6c40d2c08ee40112109b882a0d3df",
+      "editorial_bytes": 6621,
+      "editorial_sha256": "167ac250f443f653299f95004972ecd6d71d1b9936187c04e3794e6af5bae79e",
+      "kind": "task snapshot title/body prose translated; other JSON values preserved"
+    },
+    {
+      "path": "diagnostics/kotlin-library-comparison-598/598-evidence.zip",
+      "original_bytes": 29043277,
+      "original_sha256": "ddba3ba92406fbf5f5a6a2b1be327a6c762b2337059e4c51ee36963496993d1a",
+      "editorial_bytes": 28842782,
+      "editorial_sha256": "0d6cd9003bd1686d5dc15ee9ab67983baa796a07355881bef9073d7e8051574e",
+      "kind": "archive: translated prose/UI messages or invariant Unicode example encoding; executable and measured data preserved"
+    },
+    {
+      "path": "diagnostics/kotlin-library-comparison-598/598-evidence.zip.entries.json",
+      "original_bytes": 2017695,
+      "original_sha256": "7fd383f93de43d3cea82a7e1acb800fa4d878983419012229c320be1364f2dc1",
+      "editorial_bytes": 2538713,
+      "editorial_sha256": "a706dabad70b3fdf5ff2a943448dac90c0e23f0149a725d4e4a2ed554006bcac",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/kotlin-library-comparison-598/598-evidence.zip.entries.tsv",
+      "original_bytes": 1434651,
+      "original_sha256": "46caeb957b7c6af4fa05ad56a9429904b6cb3cd4beb8caf189dab243520fe366",
+      "editorial_bytes": 1434651,
+      "editorial_sha256": "45da7d0ddc1976e2bc5354d4e267bc02a27808750f652bf2f0ffb856cbf05236",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/kotlin-library-comparison-598/REPORT.md",
+      "original_bytes": 24956,
+      "original_sha256": "13e018cd6107136e3751cfad6a9b47812b3da834d9ecb47781859e74c22d4771",
+      "editorial_bytes": 22084,
+      "editorial_sha256": "e9a792865be36d0778b72ee113fc0400691dce7dde9c76976d99ce8acc92062a",
+      "kind": "English translation and readability edit; measured values and limitations preserved"
+    },
+    {
+      "path": "diagnostics/kotlin-library-comparison-598/evidence-index.json",
+      "original_bytes": 35392,
+      "original_sha256": "3f7aea1048785db7168c5092afb81caacee13549d7a1def1722c48b1325405af",
+      "editorial_bytes": 35499,
+      "editorial_sha256": "d698867fc1501e698463a597d8c60e547db62a910d878cc8c5698cf14d532869",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/kotlin-library-comparison-598/evidence.sha256",
+      "original_bytes": 21109,
+      "original_sha256": "3cfc91feaa109383e64cb7b5f5eb52266312e870ff455d3b8414830acd1f0449",
+      "editorial_bytes": 21109,
+      "editorial_sha256": "cf5bc861c56e00c4b69898c8d9dcb29112907b14b2d82e3a29ff117d6d2f48fc",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/modulus-reuse-538/evidence.sha256",
+      "original_bytes": 14065,
+      "original_sha256": "0705c6d8fe385b3204b94a0674ff1c98c5f7c40d113bb999e466b80ef4e229de",
+      "editorial_bytes": 14065,
+      "editorial_sha256": "370bf5f1d8e5c20c61d1c2723a6dc3b4845c60255565fd79c5bde1be01653f64",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/modulus-reuse-538/preparation/task-before-runtime.json",
+      "original_bytes": 75779,
+      "original_sha256": "662f1ce89e0284052fad994e9fab02a5ee137ba115f0f7af84fecd03731ae07f",
+      "editorial_bytes": 74978,
+      "editorial_sha256": "34ecdf74aff609df5241579b7eafe29d0721db4f74e5ca107ee512eb7325fa44",
+      "kind": "task snapshot title/body prose translated; other JSON values preserved"
+    },
+    {
+      "path": "diagnostics/modulus-reuse-538/preparation/task-full.json",
+      "original_bytes": 75120,
+      "original_sha256": "3d48bbbba1162f2cd967fa03f2ce544a9a52f378062bcb6f86cb49433d067845",
+      "editorial_bytes": 74319,
+      "editorial_sha256": "ea82eaa262e6c45bb2ea4f00faab9eecae976af7990299b0a39d69dea3d3e0d7",
+      "kind": "task snapshot title/body prose translated; other JSON values preserved"
+    },
+    {
+      "path": "diagnostics/modulus-reuse-538/task-before-acceptance.json",
+      "original_bytes": 75779,
+      "original_sha256": "662f1ce89e0284052fad994e9fab02a5ee137ba115f0f7af84fecd03731ae07f",
+      "editorial_bytes": 74978,
+      "editorial_sha256": "34ecdf74aff609df5241579b7eafe29d0721db4f74e5ca107ee512eb7325fa44",
+      "kind": "task snapshot title/body prose translated; other JSON values preserved"
+    },
+    {
+      "path": "diagnostics/numeric-text-537/evidence-index.json",
+      "original_bytes": 4309,
+      "original_sha256": "8b25a27915b798d8d4c523ce49c887a8876013f161a7be003876e2bb3536b5cd",
+      "editorial_bytes": 4309,
+      "editorial_sha256": "bed0966723ccbc1ac23e7452623df97e194bbf7b91f0099a568f9ed754cf383b",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/numeric-text-537/evidence.sha256",
+      "original_bytes": 2328,
+      "original_sha256": "af4aaadd925d16da9413270ebf65b5fbe9a97b84dc438aa0e07f68f32a4d824a",
+      "editorial_bytes": 2328,
+      "editorial_sha256": "6f84956be3b2cd6b756309ce9801003a124e014fb06067549c6842af56aff1a1",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/numeric-text-537/reviews-and-provenance.entries.json",
+      "original_bytes": 7559,
+      "original_sha256": "4b60ee1b998c5b83650b47a91bf012019dfe8507406cf3353f9a99afc14707a0",
+      "editorial_bytes": 7559,
+      "editorial_sha256": "f1a1c02c8e636c99f1070e6d382351201206fa3b38db3f184f75eaaded9344c4",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/numeric-text-537/reviews-and-provenance.tar.gz",
+      "original_bytes": 234359,
+      "original_sha256": "a8f1affc6dee2977ca4701fd876b171aeeae2e3a069627f513db1e702cec5650",
+      "editorial_bytes": 232994,
+      "editorial_sha256": "994df6d09edc42ea712bc394f20fb62b1d48556697c3558cfcc19b26e6e5b0d5",
+      "kind": "archive: translated prose/UI messages or invariant Unicode example encoding; executable and measured data preserved"
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/evidence-index.json",
+      "original_bytes": 4006,
+      "original_sha256": "2dfffe4f2d33afbed187274b9668d30fcb61577329941ad7358cd51c1c5bc18a",
+      "editorial_bytes": 5050,
+      "editorial_sha256": "1561a058b4de23b3e50682583992c400df2b4d88b00debc8a851191590a31f02",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/evidence.sha256",
+      "original_bytes": 2829,
+      "original_sha256": "182ae33ee930cc43fe621a46bb5e93311c324c78b57bdaedb94902275245d4bc",
+      "editorial_bytes": 2829,
+      "editorial_sha256": "bebbd45b81a5bf5a13b73b4d974da3e50d7b5c663af04f8da6cf43136ba1e9c4",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.entries.json",
+      "original_bytes": 372515,
+      "original_sha256": "c7d4665e18fad051c71094d14bd311df9bf07bf0d7d35588e178839154e1b243",
+      "editorial_bytes": 446813,
+      "editorial_sha256": "88f2de7a5977c03151ddec6f5835c268a20cf98046172d5a1a61efb8a12fb79a",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip",
+      "original_bytes": 18414425,
+      "original_sha256": "cffabaf5e037481d6e394dd9e1d93c7ee847978535d5036950f355237263ff9e",
+      "editorial_bytes": 14933924,
+      "editorial_sha256": "aa868ff018a79e66290994fcc1291e6cc9feafaa99aaafebe88d550c100f4b38",
+      "kind": "archive: translated prose/UI messages or invariant Unicode example encoding; executable and measured data preserved"
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/success-artifact.entries.json",
+      "original_bytes": 380007,
+      "original_sha256": "2a523576e3ced1295c40f126cbf4155d5752ce76031fbc63fbde61f6f904dd36",
+      "editorial_bytes": 456073,
+      "editorial_sha256": "4feed16dfedb6316729109143d3eacab1c9b10f615a50ea33f9c2df969e1b0ef",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip",
+      "original_bytes": 18585761,
+      "original_sha256": "b702abbe93502159afb1a1892acc360b9eaaf3f60cc7b4925ce86981a20943c0",
+      "editorial_bytes": 15055090,
+      "editorial_sha256": "965dc86de49e2769b6c5d332981e3035484bbe69b2084bff65cd50a7adf0ce82",
+      "kind": "archive: translated prose/UI messages or invariant Unicode example encoding; executable and measured data preserved"
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539/evidence-index.json",
+      "original_bytes": 3763,
+      "original_sha256": "c9c8df7b0e4d089b8ab3622d402fc9ecce15a998ee8bff5c44585ec71faf7500",
+      "editorial_bytes": 4769,
+      "editorial_sha256": "36a31388379cdff5c3a4f179b358729b709ebc399e975f883bb0b1cebcc00a3f",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539/evidence.sha256",
+      "original_bytes": 2718,
+      "original_sha256": "4f31ced00f4ec3ffb7c411ac89b7ab661ee2e8dbf492f7682bebb3d4446d775a",
+      "editorial_bytes": 2718,
+      "editorial_sha256": "a4f68fbc638fa612111cb810dd2ab8459cefebcba8640296025e5c020e9c88d1",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539/provenance-tools.entries.json",
+      "original_bytes": 176565,
+      "original_sha256": "70099bb3de0b7642a31720f7de2a934d65f251e19f0ed54b54bf4463d781ab2e",
+      "editorial_bytes": 215639,
+      "editorial_sha256": "e72574a0475925ec30a528f98fc5986e01a09ad5c9718c00e4888f8f99e107f5",
+      "kind": "current integrity manifest or ledger"
+    },
+    {
+      "path": "diagnostics/platform-multiplication-539/provenance-tools.zip",
+      "original_bytes": 5300846,
+      "original_sha256": "c0b502f453ec38f6e71479f3d6bf8743644c7e0a0f48ed05e2d6256e69056258",
+      "editorial_bytes": 4534018,
+      "editorial_sha256": "c7a2e86aacfe357cc84efc96d9aa93e200d46bfce5f0e6ad04dceaeddfa1d96a",
+      "kind": "archive: translated prose/UI messages or invariant Unicode example encoding; executable and measured data preserved"
+    }
+  ],
+  "archives": [
+    {
+      "archive": "diagnostics/compact-storage-529/provenance-reviews.zip",
+      "old_zip_sha256": "d1b79cd3a7a8cd7acae2340707e8a74a01361ce2d125cd0bb9a8a5baabfa3498",
+      "final_zip_sha256": "0e7d4563ef5b8177cc2e2243d5008597ded2c6bedff977e1190ee5114117dca3",
+      "members": 196,
+      "changed_members": [
+        {
+          "member": "task-current.txt",
+          "old_sha256": "a30481f0cd4fb85b53d2d2a22de910147c395c3ba8e24884bab013eefb52e24f",
+          "new_sha256": "d02eaaf200cb501489eb41c9066b6f3e797eba14188853fb6dc59d81650f0922",
+          "old_bytes": 4228,
+          "new_bytes": 3309,
+          "method": "Final reviewed143-key English prose map; unchanged nonprose JSON values/types/keys/order.",
+          "catalog_keys": [
+            "d1ede050f4ec02d01ef3f3b2c2e6a696b4686c1045702dd4c8ea27945403b2a9",
+            "030e7ddb32554c21bbf55714b0af2421497f001a3af46c660474ddf3805f9c5e"
+          ]
+        },
+        {
+          "member": "task-full-current.json",
+          "old_sha256": "a30481f0cd4fb85b53d2d2a22de910147c395c3ba8e24884bab013eefb52e24f",
+          "new_sha256": "d02eaaf200cb501489eb41c9066b6f3e797eba14188853fb6dc59d81650f0922",
+          "old_bytes": 4228,
+          "new_bytes": 3309,
+          "method": "Final reviewed143-key English prose map; unchanged nonprose JSON values/types/keys/order.",
+          "catalog_keys": [
+            "d1ede050f4ec02d01ef3f3b2c2e6a696b4686c1045702dd4c8ea27945403b2a9",
+            "030e7ddb32554c21bbf55714b0af2421497f001a3af46c660474ddf3805f9c5e"
+          ]
+        },
+        {
+          "member": "tracker-backlog-current.json",
+          "old_sha256": "7c2043bd55f57c93e847650e76e4f0e3749d97383c0e8bb2445d9be038061148",
+          "new_sha256": "5d4c2587981c57fd66018e3c70b38dda5d8b0111c06a969a593a9aec570ca73d",
+          "old_bytes": 256619,
+          "new_bytes": 194760,
+          "method": "Final reviewed143-key English prose map; unchanged nonprose JSON values/types/keys/order.",
+          "catalog_keys": [
+            "8424edb701c487657cd78bbe1fba5457e0e839a4654140885c96a9336d9005e1",
+            "b7d14012dbb04ab0de3f0d49acd58a7985ddb53e6e130331fb938935484749d2",
+            "b153490b8f492933ddf35882d357aff4dc9ba0a82a9fe741e2274607a5e3a105",
+            "6ba3d7233cf4196cc11c84cfbdbadaa226442c9a9280c21bdd2e5356b056224b",
+            "1dd39fdda4268fbfd4e1aec987d09f8ec18aa6a6b9c329c2d9a3453357a92820",
+            "1eb0f1baf5ec4e6d75cf500ed9f101c4dba6ba416fc46e3559f5e6ba8bd7e6d0",
+            "8af605c11651e23310fbab8abd5c71d69e1f26fc86cad160f4b6dfffdb5081e8",
+            "c6028374ad01134389749ec05e3607bd284f6616c615fc08f24d2e0823fd0882",
+            "399fc3d13e11407b41bc7ce284359adceb1131a21e4e3dd9e4801b558aebc1a7",
+            "fe7a46eb3f2370e872e8abd3e4a7537bd36113fd00b7a6560ca69298236f0199",
+            "0de20ec712247eaf43b192fc3af527a6f4b964338a3bab5c63a3750d29bfe04f",
+            "05f0cb52d1d7678d8186f4ef2e797fd9324387c32c45a8cf1f6a10d81cbb60bc",
+            "d1ede050f4ec02d01ef3f3b2c2e6a696b4686c1045702dd4c8ea27945403b2a9",
+            "030e7ddb32554c21bbf55714b0af2421497f001a3af46c660474ddf3805f9c5e",
+            "ee8844e8ce78ddda53ff63c7f8c6995ee2afe2fde6af3fcc79af9be2f048675c",
+            "119f0e4f758d768cd7aa261728c1d67f613257cb62c27f4bab5383ed9fff9d36",
+            "1c93f38d7fc98ec59f2e99271a36a3104a7e4bcc0d63fe8e4210553bae6810ed",
+            "9d9a9258ed299c6a8683621235c8165d5c49c6d2086145f12e618dfc63b734d4",
+            "e24e5acd7f9abbd56699c0ddeb14fc8dfd70dfafbf5b09bb5d7f3a1cf489b89e",
+            "ce8a9ed3b5070522388dc72d3914449b8626bbfa94e8b2a28d130f754a700fb7",
+            "4b7f06c34f96a0da9b230cc59fee6a27e909126b50da9a1a13c7d26d4eb0e6f5",
+            "4d48d2a7741d77abf2a8b3fdde7154615fc75cfba1efd36f35dc89385f773f84",
+            "cc0242ecf8bde29964380a7ce83c4bc560f6954c8d4936981fc4402bc856c9de",
+            "8bfdb24d55cff25804de8c24f8cb37ae5a36a5b06b75c402743e3d57732cd465",
+            "61fc3f039da9555a2a029c4fcab5056249fb2b7397e9380974307ab51f706562",
+            "21932cc04ff8954b219ed7ab5b5b09e16e1f21c88bcf7d6684974fa099f2a200",
+            "511155545b09a9c60e2f5ecf7b375d49e4fa7939cef05a6b89ed766f7ed2a347",
+            "3dec4b23110b6d7db65fa026029b1ce1d2ce4ae8b5c1f3bc1b6f846cb5de89bf",
+            "668a1dac75162b40a14d0791ed052772b2df741bb17c14f87f017cf055d4cce0",
+            "9ca533c9e60113c8c5e41908d0521de087b6ff79a2fd627126b168858b7159fe",
+            "5d3b7d8f94569b6a9fe8f8c81db23ffc382029d044ebd843317544f434904ed9",
+            "325f14d03fcefcdd42f36457127438e12570c5d8f71b26203cf4591cf46af38c",
+            "5e2d2a9d6437ed5261b3463736d925eb6668bdbf88fae479d7cf126ac24d4d1c",
+            "0b266dcdc71ff9cc41ce650efca86119a522a46ba4e83f6066953c56fdf32128",
+            "5929f578d67ae97e5fa8c36f1346adb21fad5e1e29d5e91f87e6de6620acda7d",
+            "98a999ac40a1b9e3699f1580ffd683bb4760f01110b1b0d341c76fb7ec16cc59",
+            "912b726923a26cc5955cbce9d07125e4e8236dae9fa61234aa2e96748e01da30",
+            "e903a8e941c27e4de3d405195c890fdaaeb8cce04abf2462fc2247e244ff5b87",
+            "8c54cc66261dd8fa0e9576100d1c1a3b3a2a55921550c47254c573962a9385fd",
+            "95fb32509bef2ba0c6de5c5418cc386a4dd474114c910db3f5f311395935fbdd",
+            "9c77f4dc994c725ee5be5e517ee989bcd48dc0e4c50cd245f85be740d7bd14d7",
+            "7b30540db3aa6534e9f7e5905f62e71961c0c62e62356b564445738fea020ef9",
+            "8d9aa33fdb44436589310f65a46a92ecaa9273c0c7f5e2e496376e91dfdee5b9",
+            "99cb27bdeaa8175faec1e21053e036e6293fdcd89adc571b11ede5cedddf459f",
+            "91602c02d059fba69b06393a9f56b0a40e2fb829e7629e90459578f1ddbb5c25",
+            "70e14d9a89d67ee4871fd196a2a519ce74b970f278466fb57b089b72b6cbf07d",
+            "19dd735740d2f4a844253ed5a1017fa60a2b37af8d53491475d0678e259f8285",
+            "1233b79d55fe53361f6c2a9dee09e97135533aeaa628d43977062cea9e1e0679",
+            "baa420c20c80ba0fb6f1793761bba696d960c74222015594bd013d159c8233a6",
+            "b954f191b93f4eae6d51572ddd16aabc1a6a58c2c878d51119bab0c7083cfb8c",
+            "488b2b69f64633f1864ac695a1c6d8e420e141abfe799b2ea5790315dc680aec",
+            "3122604420766a0978d225b9ac6659a75b3ac38e644f5119063e65c765cc6e38",
+            "3176867364c0b9dce4dcdfb5cabc3a48ff30dc7e56d4f460796db06cfab47b68",
+            "b20abaec34a40e6b2b65bd5ce1bc58a648053cecc0a6e83c64213c8f3c4ac262",
+            "3b149ec74c9f03d723d392f184de04ea4065d2c5d9732546cbe7f8b6678afa12",
+            "65bf3d404735b905121b5a7fa02f5d8e76c19be920ba4c96191a507b86d306aa",
+            "028d906fb9ef326c019fca43f59124dcfdc6de5e9bad83c81fff77a21b333ac2",
+            "bc5071ebfae61c842ddd0e71dac59818060d6dff8e2702b7b5c403e7da1e9f02",
+            "58807b0671d92dbc40db73d8e90782f6e5433fa4109eb4b743cc51ccd3551259",
+            "52cd64be0640103d552b67291108d79ac64030b3a222cbd695926142cba646c2",
+            "460029355134ec22bc8553c1619698babe30f2eeb1a9694cd058005839c8aa90",
+            "dcf5e8e7a92519e6685104cb13b22f5cbee283ed8837701b7b86d545a787e9d3",
+            "f8c2fee2cdfdb9f91efb40448d0771da336cfb83d98017915af49495e82b7cda",
+            "98251471a4264b1e6b9b38423345a60373e2007b115b1d093b9cefe106479031",
+            "cb7970dd82eff7601f9f5418918740982d66ba049eda2e37a46eb7b51b0045fc",
+            "7ab3cf0fc807dad611e84d9780e1be75831a1e6d52897f12e972307d8a72755e",
+            "a339386e160973f795583c7c870ccea878493938d5b4d77137675ec3a18e62eb",
+            "7ccbc56b6d91ae679fe64d759737ba5926007092d6fe9babb41ad41575cf5ba8",
+            "aa8a251ffcf8e4bc328d67f6450ce2f246dbe0ddc15912a1dcb64e6bf1328343",
+            "32ef3d7f9da68502ea4f68dd05e002ead8309cb0f102f6ba3677cd2660bd1e5f",
+            "ccc30b18830bd75b635385c61f72e2d24f28b4adfb8f4d1998c77b10c0e4fc2e",
+            "aaaa7a222f6bb59aeae387464736e1ef2876ebcd43022572588ba61d17065467",
+            "79748cd23a07681d446496fd39b8266a18e3669a93d48b0810080dfaa43fcb90",
+            "fd223cba8ce1fc490e3afa2a48a35032ef4e67567679ad9a0c7f383bb645f17b",
+            "dbf408bc05f88b6175386345245ccee893b0ea8546975f8166ef018c39333a15",
+            "78450806aa081604f62560c737b7c6f6d1b008d72bc39c4227eb357edcbd1d7d",
+            "68ad82c27133aee2b3495e5144b47e2c584361fc79822eb1d6af85695b78e0a9",
+            "9aac1b4b3239f2d2a29006d28a596a2652ef05dcafc17a16661417c4ad0b3327",
+            "e0ed4d388f8ab569737ab194356d502754ca818b1a41c72a8be775121c59aec9",
+            "ef352e29b529ad2f21c4ea32a62732dfe2bb0710bf99782e90c00d2e31a01ca0",
+            "b448ee0c0b909de86c9c6dcae823feb5db3cacc29f55f19be5b86103e0ecc3e0",
+            "b8d57040f80996b7a305fea0f5cbafc4c4c3b74812ca2b39acffab3cdc6ab7db",
+            "2c63001dffe4cbc6a8897c25bf2baa2e03ff4f4fb6477099bbda45e6506a1165",
+            "ad6c52716f96c1133e3dc15f0a552e47dd360c22b03c4d9ac5944c4b156b7918",
+            "783b245c2eff507bd718aac9fcf6f62450b3ca698f508c2d3b867825f5dcaee7",
+            "9095adcb09ff55dad9cf56dda2b61d7dd81b2c1b6aee73354148cfca1aa5eaa8",
+            "79fb4f0ab5c5f12db7b609d83351f49d9f368948d115e51f33e1ecc9405d757e",
+            "954d237d533dee9176421f5e9cd0d6423d08d8c01701a97ed6748d9ac4754bf4",
+            "f67dc355770242cbc76746ba799b0c92bb2d299059b51c9572abd524e9d67b32",
+            "97db2dfc7b5e48d345d200348011a8ff8968b17d50865ca7f6794aa2d9a563fc",
+            "c754be4f4bb7c5634a7caf11ed4ad74c81986e27620fad695ca2677cbbfd521f",
+            "e7abc50b6790bc18bc4879198c995e6742f5c17bb47eeaac8fef32acd01d2ed0",
+            "c4c020a00a165444dcb19620f00b499dac9617be556c9df51b243a9134129fef",
+            "d076e75a149758f39683111eba28a3e6ee30f1bc553683c5c4204b1a4b9684a7",
+            "c7ed16bde5e8d26346acae23f311dba8ffa3c21b7962d8ebdbe049d630221d83",
+            "92662dfc3776fc1c53b8345e61db405adf3b37bb671ef8042b39e7ad353819d3",
+            "9aef78d9d8ef7da3c933ecea880f1587b028c2b19cabc702879643a02b63f016",
+            "9747f8654002ceb29e341c07df9d6f2a01ed1a7569f13f5b23878fafe9bcaaf2",
+            "b10df1486fc5026df109b88b16b2e43eb6913c0e1fd37ff1ccbe8401038a0b87",
+            "69588e562127a230a3977d43d45093832d32ee7287776a6f56dad17ad0df39f6",
+            "60dd5c11c588466f00597c5b4380081d7816216fc4c55ba2c5aa51197c04a6bc",
+            "a35bb94e0c20e81511256ad1e5c38a7dfa92ca850f25d3614a7f31e2bef371bd",
+            "87151e24b634f0b05d67252c3a0e2483fbfe597f9fafb2a8e760cbdcc5aea119",
+            "7af0374754cfa57546bc45a3bb3bb177ee4b86951cf77b7e4a11c761a1682e57",
+            "a18c0c1819cd231460a4dbd58d69fc968045c9d0b621332f58e40aa8dc5e6888",
+            "e7af5e98e73ac1c97508a107ddc2c7f5d5558790dd5ca489e17f3077d87bc0d8",
+            "675da31a5f12fd70fdd2965e67330b65c40a7fc4c2ab903ebe44e78c770edbbc",
+            "ffdc014b7bcc3769f67bf3633bed34c48c0b08862c50532c4b5ef9d7862f0aaa",
+            "44b0b5ef9e4ad856b8dcc29be24dc69dc6a1b5ed8fd81d4a325382c9757e56ba",
+            "4dabb79049c294b7be55aab663b78ad4b2580ced989e9b40fe7fa2f0d6d0ee88",
+            "5da1c625721bb9096d06b8bf1aa434f2250a4a17011c5ca11517c112b56d36f2",
+            "0806e136301b4458e14ebbf3cecdf3f16b5ac089dfdf8f32278d18e2b8cb4b32",
+            "b47df43c5a889da435cac829a00afa0c8b845c2e20736cad1571ce31b05582f1",
+            "eca50843399784a3aab25bea84174b6b631e8131a7a8b2ff6a59d2f1be387613",
+            "ac8047aff45e2e6ea5f79d2aadabb2f039395b12c1822d674efe107b2ad03cfe",
+            "81e6a3e76103fa9dee58dc534132b46a18803a57afb7baec2732e56363795b3e",
+            "29130c064fce25db42e6b76936c26264de3383172f5bdea1e53202c5f74ad321",
+            "3c99a7fc895e766e74cf969d2519ab8c96f2286e1875e12d44fa6df2ad5edbbf",
+            "9a980d2abed6645f194495c6ddb88eeb2a2d8d7bf33389b603fc7bee0b02a0d2",
+            "2594dfd9b3b150c46d0521dc2381dd8e6644ce93cddbbb4e35ea395a5ae1592f",
+            "7126df21f3961195b1be75227ddcbe2aae28bf91d2aafab8cb076011d7843ab7",
+            "d210afa65e64a673d1ac74e1c948b094a69bba113a11b6017f6817716df47e17",
+            "dde3f3590f5cfae7321f4382e3545c3c4cd4fb6a1a4b296ba0bf10b13f1dc745",
+            "eaee9426a0cf13b6a0c6806bdbd5c766a95ca5a4c4687b1c56aefc4990c2b1a3",
+            "de9043b6a6cc54f5095956e853caffdeceec7c786c10e9fc711289adaea5e320",
+            "0ed8287036665634361cbb8fb7815570c1bf689ee675940d7672e5659111dce6",
+            "0b12c31d20a69962b748f4711e11d427c050eb52e24b912ce00c7d3af0b1354a",
+            "ddf724d080932c682193a03365545f4a384f05f57bf7cfbfd4474ff0ac677e55",
+            "974e00867f2334a954b3af40d2ce0c83f1ef39a19694413050b360379370c8dc",
+            "0dff5becc32b99e6fa6ef3ecd41b24f16a170989b51620cca9285374b1169e56",
+            "a2e550d4c03011ccfaa84f9b5e1b6055aee9cd2bf3c6df73b1b329298dfb8b0b",
+            "b05ec1a309ef309c0811c8469127d55fd632b2b6ec9d4268093870621912f48e",
+            "2c2beb91f77d240a9f7127c4d7e287e150522809e25099a0894f9b6dd093b5cb",
+            "1fa52e6aaf5cfad9d499f194d4a0a6fe3fb6a01fc9b33537649564f4a1fc9581",
+            "22147ea7e78cd9cac261e6e71b862afd70761e6281e3d83ed299e85f902fc766",
+            "15b060d786547f37a1df4eedbdc9418e7e99253688669a675d08a4257eccbbe0",
+            "b543a5fd375931be3ab514440389f2c26310a0aad97a2a2a35283ac334710b59",
+            "7da8efd598b0841ddda7db372ac02e5feae86ddb38a93ec77bfc7c1562026366",
+            "6b251abd8c664570e3bad8b4ef314a86e9b14af6e8b1b817415ebaea5e26359e",
+            "d3eace033712d3f405970ee0a17ed8211338123343440fa03cb1867e6f6f4b29",
+            "3e5e0b99eee547e910ccb315bc7d04d6defa3b722431cf51d033e11d99ccd634",
+            "5d3f789c0685bf449bfdd6451d784dff01590f0e529482b4bae1fd43cfd3e941",
+            "43c2a8f66c9fb8e3ec9457c872d63b078adfd2912a9ea4bf6c19637d598e2b07"
+          ]
+        },
+        {
+          "member": "tracker-open-current.json",
+          "old_sha256": "937585618de0791ba80d5ac8592bb73c3d3bd941d17ea17e1c4b9c51975eac01",
+          "new_sha256": "036da53d81697b955475f1ebe7b5ba3b2b5f62ce94caa969f6df8f86bf269772",
+          "old_bytes": 1051,
+          "new_bytes": 843,
+          "method": "Final reviewed143-key English prose map; unchanged nonprose JSON values/types/keys/order.",
+          "catalog_keys": [
+            "d1ede050f4ec02d01ef3f3b2c2e6a696b4686c1045702dd4c8ea27945403b2a9",
+            "5e2d2a9d6437ed5261b3463736d925eb6668bdbf88fae479d7cf126ac24d4d1c",
+            "460029355134ec22bc8553c1619698babe30f2eeb1a9694cd058005839c8aa90",
+            "5d3f789c0685bf449bfdd6451d784dff01590f0e529482b4bae1fd43cfd3e941"
+          ]
+        }
+      ],
+      "all_other_members_byte_exact": 192
+    },
+    {
+      "archive": "diagnostics/platform-multiplication-539/provenance-tools.zip",
+      "old_zip_sha256": "c0b502f453ec38f6e71479f3d6bf8743644c7e0a0f48ed05e2d6256e69056258",
+      "final_zip_sha256": "c7a2e86aacfe357cc84efc96d9aa93e200d46bfce5f0e6ad04dceaeddfa1d96a",
+      "members": 1149,
+      "changed_members": [
+        {
+          "member": "packaging/JS-WASM-PUBLIC-WORKER-FEASIBILITY.md",
+          "old_sha256": "ba9d0d662d710a838483e0753f5bc846476febe5b5f6b07f45bd9b16de98da42",
+          "new_sha256": "689f8f3ed949546303c9998e034a249cf37e71e6fd36e279831a4c2c193e5608",
+          "old_bytes": 10689,
+          "new_bytes": 10548,
+          "method": "Faithful English translation of quoted task prose; numeric/API/policy claims unchanged.",
+          "catalog_keys": []
+        },
+        {
+          "member": "packaging/js-serial-retention/SCOPE-AND-EVIDENCE.md",
+          "old_sha256": "a14b419468829b7270778f683f1e8f5c9e076cbc2ada4e1f358c15c3b326700e",
+          "new_sha256": "73556ceb4c7544c5b621c99eca4976d977f9412195472840a7ac89362b0bf890",
+          "old_bytes": 6285,
+          "new_bytes": 6124,
+          "method": "Faithful English translation of quoted task prose; numeric/API/policy claims unchanged.",
+          "catalog_keys": []
+        },
+        {
+          "member": "packaging/js-small-policy-fix/CRITERIA-AND-NEXT-LAYOUT.md",
+          "old_sha256": "d8504fbf4bf16105daf631223e7f748c6bd4da77f9d624cfa76f0b4da6a92f7c",
+          "new_sha256": "69713afa776202cf2a299631161c5e7982949284a49214c20c8e17514ad9770b",
+          "old_bytes": 5389,
+          "new_bytes": 5287,
+          "method": "Faithful English translation of quoted task prose; numeric/API/policy claims unchanged.",
+          "catalog_keys": []
+        },
+        {
+          "member": "packaging/js-small-policy-fix/criteria-tracker539-snapshot.json",
+          "old_sha256": "d0fe9a5b7cc092b7faf405ce5eed2db725be70447dbeb6b093572085d9dac95b",
+          "new_sha256": "c26c665f13ff66e59d9c6141c9e78a5f50a89c4fe47d2050f3e0ec034c41d798",
+          "old_bytes": 3948,
+          "new_bytes": 3048,
+          "method": "Final reviewed143-key English prose map; unchanged nonprose JSON values/types/keys/order.",
+          "catalog_keys": [
+            "5e2d2a9d6437ed5261b3463736d925eb6668bdbf88fae479d7cf126ac24d4d1c",
+            "0b266dcdc71ff9cc41ce650efca86119a522a46ba4e83f6066953c56fdf32128"
+          ]
+        },
+        {
+          "member": "task-current.txt",
+          "old_sha256": "0efbdfddf52baa9dfc6afc68b422803ae332b7688f08b4b49e2c55ccb3226632",
+          "new_sha256": "9766f8cccd4fa153715f5af6b5c93dc65614391962db837afb282adb6ee9ded9",
+          "old_bytes": 3937,
+          "new_bytes": 3037,
+          "method": "Final reviewed143-key English prose map; unchanged nonprose JSON values/types/keys/order.",
+          "catalog_keys": [
+            "5e2d2a9d6437ed5261b3463736d925eb6668bdbf88fae479d7cf126ac24d4d1c",
+            "0b266dcdc71ff9cc41ce650efca86119a522a46ba4e83f6066953c56fdf32128"
+          ]
+        }
+      ],
+      "all_other_members_byte_exact": 1144
+    },
+    {
+      "archive": "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip",
+      "old_zip_sha256": "cffabaf5e037481d6e394dd9e1d93c7ee847978535d5036950f355237263ff9e",
+      "final_zip_sha256": "aa868ff018a79e66290994fcc1291e6cc9feafaa99aaafebe88d550c100f4b38",
+      "members": 2185,
+      "changed_members": [
+        {
+          "member": "guard/payload/baseline/mocha/node_modules/camelcase/index.d.ts",
+          "old_sha256": "2154ffa8f93802db249ddbc404a083959be0ddf036d0afd5280a88369c555c01",
+          "new_sha256": "f031da8b3da6c1778961ac68003a1682dd78d70da77494efa365817f875020c8",
+          "old_bytes": 2543,
+          "new_bytes": 2727,
+          "method": "ASCII Unicode escapes only for Cyrillic example input/output string literals; codepoint values preserved, not UI prose.",
+          "escaped_codepoints": 46
+        },
+        {
+          "member": "guard/payload/baseline/mocha/node_modules/camelcase/readme.md",
+          "old_sha256": "5919dac146a122bc648557426f85538505254457c9fc72561fd10ffc07ffad6b",
+          "new_sha256": "2c6386de2e3426b240a2579ad848f981f1c7f20c62b6b5346d8c08adb118a977",
+          "old_bytes": 3953,
+          "new_bytes": 4137,
+          "method": "ASCII Unicode escapes only for Cyrillic example input/output string literals; codepoint values preserved, not UI prose.",
+          "escaped_codepoints": 46
+        },
+        {
+          "member": "guard/payload/baseline/mocha/node_modules/yargs/locales/be.json",
+          "old_sha256": "134235e6c034c2ff51eeef9f00032cd47cbd4f836744fae0821143207c857edf",
+          "new_sha256": "6cfd9c0efe279e5db256b5ff6f21e61ec7f56ed46ec8ba8f399f98738982de95",
+          "old_bytes": 2602,
+          "new_bytes": 1696,
+          "method": "Translated runtime UI/error prose using co-located English catalog; original locale key tree/plurals/format placeholders preserved, no new keys.",
+          "changed_leaf_paths": [
+            "/Commands:",
+            "/Options:",
+            "/Examples:",
+            "/boolean",
+            "/count",
+            "/string",
+            "/number",
+            "/array",
+            "/required",
+            "/default",
+            "/default:",
+            "/choices:",
+            "/aliases:",
+            "/generated-value",
+            "/Not enough non-option arguments: got %s, need at least %s/one",
+            "/Not enough non-option arguments: got %s, need at least %s/other",
+            "/Too many non-option arguments: got %s, maximum of %s/one",
+            "/Too many non-option arguments: got %s, maximum of %s/other",
+            "/Missing argument value: %s/one",
+            "/Missing argument value: %s/other",
+            "/Missing required argument: %s/one",
+            "/Missing required argument: %s/other",
+            "/Unknown argument: %s/one",
+            "/Unknown argument: %s/other",
+            "/Invalid values:",
+            "/Argument: %s, Given: %s, Choices: %s",
+            "/Argument check failed: %s",
+            "/Implications failed:",
+            "/Not enough arguments following: %s",
+            "/Invalid JSON config file: %s",
+            "/Path to JSON config file",
+            "/Show help",
+            "/Show version number",
+            "/Did you mean %s?"
+          ],
+          "key_tree_preserved": true
+        },
+        {
+          "member": "guard/payload/baseline/mocha/node_modules/yargs/locales/ru.json",
+          "old_sha256": "3505a2e258e83fdf33bf31cc8e53aedb2018add60c3df70f4818dbf791ee9a84",
+          "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335",
+          "old_bytes": 2972,
+          "new_bytes": 1916,
+          "method": "Translated runtime UI/error prose using co-located English catalog; original locale key tree/plurals/format placeholders preserved, no new keys.",
+          "changed_leaf_paths": [
+            "/Commands:",
+            "/Options:",
+            "/Examples:",
+            "/boolean",
+            "/count",
+            "/string",
+            "/number",
+            "/array",
+            "/required",
+            "/default",
+            "/default:",
+            "/choices:",
+            "/aliases:",
+            "/generated-value",
+            "/Not enough non-option arguments: got %s, need at least %s/one",
+            "/Not enough non-option arguments: got %s, need at least %s/other",
+            "/Too many non-option arguments: got %s, maximum of %s/one",
+            "/Too many non-option arguments: got %s, maximum of %s/other",
+            "/Missing argument value: %s/one",
+            "/Missing argument value: %s/other",
+            "/Missing required argument: %s/one",
+            "/Missing required argument: %s/other",
+            "/Unknown argument: %s/one",
+            "/Unknown argument: %s/other",
+            "/Invalid values:",
+            "/Argument: %s, Given: %s, Choices: %s",
+            "/Argument check failed: %s",
+            "/Implications failed:",
+            "/Not enough arguments following: %s",
+            "/Invalid JSON config file: %s",
+            "/Path to JSON config file",
+            "/Show help",
+            "/Show version number",
+            "/Did you mean %s?",
+            "/Arguments %s and %s are mutually exclusive",
+            "/Positionals:",
+            "/command",
+            "/deprecated",
+            "/deprecated: %s"
+          ],
+          "key_tree_preserved": true
+        },
+        {
+          "member": "guard/payload/baseline/mocha/node_modules/yargs/locales/uk_UA.json",
+          "old_sha256": "70baca396d1387b30a163b03561ff1177088b579de53b89359158eed847fc273",
+          "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335",
+          "old_bytes": 2748,
+          "new_bytes": 1916,
+          "method": "Translated runtime UI/error prose using co-located English catalog; original locale key tree/plurals/format placeholders preserved, no new keys.",
+          "changed_leaf_paths": [
+            "/Commands:",
+            "/Options:",
+            "/Examples:",
+            "/count",
+            "/string",
+            "/number",
+            "/array",
+            "/required",
+            "/default",
+            "/default:",
+            "/choices:",
+            "/aliases:",
+            "/generated-value",
+            "/Not enough non-option arguments: got %s, need at least %s/one",
+            "/Not enough non-option arguments: got %s, need at least %s/other",
+            "/Too many non-option arguments: got %s, maximum of %s/one",
+            "/Too many non-option arguments: got %s, maximum of %s/other",
+            "/Missing argument value: %s/one",
+            "/Missing argument value: %s/other",
+            "/Missing required argument: %s/one",
+            "/Missing required argument: %s/other",
+            "/Unknown argument: %s/one",
+            "/Unknown argument: %s/other",
+            "/Invalid values:",
+            "/Argument: %s, Given: %s, Choices: %s",
+            "/Argument check failed: %s",
+            "/Implications failed:",
+            "/Not enough arguments following: %s",
+            "/Invalid JSON config file: %s",
+            "/Path to JSON config file",
+            "/Show help",
+            "/Show version number",
+            "/Did you mean %s?",
+            "/Arguments %s and %s are mutually exclusive",
+            "/Positionals:",
+            "/command",
+            "/deprecated",
+            "/deprecated: %s"
+          ],
+          "key_tree_preserved": true
+        },
+        {
+          "member": "guard/payload/current/mocha/node_modules/camelcase/index.d.ts",
+          "old_sha256": "2154ffa8f93802db249ddbc404a083959be0ddf036d0afd5280a88369c555c01",
+          "new_sha256": "f031da8b3da6c1778961ac68003a1682dd78d70da77494efa365817f875020c8",
+          "old_bytes": 2543,
+          "new_bytes": 2727,
+          "method": "ASCII Unicode escapes only for Cyrillic example input/output string literals; codepoint values preserved, not UI prose.",
+          "escaped_codepoints": 46
+        },
+        {
+          "member": "guard/payload/current/mocha/node_modules/camelcase/readme.md",
+          "old_sha256": "5919dac146a122bc648557426f85538505254457c9fc72561fd10ffc07ffad6b",
+          "new_sha256": "2c6386de2e3426b240a2579ad848f981f1c7f20c62b6b5346d8c08adb118a977",
+          "old_bytes": 3953,
+          "new_bytes": 4137,
+          "method": "ASCII Unicode escapes only for Cyrillic example input/output string literals; codepoint values preserved, not UI prose.",
+          "escaped_codepoints": 46
+        },
+        {
+          "member": "guard/payload/current/mocha/node_modules/yargs/locales/be.json",
+          "old_sha256": "134235e6c034c2ff51eeef9f00032cd47cbd4f836744fae0821143207c857edf",
+          "new_sha256": "6cfd9c0efe279e5db256b5ff6f21e61ec7f56ed46ec8ba8f399f98738982de95",
+          "old_bytes": 2602,
+          "new_bytes": 1696,
+          "method": "Translated runtime UI/error prose using co-located English catalog; original locale key tree/plurals/format placeholders preserved, no new keys.",
+          "changed_leaf_paths": [
+            "/Commands:",
+            "/Options:",
+            "/Examples:",
+            "/boolean",
+            "/count",
+            "/string",
+            "/number",
+            "/array",
+            "/required",
+            "/default",
+            "/default:",
+            "/choices:",
+            "/aliases:",
+            "/generated-value",
+            "/Not enough non-option arguments: got %s, need at least %s/one",
+            "/Not enough non-option arguments: got %s, need at least %s/other",
+            "/Too many non-option arguments: got %s, maximum of %s/one",
+            "/Too many non-option arguments: got %s, maximum of %s/other",
+            "/Missing argument value: %s/one",
+            "/Missing argument value: %s/other",
+            "/Missing required argument: %s/one",
+            "/Missing required argument: %s/other",
+            "/Unknown argument: %s/one",
+            "/Unknown argument: %s/other",
+            "/Invalid values:",
+            "/Argument: %s, Given: %s, Choices: %s",
+            "/Argument check failed: %s",
+            "/Implications failed:",
+            "/Not enough arguments following: %s",
+            "/Invalid JSON config file: %s",
+            "/Path to JSON config file",
+            "/Show help",
+            "/Show version number",
+            "/Did you mean %s?"
+          ],
+          "key_tree_preserved": true
+        },
+        {
+          "member": "guard/payload/current/mocha/node_modules/yargs/locales/ru.json",
+          "old_sha256": "3505a2e258e83fdf33bf31cc8e53aedb2018add60c3df70f4818dbf791ee9a84",
+          "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335",
+          "old_bytes": 2972,
+          "new_bytes": 1916,
+          "method": "Translated runtime UI/error prose using co-located English catalog; original locale key tree/plurals/format placeholders preserved, no new keys.",
+          "changed_leaf_paths": [
+            "/Commands:",
+            "/Options:",
+            "/Examples:",
+            "/boolean",
+            "/count",
+            "/string",
+            "/number",
+            "/array",
+            "/required",
+            "/default",
+            "/default:",
+            "/choices:",
+            "/aliases:",
+            "/generated-value",
+            "/Not enough non-option arguments: got %s, need at least %s/one",
+            "/Not enough non-option arguments: got %s, need at least %s/other",
+            "/Too many non-option arguments: got %s, maximum of %s/one",
+            "/Too many non-option arguments: got %s, maximum of %s/other",
+            "/Missing argument value: %s/one",
+            "/Missing argument value: %s/other",
+            "/Missing required argument: %s/one",
+            "/Missing required argument: %s/other",
+            "/Unknown argument: %s/one",
+            "/Unknown argument: %s/other",
+            "/Invalid values:",
+            "/Argument: %s, Given: %s, Choices: %s",
+            "/Argument check failed: %s",
+            "/Implications failed:",
+            "/Not enough arguments following: %s",
+            "/Invalid JSON config file: %s",
+            "/Path to JSON config file",
+            "/Show help",
+            "/Show version number",
+            "/Did you mean %s?",
+            "/Arguments %s and %s are mutually exclusive",
+            "/Positionals:",
+            "/command",
+            "/deprecated",
+            "/deprecated: %s"
+          ],
+          "key_tree_preserved": true
+        },
+        {
+          "member": "guard/payload/current/mocha/node_modules/yargs/locales/uk_UA.json",
+          "old_sha256": "70baca396d1387b30a163b03561ff1177088b579de53b89359158eed847fc273",
+          "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335",
+          "old_bytes": 2748,
+          "new_bytes": 1916,
+          "method": "Translated runtime UI/error prose using co-located English catalog; original locale key tree/plurals/format placeholders preserved, no new keys.",
+          "changed_leaf_paths": [
+            "/Commands:",
+            "/Options:",
+            "/Examples:",
+            "/count",
+            "/string",
+            "/number",
+            "/array",
+            "/required",
+            "/default",
+            "/default:",
+            "/choices:",
+            "/aliases:",
+            "/generated-value",
+            "/Not enough non-option arguments: got %s, need at least %s/one",
+            "/Not enough non-option arguments: got %s, need at least %s/other",
+            "/Too many non-option arguments: got %s, maximum of %s/one",
+            "/Too many non-option arguments: got %s, maximum of %s/other",
+            "/Missing argument value: %s/one",
+            "/Missing argument value: %s/other",
+            "/Missing required argument: %s/one",
+            "/Missing required argument: %s/other",
+            "/Unknown argument: %s/one",
+            "/Unknown argument: %s/other",
+            "/Invalid values:",
+            "/Argument: %s, Given: %s, Choices: %s",
+            "/Argument check failed: %s",
+            "/Implications failed:",
+            "/Not enough arguments following: %s",
+            "/Invalid JSON config file: %s",
+            "/Path to JSON config file",
+            "/Show help",
+            "/Show version number",
+            "/Did you mean %s?",
+            "/Arguments %s and %s are mutually exclusive",
+            "/Positionals:",
+            "/command",
+            "/deprecated",
+            "/deprecated: %s"
+          ],
+          "key_tree_preserved": true
+        },
+        {
+          "member": "guard/payload/baseline/manifest.sha256",
+          "old_sha256": "662d0cb81e603d1ba478078c13abff424c304106bd1f377dcf18b1f9a8534ab5",
+          "new_sha256": "b7a6db00bb6bb1a8d00cafe264c159b754b8a66651c0339df28546530cdeba8a",
+          "old_bytes": 123745,
+          "new_bytes": 123745,
+          "method": "Internal editorial payload manifest rebind only;5 translated locale/doc entries updated, original-run hashes preserved in original/archive/member ledger. Missing hidden files in original failurearchive remain missing, no fabricated recovery.",
+          "entry_updates": [
+            {
+              "member": "guard/payload/baseline/mocha/node_modules/camelcase/index.d.ts",
+              "old_sha256": "2154ffa8f93802db249ddbc404a083959be0ddf036d0afd5280a88369c555c01",
+              "new_sha256": "f031da8b3da6c1778961ac68003a1682dd78d70da77494efa365817f875020c8"
+            },
+            {
+              "member": "guard/payload/baseline/mocha/node_modules/camelcase/readme.md",
+              "old_sha256": "5919dac146a122bc648557426f85538505254457c9fc72561fd10ffc07ffad6b",
+              "new_sha256": "2c6386de2e3426b240a2579ad848f981f1c7f20c62b6b5346d8c08adb118a977"
+            },
+            {
+              "member": "guard/payload/baseline/mocha/node_modules/yargs/locales/be.json",
+              "old_sha256": "134235e6c034c2ff51eeef9f00032cd47cbd4f836744fae0821143207c857edf",
+              "new_sha256": "6cfd9c0efe279e5db256b5ff6f21e61ec7f56ed46ec8ba8f399f98738982de95"
+            },
+            {
+              "member": "guard/payload/baseline/mocha/node_modules/yargs/locales/ru.json",
+              "old_sha256": "3505a2e258e83fdf33bf31cc8e53aedb2018add60c3df70f4818dbf791ee9a84",
+              "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335"
+            },
+            {
+              "member": "guard/payload/baseline/mocha/node_modules/yargs/locales/uk_UA.json",
+              "old_sha256": "70baca396d1387b30a163b03561ff1177088b579de53b89359158eed847fc273",
+              "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335"
+            }
+          ]
+        },
+        {
+          "member": "guard/payload/current/manifest.sha256",
+          "old_sha256": "1f2f4ee44b1ad8363f3b004b7eb5ab6d396ab0801106a4986c991646bfe8378d",
+          "new_sha256": "a3603b0b7d980d7b520428a1a7c33c3dd18086a8e24f4faacad0a131b9f9cffd",
+          "old_bytes": 123745,
+          "new_bytes": 123745,
+          "method": "Internal editorial payload manifest rebind only;5 translated locale/doc entries updated, original-run hashes preserved in original/archive/member ledger. Missing hidden files in original failurearchive remain missing, no fabricated recovery.",
+          "entry_updates": [
+            {
+              "member": "guard/payload/current/mocha/node_modules/camelcase/index.d.ts",
+              "old_sha256": "2154ffa8f93802db249ddbc404a083959be0ddf036d0afd5280a88369c555c01",
+              "new_sha256": "f031da8b3da6c1778961ac68003a1682dd78d70da77494efa365817f875020c8"
+            },
+            {
+              "member": "guard/payload/current/mocha/node_modules/camelcase/readme.md",
+              "old_sha256": "5919dac146a122bc648557426f85538505254457c9fc72561fd10ffc07ffad6b",
+              "new_sha256": "2c6386de2e3426b240a2579ad848f981f1c7f20c62b6b5346d8c08adb118a977"
+            },
+            {
+              "member": "guard/payload/current/mocha/node_modules/yargs/locales/be.json",
+              "old_sha256": "134235e6c034c2ff51eeef9f00032cd47cbd4f836744fae0821143207c857edf",
+              "new_sha256": "6cfd9c0efe279e5db256b5ff6f21e61ec7f56ed46ec8ba8f399f98738982de95"
+            },
+            {
+              "member": "guard/payload/current/mocha/node_modules/yargs/locales/ru.json",
+              "old_sha256": "3505a2e258e83fdf33bf31cc8e53aedb2018add60c3df70f4818dbf791ee9a84",
+              "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335"
+            },
+            {
+              "member": "guard/payload/current/mocha/node_modules/yargs/locales/uk_UA.json",
+              "old_sha256": "70baca396d1387b30a163b03561ff1177088b579de53b89359158eed847fc273",
+              "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335"
+            }
+          ]
+        }
+      ],
+      "all_other_members_byte_exact": 2173
+    },
+    {
+      "archive": "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip",
+      "old_zip_sha256": "b702abbe93502159afb1a1892acc360b9eaaf3f60cc7b4925ce86981a20943c0",
+      "final_zip_sha256": "965dc86de49e2769b6c5d332981e3035484bbe69b2084bff65cd50a7adf0ce82",
+      "members": 2237,
+      "changed_members": [
+        {
+          "member": "guard/payload/baseline/mocha/node_modules/camelcase/index.d.ts",
+          "old_sha256": "2154ffa8f93802db249ddbc404a083959be0ddf036d0afd5280a88369c555c01",
+          "new_sha256": "f031da8b3da6c1778961ac68003a1682dd78d70da77494efa365817f875020c8",
+          "old_bytes": 2543,
+          "new_bytes": 2727,
+          "method": "ASCII Unicode escapes only for Cyrillic example input/output string literals; codepoint values preserved, not UI prose.",
+          "escaped_codepoints": 46
+        },
+        {
+          "member": "guard/payload/baseline/mocha/node_modules/camelcase/readme.md",
+          "old_sha256": "5919dac146a122bc648557426f85538505254457c9fc72561fd10ffc07ffad6b",
+          "new_sha256": "2c6386de2e3426b240a2579ad848f981f1c7f20c62b6b5346d8c08adb118a977",
+          "old_bytes": 3953,
+          "new_bytes": 4137,
+          "method": "ASCII Unicode escapes only for Cyrillic example input/output string literals; codepoint values preserved, not UI prose.",
+          "escaped_codepoints": 46
+        },
+        {
+          "member": "guard/payload/baseline/mocha/node_modules/yargs/locales/be.json",
+          "old_sha256": "134235e6c034c2ff51eeef9f00032cd47cbd4f836744fae0821143207c857edf",
+          "new_sha256": "6cfd9c0efe279e5db256b5ff6f21e61ec7f56ed46ec8ba8f399f98738982de95",
+          "old_bytes": 2602,
+          "new_bytes": 1696,
+          "method": "Translated runtime UI/error prose using co-located English catalog; original locale key tree/plurals/format placeholders preserved, no new keys.",
+          "changed_leaf_paths": [
+            "/Commands:",
+            "/Options:",
+            "/Examples:",
+            "/boolean",
+            "/count",
+            "/string",
+            "/number",
+            "/array",
+            "/required",
+            "/default",
+            "/default:",
+            "/choices:",
+            "/aliases:",
+            "/generated-value",
+            "/Not enough non-option arguments: got %s, need at least %s/one",
+            "/Not enough non-option arguments: got %s, need at least %s/other",
+            "/Too many non-option arguments: got %s, maximum of %s/one",
+            "/Too many non-option arguments: got %s, maximum of %s/other",
+            "/Missing argument value: %s/one",
+            "/Missing argument value: %s/other",
+            "/Missing required argument: %s/one",
+            "/Missing required argument: %s/other",
+            "/Unknown argument: %s/one",
+            "/Unknown argument: %s/other",
+            "/Invalid values:",
+            "/Argument: %s, Given: %s, Choices: %s",
+            "/Argument check failed: %s",
+            "/Implications failed:",
+            "/Not enough arguments following: %s",
+            "/Invalid JSON config file: %s",
+            "/Path to JSON config file",
+            "/Show help",
+            "/Show version number",
+            "/Did you mean %s?"
+          ],
+          "key_tree_preserved": true
+        },
+        {
+          "member": "guard/payload/baseline/mocha/node_modules/yargs/locales/ru.json",
+          "old_sha256": "3505a2e258e83fdf33bf31cc8e53aedb2018add60c3df70f4818dbf791ee9a84",
+          "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335",
+          "old_bytes": 2972,
+          "new_bytes": 1916,
+          "method": "Translated runtime UI/error prose using co-located English catalog; original locale key tree/plurals/format placeholders preserved, no new keys.",
+          "changed_leaf_paths": [
+            "/Commands:",
+            "/Options:",
+            "/Examples:",
+            "/boolean",
+            "/count",
+            "/string",
+            "/number",
+            "/array",
+            "/required",
+            "/default",
+            "/default:",
+            "/choices:",
+            "/aliases:",
+            "/generated-value",
+            "/Not enough non-option arguments: got %s, need at least %s/one",
+            "/Not enough non-option arguments: got %s, need at least %s/other",
+            "/Too many non-option arguments: got %s, maximum of %s/one",
+            "/Too many non-option arguments: got %s, maximum of %s/other",
+            "/Missing argument value: %s/one",
+            "/Missing argument value: %s/other",
+            "/Missing required argument: %s/one",
+            "/Missing required argument: %s/other",
+            "/Unknown argument: %s/one",
+            "/Unknown argument: %s/other",
+            "/Invalid values:",
+            "/Argument: %s, Given: %s, Choices: %s",
+            "/Argument check failed: %s",
+            "/Implications failed:",
+            "/Not enough arguments following: %s",
+            "/Invalid JSON config file: %s",
+            "/Path to JSON config file",
+            "/Show help",
+            "/Show version number",
+            "/Did you mean %s?",
+            "/Arguments %s and %s are mutually exclusive",
+            "/Positionals:",
+            "/command",
+            "/deprecated",
+            "/deprecated: %s"
+          ],
+          "key_tree_preserved": true
+        },
+        {
+          "member": "guard/payload/baseline/mocha/node_modules/yargs/locales/uk_UA.json",
+          "old_sha256": "70baca396d1387b30a163b03561ff1177088b579de53b89359158eed847fc273",
+          "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335",
+          "old_bytes": 2748,
+          "new_bytes": 1916,
+          "method": "Translated runtime UI/error prose using co-located English catalog; original locale key tree/plurals/format placeholders preserved, no new keys.",
+          "changed_leaf_paths": [
+            "/Commands:",
+            "/Options:",
+            "/Examples:",
+            "/count",
+            "/string",
+            "/number",
+            "/array",
+            "/required",
+            "/default",
+            "/default:",
+            "/choices:",
+            "/aliases:",
+            "/generated-value",
+            "/Not enough non-option arguments: got %s, need at least %s/one",
+            "/Not enough non-option arguments: got %s, need at least %s/other",
+            "/Too many non-option arguments: got %s, maximum of %s/one",
+            "/Too many non-option arguments: got %s, maximum of %s/other",
+            "/Missing argument value: %s/one",
+            "/Missing argument value: %s/other",
+            "/Missing required argument: %s/one",
+            "/Missing required argument: %s/other",
+            "/Unknown argument: %s/one",
+            "/Unknown argument: %s/other",
+            "/Invalid values:",
+            "/Argument: %s, Given: %s, Choices: %s",
+            "/Argument check failed: %s",
+            "/Implications failed:",
+            "/Not enough arguments following: %s",
+            "/Invalid JSON config file: %s",
+            "/Path to JSON config file",
+            "/Show help",
+            "/Show version number",
+            "/Did you mean %s?",
+            "/Arguments %s and %s are mutually exclusive",
+            "/Positionals:",
+            "/command",
+            "/deprecated",
+            "/deprecated: %s"
+          ],
+          "key_tree_preserved": true
+        },
+        {
+          "member": "guard/payload/current/mocha/node_modules/camelcase/index.d.ts",
+          "old_sha256": "2154ffa8f93802db249ddbc404a083959be0ddf036d0afd5280a88369c555c01",
+          "new_sha256": "f031da8b3da6c1778961ac68003a1682dd78d70da77494efa365817f875020c8",
+          "old_bytes": 2543,
+          "new_bytes": 2727,
+          "method": "ASCII Unicode escapes only for Cyrillic example input/output string literals; codepoint values preserved, not UI prose.",
+          "escaped_codepoints": 46
+        },
+        {
+          "member": "guard/payload/current/mocha/node_modules/camelcase/readme.md",
+          "old_sha256": "5919dac146a122bc648557426f85538505254457c9fc72561fd10ffc07ffad6b",
+          "new_sha256": "2c6386de2e3426b240a2579ad848f981f1c7f20c62b6b5346d8c08adb118a977",
+          "old_bytes": 3953,
+          "new_bytes": 4137,
+          "method": "ASCII Unicode escapes only for Cyrillic example input/output string literals; codepoint values preserved, not UI prose.",
+          "escaped_codepoints": 46
+        },
+        {
+          "member": "guard/payload/current/mocha/node_modules/yargs/locales/be.json",
+          "old_sha256": "134235e6c034c2ff51eeef9f00032cd47cbd4f836744fae0821143207c857edf",
+          "new_sha256": "6cfd9c0efe279e5db256b5ff6f21e61ec7f56ed46ec8ba8f399f98738982de95",
+          "old_bytes": 2602,
+          "new_bytes": 1696,
+          "method": "Translated runtime UI/error prose using co-located English catalog; original locale key tree/plurals/format placeholders preserved, no new keys.",
+          "changed_leaf_paths": [
+            "/Commands:",
+            "/Options:",
+            "/Examples:",
+            "/boolean",
+            "/count",
+            "/string",
+            "/number",
+            "/array",
+            "/required",
+            "/default",
+            "/default:",
+            "/choices:",
+            "/aliases:",
+            "/generated-value",
+            "/Not enough non-option arguments: got %s, need at least %s/one",
+            "/Not enough non-option arguments: got %s, need at least %s/other",
+            "/Too many non-option arguments: got %s, maximum of %s/one",
+            "/Too many non-option arguments: got %s, maximum of %s/other",
+            "/Missing argument value: %s/one",
+            "/Missing argument value: %s/other",
+            "/Missing required argument: %s/one",
+            "/Missing required argument: %s/other",
+            "/Unknown argument: %s/one",
+            "/Unknown argument: %s/other",
+            "/Invalid values:",
+            "/Argument: %s, Given: %s, Choices: %s",
+            "/Argument check failed: %s",
+            "/Implications failed:",
+            "/Not enough arguments following: %s",
+            "/Invalid JSON config file: %s",
+            "/Path to JSON config file",
+            "/Show help",
+            "/Show version number",
+            "/Did you mean %s?"
+          ],
+          "key_tree_preserved": true
+        },
+        {
+          "member": "guard/payload/current/mocha/node_modules/yargs/locales/ru.json",
+          "old_sha256": "3505a2e258e83fdf33bf31cc8e53aedb2018add60c3df70f4818dbf791ee9a84",
+          "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335",
+          "old_bytes": 2972,
+          "new_bytes": 1916,
+          "method": "Translated runtime UI/error prose using co-located English catalog; original locale key tree/plurals/format placeholders preserved, no new keys.",
+          "changed_leaf_paths": [
+            "/Commands:",
+            "/Options:",
+            "/Examples:",
+            "/boolean",
+            "/count",
+            "/string",
+            "/number",
+            "/array",
+            "/required",
+            "/default",
+            "/default:",
+            "/choices:",
+            "/aliases:",
+            "/generated-value",
+            "/Not enough non-option arguments: got %s, need at least %s/one",
+            "/Not enough non-option arguments: got %s, need at least %s/other",
+            "/Too many non-option arguments: got %s, maximum of %s/one",
+            "/Too many non-option arguments: got %s, maximum of %s/other",
+            "/Missing argument value: %s/one",
+            "/Missing argument value: %s/other",
+            "/Missing required argument: %s/one",
+            "/Missing required argument: %s/other",
+            "/Unknown argument: %s/one",
+            "/Unknown argument: %s/other",
+            "/Invalid values:",
+            "/Argument: %s, Given: %s, Choices: %s",
+            "/Argument check failed: %s",
+            "/Implications failed:",
+            "/Not enough arguments following: %s",
+            "/Invalid JSON config file: %s",
+            "/Path to JSON config file",
+            "/Show help",
+            "/Show version number",
+            "/Did you mean %s?",
+            "/Arguments %s and %s are mutually exclusive",
+            "/Positionals:",
+            "/command",
+            "/deprecated",
+            "/deprecated: %s"
+          ],
+          "key_tree_preserved": true
+        },
+        {
+          "member": "guard/payload/current/mocha/node_modules/yargs/locales/uk_UA.json",
+          "old_sha256": "70baca396d1387b30a163b03561ff1177088b579de53b89359158eed847fc273",
+          "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335",
+          "old_bytes": 2748,
+          "new_bytes": 1916,
+          "method": "Translated runtime UI/error prose using co-located English catalog; original locale key tree/plurals/format placeholders preserved, no new keys.",
+          "changed_leaf_paths": [
+            "/Commands:",
+            "/Options:",
+            "/Examples:",
+            "/count",
+            "/string",
+            "/number",
+            "/array",
+            "/required",
+            "/default",
+            "/default:",
+            "/choices:",
+            "/aliases:",
+            "/generated-value",
+            "/Not enough non-option arguments: got %s, need at least %s/one",
+            "/Not enough non-option arguments: got %s, need at least %s/other",
+            "/Too many non-option arguments: got %s, maximum of %s/one",
+            "/Too many non-option arguments: got %s, maximum of %s/other",
+            "/Missing argument value: %s/one",
+            "/Missing argument value: %s/other",
+            "/Missing required argument: %s/one",
+            "/Missing required argument: %s/other",
+            "/Unknown argument: %s/one",
+            "/Unknown argument: %s/other",
+            "/Invalid values:",
+            "/Argument: %s, Given: %s, Choices: %s",
+            "/Argument check failed: %s",
+            "/Implications failed:",
+            "/Not enough arguments following: %s",
+            "/Invalid JSON config file: %s",
+            "/Path to JSON config file",
+            "/Show help",
+            "/Show version number",
+            "/Did you mean %s?",
+            "/Arguments %s and %s are mutually exclusive",
+            "/Positionals:",
+            "/command",
+            "/deprecated",
+            "/deprecated: %s"
+          ],
+          "key_tree_preserved": true
+        },
+        {
+          "member": "guard/payload/baseline/manifest.sha256",
+          "old_sha256": "e1575dd3433e63ac7da91f22863dc76811c6ddbf85fb1e366eee8d3e90613df4",
+          "new_sha256": "b3b4fca8444b333f9795f1e882d4e5430719e5eaa8aeaaaee7fb153ab9d47f26",
+          "old_bytes": 123745,
+          "new_bytes": 123745,
+          "method": "Internal editorial payload manifest rebind only;5 translated locale/doc entries updated, original-run hashes preserved in original/archive/member ledger. Missing hidden files in original failurearchive remain missing, no fabricated recovery.",
+          "entry_updates": [
+            {
+              "member": "guard/payload/baseline/mocha/node_modules/camelcase/index.d.ts",
+              "old_sha256": "2154ffa8f93802db249ddbc404a083959be0ddf036d0afd5280a88369c555c01",
+              "new_sha256": "f031da8b3da6c1778961ac68003a1682dd78d70da77494efa365817f875020c8"
+            },
+            {
+              "member": "guard/payload/baseline/mocha/node_modules/camelcase/readme.md",
+              "old_sha256": "5919dac146a122bc648557426f85538505254457c9fc72561fd10ffc07ffad6b",
+              "new_sha256": "2c6386de2e3426b240a2579ad848f981f1c7f20c62b6b5346d8c08adb118a977"
+            },
+            {
+              "member": "guard/payload/baseline/mocha/node_modules/yargs/locales/be.json",
+              "old_sha256": "134235e6c034c2ff51eeef9f00032cd47cbd4f836744fae0821143207c857edf",
+              "new_sha256": "6cfd9c0efe279e5db256b5ff6f21e61ec7f56ed46ec8ba8f399f98738982de95"
+            },
+            {
+              "member": "guard/payload/baseline/mocha/node_modules/yargs/locales/ru.json",
+              "old_sha256": "3505a2e258e83fdf33bf31cc8e53aedb2018add60c3df70f4818dbf791ee9a84",
+              "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335"
+            },
+            {
+              "member": "guard/payload/baseline/mocha/node_modules/yargs/locales/uk_UA.json",
+              "old_sha256": "70baca396d1387b30a163b03561ff1177088b579de53b89359158eed847fc273",
+              "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335"
+            }
+          ]
+        },
+        {
+          "member": "guard/payload/current/manifest.sha256",
+          "old_sha256": "1f2f4ee44b1ad8363f3b004b7eb5ab6d396ab0801106a4986c991646bfe8378d",
+          "new_sha256": "a3603b0b7d980d7b520428a1a7c33c3dd18086a8e24f4faacad0a131b9f9cffd",
+          "old_bytes": 123745,
+          "new_bytes": 123745,
+          "method": "Internal editorial payload manifest rebind only;5 translated locale/doc entries updated, original-run hashes preserved in original/archive/member ledger. Missing hidden files in original failurearchive remain missing, no fabricated recovery.",
+          "entry_updates": [
+            {
+              "member": "guard/payload/current/mocha/node_modules/camelcase/index.d.ts",
+              "old_sha256": "2154ffa8f93802db249ddbc404a083959be0ddf036d0afd5280a88369c555c01",
+              "new_sha256": "f031da8b3da6c1778961ac68003a1682dd78d70da77494efa365817f875020c8"
+            },
+            {
+              "member": "guard/payload/current/mocha/node_modules/camelcase/readme.md",
+              "old_sha256": "5919dac146a122bc648557426f85538505254457c9fc72561fd10ffc07ffad6b",
+              "new_sha256": "2c6386de2e3426b240a2579ad848f981f1c7f20c62b6b5346d8c08adb118a977"
+            },
+            {
+              "member": "guard/payload/current/mocha/node_modules/yargs/locales/be.json",
+              "old_sha256": "134235e6c034c2ff51eeef9f00032cd47cbd4f836744fae0821143207c857edf",
+              "new_sha256": "6cfd9c0efe279e5db256b5ff6f21e61ec7f56ed46ec8ba8f399f98738982de95"
+            },
+            {
+              "member": "guard/payload/current/mocha/node_modules/yargs/locales/ru.json",
+              "old_sha256": "3505a2e258e83fdf33bf31cc8e53aedb2018add60c3df70f4818dbf791ee9a84",
+              "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335"
+            },
+            {
+              "member": "guard/payload/current/mocha/node_modules/yargs/locales/uk_UA.json",
+              "old_sha256": "70baca396d1387b30a163b03561ff1177088b579de53b89359158eed847fc273",
+              "new_sha256": "175383683b01bec33806e8f7475a9c5d91783cee9f9ef7b17fb9cb1726be5335"
+            }
+          ]
+        }
+      ],
+      "all_other_members_byte_exact": 2225
+    },
+    {
+      "path": "diagnostics/kotlin-library-comparison-598/598-evidence.zip",
+      "original_sha256": "ddba3ba92406fbf5f5a6a2b1be327a6c762b2337059e4c51ee36963496993d1a",
+      "editorial_sha256": "0d6cd9003bd1686d5dc15ee9ab67983baa796a07355881bef9073d7e8051574e",
+      "changed_members": [
+        {
+          "member": "REPORT.md",
+          "original_sha256": "13e018cd6107136e3751cfad6a9b47812b3da834d9ecb47781859e74c22d4771",
+          "editorial_sha256": "e9a792865be36d0778b72ee113fc0400691dce7dde9c76976d99ce8acc92062a",
+          "original_bytes": 24956,
+          "editorial_bytes": 22084,
+          "kind": "English prose translation; measured tables and case IDs preserved"
+        },
+        {
+          "member": "history/final-report-before-readable-correction/REPORT.md",
+          "original_sha256": "fd56223299907aac696b9d8995e9d8a4dd7b5d110b7059b5e4312c7b3cee6b78",
+          "editorial_sha256": "e37ebeade7965bce6bfe5c68e712bee6b8a3c45acfee6e27638d2da76a53b4c9",
+          "original_bytes": 24952,
+          "editorial_bytes": 22080,
+          "kind": "English prose translation; measured tables and case IDs preserved"
+        }
+      ],
+      "all_other_member_bytes_unchanged": true
+    },
+    {
+      "path": "diagnostics/numeric-text-537/reviews-and-provenance.tar.gz",
+      "before": "a8f1affc6dee2977ca4701fd876b171aeeae2e3a069627f513db1e702cec5650",
+      "after": "994df6d09edc42ea712bc394f20fb62b1d48556697c3558cfcc19b26e6e5b0d5",
+      "regular_members": 45,
+      "all_other_payloads_and_headers_exact": true,
+      "changed": [
+        {
+          "member": "preparation/task-before-focused-runtime.json",
+          "before": "005ca5d341971a2cd82922d6d92becf4b602835aa1a37ba28f37c0dfb7d4a301",
+          "after": "9742767a478e642f915186f9e70bf048dd3ef4357244a7a265bfdbd2da1a94c9",
+          "only_task_title_body_changed": true,
+          "classification": "TASK_PROSE_NOT_UNICODE_FIXTURE"
+        },
+        {
+          "member": "preparation/task-full.json",
+          "before": "4bd5dd0d232702448daec78bbc22b0455711206b6deb77ca09949a95b25a4483",
+          "after": "318720bf4d0c8c46ae274c83f8ef0e7d0ea6f34ef88ef48b7b983e731e5b65bc",
+          "only_task_title_body_changed": true,
+          "classification": "TASK_PROSE_NOT_UNICODE_FIXTURE"
+        },
+        {
+          "member": "task-before-runtime.json",
+          "before": "005ca5d341971a2cd82922d6d92becf4b602835aa1a37ba28f37c0dfb7d4a301",
+          "after": "9742767a478e642f915186f9e70bf048dd3ef4357244a7a265bfdbd2da1a94c9",
+          "only_task_title_body_changed": true,
+          "classification": "TASK_PROSE_NOT_UNICODE_FIXTURE"
+        }
+      ],
+      "manifest_rebind_owner": "backlog_coordinator; not changed by this worker"
+    }
+  ],
+  "prose_values": 143,
+  "prose_mapping_file": "prose-translations.json",
+  "prose_mapping_sha256": "559f324fb0a92fef35aaa62dc3f1d54210a3d849f66ded619f0d538c396fa598",
+  "fixture_allowlist": {
+    "archives": [
+      "diagnostics/platform-multiplication-539-public-linux/failure-artifact.zip",
+      "diagnostics/platform-multiplication-539-public-linux/success-artifact.zip"
+    ],
+    "member_patterns": [
+      "guard/payload/baseline/mocha/node_modules/camelcase/index.d.ts",
+      "guard/payload/current/mocha/node_modules/camelcase/index.d.ts",
+      "guard/payload/baseline/mocha/node_modules/camelcase/readme.md",
+      "guard/payload/current/mocha/node_modules/camelcase/readme.md"
+    ],
+    "scope": "Only actual Unicode input/output example literals use JavaScript Unicode escapes. Their decoded values are identical; Russian UI messages are translated, not hidden by escapes."
+  },
+  "opaque_binary_scope": "JAR/KLIB/class/Wasm/native executables and Git object/bundle history are binary evidence, not editorial prose. Generated numerical JS/MJS sources are byte-identical.",
+  "preserved_original_context_index_entries": [
+    {
+      "index": "diagnostics/explicit-decimal-534/evidence-index.json",
+      "path": "focused-jvm.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/explicit-decimal-534/evidence-index.json",
+      "path": "focused-other.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/explicit-decimal-534/evidence-index.json",
+      "path": "focused-jvm-summary.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/explicit-decimal-534/evidence-index.json",
+      "path": "focused-other-summary.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/explicit-decimal-534/evidence-index.json",
+      "path": "runtime-source.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/explicit-decimal-534/evidence-index.json",
+      "path": "commands.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/explicit-decimal-534/evidence-index.json",
+      "path": "focused-jvm-xml/TEST-io.heapy.krogu.math.ExplicitDecimal534JavaTest.xml",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/explicit-decimal-534/evidence-index.json",
+      "path": "focused-jvm-xml/TEST-io.heapy.krogu.math.ExplicitDecimal534JvmTest.xml",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/explicit-decimal-534/evidence-index.json",
+      "path": "focused-jvm-xml/TEST-io.heapy.krogu.math.ExplicitDecimal534Test.xml",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/explicit-decimal-534/evidence-index.json",
+      "path": "focused-other-xml/jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.ExplicitDecimal534Test.xml",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/explicit-decimal-534/evidence-index.json",
+      "path": "focused-other-xml/macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.ExplicitDecimal534Test.xml",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/explicit-decimal-534/evidence-index.json",
+      "path": "focused-other-xml/wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.ExplicitDecimal534Test.xml",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/533-final-artifacts.sha256",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/533-final-sources.sha256",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/artifact-sha256.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/calibration-candidate.jar",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/calibration-source/BigInteger.kt.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/calibration-source/IntegerMultiplication532Probe.kt.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/calibration-source/MagnitudeMultiplication.kt.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/calibration-source/jdk-release.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/calibration-source/sha256.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/entry-candidate-256.jar",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/entry-focused-xml/TEST-io.heapy.krogu.math.IntegerMultiplication532JvmTest.xml",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/entry-focused-xml/TEST-io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/entry-probe.jar",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/entry-source-draft/BigInteger.kt.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/entry-source-draft/IntegerMultiplication532Probe.kt.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/entry-source-draft/IntegerMultiplication532Test.kt.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/entry-source-draft/MagnitudeMultiplication.kt.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/entry-source-draft/sources.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/entry-warmed-probe-source.kt.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/entry-warmed-probe.jar",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/final-candidate.jar",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/final-focused-xml/TEST-io.heapy.krogu.math.IntegerMultiplication532JvmTest.xml",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/final-focused-xml/TEST-io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/final-source/BigInteger.kt.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/final-source/IntegerMultiplication532Probe.kt.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/final-source/IntegerMultiplication532Test.kt.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/final-source/MagnitudeMultiplication.kt.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/final-source/sources.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/final-validation-source-build.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/focused-other-xml/jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/focused-other-xml/macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/focused-other-xml/summary.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/focused-other-xml/wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.IntegerMultiplication532Test.xml",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/full-regression/gradle.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/full-regression/jsNodeTest-xml.tar.gz",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/full-regression/jvmTest-xml.tar.gz",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/full-regression/macosArm64Test-xml.tar.gz",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/full-regression/summary.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/full-regression/wasmJsNodeTest-xml.tar.gz",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/historical-536-baseline.jar",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/integrated-parent-baseline.jar",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/parent-source-binding.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/probe.jar",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/selected-candidate-384.jar",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/warmed-probe-source.kt.txt",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/warmed-probe.jar",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "artifacts/wasm-yarn.lock.generated",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/calibration-0.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/calibration-1.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/calibration-2.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/calibration-manifest.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/calibration-summary.csv",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/entry-focused-jvm.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/entry-warmed-probe-compile.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-focused-jvm.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-focused-other-targets.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-full-regression.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-memory-adaptive.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-memory-school.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-memory-square.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-package.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-paired-memory-manifest.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-baseline-0.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-baseline-1.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-baseline-2.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-candidate-0.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-candidate-1.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-candidate-2.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-summary.csv",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-wide-baseline-0.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-wide-baseline-1.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-wide-baseline-2.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-wide-candidate-0.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-wide-candidate-1.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-wide-candidate-2.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/final-public-wide-summary.csv",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/memory-adaptive-rss.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/memory-school-rss.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/memory-school.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/memory-square-rss.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/original-jit-baseline.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/original-jit-candidate.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/paired-memory-manifest.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-baseline-0.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-baseline-1.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-baseline-2.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-candidate-0.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-candidate-1.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-candidate-2.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-summary.csv",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-warmed-baseline-0.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-warmed-baseline-1.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-warmed-baseline-2.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-warmed-candidate-0.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-warmed-candidate-1.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-warmed-candidate-2.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/public-warmed-summary.csv",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/square-entry-0.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/square-entry-1.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/square-entry-2.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/square-entry-manifest.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/square-entry-summary.csv",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/square-entry-warmed-0.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/square-entry-warmed-1.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/square-entry-warmed-2.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/square-entry-warmed-manifest.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/square-entry-warmed-summary.csv",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/warmed-jit-memory-manifest.json",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    },
+    {
+      "index": "diagnostics/integer-multiplication-532/evidence-index.json",
+      "path": "logs/warmed-probe-compile.log",
+      "reason": "Original workspace-context entry; no matching tracked canonical file. Preserved unchanged."
+    }
+  ]
+}
