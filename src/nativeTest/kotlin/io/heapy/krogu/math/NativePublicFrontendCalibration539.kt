@@ -1,17 +1,19 @@
+@file:OptIn(kotlin.native.concurrent.ObsoleteWorkersApi::class, kotlin.ExperimentalStdlibApi::class)
 package io.heapy.krogu.math
 
+import kotlin.native.concurrent.Worker
 import kotlin.test.Test
 import kotlin.time.TimeSource
 
-/** Actual Native public route: EVERY operation includes Worker start, join,
- * termination and permit release. Never a persistent-pool warm claim. */
+/** Current Native public serial-retention route. The candidate engine and its
+ * complete per-call Worker lifecycle measurements remain historical, not these rows. */
 class NativePublicFrontendCalibration539 {
     @Test fun optionalPublicRoute() {
         val arguments = calibration539Arguments() ?: return
-        if (!arguments.startsWith("native-public-frontend,")) return
+        if (!arguments.startsWith("native-public-serial-retention,")) return
         check(calibration539Platform().startsWith("Native "))
         val args = arguments.split(',')
-        require(args.size == 4) { "native-public-frontend,size,distinct|square|ratio2,forward|reverse" }
+        require(args.size == 4) { "native-public-serial-retention,size,distinct|square|ratio2,forward|reverse" }
         val size = args[1].toInt().also { require(it in listOf(256, 1024, 4096, 8192, 16384)) }
         val shape = args[2].also { require(it in listOf("distinct", "square", "ratio2")) }
         require(args[3] in listOf("forward", "reverse"))
@@ -51,6 +53,15 @@ class NativePublicFrontendCalibration539 {
             check(aWords.contentEquals(originalWordsA) && bWords.contentEquals(originalWordsB))
             check(a.toByteArray().contentEquals(originalA) && b.toByteArray().contentEquals(originalB))
         }
+        check(retainSerialParallelMultiply539) { "Current Native public route must decline before backend helpers" }
+        Worker.current
+        val baselineWorkers = Worker.activeWorkers.map { it.id }.sorted()
+        fun verifySerialAbsence(phase: String, sample: Int) {
+            val currentWorkers = Worker.activeWorkers.map { it.id }.sorted()
+            check(currentWorkers == baselineWorkers) { "Current serial route changed Native Worker ownership" }
+            println("NATIVESERIALDECLINE539,$size/$shape,$phase,$sample,${baselineWorkers.joinToString(";")},${currentWorkers.joinToString(";")},true")
+        }
+        println("INPUTNATIVE539,$size/$shape,${aWords.size},${bWords.size},${aWords === bWords}")
         val cpuBefore = calibration539CpuNs()
         val firstStart = TimeSource.Monotonic.markNow()
         escaped = a.parallelMultiply(b)
@@ -58,8 +69,9 @@ class NativePublicFrontendCalibration539 {
         val cpuAfter = calibration539CpuNs()
         verify(escaped)
         println("FIRSTNATIVE539,$size/$shape,$firstNs,${if (cpuBefore != null && cpuAfter != null) cpuAfter - cpuBefore else "NA"}")
-        println("# first public/backend activation after untimed school/oracle/BI preparation; EVERY parallel row includes full Worker lifecycle; not pool reuse or pristine JIT")
-        // Actual parallel children remain explicit64/16; current balanced distinct serial is32.
+        verifySerialAbsence("first", -1)
+        println("# first PUBLIC call after untimed school/oracle/BI preparation; current route directly declines to virtual serial multiply; no backend startup or fresh-speedup claim")
+        // Current public parallel route is virtual serial; retained candidate children remain64/16 outside this fixture.
         // Each native output type escapes unchanged: no conversion/formatting in operations.
         val routes = mutableListOf<Pair<String, () -> Any>>(
             "kernel-k${selected.karatsuba}-s${selected.squareLeaf}-e${selected.wholeSquareEntry}" to {
@@ -93,8 +105,11 @@ class NativePublicFrontendCalibration539 {
                 verify(escaped)
                 val heap = calibration539HeapBytes()
                 println("PUBLICNATIVE539,$size/$shape/$variant,$sample,$count,$elapsed,${if (before != null && after != null) after - before else "NA"},NA,${heap ?: "NA"},${if (escaped is IntArray) (escaped as IntArray).contentHashCode() else escaped!!.hashCode()}")
+                if (variant == "parallel") verifySerialAbsence("parallel", sample)
             }
         }
+        check(Worker.activeWorkers.map { it.id }.sorted() == baselineWorkers)
+        println("NATIVESERIALRESOURCE539,$size/$shape,NONE_STARTED,${baselineWorkers.joinToString(";")},true")
         println("PASS_PUBLICNATIVE539,$size/$shape")
     }
     companion object { private var escaped: Any? = null }

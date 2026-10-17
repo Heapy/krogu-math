@@ -13,8 +13,9 @@ class NativePublicFrontend539Test {
     private fun expected(left: Int, right: Int): BigInteger = BigInteger.ONE.shiftLeft(left * 30 + right * 30 - 2)
         .add(BigInteger.valueOf(31).shiftLeft(left * 30 - 1))
         .add(BigInteger.valueOf(31).shiftLeft(right * 30 - 1)).add(BigInteger.valueOf(961))
-    @Test fun publicBoundariesSignsAliasAndWorkersTerminateBeforeReturn() {
+    @Test fun publicSerialDeclinePreservesBoundariesSignsAliasAndWorkerAbsence() {
         Worker.current
+        assertTrue(retainSerialParallelMultiply539)
         val baseline = Worker.activeWorkers.map { it.id }.toSet()
         for (words in listOf(4095, 4096, 4097)) {
             val a = value(words)
@@ -36,6 +37,7 @@ class NativePublicFrontend539Test {
         assertSame(BigInteger.ZERO, value(4096).parallelMultiply(BigInteger.ZERO))
         assertNotSame(BigInteger.ONE, BigInteger.ONE.parallelMultiply(BigInteger.ONE))
         assertEquals(baseline, Worker.activeWorkers.map { it.id }.toSet())
+        // Retained candidate capability is independent from the current public serial decline.
         assertFalse(canParallelMultiply539(4095, 4096)); assertFalse(canParallelMultiply539(4096, 8193))
         if (Platform.getAvailableProcessors() > 2) assertTrue(canParallelMultiply539(4096, 8192))
     }

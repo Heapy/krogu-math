@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
- * Unadopted JVM scheduling candidate. Common Kotlin owns all arithmetic.
- * The public parallelMultiply route is unchanged until composed measurements.
+ * Bounded JVM scheduler used by diagnostic controls and the public parallel frontend.
+ * Common Kotlin owns all arithmetic; final frontend acceptance requires composed evidence.
  * The shared gate bounds additional workers across candidate instances; it does
  * not claim control over unrelated application threads or external CPU load.
  * The processor count injection exists for deterministic branch tests; campaigns

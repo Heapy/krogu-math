@@ -178,6 +178,17 @@ open class BigInteger private constructor(
         return normalized(sign * value.sign, MagnitudeMultiplication.multiplyAdaptive(words, valueWords))
     }
 
+    /**
+     * Returns the exact product synchronously, with the same supported range as [multiply].
+     * Large balanced ordinary JVM values may use up to two helper workers.
+     * JS/Wasm/Native retain direct virtual [multiply] without activating a worker backend.
+     * Unsupported shapes, declined eligibility and custom subclasses retain virtual [multiply].
+     * Parallel execution and a speedup are not guaranteed.
+     *
+     * JVM uses a lazy pool shared within the defining classloader. This route
+     * can increase CPU and memory use. Arithmetic failures after acceptance are
+     * propagated without silently recomputing the product serially.
+     */
     open fun parallelMultiply(value: BigInteger): BigInteger {
         if (retainSerialParallelMultiply539) return multiply(value)
         // Physical metadata only before exact-class and backend initialization.
