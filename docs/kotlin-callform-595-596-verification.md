@@ -200,3 +200,17 @@ This does not close full525/553, change the required Kotlin/JS erased/generic
 Number525/557 UNSAT result, validate arbitrary numerical/resource/subtype domains,
 run giant witnesses, establish performance or pass official JCK/TCK. It is the
 narrow call-form repair and its specifically bound local observations.
+
+
+## Later caller-workaround disposition
+
+The preceding remaining-scope statements belong to this source260 report. The
+later user-selected525/557 migration explicitly edits affected Number/generic
+callers to the imported `toKrogu*` conversions (525 comments2544/2545), as described
+in the [current caller guidance](../README.md#kotlinjs-converting-through-number).
+This accepted workaround preserves the original UNSAT diagnostic and compiler
+limitation; it does not claim transparent repair of `Number.toX()` or third-party
+call sites. The595/596 implementation repairs are accepted historical evidence,
+not tasks reopened by the report's old pending wording. Final553 still requires
+matching final-source caller/supported/public evidence and its full qualified
+requirement audit. Neither539 nor598 nor553 is declared complete here.
