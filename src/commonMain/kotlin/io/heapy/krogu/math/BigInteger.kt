@@ -178,7 +178,49 @@ open class BigInteger private constructor(
         return normalized(sign * value.sign, MagnitudeMultiplication.multiplyAdaptive(words, valueWords))
     }
 
-    open fun parallelMultiply(value: BigInteger): BigInteger = multiply(value)
+    /**
+     * Returns the exact product synchronously, with the same supported range as [multiply].
+     * Large balanced ordinary JVM values may use up to two helper workers.
+     * JS/Wasm/Native retain direct virtual [multiply] without activating a worker backend.
+     * Unsupported shapes, declined eligibility and custom subclasses retain virtual [multiply].
+     * Parallel execution and a speedup are not guaranteed.
+     *
+     * JVM uses a lazy pool shared within the defining classloader. This route
+     * can increase CPU and memory use. Arithmetic failures after acceptance are
+     * propagated without silently recomputing the product serially.
+     */
+    open fun parallelMultiply(value: BigInteger): BigInteger {
+        if (retainSerialParallelMultiply539) return multiply(value)
+        // Physical metadata only before exact-class and backend initialization.
+        // Compact/zero/unbalanced/subclass routes retain virtual multiply(value).
+        if (wideWords == null || !hasParallelMagnitude539(value)) return multiply(value)
+        return parallelMultiplyLarge539(value)
+    }
+
+    // Pure, nonvirtual metadata probes. Splitting the tiny receiver getter keeps
+    // each candidate helper small without fields, cached views or allocations.
+    private fun parallelMagnitudeSize539(): Int {
+        val words = wideWords
+        if (words == null) return 0
+        return words.size
+    }
+
+    private fun hasParallelMagnitude539(value: BigInteger): Boolean =
+        parallelMagnitudeSize539() >= 4096 && value.parallelMagnitudeSize539() >= 4096
+
+    private fun parallelMultiplyLarge539(value: BigInteger): BigInteger {
+        // Physical metadata only before exact-class and backend initialization.
+        // Compact/zero/unbalanced/subclass routes retain virtual multiply(value).
+        val leftWords = wideWords ?: return multiply(value)
+        val rightWords = value.wideWords ?: return multiply(value)
+        if (!canParallelMultiply539(leftWords.size, rightWords.size)) return multiply(value)
+        if (this::class != BigInteger::class || value::class != BigInteger::class) return multiply(value)
+        MagnitudeMultiplication.checkBitLengths(magnitudeBits(), value.magnitudeBits())
+        // Borrow each immutable wide magnitude once; preserve shared-input alias.
+        val product = parallelMagnitude539(leftWords, if (value === this) leftWords else rightWords)
+            ?: return multiply(value)
+        return normalized(sign * value.sign, product)
+    }
 
     // Stored, nonvirtual certification only. Null retains the entire old sum
     // expression; unsupported aligned intermediates are never published here.

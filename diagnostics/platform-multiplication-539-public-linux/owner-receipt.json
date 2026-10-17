@@ -1,0 +1,204 @@
+{
+  "status": "OWNER_VALIDATED_IMMUTABLE_RAW_PENDING_INDEPENDENT_DISPOSITION",
+  "run_id": 39009038930,
+  "head": "67acda4549e38f235bb842aedeb570f8e1220cea",
+  "epoch": "PUBLIC_SOURCE_BUILT_LINUX_NOT_MAC_OR_CLAWS",
+  "artifact": {
+    "path": ".codex-work/539/public-linux-guard-67acda4-artifact.zip",
+    "bytes": 18585761,
+    "sha256": "b702abbe93502159afb1a1892acc360b9eaaf3f60cc7b4925ce86981a20943c0"
+  },
+  "raw_root": ".codex-work/539/public-linux-guard-actual-39009038930/guard",
+  "closure_verification": {
+    "each_root_manifest_members": 1089,
+    "each_root_files_including_manifest": 1090,
+    "each_root_hidden_members": 9,
+    "exact_inventory_and_all_member_hashes": true,
+    "safe_extraction": true
+  },
+  "strict_summary": {
+    "status": "STRICT_PAIRED_DATA_PASS_NOT_ADOPTION",
+    "TIME": 1176,
+    "REP": 168,
+    "CHECK": 168,
+    "cases": 28,
+    "guard_flags": [],
+    "all3_slower_cases": [
+      "parallel-public/1/distinct",
+      "parallel-public/63/distinct"
+    ]
+  },
+  "cpu": {
+    "samples": 111,
+    "max_interval_ns": 1002623662,
+    "pre_observation_ns": 15002959528,
+    "scope": "Descriptive interval CPU observation; no admission threshold or causal attribution"
+  },
+  "limitations": [
+    "Old macOS six flags remain retained; fresh Linux source build is a separate epoch, not byte-identical macOS/claws runtime.",
+    "Workflow SUCCESS and zero Linux flags alone are not universal performance or causal recovery claims.",
+    "No automatic numerical repeat; prior pre-numeric failure39008435845 remains preserved."
+  ],
+  "evidence": [
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/context.txt",
+      "bytes": 827,
+      "sha256": "5ade0b8aab312632bd99663167a02d114237be539c1b2e185fa9e95a24c45960"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/paired-summary.json",
+      "bytes": 395405,
+      "sha256": "d55260e94e4984b8894ab80def2651e7a645b16ac14254ed521e30250f3d0246"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/paired-summary.csv",
+      "bytes": 5043,
+      "sha256": "c1cbc1b24a7968d393486156a5180594ba3bc9f1ff97fa776deec4f68c9abfc1"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/events.jsonl",
+      "bytes": 3594,
+      "sha256": "f78f91f693df6283cf5e14020cb632e95e4f1033c7e8f1d3293d5e1490479392"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/cpu-samples.jsonl",
+      "bytes": 82271,
+      "sha256": "878472c0b7f4ff5996f235cfd8aa82ef1f76a2c7c43fdb012b39c1d25782a17c"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/cpu-processes.jsonl",
+      "bytes": 1356414,
+      "sha256": "a77ff2fd25ddf5178d346151cad17a89cb35fa92cd65cb2235a4692bd94ed83d"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/host.jsonl",
+      "bytes": 762,
+      "sha256": "9aea678436587cec2aa7f26b0a933d50428333805cf3cf61f40f5ea9aa869fb1"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/binding-before.txt",
+      "bytes": 476,
+      "sha256": "9bcfc13c7324d29c5521c3e8dee97c787a0d6ff03f7fcd27d473de56aba6a81a"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork0-baseline.log",
+      "bytes": 22719,
+      "sha256": "916c62cb014fee8493e08b008cf63e594a2711ebc514a258171b319d79d2908d"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork0-baseline.log.argv.txt",
+      "bytes": 387,
+      "sha256": "f30e6113f366a48a9596bd63b42b5865b86a2c0599f9fd644ee1775620eda6ce"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork0-baseline.log.binding",
+      "bytes": 504,
+      "sha256": "50a1e26a4561c7c404830cf3f4ee528d0e204127f21ab2560bdc51875a600e85"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork0-baseline.log.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork0-current.log",
+      "bytes": 22717,
+      "sha256": "3f666d65f198a34e3414cccb0d667969be90310f2c39b0434c91cd3542295135"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork0-current.log.argv.txt",
+      "bytes": 384,
+      "sha256": "9f49ec822def66b945bf2582021cf2f2cfb607065a6fae2bd1c99a8fdb05e4c4"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork0-current.log.binding",
+      "bytes": 503,
+      "sha256": "5216391d8d42100750bf63812a773dec0035e1bb3977373faf610e645b71d420"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork0-current.log.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork1-baseline.log",
+      "bytes": 22781,
+      "sha256": "f6480216a8b5fc609f901998bf096d42093845214f3e6650f9dbf3cd040b7525"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork1-baseline.log.argv.txt",
+      "bytes": 387,
+      "sha256": "f30e6113f366a48a9596bd63b42b5865b86a2c0599f9fd644ee1775620eda6ce"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork1-baseline.log.binding",
+      "bytes": 504,
+      "sha256": "e6a24369de1b1e89a9a9ca0de825c74028e3bfe39d3bd0fe6e62127bce605ea3"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork1-baseline.log.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork1-current.log",
+      "bytes": 22758,
+      "sha256": "c81ced9ae54901594504820fb1e2d1b21e1e0b3a9cdd9730c4de00e8d6cc10fa"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork1-current.log.argv.txt",
+      "bytes": 384,
+      "sha256": "9f49ec822def66b945bf2582021cf2f2cfb607065a6fae2bd1c99a8fdb05e4c4"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork1-current.log.binding",
+      "bytes": 503,
+      "sha256": "cacc5bfbd1b104e8021f7e8bdba141c3ab9be8201b37d7e503e4061459cbacae"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork1-current.log.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork2-baseline.log",
+      "bytes": 22716,
+      "sha256": "c29a03a956d73d53466db5d1bc8efcae9a1ae29d9aca7e8d6f63d9027c6b161c"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork2-baseline.log.argv.txt",
+      "bytes": 387,
+      "sha256": "f30e6113f366a48a9596bd63b42b5865b86a2c0599f9fd644ee1775620eda6ce"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork2-baseline.log.binding",
+      "bytes": 504,
+      "sha256": "8aaa1e00ae73f66e59981819836fd9064e93c22ee98ce747204074a0f1a4ccf7"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork2-baseline.log.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork2-current.log",
+      "bytes": 22715,
+      "sha256": "7154975b8ab44144563076d96e9359991587ed002d2f1eefe5bd943caa276f8c"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork2-current.log.argv.txt",
+      "bytes": 384,
+      "sha256": "9f49ec822def66b945bf2582021cf2f2cfb607065a6fae2bd1c99a8fdb05e4c4"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork2-current.log.binding",
+      "bytes": 503,
+      "sha256": "4b3c17dab3a67436b2380d57e8660ea9a27f05f414c371a66e7090c4522ec0f6"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-actual-39009038930/guard/run/fork2-current.log.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  ]
+}

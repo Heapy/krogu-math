@@ -1,0 +1,35 @@
+{
+  "status": "FINAL_QUALIFIED_PLATFORM_DECISIONS_ACCEPTED_PENDING_INTEGRATED_PACKAGE_BINDING",
+  "production": "3f0e1fb8f763b6518395535e222c18407112c9aa",
+  "base_decisions": {
+    "commit": "0db660d5e30983eafbee60bca7a9480c86fc7fc4",
+    "path": "diagnostics/platform-multiplication-539/selected-policy-decisions.json",
+    "sha256": "36b4aa0c654f873b6baa9896d05ede9039d7c26402058ea18283750d863dc99e",
+    "scope": "All historical arithmetic/parallel/resource decisions and adverse observations remain unchanged. This addendum updates only the final JS diagnostic/disposition state, not production policy or old measurement eras."
+  },
+  "jvm": {
+    "scalar": "64/16/384",
+    "parallel": "ADOPT explicit parallelMultiply with bounded reused two-worker pool, min physical operand4096, ratio<=2, CPU/nesting/busy eligibility and synchronous virtual decline preserved.",
+    "evidence": "Historical2d74 large8eligible+adjacency and accepted resource tradeoff, a207 small28 zero flags, scoped compiled carry-forward and final2112 correctness remain their own epochs. CPU up1.974x, approximate allocation delta up393196B, first-use11.458..37.652ms cost-only retained. No fresh-speedup/JIT/owned-peak claim."
+  },
+  "js": {
+    "scalar": "64/16/384",
+    "parallel": "DIRECT_VIRTUAL_SERIAL_BEFORE_HELPERS_BACKEND; Node worker implementation retained as refused candidate.",
+    "small_disposition": "QUALIFIED_ACCEPT_CURRENT_RETAINED_SERIAL_POLICY",
+    "independent_disposition_sha256": "dfcd43bc2ed9ec3283bbf6ce1a79c526cb4b057c1092178732038ec6bef9f0e4",
+    "new_epoch": "Public baseline07910/current975, fresh Linux-x64/Node24.16 compiler closures; fixed full28/three-pair1176TIME168REP168CHECK, zero joint frozen flags.",
+    "preserved_uncertainty": "Old six macOS flags, one local NO_NUMERIC_RUN and first pre-numeric public CI failure retained; no causal macOS recovery or universal parity. Two new all-three adverse cases remain below unchanged15%AND5ns trigger. No new backend benefit or selected32 restoration."
+  },
+  "wasm": {
+    "scalar": "64/16/384",
+    "parallel": "DIRECT_VIRTUAL_SERIAL_BEFORE_HELPERS_BACKEND; candidate activation refused.",
+    "evidence": "Qualified final current small guard PASS and retained public45FIRST1260warm numerical/resource-absence evidence accepted. Old ordinary511 distinct and parallel observations remain without causal recovery."
+  },
+  "native": {
+    "scalar": "Physical distinct equal-length32; aliases/unbalanced64; leaf16/entry384",
+    "parallel": "DIRECT_VIRTUAL_SERIAL; per-call two-worker candidate refused after credible small-path risk.",
+    "evidence": "Historical nine eligible large wins/CPU1.003..2.093/full Worker lifecycle and mixed small flags retained. Final compiled prefix removal,11contracts and retained45FIRST1260warm accepted. No claim ordinary30 parity or new backend gain."
+  },
+  "global_scope": "Arithmetic remains independent common Kotlin; no java.math numerical delegation. Full2112 correctness and current553 hosted13instances7062/oracle25/normal106+large12 support their mathematical/caller/source scopes, not universal performance. Main integration and package/Git binding remain concrete closing actions.",
+  "private_export": "No private TAR or claws export; public-source diagnostic supplied the missing bounded evidence without that permission."
+}

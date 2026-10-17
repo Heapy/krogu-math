@@ -1,0 +1,1171 @@
+{
+  "status": "PASS_HOSTED_NORMAL106_AND_FINAL_SUPPORTED_PUBLIC_EVIDENCE_JOIN_NOT_EXHAUSTIVE553_ACCEPTANCE",
+  "run_id": 39007702192,
+  "head_sha": "975182f9bca911be86ef1bc4efedc7039cc8fe36",
+  "results_sha256": "2827ab0721c0e7c114e5e6b42f51123005405f796f183582d498220125ea6a52",
+  "full_run_log_sha256": "e881a1f44a2be06a617814862822929bda669fc04d6029832fcfc2757a8ebb7b",
+  "checkpoint_sha256": "62448b1b1ddc4901871f7a9affef147d8ddac3be151d04ba253a167e0e00ceb4",
+  "artifact_api_ledger_sha256": "fbbd71790a5bdada6c9ec33d22278c0d472fef9cc1626bb04aa56e143105fb63",
+  "normal_artifact_id": 12092421721,
+  "normal_artifact_api_digest": "sha256:ce0de7a70451108c8a528c4060e9dbe2ea003d8bc7c072c64048ad057b534bb6",
+  "same_run_jar_sha256": "e8ba87ac09532760f64bd226c7b00aea40b76d8c0b7ae21ddade521570b4517a",
+  "normal_counts": {
+    "PASS": 106,
+    "FAIL": 0,
+    "SKIP": 46
+  },
+  "normal_executed_rows": [
+    {
+      "id": "baseline/BigDecimal/AddTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/AddTests.java",
+      "directive": "main AddTests",
+      "resource": "standard",
+      "stdout_sha256": "fd302a088190707710e15c07b662e1e672e13776273a7a52acecef2070117851",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "c290bb16e11b79adb64b861e2836a392a82e93336ba3f5dd078ab1f3ba1743a5",
+      "elapsed_ms": 165
+    },
+    {
+      "id": "baseline/BigDecimal/CompareToTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/CompareToTests.java",
+      "directive": "main CompareToTests",
+      "resource": "standard",
+      "stdout_sha256": "55b5ef9b4623cd9c52b492e3a818369e8a8c0c9fdd5d70637f612016bf003c83",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "cec9bee14927647880c8da476afca6701a080f16cfa0ddeb09860882e1c71d7b",
+      "elapsed_ms": 88
+    },
+    {
+      "id": "baseline/BigDecimal/Constructor/run-1",
+      "path": "test/jdk/java/math/BigDecimal/Constructor.java",
+      "directive": "testng Constructor",
+      "resource": "standard",
+      "stdout_sha256": "2dad51233b69ef12bc15caa3021396d7e20c66eba67a26b25f52eaa92ea6c2b3",
+      "stderr_sha256": "2c58b87a0350a39bb1c3b5f4891defeeb9a785e84aa11a466dc9ddb21253bf58",
+      "compiled_source_sha256": "57989836b531fc6a3f197cdefb1ae3da6c87ef805e6f3f00de4dd8d58207927e",
+      "elapsed_ms": 350
+    },
+    {
+      "id": "baseline/BigDecimal/ConstructorUnscaledValue/run-1",
+      "path": "test/jdk/java/math/BigDecimal/ConstructorUnscaledValue.java",
+      "directive": "main ConstructorUnscaledValue",
+      "resource": "standard",
+      "stdout_sha256": "98879825381ef48a03e5d7a45c3810e07714407f0df1330f8deb4f5669f8f82b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "6dcdca88154afd7d2d6da50b4c0ead500a5be3d14b2a936e96fa3ac2d8a57fe6",
+      "elapsed_ms": 90
+    },
+    {
+      "id": "baseline/BigDecimal/DivideMcTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/DivideMcTests.java",
+      "directive": "main DivideMcTests",
+      "resource": "standard",
+      "stdout_sha256": "f754a37360da297b0c3d08fe6146a92a5ca85b259e8ffd2d03fbd6415bcd09da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "d21841fd06932ea04ddd66a84004fc51b1c073efa46c09fe5ef3cbd2ff26dc9c",
+      "elapsed_ms": 583
+    },
+    {
+      "id": "baseline/BigDecimal/DivideMcTests/run-2",
+      "path": "test/jdk/java/math/BigDecimal/DivideMcTests.java",
+      "directive": "main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:+EliminateAutoBox -XX:AutoBoxCacheMax=20000 DivideMcTests",
+      "resource": "standard",
+      "stdout_sha256": "f754a37360da297b0c3d08fe6146a92a5ca85b259e8ffd2d03fbd6415bcd09da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "d21841fd06932ea04ddd66a84004fc51b1c073efa46c09fe5ef3cbd2ff26dc9c",
+      "elapsed_ms": 744
+    },
+    {
+      "id": "baseline/BigDecimal/DivideTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/DivideTests.java",
+      "directive": "main DivideTests",
+      "resource": "standard",
+      "stdout_sha256": "3652631cd3fee9cb879a2dd015024b323efa9e56cb1d94bbb3f6cef8f2edab10",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "316cd2f8c7f0c018200a4325fa5151fd14d208e63738b918b7a0677d1ae49265",
+      "elapsed_ms": 89
+    },
+    {
+      "id": "baseline/BigDecimal/DoubleFloatValueTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/DoubleFloatValueTests.java",
+      "directive": "main DoubleFloatValueTests",
+      "resource": "standard",
+      "stdout_sha256": "044b8192e58f4d3146e8ac4230b8e3f3ea7eed70c98e9f898dfadeb563e23429",
+      "stderr_sha256": "edc8d35623ef3b5bdbbf28491b2a7624c1b8e3502b34ec0aa1ae61ac754cb9c0",
+      "compiled_source_sha256": "a4d00558f9ea34811a46dec6a5fe5139b2473dc189a09db87195cd37bc30dd66",
+      "elapsed_ms": 814
+    },
+    {
+      "id": "baseline/BigDecimal/EqualsTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/EqualsTests.java",
+      "directive": "main EqualsTests",
+      "resource": "standard",
+      "stdout_sha256": "395caa87ca883639f3284c62544a9cba02c0f952a3ac3848d4f8d49dad0f1345",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "9aa2868874e5db6d7858a79058aeac3dc65f08ababce8f42da21c5010df2ca1b",
+      "elapsed_ms": 89
+    },
+    {
+      "id": "baseline/BigDecimal/FloatDoubleValueTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/FloatDoubleValueTests.java",
+      "directive": "main FloatDoubleValueTests",
+      "resource": "standard",
+      "stdout_sha256": "35d62761ccc31305f20564b8f568bdf7fb0bba6a5b87bab4a7412fc877937c1a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "e150982ec6c94be3bef802c646799b8d796e4829d8ac7174182a83e93153745d",
+      "elapsed_ms": 90
+    },
+    {
+      "id": "baseline/BigDecimal/FloatDoubleValueTests/run-2",
+      "path": "test/jdk/java/math/BigDecimal/FloatDoubleValueTests.java",
+      "directive": "main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:+EliminateAutoBox -XX:AutoBoxCacheMax=20000 FloatDoubleValueTests",
+      "resource": "standard",
+      "stdout_sha256": "35d62761ccc31305f20564b8f568bdf7fb0bba6a5b87bab4a7412fc877937c1a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "e150982ec6c94be3bef802c646799b8d796e4829d8ac7174182a83e93153745d",
+      "elapsed_ms": 82
+    },
+    {
+      "id": "baseline/BigDecimal/IntValueExactTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/IntValueExactTests.java",
+      "directive": "main IntValueExactTests",
+      "resource": "standard",
+      "stdout_sha256": "87793618f7de3adae176bfac60b66fb655754f7fd00cfac538c75320c27f4a86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "a4365f594a4dc98dd57777c3f498b7b86036b5cb0b8f7781e54fd5a0ac0a5fde",
+      "elapsed_ms": 87
+    },
+    {
+      "id": "baseline/BigDecimal/IntegralDivisionTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/IntegralDivisionTests.java",
+      "directive": "main IntegralDivisionTests",
+      "resource": "standard",
+      "stdout_sha256": "bbdf78ac84fbbad5f19a88ac0a811b802cb4b6babfd0d67f3eb91a5390061be5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "5cf351edf42b6f8a277e50d74fdb6c8e6a3c0e0e30a77b1cd6a28c85d1cc9052",
+      "elapsed_ms": 94
+    },
+    {
+      "id": "baseline/BigDecimal/IntegralValueTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/IntegralValueTests.java",
+      "directive": "main IntegralValueTests",
+      "resource": "standard",
+      "stdout_sha256": "c2538a97fa79fbb6a02eeb7e0fbfc73a52034834f59322f8b8e64a5bba068175",
+      "stderr_sha256": "9755fda2c64153356bbf40a9c1748deb055c61052e356c346e55ce776f9c4571",
+      "compiled_source_sha256": "315c42e3a35d629a715ad26ff45279bd1ddb2d84c515c8d646c1eea02f249ea0",
+      "elapsed_ms": 88
+    },
+    {
+      "id": "baseline/BigDecimal/LongValueExactTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/LongValueExactTests.java",
+      "directive": "main LongValueExactTests",
+      "resource": "standard",
+      "stdout_sha256": "a1f04f147f3d4eacf233ccd576fd998d6e0c23ff4d78ccc28bdf7a58ef029a7d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "db713578c373c465899eda36af52ae93dfbff119238488c1aaa34f558ba21e11",
+      "elapsed_ms": 82
+    },
+    {
+      "id": "baseline/BigDecimal/MovePointTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/MovePointTests.java",
+      "directive": "main MovePointTests",
+      "resource": "standard",
+      "stdout_sha256": "2c7116dea9a98d95ffbc25dab022d20c7c6a89a224d17514c93151688190db11",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "94f1761b80ca2273f814362f6dba914d065fc1406714808ddacf4ada827806ff",
+      "elapsed_ms": 92
+    },
+    {
+      "id": "baseline/BigDecimal/MultiplyTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/MultiplyTests.java",
+      "directive": "main MultiplyTests",
+      "resource": "standard",
+      "stdout_sha256": "094c0ea647b5866b274e73a666c9556dc19d6b2f9f6abaeedee34354ee1910f1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "5836ac703927c1cc400603052da3a784113e601639927ad3806d07ee0d40269a",
+      "elapsed_ms": 89
+    },
+    {
+      "id": "baseline/BigDecimal/NegateTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/NegateTests.java",
+      "directive": "main NegateTests",
+      "resource": "standard",
+      "stdout_sha256": "fd1e8557b1728a295da5a4f5e2f5a398bcb5a3c7eb433cf34b50cd71e6ddf471",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "4a053bd16873ff38783b09d0bbdb6f237688d0ca5f158bd78a85191b1b985327",
+      "elapsed_ms": 83
+    },
+    {
+      "id": "baseline/BigDecimal/PowTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/PowTests.java",
+      "directive": "main PowTests",
+      "resource": "standard",
+      "stdout_sha256": "5433293b87b7fb277ed4a7cb28c2993a628394a960fc8b23e938187ed96188f1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "711fdec71b38e584db624c5ee084a0c32ad93f2b4aef88d90f613aacaa937370",
+      "elapsed_ms": 81
+    },
+    {
+      "id": "baseline/BigDecimal/PrecisionTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/PrecisionTests.java",
+      "directive": "main PrecisionTests",
+      "resource": "standard",
+      "stdout_sha256": "bab0285bafcbadb49ec21b508bc83057f191813213c3e92eadb5ab8fd4ae31b7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "37ed0f1ee94547f2f095a8d7dca56cc7147ef6ecdacf091a1b1ea32cd7f34c0d",
+      "elapsed_ms": 86
+    },
+    {
+      "id": "baseline/BigDecimal/RangeTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/RangeTests.java",
+      "directive": "main RangeTests",
+      "resource": "standard",
+      "stdout_sha256": "6a9be902116ef7dd68cc51d8b75b6fa3f68c60336e6bb4fe2970d4778e8b05e8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "535d8df671be4b52cf3b661f83c8adb21a314a4e16bfe872736f3dca3cf844ca",
+      "elapsed_ms": 81
+    },
+    {
+      "id": "baseline/BigDecimal/RangeTests/run-2",
+      "path": "test/jdk/java/math/BigDecimal/RangeTests.java",
+      "directive": "main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:+EliminateAutoBox -XX:AutoBoxCacheMax=20000 RangeTests",
+      "resource": "standard",
+      "stdout_sha256": "6a9be902116ef7dd68cc51d8b75b6fa3f68c60336e6bb4fe2970d4778e8b05e8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "535d8df671be4b52cf3b661f83c8adb21a314a4e16bfe872736f3dca3cf844ca",
+      "elapsed_ms": 90
+    },
+    {
+      "id": "baseline/BigDecimal/RoundingTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/RoundingTests.java",
+      "directive": "main RoundingTests",
+      "resource": "standard",
+      "stdout_sha256": "9458f1aa982df8a9edd12f73652c0f4a64468e96f397edcffacaa42e7ea87631",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "ee4069cfb07a38ca05b4e013d8b4388fdcb77130c8c2e04249c039b65ca22944",
+      "elapsed_ms": 87
+    },
+    {
+      "id": "baseline/BigDecimal/ScaleByPowerOfTenTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/ScaleByPowerOfTenTests.java",
+      "directive": "main ScaleByPowerOfTenTests",
+      "resource": "standard",
+      "stdout_sha256": "3cc4640607a9c2d72aedd033b9a9c731a308d18be55807a24e7a56d1f6600339",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "bd43a3c1eb7088449a831e855bace7ab09be28171ee4dd3d89dcfd1de7249cab",
+      "elapsed_ms": 87
+    },
+    {
+      "id": "baseline/BigDecimal/SerializationTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/SerializationTests.java",
+      "directive": "main SerializationTests",
+      "resource": "serialization",
+      "stdout_sha256": "521cc755dd4dbef7855a7dfa9999956a93de3c3a9d997da574bf4903f90445f1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "217bd52fa4049b4ecfece759e4356b0f3ccb3aa6a44f67b62d630fe41e159c49",
+      "elapsed_ms": 163
+    },
+    {
+      "id": "baseline/BigDecimal/SquareRootTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/SquareRootTests.java",
+      "directive": "main SquareRootTests",
+      "resource": "standard",
+      "stdout_sha256": "8e9a45d1c054e853ec2d09709fe20b9dca787f8d8483d914b6b06272378f1bdb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "1d4abb1ea98e14a3cd28defd54d16f2ee49563e3862e86cad11399f5591274aa",
+      "elapsed_ms": 208
+    },
+    {
+      "id": "baseline/BigDecimal/StringConstructor/run-1",
+      "path": "test/jdk/java/math/BigDecimal/StringConstructor.java",
+      "directive": "main StringConstructor",
+      "resource": "standard",
+      "stdout_sha256": "c3d3af1ec5d8a059dca7620eaf5fe883bfa0dc51d54f25459fdd5405651d7f84",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "163222088c3d93c0de0ea7482fb255ccbf5e35ccad50cbb0b32e3232c36ca874",
+      "elapsed_ms": 91
+    },
+    {
+      "id": "baseline/BigDecimal/StrippingZerosTest/run-1",
+      "path": "test/jdk/java/math/BigDecimal/StrippingZerosTest.java",
+      "directive": "main StrippingZerosTest",
+      "resource": "standard",
+      "stdout_sha256": "88b9fe81dd87af09d1826fd96bfe9adb0bd6ffa5a43e86b1ae568225787cafc1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "fbb93168fc940d67e75535e952e8260cc323d7a9d9cce807330b589b76df7fe2",
+      "elapsed_ms": 84
+    },
+    {
+      "id": "baseline/BigDecimal/StrippingZerosTest/run-2",
+      "path": "test/jdk/java/math/BigDecimal/StrippingZerosTest.java",
+      "directive": "main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:+EliminateAutoBox -XX:AutoBoxCacheMax=20000 StrippingZerosTest",
+      "resource": "standard",
+      "stdout_sha256": "88b9fe81dd87af09d1826fd96bfe9adb0bd6ffa5a43e86b1ae568225787cafc1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "fbb93168fc940d67e75535e952e8260cc323d7a9d9cce807330b589b76df7fe2",
+      "elapsed_ms": 85
+    },
+    {
+      "id": "baseline/BigDecimal/ToPlainStringTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/ToPlainStringTests.java",
+      "directive": "main ToPlainStringTests",
+      "resource": "standard",
+      "stdout_sha256": "a38799d98bb6e8528a90d5ea19ee5a8fb2688baa3242f2624f2599cd487af7c4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "0347bcef07932c99f4aae2169e7a76dd03f25dc4f8e2083eb88942c3a489c538",
+      "elapsed_ms": 83
+    },
+    {
+      "id": "baseline/BigDecimal/ToPlainStringTests/run-2",
+      "path": "test/jdk/java/math/BigDecimal/ToPlainStringTests.java",
+      "directive": "main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:+EliminateAutoBox -XX:AutoBoxCacheMax=20000 ToPlainStringTests",
+      "resource": "standard",
+      "stdout_sha256": "a38799d98bb6e8528a90d5ea19ee5a8fb2688baa3242f2624f2599cd487af7c4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "0347bcef07932c99f4aae2169e7a76dd03f25dc4f8e2083eb88942c3a489c538",
+      "elapsed_ms": 89
+    },
+    {
+      "id": "baseline/BigDecimal/ValueOfDouble/run-1",
+      "path": "test/jdk/java/math/BigDecimal/ValueOfDouble.java",
+      "directive": "junit ValueOfDouble",
+      "resource": "standard",
+      "stdout_sha256": "5626a314e032532fdf4d0b5a4a8d2ad6a989094a9475835e5cc7c5307d61f149",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "bec12a6eb09cc3b5811040a2c64bf08325e00a3f38edf610a523c5f12c7af75d",
+      "elapsed_ms": 845
+    },
+    {
+      "id": "baseline/BigDecimal/ZeroScalingTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/ZeroScalingTests.java",
+      "directive": "main ZeroScalingTests",
+      "resource": "standard",
+      "stdout_sha256": "49c3aa47c4199d9249b50e24d8c3180e301ccc566c5749958bb45d7321eb162c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "4f450bc41865f926badd97697601fa5cdca3848125e983b1c189ee15b083effd",
+      "elapsed_ms": 100
+    },
+    {
+      "id": "baseline/BigInteger/BigIntegerParallelMultiplyTest/run-1",
+      "path": "test/jdk/java/math/BigInteger/BigIntegerParallelMultiplyTest.java",
+      "directive": "main BigIntegerParallelMultiplyTest",
+      "resource": "heavy",
+      "stdout_sha256": "1cb3f1ed87895e98c610e0f1893724567e96cb63fabc64d441bd96b1d8d4a611",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "e9e01a01f3d4671dac60e3e8e5887e44182e4153a1ec20de048930c95058c07d",
+      "elapsed_ms": 409
+    },
+    {
+      "id": "baseline/BigInteger/BigIntegerTest/run-1",
+      "path": "test/jdk/java/math/BigInteger/BigIntegerTest.java",
+      "directive": "main BigIntegerTest",
+      "resource": "heavy",
+      "stdout_sha256": "0a2cf76c8d122061d90e264b394e1db6a5a0bcd3dc5e2b85d2c0a029ada571f5",
+      "stderr_sha256": "825b45690cd248a92e3af47c37520f94cc7bdaeef2071e1e6a04605f330f1220",
+      "compiled_source_sha256": "6c36bb6c52802846ec1d827b7d2cecc090362d9b6975d76ab2c5fdfcc54956ba",
+      "elapsed_ms": 19599
+    },
+    {
+      "id": "baseline/BigInteger/BigIntegerTest/run-2",
+      "path": "test/jdk/java/math/BigInteger/BigIntegerTest.java",
+      "directive": "main/timeout=400 BigIntegerTest",
+      "resource": "heavy",
+      "stdout_sha256": "0a2cf76c8d122061d90e264b394e1db6a5a0bcd3dc5e2b85d2c0a029ada571f5",
+      "stderr_sha256": "825b45690cd248a92e3af47c37520f94cc7bdaeef2071e1e6a04605f330f1220",
+      "compiled_source_sha256": "6c36bb6c52802846ec1d827b7d2cecc090362d9b6975d76ab2c5fdfcc54956ba",
+      "elapsed_ms": 19531
+    },
+    {
+      "id": "baseline/BigInteger/ByteArrayConstructorTest/run-1",
+      "path": "test/jdk/java/math/BigInteger/ByteArrayConstructorTest.java",
+      "directive": "junit/othervm -DmaxDurationMillis=3000 ByteArrayConstructorTest",
+      "resource": "standard",
+      "stdout_sha256": "5373a9dd147d1e6948722915437bb995bc27976347829a54b639055accf1fd89",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "5e4081e82d20351917b33b78ada59e24bed859bac49c47a52ec5089f5ade6846",
+      "elapsed_ms": 6908
+    },
+    {
+      "id": "baseline/BigInteger/CompareToTests/run-1",
+      "path": "test/jdk/java/math/BigInteger/CompareToTests.java",
+      "directive": "main CompareToTests",
+      "resource": "standard",
+      "stdout_sha256": "55b5ef9b4623cd9c52b492e3a818369e8a8c0c9fdd5d70637f612016bf003c83",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "66d1847cca7f16ea443ed2530f2dec2918fcdce4a1609fb36c83d7ae04ea39c3",
+      "elapsed_ms": 62
+    },
+    {
+      "id": "baseline/BigInteger/ExtremeShiftingTests/run-1",
+      "path": "test/jdk/java/math/BigInteger/ExtremeShiftingTests.java",
+      "directive": "main/othervm -Xmx512m ExtremeShiftingTests",
+      "resource": "memory-512m",
+      "stdout_sha256": "3d453f6138392e1efe88c1ed68b44f614cea8f8c312abb3f8baadea893c1269e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "0775960a91aa1211cba0472012634862ad9235417f3023f0f5805e7341adcac6",
+      "elapsed_ms": 110
+    },
+    {
+      "id": "baseline/BigInteger/HashCode/run-1",
+      "path": "test/jdk/java/math/BigInteger/HashCode.java",
+      "directive": "main HashCode",
+      "resource": "standard",
+      "stdout_sha256": "c7649a30c078316dcd814fe497f765d66a59f369a144e424e947328a9c45b6df",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "3f6cb6431a98589ebca02e409e6e8876404a6a0869a300c1291dfa9ed39af0f3",
+      "elapsed_ms": 66
+    },
+    {
+      "id": "baseline/BigInteger/ModInvTime/run-1",
+      "path": "test/jdk/java/math/BigInteger/ModInvTime.java",
+      "directive": "main/othervm ModInvTime",
+      "resource": "standard",
+      "stdout_sha256": "5cbe4f7b6e05b25d7efa09d136fc35ff1807f6e01667467490d4a9741b1ed423",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "b3a9e16ab74d5bf98187fddf3d0ff764776655d14ed0dd0ffdf5d247f8fbced0",
+      "elapsed_ms": 89
+    },
+    {
+      "id": "baseline/BigInteger/ModPow/run-1",
+      "path": "test/jdk/java/math/BigInteger/ModPow.java",
+      "directive": "main ModPow",
+      "resource": "standard",
+      "stdout_sha256": "7a2ed24bc84ddba308812611e64add9ce31be953f11c6b62504389b18a99030f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "daa859975c04cdb9853613da87a35a6bd39b17f87112c9ed7190ba51a59d7754",
+      "elapsed_ms": 213
+    },
+    {
+      "id": "baseline/BigInteger/ModPow65537/run-1",
+      "path": "test/jdk/java/math/BigInteger/ModPow65537.java",
+      "directive": "main ModPow65537",
+      "resource": "standard",
+      "stdout_sha256": "0d69afbd67d16d294b7145e6f0703414590d7e674ad74342572fc4c0866c30c2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "b7cc75fcc1f3990f62f1532e5d467a0d7d1c5a5547f37a627b3350e5fd07b823",
+      "elapsed_ms": 236
+    },
+    {
+      "id": "baseline/BigInteger/ModPowPowersof2/run-1",
+      "path": "test/jdk/java/math/BigInteger/ModPowPowersof2.java",
+      "directive": "main/othervm ModPowPowersof2",
+      "resource": "standard",
+      "stdout_sha256": "743529d5976d465eb2a1d4979f1fd15b55468285546fec506098037059a4bed6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "ebb23506249e9fbebac268f98531f0035ab2c925d3f6f223ded0c90cb1330c54",
+      "elapsed_ms": 211
+    },
+    {
+      "id": "baseline/BigInteger/OperatorNpeTests/run-1",
+      "path": "test/jdk/java/math/BigInteger/OperatorNpeTests.java",
+      "directive": "main OperatorNpeTests",
+      "resource": "standard",
+      "stdout_sha256": "a750d6f8cb124deb221a21c44b10b79c043951d21f2c1ca6306db03e77bdb6de",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "0f642e8e79f67a602e381ce795e58e1d0fcc73637bc16119d1035041e57bbf2b",
+      "elapsed_ms": 62
+    },
+    {
+      "id": "baseline/BigInteger/PrimeTest/run-1",
+      "path": "test/jdk/java/math/BigInteger/PrimeTest.java",
+      "directive": "main PrimeTest",
+      "resource": "heavy",
+      "stdout_sha256": "f0cbec17d76f1736c2197223c5d53bb102037ba9fc18e2fb203071d2f581701d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "e539033a27d32ad15924a1522ab3ba4d444b2b2283ca033099c0fa60c2c9eb09",
+      "elapsed_ms": 3709
+    },
+    {
+      "id": "baseline/BigInteger/PrimitiveConversionTests/run-1",
+      "path": "test/jdk/java/math/BigInteger/PrimitiveConversionTests.java",
+      "directive": "main PrimitiveConversionTests",
+      "resource": "standard",
+      "stdout_sha256": "a80e889000c960460f534a66d9334dd1830b8ef88ebdb9fb287dd8b27809f35c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "0f878b41e59b2f6f606a2cee324c1f44532927c3e564ce5331eac34316c2742b",
+      "elapsed_ms": 231
+    },
+    {
+      "id": "baseline/BigInteger/ProbablePrime/run-1",
+      "path": "test/jdk/java/math/BigInteger/ProbablePrime.java",
+      "directive": "main ProbablePrime",
+      "resource": "heavy",
+      "stdout_sha256": "125924ac22d0f0f9a6945f9363a7805313de4c5f47e7f5a60c36698175193571",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "ec6eb9fa480ff77219ccf71ca633e9142520514323170d4829430d404819f9ae",
+      "elapsed_ms": 67
+    },
+    {
+      "id": "baseline/BigInteger/SerializationTests/run-1",
+      "path": "test/jdk/java/math/BigInteger/SerializationTests.java",
+      "directive": "main SerializationTests",
+      "resource": "serialization",
+      "stdout_sha256": "521cc755dd4dbef7855a7dfa9999956a93de3c3a9d997da574bf4903f90445f1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "a61221baef81ed88f1530cee60df7c69de6147aab9a2eaa99ca7e33ce92eb873",
+      "elapsed_ms": 135
+    },
+    {
+      "id": "baseline/BigInteger/StringConstructor/run-1",
+      "path": "test/jdk/java/math/BigInteger/StringConstructor.java",
+      "directive": "main StringConstructor",
+      "resource": "standard",
+      "stdout_sha256": "7c66a4535f9524714f14fc9062a8309ed13546b1bf5b1fe0b3c1988a3868ba18",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "dbff0ef6d209f3c6d1079f6db336620ae8805b762c1958e4d8ee79445834ec9f",
+      "elapsed_ms": 67
+    },
+    {
+      "id": "baseline/BigInteger/TestValueExact/run-1",
+      "path": "test/jdk/java/math/BigInteger/TestValueExact.java",
+      "directive": "main TestValueExact",
+      "resource": "standard",
+      "stdout_sha256": "da0df826b94dab9da9112e052836835e3614d31620beaeecd7e04002c2a874d3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "e4c7f2f36c728e2394fd94388780c00f7e89eedb386771bf1a303c662a76d459",
+      "elapsed_ms": 69
+    },
+    {
+      "id": "baseline/BigInteger/UnicodeConstructor/run-1",
+      "path": "test/jdk/java/math/BigInteger/UnicodeConstructor.java",
+      "directive": "main UnicodeConstructor",
+      "resource": "standard",
+      "stdout_sha256": "da9cd1e12632af8b5c373d9ef5fc2f78e0ca7c8dcb8afe0f80915e659d53307d",
+      "stderr_sha256": "7fd1f7f5e64c4b4f8e1f886997d2557fc09a05d62806a19bdbf4175a49d21799",
+      "compiled_source_sha256": "f2e3b628bfe2cbec8af348359394a35bfc42a00fbdd674b69efea5087e8a3db2",
+      "elapsed_ms": 69
+    },
+    {
+      "id": "baseline/RoundingMode/RoundingModeTests/run-1",
+      "path": "test/jdk/java/math/RoundingMode/RoundingModeTests.java",
+      "directive": "main RoundingModeTests",
+      "resource": "standard",
+      "stdout_sha256": "cac1503f2a0d160a76b040e66500835f476b2eccd77d08be2ca55e3fe65b47aa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "59eb1534ed163b54174cd9f3c893728b9a04699ee2eb1a00c6b2ebd87fd2a043",
+      "elapsed_ms": 65
+    },
+    {
+      "id": "port/BigDecimal/AddTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/AddTests.java",
+      "directive": "main AddTests",
+      "resource": "standard",
+      "stdout_sha256": "47af7fa994e26b92abfa54e017f9f08b55842acefd157583c5df38edd6b064d0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "67c3613418a544377cc68aedeb79e4055584e761d848e22451948095afc38af5",
+      "elapsed_ms": 260
+    },
+    {
+      "id": "port/BigDecimal/CompareToTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/CompareToTests.java",
+      "directive": "main CompareToTests",
+      "resource": "standard",
+      "stdout_sha256": "85a388745d942453ae3d038bc590c878111804792ba371b76c6d90bf6eea8dac",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "41ef2452e7d6aea0bc8874c36ea8e7c2a294547c3132b99a4efa5799b91c47f6",
+      "elapsed_ms": 94
+    },
+    {
+      "id": "port/BigDecimal/Constructor/run-1",
+      "path": "test/jdk/java/math/BigDecimal/Constructor.java",
+      "directive": "testng Constructor",
+      "resource": "standard",
+      "stdout_sha256": "aab1222705da23b0315e460e69b0f9b7108a5781cdb31a0a6d8758777bb58e8f",
+      "stderr_sha256": "2c58b87a0350a39bb1c3b5f4891defeeb9a785e84aa11a466dc9ddb21253bf58",
+      "compiled_source_sha256": "b858e7951a127bc86efbf36cb6999898b3070c3762e98af819f3e703aeb062e6",
+      "elapsed_ms": 368
+    },
+    {
+      "id": "port/BigDecimal/ConstructorUnscaledValue/run-1",
+      "path": "test/jdk/java/math/BigDecimal/ConstructorUnscaledValue.java",
+      "directive": "main ConstructorUnscaledValue",
+      "resource": "standard",
+      "stdout_sha256": "1155c7ec474b98aaca5d20fddda709248119005ec05c04698ef2c3192d453496",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "905b52ed0cea7642f6c78748d23bce07994d0b36b1b03caf4d66edf6e3e0b78f",
+      "elapsed_ms": 90
+    },
+    {
+      "id": "port/BigDecimal/DivideMcTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/DivideMcTests.java",
+      "directive": "main DivideMcTests",
+      "resource": "standard",
+      "stdout_sha256": "64fb94ba1bfa32657a44e39928e445538beab23885cd7a0e76d993d0496fc0f2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "f1fa4b9d0d0e355ead59060279c4ed74f10ffbe0a11cf798aded49f01de7ed15",
+      "elapsed_ms": 1522
+    },
+    {
+      "id": "port/BigDecimal/DivideMcTests/run-2",
+      "path": "test/jdk/java/math/BigDecimal/DivideMcTests.java",
+      "directive": "main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:+EliminateAutoBox -XX:AutoBoxCacheMax=20000 DivideMcTests",
+      "resource": "standard",
+      "stdout_sha256": "64fb94ba1bfa32657a44e39928e445538beab23885cd7a0e76d993d0496fc0f2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "f1fa4b9d0d0e355ead59060279c4ed74f10ffbe0a11cf798aded49f01de7ed15",
+      "elapsed_ms": 1316
+    },
+    {
+      "id": "port/BigDecimal/DivideTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/DivideTests.java",
+      "directive": "main DivideTests",
+      "resource": "standard",
+      "stdout_sha256": "6e8a290e224cbdb6d5109b9142a51fc5efcca1537ad040e11bfb20cd7b5dd4f2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "72f60904ee98c5297ccdc2e9a7d6a806d82ac073cc9741a4d2dbafbcef64f0a6",
+      "elapsed_ms": 161
+    },
+    {
+      "id": "port/BigDecimal/DoubleFloatValueTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/DoubleFloatValueTests.java",
+      "directive": "main DoubleFloatValueTests",
+      "resource": "standard",
+      "stdout_sha256": "c604786660c06d1975a42780c865fcd02308ba0f9d1bee2029167d44357d2657",
+      "stderr_sha256": "edc8d35623ef3b5bdbbf28491b2a7624c1b8e3502b34ec0aa1ae61ac754cb9c0",
+      "compiled_source_sha256": "ff51f3724818c270a31da1ec1b5ce2033480c57d51d18d4fe6f90838cac4c61f",
+      "elapsed_ms": 1796
+    },
+    {
+      "id": "port/BigDecimal/EqualsTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/EqualsTests.java",
+      "directive": "main EqualsTests",
+      "resource": "standard",
+      "stdout_sha256": "f59e3609696b0c509ccc91ae4be231f0d7ba41bd0fdedaf82f334e505e93126b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "0b6a3cd4dea4a49f66cd4ee83bdafe38fc653951cd06317f0ae4612b69fbad65",
+      "elapsed_ms": 151
+    },
+    {
+      "id": "port/BigDecimal/FloatDoubleValueTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/FloatDoubleValueTests.java",
+      "directive": "main FloatDoubleValueTests",
+      "resource": "standard",
+      "stdout_sha256": "8d20c2b2ea5c326bb2bf487c1e9811899ca04ec85f73cc30c42a0037b24dd1ef",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "c5730513067ce701e01e26c9d332fa59fe162467e47056aeaac90df43695db9b",
+      "elapsed_ms": 179
+    },
+    {
+      "id": "port/BigDecimal/FloatDoubleValueTests/run-2",
+      "path": "test/jdk/java/math/BigDecimal/FloatDoubleValueTests.java",
+      "directive": "main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:+EliminateAutoBox -XX:AutoBoxCacheMax=20000 FloatDoubleValueTests",
+      "resource": "standard",
+      "stdout_sha256": "8d20c2b2ea5c326bb2bf487c1e9811899ca04ec85f73cc30c42a0037b24dd1ef",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "c5730513067ce701e01e26c9d332fa59fe162467e47056aeaac90df43695db9b",
+      "elapsed_ms": 177
+    },
+    {
+      "id": "port/BigDecimal/IntValueExactTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/IntValueExactTests.java",
+      "directive": "main IntValueExactTests",
+      "resource": "standard",
+      "stdout_sha256": "533b627cec81c9505eb8dd387f44ab94fdf8a0912eae8c709a94992cf4e2e4fb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "1de475ec6eab9557810cbc84bcfd6fea9eee81a6326b5c51a77ffdb3cd9139d7",
+      "elapsed_ms": 118
+    },
+    {
+      "id": "port/BigDecimal/IntegralDivisionTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/IntegralDivisionTests.java",
+      "directive": "main IntegralDivisionTests",
+      "resource": "standard",
+      "stdout_sha256": "f7f6611126ed204fdbb391ce30e5cd34dd7049a8a20803a2d5b9b25bdbd81cc4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "0bcd2ba4479dc2a58998a8de8372104175777cc903adcba79fd00ab52153b0e3",
+      "elapsed_ms": 134
+    },
+    {
+      "id": "port/BigDecimal/IntegralValueTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/IntegralValueTests.java",
+      "directive": "main IntegralValueTests",
+      "resource": "standard",
+      "stdout_sha256": "dc5124024e394b1a88757ff16cc3c40cd2452f51b84aaf777165a44335afba04",
+      "stderr_sha256": "9755fda2c64153356bbf40a9c1748deb055c61052e356c346e55ce776f9c4571",
+      "compiled_source_sha256": "d6c2f55eb7a2e1ecca39190417aa4b90e887a46f1e10966245ceffa3565256ac",
+      "elapsed_ms": 114
+    },
+    {
+      "id": "port/BigDecimal/LongValueExactTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/LongValueExactTests.java",
+      "directive": "main LongValueExactTests",
+      "resource": "standard",
+      "stdout_sha256": "a4c3885717102f1f3eed7f1d594b1eb022fe8536870139772348ecde516153de",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "431a988d44389274a7995a4b462d7ff410a4c313fd5a83c0620b7bb026281c97",
+      "elapsed_ms": 117
+    },
+    {
+      "id": "port/BigDecimal/MovePointTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/MovePointTests.java",
+      "directive": "main MovePointTests",
+      "resource": "standard",
+      "stdout_sha256": "a1b93e467bf2ee560dd15db427a7165a6f08b5afd6a13337fa0821fdf7358fdc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "33aa9e499099530121171885ecc79a9ebff832853177f3c82ec15609b2797289",
+      "elapsed_ms": 96
+    },
+    {
+      "id": "port/BigDecimal/MultiplyTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/MultiplyTests.java",
+      "directive": "main MultiplyTests",
+      "resource": "standard",
+      "stdout_sha256": "62fb0373dbc2c0b7a515da0bd4dc92d96f9618813b7374776bab4f5e90c814e9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "c0c8c3382828456083614ccdb47a5037931d1a6e9dc1cd63dd58180ee155a08c",
+      "elapsed_ms": 111
+    },
+    {
+      "id": "port/BigDecimal/NegateTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/NegateTests.java",
+      "directive": "main NegateTests",
+      "resource": "standard",
+      "stdout_sha256": "31fdb4381637b23d904f2421766546eaac3ca84e1ce4032ae69a80e098ff9bc8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "080d396d274d17ab9831fc6f491835f825e6957e9c016e04ea4f2218ea960b57",
+      "elapsed_ms": 93
+    },
+    {
+      "id": "port/BigDecimal/PowTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/PowTests.java",
+      "directive": "main PowTests",
+      "resource": "standard",
+      "stdout_sha256": "5b0ec96b762896cb66de695a6020d4c1b0acc2ba900233c7068ffd33833ee38f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "62b3efdbd0fa33c2ccff005e896e492c4d9173888c88180438ac9ab7ac27f30c",
+      "elapsed_ms": 91
+    },
+    {
+      "id": "port/BigDecimal/PrecisionTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/PrecisionTests.java",
+      "directive": "main PrecisionTests",
+      "resource": "standard",
+      "stdout_sha256": "80da407cc5bcf86061ce9bbbf342f0c03e6c3c4117915bf64f0c4bdaccf299b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "e0d02de71081fcccfbc19380e460831a016cd0cf5266aac9f4ac9c911cc774b5",
+      "elapsed_ms": 116
+    },
+    {
+      "id": "port/BigDecimal/RangeTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/RangeTests.java",
+      "directive": "main RangeTests",
+      "resource": "standard",
+      "stdout_sha256": "b6db1bc9609e95ecc8291bc610aed9f207723115930b6ad81b83c80115ecbea1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "27c280320a82c4f582df9c7ffa93e0796b122188cd485f5b1e68cc54c07151f3",
+      "elapsed_ms": 114
+    },
+    {
+      "id": "port/BigDecimal/RangeTests/run-2",
+      "path": "test/jdk/java/math/BigDecimal/RangeTests.java",
+      "directive": "main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:+EliminateAutoBox -XX:AutoBoxCacheMax=20000 RangeTests",
+      "resource": "standard",
+      "stdout_sha256": "b6db1bc9609e95ecc8291bc610aed9f207723115930b6ad81b83c80115ecbea1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "27c280320a82c4f582df9c7ffa93e0796b122188cd485f5b1e68cc54c07151f3",
+      "elapsed_ms": 121
+    },
+    {
+      "id": "port/BigDecimal/RoundingTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/RoundingTests.java",
+      "directive": "main RoundingTests",
+      "resource": "standard",
+      "stdout_sha256": "389a66e9e5c188c1cac2ba5290b02ecb6195bb5239bae259bc1108fb8d6c2eb5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "29f1845dc07a53475a0742ec6e3b18021365b69867f9dd8fcbc7dc25f80f26bd",
+      "elapsed_ms": 92
+    },
+    {
+      "id": "port/BigDecimal/ScaleByPowerOfTenTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/ScaleByPowerOfTenTests.java",
+      "directive": "main ScaleByPowerOfTenTests",
+      "resource": "standard",
+      "stdout_sha256": "bc11d539a11e40c956fed4780edf0f39eb10400857b856e583b00feae7e41c65",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "4155cf91144e3dfa4cd01524b28a73e892472c4c700d9fba763a1b06ab37836e",
+      "elapsed_ms": 93
+    },
+    {
+      "id": "port/BigDecimal/SerializationTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/SerializationTests.java",
+      "directive": "main SerializationTests",
+      "resource": "serialization",
+      "stdout_sha256": "f7da3b0f61cb5e97676cd9b60ee2d2422e30bf2d8594d12ebcfa374f1a9e10de",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "1b86f014a7594d7a2ac83e6624a030d6a8bec88ebe55acd5b1293629868aaf0f",
+      "elapsed_ms": 164
+    },
+    {
+      "id": "port/BigDecimal/SquareRootTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/SquareRootTests.java",
+      "directive": "main SquareRootTests",
+      "resource": "standard",
+      "stdout_sha256": "5e6a9d370faf8b53d3051c931e84b15ec2535214caefb379383a2489ccd7870f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "afb93448ad8b9224e7b6674226ce894a8a7ad746d3c64a55917047723c7387b3",
+      "elapsed_ms": 357
+    },
+    {
+      "id": "port/BigDecimal/StringConstructor/run-1",
+      "path": "test/jdk/java/math/BigDecimal/StringConstructor.java",
+      "directive": "main StringConstructor",
+      "resource": "standard",
+      "stdout_sha256": "b9caddec3027cdfcce0d44091dbc686a3cdd76be0899b14af796922fcfb415ed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "cea6c70559302334074424986f2abadb58b040e7cc295ceb2c35b0486126c4eb",
+      "elapsed_ms": 140
+    },
+    {
+      "id": "port/BigDecimal/StrippingZerosTest/run-1",
+      "path": "test/jdk/java/math/BigDecimal/StrippingZerosTest.java",
+      "directive": "main StrippingZerosTest",
+      "resource": "standard",
+      "stdout_sha256": "7a9fd3a6ea544cda16b30fe87267c86072a3265dbd3bf7659a5c8720094e1fbf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "7f4ccc5b2e621d41e19f8d03dcffafa0028887340c323ecc46d5a851bc3065c3",
+      "elapsed_ms": 89
+    },
+    {
+      "id": "port/BigDecimal/StrippingZerosTest/run-2",
+      "path": "test/jdk/java/math/BigDecimal/StrippingZerosTest.java",
+      "directive": "main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:+EliminateAutoBox -XX:AutoBoxCacheMax=20000 StrippingZerosTest",
+      "resource": "standard",
+      "stdout_sha256": "7a9fd3a6ea544cda16b30fe87267c86072a3265dbd3bf7659a5c8720094e1fbf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "7f4ccc5b2e621d41e19f8d03dcffafa0028887340c323ecc46d5a851bc3065c3",
+      "elapsed_ms": 102
+    },
+    {
+      "id": "port/BigDecimal/ToPlainStringTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/ToPlainStringTests.java",
+      "directive": "main ToPlainStringTests",
+      "resource": "standard",
+      "stdout_sha256": "6f618f168927e6928794166dbdab87e328ad798e7ab3b444219113c04d25a270",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "8ac6776d4376c2a8c5cfafb5c92233171f514b785955eabd992181bc8effed38",
+      "elapsed_ms": 121
+    },
+    {
+      "id": "port/BigDecimal/ToPlainStringTests/run-2",
+      "path": "test/jdk/java/math/BigDecimal/ToPlainStringTests.java",
+      "directive": "main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:+EliminateAutoBox -XX:AutoBoxCacheMax=20000 ToPlainStringTests",
+      "resource": "standard",
+      "stdout_sha256": "6f618f168927e6928794166dbdab87e328ad798e7ab3b444219113c04d25a270",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "8ac6776d4376c2a8c5cfafb5c92233171f514b785955eabd992181bc8effed38",
+      "elapsed_ms": 124
+    },
+    {
+      "id": "port/BigDecimal/ValueOfDouble/run-1",
+      "path": "test/jdk/java/math/BigDecimal/ValueOfDouble.java",
+      "directive": "junit ValueOfDouble",
+      "resource": "standard",
+      "stdout_sha256": "e06ee24861861b2e7555df8834229e5a423ae0fc0ad0e6becf1e1593448b93f8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "34f7cf1229566ab07f67c9526b1ee262521ab6b7d62e7fe7d93a811b2b38b39e",
+      "elapsed_ms": 1047
+    },
+    {
+      "id": "port/BigDecimal/ZeroScalingTests/run-1",
+      "path": "test/jdk/java/math/BigDecimal/ZeroScalingTests.java",
+      "directive": "main ZeroScalingTests",
+      "resource": "standard",
+      "stdout_sha256": "7818ac55ac51c0507ec5bd6a329a5d83616a41619ce942ea0d0a2bb440a806e0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "d1bc88077b3c8d08f47fc54ecc85e9262463f63f3ba975f1ab8017b7ea19d940",
+      "elapsed_ms": 152
+    },
+    {
+      "id": "port/BigInteger/BigIntegerParallelMultiplyTest/run-1",
+      "path": "test/jdk/java/math/BigInteger/BigIntegerParallelMultiplyTest.java",
+      "directive": "main BigIntegerParallelMultiplyTest",
+      "resource": "heavy",
+      "stdout_sha256": "c77d3b0fc2a947abcb9f927d30dcb82d860a34079c93b7a97e9dbbce4194f17b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "d28bbd1d0e4f43ec408eb48ebbe7b38721b18e36434320ae0cfc73fbdb6e89b7",
+      "elapsed_ms": 454
+    },
+    {
+      "id": "port/BigInteger/BigIntegerTest/run-1",
+      "path": "test/jdk/java/math/BigInteger/BigIntegerTest.java",
+      "directive": "main BigIntegerTest",
+      "resource": "heavy",
+      "stdout_sha256": "f46b89741ca566c7ca6b7830430b234a77797d4f9a1dac341d65046fb6f9d7f8",
+      "stderr_sha256": "825b45690cd248a92e3af47c37520f94cc7bdaeef2071e1e6a04605f330f1220",
+      "compiled_source_sha256": "691aa05152de5ed2dd7fd6f04300ff979205dfab9f136e6d8ebde1786ce316d4",
+      "elapsed_ms": 59614
+    },
+    {
+      "id": "port/BigInteger/BigIntegerTest/run-2",
+      "path": "test/jdk/java/math/BigInteger/BigIntegerTest.java",
+      "directive": "main/timeout=400 BigIntegerTest",
+      "resource": "heavy",
+      "stdout_sha256": "f46b89741ca566c7ca6b7830430b234a77797d4f9a1dac341d65046fb6f9d7f8",
+      "stderr_sha256": "825b45690cd248a92e3af47c37520f94cc7bdaeef2071e1e6a04605f330f1220",
+      "compiled_source_sha256": "691aa05152de5ed2dd7fd6f04300ff979205dfab9f136e6d8ebde1786ce316d4",
+      "elapsed_ms": 54548
+    },
+    {
+      "id": "port/BigInteger/ByteArrayConstructorTest/run-1",
+      "path": "test/jdk/java/math/BigInteger/ByteArrayConstructorTest.java",
+      "directive": "junit/othervm -DmaxDurationMillis=3000 ByteArrayConstructorTest",
+      "resource": "standard",
+      "stdout_sha256": "774457b0814449edce84c617c2543ecce9d6be7bb4e5fd53c157555cde20c365",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "e6a4c753eed4820f3d9aaac0abd48273e0587a8741011ab9049c3ea0f358c4e9",
+      "elapsed_ms": 6814
+    },
+    {
+      "id": "port/BigInteger/CompareToTests/run-1",
+      "path": "test/jdk/java/math/BigInteger/CompareToTests.java",
+      "directive": "main CompareToTests",
+      "resource": "standard",
+      "stdout_sha256": "85a388745d942453ae3d038bc590c878111804792ba371b76c6d90bf6eea8dac",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "5ffb43a73fd0d5536c689de919ab83d92aee74a750cbb48dd7a871660e9b4780",
+      "elapsed_ms": 112
+    },
+    {
+      "id": "port/BigInteger/ExtremeShiftingTests/run-1",
+      "path": "test/jdk/java/math/BigInteger/ExtremeShiftingTests.java",
+      "directive": "main/othervm -Xmx512m ExtremeShiftingTests",
+      "resource": "memory-512m",
+      "stdout_sha256": "7bed6f050feacdf79f714923beecb9a1da7125d84397ccc766437029983d62c3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "56093b6568b22447926e7046b80cb8a19f475b8cce827f466c97d145bef40d38",
+      "elapsed_ms": 92
+    },
+    {
+      "id": "port/BigInteger/HashCode/run-1",
+      "path": "test/jdk/java/math/BigInteger/HashCode.java",
+      "directive": "main HashCode",
+      "resource": "standard",
+      "stdout_sha256": "96110b0f6ff02f535e8b0e34c3c0b445dedf6d8bffb498dcef89754673149f4a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "55559987c1b551ebf0fd28273a993f26d3abcc8873ed4504d12984fa699c6e5a",
+      "elapsed_ms": 109
+    },
+    {
+      "id": "port/BigInteger/ModInvTime/run-1",
+      "path": "test/jdk/java/math/BigInteger/ModInvTime.java",
+      "directive": "main/othervm ModInvTime",
+      "resource": "standard",
+      "stdout_sha256": "c90d564a1c8b11ab6326bf7897bcc0e5ff3015d20af541bad6d3f453f65cce3c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "15da4c3fa47593e3c51b28eaac907b2aa2a1fc87db504cc5123aad652053c042",
+      "elapsed_ms": 128
+    },
+    {
+      "id": "port/BigInteger/ModPow/run-1",
+      "path": "test/jdk/java/math/BigInteger/ModPow.java",
+      "directive": "main ModPow",
+      "resource": "standard",
+      "stdout_sha256": "3e00fdb72b0873194bf12aba932ba02730144c33f46b8b53c60d53daecae9147",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "b8cc19f00886623f55a20fc60263aebe626231550ed5b5a0c169acfdcf679097",
+      "elapsed_ms": 574
+    },
+    {
+      "id": "port/BigInteger/ModPow65537/run-1",
+      "path": "test/jdk/java/math/BigInteger/ModPow65537.java",
+      "directive": "main ModPow65537",
+      "resource": "standard",
+      "stdout_sha256": "8a6b9905e4bdabfbaacf768617dac1ee1b4fbf845fdbf20bb404a80c9473c410",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "c20cd7f6388ec8af6d39b667b6f53bf327b484145b2908e92c9bdc5daded42e9",
+      "elapsed_ms": 116
+    },
+    {
+      "id": "port/BigInteger/ModPowPowersof2/run-1",
+      "path": "test/jdk/java/math/BigInteger/ModPowPowersof2.java",
+      "directive": "main/othervm ModPowPowersof2",
+      "resource": "standard",
+      "stdout_sha256": "d176fa22a5f6a9ab6dff4a3566ec634849f0466c245efb6d2b86ec5674dee6de",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "170e1b6fb34f6f401cb9dd40fb3cb703ab88cb09e12be5f2d59f2e34cb7c9225",
+      "elapsed_ms": 268
+    },
+    {
+      "id": "port/BigInteger/OperatorNpeTests/run-1",
+      "path": "test/jdk/java/math/BigInteger/OperatorNpeTests.java",
+      "directive": "main OperatorNpeTests",
+      "resource": "standard",
+      "stdout_sha256": "6f9c6b2ffa0272dc94fb2feee85da11eee9ebbe8e106def2453c47ca66e1ac10",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "de380d24ffaae31846de5f4d6bc11ac287b805dc91f786e8ba181040272cca5e",
+      "elapsed_ms": 94
+    },
+    {
+      "id": "port/BigInteger/PrimeTest/run-1",
+      "path": "test/jdk/java/math/BigInteger/PrimeTest.java",
+      "directive": "main PrimeTest",
+      "resource": "heavy",
+      "stdout_sha256": "8a80aa13de0d870e352a72d0bc67dd1739ec0e13c624e1f3c1489cec377c97a4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "6099915bfab3b7cadfa91313f504434086b619752d11c7a5f68bea1a70c54d31",
+      "elapsed_ms": 43565
+    },
+    {
+      "id": "port/BigInteger/PrimitiveConversionTests/run-1",
+      "path": "test/jdk/java/math/BigInteger/PrimitiveConversionTests.java",
+      "directive": "main PrimitiveConversionTests",
+      "resource": "standard",
+      "stdout_sha256": "5f922496eca22be40fc5668d20b7759b6107dea7e653c6ee45cc1da2ce70f4dd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "ba7ec481a83248d7fa749dd1de2c81116c93da583af8de582ce060430c531463",
+      "elapsed_ms": 221
+    },
+    {
+      "id": "port/BigInteger/ProbablePrime/run-1",
+      "path": "test/jdk/java/math/BigInteger/ProbablePrime.java",
+      "directive": "main ProbablePrime",
+      "resource": "heavy",
+      "stdout_sha256": "e6243604809c8b78c5aa0f7a88306f4bf988dece600f84b153e1b21201facf7a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "64fd12578e41d6bffb3d58e9933f97f73d64d013be36186aaae546eaf99fb49f",
+      "elapsed_ms": 95
+    },
+    {
+      "id": "port/BigInteger/SerializationTests/run-1",
+      "path": "test/jdk/java/math/BigInteger/SerializationTests.java",
+      "directive": "main SerializationTests",
+      "resource": "serialization",
+      "stdout_sha256": "f7da3b0f61cb5e97676cd9b60ee2d2422e30bf2d8594d12ebcfa374f1a9e10de",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "50722469a1defc7dc70552913b7a66816eab46401dbc0515f6aa043eebaf392f",
+      "elapsed_ms": 162
+    },
+    {
+      "id": "port/BigInteger/StringConstructor/run-1",
+      "path": "test/jdk/java/math/BigInteger/StringConstructor.java",
+      "directive": "main StringConstructor",
+      "resource": "standard",
+      "stdout_sha256": "de9c1091cc5cb9c76a0a8d64e0ad249e6184bc9a23b1944c808edfc7bc2244a1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "ad15a19851146b0cd003b3dc7239dd46997e695728c90b06c5d2a7920b93e7fc",
+      "elapsed_ms": 92
+    },
+    {
+      "id": "port/BigInteger/TestValueExact/run-1",
+      "path": "test/jdk/java/math/BigInteger/TestValueExact.java",
+      "directive": "main TestValueExact",
+      "resource": "standard",
+      "stdout_sha256": "fce8269ec168894de531b77140adc59888baadd8885c931384e6f899cb716408",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "da7063d23d491352cfcf104938bc02e3414c6ada23a5e15f73cadeaceaeb7538",
+      "elapsed_ms": 100
+    },
+    {
+      "id": "port/BigInteger/UnicodeConstructor/run-1",
+      "path": "test/jdk/java/math/BigInteger/UnicodeConstructor.java",
+      "directive": "main UnicodeConstructor",
+      "resource": "standard",
+      "stdout_sha256": "1eef34d9ca1d4f04cdfa07609b2484a33a9a0ca4dc203dfd70ec5e6deea0bf9a",
+      "stderr_sha256": "7fd1f7f5e64c4b4f8e1f886997d2557fc09a05d62806a19bdbf4175a49d21799",
+      "compiled_source_sha256": "5a778d23d6b8d7d0c20d59a04540eb892453811c848ade50e219bd38d0cdef7e",
+      "elapsed_ms": 109
+    },
+    {
+      "id": "port/RoundingMode/RoundingModeTests/run-1",
+      "path": "test/jdk/java/math/RoundingMode/RoundingModeTests.java",
+      "directive": "main RoundingModeTests",
+      "resource": "standard",
+      "stdout_sha256": "4e109116eb86a35fd2255f2aa63d940d27bd6b6269eb3d1291fe40c4eaed592b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_source_sha256": "4054c9e2b3c79e7e1a5fb170d2fafff0b1b4638db9edd8fafdff8255cb245c4c",
+      "elapsed_ms": 96
+    }
+  ],
+  "skip_reason_counts": {
+    "Profile large-memory-8g not authorized by this invocation; coverage retained for an eligible run": 8,
+    "Pinned upstream @Test(enabled=false) retained unchanged": 16,
+    "Profile large-memory-4g not authorized by this invocation; coverage retained for an eligible run": 2,
+    "Calls package-private MutableBigInteger through patched java.base wrapper": 2,
+    "Test-only wrapper for package-private MutableBigInteger": 2,
+    "Pinned upstream commented-out call retained unchanged": 2,
+    "Profile large-memory-10g not authorized by this invocation; coverage retained for an eligible run": 2,
+    "charArrayConstructorNegativeOffset: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call": 1,
+    "charArrayConstructorNegativeLength: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call": 1,
+    "charArrayConstructorIntegerOverflow: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call": 1,
+    "charArrayConstructorIndexOutOfBounds: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call": 1,
+    "testFloat16ValueNearMinValue: incubator Float16 host-decimal conversion integration": 1,
+    "testFloat16ValueNearMinNormal: incubator Float16 host-decimal conversion integration": 1,
+    "testFloat16ValueNearMaxValue: incubator Float16 host-decimal conversion integration": 1,
+    "testFloat16ValueRandom: incubator Float16 host-decimal conversion integration": 1,
+    "testFloat16ValueExtremes: incubator Float16 host-decimal conversion integration": 1,
+    "JDK-specific mag storage invariant replaced by krogu normalized-word invariant; racy public constructor execution retained": 1,
+    "SunRsaSign key generation/signing phase: host-provider integration; all three modPow known-answer assertions retained": 1,
+    "checkHugeFails: original mandatory-cutoff expectation above the public minimum prime-domain guarantee is not executed on the port; original frozen campaign1792044478663 PrimeTest FAIL remains FAIL, not an adapted pass. A normal false result is newly checked, not historically observed; original host-baseline behavior is retained separately": 1
+  },
+  "adaptation_companion_losses": [
+    {
+      "id": "port/BigDecimal/Constructor/run-1/adaptation-1",
+      "reason": "charArrayConstructorNegativeOffset: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call"
+    },
+    {
+      "id": "port/BigDecimal/Constructor/run-1/adaptation-2",
+      "reason": "charArrayConstructorNegativeLength: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call"
+    },
+    {
+      "id": "port/BigDecimal/Constructor/run-1/adaptation-3",
+      "reason": "charArrayConstructorIntegerOverflow: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call"
+    },
+    {
+      "id": "port/BigDecimal/Constructor/run-1/adaptation-4",
+      "reason": "charArrayConstructorIndexOutOfBounds: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call"
+    },
+    {
+      "id": "port/BigDecimal/DoubleFloatValueTests/run-1/adaptation-1",
+      "reason": "testFloat16ValueNearMinValue: incubator Float16 host-decimal conversion integration"
+    },
+    {
+      "id": "port/BigDecimal/DoubleFloatValueTests/run-1/adaptation-2",
+      "reason": "testFloat16ValueNearMinNormal: incubator Float16 host-decimal conversion integration"
+    },
+    {
+      "id": "port/BigDecimal/DoubleFloatValueTests/run-1/adaptation-3",
+      "reason": "testFloat16ValueNearMaxValue: incubator Float16 host-decimal conversion integration"
+    },
+    {
+      "id": "port/BigDecimal/DoubleFloatValueTests/run-1/adaptation-4",
+      "reason": "testFloat16ValueRandom: incubator Float16 host-decimal conversion integration"
+    },
+    {
+      "id": "port/BigDecimal/DoubleFloatValueTests/run-1/adaptation-5",
+      "reason": "testFloat16ValueExtremes: incubator Float16 host-decimal conversion integration"
+    },
+    {
+      "id": "port/BigInteger/ByteArrayConstructorTest/run-1/adaptation-1",
+      "reason": "JDK-specific mag storage invariant replaced by krogu normalized-word invariant; racy public constructor execution retained"
+    },
+    {
+      "id": "port/BigInteger/ModPow65537/run-1/adaptation-1",
+      "reason": "SunRsaSign key generation/signing phase: host-provider integration; all three modPow known-answer assertions retained"
+    },
+    {
+      "id": "port/BigInteger/PrimeTest/run-1/adaptation-1",
+      "reason": "checkHugeFails: original mandatory-cutoff expectation above the public minimum prime-domain guarantee is not executed on the port; original frozen campaign1792044478663 PrimeTest FAIL remains FAIL, not an adapted pass. A normal false result is newly checked, not historically observed; original host-baseline behavior is retained separately"
+    }
+  ],
+  "combined_normal_large": {
+    "PASS": 118,
+    "retained_plan_pairs_per_phase": 59,
+    "normal_per_phase": 53,
+    "large_per_phase": 6,
+    "exact_matches_current59_plan_inventory": true,
+    "large_audit_sha256": "276bf654c83990ab6bf43ec2f5e2ce8b4a9c085493e91a61f96fc67aff277a0f"
+  },
+  "supported_join": {
+    "prior_audit_sha256": "9a45e867fa9a91f37150f06ce698eafdb2f0c7af71e8baca7249f34cf5c61422",
+    "runtime_instances": 13,
+    "actual_tests": 7062,
+    "oracle_commands": 25,
+    "ios_device_compile": true
+  },
+  "limits": [
+    "Twelve explicit adaptation losses remain SKIP, not successful original assertions.46normalSKIP include12largeprofile rows,22disabled/package-private/commented inventory and12adaptation-companions.",
+    "Original local2531 reflection failure and later targeted68473 remain historical; current fullnormal uses reviewedc234 accessor, not silently retroactive repair.",
+    "No resource/timeout/caught-OOM-incomplete failure accepted as pass. Source test tag revision/vendor differs from actual BellSoft runtime as documented.",
+    "Actual finite public/platform/caller/oracle evidence does not establish exhaustive compatibility or officialJCK. Final literal17 proof dispositions/qualified premises must be assessed separately;539JSsmallperformance remains a separate unresolved item, not553 mathematical dependency."
+  ]
+}

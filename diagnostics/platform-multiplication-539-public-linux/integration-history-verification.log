@@ -1,0 +1,10 @@
+.codex-work/539/packaging/public-linux-addendum/integration-history.bundle is okay
+The bundle contains these 2 refs:
+67acda4549e38f235bb842aedeb570f8e1220cea refs/heads/audit/539-public-linux-guard
+df6bc9e69e6549c791f19981ec18691cc5b09412 refs/heads/main
+The bundle requires these 2 refs:
+c9415d55fe8d9a743266e75709cf95738011d311 
+0db660d5e30983eafbee60bca7a9480c86fc7fc4 
+The bundle uses this hash algorithm: sha1
+67acda4549e38f235bb842aedeb570f8e1220cea refs/heads/audit/539-public-linux-guard
+df6bc9e69e6549c791f19981ec18691cc5b09412 refs/heads/main

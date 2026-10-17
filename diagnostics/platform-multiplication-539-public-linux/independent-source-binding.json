@@ -1,0 +1,17 @@
+{
+  "status": "PASS_BOTH_PUBLIC_SOURCE_MANIFESTS_MATCH_EXACT_GIT_BLOBS_AND_REVIEWED_TOOLING",
+  "raw_audit_sha256": "6e5d64d988e655e08c1818b6a7562ce5eb5197141590dbac00a44f20a8f513b5",
+  "refs": {
+    "baseline": "07910edf6d5687f1d89dbe3369c4546f648feed2",
+    "current": "975182f9bca911be86ef1bc4efedc7039cc8fe36"
+  },
+  "source_paths_checked": {
+    "baseline": 337,
+    "current": 363
+  },
+  "current_source_tsv_sha256": "4fa95dec327ad89675e4194967c88c491f9a67e84d6c9e1d5572505947bb0d88",
+  "tooling_head": "67acda4549e38f235bb842aedeb570f8e1220cea",
+  "script_sha256": "5f49fd114d7f75336973d62d8f4972d737aa45add36f39dd8cee2e4b245ee8e3",
+  "public_tools_zip_sha256": "c0b502f453ec38f6e71479f3d6bf8743644c7e0a0f48ed05e2d6256e69056258",
+  "scope": "Fresh Linux source/artifact identity, not original macOS binary identity. No numerical execution or private transfer."
+}

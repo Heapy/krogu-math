@@ -1,0 +1,211 @@
+{
+  "status": "FINAL_FULL_2112_PASS_JS_SMALL_UNRESOLVED_REMOTE_APPROVAL_PENDING",
+  "source": "3f0e1fb8f763b6518395535e222c18407112c9aa",
+  "native": {
+    "balanced_karatsuba": 32,
+    "exact_predicate": "physical magnitude arrays a!==b AND equal word lengths",
+    "alias_or_unbalanced_karatsuba": 64,
+    "square_leaf": 16,
+    "whole_square_entry": 384,
+    "evidence": [
+      "independent-native-kernel-grid-preliminary.json",
+      "independent-native-balanced-adjacent-k16-decision-support.json",
+      "independent-native-k16-host-quality-supplement.json"
+    ],
+    "rationale": "417-case active balanced-family evidence plus bounded33 neighbor supports32;16 is all3 adverse at9/11 sizes versus32, no all3 win. Mixed large points retained. This is bounded family selection, not universal optimum.",
+    "separate_square_leaf_decision": "Keep384/16. Native entry128 active old-grid128/192/256 mixed, square controls128 mixed though192/256 all3 lower; this does not establish equally consistent whole128..383-family gain. Whole-square384/512/1024 adverse; leaf4/8 active tiny8 benefit is insufficient for blanket leaf change. Do not infer a causal win from same-arithmetic controls."
+  },
+  "js": {
+    "balanced_karatsuba": 64,
+    "exact_predicate": "Current aa9 JS disables selected-shape policy: historical64/16/384 for all shapes; public parallelMultiply directly delegates virtual multiply.",
+    "alias_unbalanced": 64,
+    "whole_square_entry": 384,
+    "square_leaf": 16,
+    "evidence": [
+      "independent-js-balanced-adjacent-k16-decision-support.json",
+      "independent-js-kernel-grid-preliminary.json"
+    ],
+    "status": "AA9_SERIAL_RETENTION_VERIFIED_SIX_SMALL_FLAGS_UNRESOLVED_LOCAL_MONITOR_CONSUMED_NO_NUMERIC_RUN_REMOTE_APPROVAL_PENDING",
+    "next_coherent_candidate": {
+      "karatsuba": 64,
+      "square_leaf": 16,
+      "whole_square_entry": 384,
+      "parallelMultiply": "direct virtual multiply before physical helpers/backend",
+      "implementation_status": "Applied aa9ca6b9; actual focused6JS/6Wasm, fresh production direct-serial entries, retained public45FIRST/1260warm each and two independent published declined consumers passed. JS six small flags remain unresolved; Wasm current guard qualified PASS. Later Native-only/comments scope is separately mapped.",
+      "reason": "Promising dense balancedK32/entry128 calibration gains do not override repeated actual publicsmall CPU/latency costs after concrete tiny-dispatch/fused-basecase attempts. Guard4 all3 adverse ordinary63distinct/63square/511distinct andparallel64square all run school below32; no numericalerror or supportedfurtherfix identified. This is conservative retention, not a global optimum or denial of initial gains.",
+      "evidence": [
+        "independent-js-small-guard4-disposition.json",
+        "independent-js-guard4-cpu-and-serial-reversion-recommendation.json"
+      ]
+    },
+    "withdrawn_a207_candidate": {
+      "balanced_karatsuba": 32,
+      "exact_predicate": "physical a!==b AND equal word lengths",
+      "alias_unbalanced": 64,
+      "whole_square_entry": 128,
+      "square_leaf": 16,
+      "evidence": [
+        "independent-js-balanced-adjacent-k16-decision-support.json",
+        "independent-js-kernel-grid-preliminary.json"
+      ]
+    },
+    "current_source_evidence": [
+      "independent-final-js-wasm-serial-decline-bundle-review.json",
+      "independent-serial-retention-jvm-and-focused-actual-audit.json",
+      "packaging/wasm-small-guard-investigation/aa9-serial-retention-generated-entry-proof.json",
+      "independent-js-serial-retention-guard5-disposition.json"
+    ]
+  },
+  "jvm_wasm": {
+    "current_policy": "Both scalar64/16/384 retained. JVM ADOPT uses final3f0 compiled-equivalence/full2112 binding and historical accepted a207 small/2d74 large evidence in their original eras. Wasm aa9 direct serial fallback current small guard qualified PASS and current public comparison PASS; historical511 adverse retained. JS small clearance remains unresolved.",
+    "jvm": {
+      "karatsuba64": "Active balancedK32 all3 adverse384/512/1024/4096;128 mixed with median adverse and several other mixed neighbors, with callerallocation increases2.147x at32/2.646x at63. K128 active candidates also have repeated adverse. SelectedK32 onJS/Native is not transferred.",
+      "entry384": "Entry128 grid active256/383 lower, but dedicated active e0/default controls128 ratios1.105/.979/1.283,192 2.004/1.005/.956,256 .753/1.070/.853 are mixed; allocations2.56x/2.54x/2.80x. Keepwhole-square mediumroute rather than broad extra recursion.",
+      "leaf16": "Leaf8 large apparent gains need actual recursive alias-leaf activity; labels alone are not causal. Active tiny8 gain is an isolated measured endpoint, insufficient to establish a broader leaf replacement. Retain16 without claimingoptimality.",
+      "evidence": [
+        "independent-jvm-kernel-grid-preliminary.json",
+        "independent-jvm-square-control-1-raw-audit.json"
+      ]
+    },
+    "wasm": {
+      "karatsuba64": "K32 balanced32/63 activeall3adverse,256mixed; medium96/128/192/383/384/512 lower but large mostlymixed/adverse. No consistent broadbalanced-family change; unbalanced likewise mixed/adverse.",
+      "entry384": "Activeentry128 at128 all3adverse1.257/1.391/1.189; dedicatedsquare192 all3adverse1.073/1.086/1.574,128/256mixed. Same-recursionlabelgains at384+ cannot supportentrychange.",
+      "leaf16": "Recursiveleaf8 largepoints mixed andactivity not established fromlabels; isolated tinycontrols do not justify blanket leafpolicy.",
+      "evidence": [
+        "independent-wasm-kernel-grid-preliminary.json",
+        "independent-wasm-square-control-1-raw-audit.json"
+      ]
+    },
+    "criterion": "Judgment uses active arithmetic, mixed/adverse and resource tradeoffs. No scalar20/10 gate or globaloptimumclaim."
+  },
+  "parallel_frontends": {
+    "status": "JVM_ADOPT_JS_WASM_NATIVE_PUBLIC_BACKENDS_DECLINED",
+    "jvm": {
+      "decision": "ADOPT",
+      "api": "explicit BigInteger.parallelMultiply only; ordinary multiply body unchanged",
+      "backend": "One lazy bounded two-worker pool per defining classloader, queue2/shared admission, 30s idle thread expiry; no per-operation pool construction/shutdown claim",
+      "eligibility": "Physical minoperand4096 magnitude words, max<=2*min, ordinary exact classes, availableCPU>2; nested/busy/ineligible declines preserve virtual multiply; accepted failure not arithmetic retry",
+      "actual_latency": "Historical2d74 measurements: All8 eligible points pass median<=.80/everypair<=.90 versus fastest matched current kernel/frame/public serial, including adjacent sizes. Distinct/square4096/8192/16384; ratio2 left8192/right4096 andleft16384/right8192. Left4096/right2048 correctly declines.",
+      "guard": "Currenta207 paired28 BOTH APIs1176TIME/168REP/168CHECK, ZERO15%AND5nsflags independentlyverified0c873d22. Earlierguard2/0flags anddf733fourflags retained undertheireras; all3slowerpublic1distinctcurrent +.863/2.401/.741ns remainsbelow5ns trigger and isretained.",
+      "correctness": "Final3f0 full2112 independently PASS9b61ec84:702JVM/468JS/468Wasm/474Native,zero failures/errors/skips. Historical2d74 full2108 and a207 focused21 retain their eras. ExistingJVM9 targeted4095/4096/4097 threshold/sign/alias/ratio/virtualfallback/failure contracts remain accepted with final51596f4a instruction-equivalence mapping.",
+      "resource_judgment": "Accept bounded extra CPU/allocation for the explicit parallel API and demonstrated real reused-pool latency benefit. Measured CPU ratios0.989..1.974 versus the wall-fastest matched serial; approximate all-live-thread allocation delta170..393196B/operation. No arbitrary CPU cap, resource parity or owned/per-operation peak claim. At most two backend workers per defining classloader; caller local child is additional CPU work.",
+      "first_call_tradeoff": "Eligible FIRST11.458292..37.651875ms is actual first public activation after untimed input/JDK preparation. Accept startup cost for the implemented classloader-owned reuse model; no matchedserialFIRST/fresh-call speedup, pristinecold, universal one-shot benefit or hypothetical amortization claim.",
+      "memory_scope": "Whole-child RSS187924480..339148800B includes runtime/harness, not retained backend bytes or per-operation owned peak. Allocation observer approximate and may miss terminated threads.",
+      "host_limits": "Shared unisolated host; actual snapshots/flags retained. No controlled old/new speedup or observed JIT causality inferred from26B wrapper or zero guard flags.",
+      "evidence": [
+        "independent-actual-public-jvm-route-2-raw-audit.json",
+        "independent-actual-public-jvm-route-2-decision-support.json",
+        "independent-actual-public-jvm-paired-small-2-raw-audit.json",
+        "independent-full-thin-regression-1-audit.json",
+        "independent-preflight-adoption-protocol.json",
+        "independent-fused-compact-combined-prelaunch-review.json",
+        "independent-actual-public-jvm-paired-small-3-raw-audit.json",
+        "independent-jvm-a207-guard-and-adoption-disposition.json",
+        "fused-compact-focused-1-results/summary.json"
+      ],
+      "decision_source": "a2070e1e1e7a5c455f25319cd623618714fad921",
+      "historical_large_source": "2d74b6467c449084d6c528cc26398c2ac93b0a3b",
+      "bounded_large_applicability": "Acceptedengineering/semanticcarryforward to a207, not new45FIRST/1260warm observations or guaranteednewnumericalmargin: new33Bentry addsone nonallocating stored-field/nulltest oneligiblewide receivers thenoldpredicate/coldhelper/pool/arithmetic;150BImethods148identicalnormalizedinstructionlistings, privategetterprimitiveequivalent; JS-onlynewhelperunreachableonJVM. Currentactualsmall28guardpasses. Additionalwide-prefix latency notmeasured separately; no observedJITclaim."
+    },
+    "js_wasm_node": "embedded original-Kotlin private worker closure, isolate owner2/30sidle/naturalexit retirement; consumer SHORT+IDLE proven production033 era",
+    "native": {
+      "decision": "DECLINE_CURRENT_PUBLIC_PARALLEL_BACKEND",
+      "production": "Native constant true now returns virtual multiply directly before physical helpers and backend. Scalar physical distinct/equal K32 remains; alias/unbalanced K64, leaf16, entry384.",
+      "reason": "Nine eligible large dimensions passed frozen latency and adjacency with full per-operation Worker lifecycle, but investigated credible small-path risk remained: two mixed flags plus actual extra fallback save/restore. Parent accepted bounded refusal, not resource-cap refusal or a mandatory-zero-flags theorem.",
+      "candidate_resources": "CPU ratios1.003\u20132.093; whole-child RSS19.84\u2013153.04MB; eligible FIRST0.983\u201353.551ms. Retained as candidate measurements from aa9, not current serial route.",
+      "residual": "Ordinary compact30 distinct adverse pairs remain unexplained; direct fallback withdrawal is not measured ordinary parity or causal recovery. No additional numerical small28 repeat.",
+      "evidence": [
+        "independent-native-final-public-joint-disposition.json",
+        "independent-native-final-small-guard3-disposition.json",
+        "independent-actual-public-native-route-final-1-raw-audit.json",
+        "independent-native-final-retained-public-disposition.json"
+      ],
+      "pending": "Canonical source/package evidence. Final unfiltered four-target2112 independently passed9b61ec84; JVM supplement51596f4a accepted.",
+      "current_compiled": "Native current immutable f014e741 public direct virtual call;19fastinstructions/48B frame/3save-restore,noTLS/getter/field/backend. Baseline body not literally identical; no measured ordinary parity. Independent compiled763f3b0c.",
+      "current_contracts": "Current11contracts4public/3engine/4selected independently PASSf6d27753.",
+      "current_retained_public": "Independently PASSa957621d/dispositionacc01b37: current3f0e1fb8,45FIRST/1260warm/45fresh/45inputs/360baselineWorker-IDequalities/45NONE_STARTED; all result/input hashes and stats exact. Serial execution/absence only; no backend gain or old small flag recovery.",
+      "current_serial_resources": "FIRST0.023584\u201361.410292ms after untimed preparation; whole completed-childRSS19.87\u201321.46MB and footprint13.07\u201314.66MB. AllocationNA/lastGCheapcoarse; not per-operation owned memory."
+    },
+    "public_candidate_gate": "ordinary exact classes, physical minwords4096,max<=2min,CPU>2; accepted failures never arithmetic retry",
+    "pending": "Canonical source/package evidence. Native declined runtime/compiled proof and final full2112 accepted in exact scopes. JS small performance unresolved after one monitored admission NO_NUMERIC_RUN; remote approval pending and no export performed.",
+    "node_final_decisions": {
+      "implementation_status": "APPLIED_AA9_COMPILED_AND_ACTUAL_SERIAL_DECLINE_VERIFIED",
+      "JS": {
+        "decision": "DECLINE_CURRENT_AUTOMATIC_NODE_PARALLEL_FRONTEND",
+        "serial_policy": "64/16/384 retained",
+        "rationale": "Actual frozen small-case investigation found repeated credible CPU/latency cost after two concrete dispatch corrections; public no-small-regression condition takes priority over positive historical reused-worker large gains. Not a claim Node synchronous workers are impossible or unavailable; standalone KLIB consumer activation/delivery/lifecycle was actually proven in033era. Existingworkerimplementation/prototype/gains/resources remain archived.",
+        "evidence": [
+          "independent-js-small-guard4-disposition.json",
+          "independent-js-guard4-cpu-and-serial-reversion-recommendation.json"
+        ]
+      },
+      "Wasm": {
+        "decision": "DECLINE_CURRENT_AUTOMATIC_NODE_PARALLEL_FRONTEND",
+        "serial_policy": "64/16/384 retained",
+        "rationale": "Actualguard4 ordinary/parallel511distinct arebothall3 adverse and processCPUtrackswall; no supportedfurtherarithmeticfix or automaticrepeat. Directserialwithdrawal is a boundedbackendrefusal, NOT proof the ordinary511distinct result is cured: ordinarynevercallsrewrittenparallelhelper and unresolved CPU/latency result must remain in finalreport. Positive historical privateworker gains are retained, not finalpublicadoption.",
+        "evidence": [
+          "independent-wasm-small-guard4-disposition.json"
+        ]
+      },
+      "validation_next": "Completed aa9 actual45FIRST/1260warm per target and two independent published-KLIB declined consumers. No backend activation/gain or cleanup claim. Native-only later delta plus docs has scoped applicability, not relabelled aa9 measurements."
+    }
+  },
+  "source_manifest_sha256": "48c4b61794256a738e36af34fe8d1ccc32a897590fa86c7cf7813c24170e5e0a",
+  "historical_serial_decision_record": "selected-policy-decisions-before-jvm-adoption.json",
+  "historical_previous_decision_record": "selected-policy-decisions-before-a207-jvm-reaffirmation.json",
+  "historical_before_node_retention_decision": "selected-policy-decisions-before-js-wasm-retention-decision.json",
+  "historical_before_aa9_actual_record": "selected-policy-decisions-before-aa9-retention-actual.json",
+  "current_actual_binding": {
+    "focused": "independent-serial-retention-jvm-and-focused-actual-audit.json",
+    "JVM_carry_forward": "Fresh main919a, 34B entry adds only inertNOP to accepted a207 graph; other methods/cold route unchanged. a207 guard and 2d74 large timing retain original source eras; no new numeric/JIT claim.",
+    "JS_Wasm_runtime_scope": "Actual emitted directserial, two absence consumers and retained45FIRST/1260warm comparisons accepted on aa9. Final3f0 full2112 accepted; unchanged target and comment-only scope justifies bounded applicability, not relabelled aa9 binaries or new timings."
+  },
+  "current_aa9_small_guards": {
+    "JS": {
+      "handle": 91477,
+      "strict_data": "PASS1176TIME/168REP/168CHECK",
+      "guard_flag_count": 6,
+      "adoption_clearance": "NOT_CLEARED",
+      "disposition": "independent-js-serial-retention-guard5-disposition.json",
+      "next_scope": "Single monitored99668 terminal NO_NUMERIC_RUN: bounded admission indeterminate due external churn, zero numerical pairs. Independent7f30e5e2 verified; no automatic retry. Six prior flags unresolved; remote diagnostic requires separate explicit approval."
+    },
+    "Wasm": {
+      "handle": 25695,
+      "strict_data": "PASS1176TIME/168REP/168CHECK",
+      "guard_flag_count": 0,
+      "current_guard": "QUALIFIED_PASS",
+      "disposition": "independent-wasm-serial-retention-guard5-disposition.json",
+      "limits": "Current noflag is not isolated recovery; ordinary511 all3 slower below frozen15% threshold, historical credibleflags and CPUcost remain preserved. Both public backends explicitly declined."
+    }
+  },
+  "historical_before_final_native_retention": {
+    "path": "selected-policy-decisions-before-final-native-retention.json",
+    "sha256": "b23d81e3e5646c19e1eba57cb52ff615d75c13c97bfe4c51db3cdef154b7cb0a"
+  },
+  "final_node_actuals": {
+    "JS": {
+      "raw": "independent-actual-public-node-js-serial-retention-1-raw-audit.json",
+      "disposition": "independent-js-final-public-serial-retention-disposition.json",
+      "rows": "45FIRST/1260warm",
+      "scope": "Actual serial execution/numeric and absence evidence; large CPU/wall spread between literal serial routes retained, no backend gain."
+    },
+    "Wasm": {
+      "raw": "independent-actual-public-node-wasm-serial-retention-1-raw-audit.json",
+      "disposition": "independent-wasm-final-public-serial-retention-disposition.json",
+      "rows": "45FIRST/1260warm",
+      "scope": "Serial execution/numeric and absence evidence; qualified current small guard, historical511 adverse retained."
+    },
+    "consumer": "independent-two-serial-declined-consumers-actual-audit.json"
+  },
+  "final_validation_state": {
+    "source": "3f0e1fb8f763b6518395535e222c18407112c9aa",
+    "source_manifest_sha256": "48c4b61794256a738e36af34fe8d1ccc32a897590fa86c7cf7813c24170e5e0a",
+    "native_release": "native-retained-release-build-1-summary.json",
+    "native_contracts": "independent-retained-native-eleven-contracts-actual-audit.json",
+    "native_current_comparison": "actual-public-native-serial-retention-1-terminal.json",
+    "full_four_target": "PASS3267_2112=702JVM/468JS/468Wasm/474Native_zero_failure_error_skip_independent9b61ec84",
+    "remote_js_export": "UNAPPROVED_NOT_PERFORMED",
+    "residual_js_small": "UNRESOLVED_SIXFLAGS_ONE_MONITORED_ADMISSION_NO_NUMERIC_RUN",
+    "native_current_independent_disposition": "independent-native-final-retained-public-disposition.json"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "status": "PASS_TARGETED_ACTUAL_BASELINE_PORT_AND_HOSTED_REF_SOURCE_PRESERVATION",
+  "targeted_handle": 68473,
+  "results_sha256": "488c322bee8bf1d16b653be14706025b1a511048720574c9249007c12ca2208b",
+  "counts": {
+    "PASS": 2,
+    "FAIL": 0,
+    "SKIP": 139
+  },
+  "actual_junit": [
+    {
+      "phase": "baseline",
+      "junit_cases": 2,
+      "stdout_sha256": "6509974060bb9c9142e9a4575c8cf62fc1a198d36a88e863695b95d07401924f",
+      "xml": [
+        {
+          "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/553/worktree/build/math-tck/results/1792216074977/baseline/BigInteger/ByteArrayConstructorTest/run-1/framework-reports/TEST-junit-jupiter.xml",
+          "sha256": "05e9de1147fef85101336c60e779138ccd76aff7e3d5f4c6366482bf8dbcfac5"
+        },
+        {
+          "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/553/worktree/build/math-tck/results/1792216074977/baseline/BigInteger/ByteArrayConstructorTest/run-1/framework-reports/TEST-junit-platform-suite.xml",
+          "sha256": "3b8c7a2a1ad9c315764713d716a5ed3ae48f855aaa79df964aa4a9d008a96e9b"
+        },
+        {
+          "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/553/worktree/build/math-tck/results/1792216074977/baseline/BigInteger/ByteArrayConstructorTest/run-1/framework-reports/TEST-junit-vintage.xml",
+          "sha256": "557ee44be1f15b898952b47c06391c01e0ac63aac8afb3470c18efc38ad08427"
+        }
+      ]
+    },
+    {
+      "phase": "port",
+      "junit_cases": 2,
+      "stdout_sha256": "3840a59efe0b2daa7d84982e0613f34eac4ba49c9e3e401f58b63060311ef694",
+      "xml": [
+        {
+          "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/553/worktree/build/math-tck/results/1792216074977/port/BigInteger/ByteArrayConstructorTest/run-1/framework-reports/TEST-junit-jupiter.xml",
+          "sha256": "fcb62ace2fee33bac7b39dd44245061c15f122f5cc5855373842d8d3d808ba33"
+        },
+        {
+          "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/553/worktree/build/math-tck/results/1792216074977/port/BigInteger/ByteArrayConstructorTest/run-1/framework-reports/TEST-junit-platform-suite.xml",
+          "sha256": "285aa433406f538f2e0305ed5d6cc3e1e492406424fb7cf0842cea7e82d658b3"
+        },
+        {
+          "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/553/worktree/build/math-tck/results/1792216074977/port/BigInteger/ByteArrayConstructorTest/run-1/framework-reports/TEST-junit-vintage.xml",
+          "sha256": "9919cfaf73e59f7a932fb30332bf37046715e551c01023dc6b589f1c824a1c1e"
+        }
+      ]
+    }
+  ],
+  "historical_full2531_counts": {
+    "PASS": 105,
+    "FAIL": 1,
+    "SKIP": 46
+  },
+  "hosted_ref": "975182f9bca911be86ef1bc4efedc7039cc8fe36",
+  "base_evidence_commit": "0db660d5e30983eafbee60bca7a9480c86fc7fc4",
+  "changed_reviewed_blobs": [
+    {
+      "path": "COMPATIBILITY.md",
+      "sha256": "78724858e314a2346e70a2f171a3f4d58932364f8812102b918aa288b52378cd"
+    },
+    {
+      "path": "docs/kotlin-callform-595-596-verification.md",
+      "sha256": "788ca32f3d831ab8d26f2ee81eb0a23eab232f348a13fb287f1dcb78279f7daa"
+    },
+    {
+      "path": "docs/kotlin-migration-525-callforms.md",
+      "sha256": "f6dd4ab6dea4c22ad59b18889e26b79b1620c370e243ecc5c053047986066494"
+    },
+    {
+      "path": "tools/math-tck/ArrayAccessor.java",
+      "sha256": "c234c18feb334c9d51dcd70fdf96aa0f5eb68156191352319b5059964fa6d689"
+    }
+  ],
+  "tested_production_source_files_exact": 405,
+  "worktree_clean": true,
+  "tooling_commit": "df6bc9e69e6549c791f19981ec18691cc5b09412",
+  "production_commit": "3f0e1fb8f763b6518395535e222c18407112c9aa",
+  "production_jar_sha256": "e8ba87ac09532760f64bd226c7b00aea40b76d8c0b7ae21ddade521570b4517a",
+  "scope": "Meaningful corrected representation adapter targeted PASS only, not full normal corpus. Hosted ref preserves exact production/build/workflows/canonical539 with only four reviewed docs/helper blobs. Ready for authorized isolated push/existing CI; actual hosted13/25/ARM/iOS plus same-run normal/large/public artifacts remain pending. No main merge,539 performance acceptance, remote private export or official JCK claim."
+}

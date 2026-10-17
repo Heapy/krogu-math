@@ -1,0 +1,34 @@
+{
+  "status": "PASS_FOCUSED_SOURCE_METHOD_PUBLIC_ONLY_SOURCE_BUILT_LINUX_DIAGNOSTIC",
+  "manifest_sha256": "a90d146339da8dbaa5aa801a18580d3a6bffe5afb98b99bc1d5b573fb7c32398",
+  "patch_sha256": "5d7b0f4352563291ad9130e4e8fc340a4ae26ca4d3c664e75a2414b32fc919c1",
+  "files": [
+    {
+      "path": ".codex-work/539/public-linux-guard-worktree/.github/workflows/public-linux-js-guard-539.yml",
+      "bytes": 3990,
+      "sha256": "2f497b78a2c2b0029fca0439ed7861434a9cade31aa96a21f1a3b8eb5543d068"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-worktree/scripts/run-public-linux-js-guard.main.kts",
+      "bytes": 15186,
+      "sha256": "41202f262ab0f6241dd0dd2d2f04262b9d2a14e79d7291f904a2d2efe6ad1e27"
+    }
+  ],
+  "public_source_refs": [
+    "07910edf6d5687f1d89dbe3369c4546f648feed2",
+    "975182f9bca911be86ef1bc4efedc7039cc8fe36"
+  ],
+  "closed_concrete_findings": [
+    "Generated init hooks actual class-applied Node plugins through KMP classloader rather than unavailable Node plugin IDs.",
+    "Pinned EnvSpec Property APIs use explicit set/get, fail-closed effective configuration assertion and actual pin logs."
+  ],
+  "unchanged_outside_generated_init_vs_first_reviewed_script": true,
+  "numeric_scope": "Published original publicSmall builder exact584575df; frozen28 BOTHAPI/6freshchildren/alternating F-R-F/7samples20ms/1176TIME168REP168CHECK. Extracted host41579f35, original Linuxcontroller322f1777 and stricthelpercbde exact; mechanical controller roots/runtime/source/manifests/epoch rebind only, observer15s descriptive no quiet admission/new criterion. All flags/raw preserved.",
+  "provenance_scope": "Two public Git checkouts07910 and975, fresh compiler and Mocha closures built in hostedLinux; complete actual copied trees+member manifests. Private macOS/claws TAR and rejected export not read/transferred/reencoded. Existing553 workflows unchanged. New branch-filtered workflow push explicitly triggers only owned diagnostic branch; no push/run performed by reviewer.",
+  "remaining_actual_obligations": [
+    "First actual CI build must establish init callback/effective pins and Kotlin/Gradle/Groovy compatibility; source PASS does not fabricate these outcomes.",
+    "Actual runtime/compiled closure/manifests/source/child identity/counter/raw/strict statistics and continuous CPU outputs require terminal audit.",
+    "New Linux epoch is not macOS or proposedclaws artifact identity, not causal recovery of old six JS flags and not automatic539 acceptance."
+  ],
+  "limits": "No numerical execution/build/export by reviewer. Main.kts skill applied for script/source review only."
+}

@@ -1,0 +1,5 @@
+RETAIN_EXISTING_ARCHIVE raw-campaigns.zip
+RETAIN_EXISTING_ARCHIVE provenance-tools.zip
+RETAIN_EXISTING_ARCHIVE measured-artifacts.zip
+RETAIN_EXISTING_ARCHIVE source-tree.zip
+PACKAGE_GENERATED_NOT_ACCEPTANCE /Users/yoda/dev/pet/krogu-math/.codex-work/539/worktree/diagnostics/platform-multiplication-539

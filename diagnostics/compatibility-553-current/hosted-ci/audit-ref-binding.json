@@ -1,0 +1,39 @@
+{
+  "task": "local:553",
+  "purpose": "Fresh existing hosted supported-platform and public-consumer validation, not task539 performance acceptance.",
+  "repository": "Heapy/krogu-math",
+  "audit_branch": "audit/553-current-3f0-docs8404",
+  "audit_commit": "975182f9bca911be86ef1bc4efedc7039cc8fe36",
+  "base_evidence_commit": "0db660d5e30983eafbee60bca7a9480c86fc7fc4",
+  "production_commit": "3f0e1fb8f763b6518395535e222c18407112c9aa",
+  "production_source_manifest_sha256": "48c4b61794256a738e36af34fe8d1ccc32a897590fa86c7cf7813c24170e5e0a",
+  "production_source_files": 405,
+  "docs_commit": "8404b22e1d8ca769f73b5916c24da3658648b689",
+  "reviewed_adapter_commit": "df6bc9e69e6549c791f19981ec18691cc5b09412",
+  "composition_review_sha256": "22dc7fd793b23ddf340004eb400fcf9656757d3d804e7358223822c42bf424ff",
+  "delta_paths": [
+    "COMPATIBILITY.md",
+    "docs/kotlin-callform-595-596-verification.md",
+    "docs/kotlin-migration-525-callforms.md",
+    "tools/math-tck/ArrayAccessor.java"
+  ],
+  "scope": "All four blobs equal reviewed df6 source; all other tracked tree blobs including405 production, workflows/build/worker and immutable539 canonical evidence equal0db. No private/untracked remote payload or retained artifact directory is tracked. Main is not merged.",
+  "compatibility_workflow": {
+    "id": 383044414,
+    "path": ".github/workflows/ci.yml",
+    "trigger": "push; pull_request also configured but not needed for this audit",
+    "workflow_dispatch": false,
+    "expected_scope": "13 runtime target instances,25 oracle/check invocations, same-run Linux ARM64 artifact execution, separate iOS device compilation and same-run normal public JVM corpus."
+  },
+  "large_workflow": {
+    "id": 385720801,
+    "path": ".github/workflows/public-math-large.yml",
+    "trigger": "workflow_dispatch on the same named audit ref; no custom inputs",
+    "same_run_jar_binding": "Producer checks checkout HEAD==GITHUB_SHA, records SOURCE_COMMIT and SHA256SUMS; consumer validates all before use.",
+    "profiles": ["large-memory-4g", "large-memory-8g", "large-memory-10g"],
+    "max_heap_mib": 8192,
+    "resource_scope": "Existing automatic OS/fresh-memory gates retained; skips are not passes. 8g and10g profile default heap is8192MiB per existing runner."
+  },
+  "state": "Launch outcomes and run IDs recorded separately; no hosted acceptance inferred from this binding.",
+  "private_remote_export": "Not performed; separate claws approval still pending."
+}

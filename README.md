@@ -398,11 +398,24 @@ case alone does not establish a required result or a JDK defect.
 Official TCK/JCK has not been run. These differential suites are not a TCK result
 or certification.
 
-`parallelMultiply` computes the same result synchronously. Multiplication and
-division currently prioritize straightforward correctness over JDK's advanced
-large-input algorithms. Extremely large inputs remain subject to available
-memory and execution time. Random sources are caller-selected; the default
-primality witness generator is Kotlin's default random source.
+`parallelMultiply` computes the same exact result synchronously. Large balanced
+ordinary JVM values may use two helper workers. Eligibility, capability
+and busy checks can select synchronous `multiply` fallback; backend construction
+and arithmetic failures can still propagate. JVM uses a shared pool. JS/Wasm/Native
+retain direct virtual `multiply`; these public routes do not activate their
+retained worker candidates. Initialization,
+copies, communication and worker lifecycle can increase CPU, memory and latency;
+parallel execution and a speedup are not guaranteed. See
+[platform multiplication](docs/platform-multiplication-539.md) for current dispatch,
+lifecycle limits and historical Node evidence. Final source-bound runtime,
+resource and guard acceptance remain pending in task539; historical worker
+measurements are not current activation or speedup claims. Regular multiplication
+uses adaptive base-2^30 kernels; JS/Wasm retain64/16/384, while Native uses K32
+only for physical equal-length nonalias operands and K64 otherwise, with leaf16
+and whole-square entry384. Extremely large inputs
+remain subject to available memory and execution time. Random sources are
+caller-selected; the default primality witness generator is Kotlin's default
+random source.
 
 The active work toward full source and behavioral compatibility, its evidence and remaining
 gaps are tracked in [COMPATIBILITY.md](COMPATIBILITY.md). The current passing

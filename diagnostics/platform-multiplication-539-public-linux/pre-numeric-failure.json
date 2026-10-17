@@ -1,0 +1,32 @@
+{
+  "status": "PRE_NUMERIC_WIRING_FAILURE_ZERO_CHILDREN",
+  "run": 39008435845,
+  "head": "c0ad6de0f8fddd7955e2fe454e4609839bba46e4",
+  "conclusion": "failure",
+  "builds": "Both source builds SUCCESS, stage SUCCESS",
+  "failure": "First controller verify: Exact runtime inventory, before binding-before/host/observation/childloop",
+  "numeric_children": 0,
+  "completed_pairs": 0,
+  "run_members": [
+    "guard/run/FAILED"
+  ],
+  "reason": "Depth-first walk compared to global sorted manifest; actual manifest names produce153 ordering mismatches eachroot; exactmembership/hash validation not relaxed by sortingbothlists",
+  "retention_gap": "Default artifactupload omitted9hiddenmetadata members perroot; corrected include-hidden-files:true. Their absence in returned ZIP is not evidence they were absent onrunner.",
+  "files": [
+    {
+      "path": ".codex-work/539/public-linux-guard-c0ad6de0-artifact.zip",
+      "bytes": 18414425,
+      "sha256": "cffabaf5e037481d6e394dd9e1d93c7ee847978535d5036950f355237263ff9e"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-c0ad6de0-artifacts.json",
+      "bytes": 787,
+      "sha256": "7eacbf45ebda9c723a63bdf9f162f1435b2b258ea142dec70b0109f02a118f93"
+    },
+    {
+      "path": ".codex-work/539/public-linux-guard-c0ad6de0-logs.zip",
+      "bytes": 49537,
+      "sha256": "e1149eccec06fad8d8170e8ca4c23c37ba2e5ddf750f6f316dededdc6e804c97"
+    }
+  ]
+}

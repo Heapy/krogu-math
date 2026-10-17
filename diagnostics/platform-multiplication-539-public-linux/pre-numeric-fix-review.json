@@ -1,0 +1,56 @@
+{
+  "status": "PASS_ACTUAL_PRE_NUMERIC_FAILURE_AND_NARROW_INVENTORY_RETENTION_CORRECTION",
+  "failed_run": 39008435845,
+  "failed_head": "c0ad6de0f8fddd7955e2fe454e4609839bba46e4",
+  "artifact_sha256": "cffabaf5e037481d6e394dd9e1d93c7ee847978535d5036950f355237263ff9e",
+  "failure_ledger_sha256": "d0d022eede44c1a6a6522e418fe368d2fc5aab04e636e52fbe6e4196bd30790c",
+  "new_manifest_sha256": "75c382a9bd433c4bbe542ed36867e5f5ca56016e8de5a15c89bc06c5fbeef410",
+  "delta_patch_sha256": "27171edcf9b0af964c6d65b40abb55c65e3710dbacfb76fc3dc0ca0393ec1b44",
+  "actual_numeric_children": 0,
+  "actual_numeric_pairs": 0,
+  "first_verify_before_host_observation_and_child_loop": true,
+  "inventory_models": [
+    {
+      "root": "baseline",
+      "manifest_listed_files": 1089,
+      "runtime_inventory_including_manifest": 1090,
+      "returned_files_including_manifest": 1081,
+      "hidden_missing": [
+        "mocha/node_modules/.yarn-integrity",
+        "mocha/node_modules/@pkgjs/parseargs/.editorconfig",
+        "mocha/node_modules/balanced-match/.github/FUNDING.yml",
+        "mocha/node_modules/brace-expansion/.github/FUNDING.yml",
+        "mocha/node_modules/flat/.travis.yml",
+        "mocha/node_modules/isexe/.npmignore",
+        "mocha/node_modules/require-directory/.jshintrc",
+        "mocha/node_modules/require-directory/.npmignore",
+        "mocha/node_modules/require-directory/.travis.yml"
+      ],
+      "ordering_mismatches": 153,
+      "sorted_membership_exact": true
+    },
+    {
+      "root": "current",
+      "manifest_listed_files": 1089,
+      "runtime_inventory_including_manifest": 1090,
+      "returned_files_including_manifest": 1081,
+      "hidden_missing": [
+        "mocha/node_modules/.yarn-integrity",
+        "mocha/node_modules/@pkgjs/parseargs/.editorconfig",
+        "mocha/node_modules/balanced-match/.github/FUNDING.yml",
+        "mocha/node_modules/brace-expansion/.github/FUNDING.yml",
+        "mocha/node_modules/flat/.travis.yml",
+        "mocha/node_modules/isexe/.npmignore",
+        "mocha/node_modules/require-directory/.jshintrc",
+        "mocha/node_modules/require-directory/.npmignore",
+        "mocha/node_modules/require-directory/.travis.yml"
+      ],
+      "ordering_mismatches": 153,
+      "sorted_membership_exact": true
+    }
+  ],
+  "count_precision": "1090 is total runtime inventory INCLUDING manifest; TSV itself lists1089. Returned1081 likewise includes manifest. Nine hidden omissions per root, not runtime absence.",
+  "source_fix": "Sort only actual inventory before existing exact names comparison; all content hashes/duplicates/exact membership retained. Upload include-hidden-files:true retains hidden closure files.",
+  "unchanged_scope": "No numerical corpus/count/order/criteria/observer/runtime/lifecycle/helper change. Failed initial result is not performance evidence or clearance. One next numerical attempt authorized after setup correction; new public Linux epoch, no private TAR export.",
+  "remaining_actual": "Next actual returned closure must contain all hidden files and validate full manifests, alongside1176TIME168REP168CHECK and raw/load evidence."
+}

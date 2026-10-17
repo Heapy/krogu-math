@@ -59,3 +59,27 @@ publishing.publications.withType<MavenPublication>().configureEach {
         scm { url.set("https://github.com/Heapy/krogu-math"); connection.set("scm:git:https://github.com/Heapy/krogu-math.git") }
     }
 }
+
+// Opt-in optimized Native diagnostic test entry; ordinary test binaries are unchanged.
+// Native threshold calibration must not mistake a DEBUG test executable for production cost.
+if (providers.gradleProperty("multiplication539").orNull == "true") {
+    kotlin.targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>().configureEach {
+        binaries.test("calibration539", listOf(org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.RELEASE))
+    }
+}
+
+
+// Embed a complete independently linked worker closure in each platform KLIB.
+// No consumer-side resource copy or application-root import is needed.
+kotlin.sourceSets.named("jsMain") {
+    kotlin.srcDir(project(":nodeWorker539").layout.buildDirectory.dir("generated/payload/js"))
+}
+kotlin.sourceSets.named("wasmJsMain") {
+    kotlin.srcDir(project(":nodeWorker539").layout.buildDirectory.dir("generated/payload/wasmJs"))
+}
+tasks.matching { it.name == "compileKotlinJs" || it.name == "jsSourcesJar" }.configureEach {
+    dependsOn(":nodeWorker539:generateJsPayload539")
+}
+tasks.matching { it.name == "compileKotlinWasmJs" || it.name == "wasmJsSourcesJar" }.configureEach {
+    dependsOn(":nodeWorker539:generateWasmJsPayload539")
+}

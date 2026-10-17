@@ -1,0 +1,320 @@
+{
+  "status": "QUALIFIED_PASS_17_DOMAINS_ON_FROZEN_AUDITED_REVISION_MAIN_INTEGRATION_PENDING",
+  "task": "local:553",
+  "task_authority_sha256": "51ace59b34a6464c2141bf57c57dec1b8d5a23e908ff055a9a3536a26f4f72fd",
+  "authoritative_comments": [
+    1636,
+    2284
+  ],
+  "caller_workaround_authority": [
+    "local:525/comment2544",
+    "local:525/comment2545"
+  ],
+  "audited_revision": "975182f9bca911be86ef1bc4efedc7039cc8fe36",
+  "numerical_production": "3f0e1fb8f763b6518395535e222c18407112c9aa",
+  "source405_sha256": "48c4b61794256a738e36af34fe8d1ccc32a897590fa86c7cf7813c24170e5e0a",
+  "actual_main_at_handoff": "df6bc9e69e6549c791f19981ec18691cc5b09412",
+  "matrix_sha256": "08365b39417362a89ed559a79867f118d5ee9bd2b0aad6f3b5c7658d7793daba",
+  "durable_report_sha256": "bab48db3a97b1da4cfa9f22ea7f9a54dc38bd7940d7098d2ac711d8804082a03",
+  "source_composition_sha256": "fb6faad6a21b8cbcc1dbd920877246a96fa502e4a3949668a00917b0919ae052",
+  "actual_audits": [
+    {
+      "path": "independent-targeted-public-and-hosted-ref-review.json",
+      "sha256": "22dc7fd793b23ddf340004eb400fcf9656757d3d804e7358223822c42bf424ff"
+    },
+    {
+      "path": "independent-hosted-normal-and-final-supported-public-join-audit.json",
+      "sha256": "1fe60f94277014ca58c42209a7702776585d79a7a34ec2a0da4f12badaeba6de"
+    },
+    {
+      "path": "independent-hosted-large-39007728056-actual-audit.json",
+      "sha256": "276bf654c83990ab6bf43ec2f5e2ce8b4a9c085493e91a61f96fc67aff277a0f"
+    },
+    {
+      "path": "independent-hosted-arm-oracle-ios-same-run-join-audit.json",
+      "sha256": "9a45e867fa9a91f37150f06ce698eafdb2f0c7af71e8baca7249f34cf5c61422"
+    }
+  ],
+  "requirements": [
+    {
+      "requirement": 1,
+      "domain": "Independent common implementation, relocation/license and reference/tooling provenance",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [],
+      "existing_proof_basis": "Actual553 body requires independent common Kotlin, io.heapy.krogu.math, Apache-2.0, no foreign numerical implementation sources/delegation; wrapper pins Gradle9.8.1/checksum, CI pins Kotlin2.4.21 and BellSoft25.0.4+9",
+      "final_applicability_and_actual_evidence": "Qualified inherited provenance: own common source, relocation and Apache-2.0 remain. Final3f0 production/source405 and reviewed worker build closure are bound by539 canonical package; benchmark peers remain external598. No foreign numerical implementation was inspected. Exact source composition binds all43 inherited main files:41 byte-unchanged,2 exactly reversible after reviewed539 changes; all58 final main files match975. Fresh hosted toolchain/source/JAR/provenance is accepted by audits1fe60f94/9a45e867/276bf654. A finite suite cannot establish independence alone.",
+      "qualification": "Independence rests on recorded own-source/dependency provenance, not finite tests alone; no foreign numerical source or production delegation."
+    },
+    {
+      "requirement": 2,
+      "domain": "Kotlin numerical call surface, constants, operators and conversions of all four types",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/kotlin-migration-525-callforms.md",
+          "sha256": "f6dd4ab6dea4c22ad59b18889e26b79b1620c370e243ecc5c053047986066494"
+        },
+        {
+          "path": "docs/kotlin-callform-595-596-verification.md",
+          "sha256": "788ca32f3d831ab8d26f2ee81eb0a23eab232f348a13fb287f1dcb78279f7daa"
+        }
+      ],
+      "existing_proof_basis": "`ApiSurfaceTest`, the [finite call-form inventory](../../docs/kotlin-migration-525-callforms.md), existing conversion/operator/floating tranches and the [595/596 source260 local repair](../../docs/kotlin-callform-595-596-verification.md); task573's49 compiler jobs retain their narrower input-nullability scope",
+      "final_applicability_and_actual_evidence": "Accepted caller workaround: actual525 comments2544/2545 authorize explicit toKrogu imports without repairing Number.toX or third-party callers. Exact three-doc correction8404 is independently reviewed and integrated. Current four-type source signatures/fields are bound: all old BigInteger bytes exact except same-signature parallelMultiply body/private helpers; other three types fully byte-equal. Final3f0 caller127 instances are already bound. Current975 hosted/compiler/public observations are accepted by1fe60f94/9a45e867, alongside the source-bound127 caller instances. Historical49 jobs keep their narrower scope; no transparent Number/third-party compiler repair is claimed.",
+      "qualification": "Explicit imported toKrogu caller migration authorized2544/2545; original Number.toX/upstream and unrelated third-party callers not transparently repaired."
+    },
+    {
+      "requirement": 3,
+      "domain": "Java source compatibility inside the TCK harness",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/source255-public-math-verification-559.md",
+          "sha256": "e5872543bc9f446161ffae224274aa8eea4a03b98a08e4325bdc0158cbc196e3"
+        }
+      ],
+      "existing_proof_basis": "`JavaApiContractTest`, explicit test adapters and the accepted [source255 public campaigns](../../docs/source255-public-math-verification-559.md):106 normal plus12 large baseline/port PASS IDs, covering all59 retained plans in both phases",
+      "final_applicability_and_actual_evidence": "Current975/e8 hosted normal106 PASS and large12 PASS are independently accepted by1fe60f94/276bf654: exactly59 retained plans in each phase. Normal46 SKIP retain12 large-profile rows,22 disabled/private/commented rows and12 explicit adaptation losses; none is counted as a pass. Historical local2531 remains105PASS/1FAIL/46SKIP; reviewed df6 adapter and targeted68473 recovery remain separate. Java production ABI and official JCK are not claimed.",
+      "qualification": "Java call shapes only in harness per1636;118 adapted invocations/59plans do not certify officialJCK or erase12lost original fields."
+    },
+    {
+      "requirement": 4,
+      "domain": "BigInteger signed arithmetic and exact results",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/modular-substitution-546-proof-binding.md",
+          "sha256": "b9d04234f39761a7c609346e035a4467ba9d49a798dfe99052578d99230b54fc"
+        }
+      ],
+      "existing_proof_basis": "Portable oracle; 396 signed pairs through 16,384-bit inputs and 32,768-bit products; carry/borrow and quotient arguments; seeded JVM arithmetic and modular tests; 10,156 string-constructor outcomes; 11,798 modular reduction/inverse outcomes; 9,176 modular-power outcomes; [transitively truthful modular substitution argument](../../docs/modular-substitution-546-proof-binding.md)",
+      "final_applicability_and_actual_evidence": "Qualified source composition completed: accepted532/533 kernel tail is byte-identical, Native32 only changes valid recursion cutoff, and joined top-level frame composes the same exact Karatsuba polynomial.529 representation and all other BigInteger bytes remain exact outside the reviewed parallel entry/private helpers. Final3f0 unfiltered local2112 PASS is finite evidence; fresh975 public arithmetic and25 hosted oracle/check commands now PASS (1fe60f94/9a45e867), with the existing source-composition argument retained. Performance of539 is not a mathematical closure criterion.",
+      "qualification": "Exact inherited kernel/source plus reviewed frame algebra and parameter-valid cutoff; completion remains resource-conditional."
+    },
+    {
+      "requirement": 5,
+      "domain": "Infinite two's-complement bit semantics",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/integer-bits-545-proof.md",
+          "sha256": "7045cce84f21b453c13fd5a0548fe681eb7a892e568aa124c37de94cf8896f25"
+        }
+      ],
+      "existing_proof_basis": "Portable oracle, seeded JVM operations, algebraic invariants and the [signed-width/endpoint argument](../../docs/integer-bits-545-proof.md); 17,198 bit value/callback/identity outcomes and the current range ledger",
+      "final_applicability_and_actual_evidence": "Unchanged reached bit operations retain signed-width/endpoint proof and529 publication/identity evidence; final3f0 full local bit/byte/subtype tests PASS. Current975 supported/public source binding is accepted by1fe60f94/9a45e867. No repeated529 raw audit required.",
+      "qualification": "Signed-width/endpoint lemmas and unchanged reached operations; no fixed-memory arbitrary giant witness."
+    },
+    {
+      "requirement": 6,
+      "domain": "All constructor encodings and validation",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/api-constructor-549-current-binding.md",
+          "sha256": "18c8552ab46a6c7fc9ec18a51e595971714dfe80408110a078e33f41724c9c0d"
+        },
+        {
+          "path": "docs/decimal-text-sqrt-587-589-verification.md",
+          "sha256": "7118f749f5ccbe4a399c69c760a67accd639818779f648486bf1d66d3338ab5d"
+        }
+      ],
+      "existing_proof_basis": "Historical 25,584 byte and 10,156 string outcomes; BMP digit/radix corpus; conditional lexical/slice, byte and rounding arguments composed by the [current constructor/API binding](../../docs/api-constructor-549-current-binding.md); [588/589 text-constructor verification](../../docs/decimal-text-sqrt-587-589-verification.md); separate16-call scale-wording diagnostic",
+      "final_applicability_and_actual_evidence": "Unchanged lexical/slice/Unicode and byte validation arguments carry forward, with reviewed exact-class/once-materialization frontier in539. Final local constructor tests PASS; current975 public constructor/oracle observations PASS (1fe60f94/9a45e867), and final3f0 caller127 instances are source-bound byfb6faad6.",
+      "qualification": "Lexical/byte/validation argument and explicit null/compound-invalid classification retained; four lost joint-invalid public calls not treated as original passes."
+    },
+    {
+      "requirement": 7,
+      "domain": "Decimal rounding, precision, preferred scales, comparisons and text",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/decimal-overload-541-current-binding.md",
+          "sha256": "b5244849ce03ff9778660666de0016dab3ce22c607b28fdbe3cdaac5628833de"
+        },
+        {
+          "path": "docs/decimal-division-normalization-594-verification.md",
+          "sha256": "8381e550ae87d02dc3136fae508481c505ca6ab907492d0092f2b71d33eb8d69"
+        }
+      ],
+      "existing_proof_basis": "Historical192,000 structured JVM comparisons,207,239 portable scale outcomes and75,728 context observations; [current39-entry overload binding](../../docs/decimal-overload-541-current-binding.md), product/division/sum arguments and [594 normalization verification](../../docs/decimal-division-normalization-594-verification.md) bind the later repairs",
+      "final_applicability_and_actual_evidence": "Qualified overload/value/cohort/scale/callback proofs541/594 remain; BigDecimal implementation is unchanged by539, while products transitively reach reviewed multiply leaves. Final local decimal regressions PASS; current975 public decimal/hosted oracle binding PASS is accepted by1fe60f94/9a45e867. No arbitrary all-size speed condition.",
+      "qualification": "Qualified value/cohort/scale/canonical/error/dispatch partition from541/594; no blanket arbitrary changing-subclass trace equivalence."
+    },
+    {
+      "requirement": 8,
+      "domain": "Powers and roots",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/decimal-pow-542-accuracy-scope.md",
+          "sha256": "929533af80323bca96696526edc1ce94ec17138286cabbdddf4d1327ca6860fb"
+        },
+        {
+          "path": "docs/decimal-text-sqrt-587-589-verification.md",
+          "sha256": "7118f749f5ccbe4a399c69c760a67accd639818779f648486bf1d66d3338ab5d"
+        },
+        {
+          "path": "docs/decimal-power-593-verification.md",
+          "sha256": "3d85cec1ae5c7bcf52f098da024fc42b28d88ce0d82bb6276afb889221ffc4c7"
+        }
+      ],
+      "existing_proof_basis": "Historical exponent/rounding and midpoint fixtures; the [542 operational/accuracy scope](../../docs/decimal-pow-542-accuracy-scope.md), [587 root normalization](../../docs/decimal-text-sqrt-587-589-verification.md), integer-power/root arguments, [593 private working-coefficient repair](../../docs/decimal-power-593-verification.md) and complete94,282-record strict sqrt ledger retained through260; source255 matching hosted/public records above",
+      "final_applicability_and_actual_evidence": "Existing542/587/593 operational/accuracy lemmas remain conditional on their documented working-coefficient/capacity premises and composed multiplication. Final local powers/sqrt regressions PASS; current975 public powers and hosted sqrt/oracle observations PASS (1fe60f94/9a45e867); their finite scope does not enlarge the inherited lemmas. No universal two-ulp theorem is inferred.",
+      "qualification": "Operational working-coefficient/capacity/accuracy conditions retained; no new universal sharp two-ulp theorem."
+    },
+    {
+      "requirement": 9,
+      "domain": "Float/Double conversions and canonical factory values",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/floating-conversion-543-proof-binding.md",
+          "sha256": "8fdfcf54b6e66855e32efecf6dc60cac4588aada3afc24e732f2a6c7703def46"
+        }
+      ],
+      "existing_proof_basis": "Bitwise oracle comparisons, midpoint/canonical boundary fixtures, all binary scaling powers from -1074 through 1023, and the independently reviewed [current exhaustive-class composition](../../docs/floating-conversion-543-proof-binding.md) for integer/decimal rounding, exact Double construction and canonical Float/Double selection",
+      "final_applicability_and_actual_evidence": "543 conversion-class proof and unchanged conversion leaves carry forward; final local canonical Float/Double tests PASS. Accepted Number caller workaround is explicit. Current975 public conversion/hosted observations PASS (1fe60f94/9a45e867), joined to the source-bound caller127 instances; historical and current finite counts do not enlarge the conversion-class proof.",
+      "qualification": "Inherited exhaustive conversion-class proof and unchanged leaves; finite hosted observations corroborate, no new allinputs enumeration."
+    },
+    {
+      "requirement": 10,
+      "domain": "Random adapters and both random-construction API families",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/platform-random-validation-549-proof.md",
+          "sha256": "20921ad4f1e4729849871b6b129ebf2c628ca7329cee065f2cd36986bd0a3f59"
+        },
+        {
+          "path": "docs/primality-547-proof-binding.md",
+          "sha256": "a3855078b4bdebaa279972a5e108f7a3cbc59194b98b50659388c51a6fb84169"
+        }
+      ],
+      "existing_proof_basis": "[JVM bridge validation proof](../../docs/platform-random-validation-549-proof.md): Java PlatformRandom alias and distinct Kotlin Random factories; negative numBits IAE, bitLength<2 AE, zero numerical result and separate null boundaries. [Sampling/callback argument](../../docs/primality-547-proof-binding.md#actual-randomness-callbacks-and-finite-evidence) states conditional distribution and exception propagation premises",
+      "final_applicability_and_actual_evidence": "549 platform-adapter validation and547 conditional sampling/callback arguments carry forward unchanged; final local random tests PASS. Both Kotlin Random and JVM PlatformRandom construction families remain in scope. Current975 hosted platform/API observations PASS (1fe60f94/9a45e867); no stronger RNG/distribution theorem is asserted.",
+      "qualification": "Both random API families validation and callback propagation bound; supplied RNG quality/history assumptions remain necessary."
+    },
+    {
+      "requirement": 11,
+      "domain": "Prime generation and certainty",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/primality-547-proof-binding.md",
+          "sha256": "a3855078b4bdebaa279972a5e108f7a3cbc59194b98b50659388c51a6fb84169"
+        }
+      ],
+      "existing_proof_basis": "416 portable primality/successor/trace cases; bounded MAX_VALUE-certainty liveness test; conclusive thirteen-base domain; Carmichael/strong-pseudoprime regressions; [whole-domain conditional certainty and sampling argument](../../docs/primality-547-proof-binding.md); exhaustive small byte-payload distribution, primality and successor trial-division checks",
+      "final_applicability_and_actual_evidence": "547 conditional certainty and sampling proof remains qualified; reviewed539 exact multiplication composition preserves its reached arithmetic. Final local prime/witness/budget tests PASS. Current975 public primality/hosted observations PASS (1fe60f94/9a45e867), retaining timeout classifications and conditional certainty premises; certainty is not inferred from timing.",
+      "qualification": "Conditional certainty/sampling/successor arguments retained; not inferred from runtime or deterministic draw-count matching."
+    },
+    {
+      "requirement": 12,
+      "domain": "Exception conditions and types",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/api-constructor-549-current-binding.md",
+          "sha256": "18c8552ab46a6c7fc9ec18a51e595971714dfe80408110a078e33f41724c9c0d"
+        }
+      ],
+      "existing_proof_basis": "Historical portable/null/invalid fixtures, the [current API/error binding](../../docs/api-constructor-549-current-binding.md), public-entry ledgers and reviewed48-input non-null policy implemented by573\u2013578",
+      "final_applicability_and_actual_evidence": "529 identity repair plus541/549/573\u2013578 error-order/null proofs retained. Reviewed539 accepted-work failure/permit/join contracts and final local tests PASS; JS/Wasm/Native final public path is direct virtual fallback. Current975 public error/hosted bindings PASS (1fe60f94/9a45e867), joined to source-bound caller observations; no arithmetic retry after accepted failure is permitted.",
+      "qualification": "Required isolated errors/identity/dispatch retained, compound-invalid/research fields explicitly classified; accepted-work failure never serial arithmetic retry."
+    },
+    {
+      "requirement": 13,
+      "domain": "Equality, ordering, hash codes, immutability",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/context-mode-contract-549-ledger.md",
+          "sha256": "1f32c23c84d2c3d9e7706995cee7f6d55d7a138dd6923dbb05acafba753224f0"
+        }
+      ],
+      "existing_proof_basis": "JVM oracle/common invariants, 6,110 portable integer hash outcomes, [context/mode](../../docs/context-mode-contract-549-ledger.md), current API/overload bindings and591's normalized public comparison units",
+      "final_applicability_and_actual_evidence": "Unchanged representation/hash/current serialization leaves plus reviewed539 borrowed-input/output ownership contracts are source-bound; final local equality/hash/alias/subclass/identity tests PASS. Current975 public/hosted binding PASS is accepted by1fe60f94/9a45e867. No new object fields were introduced by public frontend.",
+      "qualification": "Representation publication/immutability/hash/identity arguments plus borrowed-child ownership; finite observed identities not universal reuse promise."
+    },
+    {
+      "requirement": 14,
+      "domain": "MathContext and RoundingMode public contracts",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/context-mode-contract-549-ledger.md",
+          "sha256": "1f32c23c84d2c3d9e7706995cee7f6d55d7a138dd6923dbb05acafba753224f0"
+        }
+      ],
+      "existing_proof_basis": "[Context/mode ledger](../../docs/context-mode-contract-549-ledger.md): all handwritten entries, canonical text/roundtrip, arbitrary supported Int precision and legacy mode-code arguments; generated enum behavior conditional on runtime contracts",
+      "final_applicability_and_actual_evidence": "Context/mode ledger549 and unchanged implementation carry forward with its explicit lexeme-extension/runtime-enum qualifications. Final local context/mode tests PASS; current975 public/hosted binding PASS is accepted by1fe60f94/9a45e867. Qualified compatibility extensions are not unconditional normative equivalence.",
+      "qualification": "Canonical context/enum obligations and accepted broader lexeme-extension classification retained; unresolved normative interpretation not falsely marked proved."
+    },
+    {
+      "requirement": 15,
+      "domain": "Current-format JVM serialization; optional snapshot adapter evidence",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [],
+      "existing_proof_basis": "Current-format round trips, validated base state, subclass state, reference identity, cycles and array-alias isolation; existing exact coefficient/scale adapters",
+      "final_applicability_and_actual_evidence": "Final3f0 local current-format JVM serialization tests PASS; no serialized pool/worker state or new numerical object fields. Existing subclass/cycle/array-detachment scope retained. Current975 full normal public serialization invocations PASS in accepted106 campaign1fe60f94; prior2531 passed serialization but its complete campaign remainsFAIL on the old constructor adapter. Legacy/cross-format Java serialization remains the sole accepted exclusion.",
+      "qualification": "Current own-format serialization includes subclass/cycles/alias isolation; legacy/cross-format streams remain the sole agreed serialization exclusion."
+    },
+    {
+      "requirement": 16,
+      "domain": "Same common behavior on every supported platform",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/source255-hosted-verification.md",
+          "sha256": "c82733757cd1187b70af9e30b020fbbc0f6cf2ef3bd30a1c5dcf8c9cc4c13d79"
+        }
+      ],
+      "existing_proof_basis": "Accepted [source255 hosted snapshot](../../docs/source255-hosted-verification.md):5,855 methods across13 target instances and25 separate oracle checks, with iOS device compilation separate; source260 has1,785 local methods across four targets",
+      "final_applicability_and_actual_evidence": "Current975 hosted13 runtime instances/7062 tests independently PASS, zero failures/errors/skips;25 actual oracle/check commands PASS; same-run LinuxARM64 executes474 tests and iOS device compileKotlinIosArm64 succeeds separately. Audits95d7be65/9a45e867/1fe60f94 bind XML/log/artifact source and reuse the accepted Windows/macARM parts. Local3f0 full2112 stays separately source-bound. No iOS device runtime claim or598 dependency.",
+      "qualification": "Configured13 runtime instances7062/25commands and separate iOSdevice compilation; no unsupported browser or iOSdevice execution claim."
+    },
+    {
+      "requirement": 17,
+      "domain": "Required numerical range",
+      "verdict": "QUALIFIED_PASS_ON_FROZEN975_WITH_ACCEPTED_CONTRACT_PARTITIONS",
+      "source_proof_refs": [
+        {
+          "path": "docs/decimal-range-590-592-verification.md",
+          "sha256": "71933e0186c63657970a0f7cd368f231c5f554a5dd8f2c1472214d916118668a"
+        },
+        {
+          "path": "docs/decimal-power-593-verification.md",
+          "sha256": "3d85cec1ae5c7bcf52f098da024fc42b28d88ce0d82bb6276afb889221ffc4c7"
+        },
+        {
+          "path": "docs/decimal-division-normalization-594-verification.md",
+          "sha256": "8381e550ae87d02dc3136fae508481c505ca6ab907492d0092f2b71d33eb8d69"
+        },
+        {
+          "path": "docs/supported-range-allocation-548-ledger.md",
+          "sha256": "3505b33e6898861239af7e08835faf7a7dd3600b15e01983808bc435e47e6d3e"
+        }
+      ],
+      "existing_proof_basis": "Integer/decimal kernel arguments, selected extreme-scale regressions, [590\u2013592 boundary repairs](../../docs/decimal-range-590-592-verification.md), [593 private pow coefficients](../../docs/decimal-power-593-verification.md), [594 numerical normalization](../../docs/decimal-division-normalization-594-verification.md) and the [unified source/allocation ledger](../../docs/supported-range-allocation-548-ledger.md), with dense giant witnesses explicitly symbolic",
+      "final_applicability_and_actual_evidence": "548 supported-result/allocation/resource premises and532/533 capacity arguments compose with reviewed539 bounded frames/output/worker ownership; final local boundary tests PASS. Required current large profiles now actual12PASS on source975/e8; current975 normal and hosted range/oracle binding PASS is accepted by1fe60f94/9a45e867. Dense giant witnesses remain symbolic and no fixed-heap theorem/default lower cap is introduced.",
+      "qualification": "Supported-result/capacity/avoidable-intermediate-overflow proofs retained under548 physical resources; dense giant witnesses symbolic, no arbitrary lowercap/fixedheap theorem."
+    }
+  ],
+  "remaining_required_action": [
+    {
+      "kind": "INTEGRATED_MAIN_BINDING",
+      "action": "Integrate authorized audited source through reviewed Git flow. Record resulting fullcommit and compare complete tracked production/build/workflows plus reviewed docs/adapter to audited975; explicitly account for any evidence/docs-only deltas. Main df6 is not the auditedproduction and975 is not its directfastforward.",
+      "numerical_retest_condition": "No numerical replay solely for equal source/tree at a new merge commit; any actual executable/input/toolchain delta needs only affected validation justified by that delta. Never relabel975 CI attestations as executed on newmainSHA."
+    }
+  ],
+  "substantive_remaining_behavior_gaps_found": [],
+  "qualification_boundary": "Accepted526 research/reference partitions, MathContext lexeme extension,542 operational accuracy,547 conditional randomness/callback and548 physical resources are retained qualified contract/evidence scopes, not newly proved fields or newly waived known required mismatches. Tests corroborate source/proofs;118 or7062 alone cannot establish full-domain compatibility.",
+  "not_claimed": [
+    "OfficialJCK certification",
+    "Unconditional formal exhaustive/fixed-resource guarantee",
+    "Transparent Number.toX or third-party compiler repair",
+    "539performance closure or598comparative acceptance"
+  ],
+  "task_completion": "Do not mark553 integrated/final-main DONE before exact integration binding. No dependency on539performance/598 is introduced. No taskstate/comments/link mutation, build, numerical test or foreign implementation inspection by this review."
+}

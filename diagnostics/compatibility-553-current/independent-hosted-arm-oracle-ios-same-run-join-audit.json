@@ -1,0 +1,71 @@
+{
+  "status": "PASS_FINAL_13TH_RUNTIME_ORACLE25_IOS_DEVICE_COMPILATION_AND_SAME_RUN_BINDING_NORMAL_PUBLIC_PENDING",
+  "run_id": 39007702192,
+  "head_sha": "975182f9bca911be86ef1bc4efedc7039cc8fe36",
+  "checkpoint_sha256": "0ef24f52c7ca33f37f29523c22c270af7bd89d3fd246526cc2b0f1ddc29db559",
+  "new_runtime": {
+    "target": "linuxArm64",
+    "job_id": 117327316251,
+    "actual_RUN_OK_pairs": 474,
+    "suites": 108,
+    "log_sha256": "937b6be9db747c10492f43b328f105859508f392664ad5af0c2722d6880d0288",
+    "same_run_artifact_id": 12092207435,
+    "api_zip_digest": "sha256:ceae2cb5061eccc1fa67aa73f6ac0eeb72e341be5fadc23161f1840362ff4bde",
+    "download_digest_verified_in_runtime_log": true,
+    "executable_sha256": "7255e37f10b19888bebd662e3473a9d5a6ff983a00a6e97942b85f4fb2a0ea54"
+  },
+  "oracle25": {
+    "job_id": 117323442263,
+    "exact_workflow_commands": [
+      "kotlinr scripts/generate-oracle.main.kts --check",
+      "kotlinr scripts/generate-scale-oracle.main.kts --check",
+      "kotlinr scripts/generate-null-oracle.main.kts --check",
+      "kotlinr scripts/generate-character-oracle.main.kts --check",
+      "kotlinr scripts/generate-prime-oracle.main.kts --check",
+      "kotlinr scripts/generate-prime-prefix-oracle.main.kts --check",
+      "kotlinr scripts/generate-decimal-pair-dispatch-oracle.main.kts --check",
+      "kotlinr scripts/generate-decimal-integral-dispatch-oracle.main.kts --check",
+      "kotlinr scripts/generate-decimal-context-dispatch-oracle.main.kts --check",
+      "kotlinr -J-Xmx512m scripts/map-decimal-context-contract-coverage.main.kts --check",
+      "kotlinr scripts/extract-decimal-context-returned-representations.main.kts --check",
+      "kotlinr scripts/inventory-decimal-exact-root-callbacks-563.main.kts",
+      "kotlinr scripts/generate-decimal-remainder-array-oracle.main.kts --check",
+      "kotlinr scripts/generate-integer-arithmetic-oracle.main.kts --check",
+      "kotlinr scripts/generate-integer-parser-oracle.main.kts --check",
+      "kotlinr scripts/generate-integer-bytes-oracle.main.kts --check",
+      "kotlinr scripts/generate-integer-division-oracle.main.kts --check",
+      "kotlinr scripts/generate-integer-pow-oracle.main.kts --check",
+      "kotlinr scripts/generate-integer-gcd-oracle.main.kts --check",
+      "kotlinr scripts/generate-integer-sqrt-oracle.main.kts --check",
+      "kotlinr scripts/generate-integer-bits-oracle.main.kts --check",
+      "kotlinr scripts/generate-integer-inverse-oracle.main.kts --check",
+      "kotlinr scripts/generate-integer-modpow-oracle.main.kts --check",
+      "kotlinr scripts/generate-context-oracle.main.kts --check",
+      "kotlinr scripts/generate-hash-oracle.main.kts --check"
+    ],
+    "log_sha256": "10c10f736628693ec5a589cba780380d3a50b57df6db31e25673dc761901d395",
+    "status": "SUCCESS_ACTUAL_COMMANDS_MATCH25_EXPECTED"
+  },
+  "ios_device": {
+    "job_id": 117323442272,
+    "compile_task": "compileKotlinIosArm64",
+    "actual_executed_task_in_successful_log": true,
+    "log_sha256": "8f53d475089a0f1de3b66abe994dd4799bef33c1c296464bc95cfcb83f3fccbb",
+    "scope": "Device source compilation only; device runtime not claimed. Simulator ARM/X64 execution counted in accepted matrix."
+  },
+  "same_run_jvm_producer": {
+    "source_commit": "975182f9bca911be86ef1bc4efedc7039cc8fe36",
+    "jar_sha256": "e8ba87ac09532760f64bd226c7b00aea40b76d8c0b7ae21ddade521570b4517a",
+    "SOURCE_COMMIT_sha256": "5664358c5f0f490b6c22e28c6d2a6020efb9f3dd135629828ea2d916532b8667",
+    "SHA256SUMS_sha256": "2674759200266c3bc7a055519df4158ca85c755ac9c6289017a27cf00c0dea4d"
+  },
+  "previous_parts_reused": {
+    "ubuntu_macosintel_audit_sha256": "95d7be653bc05ca2f6422ad49a5fbb22c943db983c96fd4db20c0a79bb207a37",
+    "previously_accepted_windows_macosARM_tests": 2826,
+    "matrix_12_instance_subtotal": 6588
+  },
+  "supported_runtime_instances": 13,
+  "supported_runtime_tests": 7062,
+  "remaining": "Normal public117327316298 actual result still pending; accepted large12 remains separate run39007728056 on exact975. Final literal17 evidence/disposition and same-run normal must complete before553 acceptance. No539 performance/remote/export or officialJCK completion inferred.",
+  "reviewer_execution": "No binary/script numerical execution, rebuild or foreign numerical implementation inspection."
+}

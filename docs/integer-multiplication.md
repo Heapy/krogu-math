@@ -5,8 +5,11 @@ Task `local:532` adds independent magnitude kernels underneath the existing
 products use row multiplication. Shared magnitude arrays can use a specialized
 square that computes each off-diagonal product once and doubles it. Larger
 balanced operands use Karatsuba; strongly unequal operands use short-sized
-blocks instead of padding both operands to the longer size. No Toom–Cook or
-parallel executor is introduced.
+blocks instead of padding both operands to the longer size. Task 532 introduced
+no Toom–Cook or parallel executor. Its threshold tables and measurements below
+remain historical 532 evidence. Current platform selectors and explicit parallel
+frontend source are described in [platform multiplication](platform-multiplication-539.md);
+that frontend's final acceptance remains pending.
 
 The public result is still exact and signed. Zero behavior, stored coefficient
 range checks, final normalized bit-length validation, and subclass dispatch of

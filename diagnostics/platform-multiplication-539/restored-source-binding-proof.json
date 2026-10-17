@@ -1,0 +1,19 @@
+{
+    "status": "PACKAGE_BINDINGS_PASS_NOT_TASK_ACCEPTANCE",
+    "task": "local:539",
+    "declared_package_status": "INCOMPLETE_JS_SMALL_UNRESOLVED",
+    "indexed_files": 23,
+    "index_sha256": "fa4e84c5cde6b789f17a96edfcb4bb8859db9eb562404382b125e76418587315",
+    "canonical_archives": 3,
+    "retained_archives": 1,
+    "recovery": [
+        {
+            "map": "file-map.json",
+            "archive": "retained:measured-artifacts.zip",
+            "restorable_paths": 18613,
+            "distinct_blobs": 1213
+        }
+    ],
+    "tested_source_files": 405,
+    "git_blobs_checked": 0
+}

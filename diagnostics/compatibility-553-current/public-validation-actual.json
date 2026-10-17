@@ -1,0 +1,1136 @@
+{
+  "status": "TARGETED_ADAPTER_RECOVERY_PASS_FULL_NORMAL_FIRST_RUN_FAIL_HOSTED_PENDING",
+  "main_integrated_commit": "df6bc9e69e6549c791f19981ec18691cc5b09412",
+  "production_source_commit": "3f0e1fb8f763b6518395535e222c18407112c9aa",
+  "jar_sha256": "e8ba87ac09532760f64bd226c7b00aea40b76d8c0b7ae21ddade521570b4517a",
+  "first_normal": {
+    "handle": 2531,
+    "exit_code": 1,
+    "path": ".codex-work/553/worktree/build/math-tck/results/1792215776420/results.json",
+    "bytes": 731899,
+    "sha256": "125620147485c85c8fc1a3f232d066ce6ced5e35efab7e60b4566b539883ed7d",
+    "counts": {
+      "PASS": 105,
+      "FAIL": 1,
+      "SKIP": 46
+    },
+    "failure_ids": [
+      "port/BigInteger/ByteArrayConstructorTest/run-1"
+    ]
+  },
+  "targeted": {
+    "handle": 68473,
+    "exit_code": 0,
+    "path": ".codex-work/553/worktree/build/math-tck/results/1792216074977/results.json",
+    "bytes": 105721,
+    "sha256": "488c322bee8bf1d16b653be14706025b1a511048720574c9249007c12ca2208b",
+    "counts": {
+      "PASS": 2,
+      "FAIL": 0,
+      "SKIP": 139
+    },
+    "passed_ids": [
+      "baseline/BigInteger/ByteArrayConstructorTest/run-1",
+      "port/BigInteger/ByteArrayConstructorTest/run-1"
+    ],
+    "scope": "Only exact original concurrent constructor test baseline and port; does not replace failed fullnormal or establish whole public corpus."
+  },
+  "selection": {
+    "path": ".codex-work/553/public-harness/selection-59-inventory.json",
+    "bytes": 125062,
+    "sha256": "c6c28abf014b381a4c8c2d506987228207188b9494ef0f66bf0f2fd9e2ad155b",
+    "handle": 64936,
+    "exit_code": 0,
+    "tests_executed": 0,
+    "plans": 59,
+    "resources": {
+      "standard": 45,
+      "serialization": 2,
+      "heavy": 5,
+      "large-memory-8g": 4,
+      "memory-512m": 1,
+      "large-memory-4g": 1,
+      "large-memory-10g": 1
+    },
+    "scope": "59 plans remain selected; all seven profiles planned only, no large numerical run/free-memory bypass."
+  },
+  "retained_port_adaptation_companion_skips": [
+    {
+      "id": "port/BigDecimal/Constructor/run-1/adaptation-1",
+      "phase": "port",
+      "path": "test/jdk/java/math/BigDecimal/Constructor.java",
+      "scope": "adaptation-companion",
+      "status": "SKIP",
+      "reason": "charArrayConstructorNegativeOffset: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call",
+      "lostCoverage": "charArrayConstructorNegativeOffset: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call",
+      "retainedChanges": [
+        "Redirect math imports; retain original source, directives and notices except explicitly listed adaptations",
+        "Use MathContext.UNLIMITED instead of exactly four null contexts for invalid char-array range tests under the non-null Kotlin constructor policy; retain all original range/numeric operands, five TestNG assertions, method names, annotations and error-cause check. Original joint-invalid precedence is separate lost coverage, not an adapted pass"
+      ]
+    },
+    {
+      "id": "port/BigDecimal/Constructor/run-1/adaptation-2",
+      "phase": "port",
+      "path": "test/jdk/java/math/BigDecimal/Constructor.java",
+      "scope": "adaptation-companion",
+      "status": "SKIP",
+      "reason": "charArrayConstructorNegativeLength: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call",
+      "lostCoverage": "charArrayConstructorNegativeLength: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call",
+      "retainedChanges": [
+        "Redirect math imports; retain original source, directives and notices except explicitly listed adaptations",
+        "Use MathContext.UNLIMITED instead of exactly four null contexts for invalid char-array range tests under the non-null Kotlin constructor policy; retain all original range/numeric operands, five TestNG assertions, method names, annotations and error-cause check. Original joint-invalid precedence is separate lost coverage, not an adapted pass"
+      ]
+    },
+    {
+      "id": "port/BigDecimal/Constructor/run-1/adaptation-3",
+      "phase": "port",
+      "path": "test/jdk/java/math/BigDecimal/Constructor.java",
+      "scope": "adaptation-companion",
+      "status": "SKIP",
+      "reason": "charArrayConstructorIntegerOverflow: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call",
+      "lostCoverage": "charArrayConstructorIntegerOverflow: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call",
+      "retainedChanges": [
+        "Redirect math imports; retain original source, directives and notices except explicitly listed adaptations",
+        "Use MathContext.UNLIMITED instead of exactly four null contexts for invalid char-array range tests under the non-null Kotlin constructor policy; retain all original range/numeric operands, five TestNG assertions, method names, annotations and error-cause check. Original joint-invalid precedence is separate lost coverage, not an adapted pass"
+      ]
+    },
+    {
+      "id": "port/BigDecimal/Constructor/run-1/adaptation-4",
+      "phase": "port",
+      "path": "test/jdk/java/math/BigDecimal/Constructor.java",
+      "scope": "adaptation-companion",
+      "status": "SKIP",
+      "reason": "charArrayConstructorIndexOutOfBounds: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call",
+      "lostCoverage": "charArrayConstructorIndexOutOfBounds: original port call with invalid char-array range and null MathContext no longer tests joint-invalid error precedence; only null is replaced with MathContext.UNLIMITED, retaining the range operands and NumberFormatException assertion. Original port/BigDecimal/Constructor/run-1 FAIL in frozen campaign1792066236575 remains evidence, not a pass for this original call",
+      "retainedChanges": [
+        "Redirect math imports; retain original source, directives and notices except explicitly listed adaptations",
+        "Use MathContext.UNLIMITED instead of exactly four null contexts for invalid char-array range tests under the non-null Kotlin constructor policy; retain all original range/numeric operands, five TestNG assertions, method names, annotations and error-cause check. Original joint-invalid precedence is separate lost coverage, not an adapted pass"
+      ]
+    },
+    {
+      "id": "port/BigDecimal/DoubleFloatValueTests/run-1/adaptation-1",
+      "phase": "port",
+      "path": "test/jdk/java/math/BigDecimal/DoubleFloatValueTests.java",
+      "scope": "adaptation-companion",
+      "status": "SKIP",
+      "reason": "testFloat16ValueNearMinValue: incubator Float16 host-decimal conversion integration",
+      "lostCoverage": "testFloat16ValueNearMinValue: incubator Float16 host-decimal conversion integration",
+      "retainedChanges": [
+        "Redirect math imports; retain original source, directives and notices except explicitly listed adaptations",
+        "Bridge only Float16 input for compilation; port invocation reflects the ten original double/float test methods"
+      ]
+    },
+    {
+      "id": "port/BigDecimal/DoubleFloatValueTests/run-1/adaptation-2",
+      "phase": "port",
+      "path": "test/jdk/java/math/BigDecimal/DoubleFloatValueTests.java",
+      "scope": "adaptation-companion",
+      "status": "SKIP",
+      "reason": "testFloat16ValueNearMinNormal: incubator Float16 host-decimal conversion integration",
+      "lostCoverage": "testFloat16ValueNearMinNormal: incubator Float16 host-decimal conversion integration",
+      "retainedChanges": [
+        "Redirect math imports; retain original source, directives and notices except explicitly listed adaptations",
+        "Bridge only Float16 input for compilation; port invocation reflects the ten original double/float test methods"
+      ]
+    },
+    {
+      "id": "port/BigDecimal/DoubleFloatValueTests/run-1/adaptation-3",
+      "phase": "port",
+      "path": "test/jdk/java/math/BigDecimal/DoubleFloatValueTests.java",
+      "scope": "adaptation-companion",
+      "status": "SKIP",
+      "reason": "testFloat16ValueNearMaxValue: incubator Float16 host-decimal conversion integration",
+      "lostCoverage": "testFloat16ValueNearMaxValue: incubator Float16 host-decimal conversion integration",
+      "retainedChanges": [
+        "Redirect math imports; retain original source, directives and notices except explicitly listed adaptations",
+        "Bridge only Float16 input for compilation; port invocation reflects the ten original double/float test methods"
+      ]
+    },
+    {
+      "id": "port/BigDecimal/DoubleFloatValueTests/run-1/adaptation-4",
+      "phase": "port",
+      "path": "test/jdk/java/math/BigDecimal/DoubleFloatValueTests.java",
+      "scope": "adaptation-companion",
+      "status": "SKIP",
+      "reason": "testFloat16ValueRandom: incubator Float16 host-decimal conversion integration",
+      "lostCoverage": "testFloat16ValueRandom: incubator Float16 host-decimal conversion integration",
+      "retainedChanges": [
+        "Redirect math imports; retain original source, directives and notices except explicitly listed adaptations",
+        "Bridge only Float16 input for compilation; port invocation reflects the ten original double/float test methods"
+      ]
+    },
+    {
+      "id": "port/BigDecimal/DoubleFloatValueTests/run-1/adaptation-5",
+      "phase": "port",
+      "path": "test/jdk/java/math/BigDecimal/DoubleFloatValueTests.java",
+      "scope": "adaptation-companion",
+      "status": "SKIP",
+      "reason": "testFloat16ValueExtremes: incubator Float16 host-decimal conversion integration",
+      "lostCoverage": "testFloat16ValueExtremes: incubator Float16 host-decimal conversion integration",
+      "retainedChanges": [
+        "Redirect math imports; retain original source, directives and notices except explicitly listed adaptations",
+        "Bridge only Float16 input for compilation; port invocation reflects the ten original double/float test methods"
+      ]
+    },
+    {
+      "id": "port/BigInteger/ByteArrayConstructorTest/run-1/adaptation-1",
+      "phase": "port",
+      "path": "test/jdk/java/math/BigInteger/ByteArrayConstructorTest.java",
+      "scope": "adaptation-companion",
+      "status": "SKIP",
+      "reason": "JDK-specific mag storage invariant replaced by krogu normalized-word invariant; racy public constructor execution retained",
+      "lostCoverage": "JDK-specific mag storage invariant replaced by krogu normalized-word invariant; racy public constructor execution retained",
+      "retainedChanges": [
+        "Redirect math imports; retain original source, directives and notices except explicitly listed adaptations",
+        "Replace private JDK accessor with an explicit big-endian view of krogu words; retain both original racy tests, duration, threads and assertTrue"
+      ]
+    },
+    {
+      "id": "port/BigInteger/ModPow65537/run-1/adaptation-1",
+      "phase": "port",
+      "path": "test/jdk/java/math/BigInteger/ModPow65537.java",
+      "scope": "adaptation-companion",
+      "status": "SKIP",
+      "reason": "SunRsaSign key generation/signing phase: host-provider integration; all three modPow known-answer assertions retained",
+      "lostCoverage": "SunRsaSign key generation/signing phase: host-provider integration; all three modPow known-answer assertions retained",
+      "retainedChanges": [
+        "Redirect math imports; retain original source, directives and notices except explicitly listed adaptations",
+        "Move RSA statements intact into optional hostProviderPhase; bridge only the three provider exponent arguments"
+      ]
+    },
+    {
+      "id": "port/BigInteger/PrimeTest/run-1/adaptation-1",
+      "phase": "port",
+      "path": "test/jdk/java/math/BigInteger/PrimeTest.java",
+      "scope": "adaptation-companion",
+      "status": "SKIP",
+      "reason": "checkHugeFails: original mandatory-cutoff expectation above the public minimum prime-domain guarantee is not executed on the port; original frozen campaign1792044478663 PrimeTest FAIL remains FAIL, not an adapted pass. A normal false result is newly checked, not historically observed; original host-baseline behavior is retained separately",
+      "lostCoverage": "checkHugeFails: original mandatory-cutoff expectation above the public minimum prime-domain guarantee is not executed on the port; original frozen campaign1792044478663 PrimeTest FAIL remains FAIL, not an adapted pass. A normal false result is newly checked, not historically observed; original host-baseline behavior is retained separately",
+      "retainedChanges": [
+        "Redirect math imports; retain original source, directives and notices except explicitly listed adaptations",
+        "Port-only range policy: retain huge operand, certainty 1, main call and original ArithmeticException catch; require false on normal return instead of requiring the range exception. Normal true fails; other exceptions remain uncaught"
+      ]
+    }
+  ],
+  "local_current_caller_api": {
+    "source_full_summary": {
+      "path": ".codex-work/539/final-retention-full-regression-1/summary.json",
+      "bytes": 155532,
+      "sha256": "859b6323d8dcf25f0d931dd4283415036d986526bcfc0fd1c24933d4c945c4ba"
+    },
+    "unchanged_common_and_jvm_migration_sources_since_accepted529": true,
+    "suites": 32,
+    "case_instances": 127,
+    "fixtures": [
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.ApiSurfaceTest.xml",
+        "sha256": "b5dc1aa316e9fb5d1a0347e3b01f458acb5ff9e395080ad53318ffb2b2a1fff8",
+        "cases": [
+          {
+            "name": "jdkPublicSurfaceIsPresent[jvm]",
+            "classname": "io.heapy.krogu.math.ApiSurfaceTest",
+            "time": "0.058"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.JavaApiContractTest.xml",
+        "sha256": "1a7dccba9268f057886bf84adc8821015f7e609e573daeb5d5dad58bf87bed79",
+        "cases": [
+          {
+            "name": "nullableRandomCallsRemainUnambiguous[jvm]",
+            "classname": "io.heapy.krogu.math.JavaApiContractTest",
+            "time": "0.003"
+          },
+          {
+            "name": "randomConstructorsAndStaticFactories[jvm]",
+            "classname": "io.heapy.krogu.math.JavaApiContractTest",
+            "time": "0.001"
+          },
+          {
+            "name": "zeroBitsReturnsZeroAndRecordsRandomConsumption[jvm]",
+            "classname": "io.heapy.krogu.math.JavaApiContractTest",
+            "time": "0.001"
+          },
+          {
+            "name": "javaSubclassDispatch[jvm]",
+            "classname": "io.heapy.krogu.math.JavaApiContractTest",
+            "time": "0.001"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.KotlinSubclassContractTest.xml",
+        "sha256": "64826ec3becedbbb9b81ef4ead053bea25fe5c9890ee4107c77aa3cfdc758250",
+        "cases": [
+          {
+            "name": "inheritedNumberJvmNamesDispatchInKotlin[jvm]",
+            "classname": "io.heapy.krogu.math.KotlinSubclassContractTest",
+            "time": "0.002"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.migration.KotlinArithmeticOperator595JvmTest.xml",
+        "sha256": "534588fec76cccb060b1167dce529c17aa6c83f25c2ff6588eafe3c48a1ce8c7",
+        "cases": [
+          {
+            "name": "publicStdlibAndKroguImportedFormsMatchIndependentLiterals[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinArithmeticOperator595JvmTest",
+            "time": "0.0"
+          },
+          {
+            "name": "pairedJdkAndKroguCallerDeclarationsKeepMemberAndBaseSelection[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinArithmeticOperator595JvmTest",
+            "time": "0.003"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test.xml",
+        "sha256": "0a00998425bbcddd3f2708c25621d4993b93b42acfa8947701bd2586b796fc21",
+        "cases": [
+          {
+            "name": "callerOwnedSevenMembersAndStaticBaseExtensionsRemainDistinct[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+            "time": "0.001"
+          },
+          {
+            "name": "extensionsPreserveReachedVirtualResultOperandAndExceptionIdentity[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+            "time": "0.001"
+          },
+          {
+            "name": "importedAndAliasedArithmeticRetainsIndependentValuesAndDecimalCohorts[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.migration.KotlinConversionExtensionsConformanceTest.xml",
+        "sha256": "b7b8be5071be96b1a9edb22379b64f23f560f78aa55b34bbbf0972d14e11dc96",
+        "cases": [
+          {
+            "name": "nullableIntegerParsingRetainsTheLeadingPlusReferenceDiscrepancy[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinConversionExtensionsConformanceTest",
+            "time": "0.0"
+          },
+          {
+            "name": "textRadixAndContextCallsKeepParseAndArithmeticFailuresDistinct[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinConversionExtensionsConformanceTest",
+            "time": "0.007"
+          },
+          {
+            "name": "integralReceiversAndNamedDefaultsMatchPublicKotlinCalls[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinConversionExtensionsConformanceTest",
+            "time": "0.004"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest.xml",
+        "sha256": "50d38d6a3741bef34b22a78534d1309b96460bab2a47728fa4d91b8c6fae31ab",
+        "cases": [
+          {
+            "name": "nullableParsingDoesNotSwallowConfigurationOrRoundingErrors[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+            "time": "0.001"
+          },
+          {
+            "name": "integerBoundariesAndNamedDecimalDefaultsSelectKroguTypes[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "signedRadixAndDecimalTextPreserveValuesAndScale[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.migration.KotlinFloatingConversionConformanceTest.xml",
+        "sha256": "1be91167c91c4e786ec0bb37e847ae7b1d4e015e27cc46330f1e755f3da2860e",
+        "cases": [
+          {
+            "name": "literalControlsAgreeWithBothPublicStdlibAndJdkText[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinFloatingConversionConformanceTest",
+            "time": "0.002"
+          },
+          {
+            "name": "doubleBoundaryExtensionsReuseThePublicCanonicalFactoryContract[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinFloatingConversionConformanceTest",
+            "time": "0.015"
+          },
+          {
+            "name": "floatPowerBoundariesAndSmallSubnormalsMatchPublicTextConversions[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinFloatingConversionConformanceTest",
+            "time": "0.027"
+          },
+          {
+            "name": "contextsAndNonfiniteErrorsMatchPublicStdlibForEveryRoundingMode[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinFloatingConversionConformanceTest",
+            "time": "0.016"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest.xml",
+        "sha256": "17cfa0767e9f37553d9caacf5dd4f2de48ec12d037ed4a423c12be1ec4241f61",
+        "cases": [
+          {
+            "name": "floatBitBoundariesRetainAsymmetricAndDecimalTieRegressions[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.001"
+          },
+          {
+            "name": "contextsRoundTheSelectedDecimalWithAllEightModes[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "floatTextDoesNotUseWidenedDoubleOrTheExactBinaryConstructor[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "primitiveLiteralsPreserveCanonicalTextScaleAndSelectKroguTypes[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "nonfiniteInputsRetainNumberFormatErrorsWithAndWithoutContext[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "smallSubnormalsUseTheUnionOfOneAndTwoDigitDecimals[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyConformanceTest.xml",
+        "sha256": "ee5ec7ec390b786ce2d48ebc188e4d57fc5d612775edd06bdc932b5a5d304b50",
+        "cases": [
+          {
+            "name": "pairedImportedPropertyFormsMatchIndependentLiteralPositions[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyConformanceTest",
+            "time": "0.0"
+          },
+          {
+            "name": "pairedBaseTypedSourceFixturesPreserveTruthfulResultsAndDirectFailures[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyConformanceTest",
+            "time": "0.001"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest.xml",
+        "sha256": "bbd66f62011fa669adae3416cc0b40fa1fc6df15b4ddd18fcbc756641d8b2fe8",
+        "cases": [
+          {
+            "name": "importedAndAliasedAccessComposeWithTruthfulVirtualGetterAndSuper[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "literalsPreserveZeroSignsAndLimbBoundariesWithoutChangingTheValue[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "directGetterExceptionIdentitySurvivesBothPropertyImports[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+            "time": "0.001"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest.xml",
+        "sha256": "efebe2c99f3a11f8c2aeebdde18a174e4a502705022137ed5227585f6388b4e3",
+        "cases": [
+          {
+            "name": "erasedGenericAndCollectionCallsPreserveWideLowBitsAndTruncation[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.002"
+          },
+          {
+            "name": "floatAndDoubleRemainDistinctIncludingTiesOverflowAndSignedUnderflow[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          },
+          {
+            "name": "concreteDispatchPreservesAllSubclassOverridesAndThrownIdentity[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.001"
+          },
+          {
+            "name": "builtinNumbersKeepPlatformConversions[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.migration.KotlinOperatorMigrationConformanceTest.xml",
+        "sha256": "de8b33c5012f1ce224c112a144085cdab38165f336a424a0601dfb0745c505f7",
+        "cases": [
+          {
+            "name": "namedAndAliasedBitCallsMatchPublicStdlibSourceShapes[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinOperatorMigrationConformanceTest",
+            "time": "0.0"
+          },
+          {
+            "name": "explicitJdkAndKroguExtensionCallsPreserveReplacementAndThrownObject[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinOperatorMigrationConformanceTest",
+            "time": "0.003"
+          },
+          {
+            "name": "infixBitOperationsAndNamedSignedShiftsMatchPublicKotlinCalls[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinOperatorMigrationConformanceTest",
+            "time": "0.0"
+          },
+          {
+            "name": "callerOwnedOperatorDeclarationsRemainSourceCompatibleOnBothTypes[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinOperatorMigrationConformanceTest",
+            "time": "0.001"
+          },
+          {
+            "name": "integerUpdatesMatchPublicKotlinOperatorsWithoutChangingAliases[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinOperatorMigrationConformanceTest",
+            "time": "0.0"
+          },
+          {
+            "name": "exactDecimalUpdatesMatchPublicKotlinCallsAndRetainScale[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinOperatorMigrationConformanceTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jvmTest/TEST-io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest.xml",
+        "sha256": "d8b40b4cb0afa817cc8efca3ef2f37a06465689a6104ce770ca263832f7047a3",
+        "cases": [
+          {
+            "name": "decimalIncrementAndDecrementUseExactPreferredScale[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "decimalExtensionsPreserveExplicitExactOverloadDispatchAndFailureIdentity[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "infixBitsAndSignedShiftsKeepUnboundedTwosComplementValues[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "integerPrefixAndPostfixKeepAliasesAndCrossSignedBoundaries[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "integerExtensionsAndInfixMembersPreserveExplicitDispatchAndFailureIdentity[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.002"
+          },
+          {
+            "name": "callerOwnedIncrementDeclarationsRemainLegalWithoutOverride[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "namedOperandsAndAliasImportsKeepBothPublicCallShapes[jvm]",
+            "classname": "io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test.xml",
+        "sha256": "f211bf72c419884558118a55ac14902cca6f8b0819658f55bcab2841b1565639",
+        "cases": [
+          {
+            "name": "importedAndAliasedArithmeticRetainsIndependentValuesAndDecimalCohorts[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+            "time": "0.0"
+          },
+          {
+            "name": "callerOwnedSevenMembersAndStaticBaseExtensionsRemainDistinct[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+            "time": "0.0"
+          },
+          {
+            "name": "extensionsPreserveReachedVirtualResultOperandAndExceptionIdentity[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest.xml",
+        "sha256": "64a665b34af536d75c2e156ea673dc5be26cb2e09329c4c1f7ca28692cb528f7",
+        "cases": [
+          {
+            "name": "integerBoundariesAndNamedDecimalDefaultsSelectKroguTypes[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "signedRadixAndDecimalTextPreserveValuesAndScale[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "nullableParsingDoesNotSwallowConfigurationOrRoundingErrors[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest.xml",
+        "sha256": "09df81f12295e4feae56a7147865a0af43f4e69b254f022bb76d321a2822ed31",
+        "cases": [
+          {
+            "name": "primitiveLiteralsPreserveCanonicalTextScaleAndSelectKroguTypes[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "floatBitBoundariesRetainAsymmetricAndDecimalTieRegressions[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "smallSubnormalsUseTheUnionOfOneAndTwoDigitDecimals[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "floatTextDoesNotUseWidenedDoubleOrTheExactBinaryConstructor[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "contextsRoundTheSelectedDecimalWithAllEightModes[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "nonfiniteInputsRetainNumberFormatErrorsWithAndWithoutContext[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest.xml",
+        "sha256": "ef366182e7f5538c0c150b78a1f8f07766ee62f247580d4826766a62c3f67ea1",
+        "cases": [
+          {
+            "name": "literalsPreserveZeroSignsAndLimbBoundariesWithoutChangingTheValue[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "importedAndAliasedAccessComposeWithTruthfulVirtualGetterAndSuper[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "directGetterExceptionIdentitySurvivesBothPropertyImports[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest.xml",
+        "sha256": "2954433bacc9ea186099d3f1ce5d95f8930178c2c79f4f9ebc032c760b7c38ae",
+        "cases": [
+          {
+            "name": "erasedGenericAndCollectionCallsPreserveWideLowBitsAndTruncation[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          },
+          {
+            "name": "floatAndDoubleRemainDistinctIncludingTiesOverflowAndSignedUnderflow[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          },
+          {
+            "name": "builtinNumbersKeepPlatformConversions[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          },
+          {
+            "name": "concreteDispatchPreservesAllSubclassOverridesAndThrownIdentity[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/jsNodeTest/TEST-jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest.xml",
+        "sha256": "da8ad5a6a1b5afed6d9a90dde2e250dc52158cb4426e2bb3d4e7798f60a24b53",
+        "cases": [
+          {
+            "name": "integerPrefixAndPostfixKeepAliasesAndCrossSignedBoundaries[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "decimalIncrementAndDecrementUseExactPreferredScale[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "infixBitsAndSignedShiftsKeepUnboundedTwosComplementValues[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "namedOperandsAndAliasImportsKeepBothPublicCallShapes[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "integerExtensionsAndInfixMembersPreserveExplicitDispatchAndFailureIdentity[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "decimalExtensionsPreserveExplicitExactOverloadDispatchAndFailureIdentity[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "callerOwnedIncrementDeclarationsRemainLegalWithoutOverride[js, node]",
+            "classname": "jsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test.xml",
+        "sha256": "a3b2b9f19afcd415534898c0f3b3a5d4dd045048a80fdea9ba4f4f3578aa50be",
+        "cases": [
+          {
+            "name": "importedAndAliasedArithmeticRetainsIndependentValuesAndDecimalCohorts[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+            "time": "0.0"
+          },
+          {
+            "name": "callerOwnedSevenMembersAndStaticBaseExtensionsRemainDistinct[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+            "time": "0.0"
+          },
+          {
+            "name": "extensionsPreserveReachedVirtualResultOperandAndExceptionIdentity[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest.xml",
+        "sha256": "5c74cc5b5e6d6fc6749bfeddaabd430c2218840c6d3edbb6005dcecaba8d83bc",
+        "cases": [
+          {
+            "name": "integerBoundariesAndNamedDecimalDefaultsSelectKroguTypes[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "signedRadixAndDecimalTextPreserveValuesAndScale[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "nullableParsingDoesNotSwallowConfigurationOrRoundingErrors[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest.xml",
+        "sha256": "b1d23721ae8d70f9f07192c159af937d2c4f9b002d1ec14ef2693b78beb77770",
+        "cases": [
+          {
+            "name": "primitiveLiteralsPreserveCanonicalTextScaleAndSelectKroguTypes[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "floatBitBoundariesRetainAsymmetricAndDecimalTieRegressions[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "smallSubnormalsUseTheUnionOfOneAndTwoDigitDecimals[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "floatTextDoesNotUseWidenedDoubleOrTheExactBinaryConstructor[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "contextsRoundTheSelectedDecimalWithAllEightModes[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "nonfiniteInputsRetainNumberFormatErrorsWithAndWithoutContext[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest.xml",
+        "sha256": "02d698d2c6d0e5eaaf08c1104b943b459763242e939ed6e89e189b2b95db4518",
+        "cases": [
+          {
+            "name": "literalsPreserveZeroSignsAndLimbBoundariesWithoutChangingTheValue[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "importedAndAliasedAccessComposeWithTruthfulVirtualGetterAndSuper[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "directGetterExceptionIdentitySurvivesBothPropertyImports[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest.xml",
+        "sha256": "4f877cf20822e6c07c813f5cb3170789c8f091c6b2d4faf0dcddca66aa766747",
+        "cases": [
+          {
+            "name": "erasedGenericAndCollectionCallsPreserveWideLowBitsAndTruncation[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          },
+          {
+            "name": "floatAndDoubleRemainDistinctIncludingTiesOverflowAndSignedUnderflow[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          },
+          {
+            "name": "builtinNumbersKeepPlatformConversions[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          },
+          {
+            "name": "concreteDispatchPreservesAllSubclassOverridesAndThrownIdentity[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/wasmJsNodeTest/TEST-wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest.xml",
+        "sha256": "bceeb779f9d0224042d53ccda291574141403fe2b09a55e9ef19dc1263189209",
+        "cases": [
+          {
+            "name": "integerPrefixAndPostfixKeepAliasesAndCrossSignedBoundaries[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "decimalIncrementAndDecrementUseExactPreferredScale[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "infixBitsAndSignedShiftsKeepUnboundedTwosComplementValues[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "namedOperandsAndAliasImportsKeepBothPublicCallShapes[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "integerExtensionsAndInfixMembersPreserveExplicitDispatchAndFailureIdentity[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "decimalExtensionsPreserveExplicitExactOverloadDispatchAndFailureIdentity[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "callerOwnedIncrementDeclarationsRemainLegalWithoutOverride[wasmJs, node]",
+            "classname": "wasmJsNodeTest.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test.xml",
+        "sha256": "48534853e7f026900e3685f061f4ef9ab13db8dde68b90a14f152f943fe5f511",
+        "cases": [
+          {
+            "name": "importedAndAliasedArithmeticRetainsIndependentValuesAndDecimalCohorts[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+            "time": "0.0"
+          },
+          {
+            "name": "callerOwnedSevenMembersAndStaticBaseExtensionsRemainDistinct[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+            "time": "0.0"
+          },
+          {
+            "name": "extensionsPreserveReachedVirtualResultOperandAndExceptionIdentity[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinArithmeticOperator595Test",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest.xml",
+        "sha256": "92702e1f9d20f630d01be29fc297e2c948bf5fe74a513ea174bd3986669805c4",
+        "cases": [
+          {
+            "name": "integerBoundariesAndNamedDecimalDefaultsSelectKroguTypes[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "signedRadixAndDecimalTextPreserveValuesAndScale[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "nullableParsingDoesNotSwallowConfigurationOrRoundingErrors[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinConversionExtensionsContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest.xml",
+        "sha256": "f0f23d188c7c4b69c55925ba97d7178cef159a65b541292edc9834ad83e3bddf",
+        "cases": [
+          {
+            "name": "primitiveLiteralsPreserveCanonicalTextScaleAndSelectKroguTypes[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "floatBitBoundariesRetainAsymmetricAndDecimalTieRegressions[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "smallSubnormalsUseTheUnionOfOneAndTwoDigitDecimals[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "floatTextDoesNotUseWidenedDoubleOrTheExactBinaryConstructor[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "contextsRoundTheSelectedDecimalWithAllEightModes[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "nonfiniteInputsRetainNumberFormatErrorsWithAndWithoutContext[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinFloatingConversionContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest.xml",
+        "sha256": "a9f0df8f5c064245a4f03c79da136e6c0e16075260b17759967d6f00357b81a1",
+        "cases": [
+          {
+            "name": "literalsPreserveZeroSignsAndLimbBoundariesWithoutChangingTheValue[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "importedAndAliasedAccessComposeWithTruthfulVirtualGetterAndSuper[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "directGetterExceptionIdentitySurvivesBothPropertyImports[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinLowestSetBitPropertyContractTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest.xml",
+        "sha256": "b4472a4557bdf87a1237d109b413e54c7de22dc8f8613661cc0dd2e6df793dca",
+        "cases": [
+          {
+            "name": "erasedGenericAndCollectionCallsPreserveWideLowBitsAndTruncation[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          },
+          {
+            "name": "floatAndDoubleRemainDistinctIncludingTiesOverflowAndSignedUnderflow[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          },
+          {
+            "name": "builtinNumbersKeepPlatformConversions[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          },
+          {
+            "name": "concreteDispatchPreservesAllSubclassOverridesAndThrownIdentity[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinNumberConversionWorkaroundTest",
+            "time": "0.0"
+          }
+        ]
+      },
+      {
+        "path": "/Users/yoda/dev/pet/krogu-math/.codex-work/539/final-retention-full-regression-1/macosArm64Test/TEST-macosArm64Test.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest.xml",
+        "sha256": "e099d82c78e1ade35f12eeaf36d08f6193226311c95ae1f8351495f37f35cf91",
+        "cases": [
+          {
+            "name": "integerPrefixAndPostfixKeepAliasesAndCrossSignedBoundaries[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "decimalIncrementAndDecrementUseExactPreferredScale[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "infixBitsAndSignedShiftsKeepUnboundedTwosComplementValues[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "namedOperandsAndAliasImportsKeepBothPublicCallShapes[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "integerExtensionsAndInfixMembersPreserveExplicitDispatchAndFailureIdentity[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "decimalExtensionsPreserveExplicitExactOverloadDispatchAndFailureIdentity[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          },
+          {
+            "name": "callerOwnedIncrementDeclarationsRemainLegalWithoutOverride[macosArm64]",
+            "classname": "macosArm64Test.io.heapy.krogu.math.migration.KotlinOperatorMigrationContractTest",
+            "time": "0.0"
+          }
+        ]
+      }
+    ],
+    "scope": "Metadata binding of already accepted3f0 full run, not new execution or exhaustive arbitrary-caller proof. Existing language/proof qualifications retained. Fresh supported hosted targets remain pending."
+  },
+  "remaining": [
+    "same-run hosted complete normal106 and large12 over all59retained plans with12adaptationlosses explicit",
+    "fresh supported13 instances/25oracle/same-runLinuxARMconsumer/iOSdevicecompile",
+    "qualified final source/API/changed-leaf composition acceptance; no finite-domain exhaustive claim"
+  ],
+  "no_foreign_numerical_implementation_read": true,
+  "official_jck": false,
+  "source_composition": {
+    "status": "EXACT_EXISTING_LEAF_BINDING_WITH_REVIEWED_CHANGED_ENTRY_SCOPE",
+    "accepted529_base": "c9415d55fe8d9a743266e75709cf95738011d311",
+    "production_final": "3f0e1fb8f763b6518395535e222c18407112c9aa",
+    "hosted_ref": "975182f9bca911be86ef1bc4efedc7039cc8fe36",
+    "old_main_paths": 43,
+    "unchanged_old_main_paths": 41,
+    "new_main_paths": [
+      "src/commonMain/kotlin/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+      "src/commonMain/kotlin/io/heapy/krogu/math/MultiplicationPolicy539.kt",
+      "src/commonMain/kotlin/io/heapy/krogu/math/ParallelMultiply539.kt",
+      "src/jsMain/kotlin/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+      "src/jsMain/kotlin/io/heapy/krogu/math/NodeParallel539.kt",
+      "src/jvmMain/kotlin/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+      "src/jvmMain/kotlin/io/heapy/krogu/math/ParallelCandidate539.kt",
+      "src/jvmMain/kotlin/io/heapy/krogu/math/ParallelMultiply539.kt",
+      "src/nativeMain/kotlin/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+      "src/nativeMain/kotlin/io/heapy/krogu/math/NativeParallelEngine539.kt",
+      "src/nativeMain/kotlin/io/heapy/krogu/math/NativeParallelMultiply539.kt",
+      "src/nativeMain/kotlin/io/heapy/krogu/math/NodeParallel539.kt",
+      "src/nonJvmMain/kotlin/io/heapy/krogu/math/ParallelMultiply539.kt",
+      "src/wasmJsMain/kotlin/io/heapy/krogu/math/MultiplicationPlatform539.kt",
+      "src/wasmJsMain/kotlin/io/heapy/krogu/math/NodeParallel539.kt"
+    ],
+    "changed_old_files": [
+      "src/commonMain/kotlin/io/heapy/krogu/math/BigInteger.kt",
+      "src/commonMain/kotlin/io/heapy/krogu/math/MagnitudeMultiplication.kt"
+    ],
+    "big_integer_entire_file_reverses_to_base_by_replacing_only_parallel_entry_and_private_helpers": true,
+    "big_decimal_context_rounding_mode_and_all_other_old_main_files_byte_equal": true,
+    "magnitude_entire_file_reverses_to_base_by_removing_only_added539_dispatch_frame_sections": true,
+    "entire_scratch_arena_product_school_square_tail_byte_equal": true,
+    "hosted_all_main_files_byte_equal_to_final": true,
+    "public_numerical_signatures_and_object_fields": "BigInteger original open parallelMultiply(value: BigInteger): BigInteger signature unchanged; new helpers private. All other old BigInteger bytes exact, no fields added. Other three types exact full bytes. New policies/platform seams internal. Java production ABI not part of553 scope.",
+    "final_platform_logic": {
+      "JVM": "existing adaptive64/16/384; exact-class balanced wide min4096, ratio<=2 CPU>2 public candidate; accepted children joined before publication, no accepted-failure arithmetic retry",
+      "JS": "constant serial-retention true before physical probes; JS selection flag false, historical adaptive64/16/384",
+      "Wasm": "constant serial-retention true before physical probes; historical adaptive64/16/384",
+      "Native": "constant serial-retention true before physical probes; only physical equal-length distinct arrays select32, alias/unequal64, leaf16/entry384"
+    },
+    "algebraic_composition": "Inherited radix2^30 school/square/carry/scratch/product proofs apply to exact unchanged implementations for valid threshold>=4. Native32 changes recursion boundary only. Parallel frame computes z0=al*bl, z2=ah*bh, zsum=(al+ah)*(bl+bh); zsum-z0-z2=al*bh+ah*bl>=0 and combines z0+B^split*cross+B^(2split)*z2. Existing add/subtract/carry code exact; outputs child-owned and joined. Sign and final normalized supported-bit bound retained in BigInteger.",
+    "existing_independent_reviews": [
+      {
+        "path": ".codex-work/539/independent-public-frontend-jvm-source-review.json",
+        "sha256": "c33f19a4b6a55f50827cd284430b995470b9a3849c71e6439f5752676e4b52f0"
+      },
+      {
+        "path": ".codex-work/539/independent-public-frontend-jvm-terminal-fence-review.json",
+        "sha256": "3f3d9faf28804d68a0e995b3edea6d32637b84801f71f569cf10b4db3d923204"
+      },
+      {
+        "path": ".codex-work/539/independent-selected-native-policy-source-review.json",
+        "sha256": "1f7212d26006a0a155f9867e8026ea9e8ad1e194e1b604ec5133083766d7736b"
+      },
+      {
+        "path": ".codex-work/539/independent-final-js-wasm-serial-decline-bundle-review.json",
+        "sha256": "b0d515408f36d53db143998bb4456374119266ceff5120cb1cf668bfb539790b"
+      },
+      {
+        "path": ".codex-work/539/independent-native-serial-retention-bundle-source-method-review.json",
+        "sha256": "0b802c413d17a697b18628eb8f4c22e158bc1b53d44d3117e8a7c3fb993e9136"
+      },
+      {
+        "path": ".codex-work/539/independent-final-full-and-jvm-carryforward-supplement.json",
+        "sha256": "51596f4a3044309e2a796ff0a6c6519f38b514e0f6b0712a7c557a95c3ceb4fd"
+      }
+    ],
+    "limits": [
+      "Source composition is not new mathematical-domain enumeration or evidence that arbitrary allocation must succeed.548 physical-resource and supported-result premises stay explicit.",
+      "547 conditional random sampling/callback and542 operational accuracy qualifications remain; no universal probability/accuracy/fixed-heap theorem added.",
+      "Final current hosted API/compiler/oracle/platform/public output remains actualpending, noJCK claim.",
+      "Performance clearance539/598 neither supplied nor required by this binding."
+    ]
+  }
+}

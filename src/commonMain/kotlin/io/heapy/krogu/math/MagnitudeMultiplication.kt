@@ -14,8 +14,47 @@ internal object MagnitudeMultiplication {
     }
 
     /** Public dispatch keeps medium squares whole, without changing large recursive leaves. */
-    fun multiplyAdaptive(a: IntArray, b: IntArray): IntArray =
-        multiplyWithSquareEntry(a, b, SQUARE_ENTRY_THRESHOLD)
+    internal fun selectedKaratsuba539(a: IntArray, b: IntArray): Int =
+        if ((useJsMultiplicationPolicy539 || useNativeBalancedMultiplicationPolicy539) && a !== b && a.size == b.size) 32 else KARATSUBA_THRESHOLD
+
+    internal fun selectedSquareEntry539(): Int =
+        if (useJsMultiplicationPolicy539) 128 else SQUARE_ENTRY_THRESHOLD
+
+    fun multiplyAdaptive(a: IntArray, b: IntArray): IntArray {
+        if (useJsMultiplicationPolicy539) return multiplyAdaptiveJs539(a, b)
+        // Preserve the exact historical dispatch on platforms without a selected policy.
+        if (!useJsMultiplicationPolicy539 && !useNativeBalancedMultiplicationPolicy539) return multiplyWithSquareEntry(a, b, SQUARE_ENTRY_THRESHOLD)
+        if (a === b && a.size >= SQUARE_THRESHOLD && a.size < selectedSquareEntry539()) {
+            val out = IntArray(a.size + b.size)
+            square(a, 0, a.size, out, 0)
+            return out
+        }
+        return multiply(a, b, selectedKaratsuba539(a, b), SQUARE_THRESHOLD)
+    }
+
+    /** Selected JS work starts only after the unchanged school/whole-square basecases. */
+    private fun multiplyAdaptiveJs539(a: IntArray, b: IntArray): IntArray {
+        if (a.size >= SQUARE_THRESHOLD && a.size < 128 && a === b) {
+            val out = IntArray(a.size + b.size)
+            square(a, 0, a.size, out, 0)
+            return out
+        }
+        val out = IntArray(a.size + b.size)
+        val small = minOf(a.size, b.size)
+        // K32 is the existing lowest selected recursion boundary, not a new policy.
+        if (small < 32) {
+            school(a, 0, a.size, b, 0, b.size, out, 0)
+            return out
+        }
+        val threshold = if (a !== b && a.size == b.size) 32 else KARATSUBA_THRESHOLD
+        if (small < threshold) {
+            school(a, 0, a.size, b, 0, b.size, out, 0)
+        } else {
+            val arena = Arena(scratchWords(a.size, b.size, threshold))
+            product(a, 0, a.size, b, 0, b.size, out, 0, arena, threshold, SQUARE_THRESHOLD)
+        }
+        return out
+    }
 
     /** Entry override is explicit so forced-kernel calibration retains its original semantics. */
     fun multiplyWithSquareEntry(a: IntArray, b: IntArray, squareEntryThreshold: Int): IntArray {
@@ -40,6 +79,100 @@ internal object MagnitudeMultiplication {
             product(a, 0, a.size, b, 0, b.size, out, 0, arena, threshold, squareThreshold)
         }
         return out
+    }
+
+    /** Explicit experimental policy; ordinary public dispatch is unchanged. */
+    fun multiplyConfigured539(a: IntArray, b: IntArray, policy: MultiplicationPolicy539): IntArray {
+        if (a.size >= policy.squareLeaf && a.size < policy.wholeSquareEntry && a === b) {
+            val out = IntArray(checkedOutput539(a.size, b.size))
+            square(a, 0, a.size, out, 0)
+            return out
+        }
+        return multiply(a, b, policy.karatsuba, policy.squareLeaf)
+    }
+
+    /** One child product over immutable views, with its own output and arena. */
+    private fun multiplyRange539(a: IntArray, ao: Int, al: Int, b: IntArray, bo: Int, bl: Int,
+        policy: MultiplicationPolicy539): IntArray {
+        val out = IntArray(checkedOutput539(al, bl))
+        val arena = Arena(scratchWords(al, bl, policy.karatsuba))
+        product(a, ao, al, b, bo, bl, out, 0, arena, policy.karatsuba, policy.squareLeaf)
+        return out
+    }
+
+    private fun checkedOutput539(a: Int, b: Int): Int {
+        val size = a.toLong() + b
+        if (size > Int.MAX_VALUE) throw ArithmeticException("BigInteger overflow")
+        return size.toInt()
+    }
+
+    /**
+     * Candidate top-level Karatsuba decomposition. Scheduling is outside this
+     * common arithmetic. Each child owns its output/arena; inputs and prepared
+     * sums are immutable throughout execution. A frame is single-use at join.
+     */
+    class ParallelFrame539 internal constructor(
+        private val a: IntArray, private val b: IntArray, private val policy: MultiplicationPolicy539,
+    ) {
+        private val split = maxOf(a.size, b.size) / 2
+        private val aLow = minOf(a.size, split)
+        private val bLow = minOf(b.size, split)
+        private val aHigh = a.size - aLow
+        private val bHigh = b.size - bLow
+        private val sumA = IntArray(maxOf(aLow, aHigh) + 1)
+        private val sumALength = sum(a, 0, aLow, aLow, aHigh, sumA, 0, sumA.size)
+        private val sumB = if (a === b) sumA else IntArray(maxOf(bLow, bHigh) + 1)
+        private val sumBLength = if (a === b) sumALength else sum(b, 0, bLow, bLow, bHigh, sumB, 0, sumB.size)
+
+        fun child(index: Int): IntArray = when (index) {
+            0 -> multiplyRange539(a, 0, aLow, b, 0, bLow, policy)
+            1 -> multiplyRange539(a, aLow, aHigh, b, bLow, bHigh, policy)
+            2 -> multiplyRange539(sumA, 0, sumALength, sumB, 0, sumBLength, policy)
+            else -> throw IllegalArgumentException("Child index")
+        }
+
+        /** Diagnostic transport only: owned copies may be transferred without detaching caller inputs. */
+        fun copiedChildInputs539(index: Int): Pair<IntArray, IntArray> {
+            fun copies(a: IntArray, ao: Int, al: Int, b: IntArray, bo: Int, bl: Int): Pair<IntArray, IntArray> {
+                val left = a.copyOfRange(ao, ao + al)
+                val right = if (a === b && ao == bo && al == bl) left else b.copyOfRange(bo, bo + bl)
+                return left to right
+            }
+            return when (index) {
+                0 -> copies(a, 0, aLow, b, 0, bLow)
+                1 -> copies(a, aLow, aHigh, b, bLow, bHigh)
+                2 -> copies(sumA, 0, sumALength, sumB, 0, sumBLength)
+                else -> throw IllegalArgumentException("Child index")
+            }
+        }
+
+        /** Conservative total new word payload; excludes borrowed inputs, headers and scheduler objects. */
+        fun wordPayloadUpperBound539(): Long = sumA.size.toLong() +
+            (if (sumB === sumA) 0 else sumB.size) + aLow + bLow + aHigh + bHigh +
+            sumALength + sumBLength + a.size + b.size +
+            scratchWords(aLow, bLow, policy.karatsuba) + scratchWords(aHigh, bHigh, policy.karatsuba) +
+            scratchWords(sumALength, sumBLength, policy.karatsuba)
+
+        /** All three children must have completed before any recombination. */
+        fun combine(low: IntArray, high: IntArray, middle: IntArray): IntArray {
+            require(low.size == aLow + bLow && high.size == aHigh + bHigh && middle.size == sumALength + sumBLength)
+            require(low !== high && low !== middle && high !== middle)
+            val out = IntArray(checkedOutput539(a.size, b.size))
+            low.copyInto(out)
+            high.copyInto(out, 2 * split)
+            subtract(middle, 0, middle.size, low, 0, low.size)
+            subtract(middle, 0, middle.size, high, 0, high.size)
+            addAt(out, split, middle, 0, trimmed(middle, 0, middle.size))
+            return out
+        }
+    }
+
+    /** Candidate-only eligibility; production parallelMultiply remains virtual multiply. */
+    fun prepareParallel539(a: IntArray, b: IntArray, policy: MultiplicationPolicy539): ParallelFrame539? {
+        checkedOutput539(a.size, b.size)
+        val small = minOf(a.size, b.size)
+        if (small < maxOf(4, policy.karatsuba) || maxOf(a.size, b.size).toLong() > 2L * small) return null
+        return ParallelFrame539(a, b, policy)
     }
 
     /** Checked arena upper bound, including a reusable short-operand-sized block product. */

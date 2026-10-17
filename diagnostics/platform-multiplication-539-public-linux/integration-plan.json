@@ -1,0 +1,38 @@
+{
+  "state": "PREPARED_NOT_MERGED_INDEPENDENT_JS_DISPOSITION_ACCEPTED",
+  "independent_js_disposition_sha256": "dfcd43bc2ed9ec3283bbf6ce1a79c526cb4b057c1092178732038ec6bef9f0e4",
+  "production": "3f0e1fb8f763b6518395535e222c18407112c9aa",
+  "production_manifest_sha256": "48c4b61794256a738e36af34fe8d1ccc32a897590fa86c7cf7813c24170e5e0a",
+  "production_files": 405,
+  "old_evidence_commit": "0db660d5e30983eafbee60bca7a9480c86fc7fc4",
+  "main_before": "df6bc9e69e6549c791f19981ec18691cc5b09412",
+  "audited_553_ref": "975182f9bca911be86ef1bc4efedc7039cc8fe36",
+  "public_linux_tooling_ref": "67acda4549e38f235bb842aedeb570f8e1220cea",
+  "read_only_merge_tree": "337ee2f93cdd8931742455cf44b9006d4c2cdafc",
+  "tooling_ref_tree": "337ee2f93cdd8931742455cf44b9006d4c2cdafc",
+  "preview": "git merge-tree --write-tree df6bc9e69e6549c791f19981ec18691cc5b09412 67acda4549e38f235bb842aedeb570f8e1220cea returned exactly the tooling ref tree, no conflicts. No branch or working tree was merged.",
+  "delta_975_to_67ac": [
+    ".github/workflows/public-linux-js-guard-539.yml",
+    "scripts/run-public-linux-js-guard.main.kts"
+  ],
+  "expected_scope": "All405 production files, build and existing workflows equal975. Three docs and test-only adapter equaldf6 and975. Only the two new public-source diagnostic files are additive. The canonical addendum is evidence-only and must be classified separately from executable source.",
+  "integration_sequence": [
+    "Independent JS actual/disposition and owner qualified acceptance are now recorded; neither follows merely from workflow SUCCESS or zero flags.",
+    "Commit the additive evidence package without changing the accepted0db canonical files or production.",
+    "Integrate reviewed67ac plus the evidence-only addendum into currentmain using an explicit merge; no false fast-forward claim. Preserve original source/evidence commits.",
+    "At the resulting commit, compare all405 source Git blobs, build/existing workflow tree entries and the four reviewed doc/helper blobs against975; classify only two new workflow/controller files and evidence package as additive.",
+    "Verify the addendum index/archive/recovery and committed Git blobs using the existing package verifier. Bind the integrated commit honestly to the975 hosted evidence and separate Linux epoch; do not relabel same-run attestations.",
+    "No numerical rerun solely for equal-tree ancestry or evidence metadata. Any actual code delta requires proportionate affected validation.",
+    "Close task539/553 only after the corresponding accepted dispositions and actual integrated source/package binding; no official JCK or unrestricted theorem claim."
+  ],
+  "recovery": {
+    "bundle": "integration-history.bundle",
+    "heads": {
+      "refs/heads/audit/539-public-linux-guard": "67acda4549e38f235bb842aedeb570f8e1220cea",
+      "refs/heads/main": "df6bc9e69e6549c791f19981ec18691cc5b09412"
+    },
+    "prerequisites": ["c9415d55fe8d9a743266e75709cf95738011d311", "0db660d5e30983eafbee60bca7a9480c86fc7fc4"],
+    "scope": "Bundle verify/list-heads succeeded in the existing repository. Recover into new named refs; never overwrite main while recovering. Public workflow/controller files are also copied directly. Old package and retained source-history bundle preserve the earlier production/evidence era with their declared prerequisites."
+  },
+  "private_export": "No private TAR/claws transfer was performed; this public-source workflow is independent of that ungranted approval."
+}

@@ -1,0 +1,246 @@
+{
+  "status": "PASS_ACTUAL_SAME_RUN_HOSTED_PUBLIC_LARGE_12_NOT_OFFICIAL_JCK_OR_FULL553",
+  "run_id": 39007728056,
+  "head_sha": "975182f9bca911be86ef1bc4efedc7039cc8fe36",
+  "results_sha256": "f4e356854959fd3782abfea16c3375bd1c94f1cd6b0ce7325de5345e7fe3030e",
+  "run_checkpoint_sha256": "ae8a4475fdd4fc620cde644bff8e1067e6c9d0562b22df19e4be507d74c0e309",
+  "full_github_log_sha256": "fd17a37b45916e7256b3c803e5178fc67220b1cf684317f0531d2453d4468ef3",
+  "jar_sha256": "e8ba87ac09532760f64bd226c7b00aea40b76d8c0b7ae21ddade521570b4517a",
+  "source_commit_file_sha256": "5664358c5f0f490b6c22e28c6d2a6020efb9f3dd135629828ea2d916532b8667",
+  "profiles": [
+    "large-memory-4g",
+    "large-memory-8g",
+    "large-memory-10g"
+  ],
+  "granted_heap_mib": 8192,
+  "counts": {
+    "PASS": 12,
+    "FAIL": 0,
+    "SKIP": 128
+  },
+  "actual_assertion_rows": [
+    {
+      "id": "baseline/BigInteger/BitLengthOverflow/run-1",
+      "heap": "-Xmx8192m",
+      "elapsed_ms": 118,
+      "fresh_free_bytes": 11655901184,
+      "required_free_mib": 8704,
+      "stdout_sha256": "c065459b0107a857f85360f795f7b61ba981d113b1a47295c63ad00b0d41d42d",
+      "compiled_source_sha256": "4a30bce8e94fa93cda5c175bb70ba02094fd41d5114286fe379fd034feaeaf8c"
+    },
+    {
+      "id": "baseline/BigInteger/DoubleValueOverflow/run-1",
+      "heap": "-Xmx8192m",
+      "elapsed_ms": 90,
+      "fresh_free_bytes": 11632037888,
+      "required_free_mib": 8704,
+      "stdout_sha256": "f2af227d83080a9e5ccbda0f8855d5043b1d1314e17dd3adbba4d566023f0507",
+      "compiled_source_sha256": "b388e80a42bc4dc7b8a727b38c7e43f057cd4076a23bf1f78efad9575d050259"
+    },
+    {
+      "id": "baseline/BigInteger/LargeValueExceptions/run-1",
+      "heap": "-Xmx4g",
+      "elapsed_ms": 28098,
+      "fresh_free_bytes": 11571744768,
+      "required_free_mib": 4608,
+      "stdout_sha256": "d5828bae5a190fe4fdbfe8d6f5154cc9245b316ecde6f8fd772f3a7366cee284",
+      "compiled_source_sha256": "abafe2950c3472667cb3b1ce1ff4463090d888c2096b738b152d64e3476c714e"
+    },
+    {
+      "id": "baseline/BigInteger/largeMemory/DivisionOverflow/run-1",
+      "heap": "-Xmx8g",
+      "elapsed_ms": 518,
+      "fresh_free_bytes": 11670548480,
+      "required_free_mib": 8704,
+      "stdout_sha256": "d4964ac50b451d43d5ed5208dd86d23317448b25f8afe30d9c68458d70a42f3f",
+      "compiled_source_sha256": "8bc16fb1cc0330fa0f54dfb8ab788487168884e5f05de43d821b9e4828f2fda8"
+    },
+    {
+      "id": "baseline/BigInteger/largeMemory/StringConstructorOverflow/run-1",
+      "heap": "-Xmx8g",
+      "elapsed_ms": 3716,
+      "fresh_free_bytes": 11613495296,
+      "required_free_mib": 8704,
+      "stdout_sha256": "ad59ae35f00ce58738b572e656bf2c68f76b02135508a13e12e59c8d233288d3",
+      "compiled_source_sha256": "56586c2b98402b1ef3916dc3ac38823ef55a16a6fe9145227ecd1c7e1c54f2a2"
+    },
+    {
+      "id": "baseline/BigInteger/largeMemory/SymmetricRangeTests/run-1",
+      "heap": "-Xmx8g",
+      "elapsed_ms": 25853,
+      "fresh_free_bytes": 11629441024,
+      "required_free_mib": 8704,
+      "stdout_sha256": "f81bcac82f7834ef0c3a532c11f62c6881ff6b4adff39ab8eb81d73a25876bf8",
+      "compiled_source_sha256": "da79e08429dc3072acb25e75d161943ae5cda872c7d183c487b33633039bc8a5"
+    },
+    {
+      "id": "port/BigInteger/BitLengthOverflow/run-1",
+      "heap": "-Xmx8192m",
+      "elapsed_ms": 200,
+      "fresh_free_bytes": 11652427776,
+      "required_free_mib": 8704,
+      "stdout_sha256": "74d3458e7cbbf544c950aabcd541ca3e3441dd25914f38c7fb5fa45f24aedec2",
+      "compiled_source_sha256": "82b9ce421cd25671148baa4eadc5a9f8bbfb4819e08d610b62e0dd5e6f6e4918"
+    },
+    {
+      "id": "port/BigInteger/DoubleValueOverflow/run-1",
+      "heap": "-Xmx8192m",
+      "elapsed_ms": 86,
+      "fresh_free_bytes": 11595272192,
+      "required_free_mib": 8704,
+      "stdout_sha256": "e62a4a91831ecccf0d130d1522d69c4defd5af703d6a9f1df724beb6a3936abb",
+      "compiled_source_sha256": "3ff332fad20159a7bc305a33da23d2a14a8a60506d74b1237cd77024d17519a5"
+    },
+    {
+      "id": "port/BigInteger/LargeValueExceptions/run-1",
+      "heap": "-Xmx4g",
+      "elapsed_ms": 804,
+      "fresh_free_bytes": 11604459520,
+      "required_free_mib": 4608,
+      "stdout_sha256": "2f166645f12fee2410ea1e4e442733f9f0fd05702ec798e2db60ebfa636faa94",
+      "compiled_source_sha256": "8b1a6a8d171fe476fb58e52459a98b6c720be59c03e570227788de3db2194271"
+    },
+    {
+      "id": "port/BigInteger/largeMemory/DivisionOverflow/run-1",
+      "heap": "-Xmx8g",
+      "elapsed_ms": 5647,
+      "fresh_free_bytes": 11504136192,
+      "required_free_mib": 8704,
+      "stdout_sha256": "5bc0e704364d2a2e0d86b933ae1cf9913f2502e024c19bf352089cc1e8bb3aba",
+      "compiled_source_sha256": "f6b2f99eb4508769c438b98068b87243c87d50b3338dd6cce27842333e07cab0"
+    },
+    {
+      "id": "port/BigInteger/largeMemory/StringConstructorOverflow/run-1",
+      "heap": "-Xmx8g",
+      "elapsed_ms": 3643,
+      "fresh_free_bytes": 11606151168,
+      "required_free_mib": 8704,
+      "stdout_sha256": "1355f1bebb1420f9413ab2cf0ff959eefc1362bbc0679c7efa1ee44f7711b2b2",
+      "compiled_source_sha256": "2906e264f0bf8abc71a3e50d1614cffa4340cefb8f572630367d71cf2eedccdd"
+    },
+    {
+      "id": "port/BigInteger/largeMemory/SymmetricRangeTests/run-1",
+      "heap": "-Xmx8g",
+      "elapsed_ms": 39629,
+      "fresh_free_bytes": 11615260672,
+      "required_free_mib": 8704,
+      "stdout_sha256": "e8f709bf63f9732dc73ee111811593f361b524788062183a3c610279add9a3af",
+      "compiled_source_sha256": "b4f99ef877ee7b23ce9de3a78668ee4bcbccf5862afcd4a055b7345eca434306"
+    }
+  ],
+  "skip_reasons": {
+    "Profile standard not authorized by this invocation; coverage retained for an eligible run": 90,
+    "Profile serialization not authorized by this invocation; coverage retained for an eligible run": 4,
+    "Profile heavy not authorized by this invocation; coverage retained for an eligible run": 10,
+    "Profile memory-512m not authorized by this invocation; coverage retained for an eligible run": 2,
+    "Pinned upstream @Test(enabled=false) retained unchanged": 16,
+    "Calls package-private MutableBigInteger through patched java.base wrapper": 2,
+    "Test-only wrapper for package-private MutableBigInteger": 2,
+    "Pinned upstream commented-out call retained unchanged": 2
+  },
+  "raw_execution_logs": [
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/baseline/BigInteger/BitLengthOverflow/run-1/test.stdout.log",
+      "sha256": "c065459b0107a857f85360f795f7b61ba981d113b1a47295c63ad00b0d41d42d"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/baseline/BigInteger/BitLengthOverflow/run-1/test.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/baseline/BigInteger/DoubleValueOverflow/run-1/test.stdout.log",
+      "sha256": "f2af227d83080a9e5ccbda0f8855d5043b1d1314e17dd3adbba4d566023f0507"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/baseline/BigInteger/DoubleValueOverflow/run-1/test.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/baseline/BigInteger/LargeValueExceptions/run-1/test.stdout.log",
+      "sha256": "d5828bae5a190fe4fdbfe8d6f5154cc9245b316ecde6f8fd772f3a7366cee284"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/baseline/BigInteger/LargeValueExceptions/run-1/test.stderr.log",
+      "sha256": "2c58b87a0350a39bb1c3b5f4891defeeb9a785e84aa11a466dc9ddb21253bf58"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/baseline/BigInteger/largeMemory/DivisionOverflow/run-1/test.stdout.log",
+      "sha256": "d4964ac50b451d43d5ed5208dd86d23317448b25f8afe30d9c68458d70a42f3f"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/baseline/BigInteger/largeMemory/DivisionOverflow/run-1/test.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/baseline/BigInteger/largeMemory/StringConstructorOverflow/run-1/test.stdout.log",
+      "sha256": "ad59ae35f00ce58738b572e656bf2c68f76b02135508a13e12e59c8d233288d3"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/baseline/BigInteger/largeMemory/StringConstructorOverflow/run-1/test.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/baseline/BigInteger/largeMemory/SymmetricRangeTests/run-1/test.stdout.log",
+      "sha256": "f81bcac82f7834ef0c3a532c11f62c6881ff6b4adff39ab8eb81d73a25876bf8"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/baseline/BigInteger/largeMemory/SymmetricRangeTests/run-1/test.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/port/BigInteger/BitLengthOverflow/run-1/test.stdout.log",
+      "sha256": "74d3458e7cbbf544c950aabcd541ca3e3441dd25914f38c7fb5fa45f24aedec2"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/port/BigInteger/BitLengthOverflow/run-1/test.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/port/BigInteger/DoubleValueOverflow/run-1/test.stdout.log",
+      "sha256": "e62a4a91831ecccf0d130d1522d69c4defd5af703d6a9f1df724beb6a3936abb"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/port/BigInteger/DoubleValueOverflow/run-1/test.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/port/BigInteger/LargeValueExceptions/run-1/test.stdout.log",
+      "sha256": "2f166645f12fee2410ea1e4e442733f9f0fd05702ec798e2db60ebfa636faa94"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/port/BigInteger/LargeValueExceptions/run-1/test.stderr.log",
+      "sha256": "2c58b87a0350a39bb1c3b5f4891defeeb9a785e84aa11a466dc9ddb21253bf58"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/port/BigInteger/largeMemory/DivisionOverflow/run-1/test.stdout.log",
+      "sha256": "5bc0e704364d2a2e0d86b933ae1cf9913f2502e024c19bf352089cc1e8bb3aba"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/port/BigInteger/largeMemory/DivisionOverflow/run-1/test.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/port/BigInteger/largeMemory/StringConstructorOverflow/run-1/test.stdout.log",
+      "sha256": "1355f1bebb1420f9413ab2cf0ff959eefc1362bbc0679c7efa1ee44f7711b2b2"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/port/BigInteger/largeMemory/StringConstructorOverflow/run-1/test.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/port/BigInteger/largeMemory/SymmetricRangeTests/run-1/test.stdout.log",
+      "sha256": "e8f709bf63f9732dc73ee111811593f361b524788062183a3c610279add9a3af"
+    },
+    {
+      "path": ".codex-work/553/hosted-ci/large-39007728056/public-math-large-evidence-975182f9bca911be86ef1bc4efedc7039cc8fe36-1/build/math-tck/results/1792216334507/port/BigInteger/largeMemory/SymmetricRangeTests/run-1/test.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "runtime": "BellSoft25.0.4+9-LTS/Linux-amd64; Kotlin2.4.21/Gradle9.8.1",
+  "limits": [
+    "Six retained large plans executed in baseline and port; includes actual five TestNG assertions per LargeValueExceptions phase. No resource admission failure, no timeout, no caught-OOM incomplete result accepted.",
+    "128 skips are nonselected profiles or retained upstream disabled/package-private/commented inventory; not passed assertions. Normal106, other supported/hosted/caller proofs remain separate.",
+    "Source test tag jdk25.0.4.1 differs from actual BellSoft25.0.4+9 revision/vendor, as explicitly declared. No official JCK or exhaustive full553 compatibility claim.",
+    "Same-run artifact built on hosted975 independently matches e8 hash; not reused local JAR attribution. No numerical execution by reviewer."
+  ]
+}
