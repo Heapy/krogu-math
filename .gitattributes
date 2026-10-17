@@ -1,0 +1,6 @@
+# Plugin declarations and locks are verified byte-for-byte across CI hosts.
+/ktc-plugins.yaml text eol=lf
+/ktc-plugins.lock.yaml text eol=lf
+# POSIX launchers also run under Git Bash on Windows.
+/kotlin text eol=lf
+/ktc-plugins text eol=lf
