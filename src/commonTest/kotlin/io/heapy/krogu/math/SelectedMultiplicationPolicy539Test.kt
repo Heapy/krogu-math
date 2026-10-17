@@ -9,7 +9,7 @@ class SelectedMultiplicationPolicy539Test {
         for (size in listOf(16, 31, 32, 33, 63, 64, 127, 128, 129, 383, 384)) {
             val a = IntArray(size) { 0x3fffffff }
             assertEquals(64, MagnitudeMultiplication.selectedKaratsuba539(a, a))
-            assertEquals(if (useJsMultiplicationPolicy539) 32 else 64,
+            assertEquals(if (useJsMultiplicationPolicy539 || useNativeBalancedMultiplicationPolicy539) 32 else 64,
                 MagnitudeMultiplication.selectedKaratsuba539(a, a.copyOf()))
             for (ratio in listOf(2, 4)) {
                 val b = IntArray(size * ratio) { 17 }

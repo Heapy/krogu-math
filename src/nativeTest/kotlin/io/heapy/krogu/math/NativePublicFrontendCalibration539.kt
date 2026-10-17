@@ -38,7 +38,8 @@ class NativePublicFrontendCalibration539 {
         val expected = number(expectedWords)
         val selected = MultiplicationPolicy539(MagnitudeMultiplication.selectedKaratsuba539(aWords, bWords),
             MagnitudeMultiplication.SQUARE_THRESHOLD, MagnitudeMultiplication.selectedSquareEntry539())
-        check(selected.karatsuba == 64 && selected.squareLeaf == 16 && selected.wholeSquareEntry == 384)
+        check(selected.karatsuba == (if (shape == "distinct") 32 else 64) &&
+            selected.squareLeaf == 16 && selected.wholeSquareEntry == 384)
         val originalWordsA = aWords.copyOf(); val originalWordsB = bWords.copyOf()
         val originalA = a.toByteArray(); val originalB = b.toByteArray()
         fun verify(value: Any?) {
@@ -58,6 +59,7 @@ class NativePublicFrontendCalibration539 {
         verify(escaped)
         println("FIRSTNATIVE539,$size/$shape,$firstNs,${if (cpuBefore != null && cpuAfter != null) cpuAfter - cpuBefore else "NA"}")
         println("# first public/backend activation after untimed school/oracle/BI preparation; EVERY parallel row includes full Worker lifecycle; not pool reuse or pristine JIT")
+        // Actual parallel children remain explicit64/16; current balanced distinct serial is32.
         // Each native output type escapes unchanged: no conversion/formatting in operations.
         val routes = mutableListOf<Pair<String, () -> Any>>(
             "kernel-k${selected.karatsuba}-s${selected.squareLeaf}-e${selected.wholeSquareEntry}" to {
