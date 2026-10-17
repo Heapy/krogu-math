@@ -12,7 +12,8 @@ internal actual fun acquireNodeParallel539(): NodeParallelLease539? {
         throw problem
     }
 }
-private fun acquireHost539(payload: String): dynamic = js("""(function(payloadString) {
+private fun acquireHost539(payload: String): dynamic = acquireHostFactory539(payload)
+private val acquireHostFactory539: dynamic = js("""(function(payloadString) {
 const PROTOCOL = 'io.heapy.krogu.node-parallel-539.v1';
 const KEY = Symbol.for(PROTOCOL);
 const DEADLINE_MS = 20000;
@@ -211,4 +212,4 @@ function acquire539(payloadString) {
 };
 
 return acquire539(payloadString);
-})(payload)""")
+})""")
