@@ -187,7 +187,11 @@ open class BigInteger private constructor(
 
     // Pure, nonvirtual metadata probes. Splitting the tiny receiver getter keeps
     // each candidate helper small without fields, cached views or allocations.
-    private fun parallelMagnitudeSize539(): Int = wideWords?.size ?: 0
+    private fun parallelMagnitudeSize539(): Int {
+        val words = wideWords
+        if (words == null) return 0
+        return words.size
+    }
 
     private fun hasParallelMagnitude539(value: BigInteger): Boolean =
         parallelMagnitudeSize539() >= 4096 && value.parallelMagnitudeSize539() >= 4096
