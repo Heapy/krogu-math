@@ -25,9 +25,19 @@ The original inventory SHA is
 `8e1511ad0fe693412a1ff9525eca47d19b5b01cf3400740b50deeb43ce0adeb7`;
 its body follows unchanged.
 
-The mandatory Kotlin/JS erased/generic Number behavior remains UNSAT. No source
-inventory, green numerical campaign or finite call-form repair waives it or
-establishes official JCK/TCK or full525/553 compatibility.
+### Later accepted caller migration
+
+After this historical inventory, the user selected explicit caller edits using
+`Number.toKroguByte`, `toKroguShort`, `toKroguInt`, `toKroguLong`, `toKroguFloat`
+and `toKroguDouble` (525 comments2544/2545). See the
+[documented workaround and limitations](../README.md#kotlinjs-converting-through-number).
+The595/596 repairs above and this caller migration have accepted dispositions;
+the historical remaining-work statement below records source255, not new open
+implementation tasks. Original `Number.toX()` compiler behavior and the retained
+UNSAT diagnostic are unchanged. Third-party calls and unrelated custom Number
+implementations are not transparently repaired. Final composed caller and
+supported/public evidence remain obligations of553; no official JCK/TCK or full
+compatibility acceptance follows from these narrow dispositions.
 
 ---
 
