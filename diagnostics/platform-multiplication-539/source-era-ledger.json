@@ -1,0 +1,30 @@
+{
+  "task": "local:539",
+  "status": "INCOMPLETE_JS_SMALL_UNRESOLVED",
+  "accepted_parent": "c9415d55fe8d9a743266e75709cf95738011d311",
+  "settled_production": "3f0e1fb8f763b6518395535e222c18407112c9aa",
+  "source_manifest_sha256": "48c4b61794256a738e36af34fe8d1ccc32a897590fa86c7cf7813c24170e5e0a",
+  "eras": [
+    {"commit_prefix":"c41f8d93","scope":"Accepted529/537 composition and initial common calibration; source manifests bind each actual platform artifact."},
+    {"commit_prefix":"3fb5716","scope":"JVM prototype cold-await correction; original common data preserved."},
+    {"commit_prefix":"07910ed","scope":"Actual public serial comparators in JVM75 and Node105; full actual worker inventories, old60 and partial failed workers separate."},
+    {"commit_prefix":"43f2cd6","scope":"JVM frontend/failure fence and JS33 bounded K16 diagnostic; source383."},
+    {"commit_prefix":"841a8b8","scope":"Selected JS32/entry128; Native initial549/11529 and historical native paired baseline; source389."},
+    {"commit_prefix":"9038","scope":"Embedded original-Kotlin Node producer and JS factory correction, targetedJS/Wasm actuals; source401."},
+    {"commit_prefix":"0331887","scope":"Native candidate frontend and publication sourcesJar dependency fix; active independent consumer SHORT/IDLE proof, source405."},
+    {"commit_prefix":"df733","scope":"Selected Native distinct/equalK32, alias/unbalanced64; initial actual publics/guards and historical full2108."},
+    {"commit_prefix":"2d74","scope":"Thin JVM entry; measured JVM route2 large45FIRST/1260warm and resources, pairedguard2/full2108."},
+    {"commit_prefix":"cd231","scope":"JS small shortcut and common primitive size getter correction; actualWasm no-box proof and affected guards."},
+    {"commit_prefix":"a207","scope":"JS fused basecases plus common compact-null public bypass;33B JVM entry and current accepted JVM smallguard."},
+    {"commit_prefix":"aa9ca6b9","scope":"JS/Wasm direct virtual serial retention; final Node retained45FIRST/1260warm each, pairedguards5, two published declined consumers. Single local monitored admission NO_NUMERIC_RUN. Native candidate9qualifying dimensions/2mixedflags refused."},
+    {"commit_prefix":"3f0e1fb8","scope":"Native direct virtual serial retention and six reviewed docs/comment files; currentNative11contracts, retained45FIRST/1260warm, full2112 and exactJVMmethod-instruction carry-forward."}
+  ],
+  "applicability": {
+    "jvm": "Final34B public entry and all changed class instruction listings exact aa9; aa9 differed from accepted a207 only by one inertNOP. Actuallarge2d74 and smalla207 retain measured identities, with independently accepted bounded semantic applicability and no new margin/JIT claim.",
+    "node": "FinalNative-only production delta plus common/JVMcomments leaves JS/Wasm target policy, transport, producer inputs, portable fixtures and worker identity scope unchanged. aa9 execution, declined publication consumers and directentry proof remain aa9 artifact facts; finalfull2112 validates settled source.",
+    "native": "Currentdirectentry and retained comparison are newly measured on3f0 binaryf014e741. Candidateaa9 lifecycle/gains/resources remain refused-candidate history, not finalparallel observations.",
+    "source": "Source-tree snapshot excludes historical diagnostic packages. Gitbundle requires acceptedparent and retains featurehistory; tested-source-map binds405 current source files, not an assertion that all historical source paths equal current."
+  },
+  "runtime_recovery_scope": "Measured artifact/publication trees are restored byte-exact by file-map. Original OS/compiler/JDK/Node installations are external prerequisites with recorded versions/paths/SHA ledgers; this is not an archived operating system or a claim that old binaries were recompiled equivalently.",
+  "remote": "Prepared archive remains local and immutable; approval pending, no export or remote numerical run."
+}

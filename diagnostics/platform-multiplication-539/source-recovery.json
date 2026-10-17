@@ -1,0 +1,8 @@
+{
+  "production":"3f0e1fb8f763b6518395535e222c18407112c9aa",
+  "accepted_parent_prerequisite":"c9415d55fe8d9a743266e75709cf95738011d311",
+  "bundle":"retained:source-history.bundle",
+  "snapshot":"source-tree.zip",
+  "actual_git_bundle_verify":{"exit_code":0,"contains_ref":"3f0e1fb8f763b6518395535e222c18407112c9aa HEAD","requires_ref":"c9415d55fe8d9a743266e75709cf95738011d311","scope":"Actual git bundle verify and list-heads succeeded; no rebuild or binary execution."},
+  "scope":"Git bundle retains every feature commit after accepted parent; git bundle verify requires that parent in the existing repository. Independent source-tree snapshot supplies all tracked build/source/docs excluding historical diagnostics; tested-source-map binds405 exact files. Prior accepted diagnostics remain their separate packages."
+}

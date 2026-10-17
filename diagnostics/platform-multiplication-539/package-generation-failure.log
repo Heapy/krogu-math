@@ -1,0 +1,7 @@
+ARCHIVED raw-campaigns.zip members=4704 bytes=18887448
+ARCHIVED provenance-tools.zip members=1149 bytes=5300846
+ARCHIVED measured-artifacts.zip members=1213 bytes=205008032
+ARCHIVED source-tree.zip members=867 bytes=6144368
+java.lang.IllegalStateException: fatal: Refusing to create empty bundle.
+
+	at Package_evidence_main.<init>(package-evidence.main.kts:142)

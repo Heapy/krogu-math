@@ -1,0 +1,49 @@
+{
+  "status": "REPORT_LITERAL_SOURCE_ERA_RESOURCE_SCOPE_PASS_WITH_DECISION_STATUS_WORDING_CORRECTION_REQUESTED",
+  "canonical_directory": ".codex-work/539/worktree/diagnostics/platform-multiplication-539",
+  "reviewed_files": [
+    {
+      "path": "REPORT.md",
+      "sha256": "520053974d66e9dad24376cd630e97fee94f0336f644498faf886c089d321d4c"
+    },
+    {
+      "path": "REQUIREMENTS.md",
+      "sha256": "c674766008724d22a02bb35a39c38868752bd047048edf2c83ab87f859038584"
+    },
+    {
+      "path": "REPRODUCE.md",
+      "sha256": "845355ffee09f75482911e6dd514c3e2f1f5aa55d447d06b671953bcc139ad9a"
+    },
+    {
+      "path": "README.md",
+      "sha256": "b60a39d2ec315c821cec623ad417b1a1af6aa19819a3c63a6249dcac852bbb94"
+    },
+    {
+      "path": "selected-policy-decisions.json",
+      "sha256": "36b4aa0c654f873b6baa9896d05ede9039d7c26402058ea18283750d863dc99e"
+    }
+  ],
+  "accepted_scope": [
+    "Overall INCOMPLETE_JS_SMALL_UNRESOLVED explicit; remote approval pending, no export.",
+    "Current 3f0 source405/full2112 versus historical timing/artifact epochs kept separate.",
+    "JVM latency adoption and semantic applicability bounded; no new current timing/JIT claim.",
+    "JS/Wasm/Native public serial refusal, actual retained comparisons and consumer absence distinguished from historical active-worker proofs.",
+    "Native9 candidate gains/CPU/full-lifecycle scope retained despite refusal; current absence is not old small recovery.",
+    "RSS/footprint/global GC/approximate allocation/FIRST/NA scopes honest; scalar20/10 gate absent.",
+    "Historical forced-school versus actual JDK/NodeBigInt oracle eras explicit; adverse/partial failures retained."
+  ],
+  "specific_correction_requested": {
+    "file": "selected-policy-decisions.json",
+    "fields": [
+      "status",
+      "parallel_frontends.jvm.correctness",
+      "js.status"
+    ],
+    "reason": "Stale current runtime/full pending and local diagnostic pending wording must reflect actual final2112 PASS and consumed NO_NUMERIC_RUN with remote approval pending. Historical source-specific facts should remain labelled."
+  },
+  "not_reviewed": [
+    "Bulk ZIP bytes/member inventories/recovery extraction/Git blob verification; separately owner/coordinator validation pending."
+  ],
+  "no_runtime_or_owner_source_edits": true,
+  "overall_task_acceptance": false
+}

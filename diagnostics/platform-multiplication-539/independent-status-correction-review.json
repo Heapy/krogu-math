@@ -1,0 +1,14 @@
+{
+  "status": "PASS_THREE_STATUS_WORDING_CORRECTION_AND_DEPENDENT_INDEX_BINDING",
+  "prior_review_sha256": "b2a968fde3fe2457e263e510da2188a45fd7e90da60c8fc1fd24e48d56f0fefc",
+  "decision_sha256": "36b4aa0c654f873b6baa9896d05ede9039d7c26402058ea18283750d863dc99e",
+  "evidence_index_sha256": "fa4e84c5cde6b789f17a96edfcb4bb8859db9eb562404382b125e76418587315",
+  "evidence_sha256_file_sha256": "6985ed86e1aa9a0ede80f8332e309ba53eea728ca88bbcb25f605299fe996ee8",
+  "corrected_fields": {
+    "status": "FINAL_FULL_2112_PASS_JS_SMALL_UNRESOLVED_REMOTE_APPROVAL_PENDING",
+    "parallel_frontends.jvm.correctness": "Final3f0 full2112 independently PASS9b61ec84:702JVM/468JS/468Wasm/474Native,zero failures/errors/skips. Historical2d74 full2108 and a207 focused21 retain their eras. ExistingJVM9 targeted4095/4096/4097 threshold/sign/alias/ratio/virtualfallback/failure contracts remain accepted with final51596f4a instruction-equivalence mapping.",
+    "js.status": "AA9_SERIAL_RETENTION_VERIFIED_SIX_SMALL_FLAGS_UNRESOLVED_LOCAL_MONITOR_CONSUMED_NO_NUMERIC_RUN_REMOTE_APPROVAL_PENDING"
+  },
+  "root_canonical_byte_equal": true,
+  "scope": "Narrow status/reference rebind only. Final2112 correctness is current; local monitored diagnostic consumed NO_NUMERIC_RUN; remote approval remains pending and JS small clearance unresolved. No package bulk/recovery verification, numerical rerun or overall539 acceptance."
+}
