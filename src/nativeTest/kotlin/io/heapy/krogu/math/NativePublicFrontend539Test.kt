@@ -1,5 +1,5 @@
 @file:OptIn(kotlin.native.concurrent.ObsoleteWorkersApi::class, kotlin.concurrent.atomics.ExperimentalAtomicApi::class,
-    kotlin.experimental.ExperimentalNativeApi::class)
+    kotlin.experimental.ExperimentalNativeApi::class, kotlin.ExperimentalStdlibApi::class)
 package io.heapy.krogu.math
 import kotlin.concurrent.atomics.AtomicInt
 import kotlin.native.Platform
