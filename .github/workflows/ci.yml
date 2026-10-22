@@ -15,11 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - name: Restore and verify the locked source plugin
+        uses: Heapy/setup-ktc-plugins@5de74f161cb07ad74e72ee28bfad228f4cce3bb4 # v1.0.0
+      - name: Record locked plugin source inputs
         shell: bash
         run: |
           set -euo pipefail
-          ./ktc-plugins sync
-          ./ktc-plugins verify
           mkdir -p build/ktc-plugin-input
           printf '%s\n' "$GITHUB_SHA" > build/ktc-plugin-input/SOURCE_COMMIT
           find plugins/benchmark -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum > build/ktc-plugin-input/SHA256SUMS
